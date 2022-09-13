@@ -1,0 +1,60 @@
+<div class="eclips"><img src="assets/images/svg/login/ellipse.svg" alt="img" /></div>
+<section class="main-frame">
+  <div class="col-12">
+    <div class="logo"><img src="assets/images/svg/logo/logo.svg" alt="logo" /></div>
+  </div>
+  <div class="col-12">
+    <div class="row g-0">
+      <div class="col-7 xs-grid-none">
+        <div class="img-holder">
+          <img src="assets/images/svg/login/login_left.svg" alt="img" />
+        </div>
+      </div>
+      <div class="col-5 xs-class">
+        <main class="form-signin">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <h1 class="h3 mb-86 fw-normal"><span class="fw-bolder">Welcome!</span> <br>Please login to your
+              account</h1>
+
+            <div class="form-floating mb-40 br-4">
+              <input type="text" class="form-control" id="floatingInput"
+                [ngClass]="{ 'is-invalid': submitted && f.userID?.errors?.required }" formControlName="userID"
+                placeholder="user ID">
+              <label for="floatingInput">User ID*</label>
+              <div *ngIf="submitted && f.userID?.errors?.required" class="invalid-feedback">
+                <div *ngIf="f.userID?.errors?.required">User id is required</div>
+              </div>
+            </div>
+            <div class="form-floating br-4">
+              <input type="{{showHidePwdInput ? 'text': 'password'}}" class="form-control" id="floatingPassword"
+                placeholder="Password" formControlName="password"
+                [ngClass]="{ 'is-invalid': submitted && f.password.errors?.required }">
+                <i [ngClass]="{'mdi-eye-outline': showHidePwdInput, 'mdi-eye-off-outline': !showHidePwdInput}"
+                class="mdi  pwd-eye mx-3" (click)="showHidePwd()"></i>
+              <label for="floatingPassword">Password*</label>
+              
+              <div *ngIf="submitted && f.password.errors?.required" class="invalid-feedback">
+                <span *ngIf="f.password.errors.required">Password is required</span>
+              </div>
+            </div>
+
+            <div class="forgot-password">
+              <a routerLink="/account/auth/reset-password" class="forgot-pwd">Forgot Your Password?</a>
+            </div>
+            <button [disabled]="loginForm.invalid" class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+          </form>
+        </main>
+      </div>
+    </div>
+    <div class="row w-100">
+      <div class="col">
+        <div class="footer login-pwd">
+          <h6>Powered by Coroebus &#169;</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="footer">
+    <h6>Powered by Coroebus &#169;</h6>
+  </div> -->
+</section>

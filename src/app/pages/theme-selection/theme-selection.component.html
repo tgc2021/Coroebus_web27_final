@@ -1,0 +1,71 @@
+<section class="main-frame" *ngIf="showComponent">
+    <header class="logo"><img src="assets/images/svg/logo/logo-with-out-transparent.svg" alt="logo" /></header>
+    <div class="baner-img mb-3">
+        <h2 class="text-center theme-select-txt">Please select your theme</h2>
+        <img class="w-100 h-100" src="assets/images/svg/theme-selection/baner-img.png" alt="img" />
+    </div>
+    <div class="col-12  p-100-">
+        <div class="card-wrapper">
+            <div id="carouselExample" class="carousel slide w-100" data-bs-interval="false" data-ride="carousel"
+                data-pause="hover">
+                <div class="carousel-inner">
+                    <div class="carousel-item" *ngFor="let items of themeList;let i = index"
+                        [ngClass]="{'active': i === 0}">
+                        <div class="row"
+                            [ngClass]="{'text-center': items?.length === 1, 'row-cols-1': (Util?.isMobile() && items?.length > 2)}">
+                            <!-- {{items | json}} -->
+                            <div class="col p-bottom-mobile" *ngFor="let item of items;let in = index"
+                                [ngClass]="{'theme-card-center': (in === 0 && items?.length === 2)}">
+                                <label [ngClass]="{'wd-50': items?.length === 1, 'theme-card-w': items?.length === 2}">
+                                    <input type="radio" name="product" class="card-input-element"
+                                        [checked]="selectedTheme === item?.id_coroebus_theme"
+                                        (change)="handleChange($event, item)" />
+                                    <div class="card-img theme-card-img p-4">
+                                        <img src="{{item?.logo}}" class="theme-img" alt="img" />
+                                        <h6 class="m-3">{{item?.coroebus_theme_title}}</h6>
+                                        <p>
+                                            {{item?.theme_description}}
+                                        </p>
+                                        <!-- [ngClass]="{'btn-outline-dark': selectedTheme === item?.id_coroebus_theme}" -->
+                                        <button type="button"  (click)="handleChange($event, item)"
+                                            class="btn" id="p-button">Select</button>
+                                    </div>
+
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ng-container *ngIf="themeList?.length >= 2">
+                    <button class="carousel-control-prev" data-bs-target="#carouselExample" type="button"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" data-bs-target="#carouselExample" type="button"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </ng-container>
+
+            </div>
+        </div>
+    </div>
+    <!-- <div class="row">
+        <div class="col-md-4 col-lg-4 col-sm-4"></div>
+        <div class="col-md-4 col-lg-4 col-sm-4 text-center">
+            <button class=" btn login-btn" type="button" (click)="selectTheme()">
+                <span class="login-btn__text text-white"></span> Next
+            </button>
+        </div>
+        <div class="col-md-4 col-lg-4 col-sm-4"></div>
+    </div> -->
+    <div class="row w-100">
+        <div class="col">
+          <div class="footer login-pwd">
+            <h6>Powered by Coroebus &#169;</h6>
+          </div>
+        </div>
+      </div>
+</section>

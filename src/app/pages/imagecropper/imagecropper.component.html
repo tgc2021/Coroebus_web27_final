@@ -1,0 +1,33 @@
+<div class="modal-header border-bottom-0 p-0">
+  <div class="row w-100">
+    <div class="col-12 pt-2">
+      <i class="fa fa-times float-end" (click)="close()"></i>
+    </div>
+  </div>
+</div>
+<div class="modal-body">
+  <div class="row row-cols-2">
+    <div class="col-12 ms-5 mt-2 w-75">
+      <image-cropper [imageChangedEvent]="fileData" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
+        [resizeToWidth]="256" format="png" [roundCropper]="true" (imageCropped)="imageCropped($event)">
+
+      </image-cropper>
+    </div>
+    <!-- <div class="col">
+      <img src="{{croppedImage}}" alt="" srcset="" class="preview-img">
+    </div> -->
+
+  </div>
+  <div class="row row-cols-1 mt-5">
+    <div class="col text-center">
+      <a class="btn" (click)="close()">Close</a>
+      <a class="btn text-white" [ngStyle]="{'background': buttonColor}" (click)="cropAndSave()">Crop & Save</a>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col text-center text-danger">
+      {{error ? error : ''}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,109 @@
+{
+    "status": "success",
+    "statuscode": 200,
+    "data": {
+        "_ranking_data": [
+            {
+                "order": 1,
+                "label": "Squad",
+                "_data": [
+                    {
+                        "blueclass": "bluerow",
+                        "rankingtable_arrow": "red",
+                        "rankingtable_weightage": "208",
+                        "id_coroebus_user": "53295",
+                        "rankingtable_name": "Tribe Citizen P3",
+                        "id_coroebus_team": "617",
+                        "rankingtable_team": "Kochi",
+                        "rankingtable_logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/TeamLogo\/\tTL-16486401346378.png",
+                        "teamlogo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/TeamLogo\/\tTL-16486401346378.png",
+                        "userid": "GOLD015",
+                        "id_role": "6",
+                        "id_coroebus_game": "197",
+                        "group_name": "TATA Nexon IPL 2022",
+                        "rankingtable_number": "2",
+                        "id_senior_rm": "53318",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16219418756328.png",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16336885915529.png"
+                    }
+                ]
+            },
+            {
+                "order": 2,
+                "label": "Clan",
+                "_data": [
+                    {
+                        "blueclass": "bluerow",
+                        "rankingtable_arrow": "red",
+                        "rankingtable_weightage": "208",
+                        "id_coroebus_user": "53295",
+                        "rankingtable_name": "Tribe Citizen P3",
+                        "id_coroebus_team": "617",
+                        "rankingtable_team": "Kochi",
+                        "rankingtable_logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/UserData\/USR-16534609458346.png?6.8129462346555165",
+                        "teamlogo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/TeamLogo\/\tTL-16486401346378.png",
+                        "userid": "GOLD015",
+                        "id_role": "6",
+                        "id_coroebus_game": "197",
+                        "group_name": "TATA Nexon IPL 2022",
+                        "rankingtable_number": "2",
+                        "id_senior_rm": "53318",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16219418756328.png",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16336885915529.png"
+                    }
+                ]
+            },
+            {
+                "order": 3,
+                "label": "Tribe",
+                "_data": [
+                    {
+                        "blueclass": "bluerow",
+                        "rankingtable_arrow": "red",
+                        "rankingtable_weightage": "208",
+                        "id_coroebus_user": "53295",
+                        "rankingtable_name": "Tribe Citizen P3",
+                        "id_coroebus_team": "617",
+                        "rankingtable_team": "Kochi",
+                        "rankingtable_logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/UserData\/USR-16534609458346.png?5.810704218047396",
+                        "teamlogo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/TeamLogo\/\tTL-16486401346378.png",
+                        "userid": "GOLD015",
+                        "id_role": "6",
+                        "id_coroebus_game": "197",
+                        "group_name": "TATA Nexon IPL 2022",
+                        "rankingtable_number": "5",
+                        "id_senior_rm": "53318",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16219418756328.png",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16336885915529.png"
+                    }
+                ]
+            },
+            {
+                "order": 4,
+                "label": "State",
+                "_data": [
+                    {
+                        "blueclass": "bluerow",
+                        "rankingtable_arrow": "red",
+                        "rankingtable_weightage": "208",
+                        "id_coroebus_user": "53295",
+                        "rankingtable_name": "Tribe Citizen P3",
+                        "id_coroebus_team": "617",
+                        "rankingtable_team": "Kochi",
+                        "rankingtable_logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/UserData\/USR-16534609458346.png?9.808594053432898",
+                        "teamlogo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/TeamLogo\/\tTL-16486401346378.png",
+                        "userid": "GOLD015",
+                        "id_role": "6",
+                        "id_coroebus_game": "197",
+                        "group_name": "TATA Nexon IPL 2022",
+                        "rankingtable_number": "16",
+                        "id_senior_rm": "53318",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16219418756328.png",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16336885915529.png"
+                    }
+                ]
+            }
+        ]
+    },
+    "message": ""
+}

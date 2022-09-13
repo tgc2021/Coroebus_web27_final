@@ -1,0 +1,37 @@
+{
+    "status": "success",
+    "statuscode": 200,
+    "data": [
+        {
+            "header": "Learning Academy",
+            "title": "Computer",
+            "image_logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/images\/learning_academy.png",
+            "logo": "",
+            "description_": "There\u2019s a new brief added to your Learning Academy Library, check it out!",
+            "date_time": "2022-05-30 11:53:42",
+            "type_": "3",
+            "id_notification_log": "3013"
+        },
+        {
+            "header": "Spot Engagement",
+            "title": "Pellentesque suscipit lacus lacinia ante gravida, ac elementum lacus sollicitudin.",
+            "image_logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/images\/spot_engagement.png",
+            "logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/SpotLogo\/STL-16488059172700.png?1157958674",
+            "description_": "Phasellus nec metus at purus finibus tempus at quis urna.In sed eros non nisi viverra laoreet. Curab",
+            "date_time": "2022-04-11 17:00:01",
+            "type_": "2",
+            "id_notification_log": "2082"
+        },
+        {
+            "header": "Spot Engagement",
+            "title": "Pellentesque suscipit lacus lacinia ante gravida, ac elementum lacus sollicitudin.",
+            "image_logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/images\/spot_engagement.png",
+            "logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/SpotLogo\/STL-16488059172700.png?1157958674",
+            "description_": "Phasellus nec metus at purus finibus tempus at quis urna.In sed eros non nisi viverra laoreet. Curab",
+            "date_time": "2022-04-11 17:00:02",
+            "type_": "2",
+            "id_notification_log": "2134"
+        }
+    ],
+    "message": "Success!!"
+}

@@ -1,0 +1,19 @@
+{
+    "status": "success",
+    "statuscode": 200,
+    "data": {
+        "check_status": "Valid",
+        "security_questions": [
+            {
+                "id_security_question": "1",
+                "question": "What was your childhood nickname?"
+            },
+            {
+                "id_security_question": "6",
+                "question": "What is your favorite team?"
+            }
+        ],
+        "id_role": "6"
+    },
+    "message": "Valid User ID"
+}

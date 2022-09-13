@@ -1,0 +1,28 @@
+<div class="container-fluid-notification">
+    <div class="row notification-title-row">
+        <div class="col">
+            <span class="notification-list-header">
+                Notification
+            </span>
+        </div>
+    </div>
+    <div class="row row-cols-1 mt-2 notification-row notification-row-margin  me-4"
+        [ngClass]="{'yellow-notification-row': item?.readStatus === '0'}"
+        *ngFor="let item of notificationLists; let i =index" (click)="openNotification(item)">
+        <div class="col">
+            <div class="media">
+                <img *ngIf="item?.image" class="mt-2" src="assets/images/svg/notification/img.png" alt="" height="47">
+                <img *ngIf="item?.gif" class="mt-2" src="assets/images/svg/notification/txt.png" alt="" height="47">
+                <img *ngIf="item?.video" class="mt-2" src="assets/images/svg/notification/v.png" alt="" height="47">
+                <img *ngIf="(item?.video==='' && item?.gif==='' && item?.image==='')" class="mt-2"
+                    src="assets/images/svg/dashboard/text-notification-read.png" alt="" height="47">
+                <div class="media-body mt-3 ms-3">
+                    <p class="mt-0 font-size-15 font-weight-semibold">{{item?.title}}</p>
+                    <span class="notification-text-mutated notification-date">
+                        {{item?.datetimestamp | date:'fullDate'}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+{
+    "status": "success",
+    "statuscode": 200,
+    "data": {
+        "validation_status": "success"
+    },
+    "message": "Security question answer matched successfully"
+}

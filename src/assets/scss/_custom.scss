@@ -1,0 +1,24 @@
+:root {
+    --color-primary: #f8fafb;
+    --color-secondary: #1493e7;
+    --color-base: #000;
+    --color-white: #fff;
+    --color-label: #979797;
+    --color-primaryBlue: #61e3ff;
+
+}
+
+// dropdown
+.dropdown-toggle {
+    &:after {
+        display: none;
+    }
+}
+
+html,
+body {
+    height: 100%;
+    background-color: var(--color-primary);
+    color: var(--color-base);
+    font-family: 'Inter', sans-serif;
+}

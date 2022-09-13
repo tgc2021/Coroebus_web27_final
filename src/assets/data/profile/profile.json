@@ -1,0 +1,40 @@
+{
+    "status": "success",
+    "statuscode": 200,
+    "data": {
+        "_personal_data": {
+            "id_role": "6",
+            "role_name": "Store",
+            "user_department": "na",
+            "user_designation": "Player",
+            "user_function": "na",
+            "user_grade": "na",
+            "cd_coroebus_user": "US-16282502523324",
+            "id_coroebus_user": "53295",
+            "id_coroebus_organization": "28",
+            "cd_coroebus_organization": "OG-1628249812508",
+            "organization_name": "Tata Nexon",
+            "organization_logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/OrgLogo\/OL-16282498102036.png?854751220",
+            "USERID": "GOLD015",
+            "EMPLOYEEID": "GOLD015",
+            "first_name": "Tribe Citizen P3",
+            "email_id": "info@thegamificationcompany.com",
+            "contact_number": "9876543210",
+            "profile_logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/UserData\/USR-16534609458346.png?2062232876",
+            "theme_logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeLogo\/TL-16559018105771.png?2082698721",
+            "game_logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/GameLogo\/\tGL-16486364698852.png",
+            "id_coroebus_game": "197",
+            "id_coroebus_team": "617",
+            "game_name": "TATA Nexon IPL 2022",
+            "cd_coroebus_game": "GM-16486364726843",
+            "team_name": "Kochi",
+            "team_logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/TeamLogo\/\tTL-16486401346378.png?2045956663",
+            "password": "9QVjcHyu0OY8aIHAOXiiBg=="
+        },
+        "_access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.IlVTLTE2MjgyNTAyNTIzMzI0Ig.a3pBUfKHgP6Ud0mNy8Q_e-ZB7zhCWt5Wk7o5JsaO-1k",
+        "_system": {
+            "date_time_stamp": "2022-06-29 07:55:46"
+        }
+    },
+    "message": "Profile Updated Successfully"
+}

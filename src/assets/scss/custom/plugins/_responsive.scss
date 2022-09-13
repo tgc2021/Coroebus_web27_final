@@ -1,0 +1,187 @@
+/***************Responsive CSS*****************/
+@media screen and (max-width: 1700px) {
+  .logo {
+    padding: 60px 0px 10px;
+  }
+
+  .forgot-password {
+    text-align: end;
+    margin: 40px 0 85px 0;
+  }
+
+  .img-holder img {
+    width: 55%;
+    margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+
+  .form-signin {
+
+    max-width: 450px;
+
+  }
+
+  .form-signin h1 {
+    line-height: 38px;
+    font-size: 1.5rem;
+  }
+
+  .mb-86 {
+    margin-bottom: 35px;
+  }
+
+
+  .form-floating>.form-control,
+  .form-floating>.form-select {
+    height: calc(2.5rem + 2px);
+    line-height: 1.25;
+  }
+
+  .form-floating>label {
+
+    padding: 0.5rem 0.75rem;
+    font-size: 14px;
+  }
+
+  .forgot-password {
+    text-align: end;
+    margin: 25px 0 75px 0;
+  }
+
+  .forgot-password a {
+    font-size: 14px;
+  }
+
+  .btn-primary {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+
+  .terms-condition .form-signin {
+    padding: 100px 15px;
+  }
+
+  .mb-custom {
+    margin-bottom: 95px;
+  }
+
+  .terms-condition .mb-5 {
+    margin-bottom: 2rem !important;
+  }
+
+  .terms-condition .mt-5 {
+    margin-top: 2rem !important;
+  }
+
+  .mt-100 {
+    margin-top: 60px !important;
+  }
+
+  .form-select {
+    padding: 0.6rem 0.7rem;
+    font-size: 14px;
+  }
+
+  .security .mb-40 {
+    margin-bottom: 25px;
+  }
+
+  .security .form-signin {
+    padding: 120px 15px 30px;
+    position: relative;
+    z-index: 1;
+
+  }
+
+  .verify .form-signin {
+    padding: 150px 15px;
+  }
+
+  .theme .p-100 {
+    padding: 65px;
+  }
+
+  .card-wrapper {
+    padding: 0 0;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+
+    height: 50px;
+    width: 50px;
+    left: 0px;
+
+  }
+
+  .carousel-control-next {
+    right: 0px !important;
+    left: auto !important;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+
+
+  .terms-condition .form-signin {
+    padding: 90px 15px 70px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .form-signin h1 {
+    line-height: 32px;
+    font-size: 1.3rem;
+  }
+
+  .form-signin {
+    padding: 0 35px;
+
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .xs-grid-none {
+    display: none;
+  }
+
+  .xs-class {
+    width: 100%;
+  }
+
+  .logo {
+    padding: 45px 0px 10px;
+    // margin-top: 45px;
+    text-align: center;
+    position: relative;
+  }
+
+  .form-signin h1 {
+    line-height: 30px;
+    font-size: 1.2rem;
+  }
+
+  .form-signin {
+    padding: 40px 10px;
+  }
+
+  .verify .form-signin {
+    padding: 80px 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+  .footer {
+    padding: 35px 0 15px;
+  }
+}
+
+@media screen and (max-width: 740px) and (min-width: 550px) {
+  .footer {
+    display: none;
+  }
+}

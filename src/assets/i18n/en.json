@@ -1,0 +1,57 @@
+{
+  "HEADER": {
+    "SEARCH": "Search...",
+    "MEGA_MENU": "Mega Menu",
+    "NOTIFICATIONS": {
+      "TITLE": "Notifications",
+      "VIEW_ALL": "View All",
+      "LOAD_MORE": "View More..",
+      "FIRST": {
+        "TITLE": "Your order is placed",
+        "TEXT": "If several languages coalesce the grammar",
+        "TIME": "3 min ago"
+      },
+      "SECOND": {
+        "TITLE": "James Lemire",
+        "TEXT": "It will seem like simplified English.",
+        "TIME": "1 hours ago"
+      },
+      "THIRD": {
+        "TITLE": "Your item is shipped",
+        "TEXT": "If several languages coalesce the grammar",
+        "TIME": "3 min ago"
+      },
+      "FOUR": {
+        "TITLE": "Salena Layfield",
+        "TEXT": "As a skeptical Cambridge friend of mine occidental.",
+        "TIME": "1 hours ago"
+      }
+    },
+    "SETTINGS": "Settings",
+    "LOGIN": {
+      "PROFILE": "Profile",
+      "LOGOUT": "Logout"
+    }
+  },
+  "MENUITEMS": {
+    "MENU": {
+      "TEXT": "Menu"
+    },
+    "DASHBOARDS": {
+      "TEXT": "Home",
+      "BADGE": "04"
+    },
+    "PROFILE": "Profile",
+    "MY_PERFORMANCE": "My Performance",
+    "PLAY_ZONE": "Play Zone",
+    "REWARDS": "Rewards",
+    "SPECTATOR_VIEW": "Spectator View",
+    "GAME_SELECTION": "Game selection",
+    "LEARNING": "Learning",
+    "LEARNING_ACADEMY": "Learning Academy",
+    "CHALLENGE_ZONE": "Challenge Zone",
+    "CHAMPIONS_LEAGUE": "Champions League",
+    "ABOUT_US": "About Us",
+    "LOG_OUT": "Log Out"
+  }
+}

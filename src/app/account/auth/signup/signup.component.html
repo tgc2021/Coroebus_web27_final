@@ -1,0 +1,111 @@
+<div class="container-fluid p-0">
+  <div class="row g-0">
+    <div class="col-xl-6">
+      <div class="p-md-5 p-4">
+        <div class="w-100">
+          <div class="d-flex flex-column h-100">
+            <div class="mb-4 mb-md-5">
+              <a routerLink="/" class="d-block auth-logo">
+                <img src="assets/images/svg/logo/logo.svg" alt="" height="55" class="auth-logo-dark">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6">
+      <img src="assets/images/svg/login/ellipse.svg" alt="" height="200" class="auth-logo-dark float-end">
+    </div>
+  </div>
+  <div class="row g-0">
+
+    <div class="col-xl-7">
+      <div class="auth-full-bg">
+        <div class="w-100">
+          <div class="bg-overlay"></div>
+        </div>
+      </div>
+    </div>
+    <!-- end col -->
+
+    <div class="col-xl-5">
+      <div class="p-4">
+        <div class="w-100">
+
+          <div class="d-flex flex-column h-100">
+            <div class="my-auto-">
+              <div>
+                <h5 class="text-primary">Register account</h5>
+                <p class="text-muted">Get your free Coroebus account now.</p>
+              </div>
+              <div class="mt-4">
+                <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                  <ngb-alert type="success" *ngIf="successmsg" [dismissible]="false">Registeration
+                    successfull.
+                  </ngb-alert>
+
+                  <ngb-alert type="danger" *ngIf="error" [dismissible]="false">{{ error }}</ngb-alert>
+
+                  <div class="mb-3">
+                    <label for="username">Username</label>
+                    <input type="text" formControlName="username" class="form-control" id="username"
+                      [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="Enter username">
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                      <div *ngIf="f.username.errors.required">Userame is required</div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="useremail">Email</label>
+                    <input type="email" formControlName="email"
+                      [ngClass]="{ 'is-invalid': submitted && f.email.errors }" class="form-control" id="useremail"
+                      placeholder="Enter email">
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                      <div *ngIf="f.email.errors.required">Email is required</div>
+                      <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="userpassword">Password</label>
+                    <input type="password" formControlName="password"
+                      [ngClass]="{ 'is-invalid': submitted && f.password.errors }" class="form-control"
+                      id="userpassword" placeholder="Enter password">
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                      <div *ngIf="f.password.errors.required">Password is required</div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <p class="mb-0">By registering you agree to the Coroebus <a href="javascript: void(0);"
+                        class="text-primary">Terms of Use</a>
+                    </p>
+                  </div>
+
+                  <div class="mt-4 d-grid">
+                    <button class="btn btn-primary btn-block" type="submit">Register</button>
+                  </div>
+                </form>
+                <div class="mt-5 text-center">
+                  <p>Already have an account ? <a routerLink="/account/login" class="fw-medium text-primary">
+                      Login</a> </p>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-12">
+      <div class="text-center">
+        <p class="mb-0">©
+          {{year}} Powered by Coroebus</p>
+      </div>
+    </div>
+    <!-- end col -->
+  </div>
+  <!-- end row -->
+</div>
+<!-- end container-fluid -->

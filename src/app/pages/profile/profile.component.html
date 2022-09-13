@@ -1,0 +1,171 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body profile-card-body">
+                    <form [formGroup]="userForm" (ngSubmit)="updateInfo()">
+                        <div class="row">
+                            <div class="col-sm-3 text-center mt-3">
+                                <figure class="figure">
+                                    <img src="{{ProfileImageNewOne ? ProfileImageNewOne : userObj?._personal_data?.profile_logo}}"
+                                        class="figure-img img-fluid user-profile-img" height="149" width="149" style="border-radius: 100%;">
+                                    <figcaption class="figure-caption">
+                                        <!-- <button type="submit" class="btn "
+                                            [ngStyle]="{'background': userObj?.otherInfo?.color}">
+                                            <input type="file" class="d-none" (change)="openFile($event)" />
+                                            <span class="text-white"> Change
+                                                Photo</span>
+                                        </button> -->
+                                        <label [ngStyle]="{'background': userObj?.otherInfo?.color}"
+                                            class="profile-upload-img"> Change Photo
+                                            <input class="d-none" type="file" size="60" (change)="openFile($event)">
+                                        </label>
+                                    </figcaption>
+                                    <figcaption class="figure-caption profile-first_name">
+                                        {{userObj?._personal_data?.first_name}}
+                                    </figcaption>
+                                    <figcaption class="figure-caption profile-organization_name">
+                                        {{userObj?._personal_data?.organization_name}}
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-xl-5 mt-3">
+                                        <div class="form-group">
+                                            <label for="name" class="profile-label">Name: </label>
+                                            <input type="text" class="form-control profile-f-c-width"
+                                                formControlName="name" placeholder="" id="name">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-5 mt-3">
+                                        <div class="form-group">
+                                            <label for="emailId" class="profile-label">Email Id: </label>
+                                            <input type="text" class="form-control profile-f-c-width"
+                                                formControlName="emailId" placeholder="" id="emailId">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-2 profile-top-4"></div>
+                                    <div class="col-xl-5 profile-top-4">
+                                        <div class="form-group">
+                                            <label for="contact" class="profile-label">Contact No: </label>
+                                            <input type="text" class="form-control profile-f-c-width"
+                                                formControlName="contact" placeholder="" id="contact">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-5 profile-top-4">
+                                        <div class="form-group">
+                                            <label for="currentPassword" class="profile-label">Current Password:
+                                            </label>
+                                            <input type="password" class="form-control profile-f-c-width"
+                                                formControlName="currentPassword" placeholder="" id="currentPassword">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-2 profile-top-4"></div>
+                                    <div class="col-xl-5 profile-top-4">
+                                        <div class="form-group">
+                                            <div for="newPassword" class="profile-label">New Password: 
+                                            <input type="{{showHidePwdInput ? 'text': 'password'}}"
+                                                class="form-control profile-f-c-width" formControlName="password"
+                                                placeholder="" id="newPassword">
+                                            <span [ngClass]="{'mdi-eye-outline': showHidePwdInput, 'mdi-eye-off-outline': !showHidePwdInput}"
+                                                class="mdi pwd-eye1" (click)="showHidePwd()">
+                                            </span>
+                                        </div>
+                                        </div>
+                                        <ng-container *ngIf="userForm.controls['password']?.dirty">
+                                            <label class="col"
+                                                [ngClass]="userForm.controls['password'].hasError('required') || userForm.controls['password'].hasError('minlength')  ? 'text-danger' : 'text-success'">
+                                                <i class="mdi mdi-close-box-outline"
+                                                    *ngIf="userForm.controls['password'].hasError('required') ||
+                                                                                                                                    userForm.controls['password'].hasError('minlength')"></i>
+                                                <i class="mdi mdi-check"
+                                                    *ngIf="!(userForm.controls['password'].hasError('required') ||
+                                                                                                                                                            userForm.controls['password'].hasError('minlength'))"></i>
+                                                Password Must be at least 8 character
+                                            </label>
+                                            <label class="col"
+                                                [ngClass]="userForm.controls['password'].hasError('required') || userForm.controls['password'].hasError('hasNumber')  ? 'text-danger' : 'text-success'">
+                                                <i class="mdi mdi-close-box-outline"
+                                                    *ngIf="userForm.controls['password'].hasError('required') ||
+                                                                                                                                    userForm.controls['password'].hasError('hasNumber')"></i>
+                                                <i class="mdi mdi-check"
+                                                    *ngIf="!(userForm.controls['password'].hasError('required') ||
+                                                                                                                                                            userForm.controls['password'].hasError('hasNumber'))"></i>
+                                                Password contain at least 1 Num
+                                            </label>
+                                            <label class="col"
+                                                [ngClass]="userForm.controls['password'].hasError('required') || userForm.controls['password'].hasError('hasCapitalCase')  ? 'text-danger' : 'text-success'">
+                                                <i class="mdi mdi-close-box-outline"
+                                                    *ngIf="userForm.controls['password'].hasError('required') ||
+                                                                                                                                    userForm.controls['password'].hasError('hasCapitalCase')"></i>
+                                                <i class="mdi mdi-check"
+                                                    *ngIf="!(userForm.controls['password'].hasError('required') ||
+                                                                                                                                                            userForm.controls['password'].hasError('hasCapitalCase'))"></i>
+                                               Must contain 1 uppercase letter!
+                                            </label>
+                                            <label class="col"
+                                                [ngClass]="userForm.controls['password'].hasError('required') || userForm.controls['password'].hasError('hasSmallCase')  ? 'text-danger' : 'text-success'">
+                                                <i class="mdi mdi-close-box-outline"
+                                                    *ngIf="userForm.controls['password'].hasError('required') ||
+                                                                                                                                    userForm.controls['password'].hasError('hasSmallCase')"></i>
+                                                <i class="mdi mdi-check"
+                                                    *ngIf="!(userForm.controls['password'].hasError('required') ||
+                                                                                                                                                            userForm.controls['password'].hasError('hasSmallCase'))"></i>
+                                             Must contain 1 lowercase letter    !
+                                            </label>
+                                            <label class="col"
+                                                [ngClass]="userForm.controls['password'].hasError('required') || userForm.controls['password'].hasError('hasSpecialCharacters') ? 'text-danger' : 'text-success'">
+                                                <i class="mdi mdi-close-box-outline"
+                                                    *ngIf="userForm.controls['password'].hasError('required') ||
+                                                                                                                                    userForm.controls['password'].hasError('hasSpecialCharacters')"></i>
+                                                <i class="mdi mdi-check"
+                                                    *ngIf="!(userForm.controls['password'].hasError('required') ||
+                                                                                                                                                            userForm.controls['password'].hasError('hasSpecialCharacters'))"></i>
+                                                Password Must contain at least 1 Special Character!
+                                            </label>
+                                        </ng-container>
+                                    </div>
+                                    <div class="col-xl-5 profile-top-4">
+                                        <div class="form-group">
+                                            <div for="confirmPassword" class="profile-label">Confirm Password
+                                            <input type="{{showHideCPwdInput ? 'text': 'password'}}"
+                                            class="form-control profile-f-c-width" formControlName="confirmPassword"
+                                            placeholder="" id="confirmPassword">
+                                            <span [ngClass]="{'mdi-eye-outline': showHideCPwdInput, 'mdi-eye-off-outline': !showHideCPwdInput}"
+                                                class="mdi pwd-eye1" (click)="showHideCPwd()">
+                                            </span>
+                                        </div>
+                                        <label class="text-danger"
+                                        *ngIf="userForm.controls['confirmPasscheckUserIDword']?.dirty && userForm.controls['confirmPassword'].hasError('required')">
+                                        Password is Required!
+                                    </label>
+                                    <label class="text-danger mt-5"
+                                        *ngIf="userForm.controls['confirmPassword']?.dirty && userForm.controls['confirmPassword'].hasError('NoPassswordMatch')">
+                                        Password do not match
+                                    </label>
+                                        </div>
+                                        
+                                      
+                                    </div>
+                                    <div class="col-xl-2 profile-top-4"></div>
+                                    <div class="col-xl-6 mt-2">
+                                        <button type="submit" class="btn " [disabled]="userForm.invalid"
+                                            [ngStyle]="{'background': userObj?.otherInfo?.color}">
+                                            <span class="text-white">Update</span></button>
+                                        <span class="text-danger ms-5" *ngIf="error">{{error? error : ''}}</span>
+                                    </div>
+                                    <!-- <div class="col-xl-6 profile-top-4" *ngIf="error">
+                                        {{error}}
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

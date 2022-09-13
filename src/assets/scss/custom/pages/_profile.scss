@@ -1,0 +1,124 @@
+.user-profile-img {
+  height: 149px;
+}
+
+.profile-first_name {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 31px;
+  align-items: center;
+  text-align: center;
+
+  color: #000000;
+}
+
+.profile-organization_name {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  align-items: center;
+
+  color: #000000;
+}
+
+.profile-label {
+  font-size: 16px !important;
+  /* font-family: "Inter"; */
+  /* font-style: normal; */
+  font-weight: 400;
+  color: #212529 !important;
+  width: 255px;
+  height: 24px;
+  line-height: 24px;
+}
+
+.profile-top-4 {
+  margin-top: 4%;
+}
+
+.profile-f-c-width {
+  width: 255px;
+}
+
+.profile-pwd-eye {
+  position: absolute;
+  right: 33px;
+  top: 39px;
+}
+
+.profile-upload-img {
+  padding: 10px;
+  color: #fff;
+  border-radius: 4px;
+}
+
+// Responsive
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+  .profile-pwd-eye {
+
+    right: 117px;
+
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.25) and (min-width: 1281px),
+only screen and (min--moz-device-pixel-ratio: 1.25) and (min-width: 1281px),
+only screen and (-o-min-device-pixel-ratio: 1.25/1) and (min-width: 1281px),
+only screen and (min-device-pixel-ratio: 1.25) and (min-width: 1281px),
+only screen and (min-resolution: 200dpi) and (min-width: 1281px),
+only screen and (min-resolution: 1.25dppx) and (min-width: 1281px) {
+  .profile-pwd-eye {
+
+    right: 17px;
+    top: 45px;
+
+  }
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.25) and (min-width: 1025px) and (max-width: 1280px),
+only screen and (min--moz-device-pixel-ratio: 1.25) and (min-width: 1025px) and (max-width: 1280px),
+only screen and (-o-min-device-pixel-ratio: 1.25/1) and (min-width: 1025px) and (max-width: 1280px),
+only screen and (min-device-pixel-ratio: 1.25) and (min-width: 1025px) and (max-width: 1280px),
+only screen and (min-resolution: 200dpi) and (min-width: 1025px) and (max-width: 1280px),
+only screen and (min-resolution: 1.25dppx) and (min-width: 1025px) and (max-width: 1280px) {}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {}

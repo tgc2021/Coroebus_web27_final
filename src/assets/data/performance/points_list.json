@@ -1,0 +1,43 @@
+{
+    "status": "success",
+    "statuscode": 200,
+    "data": [
+        {
+            "label": "Overall Score",
+            "_data": [
+                {
+                    "points": "13973.6"
+                }
+            ]
+        },
+        {
+            "label": "Index",
+            "_data": {
+                "id_coroebus_measurement": "52",
+                "measurement_name": "Capability Points - Citizen",
+                "points": "13588.4"
+            },
+            "kpi_data": [
+                {
+                    "kpi_name": "Training Hours-Citizen",
+                    "points": "13588.4"
+                }
+            ]
+        },
+        {
+            "label": "Index",
+            "_data": {
+                "id_coroebus_measurement": "104",
+                "measurement_name": "Personal Points - Citizen",
+                "points": "385.2"
+            },
+            "kpi_data": [
+                {
+                    "kpi_name": "Personal Points - Citizen",
+                    "points": "385.2"
+                }
+            ]
+        }
+    ],
+    "message": "Success"
+}

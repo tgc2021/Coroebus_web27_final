@@ -1,0 +1,2339 @@
+#cont {
+    background-image: url("/assets/images/background.png");
+    overflow: scroll;
+    width: 100vw;
+   
+}
+
+.mytabs {
+    display: flex;
+    flex-wrap: wrap;
+    width: 99%;
+    // margin: 50px auto;
+    padding: 0;
+    margin: 0;
+
+}
+
+.search{
+    margin: 7px;
+    float: right;
+    padding: 2px;
+}
+// .dataTables_wrapper .dataTables_filter input {
+//     position: absolute;
+//     right: 0;
+//     border: 1px solid #aaa;
+//     border-radius: 3px;
+//     padding: 5px;
+//     background-color: transparent;
+//     margin-left: 3px;
+// }
+
+
+.example-additional-selection {
+    opacity: 0.75;
+    font-size: 0.75em;
+  }
+
+hr {
+    margin: 0;
+}
+
+.rewardpoints {
+    position: absolute;
+    margin: 0;
+    right: 95px;
+    margin-top: 22px !important;
+
+}
+
+.totalpoints {
+    position: absolute;
+    margin: 0;
+    right: 55px;
+    margin-top: 22px !important;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.mytabs input[type="radio"] {
+    display: none;
+}
+
+.reward_tab {
+    padding: 12px;
+    background: #EFF2F6;
+    font-weight: 500;
+    // font-family: in;
+    font-size: 14px;
+    margin: 0;
+    width: 150px;
+    text-align: center;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin-right: 5px;
+    border: 1px solid #DDDDDD;
+
+}
+
+.passbook_tab{
+    padding: 12px;
+    background: #EFF2F6;
+    font-weight: 500;
+    // font-family: in;
+    font-size: 14px;
+    margin: 0;
+    width: 150px;
+    text-align: center;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin-right: 5px;
+    border: 1px solid #DDDDDD;
+}
+.mytabs .tab {
+    width: 99%;
+    padding: 20px;
+    background: white;
+    order: 1;
+    display: none;
+    min-height: 69vh;
+}
+
+.mytabs .tab h2 {
+    font-size: 3em;
+}
+
+.mytabs input[type='radio']:checked+label+.tab {
+    display: block;
+
+}
+
+.mytabs input[type="radio"]:checked+label {
+    background-color:var(--myvar);
+    // background: var(--myvar !important);
+    color: #DDDDDD;
+}
+
+.mat-tab-label {
+    border-bottom: 2px solid #DCDCDC;
+    // width: 100%;
+    font-size: 16px;
+    color: #555555;
+}
+
+.mat-tab-label.mat-tab-label-active {
+    min-width: 25px !important;
+    padding: 5px;
+    background-color: transparent;
+    color: #342319;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 700;
+    border-bottom: 2px solid var(--myvar);
+    ;
+}
+
+.mat-card {
+    position: absolute;
+    padding: 16px;
+    background: #FFFFFF;
+    border-radius: 4px;
+    margin: 7px;
+    height: 40vh;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.col-md-3 {
+    margin-top: 10px;
+}
+
+.col-sm-6 {
+    margin-top: 10px;
+
+}
+
+.productimage {
+    position: absolute;
+    width: 30%;
+    top: 10vh;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.product_description {
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 7.3rem;
+}
+
+.product_cost {
+    position: absolute;
+    width: 30%;
+    top: 25vh;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.product_cost {
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.btn_div {
+    text-align: center;
+}
+
+.redeem_btn {
+    border-radius: 5px;
+    height: 40px;
+    border: 1.8px solid #F7EA2C;
+    background: white;
+    width: 105px;
+    font-size: 13px;
+    margin-top: 4.2rem;
+}
+
+// Redemption History
+.form-select{
+    width: 10%;
+    float: right;
+    margin: 10px;
+    font-size: 12px;
+    color: #000000;
+    background-color: #F2F2F2;
+    border: none;
+    height: 46px;
+    position: absolute;
+    right: 0;
+    z-index: 10;
+}
+
+.redemption_card{
+  
+    display: block;
+    position: relative;
+    height: fit-content;
+    margin-top: 15px;
+}
+
+.redemption_card_div{
+    margin-top: 69px;
+
+}
+
+.redemption_card_div_redemption_organisation{
+    margin-top: 69px;
+}
+
+.redemption_card_redemption_organisation{
+  
+    display: inline;
+    position: relative;
+    height: fit-content;
+    width: 50%;
+    margin-top: 15px;
+}
+
+.product_description_redemption_organisation{
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 7.3rem;
+}
+
+.product_cost_redemption_organisation{
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-size: 18px;
+    margin-top: 10px;
+
+}
+.coupon_id{
+    
+
+height: 31px;
+margin-left: 40px;
+top: 160px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 17px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #000000;
+}
+
+.coupon_id_number{
+    margin-left: 6px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 17px;
+display: flex;
+align-items: center;
+text-align: center;
+color: #000000;
+
+}
+
+.product_image_redemption{
+    box-sizing: border-box;
+    width: 127px;
+    height: 127px;
+    margin-left: 40px;
+    /* top: 213px; */
+    border: 0.819768px solid #CFCFCF;
+    border-radius: 13.4789px;
+}
+
+.coupon_div p{
+    display: inline-block;
+    margin: 0;
+    padding: 2px;
+}
+
+.coupon_div{
+    margin-left: 40px;
+}
+.coupon_code{
+
+    float: right;
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 17px;
+display: flex;
+align-items: center;
+text-align: center;
+color: #000000;
+}
+
+.coupon_code_number{
+    float: right;
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 17px;
+display: flex;
+align-items: center;
+text-align: center;
+color: #000000;
+}
+
+.details{
+    position: absolute;
+}
+.product_name_redemption{
+    margin-top: 30px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 17px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}
+
+.product_full_description{
+ 
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 130.02%;
+margin-right: 150px;
+/* or 18px */
+
+
+color: #A5ACB8;
+
+}
+
+
+.cost_redemption{
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 15px;
+    color: #000000;
+}
+
+.expiry_date {
+    position: absolute;
+    bottom: 0; 
+   
+}
+
+.expiry_date p{
+    display:inline-block;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+    color: #A5ACB8;
+    padding: 2px;
+
+}
+
+#more{
+    display:inline;
+}
+
+#more_text{
+    display:none;
+}
+
+.source_dropdown .form-select{
+    float: left;
+    width: 173px;
+}
+
+.datepicker_from{
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    border: 2px;
+    background-color: #F2F2F2;
+    /* color: #F2F2F2; */
+    width: 173px;
+    height: 46px;
+    margin-top: 10px;
+    padding: 12px;
+}
+
+.datepicker_to{
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    border: 2px;
+    background-color: #F2F2F2;
+    /* color: #F2F2F2; */
+    width: 173px;
+    height: 46px;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 12px;
+}
+
+.from_datepicker{
+    position: absolute;
+    margin-left: 204px;
+    font-size: 10px;
+    color: #999999;
+    margin-top: 13px;
+}
+
+.datepicker_to {
+    position: absolute;
+    margin: 0;
+    top: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    border: 2px;
+    background-color: #F2F2F2;
+    /* color: #F2F2F2; */
+    width: 173px;
+    height: 46px;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 12px;
+}
+
+.to_datepicker{
+    position: absolute;
+    margin-left: 387px;
+    font-size: 10px;
+    color: #999999;
+    margin-top: 13px;
+    top: 0;
+    z-index: 1;
+}
+.table th {
+    font-weight: 600;
+    background-color:var(--myvar);
+    color: #FFFFFF;
+    font-size: 14px;
+}
+
+#example{
+    margin-top: 15px;
+}
+
+.organisation_redemption_history{
+    margin-top: 60px;
+}
+
+        //Passbook
+     
+        td{
+          
+            font-weight: 500;
+            font-size: 12px;
+            height: 64px;
+            vertical-align: middle;
+
+                }
+
+                .button_platform{
+                    text-align: center;
+                    background-color: white;
+                    margin-top: 50px;
+                }
+
+                .platform_redeem{
+                    background-color: white;
+                    border: 2px solid;
+                    padding: 8px;
+                    margin: 8px;
+                }
+
+                #example1{
+                    margin-top: 15px;
+                }
+@media (min-width: 280px) and (max-width: 300px){
+
+    .mytabs{
+        width: 100%;
+    }
+    #cont {
+        background-image: url(/assets/images/background.png);
+        overflow: scroll;
+        width: 100%;
+    }
+
+    .mat-tab-label .mat-tab-label-content {
+       
+        font-size: 7px;
+    }
+
+    .org_redem_div{
+        margin-top: 40px;
+    }
+    
+    .mytabs .tab{
+        padding: 0;
+    }
+    .mytabs label{
+        width: 122px;
+    }
+
+    .mat-tab-label{
+        margin-top: 20px;
+    }
+    .rewardpoints {
+        position: absolute;
+        margin: 0px;
+        right: 95px;
+        /* padding: 5px; */
+       top: 8rem;
+       right: 78px;
+    }
+
+    .totalpoints {
+        margin-top: 60px;
+        top: 8rem;
+        right: 40px;
+    }
+
+ 
+    .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+        display: flex;
+        margin-top: 19px;
+    }
+    .mat-card{
+        margin-top: 2rem;
+    }
+    .product_description{
+        margin-top: 5rem;
+        font-size: 13px;
+    }
+    .product_cost{
+        font-size: 17px;
+        margin: 0;
+    }
+    .redeem_btn{
+        margin-top: 4rem;
+    }
+
+    .productimage{
+        width: 32%;
+        top: 9vh;
+    }
+
+         //Redemption History
+
+         .form-select{
+            width: 65%;
+        }
+        .product_image_redemption{
+            width: 60px;
+            height: 60px;
+            margin: 0;
+        }
+    
+        .coupon_div{
+            margin: 0;
+        }
+    
+        .coupon_id{
+            font-size: 7px;
+        }
+    
+        .coupon_id_number{
+            font-size: 7px;
+        }
+    
+        .coupon_code{
+            position: absolute;
+            font-size: 7px;
+            top: -191px;
+            right: 60px;
+        }
+    
+        .coupon_code_number{
+            position: absolute;
+            font-size: 7px;
+            top: -153px;
+            right: 5px;
+        }
+    
+       
+        
+        .redemption_image_div{
+            margin-top: 15px;
+        }
+        .cost_redemption{
+            font-size: 10px;
+            text-align: start;
+            margin-left: 20px;
+        }
+    
+        .product_name_redemption{
+            position: absolute;
+            left: 77px;
+            top: -140px;
+            font-size: 10px;
+        }
+    
+        .product_full_description{
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 9px;
+            line-height: 133.02%;
+            margin-right: 0px; 
+            color: #A5ACB8;
+            position: relative;
+            right: 0;
+            top: -94px;
+            margin-left: 77px;
+            
+        }
+    
+        .expiry_date{
+            position: relative;
+            float: left;
+        margin-left: 77px;
+        margin-top: 17px;
+        }
+    
+        .expiry_date p{
+            font-size: 7px;
+        }
+        #more{
+            display:none;
+        }
+     
+        #more_text{
+            display:inline;
+            position: absolute;
+            color: #8D8D8D;
+            font-size: 9px;
+            font-weight: 600;
+        }
+    
+        .details{
+            position: relative;
+            margin-bottom: -100px;
+            
+        }
+
+          //Passbook
+ 
+
+    td {
+      
+        font-size: 6px;
+    }
+
+    .table th{
+        font-size: 6px;
+
+    }
+    .up_down_arrow{
+        position: absolute;
+        margin-left: 3px;
+        width: 5px;
+    }
+    .table_div{
+        padding: 10px;
+    }
+    .redeemed_popup_logo{
+        width: 10px;
+    }
+
+    .search{
+      
+        width: 51%;
+        direction: ltr;
+    }
+}
+
+@media (min-width: 360px) and (max-width: 370px){
+    .mytabs{
+        width: 100%;
+    }
+    #cont {
+        background-image: url(/assets/images/background.png);
+        overflow: scroll;
+        width: 100%;
+    }
+
+    .mat-tab-label .mat-tab-label-content {
+       
+        font-size: 11px;
+    }
+    .org_redem_div{
+        margin-top: 40px;
+    }
+    .mat-tab-label{
+        margin-top: 30px;
+    }
+
+    .mytabs .tab{
+      padding: 0;
+    }
+
+
+    .mytabs label {
+        width: 162px;
+    }
+
+    .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+        display: flex;
+        margin-top: 29px;
+    }
+
+    .product_description {
+        margin-top: 7.7rem;
+    }
+
+    .redeem_btn {
+        margin-top: 2.7rem;
+    }
+
+    .rewardpoints {
+        position: absolute;
+        margin: 0px;
+        right: 95px;
+        /* padding: 5px; */
+       top: 8.2rem;
+    }
+
+    .totalpoints {
+        margin-top: 60px;
+        top: 8.2rem;
+    }
+    .mat-card {
+        margin-top: 2rem;
+    }
+
+      //Redemption History
+
+      .form-select{
+        width: 46%;
+    }
+
+    .coupon_div{
+        margin: 0;
+    }
+
+    .coupon_id{
+        font-size: 9px;
+    }
+
+    .coupon_id_number{
+        font-size: 9px;
+    }
+
+    .coupon_code{
+        position: absolute;
+        font-size: 9px;
+        top: -191px;
+        right: 60px;
+    }
+
+    .coupon_code_number{
+        position: absolute;
+        font-size: 9px;
+        top: -191px;
+        right: 0;
+    }
+
+    .product_image_redemption{
+        width: 95px;
+        height: 95px;
+        margin: 0px;
+    }
+    .redemption_image_div{
+        margin-top: 15px;
+    }
+    .cost_redemption{
+        font-size: 14px;
+        text-align: start;
+    margin-left: 37px;
+    }
+
+    .product_name_redemption{
+        position: absolute;
+        left: 110px;
+        top: -170px;
+        font-size: 12px;
+    }
+
+    .product_full_description{
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 11px;
+        line-height: 130.02%;
+        margin-right: 0px; 
+        color: #A5ACB8;
+        position: relative;
+        right: 0;
+        top: -118px;
+        margin-left: 111px;
+        
+    }
+
+    .expiry_date{
+        position: relative;
+        float: left;
+        margin-left: 110px;
+    }
+
+    .expiry_date p{
+        font-size: 11px;
+    }
+    #more{
+        display:none;
+    }
+ 
+    #more_text{
+        display:inline;
+        position: absolute;
+        color: #8D8D8D;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .details{
+        position: relative;
+        margin-bottom: -100px;
+        
+    }
+
+      //Passbook
+
+      td {
+      
+        font-size: 8px;
+    }
+
+    .table th{
+        font-size: 8px;
+
+    }
+
+      
+
+    .up_down_arrow{
+        position: absolute;
+        margin-left: 2px;
+        width: 5px;
+        margin-top: 2px;
+
+    }
+    .table_div{
+        padding: 10px;
+    }
+    .redeemed_popup_logo{
+        width: 10px;
+    }
+    .search{
+        width: 46%;
+        direction: ltr;
+    }
+}
+
+
+
+@media (min-width: 375px) and (max-width: 385px){
+
+    .mytabs{
+        width: 100%;
+    }
+    #cont {
+        background-image: url(/assets/images/background.png);
+        overflow: scroll;
+        width: 100%;
+    }
+
+    .mat-tab-label .mat-tab-label-content {
+       
+        font-size: 12px;
+    }
+
+    .mytabs label {
+        width: 169px;
+    }
+
+    .mat-tab-label{
+        margin-top: 10px;
+    }
+
+    .mytabs .tab{
+      padding: 0;
+    }
+
+    .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+        display: flex;
+        margin-top: 7px;
+    }
+    .rewardpoints {
+        position: absolute;
+        margin: 0px;
+        right: 95px;
+        /* padding: 5px; */
+       top: 8.2rem;
+    }
+
+    .totalpoints {
+        margin-top: 60px;
+        top: 8.2rem;
+
+    }
+
+    .mat-tab-group{
+        margin-top: 20px;
+    }
+    // .mat-card {
+    //     margin-top: 30px;
+    // }
+
+    .product_description {
+        margin-top: 6.3rem;
+    }
+    .redeem_btn{
+        margin-top: 3.5rem;
+    }
+
+    //Redemption History
+
+    .form-select{
+        width: 46%;
+    }
+
+    .coupon_div{
+        margin: 0;
+    }
+
+    .coupon_id{
+        font-size: 9px;
+    }
+
+    .coupon_id_number{
+        font-size: 9px;
+    }
+
+    .coupon_code{
+        position: absolute;
+        font-size: 9px;
+        top: -191px;
+        right: 60px;
+    }
+
+    .coupon_code_number{
+        position: absolute;
+        font-size: 9px;
+        top: -191px;
+        right: 0;
+    }
+
+    .product_image_redemption{
+        width: 95px;
+        height: 95px;
+        margin: 0px;
+    }
+    .redemption_image_div{
+        margin-top: 15px;
+    }
+    .cost_redemption{
+        font-size: 14px;
+        text-align: start;
+    margin-left: 37px;
+    }
+
+    .product_name_redemption{
+        position: absolute;
+        left: 110px;
+        top: -170px;
+        font-size: 12px;
+    }
+
+    .product_full_description{
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 11px;
+        line-height: 130.02%;
+        margin-right: 0px; 
+        color: #A5ACB8;
+        position: relative;
+        right: 0;
+        top: -118px;
+        margin-left: 111px;
+        
+    }
+
+    .expiry_date{
+        position: relative;
+        float: left;
+        margin-left: 110px;
+    }
+
+    .expiry_date p{
+        font-size: 11px;
+    }
+    #more{
+        display:none;
+    }
+ 
+    #more_text{
+        display:inline;
+        position: absolute;
+        color: #8D8D8D;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .details{
+        position: relative;
+        margin-bottom: -100px;
+        
+    }
+
+    .td{
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .product_description_redemption_organisation{
+        margin-top: 15.3rem;
+        text-align: center;
+    }
+
+    //Passbook
+    .table-striped > tbody > tr:nth-of-type(odd) > * {
+        
+        font-size: 8px;
+    }
+
+    .table > :not(caption) > * > * {
+      
+        font-size: 8px;
+    }
+
+    .up_down_arrow{
+        position: absolute;
+        margin-left: 2px;
+        width: 5px;
+        margin-top: 2px;
+    }
+    .table_div{
+        padding: 10px;
+    }
+    .redeemed_popup_logo{
+        width: 10px;
+    }
+
+    .search{
+        width: 46%;
+        direction: ltr;
+    }
+}
+
+@media (min-width: 390px) and (max-width: 400px){
+    
+    .mytabs{
+        width: 100%;
+    }
+    #cont {
+        background-image: url(/assets/images/background.png);
+        overflow: scroll;
+        width: 100%;
+    }
+
+    .mat-tab-label .mat-tab-label-content {
+       
+        font-size: 13px;
+    }
+
+    .mat-tab-label{
+        margin-top: 10px;
+    }
+
+    .mytabs .tab{
+      padding: 0;
+    }
+
+    .org_redem_div{
+        margin-top: 40px;
+    }
+    .mytabs label {
+        width: 177px;
+    }
+
+    .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+        display: flex;
+        margin-top: 8px;
+    }
+    .product_description {
+        margin-top: 7.7rem;
+    }
+
+    .redeem_btn {
+        margin-top: 2.5rem;
+    }
+    .rewardpoints {
+        position: absolute;
+        margin: 0px;
+        right: 95px;
+        /* padding: 5px; */
+       top: 8.2rem;
+    }
+
+    .totalpoints {
+        margin-top: 60px;
+        top: 8.2rem;
+
+    }
+    .mat-card{
+        margin-top: 2rem;
+    }
+    .product_cost{
+        margin: 0;
+    }
+    .redeem_btn{
+        margin-top: 4.5rem;
+    }
+
+    .mat-tab-group{
+        margin-top: 20px;
+    }
+
+       //Redemption History
+
+       .form-select{
+        width: 46%;
+    }
+
+    .coupon_div{
+        margin: 0;
+    }
+
+    .coupon_id{
+        font-size: 9px;
+    }
+
+    .coupon_id_number{
+        font-size: 9px;
+    }
+
+    .coupon_code{
+        position: absolute;
+        font-size: 9px;
+        top: -191px;
+        right: 60px;
+    }
+
+    .coupon_code_number{
+        position: absolute;
+        font-size: 9px;
+        top: -191px;
+        right: 0;
+    }
+
+    .product_image_redemption{
+        width: 95px;
+        height: 95px;
+        margin: 0px;
+        
+    }
+    .redemption_image_div{
+        margin-top: 15px;
+    }
+    .cost_redemption{
+        font-size: 14px;
+        text-align: start;
+    margin-left: 37px;
+    }
+
+    .product_name_redemption{
+        position: absolute;
+        margin-left: 110px;
+        top: -170px;
+        font-size: 12px;
+    }
+
+    .product_full_description{
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 11px;
+        line-height: 140.02%;
+        margin-right: 0px; 
+        color: #A5ACB8;
+        position: relative;
+        right: 0;
+        top: -118px;
+        margin-left: 111px;
+        
+    }
+
+    .expiry_date{
+        position: relative;
+        margin-left: 111px;
+    }
+
+    .expiry_date p{
+        font-size: 11px;
+    }
+    #more{
+        display:none;
+    }
+ 
+    #more_text{
+        display:inline;
+        position: absolute;
+        color: #8D8D8D;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .details{
+        position: relative;
+        margin-bottom: -100px;
+        
+    }
+
+     //Passbook
+     .table-striped > tbody > tr:nth-of-type(odd) > * {
+        
+        font-size: 8px;
+    }
+
+    .table > :not(caption) > * > * {
+      
+        font-size: 8px;
+    }
+
+    .up_down_arrow{
+        position: absolute;
+        margin-left: 2px;
+        width: 5px;
+        margin-top: 2px;
+    }
+    .table_div{
+        padding: 10px;
+    }
+    .redeemed_popup_logo{
+        width: 10px;
+    }
+    .search{
+        width: 46%;
+        direction: ltr;
+    }
+}
+
+@media (min-width: 412px) and (max-width: 413px){
+    .mytabs{
+        width: 100%;
+    }
+    #cont {
+        background-image: url(/assets/images/background.png);
+        overflow: scroll;
+        width: 100%;
+    }
+    .mytabs label {
+        width: 188px;
+        
+    }
+    .mat-tab-label .mat-tab-label-content {
+       
+        font-size: 12px;
+    }
+    .org_redem_div{
+        margin-top: 40px;
+    }
+
+    .mat-tab-label{
+        margin-top: 10px;
+    }
+
+    .product_description {
+        margin-top: 8.2rem;
+    }
+
+    .redeem_btn {
+        margin-top: 5.5rem;
+    }
+
+    .product_cost {
+        margin-top: -9px;
+    }
+    .rewardpoints {
+        position: absolute;
+        margin: 0px;
+        right: 95px;
+        /* padding: 5px; */
+       top: 8.2rem;
+    }
+
+    .totalpoints {
+        margin-top: 60px;
+        top: 8.2rem;
+
+    }
+    .mat-card{
+        margin-top: 2rem;
+    }
+      //Redemption History
+
+      .form-select{
+        width: 46%;
+    }
+
+    .coupon_div{
+        margin: 0;
+    }
+
+    .coupon_id{
+        font-size: 9px;
+    }
+
+    .coupon_id_number{
+        font-size: 9px;
+    }
+
+    .coupon_code{
+        position: absolute;
+        font-size: 9px;
+        top: -191px;
+        right: 60px;
+    }
+
+    .coupon_code_number{
+        position: absolute;
+        font-size: 9px;
+        top: -191px;
+        right: 5px;
+    }
+
+    .product_image_redemption{
+        width: 95px;
+        height: 95px;
+        margin: 0px;
+    }
+    .redemption_image_div{
+        margin-top: 15px;
+    }
+    .cost_redemption{
+        font-size: 14px;
+        text-align: start;
+    margin-left: 37px;
+    }
+
+    .product_name_redemption{
+        position: absolute;
+        left: 110px;
+        top: -170px;
+        font-size: 12px;
+    }
+
+    .product_full_description{
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 11px;
+        line-height: 130.02%;
+        margin-right: 0px; 
+        color: #A5ACB8;
+        position: relative;
+        right: 0;
+        top: -118px;
+        margin-left: 111px;
+        
+    }
+
+    .expiry_date{
+        position: relative;
+        float: left;
+        margin-left: 110px;
+    }
+
+    .expiry_date p{
+        font-size: 11px;
+    }
+    #more{
+        display:none;
+    }
+ 
+    #more_text{
+        display:inline;
+        position: absolute;
+        color: #8D8D8D;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .details{
+        position: relative;
+        margin-bottom: -100px;
+        
+    }
+
+      //Passbook
+      .table-striped > tbody > tr:nth-of-type(odd) > * {
+        
+        font-size: 8px;
+    }
+
+    .table > :not(caption) > * > * {
+      
+        font-size: 8px;
+    }
+
+    .up_down_arrow{
+        position: absolute;
+        margin-left: 3px;
+    }
+    .table_div{
+        padding: 0;
+    }
+    .redeemed_popup_logo{
+        width: 10px;
+    }
+    .search{
+        width: 44%;
+        margin-right: 2px;
+        direction: ltr;
+    }
+}
+
+@media (min-width: 414px) and (max-width: 424px) {
+    .mytabs{
+        width: 100%;
+    }
+    #cont {
+        background-image: url(/assets/images/background.png);
+        overflow: scroll;
+        width: 100%;
+    }
+
+    .mat-tab-label .mat-tab-label-content {
+       
+        font-size: 14px;
+    }
+
+    .org_redem_div{
+        margin-top: 40px;
+    }
+    .mytabs label {
+        width: 189px;
+    
+    }
+    
+
+    .mat-tab-label{
+        margin-top: 10px;
+    }
+
+    .mytabs .tab{
+      padding: 0;
+    }
+
+   
+
+    .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+        display: flex;
+        margin-top: 14px;
+    }
+
+    .product_description {
+        margin-top: 8.2rem;
+    }
+
+
+    .redeem_btn {
+        margin-top: 5.5rem;
+    }
+    .rewardpoints {
+        position: absolute;
+        margin: 0px;
+        right: 95px;
+        /* padding: 5px; */
+       top: 8.2rem;
+    }
+
+    .totalpoints {
+        margin-top: 60px;
+        top: 8.2rem;
+
+    }
+    .mat-card{
+        margin-top: 2rem;
+    }
+    .product_cost{
+        margin: 0;
+    }
+
+    
+    .mat-tab-group{
+        margin-top: 20px;
+    }
+      //Redemption History
+
+      .form-select{
+        width: 46%;
+    }
+
+    .coupon_div{
+        margin: 0;
+    }
+
+    .coupon_id{
+        font-size: 9px;
+    }
+
+    .coupon_id_number{
+        font-size: 9px;
+    }
+    
+    .product_description_redemption_organisation{
+        margin-top: 15.3rem;
+        text-align: center;
+    }
+
+    .product_cost_redemption_organisation{
+        margin: 0;
+
+    }
+    .coupon_code{
+        position: absolute;
+        font-size: 9px;
+        top: -191px;
+        right: 60px;
+    }
+
+    .coupon_code_number{
+        position: absolute;
+        font-size: 9px;
+        top: -191px;
+        right: 6px;
+    }
+
+    .product_image_redemption{
+        width: 95px;
+        height: 95px;
+        margin: 0px;
+        
+    }
+    .redemption_image_div{
+        margin-top: 15px;
+    }
+    .cost_redemption{
+        font-size: 14px;
+        text-align: start;
+    margin-left: 37px;
+    }
+
+    .product_name_redemption{
+        position: absolute;
+        left: 110px;
+        top: -170px;
+        font-size: 12px;
+    }
+
+    .product_full_description{
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 11px;
+        line-height: 133.02%;
+        margin-right: 0px; 
+        color: #A5ACB8;
+        position: relative;
+        right: 0;
+        top: -118px;
+        margin-left: 111px;
+        
+    }
+
+    .expiry_date{
+        position: relative;
+        float: left;
+    margin-left: 112px;
+    margin-top: 17px;
+    }
+
+    .expiry_date p{
+        font-size: 11px;
+    }
+    #more{
+        display:none;
+    }
+ 
+    #more_text{
+        display:inline;
+        position: absolute;
+        color: #8D8D8D;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .details{
+        position: relative;
+        margin-bottom: -100px;
+        
+    }
+
+       //Passbook
+       .table-striped > tbody > tr:nth-of-type(odd) > * {
+        
+        font-size: 8px;
+    }
+
+    .table > :not(caption) > * > * {
+      
+        font-size: 8px;
+    }
+
+    .up_down_arrow{
+        position: absolute;
+        margin-left: 2px;
+        width: 5px;
+        margin-top: 2px;
+    }
+    .table_div{
+        padding: 10px;
+    }
+    .redeemed_popup_logo{
+        width: 10px;
+    }
+    .search{
+        width: 46%;
+        direction: ltr;
+    }
+}
+
+@media (min-width: 468px) and (max-width: 539px) {
+    .productimage {
+        width: 21%;
+    }
+
+}
+
+@media (min-width: 540px) and (max-width: 589px){
+    .mytabs{
+        width: 100%;
+    }
+    #cont {
+        background-image: url(/assets/images/background.png);
+        overflow: scroll;
+        width: 100%;
+    }
+    .mat-tab-label .mat-tab-label-content {
+       
+        font-size: 18px;
+    }
+
+    .org_redem_div{
+        margin-top: 40px;
+    }
+   
+
+    .mat-tab-label{
+        margin-top: 20px;
+    }
+
+    // .mytabs .tab{
+    //   padding: 0;
+    // }
+
+    .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+        display: flex;
+        margin-top: 7px;
+    }
+    .rewardpoints {
+        position: absolute;
+        margin: 0px;
+        right: 95px;
+        /* padding: 5px; */
+       top: 8.2rem;
+    }
+
+    .totalpoints {
+        margin-top: 60px;
+        top: 8.2rem;
+    }
+
+    .mat-tab-label{
+        margin-top: 10px;
+    }
+    .mat-card{
+        margin-top: 2rem;
+    }
+
+    .productimage{
+        width: 22%;
+    }
+    .redeem_btn{
+        margin-top: 3.2rem;
+    }
+    .mytabs label{
+        width:252px;
+    }
+
+         //Redemption History
+
+         .form-select{
+            width: 46%;
+        }
+    
+        .coupon_div{
+            margin: 0;
+        }
+    
+        .coupon_id{
+            font-size: 9px;
+        }
+    
+        .coupon_id_number{
+            font-size: 9px;
+        }
+    
+        .coupon_code{
+            position: absolute;
+            font-size: 9px;
+            top: -191px;
+            right: 60px;
+        }
+    
+        .coupon_code_number{
+            position: absolute;
+            font-size: 9px;
+            top: -191px;
+            right: 6px;
+        }
+    
+        .product_image_redemption{
+            width: 95px;
+            height: 95px;
+            margin: 0px;
+            
+        }
+        .redemption_image_div{
+            margin-top: 15px;
+        }
+        .cost_redemption{
+            font-size: 14px;
+            text-align: start;
+        margin-left: 37px;
+        }
+    
+        .product_name_redemption{
+            position: absolute;
+            left: 110px;
+            top: -170px;
+            font-size: 12px;
+        }
+    
+        .product_full_description{
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 11px;
+            line-height: 133.02%;
+            margin-right: 0px; 
+            color: #A5ACB8;
+            position: relative;
+            right: 0;
+            top: -118px;
+            margin-left: 111px;
+            
+        }
+    
+        .expiry_date{
+            position: relative;
+            float: left;
+        margin-left: 112px;
+        margin-top: 17px;
+        }
+    
+        .expiry_date p{
+            font-size: 11px;
+        }
+        #more{
+            display:none;
+        }
+     
+        #more_text{
+            display:inline;
+            position: absolute;
+            color: #8D8D8D;
+            font-size: 14px;
+            font-weight: 600;
+        }
+    
+        .details{
+            position: relative;
+            margin-bottom: -100px;
+            
+        }
+          //Passbook
+      .table-striped > tbody > tr:nth-of-type(odd) > * {
+        
+        font-size: 8px;
+    }
+
+    .table > :not(caption) > * > * {
+      
+        font-size: 8px;
+    }
+
+    .up_down_arrow{
+        position: absolute;
+        margin-left: 3px;
+        margin-top: 1px;
+        width: 6px;
+    }
+    .table_div{
+        padding: 0;
+    }
+    .redeemed_popup_logo{
+        width: 10px;
+    }
+
+}
+@media (min-width: 768px) and (max-width: 778px){
+    .mytabs{
+     
+        padding: 0;
+        padding-right: 15px;
+       }
+
+.productimage{
+    width: 70%;
+    top: 8vh;
+}
+
+.product_description{
+    font-size: 12px;
+    margin-top: 8.3rem;
+}
+.product_cost{
+    margin: 0;
+}
+.redeem_btn{
+    margin-top: 8.2rem;
+}
+
+  //Redemption History
+
+  .form-select{
+    width: 20%;
+}
+.details{
+    margin-left: 64px;
+}
+
+.product_full_description{
+    width: 95%;
+}
+
+.expiry_date{
+    margin-left: 60px;
+}
+.coupon_div{
+    width: 100%;
+}
+.cost_redemption{
+    margin-left: 64px;
+}
+
+.search{
+    margin-top: 11px;
+    width: 42%;
+    margin-right: 2px;
+    direction: ltr;
+}
+
+}
+@media (min-width: 820px) and (max-width: 900px){
+
+    .mytabs{
+     
+     padding: 0;
+     padding-right: 15px;
+    }
+    // .mytabs label {
+    //     width: 163px;
+    //     margin-top: 10px;
+    // }
+
+    // .mat-tab-label{
+    //     margin-top: 10px;
+    // }
+
+    // .mytabs .tab{
+    //   padding: 0;
+    // }
+    
+    .productimage{
+        width: 70%;
+        top: 8vh;
+    }
+
+    .product_description{
+        font-size: 13px;
+        margin-top: 9rem;
+    }
+
+    .product_cost{
+        margin: 0;
+    }
+
+    .redeem_btn{
+        margin-top: 12.2rem;
+    }
+
+
+    //Redemption History
+
+    .form-select{
+        width: 20%;
+    }
+    .details{
+        margin-left: 64px;
+    }
+
+    .product_full_description{
+        width: 95%;
+    }
+
+    .expiry_date{
+        margin-left: 60px;
+    }
+    .coupon_div{
+        width: 100%;
+    }
+    .cost_redemption{
+        margin-left: 47px;
+    }
+
+}
+
+@media (min-width: 912px) and (max-width: 922px){
+    .mytabs{
+     
+        padding: 0;
+        padding-right: 15px;
+       }
+
+.productimage{
+    width: 70%;
+    top: 8vh;
+
+}
+
+.product_description{
+    margin-top: 10.3rem;
+}
+
+.redeem_btn{
+    margin-top: 14.2rem;
+}
+.product_cost{
+    margin: 0;
+}
+  //Redemption History
+
+  .form-select{
+    width: 20%;
+}
+.details{
+    margin-left: 64px;
+}
+
+.product_full_description{
+    width: 95%;
+}
+
+.expiry_date{
+    margin-left: 60px;
+}
+.coupon_div{
+    width: 100%;
+}
+.cost_redemption{
+    margin-left: 28px;
+}
+
+.search{
+    margin-top: 11px;
+    width: 39%;
+    margin-right: 3px;
+    direction: ltr;
+}
+}
+
+@media (min-width: 1020px) and (max-width: 1024px) {
+    .product_description{
+        margin-top: 4.8rem;
+    }
+.productimage{
+    width: 33%;
+    top: 9vh;
+}
+
+.product_cost{
+    margin: 0;
+}
+
+.redeem_btn{
+    margin-top: 3.2rem;
+}
+
+//Redemption History
+.form-select{
+    width: 15%;
+}
+.coupon_div{
+    margin-left: 19px;
+}
+.coupon_id{
+    font-size: 12px;
+}
+.coupon_id_number{
+    font-size: 12px;
+
+}
+
+.product_image_redemption{
+    width: 90px;
+    height: 90px;
+    margin-left: 25px;
+
+}
+
+.cost_redemption{
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.coupon_code{
+    font-size: 12px;
+}
+
+.coupon_code_number{
+    font-size: 12px;
+}
+
+.product_name_redemption{
+    font-size: 15px;
+}
+
+.search{
+    margin-top: 11px;
+    width: 22%;
+    margin-right: 2px;
+    direction: ltr;
+}
+}
+@media (min-width: 1025px) and (max-width: 1279px) {
+
+    .mytabs {
+        width: 98%;
+        padding: 14px;
+    }
+
+    .productimage {
+        width: 30%;
+    }
+
+    .product_description {
+        width: 100%;
+        font-size: 13px;
+        margin-top: 6.2rem;
+        text-align: center;
+    }
+
+    .product_cost {
+
+        font-size: 15px;
+        margin-top: 0.5rem;
+    }
+
+    .redeem_btn {
+        border-radius: 5px;
+        height: 40px;
+        border: 1.8px solid #F7EA2C;
+        background: white;
+        width: 105px;
+        font-size: 13px;
+    }
+
+    .btn_div {
+        text-align: center;
+        margin:0;
+    }
+}
+
+@media (min-width: 1280px) and (max-width: 1299px) {
+    .productimage{
+        width: 32%;
+    }
+
+    .product_cost{
+        margin: 0;
+    }
+
+    // Redemption History
+    .cost_redemption{
+       margin-left: 38px;
+    }
+    .form-select{
+        width: 12%;
+     }
+}
+@media (min-width: 1360px) and (max-width: 1366px) {
+    .product_description {
+        margin-top: 6rem;
+    }
+
+    .product_cost {
+        margin:0;
+    }
+
+    .redeem_btn {
+        margin-top: 3rem;
+    }
+
+    .mytabs .tab {
+        width: 99%;
+    }
+
+    
+    // Redemption History
+    .cost_redemption{
+        margin-left: 22px;
+     }
+
+     .form-select{
+        width: 12%;
+     }
+}
+
+@media (min-width: 1400px) and (max-width: 1440px) {
+    .productimage {
+        width: 33%;
+    }
+
+    .product_description {
+        margin-top: 7.1rem;
+    }
+
+    .product_cost {
+        margin:0;
+    }
+
+    .redeem_btn {
+        margin-top: 4.5rem;
+    }
+
+    .mytabs .tab {
+        width: 99%;
+    }
+}
+
+
+@media (min-width: 1600px) and (max-width: 1640px){
+    .productimage{
+        width: 35%;
+        top: 8vh;
+    }
+
+    .product_description{
+        margin-top: 9.3rem;
+        font-size: 15px;
+    }
+
+    .product_cost{
+        margin: 0;
+    }
+
+    .redeem_btn{
+        width: 114px;
+        margin-top: 10.2rem;
+    }
+
+    .cost_redemption{
+        margin-right: 20px;
+     }
+}
+
+@media (min-width: 1670px) and (max-width: 1680px) {
+    .productimage {
+        width: 35%;
+        margin-top: 9vh;
+    }
+
+    .product_description {
+        margin-top: 9.5rem;
+        font-size: 15px;
+    }
+
+    .redeem_btn {
+        width: 115px;
+        margin-top: 5rem;
+    }
+
+    .product_cost {
+        margin:0;
+    }
+
+    .mytabs .tab {
+        width: 99%;
+    }
+
+    .cost_redemption{
+        margin-right: 33px;
+     }
+}
+
+@media (min-width: 1900px) and (max-width: 1920px) {
+    .product_description {
+        font-size: 15px;
+        margin-top: 9.6rem;
+    }
+
+    .product_cost {
+        margin: 0;
+    }
+
+    .redeem_btn {
+        width: 113px;
+       
+    }
+
+    .mytabs .tab {
+        width: 99%;
+    }
+    .cost_redemption{
+        margin-right: 76px;
+     }
+}
+
+@media (min-width: 2000px) and (max-width: 2048px) {
+    .productimage {
+        top: 9vh;
+        width: 31%;
+    }
+
+    .product_description {
+        margin-top: 13rem;
+        font-size: 17px;
+    }
+
+    .product_cost {
+        top: 23vh;
+        font-size: 20px;
+    }
+
+    .redeem_btn {
+        margin-top: 9rem;
+        width: 128px;
+    }
+
+    .mytabs .tab {
+        width: 99%;
+    }
+    .cost_redemption{
+        margin-right: 90px;
+     }
+}
+
+@media (min-width: 2550px) and (max-width: 2560px) {
+    .productimage {
+        top: 9vh;
+        width: 31%;
+    }
+
+    .product_description {
+        margin-top: 14rem;
+        font-size: 19px;
+    }
+
+    .product_cost {
+        top: 23vh;
+        font-size: 20px;
+    }
+
+    .redeem_btn {
+        margin-top: 6rem;
+        width: 144px;
+        height: 47px;
+        margin-top: 10rem;
+    }
+
+    .mytabs .tab {
+        width: 99%;
+    }
+
+
+}

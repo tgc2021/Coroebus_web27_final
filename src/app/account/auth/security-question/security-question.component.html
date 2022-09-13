@@ -1,0 +1,87 @@
+<div class="eclips"><img src="assets/images/svg/login/ellipse.svg" alt="img" /></div>
+<section class="main-frame">
+    <div class="col-12">
+        <div class="logo"><img src="assets/images/svg/logo/logo.svg" alt="logo" /></div>
+    </div>
+    <div class="col-12">
+        <div class="row g-0">
+            <div class="col-7 xs-grid-none">
+                <div class="img-holder">
+                    <img src="assets/images/svg/login/login_left.svg" alt="img" />
+                </div>
+            </div>
+            <div class="col-5 xs-class">
+                <main class="form-signin">
+                    <!-- {{securityQuestionForm.value | json}} -->
+                    <form [formGroup]="securityQuestionForm" (ngSubmit)="setSecurityQuestion()">
+                        <h1 class="h3 fw-normal"><span class="fw-bolder">Please set your security question</span>
+                        </h1>
+                        <!-- <label style="color:#000000;">Question 1 is required</label>  style="color:#999;"-->
+                        <select formControlName="securityQuestion_1" class="form-select br-4"
+                            aria-label="securityQuestion_1"
+                            [ngClass]="{ 'is-invalid': submitted && f.securityQuestion_1?.errors?.required }">
+                            <option value="" selected disabled sty>Select your security question</option>
+                            <option value="{{item?.id_security_question}}"
+                                *ngFor="let item of securityQList?.questionSet1; let i = index">
+                                Q{{i +1 }}. {{item?.question}}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted && f.securityQuestion_1?.errors?.required" class="invalid-feedback">
+                            <div *ngIf="f.securityQuestion_1?.errors?.required">Question is required
+                            </div>
+                        </div>
+                        <!-- -------------- -->
+
+                      
+                        <div class="form-floating br-4"> 
+                            <input type="text" formControlName="securityQuestion_1_ans" class="form-control mt-3"
+                                id="floatingInput" placeholder="Answer*"
+                                [ngClass]="{ 'is-invalid': submitted && f.securityQuestion_1_ans?.errors?.required }">
+                            <label for="floatingInput">Write your answer here</label>
+                        </div>
+                        <span *ngIf="submitted && f.securityQuestion_1_ans?.errors?.required" class="invalid-feedback">
+                            <span *ngIf="f.securityQuestion_1_ans?.errors?.required">Answer is required
+                            </span>
+                        </span>
+                       
+                        <!-- <label class="mt-2" style="color: #000000;">Question 2 is required</label> -->
+                        <select formControlName="securityQuestion_2" 
+                            [ngClass]="{ 'is-invalid': submitted && f.securityQuestion_2?.errors?.required }"
+                            class="form-select  br-4 mt-2" aria-label="Default select example">
+                            <option value="" selected disabled>Select your security question</option>
+                            <option value="{{item?.id_security_question}}"
+                                *ngFor="let item of securityQList?.questionSet2; let i = index">
+                                Q{{i+1}}. {{item?.question}}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted && f.securityQuestion_2?.errors?.required" class="invalid-feedback">
+                            <div *ngIf="f.securityQuestion_2?.errors?.required">Question is required
+                            </div>
+                        </div>
+                        
+                        <div class="form-floating br-4">
+                            <input type="text" formControlName="securityQuestion_2_ans"
+                                [ngClass]="{ 'is-invalid': submitted && f.securityQuestion_2_ans?.errors?.required }"
+                                class="form-control mt-3" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword">Write your answer here</label>
+                        </div>
+                        <div *ngIf="submitted && f.securityQuestion_2_ans?.errors?.required" class="invalid-feedback">
+                            <div *ngIf="f.securityQuestion_2_ans?.errors?.required">Answer is required
+                            </div>
+                        </div>
+                        <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Submit</button>
+                    </form>
+                </main>
+            </div>
+        </div>
+
+
+        <div class="row w-100">
+            <div class="col">
+                <div class="footer new-pwd">
+                    <h6>Powered by Coroebus &#169;</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

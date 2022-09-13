@@ -1,0 +1,324 @@
+<div class=".container" id="cont">
+  <div class="main">
+    <div class="mytabs">
+      <input type="radio" id="tab-1" name="mytabs" checked="checked">
+      <!-- ******************************************** Rewards Tab ********************************************************************     -->
+      <label class="reward_tab" for="tab-1">Rewards</label>
+
+      <div class="tab" *ngFor="let reward of rewardresponse">
+        <img class="rewardpoints" src="/assets/images/rewards/Reward point.png">
+        <p class="totalpoints" *ngFor="let points of rewardresponse">{{points.data.points_list[0]._data.rewardPoints}}
+        </p>
+        <mat-tab-group *ngFor="let reward of rewardresponse">
+
+          <!-- ******************************************* Platform Reward Tab ********************************************************************     -->
+          <mat-tab  [ngStyle]="{'background': headerInfo?.color}"  label="{{reward.data.rewardTypes[0].rewardName}}">
+            <hr>
+            <div class="button_platform">
+              <button class="platform_redeem" type="button" (click)="navigateToLogicalBaniya()">Redeem</button>
+
+            </div>
+            <!-- {{i.[0].data[0].rewardpoints[0].rewardName}} -->
+          </mat-tab>
+          <!-- **************************************** Organisation Reward Tab ********************************************************************     -->
+
+          <mat-tab label="{{reward.data.rewardTypes[1].rewardName}}">
+            <hr>
+
+            <div class="row">
+
+            </div>
+            <div class="row">
+              <div class="col-md-3 col-sm-6 " *ngFor="let rewardlist of reward.data.rewardTypes[1].rewardList;">
+                <mat-card>
+                  <img src="{{rewardlist.reward_logo}}" class="productimage" alt="Productimage">
+                  <div>
+                    <p class="product_description">{{rewardlist.name}}</p>
+
+                  </div>
+                  <div>
+                    <p class="product_cost"> {{rewardlist.redeem_point}}</p>
+
+                  </div>
+
+                  <div class="btn_div">
+                    <button type="button" class="redeem_btn">Redeem</button>
+                  </div>
+                </mat-card>
+
+              </div>
+
+            </div>
+
+
+
+          </mat-tab>
+
+        </mat-tab-group>
+
+      </div>
+
+      <input type="radio" id="tab-2" name="mytabs">
+      <label class="passbook_tab" for="tab-2">Passbook</label>
+      <!-- ******************************************* Passbook Tab ********************************************************************     -->
+
+      <div class="tab" *ngFor="let points of rewardresponse">
+        <img class="rewardpoints" src="assets/images/rewards/Reward point.png">
+        <p class="totalpoints">{{points.data.points_list[0]._data.rewardPoints}}</p>
+        <mat-tab-group>
+          <!-- ***************************************  Points Table Tab ********************************************************************     -->
+
+          <mat-tab label="{{points.data.points_list[0].label}}">
+            <hr>
+
+            <div class="table_div">
+              <!-- <span>
+                 <p class="from_datepicker">From</p>
+                 
+                 
+                 <input class="datepicker_from" type="date" name="dateofbirth" id="dateofbirth" data-date-format="DD MMMM YYYY" >
+                 <p class="to_datepicker">To</p>
+
+                 <input class="datepicker_to" type="date" name="dateofbirth" id="dateofbirth">
+                </span> -->
+                <div>
+                  <input class="search" type="search" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="        Search">
+  
+                </div>
+              <table id="example1" class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Source</th>
+                    <th scope="col">Points</th>
+
+
+                  </tr>
+                </thead>
+                <tbody *ngFor="let response of rewardresponse">
+                  <tr *ngFor="let pointTable of response.data.points_list[0]._data.reward_point_dist | filter:searchText">
+                    <td class="col-md-10 col-sm-10">{{pointTable.tag_Label}}</td>
+                    <td class="col-md-2 col-sm-2"> {{pointTable.reward_points}}</td>
+
+
+                  </tr>
+
+                </tbody>
+              </table>
+
+
+            </div>
+          </mat-tab>
+
+          <!-- ***************************************  Passbook DataTable Tab ********************************************************************     -->
+
+          <mat-tab label="{{points.data.points_list[1].label}}">
+            <hr>
+
+
+            <div class="table_div">
+              <div>
+                <input class="search" type="search" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="        Search">
+
+              </div>
+
+              <table id="example" class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Date
+                      <img class="up_down_arrow" src="assets/images/rewards/up_down_arrow.png">
+                    </th>
+                    <th scope="col">Source</th>
+                    <th scope="col">Earned
+                      <img class="up_down_arrow" src="assets/images/rewards/up_down_arrow.png">
+
+                    </th>
+                    <th scope="col">Redeemed
+                      <img class="up_down_arrow" src="assets/images/rewards/up_down_arrow.png">
+
+                    </th>
+                    <th scope="col">Balance</th>
+
+                  </tr>
+                </thead>
+                <tbody *ngFor="let response of rewardresponse ">
+                  <tr *ngFor="let passbookresponse of response.data.points_list[1]._data | filter:searchText ">
+                    <td class="col-md-2 col-sm-1">{{passbookresponse.date_time | date: 'dd/MM/yyyy' }}</td>
+                    <td class="col-md-4 col-sm-3">{{passbookresponse.description_}}</td>
+                    <td class="col-md-2 col-sm-3">{{passbookresponse.points_credited}}</td>
+                    <td *ngIf="passbookresponse.points_debited!=='' " class="col-md-2 col-sm-3">
+                      {{passbookresponse.points_debited}}
+                      <img class="redeemed_popup_logo" src="assets/images/rewards/redeemed.png">
+
+                    <td *ngIf="passbookresponse.points_debited==='' " class="col-md-2">-
+
+                    </td>
+                    <td class="col-md-2">{{passbookresponse.balance}}</td>
+
+                  </tr>
+
+                </tbody>
+              </table>
+
+            </div>
+
+
+          </mat-tab>
+
+          <!-- ***************************************  Redemption History Tab ********************************************************************     -->
+
+          <mat-tab label="{{points.data.points_list[2].label}}">
+            <hr>
+            <div>
+              <!-- *ngFor="let pointselect of points.data.points_list[2].data" -->
+              <select (change)="onChange($event)" class="form-select" aria-label="Default select example">
+                <!-- <option selected ></option> -->
+                <option *ngFor="let pointselect of points.data.points_list[2]._data" [value]="pointselect.order"
+                  selected="pointselect.order">{{pointselect.label}}</option>
+
+              </select>
+            </div>
+
+            <!-- ***************************************  Platform Reward Redemption History ********************************************************************     -->
+
+            <div class="redemption_card_div" *ngIf="value=='2'">
+              <div *ngFor="let pointselectorder2 of points.data.points_list[2]._data[1]._data">
+                <mat-card class="redemption_card">
+                  <div class="row">
+                    <div class=" col-md-3 col-xs-2 col-lg-2">
+                      <div class="coupon_div">
+                        <p class="coupon_id">Coupon ID:</p>
+                        <p class="coupon_id_number">{{pointselectorder2.couponid}}</p>
+
+
+                      </div>
+                      <div class="redemption_image_div">
+                        <img class="product_image_redemption" src="{{pointselectorder2.image}}">
+
+                      </div>
+
+                      <p class="cost_redemption"> {{pointselectorder2.rewardcount}} </p>
+
+
+                    </div>
+                    <div class=" col-md-9 col-xs-10 col-lg-10">
+                      <div class="details">
+                        <p class="product_name_redemption">{{pointselectorder2.rewards}}</p>
+                        <p class="product_full_description">{{pointselectorder2.coupondescription | slice:0:90}}<span
+                            id="dots"></span> <span id="more">{{pointselectorder2.coupondescription |
+                            slice:90}}</span><br><span (click)="showhidetext()" id="more_text">More</span> </p>
+                        <!-- <p >More</p> -->
+                        <!-- <p class="product_full_description">{{pointselectorder2.coupondescription}}<span id="dots">...</span> <span id="more">{{pointselectorder2.coupondescription}}</span ><br><span (click)="showhidetext()" id="more_text">More</span> </p> -->
+
+                      </div>
+
+                      <div class="coupon_div_1">
+
+                        <p class="coupon_code_number">Coupon Code: {{pointselectorder2.couponcode}}</p>
+                        <!-- <p class="coupon_code"></p> -->
+
+                      </div>
+
+                      <div class="expiry_date">
+                        <p> Expiry Date: {{pointselectorder2.expirydate | date: 'dd/MM/yyyy'}}</p>
+                      </div>
+
+                    </div>
+                  </div>
+
+
+
+
+
+                </mat-card>
+                <!-- <mat-card class="redemption_card">
+                  <div class="row">
+                    <div class="col-sm-2 col-md-2 col-xs-2">
+                      <div class="coupon_div">
+                        <p class="coupon_id">Coupon ID:</p>
+                        <p class="coupon_id_number">52154</p>
+                      
+      
+                      </div>
+                      <div class="redemption_image_div">
+                        <img class="product_image_redemption" src="/assets/images/rewards/product_image.png">
+      
+                      </div>
+  
+                      <div>
+                        <p class="cost_redemption"> 100 </p>
+                        
+                      </div>
+                     
+                    </div>
+                    <div class="col-sm-10 col-md-10 col-xs-10">
+                      <div class="details">
+                        <p class="product_name_redemption">Customized Bottle</p>
+                        <p class="product_full_description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.<span id="dots">...</span> <span id="more">erisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta.</span ><br><span (click)="showhidetext()" id="more_text">More</span> </p>
+  
+                      </div>
+  
+                      <div class="coupon_div">
+                       
+                        <p class="coupon_code_number">1221454496</p>
+                        <p class="coupon_code">Coupon Code:</p>
+      
+                      </div>
+  
+                      <div class="expiry_date">
+                        <p> Expiry Date:</p>
+                        <p> 02/09/2022</p>
+                      </div>
+                    
+                    </div>
+                  </div>
+            
+                   
+  
+                 
+  
+                </mat-card> -->
+              </div>
+
+            </div>
+
+            <!-- ***************************************  Organisation Reward Redemption History ********************************************************************     -->
+
+            <div>
+
+              
+              <div  *ngIf="value=='1'">
+                <div class="row">
+                  <div class="col-md-3 col-sm-12 org_redem_div " 
+                    *ngFor="let pointselectorder3 of points.data.points_list[2]._data[0]._data">
+                    <mat-card class="organisation_redemption_history">
+                      <img src="{{pointselectorder3.reward_logo}}" class="productimage" alt="Productimage">
+                      <div>
+                        <p class="product_description">{{pointselectorder3.rewards}}</p>
+
+                      </div>
+                      <div>
+                        <p class="product_cost"> {{pointselectorder3.points}}</p>
+
+                      </div>
+
+                      
+                    </mat-card>
+
+                  </div>
+
+                </div>
+              </div>
+
+
+            </div>
+
+          </mat-tab>
+        </mat-tab-group>
+
+      </div>
+
+
+    </div>
+  </div>
+
+</div>

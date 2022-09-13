@@ -1,0 +1,62 @@
+{
+    "status": "success",
+    "statuscode": 200,
+    "data": [
+        {
+            "id_coroebus_user": "53295",
+            "id_role": "6",
+            "USERID": "GOLD015",
+            "first_name": "Tribe Citizen P3",
+            "userlogo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/UserData\/USR-16534609458346.png?3.660111300330713",
+            "team_name": "Kochi",
+            "teamlogo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/TeamLogo\/\tTL-16486401346378.png",
+            "role_name": "Store",
+            "id_coroebus_game": "197"
+        },
+        {
+            "id_coroebus_user": "53288",
+            "id_role": "4",
+            "USERID": "GOLD009",
+            "first_name": "Team Leader P3",
+            "userlogo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/UserData\/USR-53288-FWUN6R.png?3.8113707898290556",
+            "team_name": "Kochi",
+            "teamlogo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/TeamLogo\/\tTL-16486401346378.png",
+            "role_name": "CM",
+            "id_coroebus_game": "197"
+        },
+        {
+            "id_coroebus_user": "53283",
+            "id_role": "3",
+            "USERID": "GOLD003",
+            "first_name": "Reporting Manager P3",
+            "userlogo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/UserData\/USR-53283-Z0BEJF.png?8.076520355489588",
+            "team_name": "Brand 3",
+            "teamlogo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/BrandLogo\/\tBRL-16486395856395.png",
+            "role_name": "AM",
+            "id_coroebus_game": "197"
+        },
+        {
+            "id_coroebus_user": "53318",
+            "id_role": "8",
+            "USERID": "GOLD104",
+            "first_name": "Senior Manager P2",
+            "userlogo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/UserData\/USR-53318-I2CV7L.png?8.948489715297232",
+            "team_name": "Team C",
+            "teamlogo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/TeamLogo\/\tTL-16488124699176.png",
+            "role_name": "RM",
+            "id_coroebus_game": "197"
+        },
+        {
+            "id_coroebus_user": "53317",
+            "id_role": "9",
+            "USERID": "GOLD102",
+            "first_name": "General Manager P2",
+            "userlogo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/UserData\/USR-53317-1EZDW3.png?0.512887817353837",
+            "team_name": "Team B",
+            "teamlogo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/TeamLogo\/\tTL-16488124438557.png",
+            "role_name": "NSM",
+            "id_coroebus_game": "197"
+        }
+    ],
+    "message": ""
+}

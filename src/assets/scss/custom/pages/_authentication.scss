@@ -1,0 +1,383 @@
+// 
+// authentication.scss
+//
+
+
+// authentication home icon
+.home-btn {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+}
+
+// auth 2
+
+.auth-logo {
+    .auth-logo-dark {
+        display: $display-block;
+        left: 5.2%;
+        right: 81.2%;
+        top: 7.67%;
+        bottom: 86.06%;
+    }
+
+    .auth-logo-light {
+        display: $display-none;
+    }
+}
+
+.auth-body-bg {
+    background-color: $card-bg;
+}
+
+
+// auth-pass-inputgroup
+
+.auth-pass-inputgroup {
+    input[type="input"]+.btn .mdi-eye-outline {
+        &:before {
+            content: "\F06D1";
+        }
+    }
+}
+
+// authentication full page
+
+.auth-full-bg {
+    // background-color: rgba($primary, 0.25);
+    display: flex;
+
+    @media (min-width: 1200px) {
+        // height: 100vh;
+    }
+
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+    }
+
+    .bg-overlay {
+        background: url("../../../images/svg/login/login_left.svg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        width: 601.12px;
+        height: 491px;
+        left: 161px;
+        // top: 174px;
+
+        @media (max-width: 768px) {
+            position: inherit;
+            width: 350px;
+            height: 350px;
+        }
+    }
+}
+
+.auth-full-page-content {
+    display: flex;
+
+    @media (min-width: 1200px) {
+        min-height: 100vh;
+    }
+}
+
+.auth-review-carousel {
+    &.owl-theme {
+        .owl-dots {
+            .owl-dot {
+                span {
+                    background-color: rgba($primary, 0.25);
+                }
+
+                &.active,
+                &:hover {
+                    span {
+                        background-color: $primary;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.login-btn {
+    background: linear-gradient(180.2deg, #2C7B67 0.17%, #1D4B58 202.17%);
+    border-radius: 5px;
+    color: #FFFFFF !important;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.welcome {
+    font-family: 'Inter' !important;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    color: #000000;
+}
+
+.input-bg {
+    background: #FFFFFF;
+    border-radius: 4px;
+}
+
+.forgot-pwd {
+    // font-weight: 400;
+    // font-size: 12px;
+    // line-height: 15px;
+    // /* or 126% */
+    // text-align: center;
+    text-decoration: underline !important;
+    // color: #888888;
+}
+
+.pwd-eye {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+.almost-done-text {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #000000;
+}
+
+.verify-btn {
+    background: #E4F8E9;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    color: #000000;
+}
+
+// New design
+
+.br-4 input {
+    border-radius: 5px !important;
+}
+
+.form-signin h1 {
+    line-height: 45px;
+}
+
+.form-signin .form-control {
+    border-color: #fff;
+}
+
+.logo {
+    // position: absolute;
+    // top: 60px;
+    // left: 78px;
+    padding: 60px 85px;
+}
+
+.eclips {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 500px;
+    // padding: 110px 15px;
+    margin: auto;
+}
+
+.form-signin .checkbox {
+    font-weight: 400;
+}
+
+.form-signin label {
+    color: var(--color-label);
+}
+
+.forgot-password {
+    text-align: end;
+    margin: 40px 0 145px 0;
+}
+
+.forgot-password a {
+    color: #888;
+}
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.btn-primary {
+    color: #fff;
+    background: linear-gradient(180.2deg, #2C7B67 0.17%, #1D4B58 202.17%);
+    border-color: transparent;
+    border-radius: 5px;
+    padding: 12px;
+    transition: all 1.5s;
+}
+
+// .btn-primary:hover {
+//     color: #fff;
+//     background: linear-gradient(180.2deg, #1D4B58 0.17%, #2C7B67 202.17%);
+//     border-color: transparent;
+//     transition: all 1.5s;
+// }
+
+.img-holder {
+    display: flex;
+    justify-content: center;
+}
+
+.footer {
+    padding: 0px 0 15px;
+    position: static;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+}
+
+/***********************terms-condition**************************/
+.form-check-label {
+    color: var(--color-base) !important;
+    font-size: 18px;
+}
+
+.form-check-input {
+    margin-top: 6px;
+}
+
+.terms-condition .form-signin {
+
+    padding: 140px 15px;
+
+}
+
+.mb-custom {
+    margin-bottom: 160px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.25) and (min-width: 1281px),
+only screen and (min--moz-device-pixel-ratio: 1.25) and (min-width: 1281px),
+only screen and (-o-min-device-pixel-ratio: 1.25/1) and (min-width: 1281px),
+only screen and (min-device-pixel-ratio: 1.25) and (min-width: 1281px),
+only screen and (min-resolution: 200dpi) and (min-width: 1281px),
+only screen and (min-resolution: 1.25dppx) and (min-width: 1281px) {
+
+    .theme-footer {
+        position: static;
+        margin-top: 1px;
+    }
+
+    .game-footer {
+        position: static;
+        margin-top: 50px;
+    }
+
+    .p-100 {
+        padding: 0 !important;
+    }
+
+    .baner-img {
+        height: 169px !important;
+    }
+
+    .logo {
+        padding: 39px 85px !important;
+    }
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+    .theme-footer,
+    .game-footer {
+        position: static;
+        margin-top: 1px;
+    }
+
+    .baner-img {
+        height: 160px !important;
+    }
+
+    .p-bottom-mobile {
+        padding-bottom: 10px;
+    }
+
+    .card-img {
+        padding: 0 !important;
+    }
+
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+    .theme-footer,
+    .game-footer {
+        position: static;
+        margin-top: 1px;
+    }
+
+    .baner-img {
+        height: 160px !important;
+    }
+
+    .p-bottom-mobile {
+        padding-bottom: 10px;
+    }
+
+    .card-img {
+        padding: 0 !important;
+    }
+
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.25) and (min-width: 320px) and (max-width: 480px),
+only screen and (min--moz-device-pixel-ratio: 1.25) and (min-width: 320px) and (max-width: 480px),
+only screen and (-o-min-device-pixel-ratio: 1.25/1) and (min-width: 320px) and (max-width: 480px),
+only screen and (min-device-pixel-ratio: 1.25) and (min-width: 320px) and (max-width: 480px),
+only screen and (min-resolution: 200dpi) and (min-width: 320px) and (max-width: 480px),
+only screen and (min-resolution: 1.25dppx) and (min-width: 320px) and (max-width: 480px) {
+
+    .theme-footer,
+    .game-footer,
+    .footer {
+        position: static;
+        margin-top: 1px;
+    }
+
+    .p-bottom-mobile {
+        padding-bottom: 10px;
+    }
+}

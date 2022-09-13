@@ -1,0 +1,67 @@
+{
+    "status": "success",
+    "statuscode": 200,
+    "data": [
+        {
+            "id_coroebus_theme": "5",
+            "coroebus_theme_title": "Tribe",
+            "theme_description": "  Tribe  ",
+            "logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeLogo\/\tTL-16189905319488.png?659879099",
+            "theme_label": "Tribe",
+            "role_3_label": "Clan",
+            "role_4_label": "Squad",
+            "role_6_label": "Citizen",
+            "role_8_label": "Tribe",
+            "role_9_label": "State",
+            "theme_background": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeBackground\/f1_bg.png?1573655518",
+            "player_label": "Citizen",
+            "target_icon": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeTargetIcon\/TTI-16189913827505.png?1395492048"
+        },
+        {
+            "id_coroebus_theme": "5",
+            "coroebus_theme_title": "Tribe",
+            "theme_description": "  Tribe  ",
+            "logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeLogo\/\tTL-16189905319488.png?659879099",
+            "theme_label": "Tribe",
+            "role_3_label": "Clan",
+            "role_4_label": "Squad",
+            "role_6_label": "Citizen",
+            "role_8_label": "Tribe",
+            "role_9_label": "State",
+            "theme_background": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeBackground\/f1_bg.png?1573655518",
+            "player_label": "Citizen",
+            "target_icon": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeTargetIcon\/TTI-16189913827505.png?1395492048"
+        },
+        {
+            "id_coroebus_theme": "5",
+            "coroebus_theme_title": "Tribe",
+            "theme_description": "  Tribe  ",
+            "logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeLogo\/\tTL-16189905319488.png?659879099",
+            "theme_label": "Tribe",
+            "role_3_label": "Clan",
+            "role_4_label": "Squad",
+            "role_6_label": "Citizen",
+            "role_8_label": "Tribe",
+            "role_9_label": "State",
+            "theme_background": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeBackground\/f1_bg.png?1573655518",
+            "player_label": "Citizen",
+            "target_icon": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeTargetIcon\/TTI-16189913827505.png?1395492048"
+        },
+        {
+            "id_coroebus_theme": "5",
+            "coroebus_theme_title": "Tribe",
+            "theme_description": "  Tribe  ",
+            "logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeLogo\/\tTL-16189905319488.png?659879099",
+            "theme_label": "Tribe",
+            "role_3_label": "Clan",
+            "role_4_label": "Squad",
+            "role_6_label": "Citizen",
+            "role_8_label": "Tribe",
+            "role_9_label": "State",
+            "theme_background": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeBackground\/f1_bg.png?1573655518",
+            "player_label": "Citizen",
+            "target_icon": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeTargetIcon\/TTI-16189913827505.png?1395492048"
+        }
+    ],
+    "message": "Successfully Theme List Loaded"
+}

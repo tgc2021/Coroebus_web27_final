@@ -1,0 +1,53 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "module": "es2020",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "paths": {
+      "@app/*": [
+        "app/core/*"
+      ],
+      "@shared/*": [
+        "app/shared/*"
+      ],
+      "@coroebus/skeleton-screen-loader": [
+        "../projects/coroebus/skeleton-screen-loader/src/public-api.ts"
+      ],
+      "@env": [
+        "environments/environment"
+      ],
+      "@models/*": [
+        "app/models/*"
+      ],
+      "@pages/*": [
+        "app/pages/*"
+      ],
+      "@account/*": [
+        "app/account/*"
+      ],
+      "@layouts/*": [
+        "app/layouts/*"
+      ]
+    },
+    "lib": [
+      "es2018",
+      "dom"
+    ]
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+  }
+}

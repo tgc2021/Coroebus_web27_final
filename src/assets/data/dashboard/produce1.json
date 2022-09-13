@@ -1,0 +1,461 @@
+{
+    "status": "success",
+    "statuscode": 200,
+    "data": {
+        "_primary": {
+            "primary_type": "EMP",
+            "primary_name": "Tribe Citizen P3",
+            "primary_id": "53295",
+            "primary_supervisor": "53288",
+            "primary_logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/UserData\/USR-16534609458346.png?34116893",
+            "primary_rank": "19",
+            "primary_progress": "",
+            "primary_target": "0",
+            "primary_label": "Game Position"
+        },
+        "_points": [
+            {
+                "lid": "PT-GM",
+                "label": "Game Point",
+                "score": 219,
+                "type": "comp-point"
+            },
+            {
+                "lid": "PT-OP",
+                "label": "Olympic Point",
+                "score": 0,
+                "type": "comp-olympic"
+            },
+            {
+                "lid": "PT-RP",
+                "label": "Reward Point",
+                "score": 257,
+                "type": "comp-reward"
+            }
+        ],
+        "_kpi_score": [
+            {
+                "coroebus_measurement": "Capability Points - Citizen",
+                "point_label": "Capability Points ",
+                "point_indicator": "Capability Points - Citizen",
+                "id_coroebus_organization": "28",
+                "weightage": "219"
+            }
+        ],
+        "is_land_logos": [
+            {
+                "order": 1,
+                "label": "Squad Rank",
+                "tag": "CM Rank",
+                "logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/IslandBadges\/BL-16559656238215.png",
+                "_userid": "GOLD009",
+                "game_id": "197",
+                "_data": "4",
+                "role_id": 4
+            },
+            {
+                "order": 2,
+                "label": "Clan Rank",
+                "tag": "AM Rank",
+                "logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/IslandBadges\/BL-16559667652410.png",
+                "_userid": "GOLD003",
+                "game_id": "197",
+                "_data": "3",
+                "role_id": 3
+            },
+            {
+                "order": 3,
+                "label": "Tribe Rank",
+                "tag": "RM Rank",
+                "logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/IslandBadges\/BL-16559669531487.png",
+                "_userid": "GOLD104",
+                "game_id": "197",
+                "_data": "2",
+                "role_id": 8
+            },
+            {
+                "order": 4,
+                "label": "State Level",
+                "tag": "NSM Level",
+                "logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/IslandBadges\/BL-16559672396530.png",
+                "_userid": "GOLD102",
+                "game_id": "197",
+                "_data": "1",
+                "role_id": 9
+            }
+        ],
+        "theme_details": [
+            {
+                "id_coroebus_theme": "103",
+                "theme_label": "Game",
+                "role_3_label": "AM",
+                "role_4_label": "CM",
+                "role_6_label": "Store",
+                "player_label": "Store",
+                "theme_background": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeBackground\/TB-16559601888214.png?707529552",
+                "theme_background_web": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeBackground\/TB-16559601885652.png?1070852675",
+                "target_icon": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeTargetIcon\/TTI-16559601885393.png?1979996689",
+                "role_8_label": "RM",
+                "role_9_label": "NSM",
+                "role_10_label": "ICCM",
+                "role_11_label": "ICAM",
+                "role_12_label": "ICRM",
+                "dark_color": "#104E5B",
+                "medium_color": "#53B8BB",
+                "light_color": "#F3F2C1",
+                "up_arrow": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeTargetIcon\/UP-16559601883753.png?637903958",
+                "down_arrow": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeTargetIcon\/DN-16559601883475.png?1016780448",
+                "equal_arrow": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeTargetIcon\/EQ-16559601881797.png?712860474",
+                "reward_points_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeBackground\/TB-16559601881542.png?904066074",
+                "game_points_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeBackground\/TB-16559601885961.png?1606917354",
+                "add_ins_background": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeBackground\/TD-16559601888994.png?950438446",
+                "notification_background": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeBackground\/TA-16559601886107.png?1385630974",
+                "island_background": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeBackground\/TB-16559601882590.png?1791038871",
+                "point_dist_background": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeBackground\/TB-16559601889412.png?1670176574"
+            }
+        ],
+        "_poked_data": [],
+        "_back_images": [
+            {
+                "order": 1,
+                "label": "badge images",
+                "_data": [
+                    {
+                        "ranking_badge_level": "152",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559598359267.png"
+                    },
+                    {
+                        "ranking_badge_level": "153",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559599848336.png"
+                    },
+                    {
+                        "ranking_badge_level": "154",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559601016752.png"
+                    },
+                    {
+                        "ranking_badge_level": "155",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559601602644.png"
+                    },
+                    {
+                        "ranking_badge_level": "156",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559602267269.png"
+                    },
+                    {
+                        "ranking_badge_level": "157",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559603487301.png"
+                    },
+                    {
+                        "ranking_badge_level": "158",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559610341984.png"
+                    },
+                    {
+                        "ranking_badge_level": "159",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559610858748.png"
+                    },
+                    {
+                        "ranking_badge_level": "160",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559611416545.png"
+                    },
+                    {
+                        "ranking_badge_level": "161",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-1655961203694.png"
+                    },
+                    {
+                        "ranking_badge_level": "162",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559613358139.png"
+                    },
+                    {
+                        "ranking_badge_level": "163",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559615092162.png"
+                    },
+                    {
+                        "ranking_badge_level": "164",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559616208030.png"
+                    },
+                    {
+                        "ranking_badge_level": "165",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559617049389.png"
+                    },
+                    {
+                        "ranking_badge_level": "166",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559617049389.png"
+                    },
+                    {
+                        "ranking_badge_level": "167",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559618851096.png"
+                    },
+                    {
+                        "ranking_badge_level": "168",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559619358193.png"
+                    },
+                    {
+                        "ranking_badge_level": "169",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559619866233.png"
+                    },
+                    {
+                        "ranking_badge_level": "170",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-1655962020833.png"
+                    },
+                    {
+                        "ranking_badge_level": "171",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559620631196.png"
+                    },
+                    {
+                        "ranking_badge_level": "172",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559621042512.png"
+                    },
+                    {
+                        "ranking_badge_level": "173",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559621971471.png"
+                    },
+                    {
+                        "ranking_badge_level": "174",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559622438650.png"
+                    },
+                    {
+                        "ranking_badge_level": "175",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-1655962288642.png"
+                    },
+                    {
+                        "ranking_badge_level": "176",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559623332506.png"
+                    },
+                    {
+                        "ranking_badge_level": "177",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559623817424.png"
+                    },
+                    {
+                        "ranking_badge_level": "178",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559624858510.png"
+                    },
+                    {
+                        "ranking_badge_level": "179",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559625291035.png"
+                    },
+                    {
+                        "ranking_badge_level": "180",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559625676057.png"
+                    },
+                    {
+                        "ranking_badge_level": "181",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559626121414.png"
+                    },
+                    {
+                        "ranking_badge_level": "182",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559626584657.png"
+                    },
+                    {
+                        "ranking_badge_level": "183",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-1655962735854.png"
+                    },
+                    {
+                        "ranking_badge_level": "184",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559628056123.png"
+                    },
+                    {
+                        "ranking_badge_level": "185",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559640225297.png"
+                    },
+                    {
+                        "ranking_badge_level": "186",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559646458351.png"
+                    },
+                    {
+                        "ranking_badge_level": "187",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559646833287.png"
+                    },
+                    {
+                        "ranking_badge_level": "188",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559647545836.png"
+                    },
+                    {
+                        "ranking_badge_level": "189",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559647882335.png"
+                    },
+                    {
+                        "ranking_badge_level": "190",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559648348373.png"
+                    },
+                    {
+                        "ranking_badge_level": "191",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559648894221.png"
+                    },
+                    {
+                        "ranking_badge_level": "192",
+                        "ranking_badge": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559649261131.png"
+                    }
+                ]
+            },
+            {
+                "order": 2,
+                "label": "background images",
+                "_data": [
+                    {
+                        "ranking_image_level": "83",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16559613434662.png"
+                    },
+                    {
+                        "ranking_image_level": "84",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16559682887094.png"
+                    },
+                    {
+                        "ranking_image_level": "85",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16559692246968.png"
+                    },
+                    {
+                        "ranking_image_level": "87",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-1655969994864.png"
+                    },
+                    {
+                        "ranking_image_level": "88",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16559700431676.png"
+                    },
+                    {
+                        "ranking_image_level": "89",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16559701017414.png"
+                    },
+                    {
+                        "ranking_image_level": "90",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16559701497713.png"
+                    },
+                    {
+                        "ranking_image_level": "91",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16559701902443.png"
+                    },
+                    {
+                        "ranking_image_level": "92",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16559702244115.png"
+                    },
+                    {
+                        "ranking_image_level": "93",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16559715693582.png"
+                    },
+                    {
+                        "ranking_image_level": "94",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16559745735876.png"
+                    },
+                    {
+                        "ranking_image_level": "95",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16559746006760.png"
+                    },
+                    {
+                        "ranking_image_level": "96",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16559746683148.png"
+                    },
+                    {
+                        "ranking_image_level": "97",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-1655974843488.png"
+                    },
+                    {
+                        "ranking_image_level": "98",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16559749038452.png"
+                    },
+                    {
+                        "ranking_image_level": "99",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16559749528884.png"
+                    },
+                    {
+                        "ranking_image_level": "100",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16559750395096.png"
+                    },
+                    {
+                        "ranking_image_level": "101",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16559750749516.png"
+                    },
+                    {
+                        "ranking_image_level": "102",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16559751079171.png"
+                    },
+                    {
+                        "ranking_image_level": "103",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16559751662428.png"
+                    },
+                    {
+                        "ranking_image_level": "104",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16559752284587.png"
+                    },
+                    {
+                        "ranking_image_level": "105",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16559752516272.png"
+                    },
+                    {
+                        "ranking_image_level": "106",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16559752848168.png"
+                    },
+                    {
+                        "ranking_image_level": "107",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16559753072888.png"
+                    },
+                    {
+                        "ranking_image_level": "108",
+                        "ranking_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBR-16559753388513.png"
+                    }
+                ]
+            }
+        ],
+        "_personal_data": {
+            "id_role": "6",
+            "role_name": "Store",
+            "user_department": "na",
+            "user_designation": "Player",
+            "user_function": "na",
+            "user_grade": "na",
+            "cd_coroebus_user": "US-16282502523324",
+            "id_coroebus_user": "53295",
+            "id_coroebus_organization": "28",
+            "cd_coroebus_organization": "OG-1628249812508",
+            "organization_name": "Tata Nexon",
+            "organization_logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/OrgLogo\/OL-1657601503941.png?383936582",
+            "USERID": "GOLD015",
+            "EMPLOYEEID": "GOLD015",
+            "first_name": "Tribe Citizen P3",
+            "email_id": "info@thegamificationcompany.com",
+            "contact_number": "9876543210",
+            "profile_logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/UserData\/USR-16534609458346.png?609278950",
+            "theme_logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeLogo\/TL-16559018105771.png?2063510445",
+            "game_logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/GameLogo\/\tGL-16486364698852.png",
+            "id_coroebus_game": "197",
+            "id_coroebus_team": "617",
+            "game_name": "TATA Nexon IPL 2022",
+            "cd_coroebus_game": "GM-16486364726843",
+            "team_name": "Kochi",
+            "team_logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/TeamLogo\/\tTL-16486401346378.png?713717123",
+            "password": "9QVjcHyu0OY8aIHAOXiiBg==",
+            "profile_badge_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBadges\/BL-16559601602644.png",
+            "level_label": "Silver League",
+            "profile_background_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/LevelsBackground\/LBP-16559701019635.png",
+            "external_kpi_data": [
+                {
+                    "kpi_name": "Seasonals KPI 1 Player",
+                    "is_attempted": "0",
+                    "is_correct": "1"
+                }
+            ]
+        },
+        "is_revenue_achievement": 0,
+        "is_learningAcademy": 1,
+        "is_play_zone": 1,
+        "is_champions_league": "A",
+        "is_personal_challenge": "A",
+        "is_fantasy_league": "D",
+        "is_seasonal_theme": "1",
+        "is_about_game": 1,
+        "about_game": [
+            {
+                "id_about_game": "16",
+                "cd_about_game": "AG-16552795791629",
+                "id_coroebus_organization": "28",
+                "id_coroebus_game": "197",
+                "created_by": "65717",
+                "description": null,
+                "file_path": "1655279579_6b9ff9725245ac0aa0e1.pdf",
+                "status": "A",
+                "created_date": "2022-06-15 13:22:59",
+                "updated_date": "2022-06-15 13:22:59",
+                "file_name": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/GameLogo\/media1655279579_6b9ff9725245ac0aa0e1.pdf",
+                "ispdf": "yes"
+            }
+        ]
+    },
+    "message": ""
+}

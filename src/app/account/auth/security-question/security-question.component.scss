@@ -1,0 +1,73 @@
+::-webkit-scrollbar{
+    width: 2px;
+}
+
+
+.form-select {
+    padding: 1rem 0.7rem;
+}
+
+.security .mb-86 {
+    margin-bottom: 50px;
+}
+
+.security .mb-40 {
+    margin-bottom: 35px;
+}
+
+.security .mt-100 {
+    margin-top: 75px;
+}
+
+.security .form-signin {
+    width: 100%;
+    max-width: 500px;
+    padding: 160px 15px 30px;
+    margin: auto;
+}
+
+// media Query
+.create-new-pwd-header {
+    font-size: 25px !important;
+}
+
+@media (min-width: 1281px) {
+    .new-pwd {
+        position: fixed !important;
+    }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.25) and (min-width: 1281px),
+only screen and (min--moz-device-pixel-ratio: 1.25) and (min-width: 1281px),
+only screen and (-o-min-device-pixel-ratio: 1.25/1) and (min-width: 1281px),
+only screen and (min-device-pixel-ratio: 1.25) and (min-width: 1281px),
+only screen and (min-resolution: 200dpi) and (min-width: 1281px),
+only screen and (min-resolution: 1.25dppx) and (min-width: 1281px) {
+    .new-pwd {
+        position: fixed !important;
+    }
+}
+@media (min-width:768px) and (max-width: 1281px) {
+    .new-pwd {
+        position: fixed !important;
+    }
+    .logo {
+        padding: 60px 85px;
+    }
+}
+@media (min-width: 481px) and (max-width: 767px) {
+    .new-pwd {
+        position: fixed !important;
+    }
+
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .new-pwd {
+        position: fixed !important;
+    }
+
+}
+.option1{
+    color:#999999 !important;
+}

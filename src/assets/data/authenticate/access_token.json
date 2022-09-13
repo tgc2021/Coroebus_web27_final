@@ -1,0 +1,149 @@
+{
+    "status": "success",
+    "statuscode": 200,
+    "data": {
+        "olympic_logo": "https:\/\/www.coroebus.in\/coroebus-image\/reward\/olympicsLogo.png",
+        "indicator_flag": 1,
+        "theme_flag": 0,
+        "terms": {
+            "id_coroebus_terms_conditions": "15",
+            "description": "Demo 123",
+            "id_coroebus_organization": "28"
+        },
+        "is_spectator": 1,
+        "is_learningAcademy": 1,
+        "is_champions_league": "A",
+        "is_personal_challenge": "A",
+        "is_fantasy_league": "D",
+        "is_seasonal_theme": "1",
+        "is_heart_points": 1,
+        "security_questions": {
+            "questionSet1": [
+                {
+                    "id_security_question": "1",
+                    "question": "What was your childhood nickname?",
+                    "setNumber": "1 "
+                },
+                {
+                    "id_security_question": "2",
+                    "question": "What is the name of your favorite childhood friend?",
+                    "setNumber": "1"
+                },
+                {
+                    "id_security_question": "3",
+                    "question": "What was the name of the hospital where you were born?",
+                    "setNumber": "1"
+                },
+                {
+                    "id_security_question": "4",
+                    "question": "Who is your childhood sports hero?",
+                    "setNumber": "1"
+                },
+                {
+                    "id_security_question": "5",
+                    "question": "In what town was your first job?",
+                    "setNumber": "1"
+                }
+            ],
+            "questionSet2": [
+                {
+                    "id_security_question": "6",
+                    "question": "What is your favorite team?",
+                    "setNumber": "2"
+                },
+                {
+                    "id_security_question": "7",
+                    "question": "What is your favorite movie?",
+                    "setNumber": "2"
+                },
+                {
+                    "id_security_question": "8",
+                    "question": "What was your favorite sport in high school?",
+                    "setNumber": "2"
+                },
+                {
+                    "id_security_question": "9",
+                    "question": "What was your favorite food as a child?",
+                    "setNumber": "2"
+                },
+                {
+                    "id_security_question": "10",
+                    "question": "who is your favorite singer?",
+                    "setNumber": "2"
+                }
+            ]
+        },
+        "themes": [
+            {
+                "id_coroebus_theme": "5",
+                "coroebus_theme_title": "Tribe",
+                "theme_description": "  Tribe  ",
+                "theme_background_web": null,
+                "logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeLogo\/\tTL-16189905319488.png?1682951227",
+                "theme_label": "Tribe",
+                "role_3_label": "Clan",
+                "role_4_label": "Squad",
+                "role_6_label": "Citizen",
+                "role_8_label": "Tribe",
+                "role_9_label": "State",
+                "theme_background": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeBackground\/f1_bg.png?724919883",
+                "player_label": "Citizen",
+                "target_icon": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeTargetIcon\/TTI-16189913827505.png?907184174",
+                "reward_points_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeBackground\/RP-16336925341123.png?1685990163",
+                "game_points_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeBackground\/RP-16336925345465.png?1070015570",
+                "add_ins_background": null,
+                "notification_background": null,
+                "island_background": null,
+                "point_dist_background": null
+            },
+            {
+                "id_coroebus_theme": "103",
+                "coroebus_theme_title": "Millionaire V1",
+                "theme_description": "Millionaire V1",
+                "theme_background_web": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeBackground\/TB-16559601885652.png?1873735115",
+                "logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeLogo\/TL-16559018105771.png?1682951227",
+                "theme_label": "Game",
+                "role_3_label": "AM",
+                "role_4_label": "CM",
+                "role_6_label": "Store",
+                "role_8_label": "RM",
+                "role_9_label": "NSM",
+                "theme_background": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeBackground\/TB-16559601888214.png?724919883",
+                "player_label": "Store",
+                "target_icon": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeTargetIcon\/TTI-16559601885393.png?907184174",
+                "reward_points_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeBackground\/TB-16559601881542.png?1685990163",
+                "game_points_image": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeBackground\/TB-16559601885961.png?1070015570",
+                "add_ins_background": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeBackground\/TD-16559601888994.png?23596175",
+                "notification_background": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeBackground\/TA-16559601886107.png?570454362",
+                "island_background": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeBackground\/TB-16559601882590.png?1123267374",
+                "point_dist_background": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeBackground\/TB-16559601889412.png?1656097157"
+            }
+        ],
+        "games": [],
+        "kpi_name": [],
+        "_personal_data": {
+            "id_role": "3",
+            "user_department": "India",
+            "user_designation": "Player",
+            "user_function": "na",
+            "user_grade": "na",
+            "cd_coroebus_user": "US-16552688364062",
+            "id_coroebus_user": "73943",
+            "cd_coroebus_organization": "OG-1628249812508",
+            "organization_name": "Tata Nexon",
+            "organization_logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/OrgLogo\/OL-1657601503941.png?535915228",
+            "USERID": "GOLD1163",
+            "EMPLOYEEID": "GOLD1163",
+            "first_name": "Hira Sura",
+            "email_id": "tgc@tgc.com",
+            "contact_number": "9876543210",
+            "profile_logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/UserData\/USR-73943-QYKRA2.png?1912591098",
+            "password": "2hw6xoNYM4CXdwtMC9BY9w=="
+        },
+        "_access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.IlVTLTE2NTUyNjg4MzY0MDYyIg.qWkeHznAgiCwiBjVU7IwkfQTjTkNRSFImLjUk8M2RN8",
+        "_system": {
+            "date_time_stamp": "2022-07-20 11:19:57"
+        }
+    },
+    "message": ""
+}

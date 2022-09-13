@@ -1,0 +1,72 @@
+{
+    "status": "success",
+    "statuscode": 200,
+    "data": {
+        "games": [
+            {
+                "id_coroebus_game": "98",
+                "game_name": "48k",
+                "description": "48k121",
+                "logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/GameLogo\/\tGL-16283552727837.png?1320365256",
+                "version": "3",
+                "is_levels": "A",
+                "id_coroebus_user": "53295",
+                "id_role": "6",
+                "id_coroebus_rm_brand": "219",
+                "cd_coroebus_rm_brand": "BR-16283554366859",
+                "id_reporting_manager": "53283",
+                "id_coroebus_organization": "28",
+                "brand_name": "Brand 3",
+                "brand_logo": "\tBRL-16283554353168.png",
+                "status": "A",
+                "id_general_rm": "53317",
+                "id_senior_rm": "53318",
+                "id_coroebus_group": null
+            },
+            {
+                "id_coroebus_game": "131",
+                "game_name": "124K",
+                "description": "124K1",
+                "logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/GameLogo\/\tGL-16373899414392.png?1320365256",
+                "version": "3",
+                "is_levels": "A",
+                "id_coroebus_user": "53295",
+                "id_role": "6",
+                "id_coroebus_rm_brand": "290",
+                "cd_coroebus_rm_brand": "BR-16373901775908",
+                "id_reporting_manager": "53283",
+                "id_coroebus_organization": "28",
+                "brand_name": "Brand A3",
+                "brand_logo": "\tBRL-16373901714673.png",
+                "status": "A",
+                "id_general_rm": "53317",
+                "id_senior_rm": "53318",
+                "id_coroebus_group": null
+            }
+        ],
+        "is_heart_points": 1,
+        "kpi_name": "Calorie Point KPI 1",
+        "_personal_data": {
+            "id_role": "6",
+            "role_name": "Citizen",
+            "user_department": "na",
+            "user_designation": "Player",
+            "user_function": "na",
+            "user_grade": "na",
+            "cd_coroebus_user": "US-16282502523324",
+            "id_coroebus_user": "53295",
+            "cd_coroebus_organization": "OG-1628249812508",
+            "organization_name": "Tata Nexon",
+            "organization_logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/OrgLogo\/\tOL-16282498102036.png?1399256492",
+            "USERID": "GOLD015",
+            "EMPLOYEEID": "GOLD015",
+            "first_name": "Tribe Citizen P3",
+            "email_id": "info@thegamificationcompany.com",
+            "contact_number": "9876543210",
+            "profile_logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/UserData\/USR-16534609458346.png?2050184009",
+            "theme_logo": "https:\/\/coroebusbeta.in\/coroebus-beta\/assets\/ThemeLogo\/\tTL-16189905319488.png?1290187317",
+            "password": "Dev@1234"
+        }
+    },
+    "message": "Successfully Game List Loaded"
+}

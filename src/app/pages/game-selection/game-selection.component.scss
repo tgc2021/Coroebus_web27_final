@@ -1,0 +1,277 @@
+.theme-card-center {
+    text-align: end;
+}
+
+.theme-card-w {
+    // width: unset;
+    width: 325px;
+    @media screen and (max-width: 768px) {
+        width: unset !important
+    }
+}
+
+.theme-selection-banner {
+    margin-left: -12px
+}
+
+.theme-card,
+.theme-card-header {
+    background: #FFFFFF;
+    box-shadow: 0px 3.64119px 13.6545px rgb(0 0 0 / 5%);
+    border-radius: 10px;
+}
+
+.theme-logo-for-select {
+    height: 160px;
+    width: 56%;
+}
+
+.card-input-element {
+    display: none;
+}
+
+.card-input {
+    margin: 10px;
+    padding: 0px;
+}
+
+.card-input:hover {
+    cursor: pointer;
+}
+
+.card-input-element:checked+.card-input {
+    box-shadow: 0 0 1px 1px #2ecc71;
+}
+
+.theme-banner {
+    height: 330px;
+    width: 100%;
+    background-image: url('../../../assets/images/svg/theme-selection/theme-selection-banner.svg');
+}
+
+// New theme - 
+/***************************themes selection *********************************/
+.logo {
+    position: static;
+    background: var(--color-white);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+    height: 80px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.baner-img {
+    // height: 250px;
+    height: 169px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.baner-img h2 {
+    position: absolute;
+    color: var(--color-white);
+    font-size: 40px;
+}
+
+.card-img {
+    background: var(--color-white);
+    box-shadow: 0px 3.64119px 13.6545px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    text-align: center;
+    height: 100%;
+}
+
+.p-100 {
+    padding: 100px;
+}
+
+.card-img p {
+    color: #999;
+}
+
+.p-button {
+    padding: 0.5rem 2.5rem;
+    border-color: linear-gradient(180.2deg, #1D4B58 0.17%, #2C7B67 202.17%);
+}
+
+.card-wrapper {
+    padding: 0 150px;
+
+    @media screen and (max-width: 768px) {
+        padding: unset !important
+    }
+}
+
+label {
+    width: 100%;
+    height: 100%;
+    padding: 5px 20px;
+
+    @media screen and (max-width: 768px) {
+        padding: unset !important;
+    }
+}
+
+.card-input-element {
+    display: none;
+}
+
+
+.card-img:hover {
+    cursor: pointer;
+}
+
+.card-input-element:checked+.card-img {
+    box-shadow: 0 0 1px 1px #2ecc71;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    left: 0;
+    background: linear-gradient(180.2deg, #1D4B58 0.17%, #2C7B67 202.17%);
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    left: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-control-next {
+    right: -12px !important;
+    left: auto !important;
+}
+
+.theme-img {
+    width: 140px;
+    height: 140px;
+}
+
+.wd-50 {
+    width: 50%;
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+@media (min-width: 1281px) {
+    .game-footer {
+        position: fixed !important;
+    }
+
+    // .stick-to-bottom {
+    //     position: unset !important;
+    // }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.25) and (min-width: 1281px),
+only screen and (min--moz-device-pixel-ratio: 1.25) and (min-width: 1281px),
+only screen and (-o-min-device-pixel-ratio: 1.25/1) and (min-width: 1281px),
+only screen and (min-device-pixel-ratio: 1.25) and (min-width: 1281px),
+only screen and (min-resolution: 200dpi) and (min-width: 1281px),
+only screen and (min-resolution: 1.25dppx) and (min-width: 1281px) {
+    .game-footer {
+        position: fixed !important;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .game-footer {
+        position: static !important;
+    }
+
+    .game-select-txt {
+        font-size: 30px !important;
+    }
+
+    .game-card-img {
+        margin-top: 7px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .game-img {
+        width: 115px;
+        height: 115px;
+    }
+
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .game-footer {
+        position: static !important;
+    }
+
+    .game-select-txt {
+        font-size: 30px !important;
+    }
+
+    .game-card-img {
+        margin-top: 7px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .game-img {
+        width: 115px;
+        height: 115px;
+    }
+}
+
+.logo {
+    padding: 0 !important;
+}
+
+@media (min-width: 768px) and (max-width: 1366px) {
+    .baner-img {
+        height: 150px;
+    }
+
+    .logo {
+        padding: 0;
+    }
+}
+
+
+@media (min-width: 1281px) {
+    .login-pwd {
+        position: fixed !important;
+    }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.25) and (min-width: 1281px),
+only screen and (min--moz-device-pixel-ratio: 1.25) and (min-width: 1281px),
+only screen and (-o-min-device-pixel-ratio: 1.25/1) and (min-width: 1281px),
+only screen and (min-device-pixel-ratio: 1.25) and (min-width: 1281px),
+only screen and (min-resolution: 200dpi) and (min-width: 1281px),
+only screen and (min-resolution: 1.25dppx) and (min-width: 1281px) {
+    .login-pwd {
+        position: fixed !important;
+    }
+
+
+}
+@media (min-width: 768px) and (max-width:1280px) {
+    .login-pwd {
+        position: fixed !important;
+    }
+
+
+}
+@media (min-width: 481px) and (max-width: 767px) {
+    .login-pwd {
+        position: fixed !important;
+    }
+
+
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .login-pwd {
+        position: fixed !important;
+    }
+}

@@ -1,0 +1,116 @@
+<!-- ========== Left Sidebar Start ========== -->
+
+<ng-template #contentTemplate>
+  <!--- Sidemenu -->
+  <div id="sidebar-menu">
+    <!-- Left Menu Start -->
+    <ul class="d-none- metismenu list-unstyled" id="side-menu" #sideMenu>
+      <!-- {{menuItems}} -->
+      <ng-container *ngFor="let item of menuItems">
+        <!-- <li class="menu-title" *ngIf="item.isTitle">
+          <!-- {{ item.label | translate }} -->
+          <!-- <img class="me-1" src="assets/images/svg/menu/user-img.svg" alt=""> --!>
+          <div>
+          <img class="me-1" src="{{userObj?._personal_data?.profile_logo}}" alt="" height="" style="border-radius:100%; height: 50px;width: 50px;">
+        </div>
+          <!-- {{profileLogo}} --!>
+          <span class="d-flex">
+            <span class="user-name ellipsis" placement="top" ngbTooltip="{{userObj?._personal_data?.first_name}}">{{userObj?._personal_data?.first_name}}</span>
+            <span class="menu-sub-title">
+              {{userObj?._personal_data?.organization_name}}
+            </span>
+          </span>
+        </li> -->
+
+        <li class="menu-title" *ngIf="item.isTitle">
+           <div class="row p-0 m-0">
+            <div class="col-2 p-0 m-0">
+              <img class="me-2" src="{{ProfileImageNewOne? ProfileImageNewOne : userObj?._personal_data?.profile_logo}}" alt="" height="" style="border-radius:100%; height: 50px;width: 50px;">
+            </div>
+         <div class="col-10 mt-2">
+          <div class="row m-0" placement="bottom" ngbTooltip="{{userObj?._personal_data?.first_name}}">
+            <div class="col-12 m-0 ellipsis">
+              <span class="user-name ellipsis" >{{userObj?._personal_data?.first_name}}</span> 
+            </div>
+          </div>
+          <div class="row m-0">
+           <div class="col-12 m-0 menu-sub-title">
+              {{userObj?._personal_data?.organization_name}}
+           </div>
+          </div>
+         </div>
+        </div>
+        </li>
+
+        <ng-container *ngIf="!item.isTitle && !item.isLayout">
+          <li class="p-2" [ngClass]="{'mm-active': item?.link === activeRouterLink}"
+            (click)="item?.icon === 'logout' ? logout() : null">
+            <a *ngIf="hasItems(item)" href="javascript:void(0);" class="is-parent"
+              [ngClass]="{'has-arrow': !item.badge, 'has-dropdown': item.badge}">
+              <!-- <i class="bx {{item.icon}}" *ngIf="item.icon"></i> -->
+              <img class="me-1" src="assets/images/svg/menu/{{item.icon}}.svg" alt="">
+              <span> {{ item.label | translate }}</span>
+              <span class="badge rounded-pill float-end bg-{{item.badge.variant}}" *ngIf="item.badge">{{item.badge.text 
+                |
+                translate}}</span>
+            </a>
+            <!-- [ngClass]="{'active': item?.link === activeRouterLink}" -->
+            <a [routerLink]="item.link" download (click)="activeLink(item)"*ngIf="!hasItems(item)" class="side-nav-link-ref"
+             style="color:#686868;">
+              <!-- <i class="bx {{ item.icon }}" *ngIf="item.icon"></i> -->
+              <img class="me-1" src="assets/images/svg/menu/{{item.icon}}.svg" alt="">
+              <ng-container *ngIf="item?.icon === 'logout'; else other">
+                <span (click)="logout()"> {{ item.label | translate }}</span>
+              </ng-container>
+              <ng-template #other>
+                <span > {{ item.label
+                  | translate }}</span>
+              </ng-template>
+
+
+              <span class="badge rounded-pill bg-{{item.badge.variant}} float-end" *ngIf="item.badge">{{item.badge.text
+                |
+                translate}}</span>
+            </a>
+
+            <ul *ngIf="hasItems(item)" class="sub-menu" aria-expanded="false">
+              <li class="p-2" *ngFor="let subitem of item.subItems" >
+                <a [routerLink]="subitem.link" *ngIf="!hasItems(subitem)" class="side-nav-link-ref"
+                  [attr.data-parent]="subitem.parentId">
+                  {{ subitem.label | translate}}
+                </a>
+                <a *ngIf="hasItems(subitem)" class="side-nav-link-a-ref has-arrow" href="javascript:void(0);"
+                  [attr.data-parent]="subitem.parentId">
+                  {{ subitem.label | translate}}
+                </a>
+                <ul *ngIf="hasItems(subitem)" class="sub-menu mm-collapse" aria-expanded="false">
+                  <li *ngFor="let subSubitem of subitem.subItems">
+                    <a [attr.data-parent]="subSubitem.parentId" [routerLink]="subSubitem.link"
+                      class="side-nav-link-ref">
+                      {{ subSubitem.label | translate }}
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ng-container>
+
+
+      </ng-container>
+    </ul>
+  </div>
+</ng-template>
+<!-- Sidebar -->
+
+<div class="vertical-menu" [ngClass]="{'d-none': isCondensed}">
+  <ngx-simplebar class="h-100" #componentRef>
+    <div *ngIf="!isCondensed">
+      <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    </div>
+    <div *ngIf="isCondensed">
+      <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    </div>
+  </ngx-simplebar>
+</div>
+<!-- Left Sidebar End -->
