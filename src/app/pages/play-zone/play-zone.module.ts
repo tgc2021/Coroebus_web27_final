@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PlayZoneRoutingModule } from './play-zone-routing.module';
 import { PlayZoneComponent } from './play-zone.component';
 
+import {IvyCarouselModule} from 'angular-responsive-carousel';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { PlayZoneComponent } from './play-zone.component';
   ],
   imports: [
     CommonModule,
+    IvyCarouselModule,
     PlayZoneRoutingModule
   ]
 })

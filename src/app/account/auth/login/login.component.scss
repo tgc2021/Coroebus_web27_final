@@ -42,4 +42,12 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1281px) {
     .login-pwd {
         position: fixed !important;
     }
+
+    
+}
+
+@media (min-width: 1366px) and (max-width: 1380px) {
+  .logo{
+    padding: 60px 85px;
+  }
 }

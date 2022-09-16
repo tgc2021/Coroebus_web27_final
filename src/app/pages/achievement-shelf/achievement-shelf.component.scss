@@ -1,0 +1,251 @@
+.top_container{
+    position:absolute;
+    width: 100%;
+    left: 0;
+    top: 72px;
+    height: 72px;
+    background: white;  
+
+}
+
+.title{
+    margin-top: 24px;
+    margin-left: 40px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+    
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+    letter-spacing: -0.02em;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    
+    color: #000000;
+}
+
+.mat_container {
+  
+    height: 70vh;
+    margin: 40px;
+    background: white;
+}
+
+hr{
+    margin: 0;
+}
+
+.mat-tab-label.mat-tab-label-active {
+   
+    background-color: transparent;
+    color: #342319;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 700;
+    border-bottom: 2px solid #342319;
+    color: #000000;
+}
+
+.content_seasonal_card{
+    background-color: white;
+}
+
+.content_seasonal_card_div{
+ 
+    margin-top: 15px;
+}
+
+.content_seasonal_card{
+ 
+    background: #FFFFFF;
+    border-radius: 11.877px;
+    margin-top: 15px;
+    height: 309px;
+    margin: 4px;
+    border-radius: 12px !important;
+    box-shadow: 0px 0px 0px 0.791802px #E8E8E8, 0px 0px 1.5836px rgba(0, 0, 0, 0.12), 0px 15.836px 15.836px rgba(0, 0, 0, 0.02);
+}
+
+.title_seasonal_card{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 17px;
+letter-spacing: -0.02em;
+font-feature-settings: 'pnum' on, 'lnum' on;
+color: #000000;
+margin-top: 4px;
+}
+
+.rewards_div{
+    display: -webkit-inline-box;    
+}
+
+.total_point{
+    margin-left: 6px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: -0.02em;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #000000;
+    margin-top: 4px;
+}
+
+.calender_div{
+    display: flex;    
+
+}
+
+.calender_logo{
+    height: 20px;
+
+}
+
+.date{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 10px;
+line-height: 12px;
+/* identical to box height */
+letter-spacing: -0.02em;
+font-feature-settings: 'pnum' on, 'lnum' on;
+
+color: #898787;
+margin-left: 10px;
+margin-top: 4px;
+}
+
+.status{
+    font-family: 'Open Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 10px;
+line-height: 15px;
+color: #16C79A;
+
+margin-left: 20px;
+background-color: #E8F9F5;
+width: 70px;
+text-align: center;
+padding: 5px;
+
+}
+
+.info_logo{
+    height: 19px;
+    position: absolute;
+    right: 10px;
+}
+
+.bricks_background{
+    width: 100%;
+    height: 162px;
+}
+
+.bricks_table{
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    width: 74%;
+
+}
+
+/***************************************************** Carausel ************************************************************/
+
+// .carousel-cells {
+//     transition: transform .2s;
+//     width: 100% !important;
+//     height: 100%;
+//     display: block;
+//     will-change: transform;
+// }
+
+// .carousel-cell {
+//     width: 18% !important;
+//     height: 100%;
+//     left: 55px;
+//     position: absolute;
+//     overflow: hidden;
+// }
+
+// .carousel-container{
+//     overflow: hidden;
+//     width: 100%;
+//     height: 45% !important;
+//     cursor: grab;
+//     position: absolute;
+//     top: -153px !important;
+// }
+
+// .carousel-arrow-next {
+//     right: 10px;
+//     position: absolute;
+//     top: -100px !important;
+// }
+
+// .carousel-arrow-prev {
+//     left: 10px;
+//     position: absolute;
+//     top: -100px !important;
+// }
+
+
+
+// .carousel-cell1{
+//     position: absolute;
+//     left: -84px;
+//     top: 7px;
+//     width: 70px !important;
+// }
+
+// .carousel-cell2{
+//     position: absolute;
+//     left: -213px;
+//     top: 7px;
+//     width: 70px !important;
+
+// }
+
+// .carousel-cell3{
+//     position: absolute;
+//     left: -342px;
+//     top: 7px;
+//     width: 70px !important;
+
+// }
+
+// .carousel-cell4{
+//     position: absolute;
+//     left: -459px;
+//     top: 7px;
+//     width: 70px !important;
+
+// }
+
+
+// .carousel-cells .carousel-cell {
+//     transform: translateX(0px);
+//     width: 77% !important;
+//     position: absolute;
+//     left: 46px !important;
+// }
+
+// .carousel-cells .carousel-cell img, .carousel-cells .carousel-cell video {
+//     height: 100%;
+//     position: relative;
+//     object-fit: contain;
+//     width: 80px !important;
+// }
+
+
+

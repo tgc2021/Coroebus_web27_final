@@ -14,10 +14,11 @@ import {MatInputModule} from '@angular/material/input';
 import {MatNativeDateModule} from '@angular/material/core';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
-    RewardsComponent
+    RewardsComponent,
   ],
   imports: [
     CommonModule,
@@ -31,6 +32,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     FormsModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
+    MatDialogModule,
     RewardsRoutingModule
   ]
 })

@@ -6,7 +6,7 @@
       <label class="reward_tab" for="tab-1">Rewards</label>
 
       <div class="tab" *ngFor="let reward of rewardresponse">
-        <img class="rewardpoints" src="/assets/images/rewards/Reward point.png">
+        <img class="rewardpoints" src="assets/images/rewards/Reward point.png">
         <p class="totalpoints" *ngFor="let points of rewardresponse">{{points.data.points_list[0]._data.rewardPoints}}
         </p>
         <mat-tab-group *ngFor="let reward of rewardresponse">
@@ -82,7 +82,7 @@
                  <input class="datepicker_to" type="date" name="dateofbirth" id="dateofbirth">
                 </span> -->
                 <div>
-                  <input class="search" type="search" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="        Search">
+                  <input class="search" type="search" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder=" Search">
   
                 </div>
               <table id="example1" class="table table-striped">
@@ -117,7 +117,7 @@
 
             <div class="table_div">
               <div>
-                <input class="search" type="search" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="        Search">
+                <input class="search" type="search" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder=" Search">
 
               </div>
 
@@ -147,7 +147,9 @@
                     <td class="col-md-2 col-sm-3">{{passbookresponse.points_credited}}</td>
                     <td *ngIf="passbookresponse.points_debited!=='' " class="col-md-2 col-sm-3">
                       {{passbookresponse.points_debited}}
-                      <img class="redeemed_popup_logo" src="assets/images/rewards/redeemed.png">
+                      <img data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="redeemed_popup_logo"  src="assets/images/rewards/redeemed.png">
+
+                      
 
                     <td *ngIf="passbookresponse.points_debited==='' " class="col-md-2">-
 
@@ -230,53 +232,7 @@
 
 
                 </mat-card>
-                <!-- <mat-card class="redemption_card">
-                  <div class="row">
-                    <div class="col-sm-2 col-md-2 col-xs-2">
-                      <div class="coupon_div">
-                        <p class="coupon_id">Coupon ID:</p>
-                        <p class="coupon_id_number">52154</p>
-                      
-      
-                      </div>
-                      <div class="redemption_image_div">
-                        <img class="product_image_redemption" src="/assets/images/rewards/product_image.png">
-      
-                      </div>
-  
-                      <div>
-                        <p class="cost_redemption"> 100 </p>
-                        
-                      </div>
-                     
-                    </div>
-                    <div class="col-sm-10 col-md-10 col-xs-10">
-                      <div class="details">
-                        <p class="product_name_redemption">Customized Bottle</p>
-                        <p class="product_full_description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.<span id="dots">...</span> <span id="more">erisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta.</span ><br><span (click)="showhidetext()" id="more_text">More</span> </p>
-  
-                      </div>
-  
-                      <div class="coupon_div">
-                       
-                        <p class="coupon_code_number">1221454496</p>
-                        <p class="coupon_code">Coupon Code:</p>
-      
-                      </div>
-  
-                      <div class="expiry_date">
-                        <p> Expiry Date:</p>
-                        <p> 02/09/2022</p>
-                      </div>
-                    
-                    </div>
-                  </div>
-            
-                   
-  
-                 
-  
-                </mat-card> -->
+   
               </div>
 
             </div>
@@ -321,4 +277,72 @@
     </div>
   </div>
 
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content passbookModal">
+        <div class="modal-header popup_Header">
+          <!-- <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5> -->
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         
+
+          <div>
+            <div class="redemption_card">
+              <div class="row">
+                <div class=" col-md-4 col-lg-4 ">
+                  <div class="coupon_div_popup">
+                    <p class="coupon_id_popup">Coupon ID: 728642</p>
+
+
+                  </div>
+                  <div class="redemption_image_div_popup">
+                    <img class="product_image_redemption_popup" src="assets/images/rewards/product_image.png">
+
+                  </div>
+
+                  <p class="cost_redemption_popup"> 200 </p>
+
+
+                </div>
+                <div class=" col-md-8  col-lg-8 ">
+                  <div class="coupon_div_1_popup">
+
+                    <p class="coupon_code_number_popup">Coupon Code: BTN434242</p>
+
+                  </div>
+
+                  <div class="details_popup">
+                    <div>
+                      <p class="product_name_redemption_popup">Coke</p>
+
+                    </div>
+                    <p class="product_full_description_popup">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter. Lorem ipsum
+                    </p>
+                  
+                  </div>
+
+                
+
+               
+
+                </div>
+              </div>
+
+
+
+
+
+          </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="expiry_date_popup">
+            <p> Expiry Date: 22/10/2022</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

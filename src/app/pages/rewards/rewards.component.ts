@@ -10,6 +10,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Util } from '@app/utils/util';
 import { takeUntil } from 'rxjs/operators';
 import { ApiserviceService } from 'app/apiservice.service';
+import { MatDialog } from '@angular/material/dialog';
 declare var $;
 
 @Component({
@@ -44,11 +45,14 @@ export class RewardsComponent implements OnInit ,AfterViewInit{
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
-    private _route: ActivatedRoute, public toastService: ToastService, public http: ApiserviceService,public element:ElementRef) { }
+    private _route: ActivatedRoute, public toastService: ToastService, public http: ApiserviceService,public element:ElementRef,public dialog: MatDialog) { }
    
     openMobileMenu: boolean;
     headerInfo: any
 
+  
+ 
+  
   ngOnInit(): void {
 
     
@@ -70,14 +74,17 @@ export class RewardsComponent implements OnInit ,AfterViewInit{
       console.log(body);
       this.http.rewards(body).subscribe((res) => {
         console.log(res)
-        const response = res
+        // console.log( res.data.points_list[0].label);
+        
+        // const response = res.data.points_list[0].label
+
         // this.requestdata=responce
 
         this.rewardresponse = res;
         this.rewardresponse = Array.of(this.rewardresponse);
         console.log(this.rewardresponse);
 
-
+        console.log(this.rewardresponse[0].data.points_list[0].label);
 
       })
 

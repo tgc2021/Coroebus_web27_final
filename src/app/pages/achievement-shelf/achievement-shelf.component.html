@@ -1,4 +1,4 @@
-<div class="account-pages">
+<!-- <div class="account-pages">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -18,6 +18,163 @@
                     <img src="assets/images/comingSoon/CoroebusRewards.png" alt="" class="img-fluid">
                 </div>
             </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="top_container">
+    <div>
+        <p class="title"> Achievement Shelf</p>
+
+        <div *ngFor="let seasonaldata of seasonal_theme_response">
+            <mat-card class="mat_container">
+
+                <mat-tab-group>
+                    <mat-tab label="Seasonal Theme">
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-sm-4 col-md-4 col-lg-4 content_seasonal_card_div"  *ngFor="let details of seasonal_theme_response[0].data">
+                                <mat-card class="content_seasonal_card">
+                                    <div>
+                                        <p class="title_seasonal_card">{{details.name}}</p>
+                                    </div>
+                                    <div class="rewards_div">
+                                        <img src="assets/images/rewards/Reward point.png">
+                                        <p class="total_point">{{details.reward_point}}</p>
+                                    </div>
+                                    <div class="calender_div">
+                                        <img class="calender_logo" src="assets/images/seasonaltheme/calendericon.png">
+                                        <p class="date">{{details.start_date | date: 'MMM d, y' }} -{{details.end_date | date: 'MMM d, y'}}</p>
+                                        <p class="status">Running</p>
+                                        <img class="info_logo" src="assets/images/seasonaltheme/infoicon.png">
+
+                                    </div>
+
+                                    <div>
+                                        <img class="bricks_background"
+                                            src="assets/images/seasonaltheme/Rectangle 541.png.png">
+
+                                    </div>
+
+                                    <div>
+                                        <img class="bricks_table" src="assets/images/seasonaltheme/Group 2029.png">
+
+                                    </div>
+                                    <!-- <carousel> -->
+                                        <!-- <div class="carousel-cell">
+                                            <img src="../../../assets/images/seasonaltheme/Picture31.png">
+
+                                        </div>
+                                        <div class="carousel-cell">
+                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
+
+                                        </div>
+
+                                        <div class="carousel-cell">
+                                            <img src="../../../assets/images/seasonaltheme/Picture33.png">
+
+                                        </div>
+                                        <div class="carousel-cell">
+                                            <img src="../../../assets/images/seasonaltheme/Picture31.png">
+
+                                        </div> -->
+                                        <!-- <div class="carousel-cell"  *ngFor="let carauseldata of details._badges._data" >
+                                            <img src="{{carauseldata.seasonal_badge_logo}}">
+                            
+                                            
+                                        </div> -->
+                                        <!-- <div class="carousel-cell">
+                                            <img src="../../../assets/images/seasonaltheme/Picture31.png">
+
+                                        </div>
+                                        <div class="carousel-cell">
+                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
+
+                                        </div>
+                                        <div class="carousel-cell">
+                                            <img src="../../../assets/images/seasonaltheme/Picture30.png">
+                                        </div>
+                                        <div class="carousel-cell">
+                                            <img src="../../../assets/images/seasonaltheme/Picture31.png">
+
+                                        </div>
+                                        <div class="carousel-cell">
+                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
+
+                                        </div>
+                                        <div class="carousel-cell">
+                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
+
+                                        </div>
+                                        <div class="carousel-cell">
+                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
+
+                                        </div>
+                                        <div class="carousel-cell">
+                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
+
+                                        </div>
+                                        <div class="carousel-cell">
+                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
+
+                                        </div>
+                                        <div class="carousel-cell">
+                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
+
+                                        </div>
+                                        <div class="carousel-cell">
+                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
+
+                                        </div>
+                                        <div class="carousel-cell">
+                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
+
+                                        </div>
+                                        <div class="carousel-cell">
+                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
+
+                                        </div>
+                                        <div class="carousel-cell">
+                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
+
+                                        </div> -->
+                                    <!-- </carousel> -->
+
+
+                                    <carousel>
+                                        <li class="carousel-cell" style="width: 50px !important;">
+                                          <img src="../../../assets/images/seasonaltheme/Picture30.png">
+                                        </li>
+                                        <li class="carousel-cell" style="width: 50px  !important;">
+                                            <img src="../../../assets/images/seasonaltheme/Picture31.png">
+                                        </li>
+                                        <li class="carousel-cell"  style="width: 50px  !important;">
+                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
+                                        </li>
+                                        <li class="carousel-cell"  style="width: 50px;">
+                                            <img src="../../../assets/images/seasonaltheme/Picture30.png">
+                                        </li>
+                                        <li class="carousel-cell"  style="width: 50px;">
+                                            <img src="../../../assets/images/seasonaltheme/Picture31.png">
+                                        </li>
+                                        <li class="carousel-cell"  style="width: 50px;">
+                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
+                                        </li>
+                                      </carousel>
+                                      
+                                </mat-card>
+                            </div>
+                        </div>
+
+
+                    </mat-tab>
+                    <!-- <mat-tab label="Second"> Content 2 </mat-tab>
+                    <mat-tab label="Third"> Content 3 </mat-tab> -->
+                </mat-tab-group>
+
+            </mat-card>
+
         </div>
     </div>
 </div>

@@ -17,4 +17,11 @@ export class ApiserviceService {
     return this.Http.post(tempurl,data)
 
   }
+
+  seasonal_theme(data:any){
+    // var tempurl = ${this.URLstring}+/coroebus-beta-api-levels/Passbook/getReward
+    var tempurl = `${this.URLstring}`+`/coroebus-beta-api-levels/SeasonalTheme/Dashboard`
+    return this.Http.post(tempurl,data)
+
+  }
 }

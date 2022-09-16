@@ -1,0 +1,125 @@
+{
+    "cards": {
+
+        "card1": {
+            "Title": "Autumn-Winter",
+            "Points": "200",
+            "calender-icon": "../assets/images/seasonal",
+            "Date":"Sep 1 2021 - Oct 1 2021",
+            "Status": "Running",
+            "info": "./assets/images/seasonaltheme/infoicon.png"
+        },
+        "card2": {
+            "Title": "Summer Spring",
+            "Points": "400",
+            "calender-icon": "./assets/images/seasonaltheme/calendericon.png",
+            "Date":"Sep 1 2021 - Oct 1 2021",
+            "Status": "Running",
+            "info": "./assets/images/seasonaltheme/infoicon.png"
+        },
+        "card3": {
+            "Title": "Back to College",
+            "Points": "400",
+            "calender-icon": "./assets/images/seasonaltheme/calendericon.png",
+            "Date":"Sep 1 2021 - Oct 1 2021",
+            "Status": "Running",
+            "info": "./assets/images/seasonaltheme/infoicon.png"
+        },
+        "card4": {
+            "Title": "End Of Season Sale",
+            "Points": "400",
+            "calender-icon": "./assets/images/seasonaltheme/calendericon.png",
+            "Date":"Sep 1 2021 - Oct 1 2021",
+            "Status": "Expired",
+            "info": "./assets/images/seasonaltheme/infoicon.png"
+        }
+    },
+	"themes": { 
+	"theme1": { 
+        "content1": {
+
+            "pic1": "src/assets/images/seasonaltheme/Picture30.png",
+            "number": 1
+        },
+        "content2": {
+
+            "pic2": "src/assets/images/seasonaltheme/Picture33.png",
+            "number": 2
+        },
+        "content3": {
+
+            "pic3": "src/assets/images/seasonaltheme/Picture32.png",
+            "number": 3
+        },
+        "content4": {
+
+            "pic4": "src/assets/images/seasonaltheme/Picture31.png",
+            "number": 4
+        }
+	},
+	"theme2": {"content1": {
+
+        "pic1": "src/assets/images/seasonaltheme/Picture37.png",
+        "number": 1
+    },
+    "content2": {
+
+        "pic2": "src/assets/images/seasonaltheme/Picture38.png",
+        "number": 2
+    },
+    "content3": {
+
+        "pic3": "src/assets/images/seasonaltheme/Picture39.png",
+        "number": 3
+    },
+    "content4": {
+
+        "pic4": "src/assets/images/seasonaltheme/Picture40.png",
+        "number": 4
+    }
+	},
+	"theme3": {"content1": {
+
+        "pic1": "src/assets/images/seasonaltheme/Picture42.png",
+        "number": 1
+    },
+    "content2": {
+
+        "pic2": "src/assets/images/seasonaltheme/Picture43.png",
+        "number": 2
+    },
+    "content3": {
+
+        "pic3": "src/assets/images/seasonaltheme/Picture44.png",
+        "number": 3
+    },
+    "content4": {
+
+        "pic4": "src/assets/images/seasonaltheme/Picture31.png",
+        "number": 4
+	},
+	"theme4": {
+        
+        "content1": {
+        "pic1": "src/assets/images/seasonaltheme/Picture30.png",
+        "number": 1
+    },
+    "content2": {
+
+        "pic2": "src/assets/images/seasonaltheme/Picture33.png",
+        "number": 2
+    },
+    "content3": {
+
+        "pic3": "src/assets/images/seasonaltheme/Picture32.png",
+        "number": 3
+    },
+    "content4": {
+
+        "pic4": "src/assets/images/seasonaltheme/Picture31.png",
+        "number": 4
+    }
+	}
+	}
+}
+}

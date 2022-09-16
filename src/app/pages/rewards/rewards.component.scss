@@ -514,6 +514,123 @@ color: #A5ACB8;
                 #example1{
                     margin-top: 15px;
                 }
+
+                  
+                  .redeemed_popup_logo{
+                    cursor: pointer;
+                  }
+
+                  .passbookModal{
+                        border-radius: 0;
+                  }
+             
+                  .popup_Header{
+                    border-bottom: 0;
+                  }
+
+/********************************************* Popup ****************************************************/
+.coupon_div_popup{
+    margin-left: 0;
+}
+.coupon_div_popup p{
+   
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    color: #000000;
+    margin-left: 10px;
+}
+
+.product_image_redemption_popup{
+    box-sizing: border-box;
+    width: 127px;
+    height: 127px;
+    margin-left: 10px;
+    /* top: 213px; */
+    border: 0.819768px solid #CFCFCF;
+    border-radius: 13.4789px;
+}
+
+.details_popup{
+    position: relative;
+}
+
+.product_name_redemption_popup {
+    margin-top: 30px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 17px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}
+
+.product_full_description_popup {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 130.02%;
+    margin-right: 10px;
+    color: #A5ACB8;
+}
+
+.cost_redemption_popup {
+    text-align: center;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 17px;
+    margin-top: 15px;
+    color: #000000;
+}
+
+.coupon_div_1_popup{
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.coupon_code_number_popup{
+    font-weight: 600;
+    font-size: 12px;
+    float: right;
+}
+
+
+.expiry_date_popup{
+position: relative;
+}
+
+.expiry_date_popup p{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    margin: 0;
+    color: #A5ACB8;
+    }
+
+    .popup_Header {
+        border-bottom: 0;
+        margin: 0;
+        padding-right: 12px;
+        padding-top: 10px;
+        padding-bottom: 0;
+    }
+
+    .modal-header .btn-close {
+        width: 19px;
+        height: 19px;
+        color: #000000;
+    }
+
 @media (min-width: 280px) and (max-width: 300px){
 
     .mytabs{
@@ -704,6 +821,7 @@ color: #A5ACB8;
     }
     .redeemed_popup_logo{
         width: 10px;
+        cursor: pointer;
     }
 
     .search{
@@ -711,6 +829,60 @@ color: #A5ACB8;
         width: 51%;
         direction: ltr;
     }
+       /********************************************** Popup *******************************************/
+.coupon_div_popup {
+    margin-left: 0;
+    text-align: center;
+}
+
+.coupon_code_number_popup {
+    font-weight: 600;
+    font-size: 12px;
+    position: relative;
+    /* float: right; */
+    width: 93%;
+    top: -199px;
+    text-align: center;
+}
+
+.redemption_image_div_popup{
+    margin-top: 15px;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  
+}
+
+.cost_redemption_popup {
+ 
+    font-size: 12px;
+    margin: 0;
+}
+.product_name_redemption_popup {
+    /* margin-top: 30px; */
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin: 0;
+}
+.product_full_description_popup {
+
+    margin-top: 10px;
+}
+
+.expiry_date_popup{
+    width: 100%;
+}
+
+.expiry_date_popup p{
+    text-align: center;
+}
 }
 
 @media (min-width: 360px) and (max-width: 370px){
@@ -898,6 +1070,61 @@ color: #A5ACB8;
         width: 46%;
         direction: ltr;
     }
+
+       /********************************************** Popup *******************************************/
+.coupon_div_popup {
+    margin-left: 0;
+    text-align: center;
+}
+
+.coupon_code_number_popup {
+    font-weight: 600;
+    font-size: 12px;
+    position: relative;
+    /* float: right; */
+    width: 93%;
+    top: -199px;
+    text-align: center;
+}
+
+.redemption_image_div_popup{
+    margin-top: 15px;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  
+}
+
+.cost_redemption_popup {
+ 
+    font-size: 12px;
+    margin: 0;
+}
+.product_name_redemption_popup {
+    /* margin-top: 30px; */
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin: 0;
+}
+.product_full_description_popup {
+
+    margin-top: 10px;
+}
+
+.expiry_date_popup{
+    width: 100%;
+}
+
+.expiry_date_popup p{
+    text-align: center;
+}
 }
 
 
@@ -1095,7 +1322,63 @@ color: #A5ACB8;
         width: 46%;
         direction: ltr;
     }
+
+    /********************************************** Popup *******************************************/
+.coupon_div_popup {
+    margin-left: 0;
+    text-align: center;
 }
+
+.coupon_code_number_popup {
+    font-weight: 600;
+    font-size: 12px;
+    position: relative;
+    /* float: right; */
+    width: 93%;
+    top: -199px;
+    text-align: center;
+}
+
+.redemption_image_div_popup{
+    margin-top: 15px;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  
+}
+
+.cost_redemption_popup {
+ 
+    font-size: 12px;
+    margin: 0;
+}
+.product_name_redemption_popup {
+    /* margin-top: 30px; */
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin: 0;
+}
+.product_full_description_popup {
+
+    margin-top: 10px;
+}
+
+.expiry_date_popup{
+    width: 100%;
+}
+
+.expiry_date_popup p{
+    text-align: center;
+}
+}
+
 
 @media (min-width: 390px) and (max-width: 400px){
     
@@ -1288,6 +1571,61 @@ color: #A5ACB8;
         width: 46%;
         direction: ltr;
     }
+
+       /********************************************** Popup *******************************************/
+.coupon_div_popup {
+    margin-left: 0;
+    text-align: center;
+}
+
+.coupon_code_number_popup {
+    font-weight: 600;
+    font-size: 12px;
+    position: relative;
+    /* float: right; */
+    width: 93%;
+    top: -199px;
+    text-align: center;
+}
+
+.redemption_image_div_popup{
+    margin-top: 15px;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  
+}
+
+.cost_redemption_popup {
+ 
+    font-size: 12px;
+    margin: 0;
+}
+.product_name_redemption_popup {
+    /* margin-top: 30px; */
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin: 0;
+}
+.product_full_description_popup {
+
+    margin-top: 10px;
+}
+
+.expiry_date_popup{
+    width: 100%;
+}
+
+.expiry_date_popup p{
+    text-align: center;
+}
 }
 
 @media (min-width: 412px) and (max-width: 413px){
@@ -1463,6 +1801,60 @@ color: #A5ACB8;
         margin-right: 2px;
         direction: ltr;
     }
+       /********************************************** Popup *******************************************/
+.coupon_div_popup {
+    margin-left: 0;
+    text-align: center;
+}
+
+.coupon_code_number_popup {
+    font-weight: 600;
+    font-size: 12px;
+    position: relative;
+    /* float: right; */
+    width: 93%;
+    top: -199px;
+    text-align: center;
+}
+
+.redemption_image_div_popup{
+    margin-top: 15px;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  
+}
+
+.cost_redemption_popup {
+ 
+    font-size: 12px;
+    margin: 0;
+}
+.product_name_redemption_popup {
+    /* margin-top: 30px; */
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin: 0;
+}
+.product_full_description_popup {
+
+    margin-top: 10px;
+}
+
+.expiry_date_popup{
+    width: 100%;
+}
+
+.expiry_date_popup p{
+    text-align: center;
+}
 }
 
 @media (min-width: 414px) and (max-width: 424px) {
@@ -1669,6 +2061,60 @@ color: #A5ACB8;
         width: 46%;
         direction: ltr;
     }
+       /********************************************** Popup *******************************************/
+.coupon_div_popup {
+    margin-left: 0;
+    text-align: center;
+}
+
+.coupon_code_number_popup {
+    font-weight: 600;
+    font-size: 12px;
+    position: relative;
+    /* float: right; */
+    width: 93%;
+    top: -199px;
+    text-align: center;
+}
+
+.redemption_image_div_popup{
+    margin-top: 15px;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  
+}
+
+.cost_redemption_popup {
+ 
+    font-size: 12px;
+    margin: 0;
+}
+.product_name_redemption_popup {
+    /* margin-top: 30px; */
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin: 0;
+}
+.product_full_description_popup {
+
+    margin-top: 10px;
+}
+
+.expiry_date_popup{
+    width: 100%;
+}
+
+.expiry_date_popup p{
+    text-align: center;
+}
 }
 
 @media (min-width: 468px) and (max-width: 539px) {
@@ -1858,7 +2304,60 @@ color: #A5ACB8;
     .redeemed_popup_logo{
         width: 10px;
     }
+   /********************************************** Popup *******************************************/
+   .coupon_div_popup {
+    margin-left: 0;
+    text-align: center;
+}
 
+.coupon_code_number_popup {
+    font-weight: 600;
+    font-size: 12px;
+    position: relative;
+    /* float: right; */
+    width: 93%;
+    top: -199px;
+    text-align: center;
+}
+
+.redemption_image_div_popup{
+    margin-top: 15px;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  
+}
+
+.cost_redemption_popup {
+ 
+    font-size: 12px;
+    margin: 0;
+}
+.product_name_redemption_popup {
+    /* margin-top: 30px; */
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin: 0;
+}
+.product_full_description_popup {
+
+    margin-top: 10px;
+}
+
+.expiry_date_popup{
+    width: 100%;
+}
+
+.expiry_date_popup p{
+    text-align: center;
+}
 }
 @media (min-width: 768px) and (max-width: 778px){
     .mytabs{
