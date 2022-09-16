@@ -61,6 +61,14 @@
                                         <img class="bricks_table" src="assets/images/seasonaltheme/Group 2029.png">
 
                                     </div>
+
+                                    <carousel>
+                                        <div class="carousel-cell"  *ngFor="let carauseldata of details._badges._data" >
+                                            <img src="{{carauseldata.seasonal_badge_logo}}">
+                            
+                                            
+                                        </div>
+                                    </carousel>
                                     <!-- <carousel> -->
                                         <!-- <div class="carousel-cell">
                                             <img src="../../../assets/images/seasonaltheme/Picture31.png">
@@ -142,7 +150,7 @@
                                     <!-- </carousel> -->
 
 
-                                    <carousel>
+                                    <!-- <carousel>
                                         <li class="carousel-cell" style="width: 50px !important;">
                                           <img src="../../../assets/images/seasonaltheme/Picture30.png">
                                         </li>
@@ -161,7 +169,7 @@
                                         <li class="carousel-cell"  style="width: 50px;">
                                             <img src="../../../assets/images/seasonaltheme/Picture32.png">
                                         </li>
-                                      </carousel>
+                                      </carousel> -->
                                       
                                 </mat-card>
                             </div>
