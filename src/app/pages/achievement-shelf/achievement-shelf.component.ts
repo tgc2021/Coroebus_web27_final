@@ -21,7 +21,17 @@ export class AchievementShelfComponent implements OnInit {
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
-    private _route: ActivatedRoute, public toastService: ToastService, public http: ApiserviceService,public element:ElementRef) { }
+    private _route: ActivatedRoute, public toastService: ToastService, public http: ApiserviceService,public element:ElementRef) {
+
+
+
+
+  
+
+
+
+      
+     }
 
     userObj: any
     mergeObj: any
@@ -65,6 +75,37 @@ export class AchievementShelfComponent implements OnInit {
 
   }
 
+  scorll(){
+
+
+    
+    var imgList = document.getElementById('imgList');
+    var scrollRight = document.getElementById('scroll-right')
+    var scrollLeft = document.getElementById('scroll-left');
+  
+  
+    scrollRight?.addEventListener('click', (event) => {
+   
+      imgList?.scrollBy(750, 0);
+  });
+
+  
+
+
+  
+  // When a user clicks on the left arrow, the ul will scroll 750px to the left
+    scrollLeft?.addEventListener('click', (event) => {
+
+      imgList?.scrollBy(-750, 0);
+  });
+  
+  }
+
+  trackList = (index)=>{
+    
+    return index;
+  
+  }
   }
 
 
