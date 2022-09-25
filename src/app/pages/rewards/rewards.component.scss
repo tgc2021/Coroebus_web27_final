@@ -631,6 +631,39 @@ position: relative;
         color: #000000;
     }
 
+    /**************************************  Organisation Reward Popup ****************************************/
+    .modal-title1{
+        width: 100%;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .redeem_organisation{
+        position: relative;
+        width: 87px;
+        height: 35px;
+        font-size: 13px;
+        padding: 3px;
+        border-radius: 6px;
+        border: none;
+        right: 38px;
+        background-color: var(--myvar);
+        color: #ffffff;
+    
+
+    }
+
+    .balance_div{
+        position: absolute;
+        left: 30px;
+        color: red;
+        font-size: 14px;
+    }
+.right_side_div{
+    margin-left: 25px;
+    font-size: 14px;
+}
+
 @media (min-width: 280px) and (max-width: 300px){
 
     .mytabs{

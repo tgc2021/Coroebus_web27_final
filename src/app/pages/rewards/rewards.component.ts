@@ -34,6 +34,8 @@ export class RewardsComponent implements OnInit ,AfterViewInit{
   rewardresponse: any;
   fulldescription: any;
   color: any;
+
+
   // requestdata: any[] = [];
   // requestdata: Observable<any>;
   term:any;
@@ -49,8 +51,8 @@ export class RewardsComponent implements OnInit ,AfterViewInit{
    
     openMobileMenu: boolean;
     headerInfo: any
-
-  
+    popupresponse:any
+     data:any
  
   
   ngOnInit(): void {
@@ -155,7 +157,9 @@ export class RewardsComponent implements OnInit ,AfterViewInit{
 
 
   
-  showhidetext() {
+  showhidetext(k:any) {
+    console.log(k);
+    
     var dots = document.getElementById("dots");
     var moreText = document.getElementById("more");
     var btnText = document.getElementById("more_text");
@@ -169,6 +173,46 @@ export class RewardsComponent implements OnInit ,AfterViewInit{
       btnText.innerHTML = "Less";
       moreText.style.display = "inline";
     }
+  }
+
+
+  
+
+  popupRedemed(rewardresponse:any){
+
+  this.data=rewardresponse
+    console.log(this.data);
+    console.log(this.data.log_id);
+
+    
+    let body ={
+
+      _userid: this.mergeObj.USERID,
+      _game: this.mergeObj.id_coroebus_game,
+      log_id: this.data.log_id
+    
+    
+    }
+
+    console.log(body);
+    
+    this.http.popup_passbook_redemption(body).subscribe((res) => {
+      console.log(res)
+      
+
+
+      this.popupresponse = res;
+
+      this.popupresponse = Array.of(this.popupresponse);
+      console.log(this.popupresponse);
+
+      console.log(this.popupresponse[0].data.couponid);
+
+
+    })
+
+    
+    
   }
 
   ngAfterViewInit(): void {

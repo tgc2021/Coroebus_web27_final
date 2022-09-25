@@ -247,7 +247,7 @@ padding: 5px;
 //     width: 80px !important;
 // }
 
-section {
+.section_slider {
     text-align: start;
     margin-top: 2.5%;
     padding: 16px;
@@ -269,7 +269,7 @@ section {
     transition: 0.2s;
     opacity:1;
   }
-    ul {
+  .image_ul {
       width: 94%;
       margin: 0;
       padding: 0;
@@ -284,10 +284,10 @@ section {
       -webkit-overflow-scrolling: touch;
     
     }
-      ul::-webkit-scrollbar {
+    .image_ul::-webkit-scrollbar {
       display: none;
     }
-    li {
+    .image_li {
       list-style: none;
       display: inline-block;
       position: relative;
@@ -298,21 +298,10 @@ section {
       // filter: grayscale(100%);
         transition: 0.2s;
     }
-  // li {
-  //   width: 500px;
-  // }
-    // li:hover {
-    //   transition: 0.2s;
-    //   filter: grayscale(0);
-    // }
-
-    .all_images{
-      // width: 200px;
-
-    }
+ 
 
 .slider_final{
-  background-image: url(./../../../assets/images/seasonaltheme/bricks.png);
+  background-image: url(./../../../assets/images/seasonaltheme/Shelf.png);
   background-repeat: no-repeat;
   /* width: 100%; */
   /* padding: 4px; */
@@ -320,4 +309,16 @@ section {
   height: 58%;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+}
+
+.badge_count{
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+letter-spacing: -0.02em;
+margin-top: 3px;
+color: #FFFFFF;
+
 }

@@ -24,4 +24,9 @@ export class ApiserviceService {
     return this.Http.post(tempurl,data)
 
   }
+
+  popup_passbook_redemption(data:any){
+    var tempurl = `${this.URLstring}`+`/coroebus-beta-api-levels/Passbook/getRewardDetail`
+    return this.Http.post(tempurl,data)
+  }
 }

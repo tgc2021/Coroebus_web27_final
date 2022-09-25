@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '@app/services/event.service';
@@ -10,35 +10,47 @@ import { Util } from '@app/utils/util';
 import { takeUntil } from 'rxjs/operators';
 import * as fromRoot from '../../core/app-state';
 import { Subscription, combineLatest, Subject, Observable } from 'rxjs';
+import { DOCUMENT } from '@angular/common'; 
+import { Inject }  from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: 'app-achievement-shelf',
   templateUrl: './achievement-shelf.component.html',
-  styleUrls: ['./achievement-shelf.component.scss']
+  styleUrls: ['./achievement-shelf.component.scss'],
+  providers: [DatePipe]
+
 })
+
 export class AchievementShelfComponent implements OnInit {
+  myDate = new Date();
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
-    private _route: ActivatedRoute, public toastService: ToastService, public http: ApiserviceService,public element:ElementRef) {
+    private _route: ActivatedRoute, public toastService: ToastService, public http: ApiserviceService, public element: ElementRef,@Inject(DOCUMENT) document: Document,private datePipe: DatePipe) { 
+     
 
+    }
+ 
 
-
-
-  
-
-
-
-      
-     }
-
-    userObj: any
-    mergeObj: any
-    destroy$: Subject<boolean> = new Subject<boolean>();
-    seasonal_theme_response:any
-
+  userObj: any
+  mergeObj: any
+  destroy$: Subject<boolean> = new Subject<boolean>();
+  seasonal_theme_response: any
+  currentDate:any
+  currentdatetransform:any
+  lo:any
+  date:any
+  cardstatus: boolean=false
+  cardstatus1: boolean=false
   ngOnInit(): void {
+     this.currentDate = new Date();
+    console.log(this.currentDate);
+
+    this.currentdatetransform = this.datePipe.transform(this.currentDate, 'dd MMM YYYY');
+    console.log(  this.currentdatetransform );
+
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
     ).subscribe(data => {
@@ -60,14 +72,55 @@ export class AchievementShelfComponent implements OnInit {
         this.seasonal_theme_response = res;
         this.seasonal_theme_response = Array.of(this.seasonal_theme_response);
         console.log(this.seasonal_theme_response);
+        console.log(this.seasonal_theme_response[0].data.length);
+
+      //   debugger
+      // this.seasonal_theme_response[0].data.forEach((element: any) => {
+      //     this.lo = element.end_date;
+      //     this.date = new Date(this.lo);
+      //     console.log(this.date);
+      //     console.log(this.currentDate);
+          
+      //     if(this.date>this.currentDate){
+      //       console.log("running");
+      //       this.cardstatus= true
+      //       this.cardstatus1= false
+      //   }
+      //  else if(this.date<this.currentDate){
+      //     console.log("expiry");
+      //     this.cardstatus1=true
+      //     this.cardstatus= false
+
+  
+      //  }
+         
+      //   });
+
+     
+  
+
+
+
+        // for(let k=0;k<=this.seasonal_theme_response[0].data.length;k++){
+        //   this.lo = this.seasonal_theme_response[0].data[k].end_date
+        //   console.log(this.lo);
+        //    this.date = new Date(this.lo);
+        //   console.log(this.date);
+          
+        //
+  
+        
 
        
-          const lo=this.seasonal_theme_response[0].data[0]._badges._data[0].id_coroebus_game
-          console.log(lo);
-        
-   
-        
-        
+        // lo=new Date();
+        // if( lo != this.currentdatetransform){
+          
+        //   console.log(this.currentdatetransform);
+          
+        // }
+
+
+
       })
 
 
@@ -75,38 +128,36 @@ export class AchievementShelfComponent implements OnInit {
 
   }
 
-  scorll(){
+  scorll(details: any,index:any) {
 
+    console.log(details,index+1);
+    const elem=(<HTMLInputElement>document.getElementById('imgList'+index))
 
+      console.log(elem)
+      elem.scrollBy(750, 0);
     
-    var imgList = document.getElementById('imgList');
-    var scrollRight = document.getElementById('scroll-right')
-    var scrollLeft = document.getElementById('scroll-left');
-  
-  
-    scrollRight?.addEventListener('click', (event) => {
+  }
+
+  leftscroll(details: any,index:any) {
+    const elem=(<HTMLInputElement>document.getElementById('imgList'+index))
    
-      imgList?.scrollBy(750, 0);
-  });
 
-  
+    console.log(elem)
+    elem.scrollBy(-750, 0);
 
 
-  
-  // When a user clicks on the left arrow, the ul will scroll 750px to the left
-    scrollLeft?.addEventListener('click', (event) => {
-
-      imgList?.scrollBy(-750, 0);
-  });
-  
-  }
-
-  trackList = (index)=>{
     
-    return index;
+
+
+  }
   
+
+  trackList = (index) => {
+
+    return index;
+
   }
-  }
+}
 
 
 

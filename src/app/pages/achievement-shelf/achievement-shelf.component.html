@@ -1,27 +1,3 @@
-<!-- <div class="account-pages">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="text-center mb-5">
-                    <h1 class="display-2 fw-medium">C<i class="bx bx-buoy bx-spin text-success display-3"></i>ming
-                        Soon</h1>
-                   
-                    <div class="mt-5 text-center">
-                        <a class="btn btn-primary" routerLink="/">Back to Dashboard</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-xl-6">
-                <div>
-                    <img src="assets/images/comingSoon/CoroebusRewards.png" alt="" class="img-fluid">
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-
 <div class="top_container">
     <div>
         <p class="title"> Achievement Shelf</p>
@@ -34,7 +10,8 @@
                         <hr>
 
                         <div class="row">
-                            <div class="col-sm-4 col-md-4 col-lg-4 content_seasonal_card_div"  *ngFor="let details of seasonal_theme_response[0].data">
+                            <div class="col-sm-4 col-md-4 col-lg-4 content_seasonal_card_div"
+                                *ngFor="let details of seasonal_theme_response[0].data ;let k=index">
                                 <mat-card class="content_seasonal_card">
                                     <div>
                                         <p class="title_seasonal_card">{{details.name}}</p>
@@ -45,8 +22,13 @@
                                     </div>
                                     <div class="calender_div">
                                         <img class="calender_logo" src="assets/images/seasonaltheme/calendericon.png">
-                                        <p class="date">{{details.start_date | date: 'MMM d, y' }} -{{details.end_date | date: 'MMM d, y'}}</p>
-                                        <p class="status">Running</p>
+                                        <p class="date">{{details.start_date | date: 'MMM d, y' }} -{{details.end_date |
+                                            date: 'MMM d, y'}}</p>
+                                            <!-- *ngIf="(details.end_date |  date: 'MMM d, y') > (currentDate |  date: 'MMM d, y')" -->
+                                            <div *ngIf="(details.end_date |  date: 'MMM d, y') > (currentDate |  date: 'MMM d, y')">
+                                                <p  class="status">{{details.end_date |  date: 'MMM d, y' }}</p>
+
+                                            </div>
                                         <img class="info_logo" src="assets/images/seasonaltheme/infoicon.png">
 
                                     </div>
@@ -57,142 +39,49 @@
 
                                     </div> -->
 
-                                    <div>
+                                    <!-- <div>
                                         <img class="bricks_table" src="assets/images/seasonaltheme/Group 2029.png">
 
+                                    </div> -->
+
+                                    <div class="slider_final">
+                                        <section class="section_slider">
+                                            <div class="scroll-arrow" id="scroll-left" (click)="leftscroll(details,k)">
+                                                <img src="assets/images/seasonaltheme/left-arrow.png">
+                                            </div>
+                                            <ul class="image_ul" [id]="'imgList'+k">
+                                                <li class="image_li" *ngFor="let carauseldata of details._badges._data "><img style="width: 80px;" class="all_images" src="{{carauseldata.seasonal_badge_logo}}"/>
+                                                <p class="badge_count">{{carauseldata.badge_count_}}</p>
+                                                </li>
+                                                 <!-- <li>
+                                                    <img style="width: 80px;" class="all_images"
+                                                        src="./../../../assets/images/seasonaltheme/Picture44.png" />
+                                                </li>
+                                                <li><img class="all_images"
+                                                        src="./../../../assets/images/seasonaltheme/Picture32.png" />
+                                                </li>
+                                                <li><img class="all_images"
+                                                        src="./../../../assets/images/seasonaltheme/Picture33.png" />
+                                                </li>
+                                                <li><img class="all_images"
+                                                        src="./../../../assets/images/seasonaltheme/Picture37.png" />
+                                                </li>
+                                                <li><img class="all_images"
+                                                        src="./../../../assets/images/seasonaltheme/Picture39.png" />
+                                                </li>  -->
+                                            </ul>
+                                            <div class="scroll-arrow" id="scroll-right" (click)="scorll(details,k)">
+                                                <img src="assets/images/seasonaltheme/right-arrow.png">
+                                            </div>
+                                        </section>
                                     </div>
 
-<div class="slider_final">
-    <section>
-        <div class="scroll-arrow" id="scroll-left">
-            <img src="assets/images/seasonaltheme/left-arrow.png">
-          </div>
-          <ul id="imgList" >
-            <!-- <li *ngFor="let carauseldata of details._badges._data"><img style="width: 100px;" class="all_images" src="{{carauseldata.seasonal_badge_logo}}"/></li> -->
-             <li><img class="all_images" src="./../../../assets/images/seasonaltheme/Picture31.png"/></li>
-            <li><img class="all_images" src="./../../../assets/images/seasonaltheme/Picture32.png"/></li>
-            <li><img class="all_images" src="./../../../assets/images/seasonaltheme/Picture33.png"/></li>
-            <li><img class="all_images" src="./../../../assets/images/seasonaltheme/Picture37.png"/></li>
-            <li><img class="all_images" src="./../../../assets/images/seasonaltheme/Picture39.png"/></li> 
-          </ul>
-          <div class="scroll-arrow" id="scroll-right" (click)="scorll()">
-            <img src="assets/images/seasonaltheme/right-arrow.png">
-          </div>
-        </section>
-</div>
 
 
-                                   
-                                        
-                                    <!-- <carousel>
-                                        <div class="carousel-cell"  *ngFor="let carauseldata of details._badges._data" >
-                                            <img src="{{carauseldata.seasonal_badge_logo}}">
-                            
-                                            
-                                        </div>
-                                    </carousel> -->
-                                    <!-- <carousel> -->
-                                        <!-- <div class="carousel-cell">
-                                            <img src="../../../assets/images/seasonaltheme/Picture31.png">
-
-                                        </div>
-                                        <div class="carousel-cell">
-                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
-
-                                        </div>
-
-                                        <div class="carousel-cell">
-                                            <img src="../../../assets/images/seasonaltheme/Picture33.png">
-
-                                        </div>
-                                        <div class="carousel-cell">
-                                            <img src="../../../assets/images/seasonaltheme/Picture31.png">
-
-                                        </div> -->
-                                        <!-- <div class="carousel-cell"  *ngFor="let carauseldata of details._badges._data" >
-                                            <img src="{{carauseldata.seasonal_badge_logo}}">
-                            
-                                            
-                                        </div> -->
-                                        <!-- <div class="carousel-cell">
-                                            <img src="../../../assets/images/seasonaltheme/Picture31.png">
-
-                                        </div>
-                                        <div class="carousel-cell">
-                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
-
-                                        </div>
-                                        <div class="carousel-cell">
-                                            <img src="../../../assets/images/seasonaltheme/Picture30.png">
-                                        </div>
-                                        <div class="carousel-cell">
-                                            <img src="../../../assets/images/seasonaltheme/Picture31.png">
-
-                                        </div>
-                                        <div class="carousel-cell">
-                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
-
-                                        </div>
-                                        <div class="carousel-cell">
-                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
-
-                                        </div>
-                                        <div class="carousel-cell">
-                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
-
-                                        </div>
-                                        <div class="carousel-cell">
-                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
-
-                                        </div>
-                                        <div class="carousel-cell">
-                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
-
-                                        </div>
-                                        <div class="carousel-cell">
-                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
-
-                                        </div>
-                                        <div class="carousel-cell">
-                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
-
-                                        </div>
-                                        <div class="carousel-cell">
-                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
-
-                                        </div>
-                                        <div class="carousel-cell">
-                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
-
-                                        </div>
-                                        <div class="carousel-cell">
-                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
-
-                                        </div> -->
-                                    <!-- </carousel> -->
 
 
-                                    <!-- <carousel>
-                                        <li class="carousel-cell" style="width: 50px !important;">
-                                          <img src="../../../assets/images/seasonaltheme/Picture30.png">
-                                        </li>
-                                        <li class="carousel-cell" style="width: 50px  !important;">
-                                            <img src="../../../assets/images/seasonaltheme/Picture31.png">
-                                        </li>
-                                        <li class="carousel-cell"  style="width: 50px  !important;">
-                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
-                                        </li>
-                                        <li class="carousel-cell"  style="width: 50px;">
-                                            <img src="../../../assets/images/seasonaltheme/Picture30.png">
-                                        </li>
-                                        <li class="carousel-cell"  style="width: 50px;">
-                                            <img src="../../../assets/images/seasonaltheme/Picture31.png">
-                                        </li>
-                                        <li class="carousel-cell"  style="width: 50px;">
-                                            <img src="../../../assets/images/seasonaltheme/Picture32.png">
-                                        </li>
-                                      </carousel> -->
-                                      
+
+
                                 </mat-card>
                             </div>
                         </div>
