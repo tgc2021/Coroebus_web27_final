@@ -730,6 +730,23 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
   }
 
+  navigateToRewards(){
+    var url_string = window.location.href
+    // console.log(url_string);
+    var userID = url_string.includes("?"); // true
+
+    if( url_string.includes("?")){
+      console.log("spectator view");
+      
+    }
+    else if(url_string.includes("")){
+      this._router.navigate(['reward/rewardPoints'])
+
+    }
+  }
+
+
+
   getGraphDataById() {
     // console.log('Graph data',data);
     let obj = {

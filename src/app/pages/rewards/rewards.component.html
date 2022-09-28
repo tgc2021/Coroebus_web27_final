@@ -303,7 +303,7 @@
             <div class="redemption_card">
               <div class="row" *ngFor="let popup of popupresponse">
                 <div class=" col-md-4 col-lg-4 ">
-                  <div class="coupon_div_popup">
+                  <div class="coupon_div_popup" *ngIf="popup.data.couponid != null">
                     <p class="coupon_id_popup">Coupon ID:{{popup.data.couponid}} </p>
 
 
@@ -318,7 +318,7 @@
 
                 </div>
                 <div class=" col-md-8  col-lg-8 ">
-                  <div class="coupon_div_1_popup">
+                  <div class="coupon_div_1_popup" *ngIf="popup.data.couponcode != null">
 
                     <p class="coupon_code_number_popup">Coupon Code: {{popup.data.couponcode}}</p>
 
@@ -349,11 +349,16 @@
 
           </div>
         </div>
-        <div class="modal-footer" *ngFor="let popup of popupresponse">
-          <div class="expiry_date_popup">
+       <div  *ngFor="let popup of popupresponse">
+        <div class="modal-footer" *ngIf="popup.data.expirydate != null">
+          <div class="expiry_date_popup"  >
             <p> Expiry Date:{{popup.data.expirydate | date: 'dd/MM/yyyy'}} </p>
-          </div>
+          </div>         
         </div>
+       </div>
+        
+
+
       </div>
     </div>
   </div>

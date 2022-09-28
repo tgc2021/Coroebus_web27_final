@@ -164,7 +164,7 @@
                                                 <br> <button
                                                     class="btn btn-primary- text-white dashboard-banner-point-btn"
                                                     [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}"
-                                                    [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
+                                                    [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color" (click)="navigateToRewards()">
                                                     <span class="dashboard-banner-point-btn-text">
                                                         {{rewardPoints?.[0]?.score}}
                                                     </span></button>
