@@ -83,19 +83,17 @@ margin-top: 4px;
 
 .rewards_div{
     display: -webkit-inline-box;    
+    margin-bottom: 10px;
 }
 
 .total_point{
+    margin: 0;
     margin-left: 6px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
-    font-size: 14px;
-    line-height: 17px;
-    letter-spacing: -0.02em;
-    font-feature-settings: 'pnum' on, 'lnum' on;
+  
     color: #000000;
-    margin-top: 4px;
 }
 
 .calender_div{
@@ -142,7 +140,7 @@ padding: 5px;
 .info_logo{
     height: 19px;
     position: absolute;
-    right: 10px;
+    right: 16px;
 }
 
 .bricks_background{

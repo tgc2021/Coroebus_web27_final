@@ -29,4 +29,9 @@ export class ApiserviceService {
     var tempurl = `${this.URLstring}`+`/coroebus-beta-api-levels/Passbook/getRewardDetail`
     return this.Http.post(tempurl,data)
   }
+
+  redeemed(data:any){
+    var tempurl = `${this.URLstring}`+`/coroebus-beta-api-levels/redeemed_reward/redeemed`
+    return this.Http.post(tempurl,data)
+  }
 }

@@ -12,7 +12,7 @@
         <mat-tab-group *ngFor="let reward of rewardresponse">
 
           <!-- ******************************************* Platform Reward Tab ********************************************************************     -->
-          <mat-tab [ngStyle]="{'background': headerInfo?.color}" label="{{reward.data.rewardTypes[0].rewardName}}">
+          <mat-tab  [ngStyle]="{'background': headerInfo?.color}" label="{{reward.data.rewardTypes[0].rewardName}}" >
             <hr>
             <div class="button_platform">
               <button class="platform_redeem" type="button" (click)="navigateToLogicalBaniya()">Redeem</button>
@@ -44,8 +44,8 @@
                   <div class="btn_div">
                     <!-- <img data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="redeemed_popup_logo"  src="assets/images/rewards/redeemed.png"> -->
 
-                    <button data-bs-toggle="modal" data-bs-target="#staticBackdrop1" type="button"
-                      class="redeem_btn">Redeem</button>
+                    <button (click)="redemeedOrg(rewardlist)" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"
+                      type="button" class="redeem_btn">Redeem</button>
                   </div>
                 </mat-card>
 
@@ -152,17 +152,17 @@
                     <td class="col-md-4 col-sm-3">{{passbookresponse.description_}}</td>
                     <td class="col-md-2 col-sm-3">{{passbookresponse.points_credited}}</td>
 
-                      <td  *ngIf="passbookresponse.points_debited!=='' " class="col-md-2 col-sm-3" >
-                        {{passbookresponse.points_debited}}
-                        <img  data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="redeemed_popup_logo"
-                          src="assets/images/rewards/redeemed.png" (click)="popupRedemed(passbookresponse)">
-  
-  
-  
-                      <td *ngIf="passbookresponse.points_debited==='' " class="col-md-2">-
-  
-                      </td>
-                  
+                    <td *ngIf="passbookresponse.points_debited!=='' " class="col-md-2 col-sm-3">
+                      {{passbookresponse.points_debited}}
+                      <img data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="redeemed_popup_logo"
+                        src="assets/images/rewards/redeemed.png" (click)="popupRedemed(passbookresponse)">
+
+
+
+                    <td *ngIf="passbookresponse.points_debited==='' " class="col-md-2">-
+
+                    </td>
+
                     <td class="col-md-2">{{passbookresponse.balance}}</td>
 
                   </tr>
@@ -180,10 +180,8 @@
           <mat-tab label="{{points.data.points_list[2].label}}">
             <hr>
             <div>
-              <!-- *ngFor="let pointselect of points.data.points_list[2].data" -->
-              <select (change)="onChange($event)" class="form-select" aria-label="Default select example">
-                <!-- <option selected ></option> -->
-                <option *ngFor="let pointselect of points.data.points_list[2]._data" [value]="pointselect.order"
+              <select (change)="onChange($event)" class="form-select" aria-label=".form-select-lg example">
+                <option class="option_select" *ngFor="let pointselect of points.data.points_list[2]._data" [value]="pointselect.order"
                   selected="pointselect.order">{{pointselect.label}}</option>
 
               </select>
@@ -192,8 +190,8 @@
             <!-- ***************************************  Platform Reward Redemption History ********************************************************************     -->
 
             <div class="redemption_card_div" *ngIf="value=='2'">
-              <div *ngFor="let pointselectorder2 of points.data.points_list[2]._data[1]._data; let k=index"  >
-                
+              <div *ngFor="let pointselectorder2 of points.data.points_list[2]._data[1]._data; let k=index">
+
                 <mat-card class="redemption_card">
                   <div class="row">
                     <div class=" col-md-3 col-xs-2 col-lg-2">
@@ -302,8 +300,8 @@
 
 
           <div>
-            <div class="redemption_card" >
-              <div class="row" *ngFor="let popup of popupresponse" >
+            <div class="redemption_card">
+              <div class="row" *ngFor="let popup of popupresponse">
                 <div class=" col-md-4 col-lg-4 ">
                   <div class="coupon_div_popup">
                     <p class="coupon_id_popup">Coupon ID:{{popup.data.couponid}} </p>
@@ -365,8 +363,8 @@
   <!-- *************************************************** Organisation Reward Popup ************************************ -->
   <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered"  *ngFor="let reward of rewardresponse">
-      <div class="modal-content passbookModal" *ngFor="let rewardlist of reward.data.rewardTypes[1].rewardList;">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content passbookModal" *ngFor="let model of modeldata;">
         <div class="modal-header popup_Header">
           <h5 class="modal-title1" id="staticBackdropLabel">Redeem Rewards</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -381,17 +379,18 @@
 
                   <div class="right_side_div">
                     <div *ngFor="let reward of rewardresponse">
-                      <p *ngFor="let points of rewardresponse">Available Points: {{points.data.points_list[0]._data.rewardPoints}}</p>
+                      <p *ngFor="let points of rewardresponse">Available Points:
+                        {{points.data.points_list[0]._data.rewardPoints}}</p>
                     </div>
                     <div>
-                      <p>{{rewardlist.name}}</p>
+                      <p>{{model.name}}</p>
                     </div>
-  
+
                     <div>
-                      <p>{{rewardlist.redeem_point}}</p>
+                      <p>Pick for {{model.redeem_point}} points</p>
                     </div>
                   </div>
-                
+
 
 
                 </div>
@@ -399,7 +398,7 @@
 
 
                   <div>
-                    <img style="max-width: 111px;" src="{{rewardlist.reward_logo}}">
+                    <img style="max-width: 111px;" src="{{model.reward_logo}}">
                   </div>
 
 
@@ -417,11 +416,12 @@
           </div>
         </div>
         <div class="modal-footer">
-          <div class="balance_div" *ngFor="let reward of rewardresponse" >
-            <p *ngFor="let points of rewardresponse">Balance Point: {{points.data.points_list[0]._data.rewardPoints-rewardlist.redeem_point}} </p>
+          <div class="balance_div" *ngFor="let reward of rewardresponse">
+            <p *ngFor="let points of rewardresponse">Balance Point:
+              {{points.data.points_list[0]._data.rewardPoints-model.redeem_point}} </p>
           </div>
           <div class="expiry_date_popup">
-            <button class="redeem_organisation">Redeem</button>
+            <button class="redeem_organisation"  data-bs-dismiss="modal" (click)="organisationrewardredeem(modeldata)">Redeem</button>
           </div>
 
         </div>

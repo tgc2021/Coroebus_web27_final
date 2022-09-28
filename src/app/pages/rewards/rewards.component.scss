@@ -1,3 +1,17 @@
+option{
+    width: 100%;
+    background: #ddd;
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    padding: 1rem;
+    margin: 0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
 #cont {
     background-image: url("/assets/images/background.png");
     overflow: scroll;
@@ -214,6 +228,8 @@ hr {
     right: 0;
     z-index: 10;
 }
+
+
 
 .redemption_card{
   

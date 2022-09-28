@@ -74,6 +74,15 @@ export class AchievementShelfComponent implements OnInit {
         console.log(this.seasonal_theme_response);
         console.log(this.seasonal_theme_response[0].data.length);
 
+        this.calculate(this.seasonal_theme_response)
+        for(let k=0;k<=this.seasonal_theme_response[0].data.length;k++){
+          this.lo = this.seasonal_theme_response[0].data[k].end_date
+          console.log(this.lo);
+           this.date = new Date(this.lo);
+          console.log(this.date);
+        }
+          
+
       //   debugger
       // this.seasonal_theme_response[0].data.forEach((element: any) => {
       //     this.lo = element.end_date;
@@ -156,6 +165,12 @@ export class AchievementShelfComponent implements OnInit {
 
     return index;
 
+  }
+
+  calculate(seasonal_theme_response){
+    console.log(this.seasonal_theme_response[0].data);
+    
+    let end =new Date().getTime
   }
 }
 
