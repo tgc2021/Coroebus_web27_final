@@ -17,58 +17,82 @@
                                         <p class="title_seasonal_card">{{details.name}}</p>
                                     </div>
                                     <div class="rewards_div">
-                                        <img src="assets/images/rewards/Reward point.png">
+                                        <img class="rewards_img" src="assets/images/rewards/Reward point.png">
                                         <p class="total_point">{{details.reward_point}}</p>
                                     </div>
                                     <div class="calender_div">
                                         <img class="calender_logo" src="assets/images/seasonaltheme/calendericon.png">
                                         <p class="date">{{details.start_date | date: 'MMM d, y' }} -{{details.end_date |
                                             date: 'MMM d, y'}}</p>
-                                            <!-- *ngIf="(details.end_date |  date: 'MMM d, y') > (currentDate |  date: 'MMM d, y')" -->
-                                            <div>
-                                                <p  class="status">Running</p>
+                                        <!-- *ngIf="(details.end_date |  date: 'MMM d, y') > (currentDate |  date: 'MMM d, y')" -->
+                                        <div>
+                                            <p class="status">Running</p>
+
+                                        </div>
+                                        <div class="wrapper">
+                                            <div class="text">
+                                                <img class="info_logo" (click)="popoverDetails(details,k)"
+                                                    src="assets/images/seasonaltheme/infoicon.png">
 
                                             </div>
-                                        <img class="info_logo" src="assets/images/seasonaltheme/infoicon.png">
+                                            <div class="content" [id]="'popover_content'+k" style="visibility:hidden">
+
+                                                <div class="row" >
+                                                    <div class="col-4" >
+                                                        <img class="image_popover"  
+                                                            src="{{details.description.logo}}">
+                                                    </div>
+                                                    <div class="col-8" >
+                                                        <div>
+                                                            <p class="summit_details">Summit Details</p>
+                                                        </div>
+                                                        <div>
+                                                            <h5 class="name_div">{{details.description.seasonal_theme_title}}</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <p class="first_description">
+                                                       {{details.description.theme_description}}
+                                                    </p>
+                                                    <hr>
+                                                </div>
+
+                                                <div>
+                                                    <div>
+                                                        <p class="challenge_details">Challenge Details</p>
+                                                    </div>
+                                                    <div>
+                                                        <h5 class="name1_div">Mission Impossible</h5>
+                                                    </div>
+                                                    <p class="second_description">
+                                                        Nothing comes close to the precision with which physics enables
+                                                        you to understand the world around you.
+                                                    </p>
+                                                </div>
+
+
+
+
+                                            </div>
+                                        </div>
 
                                     </div>
 
-                                    <!-- <div>
-                                        <img class="bricks_background"
-                                            src="assets/images/seasonaltheme/Rectangle 541.png.png">
 
-                                    </div> -->
 
-                                    <!-- <div>
-                                        <img class="bricks_table" src="assets/images/seasonaltheme/Group 2029.png">
-
-                                    </div> -->
-
-                                    <div class="slider_final">
+                                    <div class="slider_final"  >
                                         <section class="section_slider">
                                             <div class="scroll-arrow" id="scroll-left" (click)="leftscroll(details,k)">
                                                 <img src="assets/images/seasonaltheme/left-arrow.png">
                                             </div>
                                             <ul class="image_ul" [id]="'imgList'+k">
-                                                <li class="image_li" *ngFor="let carauseldata of details._badges._data "><img style="width: 80px;" class="all_images" src="{{carauseldata.seasonal_badge_logo}}"/>
-                                                <p class="badge_count">{{carauseldata.badge_count_}}</p>
+                                                <li class="image_li"
+                                                    *ngFor="let carauseldata of details._badges._data "><img
+                                                        class="all_images" src="{{carauseldata.seasonal_badge_logo}}" />
+                                                    <p class="badge_count">{{carauseldata.badge_count_}}</p>
                                                 </li>
-                                                 <!-- <li>
-                                                    <img style="width: 80px;" class="all_images"
-                                                        src="./../../../assets/images/seasonaltheme/Picture44.png" />
-                                                </li>
-                                                <li><img class="all_images"
-                                                        src="./../../../assets/images/seasonaltheme/Picture32.png" />
-                                                </li>
-                                                <li><img class="all_images"
-                                                        src="./../../../assets/images/seasonaltheme/Picture33.png" />
-                                                </li>
-                                                <li><img class="all_images"
-                                                        src="./../../../assets/images/seasonaltheme/Picture37.png" />
-                                                </li>
-                                                <li><img class="all_images"
-                                                        src="./../../../assets/images/seasonaltheme/Picture39.png" />
-                                                </li>  -->
+
                                             </ul>
                                             <div class="scroll-arrow" id="scroll-right" (click)="scorll(details,k)">
                                                 <img src="assets/images/seasonaltheme/right-arrow.png">

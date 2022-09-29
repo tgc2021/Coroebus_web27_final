@@ -59,6 +59,12 @@ export class RewardsComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
+    if (!localStorage.getItem('foo')) { 
+      localStorage.setItem('foo', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('foo') 
+    }
 
 
     this.store.select(fromRoot.userLogin).pipe(

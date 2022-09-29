@@ -1,3 +1,15 @@
+.mat-tab-body.mat-tab-body-active {
+    min-height: 62vh;
+    min-width: 90vw;
+}
+
+
+.all_images{
+    width: 80px;
+}
+
+
+
 .top_container{
     position:absolute;
     width: 100%;
@@ -29,7 +41,7 @@
 
 .mat_container {
   
-    min-height: 70vh;
+    min-height: 65vh;
     margin: 40px;
     background: white;
 }
@@ -47,6 +59,7 @@ hr{
     font-weight: 700;
     border-bottom: 2px solid #342319;
     color: #000000;
+   
 }
 
 .content_seasonal_card{
@@ -319,4 +332,268 @@ letter-spacing: -0.02em;
 margin-top: 3px;
 color: #FFFFFF;
 
+}
+
+
+// .wrapper{
+//     position:absolute;
+//     right: 0;
+// }
+
+
+// .wrapper:hover .content{
+//   visibility:visible;
+//   position: relative;
+// }
+
+
+.content{
+    
+    background: #ffffff;
+    padding: 15px;
+    position:absolute;
+    z-index: 1000000;
+    border-radius: 5px;
+    right: 0;
+    box-shadow: 0px 0px 0px 0.791802px #E8E8E8, 0px 0px 1.5836px rgba(0, 0, 0, 0.12), 0px 15.836px 15.836px rgba(0, 0, 0, 0.02);
+    width: 63%;
+    margin-top: 20px;
+}
+
+.main-content .content{
+    margin-top: 27px;
+    right: 6px;
+    width: 63%;
+    min-height: 80%;
+}
+.content::before{
+    content: "";
+    border-style: solid;
+    border-width: 0px 10px 10px 10px;
+    border-color: transparent transparent #ffffff transparent;
+    position:absolute;
+    top: -10px;
+    right: calc(50% - 133px);
+    filter: drop-shadow(0px 0px 0px black); 
+}
+
+.text{
+    margin-bottom: 10px;
+}
+
+/****************************************************** Popover ***********************************************/
+.image_popover{
+    position: absolute;
+width: 67px;
+height: 64.15px;
+left: 16px;
+top: 27.5px;
+border-radius: 5px;
+}
+
+.summit_details{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 9px;
+line-height: 11px;
+display: flex;
+align-items: center;
+margin-top: 27.5px;
+color: #898787;
+}
+
+.col_ssummit_details{
+    padding: 0;
+}
+
+.name_div{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+}
+
+.first_description{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 15px;
+margin-top: 13px;
+color: #000000;
+}
+
+.challenge_details{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 9px;
+line-height: 11px;
+display: flex;
+align-items: center;
+margin-top: 10px;
+color: #898787;
+}
+
+.second_description{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 13px;
+    color: #000000;
+}
+
+.name1_div{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+@media (min-width: 1020px) and (max-width: 1024px){
+    .date{
+        font-size: 9px;
+    }
+
+    .calender_logo{
+        height: 16px;
+    }
+
+    .rewards_img{
+        height: 16px;
+    }
+    .total_point{
+        font-size: 13px;
+        margin-top: 4px;
+    }
+
+    .status{
+        font-size: 9px;
+        width: 47px;
+    }
+    .info_logo{
+        height: 16px;
+        margin-top: 3px;
+    }
+
+    .section_slider{
+        padding: 4px;
+    }
+
+    .all_images{
+        width: 50px;
+    }
+    .content_seasonal_card{
+        height: 288px;
+    }
+}
+
+
+@media (min-width: 1280px) and (max-width: 1299px){
+
+    .date{
+        font-size: 9px;
+    }
+
+    .calender_logo{
+        height: 16px;
+    }
+
+    .rewards_img{
+        height: 16px;
+    }
+    .total_point{
+        font-size: 13px;
+        margin-top: 4px;
+    }
+
+    .status{
+        font-size: 9px;
+        width: 47px;
+    }
+    .info_logo{
+        height: 16px;
+        margin-top: 3px;
+    }
+
+    .section_slider{
+        padding: 4px;
+    }
+
+    .all_images{
+        width: 55px;
+        margin-top: 5px;
+    }
+    .content_seasonal_card{
+        height: 288px;
+    }
+}
+
+@media (min-width: 1670px) and (max-width: 1680px){
+    .slider_final{
+        height: 67%;
+    }
+
+    .content_seasonal_card{
+        height: 365px;
+    }
+}
+
+
+@media (min-width: 1900px) and (max-width: 1920px){
+    .content_seasonal_card{
+        height: 418px;
+    }
+    .slider_final{
+        height: 67%;
+    }
+
+    .all_images{
+        width:  105px;
+    }
+}
+
+
+@media (min-width: 2040px) and (max-width: 2050px){
+    .content_seasonal_card{
+        height: 418px;
+    }
+    .slider_final{
+        height: 67%;
+    }
+
+    .all_images{
+        width:  115px;
+    }
+}
+
+@media (min-width: 2550px) and (max-width: 2560px){
+    .content_seasonal_card{
+        height: 512px;
+    }
+    .slider_final{
+        height: 67%;
+    }
+
+    .all_images{
+        width:  162px;
+    }
+}
+
+@media (min-width: 3830px) and (max-width: 3840px){
+    .content_seasonal_card{
+        height: 840px;
+    }
+    .slider_final{
+        height: 87%;
+    }
+
+    .all_images{
+        width:  262px;
+    }
 }

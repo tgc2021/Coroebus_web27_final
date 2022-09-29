@@ -6,6 +6,7 @@ import { AchievementShelfComponent } from './achievement-shelf.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { MdePopoverModule } from '@material-extended/mde';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
     MatCardModule,
     MatTabsModule,
     IvyCarouselModule,
+    MdePopoverModule,
     AchievementShelfRoutingModule
   ]
 })

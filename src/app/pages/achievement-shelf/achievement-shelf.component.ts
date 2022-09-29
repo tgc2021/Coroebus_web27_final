@@ -44,7 +44,18 @@ export class AchievementShelfComponent implements OnInit {
   date:any
   cardstatus: boolean=false
   cardstatus1: boolean=false
+  popover: boolean=false
+
+
   ngOnInit(): void {
+
+    if (!localStorage.getItem('foo')) { 
+      localStorage.setItem('foo', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('foo') 
+    }
+ 
      this.currentDate = new Date();
     console.log(this.currentDate);
 
@@ -172,6 +183,38 @@ export class AchievementShelfComponent implements OnInit {
     
     let end =new Date().getTime
   }
+
+  // clickinfo(index:any)
+  // {
+    
+  // }
+
+  popoverDetails(details:any,index:any){
+    console.log(details);
+    console.log(details,index+1);
+    
+    // const elem=(<HTMLInputElement>document.getElementById('popover_content'+index));
+    // console.log(elem);
+    (<HTMLInputElement>document.getElementById('popover_content'+index)).style.visibility = "visible";
+    // let e = document.getElementById('popover_content'+index);
+    // if(e){
+    //   e.click();
+      if(this.popover==false){
+        (<HTMLInputElement>document.getElementById('popover_content'+index)).style.visibility = "visible";
+        this.popover=true
+      }
+      else{
+        (<HTMLInputElement>document.getElementById('popover_content'+index)).style.visibility = "hidden";
+        this.popover=false
+      }
+    // }
+    
+   
+    
+  }
+
+  
+  
 }
 
 
