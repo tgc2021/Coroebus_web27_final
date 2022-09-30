@@ -364,7 +364,7 @@ color: #FFFFFF;
     margin-top: 27px;
     right: 6px;
     width: 63%;
-    min-height: 80%;
+    min-height: 63%;
 }
 .content::before{
     content: "";
@@ -417,12 +417,12 @@ line-height: 19px;
 
 .first_description{
     font-family: 'Inter';
-font-style: normal;
-font-weight: 500;
-font-size: 12px;
-line-height: 15px;
-margin-top: 13px;
-color: #000000;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 18px;
+    color: #000000;
 }
 
 .challenge_details{
@@ -455,6 +455,117 @@ color: #898787;
     line-height: 19px;
 }
 
+/************************************************* Image Modal ****************************************/
+
+.modal_logo{
+    display: flex;
+    justify-content: center;
+}
+
+.badgeDialog{
+    background-color: transparent;
+    border: none;
+   
+    
+}
+
+.badge_Dialog_Header{
+    border-bottom:none;
+}
+
+.top_image{
+    width: 110px;
+    margin-bottom: 20px;
+}
+
+.mat_card_badge_details{
+    background-color: white;
+    min-height: 40vh;
+    border-radius: 28px !important;
+}
+
+
+.close_popup{
+    background: transparent;
+}
+
+
+.close_button_image{
+    width: 23px;
+}
+
+.date_col{
+    background-color: #EDEDED;
+    min-height: 38vh;
+    max-height: 38vh;
+    border-radius: 14px;
+    left: 10px;
+
+    // margin-left: 10px;
+}
+.date_details {
+   
+    display:flex;
+    justify-content: center;
+}
+
+.dot_image{
+    width: 30px;
+    height: 30px;
+    margin-top: 20px;
+}
+
+.date_sequence{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+color: #625D5D;
+margin-bottom: 5px;
+}
+.badge_total_count{
+    position:absolute;
+    left: 48%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    top: 34px;
+}
+
+.date_sequence_div{
+    margin-top: 6px;
+    max-height: 203px;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+   
+}
+
+.scroll-area {
+    overflow: scroll;
+}
+
+
+.title_popup{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 19px;
+line-height: 24px;
+color: #000000;
+
+}
+
+.details_col{
+    left: 8px;
+}
+
+.badge_description_popup{
+    font-family: 'Inter';
+font-style: italic;
+font-weight: 100;
+font-size: 16px;
+line-height: 28px;
+color: #000000;
+}
 @media (min-width: 1020px) and (max-width: 1024px){
     .date{
         font-size: 9px;
@@ -491,6 +602,12 @@ color: #898787;
     .content_seasonal_card{
         height: 288px;
     }
+
+   /************************************************* Popover *********************************/
+   
+   .main-content .content{
+    width: 97%;
+   }
 }
 
 
@@ -532,6 +649,37 @@ color: #898787;
     .content_seasonal_card{
         height: 288px;
     }
+
+     /************************************************* Popover *********************************/
+   
+   .main-content .content{
+    width: 77%;
+   }
+}
+
+
+@media (min-width: 1360px) and (max-width: 1366px){
+    .slider_final{
+        height: 57%;
+    }
+
+    .all_images{
+        width: 65px;
+    }
+
+    .main-content .content{
+        width: 72%;
+    }
+}
+
+
+@media (min-width: 1400px) and (max-width: 1440px) {
+    .all_images{
+        width: 70px;
+    }
+    .main-content .content{
+        width: 69%;
+       }
 }
 
 @media (min-width: 1670px) and (max-width: 1680px){
@@ -541,6 +689,10 @@ color: #898787;
 
     .content_seasonal_card{
         height: 365px;
+    }
+
+    .main-content .content{
+        width: 58%;
     }
 }
 
@@ -556,6 +708,10 @@ color: #898787;
     .all_images{
         width:  105px;
     }
+
+    .content::before{
+        right: calc(50% - 173px);
+    }
 }
 
 
@@ -570,6 +726,9 @@ color: #898787;
     .all_images{
         width:  115px;
     }
+    .content::before{
+        right: calc(50% - 185px);
+    }
 }
 
 @media (min-width: 2550px) and (max-width: 2560px){
@@ -583,6 +742,13 @@ color: #898787;
     .all_images{
         width:  162px;
     }
+
+    .main-content .content{
+        width: 49%;
+    }
+    .content::before{
+        right: calc(50% - 186px);
+    }
 }
 
 @media (min-width: 3830px) and (max-width: 3840px){
@@ -595,5 +761,13 @@ color: #898787;
 
     .all_images{
         width:  262px;
+    }
+
+    .main-content .content{
+        width: 46%;
+        min-height: 35vh;
+    }
+    .content::before{
+        right: calc(50% - 264px);
     }
 }

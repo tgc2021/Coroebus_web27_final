@@ -34,4 +34,10 @@ export class ApiserviceService {
     var tempurl = `${this.URLstring}`+`/coroebus-beta-api-levels/redeemed_reward/redeemed`
     return this.Http.post(tempurl,data)
   }
+
+  popup_bagde_details(data:any){
+    var tempurl = `${this.URLstring}`+`/coroebus-beta-api-levels/SeasonalTheme/BadgeDetail`
+    return this.Http.post(tempurl,data)
+  }
+
 }

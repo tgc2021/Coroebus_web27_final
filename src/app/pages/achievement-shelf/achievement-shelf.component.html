@@ -37,40 +37,27 @@
                                             </div>
                                             <div class="content" [id]="'popover_content'+k" style="visibility:hidden">
 
-                                                <div class="row" >
-                                                    <div class="col-4" >
-                                                        <img class="image_popover"  
-                                                            src="{{details.description.logo}}">
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <img class="image_popover" src="{{details.description.logo}}">
                                                     </div>
-                                                    <div class="col-8" >
+                                                    <div class="col-8">
                                                         <div>
                                                             <p class="summit_details">Summit Details</p>
                                                         </div>
                                                         <div>
-                                                            <h5 class="name_div">{{details.description.seasonal_theme_title}}</h5>
+                                                            <h5 class="name_div">
+                                                                {{details.description.seasonal_theme_title}}</h5>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div>
                                                     <p class="first_description">
-                                                       {{details.description.theme_description}}
-                                                    </p>
-                                                    <hr>
-                                                </div>
-
-                                                <div>
-                                                    <div>
-                                                        <p class="challenge_details">Challenge Details</p>
-                                                    </div>
-                                                    <div>
-                                                        <h5 class="name1_div">Mission Impossible</h5>
-                                                    </div>
-                                                    <p class="second_description">
-                                                        Nothing comes close to the precision with which physics enables
-                                                        you to understand the world around you.
+                                                        {{details.description.theme_description}}
                                                     </p>
                                                 </div>
 
+                                           
 
 
 
@@ -81,15 +68,17 @@
 
 
 
-                                    <div class="slider_final"  >
+                                    <div class="slider_final">
                                         <section class="section_slider">
                                             <div class="scroll-arrow" id="scroll-left" (click)="leftscroll(details,k)">
                                                 <img src="assets/images/seasonaltheme/left-arrow.png">
                                             </div>
                                             <ul class="image_ul" [id]="'imgList'+k">
                                                 <li class="image_li"
-                                                    *ngFor="let carauseldata of details._badges._data "><img
-                                                        class="all_images" src="{{carauseldata.seasonal_badge_logo}}" />
+                                                    *ngFor="let carauseldata of details._badges._data; let l=index"><img
+                                                        class="all_images" (click)="getBadgesDetail(carauseldata,l)" data-bs-toggle="modal"
+                                                        data-bs-target="#staticBackdrop" [id]="'dialog_popup'+k"
+                                                        src="{{carauseldata.seasonal_badge_logo}}" />
                                                     <p class="badge_count">{{carauseldata.badge_count_}}</p>
                                                 </li>
 
@@ -120,4 +109,68 @@
 
         </div>
     </div>
+
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content badgeDialog">
+                <div class="modal-header badge_Dialog_Header">
+                    <!-- <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5> -->
+                    <button type="button" class="btn-close close_popup" data-bs-dismiss="modal" >
+                        <img class="close_button_image" src="assets/images/seasonaltheme/close_button.png">
+                    </button>
+                </div>
+                <div class="modal-body" *ngFor="let badgepopupresponse of bagde_details_response">
+                   <div class="modal_logo" >
+                    <img class="top_image" src="{{badgepopupresponse.seasonal_badge_logo}}">
+                   </div>
+                   <div>
+                    <mat-card class="mat_card_badge_details" >
+                        <div class="row">
+                            <div class="col-3 col-md-3 col-lg-3 date_col">
+                                <div>
+                                    <p class="badge_total_count">{{badgepopupresponse.count_}}</p>
+                                </div>
+                                <div class="date_details">
+                                    <img class="dot_image" src="assets/images/seasonaltheme/badgecount.png">
+                                </div>
+                                <div class="date_sequence_div" *ngFor="let badgepopupresponse1 of badge_details_date.badge_win_date[0]" >
+                                    <p class="date_sequence">{{badgepopupresponse1}} </p>
+                                   
+
+                                </div> 
+                                
+                            </div>
+                            <div class="col-9 col-md-9 col-lg-9 details_col" >
+                                <div>
+                                    <h5 class="title_popup">{{badgepopupresponse.seasonal_badge_title}}</h5>
+
+                                </div>
+                                <div class="rewards_div">
+                                    <img class="rewards_img" src="assets/images/rewards/Reward point.png">
+                                    <p class="total_point">{{badgepopupresponse.points_}} </p>
+                                </div>
+                                <hr>
+
+                                <div>
+                                    <p class="badge_description_popup">
+                                        {{badgepopupresponse.seasonal_badge_description}}
+                                    </p>
+                                </div>
+                                <div>
+                                    
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </mat-card>
+                   </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>

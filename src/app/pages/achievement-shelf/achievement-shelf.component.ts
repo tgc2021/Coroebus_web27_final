@@ -45,8 +45,9 @@ export class AchievementShelfComponent implements OnInit {
   cardstatus: boolean=false
   cardstatus1: boolean=false
   popover: boolean=false
-
-
+  bagde_details: any
+  bagde_details_response:any
+  badge_details_date:any
   ngOnInit(): void {
 
     if (!localStorage.getItem('foo')) { 
@@ -93,53 +94,6 @@ export class AchievementShelfComponent implements OnInit {
           console.log(this.date);
         }
           
-
-      //   debugger
-      // this.seasonal_theme_response[0].data.forEach((element: any) => {
-      //     this.lo = element.end_date;
-      //     this.date = new Date(this.lo);
-      //     console.log(this.date);
-      //     console.log(this.currentDate);
-          
-      //     if(this.date>this.currentDate){
-      //       console.log("running");
-      //       this.cardstatus= true
-      //       this.cardstatus1= false
-      //   }
-      //  else if(this.date<this.currentDate){
-      //     console.log("expiry");
-      //     this.cardstatus1=true
-      //     this.cardstatus= false
-
-  
-      //  }
-         
-      //   });
-
-     
-  
-
-
-
-        // for(let k=0;k<=this.seasonal_theme_response[0].data.length;k++){
-        //   this.lo = this.seasonal_theme_response[0].data[k].end_date
-        //   console.log(this.lo);
-        //    this.date = new Date(this.lo);
-        //   console.log(this.date);
-          
-        //
-  
-        
-
-       
-        // lo=new Date();
-        // if( lo != this.currentdatetransform){
-          
-        //   console.log(this.currentdatetransform);
-          
-        // }
-
-
 
       })
 
@@ -213,7 +167,32 @@ export class AchievementShelfComponent implements OnInit {
     
   }
 
-  
+  getBadgesDetail(carauseldata:any,index:any){
+    console.log(carauseldata,index+1);
+    let body = {
+      _userid: this.mergeObj.USERID,
+      _game: this.mergeObj.id_coroebus_game,
+      _seasonal_theme: carauseldata.id_seasonal_theme,
+      _badge_id:carauseldata.id_seasonal_badge
+    }
+
+    console.log(body);
+    this.http.popup_bagde_details(body).subscribe((res) => {
+      console.log(res)
+      this.bagde_details=res
+      this.bagde_details = Array.of(this.bagde_details);
+      this.bagde_details_response=this.bagde_details[0].data[0]
+      console.log(this.bagde_details);
+      console.log(this.bagde_details_response);
+    
+      this.badge_details_date=this.bagde_details[0].data[1]
+      console.log(this.badge_details_date.badge_win_date);
+      this.badge_details_date.badge_win_date=Array.of(this.badge_details_date.badge_win_date)
+      console.log(this.badge_details_date.badge_win_date);
+      
+      
+    })
+  }
   
 }
 
