@@ -8,7 +8,22 @@
     width: 80px;
 }
 
+.total_reward_points{
+    position: absolute;
+    right: 95px;
+    top: 30px;
+}
 
+.total_reward_points_value{
+    position: absolute;
+    top: 5px;
+    left: 25px;
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+}
 
 .top_container{
     position:absolute;
@@ -144,6 +159,22 @@ color: #16C79A;
 
 margin-left: 20px;
 background-color: #E8F9F5;
+width: 70px;
+text-align: center;
+padding: 5px;
+
+}
+
+.status1{
+    font-family: 'Open Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 10px;
+line-height: 15px;
+color: #F05454;
+
+margin-left: 20px;
+background-color: #FEEEEE;
 width: 70px;
 text-align: center;
 padding: 5px;
@@ -587,6 +618,13 @@ color: #000000;
         font-size: 9px;
         width: 47px;
     }
+
+    
+    .status1{
+        font-size: 9px;
+        width: 47px;
+    }
+    
     .info_logo{
         height: 16px;
         margin-top: 3px;
@@ -630,6 +668,11 @@ color: #000000;
     }
 
     .status{
+        font-size: 9px;
+        width: 47px;
+    }
+
+    .status1{
         font-size: 9px;
         width: 47px;
     }

@@ -4,31 +4,52 @@
 
         <div *ngFor="let seasonaldata of seasonal_theme_response;">
             <mat-card class="mat_container">
-
+                <div class="total_reward_points" *ngFor="let totalrewardrespone of seasonal_total_points_response">
+                    <img src="assets/images/rewards/Reward point.png">
+                    <p class="total_reward_points_value">{{totalrewardrespone.reward_point}}</p>
+                </div>
                 <mat-tab-group>
                     <mat-tab label="Seasonal Theme">
                         <hr>
 
                         <div class="row">
                             <div class="col-sm-4 col-md-4 col-lg-4 content_seasonal_card_div"
-                                *ngFor="let details of seasonal_theme_response[0].data ;let k=index">
+                                *ngFor="let details of seasonal_theme_response[0].data ;let k=index;let w of showCombo;let j =index">
                                 <mat-card class="content_seasonal_card">
                                     <div>
                                         <p class="title_seasonal_card">{{details.name}}</p>
                                     </div>
-                                    <div class="rewards_div">
+                                    <div class="rewards_div" *ngIf="details.reward_point != null">
                                         <img class="rewards_img" src="assets/images/rewards/Reward point.png">
                                         <p class="total_point">{{details.reward_point}}</p>
                                     </div>
+                                    <div class="rewards_div" *ngIf="details.reward_point == null">
+                                        <img class="rewards_img" src="assets/images/rewards/Reward point.png">
+                                        <p class="total_point">0</p>
+                                    </div>
                                     <div class="calender_div">
                                         <img class="calender_logo" src="assets/images/seasonaltheme/calendericon.png">
-                                        <p class="date">{{details.start_date | date: 'MMM d, y' }} -{{details.end_date |
+                                        <p class="date">{{details.start_date | date: 'MMM d, y' }} - {{details.end_date |
                                             date: 'MMM d, y'}}</p>
                                         <!-- *ngIf="(details.end_date |  date: 'MMM d, y') > (currentDate |  date: 'MMM d, y')" -->
-                                        <div>
-                                            <p class="status">Running</p>
+                                        <!-- <div>
+                                            <p *ngIf="k.islessThanToday" class="status"> {{w.end_date}} {{w.islessThanToday}}Running</p>
+                                            <p *ngIf="!k.islessThanToday" class="status"> {{w.end_date}} {{w.islessThanToday}} Expiry</p>
+
+                                        </div> -->
+
+                                        <div *ngIf="w.islessThanToday != true">
+                                            <p *ngIf="k.islessThanToday" class="status"> Running</p>
+                                            <p *ngIf="!k.islessThanToday" class="status"> Running</p>
 
                                         </div>
+                                        <div *ngIf="w.islessThanToday == true">
+                                            <p *ngIf="k.islessThanToday" class="status1"> Expiry</p>
+                                            <p *ngIf="!k.islessThanToday" class="status1"> Expiry</p>
+
+                                        </div>
+
+
                                         <div class="wrapper">
                                             <div class="text">
                                                 <img class="info_logo" (click)="popoverDetails(details,k)"
@@ -54,10 +75,11 @@
                                                 <div>
                                                     <p class="first_description">
                                                         {{details.description.theme_description}}
+                                                        
                                                     </p>
                                                 </div>
 
-                                           
+
 
 
 
@@ -69,15 +91,16 @@
 
 
                                     <div class="slider_final">
-                                        <section class="section_slider">
+                                        <section class="section_slider" >
                                             <div class="scroll-arrow" id="scroll-left" (click)="leftscroll(details,k)">
                                                 <img src="assets/images/seasonaltheme/left-arrow.png">
                                             </div>
                                             <ul class="image_ul" [id]="'imgList'+k">
                                                 <li class="image_li"
                                                     *ngFor="let carauseldata of details._badges._data; let l=index"><img
-                                                        class="all_images" (click)="getBadgesDetail(carauseldata,l)" data-bs-toggle="modal"
-                                                        data-bs-target="#staticBackdrop" [id]="'dialog_popup'+k"
+                                                        class="all_images" (click)="getBadgesDetail(carauseldata,l)"
+                                                        data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                                                        [id]="'dialog_popup'+k"
                                                         src="{{carauseldata.seasonal_badge_logo}}" />
                                                     <p class="badge_count">{{carauseldata.badge_count_}}</p>
                                                 </li>
@@ -116,56 +139,56 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content badgeDialog">
                 <div class="modal-header badge_Dialog_Header">
-                    <!-- <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5> -->
-                    <button type="button" class="btn-close close_popup" data-bs-dismiss="modal" >
+                    <button type="button" class="btn-close close_popup" data-bs-dismiss="modal">
                         <img class="close_button_image" src="assets/images/seasonaltheme/close_button.png">
                     </button>
                 </div>
                 <div class="modal-body" *ngFor="let badgepopupresponse of bagde_details_response">
-                   <div class="modal_logo" >
-                    <img class="top_image" src="{{badgepopupresponse.seasonal_badge_logo}}">
-                   </div>
-                   <div>
-                    <mat-card class="mat_card_badge_details" >
-                        <div class="row">
-                            <div class="col-3 col-md-3 col-lg-3 date_col">
-                                <div>
-                                    <p class="badge_total_count">{{badgepopupresponse.count_}}</p>
-                                </div>
-                                <div class="date_details">
-                                    <img class="dot_image" src="assets/images/seasonaltheme/badgecount.png">
-                                </div>
-                                <div class="date_sequence_div" *ngFor="let badgepopupresponse1 of badge_details_date.badge_win_date[0]" >
-                                    <p class="date_sequence">{{badgepopupresponse1}} </p>
-                                   
+                    <div class="modal_logo">
+                        <img class="top_image" src="{{badgepopupresponse.seasonal_badge_logo}}">
+                    </div>
+                    <div>
+                        <mat-card class="mat_card_badge_details">
+                            <div class="row">
+                                <div class="col-3 col-md-3 col-lg-3 date_col">
+                                    <div>
+                                        <p class="badge_total_count">{{badgepopupresponse.count_}}</p>
+                                    </div>
+                                    <div class="date_details">
+                                        <img class="dot_image" src="assets/images/seasonaltheme/badgecount.png">
+                                    </div>
+                                    <div class="date_sequence_div"
+                                        *ngFor="let badgepopupresponse1 of badge_details_date.badge_win_date[0]">
+                                        <p class="date_sequence">{{badgepopupresponse1}} </p>
 
-                                </div> 
-                                
+
+                                    </div>
+
+                                </div>
+                                <div class="col-9 col-md-9 col-lg-9 details_col">
+                                    <div>
+                                        <h5 class="title_popup">{{badgepopupresponse.seasonal_badge_title}}</h5>
+
+                                    </div>
+                                    <div class="rewards_div">
+                                        <img class="rewards_img" src="assets/images/rewards/Reward point.png">
+                                        <p class="total_point">{{badgepopupresponse.points_}} </p>
+                                    </div>
+                                    <hr>
+
+                                    <div>
+                                        <p class="badge_description_popup">
+                                            {{badgepopupresponse.seasonal_badge_description}}
+                                        </p>
+                                    </div>
+                                    <div>
+
+                                    </div>
+
+                                </div>
                             </div>
-                            <div class="col-9 col-md-9 col-lg-9 details_col" >
-                                <div>
-                                    <h5 class="title_popup">{{badgepopupresponse.seasonal_badge_title}}</h5>
-
-                                </div>
-                                <div class="rewards_div">
-                                    <img class="rewards_img" src="assets/images/rewards/Reward point.png">
-                                    <p class="total_point">{{badgepopupresponse.points_}} </p>
-                                </div>
-                                <hr>
-
-                                <div>
-                                    <p class="badge_description_popup">
-                                        {{badgepopupresponse.seasonal_badge_description}}
-                                    </p>
-                                </div>
-                                <div>
-                                    
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </mat-card>
-                   </div>
+                        </mat-card>
+                    </div>
 
                 </div>
             </div>

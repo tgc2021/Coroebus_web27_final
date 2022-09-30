@@ -48,6 +48,9 @@ export class AchievementShelfComponent implements OnInit {
   bagde_details: any
   bagde_details_response:any
   badge_details_date:any
+  seasonal_total_points:any
+  seasonal_total_points_response:any
+  showCombo: any= []
   ngOnInit(): void {
 
     if (!localStorage.getItem('foo')) { 
@@ -86,15 +89,45 @@ export class AchievementShelfComponent implements OnInit {
         console.log(this.seasonal_theme_response);
         console.log(this.seasonal_theme_response[0].data.length);
 
-        this.calculate(this.seasonal_theme_response)
-        for(let k=0;k<=this.seasonal_theme_response[0].data.length;k++){
-          this.lo = this.seasonal_theme_response[0].data[k].end_date
-          console.log(this.lo);
-           this.date = new Date(this.lo);
-          console.log(this.date);
-        }
+
+
+
+
+        this.showCombo=this.seasonal_theme_response[0]?.data
+        this.showCombo.map((x:any) => {
+      
+            
+           x['islessThanToday']= new Date(x.end_date) < this.currentDate
+                
+                
+        });
+           
+        
+       console.log(this.showCombo)
+       
           
 
+
+
+        // this.calculate(this.seasonal_theme_response)
+        // for(let k=0;k<=this.seasonal_theme_response[0].data.length;k++){
+        //   this.lo = this.seasonal_theme_response[0].data[k].end_date
+        //   console.log(this.lo);
+        //    this.date = new Date(this.lo);
+        //   console.log(this.date);
+        // }
+          
+
+      })
+
+
+      this.http.seasonal_rewards_points(body).subscribe((res) => {
+        console.log(res)
+        this.seasonal_total_points=res
+        this.seasonal_total_points_response= this.seasonal_total_points.data[0]
+        console.log(this.seasonal_total_points.data[0]);
+        
+        
       })
 
 

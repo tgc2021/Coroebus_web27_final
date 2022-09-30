@@ -40,4 +40,10 @@ export class ApiserviceService {
     return this.Http.post(tempurl,data)
   }
 
+  seasonal_rewards_points(data:any){
+    var tempurl = `${this.URLstring}`+`/coroebus-beta-api-levels/SeasonalTheme/Overallrewards`
+    return this.Http.post(tempurl,data)
+  }
+  
+
 }
