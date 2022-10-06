@@ -428,6 +428,15 @@ color: #FFFFFF;
     margin-bottom: 10px;
 }
 
+.coming_soon{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
 /****************************************************** Popover ***********************************************/
 .image_popover{
     position: absolute;
@@ -695,6 +704,10 @@ color: #000000;
 
     .content::before{
         right: calc(50% - 100px);
+    }
+    .coming_soon{
+        font-size: 1.5rem;
+        height: 67%;
     }
 }
 
@@ -1039,6 +1052,10 @@ color: #000000;
     .summit_details{
         margin-left: 10px;
     }
+    .coming_soon{
+        font-size: 1.2rem;
+        height: 55%;
+    }
 }
 
 @media (min-width: 820px) and (max-width: 900px){
@@ -1117,6 +1134,10 @@ color: #000000;
 
     .name_div{
         font-size: 12px;
+    }
+    .coming_soon{
+        font-size: 1.5rem;
+        height: 55%;
     }
 }
 
@@ -1202,6 +1223,10 @@ color: #000000;
     .summit_details{
         margin-left: 10px;
     }
+    .coming_soon{
+        font-size: 1.5rem;
+        height: 55%;
+    }
 }
 
 @media (min-width: 1020px) and (max-width: 1024px){
@@ -1248,6 +1273,10 @@ color: #000000;
         height: 288px;
     }
 
+    .coming_soon{
+    font-size: 1.5rem;  
+    height: 61%;      
+    }
    /************************************************* Popover *********************************/
    
    .main-content .content{
@@ -1444,7 +1473,13 @@ color: #000000;
     .summit_details{
         margin-left: 10px;
     }
+    .left_arrow{
+        width: 15px;
+    }
 
+    .right_arrow{
+        width: 15px;
+    }
 }
 @media (min-width: 1670px) and (max-width: 1680px){
     .slider_final{
@@ -1476,6 +1511,13 @@ color: #000000;
     
     .summit_details{
         margin-left: 10px;
+    }
+    .left_arrow{
+        width: 20px;
+    }
+
+    .right_arrow{
+        width: 20px;
     }
 }
 
@@ -1513,6 +1555,13 @@ color: #000000;
     
     .summit_details{
         margin-left: 10px;
+    }
+    .left_arrow{
+        width: 25px;
+    }
+
+    .right_arrow{
+        width: 25px;
     }
 }
 
@@ -1553,6 +1602,16 @@ color: #000000;
     .summit_details{
         margin-left: 10px;
     }
+    .coming_soon{
+        font-size: 3.5rem;  
+        }
+        .left_arrow{
+            width: 35px;
+        }
+    
+        .right_arrow{
+            width: 35px;
+        }
 }
 
 @media (min-width: 2550px) and (max-width: 2560px){
@@ -1589,6 +1648,16 @@ color: #000000;
     .summit_details{
         margin-left: 10px;
     }
+    .coming_soon{
+        font-size: 4.5rem;  
+        }
+        .left_arrow{
+            width: 40px;
+        }
+    
+        .right_arrow{
+            width: 40px;
+        }
 }
 
 @media (min-width: 3830px) and (max-width: 3840px){
@@ -1625,4 +1694,16 @@ color: #000000;
     .summit_details{
         margin-left: 10px;
     }
+    .coming_soon{
+        font-size: 6.5rem;  
+        }
+
+        .left_arrow{
+        width: 45px;
+    }
+
+    .right_arrow{
+        width: 45px;
+    }
+   
 }

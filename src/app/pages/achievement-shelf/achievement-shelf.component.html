@@ -93,28 +93,32 @@
 
 
 
-                                    <div class="slider_final" >
+                                    <div class="slider_final"  *ngIf="details._badges._data.length>0">
                                         <section class="section_slider" >
-                                            <div class="scroll-arrow" id="scroll-left" (click)="leftscroll(details,k)">
-                                                <img src="assets/images/seasonaltheme/left-arrow.png">
+                                            <div class="scroll-arrow" *ngIf="details._badges._data.length>4" id="scroll-left" (click)="leftscroll(details,k)">
+                                                <img class="left_arrow" src="assets/images/seasonaltheme/left-arrow.png">
                                             </div>
                                             <ul class="image_ul" [id]="'imgList'+k">
                                                 <li class="image_li"
                                                     *ngFor="let carauseldata of details._badges._data; let l=index"><img
-                                                        class="all_images"  (click)="getBadgesDetail(carauseldata,l)"
+                                                       *ngIf="carauseldata != null" class="all_images"  (click)="getBadgesDetail(carauseldata,l)"
                                                         data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                                                         [id]="'dialog_popup'+k"
                                                         src="{{carauseldata.seasonal_badge_logo}}" />
-                                                    <p class="badge_count">{{carauseldata.badge_count_}}</p>
+                                                    <p  *ngIf="carauseldata != null" class="badge_count">{{carauseldata.badge_count_}}</p>
                                                 </li>
 
                                             </ul>
-                                            <div class="scroll-arrow" id="scroll-right" (click)="scorll(details,k)">
-                                                <img src="assets/images/seasonaltheme/right-arrow.png">
+                                            <div class="scroll-arrow" *ngIf="details._badges._data.length>4" id="scroll-right" (click)="scorll(details,k)">
+                                                <img class="right_arrow" src="assets/images/seasonaltheme/right-arrow.png">
                                             </div>
                                         </section>
                                     </div>
 
+
+                                    <div class="slider_final"  *ngIf="details._badges._data.length==0">
+                                      <h5 class="coming_soon">Coming Soon</h5>
+                                    </div>
 
 
 
@@ -157,6 +161,7 @@
                                     <div>
                                         <p class="badge_total_count">{{badgepopupresponse.count_}}</p>
                                     </div>
+                                    
                                     <div class="date_details">
                                         <img class="dot_image" src="assets/images/seasonaltheme/badgecount.png">
                                     </div>
@@ -175,7 +180,9 @@
                                     </div>
                                     <div class="rewards_div">
                                         <img class="rewards_img" src="assets/images/rewards/Reward point.png">
-                                        <p class="total_point">{{badgepopupresponse.points_}} </p>
+                                        <p  *ngIf="badgepopupresponse.points_ != null" class="total_point">{{badgepopupresponse.points_}} </p>
+                                        <p  *ngIf="badgepopupresponse.points_ == null" class="total_point"> 0 </p>
+
                                     </div>
                                     <hr>
 

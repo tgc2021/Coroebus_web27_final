@@ -62,6 +62,7 @@ export class AchievementShelfComponent implements OnInit {
     } else {
       localStorage.removeItem('foo') 
     }
+
  
      this.currentDate = new Date();
     console.log(this.currentDate);
