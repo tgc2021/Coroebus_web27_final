@@ -50,13 +50,15 @@
                                         </div>
 
 
-                                        <div class="wrapper">
+                                        <div>
                                             <div class="text">
                                                 <img class="info_logo" (click)="popoverDetails(details,k)"
-                                                    src="assets/images/seasonaltheme/infoicon.png" >
+                                                    [ngbPopover]="popContent" 	
+                                                    src="assets/images/seasonaltheme/infoicon.png" popoverClass="my-custom-class">      
 
                                             </div>
-                                            <div class="content" [id]="'popover_content'+k" style="visibility:hidden" >
+                                            <ng-template #popContent>	
+                                            <div class="content" >
 
                                                 <div class="row">
                                                     <div class="col-4">
@@ -84,13 +86,14 @@
 
 
                                             </div>
+                                            </ng-template>
                                         </div>
 
                                     </div>
 
 
 
-                                    <div class="slider_final" *ngIf="details._badges._data !== null">
+                                    <div class="slider_final" >
                                         <section class="section_slider" >
                                             <div class="scroll-arrow" id="scroll-left" (click)="leftscroll(details,k)">
                                                 <img src="assets/images/seasonaltheme/left-arrow.png">

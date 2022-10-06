@@ -2,6 +2,11 @@
     scrollbar-width: none;
 
 }
+
+.popover-body{
+    padding: 0;
+}
+
 .mat-tab-body.mat-tab-body-active {
     min-height: 62vh;
     min-width: 90vw;
@@ -189,6 +194,13 @@ padding: 5px;
     height: 19px;
     position: absolute;
     right: 16px;
+}
+
+.my-custom-class {	
+    width: 18vw;
+    height: 31vh;	
+    margin-top: 2.4%;	
+    margin-left: -7.6vw;          	
 }
 
 .bricks_background{
@@ -382,23 +394,23 @@ color: #FFFFFF;
 // }
 
 
-.content{
+// .content{
     
-    background: #ffffff;
-    padding: 15px;
-    position:absolute;
-    z-index: 1000000;
-    border-radius: 5px;
-    right: 0;
-    box-shadow: 0px 0px 0px 0.791802px #E8E8E8, 0px 0px 1.5836px rgba(0, 0, 0, 0.12), 0px 15.836px 15.836px rgba(0, 0, 0, 0.02);
-    width: 63%;
-    margin-top: 20px;
-}
+//     background: #ffffff;
+//     padding: 15px;
+//     position:absolute;
+//     z-index: 1000000;
+//     border-radius: 5px;
+//     right: 0;
+//     box-shadow: 0px 0px 0px 0.791802px #E8E8E8, 0px 0px 1.5836px rgba(0, 0, 0, 0.12), 0px 15.836px 15.836px rgba(0, 0, 0, 0.02);
+//     width: 63%;
+//     margin-top: 20px;
+// }
 
 .main-content .content{
     margin-top: 27px;
     right: 6px;
-    width: 63%;
+    width: 100%;
     min-height: 63%;
 }
 .content::before{
@@ -420,9 +432,8 @@ color: #FFFFFF;
 .image_popover{
     position: absolute;
 width: 67px;
-height: 64.15px;
-left: 16px;
-top: 27.5px;
+height: 64px;
+
 border-radius: 5px;
 }
 
@@ -434,8 +445,8 @@ font-size: 9px;
 line-height: 11px;
 display: flex;
 align-items: center;
-margin-top: 27.5px;
 color: #898787;
+width: 100%;
 }
 
 .col_ssummit_details{
@@ -670,6 +681,21 @@ color: #000000;
     .total_reward_points{
         right: 60px;
     }
+
+    .my-custom-class {	
+        width: 73vw;
+        height:auto;	
+        margin-top: 17px;	
+        margin-left: -5.8rem;          	
+    }
+
+    .name_div{
+        font-size: 13px;
+    }
+
+    .content::before{
+        right: calc(50% - 100px);
+    }
 }
 
 @media (min-width: 360px) and (max-width: 370px){
@@ -705,6 +731,16 @@ color: #000000;
     }
     .scroll-arrow{
         z-index: 1000;
+    }
+
+    .my-custom-class {	
+        width: 72vw;
+        height:auto;	
+        margin-top: 17px;	
+        margin-left: -7rem;          	
+    }
+    .content::before{
+        right: calc(50% - 123px);
     }
 }
 
@@ -742,6 +778,13 @@ color: #000000;
     .scroll-arrow{
         z-index: 1000;
     }
+    .my-custom-class {	
+        width: 72vw;
+        height:auto;	
+        margin-top: 17px;	
+        margin-left: -7.8rem;          	
+    }
+    
 }
 
 @media (min-width: 390px) and (max-width: 400px){
@@ -777,6 +820,12 @@ color: #000000;
     }
     .scroll-arrow{
         z-index: 1000;
+    }
+    .my-custom-class {	
+        width: 72vw;
+        height:auto;	
+        margin-top: 17px;	
+        margin-left: -7.8rem;          	
     }
 }
 
@@ -815,6 +864,12 @@ color: #000000;
     .scroll-arrow{
         z-index: 1000;
     }
+    .my-custom-class {	
+        width: 72vw;
+        height:auto;	
+        margin-top: 17px;	
+        margin-left: -7.8rem;          	
+    }
 
 }
 @media (min-width: 414px) and (max-width: 424px){
@@ -850,6 +905,14 @@ color: #000000;
     .scroll-arrow{
         z-index: 1000;
     }
+
+    .my-custom-class {	
+        width: 65vw;
+        height:auto;	
+        margin-top: 17px;	
+        margin-left: -7.8rem;          	
+    }
+    
 }
 
 @media (min-width: 540px) and (max-width: 589px){
@@ -884,6 +947,13 @@ color: #000000;
     }
     .scroll-arrow{
         z-index: 1000;
+    }
+
+    .my-custom-class {	
+        width: 65vw;
+        height:auto;	
+        margin-top: 17px;	
+        margin-left: -7.8rem;          	
     }
 }
 @media (min-width: 768px) and (max-width: 778px){
@@ -949,6 +1019,26 @@ color: #000000;
         font-size: 12px;
         margin-top: 4px;
     }
+   
+    .my-custom-class {	
+        width: 25vw;
+        height:auto;	
+        margin-top: 17px;	
+        margin-left: -5rem;          	
+    }
+
+    .name_div{
+        font-size: 11px;
+        margin-left: 10px;
+    }
+
+    .content::before{
+        right: calc(50% - 93px);
+    }
+
+    .summit_details{
+        margin-left: 10px;
+    }
 }
 
 @media (min-width: 820px) and (max-width: 900px){
@@ -1011,6 +1101,21 @@ color: #000000;
     }
 
     .total_point{
+        font-size: 12px;
+    }
+
+    .my-custom-class {	
+        width: 26vw;
+        height:auto;	
+        margin-top: 17px;	
+        margin-left: -5.5rem;          	
+    }
+
+    .content::before{
+        right: calc(50% - 97px);
+    }
+
+    .name_div{
         font-size: 12px;
     }
 }
@@ -1077,6 +1182,26 @@ color: #000000;
     .total_point{
         font-size: 12px;
     }
+
+    .my-custom-class {	
+        width: 25vw;
+        height:auto;	
+        margin-top: 17px;	
+        margin-left: -6rem;          	
+    }
+
+    .name_div{
+        font-size: 11px;
+        margin-left: 10px;
+    }
+
+    .content::before{
+        right: calc(50% - 106px);
+    }
+
+    .summit_details{
+        margin-left: 10px;
+    }
 }
 
 @media (min-width: 1020px) and (max-width: 1024px){
@@ -1128,6 +1253,26 @@ color: #000000;
    .main-content .content{
     width: 97%;
    }
+
+   .my-custom-class {	
+    width: 25vw;
+    height:auto;	
+    margin-top: 17px;	
+    margin-left: -6rem;          	
+}
+
+.name_div{
+    font-size: 11px;
+    margin-left: 10px;
+}
+
+.content::before{
+    right: calc(50% - 106px);
+}
+
+.summit_details{
+    margin-left: 10px;
+}
 }
 
 
@@ -1180,6 +1325,26 @@ color: #000000;
    .main-content .content{
     width: 77%;
    }
+
+   .my-custom-class {	
+    width: 25vw;
+    height:auto;	
+    margin-top: 17px;	
+    margin-left: -7rem;          	
+}
+
+.name_div{
+    font-size: 11px;
+    margin-left: 10px;
+}
+
+.content::before{
+    right: calc(50% - 122px);
+}
+
+.summit_details{
+    margin-left: 10px;
+}
 }
 
 
@@ -1193,7 +1358,27 @@ color: #000000;
     }
 
     .main-content .content{
-        width: 72%;
+        width: 100%;
+    }
+
+    .my-custom-class {	
+        width: 25vw;
+        height:auto;	
+        margin-top: 17px;	
+        margin-left: -7rem;          	
+    }
+    
+    .name_div{
+        font-size: 11px;
+        margin-left: 10px;
+    }
+    
+    .content::before{
+        right: calc(50% - 122px);
+    }
+    
+    .summit_details{
+        margin-left: 10px;
     }
 }
 
@@ -1203,10 +1388,64 @@ color: #000000;
         width: 70px;
     }
     .main-content .content{
-        width: 69%;
+        width: 100%;
        }
+      
+
+    .my-custom-class {	
+        width: 25vw;
+        height:auto;	
+        margin-top: 17px;	
+        margin-left: -7rem;          	
+    }
+    
+    .name_div{
+        font-size: 11px;
+        margin-left: 10px;
+    }
+    
+    .content::before{
+        right: calc(50% - 122px);
+    }
+    
+    .summit_details{
+        margin-left: 10px;
+    }
 }
 
+@media (min-width: 1600px) and (max-width: 1670px){
+    .slider_final{
+        height: 67%;
+    }
+
+    .content_seasonal_card{
+        height: 365px;
+    }
+
+    .main-content .content{
+        width: 100%;
+    }
+    .my-custom-class {	
+        width: 25vw;
+        height:auto;	
+        margin-top: 17px;	
+        margin-left: -7rem;          	
+    }
+    
+    .name_div{
+        font-size: 11px;
+        margin-left: 10px;
+    }
+    
+    .content::before{
+        right: calc(50% - 122px);
+    }
+    
+    .summit_details{
+        margin-left: 10px;
+    }
+
+}
 @media (min-width: 1670px) and (max-width: 1680px){
     .slider_final{
         height: 67%;
@@ -1217,7 +1456,26 @@ color: #000000;
     }
 
     .main-content .content{
-        width: 58%;
+        width: 100%;
+    }
+    .my-custom-class {	
+        width: 25vw;
+        height:auto;	
+        margin-top: 17px;	
+        margin-left: -7rem;          	
+    }
+    
+    .name_div{
+        font-size: 11px;
+        margin-left: 10px;
+    }
+    
+    .content::before{
+        right: calc(50% - 122px);
+    }
+    
+    .summit_details{
+        margin-left: 10px;
     }
 }
 
@@ -1234,8 +1492,27 @@ color: #000000;
         width:  105px;
     }
 
+    .main-content .content{
+        width: 100%;
+    }
+    .my-custom-class {	
+        width: 25vw;
+        height:auto;	
+        margin-top: 17px;	
+        margin-left: -7rem;          	
+    }
+    
+    .name_div{
+        font-size: 11px;
+        margin-left: 10px;
+    }
+    
     .content::before{
-        right: calc(50% - 173px);
+        right: calc(50% - 122px);
+    }
+    
+    .summit_details{
+        margin-left: 10px;
     }
 }
 
@@ -1254,6 +1531,28 @@ color: #000000;
     .content::before{
         right: calc(50% - 185px);
     }
+    .main-content .content{
+        width: 100%;
+    }
+    .my-custom-class {	
+        width: 25vw;
+        height:auto;	
+        margin-top: 17px;	
+        margin-left: -7rem;          	
+    }
+    
+    .name_div{
+        font-size: 11px;
+        margin-left: 10px;
+    }
+    
+    .content::before{
+        right: calc(50% - 122px);
+    }
+    
+    .summit_details{
+        margin-left: 10px;
+    }
 }
 
 @media (min-width: 2550px) and (max-width: 2560px){
@@ -1269,10 +1568,26 @@ color: #000000;
     }
 
     .main-content .content{
-        width: 49%;
+        width: 100%;
     }
+    .my-custom-class {	
+        width: 25vw;
+        height:auto;	
+        margin-top: 17px;	
+        margin-left: -7rem;          	
+    }
+    
+    .name_div{
+        font-size: 11px;
+        margin-left: 10px;
+    }
+    
     .content::before{
-        right: calc(50% - 186px);
+        right: calc(50% - 122px);
+    }
+    
+    .summit_details{
+        margin-left: 10px;
     }
 }
 
@@ -1289,10 +1604,25 @@ color: #000000;
     }
 
     .main-content .content{
-        width: 46%;
-        min-height: 35vh;
+        width: 100%;
     }
+    .my-custom-class {	
+        width: 25vw;
+        height:auto;	
+        margin-top: 17px;	
+        margin-left: -7rem;          	
+    }
+    
+    .name_div{
+        font-size: 11px;
+        margin-left: 10px;
+    }
+    
     .content::before{
-        right: calc(50% - 264px);
+        right: calc(50% - 122px);
+    }
+    
+    .summit_details{
+        margin-left: 10px;
     }
 }

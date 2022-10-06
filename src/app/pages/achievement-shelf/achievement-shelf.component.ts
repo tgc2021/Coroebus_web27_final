@@ -13,6 +13,8 @@ import { Subscription, combineLatest, Subject, Observable } from 'rxjs';
 import { DOCUMENT } from '@angular/common'; 
 import { Inject }  from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { MdePopoverTrigger } from '@material-extended/mde';	
+import { NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -28,8 +30,9 @@ export class AchievementShelfComponent implements OnInit {
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
-    private _route: ActivatedRoute, public toastService: ToastService, public http: ApiserviceService, public element: ElementRef,@Inject(DOCUMENT) document: Document,private datePipe: DatePipe) { 
-     
+    private _route: ActivatedRoute, config: NgbPopoverConfig, public toastService: ToastService, public http: ApiserviceService, public element: ElementRef,@Inject(DOCUMENT) document: Document,private datePipe: DatePipe) { 
+      config.placement = 'bottom';	
+      config.triggers = 'click';   
 
     }
  
