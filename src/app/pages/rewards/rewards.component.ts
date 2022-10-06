@@ -165,21 +165,21 @@ export class RewardsComponent implements OnInit, AfterViewInit {
 
 
 
-  showhidetext(k: any) {
-    console.log(k);
+  showhidetext(index: any) {
+    console.log(index);
 
-    var dots = document.getElementById("dots");
-    var moreText = document.getElementById("more");
-    var btnText = document.getElementById("more_text");
+    var dots = document.getElementById('dots'+index);
+    var moreText = document.getElementById('more'+index);
+    var btnText = document.getElementById('more_text'+index);
 
     if (dots.style.display === "none") {
       dots.style.display = "inline";
       btnText.innerHTML = "More";
-      moreText.style.display = "none";
+      (<HTMLInputElement>document.getElementById('more'+index)).style.display = "none";
     } else {
       dots.style.display = "none";
       btnText.innerHTML = "Less";
-      moreText.style.display = "inline";
+      (<HTMLInputElement>document.getElementById('more'+index)).style.display = "inline";
     }
   }
 

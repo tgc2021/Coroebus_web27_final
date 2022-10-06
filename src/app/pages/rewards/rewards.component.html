@@ -214,8 +214,8 @@
                       <div class="details">
                         <p class="product_name_redemption">{{pointselectorder2.rewards}}</p>
                         <p class="product_full_description">{{pointselectorder2.coupondescription | slice:0:90}}<span
-                            id="dots"></span> <span id="more">{{pointselectorder2.coupondescription |
-                            slice:90}}</span><br><span (click)="showhidetext(k)" id="more_text">More</span> </p>
+                            [id]="'dots'+k"></span> <span style="display:none;" [id]="'more'+k">{{pointselectorder2.coupondescription |
+                            slice:90}}</span><br><span class="moreText" [id]="'more_text'+k"  (click)="showhidetext(k)" >More</span> </p>
                         <!-- <p >More</p> -->
                         <!-- <p class="product_full_description">{{pointselectorder2.coupondescription}}<span id="dots">...</span> <span id="more">{{pointselectorder2.coupondescription}}</span ><br><span (click)="showhidetext()" id="more_text">More</span> </p> -->
 
@@ -301,7 +301,7 @@
 
           <div>
             <div class="redemption_card">
-              <div class="row" *ngFor="let popup of popupresponse">
+              <div class="row" *ngFor="let popup of popupresponse; let k=index">
                 <div class=" col-md-4 col-lg-4 ">
                   <div class="coupon_div_popup" *ngIf="popup.data.couponid != null">
                     <p class="coupon_id_popup">Coupon ID:{{popup.data.couponid}} </p>
@@ -329,9 +329,11 @@
                       <p class="product_name_redemption_popup">{{popup.data.rewards}}</p>
 
                     </div>
-                    <p class="product_full_description_popup">{{popup.data.coupondescription | slice:0:290}}
-                    </p>
-
+                    <!-- <p class="product_full_description_popup">{{popup.data.coupondescription | slice:0:290}}
+                    </p> -->
+                    <p class="product_full_description_popup">{{popup.data.coupondescription | slice:0:345}}<span
+                      [id]="'dots'+k"></span> <span style="display:none;" [id]="'more'+k">{{popup.data.coupondescription |
+                      slice:346}}</span><br><span class="moreText" [id]="'more_text'+k"  (click)="showhidetext(k)" >More</span> </p>
                   </div>
 
 
@@ -380,7 +382,7 @@
           <div>
             <div class="redemption_card">
               <div class="row">
-                <div class=" col-md-8 col-lg-8 ">
+                <div class=" col-md-8 col-lg-8 col-7">
 
                   <div class="right_side_div">
                     <div *ngFor="let reward of rewardresponse">
@@ -399,11 +401,11 @@
 
 
                 </div>
-                <div class=" col-md-4  col-lg-4 ">
+                <div class=" col-md-4  col-lg-4 col-5">
 
 
                   <div>
-                    <img style="max-width: 111px;" src="{{model.reward_logo}}">
+                    <img class="popup_logo_org" style="max-width: 111px;" src="{{model.reward_logo}}">
                   </div>
 
 
