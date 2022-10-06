@@ -5,7 +5,7 @@
         <div *ngFor="let seasonaldata of seasonal_theme_response;">
             <mat-card class="mat_container">
                 <div class="total_reward_points" *ngFor="let totalrewardrespone of seasonal_total_points_response">
-                    <img src="assets/images/rewards/Reward point.png">
+                    <img class="reward_coin" src="assets/images/rewards/Reward point.png">
                     <p class="total_reward_points_value">{{totalrewardrespone.reward_point}}</p>
                 </div>
                 <mat-tab-group>
@@ -44,8 +44,8 @@
 
                                         </div>
                                         <div *ngIf="w.islessThanToday == true">
-                                            <p *ngIf="k.islessThanToday" class="status1"> Expiry</p>
-                                            <p *ngIf="!k.islessThanToday" class="status1"> Expiry</p>
+                                            <p *ngIf="k.islessThanToday" class="status1"> Expired</p>
+                                            <p *ngIf="!k.islessThanToday" class="status1"> Expired</p>
 
                                         </div>
 
@@ -53,10 +53,10 @@
                                         <div class="wrapper">
                                             <div class="text">
                                                 <img class="info_logo" (click)="popoverDetails(details,k)"
-                                                    src="assets/images/seasonaltheme/infoicon.png">
+                                                    src="assets/images/seasonaltheme/infoicon.png" >
 
                                             </div>
-                                            <div class="content" [id]="'popover_content'+k" style="visibility:hidden">
+                                            <div class="content" [id]="'popover_content'+k" style="visibility:hidden" >
 
                                                 <div class="row">
                                                     <div class="col-4">
@@ -90,7 +90,7 @@
 
 
 
-                                    <div class="slider_final">
+                                    <div class="slider_final" *ngIf="details._badges._data !== null">
                                         <section class="section_slider" >
                                             <div class="scroll-arrow" id="scroll-left" (click)="leftscroll(details,k)">
                                                 <img src="assets/images/seasonaltheme/left-arrow.png">
@@ -98,7 +98,7 @@
                                             <ul class="image_ul" [id]="'imgList'+k">
                                                 <li class="image_li"
                                                     *ngFor="let carauseldata of details._badges._data; let l=index"><img
-                                                        class="all_images" (click)="getBadgesDetail(carauseldata,l)"
+                                                        class="all_images"  (click)="getBadgesDetail(carauseldata,l)"
                                                         data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                                                         [id]="'dialog_popup'+k"
                                                         src="{{carauseldata.seasonal_badge_logo}}" />

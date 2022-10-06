@@ -1,3 +1,7 @@
+*{
+    scrollbar-width: none;
+
+}
 .mat-tab-body.mat-tab-body-active {
     min-height: 62vh;
     min-width: 90vw;
@@ -597,6 +601,484 @@ font-size: 16px;
 line-height: 28px;
 color: #000000;
 }
+
+@media (min-width: 280px) and (max-width: 300px){
+
+    .mat-tab-body.mat-tab-body-active {
+        min-width: 89vw;
+    }
+
+    .slider_final {
+        background-size: 100%;
+        height: 57%;
+     
+    }
+
+    .image_ul {
+        width: 94%;
+    }
+
+    .all_images {
+        width: 30px;
+    }
+
+    .content_seasonal_card {
+        width: 98%;
+        height: 100%;
+    }
+    .date_sequence_div {
+        margin-top: 20px;
+    }
+
+    .date_sequence {      
+        font-size: 8px;
+      
+    }
+
+    .mat_container {
+       margin: 0;
+    }
+    .scroll-arrow{
+        z-index: 1000;
+    }
+
+    .rewards_img{
+        height: 13px;
+    }
+
+    .calender_logo{
+        height: 13px;
+    }
+
+    .status1 {   
+        font-size: 8px;     
+        margin-left: 9px;    
+        width: 40px;
+        padding: 3px;
+    }
+
+    .info_logo{
+        height: 13px;
+        margin-top: 4px;
+    }
+    .reward_coin{
+        height: 13px;
+    }
+    .total_reward_points_value{
+        font-size: 13px;
+    }
+    .total_reward_points{
+        right: 60px;
+    }
+}
+
+@media (min-width: 360px) and (max-width: 370px){
+    .slider_final {
+        background-size: 100%;
+        height: 57%;
+     
+    }
+
+    .image_ul {
+        width: 94%;
+    }
+
+    .all_images {
+        width: 50px;
+    }
+
+    .content_seasonal_card {
+        width: 98%;
+        height: 300px;
+    }
+    .date_sequence_div {
+        margin-top: 20px;
+    }
+
+    .date_sequence {      
+        font-size: 8px;
+      
+    }
+
+    .mat_container {
+       margin: 0;
+    }
+    .scroll-arrow{
+        z-index: 1000;
+    }
+}
+
+@media (min-width: 375px) and (max-width: 385px){
+    .slider_final {
+        background-size: 100%;
+        height: 57%;
+     
+    }
+
+    .image_ul {
+        width: 94%;
+    }
+
+    .all_images {
+        width: 50px;
+    }
+
+    .content_seasonal_card {
+        width: 98%;
+        height: 300px;
+    }
+    .date_sequence_div {
+        margin-top: 20px;
+    }
+
+    .date_sequence {      
+        font-size: 8px;
+        margin-left: 3px;
+    }
+
+    .mat_container {
+       margin: 0;
+    }
+    .scroll-arrow{
+        z-index: 1000;
+    }
+}
+
+@media (min-width: 390px) and (max-width: 400px){
+    .slider_final {
+        background-size: 100%;
+        height: 57%;
+     
+    }
+
+    .image_ul {
+        width: 94%;
+    }
+
+    .all_images {
+        width: 50px;
+    }
+
+    .content_seasonal_card {
+        width: 98%;
+        height: 300px;
+    }
+    .date_sequence_div {
+        margin-top: 20px;
+    }
+
+    .date_sequence {      
+        font-size: 9px;
+        margin-left: 3px;
+    }
+
+    .mat_container {
+       margin: 0;
+    }
+    .scroll-arrow{
+        z-index: 1000;
+    }
+}
+
+@media (min-width: 401px) and (max-width: 413px){
+    .slider_final {
+        background-size: 100%;
+        height: 57%;
+     
+    }
+
+    .image_ul {
+        width: 94%;
+    }
+
+    .all_images {
+        width: 50px;
+    }
+
+    .content_seasonal_card {
+        width: 98%;
+        height: 300px;
+    }
+    .date_sequence_div {
+        margin-top: 20px;
+    }
+
+    .date_sequence {      
+        font-size: 10px;
+      
+    }
+
+    .mat_container {
+       margin: 0;
+    }
+
+    .scroll-arrow{
+        z-index: 1000;
+    }
+
+}
+@media (min-width: 414px) and (max-width: 424px){
+    .slider_final {
+        background-size: 100%;
+        height: 57%;
+     
+    }
+
+    .image_ul {
+        width: 94%;
+    }
+
+    .all_images {
+        width: 50px;
+    }
+
+    .content_seasonal_card {
+        width: 99%;
+        height: 300px;
+    }
+    .date_sequence_div {
+        margin-top: 20px;
+    }
+
+    .date_sequence {      
+        font-size: 10px;
+    }
+
+    .mat_container {
+       margin: 0;
+    }
+    .scroll-arrow{
+        z-index: 1000;
+    }
+}
+
+@media (min-width: 540px) and (max-width: 589px){
+    .slider_final {
+        background-size: 100%;
+        height: 63%;
+     
+    }
+
+    .image_ul {
+        width: 94%;
+    }
+
+    .all_images {
+        width: 90px;
+    }
+
+    .content_seasonal_card {
+        width: 99%;
+        height: 360px;
+    }
+    .date_sequence_div {
+        margin-top: 20px;
+    }
+
+    .date_sequence {      
+        font-size: 10px;
+    }
+
+    .mat_container {
+       margin: 0;
+    }
+    .scroll-arrow{
+        z-index: 1000;
+    }
+}
+@media (min-width: 768px) and (max-width: 778px){
+    .mat-tab-body.mat-tab-body-active {
+        min-height: 62vh;
+        min-width: 85vw;
+    }
+
+    .rewards_img{
+        height: 16px;
+    }
+
+    .calender_logo{
+        height: 16px;
+    }
+
+    .status1{
+        font-size: 7px;
+        width: 30px;
+        margin-left: 9px;
+        padding: 3px;
+    }
+
+    .status{
+        font-size: 8px;
+        width: 40px;
+        margin-left: 3px;
+        padding: 4px;
+    }
+    .date{
+        margin-left: 5px;
+        font-size: 7px;
+    }
+
+    .info_logo{
+        height: 16px;
+      
+        right: 10px;
+        margin-top: 4px;
+    }
+
+    .content_seasonal_card{
+        height: 100%;
+    }
+
+    .all_images{
+        width: 20px;
+    }
+
+    .section_slider{
+        padding: 10px;
+    }
+    .scroll-arrow{
+        z-index: 1000;
+    }
+
+    .title_seasonal_card{
+        font-size: 12px;
+        margin-top: 4px;
+    }
+
+    .total_point{
+        font-size: 12px;
+        margin-top: 4px;
+    }
+}
+
+@media (min-width: 820px) and (max-width: 900px){
+    .mat-tab-body.mat-tab-body-active {
+        min-height: 62vh;
+        min-width: 86vw;
+    }
+
+    .rewards_img{
+        height: 16px;
+    }
+
+    .calender_logo{
+        height: 16px;
+    }
+
+    .status1{
+        font-size: 8px;
+        width: 40px;
+        margin-left: 7px;
+        padding: 4px;
+    }
+
+    .status{
+        font-size: 8px;
+        width: 40px;
+        margin-left: 7px;
+        padding: 4px;
+    }
+    .date{
+        margin-left: 5px;
+        font-size: 8px;
+    }
+
+    .info_logo{
+        height: 16px;
+      
+        right: 10px;
+        margin-top: 4px;
+    }
+
+    .content_seasonal_card{
+        height: 100%;
+    }
+
+    .all_images{
+        width: 20px;
+    }
+
+    .section_slider{
+        padding: 10px;
+    }
+    .scroll-arrow{
+        z-index: 1000;
+    }
+
+    .title_seasonal_card{
+        font-size: 12px;
+        margin-top: 4px;
+    }
+
+    .total_point{
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 912px) and (max-width: 922px){
+    .mat-tab-body.mat-tab-body-active {
+        min-height: 62vh;
+        min-width: 86vw;
+    }
+
+    .rewards_img{
+        height: 16px;
+    }
+
+    .calender_logo{
+        height: 16px;
+    }
+
+    .status1{
+        font-size: 8px;
+        width: 40px;
+        margin-left: 7px;
+        padding: 4px;
+    }
+
+    .status{
+        font-size: 8px;
+        width: 40px;
+        margin-left: 7px;
+        padding: 4px;
+    }
+    .date{
+        margin-left: 5px;
+        font-size: 8px;
+    }
+
+    .info_logo{
+        height: 16px;
+      
+        right: 10px;
+        margin-top: 4px;
+    }
+
+    .content_seasonal_card{
+        height: 100%;
+    }
+
+    .all_images{
+        width: 33px;
+    }
+
+    .section_slider{
+        padding: 10px;
+    }
+    .scroll-arrow{
+        z-index: 1000;
+    }
+
+    .title_seasonal_card{
+        font-size: 12px;
+        margin-top: 4px;
+    }
+
+    .total_point{
+        font-size: 12px;
+    }
+}
+
 @media (min-width: 1020px) and (max-width: 1024px){
     .date{
         font-size: 9px;
