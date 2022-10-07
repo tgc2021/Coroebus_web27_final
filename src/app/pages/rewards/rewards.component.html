@@ -30,7 +30,7 @@
             </div>
             <div class="row">
               <div class="col-md-3 col-sm-6 " *ngFor="let rewardlist of reward.data.rewardTypes[1].rewardList;">
-                <mat-card>
+                <mat-card *ngIf="reward.data.rewardTypes[1].rewardList.length > 0">
                   <img src="{{rewardlist.reward_logo}}" class="productimage" alt="Productimage">
                   <div>
                     <p class="product_description">{{rewardlist.name}}</p>
@@ -51,6 +51,9 @@
 
               </div>
 
+              <div *ngIf="reward.data.rewardTypes[1].rewardList.length == 0" >
+                <p class="error_organisation_reward">No Data Available</p>
+              </div>
             </div>
 
 
@@ -188,63 +191,72 @@
             </div>
 
             <!-- ***************************************  Platform Reward Redemption History ********************************************************************     -->
+<div >
+  <div class="redemption_card_div" *ngIf="value=='2'">
+    <div *ngFor="let pointselectorder2 of points.data.points_list[2]._data[1]._data; let k=index">
 
-            <div class="redemption_card_div" *ngIf="value=='2'">
-              <div *ngFor="let pointselectorder2 of points.data.points_list[2]._data[1]._data; let k=index">
-
-                <mat-card class="redemption_card">
-                  <div class="row">
-                    <div class=" col-md-3 col-xs-2 col-lg-2">
-                      <div class="coupon_div">
-                        <p class="coupon_id">Coupon ID:</p>
-                        <p class="coupon_id_number">{{pointselectorder2.couponid}}</p>
-
-
-                      </div>
-                      <div class="redemption_image_div">
-                        <img class="product_image_redemption" src="{{pointselectorder2.image}}">
-
-                      </div>
-
-                      <p class="cost_redemption"> {{pointselectorder2.rewardcount}} </p>
+      <mat-card class="redemption_card" *ngIf="points.data.points_list[2]._data[1]._data.length >0">
+        <div class="row">
+          <div class=" col-md-3 col-xs-2 col-lg-2">
+            <div class="coupon_div">
+              <p class="coupon_id">Coupon ID:</p>
+              <p class="coupon_id_number">{{pointselectorder2.couponid}}</p>
 
 
-                    </div>
-                    <div class=" col-md-9 col-xs-10 col-lg-10">
-                      <div class="details">
-                        <p class="product_name_redemption">{{pointselectorder2.rewards}}</p>
-                        <p class="product_full_description">{{pointselectorder2.coupondescription | slice:0:90}}<span
-                            [id]="'dots'+k"></span> <span style="display:none;" [id]="'more'+k">{{pointselectorder2.coupondescription |
-                            slice:90}}</span><br><span class="moreText" [id]="'more_text'+k"  (click)="showhidetext(k)" >More</span> </p>
-                        <!-- <p >More</p> -->
-                        <!-- <p class="product_full_description">{{pointselectorder2.coupondescription}}<span id="dots">...</span> <span id="more">{{pointselectorder2.coupondescription}}</span ><br><span (click)="showhidetext()" id="more_text">More</span> </p> -->
-
-                      </div>
-
-                      <div class="coupon_div_1">
-
-                        <p class="coupon_code_number">Coupon Code: {{pointselectorder2.couponcode}}</p>
-                        <!-- <p class="coupon_code"></p> -->
-
-                      </div>
-
-                      <div class="expiry_date">
-                        <p> Expiry Date: {{pointselectorder2.expirydate | date: 'dd/MM/yyyy'}}</p>
-                      </div>
-
-                    </div>
-                  </div>
-
-
-
-
-
-                </mat-card>
-
-              </div>
+            </div>
+            <div class="redemption_image_div">
+              <img class="product_image_redemption" src="{{pointselectorder2.image}}">
 
             </div>
 
+            <p class="cost_redemption"> {{pointselectorder2.rewardcount}} </p>
+
+
+          </div>
+          <div class=" col-md-9 col-xs-10 col-lg-10">
+            <div class="details">
+              <p class="product_name_redemption">{{pointselectorder2.rewards}}</p>
+              <p class="product_full_description">{{pointselectorder2.coupondescription | slice:0:90}}<span
+                  [id]="'dots'+k"></span> <span style="display:none;" [id]="'more'+k">{{pointselectorder2.coupondescription |
+                  slice:90}}</span><br><span class="moreText" [id]="'more_text'+k"  (click)="showhidetext(k)" >More</span> </p>
+              <!-- <p >More</p> -->
+              <!-- <p class="product_full_description">{{pointselectorder2.coupondescription}}<span id="dots">...</span> <span id="more">{{pointselectorder2.coupondescription}}</span ><br><span (click)="showhidetext()" id="more_text">More</span> </p> -->
+
+            </div>
+
+            <div class="coupon_div_1">
+
+              <p class="coupon_code_number">Coupon Code: {{pointselectorder2.couponcode}}</p>
+              <!-- <p class="coupon_code"></p> -->
+
+            </div>
+
+            <div class="expiry_date">
+              <p> Expiry Date: {{pointselectorder2.expirydate | date: 'dd/MM/yyyy'}}</p>
+            </div>
+
+          </div>
+        </div>
+
+
+
+
+
+      </mat-card>
+
+
+     
+    </div>
+
+
+    <div *ngIf="points.data.points_list[2]._data[1]._data.length ==0">
+      <p class="error_mssg_platform_redemption">No Data Available</p>
+   </div>
+
+  </div>
+
+</div>
+         
             <!-- ***************************************  Organisation Reward Redemption History ********************************************************************     -->
 
             <div>
@@ -254,7 +266,7 @@
                 <div class="row">
                   <div class="col-md-3 col-sm-12 org_redem_div "
                     *ngFor="let pointselectorder3 of points.data.points_list[2]._data[0]._data">
-                    <mat-card class="organisation_redemption_history">
+                    <mat-card class="organisation_redemption_history" *ngIf="points.data.points_list[2]._data[0]._data.length > 0">
                       <img src="{{pointselectorder3.reward_logo}}" class="productimage" alt="Productimage">
                       <div>
                         <p class="product_description">{{pointselectorder3.rewards}}</p>
@@ -267,6 +279,11 @@
 
 
                     </mat-card>
+
+                  </div>
+
+                  <div class="organisation_redemption_history" *ngIf="points.data.points_list[2]._data[0]._data.length == 0">
+                    <p class="error_mssg_organisation_redemption">No Data Available</p>
 
                   </div>
 
