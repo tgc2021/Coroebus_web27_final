@@ -31,8 +31,12 @@
             <div class="row">
               <div class="col-md-3 col-sm-6 " *ngFor="let rewardlist of reward.data.rewardTypes[1].rewardList;">
                 <mat-card *ngIf="reward.data.rewardTypes[1].rewardList.length > 0">
-                  <img src="{{rewardlist.reward_logo}}" class="productimage" alt="Productimage">
+                  <div class="product_image_div">
+                    <img src="{{rewardlist.reward_logo}}" class="productimage" alt="Productimage">
+
+                  </div>
                   <div>
+
                     <p class="product_description">{{rewardlist.name}}</p>
 
                   </div>
@@ -267,7 +271,10 @@
                   <div class="col-md-3 col-sm-12 org_redem_div "
                     *ngFor="let pointselectorder3 of points.data.points_list[2]._data[0]._data">
                     <mat-card class="organisation_redemption_history" *ngIf="points.data.points_list[2]._data[0]._data.length > 0">
-                      <img src="{{pointselectorder3.reward_logo}}" class="productimage" alt="Productimage">
+                      <div class="product_image_div">
+                        <img src="{{pointselectorder3.reward_logo}}" class="productimage" alt="Productimage">
+
+                      </div>
                       <div>
                         <p class="product_description">{{pointselectorder3.rewards}}</p>
 

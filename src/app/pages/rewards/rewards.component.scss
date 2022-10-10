@@ -159,7 +159,7 @@ hr {
     background: #FFFFFF;
     border-radius: 4px;
     margin: 7px;
-    height: 40vh;
+    height: auto;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
 }
 
@@ -171,39 +171,43 @@ hr {
     margin-top: 10px;
 
 }
-
+.product_image_div{
+    display: flex;
+    justify-content: center;
+}
 .productimage {
-    position: absolute;
+ 
     width: 30%;
-    top: 10vh;
-    left: 50%;
-    right: 50%;
-    transform: translate(-50%, -50%);
+ 
 }
 
 .product_description {
+    font-family: 'Inter';
     width: 100%;
     font-size: 14px;
     text-align: center;
-    margin-top: 7.3rem;
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #000000;
 }
 
 .product_cost {
-    position: absolute;
-    width: 30%;
-    top: 25vh;
-    left: 50%;
-    right: 50%;
-    transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000000;
 }
 
-.product_cost {
-    text-align: center;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    font-size: 18px;
-    margin-top: 10px;
-}
+
+// .product_cost {
+//     text-align: center;
+//     font-weight: 700;
+//     letter-spacing: -0.02em;
+//     font-size: 18px;
+//     margin-top: 10px;
+// }
 
 .btn_div {
     text-align: center;
@@ -216,7 +220,7 @@ hr {
     background: white;
     width: 105px;
     font-size: 13px;
-    margin-top: 4.2rem;
+    margin-top: 1rem;
 }
 
 // Redemption History
@@ -758,16 +762,12 @@ position: relative;
         margin-top: 2rem;
     }
     .product_description{
-        margin-top: 5rem;
         font-size: 13px;
     }
     .product_cost{
         font-size: 17px;
-        margin: 0;
     }
-    .redeem_btn{
-        margin-top: 4rem;
-    }
+  
 
     .productimage{
         width: 32%;
@@ -1014,13 +1014,7 @@ position: relative;
         margin-top: 29px;
     }
 
-    .product_description {
-        margin-top: 7.7rem;
-    }
-
-    .redeem_btn {
-        margin-top: 2.7rem;
-    }
+   
 
     .rewardpoints {
         position: absolute;
@@ -1285,12 +1279,7 @@ position: relative;
     //     margin-top: 30px;
     // }
 
-    .product_description {
-        margin-top: 6.3rem;
-    }
-    .redeem_btn{
-        margin-top: 3.5rem;
-    }
+  
 
     //Redemption History
 
@@ -1527,13 +1516,7 @@ position: relative;
         display: flex;
         margin-top: 8px;
     }
-    .product_description {
-        margin-top: 7.7rem;
-    }
-
-    .redeem_btn {
-        margin-top: 2.5rem;
-    }
+   
     .rewardpoints {
         position: absolute;
         margin: 0px;
@@ -1553,9 +1536,7 @@ position: relative;
     .product_cost{
         margin: 0;
     }
-    .redeem_btn{
-        margin-top: 4.5rem;
-    }
+  
 
     .mat-tab-group{
         margin-top: 20px;
@@ -1772,17 +1753,7 @@ position: relative;
         margin-top: 10px;
     }
 
-    .product_description {
-        margin-top: 8.2rem;
-    }
-
-    .redeem_btn {
-        margin-top: 5.5rem;
-    }
-
-    .product_cost {
-        margin-top: -9px;
-    }
+   
     .rewardpoints {
         position: absolute;
         margin: 0px;
@@ -2025,14 +1996,7 @@ position: relative;
         margin-top: 14px;
     }
 
-    .product_description {
-        margin-top: 8.2rem;
-    }
-
-
-    .redeem_btn {
-        margin-top: 5.5rem;
-    }
+   
     .rewardpoints {
         position: absolute;
         margin: 0px;
@@ -2316,9 +2280,7 @@ position: relative;
     .productimage{
         width: 22%;
     }
-    .redeem_btn{
-        margin-top: 3.2rem;
-    }
+    
     .mytabs label{
         width:252px;
     }
@@ -2523,14 +2485,8 @@ position: relative;
 
 .product_description{
     font-size: 12px;
-    margin-top: 8.3rem;
 }
-.product_cost{
-    margin: 0;
-}
-.redeem_btn{
-    margin-top: 8.2rem;
-}
+
 
   //Redemption History
 
@@ -2590,16 +2546,9 @@ position: relative;
 
     .product_description{
         font-size: 13px;
-        margin-top: 9rem;
     }
 
-    .product_cost{
-        margin: 0;
-    }
-
-    .redeem_btn{
-        margin-top: 12.2rem;
-    }
+  
 
 
     //Redemption History
@@ -2640,16 +2589,7 @@ position: relative;
 
 }
 
-.product_description{
-    margin-top: 10.3rem;
-}
 
-.redeem_btn{
-    margin-top: 14.2rem;
-}
-.product_cost{
-    margin: 0;
-}
   //Redemption History
 
   .form-select{
@@ -2682,21 +2622,14 @@ position: relative;
 }
 
 @media (min-width: 1020px) and (max-width: 1024px) {
-    .product_description{
-        margin-top: 4.8rem;
-    }
+  
 .productimage{
     width: 33%;
-    top: 9vh;
 }
 
-.product_cost{
-    margin: 0;
-}
 
-.redeem_btn{
-    margin-top: 3.2rem;
-}
+
+
 
 //Redemption History
 .form-select{
@@ -2756,23 +2689,18 @@ position: relative;
     }
 
     .product_description {
-        width: 100%;
         font-size: 13px;
-        margin-top: 6.2rem;
-        text-align: center;
+      
     }
 
     .product_cost {
 
         font-size: 15px;
-        margin-top: 0.5rem;
+        
     }
 
     .redeem_btn {
-        border-radius: 5px;
-        height: 40px;
-        border: 1.8px solid #F7EA2C;
-        background: white;
+       
         width: 105px;
         font-size: 13px;
     }
@@ -2788,9 +2716,6 @@ position: relative;
         width: 32%;
     }
 
-    .product_cost{
-        margin: 0;
-    }
 
     // Redemption History
     .cost_redemption{
@@ -2801,17 +2726,7 @@ position: relative;
      }
 }
 @media (min-width: 1360px) and (max-width: 1366px) {
-    .product_description {
-        margin-top: 6rem;
-    }
-
-    .product_cost {
-        margin:0;
-    }
-
-    .redeem_btn {
-        margin-top: 3rem;
-    }
+   
 
     .mytabs .tab {
         width: 99%;
@@ -2833,17 +2748,7 @@ position: relative;
         width: 33%;
     }
 
-    .product_description {
-        margin-top: 7.1rem;
-    }
-
-    .product_cost {
-        margin:0;
-    }
-
-    .redeem_btn {
-        margin-top: 4.5rem;
-    }
+    
 
     .mytabs .tab {
         width: 99%;
@@ -2854,22 +2759,9 @@ position: relative;
 @media (min-width: 1600px) and (max-width: 1640px){
     .productimage{
         width: 35%;
-        top: 8vh;
     }
 
-    .product_description{
-        margin-top: 9.3rem;
-        font-size: 15px;
-    }
-
-    .product_cost{
-        margin: 0;
-    }
-
-    .redeem_btn{
-        width: 114px;
-        margin-top: 10.2rem;
-    }
+  
 
     .cost_redemption{
         margin-right: 20px;
@@ -2879,23 +2771,9 @@ position: relative;
 @media (min-width: 1670px) and (max-width: 1680px) {
     .productimage {
         width: 35%;
-        margin-top: 9vh;
     }
 
-    .product_description {
-        margin-top: 9.5rem;
-        font-size: 15px;
-    }
-
-    .redeem_btn {
-        width: 115px;
-        margin-top: 5rem;
-    }
-
-    .product_cost {
-        margin:0;
-    }
-
+  
     .mytabs .tab {
         width: 99%;
     }
@@ -2906,19 +2784,7 @@ position: relative;
 }
 
 @media (min-width: 1900px) and (max-width: 1920px) {
-    .product_description {
-        font-size: 15px;
-        margin-top: 9.6rem;
-    }
-
-    .product_cost {
-        margin: 0;
-    }
-
-    .redeem_btn {
-        width: 113px;
-       
-    }
+  
 
     .mytabs .tab {
         width: 99%;
@@ -2928,26 +2794,15 @@ position: relative;
      }
 }
 
+
+
+
 @media (min-width: 2000px) and (max-width: 2048px) {
     .productimage {
-        top: 9vh;
         width: 31%;
     }
 
-    .product_description {
-        margin-top: 13rem;
-        font-size: 17px;
-    }
-
-    .product_cost {
-        top: 23vh;
-        font-size: 20px;
-    }
-
-    .redeem_btn {
-        margin-top: 9rem;
-        width: 128px;
-    }
+ 
 
     .mytabs .tab {
         width: 99%;
@@ -2959,30 +2814,26 @@ position: relative;
 
 @media (min-width: 2550px) and (max-width: 2560px) {
     .productimage {
-        top: 9vh;
-        width: 31%;
+        width: 24%;
     }
 
-    .product_description {
-        margin-top: 14rem;
-        font-size: 19px;
-    }
-
-    .product_cost {
-        top: 23vh;
-        font-size: 20px;
-    }
-
-    .redeem_btn {
-        margin-top: 6rem;
-        width: 144px;
-        height: 47px;
-        margin-top: 10rem;
-    }
+   
 
     .mytabs .tab {
         width: 99%;
     }
 
 
+}
+
+@media (min-width: 3830px) and (max-width: 3860px){
+    .productimage {
+        width:24%;
+    }
+
+   
+
+    .mytabs .tab {
+        width: 99%;
+    }
 }
