@@ -635,6 +635,32 @@ color: #A5ACB8;
     color: #000000;
 }
 
+.product_image_redemption_popup_org{
+    width: 100%;
+}
+
+.cost_redemption_popup_org{
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 600;
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+
+
+.product_name_redemption_popup_org{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 17px;
+    display: block;
+    color: #000000;
+    margin-top: 20px;
+}
+
+
 .coupon_div_1_popup{
     font-weight: 600;
     font-size: 12px;
@@ -931,6 +957,34 @@ position: relative;
     font-size: 12px;
     margin: 0;
 }
+
+.product_image_redemption_popup_org{
+    width: 30%;
+}
+
+.cost_redemption_popup_org{
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 600;
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+
+
+.product_name_redemption_popup_org{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 17px;
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin-top: 10px;
+}
+
 .product_name_redemption_popup {
     /* margin-top: 30px; */
     font-family: "Inter";
@@ -1188,6 +1242,34 @@ position: relative;
     font-size: 12px;
     margin: 0;
 }
+
+.product_image_redemption_popup_org{
+    width: 30%;
+}
+
+.cost_redemption_popup_org{
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 600;
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+
+
+.product_name_redemption_popup_org{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 17px;
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin-top: 10px;
+}
+
 .product_name_redemption_popup {
     /* margin-top: 30px; */
     font-family: "Inter";
@@ -1439,6 +1521,19 @@ position: relative;
   
 }
 
+.product_image_redemption_popup_org{
+    width: 30%;
+}
+
+.cost_redemption_popup_org{
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 600;
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+
 .cost_redemption_popup {
  
     font-size: 12px;
@@ -1457,6 +1552,20 @@ position: relative;
     color: #000000;
     margin: 0;
 }
+
+.product_name_redemption_popup_org{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 17px;
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin-top: 6px;
+}
+
 .product_full_description_popup {
 
     margin-top: 10px;
@@ -1580,6 +1689,10 @@ position: relative;
         margin: 0px;
         
     }
+
+    .product_image_redemption_popup_org{
+        width: 30%;
+    }
     .redemption_image_div{
         margin-top: 15px;
     }
@@ -1694,6 +1807,30 @@ position: relative;
     font-size: 12px;
     margin: 0;
 }
+
+.cost_redemption_popup_org{
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 600;
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+
+
+.product_name_redemption_popup_org{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 17px;
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin-top: 10px;
+}
+
 .product_name_redemption_popup {
     /* margin-top: 30px; */
     font-family: "Inter";
@@ -1920,6 +2057,34 @@ position: relative;
     font-size: 12px;
     margin: 0;
 }
+
+.product_image_redemption_popup_org{
+    width: 30%;
+}
+
+.cost_redemption_popup_org{
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 600;
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+
+
+.product_name_redemption_popup_org{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 17px;
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin-top: 10px;
+}
+
 .product_name_redemption_popup {
     /* margin-top: 30px; */
     font-family: "Inter";
@@ -2068,6 +2233,12 @@ position: relative;
         margin: 0px;
         
     }
+
+    .product_image_redemption_popup_org{
+        width: 30%;
+    }
+
+    
     .redemption_image_div{
         margin-top: 15px;
     }
@@ -2166,22 +2337,32 @@ position: relative;
     position: relative;
     /* float: right; */
     width: 93%;
-    top: -199px;
+    top: -209px;
     text-align: center;
 }
+
+
 
 .redemption_image_div_popup{
     margin-top: 15px;
     width: 100%;
     text-align: center;
     margin-top: 20px;
-  
+   padding-bottom: 10px;
 }
 
 .cost_redemption_popup {
  
-    font-size: 12px;
+    font-size: 14px;
     margin: 0;
+}
+.cost_redemption_popup_org{
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 600;
+    display: block;
+    align-items: center;
+    text-align: center;
 }
 .product_name_redemption_popup {
     /* margin-top: 30px; */
@@ -2195,6 +2376,19 @@ position: relative;
     text-align: center;
     color: #000000;
     margin: 0;
+}
+
+.product_name_redemption_popup_org{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 17px;
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin-top: 10px;
 }
 .product_full_description_popup {
 
@@ -2217,6 +2411,7 @@ position: relative;
 .right_side_div{
     margin-left: 15px;
 }
+
 }
 
 @media (min-width: 468px) and (max-width: 539px) {
@@ -2433,6 +2628,35 @@ position: relative;
     font-size: 12px;
     margin: 0;
 }
+
+.product_image_redemption_popup_org{
+    width: 30%;
+}
+
+.cost_redemption_popup_org{
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 600;
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+
+
+.product_name_redemption_popup_org{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 17px;
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin-top: 10px;
+}
+
+
 .product_name_redemption_popup {
     /* margin-top: 30px; */
     font-family: "Inter";
@@ -2471,6 +2695,8 @@ position: relative;
     margin-left: 53px;
 }
 }
+
+
 @media (min-width: 768px) and (max-width: 778px){
     .mytabs{
      

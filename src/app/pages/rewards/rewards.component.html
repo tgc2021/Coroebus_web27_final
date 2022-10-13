@@ -157,7 +157,7 @@
                   <tr *ngFor="let passbookresponse of response.data.points_list[1]._data | filter:searchText ">
                     <td class="col-md-2 col-sm-1">{{passbookresponse.date_time | date: 'dd/MM/yyyy' }}</td>
                     <td class="col-md-4 col-sm-3">{{passbookresponse.description_}}</td>
-                    <td class="col-md-2 col-sm-3">{{passbookresponse.points_credited}}</td>
+                    <td class="col-md-2 col-sm-3">{{passbookresponse.points_credited | number : '1.2-2'}}</td>
 
                     <td *ngIf="passbookresponse.points_debited!=='' " class="col-md-2 col-sm-3">
                       {{passbookresponse.points_debited}}
@@ -170,7 +170,7 @@
 
                     </td>
 
-                    <td class="col-md-2">{{passbookresponse.balance}}</td>
+                    <td class="col-md-2">{{passbookresponse.balance | number : '1.2-2'}}</td>
 
                   </tr>
 
@@ -332,12 +332,19 @@
 
 
                   </div>
-                  <div class="redemption_image_div_popup">
+                  <div class="redemption_image_div_popup" *ngIf="popup.data.couponcode != null">
                     <img class="product_image_redemption_popup" src="{{popup.data.reward_logo}}">
 
                   </div>
 
-                  <p class="cost_redemption_popup"> {{popup.data.points}} </p>
+                  <div class="redemption_image_div_popup" *ngIf="popup.data.couponcode == null">
+                    <img class="product_image_redemption_popup_org" src="{{popup.data.reward_logo}}">
+
+                  </div>
+
+
+                  <p *ngIf="popup.data.couponcode != null" class="cost_redemption_popup"> {{popup.data.points}} </p>
+                  <p *ngIf="popup.data.couponcode == null" class="cost_redemption_popup_org"> {{popup.data.points}} </p>
 
 
                 </div>
@@ -347,17 +354,22 @@
                     <p class="coupon_code_number_popup">Coupon Code: {{popup.data.couponcode}}</p>
 
                   </div>
+                  
 
                   <div class="details_popup">
-                    <div>
+                    <div *ngIf="popup.data.couponcode != null">
                       <p class="product_name_redemption_popup">{{popup.data.rewards}}</p>
+
+                    </div>
+                    <div *ngIf="popup.data.couponcode == null">
+                      <p class="product_name_redemption_popup_org">{{popup.data.rewards}}</p>
 
                     </div>
                     <!-- <p class="product_full_description_popup">{{popup.data.coupondescription | slice:0:290}}
                     </p> -->
                     <p class="product_full_description_popup">{{popup.data.coupondescription | slice:0:345}}<span
                       [id]="'dots'+k"></span> <span style="display:none;" [id]="'more'+k">{{popup.data.coupondescription |
-                      slice:346}}</span><br><span class="moreText" [id]="'more_text'+k"  (click)="showhidetext(k)" >More</span> </p>
+                      slice:346}}</span><br><span  *ngIf="popup.data.couponid != null" class="moreText" [id]="'more_text'+k"  (click)="showhidetext(k)" >More</span> </p>
                   </div>
 
 
