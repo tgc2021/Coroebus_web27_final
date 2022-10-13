@@ -12,6 +12,13 @@
 
 }
 
+.widthText{
+    width: 10%;
+}
+
+// .media{
+//     width: 20%;
+// }
 ::-webkit-scrollbar{
     width: 2px;
 }
@@ -802,6 +809,8 @@ border-radius: 15px;
     border: 1px solid;
 }
 
+
+
 // Responsive
 
 
@@ -821,7 +830,9 @@ border-radius: 15px;
             margin-left: 25%;
         }
     }
-    
+    .widthText{
+        width: 10%;
+    }
     .level-badge-btn {
         width:73px;
         height: 28.86px;
@@ -887,6 +898,7 @@ border-radius: 15px;
     .w-86 {
         width: 90%;
     }
+
 
     .points-bullentins-card {
         height: 372px;
