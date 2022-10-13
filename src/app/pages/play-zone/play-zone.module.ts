@@ -1,19 +1,36 @@
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';	
 import { CommonModule } from '@angular/common';
-
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatDialogModule} from '@angular/material/dialog';
 import { PlayZoneRoutingModule } from './play-zone-routing.module';
 import { PlayZoneComponent } from './play-zone.component';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {MatSelectModule} from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
+
 
 @NgModule({
   declarations: [
-    PlayZoneComponent
+    PlayZoneComponent,
+    
+    
+    
+    
   ],
   imports: [
     CommonModule,
+    MatTabsModule,
     IvyCarouselModule,
-    PlayZoneRoutingModule
+    PlayZoneRoutingModule,
+    FormsModule,
+    MatSelectModule,
+    Ng2SearchPipeModule,
+    FormsModule,
+    NgbModule,
+    MatDialogModule
+   
   ]
 })
 export class PlayZoneModule { }

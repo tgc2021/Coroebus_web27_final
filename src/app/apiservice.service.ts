@@ -44,6 +44,23 @@ export class ApiserviceService {
     var tempurl = `${this.URLstring}`+`/coroebus-beta-api-levels/SeasonalTheme/Overallrewards`
     return this.Http.post(tempurl,data)
   }
-  
+  playZone(data:any)
+  {
+    var tempurl = `${this.URLstring}`+`/coroebus-beta-api-levels/SpotDashboard/produce`
+    return this.Http.post(tempurl,data)
+  }
+
+  playZoneUpdate(data:any)
+  {
+    var tempurl = `${this.URLstring}`+`/coroebus-beta-api-levels/SpotDashboard/produce`
+    return this.Http.put(tempurl,data)
+  }
+
+  playZonePassbook(data:any){
+    var tempurl = `${this.URLstring}`+`/coroebus-beta-api-levels/SpotDashboard/passbook`
+    return this.Http.post(tempurl,data)
+
+
+  }
 
 }
