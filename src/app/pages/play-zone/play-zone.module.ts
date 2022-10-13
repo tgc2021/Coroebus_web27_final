@@ -8,12 +8,16 @@ import { PlayZoneComponent } from './play-zone.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+
 import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { FilterPipePipe } from './pipe/filter-pipe.pipe';
+
 
 
 @NgModule({
   declarations: [
     PlayZoneComponent,
+    FilterPipePipe,
     
     
     

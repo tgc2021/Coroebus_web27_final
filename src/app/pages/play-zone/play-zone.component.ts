@@ -27,6 +27,8 @@ export class PlayZoneComponent implements OnInit {
   update_spot_status: any;
   newArray: any;
   hideMobileDropDown: boolean;
+  PerformanceType: any;
+  EngagementMentType: any;
 
 
   
@@ -50,6 +52,7 @@ export class PlayZoneComponent implements OnInit {
   rewardPoints: any=0;
   term:any="";
   term1:any="";
+  spot_type:any='';
   updateStatus:any=[];
   
 
@@ -74,6 +77,14 @@ export class PlayZoneComponent implements OnInit {
       this.http.playZone(body).subscribe((res:any) => {
         //console.table(res);
         this.spotEngagementData=res.data._spot_engagement_data;
+        console.log(this.spotEngagementData);
+        this.PerformanceType = this.spotEngagementData.filter(value => value.spot_type==='Performance');
+        this.EngagementMentType=this.spotEngagementData.filter(value=>value.spot_type==='Engagement');
+        
+
+        console.log(this.PerformanceType);
+        console.log(this.EngagementMentType);
+
       });
       //  console.log(this.spotEngagementData);
       this.http.playZonePassbook(body).subscribe((res:any)=>{
@@ -81,7 +92,10 @@ export class PlayZoneComponent implements OnInit {
         this.rewardPoints=res.data._reward_points;
         console.log(this.rewardPoints);
         this.spotEngagementPassbook=res.data._spot_passbook_data;
+       
       })
+
+      
       
 
       console.log()
@@ -107,9 +121,13 @@ export class PlayZoneComponent implements OnInit {
     this.hideMobileDropDown=!this.hideMobileDropDown;
   }
 
+  value = '2';
 
+  onChange(event) {
+    this.value = event.target.value;
+    console.log(this.value);
 
-  
+  }
 
   // async spectSearch() {
   //   let err: any, res: any;
