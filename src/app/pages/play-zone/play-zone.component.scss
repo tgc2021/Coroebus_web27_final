@@ -5,19 +5,22 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    // width: 100vw;
-    // height: 100vh;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
 }
 
 .playZone-container {
     margin: 1%;
     padding: 1%;
     background: #FFFFFF;
-    min-height: 80vh;
+    height: 85vh;
     border-radius: 8px;
     width: 66%;
-    // position: fixed;
+    // height: 70vh;
+    position: fixed;
     overflow-y:scroll;
+    
     
 }
 .subHeading {
@@ -36,8 +39,11 @@
     padding: 1%;
     background: #FFFFFF;
     border-radius: 8px;
-    min-height: 80vh;
+    height: 85vh;
     width: 30%;
+    position: fixed;
+    right: 0;
+    overflow-y: auto;
 
 }
 
@@ -198,11 +204,9 @@ option {
             font-size: 14px;
             line-height: 14px;
             /* or 101% */
-        
             display: flex;
             align-items: center;
             text-align: center;
-        
             color: #1A5286;
 
         
@@ -211,9 +215,10 @@ option {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-evenly;
+        justify-content:space-around;
         align-items: center;
-        gap: 1rem;
+       
+       
    
     }
 
@@ -295,7 +300,7 @@ color: #54595E;
 
 }
 .playzone-mobile-view{
-    background: url('../../../assets/images/playZone/images/Rectangle\ 569.png');
+    background: url('../../../assets/images/playZone/images/Rectangle\ 569.png') -19vh;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -304,6 +309,7 @@ color: #54595E;
 
 
 .mobile-playzone-container {
+
     display: flex;
     justify-content: space-between;
     background: #ffff !important;
