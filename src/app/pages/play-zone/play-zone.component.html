@@ -211,13 +211,13 @@
                                         <img src="assets/images/playZone/images/filterDown.png" alt="">
                                     </ng-template>
                                     <ng-template #upFilter1>
-                                        <img src="../../../assets/images/playZone/images/filterUp.png" alt="">
+                                        <img src="assets/images/playZone/images/filterUp.png" alt="">
                                     </ng-template>
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let passbookData of spotEngagementPassbook |filter:term |orderBy: key : reverse |orderBy: key1 : reverse1 ;let i=index ">
+                            <tr *ngFor="let passbookData of spotEngagementPassbook |filter:term |orderBy: key : reverse | orderBy: key1 : reverse1 ;let i=index ">
                                 <td scope="row">{{i+1}}</td>
                                 <td>
                                     <span [ngbTooltip]="tooltipContent" placement="bottom" id=table-row >{{passbookData.game_name.slice(0,10)}}&nbsp;...</span>
