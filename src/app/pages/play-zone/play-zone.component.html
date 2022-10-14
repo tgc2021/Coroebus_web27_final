@@ -19,10 +19,7 @@
                           
                     <div class="searchBar col-9">
                         <input type="text" class="form-control col-12" placeholder="Search"
-                            aria-label="Search People here.." aria-describedby="basic-addon2" [(ngModel)]="term1">
-                            <!-- <input type="text" class="form-control dashboard-search" placeholder="Search People here.."
-                            [(ngModel)]="spectSearchStr" aria-label="Search People here.."
-                            aria-describedby="basic-addon2" (keyup.enter)="spectSearch()"> -->
+                            aria-label="Search People here.." aria-describedby="basic-addon2"  [(ngModel)]="term1" >
                     </div>
                     <div>
                         <button class="btn-sm-2 col-1">
@@ -157,23 +154,23 @@
                                     
                                         <img src="assets/images/playZone/images/Group 6078.png" type="button" alt="filter" (click)="openDropdown()" id="dropdownBasic1" ngbDropdownToggle >
                                     
-                                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" *ngIf="hideDropDown" [(ngModel)]="status" class="d-flex flex-column justify-content-center p-3 m-2" style="width:20vw">
+                                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" *ngIf="hideDropDown"  class="d-flex flex-column justify-content-center p-3 m-2" style="width:20vw">
                                         <button  class="form-label" ngbDropdownItem>status</button>
                                         <button ngbDropdownItem>
-                                       <input type="checkbox">  &nbsp;
+                                       <input type="checkbox" checked="Latest">  &nbsp;
                                         Latest</button>
                                         <button ngbDropdownItem>
-                                            <input type="checkbox">&nbsp;
+                                            <input type="checkbox"  checked="Validity">&nbsp;
                                         Validity</button>
                                         <button  class="form-label" ngbDropdownItem>Engagement Type</button>
                                         <button ngbDropdownItem>
-                                            <input type="checkbox">&nbsp;
+                                            <input type="checkbox" checked="Performance">&nbsp;
                                         Performance</button>
                                         <button ngbDropdownItem>
-                                            <input type="checkbox">&nbsp;
+                                            <input type="checkbox" checked="Engaged">&nbsp;
                                         Engagement</button>
                                         <button ngbDropdownItem>
-                                            <input type="checkbox">&nbsp;
+                                            <input type="checkbox" checked="all">&nbsp;
                                         All</button>
                                       
                                     </div>
@@ -197,12 +194,30 @@
                             <tr>
                                 <th scope="col">Sr No.</th>
                                 <th scope="col">Event</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Points</th>
+                                <th scope="col" (click)="sortList('date_time_stamp')">
+                                    Date &nbsp;
+                                    <div *ngIf="reverse; then downFilter else upFilter"></div>
+                                    <ng-template #downFilter>
+                                        <img src="assets/images/playZone/images/filterDown.png" alt="">
+                                    </ng-template>
+                                    <ng-template #upFilter>
+                                        <img src="../../../assets/images/playZone/images/filterUp.png" alt="">
+                                    </ng-template>
+
+                                </th>
+                                <th scope="col" (click)="sortList1('reward_point')">Points
+                                    &nbsp;<div *ngIf="!reverse1; then downFilter1 else upFilter1"></div>
+                                    <ng-template #downFilter1>
+                                        <img src="assets/images/playZone/images/filterDown.png" alt="">
+                                    </ng-template>
+                                    <ng-template #upFilter1>
+                                        <img src="../../../assets/images/playZone/images/filterUp.png" alt="">
+                                    </ng-template>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let passbookData of spotEngagementPassbook |filter:term;let i=index ">
+                            <tr *ngFor="let passbookData of spotEngagementPassbook |filter:term |orderBy: key : reverse |orderBy: key1 : reverse1 ;let i=index ">
                                 <td scope="row">{{i+1}}</td>
                                 <td>
                                     <span [ngbTooltip]="tooltipContent" placement="bottom" id=table-row >{{passbookData.game_name.slice(0,10)}}&nbsp;...</span>
@@ -362,7 +377,7 @@
                             <div class="d-flex p-2" style="cursor:pointer;">
                                 <div *ngIf="data.spot_status==='Open' && data._status==='active'; then openedBlock;else openBlock"></div>
                                     <ng-template #openedBlock>
-                                        <button style="cursor:pointer;border: none;background: #ffff;" class="status-openButton"
+                                        <button style="cursor:pointer;border: none;background: #ffff;" class="mobile-status-openButton"
                                         (click)="open(content1)">
                                         {{data.spot_status}}
                                     </button>

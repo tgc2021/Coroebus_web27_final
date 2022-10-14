@@ -8,9 +8,11 @@ import { PlayZoneComponent } from './play-zone.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
-
+import { Ng2OrderModule } from 'ng2-order-pipe';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { FilterPipePipe } from './pipe/filter-pipe.pipe';
+
+
 
 
 
@@ -18,8 +20,6 @@ import { FilterPipePipe } from './pipe/filter-pipe.pipe';
   declarations: [
     PlayZoneComponent,
     FilterPipePipe,
-    
-    
     
     
   ],
@@ -31,6 +31,7 @@ import { FilterPipePipe } from './pipe/filter-pipe.pipe';
     FormsModule,
     MatSelectModule,
     Ng2SearchPipeModule,
+    Ng2OrderModule,
     FormsModule,
     NgbModule,
     MatDialogModule
