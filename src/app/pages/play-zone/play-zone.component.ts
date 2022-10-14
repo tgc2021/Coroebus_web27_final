@@ -30,7 +30,6 @@ export class PlayZoneComponent implements OnInit {
   PerformanceType: any;
   EngagementMentType: any;
 
-
   
   constructor(private http: ApiserviceService, private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -54,6 +53,7 @@ export class PlayZoneComponent implements OnInit {
   term1:any="";
   spot_type:any='';
   updateStatus:any=[];
+  order: string = '';
   
 
 
@@ -80,7 +80,6 @@ export class PlayZoneComponent implements OnInit {
         console.log(this.spotEngagementData);
         this.PerformanceType = this.spotEngagementData.filter(value => value.spot_type==='Performance');
         this.EngagementMentType=this.spotEngagementData.filter(value=>value.spot_type==='Engagement');
-        
 
         console.log(this.PerformanceType);
         console.log(this.EngagementMentType);
@@ -92,6 +91,8 @@ export class PlayZoneComponent implements OnInit {
         this.rewardPoints=res.data._reward_points;
         console.log(this.rewardPoints);
         this.spotEngagementPassbook=res.data._spot_passbook_data;
+
+        console.log(this.spotEngagementPassbook);
        
       })
 
@@ -128,6 +129,22 @@ export class PlayZoneComponent implements OnInit {
     console.log(this.value);
 
   }
+
+key = 'date_time_stamp';  
+key1='reward_point';
+reverse = false;
+reverse1=false;
+  sortList(key) {
+    this.key = key;
+    this.reverse = !this.reverse;
+   
+  }
+  sortList1(key1) {
+    this.key1 = key1;
+    this.reverse1=!this.reverse1;
+  }
+
+
 
   // async spectSearch() {
   //   let err: any, res: any;

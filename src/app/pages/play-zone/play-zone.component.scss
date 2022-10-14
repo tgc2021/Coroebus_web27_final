@@ -20,8 +20,7 @@
     // height: 70vh;
     position: fixed;
     overflow-y:scroll;
-    
-    
+    -webkit-overflow-y:scroll;
 }
 .subHeading {
     display: flex;
@@ -43,7 +42,9 @@
     width: 30%;
     position: fixed;
     right: 0;
-    overflow-y: auto;
+    overflow-y: scroll;
+    -webkit-overflow-y:scroll;
+
 
 }
 
@@ -208,8 +209,6 @@ option {
             align-items: center;
             text-align: center;
             color: #1A5286;
-
-        
     }
     .cards{
         display: flex;
