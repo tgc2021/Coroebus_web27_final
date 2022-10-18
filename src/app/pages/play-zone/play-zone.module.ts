@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';	
 import { CommonModule } from '@angular/common';
 import {MatTabsModule} from '@angular/material/tabs';
-import {MatDialogModule} from '@angular/material/dialog';
 import { PlayZoneRoutingModule } from './play-zone-routing.module';
 import { PlayZoneComponent } from './play-zone.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -14,14 +13,11 @@ import { FilterPipePipe } from './pipe/filter-pipe.pipe';
 
 
 
-
-
 @NgModule({
   declarations: [
     PlayZoneComponent,
     FilterPipePipe,
-    
-    
+ 
   ],
   imports: [
     CommonModule,
@@ -34,8 +30,11 @@ import { FilterPipePipe } from './pipe/filter-pipe.pipe';
     Ng2OrderModule,
     FormsModule,
     NgbModule,
-    MatDialogModule
+
    
-  ]
+  ],
+
+  
+
 })
 export class PlayZoneModule { }
