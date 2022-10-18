@@ -7,13 +7,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '@app/services/event.service';
 
 import { ToastService } from '@app/services/toast-service';
-import { NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
+import { Subject } from 'rxjs';
 
-import { Subscription, combineLatest, Subject, Observable } from 'rxjs';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Util } from '@app/utils/util';
 import { takeUntil } from 'rxjs/operators';
 import { NgbModalConfig,NgbDropdownConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { roundWithPrecision } from 'chartist';
 
 @Component({
   selector: 'app-play-zone',
@@ -29,18 +28,8 @@ export class PlayZoneComponent implements OnInit {
   hideMobileDropDown: boolean;
   PerformanceType: any;
   EngagementMentType: any;
-
-  
-  constructor(private http: ApiserviceService, private readonly store: Store, private modalService: NgbModal,
-    public Util: Util, private eventService: EventService, private _router: Router,
-   
-    private _route: ActivatedRoute, public toastService: ToastService,config: NgbModalConfig,obj: NgbDropdownConfig) { 
-      config.backdrop = true;
-      config.keyboard = false;
-      config.centered= true;
-      // obj.autoClose=false;
-    }
-   id: any;
+  filterPerformanceData: string;
+  id: any;
   destroy$: Subject<boolean> = new Subject<boolean>();
   spotEngagementData;
   spotEngagementPassbook:any;
@@ -49,11 +38,25 @@ export class PlayZoneComponent implements OnInit {
   status: any;
   i:any;
   rewardPoints: any=0;
-  term:any="";
-  term1:any="";
+  term:string="";
+  term1:string="";
   spot_type:any='';
   updateStatus:any=[];
   order: string = '';
+  PerformanceArray:any=[];
+  openEvents:boolean=true;
+  openPassBook:boolean;
+
+  constructor(private http: ApiserviceService, private readonly store: Store, private modalService: NgbModal,
+    public Util: Util, private eventService: EventService, private _router: Router,
+   
+    private _route: ActivatedRoute, public toastService: ToastService,config: NgbModalConfig,obj: NgbDropdownConfig) { 
+      config.backdrop = true;
+      config.keyboard = false;
+      config.centered= true;
+      obj.autoClose=false;
+    }
+  
   
 
 
@@ -75,14 +78,21 @@ export class PlayZoneComponent implements OnInit {
 
       console.log(body);
       this.http.playZone(body).subscribe((res:any) => {
-        //console.table(res);
-        this.spotEngagementData=res.data._spot_engagement_data;
-        console.log(this.spotEngagementData);
-        this.PerformanceType = this.spotEngagementData.filter(value => value.spot_type==='Performance');
-        this.EngagementMentType=this.spotEngagementData.filter(value=>value.spot_type==='Engagement');
+      console.log(res);
 
-        console.log(this.PerformanceType);
-        console.log(this.EngagementMentType);
+      this.spotEngagementData=res.data._spot_engagement_data;
+      this.filterPerformanceData=this.spotEngagementData.map((res:any)=>{ 
+            if(res.spot_type==="Performance")
+            {
+              this.PerformanceArray.push(this.spotEngagementData);
+            }
+
+       
+        
+        });
+       
+        console.log(this.PerformanceArray);
+        this.filterPerformance();
 
       });
       //  console.log(this.spotEngagementData);
@@ -109,10 +119,17 @@ export class PlayZoneComponent implements OnInit {
       })
    
     }) 
+
+    
+  
     
   }
   
-  
+  filterPerformance(){
+    this.PerformanceArray;
+    console.log(this.PerformanceArray);
+
+  }
   open(content) {
     this.modalService.open(content);
   }
@@ -124,10 +141,10 @@ export class PlayZoneComponent implements OnInit {
 
   value = '2';
 
-  onChange(event) {
-    this.value = event.target.value;
-    console.log(this.value);
 
+  clearText(){
+    this.term1="";
+    this.term="";
   }
 
 key = 'date_time_stamp';  
@@ -144,35 +161,21 @@ reverse1=false;
     this.reverse1=!this.reverse1;
   }
 
-
-
-  // async spectSearch() {
-  //   let err: any, res: any;
-  //   let body: any;
-  //   // this.spectSearchStrTrigger = true
-
-  //   if (this.spectSearchStr) {
-  //     this.spectSearchStrTrigger = true
-  //   } else {
-  //     this.spectSearchStrTrigger = false
-  //   }
-  //   body = {
-  //     "_userid": this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
-  //     "_game": this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game,
-  //     "page_number": this.pageNumberForSectionView_3,
-  //     "_uname": this.spectSearchStr,
-  //     "_order": this.activeTabOrderNumberForSectionView_2
-  //   };
-  //   [err, res] = await HttpProtocols.to(DashboardModel.spectSearch(body))
-  //   if (!err && res?.statuscode === 200) {
-  //     this.spectSearList = res?.data
-  //     console.log(this.spectSearList);
-
-  //   } else {
-  //     this.notificationList_err = 'Error'
-  //   }
-  // }
   
+
+openEvent(){
+  this.openEvents=true;
+  this.openPassBook=false;
+}
+
+rewardPassBook(){
+  this.openEvents=false;
+  this.openPassBook=true;
+}
+
+
+
+
   
   
 
