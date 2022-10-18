@@ -245,12 +245,8 @@
                             </tr>
                         </thead>
                         <tbody>
-<<<<<<< HEAD
-                            <tr *ngFor="let passbookData of spotEngagementPassbook |filter:term |orderBy: key : reverse | orderBy: key1 : reverse1 ;let i=index ">
-=======
                             <tr
                                 *ngFor="let passbookData of spotEngagementPassbook |filter:term |orderBy: key : reverse |orderBy: key1 : reverse1 ;let i=index ">
->>>>>>> abbcbcb1d1c6ab7aea8c63825129bacee2e2ed80
                                 <td scope="row">{{i+1}}</td>
                                 <td>
                                     <span [ngbTooltip]="tooltipContent" placement="bottom"
