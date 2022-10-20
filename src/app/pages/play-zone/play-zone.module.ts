@@ -13,10 +13,11 @@ import { FilterPipePipe } from './pipe/filter-pipe.pipe';
 
 
 
+
 @NgModule({
   declarations: [
     PlayZoneComponent,
-    FilterPipePipe,
+    FilterPipePipe
  
   ],
   imports: [

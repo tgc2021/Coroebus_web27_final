@@ -128,33 +128,59 @@
 
 
             <div class="table_div">
-              <div>
-                <input class="search" type="search" name="search" [(ngModel)]="searchText" autocomplete="off"
-                  placeholder=" Search">
+              <div class="mt-3 m-2">
+                <div class="row">
+                  <div class="col">
+                    <div ngbDropdown class="d-inline-block">
+                      <!-- <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                        Toggle dropdown
+                      </button>
+                      <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="mt-2">
+                        <button ngbDropdownItem (click)="filteredCoreGames('Core Game')">Core Game</button>
+                         <button ngbDropdownItem (click)="filteredCoreGames('Redeemed Reward')">Redeemed Reward</button>
+                        <button ngbDropdownItem (click)="filteredCoreGames('Seasonal Theme')">Seasonal Theme</button>
+                        <button ngbDropdownItem (click)="filteredCoreGames('')"> All Source</button>
+                      </div> -->
+                    </div>
+                  </div>
+                  <div class="col">
+                    <input class="search" type="search" name="search" [(ngModel)]="searchText" autocomplete="off"
+                      placeholder=" Search">
+                  </div>
+                  
+                </div> 
+                
 
               </div>
 
               <table id="example" class="table table-striped">
                 <thead>
                   <tr>
-                    <th scope="col">Date
-                      <img class="up_down_arrow" src="assets/images/rewards/up_down_arrow.png">
+                    <th scope="col" (click)="sortList('date_time')">Date
+                      <!-- <img class="up_down_arrow" src="assets/images/rewards/up_down_arrow.png"> -->
+                      &nbsp;<div *ngIf="reverse; then downFilter1 else upFilter1"></div>
+                      <ng-template #downFilter1>
+                        <img src="assets/images/playZone/images/filterDown.png" alt="">
+                      </ng-template>
+                      <ng-template #upFilter1>
+                        <img src="assets/images/playZone/images/filterUp.png" alt="">
+                      </ng-template>
                     </th>
                     <th scope="col">Source</th>
                     <th scope="col">Earned
-                      <img class="up_down_arrow" src="assets/images/rewards/up_down_arrow.png">
+                      <!-- <img class="up_down_arrow" src="assets/images/rewards/up_down_arrow.png"> -->
 
                     </th>
                     <th scope="col">Redeemed
-                      <img class="up_down_arrow" src="assets/images/rewards/up_down_arrow.png">
+                      <!-- <img class="up_down_arrow" src="assets/images/rewards/up_down_arrow.png"> -->
 
                     </th>
                     <th scope="col">Balance</th>
 
                   </tr>
                 </thead>
-                <tbody *ngFor="let response of rewardresponse ">
-                  <tr *ngFor="let passbookresponse of response.data.points_list[1]._data | filter:searchText ">
+                <tbody *ngFor="let response of rewardresponse">
+                  <tr *ngFor="let passbookresponse of response.data.points_list[1]._data |orderBy: key : reverse |filter:searchText ">
                     <td class="col-md-2 col-sm-1">{{passbookresponse.date_time | date: 'dd/MM/yyyy' }}</td>
                     <td class="col-md-4 col-sm-3">{{passbookresponse.description_}}</td>
                     <td class="col-md-2 col-sm-3">{{passbookresponse.points_credited | number : '1.2-2'}}</td>
@@ -166,7 +192,7 @@
 
 
 
-                    <td *ngIf="passbookresponse.points_debited==='' " class="col-md-2">-
+                    <td *ngIf="passbookresponse.points_debited==='' " class="col-md-2">
 
                     </td>
 

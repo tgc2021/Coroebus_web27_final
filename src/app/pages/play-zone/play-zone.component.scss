@@ -2,7 +2,7 @@
 .PlayZone-web-view {
     position: 0;
     margin: 0;
-    background: url('../../../assets/images/playZone/images/Rectangle\ 569.png') center center;
+    background: url('../../../assets/images/playZone/images/Background.png') center center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -272,15 +272,14 @@ input[type="checkbox"]::placeholder {
             text-align: center;
             color: #1A5286;
     }
+    
     .cards{
+        margin: auto;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content:space-around;
-        align-items: center;
-       
-       
-   
+        // row-gap: 2rem;
     }
 
 }
@@ -319,15 +318,27 @@ color: #54595E;
 
 .table {
     margin-top: 5%;
+    font-family:'Roboto' sans-serif;
+    font-size: 14px;
+    font-weight:normal;
+    line-height: 150%;
 
 }
-#table-row { 
-        width:200px;
-        white-space: wrap;
-        overflow: hidden;
-        // border:1px solid;
-        text-overflow: ellipsis;
-      }
+
+::ng-deep {
+    .tooltip-inner {
+        background-color: #104E5B !important;
+        font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        /* Grey / Light */
+        color: #F5F5F5;   
+    }
+   
+
+}
   
 .date {
     color: #A5ACB8;

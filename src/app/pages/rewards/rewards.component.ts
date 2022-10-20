@@ -46,6 +46,8 @@ export class RewardsComponent implements OnInit, AfterViewInit {
 
   toppings = new FormControl('');
   toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  filterCoreGame: any=[];
+  coreGame: any;
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -91,17 +93,53 @@ export class RewardsComponent implements OnInit, AfterViewInit {
         // this.requestdata=responce
 
         this.rewardresponse = res;
+        // this.filterCoreGame=res;
+
+       
+
+         console.log(this.filterCoreGame);
+        console.log(this.rewardresponse);
+        console.log(this.filterCoreGame);
         this.rewardresponse = Array.of(this.rewardresponse);
         console.log(this.rewardresponse);
-
-        console.log(this.rewardresponse[0].data.points_list[0].label);
-
+        console.log(this.rewardresponse[0].data.points_list[0].description_);
       })
+    })
+    this.dynamicColor()
+  }
+  
+  key = 'date_time';  
+  reverse = false;
+  sortList(key) {
+    this.key = key;
+    this.reverse = !this.reverse;
+  
+  }
 
+  filteredCoreGames(category:unknown){
+   
+    
+     
+    this.rewardresponse[0].data.points_list[1]._data.map(element => {
+
+      this.filterCoreGame.push(element);
+       
+     })
+
+ 
+
+    this.coreGame=this.filterCoreGame.filter(res=>{
+
+      if(res.description_===category || category==''){
+        return res.description_;
+  
+      }
+     
 
     })
+    console.log(this.coreGame)
 
-    this.dynamicColor()
+
   }
 
 
@@ -184,6 +222,7 @@ export class RewardsComponent implements OnInit, AfterViewInit {
   }
 
 
+  
 
 
   popupRedemed(rewardresponse: any) {
@@ -192,14 +231,10 @@ export class RewardsComponent implements OnInit, AfterViewInit {
     console.log(this.data);
     console.log(this.data.log_id);
 
-
     let body = {
-
       _userid: this.mergeObj.USERID,
       _game: this.mergeObj.id_coroebus_game,
       log_id: this.data.log_id
-
-
     }
 
     console.log(body);
@@ -275,12 +310,14 @@ export class RewardsComponent implements OnInit, AfterViewInit {
 
     })
 
+    
+
 
 
   }
 
 
-
+  
 
   ngAfterViewInit(): void {
     // $('#example').DataTable();
