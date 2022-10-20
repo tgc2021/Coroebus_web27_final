@@ -183,8 +183,10 @@
                   <tr *ngFor="let passbookresponse of response.data.points_list[1]._data |orderBy: key : reverse |filter:searchText ">
                     <td class="col-md-2 col-sm-1">{{passbookresponse.date_time | date: 'dd/MM/yyyy' }}</td>
                     <td class="col-md-4 col-sm-3">{{passbookresponse.description_}}</td>
-                    <td class="col-md-2 col-sm-3">{{passbookresponse.points_credited | number : '1.2-2'}}</td>
-
+                    <td *ngIf="passbookresponse.points_credited!=='' " class="col-md-2 col-sm-3">{{passbookresponse.points_credited | number : '1.2-2'}}</td>
+                    <td *ngIf="passbookresponse.points_credited==='' " class="col-md-2">
+                      -
+                    </td>
                     <td *ngIf="passbookresponse.points_debited!=='' " class="col-md-2 col-sm-3">
                       {{passbookresponse.points_debited}}
                       <img data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="redeemed_popup_logo"
@@ -193,7 +195,7 @@
 
 
                     <td *ngIf="passbookresponse.points_debited==='' " class="col-md-2">
-
+                      -
                     </td>
 
                     <td class="col-md-2">{{passbookresponse.balance | number : '1.2-2'}}</td>
