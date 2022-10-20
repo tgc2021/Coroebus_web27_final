@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SpectatorViewRoutingModule } from './spectator-view-routing.module';
 import { SpectatorViewComponent } from './spectator-view.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { SpectatorViewComponent } from './spectator-view.component';
   ],
   imports: [
     CommonModule,
+    MatTabsModule,
     SpectatorViewRoutingModule
   ]
 })

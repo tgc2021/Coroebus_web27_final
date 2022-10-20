@@ -9,6 +9,7 @@ import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-co
 import { CreateNewPasswordComponent } from './create-new-password/create-new-password.component';
 import { SecurityQuestionComponent } from './security-question/security-question.component';
 import { AuthGuard } from '@app/guards/auth.guard';
+import { TvsDashboardComponent } from './tvs-dashboard/tvs-dashboard.component';
 const routes: Routes = [
     {
         path: 'login',
@@ -18,6 +19,10 @@ const routes: Routes = [
     {
         path: 'signup',
         component: SignupComponent
+    },
+    {
+        path: 'tvs',
+        component: TvsDashboardComponent,
     },
     {
         path: 'reset-password',
@@ -42,6 +47,7 @@ const routes: Routes = [
         data: { animation: 'security-question' },
         canActivate: [AuthGuard]
     }
+   
 ];
 
 @NgModule({
