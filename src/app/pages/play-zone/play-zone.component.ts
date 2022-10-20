@@ -13,6 +13,7 @@ import { Util } from '@app/utils/util';
 import { takeUntil } from 'rxjs/operators';
 import { NgbModalConfig,NgbDropdownConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { roundWithPrecision } from 'chartist';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-play-zone',
@@ -46,6 +47,8 @@ export class PlayZoneComponent implements OnInit {
   PerformanceArray:any=[];
   openEvents:boolean=true;
   openPassBook:boolean;
+  filterByCategory: any;
+  Passbook: any;
 
   constructor(private http: ApiserviceService, private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -54,13 +57,14 @@ export class PlayZoneComponent implements OnInit {
       config.backdrop = true;
       config.keyboard = false;
       config.centered= true;
-      obj.autoClose=false;
+      obj.autoClose=true;
     }
   
   
 
 
   ngOnInit(): void {
+
 
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
@@ -81,34 +85,22 @@ export class PlayZoneComponent implements OnInit {
       console.log(res);
 
       this.spotEngagementData=res.data._spot_engagement_data;
-      this.filterPerformanceData=this.spotEngagementData.map((res:any)=>{ 
-            if(res.spot_type==="Performance")
-            {
-              this.PerformanceArray.push(this.spotEngagementData);
-            }
-
-       
-        
-        });
-       
-        console.log(this.PerformanceArray);
-        this.filterPerformance();
-
+      this.filterByCategory=res.data._spot_engagement_data;
       });
+
+      
       //  console.log(this.spotEngagementData);
       this.http.playZonePassbook(body).subscribe((res:any)=>{
         console.log(res);
         this.rewardPoints=res.data._reward_points;
+       
+        
         console.log(this.rewardPoints);
         this.spotEngagementPassbook=res.data._spot_passbook_data;
-
+        this.Passbook=res.data._spot_passbook_data;
         console.log(this.spotEngagementPassbook);
        
       })
-
-      
-      
-
       console.log()
       this.http.playZoneUpdate(body).subscribe((res:any)=>{
         console.log(res);
@@ -119,17 +111,9 @@ export class PlayZoneComponent implements OnInit {
       })
    
     }) 
-
-    
-  
-    
   }
   
-  filterPerformance(){
-    this.PerformanceArray;
-    console.log(this.PerformanceArray);
 
-  }
   open(content) {
     this.modalService.open(content);
   }
@@ -139,6 +123,36 @@ export class PlayZoneComponent implements OnInit {
     this.hideMobileDropDown=!this.hideMobileDropDown;
   }
 
+  filter(category:any){
+
+    this.filterByCategory=this.spotEngagementData
+    .filter((a:any)=>{
+      if(a.spot_type==category || category=='')
+      return a;
+    })
+  }
+
+
+  filterPassBook(category:any){
+    
+    this.Passbook=this.spotEngagementPassbook.filter((a:any)=>{
+      if(a.spot_type===category|| category==''){
+        return a;
+      }
+
+    })
+
+  }
+  filterPassBookByDate(a:any,b:any){
+    console.log(this.spotEngagementPassbook)
+    this.Passbook=this.spotEngagementPassbook.filter((a:any)=>{
+      if(a.date_time_stamp>b.date_time_stamp){
+        return 1;
+      }
+
+    })
+
+  }
   value = '2';
 
 
@@ -148,7 +162,7 @@ export class PlayZoneComponent implements OnInit {
   }
 
 key = 'date_time_stamp';  
-key1='reward_point';
+key1:number;
 reverse = false;
 reverse1=false;
   sortList(key) {
@@ -172,11 +186,5 @@ rewardPassBook(){
   this.openEvents=false;
   this.openPassBook=true;
 }
-
-
-
-
-  
-  
 
 }
