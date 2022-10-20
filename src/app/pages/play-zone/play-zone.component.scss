@@ -43,9 +43,10 @@
 
 .playZone-container {
     margin: 1%;
+    margin-top: 1%;
     padding: 1%;
     background: #FFFFFF;
-    height: 85vh;
+    height: 88vh;
     border-radius: 8px;
     width: 66%;
     position: fixed;
@@ -68,10 +69,11 @@
     justify-content: center;
     overflow-y: auto;
     margin: 1%;
+    margin-top: 1%;
     padding: 1%;
     background: #FFFFFF;
     border-radius: 8px;
-    height: 85vh;
+    height: 88vh;
     width: 30%;
     position: fixed;
     right: 0;
@@ -335,6 +337,9 @@ color: #54595E;
         line-height: 18px;
         /* Grey / Light */
         color: #F5F5F5;   
+    }
+    .page-content {
+        padding: 71px 12px 60px 2px;
     }
    
 
