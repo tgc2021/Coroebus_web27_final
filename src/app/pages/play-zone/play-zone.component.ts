@@ -39,8 +39,8 @@ export class PlayZoneComponent implements OnInit {
   status: any;
   i:any;
   rewardPoints: any=0;
-  term:string="";
-  term1:string="";
+  term:any;
+  term1:any;
   spot_type:any='';
   updateStatus:any=[];
   order: string = '';
@@ -49,6 +49,8 @@ export class PlayZoneComponent implements OnInit {
   openPassBook:boolean;
   filterByCategory: any;
   Passbook: any;
+  Ascending: boolean=true;
+  Descending:boolean;
 
   constructor(private http: ApiserviceService, private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -59,10 +61,6 @@ export class PlayZoneComponent implements OnInit {
       config.centered= true;
       obj.autoClose=true;
     }
-  
-  
-
-
   ngOnInit(): void {
 
 
@@ -101,14 +99,7 @@ export class PlayZoneComponent implements OnInit {
         console.log(this.spotEngagementPassbook);
        
       })
-      console.log()
-      this.http.playZoneUpdate(body).subscribe((res:any)=>{
-        console.log(res);
-        let id;
-        this.update_spot_status=res.data._spot_engagement_data;
-        console.log(this.update_spot_status);
-        
-      })
+      
    
     }) 
   }
@@ -143,16 +134,21 @@ export class PlayZoneComponent implements OnInit {
     })
 
   }
-  filterPassBookByDate(a:any,b:any){
-    console.log(this.spotEngagementPassbook)
-    this.Passbook=this.spotEngagementPassbook.filter((a:any)=>{
-      if(a.date_time_stamp>b.date_time_stamp){
-        return 1;
-      }
 
-    })
-
+  filterByPointsAsc(){
+    this.Passbook = this.spotEngagementPassbook.sort((a, b) => b.reward_point - a.reward_point);  
+   console.log("Asc order",this.Passbook)
+   this.Ascending=true;
+   this.Descending=false;
   }
+  filterByPointsDsc(){
+    this.Passbook = this.spotEngagementPassbook.sort((a, b) => a.reward_point - b.reward_point);
+    this.Descending=true;
+    this.Ascending=false;
+   
+    console.log("DSC order",this.Passbook)
+  }
+  
   value = '2';
 
 
@@ -162,27 +158,27 @@ export class PlayZoneComponent implements OnInit {
   }
 
 key = 'date_time_stamp';  
-key1:number;
+
 reverse = false;
-reverse1=false;
+
   sortList(key) {
     this.key = key;
     this.reverse = !this.reverse;
    
   }
-  sortList1(key1) {
-    this.key1 = key1;
-    this.reverse1=!this.reverse1;
-  }
 
-  
+
+
+
 
 openEvent(){
+
   this.openEvents=true;
   this.openPassBook=false;
 }
 
 rewardPassBook(){
+  
   this.openEvents=false;
   this.openPassBook=true;
 }

@@ -11,9 +11,6 @@ import { Ng2OrderModule } from 'ng2-order-pipe';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { FilterPipePipe } from './pipe/filter-pipe.pipe';
 
-
-
-
 @NgModule({
   declarations: [
     PlayZoneComponent,
@@ -30,9 +27,7 @@ import { FilterPipePipe } from './pipe/filter-pipe.pipe';
     Ng2SearchPipeModule,
     Ng2OrderModule,
     FormsModule,
-    NgbModule,
-
-   
+    NgbModule,   
   ],
 
   
