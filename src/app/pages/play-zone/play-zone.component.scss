@@ -9,6 +9,27 @@
     position: relative;
     width: 100vw;
     height: 100vh;
+
+
+
+ 
+}
+::ng-deep{
+    .tooltip-inner {
+        background-color: #104E5B !important;
+        font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        /* Grey / Light */
+        color: #F5F5F5;   
+    }
+    // .page-content {
+    //    padding: 71px 30px 60px 0px;
+    // }
+   
+
 }
 
 ::-webkit-scrollbar {
@@ -46,15 +67,12 @@
     margin-top: 1%;
     padding: 1%;
     background: #FFFFFF;
-    height: 88vh;
+    height: 86vh;
     border-radius: 8px;
     width: 66%;
     position: fixed;
     overflow-y:auto;
     overflow-x: hidden;
- 
-    
-   
 }
 .subHeading {
     display: flex;
@@ -73,7 +91,7 @@
     padding: 1%;
     background: #FFFFFF;
     border-radius: 8px;
-    height: 88vh;
+    height: 86vh;
     width: 30%;
     position: fixed;
     right: 0;
@@ -327,23 +345,7 @@ color: #54595E;
 
 }
 
-::ng-deep {
-    .tooltip-inner {
-        background-color: #104E5B !important;
-        font-family: 'IBM Plex Sans Thai Looped', sans-serif;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 18px;
-        /* Grey / Light */
-        color: #F5F5F5;   
-    }
-    .page-content {
-        padding: 71px 12px 60px 2px;
-    }
-   
 
-}
   
 .date {
     color: #A5ACB8;
@@ -407,6 +409,7 @@ color: #54595E;
     display: flex;
     justify-content: space-between;
     background: #ffff !important;
+   
    
     
 }

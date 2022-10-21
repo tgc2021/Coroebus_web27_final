@@ -93,6 +93,7 @@ export class RewardsComponent implements OnInit, AfterViewInit {
         // this.requestdata=responce
 
         this.rewardresponse = res;
+        this.filterCoreGame=res;
         // this.filterCoreGame=res;
 
        
@@ -116,31 +117,17 @@ export class RewardsComponent implements OnInit, AfterViewInit {
   
   }
 
-  filteredCoreGames(category:unknown){
+  // filteredCoreGames(category:unknown){
+  //   this.filterCoreGame=this.rewardresponse[0].data.points_list[1]._data.filter(element => {
+  //     if(element.description_===category || category==''){
+  //        return element;
+  //        }
+  //    })
+  //    console.log(this.filterCoreGame);
    
-    
-     
-    this.rewardresponse[0].data.points_list[1]._data.map(element => {
-
-      this.filterCoreGame.push(element);
-       
-     })
-
- 
-
-    this.coreGame=this.filterCoreGame.filter(res=>{
-
-      if(res.description_===category || category==''){
-        return res.description_;
-  
-      }
-     
-
-    })
-    console.log(this.coreGame)
 
 
-  }
+  // }
 
 
   dynamicColor() {
