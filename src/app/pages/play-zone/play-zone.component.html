@@ -3,19 +3,17 @@
         <div class="col-12 d-flex gap-2">
             <div class="col-8 playZone-container">
                 <h5>Play zone</h5>
-
-                <div class="subHeading">
-                    <span class="text ">Welcome to Play Zone! Start playing and earning Rewards!</span>
+                <div class="subHeading mb-3">
+                    <span class="text">Welcome to Play Zone! Start playing and earning Rewards!</span>
                 </div>
-
                 <div class="d-flex gap-1">
-
-                    <select class="form-control form-select" [(ngModel)]="spot_type"
+                    <select class="form-control  form-select" [(ngModel)]="spot_type"
                         aria-label=".form-select-lg example">
-                        <option [(ngModel)]="spot_type" class="form-option m-5">Performance</option>
+                        <option value="Performance" class="form-option m-5">Performance</option>
                         <option value="Engagement" class="form-option m-5">Engagement</option>
                         <option value="" selected="selected" class="form-option m-5">All</option>
                     </select>
+                   
                     <div class="searchBar col-9" style="display: inline;">
                         <input type="text" class="form-control" placeholder="Search" aria-label="Search People here.."
                             aria-describedby="basic-addon2" [(ngModel)]="term1">
@@ -41,11 +39,9 @@
                                         <span class="heading">{{data.spot_type}}</span>
                                     </div>
                                     <div>
-
                                         <div
                                             *ngIf="data.spot_status === 'Open' &&  data._status!=='active'; then ifBlock">
                                         </div>
-
                                         <ng-template #ifBlock>
                                             <button class="btn btn-secondary" [disabled]="true">Retracted</button>
                                         </ng-template>
@@ -61,12 +57,11 @@
                                     </div>
                                 </div>
                                 <div class="card-body d-flex gap-2">
-                                    <div class="col-5">
-                                        <div class="p-1">
-                                            <img src="{{data.primary_logo}}" alt="" height="100%" width="100%">
-                                        </div>
-                                        <div>
-
+                                        <div class="col-5">
+                                                <div class="p-1">
+                                                    <img src="{{data.primary_logo}}" alt="" height="100%" width="100%">
+                                                </div>
+                                            <div>
                                         </div>
                                     </div>
                                     <div class="col-7">
@@ -97,8 +92,8 @@
                                     </ng-template>
                                     <ng-template #openBlock>
 
-                                        <button style="cursor:pointer;border: none;background: #ffff; margin:2% 5%;" [disabled]="true"
-                                            class="status-openButton">
+                                        <button style="cursor:pointer;border: none;background: #ffff; margin:2% 5%;"
+                                            [disabled]="true" class="status-openButton">
                                             {{data.spot_status}}
                                         </button>
                                     </ng-template>
@@ -162,30 +157,29 @@
 
                             <div class="row">
                                 <div class="col">
-                                    <div ngbDropdown class="d-inline-block">
+                                    <div ngbDropdown class="d-inline-block" style="font-family:'Inter';">
                                         <img src="assets/images/playZone/images/Group 6078.png" type="button"
                                             alt="filter" id="dropdownBasic1" ngbDropdownToggle>
-                                        <!-- <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="m-2"
+                                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="m-2"
                                             style="width:20vw;">
                                             <label class="container" ngbDropdownItem>
-                                                <h5>Status</h5>
+                                                <span class="DropdownHeading">Status</span>
                                             </label>
                                             <label class="container" ngbDropdownItem
                                                 (change)="sortList('date_time_stamp')">
                                                 <input type="checkbox">&nbsp;Latest&nbsp;
                                                 <span class="checkmark"></span>
                                             </label>
-                                            <label class="container" ngbDropdownItem>
+                                            <!-- <label class="container" ngbDropdownItem>
                                                 <input type="checkbox" data-value="Validity">&nbsp;Validity&nbsp;
                                                 <span class="checkmark"></span>
-                                            </label>
+                                            </label> -->
 
                                             <label class="container" ngbDropdownItem>
-                                                <h5>Engagement type</h5>
+                                                <span class="DropdownHeading">Engagement type</span>
                                             </label>
-                                            <label class="container" ngbDropdownItem
-                                                (change)="filterPassBook('Performance')">
-                                                <input type="checkbox" data-value="Performance" checked>&nbsp;Performance&nbsp;
+                                            <label class="container" ngbDropdownItem>
+                                                <input type="checkbox"  (change)="filterPassBook('Performance')" data-value="Performance" >&nbsp;Performance&nbsp;
                                                 <span class="checkmark"></span>
                                             </label>
                                             <label class="container" ngbDropdownItem
@@ -197,7 +191,7 @@
                                                 <input type="checkbox">&nbsp;All
                                                 <span class="checkmark"></span>
                                             </label>
-                                        </div> -->
+                                        </div>
 
                                     </div>
                                 </div>
@@ -215,67 +209,55 @@
                             <img src="assets/images/playZone/images/Vector.png" alt="" type="button"
                                 id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
-
                         </button>
                     </div>
-
-                    <table class="table table-striped m-2">
+                    <div>
+                        <table class="table  table-striped m-2">
                         <thead>
                             <tr>
                                 <th scope="col">Sr No.</th>
                                 <th scope="col">Event</th>
                                 <th scope="col">
                                     <div class="d-flex gap-2">
-                                        Date 
+                                        Date
                                         <div class="d-flex flex-column justify-content-center gap-2">
-                                            <img src="assets/images/playZone/images/filterUp.png" alt=""  (click)="sortList('date_time_stamp')" width="12px" *ngIf="reverse">
-                                            <img src="assets/images/playZone/images/filterDown.png" alt="" (click)="sortList('date_time_stamp')" width="12px" *ngIf="!reverse">
+                                            <img src="assets/images/playZone/images/filterUp.png" alt=""
+                                                (click)="sortList('date_time_stamp')" width="12px" *ngIf="reverse">
+                                            <img src="assets/images/playZone/images/filterDown.png" alt=""
+                                                (click)="sortList('date_time_stamp')" width="12px" *ngIf="!reverse">
                                         </div>
                                     </div>
-                                    
-
                                 </th>
-                               <th scope="col">
-                                <div class="d-flex gap-2">
-                                    Points
-                                    <div class="d-flex flex-column justify-content-center gap-2">
-                                        <img src="assets/images/playZone/images/filterUp.png" alt="" (click)="filterByPointsDsc()" width="12px" *ngIf="Ascending">
-                                        <img src="assets/images/playZone/images/filterDown.png" alt="" (click)="filterByPointsAsc()" width="12px" *ngIf="Descending">
+                                <th scope="col">
+                                    <div class="d-flex gap-2">
+                                        Points
+                                        <div class="d-flex flex-column justify-content-center gap-2">
+                                            <img src="assets/images/playZone/images/filterUp.png" alt=""
+                                                (click)="filterByPointsDsc()" width="12px" *ngIf="Ascending">
+                                            <img src="assets/images/playZone/images/filterDown.png" alt=""
+                                                (click)="filterByPointsAsc()" width="12px" *ngIf="Descending">
+                                        </div>
                                     </div>
-                                </div>
-                                
-                                
-
-
-                               </th>
-                               
-                               
-                            
-                                
-                               
-                               
-                               
-                               
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr
-                                *ngFor="let passbookData of Passbook |filter:term |orderBy: key : reverse  ;let i=index ">
+                            <tr *ngFor="let passbookData of Passbook |filter:term |orderBy: key:reverse;let i=index">
                                 <td scope="row">{{i+1}}</td>
                                 <td>
                                     <span [ngbTooltip]="tooltipContent" placement="bottom"
-                                        id=table-row >{{passbookData.game_name.slice(0,10)}}&nbsp;...</span>
+                                        id=table-row>{{passbookData.game_name.slice(0,10)}}&nbsp;...</span>
                                 </td>
                                 <td>{{passbookData.date_time_stamp|date:'dd/MM/yyyy'}}</td>
                                 <td>{{passbookData.reward_point}}</td>
-
-                                <ng-template #tooltipContent >
+                                <ng-template #tooltipContent>
                                     {{passbookData.game_name}}
                                 </ng-template>
                             </tr>
                         </tbody>
                     </table>
-
+                </div>
+                    
                     <div class="d-flex justify-content-center align-items-center"
                         *ngIf="spotEngagementPassbook.length<=0">
                         <div class="noContentContainer">
@@ -284,8 +266,6 @@
                                 Stay tuned! You might soon get a chance to play and earn rewards.
                             </span>
                         </div>
-
-
                     </div>
 
                 </div>
@@ -306,7 +286,7 @@
     <div class="row">
         <div class="col">
             <div class="mobile-playzone-container">
-               
+
                 <div class="col-10">
                     <h5>Play zone</h5>
                     <div class="mb-1">
@@ -333,19 +313,14 @@
                                     <div class="row">
                                         <div class="col">
                                             <div ngbDropdown class="d-inline-block">
-
-                                               
-
                                                 <img src="assets/images/playZone/images/Group 6078.png" type="button"
-                                                     alt="filter" id="dropdownBasic2"
-                                                    ngbDropdownToggle>
+                                                    alt="filter" id="dropdownBasic2" ngbDropdownToggle>
 
                                                 <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="m-2"
                                                     style="width:60vw;">
                                                     <label class="container" ngbDropdownItem
                                                         (click)="filter('Performance')">
                                                         &nbsp;Performance&nbsp;
-
                                                     </label>
 
                                                     <label class="container" ngbDropdownItem
@@ -392,8 +367,7 @@
                                     <ng-template #ifBlock>
                                         <button class="btn btn-secondary" [disabled]="true">Retracted</button>
                                     </ng-template>
-                                    <div
-                                        *ngIf="data.spot_status==='Opened' &&  data._status!=='active'; then ifBlock1">
+                                    <div *ngIf="data.spot_status==='Opened' &&  data._status!=='active'; then ifBlock1">
                                     </div>
                                     <ng-template #ifBlock1>
                                         <button class="btn btn-danger" [disabled]="true">{{data._status}}</button>
@@ -494,25 +468,26 @@
                                     <div class="row">
                                         <div class="col-2">
                                             <div ngbDropdown class="d-inline-block">
-
                                                 <img src="assets/images/playZone/images/Group 6078.png" type="button"
                                                     alt="filter" id="dropdownBasic2" ngbDropdownToggle>
-
-                                                <!-- <div ngbDropdownMenu aria-labelledby="dropdownBasic" class="m-2"
+                                                <div ngbDropdownMenu aria-labelledby="dropdownBasic" class="m-2"
                                                     style="width:60vw;">
+                                                    <label class="container" ngbDropdownItem>
+                                                        <span class="DropdownHeading">Status</span>
+                                                    </label>
                                                     <label class="container" ngbDropdownItem
                                                         (change)="sortList('date_time_stamp')">
                                                         <input type="checkbox">&nbsp;Latest&nbsp;
                                                         <span class="checkmark"></span>
                                                     </label>
-                                                    <label class="container" ngbDropdownItem>
+                                                    <!-- <label class="container" ngbDropdownItem>
                                                         <input type="checkbox"
                                                             data-value="Validity">&nbsp;Validity&nbsp;
                                                         <span class="checkmark"></span>
-                                                    </label>
+                                                    </label> -->
 
                                                     <label class="container" ngbDropdownItem>
-                                                        <h5>Engagement type</h5>
+                                                        <span class="DropdownHeading">Engagement type</span>
                                                     </label>
                                                     <label class="container" ngbDropdownItem
                                                         (change)="filterPassBook('Performance')">
@@ -531,7 +506,7 @@
                                                         <input type="checkbox">&nbsp;All
                                                         <span class="checkmark"></span>
                                                     </label>
-                                                </div> -->
+                                                </div>
 
                                             </div>
                                         </div>
@@ -559,24 +534,26 @@
                                     <th scope="col">Event</th>
                                     <th scope="col">
                                         <div class="d-flex gap-2">
-                                            Date 
+                                            Date
                                             <div class="d-flex flex-column justify-content-center gap-2">
-                                                <img src="assets/images/playZone/images/filterUp.png" alt=""  (click)="sortList('date_time_stamp')" width="12px" *ngIf="reverse">
-                                                <img src="assets/images/playZone/images/filterDown.png" alt="" (click)="sortList('date_time_stamp')" width="12px" *ngIf="!reverse">
+                                                <img src="assets/images/playZone/images/filterUp.png" alt=""
+                                                    (click)="sortList('date_time_stamp')" width="12px" *ngIf="reverse">
+                                                <img src="assets/images/playZone/images/filterDown.png" alt=""
+                                                    (click)="sortList('date_time_stamp')" width="12px" *ngIf="!reverse">
                                             </div>
                                         </div>
-                                        
-    
                                     </th>
-                                   <th scope="col">
-                                    <div class="d-flex gap-2">
-                                        Points
-                                        <div class="d-flex flex-column justify-content-center gap-2">
-                                            <img src="assets/images/playZone/images/filterUp.png" alt="" (click)="filterByPointsDsc()" width="12px" *ngIf="Ascending">
-                                            <img src="assets/images/playZone/images/filterDown.png" alt="" (click)="filterByPointsAsc()" width="12px" *ngIf="Descending">
+                                    <th scope="col">
+                                        <div class="d-flex gap-2">
+                                            Points
+                                            <div class="d-flex flex-column justify-content-center gap-2">
+                                                <img src="assets/images/playZone/images/filterUp.png" alt=""
+                                                    (click)="filterByPointsDsc()" width="12px" *ngIf="Ascending">
+                                                <img src="assets/images/playZone/images/filterDown.png" alt=""
+                                                    (click)="filterByPointsAsc()" width="12px" *ngIf="Descending">
+                                            </div>
                                         </div>
-                                    </div>
-                                   </th>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -589,7 +566,6 @@
                                     </td>
                                     <td>{{passbookData.date_time_stamp|date:'dd/MM/yyyy'}}</td>
                                     <td>{{passbookData.reward_point}}</td>
-
                                     <ng-template #tooltipContent>
                                         {{passbookData.game_name}}
                                     </ng-template>
