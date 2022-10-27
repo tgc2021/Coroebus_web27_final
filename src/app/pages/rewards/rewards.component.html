@@ -47,7 +47,6 @@
 
                   <div class="btn_div">
                     <!-- <img data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="redeemed_popup_logo"  src="assets/images/rewards/redeemed.png"> -->
-
                     <button (click)="redemeedOrg(rewardlist)" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"
                       type="button" class="redeem_btn">Redeem</button>
                   </div>
@@ -96,27 +95,30 @@
                   placeholder=" Search">
 
               </div>
-              <table id="example1" class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">Source</th>
-                    <th scope="col">Points</th>
-
-
-                  </tr>
-                </thead>
-                <tbody *ngFor="let response of rewardresponse">
-                  <tr
-                    *ngFor="let pointTable of response.data.points_list[0]._data.reward_point_dist | filter:searchText">
-                    <td class="col-md-10 col-sm-10">{{pointTable.tag_Label}}</td>
-                    <td class="col-md-2 col-sm-2"> {{pointTable.reward_points}}</td>
-
-
-                  </tr>
-
-                </tbody>
-              </table>
-
+              <div class="table-container">
+                <table id="example1" class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Source</th>
+                      <th scope="col">Points</th>
+  
+  
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let response of rewardresponse">
+                    <tr
+                      *ngFor="let pointTable of response.data.points_list[0]._data.reward_point_dist | filter:searchText">
+                      <td class="col-md-10 col-sm-10">{{pointTable.tag_Label}}</td>
+                      <td class="col-md-2 col-sm-2"> {{pointTable.reward_points}}</td>
+  
+  
+                    </tr>
+  
+                  </tbody>
+                </table>
+  
+              </div>
+              
 
             </div>
           </mat-tab>
@@ -152,59 +154,56 @@
                 
 
               </div>
-
-              <table id="example" class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col" (click)="sortList('date_time')">Date
-                      <!-- <img class="up_down_arrow" src="assets/images/rewards/up_down_arrow.png"> -->
-                      &nbsp;<div *ngIf="reverse; then downFilter1 else upFilter1" ></div>
-                      <ng-template #downFilter1>
-                        <img src="assets/images/playZone/images/filterDown.png" alt="up_arrow" width="8px" >
-                      </ng-template>
-                      <ng-template #upFilter1>
-                        <img src="assets/images/playZone/images/filterUp.png" alt="down_arrow" width="8px">
-                      </ng-template>
-                    </th>
-                    <th scope="col">Source</th>
-                    <th scope="col">Earned
-                      <!-- <img class="up_down_arrow" src="assets/images/rewards/up_down_arrow.png"> -->
-
-                    </th>
-                    <th scope="col">Redeemed
-                      <!-- <img class="up_down_arrow" src="assets/images/rewards/up_down_arrow.png"> -->
-
-                    </th>
-                    <th scope="col">Balance</th>
-
-                  </tr>
-                </thead>
-                <tbody *ngFor="let response of rewardresponse">
-                  <tr *ngFor="let passbookresponse of response.data.points_list[1]._data |orderBy: key : reverse |filter:searchText ">
-                    <td class="col-md-2 col-sm-1">{{passbookresponse.date_time | date: 'dd/MM/yyyy' }}</td>
-                    <td class="col-md-4 col-sm-3">{{passbookresponse.description_}}</td>
-                    <td *ngIf="passbookresponse.points_credited!=='' " class="col-md-2 col-sm-3">{{passbookresponse.points_credited | number : '1.2-2'}}</td>
-                    <td *ngIf="passbookresponse.points_credited==='' " class="col-md-2">
-                      -
-                    </td>
-                    <td *ngIf="passbookresponse.points_debited!=='' " class="col-md-2 col-sm-3">
-                      {{passbookresponse.points_debited}}
-                      <img data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="redeemed_popup_logo"
-                        src="assets/images/rewards/redeemed.png" (click)="popupRedemed(passbookresponse)">
-
-
-
-                    <td *ngIf="passbookresponse.points_debited==='' " class="col-md-2">
-                      -
-                    </td>
-
-                    <td class="col-md-2">{{passbookresponse.balance | number : '1.2-2'}}</td>
-
-                  </tr>
-
-                </tbody>
-              </table>
-
+              <div class="table-container">
+                <table id="example" class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col" (click)="sortList('date_time')">Date
+                        <!-- <img class="up_down_arrow" src="assets/images/rewards/up_down_arrow.png"> -->
+                        &nbsp;<div *ngIf="reverse; then downFilter1 else upFilter1" ></div>
+                        <ng-template #downFilter1>
+                          <img src="assets/images/playZone/images/filterDown.png" alt="up_arrow" width="8px" >
+                        </ng-template>
+                        <ng-template #upFilter1>
+                          <img src="assets/images/playZone/images/filterUp.png" alt="down_arrow" width="8px">
+                        </ng-template>
+                      </th>
+                      <th scope="col">Source</th>
+                      <th scope="col">Earned
+                        <!-- <img class="up_down_arrow" src="assets/images/rewards/up_down_arrow.png"> -->
+                      </th>
+                      <th scope="col">Redeemed
+                        <!-- <img class="up_down_arrow" src="assets/images/rewards/up_down_arrow.png"> -->
+                      </th>
+                      <th scope="col">Balance</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let response of rewardresponse">
+                    <tr *ngFor="let passbookresponse of response.data.points_list[1]._data |orderBy: key : reverse |filter:searchText ">
+                      <td class="col-md-2 col-sm-1">{{passbookresponse.date_time | date: 'dd/MM/yyyy' }}</td>
+                      <td class="col-md-4 col-sm-3">{{passbookresponse.description_}}</td>
+                      <td class="col-md-2 col-sm-3">{{passbookresponse.points_credited}}</td>
+  
+                      <td *ngIf="passbookresponse.points_debited!=='' " class="col-md-2 col-sm-3">
+                        {{passbookresponse.points_debited}}
+                        <img data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="redeemed_popup_logo"
+                          src="assets/images/rewards/redeemed.png" (click)="popupRedemed(passbookresponse)">
+  
+  
+  
+                      <td *ngIf="passbookresponse.points_debited==='' " class="col-md-2">
+  
+                      </td>
+  
+                      <td class="col-md-2">{{passbookresponse.balance}}</td>
+  
+                    </tr>
+  
+                  </tbody>
+                </table>
+  
+              </div>
+              
             </div>
 
 
@@ -214,8 +213,8 @@
 
           <mat-tab label="{{points.data.points_list[2].label}}">
             <hr>
-            <div>
-              <select (change)="onChange($event)" class="form-select" aria-label=".form-select-lg example">
+            <div class="select_container d-flex justify-content-end">
+              <select (change)="onChange($event)" class="form-control form-select form-select-sm" aria-label=".form-select-lg example">
                 <option class="option_select" *ngFor="let pointselect of points.data.points_list[2]._data" [value]="pointselect.order"
                   selected="pointselect.order">{{pointselect.label}}</option>
 

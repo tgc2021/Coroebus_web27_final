@@ -9,10 +9,7 @@
     position: relative;
     width: 100vw;
     height: 100vh;
-
-
-
- 
+   
 }
 ::ng-deep{
     .tooltip-inner {
@@ -26,10 +23,8 @@
         color: #F5F5F5;   
     }
     // .page-content {
-    //    padding: 71px 30px 60px 0px;
+    //   padding: 71px 30px 60px 0px;
     // }
-   
-
 }
 
 ::-webkit-scrollbar {
@@ -61,7 +56,6 @@
     display: none !important;
     
 }
-
 .playZone-container {
     margin: 1%;
     margin-top: 1%;
@@ -97,30 +91,27 @@
     right: 0;
     overflow-y: auto;
     overflow-x: hidden;
-   
-
-
 }
-
 .drop-down-card{
-    // z-index: 10;
     width:100%;
+    font-size: 18px;
+    font-family: 'Inter';
     padding-left:5vw;
     z-index:1;
 }
+.DropdownHeading{
+    font-family: 'Inter';
+    font-family: 18px;
+    color: #878787;
 
-
-
+}
 .form-select{
- 
-
 font-family: 'Inter';
 font-style: normal;
 font-weight: 400;
 font-size: 14px;
 line-height: 24px;
 /* identical to box height, or 171% */
-
 .form-option{
     height: 32px;
 }
@@ -343,22 +334,15 @@ color: #54595E;
     font-weight:normal;
     line-height: 150%;
 
-}
-
-
-  
+} 
 .date {
     color: #A5ACB8;
     font-size: 9px;
-
 }
 .btn-ok{
     background: #104E5B;
     color: #ffff;
-    
 }
-
-
 .noContentContainer{
     display:flex;
     flex-direction: column;

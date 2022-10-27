@@ -2,18 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ApiserviceService } from 'app/apiservice.service';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../core/app-state';
-
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '@app/services/event.service';
-
 import { ToastService } from '@app/services/toast-service';
 import { Subject } from 'rxjs';
-
 import { Util } from '@app/utils/util';
 import { takeUntil } from 'rxjs/operators';
 import { NgbModalConfig,NgbDropdownConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { roundWithPrecision } from 'chartist';
-import { element } from 'protractor';
+
 
 @Component({
   selector: 'app-play-zone',
@@ -83,11 +79,12 @@ export class PlayZoneComponent implements OnInit {
       console.log(res);
 
       this.spotEngagementData=res.data._spot_engagement_data;
+      console.log(this.spotEngagementData);
       this.filterByCategory=res.data._spot_engagement_data;
       });
 
       
-      //  console.log(this.spotEngagementData);
+     
       this.http.playZonePassbook(body).subscribe((res:any)=>{
         console.log(res);
         this.rewardPoints=res.data._reward_points;
@@ -99,8 +96,6 @@ export class PlayZoneComponent implements OnInit {
         console.log(this.spotEngagementPassbook);
        
       })
-      
-   
     }) 
   }
   
@@ -123,16 +118,25 @@ export class PlayZoneComponent implements OnInit {
     })
   }
 
+checked:boolean=false;
+
 
   filterPassBook(category:any){
-    
-    this.Passbook=this.spotEngagementPassbook.filter((a:any)=>{
-      if(a.spot_type===category|| category==''){
-        return a;
-      }
+    this.checked=!this.checked;
+    if(this.checked==true){
+      this.Passbook=this.spotEngagementPassbook.filter((a:any)=>{
+        if(a.spot_type===category||category==''){
 
+          return a;
+        }
+        console.log(this.checked);
     })
-
+    }
+    else{
+      this.Passbook=this.spotEngagementPassbook.filter((a:any)=>{
+          return a;
+    })
+    }
   }
 
   filterByPointsAsc(){
@@ -148,10 +152,7 @@ export class PlayZoneComponent implements OnInit {
    
     console.log("DSC order",this.Passbook)
   }
-  
   value = '2';
-
-
   clearText(){
     this.term1="";
     this.term="";
@@ -160,17 +161,10 @@ export class PlayZoneComponent implements OnInit {
 key = 'date_time_stamp';  
 
 reverse = false;
-
   sortList(key) {
     this.key = key;
     this.reverse = !this.reverse;
-   
   }
-
-
-
-
-
 openEvent(){
 
   this.openEvents=true;
@@ -178,7 +172,6 @@ openEvent(){
 }
 
 rewardPassBook(){
-  
   this.openEvents=false;
   this.openPassBook=true;
 }
