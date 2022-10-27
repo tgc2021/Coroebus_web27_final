@@ -241,7 +241,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
     // this.router.navigate(['/account/login'], { queryParams: { returnUrl: location.hash } })
   }
   activeLink(item) {
-    this.activeRouterLink = item?.link
+    this.activeRouterLink = item?.link;
     document?.getElementById('vertical-menu-btn')?.click()
     if (item?.icon === 'logout') {
       this.logout()

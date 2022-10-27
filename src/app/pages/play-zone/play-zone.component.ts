@@ -79,11 +79,12 @@ export class PlayZoneComponent implements OnInit {
       console.log(res);
 
       this.spotEngagementData=res.data._spot_engagement_data;
+      console.log(this.spotEngagementData);
       this.filterByCategory=res.data._spot_engagement_data;
       });
 
       
-      //  console.log(this.spotEngagementData);
+     
       this.http.playZonePassbook(body).subscribe((res:any)=>{
         console.log(res);
         this.rewardPoints=res.data._reward_points;
