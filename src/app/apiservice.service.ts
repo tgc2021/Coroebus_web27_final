@@ -63,4 +63,8 @@ export class ApiserviceService {
 
   }
 
+  interactiveDashboard(data:any){
+    var tempurl = `${this.URLstring}`+`/coroebus-beta-api-levels/DashboardHome/produce`
+    return this.Http.post(tempurl,data)
+  }
 }

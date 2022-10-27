@@ -1,0 +1,117 @@
+import { Component, ElementRef, OnInit } from '@angular/core';
+import * as fromRoot from '../../../core/app-state';
+import { Store } from '@ngrx/store';
+import { takeUntil } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+import { Router, ActivatedRoute } from '@angular/router';
+import { EventService } from '@app/services/event.service';
+import { ToastService } from '@app/services/toast-service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ApiserviceService } from 'app/apiservice.service';
+import { Util } from '@app/utils/util';
+import { Subscription, combineLatest, Subject, Observable } from 'rxjs';
+
+@Component({
+  selector: 'app-interactive-dashboard',
+  templateUrl: './interactive-dashboard.component.html',
+  styleUrls: ['./interactive-dashboard.component.scss']
+})
+export class InteractiveDashboardComponent implements OnInit {
+  auto_parts = [
+    {
+      "shape": "rect",
+      "type": "Lerning Academy",
+      "coords": "15,362,139,409"
+    }, {
+
+      "shape": "rect",
+      "type": "Play Zone",
+      "coords": "232,369,354,395"
+    }, {
+      "shape": "rect",
+      "type": "Jackets",
+      "coords": "270,448,356,475"
+    }, {
+      "shape": "rect",
+      "type": "Gloves",
+      "coords": "269,485,359,575"
+    }, {
+      "shape": "rect",
+      "type": "Winter wear",
+      "coords": "269,521,357,555"
+    }, {
+      "shape": "rect",
+      "type": "3rd umpire",
+      "coords": "28,682,96,778"
+    }, {
+      "shape": "rect",
+      "type": "Booster",
+      "coords": "295,699,333,783"
+    },
+    {
+      "shape": "rect",
+      "type": "PersonalMileStone",
+      "coords": "24,324,60,350"
+    },
+    {
+      "shape": "rect",
+      "type": "angryB",
+      "coords": "149,376,222,407"
+    },
+    {
+      "shape": "rect",
+      "type": "spectr",
+      "coords": "7,419,249,495"
+    }
+  ];
+
+  destroy$: Subject<boolean> = new Subject<boolean>();
+  userObj: any
+  mergeObj: any
+  interactive_dashoard_response:any
+
+  constructor(private readonly store: Store, public Util: Util,private _router: Router, public http: ApiserviceService) { }
+
+  ngOnInit(): void {
+      this.store.select(fromRoot.userLogin).pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(data => {
+      this.userObj = data?.user
+      console.log(this.userObj);
+
+      this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
+      console.log(this.mergeObj);
+
+      let body = {
+        _userid: this.mergeObj.USERID,
+        _game: this.mergeObj.id_coroebus_game,
+       
+      }
+
+      console.log(body);
+      this.http.interactiveDashboard(body).subscribe((res) => {
+        console.log(res)
+        this.interactive_dashoard_response = res;
+        this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
+        console.log(this.interactive_dashoard_response);
+
+       
+
+       
+      })
+    })
+  }
+
+
+  partClicked(arg) {
+    // console.log(arg);
+    console.log("---->", arg);
+    // console.log(arg);
+    if (arg.type == 'Lerning Academy') {
+      console.log("Learning Academy");
+      
+    }
+    
+
+  }
+}
