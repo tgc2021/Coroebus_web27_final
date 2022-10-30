@@ -747,6 +747,15 @@ position: relative;
         font-size: 7px;
     }
 
+
+    
+    .table-container .table th {
+        font-weight: 600;
+        background-color: var(--myvar);
+        color: #FFFFFF;
+        font-size: 8px;
+    }
+    
     .org_redem_div{
         margin-top: 40px;
     }
@@ -1185,9 +1194,11 @@ position: relative;
         font-size: 8px;
     }
 
-    .table th{
+    .table-container .table th {
+        font-weight: 600;
+        background-color: var(--myvar);
+        color: #FFFFFF;
         font-size: 8px;
-
     }
 
       
@@ -1476,6 +1487,14 @@ position: relative;
         font-size: 8px;
     }
 
+    
+    .table-container .table th {
+        font-weight: 600;
+        background-color: var(--myvar);
+        color: #FFFFFF;
+        font-size: 8px;
+    }
+
     .up_down_arrow{
         position: absolute;
         margin-left: 2px;
@@ -1621,6 +1640,14 @@ position: relative;
     .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
         display: flex;
         margin-top: 8px;
+    }
+
+    
+    .table-container .table th {
+        font-weight: 600;
+        background-color: var(--myvar);
+        color: #FFFFFF;
+        font-size: 8px;
     }
    
     .rewardpoints {
@@ -1901,6 +1928,15 @@ position: relative;
         top: 8.2rem;
 
     }
+
+    
+    .table-container .table th {
+        font-weight: 600;
+        background-color: var(--myvar);
+        color: #FFFFFF;
+        font-size: 8px;
+    }
+
     .mat-card{
         margin-top: 2rem;
     }
@@ -2152,6 +2188,12 @@ position: relative;
     }
 
    
+    .table-container .table th {
+        font-weight: 600;
+        background-color: var(--myvar);
+        color: #FFFFFF;
+        font-size: 8px;
+    }
 
     .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
         display: flex;

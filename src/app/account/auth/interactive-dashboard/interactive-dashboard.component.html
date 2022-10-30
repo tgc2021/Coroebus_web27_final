@@ -15,10 +15,10 @@
                  
                 <div class="second_row">
                         <div class="my_name_details" >
-                             Gopala Ganeshan
+                            {{interactive_dashoard_response[0].data._personal_data.first_name}}
                         </div>
                         <div class="team_name_details">
-                            Strange Warriors
+                            {{interactive_dashoard_response[0].data._personal_data.team_name}}
                         </div>
                     </div>
                
@@ -29,7 +29,7 @@
 
                 <div  class="league_name">
                     <div class="leauge_name_details">
-                        Bahrain Premier League
+                        {{interactive_dashoard_response[0].data._personal_data.game_name}}
                               
                      </div>
                 </div>
@@ -50,7 +50,7 @@
                     <div class="rewardsPoints">
                         <img class="rewards_points"  src="assets/images/interactive-dashboard/reward points icon 1.png"/>
 
-                        <p class="reward_total_points">2902343</p>
+                        <p class="reward_total_points"> {{interactive_dashoard_response[0].data._points[2].score}}</p>
                         <p class="reward">Reward Points</p>
 
                     </div>
@@ -75,6 +75,7 @@
                         <div class="col-md-3 dot">
                             <p class="run_scored">23456</p>
                             <div class="run_scored_box">
+                                <!-- {{interactive_dashoard_response[0].data._Point_distribution[0].point_label}} -->
                                 <p class="text_run_scored">RUN SCORED</p>
                             </div>
                         </div>
