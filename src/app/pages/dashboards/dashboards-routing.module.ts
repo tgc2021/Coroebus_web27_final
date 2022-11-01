@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { DefaultComponent } from './default/default.component';
 import { InteractiveDashboardComponent } from './interactive-dashboard/interactive-dashboard/interactive-dashboard.component';
 

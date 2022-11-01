@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, HostListener} from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { BusyService } from '@app/services/busy.service';
 import { asapScheduler } from 'rxjs';
@@ -19,7 +19,7 @@ import { SIDEBAR_TYPE } from "../layouts.model";
  */
 export class VerticalComponent implements OnInit, AfterViewInit {
 
-  isCondensed = true;
+  isCondensed:boolean=true;
   sidebartype: string;
   busy = false
   constructor(private router: Router, private eventService: EventService,
@@ -65,7 +65,6 @@ export class VerticalComponent implements OnInit, AfterViewInit {
   onSettingsButtonClicked() {
     document.body.classList.toggle('right-bar-enabled');
   }
-
   changeSidebar(value) {
     switch (value) {
       case "light":
@@ -131,12 +130,12 @@ export class VerticalComponent implements OnInit, AfterViewInit {
     this.isCondensed = !this.isCondensed;
     document.body.classList.toggle('sidebar-enable');
     document.body.classList.toggle('vertical-collpsed');
-
     if (window.screen.width <= 768) {
       document.body.classList.remove('vertical-collpsed');
     }
     this.changeSidebar(this.sidebartype);
   }
-
-
+  
 }
+
+

@@ -1,6 +1,5 @@
 *{
     scrollbar-width: none;
-
 }
 
 option{
@@ -10,7 +9,7 @@ option{
     top: calc(100% + 0.5rem);
     left: 0;
     padding: 1rem;
-    margin: 0;
+
     box-sizing: border-box;
     border-radius: 5px;
     max-height: 200px;
@@ -227,19 +226,17 @@ hr {
 .form-select-sm{
      width: 10%;
     //  float: right;
-     margin: 10px;
+    margin-top: 10px;
     font-size: 12px;
     color: #000000;
-     background-color: #F2F2F2;
-     border: none;
-     height: 46px;
-     position: absolute;
-     right: 0;
-    z-index: 10;
+    background-color: #F2F2F2;
+    border: none;
+    height: 46px;
+    position: absolute;
+    right: 12px;
+    z-index: 10; 
  }
-
 .redemption_card{
-  
     display: block;
     position: relative;
     height: fit-content;
@@ -381,10 +378,8 @@ font-style: normal;
 font-weight: 500;
 font-size: 12px;
 line-height: 130.02%;
-margin-right: 150px;
+margin-right: 180px;
 /* or 18px */
-
-
 color: #A5ACB8;
 
 }
@@ -536,6 +531,7 @@ color: #A5ACB8;
                 .platform_redeem{
                     background-color: white;
                     border: 2px solid;
+                    border-radius: 8px;
                     padding: 8px;
                     margin: 8px;
                 }
