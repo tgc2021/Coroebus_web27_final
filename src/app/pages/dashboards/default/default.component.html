@@ -5,7 +5,7 @@
         </div>
     </div>
     <ng-template #dashboardTpl>
-        <div class="row" >
+        <div class="row" style="height:100%;" >
             <div class="col-3 pointsDistributionSection">
                 <div class="card points-dis-card"
                     [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
@@ -97,7 +97,7 @@
                 </div>
             </div>
             <div class="col-6  DashboardSection">
-                <div class="row">
+                <div class="row d-flex justify-content-around">
 
                     <div class="col-3">
                         <div class="avatar-upload">
@@ -375,7 +375,7 @@
                 </div>
             </div> 
             <div class="col-3 RankSection">
-                <div class="card points-rank-card" *ngIf="sectionView_1?.is_land_logos?.length > 0"
+                <div class="card points-rank-card" *ngIf="sectionView_1?.is_land_logos?.length>0"
                     [style.background-image]="
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
                     <div class="card-body align-items-center">
@@ -622,40 +622,6 @@
 
                 </div>
             </div>
-            <div class="col-12 pointsDistributionSection">
-                <div class="card points-dis-card"
-                    [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-                    <div class="card-body">
-                        <div class="float-start dropdown ms-2 font-size-16 font-weight-semibold">
-                            Point Distribution
-                        </div>
-                        <div>
-                            <div class="mb-4 me-3"></div>
-                            <div class="inner-points-height">
-                                <div class="row mt-2 points-row ms-1" (click)="getGraphDataById()"
-                                    *ngFor="let item of sectionView_1?._kpi_score">
-                                    <div class="col-6 p-0">
-                                        <!-- ngbTooltip="{{item?.point_label}}"   this is inside ellipsis1-->
-                                        <div class="pt-2 mobile-points-dis-name1 ellipsis1">
-                                            {{item?.point_label}}
-                                        </div>
-                                    </div>
-                                    <div class="col-3 mt-3">
-                                        <img loading="lazy" class="align-self-start float-end"
-                                            src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}" alt=""
-                                            height="25">
-                                    </div>
-                                    <div class="col-3 mt-3 text-center font-size-10 font-weight-semibold">
-                                        {{item?.weightage}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                    
-            </div>
             <div class="col-12 RankSection">
                 <div class="" *ngIf="sectionView_1?.is_land_logos?.length > 0"
                     [style.background-image]="
@@ -691,6 +657,41 @@
     
     
             </div>
+            <div class="col-12 pointsDistributionSection">
+                <div class="card points-dis-card"
+                    [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                    <div class="card-body">
+                        <div class="float-start dropdown ms-2 font-size-16 font-weight-semibold">
+                            Point Distribution
+                        </div>
+                        <div>
+                            <div class="mb-4 me-3"></div>
+                            <div class="inner-points-height">
+                                <div class="row mt-2 points-row ms-1" (click)="getGraphDataById()"
+                                    *ngFor="let item of sectionView_1?._kpi_score">
+                                    <div class="col-6 p-0">
+                                        <!-- ngbTooltip="{{item?.point_label}}"   this is inside ellipsis1-->
+                                        <div class="pt-2 mobile-points-dis-name1 ellipsis1">
+                                            {{item?.point_label}}
+                                        </div>
+                                    </div>
+                                    <div class="col-3 mt-3">
+                                        <img loading="lazy" class="align-self-start float-end"
+                                            src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}" alt=""
+                                            height="25">
+                                    </div>
+                                    <div class="col-3 mt-3 text-center font-size-10 font-weight-semibold">
+                                        {{item?.weightage}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                    
+            </div>
+            
 
 
             <div class="row no-gutter-" [ngClass]="{'row-cols-2': sectionView_2?._ranking_data?.length === 2,
