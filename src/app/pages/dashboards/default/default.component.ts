@@ -456,8 +456,9 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     body = { "_game": this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game, "_role": this.userSelectionData?._personal_data?.id_role };
     [err, res] = await HttpProtocols.to(DashboardModel.levelsBuckets(body))
     if (!err && res?.statuscode === 200) {
-      this.levelsBucketsList = res?.data
-      this.modalService.open(this.content, { centered: true, windowClass: 'modal-cls' });
+      this.levelsBucketsList = res?.data;
+ 
+      this.modalService.open(this.content, { centered: true, windowClass: 'modal-cls'});
     } else {
       this.levelsBucketsList_err = 'Error'
     }

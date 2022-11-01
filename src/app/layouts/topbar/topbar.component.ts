@@ -82,7 +82,6 @@ export class TopbarComponent implements OnInit, OnDestroy {
     this.mobileMenuButtonClicked.emit();
     this.eventService.broadcast('requestForProduce1Data')
   }
-
   /**
    * Logout the user
    */

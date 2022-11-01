@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-12 d-flex gap-2">
             <div class="col-8 playZone-container">
-                <h5>Play zone</h5>
+                <h5>Play Zone</h5>
                 <div class="subHeading mb-3">
                     <span class="text">Welcome to Play Zone! Start playing and earning Rewards!</span>
                 </div>
@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="card-body d-flex gap-2">
                                         <div class="col-5">
-                                                <div class="p-1" style="width:10vw; height:17vh">
+                                                <div  style="width:10vw; height:16vh">
                                                     <img src="{{data.logo}}" alt="Logo" height="100%" width="100%">
                                                 </div>
                                             <div>
@@ -79,20 +79,22 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr>
+                                <div class="d-flex justify-content-center">
+                                    <hr  width="98%">
+                                </div>
                                 <div class="d-flex p-1">
                                     <div
-                                        *ngIf="data.spot_status==='Open' && data._status==='active'; then openedBlock;else openBlock">
+                                        *ngIf="data.spot_status==='Open' && data._status==='active'; then openBlock;else openedBlock">
                                     </div>
-                                    <ng-template #openedBlock>
-                                        <button style="cursor:pointer;border: none;background: #ffff; margin:2% 5%;"
+                                    <ng-template #openBlock>
+                                        <button style="cursor:pointer;border: none;background: #ffff; margin:3% 5%;"
                                             class="status-openButton" (click)="open(content)">
                                             {{data.spot_status}}
                                         </button>
                                     </ng-template>
-                                    <ng-template #openBlock>
+                                    <ng-template #openedBlock>
 
-                                        <button style="cursor:pointer;border: none;background: #ffff; margin:2% 5%;"
+                                        <button style="cursor:pointer;border: none;background: #ffff; margin:3% 5%;"
                                             [disabled]="true" class="status-openButton">
                                             {{data.spot_status}}
                                         </button>
@@ -288,7 +290,7 @@
             <div class="mobile-playzone-container">
 
                 <div class="col-10">
-                    <h5>Play zone</h5>
+                    <h5>Play Zone</h5>
                     <div class="mb-1">
                         <span class="text">Welcome to Play Zone! Start playing and earning Rewards!</span>
                     </div>
@@ -302,8 +304,8 @@
             <div>
 
                 <div class="d-flex  m-2 mb-3 gap-2 tab">
-                    <button (click)="openEvent()" class="tab-btn target">Events</button>
-                    <button (click)="rewardPassBook()" class="tab-btn target">Reward passbook</button>
+                    <button (click)="openEvent()"  class="tab-btn target">Events</button>
+                    <button (click)="rewardPassBook()"  class="tab-btn target">Reward passbook</button>
                 </div>
                 <div>
                     <ng-container *ngIf="openEvents">
@@ -378,10 +380,9 @@
                             </div>
                             <div class="card-body d-flex gap-2">
                                 <div class="col-5">
-                                    <div class="p-1" style="height:20vh; width: 35vw;">
+                                    <div class="p-1" style="height:22vh;width: 35vw;">
                                         <img src="{{data.logo}}" alt="Logo" height="100%" width="100%">
                                     </div>
-                                    
                                 </div>
                                 <div class="col-7">
                                     <div>
@@ -394,15 +395,13 @@
                                                 style="position: absolute; bottom:60px; right:10px">{{data.end_date |
                                                 date:"d/M/yyyy 'at' hh:mm a"}}</span>
                                         </div>
-
-
-
                                     </div>
                                 </div>
-
-
                             </div>
-                            <hr>
+                            <div class="d-flex justify-content-center">
+                                <hr  width="98%">
+                            </div>
+                            
                             <div class="d-flex  mb-2 ms-4" style="cursor:pointer;">
                                 <div
                                     *ngIf="data.spot_status==='Open' && data._status==='active'; then openedBlock;else openBlock">

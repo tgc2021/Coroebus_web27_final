@@ -12,6 +12,7 @@ import { SkeletonScreenLoaderModule } from '@coroebus/skeleton-screen-loader';
 import { ImagecropperComponent } from '@pages/imagecropper/imagecropper.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { ToastsContainerComponent } from '@pages/toasts-container/toasts-container.component';
+
 @NgModule({
   declarations: [DefaultComponent, ImagecropperComponent, ToastsContainerComponent],
   imports: [

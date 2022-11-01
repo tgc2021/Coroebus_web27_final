@@ -1,130 +1,168 @@
-.bg-image{
-    background-image: url(../../../../assets/images/29cricket-[Converted].png);
-} 
+.web-view{
+    width: 100vw;
+}
+.points-dis-card,
+.points-notification-card
+ {
+    background-repeat: no-repeat;
+    background-position: inherit;
+    background-size: cover;
+    width: auto;
+    height: auto;
+    // min-height:vh;
+    border-radius: 11px;
+}
+.inner-points-height {
+    // padding-top: 2%;
+    height: 30vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.points-rank-card{
+    background-repeat: no-repeat;
+    background-position: inherit;
+    background-size: cover;
+    width: auto;
+    height: auto;
+    border-radius: 11px;
 
-.ellipsis1 {
-    overflow: visible;
-    text-overflow: ellipsis;
-    white-space:nowrap;
-    max-width: 100%;
-    // cursor: pointer;
 }
-.points-dis-name1 {
-    background: #F3F2C1;
-//    height: 87%;
-   margin-top:2px;
-   margin-left:2px;
-   border-radius: 6.46995px;
-   text-align:left;
-   font-weight: 600;
-   font-size: 11px;
-   line-height: 31px;
-padding-left: 10px;
-   width: 149.62px;
-height: 50.14px;
-left: 4px;
-top: 3.23px;
-}
-.table-header
-{
-    font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 14px;
-line-height: 100%;
-}
+.points-bullentins-card{
+    background-repeat: no-repeat;
+    background-position: inherit;
+    background-size: cover;
+    width: auto;
+    height:auto;
+    border-radius: 11px;
+    
 
-.poketitle
-{
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 22px;
-    letter-spacing: -0.02em;
-    font-feature-settings: 'pnum' on, 'lnum' on;
-   color: #342319;
+}
+.points-dis-name1{
+        background: #F3F2C1;
+        margin-top: 2px;
+        margin-left: 2px;
+        border-radius: 6.46995px;
+        font-weight: 600;
+        font-size: 11px;
+        line-height: 31px;
+        padding-left: 10px;
+        width: 9vw;
+        height: 50.14px;
+        left: 4px;
+        top: 3.23px;
+}
+.inner-notification-height {
+    height: 30vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.dashboard-center-table{
+    min-height: 24vh;
+
+}
+::ng-deep{
+    .page-content{
+        padding: calc(70px + 24px) calc(24px / 2) 2px calc(24px / 2);
+    }
     
 }
-.active{
-//  border-radius: 16px;
-// box-shadow: inset 3px 3px 3px rgba(136,164,191,0.48);
-// outline: none;
-text-shadow:#342319;
-background: #FFFFFF;
-border: 2px;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 11px;
+
+
+@media screen and (min-width:270px) and (max-width:960px) {
+    .web-view {
+        display: none;
+    }
+
+}
+// Mobile view Started //
+@media screen and (min-width:960.1px) {
+    .mobile-view {
+        display: none;
+    }
+}
+.dashboard-user-name,
+.dashboard-user-team-name {
+    margin-left: -11px;
 }
 
-.emojitext{
-   border-radius: 10px;
-    background: #ffffff;
-    box-shadow: unset !important;
+.mobile-dashboard-banner-main-rank-img{
+    height: auto;
+    width: 18vw;
+}
+.mobile-points-dis-name1{
+    background: #F3F2C1;
+    margin-top: 2px;
+    margin-left: 2px;
+    border-radius: 6.46995px;
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 31px;
+    padding-left: 10px;
+    width: 27vw;
+    height: 50.14px;
+    left: 4px;
+    top: 3.23px;
+}
+
+.mobile-avatar-upload{
+    position: relative;
+    height: 15vh;
+    width: 15vw;
+
+}
+.mobile-avatar-upload .mobile-avatar-edit{position: absolute;
+    left:50px;
+    z-index: 1;
+    top: 1%;
+}
+.mobile-avatar-upload .mobile-avatar-edit input {
+    display: none;
+}
+.mobile-avatar-upload .mobile-avatar-edit input+label{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 0;
+    border-radius: 100%;
     background: #FFFFFF;
-border: 2px solid rgba(83, 184, 187, 0.5);
-border-radius: 15px;
+    border: 1px solid transparent;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    font-weight: normal;
+    transition: all 0.2s ease-in-out;
+    background-repeat: no-repeat;
+    background-position: center;
 }
-.card-fotter{
+
+.mobile-avatar-upload .mobile-avatar-preview {
+    width: 85px;
+    height: 100%;
+    position: relative;
+    border-radius: 100%;
+    margin-bottom: 5%;
+    border: 2.20588px solid #FFFFFF;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.mobile-avatar-upload .mobile-avatar-preview>img {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.mobile-dashboard-user-name{
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 100%;
+    color: #000000;
+    text-align: center;
+}
+.mobile-dashboard-user-team-name{
+font-weight: 600;
+font-size: 10px;
 text-align: center;
+color: #000000;
+
 }
-.submit
-{
-    width: 145px;
-}
-// #animationPoke{
-//     position: fixed;
-//     top:0;
-//     left: 0;
-//     z-index: 1050;
-//     display: block;
-//     height: 100%;
-//     width: 100%;
-//     overflow:hidden;
-//    outline: 0;
-//    background-color: rgba(0,0,0,0.4);
-// }
 
-// .crawl{
-//     position: relative;
-//     transform-origin: 50% 100%;
-//     animation:crawl 6s linear;
-// }
-// section[class*="poke-slide"]{
-//     position: relative;
-//     display: none;
-// }
-// section[class="poke-slide1"]{
-//     position: relative;
-//     display:flex;
-// }
-// .star-wars{
-//     display: none;
-//     padding: 2%;
-//     justify-content: center;
-//     position: absolute;
-//     height: auto;
-//     color: rgb(255,255,255);
-//     z-index: 20000;
-//     font-size: 20px;
-//     font-weight: 400;
-//     line-height: 120%;
-//     top: 100%;
-//     text-align: center;
-// }
-
-// .crawl> .title {
-//     font-size: 90%;
-//     text-align: center;
-// }
-
-// .crawl > .title h1{
-//     margin: 0px 0px 100px;
-// }
-
-// @keyframes crawl{
-//     0%{
-//         margin-top: -0%;
-//         transform: rotate(1deg) translateZ((0));
-//     }
-// }

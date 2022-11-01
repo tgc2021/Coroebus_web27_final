@@ -61,7 +61,7 @@
     filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.12)) drop-shadow(0px 20px 20px rgba(0, 0, 0, 0.08));
     border-radius: 15px;
     width: 100%;
-    height: 203px;
+    height: auto;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -151,8 +151,8 @@
     // width: 162.89px;
     width: 100%;
     height: 50px;
-    left: 372px;
-    top: 323px;
+    // left: 372px;
+    // top: 323px;
     // background: #FFFFFF;
     border: 0.539866px solid;
     box-shadow: 0px 2.15946px 16.196px rgba(0, 0, 0, 0.05);
@@ -180,13 +180,13 @@
     border-radius: 10px;
 }
 
-.dashboard-f-width {
-    width: 667px;
-    margin-left: 21%;
-}
+// .dashboard-f-width {
+//     width: 70vh;
+//     margin-left: 21%;
+// }
 
 .dashboard-center-table {
-    max-height: 94px;
+    max-height: 10vh;
     // -ms-overflow-style: none;
     // /* for Internet Explorer, Edge */
     // scrollbar-width: none;
@@ -196,7 +196,7 @@
 }
 
 .inner-bulletins-height {
-    max-height: 254px;
+    height: auto;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -336,17 +336,17 @@
     margin-left: 24%;
 }
 
-.points-dis-card,
-.points-notification-card,
-.points-rank-card,
-.points-bullentins-card {
-    background-repeat: no-repeat;
-    background-position: inherit;
-    background-size: cover;
-    width: auto;
-    height: 286px;
-    border-radius: 11px;
-}
+// .points-dis-card,
+// .points-notification-card,
+// .points-rank-card,
+// .points-bullentins-card {
+//     background-repeat: no-repeat;
+//     background-position: inherit;
+//     background-size: cover;
+//     width: auto;
+//     height: 40vh;
+//     border-radius: 11px;
+// }
 
 .points-bullentins-card-no-height {
     height: 920px;
@@ -382,11 +382,11 @@
     height: 56px;
 }
 
-.inner-points-height {
-    height: 230px;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
+// .inner-points-height {
+//     height: 230px;
+//     overflow-x: hidden;
+//     overflow-y: auto;
+// }
 
 .inner-points-height.one-row {
     height: 80px !important;
@@ -448,9 +448,9 @@
 .level-badge-btn {
     // background: #104E5B;
     border-radius: 20px;
-    width: 100%;
+    // width: 15vw;
     font-size: 14px;
-    // width: 73px;
+    width: 73px;
 }
 
 .bulletins-sub-card {
@@ -527,15 +527,15 @@
 
 .avatar-upload {
     position: relative;
-    max-width: 170px;
+    // max-width: 15vw;
     // margin: 50px auto;
 }
 
 .avatar-upload .avatar-edit {
     position: absolute;
-    right: 20px;
+    left:65%;
     z-index: 1;
-    top: 10px;
+    top: 1%;
 }
 
 .avatar-upload .avatar-edit input {
@@ -564,10 +564,11 @@
 // }
 
 .avatar-upload .avatar-preview {
-    width: 149px;
-    height: 149px;
+    width: 12vw;
+    height: 12vw;
     position: relative;
     border-radius: 100%;
+    margin-bottom: 5%;
     border: 2.20588px solid #FFFFFF;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
 }
@@ -580,7 +581,6 @@
     background-repeat: no-repeat;
     background-position: center;
 }
-
 .dashboard-user-name {
     font-weight: 600;
     font-size: 18px;
@@ -589,7 +589,6 @@
     text-align: center;
     // margin-left: 9%;
 }
-
 .dashboard-user-team-name {
     font-weight: 600;
     font-size: 14px;
@@ -601,7 +600,8 @@
 }
 
 .dashboard-banner-main-rank-img {
-    height: 141px;
+    height: auto;
+    width: 11vw;
 }
 
 .dashboard-game-point-img,
@@ -615,7 +615,7 @@
     box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
     border-radius: 10.61px;
     // height: 35px;
-    width: 119px;
+    width: 8vw;
 }
 
 .dashboard-banner-point-btn-text {
@@ -629,9 +629,9 @@
 .dashboard-level-rank-name {
     font-weight: 600;
     font-size: 14px;
+    // font-size: .7rem;
     line-height: 100%;
-    align-items: center;
-
+   text-align: center;
     color: #FFFFFF;
 }
 
@@ -723,9 +723,7 @@
 .notification-popup-title {
     font-weight: 700;
     font-size: 14px;
-
     text-align: center;
-
     color: #000000;
 }
 
@@ -850,7 +848,7 @@ border-radius: 15px;
     // }
 
     .avatar-upload .avatar-edit {
-        right: -13px;
+        margin-left: 2vw;
     }
 
     .w-86 {
@@ -918,13 +916,11 @@ border-radius: 15px;
             margin-left: 25%;
         }
     }
-
     .one-data {
         >div>img.island_login {
             height: 234px;
         }
     }
-
     .two-data {
         margin-top: 21%;
 
@@ -932,11 +928,8 @@ border-radius: 15px;
             height: 117px;
         }
     }
-
     .level-badge-btn {
-       
         width: 50%;
-
     }
 
     /* CSS */
@@ -1354,10 +1347,10 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
         margin-top: -0.5%;
     }
 
-    .dashboard-center-table {
-        height: 300px;
-        max-height: 290px;
-    }
+    // .dashboard-center-table {
+    //     height: 300px;
+    //     max-height: 290px;
+    // }
 
     .points-bullentins-card {
         height: 371px;
@@ -2230,17 +2223,18 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
 
     .dashboard-level-rank-name {
         font-size: 10px;
-        float: left;
-        margin-left: 22px;
+       
     }
 
     .dashboard-banner {
-        height: 132px;
+        height: auto;
     }
 
     .avatar-edit {
-        top: -9px !important;
-        right: 21px !important;
+        top: 0px !important;
+        right: -26vw;
+        left: 65px;
+    
     }
 
     .dashboard-bg-image {
@@ -2383,6 +2377,7 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
 
     .filter-btn-dashboard {
         height: 33px;
+        font-size: 9px;
     }
 
     /* CSS */
@@ -2491,7 +2486,7 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
     .dashboard-user-team-name {
         font-size: 9px;
         font-weight: bold;
-        margin-left: 0;
+        margin-left: -11px;
     }
 
     .dashboard-banner-main-rank-img {
@@ -2515,14 +2510,9 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
         float: left;
     }
 
-    .dashboard-level-rank-name {
-        font-size: 10px;
-        float: left;
-        margin-left: 5px;
-    }
 
     .dashboard-banner {
-        height: 132px;
+        height: auto;
     }
 
     .dashboard-bg-image {
