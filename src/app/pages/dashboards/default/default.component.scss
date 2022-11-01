@@ -1,8 +1,7 @@
 .web-view{
-    margin: 0;
-    padding: 0;
+   
     width: 100vw;
-    height: 90vh;
+   
 }
 .points-dis-card,
 .points-notification-card
@@ -12,12 +11,11 @@
     background-size: cover;
     width: auto;
     height: 41vh;
-    
     border-radius: 11px;
 }
 .inner-points-height {
     // padding-top: 2%;
-    // height: 30vh;
+    height: 30vh;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -26,7 +24,7 @@
     background-position: inherit;
     background-size: cover;
     width: auto;
-    height: 45vh;
+    height: auto;
     border-radius: 11px;
 
 }
@@ -60,9 +58,7 @@
     overflow-x: hidden;
 }
 .dashboard-center-table{
-    min-height: 22vh;
-
-
+    min-height: 25vh;
 }
 ::ng-deep{
     .page-content{
