@@ -44,6 +44,8 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
   url: string;
   filepath: any;
   ProfileImageNewOne:any=null
+  id_coroebus_theme :any
+  themeObj: any
 
   constructor(private eventService: EventService, private router: Router,public dashboard:DefaultComponent,
     public translate: TranslateService, private http: HttpClient,
@@ -105,6 +107,8 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
       })
 
     })
+
+  
   }
 
   ngOnInit() {
@@ -113,6 +117,9 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
     ).subscribe(data => {
       this.userObj = data?.user
       console.log(this.userObj)
+      this.id_coroebus_theme=this.userObj.themes[0].id_coroebus_theme
+      console.log(this.id_coroebus_theme);
+      
     })
 
     this.initialize();
@@ -241,7 +248,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
     // this.router.navigate(['/account/login'], { queryParams: { returnUrl: location.hash } })
   }
   activeLink(item) {
-    this.activeRouterLink = item?.link;
+    this.activeRouterLink = item?.link1;
     document?.getElementById('vertical-menu-btn')?.click()
     if (item?.icon === 'logout') {
       this.logout()

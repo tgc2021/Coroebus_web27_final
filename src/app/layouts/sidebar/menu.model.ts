@@ -20,6 +20,7 @@
     label?: string;
     icon?: string;
     link?: string;
+    link1?: string;
     subItems?: any;
     isTitle?: boolean;
     badge?: any;

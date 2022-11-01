@@ -1,4 +1,4 @@
-<div>
+<div class="container-fluid">
     <div class="row" *ngFor="let response of interactive_dashoard_response">
         <div class="col-12 box-container">
 
@@ -23,8 +23,8 @@
                     </div>
                
            
-                <div class="profile_pic">
-                    <img src="assets/images/interactive-dashboard/profile pic.png" />
+                <div class="profile_pic" (click)="navigateToProfile()">
+                    <img class="prof_src" src="{{interactive_dashoard_response[0].data._personal_data.profile_logo}}" alt="profile" />
                 </div>
 
                 <div  class="league_name">
@@ -35,16 +35,16 @@
                 </div>
 
                 <div class="trophyAndRewards">
-                    <div class="myTrophy">
+                    <div class="myTrophy" (click)="navigateAchievementshelf()">
                         My Trophy
                         <img class="trophy_img"  src="assets/images/interactive-dashboard/my trophy icon.png"/>
 
                     </div>
 
-                    <div class="myRewards">
+                    <div class="myRewards" (click)="navigateReward()">
                         <img class="trophy_img"  src="assets/images/interactive-dashboard/reward icon.png"/>
 
-                        My Trophy
+                        My Reward
 
                     </div>
                     <div class="rewardsPoints">
@@ -57,8 +57,8 @@
                 </div>
                
 
-                <div class="details_box">
-                    <div class="title"  >
+                <div class="details_box" (click)="navigateDashboard()">
+                    <div class="title_interactive"  >
                         <p class="team_rank">TEAM RANK</p>
                         <p class="my_score">MY SCORE</p>
                         <p class="my_rank">MY RANK</p>
@@ -72,35 +72,14 @@
                     </div>
 
                     <div class="row grid_circle">
-                        <div class="col-md-3 dot">
-                            <p class="run_scored">23456</p>
+                        <div class="col-md-3 dot" *ngFor="let points of interactive_dashoard_response[0].data._Point_distribution">
+                            <p class="run_scored">{{points.weightage}}</p>
                             <div class="run_scored_box">
                                 <!-- {{interactive_dashoard_response[0].data._Point_distribution[0].point_label}} -->
-                                <p class="text_run_scored">RUN SCORED</p>
+                                <p class="text_run_scored">{{points.point_label}}</p>
                             </div>
                         </div>
 
-                        <div class="col-md-3 dot">
-                            <p class="run_scored">34556</p>
-                            <div class="run_scored_box">
-                                <p class="text_run_scored"> RUN SAVED</p>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-3 dot">
-                            <p class="run_scored">34553</p>
-                            <div class="run_scored_box">
-                                <p class="text_run_scored">WICKETS TAKEN</p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 dot">
-                            <p class="run_scored">43435</p>
-                            <div class="run_scored_box">
-                                <p class="text_run_scored">FAIR PLAY</p>
-                            </div>
-                        </div>
 
                     </div>
 
@@ -108,14 +87,18 @@
 
                
                 <div>
-                    <img class="backround_image" src="assets/images/interactive-dashboard/driving_skillmuni_green.png"  usemap="#auto"/>
+                    <img class="backround_image" id="img_id" src="{{interactive_dashoard_response[0].data._personal_data.skillmuni}}"  usemap="#auto"/>
                     <map name="auto"
                     id="auto">
                    <area *ngFor="let part of auto_parts"
                          shape="{{part.shape}}"
                          coords="{{part.coords}}"
                          (click)="partClicked(part)"
-                         title="part.type" />
+                         title="part.type" 
+                         href="javascript:void(0);"
+                         onmouseover="document.getElementById('img_id').style.cursor='pointer';" 
+                         onmouseout="document.getElementById('img_id').style.cursor='';"
+                         />
                </map>
                 </div>
 

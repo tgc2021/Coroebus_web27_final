@@ -10,6 +10,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ApiserviceService } from 'app/apiservice.service';
 import { Util } from '@app/utils/util';
 import { Subscription, combineLatest, Subject, Observable } from 'rxjs';
+import * as userActions from '../../../core/app-state/actions';
 
 @Component({
   selector: 'app-interactive-dashboard',
@@ -21,12 +22,12 @@ export class InteractiveDashboardComponent implements OnInit {
     {
       "shape": "rect",
       "type": "Lerning Academy",
-      "coords": "15,362,139,409"
+      "coords": "23,384,109,348"
     }, {
 
       "shape": "rect",
       "type": "Play Zone",
-      "coords": "232,369,354,395"
+      "coords": "248,385,337,348",
     }, {
       "shape": "rect",
       "type": "Jackets",
@@ -51,7 +52,7 @@ export class InteractiveDashboardComponent implements OnInit {
     {
       "shape": "rect",
       "type": "PersonalMileStone",
-      "coords": "24,324,60,350"
+      "coords": "137,391,226,354"
     },
     {
       "shape": "rect",
@@ -70,7 +71,7 @@ export class InteractiveDashboardComponent implements OnInit {
   mergeObj: any
   interactive_dashoard_response:any
 
-  constructor(private readonly store: Store, public Util: Util,private _router: Router, public http: ApiserviceService) { }
+  constructor(private readonly store: Store, public Util: Util,private _router: Router, public http: ApiserviceService, private eventService: EventService) { }
 
   ngOnInit(): void {
       this.store.select(fromRoot.userLogin).pipe(
@@ -94,12 +95,24 @@ export class InteractiveDashboardComponent implements OnInit {
         this.interactive_dashoard_response = res;
         this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
         console.log(this.interactive_dashoard_response);
+        this.eventService.broadcast('passDataToHeader', {
+          color: this.interactive_dashoard_response[0].data.theme_details[0].dark_color,
+          game_logo: this.interactive_dashoard_response[0].data._personal_data.game_logo,
+    
+        })
+        this.store.dispatch(userActions.updateUserObj({
+          data: {
+            color: this.interactive_dashoard_response[0].data.theme_details[0].dark_color,
+            game_logo: this.interactive_dashoard_response[0].data._personal_data.game_logo,
 
-       
-
+          }
+        }));
+        
        
       })
     })
+  
+
   }
 
 
@@ -111,7 +124,36 @@ export class InteractiveDashboardComponent implements OnInit {
       console.log("Learning Academy");
       
     }
+    else if(arg.type == 'Play Zone'){
+      this._router.navigateByUrl("/playzone/play")
+
+      
+    }
+    else if(arg.type == '3rd umpire'){
+      this._router.navigateByUrl("/notification/list")
+
+      
+    }
     
+    
+
+  }
+
+  navigateDashboard(){
+    this._router.navigateByUrl("/dashboard")
+  }
+
+  navigateAchievementshelf(){
+    this._router.navigateByUrl("/Achievement/AchievementShelf")
+
+  }
+
+  navigateReward(){
+    this._router.navigateByUrl("/reward/rewardPoints")
+
+  }
+  navigateToProfile(){
+    this._router.navigateByUrl("/profile")
 
   }
 }
