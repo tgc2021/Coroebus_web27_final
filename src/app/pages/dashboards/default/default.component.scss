@@ -1,8 +1,7 @@
 .web-view{
-    margin: 0;
-    padding: 0;
+   
     width: 100vw;
-    height: 90vh;
+   
 }
 .points-dis-card,
 .points-notification-card
@@ -59,9 +58,7 @@
     overflow-x: hidden;
 }
 .dashboard-center-table{
-    min-height: 22vh;
-
-
+    min-height: 25vh;
 }
 ::ng-deep{
     .page-content{
