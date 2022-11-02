@@ -70,6 +70,8 @@ export class InteractiveDashboardComponent implements OnInit {
   userObj: any
   mergeObj: any
   interactive_dashoard_response:any
+  combineLatest: Subscription
+  userSelectionData:any
 
   constructor(private readonly store: Store, public Util: Util,private _router: Router, public http: ApiserviceService, private eventService: EventService) { }
 
@@ -83,33 +85,78 @@ export class InteractiveDashboardComponent implements OnInit {
       this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
       console.log(this.mergeObj);
 
-      let body = {
-        _userid: this.mergeObj.USERID,
-        _game: this.mergeObj.id_coroebus_game,
+      this.combineLatest = combineLatest([
+        this.store.select(fromRoot.userLogin),
+        this.store.select(fromRoot.usertheme),
+        this.store.select(fromRoot.usergame),
+      ]
+      ).subscribe(([login, theme, game]) => {
+        console.log(login, theme, game)
+        this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
+       console.log(this.userSelectionData);
        
-      }
-
-      console.log(body);
-      this.http.interactiveDashboard(body).subscribe((res) => {
-        console.log(res)
-        this.interactive_dashoard_response = res;
-        this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
-        console.log(this.interactive_dashoard_response);
-        this.eventService.broadcast('passDataToHeader', {
-          color: this.interactive_dashoard_response[0].data.theme_details[0].dark_color,
-          game_logo: this.interactive_dashoard_response[0].data._personal_data.game_logo,
-    
-        })
-        this.store.dispatch(userActions.updateUserObj({
-          data: {
-            color: this.interactive_dashoard_response[0].data.theme_details[0].dark_color,
-            game_logo: this.interactive_dashoard_response[0].data._personal_data.game_logo,
-
-          }
-        }));
-        
-       
+  
       })
+      
+if(this.mergeObj.id_coroebus_game != null){
+  let body = {
+    _userid: this.mergeObj.USERID,
+    _game: this.mergeObj.id_coroebus_game,
+   
+  }
+
+  console.log(body);
+  this.http.interactiveDashboard(body).subscribe((res) => {
+    console.log(res)
+    this.interactive_dashoard_response = res;
+    this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
+    console.log(this.interactive_dashoard_response);
+    this.eventService.broadcast('passDataToHeader', {
+      color: this.interactive_dashoard_response[0].data.theme_details[0].dark_color,
+      game_logo: this.interactive_dashoard_response[0].data._personal_data.game_logo,
+
+    })
+    this.store.dispatch(userActions.updateUserObj({
+      data: {
+        color: this.interactive_dashoard_response[0].data.theme_details[0].dark_color,
+        game_logo: this.interactive_dashoard_response[0].data._personal_data.game_logo,
+
+      }
+    }));
+    
+   
+  })
+}
+else{
+  let body = {
+    _userid: this.mergeObj.USERID,
+    _game: this.userSelectionData.id_coroebus_game,
+   
+  }
+
+  console.log(body);
+  this.http.interactiveDashboard(body).subscribe((res) => {
+    console.log(res)
+    this.interactive_dashoard_response = res;
+    this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
+    console.log(this.interactive_dashoard_response);
+    this.eventService.broadcast('passDataToHeader', {
+      color: this.interactive_dashoard_response[0].data.theme_details[0].dark_color,
+      game_logo: this.interactive_dashoard_response[0].data._personal_data.game_logo,
+
+    })
+    this.store.dispatch(userActions.updateUserObj({
+      data: {
+        color: this.interactive_dashoard_response[0].data.theme_details[0].dark_color,
+        game_logo: this.interactive_dashoard_response[0].data._personal_data.game_logo,
+
+      }
+    }));
+    
+   
+  })
+}
+      
     })
   
 
