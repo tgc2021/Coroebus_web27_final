@@ -384,7 +384,7 @@
                     'four-data': sectionView_1?.is_land_logos?.length ===4,
                     'one-data': sectionView_1?.is_land_logos?.length ===1,
                     'row-cols-1': sectionView_1?.is_land_logos?.length === 1}">
-                            <div class="col-6  text-center" 
+                            <div class="col-6 d-flex flex-column align-items-center justify-content-center gap-2 text-center" 
                                 *ngFor="let item of sectionView_1?.is_land_logos">
                                 <img src="{{item?.logo}}"  alt="logo" height="90" width="90">
                                 <!-- [ngClass]="{'one-data': sectionView_1?.is_land_logos?.length ===1}" -->
@@ -394,7 +394,7 @@
                                     (click)="getDataBasedOnUserID(item)">
                                     {{item?._data}}
                                 </button>
-                                <br><span class="level-rank-name">{{item?.tag}}</span>
+                                <span class="level-rank-name">{{item?.tag}}</span>
                             </div>
 
                         </div>
