@@ -1,8 +1,13 @@
 .web-view{
-   
-    width: 100vw;
+    // width: 100vw;
+    height: 88vh;
+    overflow-y: hidden;
    
 }
+.container{
+    width: 95vw;
+}
+
 .points-dis-card,
 .points-notification-card
  {
@@ -10,12 +15,12 @@
     background-position: inherit;
     background-size: cover;
     width: auto;
-    height: 41vh;
+    height: 42vh;
     border-radius: 11px;
 }
 .inner-points-height {
     // padding-top: 2%;
-    height: 30vh;
+    height: 35vh;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -23,8 +28,8 @@
     background-repeat: no-repeat;
     background-position: inherit;
     background-size: cover;
-    width: auto;
-    height: auto;
+    //width: auto;
+    height: 42vh;
     border-radius: 11px;
 
 }
@@ -33,7 +38,7 @@
     background-position: inherit;
     background-size: cover;
     width: auto;
-    height:38vh;
+    height:42vh;
     border-radius: 11px;
     
 
@@ -58,7 +63,7 @@
     overflow-x: hidden;
 }
 .dashboard-center-table{
-    min-height: 25vh;
+    min-height: 24vh;
 }
 ::ng-deep{
     .page-content{
@@ -98,7 +103,7 @@
     font-size: 11px;
     line-height: 31px;
     padding-left: 10px;
-    width: 27vw;
+    width: 30vw;
     height: 50.14px;
     left: 4px;
     top: 3.23px;
@@ -110,8 +115,9 @@
     width: auto;
 
 }
-.mobile-avatar-upload .mobile-avatar-edit{position: absolute;
-    left:50px;
+.mobile-avatar-upload .mobile-avatar-edit
+{position: absolute;
+    left:80px;
     z-index: 1;
     top: 1%;
 }
@@ -135,8 +141,8 @@
 }
 
 .mobile-avatar-upload .mobile-avatar-preview {
-    width: 85px;
-    height: 85px;
+    width: 87px;
+    height: 87px;
     position: relative;
     border-radius: 100%;
     margin-bottom: 5%;
@@ -165,4 +171,11 @@ text-align: center;
 color: #000000;
 
 }
-
+.mobile-points-dis-card{
+    background-repeat: no-repeat;
+    background-position: inherit;
+    background-size: cover;
+    width: auto;
+    height: auto;
+    border-radius: 11px;
+}

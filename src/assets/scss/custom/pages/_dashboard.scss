@@ -681,7 +681,7 @@
     // margin-left: -2%;
 
     .rank_index {
-        margin-left:64px!important;
+        margin-left:40px!important;
     }
 
     .percentile {
@@ -1153,9 +1153,9 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1281px) {
         width: 68px;
     }
 
-    .inner-bulletins-height {
-        max-height: 195px;
-    }
+    // .inner-bulletins-height {
+    //     max-height: 195px;
+    // }
 
     .inner-bulletins-no-height {
         max-height: 580px !important;
@@ -2390,7 +2390,7 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
     }
 
     .filter-btn-dashboard {
-        width: 100%;
+        width: 107%;
     }
 
     .level-label-name {
@@ -2512,7 +2512,7 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
 
 
     .dashboard-banner {
-        height: auto;
+        height: 18vh;
     }
 
     .dashboard-bg-image {
@@ -2572,13 +2572,13 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
         max-height: 142px;
     }
 
-    .filter-txt-name {
-        margin-top: 0px;
-        // float: cen;
-        float: left;
-        margin-left: 12%;
-        font-size: 10px;
-    }
+    // .filter-txt-name {
+    //     margin-top: 0px;
+    //     // float: cen;
+    //     // float: left;
+    //     margin-left: 12%;
+    //     font-size: 10px;
+    // }
 
     .modal-cls>div>.modal-content {
         margin-left: 0%;
@@ -2625,13 +2625,13 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 320px) and (max-width
 
     }
 
-    .filter-txt-name {
-        margin-left: 18%;
-        margin-top: 3%;
-    }
+    // .filter-txt-name {
+    //     margin-left: 18%;
+    //     margin-top: 3%;
+    // }
 
-    .filter-my-store {
-        margin-left: 36%;
-        margin-top: 1%;
-    }
+    // .filter-my-store {
+    //     margin-left: 36%;
+    //     margin-top: 1%;
+    // }
 }

@@ -5,7 +5,7 @@
         </div>
     </div>
     <ng-template #dashboardTpl>
-        <div class="row" style="height:100%;" >
+        <div class="row">
             <div class="col-3 pointsDistributionSection">
                 <div class="card points-dis-card"
                     [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
@@ -98,7 +98,6 @@
             </div>
             <div class="col-6  DashboardSection">
                 <div class="row d-flex justify-content-around">
-
                     <div class="col-3">
                         <div class="avatar-upload">
                             <div class="avatar-edit" *ngIf="edit_image">
@@ -112,10 +111,10 @@
                                     src="{{sectionView_1?._personal_data?.profile_logo}}">
                             </div>
                         </div>
-                        <div class="row" placement="bottom" ngbTooltip="{{sectionView_1?._personal_data?.first_name}}">
-                            <div class="col-lg-12 ellipsis" style="text-align: center;">
+                        <div class="row d-flex justify-content-center" placement="bottom" ngbTooltip="{{sectionView_1?._personal_data?.first_name}}">
+                            <div class="col-lg-12 ellipsis">
                                 <span
-                                    class="dashboard-user-name ellipsis">{{sectionView_1?._personal_data?.first_name}}</span><br>
+                                    class="dashboard-user-name">{{sectionView_1?._personal_data?.first_name}}</span><br>
                                 <span
                                     class="dashboard-user-team-name">{{sectionView_1?._personal_data?.team_name}}</span>
                             </div>
@@ -147,12 +146,12 @@
                                                     class="btn btn-primary- text-white text-center dashboard-banner-point-btn"
                                                     [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}"
                                                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
-                                                    <span class="dashboard-banner-point-btn-text">
+                                                    <span class="dashboard-banner-point-btn-text text-center">
                                                         {{gamePoints?.[0]?.score}}
                                                     </span>
                                                 </button>
                                                 <br><span
-                                                    class="dashboard-level-rank-name">{{gamePoints?.[0]?.label}}s</span>
+                                                    class="dashboard-level-rank-name ">{{gamePoints?.[0]?.label}}s</span>
                                             </div>
                                         </div>
                                         <div class="confetti"
@@ -167,7 +166,7 @@
                                                     [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}"
                                                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                                     (click)="navigateToRewards()">
-                                                    <span class="dashboard-banner-point-btn-text">
+                                                    <span class="dashboard-banner-point-btn-text text-center">
                                                         {{rewardPoints?.[0]?.score}}
                                                     </span></button>
                                                 <br><span
@@ -237,7 +236,7 @@
                     </div>
 
                 </div>
-                <div class="row row-cols-2 no-gutter- " style="margin-top: 17px;">
+                <div class="row row-cols-2 no-gutter" style="margin-top: 17px;">
                     <div class="col w-86" style="padding-right:0px;">
                         <input type="text" class="form-control dashboard-search" placeholder="Search People here.."
                             [(ngModel)]="spectSearchStr" aria-label="Search People here.."
@@ -472,12 +471,12 @@
 
 
     </ng-template>
-    <ng-template #content let-modal *ngIf="sectionView_1?._personal_data?.id_role !=='9'">
+    <ng-template #content let-modal>
         <div class="level-buckets content-buckets">
             <div class="modal-header border-bottom-0 p-0">
                 <div class="row w-100">
                     <div class="col"></div>
-                    <div class="col text-center level-label-name-popup ms-3">
+                    <div class="col-sm-9 text-center level-label-name-popup ms-3">
                         <p class="text-white">{{sectionView_1?._personal_data?.level_label}}</p>
                     </div>
                     <div class="col pt-2">
@@ -490,22 +489,22 @@
             </div>
             <div class="modal-body dashboard-popup-level">
                 <!-- {{levelsBucketsList | json}} -->
-                <div class="row d-flex justify-content-evenly able-header mb-2" [ngClass]="{'row-cols-3': false,'row-cols-4': true}">
-                    <div class="col">
-                        <span class="font-size-14 ms-3">League</span>
+                <div class="row table-header mb-2" [ngClass]="{'row-cols-3': false,'row-cols-4': true}">
+                    <div class="col-2">
+                        <span class="font-size-14 ms-4">League</span>
                     </div>
                     <div class="col">
-                        <span class="font-size-14">Rank/Index</span>
+                        <span class="font-size-14  rank_index">Rank/Index</span>
                     </div>
                     <div class="col">
                         <span class="font-size-14  percentile">Percentile</span>
                     </div>
                     <div class="col">
-                        <span class="font-size-14 percentile_people" *ngIf="!(Util?.isMobile())">% of People</span>
-                        <span class="font-size-14  percentile_people" *ngIf="Util?.isMobile()">%</span>
+                        <span class="font-size-14  percentile_people" *ngIf="!(Util?.isMobile())">% of People</span>
+                        <span class="font-size-14 ms-4 percentile_people" *ngIf="Util?.isMobile()">%</span>
                     </div>
                 </div>
-                <div class="row py-3 dashboard-rank-row ms-4 text-white percentile-row-height "
+                <div class="row py-3 dashboard-rank-row ms-1 text-white percentile-row-height "
                     [style.background-image]="'url(' + item?.backgroung_image_ranking + ')'"
                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                     [ngClass]="{'row-cols-3': false,'row-cols-4': true}" *ngFor="let item of levelsBucketsList ">
@@ -526,6 +525,48 @@
         </div>
     
     </ng-template>
+    <ng-template #hierarchyPopup let-modal>
+        <div class="level-buckets hierarchyPopup-buckets">
+            <div class="modal-header border-bottom-0 p-0">
+                <div class="row w-100">
+                    <div class="col-12 pt-2">
+                        <i class="fa fa-times float-end" (click)="modal.dismiss('Cross click')"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body dashboard-popup-level">
+                <!-- {{hierarchyPopupList | json}} -->
+                <div class="row hierarchy-popup-list mb-3 p-2 ms-5 w-75" *ngFor="let item of hierarchyPopupList"
+                    (click)="getDataBasedOnUserIDVIAhierarchyPopupList(item,modal)">
+                    <div class="col-lg-6 pt-2">
+                        <div class="media">
+                                            <img loading="lazy" class="mr-3 rounded-circle" height="45" width="45" src="{{item?.userlogo}}"
+                                alt="Generic placeholder image">
+                            <div class="media-body">
+                                <h5 class="mt-0 hierarchy-popup-list-team_name ms-2">{{item?.team_name}}
+                                    <p class="hierarchy-popup-list-first_name mb-0">
+                                        {{item?.first_name}}
+                                    </p>
+                                    <p class="hierarchy-popup-list-role_name">
+                                        {{item?.role_name}}
+                                    </p>
+                                </h5>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="col-lg-6 pt-2">
+                        <img loading="lazy" class="mr-3 rounded-circle float-end hierarchy-popup-list-right-arrow"
+                            height="12" width="8" src="assets/images/svg/dashboard/right-arrow.svg"
+                            alt="Generic placeholder image">
+                        <img loading="lazy" class="mr-3 rounded-circle float-end" height="45" width="45"
+                            src="{{item?.teamlogo}}" alt="Generic placeholder image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    
     
 
 
@@ -541,26 +582,30 @@
     </div>
     <ng-template #mobileTemplate>
         <div class="row  DashboardSection">
-            <div class="col-12  d-flex justify-content-around">
-                <div class="col-2">
-                    <div class="mobile-avatar-upload">
-                        <div class="mobile-avatar-edit" *ngIf="edit_image">
-                            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
-                                (change)="previewFile($event)" />
-                            <label for="imageUpload"
-                                [style.background-image]="'url(assets/images/svg/dashboard/camera-icon.svg)'"></label>
+            <div class="d-flex justify-content-between">
+                <div class="col-4">
+                    <div class="row d-flex justify-content-center">
+                        <div class="mobile-avatar-upload">
+                            <div class="mobile-avatar-edit" *ngIf="edit_image">
+                                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
+                                    (change)="previewFile($event)" />
+                                <label for="imageUpload"
+                                    [style.background-image]="'url(assets/images/svg/dashboard/camera-icon.svg)'"></label>
+                            </div>
+                           
+                            <div class="mobile-avatar-preview  justify-content-center">
+                                <img loading="lazy" id="imagePreview" src="{{sectionView_1?._personal_data?.profile_logo}}">
+    
+                            </div>
                         </div>
-                        <div class="mobile-avatar-preview  justify-content-center">
-                            <img loading="lazy" id="imagePreview" src="{{sectionView_1?._personal_data?.profile_logo}}">
-
+                        <div class="row" placement="bottom" ngbTooltip="{{sectionView_1?._personal_data?.first_name}}">
+                            
+                                <span class="mobile-dashboard-user-name ellipsis">{{sectionView_1?._personal_data?.first_name}}</span><br>
+                                <span class="mobile-dashboard-user-team-name ellipsis">{{sectionView_1?._personal_data?.team_name}}</span>
+                            
                         </div>
                     </div>
-                    <div class="row" placement="bottom" ngbTooltip="{{sectionView_1?._personal_data?.first_name}}">
-                        <div class="ellipsis text-start" >
-                            <span class="mobile-dashboard-user-name ellipsis1">{{sectionView_1?._personal_data?.first_name}}</span><br>
-                            <span class="mobile-dashboard-user-team-name ellipsis1">{{sectionView_1?._personal_data?.team_name}}</span>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div class="col-8 d-flex gap-3">
                     <div class="bg-image d-flex dashboard-banner mb-3"
@@ -587,7 +632,7 @@
                                                 <br> <button class="btn text-white dashboard-banner-point-btn"
                                                     [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}"
                                                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
-                                                    <span class="dashboard-banner-point-btn-text">
+                                                    <span class="dashboard-banner-point-btn-text text-center">
                                                         {{gamePoints?.[0]?.score}}
                                                     </span>
                                                 </button>
@@ -605,11 +650,11 @@
                                                     [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}"
                                                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                                     (click)="navigateToRewards()">
-                                                    <span class="dashboard-banner-point-btn-text">
+                                                    <span class="dashboard-banner-point-btn-text text-center">
                                                         {{rewardPoints?.[0]?.score}}
                                                     </span></button>
-                                                <br><span
-                                                    class="dashboard-level-rank-name" style="font-size:7px;">{{rewardPoints?.[0]?.label}}</span>
+                                                <br>
+                                                <span class="dashboard-level-rank-name" style="font-size:7px;">{{rewardPoints?.[0]?.label}}</span>
                                             </div>
                                         </div>
                                     
@@ -633,8 +678,9 @@
                     'four-data': sectionView_1?.is_land_logos?.length ===4,
                     'one-data': sectionView_1?.is_land_logos?.length ===1,
                     'row-cols-1': sectionView_1?.is_land_logos?.length === 1}">
-                        <div class="d-flex gap-1 container" style="width:95vw;overflow-y:auto;">
-                            <div class="col-4  text-center" style="padding:5px 10px 0px 0px;"
+                        <div class="col-12 d-flex justify-content-start container gap-2" style="width:95vw;overflow-y:auto;">
+                            
+                            <div class="col text-center" style="padding:5px 10px 0px 0px;"
                                 *ngFor="let item of sectionView_1?.is_land_logos">
                                 <img src="{{item?.logo}}" class="island_login" alt="" height="100">
                                 <br>
@@ -658,7 +704,7 @@
     
             </div>
             <div class="col-12 pointsDistributionSection">
-                <div class="card points-dis-card"
+                <div class="card mobile-points-dis-card"
                     [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
                     <div class="card-body">
                         <div class="float-start dropdown ms-2 font-size-16 font-weight-semibold">
@@ -666,7 +712,7 @@
                         </div>
                         <div>
                             <div class="mb-4 me-3"></div>
-                            <div class="inner-points-height">
+                            <div class="mobile-inner-points-height">
                                 <div class="row mt-2 points-row ms-1" (click)="getGraphDataById()"
                                     *ngFor="let item of sectionView_1?._kpi_score">
                                     <div class="col-6 p-0">
@@ -692,25 +738,24 @@
                     
             </div>
             
-
-
             <div class="row no-gutter-" [ngClass]="{'row-cols-2': sectionView_2?._ranking_data?.length === 2,
-                            'row-cols-3': sectionView_2?._ranking_data?.length === 3,
-                            'row-cols-4': sectionView_2?._ranking_data?.length === 4,
-                            'row-cols-1': sectionView_2?._ranking_data?.length === 4}" style="margin-top: 17px;">
-                <div class="d-flex gap-4" *ngFor="let item of sectionView_2?._ranking_data">
-                    <a class="btn btn-xs filter-btn-dashboard  text-center"
-                        [ngClass]="{'filter-btn-dashboard-active': activeTabForSectionView_2 === item?.order}"
-                        [ngStyle]="{'background': (activeTabForSectionView_2 ===item?.order) ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
-                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                        (click)="changeTabFilter(item?.label,item?.order)">
-                        <span class="v-align text-center"
-                            [ngStyle]="{'color': (activeTabForSectionView_2 === item?.order) ? '#ffffff' : '#000000'}">
-                            {{item?.label}}
-                        </span>
-                    </a>
+                                'row-cols-3': sectionView_2?._ranking_data?.length === 3,
+                                'row-cols-4': sectionView_2?._ranking_data?.length === 4,
+                                'row-cols-1': sectionView_2?._ranking_data?.length === 4}" style="margin-top: 17px;">
+                    <div class="col" *ngFor="let item of sectionView_2?._ranking_data">
+                        <a class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2" style="padding-top: 8px;"
+                            [ngClass]="{'filter-btn-dashboard-active': activeTabForSectionView_2 === item?.order}"
+                            [ngStyle]="{'background': (activeTabForSectionView_2 ===item?.order) ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
+                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                            (click)="changeTabFilter(item?.label,item?.order)">
+                            <span class="filter-txt-name text-center"
+                                [ngStyle]="{'color': (activeTabForSectionView_2 === item?.order) ? '#ffffff' : '#000000'}">
+                                {{item?.label}}
+                            </span>
+                        </a>
+                    </div>
                 </div>
-            </div>
+
             
             <div class="row" *ngIf="sectionView_3_list?.[0]?._Overall">
                 <div class="col-3 text-center">
@@ -723,8 +768,11 @@
                             [ngStyle]="{'color': (activeSubTabForSectionView_2 === 'My Store') ? '#ffffff' : '#000000'}">
                             My {{labelNameMy}}
                         </span>
+                     
+
                     </a>
                 </div>
+                <br>
                 <div class="col">
                     <a class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
                         [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 === 'Overall'}"
@@ -879,6 +927,7 @@
         
 
     </ng-template>
-
+    
+    
 
 </div>
