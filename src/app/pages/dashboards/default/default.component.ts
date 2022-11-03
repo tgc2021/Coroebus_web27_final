@@ -351,9 +351,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
         // }
-
       }
-
       else if ((this.queryParams?.roleID === '9' || this.userSelectionData?._personal_data?.id_role === '9')
         || (this.queryParams?.roleID === '10' || this.userSelectionData?._personal_data?.id_role === '10')
         || (this.queryParams?.roleID === '11' || this.userSelectionData?._personal_data?.id_role === '11')
@@ -394,7 +392,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
           if (element?.label === this.sectionView_3?._ranking_data[index]?.label) {
             if (element?._data?.length > 0) {
               this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data)
-              this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "start", inline: 'nearest' });
+              this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'start' });
             }
           }
 

@@ -7,7 +7,8 @@
     <ng-template #dashboardTpl>
         <div class="row">
             <div class="col-3 pointsDistributionSection">
-                <div class="card points-dis-card"
+                <div>
+                    <div class="card points-dis-card"
                     [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
                     <div class="card-body border-bottom-">
                         <div class="float-start dropdown ms-2 font-size-16 font-weight-semibold">
@@ -37,6 +38,8 @@
                         </div>
                     </div>
                 </div>
+                </div>
+                
                 <div>
                     <div class="card points-notification-card"
                         [style.background-image]="sectionView_1?.theme_details?.[0]?.notification_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
@@ -68,7 +71,6 @@
                                         (click)="openNotification(item)">
                                         <div class="col">
                                             <div class="media">
-
                                                 <img loading="lazy" *ngIf="item?.image" class="mt-2"
                                                     src="assets/images/svg/notification/img.png" alt="" height="47">
                                                 <img loading="lazy" *ngIf="item?.gif" class="mt-2"
@@ -84,7 +86,7 @@
                                                     <p class="mt-0 font-size-12 font-weight-semibold" s>{{item?.title}}
                                                     </p>
                                                     <span class="notification-text-mutated">
-                                                        {{item?.datetimestamp | date:'fullDate'}}
+                                                        {{item?.datetimestamp|date:'fullDate'}}
                                                     </span>
                                                 </div>
                                             </div>
@@ -151,7 +153,7 @@
                                                     </span>
                                                 </button>
                                                 <br><span
-                                                    class="dashboard-level-rank-name ">{{gamePoints?.[0]?.label}}s</span>
+                                                    class="dashboard-level-rank-name">{{gamePoints?.[0]?.label}}s</span>
                                             </div>
                                         </div>
                                         <div class="confetti"
@@ -373,41 +375,46 @@
 
                 </div>
             </div> 
-            <div class="col-3 RankSection">
-                <div class="card points-rank-card d-flex justify-content-center align-items-center" *ngIf="sectionView_1?.is_land_logos?.length>0"
+            <div class="col-3 RankSection mb-2">
+                
+                <div class="card points-rank-card" *ngIf="sectionView_1?.is_land_logos?.length > 0"
                     [style.background-image]="
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
-                    <div class="card-body align-items-center">
+                    <div class="card-body border-bottom-">
                         <div class="row" [ngClass]="{'row-cols-2': sectionView_1?.is_land_logos?.length !== 1,
                     'two-data': sectionView_1?.is_land_logos?.length === 2,
                     'three-data': sectionView_1?.is_land_logos?.length ===3,
                     'four-data': sectionView_1?.is_land_logos?.length ===4,
                     'one-data': sectionView_1?.is_land_logos?.length ===1,
                     'row-cols-1': sectionView_1?.is_land_logos?.length === 1}">
-                            <div class="col-6 d-flex flex-column align-items-center justify-content-center gap-2 text-center" 
-                                *ngFor="let item of sectionView_1?.is_land_logos">
-                                <img src="{{item?.logo}}"  alt="logo" height="90" width="90">
+                            <div class="col text-center" *ngFor="let item of sectionView_1?.is_land_logos">
+                                <img src="{{item?.logo}}" class="island_login mb-2" alt="" height="112">
+                                <br>
                                 <!-- [ngClass]="{'one-data': sectionView_1?.is_land_logos?.length ===1}" -->
-                                <button class="btn btn-primary- text-white level-badge-btn mt-2"
-                                    [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
+                                <button
+                                  class="btn btn-primary- text-white level-badge-btn"
+
+                                   [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                     (click)="getDataBasedOnUserID(item)">
                                     {{item?._data}}
                                 </button>
-                                <span class="level-rank-name">{{item?.tag}}</span>
+                                <br><span class="level-rank-name">{{item?.tag}}</span>
                             </div>
 
                         </div>
                     </div>
                 </div>
-                <div class="card points-bullentins-card"
-                    [ngClass]="{'points-bullentins-card-no-height': sectionView_1?.is_land_logos?.length === 0}"
+                <div class="card"
+                    [ngClass]="{'points-bullentins-card-no-height': sectionView_1?.is_land_logos?.length == 0, 'points-bullentins-card': sectionView_1?.is_land_logos?.length != 0}"
                     [style.background-image]="sectionView_1?.theme_details?.[0]?.add_ins_background ? 'url(' + sectionView_1?.theme_details?.[0]?.add_ins_background + ')' : null">
                     <div class="card-body pt-2">
                         <div class="float-start dropdown ms-2 font-size-16 font-weight-semibold">
                             Bulletins
                         </div>
-
+                        <!-- <div>
+                            {{sectionView_1?.is_land_logoslength}}
+                        </div> -->
                         <div *ngIf="buletinsHide">
                             <br>
                             <div class="buletinsHideFont" style="font-family: 'Inter';
@@ -422,8 +429,8 @@
                             </div>
                         </div>
                         <div class="mb-4 me-3"></div>
-                        <div class="inner-bulletins-height"
-                            [ngClass]="{'inner-bulletins-no-height': sectionView_1?.is_land_logos?.length === 0}">
+                        <div 
+                            [ngClass]="{'inner-bulletins-no-height': sectionView_1?.is_land_logos?.length == 0,'inner-bulletins-height':sectionView_1?.is_land_logos?.length!=0}">
 
                             <div class="card bulletins-sub-card" *ngFor="let item of addInsList">
                                 <div class="card-body bulletins-sub-card-body">
@@ -667,7 +674,7 @@
 
                 </div>
             </div>
-            <div class="col-12 RankSection">
+            <div class="col-12 RankSection mb-2"  >
                 <div class="" *ngIf="sectionView_1?.is_land_logos?.length > 0"
                     [style.background-image]="
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
@@ -678,7 +685,7 @@
                     'four-data': sectionView_1?.is_land_logos?.length ===4,
                     'one-data': sectionView_1?.is_land_logos?.length ===1,
                     'row-cols-1': sectionView_1?.is_land_logos?.length === 1}">
-                        <div class="col-12 d-flex justify-content-start container gap-2" style="width:95vw;overflow-y:auto;">
+                        <div class="col-12 d-flex justify-content-start container gap-3" style="width:95vw;overflow-y:auto;">
                             
                             <div class="col text-center" style="padding:5px 10px 0px 0px;"
                                 *ngFor="let item of sectionView_1?.is_land_logos">
