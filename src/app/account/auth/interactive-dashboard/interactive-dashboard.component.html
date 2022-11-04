@@ -90,6 +90,47 @@
                     <img class="backround_image" id="img_id" src="{{interactive_dashoard_response[0].data._personal_data.skillmuni}}"  usemap="#auto"/>
                     <map name="auto"
                     id="auto">
+
+                    <div *ngFor="let part of auto_parts; let k=index">
+                        <div *ngIf="part.type == 'Play Zone' || part.type == 'Lerning Academy' || part.type == 'ChampionsLeague'; then withoutModal; else withModal">
+                            <!-- *ngIf="data.spot_status==='Open' && data._status==='active'; then openBlock;else openedBlock" -->
+                        </div>
+                        <ng-template #withoutModal >
+                            <area 
+                            shape="{{part.shape}}"
+                            coords="{{part.coords}}"                       
+                            (click)="partClicked(part,k)" 
+                            data-id="k"                   
+                            title="part.type" 
+                            href="javascript:void(0);"
+                            onmouseover="document.getElementById('img_id').style.cursor='pointer';" 
+                            onmouseout="document.getElementById('img_id').style.cursor='';"
+                            />
+                        </ng-template>
+                        <ng-template #withModal >
+                            <div *ngIf="part.type == 'PersonalMileStone'">
+                                <area 
+                                shape="{{part.shape}}"
+                                coords="{{part.coords}}"                       
+                                data-bs-toggle="modal" data-bs-target="#staticBackdrop1"
+                                (click)="partClicked(part,k)"
+                                data-id="k"                   
+
+                                title="part.type" 
+                                href="javascript:void(0);"
+                                onmouseover="document.getElementById('img_id').style.cursor='pointer';" 
+                                onmouseout="document.getElementById('img_id').style.cursor='';"
+                                />
+                            </div>
+                           
+                        </ng-template>
+                    </div>
+                    
+                 
+<!--                  
+               </map>
+                </div>
+
                    <area *ngFor="let part of auto_parts"
                          shape="{{part.shape}}"
                          coords="{{part.coords}}"
@@ -98,7 +139,7 @@
                          href="javascript:void(0);"
                          onmouseover="document.getElementById('img_id').style.cursor='pointer';" 
                          onmouseout="document.getElementById('img_id').style.cursor='';"
-                         />
+                         /> -->
                </map>
                 </div>
 
@@ -107,5 +148,46 @@
         </div>
 
     </div>
+
+
+    <div >
+        <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" >
+          <div class="modal-content passbookModal" >
+            
+              
+           
+            
+            <div class="modal-body"  >
+                <div *ngFor="let part_img of auto_parts">
+                    <div *ngIf="part_img.type == 'PersonalMileStone'" style="position:relative;">
+
+                        <img src="https://coroebus.in/coroebus-beta/assets/Media/personal_milestone.png"/>
+                        <div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> 
+
+                        </div>
+                      </div>
+
+                      <!-- <div *ngIf="part_img.type == 'PersonalMileStone'">
+
+                        <img  src="https://coroebus.in/coroebus-beta/assets/Media/personal_milestone.png"/>
+                      </div> -->
+                </div>
+             
+           
+    
+            <!-- -->
+            </div>
+            <!-- <div class="modal-footer">
+             
+    
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
 
 </div>

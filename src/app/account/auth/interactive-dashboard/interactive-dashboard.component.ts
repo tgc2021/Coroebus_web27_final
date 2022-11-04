@@ -63,7 +63,13 @@ export class InteractiveDashboardComponent implements OnInit {
       "shape": "rect",
       "type": "spectr",
       "coords": "7,419,249,495"
+    },
+    {
+      "shape": "rect",
+      "type": "ChampionsLeague",
+      "coords": "23,517,105,562"
     }
+
   ];
 
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -163,8 +169,9 @@ else{
   }
 
 
-  partClicked(arg) {
-    // console.log(arg);
+  partClicked(arg,k:any) {
+
+    console.log(k);
     console.log("---->", arg);
     // console.log(arg);
     if (arg.type == 'Lerning Academy') {
@@ -183,6 +190,19 @@ else{
 
       
     }
+
+    else if(arg.type == 'ChampionsLeague'){
+      this._router.navigateByUrl("/champions_league")
+
+      
+    }
+
+
+    // else if(arg.type == 'PersonalMileStone'){
+    //   document.getElementById("btn").click();
+
+      
+    // }
     
     
     
