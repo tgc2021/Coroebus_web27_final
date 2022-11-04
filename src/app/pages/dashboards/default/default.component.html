@@ -605,16 +605,18 @@
     
                             </div>
                         </div>
-                        <div class="row" placement="bottom" ngbTooltip="{{sectionView_1?._personal_data?.first_name}}">
-                            
-                                <span class="mobile-dashboard-user-name ellipsis">{{sectionView_1?._personal_data?.first_name}}</span><br>
-                                <span class="mobile-dashboard-user-team-name ellipsis">{{sectionView_1?._personal_data?.team_name}}</span>
+                        <div class="row d-flex justify-content-center" placement="bottom" ngbTooltip="{{sectionView_1?._personal_data?.first_name}}">
+                                <div class="ellipsis">
+                                    <span class="mobile-dashboard-user-name ellipsis1">{{sectionView_1?._personal_data?.first_name}}</span><br>
+                                    <span class="mobile-dashboard-user-team-name ellipsis1">{{sectionView_1?._personal_data?.team_name}}</span>
+                                </div>
+                                
                             
                         </div>
                     </div>
                     
                 </div>
-                <div class="col-8 d-flex gap-3">
+                <div class="col-8 d-flex gap-2">
                     <div class="bg-image d-flex dashboard-banner mb-3"
                         [style.background-image]="'url(' + sectionView_1?._personal_data?.profile_background_image + ')'"
                         [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
@@ -661,7 +663,7 @@
                                                         {{rewardPoints?.[0]?.score}}
                                                     </span></button>
                                                 <br>
-                                                <span class="dashboard-level-rank-name" style="font-size:7px;">{{rewardPoints?.[0]?.label}}</span>
+                                                <span class="dashboard-level-rank-name ellipsis1" style="font-size:7px;">{{rewardPoints?.[0]?.label}}</span>
                                             </div>
                                         </div>
                                     
@@ -744,8 +746,8 @@
                 
                     
             </div>
-            
-            <div class="row no-gutter-" [ngClass]="{'row-cols-2': sectionView_2?._ranking_data?.length === 2,
+            <div class="col" >
+                <div class="row no-gutter" [ngClass]="{'row-cols-2': sectionView_2?._ranking_data?.length === 2,
                                 'row-cols-3': sectionView_2?._ranking_data?.length === 3,
                                 'row-cols-4': sectionView_2?._ranking_data?.length === 4,
                                 'row-cols-1': sectionView_2?._ranking_data?.length === 4}" style="margin-top: 17px;">
@@ -764,8 +766,8 @@
                 </div>
 
             
-            <div class="row" *ngIf="sectionView_3_list?.[0]?._Overall">
-                <div class="col-3 text-center">
+            <div class="row d-flex justify-content-center" *ngIf="sectionView_3_list?.[0]?._Overall">
+                <div class="col text-center">
                     <a class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
                         [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 ==='My Store'}"
                         [ngStyle]="{'background': (activeSubTabForSectionView_2 === 'My Store') ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
@@ -794,7 +796,7 @@
                 </div>
 
             </div>
-            <div class="row row-cols-2 no-gutter- " style="margin-top: 17px;">
+            <div class="row row-cols-2 no-gutter " style="margin-top: 17px;">
                 <div class="col-9" style="padding-right:0px;">
                     <input type="text" class="form-control dashboard-search" placeholder="Search People here.."
                         [(ngModel)]="spectSearchStr" aria-label="Search People here.." aria-describedby="basic-addon2"
@@ -871,6 +873,8 @@
                     </div>
                 </div>
 
+            </div>
+            
                 <div class="dashboard-center-table">
                     <!-- {{spectSearList | json}} -->
                     <!-- {{spectSearchStr ? 'true': 'false'}} -->

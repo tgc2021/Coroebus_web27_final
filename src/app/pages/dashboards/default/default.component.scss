@@ -58,7 +58,7 @@
     overflow-x: hidden;
 }
 .dashboard-center-table{
-    min-height: 22vh;
+    max-height: 22vh;
 }
 .dashboard-center-table-forNSM{
     min-height: 32vh;
@@ -182,7 +182,7 @@
     font-size: 14px;
     line-height: 100%;
     color: #000000;
-    text-align: center;
+    
 }
 .mobile-dashboard-user-team-name{
 font-weight: 600;
