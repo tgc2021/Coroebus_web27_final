@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   error = '';
   returnUrl: any;
-  userid:any
+
   // set the currenr year
   year: number = new Date().getFullYear();
   showHidePwdInput: boolean = false
