@@ -12,6 +12,55 @@
 
 }
 
+
+.three-data {
+    >div:nth-child(3) {
+        margin-left: 25%;
+        
+    }
+}
+
+.one-data {
+    >div>img.island_login {
+        // height: 234px;
+        height: 20vh;
+        // width: 194px;
+        margin-top:25px;
+    }
+}
+   .one-data {
+    >div>button.level-badge-btn {
+        width: 116.8px;
+        height: 35.37px;
+    }
+}
+.three-data {
+    >div>img.island_login {
+        // height: 234px;
+        
+        // width: 194px;
+        height: 10vh;
+    }
+}
+
+.four-data{
+    >div>img.island_login {
+        margin-top:2px;
+        height: 10vh;
+        
+    }
+
+}
+
+.two-data {
+    margin-top: 21%;
+
+    >div>img.island_login {
+        height: 117px;
+    }
+
+}
+
 .widthText{
     width: 10%;
 }
@@ -196,7 +245,7 @@
 }
 
 .inner-bulletins-height {
-    height: 30vh;
+    height: 35vh;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -824,10 +873,12 @@ border-radius: 15px;
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
 */
+
 @media (min-width: 800px) and (max-width: 1280px) {
     .three-data {
         >div:nth-child(3) {
             margin-left: 25%;
+            height: 10vh;
         }
     }
     .widthText{
@@ -890,7 +941,54 @@ border-radius: 15px;
     .view-more-row {
         margin-top: -3%;
     }
-  
+    .three-data {
+        >div:nth-child(3) {
+            margin-left: 25%;
+            
+        }
+    }
+
+    .one-data {
+        >div>img.island_login {
+            // height: 234px;
+            height: 20vh;
+            // width: 194px;
+            margin-top:25px;
+        }
+    }
+       .one-data {
+        >div>button.level-badge-btn {
+            width: 116.8px;
+            height: 35.37px;
+        }
+    }
+    .three-data {
+        >div>img.island_login {
+            // height: 234px;
+            
+            // width: 194px;
+            height: 10vh;
+        }
+    }
+    
+    .four-data{
+        >div>img.island_login {
+            margin-top:2px;
+            height: 10vh;
+            
+        }
+
+    }
+
+    .two-data {
+        margin-top: 21%;
+
+        >div>img.island_login {
+            height: 117px;
+        }
+
+    }
+
 
 }
 
@@ -916,11 +1014,12 @@ border-radius: 15px;
     .three-data {
         >div:nth-child(3) {
             margin-left: 25%;
+            height: 10vh;
         }
     }
     .one-data {
         >div>img.island_login {
-            height: 234px;
+            height: 20vh;
         }
     }
     .two-data {
@@ -1049,13 +1148,14 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1281px) {
     .three-data {
         >div:nth-child(3) {
             margin-left: 25%;
+            
         }
     }
 
     .one-data {
         >div>img.island_login {
             // height: 234px;
-            height: 243.56px;
+            height: 20vh;
             // width: 194px;
             margin-top:25px;
         }
@@ -1066,10 +1166,20 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1281px) {
             height: 35.37px;
         }
     }
+    .three-data {
+        >div>img.island_login {
+            // height: 234px;
+            
+            // width: 194px;
+            height: 10vh;
+        }
+    }
     
     .four-data{
         >div>img.island_login {
             margin-top:2px;
+            height: 10vh;
+            
         }
 
     }
@@ -1274,7 +1384,7 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1281px) {
     .one-data {
         >div>img.island_login {
             // height: 234px;
-            height: 243.56px;
+            height: 20vh;
             // width: 194px;
             margin-top: 30px;
         }
@@ -1340,6 +1450,53 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
     
     }
 
+    .three-data {
+        >div:nth-child(3) {
+            margin-left: 25%;
+            
+        }
+    }
+
+    .one-data {
+        >div>img.island_login {
+            // height: 234px;
+            height: 20vh;
+            // width: 194px;
+            margin-top:25px;
+        }
+    }
+       .one-data {
+        >div>button.level-badge-btn {
+            width: 116.8px;
+            height: 35.37px;
+        }
+    }
+    .three-data {
+        >div>img.island_login {
+            // height: 234px;
+            
+            // width: 194px;
+            height: 9vh;
+        }
+    }
+    
+    .four-data{
+        >div>img.island_login {
+            margin-top:2px;
+            height: 9vh;
+            
+        }
+
+    }
+
+    .two-data {
+        margin-top: 21%;
+
+        >div>img.island_login {
+            height: 117px;
+        }
+
+    }
 
 
     /* insert styles here */
@@ -1695,6 +1852,7 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
     .three-data {
         >div>button.mobile-ipad-only_level-badge-btn {
             width: 56%;
+            height: 10vh;
         }
     }
 
@@ -1885,6 +2043,7 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
     .three-data {
         >div>button.mobile-ipad-only_level-badge-btn {
             width: 56%;
+            height: 10vh;
         }
     }
 

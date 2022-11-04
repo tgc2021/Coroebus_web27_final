@@ -238,8 +238,8 @@
                     </div>
 
                 </div>
-                <div class="row gap-1 row-cols-2 no-gutter" style="margin-top: 17px;">
-                    <div class="col w-86" style="padding-right:0px;">
+                <div class="row gap-3" style="margin-top: 17px;">
+                    <div class="col-10" style="padding-right:0px;">
                         <input type="text" class="form-control dashboard-searchbar" placeholder="Search People here.."
                             [(ngModel)]="spectSearchStr" aria-label="Search People here.."
                             aria-describedby="basic-addon2" (keyup.enter)="spectSearch()">
@@ -389,7 +389,7 @@
                     'one-data': sectionView_1?.is_land_logos?.length ===1,
                     'row-cols-1': sectionView_1?.is_land_logos?.length === 1}">
                             <div class="col text-center" *ngFor="let item of sectionView_1?.is_land_logos">
-                                <img src="{{item?.logo}}" class="island_login mb-2" alt="" height="112">
+                                <img src="{{item?.logo}}" class="island_login mb-2" alt=""  >
                                 <br>
                                 <!-- [ngClass]="{'one-data': sectionView_1?.is_land_logos?.length ===1}" -->
                                 <button
@@ -642,7 +642,7 @@
                                                 <br> <button class="btn text-white dashboard-banner-point-btn"
                                                     [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}"
                                                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
-                                                    <span class="dashboard-banner-point-btn-text text-center">
+                                                    <span class="dashboard-banner-point-btn-text">
                                                         {{gamePoints?.[0]?.score}}
                                                     </span>
                                                 </button>
@@ -682,15 +682,10 @@
                     [style.background-image]="
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
                     <div class="card-body border-bottom- p-0">
-                        <div class="row" [ngClass]="{'row-cols-2': sectionView_1?.is_land_logos?.length !== 1,
-                    'two-data': sectionView_1?.is_land_logos?.length === 2,
-                    'three-data': sectionView_1?.is_land_logos?.length ===3,
-                    'four-data': sectionView_1?.is_land_logos?.length ===4,
-                    'one-data': sectionView_1?.is_land_logos?.length ===1,
-                    'row-cols-1': sectionView_1?.is_land_logos?.length === 1}">
-                        <div class="col-12  container d-flex justify-content-between gap-1" style="width:100vw;overflow-y:auto;">
-                            
-                            <div class="col text-center" style="padding:5px 10px 0px 0px;"
+                        <div class="row" >
+                        <div class="col container d-flex  gap-2" style="overflow-y:auto;">
+                         
+                                <div  class="col-4 text-center" style="padding:5px 10px 0px 0px;"
                                 *ngFor="let item of sectionView_1?.is_land_logos">
                                 <img src="{{item?.logo}}" class="island_login" alt="" height="100">
                                 <br>
@@ -702,7 +697,9 @@
                                     {{item?._data}}
                                 </button>
                                 <br><span class="level-rank-name">{{item?.tag}}</span>
+                            
                             </div>
+                            
     
                         </div>
                             
@@ -799,7 +796,7 @@
             </div>
             <div class="row row-cols-2 no-gutter " style="margin-top: 17px;">
                 <div class="col-9" style="padding-right:0px;">
-                    <input type="text" class="form-control dashboard-search" placeholder="Search People here.."
+                    <input  type="text" class="form-control dashboard-search col-12" placeholder="Search People here.."
                         [(ngModel)]="spectSearchStr" aria-label="Search People here.." aria-describedby="basic-addon2"
                         (keyup.enter)="spectSearch()">
 
