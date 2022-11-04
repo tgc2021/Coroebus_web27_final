@@ -169,6 +169,8 @@ else{
     // console.log(arg);
     if (arg.type == 'Lerning Academy') {
       console.log("Learning Academy");
+      this._router.navigateByUrl("/learning/learningAcademy")
+
       
     }
     else if(arg.type == 'Play Zone'){
@@ -181,6 +183,7 @@ else{
 
       
     }
+    
     
     
 
