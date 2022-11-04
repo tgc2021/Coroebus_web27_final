@@ -2,12 +2,7 @@
     // width: 100vw;
     // height: 88vh;
     overflow-y: hidden;
-   
 }
-.container{
-    width: 95vw;
-}
-
 .points-dis-card,
 .points-notification-card
  {
@@ -15,12 +10,12 @@
     background-position: inherit;
     background-size: cover;
     width: auto;
-    height: 42vh;
+    height: 41vh;
     border-radius: 11px;
 }
 .inner-points-height {
     // padding-top: 2%;
-    height: 35vh;
+    height: auto;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -38,7 +33,7 @@
     background-position: inherit;
     background-size: cover;
     width: auto;
-    height:40vh;
+    height:37vh;
     border-radius: 11px;
     
 
@@ -63,7 +58,35 @@
     overflow-x: hidden;
 }
 .dashboard-center-table{
-    min-height: 24vh;
+    max-height: 22vh;
+}
+.dashboard-center-table-forNSM{
+    min-height: 32vh;
+}
+.dashboard-username{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 100%;
+    color: #000000;
+    width:200px;
+//   white-space: nowrap;
+  overflow: hidden;
+ 
+  text-overflow: ellipsis;
+  
+    
+}
+.dashboard-teamname{
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 100%;
+    color: #000000;
+    width:200px;
+//   white-space: nowrap;
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+  
 }
 ::ng-deep{
     .page-content{
@@ -85,10 +108,7 @@
         display: none;
     }
 }
-.dashboard-user-name,
-.dashboard-user-team-name {
-    margin-left: -11px;
-}
+
 
 .mobile-dashboard-banner-main-rank-img{
     height: auto;
@@ -162,7 +182,7 @@
     font-size: 14px;
     line-height: 100%;
     color: #000000;
-    text-align: center;
+    
 }
 .mobile-dashboard-user-team-name{
 font-weight: 600;

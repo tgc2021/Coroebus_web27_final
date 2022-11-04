@@ -18,6 +18,7 @@ import Swal from 'sweetalert2';
  * Login component
  */
 export class LoginComponent implements OnInit {
+  userid: any;
 
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router,
     private readonly store: Store, private Util: Util) { }
@@ -111,8 +112,7 @@ export class LoginComponent implements OnInit {
       // window.location.reload()
     }
     console.log(this.returnUrl)
-  }
-  // convenience getter for easy access to form fields
+  }// convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
 
   /**

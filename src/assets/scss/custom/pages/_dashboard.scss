@@ -196,14 +196,15 @@
 }
 
 .inner-bulletins-height {
-    height: 32vh;
+    height: 30vh;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
-.inner-bulletins-no-height {
-    max-height: 619px;
-}
+ .inner-bulletins-no-height {
+     overflow-y: auto;
+    max-height: 80vh;
+ }
 
 .dashboard-popup-level::-webkit-scrollbar {
     width: 4px;
@@ -349,7 +350,9 @@
 // }
 
 .points-bullentins-card-no-height {
-    height: 920px;
+    height: 85vh;
+    border-radius: 10px;
+ 
 }
 
 .points-notification-card {
@@ -589,18 +592,17 @@
     text-align: center;
     // margin-left: 9%;
 }
-.dashboard-user-team-name {
+.dashboard-user-teamname {
     font-weight: 600;
     font-size: 14px;
     line-height: 100%;
     // display: flex;
     // align-items: center;
     color: #000000;
-    // margin-left: 18%;
 }
 
 .dashboard-banner-main-rank-img {
-    height: auto;
+    height: 90%;
     width: 11vw;
 }
 
@@ -628,9 +630,9 @@
 
 .dashboard-level-rank-name {
     font-weight: 600;
-    font-size: 14px;
+    font-size: .8em;
     // font-size: .7rem;
-    line-height: 100%;
+    // line-height: 100%;
    text-align: center;
     color: #FFFFFF;
 }
@@ -650,7 +652,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    max-width: 100%;
+    max-width: 70%;
     cursor: pointer;
 }
 
@@ -872,9 +874,9 @@ border-radius: 15px;
         height: 282px;
     }
     
-    .points-bullentins-card-no-height {
-        height:635px;
-    }
+    // .points-bullentins-card-no-height {
+    //     height:635px;
+    // }
 
     .inner-bulletins-height {
         max-height: 229px;
@@ -1192,7 +1194,8 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1281px) {
     // }
 
     .inner-bulletins-no-height {
-        max-height: 580px !important;
+    overflow-y: auto;
+    max-height: 80vh !important;
     }
 
     .spot-engagement {
@@ -1247,9 +1250,9 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1281px) {
         height: 253px;
     }
 
-    .points-bullentins-card-no-height {
-        height:635px;
-    }
+    // .points-bullentins-card-no-height {
+    //     height:635px;
+    // }
 
     // .avatar-upload .avatar-edit {
     //     right: 3px;
@@ -2557,7 +2560,7 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
     }
 
     .filter-btn-dashboard {
-        width: 107%;
+        width: 100%;
     }
 
     .level-label-name {
@@ -2679,7 +2682,7 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
 
 
     .dashboard-banner {
-        height: 18vh;
+        height: 100%;
     }
 
     .dashboard-bg-image {
