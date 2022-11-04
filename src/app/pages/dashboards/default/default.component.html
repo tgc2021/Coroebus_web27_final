@@ -238,14 +238,15 @@
                     </div>
 
                 </div>
-                <div class="row row-cols-2 no-gutter" style="margin-top: 17px;">
+                <div class="row gap-1 row-cols-2 no-gutter" style="margin-top: 17px;">
                     <div class="col w-86" style="padding-right:0px;">
-                        <input type="text" class="form-control dashboard-search" placeholder="Search People here.."
+                        <input type="text" class="form-control dashboard-searchbar" placeholder="Search People here.."
                             [(ngModel)]="spectSearchStr" aria-label="Search People here.."
                             aria-describedby="basic-addon2" (keyup.enter)="spectSearch()">
 
                     </div>
                     <div class="col-1">
+                        
                         <button type="button" class="btn btn-primary dashboard-search-btn ms-1" (click)="spectSearch()"
                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"><i
                                 class="fa fa-search" aria-hidden="true"></i></button>
@@ -687,7 +688,7 @@
                     'four-data': sectionView_1?.is_land_logos?.length ===4,
                     'one-data': sectionView_1?.is_land_logos?.length ===1,
                     'row-cols-1': sectionView_1?.is_land_logos?.length === 1}">
-                        <div class="col-12 d-flex justify-content-start container gap-3" style="width:95vw;overflow-y:auto;">
+                        <div class="col-12  container d-flex justify-content-between gap-1" style="width:100vw;overflow-y:auto;">
                             
                             <div class="col text-center" style="padding:5px 10px 0px 0px;"
                                 *ngFor="let item of sectionView_1?.is_land_logos">
