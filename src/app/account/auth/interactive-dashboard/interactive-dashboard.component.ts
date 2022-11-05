@@ -43,11 +43,11 @@ export class InteractiveDashboardComponent implements OnInit {
     }, {
       "shape": "rect",
       "type": "3rd umpire",
-      "coords": "28,682,96,778"
+      "coords": "24,692,101,782"
     }, {
       "shape": "rect",
       "type": "Booster",
-      "coords": "295,699,333,783"
+      "coords": "267,693,343,780"
     },
     {
       "shape": "rect",
@@ -68,6 +68,16 @@ export class InteractiveDashboardComponent implements OnInit {
       "shape": "rect",
       "type": "ChampionsLeague",
       "coords": "23,517,105,562"
+    },{
+      "shape": "rect",
+      "type": "Daily",
+      "coords": "256,502,338,544"
+     
+    },
+    {
+      "shape": "rect",
+      "type": "Weekly",
+      "coords": "257,551,337,592"
     }
 
   ];
@@ -197,12 +207,14 @@ else{
       
     }
 
+  
 
-    // else if(arg.type == 'PersonalMileStone'){
-    //   document.getElementById("btn").click();
+
+    else if(arg.type == 'spectr'){
+      this._router.navigateByUrl("/spectator/spectatorView")
 
       
-    // }
+    }
     
     
     

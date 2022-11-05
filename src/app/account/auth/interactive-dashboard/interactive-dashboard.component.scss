@@ -1,25 +1,47 @@
 .container-fluid {
     background-color: #000000;
+ 
 }
 
 
-.modal-body{
-    display:flex;
+.modal-body {
+    display: flex;
     justify-content: center;
 }
 
+.modalDialogDaily {
+    max-width: 360px;
 
-.modal-content{
+}
+
+.modal-content {
     background-color: transparent;
     border: none;
 }
 
-.btn-close{
+.modalContentDaily {
+    background-color: #ffffff;
+    border-radius: 0;
+
+}
+
+.ModalBody {
+
+
+    background: url("https://coroebus.in/coroebus-beta/assets/Media/Daily_champion.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 50vh;
+
+}
+
+.btn-close {
     position: absolute;
     right: 10px;
     /* right: 100px; */
     top: 10px;
 }
+
 // .box-container {
 //     display: flex;
 //     justify-content: center;
@@ -27,15 +49,16 @@
 
 // }
 
-.box-container{
+.box-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     background: black;
     margin-top: -24px;
     position: absolute;
     /* height: 108vh; */
-    height: 120vh;
+    height: 1280px;
+  
     /* padding-bottom: 0; */
 }
 
@@ -45,14 +68,14 @@
 //     padding: 0;
 //     margin-top: -50px;
 // }
-.prof_src{
+.prof_src {
     width: 80px;
     border-radius: 100%;
     height: 80px;
-   
+
 }
 
-.image-container{
+.image-container {
     width: 360px;
     height: 801px;
     padding: 0;
@@ -124,6 +147,7 @@
     width: 100px;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: center;
 }
 
 .team_name_details {
@@ -140,6 +164,7 @@
     width: 100px;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: center;
 }
 
 .profile_pic {
@@ -434,3 +459,58 @@
 }
 
 
+
+
+
+
+.title_div{
+    display:flex;
+    justify-content: start;
+    width: 100%;
+}
+.daily_title {
+    font-family: 'Swiss921 BT';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: -0.02em;
+    color: #252525;
+}
+
+// .daily_description {
+   
+//     font-family: "Swis721 Cn BT";
+//     font-style: normal;
+//     font-weight: 400;
+//     font-size: 14px;
+//     /* line-height: 14px; */
+//     letter-spacing: -0.02em;
+//     color: #000000;
+// }
+
+
+
+@media (min-width: 2000px) and (max-width: 2048px){
+    .box-container {
+     
+        height: 1536px;
+        /* padding-bottom: 0; */
+    }
+}
+
+@media (min-width: 2550px) and (max-width: 2560px){
+    .box-container {
+     
+        height: 1920px;
+        /* padding-bottom: 0; */
+    }
+}
+
+@media (min-width: 3830px) and (max-width: 3860px){
+    .box-container {
+     
+        height: 2160px;
+        /* padding-bottom: 0; */
+    }
+}

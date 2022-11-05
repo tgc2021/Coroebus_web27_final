@@ -36,8 +36,9 @@
                     </video>
                 </ng-container>
                 <ng-container *ngIf="notoficationData?.video_path">
-                    <iframe class="notification-popup-iframe" width="100%" , height="300" src="{{videoURL}}"
-                        frameborder="0"></iframe>
+                  
+                    <iframe [src]='videoURL' frameborder="0" allowfullscreen></iframe>
+
                 </ng-container>
             </span>
         </div>

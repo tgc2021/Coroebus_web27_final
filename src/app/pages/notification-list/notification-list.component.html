@@ -14,7 +14,8 @@
                 <img *ngIf="item?.image" class="mt-2" src="assets/images/svg/notification/img.png" alt="" height="47">
                 <img *ngIf="item?.gif" class="mt-2" src="assets/images/svg/notification/txt.png" alt="" height="47">
                 <img *ngIf="item?.video" class="mt-2" src="assets/images/svg/notification/v.png" alt="" height="47">
-                <img *ngIf="(item?.video==='' && item?.gif==='' && item?.image==='')" class="mt-2"
+                <img *ngIf="item?.video_path" class="mt-2" src="assets/images/svg/notification/v.png" alt="" height="47">    
+                <img *ngIf="(item?.video==='' && item?.gif==='' && item?.image==='' && item?.video_path==='')" class="mt-2"
                     src="assets/images/svg/dashboard/text-notification-read.png" alt="" height="47">
                 <div class="media-body mt-3 ms-3">
                     <p class="mt-0 font-size-15 font-weight-semibold">{{item?.title}}</p>

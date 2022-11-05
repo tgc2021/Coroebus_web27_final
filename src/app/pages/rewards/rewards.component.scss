@@ -2,6 +2,7 @@
     scrollbar-width: none;
 }
 
+.container-fluid{}
 option{
     width: 100%;
     background: #ddd;
@@ -22,6 +23,13 @@ option{
     width: 100vw;
     min-height: 79vh;
 }
+
+.platform_image{
+    width: 100%;
+    height: 90%;
+    margin-bottom: 2rem;
+}
+
 
 .mytabs {
     display: flex;
@@ -509,6 +517,20 @@ color: #A5ACB8;
 
 .organisation_redemption_history{
     margin-top: 60px;
+   display:flex;
+   justify-content: center;
+   min-height: 42vh;
+}
+
+.no_data_reward_image{
+    width: 25vw;
+    height: 35vh;
+}
+
+.no_data_reward_message{
+    position:absolute;
+    bottom: 0;
+    font-size: 1em;
 }
 
         //Passbook
@@ -525,7 +547,7 @@ color: #A5ACB8;
                 .button_platform{
                     text-align: center;
                     background-color: white;
-                    margin-top: 50px;
+                    margin-top: 10px;
                 }
 
                 .platform_redeem{

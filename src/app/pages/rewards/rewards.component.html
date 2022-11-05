@@ -15,7 +15,16 @@
           <mat-tab  [ngStyle]="{'background': headerInfo?.color}" label="{{reward.data.rewardTypes[0].rewardName}}" >
             <hr>
             <div class="button_platform">
-              <button class="platform_redeem" type="button" (click)="navigateToLogicalBaniya()">Redeem</button>
+              <div class="row">
+                <div class="col-md-3 col-12 col-sm-6 ">
+                  <mat-card class="platform_mat_card">
+                    <img class="platform_image" src="assets/images/rewards/Platform_reward.jpg"/>
+                    <button class="redeem_btn" type="button" (click)="navigateToLogicalBaniya()">Redeem</button>
+                  </mat-card>
+                </div>
+              </div>
+              
+             
             </div>
             <!-- {{i.[0].data[0].rewardpoints[0].rewardName}} -->
           </mat-tab>
@@ -54,6 +63,8 @@
               </div>
 
               <div *ngIf="reward.data.rewardTypes[1].rewardList.length == 0" >
+
+               
                 <p class="error_organisation_reward">No Data Available</p>
               </div>
             </div>
@@ -260,8 +271,12 @@
     </div>
 
 
-    <div *ngIf="points.data.points_list[2]._data[1]._data.length ==0">
-      <p class="error_mssg_platform_redemption">No Data Available</p>
+    <div class="organisation_redemption_history" *ngIf="points.data.points_list[2]._data[1]._data.length ==0">
+      
+      <img class="no_data_reward_image" src="assets/images/rewards/no_redeem_rewad.png"/>
+      <p class="no_data_reward_message">You have not redeemed any rewards yet !
+
+      </p>
    </div>
 
   </div>
@@ -297,7 +312,11 @@
                   </div>
 
                   <div class="organisation_redemption_history" *ngIf="points.data.points_list[2]._data[0]._data.length == 0">
-                    <p class="error_mssg_organisation_redemption">No Data Available</p>
+                    <img class="no_data_reward_image" src="assets/images/rewards/no_redeem_rewad.png"/>
+                    <p class="no_data_reward_message">You have not redeemed any rewards yet !
+
+                    </p>
+                    <!-- <p class="error_mssg_organisation_redemption">No Data Available</p> -->
 
                   </div>
 

@@ -5,66 +5,68 @@
             <mat-card class="image-container">
 
                 <div class="first_row">
-                    <div class="my_name" >
+                    <div class="my_name">
                         <p> My Name</p>
                     </div>
                     <div class="team_name">
                         <p> Team Name</p>
                     </div>
                 </div>
-                 
+
                 <div class="second_row">
-                        <div class="my_name_details" >
-                            {{interactive_dashoard_response[0].data._personal_data.first_name}}
-                        </div>
-                        <div class="team_name_details">
-                            {{interactive_dashoard_response[0].data._personal_data.team_name}}
-                        </div>
+                    <div class="my_name_details">
+                        {{interactive_dashoard_response[0].data._personal_data.first_name}}
                     </div>
-               
-           
-                <div class="profile_pic" (click)="navigateToProfile()">
-                    <img class="prof_src" src="{{interactive_dashoard_response[0].data._personal_data.profile_logo}}" alt="profile" />
+                    <div class="team_name_details">
+                        {{interactive_dashoard_response[0].data._personal_data.team_name}}
+                    </div>
                 </div>
 
-                <div  class="league_name">
+
+                <div class="profile_pic" (click)="navigateToProfile()">
+                    <img class="prof_src" src="{{interactive_dashoard_response[0].data._personal_data.profile_logo}}"
+                        alt="profile" />
+                </div>
+
+                <div class="league_name">
                     <div class="leauge_name_details">
                         {{interactive_dashoard_response[0].data._personal_data.game_name}}
-                              
-                     </div>
+
+                    </div>
                 </div>
 
                 <div class="trophyAndRewards">
                     <div class="myTrophy" (click)="navigateAchievementshelf()">
                         My Trophy
-                        <img class="trophy_img"  src="assets/images/interactive-dashboard/my trophy icon.png"/>
+                        <img class="trophy_img" src="assets/images/interactive-dashboard/my trophy icon.png" />
 
                     </div>
 
                     <div class="myRewards" (click)="navigateReward()">
-                        <img class="trophy_img"  src="assets/images/interactive-dashboard/reward icon.png"/>
+                        <img class="trophy_img" src="assets/images/interactive-dashboard/reward icon.png" />
 
                         My Reward
 
                     </div>
                     <div class="rewardsPoints">
-                        <img class="rewards_points"  src="assets/images/interactive-dashboard/reward points icon 1.png"/>
+                        <img class="rewards_points"
+                            src="assets/images/interactive-dashboard/reward points icon 1.png" />
 
                         <p class="reward_total_points"> {{interactive_dashoard_response[0].data._points[2].score}}</p>
                         <p class="reward">Reward Points</p>
 
                     </div>
                 </div>
-               
+
 
                 <div class="details_box" (click)="navigateDashboard()">
-                    <div class="title_interactive"  >
+                    <div class="title_interactive">
                         <p class="team_rank">TEAM RANK</p>
                         <p class="my_score">MY SCORE</p>
                         <p class="my_rank">MY RANK</p>
 
                     </div>
-                    <div class="title_details"  >
+                    <div class="title_details">
                         <p class="team_rank_details">{{interactive_dashoard_response[0].data._primary.team_rank}}</p>
                         <p class="my_score_details">{{interactive_dashoard_response[0].data._points[0].score}}</p>
                         <p class="my_rank_details">{{interactive_dashoard_response[0].data._primary.my_rank}}</p>
@@ -72,7 +74,8 @@
                     </div>
 
                     <div class="row grid_circle">
-                        <div class="col-md-3 dot" *ngFor="let points of interactive_dashoard_response[0].data._Point_distribution">
+                        <div class="col-md-3 dot"
+                            *ngFor="let points of interactive_dashoard_response[0].data._Point_distribution">
                             <p class="run_scored">{{points.weightage}}</p>
                             <div class="run_scored_box">
                                 <!-- {{interactive_dashoard_response[0].data._Point_distribution[0].point_label}} -->
@@ -85,49 +88,54 @@
 
                 </div>
 
-               
+
                 <div>
-                    <img class="backround_image" id="img_id" src="{{interactive_dashoard_response[0].data._personal_data.skillmuni}}"  usemap="#auto"/>
-                    <map name="auto"
-                    id="auto">
+                    <img class="backround_image" id="img_id"
+                        src="{{interactive_dashoard_response[0].data._personal_data.skillmuni}}" usemap="#auto" />
+                    <map name="auto" id="auto">
 
-                    <div *ngFor="let part of auto_parts; let k=index">
-                        <div *ngIf="part.type == 'Play Zone' || part.type == 'Lerning Academy' || part.type == 'ChampionsLeague'; then withoutModal; else withModal">
-                            <!-- *ngIf="data.spot_status==='Open' && data._status==='active'; then openBlock;else openedBlock" -->
-                        </div>
-                        <ng-template #withoutModal >
-                            <area 
-                            shape="{{part.shape}}"
-                            coords="{{part.coords}}"                       
-                            (click)="partClicked(part,k)" 
-                            data-id="k"                   
-                            title="part.type" 
-                            href="javascript:void(0);"
-                            onmouseover="document.getElementById('img_id').style.cursor='pointer';" 
-                            onmouseout="document.getElementById('img_id').style.cursor='';"
-                            />
-                        </ng-template>
-                        <ng-template #withModal >
-                            <div *ngIf="part.type == 'PersonalMileStone'">
-                                <area 
-                                shape="{{part.shape}}"
-                                coords="{{part.coords}}"                       
-                                data-bs-toggle="modal" data-bs-target="#staticBackdrop1"
-                                (click)="partClicked(part,k)"
-                                data-id="k"                   
-
-                                title="part.type" 
-                                href="javascript:void(0);"
-                                onmouseover="document.getElementById('img_id').style.cursor='pointer';" 
-                                onmouseout="document.getElementById('img_id').style.cursor='';"
-                                />
+                        <div *ngFor="let part of auto_parts; let k=index">
+                            <div
+                                *ngIf="part.type == 'Play Zone' || part.type == 'Lerning Academy' || part.type == 'ChampionsLeague' || part.type == '3rd umpire' || part.type == 'spectr' ; then withoutModal; else withModal">
+                                <!-- *ngIf="data.spot_status==='Open' && data._status==='active'; then openBlock;else openedBlock" -->
                             </div>
-                           
-                        </ng-template>
-                    </div>
-                    
-                 
-<!--                  
+                            <ng-template #withoutModal>
+                                <area shape="{{part.shape}}" coords="{{part.coords}}" (click)="partClicked(part,k)"
+                                    data-id="k" title="part.type" href="javascript:void(0);"
+                                    onmouseover="document.getElementById('img_id').style.cursor='pointer';"
+                                    onmouseout="document.getElementById('img_id').style.cursor='';" />
+                            </ng-template>
+                            <ng-template #withModal>
+                                <div *ngIf="part.type == 'PersonalMileStone' ">
+                                    <area shape="{{part.shape}}" coords="{{part.coords}}" data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop1" (click)="partClicked(part,k)" data-id="k"
+                                        title="part.type" href="javascript:void(0);"
+                                        onmouseover="document.getElementById('img_id').style.cursor='pointer';"
+                                        onmouseout="document.getElementById('img_id').style.cursor='';" />
+                                </div>
+
+
+                                <div *ngIf="part.type == 'Daily' ">
+                                    <area shape="{{part.shape}}" coords="{{part.coords}}" data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop2" (click)="partClicked(part,k)" data-id="k"
+                                        title="part.type" href="javascript:void(0);"
+                                        onmouseover="document.getElementById('img_id').style.cursor='pointer';"
+                                        onmouseout="document.getElementById('img_id').style.cursor='';" />
+                                </div>
+
+                                <div *ngIf="part.type == 'Booster' ">
+                                    <area shape="{{part.shape}}" coords="{{part.coords}}" data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop3" (click)="partClicked(part,k)" data-id="k"
+                                        title="part.type" href="javascript:void(0);"
+                                        onmouseover="document.getElementById('img_id').style.cursor='pointer';"
+                                        onmouseout="document.getElementById('img_id').style.cursor='';" />
+                                </div>
+
+                            </ng-template>
+                        </div>
+
+
+                        <!--                  
                </map>
                 </div>
 
@@ -140,54 +148,106 @@
                          onmouseover="document.getElementById('img_id').style.cursor='pointer';" 
                          onmouseout="document.getElementById('img_id').style.cursor='';"
                          /> -->
-               </map>
+                    </map>
                 </div>
 
             </mat-card>
-          
+
         </div>
 
     </div>
 
 
-    <div >
+    <div>
         <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" >
-          <div class="modal-content passbookModal" >
-            
-              
-           
-            
-            <div class="modal-body"  >
-                <div *ngFor="let part_img of auto_parts">
-                    <div *ngIf="part_img.type == 'PersonalMileStone'" style="position:relative;">
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content passbookModal">
+                    <div class="modal-body">
+                        <div *ngFor="let part_img of auto_parts">
+                            <div *ngIf="part_img.type == 'PersonalMileStone'" style="position:relative;">
 
-                        <img src="https://coroebus.in/coroebus-beta/assets/Media/personal_milestone.png"/>
-                        <div>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> 
+                                <img src="https://coroebus.in/coroebus-beta/assets/Media/personal_milestone.png" />
+                                <div>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
 
+                                </div>
+                            </div>
                         </div>
-                      </div>
 
-                      <!-- <div *ngIf="part_img.type == 'PersonalMileStone'">
 
-                        <img  src="https://coroebus.in/coroebus-beta/assets/Media/personal_milestone.png"/>
-                      </div> -->
-                </div>
-             
-           
-    
-            <!-- -->
-            </div>
-            <!-- <div class="modal-footer">
+
+                        <!-- -->
+                    </div>
+                    <!-- <div class="modal-footer">
              
     
             </div> -->
-          </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
 
+
+    <div>
+        <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modalDialogDaily modal-dialog-centered ">
+                <div class="modal-content modalContentDaily">
+                    <div class="modal-body ModalBody">
+                        <div class="title_div">
+                            <h6 class="daily_title">Daily Campaign</h6>
+
+                        </div>
+                        <!-- <div>
+                            <p class="daily_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                e
+                                iu s mod tempor incididunt ut labore et dolore magna aliqua. adex m inim veniamint </p>
+                        </div> -->
+
+                        <!-- <div>
+                            <p class="daily_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                e
+                                iu s mod tempor incididunt ut labore et dolore magna aliqua. adex m inim veniamint </p>
+                        </div> -->
+
+                        <!-- 
+
+                        <div>
+                            <p>Valid Till: 22/09/2022</p>
+                        </div> -->
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+        <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered ">
+                <div class="modal-content">
+                    <div class="modal-body" >
+                        <div style="position:relative;">
+
+                            <img src="https://coroebus.in/coroebus-beta/assets/Media/Booster.png" />
+                            <div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+
+                            </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
