@@ -223,7 +223,7 @@
 }
 
 .dashboard-search-btn {
-    width: 56.34px;
+    width: 60.34px;
     height: 60px;
     background: #104E5B;
     border-radius: 10px;
@@ -836,6 +836,11 @@ border-radius: 15px;
     background: #FFFFFF;
     border: 0.5px solid #C6C3C3;
     border-radius: 5px;
+}
+.hierarchy-popup-list-border:first-child{
+    border-top: none;
+    border-left:none;
+    border-right:none;
 }
 .hierarchy-popup-list-role_name {
     font-size: 9px;

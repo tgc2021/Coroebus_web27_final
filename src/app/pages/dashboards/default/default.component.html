@@ -116,9 +116,9 @@
                         <div class="row d-flex justify-content-center" placement="bottom" ngbTooltip="{{sectionView_1?._personal_data?.first_name}}">
                             <div class="col-lg-12 ellipsis">
                                 <span
-                                    class="dashboard-user-name">{{sectionView_1?._personal_data?.first_name}}</span><br>
+                                    class="dashboard-user-name ellipsis">{{sectionView_1?._personal_data?.first_name}}</span><br>
                                 <span
-                                    class="dashboard-user-team-name">{{sectionView_1?._personal_data?.team_name}}</span>
+                                    class="dashboard-user-team-name ms-2 me-2">{{sectionView_1?._personal_data?.team_name}}</span>
                             </div>
                         </div>
                     </div>
@@ -135,7 +135,7 @@
                                         <div class="col">
                                             <img loading="lazy" class="dashboard-banner-main-rank-img"
                                                 src="{{sectionView_1?._personal_data?.profile_badge_image}}"
-                                                alt="Generic placeholder image" >
+                                                alt="Generic placeholder image">
                                         </div>
                                         <div class="confetti"
                                             [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'">
@@ -238,21 +238,20 @@
                     </div>
 
                 </div>
-                <div class="row gap-3" style="margin-top: 17px;">
-                    <div class="col-10" style="padding-right:0px;">
+                <div class="d-flex flex-row" style="margin-top: 17px;">
+                    <div class="col-11" style="padding-right:0px;">
                         <input type="text" class="form-control dashboard-searchbar" placeholder="Search People here.."
                             [(ngModel)]="spectSearchStr" aria-label="Search People here.."
                             aria-describedby="basic-addon2" (keyup.enter)="spectSearch()">
-
                     </div>
-                    <div class="col-1">
+                    <div class="col-1 d-flex justify-content-end">
                         
                         <button type="button" class="btn btn-primary dashboard-search-btn ms-1" (click)="spectSearch()"
                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"><i
-                                class="fa fa-search" aria-hidden="true"></i></button>
+                            class="fa fa-search" aria-hidden="true"></i></button>
                     </div>
                 </div>
-                <div class="mt-2 mobile-ipad-only-margin-div">
+                <div class="mt-2">
                     <div class="row row">
                         <div class="col-2 col-md-2 col-col-lg-2">
                             <span class="rank_h">Rank</span>
@@ -544,11 +543,12 @@
             </div>
             <div class="modal-body dashboard-popup-level">
                 <!-- {{hierarchyPopupList | json}} -->
-                <div class="row hierarchy-popup-list mb-3 p-2 ms-5 w-75" *ngFor="let item of hierarchyPopupList"
+                
+                    <div class="row  hierarchy-popup-list hierarchy-popup-list-border mb-3 p-2 ms-5 w-75" *ngFor="let item of hierarchyPopupList"
                     (click)="getDataBasedOnUserIDVIAhierarchyPopupList(item,modal)">
-                    <div class="col-lg-6 pt-2">
+                    <div class=" col-6 pt-2">
                         <div class="media">
-                                            <img loading="lazy" class="mr-3 rounded-circle" height="45" width="45" src="{{item?.userlogo}}"
+                                <img loading="lazy" class="mr-3 rounded-circle" height="45" width="45" src="{{item?.userlogo}}"
                                 alt="Generic placeholder image">
                             <div class="media-body">
                                 <h5 class="mt-0 hierarchy-popup-list-team_name ms-2">{{item?.team_name}}
@@ -560,7 +560,6 @@
                                     </p>
                                 </h5>
                             </div>
-    
                         </div>
                     </div>
                     <div class="col-lg-6 pt-2">
@@ -570,7 +569,9 @@
                         <img loading="lazy" class="mr-3 rounded-circle float-end" height="45" width="45"
                             src="{{item?.teamlogo}}" alt="Generic placeholder image">
                     </div>
+              
                 </div>
+                
             </div>
         </div>
     </ng-template>
@@ -794,8 +795,8 @@
                 </div>
 
             </div>
-            <div class="row row-cols-2 no-gutter " style="margin-top: 17px;">
-                <div class="col-9" style="padding-right:0px;">
+            <div class="row row-cols-2" style="margin-top: 17px;">
+                <div class="col-10" style="padding-right:0px;">
                     <input  type="text" class="form-control dashboard-search col-12" placeholder="Search People here.."
                         [(ngModel)]="spectSearchStr" aria-label="Search People here.." aria-describedby="basic-addon2"
                         (keyup.enter)="spectSearch()">
