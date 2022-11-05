@@ -7,19 +7,6 @@
     border-radius: 10px;
 }
 
-.modalBodyBooster{
-    display:flex;
-    justify-content: center;
-}
-
-
-.closeBooster{
-    position:absolute;
-    top: 10px;
-    right: 10px;
-}
-
-
 .PersonalMilestoneModal
 {
     .modal-body{
@@ -265,16 +252,15 @@
 
 
 
-.box-container {
+.box-container{
     display: flex;
     justify-content: center;
-    align-items: start;
+    align-items: center;
     background: black;
     margin-top: -24px;
     position: absolute;
     /* height: 108vh; */
-    height: 1280px;
-  
+    height: 120vh;
     /* padding-bottom: 0; */
 }
 
@@ -363,7 +349,6 @@
     width: 100px;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-align: center;
 }
 
 .team_name_details {
@@ -380,7 +365,6 @@
     width: 100px;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-align: center;
 }
 
 .profile_pic {
@@ -675,26 +659,3 @@
 }
 
 
-@media (min-width: 2000px) and (max-width: 2048px){
-    .box-container {
-     
-        height: 1536px;
-        /* padding-bottom: 0; */
-    }
-}
-
-@media (min-width: 2550px) and (max-width: 2560px){
-    .box-container {
-     
-        height: 1920px;
-        /* padding-bottom: 0; */
-    }
-}
-
-@media (min-width: 3830px) and (max-width: 3860px){
-    .box-container {
-     
-        height: 2160px;
-        /* padding-bottom: 0; */
-    }
-}

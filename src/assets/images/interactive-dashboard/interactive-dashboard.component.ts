@@ -47,7 +47,7 @@ export class InteractiveDashboardComponent implements OnInit {
     }, {
       "shape": "rect",
       "type": "Booster",
-      "coords": "267,693,343,780"
+      "coords": "295,699,333,783"
     },
     {
       "shape": "rect",
@@ -135,8 +135,6 @@ if(this.mergeObj.id_coroebus_game != null){
     console.log(res)
     this.interactive_dashoard_response = res;
     this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
-    console.log(this.interactive_dashoard_response);
-
     this.dailyToppers=this.interactive_dashoard_response[0].data.seasonal_theme_daily_badge_details;
     this.weeklyTopers=this.interactive_dashoard_response[0].data.seasonal_theme_weekly_badge_toppers;
     this.monthlyTopers=this.interactive_dashoard_response[0].data.seasonal_theme_monthly_badge_toppers;
@@ -144,7 +142,6 @@ if(this.mergeObj.id_coroebus_game != null){
     console.log(this.weeklyTitle);
     console.log("=------->>",this.dailyToppers);
 
-    
     this.eventService.broadcast('passDataToHeader', {
       color: this.interactive_dashoard_response[0].data.theme_details[0].dark_color,
       game_logo: this.interactive_dashoard_response[0].data._personal_data.game_logo,
@@ -228,11 +225,11 @@ else{
   
 
 
-    else if(arg.type == 'spectr'){
-      this._router.navigateByUrl("/spectator/spectatorView")
+    // else if(arg.type == 'PersonalMileStone'){
+    //   document.getElementById("btn").click();
 
       
-    }
+    // }
     
     
     
