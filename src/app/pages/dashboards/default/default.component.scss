@@ -1,8 +1,3 @@
-.web-view{
-    // width: 100vw;
-    // height: 88vh;
-    // overflow-y: hidden;
-}
 
 .points-notification-card
  {
@@ -22,6 +17,12 @@
     border-radius: 11px;
 
 }
+::ng-deep{
+    .page-content {
+        padding: 79px 0px 0px 0px !important;
+    }
+}
+
 .inner-points-height {
     // padding-top: 2%;
     height: 35vh;
