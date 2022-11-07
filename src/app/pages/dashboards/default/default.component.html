@@ -57,7 +57,7 @@
                                         line-height: 25px;
                                         text-align: center;
                                         letter-spacing: 0.003em;
-                                       color: #000000; margin:40% 0% 40% 0%;">
+                                       color: #000000; margin:25% 0% 25% 0%;">
                                         There's no Notifications you have subscribed to, stay tuned to this section for
                                         more.
                                     </div>
@@ -115,10 +115,15 @@
                         </div>
                         <div class="row d-flex justify-content-center" placement="bottom" ngbTooltip="{{sectionView_1?._personal_data?.first_name}}">
                             <div class="col-lg-12 ellipsis">
-                                <span
-                                    class="dashboard-user-name ellipsis">{{sectionView_1?._personal_data?.first_name}}</span><br>
-                                <span
-                                    class="dashboard-user-team-name ms-2 me-2">{{sectionView_1?._personal_data?.team_name}}</span>
+                                <div class="d-flex justify-content-center">
+                                    <span class="dashboard-user-name ellipsis">{{sectionView_1?._personal_data?.first_name}}</span>
+                                </div>
+                                
+                                <div class="d-flex justify-content-center">
+                                    <span
+                                    class="dashboard-user-team-name text-center ellipsis" style="width:60px;">{{sectionView_1?._personal_data?.team_name}}</span>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -424,7 +429,7 @@
                             line-height: 25px;
                             text-align: center;
                             letter-spacing: 0.003em;
-                           color: #000000;margin:25% 0% 25% 0%;">
+                           color: #000000;margin:30% 0% 30% 0%;">
                                 There's no bulletin’s you have subscribed to, stay tuned to this section for more.
                             </div>
                         </div>
@@ -636,7 +641,7 @@
                                         </div>
                                         <div class="confetti"
                                             [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'">
-                                            <div class="col text-center mt-4">
+                                            <div class="col text-center mt-5">
                                                 <img loading="lazy"
                                                     src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}" alt=""
                                                     class="dashboard-game-point-img" style="padding-bottom: 7px;">
