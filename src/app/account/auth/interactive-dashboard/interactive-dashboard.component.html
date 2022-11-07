@@ -211,7 +211,7 @@
 
 
     <!-- DailyModal -->
-    <div class="DailyModal">
+    <div class="DailyModal" *ngIf="interactive_dashoard_response[0].data.seasonal_theme_daily.length>0">
         <div class="modal  fade bd-example-modal-sm" id="staticBackdrop2" data-bs-backdrop="static"
             data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogDaily modal-dialog-centered">
@@ -338,7 +338,7 @@
 
 
     <!-- Weekly Modal Started -->
-    <div class="weeklyModal">
+    <div class="weeklyModal" *ngIf="interactive_dashoard_response[0].data.seasonal_theme_weekly.length > 0">
         <div class="modal  fade bd-example-modal-sm" id="staticBackdrop3" data-bs-backdrop="static"
             data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogWeekly modal-dialog-centered">
@@ -407,19 +407,56 @@
                                     <span class="infoIcon">&#x24D8;</span>
                                 </div>
 
-                                <div class="col-12 card-container d-flex gap-2 " style="overflow-x:auto;">
-                                    <div class="card col-4 p-2 gap-2" *ngFor="let topper of weeklyTopers"
+                                <div class="col-12 card-container d-flex gap-2 " style="overflow-x:auto;" >
+                                    <div class="card col-4 p-2 gap-2" *ngFor="let topper of weeklyTopers "
                                         style="background: #D9FFDE ;">
-                                        <div class="pic">
-                                            <img src="{{topper.profile_mage}}" alt="image" height="40px" width="40px">
+                                        <div>
+                                            <div class="pic">
+                                                <img src="{{topper.profile_mage}}" alt="image" height="40px" width="40px">
+                                            </div>
+                                            <div class="name">{{topper.first_name.slice(0,10)}}...</div>
+                                            <div class="rank">Rank:{{topper.user_rank}}</div>
+                                            <div class="score">{{topper.score}}</div>
                                         </div>
-                                        <div class="name">{{topper.first_name.slice(0,10)}}...</div>
-                                        <div class="rank">Rank:{{topper.user_rank}}</div>
-                                        <div class="score">{{topper.score}}</div>
+
+                                        <!-- <div *ngIf="weeklyTopers.length ==0">
+                                            <div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <span class="welcomeText">
+                                                            Hey welcome! The themes will be configured soon. Stay tuned!
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                         -->
+                                        
                                     </div>
 
                                 </div>
 
+                                <div class="col-12 card-container d-flex gap-2 " style="overflow-x:auto;" *ngIf="weeklyTopers.length == 0">
+                                    <div class="card col-4 p-2 gap-2"
+                                        style="background: #D9FFDE ;">
+                                       
+
+                                        <div>
+                                            <div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <span class="welcomeText">
+                                                            Hey welcome! The themes will be configured soon. Stay tuned!
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+
+                                </div>
 
                             </div>
 
@@ -442,7 +479,7 @@
 
 
     <!-- Monthly Modal -->
-    <div class="monthlyModal">
+    <div class="monthlyModal"  *ngIf="interactive_dashoard_response[0].data.seasonal_theme_monthly.length>0">
         <div class="modal  fade bd-example-modal-sm" id="staticBackdrop4" data-bs-backdrop="static"
             data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogMonthly modal-dialog-centered">
