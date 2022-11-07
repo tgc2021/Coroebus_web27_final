@@ -8,6 +8,8 @@
     @media (min-width: 1366px) {
         min-width: 320px;
         max-width: 320px;
+
+       
     }
 
 }
@@ -235,7 +237,7 @@
 // }
 
 .dashboard-center-table {
-    max-height: 10vh;
+    height: 20vh;
     // -ms-overflow-style: none;
     // /* for Internet Explorer, Edge */
     // scrollbar-width: none;
@@ -252,6 +254,7 @@
 
  .inner-bulletins-no-height {
      overflow-y: auto;
+     
     max-height: 80vh;
  }
 
@@ -401,6 +404,7 @@
 .points-bullentins-card-no-height {
     height: 85vh;
     border-radius: 10px;
+ 
  
 }
 
@@ -1098,7 +1102,7 @@ border-radius: 15px;
     }
 
     .dashboard-center-table {
-        max-height: 209px;
+        max-height: 266px;
     }
 
     .avatar-upload .avatar-edit {
@@ -1433,8 +1437,7 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
     }
 
     .dashboard-center-table {
-        height: 178px;
-        max-height: 200px;
+       max-height: 71px;
     }
 
     .w-86 {
@@ -1458,7 +1461,7 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
     .three-data {
         >div:nth-child(3) {
             margin-left: 25%;
-            
+    
         }
     }
 
@@ -1495,8 +1498,7 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
     }
 
     .two-data {
-        margin-top: 21%;
-
+        margin-top: 12%;
         >div>img.island_login {
             height: 117px;
         }
@@ -1512,11 +1514,11 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
         margin-top: -0.5%;
     }
 
-    // .dashboard-center-table {
-    //     height: 300px;
-    //     max-height: 290px;
-    // }
-
+    .dashboard-center-table {
+        height: 167px;
+        max-height:167px;
+     }
+   
     .points-bullentins-card {
         height: 371px;
     }
@@ -1587,8 +1589,8 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
     }
 
     .dashboard-center-table {
-        height: 244px;
-        max-height: 290px;
+       
+        max-height: 244px;
     }
 
     /* insert styles here */
@@ -1622,8 +1624,8 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
     }
 
     .dashboard-center-table {
-        height: 179px;
-        max-height: 290px;
+        max-height: 223px;
+       
     }
 
     .dashboard-bg-image {
@@ -1664,12 +1666,15 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
 @media (min-width: 1900px) and (max-width: 1920px) {
 
     /* insert styles here */
+    .confetti{
+        margin-top: 6%;
+    }
     .view-more-row {
         margin-top: -0.5%;
     }
 
     .dashboard-center-table {
-        height: 179px;
+   
         max-height: 290px;
     }
 
@@ -1692,7 +1697,7 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
     .avatar-upload .avatar-edit {
         right: 0px;
     }
-
+  
     // .dashboard-user-name {
     //     // margin-left: 7%;
     // }
@@ -1704,6 +1709,7 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
     .name_h {
         margin-left: 16%;
     }
+  
 }
 
 /* (2048x1536) Full HD Display */
@@ -1718,8 +1724,8 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
     }
 
     .dashboard-center-table {
-        height: 179px;
-        max-height: 290px;
+        
+        max-height: 179px;
     }
 
     .dashboard-bg-image {
@@ -1785,8 +1791,7 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
     }
 
     .dashboard-center-table {
-        height: 179px;
-        max-height: 290px;
+        max-height: 179px;
     }
 
     .dashboard-bg-image {
@@ -2734,7 +2739,6 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
     .mobile-ipad-only-margin-div {
         margin-left: -4%;
     }
-
     .dashboard-center-table {
         max-height: 142px;
     }
