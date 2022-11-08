@@ -77,7 +77,7 @@ export class GameSelectionComponent implements OnInit, OnDestroy {
     this.id_coroebus_theme =this.themeObj?.id_coroebus_theme
     console.log(this.id_coroebus_theme);
 
-    if(this.id_coroebus_theme>7){
+    if(this.id_coroebus_theme>6){
       this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
       this.router.navigate(['/account/interactive-dashboard']);
     }
