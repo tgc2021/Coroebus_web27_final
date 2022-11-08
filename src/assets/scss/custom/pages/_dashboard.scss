@@ -999,57 +999,26 @@ border-radius: 15px;
     }
 
 
-    // .inner-points-height{
-    //     height: 22vh;
-    // }
-    // .points-notification-card{
-    //     height: 51vh;
-    // }
-
-    // .dashboard-banner{
-    //     height: 20vh;
-    // }
-
-    // .dashboard-banner-main-rank-img{
-    //     height: 10vh;
-    // }
-    // .level-label-name{
-    //     width: 195px;
-    //     height: 27px;
-    //     margin-left: 33%;
-    // }
-    // .confetti{
-    //     height: 28px;
-    // }
-
-    // .dashboard-game-point-img{
-    //     height: 28px;
-    // }
-
-    // .dashboard-banner-point-btn{
-    //     width: 74px;
-    //     height: 25px;
-    // }
 }
 
-// @media (min-width: 1281px) {
-//     .w-86 {
-//         width: 90%;
-//     }
+@media (min-width: 1281px) {
+    .w-86 {
+        width: 90%;
+    }
 
 
-//     .points-bullentins-card {
-//         height: 372px;
-//     }
+    .points-bullentins-card {
+        height: 372px;
+    }
 
-//     .inner-notification-height {
-//         max-height: 396px;
-//     }
+    .inner-notification-height {
+        max-height: 396px;
+    }
 
-//     .points-notification-card {
-//         height: 480px;
-//         // width: 330px;
-//     }
+    .points-notification-card {
+        height: 480px;
+        // width: 330px;
+    }
 
     .three-data {
         >div:nth-child(3) {
@@ -1073,89 +1042,89 @@ border-radius: 15px;
         width: 50%;
     }
 
-//     /* CSS */
+    /* CSS */
 
-//     .dashboard-f-width {
-//         width: 667px;
-//         margin-left: 21%;
-//     }
+    .dashboard-f-width {
+        width: 667px;
+        margin-left: 21%;
+    }
 
-//     .dashboard-bg-image {
-//         width: 100%;
-//         background-repeat: no-repeat;
-//         background-position: center;
-//         background-size: cover;
-//     }
+    .dashboard-bg-image {
+        width: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
 
-//     .no-gutter {
-//         --bs-gutter-x: -20rem
-//     }
+    .no-gutter {
+        --bs-gutter-x: -20rem
+    }
 
-//     .w-89 {
-//         width: 91%;
-//     }
+    .w-89 {
+        width: 91%;
+    }
 
-//     .f-right {
-//         float: right;
-//     }
+    .f-right {
+        float: right;
+    }
 
-//     .rank_h {
-//         margin-left: 5%;
-//         font-weight: 600;
-//         font-size: 18px;
-//         line-height: 150%;
-//     }
+    .rank_h {
+        margin-left: 5%;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 150%;
+    }
 
-//     .name_h {
-//         margin-left: 3%;
-//         font-weight: 600;
-//         font-size: 18px;
-//         line-height: 150%;
-//     }
+    .name_h {
+        margin-left: 3%;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 150%;
+    }
 
-//     .points_h {
-//         margin-left: 94%;
-//         font-weight: 600;
-//         font-size: 18px;
-//         line-height: 150%;
-//     }
+    .points_h {
+        margin-left: 94%;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 150%;
+    }
 
-//     .user-logo-row {
-//         margin-left: 3rem;
-//     }
+    .user-logo-row {
+        margin-left: 3rem;
+    }
 
-//     .name-f-size {
-//         font-size: 14.86px;
-//     }
+    .name-f-size {
+        font-size: 14.86px;
+    }
 
-//     .point-number {
-//         margin-left: 21%;
-//     }
+    .point-number {
+        margin-left: 21%;
+    }
 
     .dashboard-center-table {
         max-height: 266px;
     }
 
-//     .avatar-upload .avatar-edit {
-//         right: -29px;
-//     }
+    .avatar-upload .avatar-edit {
+        right: -29px;
+    }
 
-//     .avatar-upload .avatar-preview {
-//         margin-left: 20%;
-//         width: 169px;
-//         height: 169px;
+    .avatar-upload .avatar-preview {
+        margin-left: 20%;
+        width: 169px;
+        height: 169px;
 
 
-//     }
+    }
 
-//     // .dashboard-user-name {
-//     //     // margin-left: 28%;
-//     // }
+    // .dashboard-user-name {
+    //     // margin-left: 28%;
+    // }
 
-//     // .dashboard-user-team-name {
-//     //     // margin-left: 49%;
-//     // }
-// }
+    // .dashboard-user-team-name {
+    //     // margin-left: 49%;
+    // }
+}
 
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.25) and (min-width: 1281px),
@@ -1745,44 +1714,6 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
 
 /* (2048x1536) Full HD Display */
 @media (min-width: 2000px) and (max-width: 2048px) {
-    .points-dis-card{
-        height: 30vh;
-    }
-
-    .inner-points-height{
-        height: 27vh;
-    }
-
-    .points-notification-card{
-        height: 58vh;
-    }
-
-    .inner-notification-height{
-        max-height: 54vh ;
-    }
-
-    .points-rank-card{
-        height: 30vh;
-    }
-    .island_login{
-        height: 10vh;
-    }
-
-    .level-badge-btn{
-        width: 52%;
-    }
-
-    .points-bullentins-card{
-        height: 58vh;
-    }
-
-    .inner-bulletins-height{
-        max-height: 54vh;
-    }
-
-    .dashboard-center-table{
-        max-height: 48vh;
-    }
     .dashboard-container {
         margin-top: 1.7%;
     }
@@ -1810,19 +1741,11 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
 
     /* insert styles here */
     .avatar-upload .avatar-preview {
-        width: 235px;
-        height: 247px;
+        margin-left: 10%;
     }
 
     .avatar-upload .avatar-edit {
-        right: -39px;
-    }
-
-    .filter-btn-dashboard{
-        height: 65px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        right: 0px;
     }
 
     // .dashboard-user-name {
@@ -1842,67 +1765,6 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
 
 /* (2560x1600 ) HD+ Display */
 @media (min-width: 2550px) and (max-width: 2560px) {
-
-    .points-dis-card{
-        height: 30vh;
-    }
-
-    .inner-points-height{
-        height: 27vh;
-    }
-
-    .points-notification-card{
-        height: 58vh;
-    }
-
-    .inner-notification-height{
-        max-height: 54vh ;
-    }
-
-    .points-rank-card{
-        height: 30vh;
-    }
-    .island_login{
-        height: 10vh;
-    }
-
-    .level-badge-btn{
-        width: 52%;
-    }
-
-    .points-bullentins-card{
-        height: 58vh;
-    }
-
-    .inner-bulletins-height{
-        max-height: 54vh;
-    }
-
-    .dashboard-center-table{
-        max-height: 48vh;
-    }
-
-    .dashboard-banner{
-        height: 20vh;
-      }
-
-      .avatar-upload .avatar-preview {
-        width: 235px;
-        height: 247px;
-    }
-
-    .avatar-upload .avatar-edit {
-        right: -39px;
-    }
-
-    .filter-btn-dashboard{
-        height: 65px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-
     .name_h {
         margin-left: -2%;
     }

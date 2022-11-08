@@ -41,6 +41,15 @@ option{
 
 }
 
+.no_data_div{
+    display:flex;
+    justify-content: center;
+}
+
+.no_data_reward_image_org {
+    width: 25vw;
+    height: 56vh;
+}
 .search{
     margin: 7px;
     float: right;
@@ -586,6 +595,7 @@ color: #A5ACB8;
                   .error_organisation_reward{
                     display:flex;
                     justify-content: center;
+                    margin-top: 2rem;
 
                   }
 /********************************************* Popup ****************************************************/

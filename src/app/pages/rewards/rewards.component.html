@@ -62,10 +62,11 @@
 
               </div>
 
-              <div *ngIf="reward.data.rewardTypes[1].rewardList.length == 0" >
+              <div class="no_data_div" *ngIf="reward.data.rewardTypes[1].rewardList.length == 0" >
 
                
-                <p class="error_organisation_reward">No Data Available</p>
+                <!-- <p class="error_organisation_reward">No Data Available</p> -->
+                <img class="no_data_reward_image_org" src="assets/images/rewards/Coming_soon.png" />
               </div>
             </div>
 
