@@ -211,55 +211,56 @@
 
 
     <!-- DailyModal -->
-    <div class="DailyModal" *ngIf="interactive_dashoard_response[0].data.seasonal_theme_daily.length>0">
-        <div class="modal  fade bd-example-modal-sm" id="staticBackdrop2" data-bs-backdrop="static"
-            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="DailyModal" >
+        <div class="modal  fade bd-example-modal-sm" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogDaily modal-dialog-centered">
                 <div class="modal-content "
                     style="background: url(assets/images/interactive-dashboard/BG.png);position: relative; background-size:contain;">
                     <div class="modal-body"
-                        style="background-image:url(https://coroebus.in/coroebus-beta/assets/Media/Daily_champion.svg); background-repeat: no-repeat; background-size: contain; position:ralative;">
-                        <div class="popupheight popupDaily row d-flex">
+                        style="background-image:url(https://coroebus.in/coroebus-beta/assets/Media/Daily_champion.svg); background-repeat: no-repeat; background-size:contain; position:ralative;">
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="button-close" data-bs-dismiss="modal"
+                                aria-label="Close">X</button>
+                        </div>
+                        <div class="popupheight popupDaily row d-flex" *ngIf="interactive_dashoard_response[0].data.seasonal_theme_daily.length>0" >
                             <div class="d-flex justify-content-between  mb-2 p-1">
                                 <div class="ModalHeading">
                                     {{interactive_dashoard_response[0].data.seasonal_theme_daily[0].seasonal_theme_title}}
                                 </div>
-                                <div>
-                                    <button type="button" class="button-close" data-bs-dismiss="modal"
-                                        aria-label="Close">X</button>
-                                </div>
+                               
                             </div>
                             <div class="mt-2 " style="height: 200px;">
                                 <div class="modalDescription col-11">
                                     {{interactive_dashoard_response[0].data.seasonal_theme_daily[0].theme_description}}
-
+                                    
                                 </div>
-
+    
                                 <div class="modalDescription d-flex justify-content-start p-1 mt-2">
-
+    
                                     <div> Valid Till
-                                        :{{interactive_dashoard_response[0].data.seasonal_theme_daily[0].valid_till_date
-                                        |
+                                        :{{interactive_dashoard_response[0].data.seasonal_theme_daily[0].valid_till_date |
                                         date:"dd/M/yyyy"}}</div>
                                 </div>
                             </div>
-
+    
                             <div class="d-flex flex-column justify-content-center align-items-center ms-4">
                                 <div class="firstCircle centerCircle">
                                     <div class="secondCircle centerCircle">
                                         <div class="thirdCircle centerCircle">
                                             <div class="forthCircle">
                                                 <img src="{{interactive_dashoard_response[0].data.seasonal_theme_daily[0].logo}}"
-                                                    alt="" height="52" width="52" style="border-radius: 50%;">
+                                                     alt=""
+                                                     height="52"
+                                                     width="52"
+                                                     style="border-radius: 50%;">
                                             </div>
                                             <!-- <div style="font-size: 12px;color: #ffffff;">15000</div> -->
                                             <div class="row">
                                                 <div class="col p-1">
                                                     <div class="rewardPintImg">
                                                         <img class="imgSIze-17"
-                                                            src={{interactive_dashoard_response[0].data.seasonal_theme_daily[0].reward_points_image}} />
-                                                        <span style="color: #FFFFFF;">
-                                                            {{interactive_dashoard_response[0].data.seasonal_theme_daily[0].reward_point}}</span>
+                                                             src={{interactive_dashoard_response[0].data.seasonal_theme_daily[0].reward_points_image}} /> <span style="color: #FFFFFF;"> {{interactive_dashoard_response[0].data.seasonal_theme_daily[0].reward_point}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -267,7 +268,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                                
                             <div class="card" style="margin-top:20%;">
                                 <div class="Progress-card container">
                                     <div class="">
@@ -277,15 +278,15 @@
                                                 <div class="col-5" style="text-align:end;">
                                                     Target:{{item.seasonal_score_target}} </div>
                                             </div>
-
+    
                                             <div class="row" *ngIf="item.length !=0">
                                                 <div class="col-10" style="padding:14px 7px 0px 0px;">
                                                     <!-- <input type="range"
-                                                     class="range rangeBgcolor"
-                                                     width="100%"
-                                                     min="1"
-                                                     max="100"
-                                                     value="{{item.seasonal_score_percentage}}"> -->
+                                                         class="range rangeBgcolor"
+                                                         width="100%"
+                                                         min="1"
+                                                         max="100"
+                                                         value="{{item.seasonal_score_percentage}}"> -->
                                                     <progress id="file" class="range rangeBgcolor"
                                                         value="{{item.seasonal_score_percentage}}" max="100">
                                                         {{item.seasonal_score_percentage}}% </progress>
@@ -295,7 +296,7 @@
                                                         width="39" style="border-radius: 50%;">
                                                 </div>
                                             </div>
-
+    
                                         </div>
                                         <div *ngIf="dailyToppers.length == 0">
                                             <div>
@@ -309,26 +310,34 @@
                                             </div>
                                         </div>
                                     </div>
-
+    
                                 </div>
                             </div>
-
-
-
-
-
-
+                                
+    
+    
+                            
+    
+    
                         </div>
+                        <div class="row d-flex justify-content-center align-items-end " style="height:35vh;" *ngIf="interactive_dashoard_response[0].data.seasonal_theme_daily.length==0">
+                            <div class="col text-center">
+                                <span>Hey Welcome! The Themes will be configured soon. Stay tuned </span>
+                            </div>
+                        </div>
+                        
                         <!-- -->
                     </div>
                     <!-- <div class="modal-footer">
-             
-    
-            </div> -->
+                 
+        
+                </div> -->
                 </div>
             </div>
         </div>
     </div>
+
+
 
 
 
@@ -338,129 +347,96 @@
 
 
     <!-- Weekly Modal Started -->
-    <div class="weeklyModal" *ngIf="interactive_dashoard_response[0].data.seasonal_theme_weekly.length > 0">
-        <div class="modal  fade bd-example-modal-sm" id="staticBackdrop3" data-bs-backdrop="static"
-            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modalDialogWeekly modal-dialog-centered">
-                <div class="modal-content modalContentWeekly"
-                    style="background: url(assets/images/interactive-dashboard/BG.png);position: relative; background-size:contain;">
-                    <div class="modal-body"
-                        style="background-image:url(https://coroebus.in/coroebus-beta/assets/Media/weekly_champion.svg); background-repeat: no-repeat; background-size: contain; position:ralative;">
-                        <div class="row d-flex">
+    <div class="weeklyModal" >
+        <div class="modal  fade bd-example-modal-sm" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+            <div class="modal-dialog modalDialogWeekly modal-dialog-centered" >
+                <div class="modal-content modalContentWeekly" style="background: url(assets/images/interactive-dashboard/BG.png);position: relative; background-size:contain;"   >
+                    <div class="modal-body" style="background-image:url(https://coroebus.in/coroebus-beta/assets/Media/weekly_champion.svg); background-repeat: no-repeat; background-size: contain; position:ralative;">
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="button-close" data-bs-dismiss="modal"
+                                aria-label="Close">X</button>
+                        </div>
+                        <div class="row d-flex" *ngIf="interactive_dashoard_response[0].data.seasonal_theme_weekly.length>0" >
                             <div class="d-flex justify-content-between  mb-1 p-1">
-                                <div class="ModalHeading">
-                                    {{interactive_dashoard_response[0].data.seasonal_theme_weekly[0].seasonal_theme_title}}
-                                </div>
-                                <div>
-                                    <button type="button" class="button-close" data-bs-dismiss="modal"
-                                        aria-label="Close">X</button>
-                                </div>
+                                <div class="ModalHeading" >{{interactive_dashoard_response[0].data.seasonal_theme_weekly[0].seasonal_theme_title}}</div>
+                                
                             </div>
                             <div class="mb-3">
-                                <div class="modalDescription col-11">
+                                <div  class="modalDescription col-11" >
                                     {{interactive_dashoard_response[0].data.seasonal_theme_weekly[0].theme_description}}
                                 </div>
-
+                               
                                 <div class="modalDescription d-flex justify-content-between p-1 mt-2">
-                                    <div> Valid From : 22/09/2022</div>
-                                    <div> Valid Till
-                                        :{{interactive_dashoard_response[0].data.seasonal_theme_weekly[0].valid_till_date
-                                        | date:"dd/M/yyyy"}}</div>
+                                    <div > Valid From : 22/09/2022</div>
+                                    <div> Valid Till :{{interactive_dashoard_response[0].data.seasonal_theme_weekly[0].valid_till_date | date:"dd/M/yyyy"}}</div>
                                 </div>
                             </div>
-
+                          
                             <div class="mt-5">
                                 <div class="d-flex justify-content-center">
                                     <img src="assets/images/interactive-dashboard/master blaster.png" alt="">
                                 </div>
 
                                 <div class="d-flex justify-content-center mt-2">
-                                    <button
-                                        class="btn-reward d-flex justify-content-center align-items-center p-1 gap-1">
+                                    <button class="btn-reward d-flex justify-content-center align-items-center p-1 gap-1" >
                                         <div>
-                                            <img src="assets/images/interactive-dashboard/reward points icon 1.png"
-                                                alt="">
+                                            <img src="assets/images/interactive-dashboard/reward points icon 1.png" alt="">
                                         </div>
-                                        <div>
-                                            {{interactive_dashoard_response[0].data.seasonal_theme_weekly[0].reward_point}}
-                                        </div>
+                                        <div>{{interactive_dashoard_response[0].data.seasonal_theme_weekly[0].reward_point}}</div>
                                     </button>
-
+                                    
                                 </div>
                                 <div class="d-flex justify-content-center gap-2 mt-1">
                                     <div class="d-flex flex-column align-items-center">
-                                        <div class="Number">
-                                            {{interactive_dashoard_response[0].data.seasonal_theme_weekly_badge_details[0].your_rank}}
-                                        </div>
+                                        <div class="Number">{{interactive_dashoard_response[0].data.seasonal_theme_weekly_badge_details[0].your_rank}}</div>
                                         <div class="Words">Your Rank</div>
                                     </div>
                                     <div class="d-flex flex-column align-items-center">
-                                        <div class="Number">
-                                            {{interactive_dashoard_response[0].data.seasonal_theme_weekly_badge_details[0].your_score}}
-                                        </div>
+                                        <div class="Number">{{interactive_dashoard_response[0].data.seasonal_theme_weekly_badge_details[0].your_score}}</div>
                                         <div class="Words">Your Score</div>
                                     </div>
                                 </div>
                                 <div class="mt-3 mb-2">
-                                    <span class="Top5">Top 5 performers who have won the badge</span>
-                                    &nbsp;
-                                    <span class="infoIcon">&#x24D8;</span>
+                                   <span class="Top5">Top 5 performers who have won the badge</span> 
+                                   &nbsp;
+                                   <span class="infoIcon">&#x24D8;</span>
                                 </div>
-
-                                <div class="col-12 card-container d-flex gap-2 " style="overflow-x:auto;" >
-                                    <div class="card col-4 p-2 gap-2" *ngFor="let topper of weeklyTopers "
-                                        style="background: #D9FFDE ;">
-                                        <div>
-                                            <div class="pic">
-                                                <img src="{{topper.profile_mage}}" alt="image" height="40px" width="40px">
-                                            </div>
-                                            <div class="name">{{topper.first_name.slice(0,10)}}...</div>
-                                            <div class="rank">Rank:{{topper.user_rank}}</div>
-                                            <div class="score">{{topper.score}}</div>
-                                        </div>
-
-                                        <!-- <div *ngIf="weeklyTopers.length ==0">
-                                            <div>
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <span class="welcomeText">
-                                                            Hey welcome! The themes will be configured soon. Stay tuned!
-                                                        </span>
-                                                    </div>
+                           
+                                    <div class="col-12 card-container d-flex gap-2 " style="overflow-x:auto;" *ngIf="weeklyTopers.length!=0">
+                                        <div class="card col-4 p-2 gap-2" *ngFor="let topper of weeklyTopers" style="background: #D9FFDE;">
+                                            <div >
+                                                <div class="pic" >
+                                                    <img src="{{topper.profile_mage}}" alt="image" height="40px" width="40px"  >
                                                 </div>
+                                                <div class="name">{{topper.first_name.slice(0,10)}}...</div>
+                                                <div class="rank">Rank:{{topper.user_rank}}</div>
+                                                <div class="score">{{topper.score}}</div>
                                             </div>
+                                            
                                         </div>
-                                         -->
                                         
-                                    </div>
-
-                                </div>
-
-                                <div class="col-12 card-container d-flex gap-2 " style="overflow-x:auto;" *ngIf="weeklyTopers.length == 0">
-                                    <div class="card col-4 p-2 gap-2"
-                                        style="background: #D9FFDE ;">
                                        
-
-                                        <div>
-                                            <div>
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <span class="welcomeText">
-                                                            Hey welcome! The themes will be configured soon. Stay tuned!
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
                                         
                                     </div>
-
-                                </div>
-
+                                    <div class="card  p-2 gap-2" *ngIf="weeklyTopers.length==0">
+                                               
+                                        <span class="welcomeText">
+                                            Hey welcome! The themes will be configured soon. Stay tuned!
+                                        </span>
+                                    
+                                    </div>
+                                    
+                                
+                               
                             </div>
 
 
+                        </div>
+                        <div class="row d-flex justify-content-center align-items-end" style="height:35vh;" *ngIf="interactive_dashoard_response[0].data.seasonal_theme_weekly.length==0">
+                            <div class="col text-center">
+                                <span>Hey Welcome! The Themes will be configured soon. Stay tuned </span>
+                            </div>
                         </div>
                         <!-- -->
                     </div>
@@ -472,6 +448,9 @@
             </div>
         </div>
     </div>
+
+
+
 
 
 
@@ -479,94 +458,93 @@
 
 
     <!-- Monthly Modal -->
-    <div class="monthlyModal"  *ngIf="interactive_dashoard_response[0].data.seasonal_theme_monthly.length>0">
-        <div class="modal  fade bd-example-modal-sm" id="staticBackdrop4" data-bs-backdrop="static"
-            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modalDialogMonthly modal-dialog-centered">
-                <div class="modal-content modalContentMonthly"
-                    style="background: url(assets/images/interactive-dashboard/BG.png);position: relative; background-size:contain;">
-                    <div class="modal-body"
-                        style="background-image:url(https://coroebus.in/coroebus-beta/assets/Media/monthly_champion.svg); background-repeat: no-repeat; background-size: contain; position:ralative;">
-                        <div class="row d-flex">
+    <div class="monthlyModal">
+        <div class="modal  fade bd-example-modal-sm" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+            <div class="modal-dialog modalDialogMonthly modal-dialog-centered ">
+                <div class="modal-content modalContentMonthly" style="background: url(assets/images/interactive-dashboard/BG.png);position: relative; background-size:contain;"   >
+                    <div class="modal-body" style="background-image:url(https://coroebus.in/coroebus-beta/assets/Media/monthly_champion.svg); background-repeat: no-repeat; background-size: contain; position:ralative;">
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="button-close" data-bs-dismiss="modal"
+                                aria-label="Close">X</button>
+                        </div>
+                        <div class="row d-flex" *ngIf="interactive_dashoard_response[0].data.seasonal_theme_weekly.length>0">
                             <div class="d-flex justify-content-between  mb-1 p-1">
-                                <div class="ModalHeading">
-                                    {{interactive_dashoard_response[0].data.seasonal_theme_monthly[0].seasonal_theme_title}}
-                                </div>
-                                <div>
-                                    <button type="button" class="button-close" data-bs-dismiss="modal"
-                                        aria-label="Close">X</button>
-                                </div>
+                                <div class="ModalHeading" style="color:#ffff">{{interactive_dashoard_response[0].data.seasonal_theme_monthly[0].seasonal_theme_title}}</div>
+                                
                             </div>
-                            <div class="mb-3">
-                                <div class="modalDescription col-11">
+                            <div class="mb-3" >
+                                <div   class="modalDescription col-11" style="color:#ffff" >
                                     {{interactive_dashoard_response[0].data.seasonal_theme_monthly[0].theme_description}}
                                 </div>
-
-                                <div class="modalDescription d-flex justify-content-between p-1 mt-1">
-                                    <div> Valid From : 22/09/2022</div>
-                                    <div> Valid Till
-                                        :{{interactive_dashoard_response[0].data.seasonal_theme_weekly[0].valid_till_date
-                                        | date:"dd/M/yyyy"}}</div>
+                               
+                                <div class="modalDescription d-flex justify-content-between p-1 mt-1" style="color:#ffff">
+                                    <div > Valid From : 22/09/2022</div>
+                                    <div> Valid Till :{{interactive_dashoard_response[0].data.seasonal_theme_weekly[0].valid_till_date | date:"dd/M/yyyy"}}</div>
                                 </div>
                             </div>
-
+                          
                             <div class="mt-5">
                                 <div class="d-flex justify-content-center">
                                     <img src="assets/images/interactive-dashboard/master blaster.png" alt="">
                                 </div>
 
                                 <div class="d-flex justify-content-center mt-2">
-                                    <button
-                                        class="btn-reward d-flex justify-content-center align-items-center p-1 gap-1">
+                                    <button class="btn-reward d-flex justify-content-center align-items-center p-1 gap-1" >
                                         <div>
-                                            <img src="assets/images/interactive-dashboard/reward points icon 1.png"
-                                                alt="">
+                                            <img src="assets/images/interactive-dashboard/reward points icon 1.png" alt="">
                                         </div>
-                                        <div>
-                                            {{interactive_dashoard_response[0].data.seasonal_theme_monthly[0].reward_point}}
-                                        </div>
+                                        <div>{{interactive_dashoard_response[0].data.seasonal_theme_monthly[0].reward_point}}</div>
                                     </button>
-
+                                    
                                 </div>
                                 <div class="d-flex justify-content-center gap-2 mt-2">
                                     <div class="d-flex flex-column align-items-center">
-                                        <div class="Number">
-                                            {{interactive_dashoard_response[0].data.seasonal_theme_monthly_badge_details[0].your_rank}}
-                                        </div>
+                                        <div class="Number">{{interactive_dashoard_response[0].data.seasonal_theme_monthly_badge_details[0].your_rank}}</div>
                                         <div class="Words">Your Rank</div>
                                     </div>
+                                   
                                     <div class="d-flex flex-column align-items-center">
-                                        <div class="Number">
-                                            {{interactive_dashoard_response[0].data.seasonal_theme_monthly_badge_details[0].your_score}}
-                                        </div>
+                                        <div class="Number">{{interactive_dashoard_response[0].data.seasonal_theme_monthly_badge_details[0].your_score}}</div>
                                         <div class="Words">Your Score</div>
                                     </div>
                                 </div>
-                                <div class="mt-3 mb-2">
-                                    <span class="Top5">Top 5 performers who have won the badge</span>
-                                    &nbsp;
-                                    <span class="infoIcon">&#x24D8;</span>
-                                </div>
-
-                                <div class="col-12 card-container d-flex gap-2 " style="overflow-x:auto;">
-                                    <div class="card col-4 p-2 gap-2" *ngFor="let topper of monthlyTopers"
-                                        style="background: linear-gradient(180deg, #608CDF 0%, #62B8E9 100%);">
-                                        <div class="pic">
-                                            <img src="{{topper.profile_mage}}" alt="image" height="40px" width="40px">
+                                <div class="mt-3 mb-2" >
+                                   <span class="Top5">Top 5 performers who have won the badge</span> 
+                                   &nbsp;
+                                   <span class="infoIcon">&#x24D8;</span>
+                                </div >
+                           
+                                    <div class="col-12 card-container d-flex gap-2 " style="overflow-x:auto;color:#ffff" *ngIf="weeklyTopers.length!=0">
+                                        <div class="card col-4 p-2 gap-2" *ngFor="let topper of monthlyTopers" style="background: linear-gradient(180deg, #608CDF 0%, #62B8E9 100%);">
+                                            <div class="pic">
+                                                <img src="{{topper.profile_mage}}" alt="image" height="40px" width="40px"  >
+                                            </div>
+                                            <div class="name">{{topper.first_name.slice(0,10)}}...</div>
+                                            <div class="rank">Rank:{{topper.user_rank}}</div>
+                                            <div class="score">{{topper.score}}</div>
                                         </div>
-                                        <div class="name">{{topper.first_name.slice(0,10)}}...</div>
-                                        <div class="rank">Rank:{{topper.user_rank}}</div>
-                                        <div class="score">{{topper.score}}</div>
+                                        
                                     </div>
-
-                                </div>
-
-
+                                    <div class="card  p-2 gap-2" *ngIf="weeklyTopers.length==0">
+                                               
+                                        <span class="welcomeText">
+                                            Hey welcome! The themes will be configured soon. Stay tuned!
+                                        </span>
+                                    
+                                    </div>
+                                
+                               
                             </div>
 
 
                         </div>
-                        <!-- -->
+                        <div class="row d-flex justify-content-center align-items-end" style="height:35vh;" *ngIf="interactive_dashoard_response[0].data.seasonal_theme_weekly.length==0">
+                            <div class="col text-center">
+                                <span>Hey Welcome! The Themes will be configured soon. Stay tuned </span>
+                            </div>
+                        </div>
+                      
                     </div>
                     <!-- <div class="modal-footer">
              
@@ -576,6 +554,7 @@
             </div>
         </div>
     </div>
+
 
 
 
