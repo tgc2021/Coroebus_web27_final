@@ -16,7 +16,7 @@
                         </div>
                         <div>
                             <div class="mb-4 me-3"></div>
-                            <div class="inner-points-height">
+                            <div class="inner-points-height d-flex flex-column justify-content-center">
                                 <div class="row mt-2 points-row ms-1" (click)="getGraphDataById()"
                                     *ngFor="let item of sectionView_1?._kpi_score">
                                     <div class="col-6 p-0">
@@ -62,7 +62,7 @@
                                         more.
                                     </div>
                                 </div>
-                                <div class="mb-4 me-3"></div>
+                                <div class="mb-3 me-3"></div>
                                 <div class="inner-notification-height">
                                 <!-- {{notificationLists | json}} -->
                                     <div class="row row-cols-1 mt-2 notification-row ms-1 me-4"
@@ -282,7 +282,7 @@
                                     <img loading="lazy" class="rounded-circle z-depth-2 user-logo-row" alt=""
                                         src="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_logo}}"
                                         data-holder-rendered="trplacementue" height="37" width="37"
-                                        (click)="openHierarchyPopup(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
+                                        >
                                     <div class="media-body user-logo-row ellipsis">
                                         <h5 class="mt-0 text-white name-f-size ellipsis" placement="bottom"
                                             ngbTooltip=" {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}">
@@ -320,7 +320,7 @@
                         </div>
                     </div>
 
-                    <div class="dashboard-center-table">
+                    <div [ngClass]="{'dashboard-center-table-forNSM': sectionView_1?.is_land_logos?.length == 0, 'dashboard-center-table': sectionView_1?.is_land_logos?.length != 0}"  class=""> 
                         <!-- {{spectSearList | json}} -->
                         <!-- {{spectSearchStr ? 'true': 'false'}} -->
                         <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
@@ -413,27 +413,29 @@
                 <div class="card"
                     [ngClass]="{'points-bullentins-card-no-height': sectionView_1?.is_land_logos?.length == 0, 'points-bullentins-card': sectionView_1?.is_land_logos?.length != 0}"
                     [style.background-image]="sectionView_1?.theme_details?.[0]?.add_ins_background ? 'url(' + sectionView_1?.theme_details?.[0]?.add_ins_background + ')' : null">
-                    <div class="card-body pt-2">
-                        <div class="float-start dropdown ms-2 font-size-16 font-weight-semibold">
-                            Bulletins
-                        </div>
-                        <!-- <div>
-                            {{sectionView_1?.is_land_logoslength}}
-                        </div> -->
-                        <div *ngIf="buletinsHide">
+                    <div class="float-start dropdown ms-4 mt-3  font-size-16 font-weight-semibold">
+                     Bulletins
+                    </div>
+                    <div class="card-body pt-2 d-flex flex-column justify-content-center">
+                       
+                    
+                        <div class="d-flex align-items-center">
+                          
+                        
+                        <div *ngIf="buletinsHide" style="display:flex;flex-direction:column;justify-self:center;">
                             <br>
-                            <div class="buletinsHideFont" style="font-family: 'Inter';
+                            <div class="" style="font-family: 'Inter';
                             font-style: normal;
                             font-weight: 600;
                             font-size: 16px;
                             line-height: 25px;
                             text-align: center;
                             letter-spacing: 0.003em;
-                           color: #000000;margin:30% 0% 30% 0%;">
+                           color: #000000;">
                                 There's no bulletin’s you have subscribed to, stay tuned to this section for more.
                             </div>
                         </div>
-                        <div class="mb-4 me-3"></div>
+                        <div class="mb-2 me-3"></div>
                         <div 
                             [ngClass]="{'inner-bulletins-no-height': sectionView_1?.is_land_logos?.length == 0,'inner-bulletins-height':sectionView_1?.is_land_logos?.length!=0}">
 
@@ -473,6 +475,8 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
+                        
 
                     </div>
                 </div>
@@ -587,7 +591,7 @@
 </div>
 
 <!-- Mobile view started -->
-<div class="mobile-view col-12">
+<div class="mobile-view  p-2">
     <div class="row"
         *ngIf="!(sectionView_1 && rankingDataFirstRowForSectionView_2 && sectionView_3); else mobileTemplate">
         <div class="col-12">
@@ -641,7 +645,7 @@
                                         </div>
                                         <div class="confetti"
                                             [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'">
-                                            <div class="col text-center mt-5">
+                                            <div class="col text-center mt-2">
                                                 <img loading="lazy"
                                                     src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}" alt=""
                                                     class="dashboard-game-point-img" style="padding-bottom: 7px;">
@@ -839,7 +843,7 @@
                                 <img loading="lazy" class="rounded-circle z-depth-2 user-logo-row" alt=""
                                     src="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_logo}}"
                                     data-holder-rendered="trplacementue" height="37" width="37"
-                                    (click)="openHierarchyPopup(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
+                                    >
                                 <div class="media-body user-logo-row ellipsis">
                                     <h5 class="mt-0 text-white name-f-size ellipsis" placement="bottom"
                                         ngbTooltip=" {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}">

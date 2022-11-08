@@ -13,9 +13,12 @@
     background-position: inherit;
     background-size: cover;
     width: auto;
-    height: 42vh;
+    height: 43vh;
     border-radius: 11px;
 
+}
+.form-cpntrol{
+    width: 98%;
 }
 ::ng-deep{
     .page-content {
@@ -34,7 +37,7 @@
     background-position: inherit;
     background-size: cover;
     //width: auto;
-    height: 42vh;
+    height: 43vh;
     border-radius: 11px;
 
 }
@@ -63,16 +66,16 @@
         top: 3.23px;
 }
 .inner-notification-height {
-    height: 30vh;
+    height: 32vh;
     overflow-y: auto;
     overflow-x: hidden;
 }
 // .dashboard-center-table{
 //     height: 22vh;
 // }
-.dashboard-center-table-forNSM{
-    min-height: 32vh;
-}
+// .dashboard-center-table-forNSM{
+//     min-height: 85px;
+// }
 .dashboard-username{
     font-weight: 600;
     font-size: 18px;
