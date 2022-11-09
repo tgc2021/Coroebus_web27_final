@@ -8,8 +8,8 @@ import {environment} from '../environments/environment'
 export class ApiserviceService {
 
   URLstring = environment.apiURL
-    // Path='coroebus-beta-api-levels'
-    Path='coroebus-tgc-api-levels'
+    Path='coroebus-beta-api-levels'
+    // Path='coroebus-tgc-api-levels'
   constructor(public Http:HttpClient) { }
   
   rewards(data:any){
