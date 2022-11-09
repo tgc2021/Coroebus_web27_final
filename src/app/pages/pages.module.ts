@@ -15,10 +15,12 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { DashboardsModule } from './dashboards/dashboards.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NotificationPopupComponent } from './notification-popup/notification-popup.component';
+import { ChampionsLeagueComponent } from './champions-league/champions-league.component';
 
 @NgModule({
   declarations: [
-    NotificationPopupComponent
+    NotificationPopupComponent,
+    ChampionsLeagueComponent
   ],
   imports: [
     CommonModule,
