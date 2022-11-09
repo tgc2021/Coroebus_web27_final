@@ -554,12 +554,12 @@ color: #898787;
 
 .date_col{
     background-color: #EDEDED;
-    min-height: 38vh;
-    max-height: 38vh;
+    /* min-height: 24vh; */
+    /* max-height: 38vh; */
     border-radius: 14px;
     left: 10px;
-
-    // margin-left: 10px;
+    overflow-y: scroll;
+    height: 37vh;
 }
 .date_details {
    

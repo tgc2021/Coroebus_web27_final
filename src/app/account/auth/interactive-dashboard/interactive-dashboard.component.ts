@@ -22,12 +22,12 @@ export class InteractiveDashboardComponent implements OnInit {
     {
       "shape": "rect",
       "type": "Lerning Academy",
-      "coords": "23,384,109,348"
+      "coords": "6,355,138,406"
     }, {
 
       "shape": "rect",
       "type": "Play Zone",
-      "coords": "248,385,337,348",
+      "coords": "222,354,355,398",
     }, {
       "shape": "rect",
       "type": "Jackets",
@@ -43,16 +43,16 @@ export class InteractiveDashboardComponent implements OnInit {
     }, {
       "shape": "rect",
       "type": "3rd umpire",
-      "coords": "24,692,101,782"
+      "coords": "11,672,96,782"
     }, {
       "shape": "rect",
       "type": "Booster",
-      "coords": "267,693,343,780"
+      "coords": "278,686,341,784"
     },
     {
       "shape": "rect",
       "type": "PersonalMileStone",
-      "coords": "137,391,226,354"
+      "coords": "151,368,208,414"
     },
     {
       "shape": "rect",
@@ -62,7 +62,7 @@ export class InteractiveDashboardComponent implements OnInit {
     {
       "shape": "rect",
       "type": "spectr",
-      "coords": "7,419,249,495"
+      "coords": "1,423,271,506"
     },
     {
       "shape": "rect",
@@ -71,18 +71,18 @@ export class InteractiveDashboardComponent implements OnInit {
     },{
       "shape": "rect",
       "type": "Daily",
-      "coords": "256,502,338,544"
+      "coords": "275,491,347,518"
      
     },
     {
       "shape": "rect",
       "type": "Weekly",
-      "coords": "257,551,337,592"
+      "coords": "276,523,348,550"
     },
     {
       "shape": "rect",
       "type": "Monthly",
-      "coords": "259,599,339,640"
+      "coords": "275,557,347,584"
     }
 
   ];
