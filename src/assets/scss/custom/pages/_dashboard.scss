@@ -295,6 +295,9 @@
 .inner-bulletins-height::-webkit-scrollbar {
     width: 4px;
 }
+.inner-bulletins-no-height::-webkit-scrollbar{
+    width: 4px;
+}
 
 .dashboard-center-table-forNSM::-webkit-scrollbar {
     width: 4px;
@@ -317,6 +320,7 @@
 .inner-points-height,
 .inner-notification-height,
 .inner-bulletins-height,
+
 .dashboard-popup-level {
     scrollbar-width: thin;
     scrollbar-color: #90A4AE #CFD8DC;
@@ -326,6 +330,10 @@
     background: #CFD8DC;
 }
 .dashboard-center-table-forNSM::-webkit-scrollbar-track {
+    background: #CFD8DC;
+
+}
+.inner-bulletins-no-height::-webkit-scrollbar-track{
     background: #CFD8DC;
 
 }
@@ -341,6 +349,7 @@
 .inner-bulletins-height::-webkit-scrollbar-track {
     background: #CFD8DC;
 }
+.inner
 
 .inner-points-height::-webkit-scrollbar-track {
     background: #CFD8DC;
@@ -360,6 +369,11 @@
     background-color: #90A4AE;
     border-radius: 5px;
     // border: 3px solid #CFD8DC;
+}
+.inner-bulletins-no-height::-webkit-scrollbar-thumb{
+    background-color: #90A4AE;
+    border-radius: 5px;
+
 }
 
 .dashboard-center-table::-webkit-scrollbar-thumb {
