@@ -19,15 +19,85 @@ import * as userActions from '../../../core/app-state/actions';
 })
 export class InteractiveDashboardComponent implements OnInit {
   auto_parts = [
+    //Production Cordinates
+
+    // {
+    //   "shape": "rect",
+    //   "type": "Lerning Academy",
+    //   "coords": "6,355,138,406"
+    // }, {
+
+    //   "shape": "rect",
+    //   "type": "Play Zone",
+    //   "coords": "222,354,355,398",
+    // }, {
+    //   "shape": "rect",
+    //   "type": "Jackets",
+    //   "coords": "270,448,356,475"
+    // }, {
+    //   "shape": "rect",
+    //   "type": "Gloves",
+    //   "coords": "269,485,359,575"
+    // }, {
+    //   "shape": "rect",
+    //   "type": "Winter wear",
+    //   "coords": "269,521,357,555"
+    // }, {
+    //   "shape": "rect",
+    //   "type": "3rd umpire",
+    //   "coords": "11,672,96,782"
+    // }, {
+    //   "shape": "rect",
+    //   "type": "Booster",
+    //   "coords": "278,686,341,784"
+    // },
+    // {
+    //   "shape": "rect",
+    //   "type": "PersonalMileStone",
+    //   "coords": "151,368,208,414"
+    // },
+    // {
+    //   "shape": "rect",
+    //   "type": "angryB",
+    //   "coords": "149,376,222,407"
+    // },
+    // {
+    //   "shape": "rect",
+    //   "type": "spectr",
+    //   "coords": "1,423,271,506"
+    // },
+    // {
+    //   "shape": "rect",
+    //   "type": "ChampionsLeague",
+    //   "coords": "23,517,105,562"
+    // },{
+    //   "shape": "rect",
+    //   "type": "Daily",
+    //   "coords": "275,491,347,518"
+     
+    // },
+    // {
+    //   "shape": "rect",
+    //   "type": "Weekly",
+    //   "coords": "276,523,348,550"
+    // },
+    // {
+    //   "shape": "rect",
+    //   "type": "Monthly",
+    //   "coords": "275,557,347,584"
+    // }
+
+    // Beta Cordinates
+
     {
       "shape": "rect",
       "type": "Lerning Academy",
-      "coords": "6,355,138,406"
+      "coords": "19,344,115,386"
     }, {
 
       "shape": "rect",
       "type": "Play Zone",
-      "coords": "222,354,355,398",
+      "coords": "247,346,339,386",
     }, {
       "shape": "rect",
       "type": "Jackets",
@@ -43,16 +113,16 @@ export class InteractiveDashboardComponent implements OnInit {
     }, {
       "shape": "rect",
       "type": "3rd umpire",
-      "coords": "11,672,96,782"
+      "coords": "21,690,106,782"
     }, {
       "shape": "rect",
       "type": "Booster",
-      "coords": "278,686,341,784"
+      "coords": "265,690,345,784"
     },
     {
       "shape": "rect",
       "type": "PersonalMileStone",
-      "coords": "151,368,208,414"
+      "coords": "136,356,225,390"
     },
     {
       "shape": "rect",
@@ -62,27 +132,27 @@ export class InteractiveDashboardComponent implements OnInit {
     {
       "shape": "rect",
       "type": "spectr",
-      "coords": "1,423,271,506"
+      "coords": "1,415,257,502"
     },
     {
       "shape": "rect",
       "type": "ChampionsLeague",
-      "coords": "23,517,105,562"
+      "coords": "25,516,105,563"
     },{
       "shape": "rect",
       "type": "Daily",
-      "coords": "275,491,347,518"
+      "coords": "257,502,338,545"
      
     },
     {
       "shape": "rect",
       "type": "Weekly",
-      "coords": "276,523,348,550"
+      "coords": "258,552,334,594"
     },
     {
       "shape": "rect",
       "type": "Monthly",
-      "coords": "275,557,347,584"
+      "coords": "259,601,335,643"
     }
 
   ];
