@@ -83,8 +83,7 @@
                                                     src="assets/images/svg/dashboard/text-notification-read.png" alt=""
                                                     height="47">
                                                 <div class="media-body mt-3 ms-3">
-                                                    <p class="mt-0 font-size-12 font-weight-semibold" s>{{item?.title}}
-                                                    </p>
+                                                    <p class="mt-0 font-size-12 font-weight-semibold">{{item?.title.slice(0,15).concat('...')}}</p>
                                                     <span class="notification-text-mutated">
                                                         {{item?.datetimestamp|date:'fullDate'}}
                                                     </span>
