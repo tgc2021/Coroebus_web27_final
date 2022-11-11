@@ -177,10 +177,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     // console.log(this.userID);
   }
 
-
-
   ngAfterViewInit() {
-
     this.edit_image
   }
 
