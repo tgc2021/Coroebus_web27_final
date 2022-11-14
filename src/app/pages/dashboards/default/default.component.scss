@@ -1,11 +1,24 @@
 
+.pointsDistributionSection{
+    display: flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+.RankSection{
+    display: flex;
+    flex-direction:column;
+    justify-content:space-between;
+
+}
+
 .points-notification-card
  {
     background-repeat: no-repeat;
     background-position: inherit;
     background-size: cover;
     width: auto;
-    height: 42vh;
+    // height: 40vh;
+    height: 350px;
     border-radius: 11px;
 }
 .points-dis-card{
@@ -13,12 +26,13 @@
     background-position: inherit;
     background-size: cover;
     width: auto;
-    height: 43vh;
+    height:320px;
+    overflow-y: scroll;
     border-radius: 11px;
 
 }
 .form-cpntrol{
-    width: 98%;
+    width: 96%;
 }
 ::ng-deep{
     .page-content {
@@ -28,7 +42,7 @@
 
 .inner-points-height {
     // padding-top: 2%;
-    height: 35vh;
+    height: 250px;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -36,8 +50,12 @@
     background-repeat: no-repeat;
     background-position: inherit;
     background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     //width: auto;
-    height: 43vh;
+    // height: 45vh;
+    height: 370px;
     border-radius: 11px;
 
 }
@@ -46,11 +64,12 @@
     background-position: inherit;
     background-size: cover;
     width: auto;
-    height:42vh;
+    height:298px;
     border-radius: 11px;
     
 
 }
+
 .points-dis-name1{
         background: #F3F2C1;
         margin-top: 2px;
@@ -66,16 +85,11 @@
         top: 3.23px;
 }
 .inner-notification-height {
-    height: 32vh;
+    height: 250px;
     overflow-y: auto;
     overflow-x: hidden;
 }
-// .dashboard-center-table{
-//     height: 22vh;
-// }
-// .dashboard-center-table-forNSM{
-//     min-height: 85px;
-// }
+
 .dashboard-username{
     font-weight: 600;
     font-size: 18px;
@@ -118,16 +132,23 @@
   border-radius: 15px;
   
 }
+.name-f-size{
+    font-size: 15px;
+}
+.team-name{
+    padding-top: .2em;
+    font-size: 0.8em;
+}
 
 
-@media screen and (min-width:270px) and (max-width:1080px) {
+@media screen and (min-width:270px) and (max-width:1024px) {
     .web-view {
         display: none;
     }
 
 }
 // Mobile view Started //
-@media screen and (min-width:1080.1px) {
+@media screen and (min-width:1024.1px) {
     .mobile-view {
         display: none;
     }
@@ -204,12 +225,13 @@
 .mobile-dashboard-user-name{
     font-weight: 600;
     font-size: 14px;
-    line-height: 100%;
+    // line-height: 100%;
     color: #000000;
+    
     
 }
 .mobile-dashboard-user-team-name{
-font-weight: 600;
+font-weight: 400;
 font-size: 10px;
 text-align: center;
 color: #000000;
