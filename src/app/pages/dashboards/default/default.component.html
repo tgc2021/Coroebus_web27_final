@@ -617,7 +617,7 @@
 </div>
 
 <!-- Mobile view started -->
-<div class="mobile-view  p-2">
+<div class="mobile-view p-2">
     <div class="row"
         *ngIf="!(sectionView_1 && rankingDataFirstRowForSectionView_2 && sectionView_3); else mobileTemplate">
         <div class="col-12">
@@ -675,7 +675,8 @@
                                     </div>
                                     <div class="confetti"
                                         [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'">
-                                        <div class="col text-center mt-2">
+                                        <div class="col text-center mt-4">
+                                            
                                             <img loading="lazy"
                                                 src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}" alt=""
                                                 class="dashboard-game-point-img" style="padding-bottom: 8px;">
@@ -726,10 +727,16 @@
                     [style.background-image]="
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
                     <div class="card-body border-bottom- p-0">
-                        <div class="row" >
-                        <div class="col-12 container d-flex" style="overflow-y:auto;">
+                        <div class="row" 
+                        [ngClass]="{'one-data-mobile': sectionView_1?.is_land_logos?.length == 1,
+                        'two-data-mobile': sectionView_1?.is_land_logos?.length === 2,
+                        'three-data-mobile': sectionView_1?.is_land_logos?.length === 3,
+                        'four-data-mobile':sectionView_1?.is_land_logos?.length === 3}
+                        "
+                        >
+                        <div class="col-12 card-container" style="overflow-y:auto;">
                          
-                                <div  class="col-4 text-center"
+                                <div  class="col-4  text-center"
                                 *ngFor="let item of sectionView_1?.is_land_logos">
                                 <img src="{{item?.logo}}" class="island_login" alt="" height="100">
                                 <br>
@@ -795,7 +802,7 @@
                                 'row-cols-4': sectionView_2?._ranking_data?.length === 4,
                                 'row-cols-1': sectionView_2?._ranking_data?.length === 4}" style="margin-top: 17px;">
                     <div class="col" *ngFor="let item of sectionView_2?._ranking_data">
-                        <a class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2" style="padding-top: 8px;"
+                        <a class="btn btn-xs filter-btn-dashboard  fs-sm me-2 mb-2" style="padding-top: 8px;"
                             [ngClass]="{'filter-btn-dashboard-active': activeTabForSectionView_2 === item?.order}"
                             [ngStyle]="{'background': (activeTabForSectionView_2 ===item?.order) ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -839,15 +846,15 @@
                     </div>
 
                 </div>
-                <div class="d-flex" style="margin-top: 17px;">
+                <div class="d-flex gap-1 justify-content-between"style="margin-top: 17px;">
                     <div class="col-10" style="padding-right:0px;">
-                        <input type="text" class="form-control dashboard-search 12" placeholder="Search People here.."
+                        <input type="text" class="form-control dashboard-search" placeholder="Search People here.."
                             [(ngModel)]="spectSearchStr" aria-label="Search People here.."
                             aria-describedby="basic-addon2" (keyup.enter)="spectSearch()">
 
                     </div>
-                    <div class="col">
-                        <button type="button" class="btn btn-primary dashboard-search-btn ms-1" (click)="spectSearch()"
+                    <div class="col-2 d-flex justify-content-end">
+                        <button type="button ms-4" class="btn btn-primary dashboard-search-btn" (click)="spectSearch()"
                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"><i
                                 class="fa fa-search" aria-hidden="true"></i></button>
                     </div>
