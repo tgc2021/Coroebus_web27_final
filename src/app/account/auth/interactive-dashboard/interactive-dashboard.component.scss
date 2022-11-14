@@ -14,7 +14,27 @@
 
 // Mobile View Started
 
+.mobile-view{
+    background: linear-gradient(180deg, #060A20 0%, #121D40 33.46%, #121D40 50.28%, #174920 66.77%, #C68356 79.68%, #2B5F22 87.57%, #2F4019 100%);
+    height: 100vh;
+    width: 100vw;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+   
+}
+.mobile-cricket-pitch{
+    background: url('../../../../assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Background/stadium2\ 2\ new\ \(1\).png');
+    height: 70vh;
+    width: 95vw;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin-bottom: 1em;
 
+}
 
 @media screen and (min-width:1023.1px) {
     .mobile-view{
