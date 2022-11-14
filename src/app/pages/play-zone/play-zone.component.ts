@@ -17,7 +17,8 @@ import { NgbModalConfig,NgbDropdownConfig, NgbModal } from '@ng-bootstrap/ng-boo
   styleUrls: ['./play-zone.component.scss']
 })
 export class PlayZoneComponent implements OnInit {
-  userObj: import("d:/TGC work/Coroebus_web27_final/src/app/core/app-state/entity/user.entity").User;
+  userObj:any;
+  // userObj: import("").User;
   filteredData: any;
   hideDropDown: any;
   update_spot_status: any;
