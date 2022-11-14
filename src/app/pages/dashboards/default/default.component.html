@@ -3,6 +3,7 @@
         *ngIf="!(sectionView_1 && rankingDataFirstRowForSectionView_2 && sectionView_3); else dashboardTpl">
         <div class="col-lg-12">
             <dashboard-pages-skeleton></dashboard-pages-skeleton>
+           
         </div>
     </div>
     <ng-template #dashboardTpl>
@@ -221,7 +222,7 @@
                 </div>
                 <div class="row row-cols-2" *ngIf="sectionView_3_list?.[0]?._Overall">
                     <div class="col">
-                        <a class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
+                        <a class="btn btn-xs filter-btn-dashboard  fs-sm pt-2"
                             [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 ==='My Store'}"
                             [ngStyle]="{'background': (activeSubTabForSectionView_2 === 'My Store') ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -233,7 +234,7 @@
                         </a>
                     </div>
                     <div class="col">
-                        <a class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
+                        <a class="btn btn-xs filter-btn-dashboard  fs-sm pt-2"
                             [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 === 'Overall'}"
                             [ngStyle]="{'background': (activeSubTabForSectionView_2 === 'Overall') ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -464,7 +465,7 @@
 
                                 <div class="card bulletins-sub-card" *ngFor="let item of addInsList">
                                     <div class="card-body bulletins-sub-card-body">
-                                        <p class="spot-engagement ">{{item?.header}}</p>
+                                        <p class="spot-engagement">{{item?.header}}</p>
                                         <br>
                                         <div class="media bulletins-media">
                                             <img *ngIf="item?.type_ === '1'"
@@ -476,7 +477,7 @@
                                             <div class="media-body ms-2">
 
                                                 <h5 class="bulletins-title">{{item?.title}}
-                                                    <p class="bulletins-text-muted" style="margin-bottom:30px;">
+                                                    <p class="bulletins-text-muted" style="margin-bottom:30px;min-width:20vw;">
                                                         {{item?.description_}}
 
                                                     </p>
