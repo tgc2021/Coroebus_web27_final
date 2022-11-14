@@ -49,6 +49,7 @@ export class RewardsComponent implements OnInit, AfterViewInit {
   toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
   filterCoreGame: any=[];
   coreGame: any;
+  status: any;
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -265,12 +266,15 @@ export class RewardsComponent implements OnInit, AfterViewInit {
 
     this.data2 = this.rewardresponse
     console.log(this.data2);
-    
+     // _userid: this.mergeObj.USERID,
+      // id_reward:this.data1[0].id_coroebus_redeem_rewards,
+      // redeem_points: this.data1[0].redeem_point,
+      // rewardPoints: this.data2[0].data.points_list[0]._data.rewardPoints.toString()
 
     let body = {
 
        _userid: this.mergeObj.USERID,
-       id_reward: this.Util.encryptData(this.data1[0].id_coroebus_redeem_rewards),
+       id_reward: this.Util.encryptData(this.data1[0].id_coroebus_redeem_reward_setup),
        redeem_points: this.Util.encryptData(this.data1[0].redeem_point),
        rewardPoints: this.Util.encryptData(this.data2[0].data.points_list[0]._data.rewardPoints.toString())
 
@@ -286,15 +290,44 @@ export class RewardsComponent implements OnInit, AfterViewInit {
     this.http.redeemed(body).subscribe((res) => {
       console.log(res)
 
-      Swal.fire({
-        title: 'Success',
-        text: 'Thank You, You have successfully redemeed reward',
-        icon: 'success',
+      this.status = res
+      this.status = Array.of(this.status);
+      console.log(this.status[0].message);
+      
+      if(this.status[0].data == 'You are not eligible for this reward.'){
+           Swal.fire({
+        title: 'Failed',
+        text: this.status[0].message,
+        icon: 'error',
+        confirmButtonColor:  this.color,
+
         // confirmButtonText: 'Close'
       })
-      window.setTimeout(function(){ 
-        location.reload();
-    } ,3000);
+ 
+      } 
+      
+      else if(this.status[0].message == 'You have successfully redeemed this reward.'){
+        Swal.fire({
+    title: 'Success',
+    text: 'Thank You, You have successfully redemeed reward',
+    icon: 'success',
+    // confirmButtonText: 'Close'
+  })
+  window.setTimeout(function(){ 
+    location.reload();
+} ,3000);
+  }
+
+    
+    //   Swal.fire({
+    //     title: 'Success',
+    //     text: 'Thank You, You have successfully redemeed reward',
+    //     icon: 'success',
+    //     // confirmButtonText: 'Close'
+    //   })
+    //   window.setTimeout(function(){ 
+    //     location.reload();
+    // } ,3000);
 
     })
 

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ChampionsLeagueComponent } from './champions-league/champions-league.component';
 
 import { DefaultComponent } from './dashboards/default/default.component';
 
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'spectator', loadChildren: () => import('./spectator-view/spectator-view.module').then(m => m.SpectatorViewModule) },
   { path: 'learning', loadChildren: () => import('./learning-academy/learning-academy.module').then(m => m.LearningAcademyModule) },
   { path: 'Achievement', loadChildren: () => import('./achievement-shelf/achievement-shelf.module').then(m => m.AchievementShelfModule) },
-  
+  { path: 'champions_league', component:ChampionsLeagueComponent },
+
 ];
 
 @NgModule({

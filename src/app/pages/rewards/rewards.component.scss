@@ -2,6 +2,7 @@
     scrollbar-width: none;
 }
 
+.container-fluid{}
 option{
     width: 100%;
     background: #ddd;
@@ -17,11 +18,18 @@ option{
 }
 
 #cont {
-    background-image: url("/assets/images/background.png");
+    background-image: url("../../../assets/images/rewards/MainBackground.png");
     overflow: scroll;
     width: 100vw;
-   
+    min-height: 79vh;
 }
+
+.platform_image{
+    width: 100%;
+    height: 90%;
+    margin-bottom: 2rem;
+}
+
 
 .mytabs {
     display: flex;
@@ -33,6 +41,15 @@ option{
 
 }
 
+.no_data_div{
+    display:flex;
+    justify-content: center;
+}
+
+.no_data_reward_image_org {
+    width: 25vw;
+    height: 56vh;
+}
 .search{
     margin: 7px;
     float: right;
@@ -509,6 +526,20 @@ color: #A5ACB8;
 
 .organisation_redemption_history{
     margin-top: 60px;
+   display:flex;
+   justify-content: center;
+   min-height: 42vh;
+}
+
+.no_data_reward_image{
+    width: 25vw;
+    height: 35vh;
+}
+
+.no_data_reward_message{
+    position:absolute;
+    bottom: 0;
+    font-size: 1em;
 }
 
         //Passbook
@@ -525,7 +556,7 @@ color: #A5ACB8;
                 .button_platform{
                     text-align: center;
                     background-color: white;
-                    margin-top: 50px;
+                    margin-top: 10px;
                 }
 
                 .platform_redeem{
@@ -564,6 +595,7 @@ color: #A5ACB8;
                   .error_organisation_reward{
                     display:flex;
                     justify-content: center;
+                    margin-top: 2rem;
 
                   }
 /********************************************* Popup ****************************************************/
@@ -628,6 +660,32 @@ color: #A5ACB8;
     margin-top: 15px;
     color: #000000;
 }
+
+.product_image_redemption_popup_org{
+    width: 100%;
+}
+
+.cost_redemption_popup_org{
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 600;
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+
+
+.product_name_redemption_popup_org{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 17px;
+    display: block;
+    color: #000000;
+    margin-top: 20px;
+}
+
 
 .coupon_div_1_popup{
     font-weight: 600;
@@ -717,6 +775,15 @@ position: relative;
         font-size: 7px;
     }
 
+
+    
+    .table-container .table th {
+        font-weight: 600;
+        background-color: var(--myvar);
+        color: #FFFFFF;
+        font-size: 8px;
+    }
+    
     .org_redem_div{
         margin-top: 40px;
     }
@@ -924,6 +991,34 @@ position: relative;
     font-size: 12px;
     margin: 0;
 }
+
+.product_image_redemption_popup_org{
+    width: 30%;
+}
+
+.cost_redemption_popup_org{
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 600;
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+
+
+.product_name_redemption_popup_org{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 17px;
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin-top: 10px;
+}
+
 .product_name_redemption_popup {
     /* margin-top: 30px; */
     font-family: "Inter";
@@ -1127,9 +1222,11 @@ position: relative;
         font-size: 8px;
     }
 
-    .table th{
+    .table-container .table th {
+        font-weight: 600;
+        background-color: var(--myvar);
+        color: #FFFFFF;
         font-size: 8px;
-
     }
 
       
@@ -1181,6 +1278,34 @@ position: relative;
     font-size: 12px;
     margin: 0;
 }
+
+.product_image_redemption_popup_org{
+    width: 30%;
+}
+
+.cost_redemption_popup_org{
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 600;
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+
+
+.product_name_redemption_popup_org{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 17px;
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin-top: 10px;
+}
+
 .product_name_redemption_popup {
     /* margin-top: 30px; */
     font-family: "Inter";
@@ -1390,6 +1515,14 @@ position: relative;
         font-size: 8px;
     }
 
+    
+    .table-container .table th {
+        font-weight: 600;
+        background-color: var(--myvar);
+        color: #FFFFFF;
+        font-size: 8px;
+    }
+
     .up_down_arrow{
         position: absolute;
         margin-left: 2px;
@@ -1432,6 +1565,19 @@ position: relative;
   
 }
 
+.product_image_redemption_popup_org{
+    width: 30%;
+}
+
+.cost_redemption_popup_org{
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 600;
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+
 .cost_redemption_popup {
  
     font-size: 12px;
@@ -1450,6 +1596,20 @@ position: relative;
     color: #000000;
     margin: 0;
 }
+
+.product_name_redemption_popup_org{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 17px;
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin-top: 6px;
+}
+
 .product_full_description_popup {
 
     margin-top: 10px;
@@ -1508,6 +1668,14 @@ position: relative;
     .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
         display: flex;
         margin-top: 8px;
+    }
+
+    
+    .table-container .table th {
+        font-weight: 600;
+        background-color: var(--myvar);
+        color: #FFFFFF;
+        font-size: 8px;
     }
    
     .rewardpoints {
@@ -1572,6 +1740,10 @@ position: relative;
         height: 95px;
         margin: 0px;
         
+    }
+
+    .product_image_redemption_popup_org{
+        width: 30%;
     }
     .redemption_image_div{
         margin-top: 15px;
@@ -1687,6 +1859,30 @@ position: relative;
     font-size: 12px;
     margin: 0;
 }
+
+.cost_redemption_popup_org{
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 600;
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+
+
+.product_name_redemption_popup_org{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 17px;
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin-top: 10px;
+}
+
 .product_name_redemption_popup {
     /* margin-top: 30px; */
     font-family: "Inter";
@@ -1760,6 +1956,15 @@ position: relative;
         top: 8.2rem;
 
     }
+
+    
+    .table-container .table th {
+        font-weight: 600;
+        background-color: var(--myvar);
+        color: #FFFFFF;
+        font-size: 8px;
+    }
+
     .mat-card{
         margin-top: 2rem;
     }
@@ -1913,6 +2118,34 @@ position: relative;
     font-size: 12px;
     margin: 0;
 }
+
+.product_image_redemption_popup_org{
+    width: 30%;
+}
+
+.cost_redemption_popup_org{
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 600;
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+
+
+.product_name_redemption_popup_org{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 17px;
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin-top: 10px;
+}
+
 .product_name_redemption_popup {
     /* margin-top: 30px; */
     font-family: "Inter";
@@ -1983,6 +2216,12 @@ position: relative;
     }
 
    
+    .table-container .table th {
+        font-weight: 600;
+        background-color: var(--myvar);
+        color: #FFFFFF;
+        font-size: 8px;
+    }
 
     .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
         display: flex;
@@ -2061,6 +2300,12 @@ position: relative;
         margin: 0px;
         
     }
+
+    .product_image_redemption_popup_org{
+        width: 30%;
+    }
+
+    
     .redemption_image_div{
         margin-top: 15px;
     }
@@ -2159,22 +2404,32 @@ position: relative;
     position: relative;
     /* float: right; */
     width: 93%;
-    top: -199px;
+    top: -209px;
     text-align: center;
 }
+
+
 
 .redemption_image_div_popup{
     margin-top: 15px;
     width: 100%;
     text-align: center;
     margin-top: 20px;
-  
+   padding-bottom: 10px;
 }
 
 .cost_redemption_popup {
  
-    font-size: 12px;
+    font-size: 14px;
     margin: 0;
+}
+.cost_redemption_popup_org{
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 600;
+    display: block;
+    align-items: center;
+    text-align: center;
 }
 .product_name_redemption_popup {
     /* margin-top: 30px; */
@@ -2188,6 +2443,19 @@ position: relative;
     text-align: center;
     color: #000000;
     margin: 0;
+}
+
+.product_name_redemption_popup_org{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 17px;
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin-top: 10px;
 }
 .product_full_description_popup {
 
@@ -2210,6 +2478,7 @@ position: relative;
 .right_side_div{
     margin-left: 15px;
 }
+
 }
 
 @media (min-width: 468px) and (max-width: 539px) {
@@ -2426,6 +2695,35 @@ position: relative;
     font-size: 12px;
     margin: 0;
 }
+
+.product_image_redemption_popup_org{
+    width: 30%;
+}
+
+.cost_redemption_popup_org{
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 600;
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+
+
+.product_name_redemption_popup_org{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 17px;
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin-top: 10px;
+}
+
+
 .product_name_redemption_popup {
     /* margin-top: 30px; */
     font-family: "Inter";
@@ -2464,6 +2762,8 @@ position: relative;
     margin-left: 53px;
 }
 }
+
+
 @media (min-width: 768px) and (max-width: 778px){
     .mytabs{
      
@@ -2725,7 +3025,7 @@ position: relative;
         width: 99%;
     }
 
-    
+   
     // Redemption History
     .cost_redemption{
         margin-left: 22px;

@@ -21,6 +21,7 @@ export class GameSelectionComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
   gameList: any;
   selectedGame: any
+  id_coroebus_theme:any
   showComponent: boolean = false
   constructor(private readonly store: Store, private router: Router, public Util: Util) {
     this.store.select(fromRoot.userLogin).pipe(
@@ -73,8 +74,17 @@ export class GameSelectionComponent implements OnInit, OnDestroy {
     this.selectGame()
   }
   selectGame() {
+    this.id_coroebus_theme =this.themeObj?.id_coroebus_theme
+    console.log(this.id_coroebus_theme);
+
+    if(this.id_coroebus_theme>6){
+      this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
+      this.router.navigate(['/account/interactive-dashboard']);
+    }
+   else{
     this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
     this.router.navigate(['/dashboard']);
+   }
   }
   ngOnDestroy() {
     this.destroy$.next(true);

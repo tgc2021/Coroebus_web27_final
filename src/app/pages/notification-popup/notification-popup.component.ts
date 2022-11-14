@@ -16,8 +16,13 @@ export class NotificationPopupComponent implements OnInit {
     private eventService: EventService) { }
 
   ngOnInit(): void {
+  
+    console.log(this.notoficationData);
+    
     if (this.notoficationData?.video_path) {
       this.videoURL = this.domSanitizer?.bypassSecurityTrustResourceUrl(this.notoficationData?.video_path)
+      console.log(this.videoURL);
+      
     }
   }
   close() {

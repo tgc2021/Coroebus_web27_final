@@ -1,0 +1,661 @@
+.container-fluid {
+    background-color: #000000;
+}
+.modal-content{
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+}
+
+.PersonalMilestoneModal
+{
+    .modal-body{
+        display:flex;
+        justify-content: center;
+    }
+    
+    
+    .modal-content{
+        background-color: transparent;
+        border: none;
+    }
+    
+    .btn-close{
+        position: absolute;
+        right: 10px;
+        /* right: 100px; */
+        top: 10px;
+    }
+}
+// CSS For Weekly Modal
+
+
+::-webkit-scrollbar {
+    width: 0.4rem;
+    height: 0.3em;
+    scroll-behavior: smooth;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    display: none;
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: scroll;
+    border-radius: 10px;
+    background: #bbb;
+}
+.WeeklyModal{
+   
+  
+    .modal-body{
+        display:flex;
+        justify-content: center;
+        background-image: url('../../../../assets/images/interactive-dashboard/BG.png');
+        
+      
+    }
+  
+
+}
+.ModalHeading{
+   
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 18px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+    letter-spacing: -0.02em;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    color: #252525;
+}
+.modalDescription {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+   
+    color: #000000;
+}
+.btn-reward{
+    width: 79px;
+    height: 25px;
+    font-family: "Inter";
+    border: none !important;
+    background-color: #D9FFDE !important;
+    border-radius: 3px;
+
+}
+.Number{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 32px !important;
+    line-height: 41px;
+    /* identical to box height */
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+    letter-spacing: -0.02em;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #252525;
+}
+.button-close{
+    border-radius: 100%;
+    color: #000000;
+}
+.Top5{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+    letter-spacing: -0.02em;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #000000;
+}
+.infoIcon{
+    width: 20px;
+    height: 20px;
+    border: 2px,solid ,#000000;
+}
+.card-container{
+    position: relative;
+    overflow-x: auto;
+    .card{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        ;
+        box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.25), 0px 2px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 6px;
+
+        .pic>img{
+            border-radius: 100%;
+        }
+
+        .name .rank .score{
+            font-family: 'Inter';
+            font-weight: 500;
+            font-size: 14px;
+            text-align: center;
+            white-space: nowrap;
+            width: 10vw;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
+
+
+// Dail Modal CSS
+
+
+.centerCircle {
+    border-radius: 45%;
+    -moz-border-radius: 45%;
+    -webkit-border-radius: 45%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.firstCircle {
+    background-color: #DCDCDC;
+    border: 1px solid black;
+    height: 135px;
+    border-radius: 45%;
+    -moz-border-radius: 45%;
+    -webkit-border-radius: 45%;
+    width: 96px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: -107px;
+    left: 35%;
+    border: 9px solid transparent;
+    background-size: 100% 100%, 50% 50%, 50% 50%, 50% 50%, 50% 50%;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(white, white), linear-gradient(30deg, lightgray 36%, lightgrey 30%), linear-gradient(154deg, brown 75%, lightgrey 30%), linear-gradient(300deg, lightgray 36%, lightgrey 30%), linear-gradient(210deg, lightgray 36%, lightgrey 30%);
+    background-position: center center, left top, right top, left bottom, right bottom;
+    background-origin: content-box, border-box, border-box, border-box, border-box;
+    background-clip: content-box, border-box, border-box, border-box, border-box;
+}
+
+.secondCircle {
+    background-color: #5ABC07;
+    height: 116px;
+    width: 84px;
+    border-radius: 45%;
+    -moz-border-radius: 45%;
+    -webkit-border-radius: 45%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.thirdCircle {
+    background-color: #5ABC07;
+    border: 1px solid #ffffff;
+    height: 105px;
+    width: 73px;
+    border-radius: 45%;
+    -moz-border-radius: 45%;
+    -webkit-border-radius: 45%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.forthCircle {
+
+    background-color: #E1E1E1;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    /* border: 1px solid black; */
+    height: 52px;
+    width: 52px;
+   
+}
+
+.circle1 {
+    position: fixed;
+    right: 18px;
+}
+
+.range {
+    width: 100%;
+}
+.rangeBgcolor {
+    accent-color: #38B200;
+}
+
+
+
+
+.box-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    margin-top: -24px;
+    position: absolute;
+    /* height: 108vh; */
+    height: 120vh;
+    /* padding-bottom: 0; */
+}
+
+// .image-container {
+//     width: 360px;
+//     height: 801px;
+//     padding: 0;
+//     margin-top: -50px;
+// }
+.prof_src{
+    width: 80px;
+    border-radius: 100%;
+    height: 80px;
+   
+}
+
+.image-container{
+    width: 360px;
+    height: 801px;
+    padding: 0;
+    margin-top: -39px;
+}
+
+.first_row {
+    width: 280px;
+    height: 30px;
+    position: relative;
+    top: 120px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-top: 25px solid #2b3766;
+    border-right: 16px solid transparent;
+    border-left: 16px solid transparent;
+}
+
+
+.my_name {
+    position: absolute;
+    top: -20px;
+    font-family: 'Swis721 Cn BT';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    left: 15px;
+}
+
+.team_name {
+    position: absolute;
+    top: -20px;
+    right: 15px;
+    font-family: 'Swis721 Cn BT';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+
+}
+
+.second_row {
+    width: 330px;
+    position: absolute;
+    top: 144px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-top: 25px solid #2b3766;
+    border-right: 16px solid transparent;
+    border-left: 16px solid transparent;
+    border-bottom: 1px solid white;
+}
+
+
+.my_name_details {
+    position: absolute;
+    top: -20px;
+    font-family: 'Swis721 Cn BT';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    left: 15px;
+    white-space: nowrap;
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.team_name_details {
+    position: absolute;
+    top: -20px;
+    right: 15px;
+    font-family: 'Swis721 Cn BT';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    white-space: nowrap;
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.profile_pic {
+    position: absolute;
+    cursor: pointer;
+    left: 50%;
+    top: 9%;
+    transform: translate(-50%, 0px);
+}
+
+.league_name {
+    border-bottom: 25px solid #BF302E;
+    border-right: 16px solid transparent;
+    border-left: 16px solid transparent;
+    width: 220px;
+    left: 50%;
+    position: absolute;
+    top: 19%;
+    transform: translate(-50%, 10px);
+}
+
+.leauge_name_details {
+    position: absolute;
+    /* top: -20px; */
+    /* right: 15px; */
+    font-family: "Swis721 Cn BT";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    white-space: nowrap;
+    width: 187px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    top: 4px;
+}
+
+.trophyAndRewards {
+    width: 293px;
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-top: 25px solid #2b3766;
+    border-right: 16px solid transparent;
+    border-left: 16px solid transparent;
+
+}
+
+.myTrophy {
+    cursor: pointer;
+    position: absolute;
+    font-family: "Swis721 Cn BT";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    top: -20px;
+}
+
+.trophy_img {
+    margin-left: 4px;
+}
+
+.myRewards {
+    position: absolute;
+    cursor: pointer;
+    font-family: "Swis721 Cn BT";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    top: -20px;
+    right: 4px;
+}
+
+.rewardsPoints {
+    width: 91px;
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-top: 25px solid #ffffff;
+    border-right: 16px solid transparent;
+    border-left: 16px solid transparent;
+}
+
+.rewards_points {
+    position: absolute;
+    font-family: "Swis721 Cn BT";
+    font-style: normal;
+    font-weight: 700;
+    top: -22px;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    font-family: 'Swis721 Cn BT';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+
+    color: #951610;
+}
+
+.reward_total_points {
+    color: #951610;
+    position: absolute;
+    top: -22px;
+    font-size: 8px;
+    font-weight: bold;
+    right: 0;
+    width: 69%;
+    text-align: center;
+}
+
+.reward {
+    position: absolute;
+    font-size: 6px;
+    top: -12px;
+    right: -1px;
+    color: #951610;
+
+}
+
+.details_box {
+    position: absolute;
+    width: 262px;
+    height: 146px;
+    cursor: pointer;
+    left: 50%;
+    top: 27%;
+    transform: translate(-50%, -2px);
+    background: linear-gradient(180deg, #243356 0%, #25385B 46.87%, #2C6691 100%);
+}
+
+.team_rank {
+    font-family: "Swiss921 BT";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    margin-left: 15px;
+    margin-top: 10px;
+    font-weight: bold;
+    /* line-height: 13px; */
+    color: #FFFFFF;
+}
+
+.my_score {
+    font-family: "Swiss921 BT";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+
+    margin-top: 10px;
+    font-weight: bold;
+    /* line-height: 13px; */
+    color: #FFFFFF;
+}
+
+.my_rank {
+    font-family: "Swiss921 BT";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+
+    margin-top: 10px;
+    font-weight: bold;
+    /* line-height: 13px; */
+    color: #FFFFFF;
+    margin-right: 15px;
+}
+
+
+.title_interactive {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.title_details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.team_rank_details {
+    font-family: "Swiss921 BT";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    display: flex;
+    font-weight: bold;
+    margin-top: -16px;
+    color: #FFFFFF;
+    justify-content: center;
+    width: 33%;
+
+}
+
+.my_score_details {
+    font-family: "Swiss921 BT";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    display: flex;
+    font-weight: bold;
+    margin-top: -16px;
+    color: #F4BD34;
+    justify-content: center;
+    width: 33%;
+    margin-left: 16px;
+}
+
+.my_rank_details {
+    font-family: "Swiss921 BT";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    display: flex;
+    font-weight: bold;
+    margin-top: -16px;
+    color: #FFFFFF;
+    justify-content: center;
+    width: 33%;
+    margin-left: 4px;
+}
+
+.dot {
+    height: 45px;
+    width: 45px;
+    background-color: #2787C8;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid #ffca22;
+    left: 12px;
+    margin-top: -6px;
+
+}
+
+.run_scored {
+    font-family: "Swis721 Cn BT";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    position: absolute;
+
+    color: #FFFFFF;
+    width: -44%;
+    /* left: 0; */
+    /* top: 9px; */
+    left: 50%;
+    top: 26%;
+    transform: translate(-50%, 0px);
+}
+
+.run_scored_box {
+    width: 40px;
+    height: 25px;
+    background-color: white;
+    position: absolute;
+    top: 46px;
+    left: 2px;
+    background: #2D2C2A;
+}
+
+.text_run_scored {
+    font-family: 'Swis721 Cn BT';
+    font-style: normal;
+    width: 91%;
+    font-weight: 700;
+    font-size: 6.5px;
+    line-height: 8px;
+    text-align: center;
+    text-transform: capitalize;
+    margin-top: 4px;
+    margin-left: 2px;
+    color: #FFFFFF;
+}
+
+.grid_circle {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+

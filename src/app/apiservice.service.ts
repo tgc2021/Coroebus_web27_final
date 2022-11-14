@@ -8,59 +8,64 @@ import {environment} from '../environments/environment'
 export class ApiserviceService {
 
   URLstring = environment.apiURL
-
+    Path='coroebus-beta-api-levels'
+    // Path='coroebus-tgc-api-levels'
   constructor(public Http:HttpClient) { }
   
   rewards(data:any){
     // var tempurl = ${this.URLstring}+/coroebus-beta-api-levels/Passbook/getReward
-    var tempurl = `${this.URLstring}`+`/coroebus-beta-api-levels/Passbook/getReward`
+    var tempurl = `${this.URLstring}`+`/${this.Path}/Passbook/getReward`
     return this.Http.post(tempurl,data)
 
   }
 
   seasonal_theme(data:any){
     // var tempurl = ${this.URLstring}+/coroebus-beta-api-levels/Passbook/getReward
-    var tempurl = `${this.URLstring}`+`/coroebus-beta-api-levels/SeasonalTheme/Dashboard`
+    var tempurl = `${this.URLstring}`+`/${this.Path}/SeasonalTheme/Dashboard`
     return this.Http.post(tempurl,data)
 
   }
 
   popup_passbook_redemption(data:any){
-    var tempurl = `${this.URLstring}`+`/coroebus-beta-api-levels/Passbook/getRewardDetail`
+    var tempurl = `${this.URLstring}`+`/${this.Path}/Passbook/getRewardDetail`
     return this.Http.post(tempurl,data)
   }
 
   redeemed(data:any){
-    var tempurl = `${this.URLstring}`+`/coroebus-beta-api-levels/redeemed_reward/redeemed`
+    var tempurl = `${this.URLstring}`+`/${this.Path}/redeemed_reward/redeemed`
     return this.Http.post(tempurl,data)
   }
 
   popup_bagde_details(data:any){
-    var tempurl = `${this.URLstring}`+`/coroebus-beta-api-levels/SeasonalTheme/BadgeDetail`
+    var tempurl = `${this.URLstring}`+`/${this.Path}/SeasonalTheme/BadgeDetail`
     return this.Http.post(tempurl,data)
   }
 
   seasonal_rewards_points(data:any){
-    var tempurl = `${this.URLstring}`+`/coroebus-beta-api-levels/SeasonalTheme/Overallrewards`
+    var tempurl = `${this.URLstring}`+`/${this.Path}/SeasonalTheme/Overallrewards`
     return this.Http.post(tempurl,data)
   }
   playZone(data:any)
   {
-    var tempurl = `${this.URLstring}`+`/coroebus-beta-api-levels/SpotDashboard/produce`
+    var tempurl = `${this.URLstring}`+`/${this.Path}/SpotDashboard/produce`
     return this.Http.post(tempurl,data)
   }
 
   playZoneUpdate(data:any)
   {
-    var tempurl = `${this.URLstring}`+`/coroebus-beta-api-levels/SpotDashboard/produce`
+    var tempurl = `${this.URLstring}`+`/${this.Path}/SpotDashboard/produce`
     return this.Http.put(tempurl,data)
   }
 
   playZonePassbook(data:any){
-    var tempurl = `${this.URLstring}`+`/coroebus-beta-api-levels/SpotDashboard/passbook`
+    var tempurl = `${this.URLstring}`+`/${this.Path}/SpotDashboard/passbook`
     return this.Http.post(tempurl,data)
 
 
   }
 
+  interactiveDashboard(data:any){
+    var tempurl = `${this.URLstring}`+`/${this.Path}/DashboardHome/produce`
+    return this.Http.post(tempurl,data)
+  }
 }

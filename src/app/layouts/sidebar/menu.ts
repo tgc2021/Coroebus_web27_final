@@ -13,7 +13,8 @@ export const MENU: MenuItem[] = [
         badge: {
         },
         subItems: [],
-        link: '/dashboard'
+        link: '/account/interactive-dashboard',
+        link1: '/dashboard'
     },
     {
         id: 3,
@@ -22,7 +23,9 @@ export const MENU: MenuItem[] = [
         badge: {
         },
         subItems: [],
-        link: '/profile'
+        link: '/profile',
+        link1: '/profile'
+
     },
     {
         id: 4,
@@ -31,7 +34,9 @@ export const MENU: MenuItem[] = [
         badge: {
         },
         subItems: [],
-        link: '/performance/page'
+        link: '/performance/page',
+        link1: '/performance/page'
+
     },
     {
         id: 5,
@@ -40,7 +45,9 @@ export const MENU: MenuItem[] = [
         badge: {
         },
         subItems: [],
-        link: '/playzone/play'
+        link: '/playzone/play',
+        link1: '/playzone/play'
+
     },
     {
         id: 6,
@@ -49,7 +56,9 @@ export const MENU: MenuItem[] = [
         badge: {
         },
         subItems: [],
-        link: '/Achievement/AchievementShelf'
+        link: '/Achievement/AchievementShelf',
+        link1: '/Achievement/AchievementShelf'
+
     },
     {
         id: 7,
@@ -58,7 +67,9 @@ export const MENU: MenuItem[] = [
         badge: {
         },
         subItems: [],
-        link: '/reward/rewardPoints'
+        link: '/reward/rewardPoints',
+        link1: '/reward/rewardPoints'
+
     },
     {
         id: 8,
@@ -67,7 +78,9 @@ export const MENU: MenuItem[] = [
         badge: {
         },
         subItems: [],
-        link: '/spectator/spectatorView'
+        link: '/spectator/spectatorView',
+        link1: '/spectator/spectatorView'
+
     },
     {   
         id: 9,
@@ -76,7 +89,9 @@ export const MENU: MenuItem[] = [
         badge: {
         },
         subItems: [],
-        link: 'account/theme/selection' 
+        link: 'account/theme/selection' ,
+        link1: 'account/theme/selection' 
+
         
     },
     {
@@ -88,6 +103,7 @@ export const MENU: MenuItem[] = [
                 id: 11,
                 label: 'MENUITEMS.LEARNING_ACADEMY',
                 link: '/learning/learningAcademy',
+                link1: '/learning/learningAcademy',
                 parentId: 10
             },
         ]
@@ -101,6 +117,7 @@ export const MENU: MenuItem[] = [
                 id: 13,
                 label: 'MENUITEMS.CHAMPIONS_LEAGUE',
                 link: '/champions_league',
+                link1: '/champions_league',
                 parentId: 12
             },
         ]

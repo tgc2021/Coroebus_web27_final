@@ -9,6 +9,8 @@ import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-co
 import { CreateNewPasswordComponent } from './create-new-password/create-new-password.component';
 import { SecurityQuestionComponent } from './security-question/security-question.component';
 import { AuthGuard } from '@app/guards/auth.guard';
+import { TvsDashboardComponent } from './tvs-dashboard/tvs-dashboard.component';
+import { InteractiveDashboardComponent } from './interactive-dashboard/interactive-dashboard.component';
 const routes: Routes = [
     {
         path: 'login',
@@ -19,6 +21,11 @@ const routes: Routes = [
         path: 'signup',
         component: SignupComponent
     },
+    {
+        path: 'tvs',
+        component: TvsDashboardComponent,
+    },
+    
     {
         path: 'reset-password',
         component: PasswordresetComponent,
@@ -41,7 +48,15 @@ const routes: Routes = [
         component: SecurityQuestionComponent,
         data: { animation: 'security-question' },
         canActivate: [AuthGuard]
-    }
+    },
+    {
+        path: 'interactive-dashboard',
+        component: InteractiveDashboardComponent,
+        data: { animation: 'interactive-dashboard' },
+        canActivate: [AuthGuard]
+
+    },
+   
 ];
 
 @NgModule({

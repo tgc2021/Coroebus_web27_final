@@ -15,14 +15,18 @@ import { PasswordresetComponent } from './passwordreset/passwordreset.component'
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { CreateNewPasswordComponent } from './create-new-password/create-new-password.component';
 import { SecurityQuestionComponent } from './security-question/security-question.component';
+import { TvsDashboardComponent } from './tvs-dashboard/tvs-dashboard.component';
+import { InteractiveDashboardComponent } from './interactive-dashboard/interactive-dashboard.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
-  declarations: [LoginComponent, SignupComponent, PasswordresetComponent, TermsAndConditionsComponent, CreateNewPasswordComponent, SecurityQuestionComponent],
+  declarations: [LoginComponent, SignupComponent, PasswordresetComponent, TermsAndConditionsComponent, CreateNewPasswordComponent, SecurityQuestionComponent, TvsDashboardComponent, InteractiveDashboardComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
     NgbAlertModule,
+    MatCardModule,
     UIModule,
     AuthRoutingModule,
     CarouselModule
