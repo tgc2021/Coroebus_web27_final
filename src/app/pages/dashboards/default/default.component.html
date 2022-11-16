@@ -153,16 +153,17 @@
                                                     src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}"
                                                     alt="" class="dashboard-game-point-img"
                                                     style="padding-bottom: 7px;">
-                                                <br> <button
-                                                    class="btn btn-primary- text-white text-center dashboard-banner-point-btn"
+                                                 <button
+                                                    class="btn  text-white text-center dashboard-banner-point-btn"
                                                     [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}"
                                                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
                                                     <span class="dashboard-banner-point-btn-text text-center">
                                                         {{gamePoints?.[0]?.score}}
                                                     </span>
                                                 </button>
-                                                <br><span
-                                                    class="dashboard-level-rank-name">{{gamePoints?.[0]?.label}}s</span>
+                                                <span
+                                                    class="dashboard-level-rank-name">{{gamePoints?.[0]?.label}}
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="confetti"
@@ -172,7 +173,7 @@
                                                     src="{{sectionView_1?.theme_details?.[0]?.reward_points_image}}"
                                                     alt="" class="dashboard-reward-point-img"
                                                     style="padding-bottom: 7px;">
-                                                <br> <button
+                                                <button
                                                     class="btn btn-primary- text-white dashboard-banner-point-btn"
                                                     [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}"
                                                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -180,7 +181,7 @@
                                                     <span class="dashboard-banner-point-btn-text text-center">
                                                         {{rewardPoints?.[0]?.score}}
                                                     </span></button>
-                                                <br><span
+                                                <span
                                                     class="dashboard-level-rank-name">{{rewardPoints?.[0]?.label}}s</span>
                                             </div>
                                         </div>
@@ -477,7 +478,7 @@
                                             <div class="media-body ms-2">
 
                                                 <h5 class="bulletins-title">{{item?.title}}
-                                                    <p class="bulletins-text-muted" style="margin-bottom:30px;min-width:20vw;">
+                                                    <p class="bulletins-text-muted" style="margin-bottom:30px;">
                                                         {{item?.description_}}
 
                                                     </p>
@@ -518,7 +519,7 @@
             <div class="modal-header border-bottom-0 p-0">
                 <div class="row w-100">
                     <div class="col"></div>
-                    <div class="col-sm-9 text-center level-label-name-popup ms-3">
+                    <div class="col-9 text-center level-label-name-popup ms-3">
                         <p class="text-white">{{sectionView_1?._personal_data?.level_label}}</p>
                     </div>
                     <div class="col pt-2">
@@ -531,9 +532,9 @@
             </div>
             <div class="modal-body dashboard-popup-level">
                 <!-- {{levelsBucketsList | json}} -->
-                <div class="row table-header mb-2" [ngClass]="{'row-cols-3': false,'row-cols-4': true}">
+                <div class="row table-header mb-2 d-flex flex-row justify-content-evenly" [ngClass]="{'row-cols-3': false,'row-cols-4': true}">
                     <div class="col-2">
-                        <span class="font-size-14 ms-4">League</span>
+                        <span class="font-size-14 ">League</span>
                     </div>
                     <div class="col">
                         <span class="font-size-14  rank_index">Rank/Index</span>
@@ -582,7 +583,7 @@
                 <div class="row  hierarchy-popup-list hierarchy-popup-list-border mb-3 p-2 ms-5 w-75"
                     *ngFor="let item of hierarchyPopupList"
                     (click)="getDataBasedOnUserIDVIAhierarchyPopupList(item,modal)">
-                    <div class=" col-6 pt-2">
+                    <div class=" col-7 pt-2">
                         <div class="media">
                             <img loading="lazy" class="mr-3 rounded-circle" height="45" width="45"
                                 src="{{item?.userlogo}}" alt="Generic placeholder image">
@@ -598,7 +599,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 pt-2">
+                    <div class="col-5 pt-2">
                         <img loading="lazy" class="mr-3 rounded-circle float-end hierarchy-popup-list-right-arrow"
                             height="12" width="8" src="assets/images/svg/dashboard/right-arrow.svg"
                             alt="Generic placeholder image">
@@ -677,38 +678,48 @@
                                     <div class="confetti"
                                         [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'">
                                         <div class="col text-center mt-4">
-                                            
-                                            <img loading="lazy"
+                                            <div>
+                                                <img loading="lazy"
                                                 src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}" alt=""
                                                 class="dashboard-game-point-img" style="padding-bottom: 8px;">
-                                            <br> <button class="btn text-white dashboard-banner-point-btn"
+                                            </div>
+                                           
+                                            <button class="btn text-white dashboard-banner-point-btn"
                                                 [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}"
                                                 [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
                                                 <span class="dashboard-banner-point-btn-text">
                                                     {{gamePoints?.[0]?.score}}
                                                 </span>
                                             </button>
-                                            <br><span class="dashboard-level-rank-name"
-                                                style="font-size:8px;">{{gamePoints?.[0]?.label}}</span>
+                                            <div>
+                                                <span class="dashboard-level-rank-name"
+                                                style="font-size:2vw;">{{gamePoints?.[0]?.label}}</span>
+                                            </div>
+                                            
                                         </div>
                                     </div>
                                     <div class="confetti"
                                         [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'">
-                                        <div class="col text-center mt-4">
-                                            <img loading="lazy"
+                                        <div class="text-center mt-4">
+                                            <div>
+                                                <img loading="lazy"
                                                 src="{{sectionView_1?.theme_details?.[0]?.reward_points_image}}" alt=""
                                                 class="dashboard-reward-point-img" style="padding-bottom: 7px;">
-                                            <br> <button
+                                            </div>
+                                            
+                                            <button
                                                 class="btn btn-primary- text-white text-center dashboard-banner-point-btn"
                                                 [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}"
                                                 [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                                 (click)="navigateToRewards()">
-                                                <span class="dashboard-banner-point-btn-text text-center">
+                                                <span class="dashboard-banner-point-btn-text d-flex justify-content-center">
                                                     {{rewardPoints?.[0]?.score}}
                                                 </span></button>
-                                            <br>
-                                            <span class="dashboard-level-rank-name ellipsis1"
-                                                style="font-size:7px;">{{rewardPoints?.[0]?.label}}</span>
+                                            <div>
+                                                <span class="dashboard-level-rank-name ellipsis1"
+                                                style="font-size:2vw;">{{rewardPoints?.[0]?.label}}</span>
+                                            </div>
+                                           
                                         </div>
                                     </div>
 
@@ -824,7 +835,7 @@
                             [ngStyle]="{'background': (activeSubTabForSectionView_2 === 'My Store') ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                             (click)="changeSubTabFilter('My Store')">
-                            <span class=" v-align filter-txt-name filter-my-store"
+                            <span class="v-align filter-txt-name filter-my-store"
                                 [ngStyle]="{'color': (activeSubTabForSectionView_2 === 'My Store') ? '#ffffff' : '#000000'}">
                                 My {{labelNameMy}}
                             </span>

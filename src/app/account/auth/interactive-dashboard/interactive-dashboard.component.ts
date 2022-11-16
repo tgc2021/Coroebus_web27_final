@@ -167,6 +167,7 @@ export class InteractiveDashboardComponent implements OnInit {
   weeklyTopers: any;
   monthlyTopers: any;
   dailyToppers: any;
+  logo: any;
 
   constructor(private readonly store: Store, public Util: Util,private _router: Router, public http: ApiserviceService, private eventService: EventService) { }
 
@@ -210,8 +211,8 @@ if(this.mergeObj.id_coroebus_game != null){
     this.dailyToppers=this.interactive_dashoard_response[0].data.seasonal_theme_daily_badge_details;
     this.weeklyTopers=this.interactive_dashoard_response[0].data.seasonal_theme_weekly_badge_toppers;
     this.monthlyTopers=this.interactive_dashoard_response[0].data.seasonal_theme_monthly_badge_toppers;
-    
-    console.log(this.weeklyTitle);
+    this.logo=this.interactive_dashoard_response[0].data.seasonal_theme_monthly[0];
+    console.log(this.logo);
     console.log("=------->>",this.dailyToppers);
 
     
