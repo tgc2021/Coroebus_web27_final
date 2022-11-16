@@ -313,6 +313,18 @@ else{
     this._router.navigateByUrl("/dashboard")
   }
 
+  navigateToNotification(){
+    this._router.navigateByUrl("/notification/list")
+  }
+
+  navigateToSpectatorView(){
+    this._router.navigateByUrl("/spectator/spectatorView")
+  }
+
+  navigateToPlayZone(){
+    this._router.navigateByUrl("/playzone/play")
+  }
+
   navigateAchievementshelf(){
     this._router.navigateByUrl("/Achievement/AchievementShelf")
 

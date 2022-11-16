@@ -1,0 +1,13 @@
+@media screen and (min-width:270px) and (max-width:1023px) {
+    .web-view {
+        display: none;
+    }
+
+}
+
+@media screen and (min-width:1023.1px) {
+    .mobile-view {
+        display: none;
+    }
+
+}

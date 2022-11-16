@@ -1,7 +1,6 @@
-
 // Web-view started
 
-.web-view{
+.web-view {
     background: linear-gradient(180deg, #060A20 0%, #121D40 33.46%, #121D40 50.28%, #174920 66.77%, #C68356 79.68%, #2B5F22 87.57%, #2F4019 100%);
     height: 100vh;
     width: 100vw;
@@ -14,18 +13,18 @@
     overflow: hidden;
 }
 
-.web_first_row{
- height: 10vh;
- width: 100vw;
+.web_first_row {
+    height: 10vh;
+    width: 98vw;
 }
 
 
-.web_profile_pic{
+.web_profile_pic {
     height: 9vh;
     width: 90%;
 }
 
-.web_profile_name{
+.web_profile_name {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -36,7 +35,7 @@
     color: #FFFFFF;
 }
 
-.web_team_name{
+.web_team_name {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -47,124 +46,253 @@
 }
 
 
-.web_second_col{
+.web_second_col {
     vertical-align: middle;
     margin: auto 0;
     padding: 0;
 }
 
-.web_logo{
+.web_logo {
     height: 5vh;
 }
 
-.web_points{
-    height: 9vh;
-    margin-right: 2em;
+.web_points {
+    height: 5vh;
 }
 
-.web_second_row{
+.total_web_points {
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    color: #000000;
+}
+
+.web_points_bg {
+    background: #FEEE1E;
+    border: 4px solid #FEEE1E;
+    height: 9vh;
+    min-width: 6vw;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.web_second_row {
     height: 70vh;
     padding: 0.5em;
     display: flex;
 }
 
-.web_background_image{
+.web_third_row {
+    height: 15vh;
+    padding: 0.5em;
+    display: flex;
+}
+
+.web_center_div{
+    text-align: center;
+}
+
+.web_background_image {
     background-image: url(../../../../assets/images/final-interactive-dashboard/web-assets/Web/Web/Cricket/Background/stadium.png);
     height: 65vh;
     background-size: 100% 100%;
-    vertical-align: middle;
-    margin: auto 0;
+    margin-top: 0.5em;
 }
 
-.web_my_trophy{
+.web_my_trophy {
     height: 14vh;
-  
     padding-top: 1em;
+    cursor: pointer;
 }
 
-.web_my_rewards{
+.web_my_rewards {
     height: 14vh;
-  
     padding-top: 1em;
+    cursor: pointer;
 }
-.web_col_left{
+
+.web_col_left {
     height: 65vh;
 }
 
-.web_third_umpire{
+.web_third_umpire {
     height: 14vh;
     position: absolute;
     bottom: 0;
     left: 0.5em;
+    cursor: pointer;
 }
-.web_booster{
+
+.web_booster {
     height: 14vh;
     position: absolute;
     bottom: 0;
     right: 0.5em;
 }
 
+.web_right_side {
+    height: 85vh;
+    padding-right: 0;
+}
 
-.web_character{
+.web_character {
     height: 37vh;
     padding-bottom: 1em;
     padding-left: 3em;
 
 }
 
-.web_spectator_view{
+.web_spectator_view {
     height: 14vh;
-  
+    cursor: pointer;
     padding-top: 1em;
 }
 
-.web_col_right{
+.web_col_right {
     height: 65vh;
 }
 
 
-.upper_blue_scoreboard{
-height: 15vh;
-background: #004EC9;
-border-radius: 20px;
+.upper_blue_scoreboard {
+    height: 15vh;
+    background: #004EC9;
+    border-radius: 4px;
+    margin-top: 0.5em;
 
 }
 
-.web_team_rank{
+.lower_blue_scorecard {
+    height: 15vh;
+    background: #004EC9;
+    border-radius: 4px;
+    margin-top: 0.5em;
+}
+
+
+.upper_blue_scorecard_details,
+.lower_blue_scorecard,
+.lower_blue_scorecard_details {
+    height: 15vh;
+}
+
+.lower_blue_scorecard_details :nth-child(4) {
+    border-right: none;
+
+}
+
+.web_team_rank,
+.web_my_score,
+.web_first_measurement {
+    vertical-align: middle;
+    margin: auto 0;
+    border-right: 2px solid #ffffff
+}
+
+.web_my_rank {
     vertical-align: middle;
     margin: auto 0;
 }
-.web_tem_rank_number{
+
+.web_tem_rank_number,
+.web_my_rank_number,
+.web_first_measurement_number {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
-    font-size: 1em;
+    font-size: 1.5vw;
     text-align: center;
     color: #FFFFFF;
-    
+
 }
 
-.web_tem_rank_label{
+.web_my_score_number {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
-    font-size: 1em;
-    text-align: center;   
+    font-size: 1.5vw;
+    text-align: center;
+    color: #FEED12;
+
+}
+
+.web_tem_rank_label,
+.web_my_score_label,
+.web_my_rank_label {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.9em;
+    text-align: center;
     color: #FFFFFF;
-   
+    line-height: 0;
+}
+
+.web_first_measurement_label {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.9em;
+    text-align: center;
+    color: #FFFFFF;
+
+}
+
+
+.web_campaign_image {
+    width: 80%;
+    height: 10vh;
+
+}
+
+.campaign_details {
+    margin-top: 9vh;
+    padding-right: 1em;
+}
+
+.web_daily_image,
+.web_weekly_image,
+.web_monthly_image {
+    width: 80%;
+    height: 10vh;
+    margin-top: 2vh;
+}
+
+.campaign_full_image {
+    height: 44.5vh;
+    padding-right: 0;
+    border-right: 10px solid #ffffff;
+}
+
+.web_pole {
+    padding: 0;
+
+}
+
+.web_button_image {
+    height: 15vh;
+    width: 85%;
+    cursor: pointer;
+}
+
+.web_buttons_col {
+    // width: 66vw;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 @media screen and (min-width:270px) and (max-width:1023px) {
-    .web-view{
+    .web-view {
         display: none;
     }
-    
+
 }
 
 
 // Mobile View Started
 
-.mobile-view{
+.mobile-view {
     background: linear-gradient(180deg, #060A20 0%, #121D40 33.46%, #121D40 50.28%, #174920 66.77%, #C68356 79.68%, #2B5F22 87.57%, #2F4019 100%);
     height: 100vh;
     width: 100vw;
@@ -174,9 +302,10 @@ border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: end;
-   
+
 }
-.mobile-cricket-pitch{
+
+.mobile-cricket-pitch {
     background: url('../../../../assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Background/stadium2\ 2\ new\ \(1\).png');
     height: 70vh;
     width: 95vw;
@@ -187,10 +316,10 @@ border-radius: 20px;
 }
 
 @media screen and (min-width:1023.1px) {
-    .mobile-view{
+    .mobile-view {
         display: none;
     }
-    
+
 }
 
 
@@ -435,13 +564,13 @@ border-radius: 20px;
 //         display:flex;
 //         justify-content: center;
 //     }
-    
-    
+
+
 //     .modal-content{
 //         background-color: transparent;
 //         border: none;
 //     }
-    
+
 //     .btn-close{
 //         position: absolute;
 //         right: 10px;
@@ -472,20 +601,20 @@ border-radius: 20px;
 //     background: #bbb;
 // }
 // .WeeklyModal{
-   
-  
+
+
 //     .modal-body{
 //         display:flex;
 //         justify-content: center;
 //         background-image: url('../../../../assets/images/interactive-dashboard/BG.png');
-        
-      
+
+
 //     }
-  
+
 
 // }
 // .ModalHeading{
-   
+
 
 //     font-family: 'Roboto';
 //     font-style: normal;
@@ -508,7 +637,7 @@ border-radius: 20px;
 //     font-weight: 400;
 //     font-size: 12px;
 //     line-height: 14px;
-   
+
 //     color: #000000;
 // }
 // .btn-reward{
@@ -657,7 +786,7 @@ border-radius: 20px;
 //     /* border: 1px solid black; */
 //     height: 52px;
 //     width: 52px;
-   
+
 // }
 
 // .circle1 {
@@ -679,13 +808,13 @@ border-radius: 20px;
 //     display: flex;
 //     justify-content: center;
 //     align-items: start;
-   
+
 //     margin-top: -24px;
 //     position: absolute;
 //     /* height: 108vh; */
 //     // height: 1280px;
 //     // height: 106vh;
-  
+
 //     /* padding-bottom: 0; */
 // }
 
@@ -699,7 +828,7 @@ border-radius: 20px;
 //     width: 80px;
 //     border-radius: 100%;
 //     height: 80px;
-   
+
 // }
 
 // .image-container{
@@ -1088,7 +1217,7 @@ border-radius: 20px;
 
 // @media (min-width: 2000px) and (max-width: 2048px){
 //     .box-container {
-     
+
 //         height: 1536px;
 //         /* padding-bottom: 0; */
 //     }
@@ -1096,7 +1225,7 @@ border-radius: 20px;
 
 // @media (min-width: 2550px) and (max-width: 2560px){
 //     .box-container {
-     
+
 //         height: 1920px;
 //         /* padding-bottom: 0; */
 //     }
@@ -1104,7 +1233,7 @@ border-radius: 20px;
 
 // @media (min-width: 3830px) and (max-width: 3860px){
 //     .box-container {
-     
+
 //         height: 2160px;
 //         /* padding-bottom: 0; */
 //     }
