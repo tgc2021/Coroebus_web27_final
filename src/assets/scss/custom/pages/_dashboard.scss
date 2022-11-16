@@ -290,14 +290,15 @@
 
 .inner-bulletins-height {
     height: 230px;
-   
+    width: 300px;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
  .inner-bulletins-no-height {
     overflow-y: auto;
-  
+    overflow-x: hidden;
+    width: 300px;
     max-height: 600px;
  }
 
@@ -1457,7 +1458,7 @@ border-radius: 15px;
     }
 
     .dashboard-level-rank-name {
-        font-size: 10px;
+        font-size: 0.8em;
        
     }
 
@@ -1729,12 +1730,14 @@ border-radius: 15px;
     .dashboard-banner-point-btn {
         width: 54px;
         height: 16px;
+        display: flex;
+        justify-content: center;
     }
 
     .dashboard-banner-point-btn-text {
         font-size: 10px;
         margin-top: -6px;
-        float: left;
+        
     }
 
 
