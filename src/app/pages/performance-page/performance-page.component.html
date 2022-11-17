@@ -1,4 +1,172 @@
 <div class="container-fluid performance-container">
+    <div class="row performance-filter-row">
+        <div class="col-lg-2 col-md-2 col-3 d-flex mt-3">
+            <span class="performance-filter-txt">
+                Filter
+                <i class="fa fa-filter"></i>
+            </span>
+           
+
+        </div>
+
+        <div class="col-lg-8 col-md-8 col-5 d-flex justify-content-end">
+            <div class="historical-live-btn" role="group" aria-label="Basic radio toggle button group"
+            *ngIf="(userObj?._personal_data?.id_role === '3' || userObj?._personal_data?.id_role === '4')">
+            <input type="radio" class="btn-check" name="Historical" id="Historical" autocomplete="off"
+                [attr.checked]="buttonFilterActive === 'Historical' ? true: null">
+            <label class="btn btn-outline-primary performance-filter-primary" for="Historical"
+                [ngStyle]="{'background': buttonFilterActive === 'Historical' ? userObj?.otherInfo?.color : 'inherit'}"
+                [ngClass]="{'text-black': buttonFilterActive !== 'Historical'}"
+                (click)="buttonFilter('Historical')">Historical</label>
+
+            <input type="radio" class="btn-check" name="Live" id="Live" autocomplete="off"
+                [attr.checked]="buttonFilterActive === 'Live' ? true : null">
+            <label class="btn btn-outline-primary performance-filter-primary" for="Live"
+                [ngStyle]="{'background': buttonFilterActive === 'Live' ? userObj?.otherInfo?.color : 'inherit'}"
+                [ngClass]="{'text-black': buttonFilterActive !== 'Live'}"
+                (click)="buttonFilter('Live')">Live</label>
+        </div>
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-4 mt-1">
+            <select class="form-select performance-filter-select" aria-label="Default select example"
+            [(ngModel)]="dropDownValue" (change)="onChange($event.target.value)">
+            <option [attr.selected]="item?.mapTo?.indexOf(buttonFilterActive) > -2 ? true : null"
+                *ngFor="let item of dropDownFilterData" value="{{item?.value}}">
+                {{item?.value}}</option>
+        </select>
+        </div>
+        
+    </div>
+
+    <div class="card mt-3">
+        <div class="card-title">
+            <div class="row w-100 mt-3">
+                <div class="col">
+                    <div class="accordion performance-overalldata" id="accordionExample">
+                        <div class="accordion-item performance-overalldata-accordion-item"
+                            *ngFor="let item of [1]; let i = index"
+                            [ngClass]="{'performance-accordion-border-top': i !== 0}">
+                            <h2 class="accordion-header" [id]="'heading'+i">
+                                <button class="accordion-button performance-overalldata-btn" type="button"
+                                    [ngStyle]="{'display': 'block'}">
+                                   
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-9">
+                                                <div class="p-0">
+                                                    <span
+                                                        class="performance-overall-txt">{{overallData?.[0]?.label}}</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-3 d-flex justify-content-end">
+                                                <span class="text-start performance-game-points-coin">
+                                                    <img src="assets/images/svg/dashboard/game-points-coin.png" alt=""
+                                                        height="22">
+                                                </span>
+                                                <span class="float-end">
+                                                <span
+                                                    class="performance-overall-points ms-2">{{overallData?.[0]?._data?.[0]?.points}}</span>
+                                                <i class="fa fa-sort-down ms-4 performance-arrow-down invisible"></i>
+                                            </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </button>
+                            </h2>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row w-100 mt-3">
+                <div class="col">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item mb-4" *ngFor="let item of childData; let i = index"
+                            [ngClass]="{'performance-accordion-border-top': i !== 0}">
+                            <h2 class="accordion-header" [id]="'heading'+i">
+                                <button class="accordion-button performance-accordion-point-data" type="button"
+                                    [ngClass]="{ 'collapsed': i != 0 }" type="button" data-bs-toggle="collapse"
+                                    [attr.data-bs-target]="'#collapse'+i" aria-expanded="true"
+                                    [attr.aria-controls]="'collapse'+i" [ngStyle]="{'display': 'block'}">
+
+                                  
+                                    <div class="container-fluid">
+                                        <div class="row row-cols-0 row-cols-lg-5 g-2 g-lg-3">
+                                            <div class="col">
+                                                <div class="p-0">
+                                                    <span
+                                                        class="performance-accordion-point-data-label">{{item?._data?.measurement_name}}</span>
+                                                </div>
+                                            </div>
+                                          
+                                            <div class="col">
+                                                <span class="text-start performance-game-points-coin">
+                                                    <img src="assets/images/svg/dashboard/game-points-coin.png" alt=""
+                                                        height="22">
+                                                </span>
+                                                <span class="float-end">
+                                                    <span class="performance-points">{{item?._data?.points}}</span>
+                                                    <i class="fa fa-sort-down ms-4 performance-arrow-down"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </button>
+                            </h2>
+                            <div [id]="'collapse'+i" class="accordion-collapse collapse" [ngClass]="{ 'show': i == 0 }"
+                                [attr.aria-labelledby]="'heading'+i" data-bs-parent="#accordionExample">
+                                <div class="accordion-body performance-accordion-point-data-body">
+                                    <div class="container-fluid">
+                                        <div class="row row-cols-0 row-cols-lg-5 g-2 g-lg-3"
+                                            *ngFor="let child of item?.kpi_data">
+                                            <div class="col">
+                                                <div class="p-0">
+                                                    <span
+                                                        class="performance-accordion-point-data-label">{{child?.kpi_name}}</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col">
+                                                <span class="text-start performance-game-points-coin">
+                                                    <img src="assets/images/svg/dashboard/game-points-coin.png" alt=""
+                                                        height="22">
+                                                </span>
+                                                <span class="float-end">
+                                                    <span class="performance-points">{{child?.points}}</span>
+                                                    <i
+                                                        class="fa fa-sort-down ms-4 performance-arrow-down invisible"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-container *ngIf="graphData?.length > 0">
+        <div class="card" *ngFor="let item of graphData;let i=index">
+            <div class="card-body">
+                <apx-chart class="apex-charts" dir="ltr" [series]="[splineAreaChart?.series[i]]"
+                    [chart]="splineAreaChart?.chart" [dataLabels]="splineAreaChart?.dataLabels"
+                    [stroke]="splineAreaChart?.stroke" [colors]="splineAreaChart?.colors"
+                    [xaxis]="splineAreaChart?.xaxis[i]" [grid]="splineAreaChart?.grid"
+                    [tooltip]="splineAreaChart?.tooltip"></apx-chart>
+            </div>
+        </div>
+    </ng-container>
+</div>
+
+<!-- <div class="container-fluid performance-container">
     <div class="row col-rows-2 performance-filter-row">
         <div class="col mt-4">
             <span class="performance-filter-txt">
@@ -28,7 +196,6 @@
                     </div>
                 </div>
                 <div class="col-xl-4 mt-2">
-                    <!-- {{dropDownFilterData | json}} -->
                     <select class="form-select performance-filter-select" aria-label="Default select example"
                         [(ngModel)]="dropDownValue" (change)="onChange($event.target.value)">
                         <option [attr.selected]="item?.mapTo?.indexOf(buttonFilterActive) > -2 ? true : null"
@@ -50,13 +217,7 @@
                             <h2 class="accordion-header" [id]="'heading'+i">
                                 <button class="accordion-button performance-overalldata-btn" type="button"
                                     [ngStyle]="{'display': 'block'}">
-                                    <!-- <span class="performance-overall-txt">{{overallData?.[0]?.label}}</span>
-                                    <p class="float-end">
-                                        <img src="assets/images/svg/dashboard/game-points-coin.png" alt="" height="22">
-                                        <span
-                                            class="performance-overall-points ms-4">{{overallData?.[0]?._data?.[0]?.points}}</span>
-                                        <i class="fa fa-sort-down ms-4 performance-arrow-down invisible"></i>
-                                    </p> -->
+                                   
                                     <div class="container-fluid">
                                         <div class="row row-cols-0 row-cols-lg-5 g-2 g-lg-3">
                                             <div class="col">
@@ -94,7 +255,6 @@
             </div>
         </div>
         <div class="card-body">
-            <!-- {{childData | json}} -->
             <div class="row w-100 mt-3">
                 <div class="col">
                     <div class="accordion" id="accordionExample">
@@ -106,27 +266,7 @@
                                     [attr.data-bs-target]="'#collapse'+i" aria-expanded="true"
                                     [attr.aria-controls]="'collapse'+i" [ngStyle]="{'display': 'block'}">
 
-                                    <!-- <p class="float-end"> -->
-                                    <!-- <div class="row row-cols-4">
-                                        <div class="col">
-                                            <span
-                                                class="performance-accordion-point-data-label">{{item?._data?.measurement_name}}</span>
-                                        </div>
-                                        <div class="col">
-                                            <img src="assets/images/svg/dashboard/game-points-coin.png" alt=""
-                                                height="22">
-                                        </div>
-                                        <div class="col">
-                                            <span class="performance-points ms-4">{{item?._data?.points}}</span>
-                                        </div>
-                                        <div class="col">
-                                            <i class="fa fa-sort-down ms-4 performance-arrow-down"></i>
-                                        </div>
-                                    </div> -->
-                                    <!-- <img src="assets/images/svg/dashboard/game-points-coin.png" alt="" height="22">
-                                    <span class="performance-points ms-4">{{item?._data?.points}}</span>
-                                    <i class="fa fa-sort-down ms-4 performance-arrow-down"></i> -->
-                                    <!-- </p> -->
+                                  
                                     <div class="container-fluid">
                                         <div class="row row-cols-0 row-cols-lg-5 g-2 g-lg-3">
                                             <div class="col">
@@ -186,19 +326,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="row" *ngFor="let child of item?.kpi_data">
-                                        <div class="col-xl-6">
-                                            {{child?.kpi_name}}
-                                        </div>
-                                        <div class="col-xl-6 text-end">
-                                            <img src="assets/images/svg/dashboard/game-points-coin.png" alt=""
-                                                height="22">
-                                            <span class="performance-points ms-4">
-                                                {{child?.points}}
-                                            </span>
-                                            <i class="fa fa-sort-down ms-4 performance-arrow-down invisible"></i>
-                                        </div>
-                                    </div> -->
+                                   
                                 </div>
                             </div>
                         </div>
@@ -207,7 +335,6 @@
             </div>
         </div>
     </div>
-    <!-- {{graphData | json}} -->
     <ng-container *ngIf="graphData?.length > 0">
         <div class="card" *ngFor="let item of graphData;let i=index">
             <div class="card-body">
@@ -221,4 +348,4 @@
     </ng-container>
 
 
-</div>
+</div>  -->

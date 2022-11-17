@@ -20,7 +20,7 @@
     /* or 277% */
     text-align: center;
     color: #000000;
-    width: 150px;
+    width: 100%;
 }
 
 .performance-filter-select {
@@ -28,7 +28,8 @@
     font-size: 16px;
     line-height: 150%;
     color: #000000;
-   
+   width: 90%;
+   height: 6vh;
 }
 
 .performance-points {
@@ -46,7 +47,7 @@
 }
 
 .performance-overalldata {
-    width: 98%;
+    width: 100%;
     margin-left: 1%;
 }
 

@@ -1,7 +1,18 @@
-@media (min-width: 800px) and (max-width: 1280px) {
-    // .historical-live-btn {
-    //     margin-left: -20%;
-    // }
+.historical-live-btn{
+    width: 30%;
+    display: flex;
+    justify-content: end;
+    height: 55px;
+}
+
+
+.performance-filter-select{
+    height: 42px;
+}
+@media (min-width: 770px) and (max-width: 1024px)  {
+    .historical-live-btn {
+        width: 50%;
+    }
 
     // .performance-game-points-coin {
     //     margin-left: 0%;
@@ -12,10 +23,10 @@
     // }
 }
 
-@media (min-width: 1360px) and (max-width: 1366px) {
-    // .historical-live-btn {
-    //     margin-left: -20%;
-    // }
+@media (min-width: 200px) and (max-width: 769px) {
+    .historical-live-btn {
+        width: 100%;
+    }
 }
 
 @media (min-width: 1400px) and (max-width: 1440px) {
