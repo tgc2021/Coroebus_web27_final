@@ -4,9 +4,12 @@
 
 .theme-card-w {
     // width: unset;
+    
     width: 325px;
     @media screen and (max-width: 768px) {
-        width: unset !important
+       
+        width: 40vw !important;
+       
     }
 }
 

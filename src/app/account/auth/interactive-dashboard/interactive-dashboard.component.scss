@@ -283,7 +283,7 @@
     padding-right: 0;
 }
 
-@media screen and (min-width:270px) and (max-width:1023.9px) {
+@media screen and (min-width:270px) and (max-width:959.9px) {
     .web-view {
         display: none;
     }
@@ -302,14 +302,11 @@
     background-attachment: fixed;
     background-position: center center;
     box-sizing: border-box;
-    overflow: hidden;
-  
- 
+    overflow: hidden; 
 }
-
 .mobile-profile-section {
    margin-top: 2vh;
-   width: 95vw;
+   width: 88vw;
    height: 10vh;
 }
 
@@ -333,6 +330,7 @@
 .mobile-reward-section {
     width: 15vw;
     height: 8vh;
+    font-weight: 700;
     background: #FEEE1E;
     border: 2px solid #FEEE1E;
     border-radius: 10px;
@@ -377,7 +375,7 @@
 .mobile-btn-section {
     height: 7vh;
     margin-top: 2vh;
-    width: 90vw;
+    width: 88vw;
     display: flex;
     justify-content:space-around;
     align-items: center;
@@ -392,8 +390,8 @@
 }
 
 .character-png{
-    height: 30vh;
-    margin-bottom: 4vh;
+    height: 40vh;
+    // margin-bottom: 4vh;
 
 }
 
@@ -408,6 +406,9 @@
     width: 15vw;
     height: 6vh;
     
+}
+.mobile-my-score{
+    color: #FEED12
 }
 .campaign-buttons{
     height: auto;
@@ -440,14 +441,14 @@
 //     height: 10vh;
 // }
 
-@media (orientation: landscape) {
-    .mobile-view {
-      display: none;
-    }
+// @media (orientation: landscape) {
+//     .mobile-view {
+//       display: none;
+//     }
     
-  }
+//   }
 
-@media screen and (min-width:1024px)  {
+@media screen and (min-width:960px)  {
     .mobile-view {
         display: none;
     }
