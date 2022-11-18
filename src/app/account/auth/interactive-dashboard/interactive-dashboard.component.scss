@@ -172,10 +172,22 @@
 }
 
 
-.upper_blue_scorecard_details,
+
 .lower_blue_scorecard,
 .lower_blue_scorecard_details {
     height: 15vh;
+   
+}
+
+.upper_blue_scorecard_details{
+    height: 15vh;
+    margin-left: 2vh;
+}
+.lower_blue_scorecard_details{
+    margin-right: 0;
+    margin-left: 2vh;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .lower_blue_scorecard_details :nth-child(4) {
@@ -188,9 +200,22 @@
 .web_first_measurement {
     vertical-align: middle;
     margin: auto 0;
-    border-right: 2px solid #ffffff
+    // border-right: 2px solid #ffffff;
+    // height: 12vh;
 }
 
+
+.sideline{
+    display: flex;
+    align-items: center;
+    height: 84v;
+    /* height: 84%; */
+    height: 15vh;
+}
+
+.web_sideline_image{
+    height: 80%;
+}
 .web_my_rank {
     vertical-align: middle;
     margin: auto 0;
@@ -205,6 +230,8 @@
     font-size: 1.5vw;
     text-align: center;
     color: #FFFFFF;
+    margin-bottom: 0;
+    
 
 }
 
@@ -215,6 +242,7 @@
     font-size: 1.5vw;
     text-align: center;
     color: #FEED12;
+    line-height: 0;
 
 }
 
@@ -227,7 +255,7 @@
     font-size: 0.9em;
     text-align: center;
     color: #FFFFFF;
-    line-height: 0;
+    margin-bottom: 0;
 }
 
 .web_first_measurement_label {
