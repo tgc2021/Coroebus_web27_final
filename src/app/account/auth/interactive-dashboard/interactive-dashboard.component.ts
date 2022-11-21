@@ -168,6 +168,7 @@ export class InteractiveDashboardComponent implements OnInit {
   monthlyTopers: any;
   dailyToppers: any;
   logo: any;
+  dataForMobile: void;
 
   constructor(private readonly store: Store, public Util: Util,private _router: Router, public http: ApiserviceService, private eventService: EventService) { }
 
@@ -212,7 +213,7 @@ if(this.mergeObj.id_coroebus_game != null){
     this.weeklyTopers=this.interactive_dashoard_response[0].data.seasonal_theme_weekly_badge_toppers;
     this.monthlyTopers=this.interactive_dashoard_response[0].data.seasonal_theme_monthly_badge_toppers;
     this.logo=this.interactive_dashoard_response[0].data.seasonal_theme_monthly[0];
-    console.log(this.logo);
+
     console.log("=------->>",this.dailyToppers);
 
     
@@ -305,15 +306,19 @@ else{
       
     }
     
-    
-    
-
   }
 
   navigateDashboard(){
     this._router.navigateByUrl("/dashboard")
   }
+  navigateToChampionsLeague(){
+    this._router.navigateByUrl("/champions_league")
 
+  }
+
+  navigateToLearningAcademy(){
+    this._router.navigateByUrl("/learning/learningAcademy")
+  }
   navigateToNotification(){
     this._router.navigateByUrl("/notification/list")
   }
