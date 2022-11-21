@@ -168,7 +168,7 @@ export class InteractiveDashboardComponent implements OnInit {
   monthlyTopers: any;
   dailyToppers: any;
   logo: any;
-  dataForMobile: void;
+  point_distribution:any;
 
   constructor(private readonly store: Store, public Util: Util,private _router: Router, public http: ApiserviceService, private eventService: EventService) { }
 
@@ -246,6 +246,11 @@ else{
     this.interactive_dashoard_response = res;
     this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
     console.log(this.interactive_dashoard_response);
+
+    // this.point_distribution = this.interactive_dashoard_response[0].data._Point_distribution
+    // this.point_distribution = Array.of(this.point_distribution);
+    // console.log(this.point_distribution);
+    
     this.eventService.broadcast('passDataToHeader', {
       color: this.interactive_dashoard_response[0].data.theme_details[0].dark_color,
       game_logo: this.interactive_dashoard_response[0].data._personal_data.game_logo,
