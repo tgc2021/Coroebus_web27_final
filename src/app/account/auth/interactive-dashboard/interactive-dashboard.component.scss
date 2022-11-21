@@ -22,6 +22,7 @@
 .web_profile_pic {
     height: 9vh;
     width: 90%;
+    border: 1px solid #FEEE1E;
 }
 
 .web_profile_name {
@@ -29,8 +30,10 @@
     font-style: normal;
     font-weight: 400;
     font-size: 1em;
-    line-height: 10px;
-
+    cursor: pointer;;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     /* identical to box height */
     color: #FFFFFF;
 }
@@ -39,10 +42,11 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 1em;
+  
     /* identical to box height */
     color: #FFFFFF;
     line-height: 0;
+    font-size: 2vh;
 }
 
 
@@ -57,13 +61,14 @@
 }
 
 .web_points {
-    height: 5vh;
+    height: 4vh;
 }
 
 .total_web_points {
     text-align: center;
     font-family: 'Inter';
     font-style: normal;
+    font-size: 2vh;
     font-weight: 400;
     color: #000000;
 }
@@ -71,7 +76,7 @@
 .web_points_bg {
     background: #FEEE1E;
     border: 4px solid #FEEE1E;
-    height: 9vh;
+    height: 8vh;
     min-width: 6vw;
     border-radius: 10px;
     display: flex;
@@ -176,7 +181,8 @@
 .lower_blue_scorecard,
 .lower_blue_scorecard_details {
     height: 15vh;
-   
+   width: 100%;
+   margin-left: 0;
 }
 
 .upper_blue_scorecard_details{
@@ -185,7 +191,7 @@
 }
 .lower_blue_scorecard_details{
   
-    margin-left: 2vh;
+  
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -194,6 +200,8 @@
     border-right: none;
 
 }
+
+
 
 .web_team_rank,
 .web_my_score,
@@ -204,6 +212,9 @@
     // height: 12vh;
 }
 
+.web_first_measurement{
+    border-right: 2px solid #ffffff;
+}
 
 .sideline{
     display: flex;
@@ -242,7 +253,7 @@
     font-size: 1.5vw;
     text-align: center;
     color: #FEED12;
-    line-height: 0;
+    margin-bottom: 0;
 
 }
 
@@ -262,7 +273,7 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
-    font-size: 0.9em;
+    font-size: 1.5vh;
     text-align: center;
     color: #FFFFFF;
 
@@ -351,10 +362,26 @@
     font-style: normal;
     font-weight: 400;
     font-size: 4vw;
-   
+    cursor: pointer;;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: #FFFFFF;
 }
 
+.mobile_first_name_details{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 36vw;
+    margin-bottom: 0;
+}
+
+.mobile_team_name_details{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 36vw;
+    margin-bottom: 0;
+}
 .mobile-reward-section {
     width: 15vw;
     height: 8vh;
@@ -462,7 +489,9 @@
     border-right: 2px solid #ffff;
 }
 
-
+.border2px:last-child{
+    border-right: none;
+}
 
 
 // .mobile-my-trophy ,.mobile-my-rewards ,.mobile-tug-war, .mobile-3rd-umpire{

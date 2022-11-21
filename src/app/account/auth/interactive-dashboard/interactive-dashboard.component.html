@@ -1,26 +1,26 @@
 <!-- Web-view Started -->
-<div class="web-view">
+<div class="web-view" *ngFor="let response of interactive_dashoard_response">
     <div class="row web_first_row">
        
         <div class="col-1 web_first_col d-flex">
-           <img class="web_profile_pic" src="assets/images/final-interactive-dashboard/web-assets/Web/Web/Cricket/Buttons/PROFILE.png" />
+           <img class="web_profile_pic" src="{{interactive_dashoard_response[0].data._personal_data.profile_logo}}" />
         </div>
        
         <div class="col-2 web_second_col">
-         <p class="web_profile_name">Rahul</p> 
-         <p class="web_team_name">Strange Warriors</p> 
+         <p class="web_profile_name"> {{interactive_dashoard_response[0].data._personal_data.first_name}}</p> 
+         <p class="web_team_name"> {{interactive_dashoard_response[0].data._personal_data.team_name}}</p> 
 
          </div>
         
          <div class="col-6 d-flex justify-content-center align-items-center">
-           <img class="web_logo" src="assets/images/final-interactive-dashboard/web-assets/Web/Web/Cricket/Buttons/GAME NAME.png"/>
+           <img class="web_logo" src="{{interactive_dashoard_response[0].data._personal_data.game_logo}}"/>
         </div>
 
         <div class="col-3 d-flex justify-content-end">
             <div class="web_points_bg">
                 <div class="web_center_div">
                     <img class="web_points" src="assets/images/final-interactive-dashboard/web-assets/Web/Web/Cricket/Buttons/points_without_bg.png" />
-                    <p class="total_web_points">2000</p>
+                    <p class="total_web_points">{{interactive_dashoard_response[0].data._points[2].score}}</p>
                 </div>
                
             </div>
@@ -33,18 +33,18 @@
         <div class="col-8 web_background_image">
          <div class="row">
             <div class="col-2 web_col_left">
-                <img class="web_my_trophy" (click)="navigateAchievementshelf()" src="assets/images/final-interactive-dashboard/web-assets/Web/Web/Cricket/Buttons/MY TROPHY.png"/>
-                <img class="web_my_rewards" (click)="navigateReward()" src="assets/images/final-interactive-dashboard/web-assets/Web/Web/Cricket/Buttons/MY REWARDS.png"/>
-                <img class="web_third_umpire" (click)="navigateToNotification()" src="assets/images/final-interactive-dashboard/web-assets/Web/Web/Cricket/Buttons/3RD UMPIRE.png"/>
+                <img class="web_my_trophy" (click)="navigateAchievementshelf()" src="{{interactive_dashoard_response[0].data.theme_details[0].my_trophy}}"/>
+                <img class="web_my_rewards" (click)="navigateReward()" src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}"/>
+                <img class="web_third_umpire" (click)="navigateToNotification()" src="{{interactive_dashoard_response[0].data.theme_details[0].third_umpire_bt}}"/>
             </div>
 
             <div class="col-8 d-flex justify-content-center align-items-end">
-                <img class="web_character" src="assets/images/final-interactive-dashboard/web-assets/Web/Web/Cricket/Buttons/CHARACTER.png"/>
+                <img class="web_character" src="{{interactive_dashoard_response[0].data._personal_data.skillmuni}}"/>
             </div>
 
             <div class="col-2 d-flex justify-content-end web_col_right">
-                <img class="web_spectator_view" (click)="navigateToSpectatorView()" src="assets/images/final-interactive-dashboard/web-assets/Web/Web/Cricket/Buttons/SPECTATOR.png"/>
-                <img class="web_booster" src="assets/images/final-interactive-dashboard/web-assets/Web/Web/Cricket/Buttons/BOOSTER.png"/>
+                <img class="web_spectator_view" (click)="navigateToSpectatorView()" src="{{interactive_dashoard_response[0].data.theme_details[0].spectator_bt}}"/>
+                <img class="web_booster" src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}"/>
 
             </div>
          </div>
@@ -56,7 +56,7 @@
 
                     <div class="col-3 web_team_rank d-block">
                     
-                        <p class="web_tem_rank_number">001</p>
+                        <p class="web_tem_rank_number">{{interactive_dashoard_response[0].data._primary.team_rank}}</p>
                         <p class="web_tem_rank_label">Team Rank</p>
                     </div>
                     <div class="col-1 sideline">
@@ -67,7 +67,7 @@
 
                     <div class="col-3 web_my_score d-block">
                     
-                        <p class="web_my_score_number">933</p>
+                        <p class="web_my_score_number">{{interactive_dashoard_response[0].data._points[0].score}}</p>
                         <p class="web_my_score_label">My Score</p>
                     </div>
                     <div class="col-1 sideline">
@@ -78,7 +78,7 @@
 
                     <div class="col-3 web_my_rank d-block">
                     
-                        <p class="web_my_rank_number">007</p>
+                        <p class="web_my_rank_number">{{interactive_dashoard_response[0].data._primary.my_rank}}</p>
                         <p class="web_my_rank_label">My Rank</p>
                     </div>
                   
@@ -88,19 +88,19 @@
             </div>
 
             <div class="lower_blue_scorecard" (click)="navigateDashboard()">
-                <div class="row lower_blue_scorecard_details d-flex">
-                    <div class="col-2 web_first_measurement d-block">
-                        <p class="web_first_measurement_number">375</p>
-                        <p class="web_first_measurement_label">Runs Scored</p>
-
+                <div class="row lower_blue_scorecard_details d-flex justify-content-center">
+                    <div class="col-3 web_first_measurement d-block"  *ngFor="let points of interactive_dashoard_response[0].data._Point_distribution" >
+                        <p class="web_first_measurement_number">{{points.weightage}}</p>
+                        <p class="web_first_measurement_label">{{points.point_label}}</p>
+                       
                     </div>
-                    <div class="col-1 sideline">
+                    <!-- <div class="sideline d-flex" >
                     
                         <img class="web_sideline_image" src="assets/images/interactive-dashboard/Side Line.png"/>
 
-                    </div>
+                    </div> -->
 
-                    <div class="col-2 web_first_measurement d-block">
+                    <!-- <div class="col-2 web_first_measurement d-block">
                         <p class="web_first_measurement_number">180</p>
                         <p class="web_first_measurement_label">Runs Saved</p>
 
@@ -127,7 +127,7 @@
                         <p class="web_first_measurement_number">98</p>
                         <p class="web_first_measurement_label">Fair Play</p>
 
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -137,19 +137,19 @@
                     <div class="col-12 campaign_full_image  d-flex justify-content-end align-items-end"> 
                         <div>
                             <div  class="d-flex justify-content-end">
-                                <img class="web_campaign_image" src="assets/images/final-interactive-dashboard/web-assets/Web/Web/Cricket/Buttons/CAMPAIGNS.png" />
+                                <img class="web_campaign_image" src="{{interactive_dashoard_response[0].data.theme_details[0].campaigns_bt_web}}" />
 
                             </div>
                             <div  class="d-flex justify-content-end">
-                                <img class="web_daily_image" src="assets/images/final-interactive-dashboard/web-assets/Web/Web/Cricket/Buttons/DAILY.png"  />
+                                <img class="web_daily_image" src="{{interactive_dashoard_response[0].data.theme_details[0].daily_bt_web}}"  />
 
                             </div>
                             <div  class="d-flex justify-content-end">
-                                <img class="web_weekly_image" src="assets/images/final-interactive-dashboard/web-assets/Web/Web/Cricket/Buttons/WEEKLY.png" />
+                                <img class="web_weekly_image" src="{{interactive_dashoard_response[0].data.theme_details[0].weekly_bt_web}}" />
 
                             </div>
                             <div  class="d-flex justify-content-end">
-                                <img class="web_monthly_image" src="assets/images/final-interactive-dashboard/web-assets/Web/Web/Cricket/Buttons/MONTHLY.png" />
+                                <img class="web_monthly_image" src="{{interactive_dashoard_response[0].data.theme_details[0].monthly_bt_web}}" />
 
                             </div>
                         </div>
@@ -175,19 +175,19 @@
             <div class="row">
                 <div class="col-12 d-flex gap-2 web_buttons_col">
                     <div class="col-3 web_bottom_buttons">
-                        <img class="web_button_image" src="assets/images/final-interactive-dashboard/web-assets/Web/Web/Cricket/Buttons/TOW.png" />
+                        <img class="web_button_image" src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_web}}" />
                     </div>
             
                     <div class="col-3 web_bottom_buttons">
-                        <img class="web_button_image" src="assets/images/final-interactive-dashboard/web-assets/Web/Web/Cricket/Buttons/personal milestone 2.png" />
+                        <img class="web_button_image" src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt_web}}" />
                     </div>
             
                     <div class="col-3 web_bottom_buttons">
-                        <img class="web_button_image" src="assets/images/final-interactive-dashboard/web-assets/Web/Web/Cricket/Buttons/Learning Acad.png" />
+                        <img class="web_button_image" src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt_web}}" />
                     </div>
             
                     <div class="col-3 web_bottom_buttons">
-                        <img (click)="navigateToPlayZone()" class="web_button_image" src="assets/images/final-interactive-dashboard/web-assets/Web/Web/Cricket/Buttons/Play Z.png" />
+                        <img (click)="navigateToPlayZone()" class="web_button_image" src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt_web}}" />
                     </div>
             
                 </div>
@@ -199,7 +199,7 @@
 </div>
 
 <!-- Mobile View Started -->
-<div class="mobile-view">
+<div class="mobile-view" *ngFor="let response of interactive_dashoard_response">
     <div class="row">
         <div class="col" >
             <!-- Profile Section -->
@@ -208,12 +208,12 @@
                     <div class="d-flex justify-content-between">
                         <div class="d-flex gap-2">
                             <div class="mobile-profile-picture">
-                                <img src="assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Buttons/CAMPAIGNS.png" alt="" width="100%" height="100%">
+                                <img src="{{interactive_dashoard_response[0].data._personal_data.profile_logo}}" alt="" width="100%" height="100%">
                             </div>
                             <div class="mobile-profile-info d-flex gap-2 align-items-center">
                                 <div class="mobile-profile-name d-flex flex-column">
-                                    <span>Rahul Kumar </span>
-                                    <span>Strange Warriors</span>
+                                    <p class="mobile_first_name_details">{{interactive_dashoard_response[0].data._personal_data.first_name}} </p>
+                                    <p class="mobile_team_name_details">{{interactive_dashoard_response[0].data._personal_data.team_name}}</p>
                                 </div>
                                 
                             </div>
@@ -221,7 +221,7 @@
                         <div class="mobile-reward-section">
                             <div class="text-center">
                                 <img src="assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Buttons/wallet 1.png" alt="" >
-                                <div>1000</div>
+                                <div>{{interactive_dashoard_response[0].data._points[2].score}}</div>
                             </div>
                             
                         </div>
@@ -234,12 +234,12 @@
             <div class="d-flex justify-content-center">
                 <div class="mobile-first-section d-flex justify-content-evenly align-items-center">
                     <div class="mobile-team-rank text-center col-4 border2px" >
-                        <div>00050</div>
+                        <div>{{interactive_dashoard_response[0].data._primary.team_rank}}</div>
                         <div class="mobile-sub-name">Team Rank</div>
                     </div>
                     <div class="text-center col-4 border2px">
                         <div class="mobile-my-score">
-                            101180
+                            {{interactive_dashoard_response[0].data._points[0].score}}
                         </div>
                         <div class="mobile-sub-name">
                             My Score
@@ -247,7 +247,7 @@
                         
                     </div>
                     <div class="mobile-myRank text-center col-4">
-                        <div>00110</div>
+                        <div>{{interactive_dashoard_response[0].data._primary.my_rank}}</div>
                         <div class="mobile-sub-name">My Rank</div>
                     </div>
                 </div>
@@ -256,14 +256,14 @@
             <div class="d-flex justify-content-center" (click)="navigateDashboard()">
                 <div class="mobile-second-section d-flex flex-column justify-content-around">
                     <div class="mobile-title text-center">
-                        <span>Bahrain Premier League</span>
+                        <span> {{interactive_dashoard_response[0].data._personal_data.game_name}}</span>
                     </div>
-                    <div class="d-flex">
-                        <div class="mobile-runs-scored text-center col-3 border2px" >
-                            <div>0050</div>
-                            <div class="mobile-sub-name">Runs Scored</div>
+                    <div class="d-flex justify-content-center mobile_point_distribution">
+                        <div *ngFor="let points of interactive_dashoard_response[0].data._Point_distribution"  class="mobile-runs-scored text-center col-3 border2px"  >
+                            <div>{{points.weightage}}</div>
+                            <div class="mobile-sub-name">{{points.point_label}}</div>
                         </div>
-                        <div  class="mobile-runs-saved text-center col-3 border2px">
+                        <!-- <div  class="mobile-runs-saved text-center col-3 border2px">
                             <div>0050</div>
                             <div class="mobile-sub-name">Runs Saved</div>
                         </div>
@@ -274,7 +274,7 @@
                         <div  class="mobile-fair-play text-center col-3">
                             <div>0050</div>
                             <div class="mobile-sub-name">Fair Play</div>
-                        </div>
+                        </div> -->
                     </div>
 
                 </div>
@@ -283,13 +283,13 @@
             <div class="d-flex justify-content-center">
                 <div class="mobile-btn-section">
                     <div>
-                        <img src="assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Buttons/LEARNING ACEDAMY.png" alt="Learning_Academy" width="90%" >
+                        <img src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt}}" alt="Learning_Academy" width="90%" >
                     </div>
                     <div>
-                        <img src="assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Buttons/PERSONAL MILESTONE.png" alt="Personal_Milestone" width="90%">
+                        <img src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt}}" alt="Personal_Milestone" width="90%">
                     </div>
                    <div>
-                        <img (click)="navigateToPlayZone()" src="assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Buttons/PLAYZONE.png" alt="PlayZone" width="90%" >
+                        <img (click)="navigateToPlayZone()" src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt}}" alt="PlayZone" width="90%" >
                    </div>
                     
     
@@ -302,49 +302,49 @@
                     <div class="col-3 d-flex flex-column justify-content-between align-items-center p-2">
                         <div class="d-flex flex-column justify-content-between gap-1">
                             <div class="mobile-my-trophy">
-                                <img (click)="navigateAchievementshelf()" src="assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Buttons/Trophy.png" alt="my-trophy" width="80%" height="90%">
+                                <img (click)="navigateAchievementshelf()" src="{{interactive_dashoard_response[0].data.theme_details[0].my_trophy}}" alt="my-trophy" width="80%" height="90%">
                             </div>
                             <div class="mobile-my-rewards">
-                                <img (click)="navigateReward()" src="assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Buttons/Rewards.png" alt="my-rewards" width="80%" height="90%">
+                                <img (click)="navigateReward()" src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}" alt="my-rewards" width="80%" height="90%">
                             </div>
     
                         </div>
                         <div class="d-flex flex-column gap-3">
                             <div class="mobile-tug-war">
-                                <img src="assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Buttons/Tug Of war.png" alt="tug-of-war" height="100%">
+                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_bt}}" alt="tug-of-war" height="100%">
                                 
                             </div>
                             <div class="mobile-3rd-umpire">
-                                <img (click)="navigateToNotification()" src="assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Buttons/3rd Umpire.png" alt="3rd-Umpire" width="100%" height="90%">
+                                <img (click)="navigateToNotification()" src="{{interactive_dashoard_response[0].data.theme_details[0].third_umpire_bt}}" alt="3rd-Umpire" width="100%" height="90%">
                             </div>
                         </div>
                         
 
                     </div>
                     <div class="col-6 d-flex justify-content-center align-self-end character-png">
-                        <img src="assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Buttons/CHARACTER.png" alt="character-png" height="100%" width="100%" >
+                        <img src="{{interactive_dashoard_response[0].data._personal_data.skillmuni}}" alt="character-png" height="100%" width="100%" >
                     </div>
                     <div class="col-3 d-flex flex-column justify-content-between align-items-center p-2">
                         <div class="mobile-spectator-view">
-                            <img (click)="navigateToSpectatorView()" src="assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Buttons/Spectator view.png" alt="spectator-view" height="100%" width="100%">
+                            <img (click)="navigateToSpectatorView()" src="{{interactive_dashoard_response[0].data.theme_details[0].spectator_bt}}" alt="spectator-view" height="100%" width="100%">
                         </div>
                         <div class="campaign-buttons d-flex flex-column gap-1 mt-1" >
                             <div>
-                                <img src="assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Buttons/CAMPAIGNS.png" alt="CAMPAIGNS" height="100%" width="100%">
+                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].campaigns_bt}}" alt="CAMPAIGNS" height="100%" width="100%">
                             </div>
                             <div>
-                                <img src="assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Buttons/DAILY.png" alt="Daily" height="100%" width="100%">
+                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].Daily}}" alt="Daily" height="100%" width="100%">
                             </div>
                             <div>
-                                <img src="assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Buttons/WEEKLY.png" alt="WEEKLY" height="100%" width="100%">
+                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].Weekly}}" alt="WEEKLY" height="100%" width="100%">
                             </div>
                             <div>
-                                <img src="assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Buttons/MONTHLY.png" alt="Monthly" height="100%" width="100%">
+                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].Monthly}}" alt="Monthly" height="100%" width="100%">
                             </div>
 
                         </div>
                         <div class="mobile-booster">
-                            <img src="assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Buttons/Booster.png" alt="Booster" height="90%" width="100%">
+                            <img src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}" alt="Booster" height="90%" width="100%">
                         </div>
                     </div>
                     
