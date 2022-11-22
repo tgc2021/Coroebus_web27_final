@@ -15,7 +15,6 @@
          <div class="col-6 d-flex justify-content-center align-items-center">
            <img class="web_logo" src="{{interactive_dashoard_response[0].data._personal_data.game_logo}}"/>
         </div>
-
         <div class="col-3 d-flex justify-content-end">
             <div class="web_points_bg">
                 <div class="web_center_div">
@@ -94,40 +93,7 @@
                         <p class="web_first_measurement_label">{{points.point_label}}</p>
                        
                     </div>
-                    <!-- <div class="sideline d-flex" >
-                    
-                        <img class="web_sideline_image" src="assets/images/interactive-dashboard/Side Line.png"/>
-
-                    </div> -->
-
-                    <!-- <div class="col-2 web_first_measurement d-block">
-                        <p class="web_first_measurement_number">180</p>
-                        <p class="web_first_measurement_label">Runs Saved</p>
-
-                    </div>
-                    <div class="col-1 sideline">
-                    
-                        <img class="web_sideline_image" src="assets/images/interactive-dashboard/Side Line.png"/>
-
-                    </div>
-
-                    <div class="col-2 web_first_measurement d-block">
-                        <p class="web_first_measurement_number">280</p>
-                        <p class="web_first_measurement_label">Wickets Taken</p>
-
-                    </div>
-
-                    <div class="col-1 sideline">
-                    
-                        <img class="web_sideline_image" src="assets/images/interactive-dashboard/Side Line.png"/>
-
-                    </div>
-                    
-                    <div class="col-2 web_first_measurement d-block">
-                        <p class="web_first_measurement_number">98</p>
-                        <p class="web_first_measurement_label">Fair Play</p>
-
-                    </div> -->
+                   
                 </div>
             </div>
 
@@ -141,15 +107,15 @@
 
                             </div>
                             <div  class="d-flex justify-content-end">
-                                <img class="web_daily_image" src="{{interactive_dashoard_response[0].data.theme_details[0].daily_bt_web}}"  />
+                                <img class="web_daily_image" src="{{interactive_dashoard_response[0].data.theme_details[0].daily_bt_web}}" data-bs-toggle="modal" data-bs-target="#DailyModal"/>
 
                             </div>
                             <div  class="d-flex justify-content-end">
-                                <img class="web_weekly_image" src="{{interactive_dashoard_response[0].data.theme_details[0].weekly_bt_web}}" />
+                                <img class="web_weekly_image" src="{{interactive_dashoard_response[0].data.theme_details[0].weekly_bt_web}}"  data-bs-toggle="modal" data-bs-target="#weeklyModal"/>
 
                             </div>
                             <div  class="d-flex justify-content-end">
-                                <img class="web_monthly_image" src="{{interactive_dashoard_response[0].data.theme_details[0].monthly_bt_web}}" />
+                                <img class="web_monthly_image" src="{{interactive_dashoard_response[0].data.theme_details[0].monthly_bt_web}}" data-bs-toggle="modal" data-bs-target="#monthlyModal" />
 
                             </div>
                         </div>
@@ -301,11 +267,11 @@
                 <div class="row mobile-cricket-pitch">
                     <div class="col-3 d-flex flex-column justify-content-between align-items-center gap-3 pt-2">
                         <div class="d-flex flex-column justify-content-between gap-3">
-                            <div class="mobile-my-trophy">
-                                <img (click)="navigateAchievementshelf()" src="{{interactive_dashoard_response[0].data.theme_details[0].my_trophy}}" alt="my-trophy" width="80%" height="90%">
+                            <div class="mobile-my-trophy" >
+                                <img (click)="navigateAchievementshelf()" src="{{interactive_dashoard_response[0].data.theme_details[0].my_trophy}}" alt="my-trophy" width="80%" height="90%" style="border:1px solid yellow ; border-radius:5px">
                             </div>
                             <div class="mobile-my-rewards">
-                                <img (click)="navigateReward()" src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}" alt="my-rewards" width="80%" height="90%">
+                                <img (click)="navigateReward()" src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}" alt="my-rewards" width="80%" height="90%" style="border:1px solid yellow ; border-radius:5px">
                             </div>
 
                         </div>
@@ -326,20 +292,20 @@
                     </div>
                     <div class="col-3 d-flex flex-column justify-content-between align-items-center pt-2">
                         <div class="mobile-spectator-view">
-                            <img (click)="navigateToSpectatorView()" src="{{interactive_dashoard_response[0].data.theme_details[0].spectator_bt}}" alt="spectator-view" height="100%" width="100%">
+                            <img (click)="navigateToSpectatorView()" src="{{interactive_dashoard_response[0].data.theme_details[0].spectator_bt}}" alt="spectator-view" height="100%" width="100%" style="border:1px solid yellow ; border-radius:5px">
                         </div>
                         <div class="campaign-buttons d-flex flex-column gap-1 mt-1">
                             <div>
                                 <img src="{{interactive_dashoard_response[0].data.theme_details[0].campaigns_bt}}" alt="CAMPAIGNS" height="100%" width="100%">
                             </div>
                             <div>
-                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].Daily}}" alt="Daily" height="100%" width="100%">
+                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].Daily}}" alt="Daily" height="100%" width="100%" data-bs-toggle="modal" data-bs-target="#DailyModal">
                             </div>
                             <div>
-                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].Weekly}}" alt="WEEKLY" height="100%" width="100%">
+                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].Weekly}}" alt="WEEKLY" height="100%" width="100%" data-bs-toggle="modal" data-bs-target="#weeklyModal">
                             </div>
                             <div>
-                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].Monthly}}" alt="Monthly" height="100%" width="100%">
+                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].Monthly}}" alt="Monthly" height="100%" width="100%" data-bs-toggle="modal" data-bs-target="#monthlyModal" >
                             </div>
 
                         </div>
@@ -574,16 +540,18 @@
                             <div class="d-flex justify-content-center gap-2 mt-1">
                                 <div class="d-flex flex-column align-items-center">
                                     <div class="Number">
-                                        {{interactive_dashoard_response[0].data.seasonal_theme_weekly_badge_details[0].your_rank}}
+                                        <!-- {{interactive_dashoard_response[0].data.seasonal_theme_weekly_badge_details[0].your_rank}} -->
+                                        0
                                     </div>
                                     <div class="Words">Your Rank</div>
                                 </div>
-                                <div style="border-left:2px solid #000000;height:60px">
+                                <div style="border-left:1px solid #000000;height:60px">
                                   
                                 </div>
                                 <div class="d-flex flex-column align-items-center">
                                     <div class="Number">
-                                        {{interactive_dashoard_response[0].data.seasonal_theme_weekly_badge_details[0].your_score}}
+                                        <!-- {{interactive_dashoard_response[0].data.seasonal_theme_weekly_badge_details[0].your_score}} -->
+                                        0
                                     </div>
                                     <div class="Words">Your Score</div>
                                 </div>
@@ -612,7 +580,7 @@
 
 
                             </div>
-                            <div class="card  p-2 gap-2" *ngIf="weeklyTopers.length==0">
+                            <div class="p-2 gap-2" *ngIf="weeklyTopers.length==0">
 
                                 <span class="welcomeText">
                                     Hey welcome! The themes will be configured soon. Stay tuned!
@@ -626,7 +594,7 @@
 
 
                     </div>
-                    <div class="row d-flex justify-content-center align-items-end" style="height:35vh;"
+                    <div class="row d-flex justify-content-center align-items-start" style="height:35vh;"
                         *ngIf="interactive_dashoard_response[0].data.seasonal_theme_weekly.length==0">
                         <div class="col text-center">
                             <span>Hey Welcome! The Themes will be configured soon. Stay tuned </span>
@@ -696,7 +664,8 @@
                                 <div class="d-flex justify-content-center gap-2 mt-2">
                                     <div class="d-flex flex-column align-items-center">
                                         <div class="Number">
-                                            {{interactive_dashoard_response[0].data.seasonal_theme_monthly_badge_details[0].your_rank}}
+                                            <!-- {{interactive_dashoard_response[0].data.seasonal_theme_monthly_badge_details[0].your_rank}} -->
+                                            0
                                         </div>
                                         <div class="Words">Your Rank</div>
                                     </div>
@@ -706,7 +675,8 @@
 
                                     <div class="d-flex flex-column align-items-center">
                                         <div class="Number">
-                                            {{interactive_dashoard_response[0].data.seasonal_theme_monthly_badge_details[0].your_score}}
+                                            <!-- {{interactive_dashoard_response[0].data.seasonal_theme_monthly_badge_details[0].your_score}} -->
+                                            0
                                         </div>
                                         <div class="Words">Your Score</div>
                                     </div>
@@ -730,7 +700,7 @@
                                     </div>
 
                                 </div>
-                                <div class="card  p-2 gap-2" *ngIf="monthlyTopers.length==0">
+                                <div class="p-2 gap-2" *ngIf="monthlyTopers.length==0">
 
                                     <span class="welcomeText">
                                         Hey welcome! The themes will be configured soon. Stay tuned!
@@ -743,10 +713,10 @@
 
 
                         </div>
-                        <div class="row d-flex justify-content-center align-items-end" style="height:35vh;"
-                            *ngIf="interactive_dashoard_response[0].data.seasonal_theme_weekly.length==0">
+                        <div class="row d-flex justify-content-center align-items-start" style="height:35vh;"
+                            *ngIf="interactive_dashoard_response[0].data.seasonal_theme_monthly.length==0">
                             <div class="col text-center">
-                                <span>Hey Welcome! The Themes will be configured soon. Stay tuned </span>
+                                <span style="color:#FFFFFF">Hey Welcome! The Themes will be configured soon. Stay tuned </span>
                             </div>
                         </div>
 

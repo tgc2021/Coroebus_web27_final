@@ -138,7 +138,7 @@
 }
 
 .dashboard-banner {
-    border: 5px solid;
+    border: 2px solid;
     box-shadow: 0px 0px 0px 1px #E8E8E8;
     filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.12)) drop-shadow(0px 20px 20px rgba(0, 0, 0, 0.08));
     border-radius: 15px;
@@ -290,7 +290,7 @@
 
 .inner-bulletins-height {
     height: 230px;
-    width: 300px;
+    max-width:300px ;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -298,8 +298,8 @@
  .inner-bulletins-no-height {
     overflow-y: auto;
     overflow-x: hidden;
-    width: 300px;
-    max-height: 600px;
+    max-width: 300px;
+    height: 82vh;
  }
 
 .dashboard-popup-level::-webkit-scrollbar {
@@ -473,10 +473,7 @@
 //     border-radius: 11px;
 // }
 
-.points-bullentins-card-no-height {
-    height: 700px;
-    border-radius: 10px;
-}
+
 .points-row {
     background: #FFFFFF;
     box-shadow: 0px 0px 0px 0.619px #e8e8e8, 0px 0px 1.238px rgb(0 0 0 / 12%), 0px 12.38px 12.38px rgb(0 0 0 / 2%);
@@ -1321,10 +1318,7 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1281px) {
     //     max-height: 195px;
     // }
 
-    .inner-bulletins-no-height {
-    overflow-y: auto;
-    max-height:75vh !important;
-    }
+
 
     .spot-engagement {
         line-height: 12px;
