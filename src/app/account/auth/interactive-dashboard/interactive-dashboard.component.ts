@@ -169,7 +169,7 @@ export class InteractiveDashboardComponent implements OnInit {
   dailyToppers: any;
   logo: any;
   point_distribution:any;
-
+  scorecardcolor:any
   constructor(private readonly store: Store, public element: ElementRef, public Util: Util,private _router: Router, public http: ApiserviceService, private eventService: EventService) { }
 
   ngOnInit(): void {
@@ -214,7 +214,13 @@ if(this.mergeObj.id_coroebus_game != null){
     
     this.element.nativeElement.style.setProperty('--myvar', `${this.point_distribution}`)
 
+
+    this.scorecardcolor = this.interactive_dashoard_response[0].data.theme_details[0].scoreboard_color_bg
+    console.log(this.scorecardcolor);
     
+    this.element.nativeElement.style.setProperty('--colorback', `${this.scorecardcolor}`)
+
+
     this.dailyToppers=this.interactive_dashoard_response[0].data.seasonal_theme_daily_badge_details;
     this.weeklyTopers=this.interactive_dashoard_response[0].data.seasonal_theme_weekly_badge_toppers;
     this.monthlyTopers=this.interactive_dashoard_response[0].data.seasonal_theme_monthly_badge_toppers;

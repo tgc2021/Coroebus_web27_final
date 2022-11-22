@@ -21,6 +21,7 @@
 
 .web_profile_pic {
     height: 9vh;
+    width: 85%;
     border: 1px solid #FEEE1E;
 }
 
@@ -168,7 +169,7 @@
 
 .upper_blue_scoreboard {
     height: 15vh;
-    background: #004EC9;
+    background: var(--colorback);
     border-radius: 4px;
     margin-top: 0.5em;
 
@@ -176,7 +177,7 @@
 
 .lower_blue_scorecard {
     height: 15vh;
-    background: #004EC9;
+    background: var(--colorback);
     border-radius: 4px;
     margin-top: 0.5em;
     cursor: pointer;
@@ -414,7 +415,7 @@
 }
 
 .mobile-first-section {
-    background: #004EC9;
+    background: var(--colorback);
     color: white;
     font-family: 'Inter';
     font-style: normal;
@@ -432,7 +433,7 @@
 }
 
 .mobile-second-section {
-    background: #004EC9;
+    background: var(--colorback);
     opacity: 0.8;
     font-family: 'Inter';
     font-style: normal;

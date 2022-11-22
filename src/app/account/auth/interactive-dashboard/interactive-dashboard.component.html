@@ -22,7 +22,7 @@
                 <div class="web_points_bg">
                     <div class="web_center_div">
                         <img class="web_points"
-                            src="assets/images/final-interactive-dashboard/web-assets/Web/Web/Cricket/Buttons/points_without_bg.png" />
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].reward_points_image}}" />
                         <p class="total_web_points">{{interactive_dashoard_response[0].data._points[2].score}}</p>
                     </div>
 
@@ -221,8 +221,8 @@
                         </div>
                         <div class="mobile-reward-section">
                             <div class="text-center">
-                                <img src="assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Buttons/wallet 1.png"
-                                    alt="">
+                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].reward_points_image}}"
+                                    alt="" style="height: 5vh;">
                                 <div>{{interactive_dashoard_response[0].data._points[2].score}}</div>
                             </div>
 
