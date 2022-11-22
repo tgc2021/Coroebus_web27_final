@@ -1,206 +1,201 @@
+<!-- Web View Started-->
 <div *ngFor="let response of interactive_dashoard_response">
-    <div  class="web-view" >
+    <div class="web-view">
         <div class="row web_first_row">
-       
+
             <div class="col-1 web_first_col d-flex">
-               <img class="web_profile_pic" src="{{interactive_dashoard_response[0].data._personal_data.profile_logo}}" />
+                <img class="web_profile_pic"
+                    src="{{interactive_dashoard_response[0].data._personal_data.profile_logo}}" />
             </div>
-           
+
             <div class="col-2 web_second_col">
-             <p class="web_profile_name"> {{interactive_dashoard_response[0].data._personal_data.first_name}}</p> 
-             <p class="web_team_name"> {{interactive_dashoard_response[0].data._personal_data.team_name}}</p> 
-    
-             </div>
-            
-             <div class="col-6 d-flex justify-content-center align-items-center">
-               <img class="web_logo" src="{{interactive_dashoard_response[0].data._personal_data.game_logo}}"/>
+                <p class="web_profile_name"> {{interactive_dashoard_response[0].data._personal_data.first_name}}</p>
+                <p class="web_team_name"> {{interactive_dashoard_response[0].data._personal_data.team_name}}</p>
+
             </div>
-    
+
+            <div class="col-6 d-flex justify-content-center align-items-center">
+                <img class="web_logo" src="{{interactive_dashoard_response[0].data._personal_data.game_logo}}" />
+            </div>
+
             <div class="col-3 d-flex justify-content-end">
                 <div class="web_points_bg">
                     <div class="web_center_div">
-                        <img class="web_points" src="assets/images/final-interactive-dashboard/web-assets/Web/Web/Cricket/Buttons/points_without_bg.png" />
+                        <img class="web_points"
+                            src="assets/images/final-interactive-dashboard/web-assets/Web/Web/Cricket/Buttons/points_without_bg.png" />
                         <p class="total_web_points">{{interactive_dashoard_response[0].data._points[2].score}}</p>
                     </div>
-    
+
                 </div>
             </div>
-    
-    
+
+
         </div>
-    
+
         <div class="row web_second_row">
             <div class="col-8 web_background_image" style="background: url({{interactive_dashoard_response[0].data.theme_details[0].interactive_dashboard_bg_web}}); height: 65vh;
             background-size: 100% 100%;
             margin-top: 0.5em;">
-             <div class="row">
-                <div class="col-2 web_col_left">
-                    <img class="web_my_trophy" (click)="navigateAchievementshelf()" src="{{interactive_dashoard_response[0].data.theme_details[0].my_trophy}}"/>
-                    <img class="web_my_rewards" (click)="navigateReward()" src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}"/>
-                    <img class="web_third_umpire" (click)="navigateToNotification()" src="{{interactive_dashoard_response[0].data.theme_details[0].third_umpire_bt}}"/>
-                </div>
-    
-                <div class="col-8 d-flex justify-content-center align-items-end">
-                    <img class="web_character" src="{{interactive_dashoard_response[0].data._personal_data.skillmuni}}"/>
-                </div>
-    
-                <div class="col-2 d-flex justify-content-end web_col_right">
-                    <img class="web_spectator_view" (click)="navigateToSpectatorView()" src="{{interactive_dashoard_response[0].data.theme_details[0].spectator_bt}}"/>
-                    <img class="web_booster" src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}"/>
-    
+                <div class="row">
+                    <div class="col-2 web_col_left">
+                        <img class="web_my_trophy" (click)="navigateAchievementshelf()"
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].my_trophy}}" />
+                        <img class="web_my_rewards" (click)="navigateReward()"
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}" />
+                        <img class="web_third_umpire" (click)="navigateToNotification()"
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].third_umpire_bt}}" />
+                    </div>
+
+                    <div class="col-8 d-flex justify-content-center align-items-end">
+                        <img class="web_character"
+                            src="{{interactive_dashoard_response[0].data._personal_data.skillmuni}}" />
+                    </div>
+
+                    <div class="col-2 d-flex justify-content-end web_col_right">
+                        <img class="web_spectator_view" (click)="navigateToSpectatorView()"
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].spectator_bt}}" />
+                        <img class="web_booster"
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}" />
+
                     </div>
                 </div>
             </div>
-    
+
             <div class="col-4 web_right_side">
                 <div class="upper_blue_scoreboard">
                     <div class="row upper_blue_scorecard_details d-flex">
-    
+
                         <div class="col-3 web_team_rank d-block">
-                        
-                            <p class="web_tem_rank_number">{{interactive_dashoard_response[0].data._primary.team_rank}}</p>
+
+                            <p class="web_tem_rank_number">{{interactive_dashoard_response[0].data._primary.team_rank}}
+                            </p>
                             <p class="web_tem_rank_label">Team Rank</p>
                         </div>
                         <div class="col-1 sideline">
-                        
-                            <img class="web_sideline_image" src="assets/images/interactive-dashboard/Side Line.png"/>
-    
+
+                            <img class="web_sideline_image" src="assets/images/interactive-dashboard/Side Line.png" />
+
                         </div>
-    
+
                         <div class="col-3 web_my_score d-block">
-                        
-                            <p class="web_my_score_number">{{interactive_dashoard_response[0].data._points[0].score}}</p>
+
+                            <p class="web_my_score_number">{{interactive_dashoard_response[0].data._points[0].score}}
+                            </p>
                             <p class="web_my_score_label">My Score</p>
                         </div>
                         <div class="col-1 sideline">
-                        
-                            <img class="web_sideline_image" src="assets/images/interactive-dashboard/Side Line.png"/>
-    
+
+                            <img class="web_sideline_image" src="assets/images/interactive-dashboard/Side Line.png" />
+
                         </div>
-    
+
                         <div class="col-3 web_my_rank d-block">
-                        
+
                             <p class="web_my_rank_number">{{interactive_dashoard_response[0].data._primary.my_rank}}</p>
                             <p class="web_my_rank_label">My Rank</p>
                         </div>
-                      
-                       
-                      
+
+
+
                     </div>
                 </div>
-    
+
                 <div class="lower_blue_scorecard" (click)="navigateDashboard()">
                     <div class="row lower_blue_scorecard_details d-flex justify-content-center">
-                        <div class="col-3 web_first_measurement d-block"  *ngFor="let points of interactive_dashoard_response[0].data._Point_distribution" >
+                        <div class="col-3 web_first_measurement d-block"
+                            *ngFor="let points of interactive_dashoard_response[0].data._Point_distribution">
                             <p class="web_first_measurement_number">{{points.weightage}}</p>
                             <p class="web_first_measurement_label">{{points.point_label}}</p>
-                           
+
                         </div>
-                        <!-- <div class="sideline d-flex" >
-                        
-                            <img class="web_sideline_image" src="assets/images/interactive-dashboard/Side Line.png"/>
-    
-                        </div> -->
-    
-                        <!-- <div class="col-2 web_first_measurement d-block">
-                            <p class="web_first_measurement_number">180</p>
-                            <p class="web_first_measurement_label">Runs Saved</p>
-    
-                        </div>
-                        <div class="col-1 sideline">
-                        
-                            <img class="web_sideline_image" src="assets/images/interactive-dashboard/Side Line.png"/>
-    
-                        </div>
-    
-                        <div class="col-2 web_first_measurement d-block">
-                            <p class="web_first_measurement_number">280</p>
-                            <p class="web_first_measurement_label">Wickets Taken</p>
-    
-                        </div>
-    
-                        <div class="col-1 sideline">
-                        
-                            <img class="web_sideline_image" src="assets/images/interactive-dashboard/Side Line.png"/>
-    
-                        </div>
-                        
-                        <div class="col-2 web_first_measurement d-block">
-                            <p class="web_first_measurement_number">98</p>
-                            <p class="web_first_measurement_label">Fair Play</p>
-    
-                        </div> -->
                     </div>
                 </div>
-    
+
                 <div class="campaign_div">
-    
+
                     <div class="row campaign_details">
                         <div class="col-12 campaign_full_image  d-flex justify-content-end align-items-end">
                             <div>
-                                <div  class="d-flex justify-content-end">
-                                    <img class="web_campaign_image" src="{{interactive_dashoard_response[0].data.theme_details[0].campaigns_bt_web}}" />
-    
+                                <div class="d-flex justify-content-end">
+                                    <img class="web_campaign_image"
+                                        src="{{interactive_dashoard_response[0].data.theme_details[0].campaigns_bt_web}}" />
+
                                 </div>
-                                <div  class="d-flex justify-content-end">
-                                    <img class="web_daily_image" src="{{interactive_dashoard_response[0].data.theme_details[0].daily_bt_web}}"  />
-    
+                                <div class="d-flex justify-content-end">
+                                    <img class="web_daily_image"
+                                        src="{{interactive_dashoard_response[0].data.theme_details[0].daily_bt_web}}" />
+
                                 </div>
-                                <div  class="d-flex justify-content-end">
-                                    <img class="web_weekly_image" src="{{interactive_dashoard_response[0].data.theme_details[0].weekly_bt_web}}" />
-    
+                                <div class="d-flex justify-content-end">
+                                    <img class="web_weekly_image"
+                                        src="{{interactive_dashoard_response[0].data.theme_details[0].weekly_bt_web}}" />
+
                                 </div>
-                                <div  class="d-flex justify-content-end">
-                                    <img class="web_monthly_image" src="{{interactive_dashoard_response[0].data.theme_details[0].monthly_bt_web}}" />
-    
+                                <div class="d-flex justify-content-end">
+                                    <img class="web_monthly_image"
+                                        src="{{interactive_dashoard_response[0].data.theme_details[0].monthly_bt_web}}" />
+
                                 </div>
                             </div>
-    
+
                         </div>
-    
-                        <!-- <div class="col-1 web_pole">
-                            <div  class="d-flex justify-content-start align-items-end">
-                                <img class="web_monthly_imae" src="../../../../assets/images/final-interactive-dashboard/web-assets/Web/Web/Cricket/Buttons/POLE.png" />
-    
-                            </div>
-                        </div>  -->
-    
+
+
                     </div>
                 </div>
-    
+
             </div>
         </div>
-    
-    
+
+
         <div class="row web_third_row">
             <div class="col-8">
                 <div class="row">
                     <div class="col-12 d-flex gap-2 web_buttons_col">
                         <div class="col-3 web_bottom_buttons">
-                            <img class="web_button_image" src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_web}}" />
+                            <img class="web_button_image"
+                                src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_web}}" />
                         </div>
-    
+
                         <div class="col-3 web_bottom_buttons">
-                            <img class="web_button_image" src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt_web}}" />
+                            <img class="web_button_image"
+                                src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt_web}}" />
                         </div>
-    
+
                         <div class="col-3 web_bottom_buttons">
-                            <img class="web_button_image" src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt_web}}" />
+                            <img class="web_button_image"
+                                src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt_web}}" />
                         </div>
-    
+
                         <div class="col-3 web_bottom_buttons">
-                            <img (click)="navigateToPlayZone()" class="web_button_image" src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt_web}}" />
+                            <img (click)="navigateToPlayZone()" class="web_button_image"
+                                src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt_web}}" />
                         </div>
-    
+
                     </div>
                 </div>
             </div>
-    
+
         </div>
     </div>
-   
+
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- Mobile View Started -->
 <div class="mobile-view" *ngFor="let response of interactive_dashoard_response">
@@ -212,19 +207,23 @@
                     <div class="d-flex justify-content-between">
                         <div class="d-flex gap-2">
                             <div class="mobile-profile-picture">
-                                <img src="{{interactive_dashoard_response[0].data._personal_data.profile_logo}}" alt="" width="100%" height="100%">
+                                <img src="{{interactive_dashoard_response[0].data._personal_data.profile_logo}}" alt=""
+                                    width="100%" height="100%">
                             </div>
                             <div class="mobile-profile-info d-flex gap-2 align-items-center">
                                 <div class="mobile-profile-name d-flex flex-column">
-                                    <p class="mobile_first_name_details">{{interactive_dashoard_response[0].data._personal_data.first_name}} </p>
-                                    <p class="mobile_team_name_details">{{interactive_dashoard_response[0].data._personal_data.team_name}}</p>
+                                    <p class="mobile_first_name_details">
+                                        {{interactive_dashoard_response[0].data._personal_data.first_name}} </p>
+                                    <p class="mobile_team_name_details">
+                                        {{interactive_dashoard_response[0].data._personal_data.team_name}}</p>
                                 </div>
 
                             </div>
                         </div>
                         <div class="mobile-reward-section">
                             <div class="text-center">
-                                <img src="assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Buttons/wallet 1.png" alt="" >
+                                <img src="assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Buttons/wallet 1.png"
+                                    alt="">
                                 <div>{{interactive_dashoard_response[0].data._points[2].score}}</div>
                             </div>
 
@@ -237,7 +236,7 @@
             <!-- Mobile First ScoreBoard Section -->
             <div class="d-flex justify-content-center">
                 <div class="mobile-first-section d-flex justify-content-evenly align-items-center">
-                    <div class="mobile-team-rank text-center col-4 border2px" >
+                    <div class="mobile-team-rank text-center col-4 border2px">
                         <div>{{interactive_dashoard_response[0].data._primary.team_rank}}</div>
                         <div class="mobile-sub-name">Team Rank</div>
                     </div>
@@ -263,22 +262,12 @@
                         <span> {{interactive_dashoard_response[0].data._personal_data.game_name}}</span>
                     </div>
                     <div class="d-flex justify-content-center mobile_point_distribution">
-                        <div *ngFor="let points of interactive_dashoard_response[0].data._Point_distribution"  class="mobile-runs-scored text-center col-3 border2px"  >
+                        <div *ngFor="let points of interactive_dashoard_response[0].data._Point_distribution"
+                            class="mobile-runs-scored text-center col-3 border2px">
                             <div>{{points.weightage}}</div>
                             <div class="mobile-sub-name">{{points.point_label}}</div>
                         </div>
-                        <!-- <div  class="mobile-runs-saved text-center col-3 border2px">
-                            <div>0050</div>
-                            <div class="mobile-sub-name">Runs Saved</div>
-                        </div>
-                        <div class="mobile-wickets-taken text-center col-3 border2px">
-                            <div>0050</div>
-                            <div class="mobile-sub-name">Wickets Taken</div>
-                        </div>
-                        <div class="mobile-fair-play text-center col-3">
-                            <div>0050</div>
-                            <div class="mobile-sub-name">Fair Play</div>
-                        </div> -->
+
                     </div>
 
                 </div>
@@ -287,71 +276,90 @@
             <div class="d-flex justify-content-center">
                 <div class="mobile-btn-section">
                     <div>
-                        <img src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt}}" alt="Learning_Academy" width="90%" >
+                        <img src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt}}"
+                            alt="Learning_Academy" width="90%">
                     </div>
                     <div>
-                        <img src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt}}" alt="Personal_Milestone" width="90%">
+                        <img src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt}}"
+                            alt="Personal_Milestone" width="90%">
                     </div>
-                   <div>
-                        <img (click)="navigateToPlayZone()" src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt}}" alt="PlayZone" width="90%" >
-                   </div>
-                    
-    
+                    <div>
+                        <img (click)="navigateToPlayZone()"
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt}}" alt="PlayZone"
+                            width="90%">
+                    </div>
+
+
                 </div>
             </div>
 
 
             <div class="col  d-flex justify-content-center align-items-center">
-                <div class="row mobile-cricket-pitch"  style="background: url({{interactive_dashoard_response[0].data.theme_details[0].interactive_dashboard_bg_web}});  height: 52vh;
+                <div class="row mobile-cricket-pitch" style="background: url({{interactive_dashoard_response[0].data.theme_details[0].interactive_dashboard_bg}});  height: 52vh;
                 width: 95vw;
                 background-size: 100% 100%;
                 background-repeat: no-repeat;">
                     <div class="col-3 d-flex flex-column justify-content-between align-items-center gap-3 pt-2">
                         <div class="d-flex flex-column justify-content-between gap-3">
                             <div class="mobile-my-trophy">
-                                <img (click)="navigateAchievementshelf()" src="{{interactive_dashoard_response[0].data.theme_details[0].my_trophy}}" alt="my-trophy" width="80%" height="90%">
+                                <img (click)="navigateAchievementshelf()"
+                                    src="{{interactive_dashoard_response[0].data.theme_details[0].my_trophy}}"
+                                    alt="my-trophy" width="80%" height="90%">
                             </div>
                             <div class="mobile-my-rewards">
-                                <img (click)="navigateReward()" src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}" alt="my-rewards" width="80%" height="90%">
+                                <img (click)="navigateReward()"
+                                    src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}"
+                                    alt="my-rewards" width="80%" height="90%">
                             </div>
 
                         </div>
                         <div class="d-flex flex-column  gap-5">
                             <div class="mobile-tug-war">
-                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_bt}}" alt="tug-of-war" height="100%">
-                                
+                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_bt}}"
+                                    alt="tug-of-war" height="100%">
+
                             </div>
                             <div class="mobile-3rd-umpire">
-                                <img (click)="navigateToNotification()" src="{{interactive_dashoard_response[0].data.theme_details[0].third_umpire_bt}}" alt="3rd-Umpire" width="100%" height="90%">
+                                <img (click)="navigateToNotification()"
+                                    src="{{interactive_dashoard_response[0].data.theme_details[0].third_umpire_bt}}"
+                                    alt="3rd-Umpire" width="100%" height="90%">
                             </div>
                         </div>
 
 
                     </div>
                     <div class="col-6 d-flex justify-content-center align-self-end character-png">
-                        <img src="{{interactive_dashoard_response[0].data._personal_data.skillmuni}}" alt="character-png" height="100%" width="100%" >
+                        <img src="{{interactive_dashoard_response[0].data._personal_data.skillmuni}}"
+                            alt="character-png" height="100%" width="100%">
                     </div>
                     <div class="col-3 d-flex flex-column justify-content-between align-items-center pt-2">
                         <div class="mobile-spectator-view">
-                            <img (click)="navigateToSpectatorView()" src="{{interactive_dashoard_response[0].data.theme_details[0].spectator_bt}}" alt="spectator-view" height="100%" width="100%">
+                            <img (click)="navigateToSpectatorView()"
+                                src="{{interactive_dashoard_response[0].data.theme_details[0].spectator_bt}}"
+                                alt="spectator-view" height="100%" width="100%">
                         </div>
                         <div class="campaign-buttons d-flex flex-column gap-1 mt-1">
                             <div>
-                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].campaigns_bt}}" alt="CAMPAIGNS" height="100%" width="100%">
+                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].campaigns_bt}}"
+                                    alt="CAMPAIGNS" height="100%" width="100%">
                             </div>
                             <div>
-                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].Daily}}" alt="Daily" height="100%" width="100%">
+                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].Daily}}" alt="Daily"
+                                    height="100%" width="100%">
                             </div>
                             <div>
-                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].Weekly}}" alt="WEEKLY" height="100%" width="100%">
+                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].Weekly}}"
+                                    alt="WEEKLY" height="100%" width="100%">
                             </div>
                             <div>
-                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].Monthly}}" alt="Monthly" height="100%" width="100%">
+                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].Monthly}}"
+                                    alt="Monthly" height="100%" width="100%">
                             </div>
 
                         </div>
                         <div class="mobile-booster">
-                            <img src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}" alt="Booster" height="90%" width="100%">
+                            <img src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}"
+                                alt="Booster" height="90%" width="100%">
                         </div>
                     </div>
 
@@ -369,6 +377,13 @@
 
 </div>
 
+
+
+
+
+
+
+<!-- Modals Started -->
 <div class="PersonalMilestoneModal">
     <div class="modal fade" id="personalMileStoneModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -418,7 +433,7 @@
                             </div>
 
                         </div>
-                        <div class="" >
+                        <div class="">
                             <div class="modalDescription col-11">
                                 {{interactive_dashoard_response[0].data.seasonal_theme_daily[0].theme_description}}
                             </div>
@@ -430,7 +445,7 @@
                                     date:"dd/M/yyyy"}}</div>
                             </div>
                         </div>
-                        <div  class="d-flex justify-content-center align-items-end  dailyCenterCircle ">
+                        <div class="d-flex justify-content-center align-items-end  dailyCenterCircle ">
                             <div class="d-flex flex-column justify-content-center align-items-center">
                                 <div class="firstCircle centerCircle">
                                     <div class="secondCircle centerCircle">
@@ -439,7 +454,7 @@
                                                 <img src="{{interactive_dashoard_response[0].data.seasonal_theme_daily[0].logo}}"
                                                     alt="" height="52" width="52" style="border-radius: 50%;">
                                             </div>
-    
+
                                             <div class="row">
                                                 <div class="col p-1">
                                                     <div class="rewardPintImg">
@@ -454,9 +469,9 @@
                                     </div>
                                 </div>
                             </div>
-    
+
                         </div>
-                        
+
                         <div class="" style="margin-top:20%;">
                             <div class="Progress-card container">
                                 <div class="">
@@ -561,7 +576,7 @@
                         </div>
 
                         <div class="mt-5">
-                            <div class="d-flex justify-content-center" >
+                            <div class="d-flex justify-content-center">
                                 <img src="{{interactive_dashoard_response[0].data.seasonal_theme_weekly[0].logo}}"
                                     alt="master_blaster" height="100px" width="100px" style="border-radius:100%;">
 
@@ -586,7 +601,7 @@
                                     <div class="Words">Your Rank</div>
                                 </div>
                                 <div style="border-left:1px solid #000000;height:60px">
-                                  
+
                                 </div>
                                 <div class="d-flex flex-column align-items-center">
                                     <div class="Number">
@@ -645,6 +660,7 @@
             </div>
         </div>
     </div>
+    
     <!-- Monthly Modal -->
     <div class="monthlyModal">
         <div class="modal  fade bd-example-modal-sm" id="monthlyModal" data-bs-backdrop="static"
@@ -683,7 +699,7 @@
                             <div class="mt-5">
                                 <div class="d-flex justify-content-center mt-5">
                                     <img src="{{interactive_dashoard_response[0].data.seasonal_theme_monthly[0].logo}}"
-                                    alt="master_blaster" height="100px" width="100px" style="border-radius:100%;">
+                                        alt="master_blaster" height="100px" width="100px" style="border-radius:100%;">
 
 
                                 </div>
@@ -710,7 +726,7 @@
                                         <div class="Words">Your Rank</div>
                                     </div>
                                     <div style="border-left:2px solid #000000;height:60px">
-                                  
+
                                     </div>
 
                                     <div class="d-flex flex-column align-items-center">
@@ -756,7 +772,8 @@
                         <div class="row d-flex justify-content-center align-items-start" style="height:35vh;"
                             *ngIf="interactive_dashoard_response[0].data.seasonal_theme_monthly.length==0">
                             <div class="col text-center">
-                                <span style="color:#FFFFFF">Hey Welcome! The Themes will be configured soon. Stay tuned </span>
+                                <span style="color:#FFFFFF">Hey Welcome! The Themes will be configured soon. Stay tuned
+                                </span>
                             </div>
                         </div>
 

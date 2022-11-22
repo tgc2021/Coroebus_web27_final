@@ -21,7 +21,6 @@
 
 .web_profile_pic {
     height: 9vh;
-    width: 90%;
     border: 1px solid #FEEE1E;
 }
 
@@ -30,7 +29,8 @@
     font-style: normal;
     font-weight: 400;
     font-size: 1em;
-    cursor: pointer;;
+    cursor: pointer;
+    ;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -42,7 +42,7 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-  
+
     /* identical to box height */
     color: #FFFFFF;
     line-height: 0;
@@ -95,7 +95,7 @@
     display: flex;
 }
 
-.web_center_div{
+.web_center_div {
     text-align: center;
 }
 
@@ -121,18 +121,24 @@
 }
 
 .web_third_umpire {
-    height: 14vh;
+    height: 12vh;
     position: absolute;
-    bottom: 0;
+    bottom: 0.5em;
     left: 0.5em;
     cursor: pointer;
+    border-radius: 10px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 .web_booster {
-    height: 14vh;
+    height: 12vh;
     position: absolute;
-    bottom: 0;
+    bottom: 0.5em;
     right: 0.5em;
+    border-radius: 10px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 .web_right_side {
@@ -143,7 +149,6 @@
 .web_character {
     height: 37vh;
     padding-bottom: 1em;
-    padding-left: 3em;
 
 }
 
@@ -179,17 +184,18 @@
 .lower_blue_scorecard,
 .lower_blue_scorecard_details {
     height: 15vh;
-   width: 100%;
-   margin-left: 0;
+    width: 100%;
+    margin-left: 0;
 }
 
-.upper_blue_scorecard_details{
+.upper_blue_scorecard_details {
     height: 15vh;
     margin-left: 2vh;
 }
-.lower_blue_scorecard_details{
-  
-  
+
+.lower_blue_scorecard_details {
+
+
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -210,11 +216,11 @@
     // height: 12vh;
 }
 
-.web_first_measurement{
+.web_first_measurement {
     border-right: 2px solid #ffffff;
 }
 
-.sideline{
+.sideline {
     display: flex;
     align-items: center;
     height: 84v;
@@ -222,9 +228,10 @@
     height: 15vh;
 }
 
-.web_sideline_image{
+.web_sideline_image {
     height: 80%;
 }
+
 .web_my_rank {
     vertical-align: middle;
     margin: auto 0;
@@ -240,7 +247,7 @@
     text-align: center;
     color: #FFFFFF;
     margin-bottom: 0;
-    
+
 
 }
 
@@ -324,10 +331,11 @@
     .web-view {
         display: none;
     }
-    .dailyCenterCircle{
+
+    .dailyCenterCircle {
         height: 14vh;
     }
- 
+
 }
 
 // Mobile View Started
@@ -338,17 +346,18 @@
     width: 100vw;
     padding: 0;
     margin: 0;
-    
+
     background-size: 100% 100%;
     background-attachment: fixed;
     background-position: center center;
     box-sizing: border-box;
-    overflow: hidden; 
+    overflow: hidden;
 }
+
 .mobile-profile-section {
-   margin-top: 2vh;
-   width: 88vw;
-   height: 10vh;
+    margin-top: 2vh;
+    width: 88vw;
+    height: 10vh;
 }
 
 .mobile-profile-picture {
@@ -364,26 +373,28 @@
     font-style: normal;
     font-weight: 400;
     font-size: 4vw;
-    cursor: pointer;;
+    cursor: pointer;
+    ;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     color: #FFFFFF;
 }
 
-.mobile_first_name_details{
+.mobile_first_name_details {
     overflow: hidden;
     text-overflow: ellipsis;
     width: 36vw;
     margin-bottom: 0;
 }
 
-.mobile_team_name_details{
+.mobile_team_name_details {
     overflow: hidden;
     text-overflow: ellipsis;
     width: 36vw;
     margin-bottom: 0;
 }
+
 .mobile-reward-section {
     width: 15vw;
     height: 8vh;
@@ -410,7 +421,7 @@
     padding: 2%;
     margin-top: 1vh;
     margin-bottom: 1vh;
-   
+
 
 }
 
@@ -419,11 +430,11 @@
     opacity: 0.8;
     font-family: 'Inter';
     font-style: normal;
-    color:#ffff;
+    color: #ffff;
     font-weight: 700;
     font-size: 4vw;
     border-radius: 10px;
-    height:14vh;
+    height: 14vh;
     padding: 2%;
     width: 90vw;
 
@@ -434,36 +445,37 @@
     margin-top: 2vh;
     width: 88vw;
     display: flex;
-    justify-content:space-around;
+    justify-content: space-around;
     align-items: center;
 }
 
-.mobile-cricket-pitch {
-    // background: url('../../../../assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Background/stadium2\ 2\ new\ \(1\).png');
-  
-}
 
-.character-png{
+
+.character-png {
     height: 40vh;
     // margin-bottom: 4vh;
 }
 
-.mobile-title{
+.mobile-title {
     border-bottom: 1px solid white;
 }
 
-.mobile-my-trophy,.mobile-my-rewards,.mobile-spectator-view{
+.mobile-my-trophy,
+.mobile-my-rewards,
+.mobile-spectator-view {
     display: flex;
     justify-content: start;
     align-items: center;
     width: 15vw;
     height: 6vh;
-    
+
 }
-.mobile-my-score{
+
+.mobile-my-score {
     color: #FEED12
 }
-.campaign-buttons{
+
+.campaign-buttons {
     height: auto;
     width: 18vw;
     border-right: 2px solid #ffffff;
@@ -475,19 +487,19 @@
 
 }
 
-.mobile-sub-name{
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 2.5vw;
-        line-height: 15px;
+.mobile-sub-name {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2.5vw;
+    line-height: 15px;
 }
 
-.border2px{
+.border2px {
     border-right: 2px solid #ffff;
 }
 
-.border2px:last-child{
+.border2px:last-child {
     border-right: none;
 }
 
@@ -500,14 +512,15 @@
 //     .mobile-view {
 //       display: none;
 //     }
-    
+
 //   }
 
-@media screen and (min-width:960px)  {
+@media screen and (min-width:960px) {
     .mobile-view {
         display: none;
     }
-    .dailyCenterCircle{
+
+    .dailyCenterCircle {
         height: 23vh;
     }
 
@@ -515,7 +528,7 @@
 }
 
 // Modal CSS 
-.modal-content{
+.modal-content {
     background-color: transparent;
     border: none;
     // margin-left:14%;
@@ -524,39 +537,39 @@
     border-radius: 10px;
 }
 
-.modalBodyBooster{
-    display:flex;
+.modalBodyBooster {
+    display: flex;
     justify-content: center;
 }
 
 
-.closeBooster{
-    position:absolute;
+.closeBooster {
+    position: absolute;
     top: 10px;
     right: 10px;
 }
 
 
-.PersonalMilestoneModal
-{
-    .modal-body{
-        display:flex;
+.PersonalMilestoneModal {
+    .modal-body {
+        display: flex;
         justify-content: center;
     }
 
 
-    .modal-content{
+    .modal-content {
         background-color: transparent;
         border: none;
     }
 
-    .btn-close{
+    .btn-close {
         position: absolute;
         right: 10px;
         /* right: 100px; */
         top: 10px;
     }
 }
+
 // CSS For Weekly Modal
 
 
@@ -579,11 +592,12 @@
     border-radius: 10px;
     background: #bbb;
 }
-.WeeklyModal{
+
+.WeeklyModal {
 
 
-    .modal-body{
-        display:flex;
+    .modal-body {
+        display: flex;
         justify-content: center;
         background-image: url('../../../../assets/images/interactive-dashboard/BG.png');
 
@@ -592,7 +606,8 @@
 
 
 }
-.ModalHeading{
+
+.ModalHeading {
 
 
     font-family: 'Roboto';
@@ -610,6 +625,7 @@
 
     color: #252525;
 }
+
 .modalDescription {
     font-family: 'Inter';
     font-style: normal;
@@ -619,7 +635,8 @@
 
     color: #000000;
 }
-.btn-reward{
+
+.btn-reward {
     width: 79px;
     height: 25px;
     font-family: "Inter";
@@ -628,7 +645,8 @@
     border-radius: 3px;
 
 }
-.Number{
+
+.Number {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 800;
@@ -642,12 +660,14 @@
     font-feature-settings: 'pnum' on, 'lnum' on;
     color: #252525;
 }
-.button-close{
+
+.button-close {
     border-radius: 100%;
     color: #000000;
     background: transparent;
 }
-.Top5{
+
+.Top5 {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -658,26 +678,29 @@
     font-feature-settings: 'pnum' on, 'lnum' on;
     color: #000000;
 }
-.infoIcon{
+
+.infoIcon {
     width: 20px;
     height: 20px;
-    border: 2px,solid ,#000000;
+    border: 2px, solid, #000000;
 }
-.card-container{
+
+.card-container {
     position: relative;
     overflow-x: auto;
-    .card{
+
+    .card {
         display: flex;
         justify-content: center;
         align-items: center;
         box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.25), 0px 2px 4px rgba(0, 0, 0, 0.25);
         border-radius: 6px;
 
-        .pic>img{
+        .pic>img {
             border-radius: 100%;
         }
 
-        .name .rank .score{
+        .name .rank .score {
             font-family: 'Inter';
             font-weight: 500;
             font-size: 14px;
@@ -772,13 +795,12 @@
     right: 18px;
 }
 
-.dailyCenterCircle{
-    
-}
+.dailyCenterCircle {}
 
 .range {
     width: 100%;
 }
+
 .rangeBgcolor {
     accent-color: #38B200;
 }
@@ -806,14 +828,14 @@
 //     padding: 0;
 //     margin-top: -50px;
 // }
-.prof_src{
+.prof_src {
     width: 80px;
     border-radius: 100%;
     height: 80px;
 
 }
 
-.image-container{
+.image-container {
     width: 360px;
     height: 801px;
     padding: 0;
@@ -1197,7 +1219,7 @@
 }
 
 
-@media (min-width: 2000px) and (max-width: 2048px){
+@media (min-width: 2000px) and (max-width: 2048px) {
     .box-container {
 
         height: 1536px;
@@ -1205,7 +1227,7 @@
     }
 }
 
-@media (min-width: 2550px) and (max-width: 2560px){
+@media (min-width: 2550px) and (max-width: 2560px) {
     .box-container {
 
         height: 1920px;
@@ -1213,7 +1235,7 @@
     }
 }
 
-@media (min-width: 3830px) and (max-width: 3860px){
+@media (min-width: 3830px) and (max-width: 3860px) {
     .box-container {
 
         height: 2160px;
