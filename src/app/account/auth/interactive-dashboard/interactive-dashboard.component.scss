@@ -123,16 +123,24 @@
 .web_third_umpire {
     height: 14vh;
     position: absolute;
-    bottom: 0;
+    bottom: 0.2em;
     left: 0.5em;
     cursor: pointer;
+    border-radius: 10px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 .web_booster {
     height: 14vh;
     position: absolute;
-    bottom: 0;
+    bottom: .2em;
     right: 0.5em;
+    border-radius: 10px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+ 
+   
 }
 
 .web_right_side {
@@ -222,7 +230,7 @@
     height: 15vh;
 }
 
-.web_sideline_image{
+.web_sideline_image{ 
     height: 80%;
 }
 .web_my_rank {
@@ -370,7 +378,10 @@
     text-overflow: ellipsis;
     color: #FFFFFF;
 }
-
+.MobileimageBorder{
+    border: 1px solid yellow;
+    border-radius: 5px;
+}
 .mobile_first_name_details{
     overflow: hidden;
     text-overflow: ellipsis;
@@ -438,14 +449,11 @@
     align-items: center;
 }
 
-.mobile-cricket-pitch {
-    // background: url('../../../../assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Background/stadium2\ 2\ new\ \(1\).png');
-  
-}
+
 
 .character-png{
     height: 40vh;
-    // margin-bottom: 4vh;
+    margin-bottom: 2vh;
 }
 
 .mobile-title{
@@ -490,7 +498,21 @@
 .border2px:last-child{
     border-right: none;
 }
+.mobile-booster>img{
+    border-radius: 10px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+   
+    padding-bottom: .2em;
+}
+.mobile-3rd-umpire>img{
+    border-radius: 10px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+   
+    padding-bottom: .2em;
 
+}
 
 // .mobile-my-trophy ,.mobile-my-rewards ,.mobile-tug-war, .mobile-3rd-umpire{
 //     height: 10vh;
@@ -772,9 +794,7 @@
     right: 18px;
 }
 
-.dailyCenterCircle{
-    
-}
+
 
 .range {
     width: 100%;

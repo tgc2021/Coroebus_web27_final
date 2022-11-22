@@ -46,7 +46,7 @@
     
                 <div class="col-2 d-flex justify-content-end web_col_right">
                     <img class="web_spectator_view" (click)="navigateToSpectatorView()" src="{{interactive_dashoard_response[0].data.theme_details[0].spectator_bt}}"/>
-                    <img class="web_booster" src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}"/>
+                    <img class="web_booster" src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}" height="100%" />
     
                     </div>
                 </div>
@@ -211,8 +211,8 @@
                 <div class="mobile-profile-section">
                     <div class="d-flex justify-content-between">
                         <div class="d-flex gap-2">
-                            <div class="mobile-profile-picture">
-                                <img src="{{interactive_dashoard_response[0].data._personal_data.profile_logo}}" alt="" width="100%" height="100%">
+                            <div class="mobile-reward-section">
+                                <img src="{{interactive_dashoard_response[0].data._personal_data.profile_logo}}" alt="" width="100%" height="100%" style="border-radius: 100%;">
                             </div>
                             <div class="mobile-profile-info d-flex gap-2 align-items-center">
                                 <div class="mobile-profile-name d-flex flex-column">
@@ -302,17 +302,17 @@
 
 
             <div class="col  d-flex justify-content-center align-items-center">
-                <div class="row mobile-cricket-pitch"  style="background: url({{interactive_dashoard_response[0].data.theme_details[0].interactive_dashboard_bg_web}});  height: 52vh;
+                <div class="row mobile-cricket-pitch"  style="background: url({{interactive_dashoard_response[0].data.theme_details[0].interactive_dashboard_bg}});  height: 52vh;
                 width: 95vw;
                 background-size: 100% 100%;
                 background-repeat: no-repeat;">
                     <div class="col-3 d-flex flex-column justify-content-between align-items-center gap-3 pt-2">
                         <div class="d-flex flex-column justify-content-between gap-3">
                             <div class="mobile-my-trophy">
-                                <img (click)="navigateAchievementshelf()" src="{{interactive_dashoard_response[0].data.theme_details[0].my_trophy}}" alt="my-trophy" width="80%" height="90%">
+                                <img (click)="navigateAchievementshelf()" src="{{interactive_dashoard_response[0].data.theme_details[0].my_trophy}}" alt="my-trophy" width="80%" height="90%"  class="MobileimageBorder">
                             </div>
                             <div class="mobile-my-rewards">
-                                <img (click)="navigateReward()" src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}" alt="my-rewards" width="80%" height="90%">
+                                <img (click)="navigateReward()" src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}" alt="my-rewards" width="80%" height="90%" class="MobileimageBorder">
                             </div>
 
                         </div>
@@ -322,18 +322,18 @@
                                 
                             </div>
                             <div class="mobile-3rd-umpire">
-                                <img (click)="navigateToNotification()" src="{{interactive_dashoard_response[0].data.theme_details[0].third_umpire_bt}}" alt="3rd-Umpire" width="100%" height="90%">
+                                <img (click)="navigateToNotification()" src="{{interactive_dashoard_response[0].data.theme_details[0].third_umpire_bt}}" alt="3rd-Umpire" width="100%" height="100%" >
                             </div>
                         </div>
 
 
                     </div>
                     <div class="col-6 d-flex justify-content-center align-self-end character-png">
-                        <img src="{{interactive_dashoard_response[0].data._personal_data.skillmuni}}" alt="character-png" height="100%" width="100%" >
+                        <img src="{{interactive_dashoard_response[0].data._personal_data.skillmuni}}" alt="character-png" height="100%">
                     </div>
                     <div class="col-3 d-flex flex-column justify-content-between align-items-center pt-2">
                         <div class="mobile-spectator-view">
-                            <img (click)="navigateToSpectatorView()" src="{{interactive_dashoard_response[0].data.theme_details[0].spectator_bt}}" alt="spectator-view" height="100%" width="100%">
+                            <img (click)="navigateToSpectatorView()" src="{{interactive_dashoard_response[0].data.theme_details[0].spectator_bt}}" alt="spectator-view" height="100%" width="100%" class="MobileimageBorder">
                         </div>
                         <div class="campaign-buttons d-flex flex-column gap-1 mt-1">
                             <div>
@@ -351,7 +351,7 @@
 
                         </div>
                         <div class="mobile-booster">
-                            <img src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}" alt="Booster" height="90%" width="100%">
+                            <img src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}" alt="Booster" height="100%" width="100%">
                         </div>
                     </div>
 
