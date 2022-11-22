@@ -1,7 +1,7 @@
 // Web-view started
 
 .web-view {
-    background: linear-gradient(180deg, #060A20 0%, #121D40 33.46%, #121D40 50.28%, #174920 66.77%, #C68356 79.68%, #2B5F22 87.57%, #2F4019 100%);
+    background: linear-gradient(var(--myvar));
     height: 100vh;
     width: 100vw;
     background-size: 100% 100%;
@@ -99,23 +99,21 @@
     text-align: center;
 }
 
-.web_background_image {
-    background-image: url(../../../../assets/images/final-interactive-dashboard/web-assets/Web/Web/Cricket/Background/stadium.png);
-    height: 65vh;
-    background-size: 100% 100%;
-    margin-top: 0.5em;
-}
+
 
 .web_my_trophy {
-    height: 14vh;
-    padding-top: 1em;
+    height: 10vh;
+    margin-top: 1em;
     cursor: pointer;
+    border: 1px solid #FEEE1E;
 }
 
 .web_my_rewards {
-    height: 14vh;
-    padding-top: 1em;
+    height: 10vh;
+    margin-top: 1em;
     cursor: pointer;
+    border: 1px solid #FEEE1E;
+
 }
 
 .web_col_left {
@@ -335,7 +333,7 @@
 // Mobile View Started
 
 .mobile-view {
-    background: linear-gradient(180deg, #060A20 0%, #121D40 33.46%, #121D40 50.28%, #174920 66.77%, #C68356 79.68%, #2B5F22 87.57%, #2F4019 100%);
+    background: linear-gradient(var(--myvar));
     height: 100vh;
     width: 100vw;
     padding: 0;
@@ -441,11 +439,8 @@
 }
 
 .mobile-cricket-pitch {
-    background: url('../../../../assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Background/stadium2\ 2\ new\ \(1\).png');
-    height: 52vh;
-    width: 95vw;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+    // background: url('../../../../assets/images/final-interactive-dashboard/mobile-assets/Mobile/Cricket/Background/stadium2\ 2\ new\ \(1\).png');
+  
 }
 
 .character-png{
