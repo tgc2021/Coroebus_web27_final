@@ -139,6 +139,8 @@
     border-radius: 10px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+ 
+   
 }
 
 .web_right_side {
@@ -380,8 +382,11 @@
     text-overflow: ellipsis;
     color: #FFFFFF;
 }
-
-.mobile_first_name_details {
+.MobileimageBorder{
+    border: 1px solid yellow;
+    border-radius: 5px;
+}
+.mobile_first_name_details{
     overflow: hidden;
     text-overflow: ellipsis;
     width: 36vw;
@@ -453,7 +458,7 @@
 
 .character-png {
     height: 40vh;
-    // margin-bottom: 4vh;
+    margin-bottom: 2vh;
 }
 
 .mobile-title {
@@ -502,7 +507,21 @@
 .border2px:last-child {
     border-right: none;
 }
+.mobile-booster>img{
+    border-radius: 10px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+   
+    padding-bottom: .2em;
+}
+.mobile-3rd-umpire>img{
+    border-radius: 10px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+   
+    padding-bottom: .2em;
 
+}
 
 // .mobile-my-trophy ,.mobile-my-rewards ,.mobile-tug-war, .mobile-3rd-umpire{
 //     height: 10vh;
@@ -795,7 +814,6 @@
     right: 18px;
 }
 
-.dailyCenterCircle {}
 
 .range {
     width: 100%;
