@@ -170,7 +170,7 @@ export class InteractiveDashboardComponent implements OnInit {
   logo: any;
   point_distribution:any;
 
-  constructor(private readonly store: Store, public Util: Util,private _router: Router, public http: ApiserviceService, private eventService: EventService) { }
+  constructor(private readonly store: Store, public element: ElementRef, public Util: Util,private _router: Router, public http: ApiserviceService, private eventService: EventService) { }
 
   ngOnInit(): void {
       this.store.select(fromRoot.userLogin).pipe(
@@ -209,6 +209,12 @@ if(this.mergeObj.id_coroebus_game != null){
     this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
     console.log(this.interactive_dashoard_response);
 
+    this.point_distribution = this.interactive_dashoard_response[0].data.theme_details[0].gradient_color_bg
+    console.log(this.point_distribution);
+    
+    this.element.nativeElement.style.setProperty('--myvar', `${this.point_distribution}`)
+
+    
     this.dailyToppers=this.interactive_dashoard_response[0].data.seasonal_theme_daily_badge_details;
     this.weeklyTopers=this.interactive_dashoard_response[0].data.seasonal_theme_weekly_badge_toppers;
     this.monthlyTopers=this.interactive_dashoard_response[0].data.seasonal_theme_monthly_badge_toppers;
@@ -247,9 +253,6 @@ else{
     this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
     console.log(this.interactive_dashoard_response);
 
-    // this.point_distribution = this.interactive_dashoard_response[0].data._Point_distribution
-    // this.point_distribution = Array.of(this.point_distribution);
-    // console.log(this.point_distribution);
     
     this.eventService.broadcast('passDataToHeader', {
       color: this.interactive_dashoard_response[0].data.theme_details[0].dark_color,
