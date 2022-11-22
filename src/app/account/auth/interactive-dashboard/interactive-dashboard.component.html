@@ -54,7 +54,7 @@
                     <div class="col-2 d-flex justify-content-end web_col_right">
                         <img class="web_spectator_view" (click)="navigateToSpectatorView()"
                             src="{{interactive_dashoard_response[0].data.theme_details[0].spectator_bt}}" />
-                        <img class="web_booster"
+                        <img class="web_booster" data-bs-toggle="modal" data-bs-target="#BoosterModal"
                             src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}" />
 
                     </div>
@@ -153,17 +153,17 @@
                 <div class="row">
                     <div class="col-12 d-flex gap-2 web_buttons_col">
                         <div class="col-3 web_bottom_buttons">
-                            <img class="web_button_image"
+                            <img class="web_button_image"  (click)="navigateToChampionsLeague()"
                                 src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_web}}" />
                         </div>
 
                         <div class="col-3 web_bottom_buttons">
-                            <img class="web_button_image"
+                            <img class="web_button_image"  (click)="navigateTopersonalMilestone()"
                                 src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt_web}}" />
                         </div>
 
                         <div class="col-3 web_bottom_buttons">
-                            <img class="web_button_image"
+                            <img class="web_button_image"  (click)="navigateToLearningAcademy()"
                                 src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt_web}}" />
                         </div>
 
@@ -275,11 +275,11 @@
             <div class="d-flex justify-content-center">
                 <div class="mobile-btn-section">
                     <div>
-                        <img src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt}}"
+                        <img (click)="navigateToLearningAcademy()" src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt}}"
                             alt="Learning_Academy" width="90%">
                     </div>
                     <div>
-                        <img src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt}}"
+                        <img (click)="navigateTopersonalMilestone()" src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt}}"
                             alt="Personal_Milestone" width="90%">
                     </div>
                     <div>
@@ -310,7 +310,7 @@
                         </div>
                         <div class="d-flex flex-column  gap-5">
                             <div class="mobile-tug-war">
-                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_bt}}"
+                                <img  (click)="navigateToChampionsLeague()" src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_bt}}"
                                     alt="tug-of-war" height="100%">
 
                             </div>
@@ -348,7 +348,7 @@
 
                         </div>
                         <div class="mobile-booster">
-                            <img src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}" alt="Booster" height="100%" width="100%">
+                            <img data-bs-toggle="modal" data-bs-target="#BoosterModal"  src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}" alt="Booster" height="100%" width="100%">
                         </div>
                     </div>
 

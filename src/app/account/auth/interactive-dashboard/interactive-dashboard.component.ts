@@ -352,4 +352,9 @@ else{
     this._router.navigateByUrl("/profile")
 
   }
+
+  navigateTopersonalMilestone(){
+    this._router.navigateByUrl("/personal_milestone")
+  }
+  
 }

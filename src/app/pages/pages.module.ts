@@ -16,11 +16,13 @@ import { DashboardsModule } from './dashboards/dashboards.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NotificationPopupComponent } from './notification-popup/notification-popup.component';
 import { ChampionsLeagueComponent } from './champions-league/champions-league.component';
+import { PersonalMilestoneComponent } from './personal-milestone/personal-milestone.component';
 
 @NgModule({
   declarations: [
     NotificationPopupComponent,
-    ChampionsLeagueComponent
+    ChampionsLeagueComponent,
+    PersonalMilestoneComponent
   ],
   imports: [
     CommonModule,

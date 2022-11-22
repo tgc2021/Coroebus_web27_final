@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ChampionsLeagueComponent } from './champions-league/champions-league.component';
 
 import { DefaultComponent } from './dashboards/default/default.component';
+import { PersonalMilestoneComponent } from './personal-milestone/personal-milestone.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' },
@@ -17,6 +18,8 @@ const routes: Routes = [
   { path: 'learning', loadChildren: () => import('./learning-academy/learning-academy.module').then(m => m.LearningAcademyModule) },
   { path: 'Achievement', loadChildren: () => import('./achievement-shelf/achievement-shelf.module').then(m => m.AchievementShelfModule) },
   { path: 'champions_league', component:ChampionsLeagueComponent },
+  { path: 'personal_milestone', component:PersonalMilestoneComponent },
+
 
 ];
 
