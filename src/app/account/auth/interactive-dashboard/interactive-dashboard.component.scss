@@ -13,6 +13,8 @@
     overflow: hidden;
 }
 
+
+
 .web_first_row {
     height: 10vh;
     width: 98vw;
@@ -404,7 +406,7 @@
 
 .mobile-reward-section {
     width: 15vw;
-    height: 8vh;
+    height: 7vh;
     font-weight: 700;
     background: #FEEE1E;
     border: 2px solid #FEEE1E;
@@ -450,9 +452,9 @@
 .mobile-btn-section {
     height: 7vh;
     margin-top: 2vh;
-    width: 88vw;
+    width: 90vw;
     display: flex;
-    justify-content: space-around;
+    justify-content:space-between;
     align-items: center;
 }
 
@@ -490,6 +492,7 @@
 
 .mobile-tug-war {
     width: 15vw;
+  margin-left: -10%;
     height: 6.7vh;
 
 }
@@ -513,15 +516,14 @@
     border-radius: 10px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-   
-    padding-bottom: .2em;
+ 
 }
 .mobile-3rd-umpire>img{
     border-radius: 10px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
    
-    padding-bottom: .2em;
+    
 
 }
 

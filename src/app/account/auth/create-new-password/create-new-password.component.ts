@@ -26,6 +26,8 @@ export class CreateNewPasswordComponent implements OnInit, OnDestroy {
     private readonly store: Store, private Util: Util) { }
   newPwdForm: FormGroup;
   submitted = false;
+  getValueCurrentPassword="";
+  getValueConfirmPassword="";
   // set the currenr year
   year: number = new Date().getFullYear();
   showHidePwdInput: boolean = false
@@ -101,6 +103,7 @@ export class CreateNewPasswordComponent implements OnInit, OnDestroy {
       {
         // check whether our password and confirm password match
         validator: CustomValidators.passwordMatchValidator,
+        Validator: CustomValidators.passwordMatchValidator
         // Validator:CustomValidators.currentPassAndNewPassMatchValidator,
       }
       , 
