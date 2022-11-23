@@ -13,11 +13,13 @@
 }
 
 .dashboard-bg-image {
-    width: 100%;
+ 
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height:auto;
+    height: auto;
+    width: 100%;
+    
    
 }
 
@@ -1089,12 +1091,12 @@ border-radius: 15px;
         margin-left: 21%;
     }
 
-    .dashboard-bg-image {
-        width: 100%;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-    }
+    // .dashboard-bg-image {
+    //     width: 100%;
+    //     background-repeat: no-repeat;
+    //     background-position: center;
+    //     background-size: cover;
+    // }
 
     .no-gutter {
         --bs-gutter-x: -20rem
@@ -1247,14 +1249,14 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1281px) {
         margin-left: 3%;
     }
 
-    .dashboard-bg-image {
-        width: 100%;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: inherit;
-        height: auto;
-        overflow-x: hidden;
-    }
+    // .dashboard-bg-image {
+    //     width: 100%;
+    //     background-repeat: no-repeat;
+    //     background-position: center;
+    //     background-size: inherit;
+    //     height: auto;
+    //     overflow-x: hidden;
+    // }
 
     .dashboard-table {
         border-spacing: 0 8px
@@ -1675,9 +1677,9 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
         max-height: 325px;
     }
 
-    .dashboard-bg-image {
-        background-size: cover;
-    }
+    // .dashboard-bg-image {
+    //     background-size: cover;
+    // }
 
     .spot-engagement {
         // line-height: 12px;
@@ -1775,9 +1777,9 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
         max-height: 179px;
     }
 
-    .dashboard-bg-image {
-        background-size: cover;
-    }
+    // .dashboard-bg-image {
+    //     background-size: cover;
+    // }
 
     .spot-engagement {
         // line-height: 12px;
@@ -1841,9 +1843,9 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-widt
         max-height: 179px;
     }
 
-    .dashboard-bg-image {
-        background-size: cover;
-    }
+    // .dashboard-bg-image {
+    //     background-size: cover;
+    // }
 
     .spot-engagement {
         // line-height: 12px;
