@@ -78,8 +78,10 @@
                                                     src="assets/images/svg/notification/txt.png" alt="" height="47">
                                                 <img loading="lazy" *ngIf="item?.video" class="mt-2"
                                                     src="assets/images/svg/notification/v.png" alt="" height="47">
+                                                <img loading="lazy" *ngIf="item?.video_path" class="mt-2"
+                                                    src="assets/images/svg/notification/v.png" alt="" height="47">
                                                 <img loading="lazy"
-                                                    *ngIf="(item?.video==='' && item?.gif==='' && item?.image==='')"
+                                                    *ngIf="(item?.video==='' && item?.gif==='' && item?.image==='' && item?.video_path==='')"
                                                     class="mt-2"
                                                     src="assets/images/svg/dashboard/text-notification-read.png" alt=""
                                                     height="47">
