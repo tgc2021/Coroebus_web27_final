@@ -3,8 +3,8 @@
 .web-view {
     background: linear-gradient(var(--myvar));
     height: 100vh;
-    width: 100vw;
-    background-size: 100% 100%;
+    // width: 100vw;
+    // background-size: 100% 100%;
     display: block;
     padding-top: 1em;
     padding-bottom: 1em;
@@ -17,7 +17,7 @@
 
 .web_first_row {
     height: 10vh;
-    width: 98vw;
+    // width: 98vw;
 }
 
 
@@ -490,10 +490,9 @@
     width: 18vw;
     border-right: 2px solid #ffffff;
 }
-
 .mobile-tug-war {
     width: 15vw;
-  margin-left: -10%;
+    margin-left: -10%;
     height: 6.7vh;
 
 }

@@ -15,7 +15,6 @@
    width: auto;
    height: 43vh;
    border-radius: 11px;
-
 }
 .form-control{
    width: 98%;
@@ -39,7 +38,6 @@
    //width: auto;
    height: 43vh;
    border-radius: 11px;
-
 }
 .points-bullentins-card{
    background-repeat: no-repeat;
@@ -48,8 +46,6 @@
    width: auto;
    height:42vh;
    border-radius: 11px;
-   
-
 }
 .points-dis-name1{
        background: #F3F2C1;
@@ -70,7 +66,6 @@
    overflow-y: auto;
    overflow-x: hidden;
 }
-
 .dashboard-username{
    font-weight: 600;
    font-size: 18px;
@@ -78,11 +73,8 @@
    color: #000000;
    width:200px;
 //   white-space: nowrap;
- overflow: hidden;
-
- text-overflow: ellipsis;
- 
-   
+    overflow: hidden;
+    text-overflow: ellipsis; 
 }
 .dashboard-teamname{
    font-weight: 600;
@@ -90,17 +82,14 @@
    line-height: 100%;
    color: #000000;
    width:200px;
-//   white-space: nowrap;
- overflow: hidden;
-
- text-overflow: ellipsis;
- 
+  //white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 ::ng-deep{
    .page-content{
        padding: calc(70px + 24px) calc(24px / 2) 2px calc(24px / 2);
    }
-   
 }
 .dashboard-searchbar
 {

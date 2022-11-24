@@ -1,20 +1,20 @@
 <!-- Web View Started-->
-<div *ngFor="let response of interactive_dashoard_response">
-    <div class="web-view">
+<div *ngFor="let response of interactive_dashoard_response" style="background:linear-gradient(180deg, #060A20 0%, #121D40 33.46%, #121D40 50.28%, #174920 66.77%, #C68356 79.68%, #2B5F22 87.57%, #2F4019 100%) ;" >
+    <div class="web-view container">
         <div class="row web_first_row">
-
+            
             <div class="col-1 web_first_col d-flex">
                 <img class="web_profile_pic" (click)="navigateToProfile()"
                     src="{{interactive_dashoard_response[0].data._personal_data.profile_logo}}" />
             </div>
 
-            <div class="col-2 web_second_col">
+            <div class="col-3 web_second_col">
                 <p class="web_profile_name"> {{interactive_dashoard_response[0].data._personal_data.first_name}}</p>
                 <p class="web_team_name"> {{interactive_dashoard_response[0].data._personal_data.team_name}}</p>
 
             </div>
 
-            <div class="col-6 d-flex justify-content-center align-items-center">
+            <div class="col-5 d-flex justify-content-center align-items-center">
                 <img class="web_logo" src="{{interactive_dashoard_response[0].data._personal_data.game_logo}}" />
             </div>
 
@@ -123,17 +123,17 @@
                                 </div>
                                 <div class="d-flex justify-content-end">
                                     <img class="web_daily_image"
-                                        src="{{interactive_dashoard_response[0].data.theme_details[0].daily_bt_web}}" />
+                                        src="{{interactive_dashoard_response[0].data.theme_details[0].daily_bt_web}}" data-bs-toggle="modal" data-bs-target="#DailyModal" />
 
                                 </div>
                                 <div class="d-flex justify-content-end">
                                     <img class="web_weekly_image"
-                                        src="{{interactive_dashoard_response[0].data.theme_details[0].weekly_bt_web}}" />
+                                        src="{{interactive_dashoard_response[0].data.theme_details[0].weekly_bt_web}}" data-bs-toggle="modal" data-bs-target="#weeklyModal" />
 
                                 </div>
                                 <div class="d-flex justify-content-end">
                                     <img class="web_monthly_image"
-                                        src="{{interactive_dashoard_response[0].data.theme_details[0].monthly_bt_web}}" />
+                                        src="{{interactive_dashoard_response[0].data.theme_details[0].monthly_bt_web}}" data-bs-toggle="modal" data-bs-target="#monthlyModal" />
 
                                 </div>
                             </div>
@@ -181,22 +181,6 @@
 
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- Mobile View Started -->
 <div class="mobile-view" *ngFor="let response of interactive_dashoard_response">
     <div class="row">
@@ -214,9 +198,8 @@
                                     <p class="mobile_first_name_details">
                                         {{interactive_dashoard_response[0].data._personal_data.first_name}} </p>
                                     <p class="mobile_team_name_details">
-                                        {{interactive_dashoard_response[0].data._personal_data.team_name}}</p>
+                                     {{interactive_dashoard_response[0].data._personal_data.team_name}}</p>
                                 </div>
-
                             </div>
                         </div>
                         <div class="mobile-reward-section">
@@ -246,7 +229,6 @@
                         <div class="mobile-sub-name">
                             My Score
                         </div>
-
                     </div>
                     <div class="mobile-myRank text-center col-4">
                         <div>{{interactive_dashoard_response[0].data._primary.my_rank}}</div>
@@ -266,9 +248,7 @@
                             <div>{{points.weightage}}</div>
                             <div class="mobile-sub-name">{{points.point_label}}</div>
                         </div>
-
                     </div>
-
                 </div>
             </div>
             <!-- mobile btn section -->
@@ -287,19 +267,16 @@
                             src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt}}" alt="PlayZone"
                             width="100%">
                     </div>
-
-
                 </div>
             </div>
 
 
             <div class="col  d-flex justify-content-center align-items-center">
                 <div class="row mobile-cricket-pitch"  style="background: url({{interactive_dashoard_response[0].data.theme_details[0].interactive_dashboard_bg}});  height: 52vh;
-                width: 95vw;
-                background-size: 100% 100%;
-                background-repeat: no-repeat;
-                padding: 1%;
-                ">
+                            width: 95vw;
+                            background-size: 100% 100%;
+                            background-repeat: no-repeat;
+                            padding: 1%;">
                     <div class="col-3 d-flex flex-column justify-content-between align-items-start gap-3 pt-2 pb-2">
                         <div class="d-flex flex-column justify-content-between gap-3">
                             <div class="mobile-my-trophy">
@@ -337,15 +314,15 @@
                             </div>
                             <div>
                                 <img src="{{interactive_dashoard_response[0].data.theme_details[0].Daily}}" alt="Daily"
-                                    height="100%" width="100%">
+                                    height="100%" width="100%"  data-bs-toggle="modal" data-bs-target="#DailyModal">
                             </div>
                             <div>
                                 <img src="{{interactive_dashoard_response[0].data.theme_details[0].Weekly}}"
-                                    alt="WEEKLY" height="100%" width="100%">
+                                    alt="WEEKLY" height="100%" width="100%" data-bs-toggle="modal" data-bs-target="#weeklyModal">
                             </div>
                             <div>
                                 <img src="{{interactive_dashoard_response[0].data.theme_details[0].Monthly}}"
-                                    alt="Monthly" height="100%" width="100%">
+                                    alt="Monthly" height="100%" width="100%" data-bs-toggle="modal" data-bs-target="#monthlyModal" >
                             </div>
 
                         </div>
@@ -428,11 +405,8 @@
                             <div class="modalDescription col-11">
                                 {{interactive_dashoard_response[0].data.seasonal_theme_daily[0].theme_description}}
                             </div>
-
                             <div class="modalDescription d-flex justify-content-start p-1">
-
-                                <div> Valid Till
-                                    :{{interactive_dashoard_response[0].data.seasonal_theme_daily[0].valid_till_date |
+                                <div> Valid Till:{{interactive_dashoard_response[0].data.seasonal_theme_daily[0].valid_till_date |
                                     date:"dd/M/yyyy"}}</div>
                             </div>
                         </div>
@@ -449,8 +423,7 @@
                                             <div class="row">
                                                 <div class="col p-1">
                                                     <div class="rewardPintImg">
-                                                        <img class="imgSIze-17"
-                                                            src={{interactive_dashoard_response[0].data.seasonal_theme_daily[0].reward_points_image}} />
+                                                        <img class="imgSIze-17" src={{interactive_dashoard_response[0].data.seasonal_theme_daily[0].reward_points_image}} />
                                                         <span style="color: #FFFFFF;">
                                                             {{interactive_dashoard_response[0].data.seasonal_theme_daily[0].reward_point}}</span>
                                                     </div>
@@ -502,12 +475,6 @@
 
                             </div>
                         </div>
-
-
-
-
-
-
                     </div>
                     <div class="row d-flex justify-content-center align-items-end " style="height:35vh;"
                         *ngIf="interactive_dashoard_response[0].data.seasonal_theme_daily.length==0">
@@ -716,7 +683,7 @@
                                         </div>
                                         <div class="Words">Your Rank</div>
                                     </div>
-                                    <div style="border-left:2px solid #000000;height:60px">
+                                    <div style="border-left:1px solid #000000;">
 
                                     </div>
 
