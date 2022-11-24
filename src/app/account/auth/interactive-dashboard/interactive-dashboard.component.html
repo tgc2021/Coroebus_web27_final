@@ -1,24 +1,35 @@
 <!-- Web View Started-->
-<div *ngFor="let response of interactive_dashoard_response" style="background:linear-gradient(180deg, #060A20 0%, #121D40 33.46%, #121D40 50.28%, #174920 66.77%, #C68356 79.68%, #2B5F22 87.57%, #2F4019 100%) ;" >
+<div class="web_view_main" *ngFor="let response of interactive_dashoard_response">
     <div class="web-view container">
         <div class="row web_first_row">
             
-            <div class="col-1 web_first_col d-flex">
-                <img class="web_profile_pic" (click)="navigateToProfile()"
-                    src="{{interactive_dashoard_response[0].data._personal_data.profile_logo}}" />
+            <div class="col-4 web_first_col d-flex">
+                <div class="d-flex gap-3">
+                    <div class="web_profile_div d-flex align-items-center">
+
+                        <img class="web_profile_pic" (click)="navigateToProfile()"
+                        src="{{interactive_dashoard_response[0].data._personal_data.profile_logo}}" />
+                    </div>
+                  
+                    <div>
+                        <p class="web_profile_name"> {{interactive_dashoard_response[0].data._personal_data.first_name}}</p>
+                        <p class="web_team_name"> {{interactive_dashoard_response[0].data._personal_data.team_name}}</p>
+                    </div>
+                </div>
+               
+                  
             </div>
 
-            <div class="col-3 web_second_col">
-                <p class="web_profile_name"> {{interactive_dashoard_response[0].data._personal_data.first_name}}</p>
-                <p class="web_team_name"> {{interactive_dashoard_response[0].data._personal_data.team_name}}</p>
+            <!-- <div class="col-2 web_second_col">
+               
 
-            </div>
+            </div> -->
 
-            <div class="col-5 d-flex justify-content-center align-items-center">
+            <div class="col-4 d-flex justify-content-center align-items-center">
                 <img class="web_logo" src="{{interactive_dashoard_response[0].data._personal_data.game_logo}}" />
             </div>
 
-            <div class="col-3 d-flex justify-content-end">
+            <div class="col-4 d-flex justify-content-end">
                 <div class="web_points_bg">
                     <div class="web_center_div">
                         <img class="web_points"
@@ -151,7 +162,7 @@
         <div class="row web_third_row">
             <div class="col-8">
                 <div class="row">
-                    <div class="col-12 d-flex gap-2 web_buttons_col">
+                    <div class="col-12 d-flex gap-1 web_buttons_col">
                         <div class="col-3 web_bottom_buttons">
                             <img class="web_button_image"  (click)="navigateToChampionsLeague()"
                                 src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_web}}" />

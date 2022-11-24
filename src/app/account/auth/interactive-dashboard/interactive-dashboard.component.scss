@@ -14,7 +14,10 @@
 }
 
 
+.web_view_main{
+    background: linear-gradient(var(--myvar));
 
+}
 .web_first_row {
     height: 10vh;
     // width: 98vw;
@@ -23,10 +26,17 @@
 
 .web_profile_pic {
     height: 9vh;
-    width: 85%;
-    border: 1px solid #FEEE1E;
+    // border: 1px solid #FEEE1E;
     cursor: pointer;
+    border-radius: 100%;
 }
+
+.web_profile_div{
+    border: 1px solid #FEEE1E;
+    background: #FEEE1E;
+    height: 9vh;
+}
+
 
 .web_profile_name {
     font-family: 'Inter';
@@ -81,7 +91,7 @@
     background: #FEEE1E;
     border: 4px solid #FEEE1E;
     height: 8vh;
-    min-width: 6vw;
+    min-width: 5vw;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -324,7 +334,7 @@
 
 .web_button_image {
     height: 15vh;
-    width: 85%;
+    width: 100%;
     cursor: pointer;
 }
 
