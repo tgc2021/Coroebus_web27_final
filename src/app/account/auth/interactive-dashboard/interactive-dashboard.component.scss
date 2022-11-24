@@ -39,17 +39,16 @@
 
 
 .web_profile_name {
-    font-family: 'Inter';
+    font-family: "Inter";
     font-style: normal;
     font-weight: 400;
-    font-size: 1em;
+    font-size: 2vh;
     cursor: pointer;
-    ;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* identical to box height */
     color: #FFFFFF;
+    margin-top: 1.5vh;
 }
 
 .web_team_name {
