@@ -149,8 +149,7 @@
                 <table id="example" class="table table-striped">
                   <thead>
                     <tr>
-                      <!-- (click)="sortList('date_time')" -->
-                      <th scope="col">Date
+                      <th scope="col" (click)="sortList('date_time')">Date
                         <!-- <img class="up_down_arrow" src="assets/images/rewards/up_down_arrow.png"> -->
                         &nbsp;<div *ngIf="reverse; then downFilter1 else upFilter1" ></div>
                         <ng-template #downFilter1>
@@ -172,7 +171,7 @@
                   </thead>
                   <tbody *ngFor="let response of rewardresponse">
                     <tr *ngFor="let passbookresponse of response.data.points_list[1]._data |orderBy: key : reverse |filter:searchText ">
-                      <td class="col-md-2 col-sm-1">{{passbookresponse.date_time | date: 'dd/MM/yyyy' }}</td>
+                      <td class="col-md-2 col-sm-1">{{passbookresponse.date_time.slice(0,11) | date: 'dd/MM/yyyy' }}</td>
                       <td class="col-md-4 col-sm-3">{{passbookresponse.description_}}</td>
                       <td *ngIf="passbookresponse.points_credited!=='' " class="col-md-2 col-sm-3">{{passbookresponse.points_credited  | number : '1.2-2'}}</td>
                       <td *ngIf="passbookresponse.points_credited==='' " class="col-md-2 col-sm-3">-</td>
