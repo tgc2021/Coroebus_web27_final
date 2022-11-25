@@ -452,7 +452,7 @@
     font-style: normal;
     color: #ffff;
     font-weight: 700;
-    font-size: 4vw;
+    font-size: 5vw;
     border-radius: 10px;
     height: 14vh;
     padding: 2%;
@@ -479,7 +479,9 @@
 .mobile-title {
     border-bottom: 1px solid white;
 }
-
+.mobile-game-title{
+    font-size: 4vw;
+}
 .mobile-my-trophy,
 .mobile-my-rewards,
 .mobile-spectator-view {
