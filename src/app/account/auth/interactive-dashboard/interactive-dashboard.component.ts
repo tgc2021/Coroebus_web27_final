@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
+
+
 import * as fromRoot from '../../../core/app-state';
 import { Store } from '@ngrx/store';
 import { takeUntil } from 'rxjs/operators';
@@ -171,8 +173,10 @@ export class InteractiveDashboardComponent implements OnInit {
   point_distribution:any;
   scorecardcolor:any
   constructor(private readonly store: Store, public element: ElementRef, public Util: Util,private _router: Router, public http: ApiserviceService, private eventService: EventService) { }
-
+  
   ngOnInit(): void {
+   
+  
       this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
     ).subscribe(data => {

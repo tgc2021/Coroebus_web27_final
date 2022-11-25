@@ -1,4 +1,5 @@
 <!-- Web View Started-->
+
 <div class="web_view_main" *ngFor="let response of interactive_dashoard_response">
     <div class="web-view container">
         <div class="row web_first_row">
@@ -264,19 +265,19 @@
             </div>
             <!-- mobile btn section -->
             <div class="d-flex justify-content-center">
-                <div class="mobile-btn-section d-flex justify-content-between  gap-1">
-                    <div>
+                <div class="mobile-btn-section d-flex justify-content-between align-items-center gap-1">
+                    <div style="height:6vh;">
                         <img (click)="navigateToLearningAcademy()" src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt}}"
-                            alt="Learning_Academy" width="100%">
+                            alt="Learning_Academy" width="100%" height="100%" >
                     </div>
-                    <div>
+                    <div style="height:6vh;">
                         <img (click)="navigateTopersonalMilestone()" src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt}}"
-                            alt="Personal_Milestone" width="100%">
+                            alt="Personal_Milestone" width="100%" height="100%" >
                     </div>
-                    <div>
+                    <div style="height:6vh;">
                         <img (click)="navigateToPlayZone()"
                             src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt}}" alt="PlayZone"
-                            width="100%">
+                            width="100%" height="100%" >
                     </div>
                 </div>
             </div>
@@ -290,21 +291,21 @@
                             padding: 1%;">
                     <div class="col-3 d-flex flex-column justify-content-between align-items-start gap-3 pt-2 pb-2">
                         <div class="d-flex flex-column justify-content-between gap-3">
-                            <div class="mobile-my-trophy">
+                            <div class="mobile-my-trophy" style="height:7vh">
                                 <img (click)="navigateAchievementshelf()" src="{{interactive_dashoard_response[0].data.theme_details[0].my_trophy}}" alt="my-trophy" width="100%" height="100%"  class="MobileimageBorder">
                             </div>
-                            <div class="mobile-my-rewards">
+                            <div class="mobile-my-rewards" style="height:7vh">
                                 <img (click)="navigateReward()" src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}" alt="my-rewards" width="100%" height="100%" class="MobileimageBorder">
                             </div>
 
                         </div>
                         <div class="d-flex flex-column gap-5 align-items-start">
-                            <div class="mobile-tug-war d-flex justify-content-start">
+                            <div class="mobile-tug-war d-flex justify-content-start" style="height:6vh">
                                 <img  (click)="navigateToChampionsLeague()" src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_bt}}"
                                     alt="tug-of-war" height="100%">
 
                             </div>
-                            <div class="mobile-3rd-umpire">
+                            <div class="mobile-3rd-umpire" style="height:8vh;">
                                 <img (click)="navigateToNotification()" src="{{interactive_dashoard_response[0].data.theme_details[0].third_umpire_bt}}" alt="3rd-Umpire" width="100%" height="100%" >
                             </div>
                         </div>
@@ -312,32 +313,32 @@
 
                     </div>
                     <div class="col-6 d-flex justify-content-center align-self-end character-png">
-                        <img src="{{interactive_dashoard_response[0].data._personal_data.skillmuni}}" alt="character-png" height="100%">
+                        <img src="{{interactive_dashoard_response[0].data._personal_data.skillmuni}}" alt="character-png">
                     </div>
                     <div class="col-3 d-flex flex-column justify-content-between align-items-end pt-2 pb-2">
-                        <div class="mobile-spectator-view">
+                        <div class="mobile-spectator-view" style="height:6vh">
                             <img (click)="navigateToSpectatorView()" src="{{interactive_dashoard_response[0].data.theme_details[0].spectator_bt}}" alt="spectator-view" height="100%" width="100%">
                         </div>
                         <div class="campaign-buttons d-flex flex-column gap-1 mt-1">
-                            <div>
+                            <div style="height:6vh;">
                                 <img src="{{interactive_dashoard_response[0].data.theme_details[0].campaigns_bt}}"
                                     alt="CAMPAIGNS" height="100%" width="100%">
                             </div>
-                            <div>
+                            <div style="height:6vh;">
                                 <img src="{{interactive_dashoard_response[0].data.theme_details[0].Daily}}" alt="Daily"
                                     height="100%" width="100%"  data-bs-toggle="modal" data-bs-target="#DailyModal">
                             </div>
-                            <div>
+                            <div style="height:6vh;">
                                 <img src="{{interactive_dashoard_response[0].data.theme_details[0].Weekly}}"
                                     alt="WEEKLY" height="100%" width="100%" data-bs-toggle="modal" data-bs-target="#weeklyModal">
                             </div>
-                            <div>
+                            <div style="height:6vh;">
                                 <img src="{{interactive_dashoard_response[0].data.theme_details[0].Monthly}}"
                                     alt="Monthly" height="100%" width="100%" data-bs-toggle="modal" data-bs-target="#monthlyModal" >
                             </div>
 
                         </div>
-                        <div class="mobile-booster">
+                        <div class="mobile-booster" style="height:8vh;">
                             <img data-bs-toggle="modal" data-bs-target="#BoosterModal"  src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}" alt="Booster" height="100%" width="100%">
                         </div>
                     </div>

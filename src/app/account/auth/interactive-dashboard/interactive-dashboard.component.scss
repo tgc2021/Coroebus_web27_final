@@ -433,7 +433,7 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
-    font-size: 5vw;
+    font-size: 4.5vw;
     opacity: 0.8;
     border-radius: 10px;
     height: 10vh;
@@ -452,7 +452,7 @@
     font-style: normal;
     color: #ffff;
     font-weight: 700;
-    font-size: 5vw;
+    font-size: 4.5vw;
     border-radius: 10px;
     height: 14vh;
     padding: 2%;
@@ -462,18 +462,16 @@
 
 .mobile-btn-section {
     height: 7vh;
-    margin-top: 2vh;
+    margin-top: 1vh;
+    margin-bottom:1vh;
     width: 97vw;
     display: flex;
     justify-content:space-between;
     align-items: center;
 }
-
-
-
 .character-png {
-    height: 40vh;
-    margin-bottom: 2vh;
+    height: 35vh;
+    // margin-bottom: 1vh;
 }
 
 .mobile-title {
