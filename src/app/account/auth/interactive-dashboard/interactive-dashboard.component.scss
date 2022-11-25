@@ -434,7 +434,7 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
-    font-size: 5vw;
+    font-size: 4.5vw;
     opacity: 0.8;
     border-radius: 10px;
     height: 10vh;
@@ -453,7 +453,7 @@
     font-style: normal;
     color: #ffff;
     font-weight: 700;
-    font-size: 4vw;
+    font-size: 4.5vw;
     border-radius: 10px;
     height: 14vh;
     padding: 2%;
@@ -463,24 +463,24 @@
 
 .mobile-btn-section {
     height: 7vh;
-    margin-top: 2vh;
-    width: 95vw;
+    margin-top: 1vh;
+    margin-bottom:1vh;
+    width: 97vw;
     display: flex;
     justify-content:space-between;
     align-items: center;
 }
-
-
-
 .character-png {
-    height: 40vh;
-    margin-bottom: 2vh;
+    height: 35vh;
+    // margin-bottom: 1vh;
 }
 
 .mobile-title {
     border-bottom: 1px solid white;
 }
-
+.mobile-game-title{
+    font-size: 4vw;
+}
 .mobile-my-trophy,
 .mobile-my-rewards,
 .mobile-spectator-view {
@@ -503,8 +503,8 @@
 }
 .mobile-tug-war {
     width: 15vw;
-    // margin-left: -10%;
-    height: 6.7vh;
+    margin-left: -6%;
+    height: 6vh;
 
 }
 
