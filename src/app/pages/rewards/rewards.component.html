@@ -149,7 +149,8 @@
                 <table id="example" class="table table-striped">
                   <thead>
                     <tr>
-                      <th scope="col" (click)="sortList('date_time')">Date
+                      <!-- (click)="sortList('date_time')" -->
+                      <th scope="col">Date
                         <!-- <img class="up_down_arrow" src="assets/images/rewards/up_down_arrow.png"> -->
                         &nbsp;<div *ngIf="reverse; then downFilter1 else upFilter1" ></div>
                         <ng-template #downFilter1>
