@@ -17,7 +17,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: auto;
+    
     width: 100%;
     
    
@@ -27,21 +27,21 @@
 .rank_h {
     margin-left: 5%;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 2vh;
     line-height: 150%;
 }
 
 .name_h {
     margin-left: 3%;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 2vh;
     line-height: 150%;
 }
 
 .points_h {
     margin-left: 94%;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 2vh;
     line-height: 150%;
 }
 
@@ -69,17 +69,15 @@
 }
 .three-data {
     >div>img.island_login {
-        // height: 234px;
         
-        // width: 194px;
         height: 10vh;
     }
 }
 
 .four-data{
     >div>img.island_login {
-        margin-top:2px;
-        height: 100px;
+        margin-top: 1vh;
+        height: 10vh;
         
     }
 
@@ -145,26 +143,25 @@
     filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.12)) drop-shadow(0px 20px 20px rgba(0, 0, 0, 0.08));
     border-radius: 15px;
     width: 100%;
-    height: auto;
+    height: 26vh;
+    padding: 0% 1% 1% 1%;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
 
 .level-label-name {
-    width: 203px;
-    height: 33px;
-    // left: 205px;
-    // top: 100px;
+    width: 15vw;
+    height: 4vh;
     background: rgba(21, 18, 18, 0.45);
     border-radius: 0px 0px 8px 8px;
-    margin-left: 39%;
+  
     cursor: pointer;
 }
 
 .level-label-name-popup {
-    width: 203px;
-    height: 33px;
+    width: 15vw;
+    height: 4vh;
     // left: 205px;
     // top: 100px;
     background: rgba(21, 18, 18, 0.45);
@@ -183,7 +180,7 @@
 .team-name {
     margin-top: -10px;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 1.7vh;
     line-height: 100%;
     /* or 14px */
     display: flex;
@@ -234,10 +231,13 @@
 .filter-btn-dashboard {
     // width: 162.89px;
     width: 100%;
-    height: 50px;
+    height: 6vh;
     // left: 372px;
     // top: 323px;
     // background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 0.539866px solid;
     box-shadow: 0px 2.15946px 16.196px rgba(0, 0, 0, 0.05);
     border-radius: 10px;
@@ -247,30 +247,30 @@
     vertical-align: text-top;
 }
 
-.dashboard-search {
-    // width: 100%;
-    height: 60px;
-    /* White */
-    background: #FFFFFF;
-    /* Card / Big */
-    box-shadow: 0px 0px 0px 1px #E8E8E8, 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 20px 20px rgba(0, 0, 0, 0.08);
-    border-radius: 15px;
-}
+// .dashboard-search {
+//     // width: 100%;
+//     height: 6vh;
+//     /* White */
+//     background: #FFFFFF;
+//     /* Card / Big */
+//     box-shadow: 0px 0px 0px 1px #E8E8E8, 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 20px 20px rgba(0, 0, 0, 0.08);
+//     border-radius: 15px;
+// }
 
 .dashboard-search-btn {
-    width: 60.34px;
-    height: 60px;
+    width: 6vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 6vh;
     background: #104E5B;
     border-radius: 10px;
 }
 
-// .dashboard-f-width {
-//     width: 70vh;
-//     margin-left: 21%;
-// }
+
 
 .dashboard-center-table {
-    max-height:170px;
+    max-height:27vh;
     // -ms-overflow-style: none;
     // /* for Internet Explorer, Edge */
     // scrollbar-width: none;
@@ -279,7 +279,7 @@
     overflow-x: hidden;
 }
 .dashboard-center-table-forNSM{
-    max-height: 254px;
+    max-height: 34.2vh;
    
     // -ms-overflow-style: none;
     // /* for Internet Explorer, Edge */
@@ -291,8 +291,8 @@
 }
 
 .inner-bulletins-height {
-    height: 230px;
-    max-width:300px ;
+    height: 33vh;
+    width:30vw;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -300,8 +300,8 @@
  .inner-bulletins-no-height {
     overflow-y: auto;
     overflow-x: hidden;
-    max-width: 300px;
-    height: 79vh;
+    width:30vw;
+    height: 81vh;
  }
 
 .dashboard-popup-level::-webkit-scrollbar {
@@ -424,7 +424,7 @@
 }
 
 .dashboard-rank-row {
-    height: auto;
+    height: 6vh;
     border: 1px solid;
     // box-shadow: 0px 0px 0px 1px #e8e8e8;
     filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.12)) drop-shadow(0px 20px 20px rgba(0, 0, 0, 0.08));
@@ -451,29 +451,15 @@
 }
 
 .load-more {
-    width: 711px;
-    height: auto;
-    left: 372px;
-    top: 762px;
+    
+    height: 5vh;
     // background: #104E5B;
     border-radius: 5px;
 }
-
 .team-logo-row {
-    margin-left: 24%;
-}
+     margin-left: 30%;
+ }
 
-// .points-dis-card,
-// .points-notification-card,
-// .points-rank-card,
-// .points-bullentins-card {
-//     background-repeat: no-repeat;
-//     background-position: inherit;
-//     background-size: cover;
-//     width: auto;
-//     height: 40vh;
-//     border-radius: 11px;
-// }
 
 
 .points-row {
@@ -542,7 +528,8 @@
     border-radius: 20px;
     // width: 15vw;
     font-size: 14px;
-    width: 73px;
+    width: 6vw;
+    height: 5vh;
 }
 
 .bulletins-sub-card {
@@ -600,7 +587,7 @@
 
 .level-rank-name {
     font-weight: 700;
-    font-size: 14px;
+    font-size: 1.9vh;
     line-height: 150%;
 
     align-items: center;
@@ -671,7 +658,7 @@
 }
 .dashboard-user-name {
     font-weight: 600;
-    font-size: 18px;
+    font-size: 1.9vh;
     line-height: 100%;
     color: #000000;
     text-align: center;
@@ -679,7 +666,7 @@
 }
 .dashboard-user-teamname {
     font-weight: 600;
-    font-size: 14px;
+    font-size: 1.6vh;
     line-height: 100%;
     // display: flex;
     // align-items: center;
@@ -689,11 +676,13 @@
 .dashboard-banner-main-rank-img {
     height: 100%;
     width: 100%;
+    padding: 2%;
 }
+
 
 .dashboard-game-point-img,
 .dashboard-reward-point-img {
-    height: 38px;
+    height: 4.7vh;
 }
 
 .dashboard-banner-point-btn {
@@ -701,13 +690,13 @@
     border: 0.5px solid;
     box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
     border-radius: 10.61px;
-    // height: 35px;
+    height: 5vh;
     width: 8vw;
 }
 
 .dashboard-banner-point-btn-text {
     font-weight: 600;
-    font-size: 14px;
+    font-size: 2vh;
     align-items: center;
     text-align: center;
     color: #000000;
@@ -715,7 +704,7 @@
 
 .dashboard-level-rank-name {
     font-weight: 600;
-    font-size: .8em;
+    font-size: 1.5vh;
     // font-size: .7rem;
     // line-height: 100%;
    text-align: center;
@@ -723,7 +712,7 @@
 }
 
 .confetti {
-    height: 48px;
+    height: 5vh;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -738,18 +727,20 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     max-width: 90%;
+    
     cursor: pointer;
 }
 .ellipsis1 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    max-width: 70%;
+    max-width: 90%;
     cursor: pointer;
 }
 
 .filter-txt-name {
     font-weight: 500;
+    font-size: 2vh;
     // font-size: 15.1162px;
     // color: #000000;
 }
@@ -2420,20 +2411,12 @@ border-radius: 15px;
         height: 16px;
     }
 
-    .dashboard-banner-point-btn-text {
-        font-size: 10px;
-        margin-top: -6px;
-        float: left;
-    }
 
-    .dashboard-level-rank-name {
-        font-size: 0.8em;
-       
-    }
 
-    .dashboard-banner {
-        height: auto;
-    }
+
+    // .dashboard-banner {
+    //     height: 18vh;
+    // }
 
     .avatar-edit {
         top: 0px !important;
@@ -2703,11 +2686,7 @@ border-radius: 15px;
         justify-content: center;
     }
 
-    .dashboard-banner-point-btn-text {
-        font-size: 10px;
-        margin-top: -6px;
-        
-    }
+
 
 
     .dashboard-banner {
