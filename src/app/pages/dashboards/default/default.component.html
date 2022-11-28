@@ -276,7 +276,7 @@
                             [style.background-image]="'url(' + rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.ranking_image + ')'"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
                             <div class="col  widthText">
-                                <div class="media d-flex align-items-center gap-3">
+                                <div class="media d-flex align-items-center gap-3"  style="height: 6vh;">
                                     <span class="col-1 ms-2 text-white position-absolute-">
                                         {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_number}}
                                     </span>
@@ -286,7 +286,7 @@
                                             data-holder-rendered="trplacementue" height="100%" width="41">
                                     </div>
 
-                                    <div class="media-body user-logo-row ellipsis pt-1">
+                                    <div class="media-body user-logo-row ellipsis pt-1"  style="height: 6vh;">
                                         <h5 class="mt-0 text-white name-f-size ellipsis pt-1" placement="bottom"
                                             ngbTooltip=" {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}">
                                             {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}
@@ -298,7 +298,7 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="media d-flex align-items-center gap-3">
+                                <div class="media d-flex align-items-center gap-3"  style="height: 6vh;" >
                                     <div class="rounded-circle z-depth-2 team-logo-row d-flex align-items-center"
                                         style="height:5vh;">
                                         <img loading="lazy" class="rounded-circle z-depth-2 " alt=""
@@ -342,7 +342,7 @@
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                             *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) ">
                             <div class="col">
-                                <div class="media d-flex align-items-center gap-3 ">
+                                <div class="media d-flex align-items-center gap-3 " style="height: 6vh;">
                                     <span class="col-1 ms-2 text-white position-absolute-s">
                                         {{item?.rankingtable_number}}
                                     </span>
@@ -352,15 +352,15 @@
                                             width="41" (click)="openHierarchyPopup(item)">
                                     </div>
 
-                                    <div class="media-body user-logo-row ellipsis">
-                                        <h5 class="mt-0 text-white name-f-size ellipsis" placement="bottom"
+                                    <div class="media-body user-logo-row ellipsis"  style="height: 6vh;">
+                                        <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
                                             ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}</h5>
                                         <p class="mt-n4 team-name sub-team name-f-size">{{item?.rankingtable_team}}</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="media d-flex  gap-2">
+                                <div class="media d-flex  gap-2"  style="height: 6vh;">
                                     <div class="rounded-circle z-depth-2 team-logo-row  d-flex align-items-center"
                                         style="height:5vh;">
                                         <img alt="" src="{{item?.ranking_badge}}" data-holder-rendered="true"
@@ -549,6 +549,7 @@
                 <div class="row py-3 dashboard-rank-row ms-1 text-white percentile-row-height "
                     [style.background-image]="'url(' + item?.backgroung_image_ranking + ')'"
                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                    
                     [ngClass]="{'row-cols-3': false,'row-cols-4': true}" *ngFor="let item of levelsBucketsList ">
                     <div class="col">
                         <span class="font-size-14">{{item?.league_name}}</span>

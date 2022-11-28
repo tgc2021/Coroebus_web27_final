@@ -430,7 +430,7 @@
     width: 100%;
     background-repeat: no-repeat;
     background-position: inherit;
-    background-size: cover;
+    background-size: 100% 100%;
     border-style: inherit;
 }
 
@@ -772,7 +772,7 @@
         // top: 214px;
         background: #FFFFFF;
         border-radius: 34px;
-        width: 125%;
+        width: 100%;
 
         >.dashboard-popup-level {
             height:auto;
@@ -793,7 +793,7 @@
     }
 
     .percentile_people {
-        margin-left: 2rem;
+        // margin-left: 2rem;
     }
 
     >.hierarchyPopup-buckets {
