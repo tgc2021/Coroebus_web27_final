@@ -17,7 +17,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    
+    height: fit-content;
     width: 100%;
     
    
@@ -144,7 +144,7 @@
     padding: 0% 1% 1% 1%;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 .level-label-name {
@@ -255,7 +255,7 @@
 // }
 
 .dashboard-search-btn {
-    width: 6vw;
+    width: 20vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -528,6 +528,14 @@
     width: 6vw;
     height: 5vh;
 }
+.level-badge-btn-mobile{
+    border-radius: 20px;
+    // width: 15vw;
+    font-size: 14px;
+    width: 21vw;
+    height: 5vh;
+
+}
 
 .bulletins-sub-card {
     // width: 331px;
@@ -690,6 +698,14 @@
     height: 5vh;
     width: 8vw;
 }
+.dashboard-banner-point-btn-mobile {
+    // background: #F3F2C1;
+    border: 0.5px solid;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    border-radius: 10.61px;
+    height: 5vh;
+    width: 12vw;
+}
 
 .dashboard-banner-point-btn-text {
     font-weight: 600;
@@ -738,6 +754,12 @@
 .filter-txt-name {
     font-weight: 500;
     font-size: 2vh;
+    // font-size: 15.1162px;
+    // color: #000000;
+}
+.filter-txt-name-mobile {
+    font-weight: 500;
+    font-size: 1.5vh;
     // font-size: 15.1162px;
     // color: #000000;
 }
@@ -896,999 +918,18 @@ border-radius: 15px;
 // Responsive
 
 
-// /* (1280x1024) SXGA Display */
-// @media screen and (max-width: 1280px) {
-//     /* insert styles here */
-// }
-
-
 /* 
-  ##Device = Desktops
-  ##Screen = 1281px to higher resolution desktops
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
 */
 
-// @media (min-width: 800px) and (max-width: 1280px) {
-//     .three-data {
-//         >div:nth-child(3) {
-//             margin-left: 25%;
-//             height: 10vh;
-//         }
-//     }
-//     .widthText{
-//         width: 10%;
-//     }
-//     .level-badge-btn {
-//         width:73px;
-//         height: 28.86px;
-//       border-radius: 20px;
-//         // padding:3px 8px 2px 3px;
-//         padding: 5px;
-//     }
-
-//     // .dashboard-user-name {
-//     //     // margin-left: 24%;
-//     // }
-
-//     // .dashboard-user-team-name {
-//     //     // margin-left: 44%;
-//     // }
-
-//     .avatar-upload .avatar-edit {
-//         margin-left: 2vw;
-//     }
-
-//     .w-86 {
-//         width: 86%;
-//     }
-
-//     .user-logo-row {
-//         margin-left: 15px;
-//         margin-right: 15px;
-//     }
-
-//     .rank_h {
-//         margin-left: 10%;
-//         font-weight: 600;
-//         font-size: 18px;
-//     }
-
-//     .points_h {
-//         margin-left: 90% !important;
-//         font-weight: 600;
-//         font-size: 18px;
-//     }
-
-//     .points-bullentins-card {
-//         height: 282px;
-//     }
-    
-//     // .points-bullentins-card-no-height {
-//     //     height:635px;
-//     // }
-
-//     .inner-bulletins-height {
-//         max-height: 229px;
-//     }
-
-//     .dashboard-center-table {
-//         // height: 209px;
-//         max-height: 217px;
-//     }
-   
-
-//     .view-more-row {
-//         margin-top: -3%;
-//     }
-//     .three-data {
-//         >div:nth-child(3) {
-//             margin-left: 25%;
-            
-//         }
-//     }
-
-//     .one-data {
-//         >div>img.island_login {
-//             // height: 234px;
-//             height: 20vh;
-//             // width: 194px;
-//             margin-top:25px;
-//         }
-//     }
-//        .one-data {
-//         >div>button.level-badge-btn {
-//             width: 116.8px;
-//             height: 35.37px;
-//         }
-//     }
-//     .three-data {
-//         >div>img.island_login {
-//             // height: 234px;
-            
-//             // width: 194px;
-//             height: 10vh;
-//         }
-//     }
-    
-//     .four-data{
-//         >div>img.island_login {
-//             margin-top:2px;
-//             height: 10vh;
-            
-//         }
-
-//     }
-
-//     .two-data {
-//         margin-top: 21%;
-
-//         >div>img.island_login {
-//             height: 117px;
-//         }
-
-//     }
-
-
-// }
-
-// @media (min-width: 1281px) {
-//     .w-86 {
-//         width: 90%;
-//     }
-
-
-//     .points-bullentins-card {
-//         height: 372px;
-//     }
-
-//     .inner-notification-height {
-//         max-height: 396px;
-//     }
-
-//     .points-notification-card {
-//         height: 480px;
-//         // width: 330px;
-//     }
-
-//     .three-data {
-//         >div:nth-child(3) {
-//             margin-left: 25%;
-//             height: 10vh;
-//         }
-//     }
-//     .one-data {
-//         >div>img.island_login {
-//             height: 20vh;
-//         }
-//     }
-//     .two-data {
-//         margin-top: 21%;
-
-//         >div>img.island_login {
-//             height: 117px;
-//         }
-//     }
-//     .level-badge-btn {
-//         width: 50%;
-//     }
-
-//     /* CSS */
-
-//     .dashboard-f-width {
-//         width: 667px;
-//         margin-left: 21%;
-//     }
-
-//     // .dashboard-bg-image {
-//     //     width: 100%;
-//     //     background-repeat: no-repeat;
-//     //     background-position: center;
-//     //     background-size: cover;
-//     // }
-
-//     .no-gutter {
-//         --bs-gutter-x: -20rem
-//     }
-
-//     .w-89 {
-//         width: 91%;
-//     }
-
-//     .f-right {
-//         float: right;
-//     }
-
-//     .rank_h {
-//         margin-left: 5%;
-//         font-weight: 600;
-//         font-size: 18px;
-//         line-height: 150%;
-//     }
-
-//     .name_h {
-//         margin-left: 3%;
-//         font-weight: 600;
-//         font-size: 18px;
-//         line-height: 150%;
-//     }
-
-//     .points_h {
-//         margin-left: 94%;
-//         font-weight: 600;
-//         font-size: 18px;
-//         line-height: 150%;
-//     }
-
-//     .user-logo-row {
-//         margin-left: 3rem;
-//     }
-
-//     .name-f-size {
-//         font-size: 14.86px;
-//     }
-
-//     .point-number {
-//         margin-left: 21%;
-//     }
-
-//     .dashboard-center-table {
-//         max-height: 266px;
-//     }
-
-//     .avatar-upload .avatar-edit {
-//         right: -29px;
-//     }
-
-//     .avatar-upload .avatar-preview {
-//         margin-left: 20%;
-//         width: 169px;
-//         height: 169px;
-
-
-//     }
-
-//     // .dashboard-user-name {
-//     //     // margin-left: 28%;
-//     // }
-
-//     // .dashboard-user-team-name {
-//     //     // margin-left: 49%;
-//     // }
-// }
-
-
-// @media only screen and (-webkit-min-device-pixel-ratio: 1.25) and (min-width: 1281px),
-// only screen and (min--moz-device-pixel-ratio: 1.25) and (min-width: 1281px),
-// only screen and (-o-min-device-pixel-ratio: 1.25/1) and (min-width: 1281px),
-// only screen and (min-device-pixel-ratio: 1.25) and (min-width: 1281px),
-// only screen and (min-resolution: 200dpi) and (min-width: 1281px),
-// only screen and (min-resolution: 1.25dppx) and (min-width: 1281px) {
-//     .w-86 {
-//         width: 88%;
-//     }
-
-//     .dashboard-center-table {
-//         max-height: 219px;
-//     }
-
-//     .points-bullentins-card {
-//         height: 298px;
-//     }
-
-//     .inner-notification-height {
-//         max-height: 319px;
-//     }
-
-//     .points-notification-card {
-//         height: 391px;
-//         // width: 330px;
-//     }
-
-//     .three-data {
-//         >div:nth-child(3) {
-//             margin-left: 25%;
-            
-//         }
-//     }
-
-//     .one-data {
-//         >div>img.island_login {
-//             // height: 234px;
-//             height: 20vh;
-//             // width: 194px;
-//             margin-top:25px;
-//         }
-//     }
-//        .one-data {
-//         >div>button.level-badge-btn {
-//             width: 116.8px;
-//             height: 35.37px;
-//         }
-//     }
-//     .three-data {
-//         >div>img.island_login {
-//             // height: 234px;
-            
-//             // width: 194px;
-//             height: 10vh;
-//         }
-//     }
-    
-//     .four-data{
-//         >div>img.island_login {
-//             margin-top:2px;
-//             height: 10vh;
-            
-//         }
-
-//     }
-
-//     .two-data {
-//         margin-top: 21%;
-
-//         >div>img.island_login {
-//             height: 117px;
-//         }
-
-//     }
-
-//     .dashboard-f-width {
-//         width: 675px;
-//         margin-left: 3%;
-//     }
-
-//     // .dashboard-bg-image {
-//     //     width: 100%;
-//     //     background-repeat: no-repeat;
-//     //     background-position: center;
-//     //     background-size: inherit;
-//     //     height: auto;
-//     //     overflow-x: hidden;
-//     // }
-
-//     .dashboard-table {
-//         border-spacing: 0 8px
-//     }
-
-//     .dashboard-center-table {
-//         // max-height: 90px;
-//         max-height:123px;
-
-
-//     }
-
-//     .dashboard-card-fit {
-//         height: fit-content;
-//     }
-
-//     .no-gutter {
-//         --bs-gutter-x: 0rem
-//     }
-
-//     .w-89 {
-//         width: 89%;
-//     }
-
-//     .rank_h {
-//         margin-left: 11%;
-//         font-weight: 600;
-//         font-size: 18px;
-//         line-height: 150%;
-//     }
-
-//     .name_h {
-//         margin-left: 23%;
-//         font-weight: 600;
-//         font-size: 18px;
-//         line-height: 150%;
-//     }
-
-//     .points_h {
-//         padding-left:22px;
-//         margin-left: 90%;
-//         font-weight: 600;
-//         font-size: 18px;
-//         line-height: 150%;
-//     }
-
-//     .user-logo-row {
-//         margin-left: 2rem;
-//         // float: right;
-//     }
-
-//     .name-f-size {
-//         font-size: 14.86px;
-//     }
-
-//     .points-dis-name {
-//         width: 68px;
-//     }
-
-//     // .inner-bulletins-height {
-//     //     max-height: 195px;
-//     // }
-
-
-
-//     .spot-engagement {
-//         line-height: 12px;
-//         margin-left: 3rem;
-//     }
-
-//     .bulletins-title {
-//         line-height: 14px;
-//     }
-
-//     .bulletins-media {
-//         margin-top: -7%;
-//     }
-
-//     // .bulletins-text-muted {
-//     //     margin-top: -7%;
-//     // }
-
-//     .bulletins-image-card {
-//         height: 46px;
-//         margin-top: -9%;
-//     }
-
-//     .bulletins-sub-card {
-//         height: auto;
-//     }
-
-//     .bulletins-sub-card-body {
-//         margin-top: -5%;
-//     }
-
-//     .point-number {
-//         margin-left: 25%;
-//     }
-
-//     .dashboard-container {
-//         margin-top: -1.3%;
-//     }
-
-//     .points-notification-card {
-//         // height: 362px;
-//         height: 330px;
-
-//     }
-
-//     .inner-notification-height {
-//         max-height: 296px;
-//     }
-
-//     .points-bullentins-card {
-//         height: 253px;
-//     }
-
-//     // .points-bullentins-card-no-height {
-//     //     height:635px;
-//     // }
-
-//     // .avatar-upload .avatar-edit {
-//     //     right: 3px;
-//     // }
-
-//     .level-label-name {
-//         margin-left: 33%;
-//     }
-
-//     .avatar-upload .avatar-edit {
-
-//         right: 3px;
-
-//     }
-
-//     .avatar-upload .avatar-preview {
-//         margin-left: 0;
-//         width: 149px;
-//         height: 149px;
-//     }
-
-//     // .dashboard-user-name {
-//     //     // margin-left: 9%;
-//     // }
-
-//     // .dashboard-user-team-name {
-//     //     // margin-left: 38%;
-//     // }
-
-//     .level-badge-btn {
-//         width:73px;
-//         height: 28.86px;
-//       border-radius: 20px;
-//         // padding:3px 8px 2px 3px;
-//         padding: 5px;
-//     }
-
-// }
-
-// /* 
-//   ##Device = Laptops, Desktops
-//   ##Screen = B/w 1025px to 1280px
-// */
-
-// @media (min-width: 1025px) and (max-width: 1280px) {
-
-//     /* CSS */
-//     .dashboard-f-width {
-//         width: 667px;
-//         margin-left: 21%;
-//     }
-
-//     .one-data {
-//         >div>img.island_login {
-//             // height: 234px;
-//             height: 20vh;
-//             // width: 194px;
-//             margin-top: 30px;
-//         }
-//     }
-// }
-
-// @media only screen and (-webkit-min-device-pixel-ratio: 1.25) and (min-width: 1025px) and (max-width: 1280px),
-// only screen and (min--moz-device-pixel-ratio: 1.25) and (min-width: 1025px) and (max-width: 1280px),
-// only screen and (-o-min-device-pixel-ratio: 1.25/1) and (min-width: 1025px) and (max-width: 1280px),
-// only screen and (min-device-pixel-ratio: 1.25) and (min-width: 1025px) and (max-width: 1280px),
-// only screen and (min-resolution: 200dpi) and (min-width: 1025px) and (max-width: 1280px),
-// only screen and (min-resolution: 1.25dppx) and (min-width: 1025px) and (max-width: 1280px) {
-
-
-// }
-
-// @media only screen and (-webkit-min-device-pixel-ratio: 1.25) and (min-width: 1360px) and (max-width: 1366px),
-// only screen and (min--moz-device-pixel-ratio: 1.25) and (min-width: 1360px) and (max-width: 1366px),
-// only screen and (-o-min-device-pixel-ratio: 1.25/1) and (min-width: 1360px) and (max-width: 1366px),
-// only screen and (min-device-pixel-ratio: 1.25) and (min-width: 1360px) and (max-width: 1366px),
-// only screen and (min-resolution: 200dpi) and (min-width: 1360px) and (max-width: 1366px),
-// only screen and (min-resolution: 1.25dppx) and (min-width: 1360px) and (max-width: 1366px) {
-
-
-// }
-
-// /* (1366x768) WXGA Display */
-// @media (min-width: 1360px) and (max-width: 1366px) {
-//     .avatar-upload .avatar-edit {
-//         right: -4px;
-//     }
-
-//     .avatar-upload .avatar-preview {
-//         margin-left: 0;
-//         width: 149px;
-//         height: 149px;
-//     }
-
-//     .view-more-row {
-//         margin-top: -0.5%;
-//     }
-
-//     .dashboard-center-table {
-//        max-height: 85px;
-//     }
-//     .dashboard-center-table-forNSM {
-//         max-height: 140px !important;
-//      }
-
-
-
-//     .w-86 {
-//         width: 88% !important;
-//     }
-
-//     .spot-engagement {
-//         margin-left: 3.8rem;
-//     }
-//     .name_h {
-//         margin-left: 62%;
-//         font-weight: 600;
-//         font-size: 18px;
-//         line-height: 150%;
-//     }
-//     .points_h {
-//         margin-left:10%;
-    
-//     }
-
-//     .three-data {
-//         >div:nth-child(3) {
-//             margin-left: 25%;
-    
-//         }
-//     }
-
-//     .one-data {
-//         >div>img.island_login {
-//             // height: 234px;
-//             height: 20vh;
-//             // width: 194px;
-//             margin-top:25px;
-//         }
-//     }
-//        .one-data {
-//         >div>button.level-badge-btn {
-//             width: 116.8px;
-//             height: 35.37px;
-//         }
-//     }
-//     .three-data {
-//         >div>img.island_login {
-//             // height: 234px;
-            
-//             // width: 194px;
-//             height: 9vh;
-//         }
-//     }
-    
-//     .four-data{
-//         >div>img.island_login {
-//             margin-top:2px;
-//             height: 9vh;
-            
-//         }
-
-//     }
-
-//     .two-data {
-//         margin-top: 12%;
-//         >div>img.island_login {
-//             height: 117px;
-//         }
-
-//     }
-
-
-//     /* insert styles here */
-// }
-
-// @media (min-width: 1400px) and (max-width: 1440px) {
-//     .view-more-row {
-//         margin-top: -0.5%;
-//     }
-//     .dashboard-center-table {
-//         max-height:182px;
-//      }
-//      .dashboard-center-table-forNSM {
-//         max-height:240px;
-//      }
-   
-   
-//     .points-bullentins-card {
-//         height: 371px;
-//     }
-
-//     .inner-bulletins-height {
-//         max-height: 304px;
-//     }
-
-//     .points-notification-card {
-//         height: 475px;
-//     }
-
-//     .inner-notification-height {
-//         max-height: 397px;
-//     }
-
-//     .spot-engagement {
-//         margin-left: 3.8rem;
-//     }
-
-//     .w-86 {
-//         width: 88% !important;
-//     }
-
-//     .avatar-upload .avatar-preview {
-//         margin-left: -4% !important;
-//     }
-
-//     .avatar-upload .avatar-edit {
-//         right: 6px;
-//     }
-
-//     // .dashboard-user-name {
-//     //     // margin-left: 0%;
-//     // }
-
-//     // .dashboard-user-team-name {
-//     //     // margin-left: 35%;
-//     // }
-
-//     /* insert styles here */
-// }
-
-// /* (1440x900) WXGA+ Display */
-// @media screen and (max-width: 1440px) {
-
-//     /* insert styles here */
-
-
-// }
-
-// /* (1600x900) HD+ Display */
-// @media (min-width: 1590px) and (max-width: 1600px) {
-//     .avatar-upload .avatar-edit {
-//         right: 0px;
-//     }
-
-//     // .dashboard-user-team-name {
-//     //     // margin-left: 35%;
-//     // }
-
-//     .avatar-upload .avatar-preview {
-//         margin-left: 0%;
-//     }
-
-//     .view-more-row {
-//         margin-top: -0.5%;
-//     }
-
-//     .dashboard-center-table {
-       
-//         max-height: 244px;
-//     }
-
-//     /* insert styles here */
-//     .name_h {
-//         margin-left: 15%;
-//     }
-
-//     .spot-engagement {
-//         line-height: 32px;
-//         margin-left: 3.8rem;
-//     }
-
-//     // .dashboard-user-name {
-//     //     // margin-left: 3% !important;
-//     // }
-
-//     .profile-pwd-eye {
-//         right: 28px !important;
-//         top: 40px !important;
-//     }
-
-//     .performance-filter-select {
-//         height: unset !important;
-//     }
-// }
-
-// /* (1680x1050) WSXGA+ Display */
-// @media (min-width: 1670px) and (max-width: 1680px) {
-//     .view-more-row {
-//         margin-top: -0.5%;
-//     }
-
-//     .dashboard-center-table {
-//         max-height: 279px;
-       
-//     }
-//     .dashboard-center-table-forNSM{
-//         max-height: 325px;
-//     }
-
-//     // .dashboard-bg-image {
-//     //     background-size: cover;
-//     // }
-
-//     .spot-engagement {
-//         // line-height: 12px;
-//         margin-left: 3.8rem;
-//         margin-bottom: 9%;
-//         padding-top: 3%;
-//     }
-
-//     /* insert styles here */
-//     .avatar-upload .avatar-preview {
-//         margin-left: 0%;
-//     }
-
-//     .avatar-upload .avatar-edit {
-//         right: 0px;
-//     }
-
-//     // .dashboard-user-name {
-//     //     // margin-left: 7%;
-//     // }
-
-//     // .dashboard-user-team-name {
-//     //     // margin-left: 35%;
-//     // }
-
-//     .name_h {
-//         margin-left: 16%;
-//     }
-
-// }
-
-// /* (1920x1080) Full HD Display */
-// // @media (min-width: 1900px) and (max-width: 1920px) {
-
-// //     /* insert styles here */
-// //     .confetti{
-// //         margin-top: 6%;
-// //     }
-// //     .view-more-row {
-// //         margin-top: -0.5%;
-// //     }
-
-// //     .dashboard-center-table {
-   
-// //         max-height: 290px;
-// //     }
-
-// //     .dashboard-bg-image {
-// //         background-size: cover;
-// //     }
-
-// //     .spot-engagement {
-// //         // line-height: 12px;
-// //         margin-left: 3.8rem;
-// //         margin-bottom: 9%;
-// //         padding-top: 3%;
-// //     }
-
-// //     /* insert styles here */
-// //     .avatar-upload .avatar-preview {
-// //         margin-left: 10%;
-// //     }
-
-// //     .avatar-upload .avatar-edit {
-// //         right: 0px;
-// //     }
-  
-// //     // .dashboard-user-name {
-// //     //     // margin-left: 7%;
-// //     // }
-
-// //     // .dashboard-user-team-name {
-// //     //     // margin-left: 35%;
-// //     // }
-
-// //     .name_h {
-// //         margin-left: 16%;
-// //     }
-  
-// // }
-
-// /* (2048x1536) Full HD Display */
-// @media (min-width: 2000px) and (max-width: 2048px) {
-//     .dashboard-container {
-//         margin-top: 1.7%;
-//     }
-
-//     /* insert styles here */
-//     .view-more-row {
-//         margin-top: -0.5%;
-//     }
-
-//     .dashboard-center-table {
-        
-//         max-height: 179px;
-//     }
-
-//     // .dashboard-bg-image {
-//     //     background-size: cover;
-//     // }
-
-//     .spot-engagement {
-//         // line-height: 12px;
-//         margin-left: 3.8rem;
-//         margin-bottom: 9%;
-//         padding-top: 3%;
-//     }
-
-//     /* insert styles here */
-//     .avatar-upload .avatar-preview {
-//         margin-left: 10%;
-//     }
-
-//     .avatar-upload .avatar-edit {
-//         right: 0px;
-//     }
-
-//     // .dashboard-user-name {
-//     //     // margin-left: 7%;
-//     // }
-
-//     // .dashboard-user-team-name {
-//     //     // margin-left: 35%;
-//     // }
-
-//     .name_h {
-//         margin-left: 16%;
-//     }
-// }
-
-
-
-// /* (2560x1600 ) HD+ Display */
-// @media (min-width: 2550px) and (max-width: 2560px) {
-//     .name_h {
-//         margin-left: -2%;
-//     }
-
-//     .points_h {
-//         margin-left: 102%;
-//     }
-
-//     // .dashboard-user-name {
-//     //     // margin-left: 14%;
-//     // }
-
-//     // .dashboard-user-team-name {
-//     //     // margin-left: 33%;
-//     // }
-
-//     .dashboard-container {
-//         margin-top: 1.7%;
-//     }
-
-//     /* insert styles here */
-//     .view-more-row {
-//         margin-top: -0.5%;
-//     }
-
-//     .dashboard-center-table {
-//         max-height: 179px;
-//     }
-
-//     // .dashboard-bg-image {
-//     //     background-size: cover;
-//     // }
-
-//     .spot-engagement {
-//         // line-height: 12px;
-//         margin-left: 3.8rem;
-//         margin-bottom: 9%;
-//         padding-top: 3%;
-//     }
-
-//     /* insert styles here */
-//     .avatar-upload .avatar-preview {
-//         margin-left: 10%;
-//     }
-
-//     .avatar-upload .avatar-edit {
-//         right: 0px;
-//     }
-
-//     // .dashboard-user-name {
-//     //     // margin-left: 7%;
-//     // }
-
-//     // .dashboard-user-team-name {
-//     //     // margin-left: 35%;
-//     // }
-
-//     .name_h {
-//         margin-left: 16%;
-//     }
-// }
-
-
-// @media (min-width: 768px) and (max-width: 1024px) {
+// @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
 //     .points-row {
 //         width: 100%;
 //     }
 
 //     .points-dis-card {
 //         margin-top: 20px;
-//     }
-
-//     .dashboard-user-team-name {
-//         margin-left: 42%;
-
-//     }
-
-//     // .dashboard-user-name {
-//     //     // margin-left: 22%;
-//     // }
-
-//     // .avatar-upload .avatar-preview {
-//     //     // margin-left: 20%;
-
-//     // }
-
-//     .avatar-upload .avatar-edit {
-//         right: -8%
 //     }
 
 //     .three-data {
@@ -1920,7 +961,6 @@ border-radius: 15px;
 //         font-size: 12px;
 //         text-align: start;
 //         color: #BEBCBC;
-//         align-items: flex-end;
 //     }
 
 //     .dashboard-search::-moz-placeholder {
@@ -1929,7 +969,6 @@ border-radius: 15px;
 //         font-size: 12px;
 //         text-align: start;
 //         color: #BEBCBC;
-//         align-items: flex-end;
 //     }
 
 //     .dashboard-search:-ms-input-placeholder {
@@ -1963,10 +1002,9 @@ border-radius: 15px;
 //         }
 //     }
 
-
 //     .filter-txt-name {
 //         margin-top: 3px;
-//         float: cen;
+//         // float: cen;
 //         float: left;
 //         margin-left: 33%;
 //     }
@@ -1987,49 +1025,19 @@ border-radius: 15px;
 //         //flex: 1 0 100%;
 //     }
 
-//     .rank_h {
-//         margin-left: 11%;
-//         font-weight: 600;
-//         font-size: 18px;
-//         line-height: 150%;
-//     }
-
-//     .name_h {
-//         margin-left: 0%;
-//         font-weight: 600;
-//         font-size: 18px;
-//         line-height: 150%;
-//     }
-
-//     .points_h {
-//         margin-left: 90%;
-//         font-weight: 600;
-//         font-size: 18px;
-//         line-height: 150%;
-//     }
-
-//     .user-logo-row {
-//         margin-left: 2rem;
-//     }
-
-//     .f-right {
-//         float: right;
-//     }
-
 //     .mobile-ipad-only {
 //         display: block;
 //         // margin-left: -5%;
 //     }
 
 //     .mobile-ipad-only_level-badge-btn {
-//         height: 16px;
+//         height: 35px;
 //     }
 
 //     .mobile-ipad-only_level-badge-btn-txt {
 //         font-size: 10px;
 //         margin-top: -6px;
 //         float: left;
-//         margin-left: 48%;
 //     }
 
 //     .mobile-ipad-only_level-rank-name {
@@ -2058,729 +1066,583 @@ border-radius: 15px;
 
 // }
 
-/* 
-  ##Device = Tablets, Ipads (landscape)
-  ##Screen = B/w 768px to 1024px
-*/
-
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-    .points-row {
-        width: 100%;
-    }
-
-    .points-dis-card {
-        margin-top: 20px;
-    }
-
-    .three-data {
-        >div>button.mobile-ipad-only_level-badge-btn {
-            width: 56%;
-        }
-    }
-
-    .one-data {
-        >div>button.mobile-ipad-only_level-badge-btn {
-            width: 18%;
-        }
-    }
-
-    .two-data {
-        >div>button.mobile-ipad-only_level-badge-btn {
-            width: 32%;
-        }
-    }
-
-    .mobile-ipad-only_rank-img {
-        width: 93%;
-        height: 80%;
-    }
-
-    .dashboard-search::-webkit-input-placeholder {
-        /* Chrome/Opera/Safari */
-        font-weight: 400;
-        font-size: 12px;
-        text-align: start;
-        color: #BEBCBC;
-    }
-
-    .dashboard-search::-moz-placeholder {
-        /* Firefox 19+ */
-        font-weight: 400;
-        font-size: 12px;
-        text-align: start;
-        color: #BEBCBC;
-    }
-
-    .dashboard-search:-ms-input-placeholder {
-        /* IE 10+ */
-        font-weight: 400;
-        font-size: 12px;
-        text-align: start;
-        color: #BEBCBC;
-    }
-
-    .dashboard-search:-moz-placeholder {
-        /* Firefox 18- */
-        font-weight: 400;
-        font-size: 12px;
-        text-align: start;
-        color: #BEBCBC;
-    }
-
-    .dashboard-search {
-        height: 48px;
-        border-radius: 10px;
-    }
-
-    .dashboard-search-btn {
-        height: 48px;
-
-        >.fa-search {
-            margin-top: -2%;
-            float: left;
-            margin-left: 28%;
-        }
-    }
-
-    .filter-txt-name {
-        margin-top: 3px;
-        // float: cen;
-        float: left;
-        margin-left: 33%;
-    }
-
-    /* CSS */
-    .o-1 {
-        order: 0;
-        //flex: 1 0 100%;
-    }
-
-    .o-2 {
-        order: 1;
-        //flex: 1 0 100%;
-    }
-
-    .o-3 {
-        order: 2;
-        //flex: 1 0 100%;
-    }
-
-    .mobile-ipad-only {
-        display: block;
-        // margin-left: -5%;
-    }
-
-    .mobile-ipad-only_level-badge-btn {
-        height: 35px;
-    }
-
-    .mobile-ipad-only_level-badge-btn-txt {
-        font-size: 10px;
-        margin-top: -6px;
-        float: left;
-    }
-
-    .mobile-ipad-only_level-rank-name {
-        font-weight: 700;
-        font-size: 10px;
-        align-items: center;
-        text-align: center;
-        text-transform: uppercase;
-    }
-
-    .mobile-ipad-only_card {
-        background-color: unset;
-        background-clip: unset;
-        border: none;
-        border-radius: unset;
-        margin-left: -4%;
-    }
-
-    // .mobile-ipad-only-margin-div {
-    //     margin-left: -4%;
-    // }
-
-    .dashboard-center-table {
-        max-height: 170px;
-    }
-
-}
-
-/* 
-  ##Device = Low Resolution Tablets, Mobiles (Landscape)
-  ##Screen = B/w 481px to 767px
-*/
-
-@media (min-width: 481px) and (max-width: 767px) {
-    .profile-pwd-eye {
-        right: 55px !important;
-
-    }
-
-    .three-data {
-        >div>button.mobile-ipad-only_level-badge-btn {
-            width: 56%;
-        }
-    }
-
-    .one-data {
-        >div>button.mobile-ipad-only_level-badge-btn {
-            width: 18%;
-        }
-    }
-
-    .two-data {
-        >div>button.mobile-ipad-only_level-badge-btn {
-            width: 32%;
-        }
-    }
-
-    .dashboard-search::-webkit-input-placeholder {
-        /* Chrome/Opera/Safari */
-        font-weight: 400;
-        font-size: 10px;
-        text-align: start;
-        color: #BEBCBC;
-    }
-
-    .dashboard-search::-moz-placeholder {
-        /* Firefox 19+ */
-        font-weight: 400;
-        font-size: 10px;
-        text-align: start;
-        color: #BEBCBC;
-    }
-
-    .dashboard-search:-ms-input-placeholder {
-        /* IE 10+ */
-        font-weight: 400;
-        font-size: 10px;
-        text-align: start;
-        color: #BEBCBC;
-    }
-
-    .dashboard-search:-moz-placeholder {
-        /* Firefox 18- */
-        font-weight: 400;
-        font-size: 10px;
-        text-align: start;
-        color: #BEBCBC;
-    }
-
-    .dashboard-search {
-        height: 36px;
-        border-radius: 10px;
-    }
-
-    .dashboard-search-btn {
-        height: 36px;
-
-        >.fa-search {
-            margin-top: -2%;
-            float: left;
-            margin-left: 28%;
-        }
-    }
-
-    .filter-txt-name {
-        margin-top: 0px;
-        //  float: cen;
-        // float: left;
-        // margin-left: 10%;
-        font-size: 10px;
-    }
-
-    /* CSS */
-    .confetti {
-        height: 28px;
-    }
-
-    .mt-4 {
-        margin-top: 8px !important;
-    }
-
-    .filter-btn-dashboard {
-        width: 100%;
-    }
-
-    .level-label-name {
-        margin-left: 37%;
-        width: 127px;
-        font-size: 10px;
-        height: 15px;
-    }
-
-    .dashboard-f-width {
-        width: 100%;
-        margin-left: unset
-    }
-
-    .search-btn {
-        text-align: end;
-    }
-
-    .w-89 {
-        width: 77%;
-    }
-
-    .rank_h {
-        margin-left: 11%;
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 150%;
-    }
-
-    .name_h {
-        margin-left: 35%;
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 150%;
-    }
-
-    .points_h {
-        margin-left: 70%;
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 150%;
-    }
-
-    .user-logo-row {
-        margin-left: 8%;
-    }
-
-    .name-f-size {
-        font-size: 12px;
-    }
-
-    .up-arrow {
-        height: 35px;
-        float: right;
-    }
-
-    .o-1 {
-        order: 0;
-        //flex: 1 0 100%;
-    }
-
-    .o-2 {
-        order: 1;
-        //flex: 1 0 100%;
-    }
-
-    .o-3 {
-        order: 2;
-        //flex: 1 0 100%;
-    }
-
-    .avatar-upload .avatar-edit input+label {
-        width: 28px;
-        height: 28px;
-    }
-
-    .avatar-upload .avatar-edit {
-        right: -34px;
-    }
-
-    .avatar-upload .avatar-preview {
-        width: 89px;
-        height: 89px;
-    }
-
-    .dashboard-user-name,
-    .dashboard-user-team-name {
-        font-size: 9px;
-        font-weight: bold;
-        margin-left: 12%;
-    }
-
-    .dashboard-banner-main-rank-img {
-        height: 71px;
-        margin-left: -13%;
-    }
-
-    .dashboard-game-point-img,
-    .dashboard-reward-point-img {
-        height: 22px;
-    }
-
-    .dashboard-banner-point-btn {
-        width: 54px;
-        height: 16px;
-    }
-
-
-
-
-    // .dashboard-banner {
-    //     height: 18vh;
-    // }
-
-    .avatar-edit {
-        top: 0px !important;
-        right: -26vw;
-        left: 65px;
+// /* 
+//   ##Device = Low Resolution Tablets, Mobiles (Landscape)
+//   ##Screen = B/w 481px to 767px
+// */
+
+// @media (min-width: 481px) and (max-width: 767px) {
+//     .profile-pwd-eye {
+//         right: 55px !important;
+
+//     }
+
+//     .three-data {
+//         >div>button.mobile-ipad-only_level-badge-btn {
+//             width: 56%;
+//         }
+//     }
+
+//     .one-data {
+//         >div>button.mobile-ipad-only_level-badge-btn {
+//             width: 18%;
+//         }
+//     }
+
+//     .two-data {
+//         >div>button.mobile-ipad-only_level-badge-btn {
+//             width: 32%;
+//         }
+//     }
+
+//     .dashboard-search::-webkit-input-placeholder {
+//         /* Chrome/Opera/Safari */
+//         font-weight: 400;
+//         font-size: 10px;
+//         text-align: start;
+//         color: #BEBCBC;
+//     }
+
+//     .dashboard-search::-moz-placeholder {
+//         /* Firefox 19+ */
+//         font-weight: 400;
+//         font-size: 10px;
+//         text-align: start;
+//         color: #BEBCBC;
+//     }
+
+//     .dashboard-search:-ms-input-placeholder {
+//         /* IE 10+ */
+//         font-weight: 400;
+//         font-size: 10px;
+//         text-align: start;
+//         color: #BEBCBC;
+//     }
+
+//     .dashboard-search:-moz-placeholder {
+//         /* Firefox 18- */
+//         font-weight: 400;
+//         font-size: 10px;
+//         text-align: start;
+//         color: #BEBCBC;
+//     }
+
+//     .dashboard-search {
+//         height: 36px;
+//         border-radius: 10px;
+//     }
+
+//     .dashboard-search-btn {
+//         height: 36px;
+
+//         >.fa-search {
+//             margin-top: -2%;
+//             float: left;
+//             margin-left: 28%;
+//         }
+//     }
+
+//     .filter-txt-name {
+//         margin-top: 0px;
+//         //  float: cen;
+//         // float: left;
+//         // margin-left: 10%;
+//         font-size: 10px;
+//     }
+
+//     /* CSS */
+//     .confetti {
+//         height: 28px;
+//     }
+
+//     .mt-4 {
+//         margin-top: 8px !important;
+//     }
+
+//     .filter-btn-dashboard {
+//         width: 100%;
+//     }
+
+//     .level-label-name {
+//         margin-left: 37%;
+//         width: 127px;
+//         font-size: 10px;
+//         height: 15px;
+//     }
+
+//     .dashboard-f-width {
+//         width: 100%;
+//         margin-left: unset
+//     }
+
+//     .search-btn {
+//         text-align: end;
+//     }
+
+//     .w-89 {
+//         width: 77%;
+//     }
+
+//     .rank_h {
+//         margin-left: 11%;
+//         font-weight: 700;
+//         font-size: 14px;
+//         line-height: 150%;
+//     }
+
+//     .name_h {
+//         margin-left: 35%;
+//         font-weight: 700;
+//         font-size: 14px;
+//         line-height: 150%;
+//     }
+
+//     .points_h {
+//         margin-left: 70%;
+//         font-weight: 700;
+//         font-size: 14px;
+//         line-height: 150%;
+//     }
+
+//     .user-logo-row {
+//         margin-left: 8%;
+//     }
+
+//     .name-f-size {
+//         font-size: 12px;
+//     }
+
+//     .up-arrow {
+//         height: 35px;
+//         float: right;
+//     }
+
+//     .o-1 {
+//         order: 0;
+//         //flex: 1 0 100%;
+//     }
+
+//     .o-2 {
+//         order: 1;
+//         //flex: 1 0 100%;
+//     }
+
+//     .o-3 {
+//         order: 2;
+//         //flex: 1 0 100%;
+//     }
+
+//     .avatar-upload .avatar-edit input+label {
+//         width: 28px;
+//         height: 28px;
+//     }
+
+//     .avatar-upload .avatar-edit {
+//         right: -34px;
+//     }
+
+//     .avatar-upload .avatar-preview {
+//         width: 89px;
+//         height: 89px;
+//     }
+
+//     .dashboard-user-name,
+//     .dashboard-user-team-name {
+//         font-size: 9px;
+//         font-weight: bold;
+//         margin-left: 12%;
+//     }
+
+//     .dashboard-banner-main-rank-img {
+//         height: 71px;
+//         margin-left: -13%;
+//     }
+
+//     .dashboard-game-point-img,
+//     .dashboard-reward-point-img {
+//         height: 22px;
+//     }
+
+//     .dashboard-banner-point-btn {
+//         width: 54px;
+//         height: 16px;
+//     }
+
+
+
+
+//     // .dashboard-banner {
+//     //     height: 18vh;
+//     // }
+
+//     .avatar-edit {
+//         top: 0px !important;
+//         right: -26vw;
+//         left: 65px;
     
-    }
-
-
-
-    .team-logo-row {
-        margin-left: 6%;
-    }
-
-    .avatar-upload {
-        margin-left: -5%;
-    }
-
-    .mobile-ipad-only {
-        display: block;
-        margin-left: -5%;
-    }
-
-    .mobile-ipad-only_level-badge-btn {
-        height: 16px;
-    }
-
-    .mobile-ipad-only_level-badge-btn-txt {
-        font-size: 10px;
-        margin-top: -6px;
-        float: left;
-    }
-
-    .mobile-ipad-only_level-rank-name {
-        font-weight: 700;
-        font-size: 10px;
-        align-items: center;
-        text-align: center;
-        text-transform: uppercase;
-    }
-
-    .mobile-ipad-only_card {
-        background-color: unset;
-        background-clip: unset;
-        border: none;
-        border-radius: unset;
-        margin-left: -4%;
-    }
-
-    .mobile-ipad-only-margin-div {
-        margin-left: -4%;
-    }
-
-    .dashboard-center-table {
-        max-height: 170px;
-    }
-
-}
-
-/* 
-  ##Device = Most of the Smartphones Mobiles (Portrait)
-  ##Screen = B/w 320px to 479px
-*/
-
-@media (min-width: 320px) and (max-width: 480px) {
-    .profile-pwd-eye {
-        right: 55px !important;
-
-    }
-
-    .three-data {
-        >div>button.mobile-ipad-only_level-badge-btn {
-            width: 56%;
-        }
-    }
-
-    .one-data {
-        >div>button.mobile-ipad-only_level-badge-btn {
-            width: 18%;
-        }
-    }
-
-    .two-data {
-        >div>button.mobile-ipad-only_level-badge-btn {
-            width: 32%;
-        }
-    }
-
-    .dashboard-search::-webkit-input-placeholder {
-        /* Chrome/Opera/Safari */
-        font-weight: 400;
-        font-size: 10px;
-        text-align: start;
-        color: #BEBCBC;
-
-    }
-
-    .dashboard-search::-moz-placeholder {
-        /* Firefox 19+ */
-        font-weight: 400;
-        font-size: 10px;
-        text-align: start;
-        color: #BEBCBC;
-
-    }
-
-    .dashboard-search:-ms-input-placeholder {
-        /* IE 10+ */
-        font-weight: 400;
-        font-size: 10px;
-        text-align: start;
-        color: #BEBCBC;
-
-    }
-
-    .dashboard-search:-moz-placeholder {
-        /* Firefox 18- */
-        font-weight: 400;
-        font-size: 10px;
-        text-align: start;
-        color: #BEBCBC;
-
-    }
-
-    .dashboard-search {
-        height: 36px;
-        border-radius: 10px;
-    }
-
-    .dashboard-search-btn {
-        height: 36px;
-
-        >.fa-search {
-            margin-top: -2%;
-            float: left;
-            margin-left: 28%;
-        }
-    }
-
-    .filter-btn-dashboard {
-        height: 33px;
-        font-size: 9px;
-    }
-
-    /* CSS */
-    .confetti {
-        height: 28px;
-    }
-
-    .mt-4 {
-        margin-top: 8px !important;
-    }
-    .filter-btn-dashboard {
-        width: 100%;
-    }
-
-    .level-label-name {
-
-        margin-left: 30%;
-        width: 127px;
-        font-size: 10px;
-        height: 15px;
-    }
-
-    .dashboard-f-width {
-        width: 100%;
-        margin-left: unset
-    }
-
-    .search-btn {
-        text-align: end;
-    }
-
-    .w-89 {
-        width: 77%;
-    }
-
-    .rank_h {
-        margin-left: 11%;
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 150%;
-    }
-
-    .name_h {
-        margin-left: 35%;
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 150%;
-    }
-
-    .points_h {
-        margin-left: 70%;
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 150%;
-    }
-
-    .user-logo-row {
-        margin-left: 8%;
-    }
-
-    .name-f-size {
-        font-size: 12px;
-    }
-
-    .up-arrow {
-        height: 35px;
-        float: right;
-    }
-
-    .o-1 {
-        order: 0;
-        //flex: 1 0 100%;
-    }
-
-    .o-2 {
-        order: 1;
-        //flex: 1 0 100%;
-    }
-
-    .o-3 {
-        order: 2;
-        //flex: 1 0 100%;
-    }
-
-    .avatar-edit {
-        top: -2px !important;
-        right: 5px !important;
-    }
-
-    .avatar-upload .avatar-edit input+label {
-        width: 28px;
-        height: 28px;
-    }
-
-    .avatar-upload .avatar-edit {
-        right: -34px;
-    }
-
-    .avatar-upload .avatar-preview {
-        width: 89px;
-        height: 89px;
-    }
-
-    .dashboard-user-name,
-    .dashboard-user-team-name {
-        font-size: 9px;
-        font-weight: bold;
-       margin-left: 10%;
-    }
-
-    .dashboard-banner-main-rank-img {
-        height: 71px;
-        margin-left: -40%;
-    }
-
-    .dashboard-game-point-img,
-    .dashboard-reward-point-img {
-        height: 22px;
-    }
-
-    .dashboard-banner-point-btn {
-        width: 54px;
-        height: 16px;
-        display: flex;
-        justify-content: center;
-    }
-
-
-
-
-    .dashboard-banner {
-        height: 18vh;
-    }
-
-
-
-    .team-logo-row {
-        margin-left: 6%;
-    }
-
-    .avatar-upload {
-        margin-left: -26%;
-    }
-
-    .mobile-ipad-only {
-        display: block;
-        margin-left: -5%;
-    }
-
-    .mobile-ipad-only_level-badge-btn {
-        height: 16px;
-    }
-
-    .mobile-ipad-only_level-badge-btn-txt {
-        font-size: 10px;
-        margin-top: -6px;
-        float: left;
-        margin-left: 44%;
-    }
-
-    .mobile-ipad-only_level-rank-name {
-        font-weight: 700;
-        font-size: 8px;
-        align-items: center;
-        text-align: center;
-        text-transform: uppercase;
-    }
-
-    .mobile-ipad-only_card {
-        background-color: unset;
-        background-clip: unset;
-        border: none;
-        border-radius: unset;
-        margin-left: -4%;
-    }
-
-    .mobile-ipad-only-margin-div {
-        margin-left: -4%;
-    }
-
-    .dashboard-center-table {
-        max-height: 170px;
-    }
-
-    // .filter-txt-name {
-    //     margin-top: 0px;
-    //     // float: cen;
-    //     // float: left;
-    //     margin-left: 12%;
-    //     font-size: 10px;
-    // }
-
-    .modal-cls>div>.modal-content {
-        margin-left: 0%;
-    }
-
-    .modal-content>.poke-buckets {
-        width: 50%;
-    }
-
-    .modal-content>.content-buckets {
-        width: 95%;
-    }
-
-    .percentile-row-height {
-        height: auto;
-    }
-
-    .poke-image {
-        width: 75px;
-        height: 75px;
-    }
-
-    .poke-desc {
-        font-size: 11px !important;
-        margin-left: 23% !important;
-    }
-    .poke-desc-background{
+//     }
+
+
+
+//     .team-logo-row {
+//         margin-left: 6%;
+//     }
+
+//     .avatar-upload {
+//         margin-left: -5%;
+//     }
+
+//     .mobile-ipad-only {
+//         display: block;
+//         margin-left: -5%;
+//     }
+
+//     .mobile-ipad-only_level-badge-btn {
+//         height: 16px;
+//     }
+
+//     .mobile-ipad-only_level-badge-btn-txt {
+//         font-size: 10px;
+//         margin-top: -6px;
+//         float: left;
+//     }
+
+//     .mobile-ipad-only_level-rank-name {
+//         font-weight: 700;
+//         font-size: 10px;
+//         align-items: center;
+//         text-align: center;
+//         text-transform: uppercase;
+//     }
+
+//     .mobile-ipad-only_card {
+//         background-color: unset;
+//         background-clip: unset;
+//         border: none;
+//         border-radius: unset;
+//         margin-left: -4%;
+//     }
+
+//     .mobile-ipad-only-margin-div {
+//         margin-left: -4%;
+//     }
+
+//     .dashboard-center-table {
+//         max-height: 170px;
+//     }
+
+// }
+
+// /* 
+//   ##Device = Most of the Smartphones Mobiles (Portrait)
+//   ##Screen = B/w 320px to 479px
+// */
+
+// @media (min-width: 320px) and (max-width: 480px) {
+//     .profile-pwd-eye {
+//         right: 55px !important;
+
+//     }
+
+//     .three-data {
+//         >div>button.mobile-ipad-only_level-badge-btn {
+//             width: 56%;
+//         }
+//     }
+
+//     .one-data {
+//         >div>button.mobile-ipad-only_level-badge-btn {
+//             width: 18%;
+//         }
+//     }
+
+//     .two-data {
+//         >div>button.mobile-ipad-only_level-badge-btn {
+//             width: 32%;
+//         }
+//     }
+
+//     .dashboard-search::-webkit-input-placeholder {
+//         /* Chrome/Opera/Safari */
+//         font-weight: 400;
+//         font-size: 10px;
+//         text-align: start;
+//         color: #BEBCBC;
+
+//     }
+
+//     .dashboard-search::-moz-placeholder {
+//         /* Firefox 19+ */
+//         font-weight: 400;
+//         font-size: 10px;
+//         text-align: start;
+//         color: #BEBCBC;
+
+//     }
+
+//     .dashboard-search:-ms-input-placeholder {
+//         /* IE 10+ */
+//         font-weight: 400;
+//         font-size: 10px;
+//         text-align: start;
+//         color: #BEBCBC;
+
+//     }
+
+//     .dashboard-search:-moz-placeholder {
+//         /* Firefox 18- */
+//         font-weight: 400;
+//         font-size: 10px;
+//         text-align: start;
+//         color: #BEBCBC;
+
+//     }
+
+//     .dashboard-search {
+//         height: 6vh;
+//         border-radius: 10px;
+//     }
+
+//     .dashboard-search-btn {
+//         height: 6vh;
+//         width: 60px;
+//         >.fa-search {
+//             margin-top: -2%;
+//             float: left;
+//             margin-left: 28%;
+//         }
+//     }
+
+//     .filter-btn-dashboard {
+//         height: 6vh;
+//         width: 15vw;
+//         font-size: 9px;
+//     }
+
+//     /* CSS */
+//     .confetti {
+//         height: 28px;
+//     }
+
+//     .mt-4 {
+//         margin-top: 8px !important;
+//     }
+//     .filter-btn-dashboard {
+//         width: 100%;
+//     }
+
+//     .level-label-name {
+
+//         margin-left: 30%;
+//         width: 127px;
+//         font-size: 10px;
+//         height: 3.3vh;
+//     }
+
+//     .dashboard-f-width {
+//         width: 100%;
+//         margin-left: unset
+//     }
+
+//     .search-btn {
+//         text-align: end;
+//     }
+
+//     .w-89 {
+//         width: 77%;
+//     }
+
+//     .rank_h {
+//         margin-left: 11%;
+//         font-weight: 700;
+//         font-size: 14px;
+//         line-height: 150%;
+//     }
+
+//     .name_h {
+//         margin-left: 35%;
+//         font-weight: 700;
+//         font-size: 14px;
+//         line-height: 150%;
+//     }
+
+//     .points_h {
+//         margin-left: 70%;
+//         font-weight: 700;
+//         font-size: 14px;
+//         line-height: 150%;
+//     }
+
+//     .user-logo-row {
+//         margin-left: 8%;
+//     }
+
+//     .name-f-size {
+//         font-size: 12px;
+//     }
+
+//     .up-arrow {
+//         height: 35px;
+//         float: right;
+//     }
+
+//     .o-1 {
+//         order: 0;
+//         //flex: 1 0 100%;
+//     }
+
+//     .o-2 {
+//         order: 1;
+//         //flex: 1 0 100%;
+//     }
+
+//     .o-3 {
+//         order: 2;
+//         //flex: 1 0 100%;
+//     }
+
+//     .avatar-edit {
+//         top: -2px !important;
+//         right: 5px !important;
+//     }
+
+//     .avatar-upload .avatar-edit input+label {
+//         width: 28px;
+//         height: 28px;
+//     }
+
+//     .avatar-upload .avatar-edit {
+//         right: -34px;
+//     }
+
+//     .avatar-upload .avatar-preview {
+//         width: 89px;
+//         height: 89px;
+//     }
+
+//     .dashboard-user-name,
+//     .dashboard-user-team-name {
+//         font-size: 9px;
+//         font-weight: bold;
+//        margin-left: 10%;
+//     }
+
+//     .dashboard-banner-main-rank-img {
+//         height: 71px;
+//         margin-left: -40%;
+//     }
+
+//     .dashboard-game-point-img,
+//     .dashboard-reward-point-img {
+//         height: 22px;
+//     }
+
+//     .dashboard-banner-point-btn {
+//         width: 54px;
+//         height: 4vh;
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//     }
+
+
+
+
+//     .dashboard-banner {
+//         height: 18vh;
+//     }
+
+
+
+//     .team-logo-row {
+//         margin-left: 6%;
+//     }
+
+//     .avatar-upload {
+//         margin-left: -26%;
+//     }
+
+//     .mobile-ipad-only {
+//         display: block;
+//         margin-left: -5%;
+//     }
+
+//     .mobile-ipad-only_level-badge-btn {
+//         height: 16px;
+//     }
+
+//     .mobile-ipad-only_level-badge-btn-txt {
+//         font-size: 10px;
+//         margin-top: -6px;
+//         float: left;
+//         margin-left: 44%;
+//     }
+
+//     .mobile-ipad-only_level-rank-name {
+//         font-weight: 700;
+//         font-size: 8px;
+//         align-items: center;
+//         text-align: center;
+//         text-transform: uppercase;
+//     }
+
+//     .mobile-ipad-only_card {
+//         background-color: unset;
+//         background-clip: unset;
+//         border: none;
+//         border-radius: unset;
+//         margin-left: -4%;
+//     }
+
+//     .mobile-ipad-only-margin-div {
+//         margin-left: -4%;
+//     }
+
+//     .dashboard-center-table {
+//         max-height: 170px;
+//     }
+
+//     // .filter-txt-name {
+//     //     margin-top: 0px;
+//     //     // float: cen;
+//     //     // float: left;
+//     //     margin-left: 12%;
+//     //     font-size: 10px;
+//     // }
+
+//     .modal-cls>div>.modal-content {
+//         margin-left: 0%;
+//     }
+
+//     .modal-content>.poke-buckets {
+//         width: 50%;
+//     }
+
+//     .modal-content>.content-buckets {
+//         width: 95%;
+//     }
+
+//     .percentile-row-height {
+//         height: auto;
+//     }
+
+//     .poke-image {
+//         width: 75px;
+//         height: 75px;
+//     }
+
+//     .poke-desc {
+//         font-size: 11px !important;
+//         margin-left: 23% !important;
+//     }
+//     .poke-desc-background{
         
-background: #FFFFFF;
-border: 2px solid #53B8BB;
-box-shadow: 0px 4px 4px rgba(78, 64, 45, 0.25);
-border-radius: 15px;
-    }
-}
+// background: #FFFFFF;
+// border: 2px solid #53B8BB;
+// box-shadow: 0px 4px 4px rgba(78, 64, 45, 0.25);
+// border-radius: 15px;
+//     }
+// }
 
 
 
