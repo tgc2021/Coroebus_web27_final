@@ -191,7 +191,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     let body: any;
     body = {
       "_userid": queryParams?.userID ? queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
-      "_game": queryParams?.gameID ? queryParams?.gameID : this.userSelectionData?.id_coroebus_game, "_section_view": "1", "page_number": "1"
+      "_game": queryParams?.gameID ? queryParams?.gameID : this.userSelectionData?.id_coroebus_game, "_section_view": "1", "page_number": "1","device_type" : "W"
     };
     [err, res] = await HttpProtocols.to(DashboardModel.getUserBannerDataSectionView_1(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {

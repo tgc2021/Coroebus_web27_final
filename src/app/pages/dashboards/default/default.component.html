@@ -8,9 +8,10 @@
     <ng-template #dashboardTpl>
         <div class="row">
             <div class="col-3 pointsDistributionSection d-flex flex-column justify-content-between">
-                <div>
+                <div [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}">
                     <div class="card points-dis-card"
-                        [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                      [style.background-image]="
+                sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
                         <div class="card-body border-bottom-">
                             <div class="float-start dropdown ms-2 font-size-16 font-weight-semibold">
                                 Point Distribution
@@ -41,9 +42,11 @@
                     </div>
                 </div>
 
-                <div>
-                    <div class="card points-notification-card"
-                        [style.background-image]="sectionView_1?.theme_details?.[0]?.notification_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                <div [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}">
+                    <div class="card card-div points-notification-card"
+                      [style.background-image]="
+                sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
+                    
                         <div class="card-body border-bottom">
                             <div class="dropdown ms-2 font-size-16 font-weight-semibold">
                                 Notification
@@ -409,10 +412,13 @@
             </div>
             <div class="col-3 RankSection">
 
-                <div class="card points-rank-card " *ngIf="sectionView_1?.is_land_logos?.length > 0"
-                    [style.background-image]="
+                <div class="points-rank-card" [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}"
+                 *ngIf="sectionView_1?.is_land_logos?.length > 0"
+                   [style.background-image]="
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
-                    <div class=" card-body  d-flex justify-content-center align-items-center gap-2" style="height:38vh">
+                 
+                   <div class="card card-div">
+                    <div class="card-body  d-flex justify-content-center align-items-center gap-2" style="height:38vh">
                         <div class="row" [ngClass]="{'row-cols-2': sectionView_1?.is_land_logos?.length !== 1,
                     'two-data': sectionView_1?.is_land_logos?.length === 2,
                     'three-data': sectionView_1?.is_land_logos?.length ===3,
@@ -434,11 +440,16 @@
 
                         </div>
                     </div>
+                   </div>
+                   
                 </div>
-                <div class="card"
-                    [ngClass]="{'points-bullentins-card-no-height': sectionView_1?.is_land_logos?.length == 0, 'points-bullentins-card': sectionView_1?.is_land_logos?.length != 0}"
-                    [style.background-image]="sectionView_1?.theme_details?.[0]?.add_ins_background ? 'url(' + sectionView_1?.theme_details?.[0]?.add_ins_background + ')' : null">
-                    <div class="float-start dropdown ms-4 mt-3  font-size-16 font-weight-semibold">
+
+                <div class="card" [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}"
+                  [style.background-image]="
+                sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
+                    <div class="bulletins-card"
+                    [ngClass]="{'points-bullentins-card-no-height': sectionView_1?.is_land_logos?.length == 0, 'points-bullentins-card': sectionView_1?.is_land_logos?.length != 0}">
+                    <div class="float-start dropdown ms-4 mt-3  font-size-16 font-weight-semibold" style="width: 100%;">
                         Bulletins
                     </div>
                     <div class="card-body pt-2 d-flex flex-column justify-content-center">
@@ -447,7 +458,7 @@
                         <div class="d-flex align-items-center">
 
 
-                            <div *ngIf="buletinsHide" style="display:flex;flex-direction:column;justify-self:center;">
+                            <div *ngIf="buletinsHide" style="display:flex;flex-direction:column;justify-content:center;">
                                 <br>
                                 <div class="" style="font-family: 'Inter';
                             font-style: normal;
@@ -456,7 +467,8 @@
                             line-height: 25px;
                             text-align: center;
                             letter-spacing: 0.003em;
-                           color: #000000;">
+                           color: #000000;
+                           width: 22vw;">
                                     There's no bulletin’s you have subscribed to, stay tuned to this section for more.
                                 </div>
                             </div>
@@ -506,6 +518,8 @@
 
                     </div>
                 </div>
+                </div>
+              
 
 
             </div>

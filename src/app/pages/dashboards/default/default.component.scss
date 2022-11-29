@@ -1,3 +1,27 @@
+.cardWithBackgroundImage{
+
+    .card-div{
+        background: transparent;
+        height: 43vh;
+    }
+}
+
+.cardWithTransparentImage{
+.card-div{
+    height: 43vh;
+}
+
+
+
+}
+
+
+.bulletins-card{
+.card{
+    background-color: white;
+}
+}
+
 
 .points-notification-card
 {
@@ -37,9 +61,17 @@
    background-repeat: no-repeat;
    background-position: inherit;
    background-size: cover;
-   height: 43vh;
+  
    border-radius: 11px;
+
+ 
 }
+
+// .RankSection{
+//     .card{
+//         background: transparent;
+//     }
+// }
 .points-bullentins-card{
    background-repeat: no-repeat;
    background-position: inherit;
