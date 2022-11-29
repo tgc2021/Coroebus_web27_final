@@ -3,7 +3,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 
 import * as fromRoot from '../../../core/app-state';
 import { Store } from '@ngrx/store';
-import { takeUntil } from 'rxjs/operators';
+import { take, takeUntil } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '@app/services/event.service';
@@ -11,7 +11,7 @@ import { ToastService } from '@app/services/toast-service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ApiserviceService } from 'app/apiservice.service';
 import { Util } from '@app/utils/util';
-import { Subscription, combineLatest, Subject, Observable } from 'rxjs';
+import { Subscription, combineLatest, Subject, Observable, interval } from 'rxjs';
 import * as userActions from '../../../core/app-state/actions';
 
 @Component({
@@ -158,7 +158,7 @@ export class InteractiveDashboardComponent implements OnInit {
     }
 
   ];
-
+  isLoading = true;
   destroy$: Subject<boolean> = new Subject<boolean>();
   userObj: any
   mergeObj: any
@@ -176,7 +176,7 @@ export class InteractiveDashboardComponent implements OnInit {
   
   ngOnInit(): void {
    
-  
+   
       this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
     ).subscribe(data => {
@@ -206,12 +206,21 @@ if(this.mergeObj.id_coroebus_game != null){
    
   }
 
+
+
   console.log(body);
   this.http.interactiveDashboard(body).subscribe((res) => {
     console.log(res)
-    this.interactive_dashoard_response = res;
+  this.interactive_dashoard_response = res;
+   this.isLoading=true;
     this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
     console.log(this.interactive_dashoard_response);
+    if(this.interactive_dashoard_response){
+        setTimeout(() => {
+          this.isLoading=false;
+        },5000)
+      }
+    
 
     this.point_distribution = this.interactive_dashoard_response[0].data.theme_details[0].gradient_color_bg
     console.log(this.point_distribution);
@@ -246,8 +255,10 @@ if(this.mergeObj.id_coroebus_game != null){
       }
     }));
     
-   
+  
   })
+
+
 }
 else{
   let body = {
@@ -255,15 +266,17 @@ else{
     _game: this.userSelectionData.id_coroebus_game,
    
   }
-
+  
   console.log(body);
   this.http.interactiveDashboard(body).subscribe((res) => {
     console.log(res)
+   
+    
     this.interactive_dashoard_response = res;
     this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
     console.log(this.interactive_dashoard_response);
 
-    
+   
     this.eventService.broadcast('passDataToHeader', {
       color: this.interactive_dashoard_response[0].data.theme_details[0].dark_color,
       game_logo: this.interactive_dashoard_response[0].data._personal_data.game_logo,
@@ -279,10 +292,14 @@ else{
     
    
   })
+
 }
       
     })
-  
+   
+ 
+    
+
 
   }
 

@@ -18,9 +18,10 @@ import { SecurityQuestionComponent } from './security-question/security-question
 import { TvsDashboardComponent } from './tvs-dashboard/tvs-dashboard.component';
 import { InteractiveDashboardComponent } from './interactive-dashboard/interactive-dashboard.component';
 import {MatCardModule} from '@angular/material/card';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
-  declarations: [LoginComponent, SignupComponent, PasswordresetComponent, TermsAndConditionsComponent, CreateNewPasswordComponent, SecurityQuestionComponent, TvsDashboardComponent, InteractiveDashboardComponent],
+  declarations: [LoginComponent, SignupComponent, PasswordresetComponent, TermsAndConditionsComponent, CreateNewPasswordComponent, SecurityQuestionComponent, TvsDashboardComponent, InteractiveDashboardComponent, LoaderComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

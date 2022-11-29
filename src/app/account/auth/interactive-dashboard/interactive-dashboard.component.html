@@ -1,6 +1,6 @@
 <!-- Web View Started-->
-
-<div class="web_view_main d-flex justify-content-center" *ngFor="let response of interactive_dashoard_response">
+<app-loader *ngIf="isLoading" [bgColor]="point_distribution"></app-loader>
+<div  class="web_view_main d-flex justify-content-center"   *ngFor="let response of interactive_dashoard_response">
     <div class="web-view" style="width: 75vw;">
         <div class="row web_first_row">
             
@@ -17,10 +17,7 @@
                         <p class="web_team_name"> {{interactive_dashoard_response[0].data._personal_data.team_name}}</p>
                     </div>
                 </div>
-               
-                  
             </div>
-
             <!-- <div class="col-2 web_second_col">
                
 

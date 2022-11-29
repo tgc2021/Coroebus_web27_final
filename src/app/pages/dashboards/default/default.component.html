@@ -898,8 +898,8 @@
                             *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.length > 0"
                             [style.background-image]="'url(' + rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.ranking_image + ')'"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
-                            <div class="col widthText pt-1">
-                                <div class="media d-flex gap-3">
+                            <div class="col widthText d-flex align-items-center">
+                                <div class="media d-flex gap-2">
                                     <span class="col-1 ms-2 text-white position-absolute-">
                                         {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_number}}
                                     </span>
@@ -963,12 +963,12 @@
                         [style.background-image]="'url(' + item?.ranking_image + ')'"
                         [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                         *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) ">
-                        <div class="col pt-1">
-                            <div class="media d-flex gap-3">
+                        <div class="col d-flex align-items-center pt-1">
+                            <div class="media" style="display:flex; column-gap:.7rem;">
                                 <span class="col-1 ms-2 text-white position-absolute-s">
                                     {{item?.rankingtable_number}}
                                 </span>
-                                <div style="height:5vh;display:flex;align-items: center;">
+                                <div style="height:5vh;display:flex;justify-content:center;align-items:center">
                                     <img class="rounded-circle z-depth-2 user-logo-row" alt=""
                                         src="{{item?.rankingtable_logo}}" data-holder-rendered="true" height="100%"
                                         width="100%" (click)="openHierarchyPopup(item)">
@@ -982,7 +982,7 @@
                             </div>
                         </div>
                         <div class="col">
-                            <div class="media d-flex justify-content-between gap-5">
+                            <div class="media d-flex align-items-center ustify-content-between gap-5">
                                 <div style="height:6vh;" class="d-flex   align-items-center">
                                     <img class="rounded-circle z-depth-2 team-logo-row" alt="" src="{{item?.ranking_badge}}"
                                     data-holder-rendered="true" height="100%">
