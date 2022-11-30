@@ -4,6 +4,10 @@
         background: transparent;
         height: 43vh;
     }
+    .card-less-height{
+        background: transparent;
+       
+    }
 }
 
 .cardWithTransparentImage{
@@ -15,6 +19,13 @@
 
 }
 
+.bulletins-card{
+border-radius: 11px;
+}
+
+.points-bullentins-card-no-height{
+    height: 90vh;
+}
 
 .bulletins-card{
 .card{
@@ -22,6 +33,10 @@
 }
 }
 
+
+.bulletin_main_div{
+    border-radius: 11px;
+}
 
 .points-notification-card
 {
@@ -81,6 +96,7 @@
    height:43vh;
    border-radius: 11px;
 }
+
 .points-dis-name1{
        background: #F3F2C1;
       
@@ -142,7 +158,7 @@
 
 .font-size-14{
     font-size: 1.4vh !important;
-    font-size: 2.5vw !important;
+    
 
 }
 
