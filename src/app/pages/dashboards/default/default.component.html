@@ -129,8 +129,8 @@
                                 </div>
 
                                 <div class="d-flex justify-content-center">
-                                    <span class="dashboard-user-team-name text-center ellipsis"
-                                        style="width:60%;">{{sectionView_1?._personal_data?.team_name}}</span>
+                                    <span class="dashboard-user-teamname text-center ellipsis"
+                                        style="width:100%;">{{sectionView_1?._personal_data?.team_name}}</span>
                                 </div>
 
                             </div>
@@ -147,7 +147,7 @@
                                     </div>
                                 </div>
 
-                                <div class="media ms-4">
+                                <div class="media ms-2">
                                     <div class="row row-cols-3 w-100">
                                         <div class="col">
                                             <img loading="lazy" class="dashboard-banner-main-rank-img"
@@ -363,7 +363,7 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="media d-flex  gap-2"  style="height: 6vh;">
+                                <div class="media d-flex me-1  gap-2"  style="height: 6vh;">
                                     <div class="rounded-circle z-depth-2 team-logo-row  d-flex align-items-center"
                                         style="height:5vh;">
                                         <img alt="" src="{{item?.ranking_badge}}" data-holder-rendered="true"
@@ -637,7 +637,7 @@
     </div>
     <ng-template #mobileTemplate>
         <div class="row  DashboardSection">
-            <div class="d-flex justify-content-around">
+            <div class="d-flex justify-content-around gap-3">
                 <div class="col-3">
                     <div class="row d-flex justify-content-center">
                         <div class="mobile-avatar-upload">
@@ -910,11 +910,11 @@
                                     </div>
 
                                     <div class="media-body user-logo-row ellipsis">
-                                        <h5 class="mt-0 text-white name-f-size ellipsis" placement="bottom"
+                                        <h5 class="mt-0 text-white name-f-size mobile-ellipsis" placement="bottom"
                                             ngbTooltip=" {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}">
                                             {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}
                                         </h5>
-                                        <p class="mt-n4 team-name sub-team name-f-size">
+                                        <p class="mt-n4 team-name sub-team name-f-size mobile-ellipsis">
                                             {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_team}}
                                         </p>
                                     </div>
@@ -925,7 +925,7 @@
                                     <div style="height:6vh ;" class="d-flex">
                                         <img loading="lazy" class="rounded-circle z-depth-2 team-logo-row" alt=""
                                         src="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.ranking_badge}}"
-                                        data-holder-rendered="true" height="100%">
+                                        data-holder-rendered="true" height="90%">
                                     </div>
                                     
                                     <div class="media-body text-center pt-2">
@@ -963,7 +963,7 @@
                         [style.background-image]="'url(' + item?.ranking_image + ')'"
                         [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                         *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) ">
-                        <div class="col d-flex align-items-center pt-1">
+                        <div class="col-6 d-flex align-items-center pt-1">
                             <div class="media" style="display:flex; column-gap:.7rem;">
                                 <span class="col-1 ms-2 text-white position-absolute-s">
                                     {{item?.rankingtable_number}}
@@ -975,22 +975,25 @@
                                 </div>
 
                                 <div class="media-body user-logo-row ellipsis">
-                                    <h5 class="mt-0 text-white name-f-size ellipsis" placement="bottom"
+                                    <h5 class="mt-0 text-white name-f-size mobile-ellipsis" placement="bottom"
                                         ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}</h5>
-                                    <p class="mt-n4 team-name sub-team name-f-size">{{item?.rankingtable_team}}</p>
+                                    <p class="mt-n4 team-name sub-team name-f-size  mobile-ellipsis">{{item?.rankingtable_team}}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="media d-flex align-items-center ustify-content-between gap-5">
+                        <div class="col-6">
+                            <div class=" media d-flex align-items-center  gap-4">
                                 <div style="height:6vh;" class="d-flex   align-items-center">
                                     <img class="rounded-circle z-depth-2 team-logo-row" alt="" src="{{item?.ranking_badge}}"
-                                    data-holder-rendered="true" height="100%">
+                                    data-holder-rendered="true" height="90%">
                                 </div>
                                 
-                                <div class="media-body text-center">
-                                    <h5 class="mt-0 text-white d-flex aliign-items-center justify-content-center gap-3">
-                                        <span class="name-f-size point-number pt-2">{{item?.rankingtable_weightage}}</span>
+                                <div class=" media-body text-center">
+                                    <h5 class="p-1 text-white d-flex aliign-items-center justify-content-center gap-3">
+                                        <div>
+                                            <span class="name-f-size point-number pt-2">{{item?.rankingtable_weightage}}</span>
+                                        </div>
+                                        
                                         <div style="height:5vh" class="pt-1">
                                             <img class=" f-right up-arrow" alt=""
                                                 src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
