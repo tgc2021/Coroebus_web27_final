@@ -24,7 +24,7 @@
                                         (click)="getGraphDataById()" *ngFor="let item of sectionView_1?._kpi_score">
                                         <div class="col-6 p-0">
                                             <!-- ngbTooltip="{{item?.point_label}}"   this is inside ellipsis1-->
-                                            <div class="ms-2 points-dis-name1 ellipsis1 d-flex align-items-center ps-3">
+                                            <div class="ms-2 points-dis-name1 ellipsis d-flex align-items-center ps-3">
                                                 {{item?.point_label}}
                                             </div>
                                         </div>
@@ -390,7 +390,6 @@
                                                     data-holder-rendered="true" height="100%"
                                                     *ngIf="item?.rankingtable_arrow !== 'red'">
                                             </div>
-
                                             <!-- (click)="upDownArrow(item?.rankingtable_arrow,item)" -->
                                         </h5>
                                         <!-- <p class="mt-n4 team-name sub-team">India Maste</p> -->
@@ -566,7 +565,7 @@
                         <span class="font-size-14 ms-4 percentile_people" *ngIf="Util?.isMobile()">%</span>
                     </div>
                 </div>
-                <div class="row py-3 dashboard-rank-row ms-1 text-white percentile-row-height "
+                <div class="row py-3 d-flex justify-content-between ms-1 text-white percentile-row-height "
                     [style.background-image]="'url(' + item?.backgroung_image_ranking + ')'"
                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                     
@@ -784,9 +783,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
 
             <div class="col-12 pointsDistributionSection ">
@@ -930,7 +926,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col d-flex align-items-center">
+                            <div class="col d-flex align-items-center ms-1">
                                 <div class="media d-flex gap-5">
                                     <div style="height:6vh ;" class="d-flex">
                                         <img loading="lazy" class="rounded-circle z-depth-2 team-logo-row" alt=""
