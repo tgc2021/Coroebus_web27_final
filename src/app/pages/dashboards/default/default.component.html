@@ -10,13 +10,14 @@
             <div class="col-3 pointsDistributionSection d-flex flex-column justify-content-between">
                 <div [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}">
                     <div class="card points-dis-card"
-                      [style.background-image]="
-                sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
+                    [style.background-image]="
+                    sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
+                    <div>
                         <div class="card-body border-bottom-">
-                            <div class="float-start dropdown ms-2 font-size-16 font-weight-semibold">
+                            <div class="float-start dropdown ms-2 font-size-16 font-weight-semibold w-100 mb-1">
                                 Point Distribution
                             </div>
-                            <div>
+                            <div class="card">
                                 <!-- <div class="mb-4 me-3"></div> -->
                                 <div class="inner-points-height d-flex flex-column justify-content-center gap-2">
                                     <div class="row  points-row ms-2 d-flex align-items-center "
@@ -40,10 +41,12 @@
                             </div>
                         </div>
                     </div>
+                       
+                    </div>
                 </div>
 
                 <div [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}">
-                    <div class="card card-div points-notification-card"
+                    <div class="card-div points-notification-card"
                       [style.background-image]="
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
                     
@@ -444,9 +447,10 @@
                    
                 </div>
 
-                <div class="card" [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}"
-                  [style.background-image]="
+                <div [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}"
+                [style.background-image]="
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
+                <div class="card-div">
                     <div class="bulletins-card"
                     [ngClass]="{'points-bullentins-card-no-height': sectionView_1?.is_land_logos?.length == 0, 'points-bullentins-card': sectionView_1?.is_land_logos?.length != 0}">
                     <div class="float-start dropdown ms-4 mt-3  font-size-16 font-weight-semibold" style="width: 100%;">
@@ -518,6 +522,8 @@
 
                     </div>
                 </div>
+                </div>
+                   
                 </div>
               
 
@@ -785,7 +791,9 @@
 
             <div class="col-12 pointsDistributionSection ">
                 <div class="card mobile-points-dis-card col-11"
-                    [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                    [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null"
+                    [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}">
+                   <div class="card-div">
                     <div class="card-body">
                         <div class="float-start dropdown ms-2 font-size-16 font-weight-semibold">
                             Point Distribution
@@ -813,6 +821,8 @@
                             </div>
                         </div>
                     </div>
+                   </div>
+                    
                 </div>
 
 
