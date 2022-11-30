@@ -982,15 +982,18 @@
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="media d-flex align-items-center  gap-5 me-1">
+                            <div class=" media d-flex align-items-center  gap-4">
                                 <div style="height:6vh;" class="d-flex   align-items-center">
                                     <img class="rounded-circle z-depth-2 team-logo-row" alt="" src="{{item?.ranking_badge}}"
                                     data-holder-rendered="true" height="90%">
                                 </div>
                                 
-                                <div class="media-body text-center">
-                                    <h5 class="mt-0 text-white d-flex aliign-items-center justify-content-center gap-3">
-                                        <span class="name-f-size point-number pt-2">{{item?.rankingtable_weightage}}</span>
+                                <div class=" media-body text-center">
+                                    <h5 class="p-1 text-white d-flex aliign-items-center justify-content-center gap-3">
+                                        <div>
+                                            <span class="name-f-size point-number pt-2">{{item?.rankingtable_weightage}}</span>
+                                        </div>
+                                        
                                         <div style="height:5vh" class="pt-1">
                                             <img class=" f-right up-arrow" alt=""
                                                 src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
