@@ -148,7 +148,7 @@
 }
 
 .level-label-name {
-    width: 15vw;
+    width: 60%;
     height: 4vh;
     background: rgba(21, 18, 18, 0.45);
     border-radius: 0px 0px 8px 8px;
@@ -157,7 +157,7 @@
 }
 
 .level-label-name-popup {
-    width: 15vw;
+    width: 60%;
     height: 4vh;
     // left: 205px;
     // top: 100px;
@@ -435,7 +435,8 @@
 }
 
 .percentile-row-height {
-    height: 56px;;
+    height: 56px;
+    width: 98%;
 }
 
 .dashboard-table {
@@ -506,6 +507,7 @@
 
 .yellow-notification-row {
     background-color: #F3F2C1;
+    width: 100%;
 }
 
 .notification-text-mutated {
