@@ -583,7 +583,7 @@
                 <div class="row py-3 d-flex justify-content-between ms-1 text-white percentile-row-height "
                     [style.background-image]="'url(' + item?.backgroung_image_ranking + ')'"
                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                    [ngClass]="{'row-cols-3': false,'row-cols-4': true}" *ngFor="let item of levelsBucketsList ">
+                    [ngClass]="{'row-cols-3': false,'row-cols-4': true}" *ngFor="let item of levelsBucketsList " style="background-size:cover;height:100%;width:100%;">
                     <div class="col">
                         <span class="font-size-14">{{item?.league_name}}</span>
                     </div>
