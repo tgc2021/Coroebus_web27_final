@@ -8,8 +8,8 @@
     <ng-template #dashboardTpl>
         <div class="row">
             <div class="col-3 pointsDistributionSection d-flex flex-column justify-content-start">
-                <div >
-                    <div class="card points-dis-card"
+                <div>
+                    <div class="points-dis-card"
                     [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}"
                         [style.background-image]="
                     sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
@@ -28,6 +28,14 @@
                                             <div class="ms-2 points-dis-name1 ellipsis d-flex align-items-center ps-3">
                                                 {{item?.point_label}}
                                             </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <img loading="lazy" class="align-self-start float-end"
+                                                src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}" alt=""
+                                                height="25">
+                                        </div>
+                                        <div class="col-3 text-center font-size-10 font-weight-semibold">
+                                            {{item?.weightage}}
                                         </div>
                                     </div>
                                 </div>
@@ -447,7 +455,7 @@
 
                 <div>
 
-                    <div class="card bulletins-card"
+                    <div class="bulletins-card"
                         [ngClass]="{'points-bullentins-card-no-height': sectionView_1?.is_land_logos?.length == 0, 'points-bullentins-card': sectionView_1?.is_land_logos?.length != 0}"
                         [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}"
                         [style.background-image]="
