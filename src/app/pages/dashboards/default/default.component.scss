@@ -111,7 +111,7 @@ border-radius: 11px;
        top: 3.23px;
 }
 .inner-notification-height {
-   height: 35vh;
+   max-height: 35vh;
    overflow-y: auto;
    overflow-x: hidden;
 }
