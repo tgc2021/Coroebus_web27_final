@@ -29,37 +29,28 @@
                                                 {{item?.point_label}}
                                             </div>
                                         </div>
-                                        <div class="col-3 align-items-center">
-                                            <img loading="lazy" class="align-self-start float-end"
-                                                src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}" alt=""
-                                                height="25">
-                                        </div>
-                                        <div class="col-3  text-center font-size-10 font-weight-semibold">
-                                            {{item?.weightage}}
-                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
-
                     </div>
-                </div>
 
-                <div
-                    [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}">
-                    <div class="card-div points-notification-card"
-                        [style.background-image]="
+                    <div
+                        [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}">
+                        <div class="card-div points-notification-card"
+                            [style.background-image]="
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
 
-                        <div class="card-body border-bottom">
-                            <div class="dropdown ms-2 font-size-16 font-weight-semibold">
-                                Notification
-                            </div>
-                            <div>
-                                <div *ngIf="this.NotificationHide"
-                                    class="d-flex justify-content-center align-items-center" style="height:37vh;">
+                            <div class="card-body border-bottom">
+                                <div class="dropdown ms-2 font-size-16 font-weight-semibold">
+                                    Notification
+                                </div>
+                                <div>
+                                    <div *ngIf="this.NotificationHide"
+                                        class="d-flex justify-content-center align-items-center" style="height:37vh;">
 
-                                    <div class="buletinsHideFont" style="font-family: 'Inter';
+                                        <div class="buletinsHideFont" style="font-family: 'Inter';
                                         font-style: normal;
                                         font-weight: 600;
                                         font-size: 16px;
@@ -67,38 +58,41 @@
                                         text-align: center;
                                         letter-spacing: 0.003em;
                                        color: #000000;">
-                                        There's no Notifications you have subscribed to, stay tuned to this section for
-                                        more.
+                                            There's no Notifications you have subscribed to, stay tuned to this section
+                                            for
+                                            more.
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="inner-notification-height">
-                                    <!-- {{notificationLists | json}} -->
-                                    <div class="row row-cols-1 mt-2 notification-row ms-1 me-4"
-                                        [ngClass]="{'yellow-notification-row': item?.readStatus === '0'}"
-                                        *ngFor="let item of notificationLists; let i =index"
-                                        (click)="openNotification(item)">
-                                        <div class="col d-flex align-items-center">
-                                            <div class="media d-flex justify-content-center align-items-center gap-2">
+                                    <div class="inner-notification-height">
+                                        <!-- {{notificationLists | json}} -->
+                                        <div class="row row-cols-1 mt-2 notification-row ms-1 me-4"
+                                            [ngClass]="{'yellow-notification-row': item?.readStatus === '0'}"
+                                            *ngFor="let item of notificationLists; let i =index"
+                                            (click)="openNotification(item)">
+                                            <div class="col d-flex align-items-center">
+                                                <div
+                                                    class="media d-flex justify-content-center align-items-center gap-2">
 
-                                                <img loading="lazy" *ngIf="item?.image"
-                                                    src="assets/images/svg/notification/img.png" alt="" height="47">
-                                                <img loading="lazy" *ngIf="item?.gif"
-                                                    src="assets/images/svg/notification/txt.png" alt="" height="47">
-                                                <img loading="lazy" *ngIf="item?.video"
-                                                    src="assets/images/svg/notification/v.png" alt="" height="47">
-                                                <img loading="lazy" *ngIf="item?.video_path"
-                                                    src="assets/images/svg/notification/v.png" alt="" height="47">
-                                                <img loading="lazy"
-                                                    *ngIf="(item?.video==='' && item?.gif==='' && item?.image==='' && item?.video_path==='')"
-                                                    src="assets/images/svg/dashboard/text-notification-read.png" alt=""
-                                                    height="47">
-                                                <div class="media-body">
-                                                    <p class="mt-0 font-size-12 font-weight-semibold">
-                                                        {{item?.title.slice(0,15).concat('...')}}</p>
-                                                    <span class="notification-text-mutated">
-                                                        {{item?.datetimestamp|date:'fullDate'}}
-                                                    </span>
+                                                    <img loading="lazy" *ngIf="item?.image"
+                                                        src="assets/images/svg/notification/img.png" alt="" height="47">
+                                                    <img loading="lazy" *ngIf="item?.gif"
+                                                        src="assets/images/svg/notification/txt.png" alt="" height="47">
+                                                    <img loading="lazy" *ngIf="item?.video"
+                                                        src="assets/images/svg/notification/v.png" alt="" height="47">
+                                                    <img loading="lazy" *ngIf="item?.video_path"
+                                                        src="assets/images/svg/notification/v.png" alt="" height="47">
+                                                    <img loading="lazy"
+                                                        *ngIf="(item?.video==='' && item?.gif==='' && item?.image==='' && item?.video_path==='')"
+                                                        src="assets/images/svg/dashboard/text-notification-read.png"
+                                                        alt="" height="47">
+                                                    <div class="media-body">
+                                                        <p class="mt-0 font-size-12 font-weight-semibold">
+                                                            {{item?.title.slice(0,15).concat('...')}}</p>
+                                                        <span class="notification-text-mutated">
+                                                            {{item?.datetimestamp|date:'fullDate'}}
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -452,26 +446,27 @@
                 </div>
 
                 <div>
-                
+
                     <div class="card bulletins-card"
-                    [ngClass]="{'points-bullentins-card-no-height': sectionView_1?.is_land_logos?.length == 0, 'points-bullentins-card': sectionView_1?.is_land_logos?.length != 0}"
-                    [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}"
-                    [style.background-image]="
-                    sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null"
-                    >
-                    <div class="card-div">
-                        <div class="float-start dropdown ms-4 mt-3  font-size-16 font-weight-semibold" style="width: 100%;">
-                            Bulletins
-                        </div>
-                        <div class="card-body pt-2 d-flex flex-column justify-content-center">
-    
-    
-                            <div class="d-flex align-items-center">
-    
-    
-                                <div *ngIf="buletinsHide" style="display:flex;flex-direction:column;justify-content:center;">
-                                    <br>
-                                    <div class="" style="font-family: 'Inter';
+                        [ngClass]="{'points-bullentins-card-no-height': sectionView_1?.is_land_logos?.length == 0, 'points-bullentins-card': sectionView_1?.is_land_logos?.length != 0}"
+                        [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}"
+                        [style.background-image]="
+                    sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
+                        <div class="card-div">
+                            <div class="float-start dropdown ms-4 mt-3  font-size-16 font-weight-semibold"
+                                style="width: 100%;">
+                                Bulletins
+                            </div>
+                            <div class="card-body pt-2 d-flex flex-column justify-content-center">
+
+
+                                <div class="d-flex align-items-center">
+
+
+                                    <div *ngIf="buletinsHide"
+                                        style="display:flex;flex-direction:column;justify-content:center;">
+                                        <br>
+                                        <div class="" style="font-family: 'Inter';
                                 font-style: normal;
                                 font-weight: 600;
                                 font-size: 16px;
@@ -480,74 +475,78 @@
                                 letter-spacing: 0.003em;
                                color: #000000;
                                width: 22vw;">
-                                        There's no bulletin’s you have subscribed to, stay tuned to this section for more.
+                                            There's no bulletin’s you have subscribed to, stay tuned to this section for
+                                            more.
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="mb-2 me-3"></div>
-                                <div
-                                    [ngClass]="{'inner-bulletins-no-height': sectionView_1?.is_land_logos?.length == 0,'inner-bulletins-height':sectionView_1?.is_land_logos?.length!=0}">
-    
-                                    <div class="card bulletins-sub-card" *ngFor="let item of addInsList">
-                                        <div class="card-body bulletins-sub-card-body">
-                                            <p class="spot-engagement ">{{item?.header}}</p>
-                                            <br>
-                                            <div class="media bulletins-media">
-                                                <img *ngIf="item?.type_ === '1'"
-                                                    src="assets/images/svg/dashboard/add-ins/se.svg" alt="" height="52">
-                                                <img *ngIf="item?.type_ === '2'"
-                                                    src="assets/images/svg/dashboard/add-ins/spot.svg" alt="" height="52">
-                                                <img *ngIf="item?.type_ === '3'"
-                                                    src="assets/images/svg/dashboard/add-ins/le.svg" alt="" height="52">
-                                                <div class="media-body ms-2">
-    
-                                                    <h5 class="bulletins-title">{{item?.title}}
-                                                        <p class="bulletins-text-muted" style="margin-bottom:30px;">
-                                                            {{item?.description_}}
-                                                        </p>
-                                                    </h5>
-    
-                                                    <img class="bulletins-image-card" src="{{item?.logo}}" alt=""
-                                                        height="95">
+                                    <div class="mb-2 me-3"></div>
+                                    <div
+                                        [ngClass]="{'inner-bulletins-no-height': sectionView_1?.is_land_logos?.length == 0,'inner-bulletins-height':sectionView_1?.is_land_logos?.length!=0}">
+
+                                        <div class="card bulletins-sub-card" *ngFor="let item of addInsList">
+                                            <div class="card-body bulletins-sub-card-body">
+                                                <p class="spot-engagement ">{{item?.header}}</p>
+                                                <br>
+                                                <div class="media bulletins-media">
+                                                    <img *ngIf="item?.type_ === '1'"
+                                                        src="assets/images/svg/dashboard/add-ins/se.svg" alt=""
+                                                        height="52">
+                                                    <img *ngIf="item?.type_ === '2'"
+                                                        src="assets/images/svg/dashboard/add-ins/spot.svg" alt=""
+                                                        height="52">
+                                                    <img *ngIf="item?.type_ === '3'"
+                                                        src="assets/images/svg/dashboard/add-ins/le.svg" alt=""
+                                                        height="52">
+                                                    <div class="media-body ms-2">
+
+                                                        <h5 class="bulletins-title">{{item?.title}}
+                                                            <p class="bulletins-text-muted" style="margin-bottom:30px;">
+                                                                {{item?.description_}}
+                                                            </p>
+                                                        </h5>
+
+                                                        <img class="bulletins-image-card" src="{{item?.logo}}" alt=""
+                                                            height="95">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col text-end">
-                                                    <span class="bulletins-date">{{item?.date_time |
-                                                        date:'fullDate'}}</span>
+                                                <div class="row">
+                                                    <div class="col text-end">
+                                                        <span class="bulletins-date">{{item?.date_time |
+                                                            date:'fullDate'}}</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="row border-top">
-                                                <div class="col text-start">
-                                                    <span class="bulletins-open">Open</span>
+                                                <div class="row border-top">
+                                                    <div class="col text-start">
+                                                        <span class="bulletins-open">Open</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
+
                                 </div>
 
 
                             </div>
-    
-    
                         </div>
+
                     </div>
-                   
+
+
                 </div>
-                
-                   
-                </div>
-              
+
 
 
             </div>
-        
-</div>
+
+        </div>
 
     </ng-template>
-    
-    
-    
-    
+
+
+
+
     <ng-template #content let-modal>
         <div class="level-buckets content-buckets">
             <div class="modal-header border-bottom-0 p-0">
@@ -584,7 +583,8 @@
                 <div class="row py-3 d-flex justify-content-between ms-1 text-white percentile-row-height "
                     [style.background-image]="'url(' + item?.backgroung_image_ranking + ')'"
                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                    [ngClass]="{'row-cols-3': false,'row-cols-4': true}" *ngFor="let item of levelsBucketsList " style="background-size:cover;height:100%;width:100%;">
+                    [ngClass]="{'row-cols-3': false,'row-cols-4': true}" *ngFor="let item of levelsBucketsList "
+                    style="background-size:cover;height:100%;width:100%;">
                     <div class="col">
                         <span class="font-size-14">{{item?.league_name}}</span>
                     </div>
@@ -997,8 +997,7 @@
                                             {{item?.rankingtable_number}}
                                         </span>
                                         <div>
-                                            <div
-                                                style="height:5vh;display:flex;align-items: center;padding-top: 5%;">
+                                            <div style="height:5vh;display:flex;align-items: center;padding-top: 5%;">
                                                 <img class="rounded-circle z-depth-2 user-logo-row" alt=""
                                                     src="{{item?.rankingtable_logo}}" data-holder-rendered="true"
                                                     height="100%" width="100%" (click)="openHierarchyPopup(item)">
@@ -1026,8 +1025,8 @@
                                             <h5
                                                 class="mt-0 text-white d-flex aliign-items-center justify-content- gap-3">
 
-                                                <span
-                                                    class="name-f-size point-number align-self-center" style="width: 7vw;">{{item?.rankingtable_weightage}}</span>
+                                                <span class="name-f-size point-number align-self-center"
+                                                    style="width: 7vw;">{{item?.rankingtable_weightage}}</span>
 
 
                                                 <div style="height:5vh" class="pt-1">
