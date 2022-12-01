@@ -50,6 +50,7 @@ export class RewardsComponent implements OnInit, AfterViewInit {
   filterCoreGame: any=[];
   coreGame: any;
   status: any;
+  bgImage: any;
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -143,6 +144,7 @@ export class RewardsComponent implements OnInit, AfterViewInit {
     ]
     ).subscribe(([login, theme, game]) => {
       this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
+console.log(this.userSelectionData);
 
     })
     this.passDataToHeaderSub?.unsubscribe()
@@ -156,7 +158,11 @@ export class RewardsComponent implements OnInit, AfterViewInit {
       console.log(this.headerInfo);
       this.color = this.headerInfo.color; //yellowcolor
       console.log(this.color);
+      this.bgImage= this.userSelectionData?.themes[0].theme_background_web
+      console.log(this.bgImage);
+      
       this.element.nativeElement.style.setProperty('--myvar', `${this.color}`)
+      this.element.nativeElement.style.setProperty('--bgImage', `${this.bgImage}`)
 
       // this.element.nativeElement.style.setProperty('--mycolor',`${this.color}`)
       // console.log( this.element.nativeElement.style.setProperty('--myvar',`${this.color}`));

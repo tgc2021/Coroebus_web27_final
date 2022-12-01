@@ -6,7 +6,7 @@
   <app-sidebar [isCondensed]="isCondensed"></app-sidebar>
 
   <div class="main-content">
-    <div class="page-content">
+    <div class="page-content" style="background: url({{bgImage}}); background-size: cover; height: 100vh; overflow-y:scroll;">
       <app-progress-bar [hidden]="!busy" class="progress-host"></app-progress-bar>
       <!-- content -->
       <router-outlet></router-outlet>

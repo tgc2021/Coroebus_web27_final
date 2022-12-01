@@ -245,12 +245,14 @@ if(this.mergeObj.id_coroebus_game != null){
     this.eventService.broadcast('passDataToHeader', {
       color: this.interactive_dashoard_response[0].data.theme_details[0].dark_color,
       game_logo: this.interactive_dashoard_response[0].data._personal_data.game_logo,
+      bg_image: this.interactive_dashoard_response[0].data.theme_details
 
     })
     this.store.dispatch(userActions.updateUserObj({
       data: {
         color: this.interactive_dashoard_response[0].data.theme_details[0].dark_color,
         game_logo: this.interactive_dashoard_response[0].data._personal_data.game_logo,
+        bg_image: this.interactive_dashoard_response[0].data.theme_details[0].theme_background_web
 
       }
     }));
@@ -280,12 +282,14 @@ else{
     this.eventService.broadcast('passDataToHeader', {
       color: this.interactive_dashoard_response[0].data.theme_details[0].dark_color,
       game_logo: this.interactive_dashoard_response[0].data._personal_data.game_logo,
+      bg_image: this.interactive_dashoard_response[0].data.theme_details[0].theme_background_web
 
     })
     this.store.dispatch(userActions.updateUserObj({
       data: {
         color: this.interactive_dashoard_response[0].data.theme_details[0].dark_color,
         game_logo: this.interactive_dashoard_response[0].data._personal_data.game_logo,
+        bg_image: this.interactive_dashoard_response[0].data.theme_details[0].theme_background_web
 
       }
     }));
