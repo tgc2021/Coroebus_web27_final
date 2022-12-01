@@ -5,7 +5,7 @@
       <!-- ******************************************** Rewards Tab ********************************************************************     -->
       <label class="reward_tab" for="tab-1">Rewards</label>
 
-      <div class="tab" *ngFor="let reward of rewardresponse">
+      <div class="tab" style="position:relative;"  *ngFor="let reward of rewardresponse">
         <img class="rewardpoints" src="assets/images/rewards/Reward point.png">
         <p class="totalpoints" *ngFor="let points of rewardresponse">{{points.data.points_list[0]._data.rewardPoints}}
         </p>
@@ -82,7 +82,7 @@
       <label class="passbook_tab" for="tab-2">Passbook</label>
       <!-- ******************************************* Passbook Tab ********************************************************************     -->
 
-      <div class="tab" *ngFor="let points of rewardresponse">
+      <div class="tab" style="position: relative" *ngFor="let points of rewardresponse">
         <img class="rewardpoints" src="assets/images/rewards/Reward point.png">
         <p class="totalpoints">{{points.data.points_list[0]._data.rewardPoints}}</p>
         <mat-tab-group>

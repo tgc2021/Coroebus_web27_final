@@ -8,11 +8,12 @@
     <ng-template #dashboardTpl>
         <div class="row">
             <div class="col-3 pointsDistributionSection d-flex flex-column justify-content-start">
-                <div [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}">
+                <div >
                     <div class="card points-dis-card"
+                    [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}"
                         [style.background-image]="
                     sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
-                    <div class="card-less-height">
+                    <div class="card-div">
                         <div class="card-body border-bottom-">
                             <div class="float-start dropdown ms-2 font-size-16 font-weight-semibold w-100 mb-1">
                                 Point Distribution

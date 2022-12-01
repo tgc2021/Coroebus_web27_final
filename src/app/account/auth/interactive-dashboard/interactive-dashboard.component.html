@@ -110,8 +110,14 @@
                         <div class="row lower_blue_scorecard_details d-flex justify-content-center">
                             <div class="col-3 web_first_measurement d-block"
                                 *ngFor="let points of interactive_dashoard_response[0].data._Point_distribution">
-                                <p class="web_first_measurement_number">{{points.weightage}}</p>
-                                <p class="web_first_measurement_label">{{points.point_label}}</p>
+                                <div>
+                                    <p class="web_first_measurement_number">{{points.weightage}}</p>
+
+                                </div>
+                                <div>
+                                    <p class="web_first_measurement_label">{{points.point_label}}</p>
+
+                                </div>
     
                             </div>
                         </div>
