@@ -10,6 +10,7 @@
     }
 }
 
+
 .cardWithTransparentImage{
 .card-div{
     height: 43vh;
@@ -198,7 +199,7 @@ border-radius: 11px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 60%;
+    width: 100%;
     cursor: pointer;
 }
 .dashboard-banner-mobile{
@@ -287,6 +288,9 @@ color: #000000;
 }
 .card-container{
     display: flex;
+}
+.name-f-size-mobile{
+    font-size: 16px;
 }
 .one-data-mobile{
     .card-container{
