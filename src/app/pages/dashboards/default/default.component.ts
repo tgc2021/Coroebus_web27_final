@@ -111,6 +111,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     // setInterval(()=>{this.ShowTime(i++),8000})
 
     // this.emojiSelected(0,1)
+    this.playAudio();
 
     this.activeTab()
     this.Edit_image()
@@ -772,6 +773,13 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
     });
+  }
+
+  playAudio(){
+    let audio = new Audio();
+    audio.src = "../../../../assets/images/Notification Notification.wav";
+    audio.load();
+    audio.play();
   }
 
 }
