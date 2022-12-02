@@ -292,12 +292,12 @@
 
 }
 
-.inner-bulletins-height {
-    height: 33vh;
-    width:30vw;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
+// .inner-bulletins-height {
+//     height: 33vh;
+//     width:30vw;
+//     overflow-y: auto;
+//     overflow-x: hidden;
+// }
 
  .inner-bulletins-no-height {
     overflow-y: auto;
@@ -504,7 +504,7 @@
 .notification-row {
     // width: 279px;
     height: auto;
-   
+   min-height: 6vh;
     background: #FFFFFF;
     border-radius: 11.4808px;
     box-shadow: 0px 0px 0px 0.619px #e8e8e8, 0px 0px 1.238px rgb(0 0 0 / 12%), 0px 12.38px 12.38px rgb(0 0 0 / 2%);

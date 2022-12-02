@@ -16,7 +16,7 @@
                         [style.background-image]="
                     sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
                     <div class="card-div">
-                        <div class="card-body border-bottom-">
+                        <div class="card-body border-bottom-" style="height: 43vh;">
                             <div class="float-start dropdown ms-2 font-size-16 font-weight-semibold w-100 mb-1">
                                 Point Distribution
                             </div>
@@ -52,7 +52,7 @@
                             [style.background-image]="
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
 
-                            <div class="card-body border-bottom">
+                            <div class="card-body border-bottom mt-4">
                                 <div class="dropdown ms-2 font-size-16 font-weight-semibold">
                                     Notification
                                 </div>
@@ -429,7 +429,7 @@
 
                     <div class="card card-div">
                         <div class="card-body  d-flex justify-content-center align-items-center gap-2"
-                            style="height:38vh">
+                            style="height:43vh">
                             <div class="row" [ngClass]="{'row-cols-2': sectionView_1?.is_land_logos?.length !== 1,
                     'two-data': sectionView_1?.is_land_logos?.length === 2,
                     'three-data': sectionView_1?.is_land_logos?.length ===3,
@@ -491,7 +491,7 @@
                                     </div>
                                     <div class="mb-2 me-3"></div>
                                     <div
-                                        [ngClass]="{'inner-bulletins-no-height': sectionView_1?.is_land_logos?.length == 0,'inner-bulletins-height':sectionView_1?.is_land_logos?.length!=0}">
+                                        [ngClass]="{'inner-bulletins-no-height': sectionView_1?.is_land_logos?.length == 0,'inner-bulletins-height':sectionView_1?.is_land_logos?.length != 0}">
 
                                         <div class="card bulletins-sub-card" *ngFor="let item of addInsList">
                                             <div class="card-body bulletins-sub-card-body">

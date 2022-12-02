@@ -2,7 +2,7 @@
 
     .card-div{
         background: transparent;
-        height: 43vh;
+        ;
     }
     .card-less-height{
         background: transparent;
@@ -26,6 +26,20 @@ border-radius: 11px;
 
 .points-bullentins-card-no-height{
     height: 90vh;
+    
+}
+
+// .inner-bulletins-height {
+//     height: 33vh;
+//     width:30vw;
+//     overflow-y: auto;
+//     overflow-x: hidden;
+// }
+.inner-bulletins-height{
+    margin-top: 4h;
+    height: 33vh;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 .bulletins-card{
@@ -45,7 +59,7 @@ border-radius: 11px;
    background-position: inherit;
    background-size: cover;
    width: auto;
-   height: 43vh;
+   height: 40vh;
    border-radius: 11px;
 }
 .points-dis-card{
@@ -78,7 +92,7 @@ border-radius: 11px;
    background-repeat: no-repeat;
    background-position: inherit;
    background-size: cover;
-  
+   
    border-radius: 11px;
 
  
@@ -111,7 +125,7 @@ border-radius: 11px;
        top: 3.23px;
 }
 .inner-notification-height {
-   max-height: 35vh;
+   height: 33vh;
    overflow-y: auto;
    overflow-x: hidden;
 }
