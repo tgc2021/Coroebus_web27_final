@@ -158,7 +158,7 @@ export class InteractiveDashboardComponent implements OnInit {
     }
 
   ];
-  isLoading = true;
+  isLoading : boolean=false;
   destroy$: Subject<boolean> = new Subject<boolean>();
   userObj: any
   mergeObj: any
@@ -172,6 +172,13 @@ export class InteractiveDashboardComponent implements OnInit {
   logo: any;
   point_distribution:any;
   scorecardcolor:any
+  seasonalThemeDaily: any;
+  seasonalThemeWeekly: any;
+  seasonalThemeMonthly: any;
+  isDailyModalopen:boolean;
+  isWeeklyModalOpen:boolean;
+  isMonthlyModalOpen:boolean;
+  notAllowed = null;
   constructor(private readonly store: Store, public element: ElementRef, public Util: Util,private _router: Router, public http: ApiserviceService, private eventService: EventService) { }
   
   ngOnInit(): void {
@@ -214,13 +221,25 @@ if(this.mergeObj.id_coroebus_game != null){
   this.interactive_dashoard_response = res;
    this.isLoading=true;
     this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
+
+
+    this.seasonalThemeDaily=this.interactive_dashoard_response[0].data.seasonal_theme_daily;
+
+    this.seasonalThemeWeekly=this.interactive_dashoard_response[0].data.seasonal_theme_weekly;
+    this.seasonalThemeMonthly=this.interactive_dashoard_response[0].data.seasonal_theme_monthly;
+
+    console.log(this.seasonalThemeWeekly)
     console.log(this.interactive_dashoard_response);
     if(this.interactive_dashoard_response){
         setTimeout(() => {
           this.isLoading=false;
         },5000)
+        this.isLoading=true;
       }
+ 
     
+    
+  
 
     this.point_distribution = this.interactive_dashoard_response[0].data.theme_details[0].gradient_color_bg
     console.log(this.point_distribution);
@@ -386,6 +405,25 @@ else{
 
   navigateTopersonalMilestone(){
     this._router.navigateByUrl("/personal_milestone")
+  }
+
+  openDailyModal(){
+    this.isDailyModalopen=true;
+    this.isWeeklyModalOpen=false;
+    this.isMonthlyModalOpen=false;
+
+  }
+  openWeeklyModal(){
+    this.isDailyModalopen=false;
+    this.isWeeklyModalOpen=true;
+    this.isMonthlyModalOpen=false;
+    
+  }
+  openMonthlyModal(){
+    this.isDailyModalopen=false;
+    this.isWeeklyModalOpen=false;
+    this.isMonthlyModalOpen=true;
+    
   }
   
 }
