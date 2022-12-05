@@ -91,6 +91,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   BucketListHide: boolean
   UserIdBucket: any
   firstUserData: any;
+  getBackImagesFromSectionView1: any;
+  getBackImagesFromSectionView3: any;
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -111,6 +113,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     // setInterval(()=>{this.ShowTime(i++),8000})
 
     // this.emojiSelected(0,1)
+    this.playAudio();
 
     this.activeTab()
     this.Edit_image()
@@ -199,7 +202,9 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       this.pokeAnimationData = this.sectionView_1._poked_data
       // this.pokeAnimationData1=this.sectionView_1._poked_data[0].poke_description
 
-      console.log(this.pokeAnimationData);
+      this.getBackImagesFromSectionView1=this.sectionView_1._back_images[1]._data;
+      console.log("Section_view1_Data.....",this.getBackImagesFromSectionView1);
+ 
 
       // alert(this.pokeAnimationData)
 
@@ -398,7 +403,19 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
         });
       } else {
-        this.sectionView_3 = res?.data
+        this.sectionView_3 = res?.data;
+
+        this.getBackImagesFromSectionView3=this.sectionView_3._ranking_data.map((res:any)=>{
+          console.log(res);
+        })
+
+        this.getBackImagesFromSectionView3._data[0].map((res1)=>{
+          console.log(res1);
+
+        })
+
+        console.log(this.getBackImagesFromSectionView3);
+        console.log(this.sectionView_3._ranking_data[0]._data[0].ranking_image);
       }
       this.filterRankingData()
 
@@ -772,6 +789,13 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
     });
+  }
+
+  playAudio(){
+    let audio = new Audio();
+    audio.src = "../../../../assets/images/Notification Notification.wav";
+    audio.load();
+    audio.play();
   }
 
 }
