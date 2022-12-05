@@ -156,6 +156,11 @@
     <ng-container *ngIf="graphData?.length > 0">
         <div class="card" *ngFor="let item of graphData;let i=index">
             <div class="card-body">
+                <div class="d-flex justify-content-center">
+                   
+                    <p class="graph_label">{{item?.graph_label}}</p>
+
+                </div>
                 <apx-chart class="apex-charts" dir="ltr" [series]="[splineAreaChart?.series[i]]"
                     [chart]="splineAreaChart?.chart" [dataLabels]="splineAreaChart?.dataLabels"
                     [stroke]="splineAreaChart?.stroke" [colors]="splineAreaChart?.colors"
