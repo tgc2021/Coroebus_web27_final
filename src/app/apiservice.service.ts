@@ -8,7 +8,8 @@ import {environment} from '../environments/environment'
 export class ApiserviceService {
 
   URLstring = environment.apiURL
-    Path='coroebus-beta-api-levels'
+    Path='coroebus-beta-api-levels';
+    
     // Path='coroebus-tgc-api-levels'
   constructor(public Http:HttpClient) { }
   
@@ -67,5 +68,11 @@ export class ApiserviceService {
   interactiveDashboard(data:any){
     var tempurl = `${this.URLstring}`+`/${this.Path}/DashboardHome/produce`
     return this.Http.post(tempurl,data)
+  }
+
+  BoosterData(data:any){
+    var tempurl= `${this.URLstring}`+ `/${this.Path}/DashboardHome/produce_booster`
+    return this.Http.post(tempurl,data)
+
   }
 }

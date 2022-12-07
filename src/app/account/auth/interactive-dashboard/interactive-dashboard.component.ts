@@ -3,6 +3,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 
 import * as fromRoot from '../../../core/app-state';
 import { Store } from '@ngrx/store';
+
 import { take, takeUntil } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -179,6 +180,11 @@ export class InteractiveDashboardComponent implements OnInit {
   isWeeklyModalOpen:boolean;
   isMonthlyModalOpen:boolean;
   notAllowed = null;
+  boosterData_response: any;
+  StringArray: any;
+  firstString: string;
+  Digit: any;
+  LastString: any;
   constructor(private readonly store: Store, public element: ElementRef, public Util: Util,private _router: Router, public http: ApiserviceService, private eventService: EventService) { }
   
   ngOnInit(): void {
@@ -202,10 +208,11 @@ export class InteractiveDashboardComponent implements OnInit {
         console.log(login, theme, game)
         this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
        console.log(this.userSelectionData);
-       
   
       })
       
+     
+
 if(this.mergeObj.id_coroebus_game != null){
   let body = {
     _userid: this.mergeObj.USERID,
@@ -213,6 +220,20 @@ if(this.mergeObj.id_coroebus_game != null){
    
   }
 
+  
+  this.http.BoosterData(body).subscribe((res:any)=>{
+    this.boosterData_response=res.data;
+
+    console.log(res);
+    
+     this.StringArray=res.data.booster_rank_details[0].rank_position_stmt.split(" ");
+     this.firstString=this.StringArray[0]+" "+this.StringArray[1]+" "+this.StringArray[2];
+    this.Digit=this.StringArray[3]
+    this.LastString=this.StringArray[4];
+    console.log(this.StringArray);
+    console.log(this.LastString);
+
+  })
 
 
   console.log(body);
@@ -236,10 +257,6 @@ if(this.mergeObj.id_coroebus_game != null){
         },5000)
         this.isLoading=true;
       }
- 
-    
-    
-  
 
     this.point_distribution = this.interactive_dashoard_response[0].data.theme_details[0].gradient_color_bg
     console.log(this.point_distribution);
@@ -280,6 +297,7 @@ if(this.mergeObj.id_coroebus_game != null){
   })
 
 
+
 }
 else{
   let body = {
@@ -288,6 +306,16 @@ else{
    
   }
   
+  this.http.BoosterData(body).subscribe((res:any)=>{
+
+    console.log(res);
+    var regex = /\d+/g;
+    var string = res.data.booster_rank_details[0].rank_position_stmt;
+    var matches = string.match(regex);  // creates array from matches
+    
+    console.log(matches);
+
+  })
   console.log(body);
   this.http.interactiveDashboard(body).subscribe((res) => {
     console.log(res)
@@ -315,6 +343,7 @@ else{
     
    
   })
+
 
 }
       

@@ -2,7 +2,9 @@
 .loading{
 height: 100vh;
 width: 100vw;
-background: #0B1B48;
+// background: #0B1B48;
+background: #277166;
+// background: #ffffff;
 // background-color: #104E5B;
 display: flex;
 justify-content: center;
@@ -26,19 +28,19 @@ z-index: 10;
 }
 @keyframes span-1 {
   0% {transform:translate(0);}
-  50%{transform:translate(-50px, 0);border-color:#EE4D68}
+  50%{transform:translate(-50px, 0);border-color:#112148}
   100%{transform:translate(0);}}
 @keyframes span-2 {
   0%{transform:translate(0);}
-  50%{transform:translate(50px, 0);border-color:#875678}
+  50%{transform:translate(50px, 0);border-color:#E3F1F2}
   100%{transform:translate(0);}}
 @keyframes span-3 {
   0%{transform:translate(0);}
-  50%{transform:translate(0, -50px);border-color:#FF9900}
+  50%{transform:translate(0, -50px);border-color:#E3CF37}
   100%{transform:translate(0);}}
 @keyframes span-4 {
   0%{transform:translate(0);}
-  50%{transform:translate(0, 50px);border-color:#00E4F6}
+  50%{transform:translate(0, 50px);border-color:#C33C36}
   100%{transform:translate(0);}}
 .loader {
   width: 50px;
