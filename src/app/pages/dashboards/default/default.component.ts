@@ -256,7 +256,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
       this.sectionView_2 = res?.data;
 
-      this.sectionView2Data
+      
 
       // for(let i=0;i<this.sectionView_2?._ranking_data?.length;i++){
       if (this.queryParams?.roleID =='6' || this.userSelectionData?._personal_data?.id_role =='6') {

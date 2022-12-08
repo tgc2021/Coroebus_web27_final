@@ -489,9 +489,10 @@
                                         <div class="row" *ngIf="item.length !=0">
                                             <div class="col-10" style="padding:14px 7px 0px 0px;">
 
-                                                <progress id="file" class="range rangeBgcolor"
+                                                <!-- <progress id="file" class="range rangeBgcolor"
                                                     value="{{item.seasonal_score_percentage}}" max="100">
-                                                    {{item.seasonal_score_percentage}}% </progress>
+                                                    {{item.seasonal_score_percentage}}% </progress> -->
+                                                    <progress id="file" class="range RangeBg" value="{{item.seasonal_score_percentage}}" max="100"> {{item.seasonal_score_percentage}}% </progress>
                                             </div>
                                             <div class="col-2">
                                                 <img src="{{item.seasonal_badge_logo}}" alt="loading" height="38"
@@ -629,7 +630,7 @@
                                         </div>
                                         <div class="name">{{topper.first_name.slice(0,10)}}...</div>
                                         <div class="rank">Rank:{{topper.user_rank}}</div>
-                                        <div class="score">{{topper.score}}</div>
+                                        <div class="score">Score:{{topper.score}}</div>
 
                                     </div>
 
@@ -754,7 +755,7 @@
                                     </div>
                                     <div class="name">{{topper.first_name.slice(0,10)}}...</div>
                                     <div class="rank">Rank:{{topper.user_rank}}</div>
-                                    <div class="score">{{topper.score}}</div>
+                                    <div class="score">Score:{{topper.score}}</div>
                                 </div>
 
                             </div>
@@ -814,15 +815,25 @@
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <div class="text-center d-flex flex-column align-items-center">
-                                    <div class="accordian-title">OverAll Achievement</div>
-                                    <div class="accordian-subtitle">Overall Target:25000 </div>
+                                    <div class="accordian-title">{{boosterData_response.section_title}}</div>
+                                    <div *ngIf="boosterData_response.section_target!==null|| boosterData_response.section_target=='';then NotnullValue"></div>
+                                    <ng-template #NotnullValue>
+                                        <div class="accordian-subtitle">Overall Target:{{boosterData_response.section_target}} </div>
+                                    </ng-template>
+                                   
+                                    
                                     <div class="d-flex justify-content-center gap-2">
-                                        <div>
-                                            <img src="../../../../assets/images/BoosterAssests/calender.png" alt="">
-                                        </div>
-                                        <div class="accordian-date d-flex align-items-center">
-                                            {{boosterData_response.booster_rank_details[0].date_time_stamp_today.slice(0,10)
-                                            | date:'dd/MM/yy'}}</div>
+                                        <div *ngIf="boosterData_response.section_Date!==null|| boosterData_response.section_Date=='';then NotnullDate"></div>
+                                        <ng-template #NotnullDate>
+                                            <div>
+                                                <img src="../../../../assets/images/BoosterAssests/calender.png" alt="">
+                                            </div>
+                                            <div class="accordian-date d-flex align-items-center">
+                                                {{boosterData_response.section_Date.slice(0,10)
+                                                | date:'dd/MM/yy'}}</div>
+                                        </ng-template>
+                                        
+                                        
 
                                     </div>
                                 </div>
@@ -835,7 +846,7 @@
                                             </div>
                                             <div
                                                 class="d-flex justify-content-center align-items-center mt-2 accordian-label">
-                                                Last Score
+                                                Previous Score
                                             </div>
                                         </div>
 
@@ -849,7 +860,8 @@
                                             </div>
                                             <div
                                                 class="d-flex justify-content-center align-items-center mt-2 accordian-label">
-                                                Today's Score
+                                                
+                                                Last Score
                                             </div>
                                         </div>
 
@@ -859,9 +871,10 @@
 
                                 <div class="card mt-4 p-2" style="border-radius: 5px;">
                                     <div class="d-flex align-items-center justify-content-around">
-                                        <div class="skillmuniCharacter">
+                                        <div class="skillmuniCharacter mb-2">
                                             <img src="{{boosterData_response.booster_rank_details[0].character_img}}"
                                                 alt="" height="100%">
+                                            <div class="shadow"></div>
                                         </div>
                                         <div
                                             class="ScoreRank accordian-label d-flex flex-column gap-1 align-items-center">
@@ -929,11 +942,11 @@
                                         <div class="col-8 d-flex  align-items-center">
                                                 <div class="accordian-label d-flex flex-column align-items-start col-6">
                                                    
-                                                    <div>Last Score</div>
+                                                    <div>Previous Score</div>
                                                     <!-- <div>{{boosterData_response.booster_rank_details[0].yesterday_score}}</div> -->
                                                 </div>
                                                 <div  class="accordian-label d-flex flex-column  align-items-end col-6">
-                                                    <div>Today's Score</div>
+                                                    <div>Last Score</div>
                                                     <!-- <div>{{boosterData_response.booster_rank_details[0].today_score}}</div> -->
                                                 </div>
                                         </div>
@@ -963,17 +976,15 @@
                                                    
                                                    
                                                     <div class="progress">
-                                                        <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{'width.%': data.growth_percentage}" aria-valuenow="data.growth_percentage" aria-valuemin="0" aria-valuemax="100">{{data.growth_percentage.slice(0,5)}}</div>
+                                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [ngStyle]="{'width.%': data.growth_percentage}" aria-valuenow="data.growth_percentage" aria-valuemin="0" aria-valuemax="100%">{{data.growth_percentage.slice(0,5)}}%</div>
                                                       </div>
                                                       
             
                                                 </ng-template>
                                                 <ng-template #elseBlock>
                                                     <div class="progress">
-                                                        <div class="progress-bar bg-danger" role="progressbar" [ngStyle]="{'width.%': data.growth_percentage.slice(1,3)}" aria-valuenow="data.growth_percentage" aria-valuemin="0" aria-valuemax="-100">{{data.growth_percentage.slice(1,4)}}</div>
-                                                      </div>
-                                                    
-                                                   
+                                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" [ngStyle]="{'width.%': data.growth_percentage.slice(1,4)}" aria-valuenow="data.growth_percentage.slice(1,4)" aria-valuemin="0" aria-valuemax="100%">{{data.growth_percentage.slice(1,4)}}%</div>   
+                                                    </div> 
                                                 </ng-template>
                                         </div>
 
@@ -987,15 +998,9 @@
                                             
                                             <img src="../../../../assets/images/BoosterAssests/DN-16687580461987.png" alt=""  height="100%">
                                            
-                                        </div>
-
-                                    
-                                        
+                                        </div>  
                                     </div>
-                                    
-
                                 </div>
-
                             </div>
                         </div>
                     </div>
