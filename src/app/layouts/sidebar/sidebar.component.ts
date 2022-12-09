@@ -7,6 +7,7 @@ import { NgbNavModule, NgbAccordionModule, NgbTooltipModule, NgbModule } from '@
 import { HttpClient } from '@angular/common/http';
 
 import { MENU } from './menu';
+import { MENU_SPECTATOR } from './menu_spectator';
 import { MenuItem } from './menu.model';
 import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
@@ -34,6 +35,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
   data: any;
   hide:boolean=true
   menuItems: any;
+  id_role:any;
 
   @ViewChild('sideMenu') sideMenu: ElementRef;
   userObj: any
@@ -106,6 +108,19 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
       
       })
 
+
+
+
+      var menuArr1: any
+      menuArr1 = MENU_SPECTATOR.filter((value, index) => {
+      
+       
+    
+
+     
+      
+      })
+
     })
 
   
@@ -117,6 +132,9 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
     ).subscribe(data => {
       this.userObj = data?.user
       console.log(this.userObj)
+      this.id_role =this.userObj?._personal_data?.id_role
+      console.log(this.id_role);
+      
       this.id_coroebus_theme=this.userObj.themes[0].id_coroebus_theme
       console.log(this.id_coroebus_theme);
       
@@ -228,8 +246,15 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
    * Initialize
    */
   initialize(): void {
-    this.menuItems = MENU;
-    this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
+    if(this.id_role == 7){
+      this.menuItems = MENU_SPECTATOR;
+      this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
+    }else{
+      this.menuItems = MENU;
+      this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
+    }
+
+    
   }
 
   /**

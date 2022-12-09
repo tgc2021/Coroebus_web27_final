@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { SpectatorViewRoutingModule } from './spectator-view-routing.module';
 import { SpectatorViewComponent } from './spectator-view.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import { MatCardModule } from '@angular/material/card';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,6 +15,9 @@ import {MatTabsModule} from '@angular/material/tabs';
   imports: [
     CommonModule,
     MatTabsModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatCardModule,
     SpectatorViewRoutingModule
   ]
 })

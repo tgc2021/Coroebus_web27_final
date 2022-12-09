@@ -25,7 +25,7 @@ import { SkeletonScreenLoaderModule } from '../../../projects/coroebus/skeleton-
     NotificationPopupComponent,
     ChampionsLeagueComponent,
     PersonalMilestoneComponent,
-    MainDashboardComponent
+    MainDashboardComponent,
   ],
   imports: [
     CommonModule,

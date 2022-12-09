@@ -296,7 +296,23 @@ else{
     this.interactive_dashoard_response = res;
     this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
     console.log(this.interactive_dashoard_response);
+    if(this.interactive_dashoard_response){
+      setTimeout(() => {
+        this.isLoading=false;
+      },5000)
+      this.isLoading=true;
+    }
 
+    this.point_distribution = this.interactive_dashoard_response[0].data.theme_details[0].gradient_color_bg
+    console.log(this.point_distribution);
+    
+    this.element.nativeElement.style.setProperty('--myvar', `${this.point_distribution}`)
+
+
+    this.scorecardcolor = this.interactive_dashoard_response[0].data.theme_details[0].scoreboard_color_bg
+    console.log(this.scorecardcolor);
+    
+    this.element.nativeElement.style.setProperty('--colorback', `${this.scorecardcolor}`)
    
     this.eventService.broadcast('passDataToHeader', {
       color: this.interactive_dashoard_response[0].data.theme_details[0].dark_color,

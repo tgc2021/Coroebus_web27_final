@@ -17,6 +17,7 @@ import { Util } from '@app/utils/util';
 })
 export class GameSelectionComponent implements OnInit, OnDestroy {
   userObj: any
+  id_role:any
   themeObj: any
   destroy$: Subject<boolean> = new Subject<boolean>();
   gameList: any;
@@ -35,18 +36,25 @@ export class GameSelectionComponent implements OnInit, OnDestroy {
       this.themeObj = data?.theme
       this.getGame()
     })
+
   }
 
   ngOnInit(): void {
+    this.id_role = this.userObj?._personal_data?.id_role
+console.log(this.id_role);
 
   }
   async getGame() {
     let err: any, res: any;
     let body: any;
+    console.log(this.userObj);
+    
     body = {
       "userid": this.userObj?._personal_data?.USERID,
       "id_theme": this.themeObj?.id_coroebus_theme
     };
+    
+
     [err, res] = await HttpProtocols.to(UserModel.getGame(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
       const newArr = [];
@@ -76,8 +84,13 @@ export class GameSelectionComponent implements OnInit, OnDestroy {
   selectGame() {
     this.id_coroebus_theme =this.themeObj?.id_coroebus_theme
     console.log(this.id_coroebus_theme);
+    console.log(this.id_role);
 
-    if(this.id_coroebus_theme>6){
+    if(this.id_role==7){
+      this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
+      this.router.navigate(['/spectator/spectatorView']);
+    }
+    else if(this.id_coroebus_theme>6){
       this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
       this.router.navigate(['/account/interactive-dashboard']);
     }

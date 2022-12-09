@@ -12,9 +12,9 @@
             <div class="col-3 pointsDistributionSection d-flex flex-column justify-content-start">
                 <div>
                     <div class="points-dis-card"
-                    [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}"
+                    [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.point_dist_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.point_dist_background == null}"
                         [style.background-image]="
-                    sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
+                    sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
                     <div class="card-div">
                         <div class="card-body border-bottom-" style="height: 43vh;">
                             <div class="float-start dropdown ms-2 font-size-16 font-weight-semibold w-100 mb-1">
@@ -47,10 +47,10 @@
                     </div>
 
                     <div
-                        [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}">
+                        [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.notification_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.notification_background == null}">
                         <div class="card-div points-notification-card"
                             [style.background-image]="
-                sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
+                sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.notification_background + ')' : null">
 
                             <div class="card-body border-bottom mt-4">
                                 <div class="dropdown ms-2 font-size-16 font-weight-semibold">
@@ -459,9 +459,9 @@
 
                     <div class="bulletins-card"
                         [ngClass]="{'points-bullentins-card-no-height': sectionView_1?.is_land_logos?.length == 0, 'points-bullentins-card': sectionView_1?.is_land_logos?.length != 0}"
-                        [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}"
+                        [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.add_ins_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.add_ins_background == null}"
                         [style.background-image]="
-                    sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
+                    sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.add_ins_background + ')' : null">
                         <div class="card-div">
                             <div class="float-start dropdown ms-4 mt-3  font-size-16 font-weight-semibold"
                                 style="width: 100%;">
