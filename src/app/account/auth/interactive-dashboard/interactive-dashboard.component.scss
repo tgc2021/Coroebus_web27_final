@@ -1291,18 +1291,17 @@ color: #252525;
     height: 72px;
     width: 72px;
     border-radius: 100%;
-    border:2px solid var(--colorback);
+    border:2px solid rgba(0, 0, 0, 0.25);
     font-family: 'Swis721 Cn BT' sans-serif;
     font-style: normal;
-    font-weight: 700;
+    font-weight: bolder;
     font-size: 18px;
     line-height: 22px;
 /* identical to box height */
-    color: #FFFFFF;
-    background-color:var(--colorback);
-    
+    opacity:0.9;
+    color:#FEEE1E;
+    background-color:var(--colorback);    
 }
-
 .accordian-label{
     font-family: 'Swis721 Cn BT' 'sans-serif';
     font-style: normal;
@@ -1328,11 +1327,9 @@ color: #252525;
     line-height: 17px;
     margin-bottom: 1%;
     /* identical to box height */
-text-transform: uppercase;
-
-color: #FFFFFF;
-
-text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
 }
 .rangeBgcolor{
     background-color: #058640;
@@ -1356,6 +1353,7 @@ text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     border-radius: 60%;
     margin-top:-12%;
 }
+
 @media (min-width: 2000px) and (max-width: 2048px) {
     .box-container {
 

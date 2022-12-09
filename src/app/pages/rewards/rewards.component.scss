@@ -166,7 +166,6 @@ hr {
     font-size: 16px;
     font-weight: 700;
     border-bottom: 2px solid var(--myvar);
-    ;
 }
 
 .mat-card {
@@ -241,9 +240,10 @@ hr {
 
 // Redemption History
 .form-select-sm{
-     width: 10%;
+    width: 15%;
     //  float: right;
     margin-top: 10px;
+    margin-bottom: 10px;
     font-size: 12px;
     color: #000000;
     background-color: #F2F2F2;
@@ -252,6 +252,14 @@ hr {
     position: absolute;
     right: 12px;
     z-index: 10; 
+ }
+
+ .option_select{
+    height: 41px;
+    font-size: 1.9vh;
+    padding: 5%;
+    margin-top: 5%;
+    
  }
 .redemption_card{
     display: block;

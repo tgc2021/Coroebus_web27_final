@@ -33,7 +33,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   sectionView_3: any = []
   sectionView_3_list: any = []
   getBackImages:any=[];
-  sectionView2Data:any=[];
+  sectionView2Data:any;
   sectionView_3_err: any
   notificationLists: any
   notificationList_err: any
@@ -96,6 +96,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   getBackImagesFromSectionView1: any;
   getBackImagesFromSectionView3: any;
   sectionView3Data: any;
+  getBackImagesFromSectionView2: any;
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -208,7 +209,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       this.getBackImagesFromSectionView1=this.sectionView_1._back_images[1]._data;
 
-      this.getBackImages.push(this.getBackImagesFromSectionView1);
+      this.getBackImages.push(...this.getBackImagesFromSectionView1);
 
 
       console.log(this.getBackImages);
@@ -256,6 +257,24 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
       this.sectionView_2 = res?.data;
 
+   
+      this.getBackImagesFromSectionView2=this.sectionView_2._ranking_data.map((res:any)=>{
+
+        this.sectionView2Data=res._data;
+        console.log(this.sectionView2Data);
+        
+      })
+
+      console.log(this.sectionView2Data);
+      console.log(this.getBackImages);
+
+      if(this.sectionView2Data[0].ranking_image_level===this.getBackImages.ranking_image_level){
+          this.getBackImages.push(...this.sectionView2Data);
+      console.log("True ........................")
+      }
+
+      
+      console.log(this.sectionView2Data);
       
 
       // for(let i=0;i<this.sectionView_2?._ranking_data?.length;i++){
