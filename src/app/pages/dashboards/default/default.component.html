@@ -322,7 +322,8 @@
                                         <h5 class="mt-0 text-white" style="display: flex;
                                         justify-content: end;
                                         align-items: center;
-                                        gap: 4rem;"><span
+                                        gap: 4rem;">
+                                        <span
                                                 class="name-f-size point-number">{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_weightage}}</span>
                                             <div style="height:5vh">
                                                 <img loading="lazy" class=" f-right up-arrow" alt=""
@@ -351,7 +352,7 @@
                         <!-- {{spectSearList | json}} -->
                         <!-- {{spectSearchStr ? 'true': 'false'}} -->
                         <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
-                            [style.background-image]="'url(' + item?.ranking_image + ')'"
+                            [style.background-image]="'url(' + item?.ranking_image_level_img + ')'"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                             *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) ">
                             <div class="col">
@@ -373,8 +374,8 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="media d-flex me-1  gap-2" style="height: 6vh;">
-                                    <div class="rounded-circle z-depth-2 team-logo-row  d-flex align-items-center"
+                                <div class="media me-1" style="height: 6vh; display: flex;align-items:center">
+                                    <div class="rounded-circle z-depth-2 team-logo-row "
                                         style="height:5vh;">
                                         <img alt="" src="{{item?.ranking_badge}}" data-holder-rendered="true"
                                             height="100%" width="100%">
@@ -384,20 +385,25 @@
                                         <h5 class="mt-0 text-white" style="display: flex;
                                         justify-content: end;
                                         align-items: center;
-                                        gap: 4rem;"><span
-                                                class="name-f-size point-number">{{item?.rankingtable_weightage}}</span>
-                                            <div style="height:5vh">
-                                                <img class=" f-right up-arrow" alt=""
-                                                    src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
-                                                    data-holder-rendered="true" height="100%"
-                                                    *ngIf="item?.rankingtable_arrow === 'red'">
-                                                <!-- (click)="upDownArrow(item?.rankingtable_arrow,item)" -->
-                                                <img class=" f-right up-arrow" alt=""
-                                                    src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
-                                                    data-holder-rendered="true" height="100%"
-                                                    *ngIf="item?.rankingtable_arrow !== 'red'">
-                                            </div>
-                                            <!-- (click)="upDownArrow(item?.rankingtable_arrow,item)" -->
+                                        gap: 4rem;">
+                                                    <div style="height: 6vh; display:flex;align-items: center;">
+                                                        <span class="name-f-size point-number mt-1">{{item?.rankingtable_weightage}}</span>
+                                                    </div>
+                                                    
+                                                    <div style="height:5vh;">
+                                                        <img class="mt-1 f-right up-arrow" alt=""
+                                                            src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
+                                                            data-holder-rendered="true" height="100%"
+                                                            *ngIf="item?.rankingtable_arrow === 'red'">
+                                                        
+                                                        <img class="mt-1 f-right up-arrow" alt=""
+                                                            src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
+                                                            data-holder-rendered="true" height="100%"
+                                                            *ngIf="item?.rankingtable_arrow !== 'red'">
+                                                    </div>
+                                                
+                                            
+                                           
                                         </h5>
                                         <!-- <p class="mt-n4 team-name sub-team">India Maste</p> -->
                                     </div>

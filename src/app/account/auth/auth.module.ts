@@ -18,6 +18,7 @@ import { SecurityQuestionComponent } from './security-question/security-question
 import { TvsDashboardComponent } from './tvs-dashboard/tvs-dashboard.component';
 import { InteractiveDashboardComponent } from './interactive-dashboard/interactive-dashboard.component';
 import {MatCardModule} from '@angular/material/card';
+import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
@@ -28,6 +29,7 @@ import { LoaderComponent } from './loader/loader.component';
     FormsModule,
     NgbAlertModule,
     MatCardModule,
+    NgbProgressbarModule,
     UIModule,
     AuthRoutingModule,
     CarouselModule

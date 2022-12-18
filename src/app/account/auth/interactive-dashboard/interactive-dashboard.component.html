@@ -764,25 +764,223 @@
 
 
     
-        <div class="modal fade" id="BoosterModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered ">
-                <div class="modal-content">
-                    <div class="modal-body modalBodyBooster">
-                        <div style="position:relative;">
+    <div class="modal fade" id="BoosterModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content">
+            <div class="d-flex justify-content-end">
+                <button type="button" class="booster_btn_close" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-booster" style="width:100%;">Booster</button>
+            </div>
+            <div class="">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-headr" id="headingOn" style="background: var(point_distribution)">
+                            <button class="accordion-button accordian-label" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
+                                style="color:var(--colorback);background:var(point_distribution)">
+                                {{boosterData_response.booster_title}}
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="text-center d-flex flex-column align-items-center">
+                                    <div class="accordian-title">{{boosterData_response.section_title}}</div>
+                                    <div *ngIf="boosterData_response.section_target!==null|| boosterData_response.section_target=='';then NotnullValue"></div>
+                                    <ng-template #NotnullValue>
+                                        <div class="accordian-subtitle">Overall Target:{{boosterData_response.section_target}} </div>
+                                    </ng-template>
+                                   
+                                    
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <div *ngIf="boosterData_response.section_Date!==null|| boosterData_response.section_Date=='';then NotnullDate"></div>
+                                        <ng-template #NotnullDate>
+                                            <div>
+                                                <img src="../../../../assets/images/BoosterAssests/calender.png" alt="">
+                                            </div>
+                                            <div class="accordian-date d-flex align-items-center">
+                                                {{boosterData_response.section_Date.slice(0,10)
+                                                | date:'dd/MM/yy'}}</div>
+                                        </ng-template>
+                                        
+                                        
 
-                            <img src="https://coroebus.in/coroebus-beta/assets/Media/Booster.png" />
-                            <div>
-                                <button type="button" class="btn-close closeBooster" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                    </div>
+                                </div>
+                                <div class="d-flex  justify-content-center align-items-center gap-4">
+                                    <div class="d-flex  justify-content-center align-items-center">
+                                        <div class=" d-flex flex-column justify-content-center align-items-center">
+                                            <div
+                                                class="lastScore  d-flex justify-content-center align-items-center mt-2 ">
+                                                {{boosterData_response.booster_rank_details[0].yesterday_score}}
+                                            </div>
+                                            <div
+                                                class="d-flex justify-content-center align-items-center mt-2 accordian-label">
+                                                Previous Score
+                                            </div>
+                                        </div>
 
+
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center align-items-center">
+                                        <div class="d-flex flex-column justify-content-center align-items-center">
+                                            <div
+                                                class="TodaysScore d-flex justify-content-center align-items-center mt-2">
+                                                {{boosterData_response.booster_rank_details[0].today_score}}
+                                            </div>
+                                            <div
+                                                class="d-flex justify-content-center align-items-center mt-2 accordian-label">
+                                                
+                                                Last Score
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                                <div class="card mt-4 p-2" style="border-radius: 5px;">
+                                    <div class="d-flex align-items-center justify-content-around">
+                                        <div class="skillmuniCharacter mb-2">
+                                            <img src="{{boosterData_response.booster_rank_details[0].character_img}}"
+                                                alt="" height="100%">
+                                            <div class="shadow"></div>
+                                        </div>
+                                        <div
+                                            class="ScoreRank accordian-label d-flex flex-column gap-1 align-items-center">
+                                            <div>Rank</div>
+                                            <div>
+                                                {{boosterData_response.booster_rank_details[0].date_time_stamp_today.slice(0,10)
+                                                | date:'dd/MM/yy'}}</div>
+                                            <div style="color:green">
+                                                {{boosterData_response.booster_rank_details[0].today_rank_number}}</div>
+                                            <div>
+                                                {{boosterData_response.booster_rank_details[0].date_time_stamp_yesterday.slice(0,10)
+                                                | date:'dd/MM/yyyy'}}</div>
+                                            <div style="color:red">
+                                                {{boosterData_response.booster_rank_details[0].yesterday_rank_number}}
+                                            </div>
+
+                                        </div>
+                                        <div style="border-left:1px solid rgba(0, 0, 0, 0.07);height: 10vh;"></div>
+                                        <div
+                                            class="StatusBravo accordian-label d-flex flex-column gap-1 justify-content-center align-items-center">
+                                            <div>{{boosterData_response.booster_rank_details[0].rank_position_label}}
+                                            </div>
+                                           
+                                            <div *ngIf="boosterData_response.booster_rank_details[0].today_rank_number>0 && boosterData_response.booster_rank_details[0].yesterday_rank_number<boosterData_response.booster_rank_details[0].today_rank_number;then upArrow"></div>
+                                            <ng-template #upArrow>
+                                                <div  style="height:4vh;">
+                                                    
+                                                    <img src="../../../../assets/images/BoosterAssests/UP-16687580465394.png"
+                                                        alt="" height="100%">
+                                                </div>
+                                            </ng-template>
+                                            
+                                           
+                                                <div *ngIf="boosterData_response.booster_rank_details[0].yesterday_rank_number>boosterData_response.booster_rank_details[0].today_rank_number"  style="height:4vh;">
+                                                    <img src="../../../../assets/images/BoosterAssests/DN-16687580461987.png" alt=""  height="100%">
+                                                </div>
+                                                <div *ngIf="boosterData_response.booster_rank_details[0].yesterday_rank_number==boosterData_response.booster_rank_details[0].today_rank_number"  style="height:4vh;">
+                                                    <img src="../../../../assets/images/BoosterAssests/EQ-16687580462022.png" alt=""  height="100%">
+                                                </div>
+                                            <div *ngIf="boosterData_response.booster_rank_details[0].rank_position_stmt=='Same rank to before.';then equalRank else UnequalRank"></div>
+                                            <ng-template #equalRank>
+                                                <div class="boosterRankPosition">
+                                                    {{boosterData_response.booster_rank_details[0].rank_position_stmt}}
+                                                </div>
+                                            </ng-template>
+                                            <ng-template #UnequalRank>
+                                                <div class="boosterRankPosition">
+                                                    {{firstString}} <span style="color:green">{{Digit}}</span> {{LastString}}
+                                                </div>
+                                            </ng-template>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <hr style="width: 100%;
+                                        height: 0px;
+                                        opacity: 0.04;
+                                        border: 2px solid #000000;">
+                                </div>
+
+                                <div class="row" style="border-radius: 5px;"  style="overflow-y:auto;height: 15vh;">
+                                    <div class="col-12 d-flex">
+                                        <div class="col-3"></div>
+                                        <div class="col-8 d-flex  align-items-center">
+                                                <div class="accordian-label d-flex flex-column align-items-start col-6">
+                                                   
+                                                    <div>Previous Score</div>
+                                                    <!-- <div>{{boosterData_response.booster_rank_details[0].yesterday_score}}</div> -->
+                                                </div>
+                                                <div  class="accordian-label d-flex flex-column  align-items-end col-6">
+                                                    <div>Last Score</div>
+                                                    <!-- <div>{{boosterData_response.booster_rank_details[0].today_score}}</div> -->
+                                                </div>
+                                        </div>
+                                        <div class="col"></div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-around align-items-center" *ngFor="let data of boosterData_response.booster_index_details">
+                                        <div class="col-3 accordian-label">{{data.game_element}}</div>
+
+                                        <div class="col-8" style="height:6vh">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="accordian-label d-flex flex-column align-items-start justify-content-center col-6">
+                                                   
+                                                
+                                                    <div>{{data.yesterday_score}}</div>
+                                                </div>
+                                                <div  class="accordian-label d-flex flex-column  align-items-end col-6">
+                                                    
+                                                    <div>{{data.today_score}}</div>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                                <div  class="progress"
+                                                    *ngIf="data.arrow_color==='green';then IfBlock else   elseBlock"> </div>
+                                                <ng-template #IfBlock>
+                                                   
+                                                   
+                                                    <div class="progress">
+                                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [ngStyle]="{'width.%': data.growth_percentage}" aria-valuenow="data.growth_percentage" aria-valuemin="0" aria-valuemax="100%">{{data.growth_percentage.slice(0,5)}}%</div>
+                                                      </div>
+                                                      
+            
+                                                </ng-template>
+                                                <ng-template #elseBlock>
+                                                    <div class="progress">
+                                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" [ngStyle]="{'width.%': data.growth_percentage.slice(1,5)}" aria-valuenow="data.growth_percentage.slice(1,5)" aria-valuemin="0" aria-valuemax="100%">{{data.growth_percentage.slice(1,5)}}%</div>   
+                                                    </div> 
+                                                </ng-template>
+                                        </div>
+
+                                        <div *ngIf="data.growth_percentage>0" style="height:4vh;">
+                                        
+                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png"
+                                                alt="" height="100%">
+                                        </div>
+
+                                        <div *ngIf="data.growth_percentage<0" style="height:4vh;">
+                                            
+                                            <img src="../../../../assets/images/BoosterAssests/DN-16687580461987.png" alt=""  height="100%">
+                                           
+                                        </div>  
+                                    </div>
+                                    
+                                </div>
                             </div>
-
-
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
     

@@ -179,6 +179,12 @@ export class InteractiveDashboardComponent implements OnInit {
   isWeeklyModalOpen:boolean;
   isMonthlyModalOpen:boolean;
   notAllowed = null;
+  boosterData_response:any
+  StringArray: any;
+  firstString: string;
+  Digit: any;
+  LastString: any;
+  
   constructor(private readonly store: Store, public element: ElementRef, public Util: Util,private _router: Router, public http: ApiserviceService, private eventService: EventService) { }
   
   ngOnInit(): void {
@@ -221,7 +227,20 @@ if(this.mergeObj.id_coroebus_game != null){
   this.interactive_dashoard_response = res;
    this.isLoading=true;
     this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
-
+  
+    this.http.BoosterData(body).subscribe((res:any)=>{
+      this.boosterData_response=res.data;
+  
+      console.log(res);
+      
+       this.StringArray=res.data.booster_rank_details[0].rank_position_stmt.split(" ");
+       this.firstString=this.StringArray[0]+" "+this.StringArray[1]+" "+this.StringArray[2];
+      this.Digit=this.StringArray[3]
+      this.LastString=this.StringArray[4];
+      console.log(this.StringArray);
+      console.log(this.LastString);
+  
+    })
 
     this.seasonalThemeDaily=this.interactive_dashoard_response[0].data.seasonal_theme_daily;
 
@@ -294,14 +313,34 @@ else{
    
     
     this.interactive_dashoard_response = res;
+    this.isLoading=true;
     this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
     console.log(this.interactive_dashoard_response);
+    
+    this.http.BoosterData(body).subscribe((res:any)=>{
+      this.boosterData_response=res.data;
+  
+      console.log(res);
+      
+       this.StringArray=res.data.booster_rank_details[0].rank_position_stmt.split(" ");
+       this.firstString=this.StringArray[0]+" "+this.StringArray[1]+" "+this.StringArray[2];
+      this.Digit=this.StringArray[3]
+      this.LastString=this.StringArray[4];
+      console.log(this.StringArray);
+      console.log(this.LastString);
+  
+    })
     if(this.interactive_dashoard_response){
       setTimeout(() => {
         this.isLoading=false;
       },5000)
       this.isLoading=true;
     }
+
+    this.seasonalThemeDaily=this.interactive_dashoard_response[0].data.seasonal_theme_daily;
+
+    this.seasonalThemeWeekly=this.interactive_dashoard_response[0].data.seasonal_theme_weekly;
+    this.seasonalThemeMonthly=this.interactive_dashoard_response[0].data.seasonal_theme_monthly;
 
     this.point_distribution = this.interactive_dashoard_response[0].data.theme_details[0].gradient_color_bg
     console.log(this.point_distribution);

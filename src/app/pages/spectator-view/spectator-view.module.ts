@@ -6,6 +6,9 @@ import { SpectatorViewComponent } from './spectator-view.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @NgModule({
@@ -17,6 +20,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatTabsModule,
     ReactiveFormsModule,
     FormsModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    NgbDropdownModule,
     MatCardModule,
     SpectatorViewRoutingModule
   ]

@@ -207,7 +207,7 @@
             <hr>
             <div class="select_container d-flex justify-content-end mr-3">
               <select (change)="onChange($event)" class="form-control form-select form-select-sm" aria-label=".form-select-lg example">
-                <option class="option_select m-5" *ngFor="let pointselect of points.data.points_list[2]._data" [value]="pointselect.order"
+                <option class="option_select m-3" *ngFor="let pointselect of points.data.points_list[2]._data" [value]="pointselect.order"
                   selected="pointselect.order">{{pointselect.label}}</option>
 
               </select>

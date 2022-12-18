@@ -1,6 +1,11 @@
+
 ::ng-deep {
     .page-content {
         padding: 79px 0px 0px 0px !important;
+    }
+
+    .web_group_dropdown{
+        background: white;
     }
 }
 
@@ -12,27 +17,67 @@
     background-size: cover;
 }
 
-.web_no_notifications{
+.web_no_notifications {
     height: 70vh;
     width: 100%;
 }
 
-.web_notification_message{
+.web_select_dropdown{
+height: 6vh;
+margin-left: 2vw;
+background: transparent;
+color: white;
+border: 2px solid white;
+border-radius: 9px;
+padding: 4px;
+
+}
+.web_option {
+    color: #000000 !important;
+    background-color: transparent !important;
+ 
+    
+  }
+
+
+.web_select_div{
+height: 14vh;
+}
+
+.web_notification_message {
     font-size: 1.2vw;
     font-weight: 500;
+    font-size: 1.2vw;
+    font-weight: 500;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    /* font-size: 16px; */
+    line-height: 25px;
+    text-align: center;
+    /* letter-spacing: 0.003em; */
+    color: #000000;
 }
 
 
-.web_no_bulletins{
+.web_no_bulletins {
     height: 70vh;
     width: 100%;
 }
 
-.web_bulletins_message{
-   
-        font-size: 1.2vw;
-        font-weight: 500;
+.web_bulletins_message {
+    font-size: 1.2vw;
+    font-weight: 500;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    /* font-size: 16px; */
+    line-height: 25px;
+    text-align: center;
+    /* letter-spacing: 0.003em; */
+    color: #000000;
 }
+
 .web_bulletins_card {
     background: url("../../../assets/images/comingSoon/notification_image.png");
     height: 87vh;
@@ -42,10 +87,30 @@
 }
 
 .web_profile_card {
-    background: url("../../../assets/images/specatator-dashboard/Spectator\ View.png");
-    height: 28vh;
+    background: url("https://coroebus.in/coroebus-beta/assets/SpectBackground/spectator_bg.png");
+    height: 25vh;
+    width: 96%;
     background-size: 100% 100%;
+    margin-bottom: 2vh;
+    margin-left: 1vw;
+    padding: 0;
 }
+
+.web_upper_label {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    color: #FFFFFF;
+    
+background: rgba(21, 18, 18, 0.45);
+border-radius: 0px 0px 8px 8px;
+padding-top: 7px;
+padding-bottom: 7px;
+padding-left: 30px;
+padding-right: 30px;
+}
+
 
 .web_notification_header {
     font-family: 'Inter';
@@ -160,17 +225,41 @@
 }
 
 .web_profile_heading {
-    height: 20vh;
+    min-width: 10vw;
+    height: 6vh;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    margin-left: 3vw;
+    padding: 6px;
+   
 }
+
+.web_dropdown_div{
+    height: 14vh;
+   
+}
+
+.buttons_container{
+    margin-top:20px;
+  }
+  .buttons_container:after{
+    content:"";
+    clear:both;
+    display:block;
+  }
+  .buttons_container .dropdown{
+    float:left;
+    margin-right:10px;
+  }
 
 
 .web_profile_card_name {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
-    font-size: 1.3vw;
-    color: #FFFFFF;
-    margin-left: 12vh;
+    font-size: 1vw;
+    color: #000000;
+    margin: 0;
 }
 
 
@@ -223,9 +312,9 @@
 .web_button_1:checked {
     background-color: #666;
     color: white;
-  }
+}
 
-.web_button_2{
+.web_button_2 {
     width: 96%;
     height: 7vh;
     background: #FFFFFF;
@@ -241,7 +330,7 @@
 
 }
 
-.web_button_3{
+.web_button_3 {
     width: 96%;
     height: 7vh;
     background: #FFFFFF;
@@ -256,7 +345,7 @@
     color: #000000;
 }
 
-.web_button_4{
+.web_button_4 {
     width: 96%;
     height: 7vh;
     background: #FFFFFF;
@@ -276,7 +365,10 @@
     margin-left: 1vh;
 }
 
-.cm_tab,.am_tab,.rm_tab,.nsm_tab {
+.cm_tab,
+.am_tab,
+.rm_tab,
+.nsm_tab {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -294,7 +386,7 @@
     font-weight: 600;
     font-size: 1vw;
     color: #000000;
-   
+
 
 }
 
@@ -319,7 +411,7 @@
     color: white;
 }
 
-.load-more{
+.load-more {
     background: rgb(0, 78, 201);
     color: white;
 }
@@ -356,8 +448,7 @@
 }
 
 .web_spectator_leaderboard {
-    background: url(../../../assets/images/specatator-dashboard/Blue_spectator_bg.png);
-    background-size: 100% 100%;
+
     height: 8vh;
     border-radius: 7px;
     width: 95%;
@@ -372,7 +463,7 @@
 }
 
 .web_spectator_profile_image {
-    height: 4vh;
+    height: 5vh;
     border-radius: 100%;
 }
 
@@ -409,6 +500,7 @@
 
 .web_spectator_badge {
     height: 5vh;
+    border-radius: 100%;
 }
 
 .web_spectator_points {
@@ -464,4 +556,3 @@
     width: 95%;
     margin-left: 1vw;
 }
-
