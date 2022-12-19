@@ -268,7 +268,7 @@
           
             <div class="row web_button_row">
                 <div class="col-3">
-                    <input type="radio" id="tab-1" name="mytabs" checked="checked" value="" (click)="filterRankwiseLeaderboard(response.data.ranking[0].label)" >
+                    <input type="radio" id="tab-1" name="mytabs"  value="" (click)="filterRankwiseLeaderboard(response.data.ranking[0].label)" >
                     <label class="cm_tab" for="tab-1">{{response.data.ranking[0].label}}</label>
 
                 </div>
@@ -429,7 +429,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" >
                 <div class="col-12 web_spectator_view_more_btn_div">
                     <button class="w-100 btn btn-lg load-more" type="button" (click)="viewMore()">
                         <img src="assets/images/svg/dashboard/load-more.svg" data-holder-rendered="true" height="13">

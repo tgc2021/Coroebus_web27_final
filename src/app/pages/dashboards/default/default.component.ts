@@ -15,9 +15,6 @@ import { ActivatedRoute, Event as Events, NavigationEnd, NavigationStart, Router
 import { ToastService } from '@app/services/toast-service';
 import { $ } from 'protractor';
 import { table } from 'console';
-
-
-
 @Component({
   selector: 'app-default',
   templateUrl: './default.component.html',
@@ -32,8 +29,6 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   sectionView_2_err: any
   sectionView_3: any = []
   sectionView_3_list: any = []
-  getBackImages:any=[];
-  sectionView2Data:any;
   sectionView_3_err: any
   notificationLists: any
   notificationList_err: any
@@ -93,10 +88,6 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   BucketListHide: boolean
   UserIdBucket: any
   firstUserData: any;
-  getBackImagesFromSectionView1: any;
-  getBackImagesFromSectionView3: any;
-  sectionView3Data: any;
-  getBackImagesFromSectionView2: any;
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -117,7 +108,6 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     // setInterval(()=>{this.ShowTime(i++),8000})
 
     // this.emojiSelected(0,1)
-    // this.playAudio();
 
     this.activeTab()
     this.Edit_image()
@@ -187,7 +177,10 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     // console.log(this.userID);
   }
 
+
+
   ngAfterViewInit() {
+
     this.edit_image
   }
 
@@ -198,24 +191,16 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     let body: any;
     body = {
       "_userid": queryParams?.userID ? queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
-      "_game": queryParams?.gameID ? queryParams?.gameID : this.userSelectionData?.id_coroebus_game, "_section_view": "1", "page_number": "1","device_type" : "W"
+      "_game": queryParams?.gameID ? queryParams?.gameID : this.userSelectionData?.id_coroebus_game, "_section_view": "1", "page_number": "1"
     };
     [err, res] = await HttpProtocols.to(DashboardModel.getUserBannerDataSectionView_1(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
-      this.sectionView_1 = res?.data;
-      console.log(this.sectionView_1);
-      this.pokeAnimationData = this.sectionView_1._poked_data;
+      this.sectionView_1 = res?.data
+      this.pokeAnimationData = this.sectionView_1._poked_data
       // this.pokeAnimationData1=this.sectionView_1._poked_data[0].poke_description
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      this.getBackImagesFromSectionView1=this.sectionView_1._back_images[1]._data;
 
-      this.getBackImages.push(...this.getBackImagesFromSectionView1);
+      console.log(this.pokeAnimationData);
 
-
-      console.log(this.getBackImages);
-      console.log("Section_view1_Data.....",this.getBackImagesFromSectionView1);
- 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       // alert(this.pokeAnimationData)
 
       this.rewardPoints = this.sectionView_1?._points?.filter(data => data?.label === 'Reward Point')
@@ -255,27 +240,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     };
     [err, res] = await HttpProtocols.to(DashboardModel.getCenterDataSectionView_2(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
-      this.sectionView_2 = res?.data;
-
-   
-      this.getBackImagesFromSectionView2=this.sectionView_2._ranking_data.map((res:any)=>{
-
-        this.sectionView2Data=res._data;
-        console.log(this.sectionView2Data);
-        
-      })
-
-      console.log(this.sectionView2Data);
-      console.log(this.getBackImages);
-
-      if(this.sectionView2Data[0].ranking_image_level===this.getBackImages.ranking_image_level){
-          this.getBackImages.push(...this.sectionView2Data);
-      console.log("True ........................")
-      }
-
-      
-      console.log(this.sectionView2Data);
-      
+      this.sectionView_2 = res?.data
 
       // for(let i=0;i<this.sectionView_2?._ranking_data?.length;i++){
       if (this.queryParams?.roleID =='6' || this.userSelectionData?._personal_data?.id_role =='6') {
@@ -353,6 +318,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
         // }
 
       }
+
+
       else if (this.queryParams?.roleID === '3' || this.userSelectionData?._personal_data?.id_role === '3') {
         this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
 
@@ -421,49 +388,19 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
       this.pokeData = res?.data?._poke_list
       if (viewMore) {
-        console.log(res?.data?._ranking_data);
-        
         res?.data?._ranking_data?.forEach((element, index) => {
-          console.log(element);
-          console.log(this.sectionView_3);
-          
           if (element?.label === this.sectionView_3?._ranking_data[index]?.label) {
-            console.log(element?.label);
-            
             if (element?._data?.length > 0) {
               this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data)
-              this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'center' });
+              this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'start' });
             }
           }
 
         });
       } else {
-        this.sectionView_3 = res?.data;
-
-        console.log(this.sectionView_3);
-        
-        ///////////////////////////////////////////////////////////////// Section View 3 Started
-        this.getBackImagesFromSectionView3=this.sectionView_3._ranking_data.map((res:any)=>{
-
-          this.sectionView3Data=res._data;
-          
-        })
-
-        console.log(this.sectionView3Data);
-
-        if(this.sectionView3Data.ranking_image_level===this.getBackImages.ranking_image_level){
-          this.getBackImages.push(...this.sectionView3Data);
-          console.log("True ........................")
-        }
-
-        
-        console.log(this.sectionView3Data);
-
+        this.sectionView_3 = res?.data
       }
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
-
       this.filterRankingData()
-
 
       this.sectionView_3_list = this.sectionView_3?._ranking_data?.filter(data => {
         //console.log(data)
@@ -532,10 +469,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.activeTabOrderNumberForSectionView_2 = order
     this.activeSubTabForSectionView_2 = 'My Store'
-    
     this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
-    // this.rankingDataFirstRowForSectionView_2=this.sectionView3Data;
-    console.log(this.sectionView_3_list);
+    this.sectionView_3_list = this.sectionView_3?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
     if (this.spectSearchStr) {
       this.spectSearch()
     }
@@ -839,13 +774,4 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  playAudio(){
-    let audio = new Audio();
-    audio.src = "../../../../assets/images/Notification Notification.wav";
-    audio.load();
-    audio.play();
-  }
-
 }
-
-

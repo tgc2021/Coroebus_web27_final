@@ -58,7 +58,7 @@ searchresponse:any
 pageNumberForSectionView_3: number = 1
 getBackImagesFromSectionView3:any
 spectator_user_list_view_more:any = []
-sectionView_more_list:any = []
+
 
 @ViewChild("scrollTarget") scrollTarget: ElementRef;
 viewmoreorder:any
@@ -269,12 +269,12 @@ viewmoreorder:any
       if (element?.label === this.spectator_user_list_view_more?.data?.ranking[index]?.label) {
         console.log(element?.label);
         
-        // if (element?.user_list?.length > 0) {
-        //   this.spectator_user_list_view_more?.data?.ranking[index]?.user_list?.push(...element?.user_list)
-        //   console.log(this.spectator_user_list_view_more?.data?.ranking[index]?.user_list?.push(...element?.user_list));
+        if (element?.user_list?.length > 0) {
+          this.spectator_user_list_view_more?.data?.ranking[index]?.user_list?.push(...element?.user_list)
+          console.log(this.spectator_user_list_view_more?.data?.ranking[index]?.user_list?.push(...element?.user_list));
           
-        //   this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'center' });
-        // }
+          this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'center' });
+        }
       }
 
     });
@@ -298,7 +298,7 @@ viewmoreorder:any
   }
          
   else {
-    this.getBackImagesFromSectionView3=this.spectator_user_list_view_more.map((res:any)=>{
+    this.getBackImagesFromSectionView3=this.spectator_user_list.map((res:any)=>{
       console.log(res);
       
       // this.sectionView3Data=res._data;
@@ -335,7 +335,7 @@ viewmoreorder:any
       this.http.spectator_dashboard(body).subscribe((res) => {
         console.log(res)
         this.spectator_dashoard_response = res;
-        this.spectator_user_list_view_more=res
+
         this.spectator_dashoard_response = Array.of(this.spectator_dashoard_response);
 
         console.log(this.spectator_dashoard_response);
@@ -348,64 +348,33 @@ viewmoreorder:any
         console.log(this.spectator_user_list);
 
         if(viewmore){
-          console.log(this.spectator_ranking_leaderboard);
-          
-      
-          this.spectator_ranking_leaderboard?.forEach((element, index) => {
-            console.log(element);
-            console.log(element?.label);
-      
-            console.log(this.spectator_user_list_view_more?.data?.ranking[index]?.label);
-            
-            if (element?.label === this.spectator_user_list_view_more?.data?.ranking[index]?.label) {
-              console.log(element?.label);
-              
-              if (element?.user_list?.length > 0) {
-                this.spectator_user_list_view_more?.data?.ranking[index]?.user_list?.push(...element?.user_list)
-                console.log(this.spectator_user_list_view_more?.data?.ranking[index]?.user_list?.push(...element?.user_list));
+          console.log("view");
+          this.spectator_user_list?.forEach((element, index) => {
+            if (element?.label === this.spectator_user_list[index]?.label) {
+              if (element?._data?.length > 0) {
+                this.spectator_user_list[index]?._data?.push(...element?._data)
+                console.log(this.spectator_user_list[index]?._data?.push(...element?._data));
                 
                 this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'center' });
               }
             }
-      
+  
           });
-      
-      
-          // this.spectator_ranking_leaderboard.forEach((element, index) => {
-          //   console.log(element);
-            
-          //   if (element?.label === this.spectator_user_list_view_more[index]?.label) {
-          //     console.log(element.label);
-              
-          //     if (element?._data?.length > 0) {
-          //       this.spectator_user_list[index]?._data?.push(...element?._data)
-          //       console.log(this.spectator_user_list[index]?._data?.push(...element?._data));
-                
-          //       this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'center' });
-          //     }
-          //   }
-      
-          // });
         }
                
         else {
-
-          this.filterRankwiseLeaderboard('category')
-          this.sectionView_more_list=this.spectator_user_list.map((data:any)=>{
-            console.log(data);
-            if (data.order === this.order ) {
-              return data
-            }
+          this.getBackImagesFromSectionView3=this.spectator_user_list.map((res:any)=>{
+            console.log(res);
+            
             // this.sectionView3Data=res._data;
             
           })
             
         
-      
+  
           
-      
+  
         }
-
         this.eventService.broadcast('passDataToHeader', {
           color: this.spectator_dashoard_response[0].data.theme_details[0].dark_color,
           game_logo: this.spectator_dashoard_response[0].data._personal_data.game_logo,
@@ -530,7 +499,7 @@ viewmoreorder:any
     this.checked = !this.checked;
     this.pageNumberForSectionView_3 = 1
    
-    if (this.checked == true) {
+    if (this.checked) {
       this.spectator_data = this.spectator_ranking_leaderboard.filter((a: any) => {
         if (a.label === category || category == '') {
           console.log(a);
@@ -589,7 +558,6 @@ viewmoreorder:any
   }
 
   viewMore() {
-    
     console.log("view more");
     this.pageNumberForSectionView_3 = this.pageNumberForSectionView_3 + 1
     this.viewmoreorder=this.order
@@ -597,7 +565,6 @@ viewmoreorder:any
     
     // this.pageNumberForSectionView_3 = this.pageNumberForSectionView_3 + 1
    if(this.userObj.games.length >0){
-
     this.getSpectatorViewWebService('viewmore')
    }
    else if(this.userObj.games.length ==0){
