@@ -390,9 +390,10 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       if (viewMore) {
         res?.data?._ranking_data?.forEach((element, index) => {
           if (element?.label === this.sectionView_3?._ranking_data[index]?.label) {
+            
             if (element?._data?.length > 0) {
               this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data)
-              this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'start' });
+              this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'center' });
             }
           }
 

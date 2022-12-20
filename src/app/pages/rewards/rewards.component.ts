@@ -81,33 +81,80 @@ export class RewardsComponent implements OnInit, AfterViewInit {
       this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
       console.log(this.mergeObj);
 
-      let body = {
-        _userid: this.mergeObj.USERID,
-        _game: this.mergeObj.id_coroebus_game,
+      
+      this.combineLatest = combineLatest([
+        this.store.select(fromRoot.userLogin),
+        this.store.select(fromRoot.usertheme),
+        this.store.select(fromRoot.usergame),
+      ]
+      ).subscribe(([login, theme, game]) => {
+        console.log(login, theme, game)
+        this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
+       console.log(this.userSelectionData);
+       
+  
+      })
+
+      if(this.mergeObj.id_coroebus_game != null){
+        let body = {
+          _userid: this.mergeObj.USERID,
+          _game: this.mergeObj.id_coroebus_game,
+        }
+  
+        console.log(body);
+        this.http.rewards(body).subscribe((res) => {
+          console.log(res)
+          // console.log( res.data.points_list[0].label);
+  
+          // const response = res.data.points_list[0].label
+  
+          // this.requestdata=responce
+  
+          this.rewardresponse = res;
+          this.filterCoreGame=res;
+          // this.filterCoreGame=res;
+  
+         
+  
+           console.log(this.filterCoreGame);
+          console.log(this.rewardresponse);
+          console.log(this.filterCoreGame);
+          this.rewardresponse = Array.of(this.rewardresponse);
+          console.log(this.rewardresponse);
+          console.log(this.rewardresponse[0].data.points_list[0].description_);
+        })
       }
 
-      console.log(body);
-      this.http.rewards(body).subscribe((res) => {
-        console.log(res)
-        // console.log( res.data.points_list[0].label);
-
-        // const response = res.data.points_list[0].label
-
-        // this.requestdata=responce
-
-        this.rewardresponse = res;
-        this.filterCoreGame=res;
-        // this.filterCoreGame=res;
-
-       
-
-         console.log(this.filterCoreGame);
-        console.log(this.rewardresponse);
-        console.log(this.filterCoreGame);
-        this.rewardresponse = Array.of(this.rewardresponse);
-        console.log(this.rewardresponse);
-        console.log(this.rewardresponse[0].data.points_list[0].description_);
-      })
+      else if(this.userObj.games.length == 0){
+        let body = {
+          _userid: this.mergeObj.USERID,
+          _game: this.userSelectionData.id_coroebus_game,
+        }
+  
+        console.log(body);
+        this.http.rewards(body).subscribe((res) => {
+          console.log(res)
+          // console.log( res.data.points_list[0].label);
+  
+          // const response = res.data.points_list[0].label
+  
+          // this.requestdata=responce
+  
+          this.rewardresponse = res;
+          this.filterCoreGame=res;
+          // this.filterCoreGame=res;
+  
+         
+  
+           console.log(this.filterCoreGame);
+          console.log(this.rewardresponse);
+          console.log(this.filterCoreGame);
+          this.rewardresponse = Array.of(this.rewardresponse);
+          console.log(this.rewardresponse);
+          console.log(this.rewardresponse[0].data.points_list[0].description_);
+        })
+      }
+    
     })
     this.dynamicColor()
   }

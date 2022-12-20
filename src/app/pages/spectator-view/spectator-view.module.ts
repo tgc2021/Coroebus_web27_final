@@ -9,7 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatFormFieldModule,
     NgbDropdownModule,
     MatCardModule,
-    SpectatorViewRoutingModule
+    MatSnackBarModule,
+    SpectatorViewRoutingModule,
   ]
 })
 export class SpectatorViewModule { }

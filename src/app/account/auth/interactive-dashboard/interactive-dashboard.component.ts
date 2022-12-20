@@ -317,19 +317,19 @@ else{
     this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
     console.log(this.interactive_dashoard_response);
     
-    this.http.BoosterData(body).subscribe((res:any)=>{
-      this.boosterData_response=res.data;
+    // this.http.BoosterData(body).subscribe((res:any)=>{
+    //   this.boosterData_response=res.data;
   
-      console.log(res);
+    //   console.log(res);
       
-       this.StringArray=res.data.booster_rank_details[0].rank_position_stmt.split(" ");
-       this.firstString=this.StringArray[0]+" "+this.StringArray[1]+" "+this.StringArray[2];
-      this.Digit=this.StringArray[3]
-      this.LastString=this.StringArray[4];
-      console.log(this.StringArray);
-      console.log(this.LastString);
+    //    this.StringArray=res.data.booster_rank_details[0].rank_position_stmt.split(" ");
+    //    this.firstString=this.StringArray[0]+" "+this.StringArray[1]+" "+this.StringArray[2];
+    //   this.Digit=this.StringArray[3]
+    //   this.LastString=this.StringArray[4];
+    //   console.log(this.StringArray);
+    //   console.log(this.LastString);
   
-    })
+    // })
     if(this.interactive_dashoard_response){
       setTimeout(() => {
         this.isLoading=false;

@@ -268,20 +268,20 @@
           
             <div class="row web_button_row">
                 <div class="col-3">
-                    <input type="radio" id="tab-1" name="mytabs"  value="" (click)="filterRankwiseLeaderboard(response.data.ranking[0].label)" >
+                    <input type="radio" id="tab-1" name="mytabs" [checked]="checked1" value="response.data.ranking[0].label" (click)="filterRankwiseLeaderboard(response.data.ranking[0].label)" >
                     <label class="cm_tab" for="tab-1">{{response.data.ranking[0].label}}</label>
 
                 </div>
                 <div class="col-3">
-                    <input type="radio" id="tab-2" name="mytabs" value="response.data.ranking[1].label" (click)="filterRankwiseLeaderboard(response.data.ranking[1].label)">
+                    <input type="radio" id="tab-2" name="mytabs" [checked]="checked2" value="response.data.ranking[1].label" (click)="filterRankwiseLeaderboard(response.data.ranking[1].label)">
                     <label class="am_tab" for="tab-2">{{response.data.ranking[1].label}}</label>
                 </div>
                 <div class="col-3">
-                    <input type="radio" id="tab-3" name="mytabs" value="response.data.ranking[2].label" (click)="filterRankwiseLeaderboard(response.data.ranking[2].label)">
+                    <input type="radio" id="tab-3" name="mytabs" [checked]="checked3" value="response.data.ranking[2].label" (click)="filterRankwiseLeaderboard(response.data.ranking[2].label)">
                     <label class="rm_tab" for="tab-3">{{response.data.ranking[2].label}}</label>
                 </div>
                 <div class="col-3">
-                    <input type="radio" id="tab-4" name="mytabs" value="response.data.ranking[3].label" (click)="filterRankwiseLeaderboard(response.data.ranking[3].label)">
+                    <input type="radio" id="tab-4" name="mytabs"[checked]="checked4"  value="response.data.ranking[3].label" (click)="filterRankwiseLeaderboard(response.data.ranking[3].label)">
                     <label class="nsm_tab" for="tab-4">{{response.data.ranking[3].label}}</label>
                 </div>
             </div>
@@ -437,7 +437,7 @@
                     </button>
                 </div>
             </div>
-
+           
 
         </div>
 

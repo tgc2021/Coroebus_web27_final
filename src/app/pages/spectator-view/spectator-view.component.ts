@@ -12,6 +12,8 @@ import { Util } from '@app/utils/util';
 import { HttpProtocols } from '@app/http/http.protocols';
 
 import { DashboardModel } from '@models/dashboard.model';
+import { MatSnackBar } from "@angular/material/snack-bar";  
+
 
 
 @Component({
@@ -62,9 +64,13 @@ spectator_user_list_view_more:any = []
 
 @ViewChild("scrollTarget") scrollTarget: ElementRef;
 viewmoreorder:any
+  checked1: boolean =true;
+  checked2: boolean =false;
+  checked3: boolean =false;
+  checked4: boolean =false;
 
   constructor(private readonly store: Store, public http: ApiserviceService, private eventService: EventService, private _router: Router,
-    private _route: ActivatedRoute,public Util: Util) { }
+    private _route: ActivatedRoute,public Util: Util,public snackBar: MatSnackBar) { }
 
  
   ngOnInit(): void {
@@ -112,7 +118,7 @@ viewmoreorder:any
   }
 
 
-
+ 
 
   getButtonValue(event: Event) {
 
@@ -233,8 +239,119 @@ viewmoreorder:any
         console.log(this.spectator_ranking_leaderboard);
         this.spectator_data = this.spectator_dashoard_response[0].data.ranking;
         console.log(this.spectator_data);
-        this.spectator_user_list = this.spectator_data[0].user_list
-        console.log(this.spectator_user_list);
+        if(this.order==1 || this.order == null){
+          if(this.spectator_data[0].user_list != ''){
+            this.spectator_user_list = this.spectator_data[0].user_list;
+            this.checked1=true;
+            this.checked2=false;
+            this.checked3=false;
+            this.checked4=false;
+
+            console.log(this.spectator_user_list);
+          }
+          else{
+            console.log("nodata");
+            this.checked1=true;
+            this.checked2=false;
+            this.checked3=false;
+            this.checked4=false;
+            this.openSnackBar('No More data Available','Ok')
+
+          }
+          
+        }
+        else if(this.order==2){
+          if(this.spectator_data[1].user_list != ''){
+            this.spectator_user_list = this.spectator_data[1].user_list;
+            this.checked1=false;
+            this.checked2=true;
+            this.checked3=false;
+            this.checked4=false;
+            console.log(this.spectator_user_list);
+          }
+          else{
+            this.checked1=false;
+            this.checked2=true;
+            this.checked3=false;
+            this.checked4=false;
+            this.openSnackBar('No More data Available','Ok')
+
+          }
+         
+        }
+        else if(this.order==3){
+          if(this.spectator_data[2].user_list != ''){
+            this.spectator_user_list = this.spectator_data[2].user_list;
+            this.checked1=false;
+            this.checked2=false;
+            this.checked3=true;
+            this.checked4=false;
+            console.log(this.spectator_user_list);
+          }
+          else{
+            this.checked1=false;
+            this.checked2=false;
+            this.checked3=true;
+            this.checked4=false;
+            this.openSnackBar('No More data Available','Ok')
+
+          }
+        }
+        else if(this.order==4){
+
+          if(this.spectator_data[3].user_list != ''){
+            this.spectator_user_list = this.spectator_data[3].user_list;
+            this.checked1=false;
+            this.checked2=false;
+            this.checked3=false;
+            this.checked4=true;
+            console.log(this.spectator_user_list);
+          }
+          else{
+            this.checked1=false;
+            this.checked2=false;
+            this.checked3=false;
+            this.checked4=true;
+            this.openSnackBar('No More data Available','Ok')
+
+          }
+
+         
+        }
+
+        
+        if(viewmore){
+          console.log("view");
+          this.spectator_user_list?.forEach((element, index) => {
+            if (element?.label === this.spectator_user_list[index]?.label) {
+              if (element?._data?.length > 0) {
+                this.spectator_user_list[index]?._data?.push(...element?._data)
+                console.log(this.spectator_user_list[index]?._data?.push(...element?._data));
+                
+                this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'center' });
+              }
+            }
+  
+          });
+        }
+               
+        else {
+          this.getBackImagesFromSectionView3=this.spectator_user_list.map((res:any)=>{
+            console.log(res);
+            
+            // this.sectionView3Data=res._data;
+            
+          })
+            
+        
+  
+          
+  
+        }
+
+
+        // this.spectator_user_list = this.spectator_data[0].user_list
+        // console.log(this.spectator_user_list);
 
           this.eventService.broadcast('passDataToHeader', {
           color: this.spectator_dashoard_response[0].data.theme_details[0].dark_color,
@@ -256,61 +373,7 @@ viewmoreorder:any
 
 
         
-  if(viewmore){
-    console.log(this.spectator_ranking_leaderboard);
-    
 
-    this.spectator_ranking_leaderboard?.forEach((element, index) => {
-      console.log(element);
-      console.log(element?.label);
-
-      console.log(this.spectator_user_list_view_more?.data?.ranking[index]?.label);
-      
-      if (element?.label === this.spectator_user_list_view_more?.data?.ranking[index]?.label) {
-        console.log(element?.label);
-        
-        if (element?.user_list?.length > 0) {
-          this.spectator_user_list_view_more?.data?.ranking[index]?.user_list?.push(...element?.user_list)
-          console.log(this.spectator_user_list_view_more?.data?.ranking[index]?.user_list?.push(...element?.user_list));
-          
-          this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'center' });
-        }
-      }
-
-    });
-
-
-    // this.spectator_ranking_leaderboard.forEach((element, index) => {
-    //   console.log(element);
-      
-    //   if (element?.label === this.spectator_user_list_view_more[index]?.label) {
-    //     console.log(element.label);
-        
-    //     if (element?._data?.length > 0) {
-    //       this.spectator_user_list[index]?._data?.push(...element?._data)
-    //       console.log(this.spectator_user_list[index]?._data?.push(...element?._data));
-          
-    //       this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'center' });
-    //     }
-    //   }
-
-    // });
-  }
-         
-  else {
-    this.getBackImagesFromSectionView3=this.spectator_user_list.map((res:any)=>{
-      console.log(res);
-      
-      // this.sectionView3Data=res._data;
-      
-    })
-      
-  
-
-    
-
-  }
-      
   
         
 
@@ -344,8 +407,86 @@ viewmoreorder:any
         console.log(this.spectator_ranking_leaderboard);
         this.spectator_data = this.spectator_dashoard_response[0].data.ranking;
         console.log(this.spectator_data);
-        this.spectator_user_list = this.spectator_data[0].user_list
-        console.log(this.spectator_user_list);
+        console.log(this.order);
+        
+        if(this.order==1 || this.order == null){
+          if(this.spectator_data[0].user_list != ''){
+            this.spectator_user_list = this.spectator_data[0].user_list;
+            this.checked1=true;
+            this.checked2=false;
+            this.checked3=false;
+            this.checked4=false;
+            console.log(this.spectator_user_list);
+          }
+          else{
+            console.log("nodata");
+            this.checked1=true;
+            this.checked2=false;
+            this.checked3=false;
+            this.checked4=false;
+            this.openSnackBar('No More data Available','Ok')
+          }
+          
+        }
+        else if(this.order==2){
+          if(this.spectator_data[1].user_list != ''){
+            this.spectator_user_list = this.spectator_data[1].user_list;
+            this.checked1=false;
+            this.checked2=true;
+            this.checked3=false;
+            this.checked4=false;
+            console.log(this.spectator_user_list);
+            
+          }
+          else{
+            this.checked1=false;
+            this.checked2=true;
+            this.checked3=false;
+            this.checked4=false;
+            this.openSnackBar('No More data Available','Ok')
+
+          }
+         
+        }
+        else if(this.order==3){
+          if(this.spectator_data[2].user_list != ''){
+            this.spectator_user_list = this.spectator_data[2].user_list;
+            this.checked1=false;
+            this.checked2=false;
+            this.checked3=true;
+            this.checked4=false;
+            console.log(this.spectator_user_list);
+          }
+          else{
+            this.checked1=false;
+            this.checked2=false;
+            this.checked3=true;
+            this.checked4=false;
+            this.openSnackBar('No More data Available','Ok')
+
+          }
+        }
+        else if(this.order==4){
+
+          if(this.spectator_data[3].user_list != ''){
+            this.spectator_user_list = this.spectator_data[3].user_list;
+            this.checked1=false;
+            this.checked2=false;
+            this.checked3=false;
+            this.checked4=true;
+            console.log(this.spectator_user_list);
+          }
+          else{
+            this.checked1=false;
+            this.checked2=false;
+            this.checked3=false;
+            this.checked4=true;
+            this.openSnackBar('No More data Available','Ok')
+
+          }
+
+         
+        }
 
         if(viewmore){
           console.log("view");
@@ -430,8 +571,87 @@ viewmoreorder:any
       console.log(this.spectator_ranking_leaderboard);
       this.spectator_data = this.spectator_dashoard_response[0].data.ranking;
       console.log(this.spectator_data);
-      this.spectator_user_list = this.spectator_data[0].user_list
-      console.log(this.spectator_user_list);
+    
+      if(this.order==1 || this.order == null){
+        if(this.spectator_data[0].user_list != ''){
+          this.spectator_user_list = this.spectator_data[0].user_list;
+          this.checked1=true;
+          this.checked2=false;
+          this.checked3=false;
+          this.checked4=false;
+          console.log(this.spectator_user_list);
+        }
+        else{
+          this.checked1=true;
+          this.checked2=false;
+          this.checked3=false;
+          this.checked4=false;
+          this.openSnackBar('No More data Available','Ok')
+
+          console.log("nodata");
+          
+        }
+        
+      }
+      else if(this.order==2){
+        if(this.spectator_data[1].user_list != ''){
+          this.spectator_user_list = this.spectator_data[1].user_list;
+          this.checked1=false;
+          this.checked2=true;
+          this.checked3=false;
+          this.checked4=false;
+          console.log(this.spectator_user_list);
+        }
+        else{
+          this.checked1=false;
+          this.checked2=true;
+          this.checked3=false;
+          this.checked4=false;
+          this.openSnackBar('No More data Available','Ok')
+
+        }
+       
+      }
+      else if(this.order==3){
+        if(this.spectator_data[2].user_list != ''){
+          this.spectator_user_list = this.spectator_data[2].user_list;
+          this.checked1=false;
+          this.checked2=false;
+          this.checked3=true;
+          this.checked4=false;
+          console.log(this.spectator_user_list);
+        }
+        else{
+          this.checked1=false;
+          this.checked2=false;
+          this.checked3=true;
+          this.checked4=false;
+          this.openSnackBar('No More data Available','Ok')
+
+        }
+      }
+      else if(this.order==4){
+
+        if(this.spectator_data[3].user_list != ''){
+          this.spectator_user_list = this.spectator_data[3].user_list;
+          this.checked1=false;
+          this.checked2=false;
+          this.checked3=false;
+          this.checked4=true;
+          console.log(this.spectator_user_list);
+          
+        }
+        else{
+          this.checked1=false;
+          this.checked2=false;
+          this.checked3=false;
+          this.checked4=true;
+          this.openSnackBar('No More data Available','Ok')
+
+        }
+
+       
+      }
 
  
       if(viewmore){
@@ -493,8 +713,8 @@ viewmoreorder:any
 
 
   filterRankwiseLeaderboard(category: any) {
-    
-    
+
+     
     this.spectSearList=null
     this.checked = !this.checked;
     this.pageNumberForSectionView_3 = 1
@@ -507,11 +727,27 @@ viewmoreorder:any
           console.log(this.order);
          
           
-      
-          this.spectator_user_list = a.user_list
-          console.log(this.spectator_user_list);
+      if( a.user_list!=''){
+        this.spectator_user_list = a.user_list
+        console.log(this.spectator_user_list);
 
-          return a;
+        return a;
+      }
+      else{
+        if(this.userObj.games.length >0){
+          this.getSpectatorViewWebService('viewmore')
+
+        }
+        else if(this.userObj.games.length ==0){
+          console.log("userobj");
+          
+          this.getSpectatorViewMore2('viewmore')
+      
+         }
+        // this.getSpectatorViewMore2('viewmore')
+
+      }
+         
         }
         console.log(this.checked);
         this.checked = false
@@ -526,7 +762,11 @@ viewmoreorder:any
 
   }
 
- 
+  openSnackBar(message: string, action: string) {  
+    this.snackBar.open(message, action, {  
+       duration: 2000,  
+    });  
+ }
   async spectSearch() {
     let err: any, res: any;
     let body: any;
@@ -558,6 +798,7 @@ viewmoreorder:any
   }
 
   viewMore() {
+    
     console.log("view more");
     this.pageNumberForSectionView_3 = this.pageNumberForSectionView_3 + 1
     this.viewmoreorder=this.order
