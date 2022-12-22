@@ -88,6 +88,11 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   BucketListHide: boolean
   UserIdBucket: any
   firstUserData: any;
+  getBackImagesFromSectionView1: any
+  getBackImages: any = [];
+  firstrowbackimage: any;
+  web_first_tile_image: any;
+  web_profile_back_image: any;
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -191,7 +196,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     let body: any;
     body = {
       "_userid": queryParams?.userID ? queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
-      "_game": queryParams?.gameID ? queryParams?.gameID : this.userSelectionData?.id_coroebus_game, "_section_view": "1", "page_number": "1"
+      "_game": queryParams?.gameID ? queryParams?.gameID : this.userSelectionData?.id_coroebus_game, "_section_view": "1", "page_number": "1", "device_type": "W"
+
     };
     [err, res] = await HttpProtocols.to(DashboardModel.getUserBannerDataSectionView_1(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
@@ -200,6 +206,15 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       // this.pokeAnimationData1=this.sectionView_1._poked_data[0].poke_description
 
       console.log(this.pokeAnimationData);
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      this.getBackImagesFromSectionView1 = this.sectionView_1._back_images[1]._data;
+
+      this.getBackImages.push(...this.getBackImagesFromSectionView1);
+
+
+      console.log(this.getBackImages);
+      console.log("Section_view1_Data.....", this.getBackImagesFromSectionView1);
+      ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       // alert(this.pokeAnimationData)
 
@@ -209,6 +224,15 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       document.body.classList.add('dashboard-bg-image');
       const bgImg = this.Util?.isMobile() ? this.sectionView_1?.theme_details?.[0]?.theme_background : this.sectionView_1?.theme_details?.[0]?.theme_background_web
       document.body.style.backgroundImage = 'url(' + bgImg + ')'
+
+      this.web_profile_back_image= this.sectionView_1._back_images[1]._data[0].ranking_image_profile;
+      console.log(this.web_profile_back_image);
+      
+      for(let item of this.web_profile_back_image){
+        console.log(item);
+        
+        
+      }
       this.eventService.broadcast('passDataToHeader', {
         color: this.sectionView_1?.theme_details?.[0]?.dark_color,
         game_name: this.sectionView_1?._personal_data?.game_name,
@@ -243,47 +267,160 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       this.sectionView_2 = res?.data
 
       // for(let i=0;i<this.sectionView_2?._ranking_data?.length;i++){
-      if (this.queryParams?.roleID =='6' || this.userSelectionData?._personal_data?.id_role =='6') {
+      if (this.queryParams?.roleID == '6' || this.userSelectionData?._personal_data?.id_role == '6') {
         console.log("tab", this.activeTabForSectionView_2);
         console.log("tab bool", this.queryParams?.roleID);
 
+        // this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
-        if (this.queryParams?.roleID =='4') {
+        console.log(this.activeTabForSectionView_2);
+
+        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+
+        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+
+        console.log();
+
+        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+        console.log(this.firstrowbackimage);
+
+        for (let item of this.getBackImages) {
+          console.log(item.ranking_image_level);
+          console.log(this.firstrowbackimage);
+
+          if (item.ranking_image_level === this.firstrowbackimage) {
+
+            this.web_first_tile_image = item.ranking_image
+            console.log(this.web_first_tile_image);
+
+
+
+          }
+
+        }
+
+        
+        
+
+
+        if (this.queryParams?.roleID == '4') {
           this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[1].order
           this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[1].order
           this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
-        console.log('Active tab 2');
+
+          this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+          console.log(this.firstrowbackimage);
   
+          for (let item of this.getBackImages) {
+            console.log(item.ranking_image_level);
+            console.log(this.firstrowbackimage);
+  
+            if (item.ranking_image_level === this.firstrowbackimage) {
+  
+              this.web_first_tile_image = item.ranking_image
+              console.log(this.web_first_tile_image);
+  
+  
+  
+            }
+  
+          }
+          console.log('Active tab 2');
+
 
         }
-        else if (this.queryParams?.roleID =='3') {
+        else if (this.queryParams?.roleID == '3') {
           this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
           this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
           this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
           console.log('Active tab 3');
-
+          this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+          console.log(this.firstrowbackimage);
+  
+          for (let item of this.getBackImages) {
+            console.log(item.ranking_image_level);
+            console.log(this.firstrowbackimage);
+  
+            if (item.ranking_image_level === this.firstrowbackimage) {
+  
+              this.web_first_tile_image = item.ranking_image
+              console.log(this.web_first_tile_image);
+  
+  
+  
+            }
+  
+          }
 
         }
-        else if (this.queryParams?.roleID =='8') {
+        else if (this.queryParams?.roleID == '8') {
           this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
           this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
           this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
-
+          this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+          console.log(this.firstrowbackimage);
+  
+          for (let item of this.getBackImages) {
+            console.log(item.ranking_image_level);
+            console.log(this.firstrowbackimage);
+  
+            if (item.ranking_image_level === this.firstrowbackimage) {
+  
+              this.web_first_tile_image = item.ranking_image
+              console.log(this.web_first_tile_image);
+  
+  
+  
+            }
+  
+          }
           console.log('Active tab 4');
 
         }
-        else if (this.queryParams?.roleID =='' || this.queryParams?.roleID == null || this.queryParams?.roleID === 'undefined'||( this.queryParams?.roleID ==this.userSelectionData?._personal_data?.id_role)) {
+        else if (this.queryParams?.roleID == '' || this.queryParams?.roleID == null || this.queryParams?.roleID === 'undefined' || (this.queryParams?.roleID == this.userSelectionData?._personal_data?.id_role)) {
           this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
           this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
           this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
-
+          this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+          console.log(this.firstrowbackimage);
+  
+          for (let item of this.getBackImages) {
+            console.log(item.ranking_image_level);
+            console.log(this.firstrowbackimage);
+  
+            if (item.ranking_image_level === this.firstrowbackimage) {
+  
+              this.web_first_tile_image = item.ranking_image
+              console.log(this.web_first_tile_image);
+  
+  
+  
+            }
+  
+          }
           console.log('Active tab 1');
 
 
-        } 
+        }
         else {
           this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
-          console.log('Active tab 1');
+          console.log('Active tab 1');   this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+          console.log(this.firstrowbackimage);
+  
+          for (let item of this.getBackImages) {
+            console.log(item.ranking_image_level);
+            console.log(this.firstrowbackimage);
+  
+            if (item.ranking_image_level === this.firstrowbackimage) {
+  
+              this.web_first_tile_image = item.ranking_image
+              console.log(this.web_first_tile_image);
+  
+  
+  
+            }
+  
+          }
 
         }
 
@@ -296,6 +433,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
       else if (this.queryParams?.roleID === '4' || this.userSelectionData?._personal_data?.id_role === '4') {
         this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[1].order
+        
 
         if (this.queryParams?.roleID === '3') {
           this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
@@ -317,6 +455,24 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
         // }
 
+        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+        console.log(this.firstrowbackimage);
+
+        for (let item of this.getBackImages) {
+          console.log(item.ranking_image_level);
+          console.log(this.firstrowbackimage);
+
+          if (item.ranking_image_level === this.firstrowbackimage) {
+
+            this.web_first_tile_image = item.ranking_image
+            console.log(this.web_first_tile_image);
+
+
+
+          }
+
+        }
+
       }
 
 
@@ -337,6 +493,23 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
         // }
 
+        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+        console.log(this.firstrowbackimage);
+
+        for (let item of this.getBackImages) {
+          console.log(item.ranking_image_level);
+          console.log(this.firstrowbackimage);
+
+          if (item.ranking_image_level === this.firstrowbackimage) {
+
+            this.web_first_tile_image = item.ranking_image
+            console.log(this.web_first_tile_image);
+
+
+
+          }
+
+        }
       }
 
       else if (this.queryParams?.roleID === '8' || this.userSelectionData?._personal_data?.id_role === '8') {
@@ -351,6 +524,24 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
         // }
+
+        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+        console.log(this.firstrowbackimage);
+
+        for (let item of this.getBackImages) {
+          console.log(item.ranking_image_level);
+          console.log(this.firstrowbackimage);
+
+          if (item.ranking_image_level === this.firstrowbackimage) {
+
+            this.web_first_tile_image = item.ranking_image
+            console.log(this.web_first_tile_image);
+
+
+
+          }
+
+        }
       }
       else if ((this.queryParams?.roleID === '9' || this.userSelectionData?._personal_data?.id_role === '9')
         || (this.queryParams?.roleID === '10' || this.userSelectionData?._personal_data?.id_role === '10')
@@ -368,7 +559,23 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
         // }
+        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+        console.log(this.firstrowbackimage);
 
+        for (let item of this.getBackImages) {
+          console.log(item.ranking_image_level);
+          console.log(this.firstrowbackimage);
+
+          if (item.ranking_image_level === this.firstrowbackimage) {
+
+            this.web_first_tile_image = item.ranking_image
+            console.log(this.web_first_tile_image);
+
+
+
+          }
+
+        }
       }
 
     } else {
@@ -390,7 +597,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       if (viewMore) {
         res?.data?._ranking_data?.forEach((element, index) => {
           if (element?.label === this.sectionView_3?._ranking_data[index]?.label) {
-            
+
             if (element?._data?.length > 0) {
               this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data)
               this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'center' });
@@ -456,8 +663,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     [err, res] = await HttpProtocols.to(DashboardModel.levelsBuckets(body))
     if (!err && res?.statuscode === 200) {
       this.levelsBucketsList = res?.data;
- 
-      this.modalService.open(this.content, { centered: true, windowClass: 'modal-cls'});
+
+      this.modalService.open(this.content, { centered: true, windowClass: 'modal-cls' });
     } else {
       this.levelsBucketsList_err = 'Error'
     }
@@ -730,16 +937,16 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
   }
 
-  navigateToRewards(){
+  navigateToRewards() {
     var url_string = window.location.href
     // console.log(url_string);
     var userID = url_string.includes("?"); // true
 
-    if( url_string.includes("?")){
+    if (url_string.includes("?")) {
       console.log("spectator view");
-      
+
     }
-    else if(url_string.includes("")){
+    else if (url_string.includes("")) {
       this._router.navigate(['reward/rewardPoints'])
 
     }

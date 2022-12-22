@@ -47,11 +47,12 @@
     </div>
 </div> -->
 
-<div class="container-fluid">
+
+<div class="container-fluid web-view">
     <div class="row" *ngFor="let response of spectator_dashoard_response">
 
         <!------------------------------------------------- Notification  ----------------------------------------------------->
-        <div class="col-3">
+        <div class="col-md-3 col-lg-3 notification">
             <mat-card class="web_notification_card">
                 <div>
                     <h6 class="web_notification_header">
@@ -214,81 +215,85 @@
 
         <!------------------------------------------------- Center  ----------------------------------------------------->
 
-        <div class="col-6 g-0">
-            <mat-card class="web_profile_card">
-                <div class="d-flex justify-content-center">
-                    <p class="web_upper_label">Spectator View</p>
-                </div>
-  
-
-                <div class="d-flex align-items-center web_select_div">
-  
-                    <select class="web_select_dropdown" [(ngModel)]="selected" name="status" placeholder="select" (ngModelChange)="onOptionsSelected()">
-                        <option class="web_option" *ngFor="let web_dropdown_reponse of spectator_group_list[0].data" [ngValue]="web_dropdown_reponse.id_coroebus_group">{{web_dropdown_reponse.group_name}}</option>
-                    </select>
-
-                    
-                    <!-- <select class="form-select" id="dropdown_id" (change)="getSpectatorViewWebService($event.target.value)">
-                        <option *ngFor="let web_dropdown_reponse of spectator_group_list[0].data;let i=index"  value="{{web_dropdown_reponse.id_coroebus_group}}">
-                            {{web_dropdown_reponse.group_name}}
-                        </option>
-                    </select> -->
-                     <!-- <select class="browser-default custom-select web_select_dropdown">
+        <div class="col-md-12 col-lg-6 col-12 g-0">
+            <div class="profile_div">
+                <mat-card class="web_profile_card">
+                    <div class="d-flex justify-content-center">
+                        <p class="web_upper_label">Spectator View</p>
+                    </div>
+      
+    
+                    <div class="d-flex align-items-center web_select_div">
+      
+                        <select class="web_select_dropdown" [(ngModel)]="selected" name="status" placeholder="select" (ngModelChange)="onOptionsSelected()">
+                            <option class="web_option" *ngFor="let web_dropdown_reponse of spectator_group_list[0].data" [ngValue]="web_dropdown_reponse.id_coroebus_group">{{web_dropdown_reponse.group_name}}</option>
+                        </select>
+    
                         
-                            <option selected (change)="filterSpectatorDropdown(spectator_group_list_final[0].id_coroebus_group)"> 
-                                <div *ngFor="let web_dropdown_reponse of spectator_group_list_final; let i=index" >
-                                    <div *ngIf="i==0">
-                                        {{web_dropdown_reponse.group_name}}
-                                    </div>
-                                </div>
-                                </option>
-                           
-                            <option >
-                            <div *ngFor="let web_dropdown_reponse of spectator_group_list_final; let i= index" (click)="filterSpectatorDropdown(spectator_group_list_final[0].id_coroebus_group)">
-                                <div *ngIf="i!=0"> 
-                                    {{web_dropdown_reponse.group_name}}
-
-
-                                </div>
-                                </div>
+                        <!-- <select class="form-select" id="dropdown_id" (change)="getSpectatorViewWebService($event.target.value)">
+                            <option *ngFor="let web_dropdown_reponse of spectator_group_list[0].data;let i=index"  value="{{web_dropdown_reponse.id_coroebus_group}}">
+                                {{web_dropdown_reponse.group_name}}
                             </option>
-                         
-                           
-                      </select>  -->
-
-                    
-                  </div>
-                  
-             
-               
-
-            </mat-card>
+                        </select> -->
+                         <!-- <select class="browser-default custom-select web_select_dropdown">
+                            
+                                <option selected (change)="filterSpectatorDropdown(spectator_group_list_final[0].id_coroebus_group)"> 
+                                    <div *ngFor="let web_dropdown_reponse of spectator_group_list_final; let i=index" >
+                                        <div *ngIf="i==0">
+                                            {{web_dropdown_reponse.group_name}}
+                                        </div>
+                                    </div>
+                                    </option>
+                               
+                                <option >
+                                <div *ngFor="let web_dropdown_reponse of spectator_group_list_final; let i= index" (click)="filterSpectatorDropdown(spectator_group_list_final[0].id_coroebus_group)">
+                                    <div *ngIf="i!=0"> 
+                                        {{web_dropdown_reponse.group_name}}
+    
+    
+                                    </div>
+                                    </div>
+                                </option>
+                             
+                               
+                          </select>  -->
+    
+                        
+                      </div>
+                      
+                 
+                   
+    
+                </mat-card>
+            </div>
+      
 
 
           
             <div class="row web_button_row">
-                <div class="col-3">
+                <div class="col-3 first_tab">
                     <input type="radio" id="tab-1" name="mytabs" [checked]="checked1" value="response.data.ranking[0].label" (click)="filterRankwiseLeaderboard(response.data.ranking[0].label)" >
                     <label class="cm_tab" for="tab-1">{{response.data.ranking[0].label}}</label>
 
                 </div>
-                <div class="col-3">
+                <div class="col-3 second_tab">
                     <input type="radio" id="tab-2" name="mytabs" [checked]="checked2" value="response.data.ranking[1].label" (click)="filterRankwiseLeaderboard(response.data.ranking[1].label)">
                     <label class="am_tab" for="tab-2">{{response.data.ranking[1].label}}</label>
                 </div>
-                <div class="col-3">
+                <div class="col-3 third_tab">
                     <input type="radio" id="tab-3" name="mytabs" [checked]="checked3" value="response.data.ranking[2].label" (click)="filterRankwiseLeaderboard(response.data.ranking[2].label)">
                     <label class="rm_tab" for="tab-3">{{response.data.ranking[2].label}}</label>
                 </div>
-                <div class="col-3">
+                <div class="col-3 fourth_tab">
                     <input type="radio" id="tab-4" name="mytabs"[checked]="checked4"  value="response.data.ranking[3].label" (click)="filterRankwiseLeaderboard(response.data.ranking[3].label)">
                     <label class="nsm_tab" for="tab-4">{{response.data.ranking[3].label}}</label>
                 </div>
             </div>
 
 
-            <div class="row">
-                <div class="col-10 mt-4">
+            <div class="row search_div_with_icon">
+                
+                <div class="col-md-10 col-lg-10 col-10 mt-4 search_div">
                     <div>
                         <input type="text" class="form-control web_dashboard-search" placeholder="Search People here.." 
                         [(ngModel)]="spectSearchStr" aria-label="Search People here.."
@@ -297,22 +302,22 @@
 
                     </div>
                 </div>
-                <div class="col-2  mt-4">
+                <div class="col-md-2 col-lg-2 col-2  mt-4">
                     <button type="button" class="btn btn-primary web_spectator_search_button" (click)="spectSearch()"><i class="fa fa-search"
                             aria-hidden="true"></i></button>
                 </div>
             </div>
 
-            <div class="row mt-1">
-                <div class="col-2">
+            <div class="row mt-1 leaderboard_header_label">
+                <div class="col-md-2 col-lg-2 col-2">
                     <p class="web_spectator_label">Rank</p>
                 </div>
 
-                <div class="col-6">
+                <div class="col-md-6 col-lg-6 col-7">
                     <p class="web_spectator_label_name">Name</p>
                 </div>
 
-                <div class="col-4">
+                <div class="col-md-4 col-lg-4 col-3">
                     <p class="web_spectator_label_points">Points</p>
                 </div>
 
@@ -330,14 +335,14 @@
                     <div *ngFor="let spectatorleaderboardreponse of spectator_user_list">
                         <mat-card class="web_spectator_leaderboard" style="background: url({{spectatorleaderboardreponse.ranking_image}}); background-size: 100% 100%;">
                             <div class="row d-flex align-items-center" >
-                                <div class="col-1">
+                                <div class="col-md-1 col-sm-1 col-1">
                                     <p class="web_spectator_rank">{{spectatorleaderboardreponse.rankingtable_number}}</p>
                                 </div>
-                                <div class="col-1">
+                                <div class="col-md-1 col-sm-1 col-1 web_spectator_profile_image_div" >
                                     <img class="web_spectator_profile_image"
                                         src="{{spectatorleaderboardreponse.rankingtable_logo}}" />
                                 </div>
-                                <div class="col-6">
+                                <div class="col-md-6 col-sm-6 col-5">
                                     <div>
                                         <p class="web_spectator_name">{{spectatorleaderboardreponse.rankingtable_name}}</p>
     
@@ -347,24 +352,24 @@
                                     </div>
                                 </div>
     
-                                <div class="col-1">
+                                <div class="col-md-1 col-sm-1 col-2">
                                     <img class="web_spectator_badge"
                                         src="{{spectatorleaderboardreponse.teamlogo}}" />
                                 </div>
-    
-                                <div class="col-2">
+     
+                                <div class="col-md-2 col-sm-2 col-1">
                                     <p class="web_spectator_points">{{spectatorleaderboardreponse.rankingtable_weightage}}</p>
                                 </div>
     
-                                <div class="col-1" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'green'">
+                                <div class="col-md-1 col-sm-1 col-2" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'green'">
                                     <img class="web_spectator_up_down_arrow"
                                         src="{{response.data.theme_details[0].up_arrow}}" />
                                 </div>
-                                <div class="col-1" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'red'">
+                                <div class="col-md-1 col-sm-1 col-2" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'red'">
                                     <img class="web_spectator_up_down_arrow"
                                         src="{{response.data.theme_details[0].down_arrow}}" />
                                 </div>
-                                <div class="col-1" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'yellow'">
+                                <div class="col-md-1 col-sm-1 col-2" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'yellow'">
                                     <img class="web_spectator_up_down_arrow"
                                         src="{{response.data.theme_details[0].equal_arrow}}" />
                                 </div>
@@ -379,7 +384,7 @@
 
 
             <div class="row web_spectator_leaderboard_section" *ngIf="spectSearList != null">
-                <div class="col-12 mt-1 web_leaderboard" >
+                <div class="col-12 mt-1" >
                     <div *ngFor="let spectatorleaderboardreponse of spectSearList[0]._data">
                         <mat-card class="web_spectator_leaderboard" style="background: url({{spectatorleaderboardreponse.ranking_image}}); background-size: 100% 100%;">
                             <div class="row d-flex align-items-center" >
@@ -427,8 +432,65 @@
                    
 
                 </div>
+
+         
+
             </div>
 
+
+            <div class="row mobile_spectator_leaderboard_section" *ngIf="spectSearList != null">
+                <div class="col-12 mt-1" >
+                    <div *ngFor="let spectatorleaderboardreponse of spectSearList[0]._data">
+                        <mat-card class="web_spectator_leaderboard" style="background: url({{spectatorleaderboardreponse.ranking_image}}); background-size: 100% 100%;">
+                            <div class="row d-flex align-items-center" >
+                                <div class="col-1">
+                                    <p class="web_spectator_rank">{{spectatorleaderboardreponse.rankingtable_number}}</p>
+                                </div>
+                                <div class="col-1">
+                                    <img class="web_spectator_profile_image"
+                                        src="{{spectatorleaderboardreponse.rankingtable_logo}}" />
+                                </div>
+                                <div class="col-6">
+                                    <div>
+                                        <p class="web_spectator_name">{{spectatorleaderboardreponse.rankingtable_name}}</p>
+    
+                                    </div>
+                                    <div>
+                                        <p class="web_spectator_team">{{spectatorleaderboardreponse.rankingtable_team}}</p>
+                                    </div>
+                                </div>
+    
+                                <div class="col-1">
+                                    <img class="web_spectator_badge"
+                                        src="{{spectatorleaderboardreponse.teamlogo}}" />
+                                </div>
+    
+                                <div class="col-2">
+                                    <p class="web_spectator_points">{{spectatorleaderboardreponse.rankingtable_weightage}}</p>
+                                </div>
+    
+                                <div class="col-1" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'green'">
+                                    <img class="web_spectator_up_down_arrow"
+                                        src="{{response.data.theme_details[0].up_arrow}}" />
+                                </div>
+                                <div class="col-1" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'red'">
+                                    <img class="web_spectator_up_down_arrow"
+                                        src="{{response.data.theme_details[0].down_arrow}}" />
+                                </div>
+                                <div class="col-1" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'yellow'">
+                                    <img class="web_spectator_up_down_arrow"
+                                        src="{{response.data.theme_details[0].equal_arrow}}" />
+                                </div>
+                            </div>
+                        </mat-card>
+                    </div>
+                   
+
+                </div>
+
+         
+
+            </div>
             <div class="row" >
                 <div class="col-12 web_spectator_view_more_btn_div">
                     <button class="w-100 btn btn-lg load-more" type="button" (click)="viewMore()">
@@ -443,7 +505,7 @@
 
         <!------------------------------------------------- Bulletins  ----------------------------------------------------->
 
-        <div class="col-3">
+        <div class="col-3 web_bulletins">
             <mat-card class="web_bulletins_card">
 
                 <div>
@@ -509,3 +571,7 @@
     </div>
 
 </div>
+
+
+
+<!------------------------------------------------------- Mobile View ------------------------------------------------------->

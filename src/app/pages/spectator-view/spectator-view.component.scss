@@ -1,10 +1,9 @@
-
 ::ng-deep {
     .page-content {
         padding: 79px 0px 0px 0px !important;
     }
 
-    .web_group_dropdown{
+    .web_group_dropdown {
         background: white;
     }
 }
@@ -22,26 +21,27 @@
     width: 100%;
 }
 
-.web_select_dropdown{
-height: 6vh;
-margin-left: 2vw;
-background: transparent;
-color: white;
-border: 2px solid white;
-border-radius: 9px;
-padding: 4px;
+.web_select_dropdown {
+    height: 6vh;
+    margin-left: 2vw;
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 9px;
+    padding: 4px;
 
 }
+
 .web_option {
     color: #000000 !important;
     background-color: transparent !important;
- 
-    
-  }
 
 
-.web_select_div{
-height: 14vh;
+}
+
+
+.web_select_div {
+    height: 14vh;
 }
 
 .web_notification_message {
@@ -96,19 +96,20 @@ height: 14vh;
     padding: 0;
 }
 
+
 .web_upper_label {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
     color: #FFFFFF;
-    
-background: rgba(21, 18, 18, 0.45);
-border-radius: 0px 0px 8px 8px;
-padding-top: 7px;
-padding-bottom: 7px;
-padding-left: 30px;
-padding-right: 30px;
+
+    background: rgba(21, 18, 18, 0.45);
+    border-radius: 0px 0px 8px 8px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 
@@ -231,26 +232,28 @@ padding-right: 30px;
     border-radius: 10px;
     margin-left: 3vw;
     padding: 6px;
-   
+
 }
 
-.web_dropdown_div{
+.web_dropdown_div {
     height: 14vh;
-   
+
 }
 
-.buttons_container{
-    margin-top:20px;
-  }
-  .buttons_container:after{
-    content:"";
-    clear:both;
-    display:block;
-  }
-  .buttons_container .dropdown{
-    float:left;
-    margin-right:10px;
-  }
+.buttons_container {
+    margin-top: 20px;
+}
+
+.buttons_container:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.buttons_container .dropdown {
+    float: left;
+    margin-right: 10px;
+}
 
 
 .web_profile_card_name {
@@ -462,12 +465,23 @@ padding-right: 30px;
     overflow: scroll;
 }
 
+.web_spectator_profile_image_div {
+
+    padding: 0 !important;
+}
+
 .web_spectator_profile_image {
     height: 5vh;
     border-radius: 100%;
+    width: 90%;
+
 }
 
 .web_spectator_leaderboard_section {
+    height: 33vh;
+}
+
+.mobile_spectator_leaderboard_section {
     height: 33vh;
 }
 
@@ -558,7 +572,147 @@ padding-right: 30px;
 }
 
 
+@media screen and (min-width:270px) and (max-width:990px) {
+    .notification {
+        display: none;
+    }
+
+    .web_bulletins {
+        display: none;
+    }
+
+    .profile_div {
+        display: flex;
+        justify-content: center;
+    }
+
+    .web_profile_card {
+        background: url(https://coroebus.in/coroebus-beta/assets/SpectBackground/spectator_bg.png);
+        height: 25vh;
+        width: 96%;
+        background-size: 100% 100%;
+        margin-bottom: 2vh;
+       
+        padding: 0;
+    }
+
+    .web_button_row {
+        width: 100%;
+        margin-left: 0.4vw;
+    }
+
+    .first_tab {
+        padding-right: 2px;
+        padding-left: 10px;
+    }
+
+    .second_tab {
+        padding-right: 8px;
+    }
+
+    .third_tab {
+        padding-right: 8px;
+    }
+
+    .fourth_tab {
+        padding-right: 8px;
+    }
+
+    .cm_tab {
+        font-size: 2vw !important;
+    }
+
+    .am_tab {
+        font-size: 2vw !important;
+    }
+
+    .nsm_tab {
+        font-size: 2vw !important;
+    }
+
+    .rm_tab {
+        font-size: 2vw !important;
+    }
 
 
 
+    .search_div_with_icon {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        /* padding: 0; */
+        margin: 0;
+    }
 
+
+    .web_leaderboard {
+        height: 40vh;
+    }
+
+    .web_spectator_view_more_btn_div {
+        margin-top: 3vh;
+        width: 98% !important;
+    }
+
+    .web_spectator_search_button {
+        width: 100% !important;
+
+
+    }
+
+    .leaderboard_header_label {
+        height: 3vh;
+        display: flex;
+        align-items: center;
+    }
+
+    .web_spectator_label {
+        font-size: 2vw !important;
+    }
+
+    .web_spectator_label_name {
+        font-size: 2vw !important;
+
+    }
+
+    .web_spectator_label_points {
+        font-size: 2vw !important;
+
+    }
+
+    .web_spectator_rank {
+        font-size: 2vw !important;
+    }
+
+    .name_team_div {
+        padding-left: 6vw !important;
+    }
+
+    .web_spectator_name {
+        font-size: 1.7vw !important;
+    }
+
+    .web_spectator_team {
+        font-size: 1.7vw !important;
+    }
+
+    .web_spectator_points {
+        font-size: 1.7vw !important;
+    }
+
+    .web_spectator_badge {
+        width: 100% !important;
+    }
+
+    .web_spectator_up_down_arrow {
+        width: 100% !important;
+
+    }
+
+    .web_spectator_leaderboard {
+        margin-left: 3vw !important;
+    }
+
+}
+
+@media screen and (min-width:990.9px) {}
