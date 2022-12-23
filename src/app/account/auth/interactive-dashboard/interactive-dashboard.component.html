@@ -396,7 +396,7 @@
 
 
 <!-- DailyModal -->
-<!-- <div class="DailyModal"*ngIf="isDailyModalopen">
+<div class="DailyModal"*ngIf="isDailyModalopen">
     <div class="modal  fade bd-example-modal-sm" id="DailyModal" data-bs-backdrop="static" data-bs-keyboard="false"
         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modalDialogDaily modal-dialog-centered">
@@ -503,7 +503,7 @@
             </div>
         </div>
     </div>
-</div> -->
+</div> 
 
 
 
@@ -515,7 +515,7 @@
 
 
 <!-- Weekly Modal Started -->
-<!-- <div class="weeklyModal" *ngIf="isWeeklyModalOpen">
+<div class="weeklyModal" *ngIf="isWeeklyModalOpen">
     <div class="modal  fade bd-example-modal-sm" id="weeklyModal" data-bs-backdrop="static" data-bs-keyboard="false"
         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modalDialogWeekly modal-dialog-centered">
@@ -630,10 +630,10 @@
             </div>
         </div>
     </div>
-</div> -->
+</div> 
      
     <!-- Monthly Modal -->
-    <!-- <div class="monthlyModal" *ngIf="isMonthlyModalOpen">
+    <div class="monthlyModal" *ngIf="isMonthlyModalOpen">
         <div class="modal  fade bd-example-modal-sm" id="monthlyModal" data-bs-backdrop="static"
             data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogMonthly modal-dialog-centered ">
@@ -746,13 +746,13 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div> 
 
 
 
 
     
-  <!-- <div class="modal fade" id="BoosterModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  <div class="modal fade" id="BoosterModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered ">
         <div class="modal-content">
@@ -832,64 +832,101 @@
 
                                 <div class="card mt-4 p-2" style="border-radius: 5px;">
                                     <div class="d-flex align-items-center justify-content-around">
-                                        <div class="skillmuniCharacter mb-2">
+                                        <div class="skillmuniCharacter">
                                             <img src="{{boosterData_response.booster_rank_details[0].character_img}}"
                                                 alt="" height="100%">
-                                            <div class="shadow"></div>
+                                                <div class="shadow"></div>
                                         </div>
                                         <div
                                             class="ScoreRank accordian-label d-flex flex-column gap-1 align-items-center">
                                             <div>Rank</div>
                                             <div>
                                                 {{boosterData_response.booster_rank_details[0].date_time_stamp_today.slice(0,10)
-                                                | date:'dd/MM/yy'}}</div>
-                                            <div style="color:green">
-                                                {{boosterData_response.booster_rank_details[0].today_rank_number}}</div>
+                                                | date:'dd/MM/yyyy'}}</div>
+                                                <!-- <div *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='red' then redColor else greenColor"></div>
+                                                <div *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='yellow' then equlgreenColor"></div> -->
+    
+                                            <div *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='red'">
+                                                <span  style="color:red">#{{boosterData_response.booster_rank_details[0].today_rank_number}}</span> 
+                                            </div>
+                                            <div *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='green'">
+                                                <span  style="color:green">#{{boosterData_response.booster_rank_details[0].today_rank_number}}</span> 
+                                            </div>
+                                            <div *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='yellow'">
+                                             <span style="color:green">#{{boosterData_response.booster_rank_details[0].today_rank_number}}</span>
+                                            </div>
+    
+    
                                             <div>
                                                 {{boosterData_response.booster_rank_details[0].date_time_stamp_yesterday.slice(0,10)
                                                 | date:'dd/MM/yyyy'}}</div>
-                                            <div style="color:red">
-                                                {{boosterData_response.booster_rank_details[0].yesterday_rank_number}}
+                                            
+                                            <div *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='red'">
+                                                <span  style="color:green">#{{boosterData_response.booster_rank_details[0].yesterday_rank_number}}</span> 
                                             </div>
-
+                                            <div *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='green'">
+                                                <span  style="color:red">#{{boosterData_response.booster_rank_details[0].yesterday_rank_number}}</span> 
+                                            </div>
+                                            <div *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='yellow'">
+                                             <span style="color:green">#{{boosterData_response.booster_rank_details[0].yesterday_rank_number}}</span>
+                                            </div>
+    
                                         </div>
-                                        <div style="border-left:1px solid rgba(0, 0, 0, 0.07);height: 10vh;"></div>
+                                        <div style="border-left:1px solid rgba(0, 0, 0, 0.07);height: 10vh;">
+                                        </div>
                                         <div
                                             class="StatusBravo accordian-label d-flex flex-column gap-1 justify-content-center align-items-center">
-                                            <div>{{boosterData_response.booster_rank_details[0].rank_position_label}}
+                                            <div>
+                                                {{boosterData_response.booster_rank_details[0].rank_position_label}}
                                             </div>
-                                           
-                                            <div *ngIf="boosterData_response.booster_rank_details[0].today_rank_number>0 && boosterData_response.booster_rank_details[0].yesterday_rank_number<boosterData_response.booster_rank_details[0].today_rank_number;then upArrow"></div>
-                                            <ng-template #upArrow>
-                                                <div  style="height:4vh;">
-                                                    
-                                                    <img src="assets/images/BoosterAssests/UP-16687580465394.png"
+
+                                            <div>
+                                                <div style="height:4vh;" *ngIf="boosterData_response.booster_rank_details[0].ranking_status=='green'">
+                                                    <img src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.up_arrow}}"
                                                         alt="" height="100%">
                                                 </div>
-                                            </ng-template>
-                                            
-                                           
-                                                <div *ngIf="boosterData_response.booster_rank_details[0].yesterday_rank_number>boosterData_response.booster_rank_details[0].today_rank_number"  style="height:4vh;">
-                                                    <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""  height="100%">
-                                                </div>
-                                                <div *ngIf="boosterData_response.booster_rank_details[0].yesterday_rank_number==boosterData_response.booster_rank_details[0].today_rank_number"  style="height:4vh;">
-                                                    <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt=""  height="100%">
-                                                </div>
-                                            <div *ngIf="boosterData_response.booster_rank_details[0].rank_position_stmt=='Same rank to before.';then equalRank else UnequalRank"></div>
+                                            </div>
+                                            <div *ngIf="boosterData_response.booster_rank_details[0].ranking_status=='red'"
+                                                style="height:4vh;">
+                                                <img src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.down_arrow}}"
+                                                    alt="" height="100%">
+                                            </div>
+                                            <div *ngIf="boosterData_response.booster_rank_details[0].ranking_status=='yellow'"
+                                                style="height:4vh;">
+                                                <img src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.equal_arrow}}"
+                                                    alt="" height="100%">
+                                            </div>
+                                          
+                                        
+                                            <div
+                                                *ngIf="boosterData_response.booster_rank_details[0].rank_position_stmt=='Same rank to before.';then equalRank else UnequalRank">
+                                            </div>
                                             <ng-template #equalRank>
                                                 <div class="boosterRankPosition">
                                                     {{boosterData_response.booster_rank_details[0].rank_position_stmt}}
                                                 </div>
+    
                                             </ng-template>
                                             <ng-template #UnequalRank>
                                                 <div class="boosterRankPosition">
-                                                    {{firstString}} <span style="color:green">{{Digit}}</span> {{LastString}}
+                                                    {{firstString}}
+                                                     <span *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='green'" style="color: green;">
+                                                        {{Digit}}
+                                                    </span>
+                                                     <span *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='red'" style="color:red;">
+                                                        {{Digit}}
+                                                         </span>
+                                                     <span *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='yellow'">
+                                                        {{Digit}}
+                                                         </span>
+                                                    {{LastString}}
                                                 </div>
                                             </ng-template>
-                                            
                                         </div>
                                     </div>
                                 </div>
+
+                                
                                 <div class="d-flex justify-content-center align-items-center">
                                     <hr style="width: 100%;
                                         height: 0px;
@@ -968,7 +1005,7 @@
             </div>
         </div>
     </div>
-</div>    -->
+</div>    
     
 
 <!-- <div class="modal fade" id="BoosterModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

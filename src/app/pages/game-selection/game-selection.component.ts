@@ -90,7 +90,7 @@ console.log(this.id_role);
       this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
       this.router.navigate(['/spectator/spectatorView']);
     }
-    else if(this.id_coroebus_theme>6){
+    else if(this.id_coroebus_theme>4){
       this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
       this.router.navigate(['/account/interactive-dashboard']);
     }

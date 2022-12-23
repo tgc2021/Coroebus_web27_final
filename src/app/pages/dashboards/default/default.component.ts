@@ -231,11 +231,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       this.web_profile_back_image= this.sectionView_1._back_images[1]._data[0].ranking_image_profile;
       console.log(this.web_profile_back_image);
       
-      for(let item of this.web_profile_back_image){
-        console.log(item);
-        
-        
-      }
+     
       this.eventService.broadcast('passDataToHeader', {
         color: this.sectionView_1?.theme_details?.[0]?.dark_color,
         game_name: this.sectionView_1?._personal_data?.game_name,

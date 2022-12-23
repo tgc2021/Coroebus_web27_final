@@ -227,6 +227,7 @@ if(this.mergeObj.id_coroebus_game != null){
   this.interactive_dashoard_response = res;
    this.isLoading=true;
     this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
+  console.log(this.interactive_dashoard_response);
   
     this.http.BoosterData(body).subscribe((res:any)=>{
       this.boosterData_response=res.data;
@@ -317,6 +318,7 @@ else{
     this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
     console.log(this.interactive_dashoard_response);
     
+  
     // this.http.BoosterData(body).subscribe((res:any)=>{
     //   this.boosterData_response=res.data;
   
@@ -337,6 +339,19 @@ else{
       this.isLoading=true;
     }
 
+    this.http.BoosterData(body).subscribe((res:any)=>{
+      this.boosterData_response=res.data;
+  
+      console.log(res);
+      
+       this.StringArray=res.data.booster_rank_details[0].rank_position_stmt.split(" ");
+       this.firstString=this.StringArray[0]+" "+this.StringArray[1]+" "+this.StringArray[2];
+      this.Digit=this.StringArray[3]
+      this.LastString=this.StringArray[4];
+      console.log(this.StringArray);
+      console.log(this.LastString);
+  
+    })
     this.seasonalThemeDaily=this.interactive_dashoard_response[0].data.seasonal_theme_daily;
 
     this.seasonalThemeWeekly=this.interactive_dashoard_response[0].data.seasonal_theme_weekly;
