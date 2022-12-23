@@ -408,85 +408,339 @@ viewmoreorder:any
         this.spectator_data = this.spectator_dashoard_response[0].data.ranking;
         console.log(this.spectator_data);
         console.log(this.order);
-        
-        if(this.order==1 || this.order == null){
-          if(this.spectator_data[0].user_list != ''){
-            this.spectator_user_list = this.spectator_data[0].user_list;
-            this.checked1=true;
-            this.checked2=false;
-            this.checked3=false;
-            this.checked4=false;
-            console.log(this.spectator_user_list);
-          }
-          else{
-            console.log("nodata");
-            this.checked1=true;
-            this.checked2=false;
-            this.checked3=false;
-            this.checked4=false;
-            this.openSnackBar('No More data Available','Ok')
-          }
-          
-        }
-        else if(this.order==2){
-          if(this.spectator_data[1].user_list != ''){
-            this.spectator_user_list = this.spectator_data[1].user_list;
-            this.checked1=false;
-            this.checked2=true;
-            this.checked3=false;
-            this.checked4=false;
-            console.log(this.spectator_user_list);
+
+        ////////////////////////////////////////////////////To show Active Tab 1///////////////////////////////////////////////////////
+
+        if(this.spectator_dashoard_response[0].data._personal_data.id_role == '6'){
+          if(this.order==1 || this.order == null){
+            if(this.spectator_data[0].user_list != ''){
+              this.spectator_user_list = this.spectator_data[0].user_list;
+              this.checked1=true;
+              this.checked2=false;
+              this.checked3=false;
+              this.checked4=false;
+              console.log(this.spectator_user_list);
+            }
+            else{
+              console.log("nodata");
+              this.checked1=true;
+              this.checked2=false;
+              this.checked3=false;
+              this.checked4=false;
+              this.openSnackBar('No More data Available','Ok')
+            }
             
           }
-          else{
-            this.checked1=false;
-            this.checked2=true;
-            this.checked3=false;
-            this.checked4=false;
-            this.openSnackBar('No More data Available','Ok')
-
+          else if(this.order==2){
+            if(this.spectator_data[1].user_list != ''){
+              this.spectator_user_list = this.spectator_data[1].user_list;
+              this.checked1=false;
+              this.checked2=true;
+              this.checked3=false;
+              this.checked4=false;
+              console.log(this.spectator_user_list);
+              
+            }
+            else{
+              this.checked1=false;
+              this.checked2=true;
+              this.checked3=false;
+              this.checked4=false;
+              this.openSnackBar('No More data Available','Ok')
+  
+            }
+           
           }
-         
+          else if(this.order==3){
+            if(this.spectator_data[2].user_list != ''){
+              this.spectator_user_list = this.spectator_data[2].user_list;
+              this.checked1=false;
+              this.checked2=false;
+              this.checked3=true;
+              this.checked4=false;
+              console.log(this.spectator_user_list);
+            }
+            else{
+              this.checked1=false;
+              this.checked2=false;
+              this.checked3=true;
+              this.checked4=false;
+              this.openSnackBar('No More data Available','Ok')
+  
+            }
+          }
+          else if(this.order==4){
+  
+            if(this.spectator_data[3].user_list != ''){
+              this.spectator_user_list = this.spectator_data[3].user_list;
+              this.checked1=false;
+              this.checked2=false;
+              this.checked3=false;
+              this.checked4=true;
+              console.log(this.spectator_user_list);
+            }
+            else{
+              this.checked1=false;
+              this.checked2=false;
+              this.checked3=false;
+              this.checked4=true;
+              this.openSnackBar('No More data Available','Ok')
+  
+            }
+  
+           
+          }
         }
-        else if(this.order==3){
-          if(this.spectator_data[2].user_list != ''){
-            this.spectator_user_list = this.spectator_data[2].user_list;
-            this.checked1=false;
-            this.checked2=false;
-            this.checked3=true;
-            this.checked4=false;
-            console.log(this.spectator_user_list);
-          }
-          else{
-            this.checked1=false;
-            this.checked2=false;
-            this.checked3=true;
-            this.checked4=false;
-            this.openSnackBar('No More data Available','Ok')
 
+        ////////////////////////////////////////////////////To show Active Tab 2///////////////////////////////////////////////////////
+
+        else if(this.spectator_dashoard_response[0].data._personal_data.id_role == '4'){
+          if(this.order==1 ){
+            if(this.spectator_data[0].user_list != ''){
+              this.spectator_user_list = this.spectator_data[0].user_list;
+              this.checked1=true;
+              this.checked2=false;
+              this.checked3=false;
+              this.checked4=false;
+              console.log(this.spectator_user_list);
+            }
+            else{
+              console.log("nodata");
+              this.checked1=true;
+              this.checked2=false;
+              this.checked3=false;
+              this.checked4=false;
+              this.openSnackBar('No More data Available','Ok')
+            }
+            
+          }
+          else if(this.order==2 || this.order == null){
+            if(this.spectator_data[1].user_list != ''){
+              this.spectator_user_list = this.spectator_data[1].user_list;
+              this.checked1=false;
+              this.checked2=true;
+              this.checked3=false;
+              this.checked4=false;
+              console.log(this.spectator_user_list);
+              
+            }
+            else{
+              this.checked1=false;
+              this.checked2=true;
+              this.checked3=false;
+              this.checked4=false;
+              this.openSnackBar('No More data Available','Ok')
+  
+            }
+           
+          }
+          else if(this.order==3){
+            if(this.spectator_data[2].user_list != ''){
+              this.spectator_user_list = this.spectator_data[2].user_list;
+              this.checked1=false;
+              this.checked2=false;
+              this.checked3=true;
+              this.checked4=false;
+              console.log(this.spectator_user_list);
+            }
+            else{
+              this.checked1=false;
+              this.checked2=false;
+              this.checked3=true;
+              this.checked4=false;
+              this.openSnackBar('No More data Available','Ok')
+  
+            }
+          }
+          else if(this.order==4){
+  
+            if(this.spectator_data[3].user_list != ''){
+              this.spectator_user_list = this.spectator_data[3].user_list;
+              this.checked1=false;
+              this.checked2=false;
+              this.checked3=false;
+              this.checked4=true;
+              console.log(this.spectator_user_list);
+            }
+            else{
+              this.checked1=false;
+              this.checked2=false;
+              this.checked3=false;
+              this.checked4=true;
+              this.openSnackBar('No More data Available','Ok')
+  
+            }
+  
+           
           }
         }
-        else if(this.order==4){
 
-          if(this.spectator_data[3].user_list != ''){
-            this.spectator_user_list = this.spectator_data[3].user_list;
-            this.checked1=false;
-            this.checked2=false;
-            this.checked3=false;
-            this.checked4=true;
-            console.log(this.spectator_user_list);
+        ////////////////////////////////////////////////////To show Active Tab 3///////////////////////////////////////////////////////
+
+        else if(this.spectator_dashoard_response[0].data._personal_data.id_role == '3'){
+          if(this.order==1 ){
+            if(this.spectator_data[0].user_list != ''){
+              this.spectator_user_list = this.spectator_data[0].user_list;
+              this.checked1=true;
+              this.checked2=false;
+              this.checked3=false;
+              this.checked4=false;
+              console.log(this.spectator_user_list);
+            }
+            else{
+              console.log("nodata");
+              this.checked1=true;
+              this.checked2=false;
+              this.checked3=false;
+              this.checked4=false;
+              this.openSnackBar('No More data Available','Ok')
+            }
+            
           }
-          else{
-            this.checked1=false;
-            this.checked2=false;
-            this.checked3=false;
-            this.checked4=true;
-            this.openSnackBar('No More data Available','Ok')
-
+          else if(this.order==2 ){
+            if(this.spectator_data[1].user_list != ''){
+              this.spectator_user_list = this.spectator_data[1].user_list;
+              this.checked1=false;
+              this.checked2=true;
+              this.checked3=false;
+              this.checked4=false;
+              console.log(this.spectator_user_list);
+              
+            }
+            else{
+              this.checked1=false;
+              this.checked2=true;
+              this.checked3=false;
+              this.checked4=false;
+              this.openSnackBar('No More data Available','Ok')
+  
+            }
+           
           }
-
-         
+          else if(this.order==3 || this.order == null){
+            if(this.spectator_data[2].user_list != ''){
+              this.spectator_user_list = this.spectator_data[2].user_list;
+              this.checked1=false;
+              this.checked2=false;
+              this.checked3=true;
+              this.checked4=false;
+              console.log(this.spectator_user_list);
+            }
+            else{
+              this.checked1=false;
+              this.checked2=false;
+              this.checked3=true;
+              this.checked4=false;
+              this.openSnackBar('No More data Available','Ok')
+  
+            }
+          }
+          else if(this.order==4){
+  
+            if(this.spectator_data[3].user_list != ''){
+              this.spectator_user_list = this.spectator_data[3].user_list;
+              this.checked1=false;
+              this.checked2=false;
+              this.checked3=false;
+              this.checked4=true;
+              console.log(this.spectator_user_list);
+            }
+            else{
+              this.checked1=false;
+              this.checked2=false;
+              this.checked3=false;
+              this.checked4=true;
+              this.openSnackBar('No More data Available','Ok')
+  
+            }
+  
+           
+          }
         }
+
+        ////////////////////////////////////////////////////To show Active Tab 4///////////////////////////////////////////////////////
+
+        else if(this.spectator_dashoard_response[0].data._personal_data.id_role == '8'){
+          if(this.order==1 ){
+            if(this.spectator_data[0].user_list != ''){
+              this.spectator_user_list = this.spectator_data[0].user_list;
+              this.checked1=true;
+              this.checked2=false;
+              this.checked3=false;
+              this.checked4=false;
+              console.log(this.spectator_user_list);
+            }
+            else{
+              console.log("nodata");
+              this.checked1=true;
+              this.checked2=false;
+              this.checked3=false;
+              this.checked4=false;
+              this.openSnackBar('No More data Available','Ok')
+            }
+            
+          }
+          else if(this.order==2 ){
+            if(this.spectator_data[1].user_list != ''){
+              this.spectator_user_list = this.spectator_data[1].user_list;
+              this.checked1=false;
+              this.checked2=true;
+              this.checked3=false;
+              this.checked4=false;
+              console.log(this.spectator_user_list);
+              
+            }
+            else{
+              this.checked1=false;
+              this.checked2=true;
+              this.checked3=false;
+              this.checked4=false;
+              this.openSnackBar('No More data Available','Ok')
+  
+            }
+           
+          }
+          else if(this.order==3){
+            if(this.spectator_data[2].user_list != ''){
+              this.spectator_user_list = this.spectator_data[2].user_list;
+              this.checked1=false;
+              this.checked2=false;
+              this.checked3=true;
+              this.checked4=false;
+              console.log(this.spectator_user_list);
+            }
+            else{
+              this.checked1=false;
+              this.checked2=false;
+              this.checked3=true;
+              this.checked4=false;
+              this.openSnackBar('No More data Available','Ok')
+  
+            }
+          }
+          else if(this.order==4 || this.order == null){
+  
+            if(this.spectator_data[3].user_list != ''){
+              this.spectator_user_list = this.spectator_data[3].user_list;
+              this.checked1=false;
+              this.checked2=false;
+              this.checked3=false;
+              this.checked4=true;
+              console.log(this.spectator_user_list);
+            }
+            else{
+              this.checked1=false;
+              this.checked2=false;
+              this.checked3=false;
+              this.checked4=true;
+              this.openSnackBar('No More data Available','Ok')
+  
+            }
+  
+           
+          }
+        }
+
 
         if(viewmore){
           console.log("view");

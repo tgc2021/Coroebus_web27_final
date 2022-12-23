@@ -396,7 +396,7 @@
 
 
 <!-- DailyModal -->
-<div class="DailyModal"*ngIf="isDailyModalopen">
+<!-- <div class="DailyModal"*ngIf="isDailyModalopen">
     <div class="modal  fade bd-example-modal-sm" id="DailyModal" data-bs-backdrop="static" data-bs-keyboard="false"
         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modalDialogDaily modal-dialog-centered">
@@ -503,7 +503,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 
@@ -515,7 +515,7 @@
 
 
 <!-- Weekly Modal Started -->
-<div class="weeklyModal" *ngIf="isWeeklyModalOpen">
+<!-- <div class="weeklyModal" *ngIf="isWeeklyModalOpen">
     <div class="modal  fade bd-example-modal-sm" id="weeklyModal" data-bs-backdrop="static" data-bs-keyboard="false"
         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modalDialogWeekly modal-dialog-centered">
@@ -611,13 +611,7 @@
 
 
                             </div>
-                            <!-- <div class="p-2 gap-2" *ngIf="weeklyTopers.length==0 || weeklyTopers[0].profile_mage==null">
-
-                                <span class="welcomeText">
-                                    Hey welcome! The themes will be configured soon. Stay tuned!
-                                </span>
-
-                            </div> -->
+                           
 
 
 
@@ -636,10 +630,10 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
      
     <!-- Monthly Modal -->
-    <div class="monthlyModal" *ngIf="isMonthlyModalOpen">
+    <!-- <div class="monthlyModal" *ngIf="isMonthlyModalOpen">
         <div class="modal  fade bd-example-modal-sm" id="monthlyModal" data-bs-backdrop="static"
             data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogMonthly modal-dialog-centered ">
@@ -732,13 +726,7 @@
                                     </div>
 
                                 </div>
-                                <!-- <div class="p-2 gap-2" *ngIf="monthlyTopers.length==0">
-
-                                    <span class="welcomeText">
-                                        Hey welcome! The themes will be configured soon. Stay tuned!
-                                    </span>
-
-                                </div> -->
+                              
 
 
                             </div>
@@ -758,13 +746,13 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
 
 
     
-    <!-- <div class="modal fade" id="BoosterModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  <!-- <div class="modal fade" id="BoosterModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered ">
         <div class="modal-content">
@@ -784,7 +772,7 @@
                                 {{boosterData_response.booster_title}}
                             </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <div class="text-center d-flex flex-column align-items-center">
@@ -875,17 +863,17 @@
                                             <ng-template #upArrow>
                                                 <div  style="height:4vh;">
                                                     
-                                                    <img src="../../../../assets/images/BoosterAssests/UP-16687580465394.png"
+                                                    <img src="assets/images/BoosterAssests/UP-16687580465394.png"
                                                         alt="" height="100%">
                                                 </div>
                                             </ng-template>
                                             
                                            
                                                 <div *ngIf="boosterData_response.booster_rank_details[0].yesterday_rank_number>boosterData_response.booster_rank_details[0].today_rank_number"  style="height:4vh;">
-                                                    <img src="../../../../assets/images/BoosterAssests/DN-16687580461987.png" alt=""  height="100%">
+                                                    <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""  height="100%">
                                                 </div>
                                                 <div *ngIf="boosterData_response.booster_rank_details[0].yesterday_rank_number==boosterData_response.booster_rank_details[0].today_rank_number"  style="height:4vh;">
-                                                    <img src="../../../../assets/images/BoosterAssests/EQ-16687580462022.png" alt=""  height="100%">
+                                                    <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt=""  height="100%">
                                                 </div>
                                             <div *ngIf="boosterData_response.booster_rank_details[0].rank_position_stmt=='Same rank to before.';then equalRank else UnequalRank"></div>
                                             <ng-template #equalRank>
@@ -967,7 +955,7 @@
 
                                         <div *ngIf="data.growth_percentage<0" style="height:4vh;">
                                             
-                                            <img src="../../../../assets/images/BoosterAssests/DN-16687580461987.png" alt=""  height="100%">
+                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""  height="100%">
                                            
                                         </div>  
                                     </div>
@@ -980,5 +968,20 @@
             </div>
         </div>
     </div>
-</div> -->
+</div>    -->
     
+
+<!-- <div class="modal fade" id="BoosterModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content">
+            <div class="d-flex justify-content-end">
+                <button type="button" class="close_btn" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+            <div class="col-12">
+                <img src="assets/images/BoosterAssests/Booster.png"/>
+            </div>
+         
+        </div>
+    </div>
+</div>  -->

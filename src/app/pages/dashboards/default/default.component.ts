@@ -202,6 +202,9 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     [err, res] = await HttpProtocols.to(DashboardModel.getUserBannerDataSectionView_1(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
       this.sectionView_1 = res?.data
+
+      console.log(this.sectionView_1?.theme_details?.[0]?.dark_color);
+      
       this.pokeAnimationData = this.sectionView_1._poked_data
       // this.pokeAnimationData1=this.sectionView_1._poked_data[0].poke_description
 
@@ -239,6 +242,10 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
         game_logo: this.sectionView_1?._personal_data?.game_logo,
 
       })
+
+  
+    
+    
       this.store.dispatch(userActions.updateUserObj({
         data: {
           color: this.sectionView_1?.theme_details?.[0]?.dark_color,
@@ -248,6 +255,9 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
           id_coroebus_team: this.sectionView_1?._personal_data?.id_coroebus_team,
           _personal_data: this.sectionView_1?._personal_data
         }
+
+       
+        
       }));
     } else {
       this.sectionView_1_err = 'Please try after some time'
