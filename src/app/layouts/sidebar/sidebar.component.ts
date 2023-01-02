@@ -17,6 +17,7 @@ import { Subject } from 'rxjs';
 import * as userActions from '../../core/app-state/actions';
 import { url } from 'inspector';
 import { DefaultComponent } from '@pages/dashboards/default/default.component';
+import { ApiserviceService } from 'app/apiservice.service';
 @Component({
   providers:[DefaultComponent ],
 
@@ -50,7 +51,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
   themeObj: any
 
   constructor(private eventService: EventService, private router: Router,public dashboard:DefaultComponent,
-    public translate: TranslateService, private http: HttpClient,
+    public translate: TranslateService, private http: ApiserviceService,
     private readonly store: Store, private cd: ChangeDetectorRef) {
     router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
@@ -137,7 +138,9 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
       
       this.id_coroebus_theme=this.userObj.themes[0].id_coroebus_theme
       console.log(this.id_coroebus_theme);
-      
+   
+   
+
     })
 
     this.initialize();
@@ -265,6 +268,20 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
     return item.subItems !== undefined ? item.subItems.length > 0 : false;
   }
   logout() {
+    let body={
+      "_userid": this.userObj?._personal_data?.USERID,
+      "_game":this.userObj?.otherInfo?.id_coroebus_game,
+      _device:"W",
+      _section:"Logout",
+      _description: "User has logged out of the application"
+    }
+  
+  
+    this.http.engagamentlog(body).subscribe(res=>{
+      console.log(res);
+      
+    })
+
     document.body.classList.remove('dashboard-bg-image');
     document.body.style.backgroundImage = "url('')"
     localStorage.clear()
@@ -273,17 +290,33 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
     // this.router.navigate(['/account/login'], { queryParams: { returnUrl: location.hash } })
   }
   activeLink(item) {
+    console.log(item);
+    
     this.activeRouterLink = item?.link1;
     document?.getElementById('vertical-menu-btn')?.click()
     if (item?.icon === 'logout') {
       this.logout()
     }
     else if(item?.icon === 'aboutus'){
+      let body={
+        "_userid": this.userObj?._personal_data?.USERID,
+        "_game":this.userObj?.otherInfo?.id_coroebus_game,
+        _device:"W",
+        _section:"About Us",
+        _description: "About Us"
+      }
+    
+    
+      this.http.engagamentlog(body).subscribe(res=>{
+        console.log(res);
+        
+      })
       this.url = 'https://www.thegamificationcompany.com/';
       window.open(this.url, '_blank');
       
     }
     else if(item?.icon === 'Aboutgameicon'){
+   
       this.url = this.filepath;
       window.open(this.url, '_blank');
     }
@@ -291,6 +324,56 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
       this.url = this.filepath;
       window.open(this.url, '_blank');
     }
+    else if(item?.icon === 'myper'){
+      let body={
+        "_userid": this.userObj?._personal_data?.USERID,
+        "_game":this.userObj?.otherInfo?.id_coroebus_game,
+        _device:"W",
+        _section:"Performance",
+        _description: "From Menu"
+      }
+    
+    
+      this.http.engagamentlog(body).subscribe(res=>{
+        console.log(res);
+        
+      })
+    }
+    else if(item?.icon === 'rewards'){
+      let body={
+        "_userid": this.userObj?._personal_data?.USERID,
+        "_game":this.userObj?.otherInfo?.id_coroebus_game,
+        _device:"W",
+        _section:"Rewards Page",
+        _description: "From Menu"
+      }
+    
+    
+      this.http.engagamentlog(body).subscribe(res=>{
+        console.log(res);
+        
+      })
+    }
+    else if(item?.icon === 'playzone'){
+      let body={
+        "_userid": this.userObj?._personal_data?.USERID,
+        "_game":this.userObj?.otherInfo?.id_coroebus_game,
+        _device:"W",
+        _section:"Achievement Shelf",
+        _description: "From Menu"
+      }
+    
+    
+      this.http.engagamentlog(body).subscribe(res=>{
+        console.log(res);
+        
+      })
+    }
+
+    this.menuItems = MENU;
+   
+    console.log(this.menuItems);
+
     // else if(item?.icon === 'home'){
     //    this.dashboard.activeTabForSectionView_2='0'
        

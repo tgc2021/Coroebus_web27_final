@@ -96,15 +96,15 @@
 
                                   
                                     <div class="container-fluid">
-                                        <div class="row row-cols-0 row-cols-lg-5 g-2 g-lg-3">
-                                            <div class="col">
+                                        <div class="row">
+                                            <div class="col-lg-10 col-md-10 col-7 g-0">
                                                 <div class="p-0">
                                                     <span
                                                         class="performance-accordion-point-data-label">{{item?._data?.measurement_name}}</span>
                                                 </div>
                                             </div>
                                           
-                                            <div class="col">
+                                            <div class="col-lg-2 col-md-2 col-5 g-0">
                                                 <span class="text-start performance-game-points-coin">
                                                     <img src="assets/images/svg/dashboard/game-points-coin.png" alt=""
                                                         height="22">
@@ -122,16 +122,16 @@
                                 [attr.aria-labelledby]="'heading'+i" data-bs-parent="#accordionExample">
                                 <div class="accordion-body performance-accordion-point-data-body">
                                     <div class="container-fluid">
-                                        <div class="row row-cols-0 row-cols-lg-5 g-2 g-lg-3"
+                                        <div class="row"
                                             *ngFor="let child of item?.kpi_data">
-                                            <div class="col">
+                                            <div class="col-10">
                                                 <div class="p-0">
                                                     <span
                                                         class="performance-accordion-point-data-label">{{child?.kpi_name}}</span>
                                                 </div>
                                             </div>
                                             
-                                            <div class="col">
+                                            <div class="col-2">
                                                 <span class="text-start performance-game-points-coin">
                                                     <img src="assets/images/svg/dashboard/game-points-coin.png" alt=""
                                                         height="22">

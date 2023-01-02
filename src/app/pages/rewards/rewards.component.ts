@@ -51,7 +51,7 @@ export class RewardsComponent implements OnInit, AfterViewInit {
   coreGame: any;
   status: any;
   bgImage: any;
-
+  passbook_response:any
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
     private _route: ActivatedRoute, public toastService: ToastService, public http: ApiserviceService, public element: ElementRef, public dialog: MatDialog) { }
@@ -60,7 +60,9 @@ export class RewardsComponent implements OnInit, AfterViewInit {
   headerInfo: any
   popupresponse: any
   data: any
-
+  collectionSize:any;
+  pageSize=10;
+  page = 1;
 
   ngOnInit(): void {
 
@@ -104,6 +106,20 @@ export class RewardsComponent implements OnInit, AfterViewInit {
         console.log(body);
         this.http.rewards(body).subscribe((res) => {
           console.log(res)
+
+          let body={
+            _userid:this.mergeObj.USERID,
+            _game:this.mergeObj.id_coroebus_game,
+            _device:"W",
+            _section:"Rewards Page",
+            _description:"Rewards Page"
+          }
+      
+          this.http.engagamentlog(body).subscribe(res=>{
+            console.log(res);
+            
+          })
+
           // console.log( res.data.points_list[0].label);
   
           // const response = res.data.points_list[0].label
@@ -121,7 +137,11 @@ export class RewardsComponent implements OnInit, AfterViewInit {
           console.log(this.filterCoreGame);
           this.rewardresponse = Array.of(this.rewardresponse);
           console.log(this.rewardresponse);
-          console.log(this.rewardresponse[0].data.points_list[0].description_);
+          this.passbook_response=this.rewardresponse[0].data.points_list[1]._data
+          console.log(this.passbook_response);
+          this.collectionSize=this.passbook_response.length
+          console.log(this.collectionSize);
+          
         })
       }
 
@@ -134,6 +154,19 @@ export class RewardsComponent implements OnInit, AfterViewInit {
         console.log(body);
         this.http.rewards(body).subscribe((res) => {
           console.log(res)
+
+          let body={
+            _userid:this.mergeObj.USERID,
+            _game:this.userSelectionData.id_coroebus_game,
+            _device:"W",
+            _section:"Rewards Page",
+            _description:"Rewards Page"
+          }
+      
+          this.http.engagamentlog(body).subscribe(res=>{
+            console.log(res);
+            
+          })
           // console.log( res.data.points_list[0].label);
   
           // const response = res.data.points_list[0].label
@@ -151,7 +184,10 @@ export class RewardsComponent implements OnInit, AfterViewInit {
           console.log(this.filterCoreGame);
           this.rewardresponse = Array.of(this.rewardresponse);
           console.log(this.rewardresponse);
-          console.log(this.rewardresponse[0].data.points_list[0].description_);
+          this.passbook_response=this.rewardresponse[0].data.points_list[1]._data
+          console.log(this.passbook_response);
+          this.collectionSize=this.passbook_response.length
+          console.log(this.collectionSize);
         })
       }
     
@@ -178,7 +214,164 @@ export class RewardsComponent implements OnInit, AfterViewInit {
 
 
   // }
+  enagagmentlogAPI(tab){
+    console.log(this.rewardresponse[0].data.rewardTypes[0].rewardName);
+    
+    console.log(tab.target.firstChild.data==this.rewardresponse[0].data.rewardTypes[0].rewardName);
+    if(this.mergeObj.id_coroebus_game != null){
+      if(tab.target.firstChild.data==this.rewardresponse[0].data.rewardTypes[0].rewardName){
+        let body={
+          _userid:this.mergeObj.USERID,
+          _game:this.mergeObj.id_coroebus_game,
+          _device:"W",
+          _section:"Rewards Page",
+          _description:"Platform Voucher Rewards"
+        }
+    
+        this.http.engagamentlog(body).subscribe(res=>{
+          console.log(res);
+          
+        })
+  
+      }
 
+      else if(tab.target.firstChild.data==this.rewardresponse[0].data.rewardTypes[1].rewardName){
+        let body={
+          _userid:this.mergeObj.USERID,
+          _game:this.mergeObj.id_coroebus_game,
+          _device:"W",
+          _section:"Rewards Page",
+          _description:"Organization Rewards"
+        }
+    
+        this.http.engagamentlog(body).subscribe(res=>{
+          console.log(res);
+          
+        })
+      }
+
+    }
+
+    else if(this.userObj.games.length == 0){
+      if(tab.target.firstChild.data==this.rewardresponse[0].data.rewardTypes[0].rewardName){
+        let body={
+          _userid:this.mergeObj.USERID,
+          _game:this.mergeObj.id_coroebus_game,
+          _device:"W",
+          _section:"Rewards Page",
+          _description:"Platform Voucher Rewards"
+        }
+    
+        this.http.engagamentlog(body).subscribe(res=>{
+          console.log(res);
+          
+        })
+  
+      }
+    }
+   
+    
+  }
+
+  enagagmentlogPassbookAPI(tab){
+    console.log(tab);
+    if(this.mergeObj.id_coroebus_game != null){
+      if(tab.target.firstChild.data==this.rewardresponse[0].data.points_list[0].label){
+        let body={
+          _userid:this.mergeObj.USERID,
+          _game:this.mergeObj.id_coroebus_game,
+          _device:"W",
+          _section:"Rewards Page",
+          _description:"Points Table"
+        }
+    
+        this.http.engagamentlog(body).subscribe(res=>{
+          console.log(res);
+          
+        })
+  
+      }
+
+      else if(tab.target.firstChild.data==this.rewardresponse[0].data.points_list[1].label){
+        let body={
+          _userid:this.mergeObj.USERID,
+          _game:this.mergeObj.id_coroebus_game,
+          _device:"W",
+          _section:"Rewards Page",
+          _description:"Passbook"
+        }
+    
+        this.http.engagamentlog(body).subscribe(res=>{
+          console.log(res);
+          
+        })
+      }
+
+      else if(tab.target.firstChild.data==this.rewardresponse[0].data.points_list[2].label){
+        let body={
+          _userid:this.mergeObj.USERID,
+          _game:this.mergeObj.id_coroebus_game,
+          _device:"W",
+          _section:"Rewards Page",
+          _description:"Redemption History"
+        }
+    
+        this.http.engagamentlog(body).subscribe(res=>{
+          console.log(res);
+          
+        })
+      }
+
+    }
+
+    else if(this.userObj.games.length == 0){
+      if(tab.target.firstChild.data==this.rewardresponse[0].data.points_list[0].label){
+        let body={
+          _userid:this.mergeObj.USERID,
+          _game:this.mergeObj.id_coroebus_game,
+          _device:"W",
+          _section:"Rewards Page",
+          _description:"Points Table"
+        }
+    
+        this.http.engagamentlog(body).subscribe(res=>{
+          console.log(res);
+          
+        })
+  
+      }
+      else if(tab.target.firstChild.data==this.rewardresponse[0].data.points_list[1].label){
+        let body={
+          _userid:this.mergeObj.USERID,
+          _game:this.mergeObj.id_coroebus_game,
+          _device:"W",
+          _section:"Rewards Page",
+          _description:"Passbook"
+        }
+    
+        this.http.engagamentlog(body).subscribe(res=>{
+          console.log(res);
+          
+        })
+      }
+
+      else if(tab.target.firstChild.data==this.rewardresponse[0].data.points_list[2].label){
+        let body={
+          _userid:this.mergeObj.USERID,
+          _game:this.mergeObj.id_coroebus_game,
+          _device:"W",
+          _section:"Rewards Page",
+          _description:"Redemption History"
+        }
+    
+        this.http.engagamentlog(body).subscribe(res=>{
+          console.log(res);
+          
+        })
+      }
+
+    }
+  }
 
   dynamicColor() {
     // $('#example').DataTable();

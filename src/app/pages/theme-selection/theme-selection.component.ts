@@ -9,6 +9,7 @@ import * as fromRoot from '../../core/app-state';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { Util } from '@app/utils/util';
+import { ApiserviceService } from 'app/apiservice.service';
 @Component({
   selector: 'app-theme-selection',
   templateUrl: './theme-selection.component.html',
@@ -20,7 +21,7 @@ export class ThemeSelectionComponent implements OnInit, OnDestroy {
   themeList: any;
   selectedTheme: any
   showComponent: boolean = false
-  constructor(private readonly store: Store, private router: Router, public Util: Util) {
+  constructor(private readonly store: Store, private router: Router, public Util: Util,public http:ApiserviceService) {
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
     ).subscribe(data => {
@@ -38,6 +39,20 @@ export class ThemeSelectionComponent implements OnInit, OnDestroy {
     body = { "userid": this.userObj?._personal_data?.USERID };
     [err, res] = await HttpProtocols.to(UserModel.getThemes(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
+
+      let body={
+        _userid:this.userObj?._personal_data?.USERID,
+        _game:"na",
+        _device:"W",
+        _section:"Theme Page",
+        _description:"Theme Page"
+      }
+  
+      this.http.engagamentlog(body).subscribe(res=>{
+        console.log(res);
+        
+      })
+
       const newArr = [];
       while (res?.data?.length) newArr.push(res?.data?.splice(0, 3));
       this.themeList = newArr
@@ -62,6 +77,19 @@ export class ThemeSelectionComponent implements OnInit, OnDestroy {
     this.selectTheme()
   }
   selectTheme() {
+    let body={
+      _userid:this.userObj?._personal_data?.USERID,
+      _game:"na",
+      _device:"W",
+      _section:"Theme Page",
+      _description:"Theme selected"
+    }
+
+    this.http.engagamentlog(body).subscribe(res=>{
+      console.log(res);
+      
+    })
+
     this.store.dispatch(themeActions.theme({ theme: { 'id_coroebus_theme': this.selectedTheme } }))
     this.router.navigate(['/account/game/selection']);
   }

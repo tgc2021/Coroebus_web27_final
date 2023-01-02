@@ -150,6 +150,19 @@ export class AchievementShelfComponent implements OnInit {
           
           
         })
+
+        let body_engagement={
+          _userid:this.mergeObj.USERID,
+          _game:this.userObj.games[0].id_coroebus_game,
+          _device:"W",
+          _section:"Achievement Shelf",
+          _description:"Achievement Shelf"
+        }
+    
+        this.http.engagamentlog(body_engagement).subscribe(res=>{
+          console.log(res);
+          
+        })
       }
   
       else if(this.userObj.games.length == 0){
@@ -208,6 +221,20 @@ export class AchievementShelfComponent implements OnInit {
           
           
         })
+
+
+        let body_engagement={
+          _userid:this.mergeObj.USERID,
+          _game: this.userSelectionData.id_coroebus_game,
+          _device:"W",
+          _section:"Achievement Shelf",
+          _description:"Achievement Shelf"
+        }
+    
+        this.http.engagamentlog(body_engagement).subscribe(res=>{
+          console.log(res);
+          
+        })
       }
 
     })
@@ -256,6 +283,36 @@ export class AchievementShelfComponent implements OnInit {
   // }
 
   popoverDetails(details:any,index:any){
+
+    if(this.userObj.games.length >0){
+      let body_engagement={
+        _userid:this.mergeObj.USERID,
+        _game:this.userObj.games[0].id_coroebus_game,
+        _device:"W",
+        _section:"Achievement Shelf",
+        _description:"Season Details"
+      }
+  
+      this.http.engagamentlog(body_engagement).subscribe(res=>{
+        console.log(res);
+        
+      })
+     }
+     else if(this.userObj.games.length == 0){
+      let body_engagement={
+        _userid:this.mergeObj.USERID,
+        _game: this.userSelectionData.id_coroebus_game,
+        _device:"W",
+        _section:"Achievement Shelf",
+        _description:"Season Details"
+      }
+  
+      this.http.engagamentlog(body_engagement).subscribe(res=>{
+        console.log(res);
+        
+      })
+     }
+      
     console.log(details);
     console.log(details,index+1);
     
@@ -274,12 +331,41 @@ export class AchievementShelfComponent implements OnInit {
         this.popover=false
       }
     // }
+    console.log(this.userObj.games.length);
     
-   
-    
+  
   }
 
   getBadgesDetail(carauseldata:any,index:any){
+    if(this.userObj.games.length >0){
+      let body_engagement={
+        _userid:this.mergeObj.USERID,
+        _game:this.userObj.games[0].id_coroebus_game,
+        _device:"W",
+        _section:"Achievement Shelf",
+        _description:"Badge Details"
+      }
+  
+      this.http.engagamentlog(body_engagement).subscribe(res=>{
+        console.log(res);
+        
+      })
+     }
+     else if(this.userObj.games.length == 0){
+      let body_engagement={
+        _userid:this.mergeObj.USERID,
+        _game: this.userSelectionData.id_coroebus_game,
+        _device:"W",
+        _section:"Achievement Shelf",
+        _description:"Badge Details"
+      }
+  
+      this.http.engagamentlog(body_engagement).subscribe(res=>{
+        console.log(res);
+        
+      })
+     }
+
     console.log(carauseldata,index+1);
     let body = {
       _userid: this.mergeObj.USERID,

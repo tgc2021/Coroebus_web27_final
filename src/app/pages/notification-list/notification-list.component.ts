@@ -5,6 +5,7 @@ import { DashboardModel } from '@models/dashboard.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { NotificationPopupComponent } from '@pages/notification-popup/notification-popup.component';
+import { ApiserviceService } from 'app/apiservice.service';
 import { combineLatest, Subscription } from 'rxjs';
 import * as fromRoot from '../../core/app-state';
 
@@ -21,7 +22,7 @@ export class NotificationListComponent implements OnInit {
   combineLatest: Subscription
   callNotificationAPIAfterReadSub: Subscription
   constructor(private readonly store: Store, private modalService: NgbModal,
-    private eventService: EventService) { }
+    private eventService: EventService,public http:ApiserviceService) { }
 
   ngOnInit(): void {
     this.combineLatest = combineLatest([
@@ -44,6 +45,18 @@ export class NotificationListComponent implements OnInit {
     body = { "_userid": this.userSelectionData?._personal_data?.USERID, "_game": this.userSelectionData?.id_coroebus_game };
     [err, res] = await HttpProtocols.to(DashboardModel.notificationList(body))
     if (!err && res?.statuscode === 200) {
+      let body={
+        _userid:this.userSelectionData?._personal_data?.USERID,
+        _game:this.userSelectionData?.id_coroebus_game,
+        _device:"W",
+        _section:"Notification Page",
+        _description:"Notification Page"
+      }
+  
+      this.http.engagamentlog(body).subscribe(res=>{
+        console.log(res);
+        
+      })
       this.notificationLists = res?.data?.[0]?.list
 
     } else {
@@ -51,6 +64,53 @@ export class NotificationListComponent implements OnInit {
     }
   }
   openNotification(data: any) {
+    console.log(data);
+    
+    if(data.video== "" && data.video_path=="" &&data.image==""){
+      let body={
+        _userid:this.userSelectionData?._personal_data?.USERID,
+        _game:this.userSelectionData?.id_coroebus_game,
+        _device:"W",
+        _section:"Notification Page",
+        _description:"Text Notification"
+      }
+  
+      this.http.engagamentlog(body).subscribe(res=>{
+        console.log(res);
+        
+      })
+    }
+
+    else if(data.video!= "" || data.video_path!="" &&data.image==""){
+      let body={
+        _userid:this.userSelectionData?._personal_data?.USERID,
+        _game:this.userSelectionData?.id_coroebus_game,
+        _device:"W",
+        _section:"Notification Page",
+        _description:"Video Notification"
+      }
+  
+      this.http.engagamentlog(body).subscribe(res=>{
+        console.log(res);
+        
+      })
+    }
+
+    else if(data.video== "" && data.video_path=="" &&data.image!=""){
+      let body={
+        _userid:this.userSelectionData?._personal_data?.USERID,
+        _game:this.userSelectionData?.id_coroebus_game,
+        _device:"W",
+        _section:"Notification Page",
+        _description:"Image Notification"
+      }
+  
+      this.http.engagamentlog(body).subscribe(res=>{
+        console.log(res);
+        
+      })
+    }
+
     const modalRef = this.modalService.open(NotificationPopupComponent, { centered: true, windowClass: 'modal-cls' })
     modalRef.componentInstance.notoficationData = data;
   }

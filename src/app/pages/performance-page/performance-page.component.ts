@@ -10,6 +10,7 @@ import { combineLatest, Subject, Subscription } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import * as fromRoot from '../../core/app-state';
 import { ActivatedRoute } from '@angular/router';
+import { ApiserviceService } from 'app/apiservice.service';
 
 
 @Component({
@@ -54,7 +55,7 @@ export class PerformancePageComponent implements OnInit {
   }]
   dropDownFilterData: any
   dropDownValue: any
-  constructor(private readonly store: Store ,private graph:DefaultComponent,public Util: Util, private _route: ActivatedRoute) {
+  constructor(private readonly store: Store ,private graph:DefaultComponent,public Util: Util, private _route: ActivatedRoute,public http:ApiserviceService) {
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
     ).subscribe(data => {
@@ -62,6 +63,21 @@ export class PerformancePageComponent implements OnInit {
       this.dropDownValueFilter()
       this.dropDownValue = this.dropDownFilterData?.[0]?.value
     })
+
+
+    let body={
+      _userid:this.userObj?._personal_data?.USERID,
+      _game:this.userObj?._personal_data?.id_coroebus_game,
+      _device:"W",
+      _section:"Performance Page",
+      _description:"Performance"
+    }
+
+    this.http.engagamentlog(body).subscribe(res=>{
+      console.log(res);
+      
+    })
+
   }
   dropDownValueFilter() {
     this.dropDownFilterData = this.dropDownFilterMasterData?.filter(data => data?.mapTo.indexOf(this.buttonFilterActive) > -1)
@@ -73,6 +89,7 @@ export class PerformancePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this._routeSub = this._route.queryParams.subscribe(queryParams => {
       // do something with the query params
       if (queryParams?.userID) {

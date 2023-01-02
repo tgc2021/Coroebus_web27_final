@@ -12,6 +12,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import * as fromRoot from '../../core/app-state';
 import Swal from 'sweetalert2';
+import { ApiserviceService } from 'app/apiservice.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -31,7 +32,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   ProfileImageNewOne:any=null
   @Input() name
   constructor(public formBuilder: FormBuilder, private readonly store: Store,
-    private Util: Util, private modalService: NgbModal, private eventService: EventService) { }
+    private Util: Util, private modalService: NgbModal, private eventService: EventService, public http:ApiserviceService) { }
 
   ngOnInit(): void {
         // setTimeout(() => { this.ngOnInit() }, 1000 * 1)
@@ -40,11 +41,27 @@ export class ProfileComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy$)
     ).subscribe(data => {
       this.userObj = data?.user
+
       this.initForm()
       this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
+      
     })
     this.ProfileImageNewOne=JSON.parse(localStorage.getItem('Profile'))
     console.log( this.ProfileImageNewOne);
+
+    let body={
+      _userid:this.userObj?._personal_data?.USERID,
+      _game:"na",
+      _device:"W",
+      _section:"Profile",
+      _description:"Profile Page"
+    }
+
+    this.http.engagamentlog(body).subscribe(res=>{
+      console.log(res);
+      
+    })
+
   }
 
   initForm() {
@@ -91,6 +108,19 @@ export class ProfileComponent implements OnInit, OnDestroy {
     const element = event.currentTarget as HTMLInputElement;
     let fileList: FileList | null = element.files;
   
+    let body={
+      _userid:this.userObj?._personal_data?.USERID,
+      _game:"na",
+      _device:"W",
+      _section:"Profile",
+      _description:"Profile Edit from Profile"
+    }
+
+    this.http.engagamentlog(body).subscribe(res=>{
+      console.log(res);
+      
+    })
+
     console.log(fileList)
     if (fileList) {
       const modalRef = this.modalService.open(ImagecropperComponent, { centered: true, windowClass: 'modal-cls' })
@@ -136,6 +166,20 @@ export class ProfileComponent implements OnInit, OnDestroy {
     [err, res] = await HttpProtocols.to(ProfileModel.updateProfilePic(body))
     //console.log(body)
     if (!err && res?.statuscode === 200) {
+
+      let body={
+        _userid:this.userObj?._personal_data?.USERID,
+        _game:"na",
+        _device:"W",
+        _section:"Profile",
+        _description:"Password Change"
+      }
+  
+      this.http.engagamentlog(body).subscribe(res=>{
+        console.log(res);
+        
+      })
+
       this.eventService.broadcast('callSectionView_1API')
       this.ProfileImageNew=res?.data?._personal_data?.profile_logo
       console.log(this.ProfileImageNew);

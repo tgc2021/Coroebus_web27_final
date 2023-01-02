@@ -950,6 +950,8 @@ viewmoreorder:any
     console.log(this.selected); 
     this.spectSearList =null
     // this.getDashboardGroup()
+    this.pageNumberForSectionView_3 = 1
+
    if(this.userObj.games.length >0){
     this.getSpectatorViewWebService('viewmore')
    }
@@ -967,8 +969,7 @@ viewmoreorder:any
 
 
   filterRankwiseLeaderboard(category: any) {
-
-     
+this.spectSearchStr=null
     this.spectSearList=null
     this.checked = !this.checked;
     this.pageNumberForSectionView_3 = 1
@@ -1041,12 +1042,33 @@ viewmoreorder:any
    
     this.http.spectatorSearch(body).subscribe((res) => {
       console.log(res);
+      
+      let body={
+        _userid:this.userObj?._personal_data?.USERID,
+        _game:this.userSelectionData?.id_coroebus_game,
+        _device:"W",
+        _section:"Spectator View",
+        _description:"Search"
+      }
+  
+      this.http.engagamentlog(body).subscribe(res=>{
+        console.log(res);
+        
+      })
+
       this.searchresponse= res
       this.searchresponse == Array.of(this.searchresponse)
       console.log(this.searchresponse);
       
+      if(this.searchresponse.data[0]!= null){
+
+        this.openSnackBar('No data Available','Ok')
+        this.spectSearList == null
+      }
       this.spectSearList = this.searchresponse.data
       console.log(this.spectSearList);
+
+    
     })
 
   }

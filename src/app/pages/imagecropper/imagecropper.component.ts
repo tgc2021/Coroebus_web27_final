@@ -11,6 +11,7 @@ import * as fromRoot from '../../core/app-state';
 import { Store } from '@ngrx/store';
 import { EventEmitter } from 'stream';
 import { Subscription } from 'rxjs';
+import { ApiserviceService } from 'app/apiservice.service';
 
 @Component({
   selector: 'app-imagecropper',
@@ -31,7 +32,7 @@ export class ImagecropperComponent implements OnInit {
   crop: Subscription
 
 
-  constructor(public activeModal: NgbActiveModal, private readonly store: Store, private eventService: EventService,private Util: Util) { }
+  constructor(public activeModal: NgbActiveModal, private readonly store: Store, private eventService: EventService,private Util: Util, public http:ApiserviceService) { }
   croppedImage: any = '';
   error: any
   @ViewChild(ImageCropperComponent, { static: true }) imageCropper: ImageCropperComponent;
@@ -76,6 +77,19 @@ export class ImagecropperComponent implements OnInit {
     [err, res] = await HttpProtocols.to(ProfileModel.updateProfilePic(body))
     console.log(body)
     if (!err && res?.statuscode === 200) {
+      let body={
+        _userid:this.userObj?._personal_data?.USERID,
+        _game:"na",
+        _device:"W",
+        _section:"Profile",
+        _description:"Edit Profile"
+      }
+  
+      this.http.engagamentlog(body).subscribe(res=>{
+        console.log(res);
+        
+      })
+
       this.ProfileImageNew1=res?.data?._personal_data?.profile_logo
       console.log(this.ProfileImageNew1);
       localStorage.setItem('Profile',JSON.stringify(this.ProfileImageNew1))

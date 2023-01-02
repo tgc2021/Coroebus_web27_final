@@ -10,6 +10,7 @@ import { Util } from '@app/utils/util';
 import Swal from 'sweetalert2';
 import { CustomValidators } from '../custom-validators';
 import { RouteFadeAnimation } from '@shared/animations';
+import { ApiserviceService } from 'app/apiservice.service';
 
 @Component({
   selector: 'app-passwordreset',
@@ -23,7 +24,7 @@ import { RouteFadeAnimation } from '@shared/animations';
  */
 export class PasswordresetComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router,
-    private readonly store: Store, private Util: Util) { }
+    private readonly store: Store, private Util: Util,public http:ApiserviceService) { }
   resetForm: FormGroup;
   submitted = false;
   error = '';
@@ -39,6 +40,20 @@ export class PasswordresetComponent implements OnInit {
   securityList: any = []
 
   ngOnInit(): void {
+
+    let body={
+      _userid:'na',
+      _game:"na",
+      _device:"W",
+      _section:"Forget Password",
+      _description:"Forget Password"
+    }
+
+    this.http.engagamentlog(body).subscribe(res=>{
+      console.log(res);
+      
+    })
+
     document.body.classList.add('auth-body-bg')
     this.resetForm = this.createResetForm()
 
@@ -153,12 +168,40 @@ export class PasswordresetComponent implements OnInit {
     }
     const [err, res] = await HttpProtocols.to(UserModel.checkSecurityAnswer(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200 && res?.data?.validation_status !== 'failure') {
+
+      let body={
+        _userid:this.resetForm?.value?.userID,
+        _game:"na",
+        _device:"W",
+        _section:"Forget Password",
+        _description:"Security Question Success"
+      }
+  
+      this.http.engagamentlog(body).subscribe(res=>{
+        console.log(res);
+        
+      })
+
       this.showPassWordBlock = true;
       this.showSecurityQuestionBlock = false
       this.showId=false
       this.hideLabel=false
       this.showLabelPassword=true
     } else {
+
+      let body={
+        _userid:this.resetForm?.value?.userID,
+        _game:"na",
+        _device:"W",
+        _section:"Forget Password",
+        _description:"Security Question Failure"
+      }
+  
+      this.http.engagamentlog(body).subscribe(res=>{
+        console.log(res);
+        
+      })
+
       this.showPassWordBlock = false;
       this.resetForm.controls['confirmPassword'].patchValue(null)
       this.resetForm.controls['password'].patchValue(null)
@@ -177,6 +220,19 @@ export class PasswordresetComponent implements OnInit {
     const body = { "userid": userId, "password": password }
     const [err, res] = await HttpProtocols.to(UserModel.updatePassword(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
+      let body={
+        _userid:this.resetForm?.value?.userID,
+        _game:"na",
+        _device:"W",
+        _section:"Forget Password",
+        _description:"Successful Reset"
+      }
+  
+      this.http.engagamentlog(body).subscribe(res=>{
+        console.log(res);
+        
+      })
+
       Swal.fire({
         icon: 'success',
         text: 'Your password has been updated successfully',

@@ -2,6 +2,9 @@
     scrollbar-width: none;
 }
 
+.pagination{
+    overflow-x: auto;
+}
 .container-fluid{}
 option{
     width: 100%;
@@ -17,6 +20,17 @@ option{
     overflow-y: auto;
 }
 
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: var(--myvar);
+    border-color: var(--myvar);
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: 0px 4px 15px rgb(0 0 0 / 15%);
+}
 // #cont {
 //     // background: var(--bgImage);
 //     overflow: scroll;
@@ -539,7 +553,7 @@ color: #A5ACB8;
     margin-top: 60px;
    display:flex;
    justify-content: center;
-   min-height: 42vh;
+   min-height: 44vh;
 }
 
 .no_data_reward_image{
@@ -771,6 +785,11 @@ position: relative;
 }
 
 @media (min-width: 280px) and (max-width: 300px){
+
+    .no_data_reward_image_org {
+        width: 100vw;
+        height: 56vh;
+    }
 
     .mytabs{
         width: 100%;
@@ -1373,6 +1392,11 @@ position: relative;
 .right_side_div{
     margin-left: 15px;
 }
+.no_data_reward_image_org {
+    width: 100vw;
+    height: 56vh;
+}
+
 }
 
 
@@ -1669,11 +1693,21 @@ position: relative;
 .right_side_div{
     margin-left: 15px;
 }
+.no_data_reward_image_org {
+    width: 100vw;
+    height: 56vh;
+}
+
 }
 
 
 @media (min-width: 390px) and (max-width: 400px){
     
+    .no_data_reward_image_org {
+        width: 100vw;
+        height: 56vh;
+    }
+
     .mytabs{
         width: 100%;
     }
@@ -1965,6 +1999,12 @@ position: relative;
     .mytabs{
         width: 100%;
     }
+
+    .no_data_reward_image_org {
+        width: 100vw;
+        height: 56vh;
+    }
+
     #cont {
         background-image: url(/assets/images/background.png);
         overflow: scroll;
@@ -2237,6 +2277,12 @@ position: relative;
     .mytabs{
         width: 100%;
     }
+
+    .no_data_reward_image_org {
+        width: 100vw;
+        height: 56vh;
+    }
+
     #cont {
         background-image: url(/assets/images/background.png);
         overflow: scroll;
@@ -2544,6 +2590,10 @@ position: relative;
     .productimage {
         width: 21%;
     }
+    .no_data_reward_image_org {
+        width: 100vw;
+        height: 56vh;
+    }
 
 }
 
@@ -2551,6 +2601,12 @@ position: relative;
     .mytabs{
         width: 100%;
     }
+
+    .no_data_reward_image_org {
+        width: 100vw;
+        height: 56vh;
+    }
+
     #cont {
         background-image: url(/assets/images/background.png);
         overflow: scroll;
@@ -2831,6 +2887,10 @@ position: relative;
 
 
 @media (min-width: 768px) and (max-width: 778px){
+    .no_data_reward_image_org {
+        width: 100vw;
+        height: 56vh;
+    }
     .mytabs{
      
         padding: 0;

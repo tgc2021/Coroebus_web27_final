@@ -8,6 +8,7 @@ import { UserModel } from '@models/user.model';
 import { HttpProtocols } from '@app/http/http.protocols';
 import { Util } from '@app/utils/util';
 import Swal from 'sweetalert2';
+import { ApiserviceService } from 'app/apiservice.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
   userid: any;
 
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router,
-    private readonly store: Store, private Util: Util) { }
+    private readonly store: Store, private Util: Util,public http:ApiserviceService) { }
   loginForm: FormGroup;
   submitted = false;
   error = '';
@@ -129,6 +130,19 @@ export class LoginComponent implements OnInit {
       const body = { "USERID": userId, "PASSWORD": password }
       const [err, res] = await HttpProtocols.to(UserModel.authenticationAndAuthorization(body))
       if (!err && res?.status === 'success' && res?.statuscode === 200) {
+
+        let body={
+          _userid:userId,
+          _game:"na",
+          _device:"W",
+          _section:"Login",
+          _description:"Login Successful"
+        }
+
+        this.http.engagamentlog(body).subscribe(res=>{
+          console.log(res);
+          
+        })
         // if flag is 1 then consider it's firstLogin for end user
         if (res?.data?.indicator_flag === 1) {
           this.isfirstLoginSecurityQuestionEWnable = true
@@ -154,6 +168,19 @@ export class LoginComponent implements OnInit {
         }
 
       } else {
+        let body={
+          _userid:userId,
+          _game:"na",
+          _device:"W",
+          _section:"Login Failure",
+          _description:"Invalid Password"
+        }
+
+        this.http.engagamentlog(body).subscribe(res=>{
+          console.log(res);
+          
+        })
+
         Swal.fire({
           title: '',
           text: res?.message || res?.data,

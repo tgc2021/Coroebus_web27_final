@@ -74,7 +74,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="inner-notification-height">
+                                    <div class="inner-notification-height" *ngIf="!this.NotificationHide">
                                         <!-- {{notificationLists | json}} -->
                                         <div class="row row-cols-1 mt-2 notification-row ms-1 me-4"
                                             [ngClass]="{'yellow-notification-row': item?.readStatus === '0'}"
@@ -288,7 +288,7 @@
                             [style.background-image]="'url(' + web_first_tile_image + ')'"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
                             <div class="col  widthText">
-                                <div class="media d-flex align-items-center gap-3" style="height: 6vh;">
+                                <div class="media d-flex align-items-center gap-3" style="height: 8vh;">
                                     <span class="col-1 ms-2 text-white position-absolute-">
                                         {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_number}}
                                     </span>
@@ -310,7 +310,7 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="media d-flex align-items-center gap-3" style="height: 6vh;">
+                                <div class="media d-flex align-items-center gap-3" style="height: 8vh;">
                                     <div class="rounded-circle z-depth-2 team-logo-row d-flex align-items-center"
                                         style="height:5vh;">
                                         <img loading="lazy" class="rounded-circle z-depth-2 " alt=""
@@ -347,7 +347,7 @@
                         </div>
                     </div>
 
-                    <div [ngClass]="{'dashboard-center-table-forNSM': sectionView_1?.is_land_logos?.length == 0, 'dashboard-center-table': sectionView_1?.is_land_logos?.length != 0}"
+                    <div *ngIf="spectSearchStr === ''" [ngClass]="{'dashboard-center-table-forNSM': sectionView_1?.is_land_logos?.length == 0, 'dashboard-center-table': sectionView_1?.is_land_logos?.length != 0}"
                         class="">
                         <!-- {{spectSearList | json}} -->
                         <!-- {{spectSearchStr ? 'true': 'false'}} -->
@@ -356,7 +356,7 @@
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                             *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) ">
                             <div class="col">
-                                <div class="media d-flex align-items-center gap-3 " style="height: 6vh;">
+                                <div class="media d-flex align-items-center gap-3 " style="height: 8vh;">
                                     <span class="col-1 ms-2 text-white position-absolute-s">
                                         {{item?.rankingtable_number}}
                                     </span>
@@ -374,7 +374,7 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="media me-1" style="height: 6vh; display: flex;align-items:center">
+                                <div class="media me-1" style="height: 8vh; display: flex;align-items:center">
                                     <div class="rounded-circle z-depth-2 team-logo-row "
                                         style="height:5vh;">
                                         <img alt="" src="{{item?.ranking_badge}}" data-holder-rendered="true"
@@ -412,6 +412,74 @@
                         </div>
                         <div #scrollTarget></div>
                     </div>
+
+
+                    <div *ngIf="spectSearchStr !== ''" [ngClass]="{'dashboard-center-table-forNSM': sectionView_1?.is_land_logos?.length == 0, 'dashboard-center-table': sectionView_1?.is_land_logos?.length != 0}"
+                    class="">
+                    <!-- {{spectSearList | json}} -->
+                    <!-- {{spectSearchStr ? 'true': 'false'}} -->
+                    <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
+                        [style.background-image]="'url(' + web_tile_img + ')'"
+                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                        *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) ">
+                        <div class="col">
+                            <div class="media d-flex align-items-center gap-3 " style="height: 6vh;">
+                                <span class="col-1 ms-2 text-white position-absolute-s">
+                                    {{item?.rankingtable_number}}
+                                </span>
+                                <div style="height:5vh;display:flex;align-items: center;">
+                                    <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                        src="{{item?.rankingtable_logo}}" data-holder-rendered="true" height="100%"
+                                        width="41" (click)="openHierarchyPopup(item)">
+                                </div>
+
+                                <div class="media-body user-logo-row ellipsis" style="height: 6vh;">
+                                    <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
+                                        ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}</h5>
+                                    <p class="mt-n4 team-name sub-team name-f-size">{{item?.rankingtable_team}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="media me-1" style="height: 6vh; display: flex;align-items:center">
+                                <div class="rounded-circle z-depth-2 team-logo-row "
+                                    style="height:5vh;">
+                                    <img alt="" src="{{item?.ranking_badge}}" data-holder-rendered="true"
+                                        height="100%" width="100%">
+                                </div>
+
+                                <div class="media-body text-center">
+                                    <h5 class="mt-0 text-white" style="display: flex;
+                                    justify-content: end;
+                                    align-items: center;
+                                    gap: 4rem;">
+                                                <div style="height: 6vh; display:flex;align-items: center;">
+                                                    <span class="name-f-size point-number mt-1">{{item?.rankingtable_weightage}}</span>
+                                                </div>
+                                                
+                                                <div style="height:5vh;">
+                                                    <img class="mt-1 f-right up-arrow" alt=""
+                                                        src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
+                                                        data-holder-rendered="true" height="100%"
+                                                        *ngIf="item?.rankingtable_arrow === 'red'">
+                                                    
+                                                    <img class="mt-1 f-right up-arrow" alt=""
+                                                        src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
+                                                        data-holder-rendered="true" height="100%"
+                                                        *ngIf="item?.rankingtable_arrow !== 'red'">
+                                                </div>
+                                            
+                                        
+                                       
+                                    </h5>
+                                    <!-- <p class="mt-n4 team-name sub-team">India Maste</p> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div #scrollTarget></div>
+                </div>
+               
                     <div class="row view-more-row">
                         <div class="col">
                             <button class="w-100 btn btn-lg btn-primary load-more" type="button" (click)="viewMore()"
@@ -817,7 +885,7 @@
             </div>
 
             <div class="col-12 pointsDistributionSection ">
-                <div class="card mobile-points-dis-card col-11"
+                <div class="mobile-points-dis-card col-11"
                     [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null"
                     [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}">
                     <div class="card-div">

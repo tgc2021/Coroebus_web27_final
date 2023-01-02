@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 import { takeUntil } from 'rxjs/operators';
 import * as fromRoot from '../../../core/app-state';
 import { Subject } from 'rxjs';
+import { ApiserviceService } from 'app/apiservice.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ import { Subject } from 'rxjs';
 export class SecurityQuestionComponent implements OnInit, OnDestroy {
 
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router,
-    private readonly store: Store, private Util: Util) { }
+    private readonly store: Store, private Util: Util,public http:ApiserviceService) { }
   securityQuestionForm: FormGroup;
   submitted = false;
   // set the currenr year
@@ -75,8 +76,11 @@ export class SecurityQuestionComponent implements OnInit, OnDestroy {
       console.log(body)
       const [err, res] = await HttpProtocols.to(UserModel.setSecurityQuestion(body))
       if (!err && res?.status === 'success' && res?.statuscode === 200) {
+       
         localStorage.clear()
         this.router.navigate(['/account/auth/login']);
+
+        
         // this.router.navigate(['/account/theme/selection']);
       } else {
         Swal.fire({

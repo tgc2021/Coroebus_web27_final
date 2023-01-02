@@ -12,6 +12,7 @@ import { takeUntil } from 'rxjs/operators';
 import * as fromRoot from '../../../core/app-state';
 import { Subject } from 'rxjs';
 import { formatDate } from '@angular/common';
+import { ApiserviceService } from 'app/apiservice.service';
 @Component({
   selector: 'app-terms-and-conditions',
   templateUrl: './terms-and-conditions.component.html',
@@ -20,7 +21,7 @@ import { formatDate } from '@angular/common';
 export class TermsAndConditionsComponent implements OnInit, OnDestroy {
 
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router,
-    private readonly store: Store, private Util: Util) { }
+    private readonly store: Store, private Util: Util,public http:ApiserviceService) { }
   termsAndConditionsForm: FormGroup;
   submitted = false;
   // set the currenr year
@@ -60,8 +61,34 @@ export class TermsAndConditionsComponent implements OnInit, OnDestroy {
       console.log(body)
       const [err, res] = await HttpProtocols.to(UserModel.acceptTerms(body))
       if (!err && res?.status === 'success' && res?.statuscode === 200) {
+        let body={
+          _userid:this.userObj?._personal_data?.USERID,
+          _game:"na",
+          _device:"W",
+          _section:"Terms and Conditions",
+          _description:"Accepted"
+        }
+    
+        this.http.engagamentlog(body).subscribe(res=>{
+          console.log(res);
+          
+        })
+  
         this.dispatchAndNavigate(res)
       } else {
+        let body={
+          _userid:this.userObj?._personal_data?.USERID,
+          _game:"na",
+          _device:"W",
+          _section:"Terms and Conditions",
+          _description:"Rejected"
+        }
+    
+        this.http.engagamentlog(body).subscribe(res=>{
+          console.log(res);
+          
+        })
+  
         Swal.fire({
           title: '',
           text: res?.message || res?.data,

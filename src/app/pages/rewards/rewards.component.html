@@ -9,7 +9,7 @@
         <img class="rewardpoints" src="assets/images/rewards/Reward point.png">
         <p class="totalpoints" *ngFor="let points of rewardresponse">{{points.data.points_list[0]._data.rewardPoints}}
         </p>
-        <mat-tab-group *ngFor="let reward of rewardresponse">
+        <mat-tab-group *ngFor="let reward of rewardresponse" (click)="enagagmentlogAPI($event)">
 
           <!-- ******************************************* Platform Reward Tab ********************************************************************     -->
           <mat-tab  [ngStyle]="{'background': headerInfo?.color}" label="{{reward.data.rewardTypes[0].rewardName}}" >
@@ -39,25 +39,28 @@
             <div class="row">
               <div class="col-md-3 col-sm-6 " *ngFor="let rewardlist of reward.data.rewardTypes[1].rewardList;">
                 <mat-card *ngIf="reward.data.rewardTypes[1].rewardList.length > 0">
-                  <div class="product_image_div">
-                    <img src="{{rewardlist.reward_logo}}" class="productimage" alt="Productimage">
-
-                  </div>
                   <div>
-
-                    <p class="product_description">{{rewardlist.name}}</p>
-
+                    <div class="product_image_div">
+                      <img src="{{rewardlist.reward_logo}}" class="productimage" alt="Productimage">
+  
+                    </div>
+                    <div>
+  
+                      <p class="product_description">{{rewardlist.name}}</p>
+  
+                    </div>
+                    <div>
+                      <p class="product_cost"> {{rewardlist.redeem_point}}</p>
+  
+                    </div>
+  
+                    <div class="btn_div">
+                      <!-- <img data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="redeemed_popup_logo"  src="assets/images/rewards/redeemed.png"> -->
+                      <button (click)="redemeedOrg(rewardlist)" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"
+                        type="button" class="redeem_btn">Redeem</button>
+                    </div>
                   </div>
-                  <div>
-                    <p class="product_cost"> {{rewardlist.redeem_point}}</p>
-
-                  </div>
-
-                  <div class="btn_div">
-                    <!-- <img data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="redeemed_popup_logo"  src="assets/images/rewards/redeemed.png"> -->
-                    <button (click)="redemeedOrg(rewardlist)" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"
-                      type="button" class="redeem_btn">Redeem</button>
-                  </div>
+                
                 </mat-card>
 
               </div>
@@ -85,7 +88,7 @@
       <div class="tab" style="position: relative" *ngFor="let points of rewardresponse">
         <img class="rewardpoints" src="assets/images/rewards/Reward point.png">
         <p class="totalpoints">{{points.data.points_list[0]._data.rewardPoints}}</p>
-        <mat-tab-group>
+        <mat-tab-group (click)="enagagmentlogPassbookAPI($event)">
           <!-- ***************************************  Points Table Tab ********************************************************************     -->
 
           <mat-tab label="{{points.data.points_list[0].label}}">
@@ -170,7 +173,7 @@
                     </tr>
                   </thead>
                   <tbody *ngFor="let response of rewardresponse">
-                    <tr *ngFor="let passbookresponse of response.data.points_list[1]._data |orderBy: key : reverse |filter:searchText ">
+                    <tr *ngFor="let passbookresponse of response.data.points_list[1]._data |orderBy: key : reverse |filter:searchText | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
                       <td style="font-family:sans-serif;" class="col-md-2 col-sm-1">{{passbookresponse.date_time.slice(0,11) | date: 'dd/MM/yyyy' }}</td>
                       <td style="font-family:sans-serif;" class="col-md-4 col-sm-3">{{passbookresponse.description_}}</td>
                       <td style="font-family:sans-serif;" *ngIf="passbookresponse.points_credited!=='' " class="col-md-2 col-sm-3">{{passbookresponse.points_credited  | number : '1.2-2'}}</td>
@@ -197,8 +200,10 @@
               </div>
               
             </div>
-
-
+            <div class="d-flex justify-content-end">
+              <ngb-pagination class="pagination" [pageSize] = "10" [collectionSize]="collectionSize" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
+            
+            </div>
           </mat-tab>
 
           <!-- ***************************************  Redemption History Tab ********************************************************************     -->
@@ -294,6 +299,7 @@
                   <div class="col-md-3 col-sm-12 org_redem_div "
                     *ngFor="let pointselectorder3 of points.data.points_list[2]._data[0]._data">
                     <mat-card class="organisation_redemption_history" *ngIf="points.data.points_list[2]._data[0]._data.length > 0">
+                      <div>
                       <div class="product_image_div">
                         <img src="{{pointselectorder3.reward_logo}}" class="productimage" alt="Productimage">
 
@@ -306,7 +312,7 @@
                         <p class="product_cost"> {{pointselectorder3.points}}</p>
 
                       </div>
-
+                    </div>
 
                     </mat-card>
 

@@ -93,5 +93,11 @@ export class ApiserviceService {
 
   }
 
+  
+
+  engagamentlog(data:any){
+    var tempurl= `${this.URLstring}`+ `/${this.Path}/dashboard/engagement_log`
+    return this.Http.post(tempurl,data)
+  }
 
 }

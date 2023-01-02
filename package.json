@@ -49,6 +49,7 @@
     "@nicky-lenaers/ngx-scroll-to": "^9.0.0",
     "@types/chartist": "^0.11.0",
     "angular-archwizard": "^7.0.0",
+    "angular-device-information": "^1.0.8",
     "angular-responsive-carousel": "^2.1.2",
     "angular-strap": "^2.3.12",
     "apexcharts": "^3.27.1",

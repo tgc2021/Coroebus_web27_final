@@ -13,6 +13,7 @@ import { ApiserviceService } from 'app/apiservice.service';
 import { Util } from '@app/utils/util';
 import { Subscription, combineLatest, Subject, Observable, interval } from 'rxjs';
 import * as userActions from '../../../core/app-state/actions';
+import { AngularDeviceInformationService } from 'angular-device-information';
 
 @Component({
   selector: 'app-interactive-dashboard',
@@ -184,11 +185,13 @@ export class InteractiveDashboardComponent implements OnInit {
   firstString: string;
   Digit: any;
   LastString: any;
+  accordioncolor:any
   
-  constructor(private readonly store: Store, public element: ElementRef, public Util: Util,private _router: Router, public http: ApiserviceService, private eventService: EventService) { }
+  constructor(private readonly store: Store, public element: ElementRef, public Util: Util,private _router: Router, public http: ApiserviceService, private eventService: EventService,private deviceInformationService: AngularDeviceInformationService) { }
   
   ngOnInit(): void {
    
+
    
       this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
@@ -272,6 +275,10 @@ if(this.mergeObj.id_coroebus_game != null){
     
     this.element.nativeElement.style.setProperty('--colorback', `${this.scorecardcolor}`)
 
+    this.accordioncolor = this.interactive_dashoard_response[0].data.theme_details[0].light_color
+    console.log(this.accordioncolor);
+    
+    this.element.nativeElement.style.setProperty('--accordioncolor', `${this.accordioncolor}`)
 
     this.dailyToppers=this.interactive_dashoard_response[0].data.seasonal_theme_daily_badge_details;
     this.weeklyTopers=this.interactive_dashoard_response[0].data.seasonal_theme_weekly_badge_toppers;
@@ -296,6 +303,22 @@ if(this.mergeObj.id_coroebus_game != null){
       }
     }));
     
+    
+//   let body2={
+//     _userid: this.mergeObj.USERID,
+//     _game: this.mergeObj.id_coroebus_game,
+//     _section:"testing",
+//    _description:"dashboard/produce",
+  
+//  }
+
+//  this.http.engagamentlog(body2).subscribe((res) => {
+//    console.log(res)
+  
+   
+ 
+  
+//  })
   
   })
 
@@ -317,7 +340,10 @@ else{
     this.isLoading=true;
     this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
     console.log(this.interactive_dashoard_response);
+    this.accordioncolor = this.interactive_dashoard_response[0].data.theme_details[0].light_color
+    console.log(this.accordioncolor);
     
+    this.element.nativeElement.style.setProperty('--accordioncolor', `${this.accordioncolor}`)
   
     // this.http.BoosterData(body).subscribe((res:any)=>{
     //   this.boosterData_response=res.data;
@@ -386,6 +412,24 @@ else{
    
   })
 
+
+  
+//   let body1={
+//     _userid:this.mergeObj.USERID,
+//     _section:"testing",
+//    _description:"dashboard/produce",
+//    _game:this.userSelectionData.id_coroebus_game
+//  }
+//  console.log(body1);
+ 
+
+//  this.http.engagamentlog(body1).subscribe((res) => {
+//    console.log(res)
+  
+   
+ 
+  
+//  })
 }
       
     })

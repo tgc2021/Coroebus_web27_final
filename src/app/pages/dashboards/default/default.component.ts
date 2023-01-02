@@ -15,6 +15,7 @@ import { ActivatedRoute, Event as Events, NavigationEnd, NavigationStart, Router
 import { ToastService } from '@app/services/toast-service';
 import { $ } from 'protractor';
 import { table } from 'console';
+import { ApiserviceService } from 'app/apiservice.service';
 @Component({
   selector: 'app-default',
   templateUrl: './default.component.html',
@@ -49,7 +50,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   backUpData: any
   addInsList: any
   @ViewChild("scrollTarget") scrollTarget: ElementRef;
-  spectSearchStr: string
+  spectSearchStr: string= '';
   spectSearchStrTrigger: boolean = false
   spectSearList: string
   @ViewChild('content') content;
@@ -93,10 +94,15 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   firstrowbackimage: any;
   web_first_tile_image: any;
   web_profile_back_image: any;
+  searchbgimage:any
+  search_bg_tile_image:any
+  final_web_tile_image:any
+  section1_tile_images: any
+  web_tile_img:any
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
-    private _route: ActivatedRoute, public toastService: ToastService,) {
+    private _route: ActivatedRoute, public toastService: ToastService,public http:ApiserviceService) {
     this.activeSubTabForSectionView_2 = 'My Store'
     this.Edit_image()
   }
@@ -132,6 +138,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
           this.queryParams = queryParams
           console.log(this.queryParams);
 
+       
+
           this.getUserBannerDataSectionView_1(queryParams)
           this.getUserBannerDataSectionView_2(queryParams)
           this.getUserBannerDataSectionView_3(null, queryParams)
@@ -151,6 +159,9 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
     })
+
+   
+    
     this.callSectionView_1APISub?.unsubscribe()
     this.callSectionView_1APISub = this.eventService.subscribe('callSectionView_1API', () => {
       this.getUserBannerDataSectionView_1()
@@ -201,6 +212,19 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     };
     [err, res] = await HttpProtocols.to(DashboardModel.getUserBannerDataSectionView_1(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
+      let body={
+        _userid:this.userSelectionData?._personal_data?.USERID,
+        _game:this.userSelectionData?.id_coroebus_game,
+        _device:"W",
+        _section:"Dashboard",
+        _description:"Dashboard"
+      }
+  
+      this.http.engagamentlog(body).subscribe(res=>{
+        console.log(res);
+        
+      })
+
       this.sectionView_1 = res?.data
 
       console.log(this.sectionView_1?.theme_details?.[0]?.dark_color);
@@ -271,6 +295,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     [err, res] = await HttpProtocols.to(DashboardModel.getCenterDataSectionView_2(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
       this.sectionView_2 = res?.data
+console.log(this.sectionView_2);
 
       // for(let i=0;i<this.sectionView_2?._ranking_data?.length;i++){
       if (this.queryParams?.roleID == '6' || this.userSelectionData?._personal_data?.id_role == '6') {
@@ -681,6 +706,66 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     this.activeTabForSectionView_2 = order
     console.log(this.activeTabForSectionView_2);
 
+if(this.activeTabForSectionView_2 == 1){
+  let body={
+    "_userid": this.userSelectionData?._personal_data?.USERID,
+    "_game":this.userSelectionData?.id_coroebus_game,
+    _device:"W",
+    _section:"Dashboard",
+    _description: this.sectionView_2._ranking_data[0].label+' Tab'
+  }
+
+
+  this.http.engagamentlog(body).subscribe(res=>{
+    console.log(res);
+    
+  })
+}
+else if(this.activeTabForSectionView_2 == 2){
+  let body={
+    "_userid": this.userSelectionData?._personal_data?.USERID,
+    "_game":this.userSelectionData?.id_coroebus_game,
+    _device:"W",
+    _section:"Dashboard",
+    _description: this.sectionView_2._ranking_data[1].label+' Tab'
+  }
+
+
+  this.http.engagamentlog(body).subscribe(res=>{
+    console.log(res);
+    
+  })
+}
+else if(this.activeTabForSectionView_2 == 3){
+  let body={
+    "_userid": this.userSelectionData?._personal_data?.USERID,
+    "_game":this.userSelectionData?.id_coroebus_game,
+    _device:"W",
+    _section:"Dashboard",
+    _description: this.sectionView_2._ranking_data[2].label+' Tab'
+  }
+
+
+  this.http.engagamentlog(body).subscribe(res=>{
+    console.log(res);
+    
+  })
+}
+else if(this.activeTabForSectionView_2 == 4){
+  let body={
+    "_userid": this.userSelectionData?._personal_data?.USERID,
+    "_game":this.userSelectionData?.id_coroebus_game,
+    _device:"W",
+    _section:"Dashboard",
+    _description: this.sectionView_2._ranking_data[3].label+' Tab'
+  }
+
+
+  this.http.engagamentlog(body).subscribe(res=>{
+    console.log(res);
+    
+  })
+}
     this.activeTabOrderNumberForSectionView_2 = order
     this.activeSubTabForSectionView_2 = 'My Store'
     this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
@@ -794,8 +879,57 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     };
     [err, res] = await HttpProtocols.to(DashboardModel.spectSearch(body))
     if (!err && res?.statuscode === 200) {
+
+      let body={
+        _userid:this.userSelectionData?._personal_data?.USERID,
+        _game:this.userSelectionData?.id_coroebus_game,
+        _device:"W",
+        _section:"Dashboard",
+        _description:"Search"
+      }
+  
+      this.http.engagamentlog(body).subscribe(res=>{
+        console.log(res);
+        
+      })
+
       this.spectSearList = res?.data
       console.log(this.spectSearList);
+    
+      this.searchbgimage= this.spectSearList[0]
+      this.search_bg_tile_image=this.searchbgimage._data
+      console.log(this.search_bg_tile_image);
+
+      this.search_bg_tile_image.map(res=>{
+       
+        this.final_web_tile_image=res
+        console.log(this.final_web_tile_image);
+        
+        console.log(this.getBackImagesFromSectionView1);
+
+        this.getBackImagesFromSectionView1.map(res=>{
+          
+          this.section1_tile_images=res
+          console.log(this.section1_tile_images);
+          console.log(this.final_web_tile_image.ranking_image_level);
+          console.log(this.section1_tile_images.ranking_image_level);
+          if(this.final_web_tile_image.ranking_image_level == this.section1_tile_images.ranking_image_level){
+            console.log('true');
+            
+           this.web_tile_img= this.section1_tile_images.ranking_image
+            console.log(this.web_tile_img);
+            
+           }
+
+           console.log(this.web_tile_img);
+
+
+        })
+        
+         
+    
+      })
+      
 
     } else {
       this.notificationList_err = 'Error'
@@ -849,6 +983,20 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       modalRef.componentInstance.fileData = event;
       modalRef.componentInstance.buttonColor = this.sectionView_1?.theme_details?.[0]?.dark_color;
       modalRef.componentInstance.userObj = this.sectionView_1?._personal_data;
+
+      let body={
+        "_userid":  this.userSelectionData?._personal_data?.USERID,
+        "_game": this.userSelectionData?.id_coroebus_game,
+        _device:"W",
+        _section:"Profile",
+        _description: "Profile Edit from Dashboard"
+      }
+    
+    
+      this.http.engagamentlog(body).subscribe(res=>{
+        console.log(res);
+        
+      })
       // console.log("FileUpload -> files", fileList);
     }
     this.getUserBannerDataSectionView_2()
@@ -968,6 +1116,21 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       game_id: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
     }
     console.log(obj)
+
+    let body={
+      "_userid": this.userSelectionData?._personal_data?.USERID,
+      "_game":this.userSelectionData?.id_coroebus_game,
+      _device:"W",
+      _section:"Performance",
+      _description: "From Points Distribution"
+    }
+  
+  
+    this.http.engagamentlog(body).subscribe(res=>{
+      console.log(res);
+      
+    })
+
     // this._router.navigate('/performance/page')
     // this._router.navigate(['/performance/page'], { queryParams: { key: value } })
     this._router.navigate(['/performance/page'], {

@@ -9,6 +9,7 @@ import * as fromRoot from '../../core/app-state';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { Util } from '@app/utils/util';
+import { ApiserviceService } from 'app/apiservice.service';
 
 @Component({
   selector: 'app-game-selection',
@@ -24,7 +25,7 @@ export class GameSelectionComponent implements OnInit, OnDestroy {
   selectedGame: any
   id_coroebus_theme:any
   showComponent: boolean = false
-  constructor(private readonly store: Store, private router: Router, public Util: Util) {
+  constructor(private readonly store: Store, private router: Router, public Util: Util,public http:ApiserviceService) {
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
     ).subscribe(data => {
@@ -42,6 +43,19 @@ export class GameSelectionComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.id_role = this.userObj?._personal_data?.id_role
 console.log(this.id_role);
+let body={
+  _userid:this.userObj?._personal_data?.USERID,
+  _game:"na",
+  _device:"W",
+  _section:"Game Page",
+  _description:"Game Page"
+}
+
+this.http.engagamentlog(body).subscribe(res=>{
+  console.log(res);
+  
+})
+
 
   }
   async getGame() {
@@ -57,6 +71,7 @@ console.log(this.id_role);
 
     [err, res] = await HttpProtocols.to(UserModel.getGame(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
+
       const newArr = [];
       while (res?.data?.games.length) newArr.push(res?.data?.games.splice(0, 3));
       this.gameList = newArr
@@ -85,6 +100,18 @@ console.log(this.id_role);
     this.id_coroebus_theme =this.themeObj?.id_coroebus_theme
     console.log(this.id_coroebus_theme);
     console.log(this.id_role);
+let body={
+  _userid:this.userObj?._personal_data?.USERID,
+  _game:"na",
+  _device:"W",
+  _section:"Game Page",
+  _description:"Game selected"
+}
+
+this.http.engagamentlog(body).subscribe(res=>{
+  console.log(res);
+  
+})
 
     if(this.id_role==7){
       this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
