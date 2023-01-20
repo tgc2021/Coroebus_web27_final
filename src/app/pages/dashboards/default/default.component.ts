@@ -99,6 +99,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   final_web_tile_image:any
   section1_tile_images: any
   web_tile_img:any
+  location:any
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -133,8 +134,28 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       this._routeSub?.unsubscribe()
       this._routeSub = this._route.queryParams.subscribe(queryParams => {
         // do something with the query params
+        console.log(queryParams?.userID);
+       
+
         if (queryParams?.userID) {
-          queryParams = { userID: this.Util.decryptData(queryParams?.userID), gameID: this.Util.decryptData(queryParams?.gameID), roleID: this.Util.decryptData(queryParams?.roleID) }
+          console.log(window.location.href);
+          this.location=window.location.href
+          if(this.location.includes("?")){
+             var replacedUserId = queryParams?.userID.replace(/ /g, '+');
+         console.log(replacedUserId);
+        
+         var replacedGameId = queryParams?.gameID.replace(/ /g, '+');
+         console.log(replacedGameId);
+
+         var replacedRoleId = queryParams?.roleID.replace(/ /g, '+');
+         console.log(replacedRoleId);
+            queryParams = { userID: this.Util.decryptData(replacedUserId), gameID: this.Util.decryptData(replacedGameId), roleID: this.Util.decryptData(replacedRoleId) }
+
+          }
+          else{
+            queryParams = { userID: this.Util.decryptData(queryParams?.userID), gameID: this.Util.decryptData(queryParams?.gameID), roleID: this.Util.decryptData(queryParams?.roleID) }
+
+          }
           this.queryParams = queryParams
           console.log(this.queryParams);
 
@@ -313,11 +334,9 @@ console.log(this.sectionView_2);
         console.log();
 
         this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-        console.log(this.firstrowbackimage);
 
         for (let item of this.getBackImages) {
-          console.log(item.ranking_image_level);
-          console.log(this.firstrowbackimage);
+        
 
           if (item.ranking_image_level === this.firstrowbackimage) {
 

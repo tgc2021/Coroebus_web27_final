@@ -333,8 +333,8 @@
 
             <div class="row web_spectator_leaderboard_section" *ngIf="spectSearList == null">
                 <div class="col-12 mt-1 web_leaderboard" >
-                    <div *ngFor="let spectatorleaderboardreponse of spectator_user_list">
-                        <mat-card class="web_spectator_leaderboard" style="background: url({{spectatorleaderboardreponse.ranking_image}}); background-size: 100% 100%;">
+                    <div *ngFor="let spectatorleaderboardreponse of spectator_user_list;  let i =index">
+                        <mat-card class="web_spectator_leaderboard" style="background: url({{spectatorleaderboardreponse.ranking_image}}); background-size: 100% 100%;" (click)="navigatetoDashboard(i)">
                             <div class="row d-flex align-items-center" >
                                 <div class="col-md-1 col-sm-1 col-1">
                                     <p class="web_spectator_rank">{{spectatorleaderboardreponse.rankingtable_number}}</p>

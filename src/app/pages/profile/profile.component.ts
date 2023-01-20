@@ -41,17 +41,19 @@ export class ProfileComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy$)
     ).subscribe(data => {
       this.userObj = data?.user
+console.log(this.userObj);
 
       this.initForm()
       this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
-      
+      console.log(this.mergeObj);
+
     })
     this.ProfileImageNewOne=JSON.parse(localStorage.getItem('Profile'))
     console.log( this.ProfileImageNewOne);
 
     let body={
       _userid:this.userObj?._personal_data?.USERID,
-      _game:"na",
+      _game:this.userObj?._personal_data?.id_coroebus_game,
       _device:"W",
       _section:"Profile",
       _description:"Profile Page"
@@ -110,7 +112,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   
     let body={
       _userid:this.userObj?._personal_data?.USERID,
-      _game:"na",
+      _game:this.userObj?._personal_data?.id_coroebus_game,
       _device:"W",
       _section:"Profile",
       _description:"Profile Edit from Profile"
@@ -169,7 +171,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
       let body={
         _userid:this.userObj?._personal_data?.USERID,
-        _game:"na",
+        _game:this.userObj?._personal_data?.id_coroebus_game,
         _device:"W",
         _section:"Profile",
         _description:"Password Change"

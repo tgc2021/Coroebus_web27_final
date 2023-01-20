@@ -1,361 +1,391 @@
 <!-- Web View Started-->
 <app-loader *ngIf="isLoading"></app-loader>
-    <div  class="web_view_main d-flex justify-content-center" >
-        <div class="web-view" style="width: 75vw;" *ngFor="let response of interactive_dashoard_response">
-            <div class="row web_first_row">
-                <div class="col-4 web_first_col d-flex">
-                    <div class="d-flex gap-3">
-                        <div class="web_profile_div d-flex justify-content-center align-items-center">
-                            <img class="web_profile_pic" (click)="navigateToProfile()"
+<div class="web_view_main d-flex justify-content-center">
+    <div class="web-view" style="width: 75vw;" *ngFor="let response of interactive_dashoard_response">
+        <div class="row web_first_row">
+            <div class="col-4 web_first_col d-flex">
+                <div class="d-flex gap-3">
+                    <div class="web_profile_div d-flex justify-content-center align-items-center">
+                        <img class="web_profile_pic" (click)="navigateToProfile()"
                             src="{{interactive_dashoard_response[0].data._personal_data.profile_logo}}" />
-                        </div>
-                        <div>
-                            <p class="web_profile_name"> {{interactive_dashoard_response[0].data._personal_data.first_name}}</p>
-                            <p class="web_team_name"> {{interactive_dashoard_response[0].data._personal_data.team_name}}</p>
-                        </div>
+                    </div>
+                    <div>
+                        <p class="web_profile_name"> {{interactive_dashoard_response[0].data._personal_data.first_name}}
+                        </p>
+                        <p class="web_team_name"> {{interactive_dashoard_response[0].data._personal_data.team_name}}</p>
                     </div>
                 </div>
-                <!-- <div class="col-2 web_second_col">
+            </div>
+            <!-- <div class="col-2 web_second_col">
                    
     
                 </div> -->
-    
-                <div class="col-4 d-flex justify-content-center align-items-center">
-                    <img class="web_logo" src="{{interactive_dashoard_response[0].data._personal_data.game_logo}}" />
-                </div>
-    
-                <div class="col-4 d-flex justify-content-end">
-                    <div class="web_points_bg">
-                        <div class="web_center_div">
-                            <img class="web_points"
-                                src="{{interactive_dashoard_response[0].data.theme_details[0].reward_points_image}}" />
-                            <p class="total_web_points">{{interactive_dashoard_response[0].data._points[2].score}}</p>
-                        </div>
-    
-                    </div>
-                </div>
-    
-    
+
+            <div class="col-4 d-flex justify-content-center align-items-center">
+                <img class="web_logo" src="{{interactive_dashoard_response[0].data._personal_data.game_logo}}" />
             </div>
-    
-            <div class="row web_second_row">
-                <div class="col-8 web_background_image" style="background: url({{interactive_dashoard_response[0].data.theme_details[0].interactive_dashboard_bg_web}}); height: 65vh;
+
+            <div class="col-4 d-flex justify-content-end">
+                <div class="web_points_bg">
+                    <div class="web_center_div">
+                        <img class="web_points"
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].reward_points_image}}" />
+                        <p class="total_web_points">{{interactive_dashoard_response[0].data._points[2].score}}</p>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="row web_second_row">
+            <div class="col-8 web_background_image" style="background: url({{interactive_dashoard_response[0].data.theme_details[0].interactive_dashboard_bg_web}}); height: 65vh;
                 background-size: 100% 100%;
                 margin-top: 0.5em;">
-                    <div class="row">
-                        <div class="col-2 web_col_left">
-                            <img class="web_my_trophy" (click)="navigateAchievementshelf()"
-                                src="{{interactive_dashoard_response[0].data.theme_details[0].my_trophy}}" />
-                            <img class="web_my_rewards" (click)="navigateReward()"
-                                src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}" />
-                            <img class="web_third_umpire" (click)="navigateToNotification()"
-                                src="{{interactive_dashoard_response[0].data.theme_details[0].third_umpire_bt}}" />
-                        </div>
-    
-                        <div class="col-8 d-flex justify-content-center align-items-end">
-                            <img class="web_character"
-                                src="{{interactive_dashoard_response[0].data._personal_data.skillmuni}}" />
-                        </div>
-    
-                        <div class="col-2 d-flex justify-content-end web_col_right">
-                            <img class="web_spectator_view" (click)="navigateToSpectatorView()"
-                                src="{{interactive_dashoard_response[0].data.theme_details[0].spectator_bt}}" />
-                            <img class="web_booster" data-bs-toggle="modal" data-bs-target="#BoosterModal"
-                                src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}" />
-    
-                        </div>
+                <div class="row">
+                    <div class="col-2 web_col_left">
+                        <img class="web_my_trophy" (click)="navigateAchievementshelf()"
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].my_trophy}}" />
+                        <img class="web_my_rewards" (click)="navigateReward()"
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}" />
+                        <img class="web_third_umpire" (click)="navigateToNotification()"
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].third_umpire_bt}}" />
                     </div>
-                </div>
-    
-                <div class="col-4 web_right_side">
-                    <div class="upper_blue_scoreboard" (click)="navigateDashboard()">
-                        <div class="row upper_blue_scorecard_details d-flex">
-    
-                            <div class="col-3 web_team_rank d-block">
-    
-                                <p class="web_tem_rank_number">{{interactive_dashoard_response[0].data._primary.team_rank}}
-                                </p>
-                                <p class="web_tem_rank_label">Team Rank</p>
-                            </div>
-                            <div class="col-1 sideline">
-    
-                                <img class="web_sideline_image" src="assets/images/interactive-dashboard/Side Line.png" />
-    
-                            </div>
-    
-                            <div class="col-3 web_my_score d-block">
-    
-                                <p class="web_my_score_number">{{interactive_dashoard_response[0].data._points[0].score}}
-                                </p>
-                                <p class="web_my_score_label">My Score</p>
-                            </div>
-                            <div class="col-1 sideline">
-    
-                                <img class="web_sideline_image" src="assets/images/interactive-dashboard/Side Line.png" />
-    
-                            </div>
-    
-                            <div class="col-3 web_my_rank d-block">
-    
-                                <p class="web_my_rank_number">{{interactive_dashoard_response[0].data._primary.my_rank}}</p>
-                                <p class="web_my_rank_label">My Rank</p>
-                            </div>
-    
-    
-    
-                        </div>
-                    </div>
-    
-                    <div class="lower_blue_scorecard" (click)="navigateDashboard()">
-                        <div class="row lower_blue_scorecard_details d-flex justify-content-center">
-                            <div class="col-3 web_first_measurement d-block"
-                                *ngFor="let points of interactive_dashoard_response[0].data._Point_distribution">
-                                <div>
-                                    <p class="web_first_measurement_number">{{points.weightage}}</p>
 
-                                </div>
-                                <div>
-                                    <p class="web_first_measurement_label">{{points.point_label}}</p>
+                    <div class="col-8 d-flex justify-content-center align-items-end">
+                        <img class="web_character"
+                            src="{{interactive_dashoard_response[0].data._personal_data.skillmuni}}" />
+                    </div>
 
-                                </div>
-    
-                            </div>
-                        </div>
+                    <div class="col-2 d-flex justify-content-end web_col_right">
+                        <img class="web_spectator_view" (click)="navigateToSpectatorView()"
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].spectator_bt}}" />
+                        <img class="web_booster" data-bs-toggle="modal" data-bs-target="#BoosterModal"
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}" />
+
                     </div>
-    
-                    <div class="campaign_div">
-    
-                        <div class="row campaign_details">
-                            <div class="col-12 campaign_full_image  d-flex justify-content-end align-items-end">
-                                <div>
-                                    <div class="d-flex justify-content-end">
-                                        <img class="web_campaign_image"
-                                            src="{{interactive_dashoard_response[0].data.theme_details[0].campaigns_bt_web}}" />
-    
-                                    </div>
-                                    <div class="d-flex justify-content-end">
-                                        <img class="web_daily_image"
-                                            src="{{interactive_dashoard_response[0].data.theme_details[0].daily_bt_web}}" (mouseover)="openDailyModal()" data-bs-toggle="modal" data-bs-target="#DailyModal"  />
-    
-                                    </div>
-                                    <div class="d-flex justify-content-end">
-                                        <img class="web_weekly_image"
-                                            src="{{interactive_dashoard_response[0].data.theme_details[0].weekly_bt_web}}" (mouseover)="openWeeklyModal()" data-bs-toggle="modal" data-bs-target="#weeklyModal"  />
-    
-                                    </div>
-                                    <div class="d-flex justify-content-end">
-                                        <img class="web_monthly_image"
-                                            src="{{interactive_dashoard_response[0].data.theme_details[0].monthly_bt_web}}" (mouseover)="openMonthlyModal()" data-bs-toggle="modal" data-bs-target="#monthlyModal"  />
-    
-                                    </div>
-                                </div>
-    
-                            </div>
-    
-    
-                        </div>
-                    </div>
-    
                 </div>
             </div>
-    
-    
-            <div class="row web_third_row">
-                <div class="col-8">
-                    <div class="row">
-                        <div class="col-12 d-flex gap-1 web_buttons_col">
-                            <div class="col-3 web_bottom_buttons">
-                                <img class="web_button_image"  (click)="navigateToChampionsLeague()"
-                                    src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_web}}" />
+
+            <div class="col-4 web_right_side">
+                <div class="upper_blue_scoreboard" (click)="navigateDashboard()">
+                    <div class="row upper_blue_scorecard_details d-flex">
+
+                        <div class="col-3 web_team_rank d-block">
+
+                            <p class="web_tem_rank_number">{{interactive_dashoard_response[0].data._primary.team_rank}}
+                            </p>
+                            <p class="web_tem_rank_label">Team Rank</p>
+                        </div>
+                        <div class="col-1 sideline">
+
+                            <img class="web_sideline_image" src="assets/images/interactive-dashboard/Side Line.png" />
+
+                        </div>
+
+                        <div class="col-3 web_my_score d-block">
+
+                            <p class="web_my_score_number">{{interactive_dashoard_response[0].data._points[0].score}}
+                            </p>
+                            <p class="web_my_score_label">My Score</p>
+                        </div>
+                        <div class="col-1 sideline">
+
+                            <img class="web_sideline_image" src="assets/images/interactive-dashboard/Side Line.png" />
+
+                        </div>
+
+                        <div class="col-3 web_my_rank d-block">
+
+                            <p class="web_my_rank_number">{{interactive_dashoard_response[0].data._primary.my_rank}}</p>
+                            <p class="web_my_rank_label">My Rank</p>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <div class="lower_blue_scorecard" (click)="navigateDashboard()">
+                    <div class="row lower_blue_scorecard_details d-flex justify-content-center">
+                        <div class="col-3 web_first_measurement d-block"
+                            *ngFor="let points of interactive_dashoard_response[0].data._Point_distribution">
+                            <div>
+                                <p class="web_first_measurement_number">{{points.weightage}}</p>
+
                             </div>
-    
-                            <div class="col-3 web_bottom_buttons">
-                                <img class="web_button_image"  (click)="navigateTopersonalMilestone()"
-                                    src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt_web}}" />
+                            <div>
+                                <p class="web_first_measurement_label">{{points.point_label}}</p>
+
                             </div>
-    
-                            <div class="col-3 web_bottom_buttons">
-                                <img class="web_button_image"  (click)="navigateToLearningAcademy()"
-                                    src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt_web}}" />
-                            </div>
-    
-                            <div class="col-3 web_bottom_buttons">
-                                <img (click)="navigateToPlayZone()" class="web_button_image"
-                                    src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt_web}}" />
-                            </div>
-    
+
                         </div>
                     </div>
                 </div>
-    
+
+                <div class="campaign_div">
+
+                    <div class="row campaign_details">
+                        <div class="col-12 campaign_full_image  d-flex justify-content-end align-items-end">
+                            <div>
+                                <div class="d-flex justify-content-end">
+                                    <img class="web_campaign_image"
+                                        src="{{interactive_dashoard_response[0].data.theme_details[0].campaigns_bt_web}}" />
+
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <img class="web_daily_image"
+                                        src="{{interactive_dashoard_response[0].data.theme_details[0].daily_bt_web}}"
+                                        (mouseover)="openDailyModal()" data-bs-toggle="modal"
+                                        data-bs-target="#DailyModal" />
+
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <img class="web_weekly_image"
+                                        src="{{interactive_dashoard_response[0].data.theme_details[0].weekly_bt_web}}"
+                                        (mouseover)="openWeeklyModal()" data-bs-toggle="modal"
+                                        data-bs-target="#weeklyModal" />
+
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <img class="web_monthly_image"
+                                        src="{{interactive_dashoard_response[0].data.theme_details[0].monthly_bt_web}}"
+                                        (mouseover)="openMonthlyModal()" data-bs-toggle="modal"
+                                        data-bs-target="#monthlyModal" />
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
             </div>
         </div>
-    
-    
+
+
+        <div class="row web_third_row">
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-12 d-flex gap-1 web_buttons_col">
+                        <div class="col-3 web_bottom_buttons">
+                            <img class="web_button_image" (click)="navigateToChampionsLeague()"
+                                src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_web}}" />
+                        </div>
+
+                        <div class="col-3 web_bottom_buttons">
+                            <img class="web_button_image" (click)="navigateTopersonalMilestone()"
+                                src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt_web}}" />
+                        </div>
+
+                        <div class="col-3 web_bottom_buttons">
+                            <img class="web_button_image" (click)="navigateToLearningAcademy()"
+                                src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt_web}}" />
+                        </div>
+
+                        <div class="col-3 web_bottom_buttons">
+                            <img (click)="navigateToPlayZone()" class="web_button_image"
+                                src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt_web}}" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-    <!-- Mobile View Started -->
-    <div class="mobile-view" *ngFor="let response of interactive_dashoard_response">
-        <div class="row">
-            <div class="col">
-                <!-- Profile Section -->
-                <div class="d-flex justify-content-center">
-                    <div class="mobile-profile-section">
-                        <div class="d-flex justify-content-between">
-                            <div class="d-flex gap-2">
-                                <div class="mobile-reward-section">
-                                    <img (click)="navigateToProfile()" src="{{interactive_dashoard_response[0].data._personal_data.profile_logo}}" alt="" width="100%" height="100%" style="border-radius: 100%;">
-                                </div>
-                                <div class="mobile-profile-info d-flex gap-2 align-items-center">
-                                    <div class="mobile-profile-name d-flex flex-column">
-                                        <p class="mobile_first_name_details">
-                                            {{interactive_dashoard_response[0].data._personal_data.first_name}} </p>
-                                        <p class="mobile_team_name_details">
-                                         {{interactive_dashoard_response[0].data._personal_data.team_name}}</p>
-                                    </div>
-                                </div>
-                            </div>
+
+
+</div>
+
+
+
+<!-- Mobile View Started -->
+<div class="mobile-view" *ngFor="let response of interactive_dashoard_response">
+    <div class="row">
+        <div class="col">
+            <!-- Profile Section -->
+            <div class="d-flex justify-content-center">
+                <div class="mobile-profile-section">
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex gap-2">
                             <div class="mobile-reward-section">
-                                <div class="text-center">
-                                    <img src="{{interactive_dashoard_response[0].data.theme_details[0].reward_points_image}}"
-                                        alt="" style="height: 4vh;">
-                                    <div>{{interactive_dashoard_response[0].data._points[2].score}}</div>
+                                <img (click)="navigateToProfile()"
+                                    src="{{interactive_dashoard_response[0].data._personal_data.profile_logo}}" alt=""
+                                    width="100%" height="100%" style="border-radius: 100%;">
+                            </div>
+                            <div class="mobile-profile-info d-flex gap-2 align-items-center">
+                                <div class="mobile-profile-name d-flex flex-column">
+                                    <p class="mobile_first_name_details">
+                                        {{interactive_dashoard_response[0].data._personal_data.first_name}} </p>
+                                    <p class="mobile_team_name_details">
+                                        {{interactive_dashoard_response[0].data._personal_data.team_name}}</p>
                                 </div>
-    
                             </div>
                         </div>
-    
-                    </div>
-                </div>
-    
-                <!-- Mobile First ScoreBoard Section -->
-                <div class="d-flex justify-content-center">
-                    <div class="mobile-first-section d-flex justify-content-evenly align-items-center">
-                        <div class="mobile-team-rank text-center col-4 border2px">
-                            <div>{{interactive_dashoard_response[0].data._primary.team_rank}}</div>
-                            <div class="mobile-sub-name">Team Rank</div>
-                        </div>
-                        <div class="text-center col-4 border2px">
-                            <div class="mobile-my-score">
-                                {{interactive_dashoard_response[0].data._points[0].score}}
+                        <div class="mobile-reward-section">
+                            <div class="text-center">
+                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].reward_points_image}}"
+                                    alt="" style="height: 4vh;">
+                                <div>{{interactive_dashoard_response[0].data._points[2].score}}</div>
                             </div>
-                            <div class="mobile-sub-name">
-                                My Score
-                            </div>
-                        </div>
-                        <div class="mobile-myRank text-center col-4">
-                            <div>{{interactive_dashoard_response[0].data._primary.my_rank}}</div>
-                            <div class="mobile-sub-name">My Rank</div>
+
                         </div>
                     </div>
+
                 </div>
-                <!-- mobile second section -->
-                <div class="d-flex justify-content-center" (click)="navigateDashboard()">
-                    <div class="mobile-second-section d-flex flex-column justify-content-around gap-1">
-                        <div class="mobile-title text-center pb-2">
-                            <span class="mobile-game-title"> {{interactive_dashoard_response[0].data._personal_data.game_name}}</span>
+            </div>
+
+            <!-- Mobile First ScoreBoard Section -->
+            <div class="d-flex justify-content-center">
+                <div class="mobile-first-section d-flex justify-content-evenly align-items-center">
+                    <div class="mobile-team-rank text-center col-4 border2px">
+                        <div>{{interactive_dashoard_response[0].data._primary.team_rank}}</div>
+                        <div class="mobile-sub-name">Team Rank</div>
+                    </div>
+                    <div class="text-center col-4 border2px">
+                        <div class="mobile-my-score">
+                            {{interactive_dashoard_response[0].data._points[0].score}}
                         </div>
-                        <div class="d-flex justify-content-center mobile_point_distribution">
-                            <div *ngFor="let points of interactive_dashoard_response[0].data._Point_distribution"
-                                class=" text-center col-3 border2px">
-                                <div class="mobile-runs-scored">{{points.weightage}}</div>
-                                <div class="mobile-sub-name">{{points.point_label}}</div>
-                            </div>
+                        <div class="mobile-sub-name">
+                            My Score
                         </div>
                     </div>
+                    <div class="mobile-myRank text-center col-4">
+                        <div>{{interactive_dashoard_response[0].data._primary.my_rank}}</div>
+                        <div class="mobile-sub-name">My Rank</div>
+                    </div>
                 </div>
-                <!-- mobile btn section -->
-                <div class="d-flex justify-content-center">
-                    <div class="mobile-btn-section d-flex justify-content-between align-items-center gap-1">
-                        <div style="height:6vh;">
-                            <img (click)="navigateToLearningAcademy()" src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt}}"
-                                alt="Learning_Academy" width="100%" height="100%" >
-                        </div>
-                        <div style="height:6vh;">
-                            <img (click)="navigateTopersonalMilestone()" src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt}}"
-                                alt="Personal_Milestone" width="100%" height="100%" >
-                        </div>
-                        <div style="height:6vh;">
-                            <img (click)="navigateToPlayZone()"
-                                src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt}}" alt="PlayZone"
-                                width="100%" height="100%" >
+            </div>
+            <!-- mobile second section -->
+            <div class="d-flex justify-content-center" (click)="navigateDashboard()">
+                <div class="mobile-second-section d-flex flex-column justify-content-around gap-1">
+                    <div class="mobile-title text-center pb-2">
+                        <span class="mobile-game-title">
+                            {{interactive_dashoard_response[0].data._personal_data.game_name}}</span>
+                    </div>
+                    <div class="d-flex justify-content-center mobile_point_distribution">
+                        <div *ngFor="let points of interactive_dashoard_response[0].data._Point_distribution"
+                            class=" text-center col-3 border2px">
+                            <div class="mobile-runs-scored">{{points.weightage}}</div>
+                            <div class="mobile-sub-name">{{points.point_label}}</div>
                         </div>
                     </div>
                 </div>
-    
-    
-                <div class="col  d-flex justify-content-center align-items-center">
-                    <div class="row mobile-cricket-pitch"  style="background: url({{interactive_dashoard_response[0].data.theme_details[0].interactive_dashboard_bg}});  height: 52vh;
+            </div>
+            <!-- mobile btn section -->
+            <div class="d-flex justify-content-center">
+                <div class="mobile-btn-section d-flex justify-content-between align-items-center gap-1">
+                    <div style="height:6vh;">
+                        <img (click)="navigateToLearningAcademy()"
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt}}"
+                            alt="Learning_Academy" width="100%" height="100%">
+                    </div>
+                    <div style="height:6vh;">
+                        <img (click)="navigateTopersonalMilestone()"
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt}}"
+                            alt="Personal_Milestone" width="100%" height="100%">
+                    </div>
+                    <div style="height:6vh;">
+                        <img (click)="navigateToPlayZone()"
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt}}" alt="PlayZone"
+                            width="100%" height="100%">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col  d-flex justify-content-center align-items-center">
+                <div class="row mobile-cricket-pitch" style="background: url({{interactive_dashoard_response[0].data.theme_details[0].interactive_dashboard_bg}});  height: 52vh;
                                 width: 95vw;
                                 background-size: 100% 100%;
                                 background-repeat: no-repeat;
                                 padding: 1%;">
-                        <div class="col-3 d-flex flex-column justify-content-between align-items-start gap-3 pt-2 pb-2">
-                            <div class="d-flex flex-column justify-content-between gap-3">
-                                <div class="mobile-my-trophy" style="height:7vh">
-                                    <img (click)="navigateAchievementshelf()" src="{{interactive_dashoard_response[0].data.theme_details[0].my_trophy}}" alt="my-trophy" width="100%" height="100%"  class="MobileimageBorder">
-                                </div>
-                                <div class="mobile-my-rewards" style="height:7vh">
-                                    <img (click)="navigateReward()" src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}" alt="my-rewards" width="100%" height="100%" class="MobileimageBorder">
-                                </div>
-    
+                    <div class="col-3 d-flex flex-column justify-content-between align-items-start gap-3 pt-2 pb-2">
+                        <div class="d-flex flex-column justify-content-between gap-3">
+                            <div class="mobile-my-trophy" style="height:7vh">
+                                <img (click)="navigateAchievementshelf()"
+                                    src="{{interactive_dashoard_response[0].data.theme_details[0].my_trophy}}"
+                                    alt="my-trophy" width="100%" height="100%" class="MobileimageBorder">
                             </div>
-                            <div class="d-flex flex-column gap-5 align-items-start">
-                                <div class="mobile-tug-war d-flex justify-content-start" style="height:6vh">
-                                    <img  (click)="navigateToChampionsLeague()" src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_bt}}"
-                                        alt="tug-of-war" height="100%">
-    
-                                </div>
-                                <div class="mobile-3rd-umpire" style="height:8vh;">
-                                    <img (click)="navigateToNotification()" src="{{interactive_dashoard_response[0].data.theme_details[0].third_umpire_bt}}" alt="3rd-Umpire" width="100%" height="100%" >
-                                </div>
+                            <div class="mobile-my-rewards" style="height:7vh">
+                                <img (click)="navigateReward()"
+                                    src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}"
+                                    alt="my-rewards" width="100%" height="100%" class="MobileimageBorder">
                             </div>
-    
-    
+
                         </div>
-                        <div class="col-6 d-flex justify-content-center align-self-end character-png">
-                            <img src="{{interactive_dashoard_response[0].data._personal_data.skillmuni}}" alt="character-png">
-                        </div>
-                        <div class="col-3 d-flex flex-column justify-content-between align-items-end pt-2 pb-2">
-                            <div class="mobile-spectator-view" style="height:7vh">
-                                <img (click)="navigateToSpectatorView()" src="{{interactive_dashoard_response[0].data.theme_details[0].spectator_bt}}" alt="spectator-view" height="100%" width="100%">
+                        <div class="d-flex flex-column gap-5 align-items-start">
+                            <div class="mobile-tug-war d-flex justify-content-start" style="height:6vh">
+                                <img (click)="navigateToChampionsLeague()"
+                                    src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_bt}}"
+                                    alt="tug-of-war" height="100%">
+
                             </div>
-                            <div class="campaign-buttons d-flex flex-column gap-1 mt-1">
-                                <div style="height:6vh;">
-                                    <img src="{{interactive_dashoard_response[0].data.theme_details[0].campaigns_bt}}"
-                                        alt="CAMPAIGNS" height="100%" width="100%">
-                                </div>
-                                <div style="height:6vh;">
-                                    <img src="{{interactive_dashoard_response[0].data.theme_details[0].Daily}}" alt="Daily"
-                                        height="100%" width="100%"  data-bs-toggle="modal" data-bs-target="#DailyModal" (mouseover)="openDailyModal()">
-                                </div>
-                                <div style="height:6vh;">
-                                    <img src="{{interactive_dashoard_response[0].data.theme_details[0].Weekly}}"
-                                        alt="WEEKLY" height="100%" width="100%" data-bs-toggle="modal" data-bs-target="#weeklyModal" (mouseover)="openWeeklyModal()">
-                                </div>
-                                <div style="height:6vh;">
-                                    <img src="{{interactive_dashoard_response[0].data.theme_details[0].Monthly}}"
-                                        alt="Monthly" height="100%" width="100%" data-bs-toggle="modal" data-bs-target="#monthlyModal" (mouseover)="openMonthlyModal()" >
-                                </div>
-    
-                            </div>
-                            <div class="mobile-booster" data-bs-toggle="modal" data-bs-target="#BoosterModal" style="height:8vh;">
-                                <img   src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}" alt="Booster" height="100%" width="100%">
+                            <div class="mobile-3rd-umpire" style="height:8vh;">
+                                <img (click)="navigateToNotification()"
+                                    src="{{interactive_dashoard_response[0].data.theme_details[0].third_umpire_bt}}"
+                                    alt="3rd-Umpire" width="100%" height="100%">
                             </div>
                         </div>
-    
-    
-    
+
+
                     </div>
-    
-    
+                    <div class="col-6 d-flex justify-content-center align-self-end character-png">
+                        <img src="{{interactive_dashoard_response[0].data._personal_data.skillmuni}}"
+                            alt="character-png">
+                    </div>
+                    <div class="col-3 d-flex flex-column justify-content-between align-items-end pt-2 pb-2">
+                        <div class="mobile-spectator-view" style="height:7vh">
+                            <img (click)="navigateToSpectatorView()"
+                                src="{{interactive_dashoard_response[0].data.theme_details[0].spectator_bt}}"
+                                alt="spectator-view" height="100%" width="100%">
+                        </div>
+                        <div class="campaign-buttons d-flex flex-column gap-1 mt-1">
+                            <div style="height:6vh;">
+                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].campaigns_bt}}"
+                                    alt="CAMPAIGNS" height="100%" width="100%">
+                            </div>
+                            <div style="height:6vh;">
+                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].Daily}}" alt="Daily"
+                                    height="100%" width="100%" data-bs-toggle="modal" data-bs-target="#DailyModal"
+                                    (mouseover)="openDailyModal()">
+                            </div>
+                            <div style="height:6vh;">
+                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].Weekly}}"
+                                    alt="WEEKLY" height="100%" width="100%" data-bs-toggle="modal"
+                                    data-bs-target="#weeklyModal" (mouseover)="openWeeklyModal()">
+                            </div>
+                            <div style="height:6vh;">
+                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].Monthly}}"
+                                    alt="Monthly" height="100%" width="100%" data-bs-toggle="modal"
+                                    data-bs-target="#monthlyModal" (mouseover)="openMonthlyModal()">
+                            </div>
+
+                        </div>
+                        <div class="mobile-booster" data-bs-toggle="modal" data-bs-target="#BoosterModal"
+                            style="height:8vh;">
+                            <img src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}"
+                                alt="Booster" height="100%" width="100%">
+                        </div>
+                    </div>
+
+
+
                 </div>
-    
-    
+
+
             </div>
+
+
         </div>
-    
-    
     </div>
+
+
+</div>
 
 
 
@@ -396,7 +426,7 @@
 
 
 <!-- DailyModal -->
-<div class="DailyModal"*ngIf="isDailyModalopen">
+<div class="DailyModal" *ngIf="isDailyModalopen">
     <div class="modal  fade bd-example-modal-sm" id="DailyModal" data-bs-backdrop="static" data-bs-keyboard="false"
         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modalDialogDaily modal-dialog-centered">
@@ -407,8 +437,7 @@
                     <div class="d-flex justify-content-end">
                         <button type="button" class="button-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                     </div>
-                    <div class="popupheight popupDaily row d-flex"
-                        *ngIf="seasonalThemeDaily.length>0">
+                    <div class="popupheight popupDaily row d-flex" *ngIf="seasonalThemeDaily.length>0">
                         <div class="d-flex  justify-content-between mb-2">
                             <div class="ModalHeading">
                                 {{seasonalThemeDaily[0].seasonal_theme_title}}
@@ -430,14 +459,17 @@
                                     <div class="secondCircle centerCircle">
                                         <div class="thirdCircle centerCircle">
                                             <div class="forthCircle">
-                                                <img src="{{seasonalThemeDaily[0].logo}}"
-                                                    alt="" height="52" width="52" style="border-radius: 50%;">
+                                                <img src="{{seasonalThemeDaily[0].logo}}" alt="" height="52" width="52"
+                                                    style="border-radius: 50%;">
                                             </div>
 
                                             <div class="row">
                                                 <div class="col p-1">
-                                                    <div class="rewardPintImg d-flex align-items-center gap-1" style="height: 2.5vh;" >
-                                                        <img class="imgSIze-17" src="{{interactive_dashoard_response[0].data.theme_details[0].reward_points_image}}" height="100%" />
+                                                    <div class="rewardPintImg d-flex align-items-center gap-1"
+                                                        style="height: 2.5vh;">
+                                                        <img class="imgSIze-17"
+                                                            src="{{interactive_dashoard_response[0].data.theme_details[0].reward_points_image}}"
+                                                            height="100%" />
                                                         <span style="color: #FFFFFF;">
                                                             {{seasonalThemeDaily[0].reward_point}}</span>
                                                     </div>
@@ -450,7 +482,7 @@
 
                         </div>
 
-                        <div class="" style="margin-top:20%;height:25vh;overflow-y: auto;" >
+                        <div class="" style="margin-top:20%;height:25vh;overflow-y: auto;">
                             <div class="Progress-card container">
                                 <div class="">
                                     <div *ngFor="let item of dailyToppers">
@@ -503,7 +535,7 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
 
 
 
@@ -526,8 +558,7 @@
                     <div class="d-flex justify-content-end">
                         <button type="button" class="button-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                     </div>
-                    <div class="row d-flex"
-                        *ngIf="seasonalThemeWeekly.length>0">
+                    <div class="row d-flex" *ngIf="seasonalThemeWeekly.length>0">
                         <div class="d-flex justify-content-between  mb-1 p-1">
                             <div class="ModalHeading ms-2">
                                 {{seasonalThemeWeekly[0].seasonal_theme_title}}
@@ -540,7 +571,7 @@
                             </div>
 
                             <div class="modalDescription d-flex justify-content-end p-1 mt-2 mb-3">
-                                
+
                                 <div> Valid Till
                                     :{{seasonalThemeWeekly[0].valid_till_date |
                                     date:"dd/M/yyyy"}}</div>
@@ -549,17 +580,19 @@
 
                         <div class="mt-5">
                             <div class="d-flex justify-content-center">
-                                <img src="{{seasonalThemeWeekly[0].logo}}"
-                                    alt="master_blaster" height="100px" width="100px" style="border-radius:100%;">
+                                <img src="{{seasonalThemeWeekly[0].logo}}" alt="master_blaster" height="100px"
+                                    width="100px" style="border-radius:100%;">
 
                             </div>
-                            
+
 
                             <div class="d-flex justify-content-center mt-2">
-                                <button class="btn-reward d-flex justify-content-center align-items-center p-1 gap-1"  style="height: 3.5vh;">
-                                    
-                                        <img src="{{interactive_dashoard_response[0].data.theme_details[0].reward_points_image}}" alt="" height="100%">
-                                    
+                                <button class="btn-reward d-flex justify-content-center align-items-center p-1 gap-1"
+                                    style="height: 3.5vh;">
+
+                                    <img src="{{interactive_dashoard_response[0].data.theme_details[0].reward_points_image}}"
+                                        alt="" height="100%">
+
                                     <div>
                                         {{seasonalThemeWeekly[0].reward_point}}
                                     </div>
@@ -570,7 +603,7 @@
                                 <div class="d-flex flex-column align-items-center">
                                     <div class="Number">
                                         {{interactive_dashoard_response[0].data.seasonal_theme_weekly_badge_details[0].your_rank}}
-                                        
+
                                     </div>
                                     <div class="Words">Your Rank</div>
                                 </div>
@@ -580,41 +613,42 @@
                                 <div class="d-flex flex-column align-items-center">
                                     <div class="Number">
                                         {{interactive_dashoard_response[0].data.seasonal_theme_weekly_badge_details[0].your_score}}
-                                        
+
                                     </div>
                                     <div class="Words">Your Score</div>
                                 </div>
                             </div>
-                            
+
 
                             <div class="col-12 card-container" style="overflow-x:auto;"
                                 *ngIf="weeklyTopers.length!=0 && weeklyTopers[0].profile_mage!=null">
                                 <div class="mt-3 mb-2">
-                                <span class="Top5">Top 5 performers who have won the badge</span>
-                                &nbsp;
-                                <span class="infoIcon">&#x24D8;</span>
-                            </div>
-                            <div class="d-flex" style="overflow: scroll;">
-                                <div class="card col-4 p-2 gap-2" *ngFor="let topper of weeklyTopers;let i =index"
-                                style="background: #D9FFDE;">
-                                <div class="d-flex flex-column align-items-center">
-                                    <div class="pic">
-                                        <img src="{{topper.profile_mage}}" alt="image" height="40px" width="40px">
+                                    <span class="Top5">Top 5 performers who have won the badge</span>
+                                    &nbsp;
+                                    <span class="infoIcon">&#x24D8;</span>
+                                </div>
+                                <div class="d-flex" style="overflow: scroll;">
+                                    <div class="card col-4 p-2 gap-2" *ngFor="let topper of weeklyTopers;let i =index"
+                                        style="background: #D9FFDE;">
+                                        <div class="d-flex flex-column align-items-center">
+                                            <div class="pic">
+                                                <img src="{{topper.profile_mage}}" alt="image" height="40px"
+                                                    width="40px">
+                                            </div>
+                                            <div class="name">{{topper.first_name.slice(0,10)}}...</div>
+                                            <div class="rank">Rank:{{topper.user_rank}}</div>
+                                            <div class="score">{{topper.score}}</div>
+
+                                        </div>
+
                                     </div>
-                                    <div class="name">{{topper.first_name.slice(0,10)}}...</div>
-                                    <div class="rank">Rank:{{topper.user_rank}}</div>
-                                    <div class="score">{{topper.score}}</div>
-                                 
                                 </div>
 
-                            </div>
-                            </div>
-                               
 
 
 
                             </div>
-                           
+
 
 
 
@@ -633,93 +667,92 @@
             </div>
         </div>
     </div>
-</div> 
-     
-    <!-- Monthly Modal -->
-    <div class="monthlyModal" *ngIf="isMonthlyModalOpen">
-        <div class="modal  fade bd-example-modal-sm" id="monthlyModal" data-bs-backdrop="static"
-            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modalDialogMonthly modal-dialog-centered ">
-                <div class="modal-content modalContentMonthly"
-                    style="background: url(assets/images/interactive-dashboard/BG.png);position: relative; background-size:contain;">
-                    <div class="modal-body"
-                        style="background-image:url(https://coroebus.in/coroebus-beta/assets/Media/monthly_champion.svg); background-repeat: no-repeat; background-size: contain; position:ralative; min-height: 51vh;">
-                        <div class="d-flex justify-content-end">
-                            <button type="button" class="button-close" data-bs-dismiss="modal"
-                                aria-label="Close">X</button>
+</div>
+
+<!-- Monthly Modal -->
+<div class="monthlyModal" *ngIf="isMonthlyModalOpen">
+    <div class="modal  fade bd-example-modal-sm" id="monthlyModal" data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modalDialogMonthly modal-dialog-centered ">
+            <div class="modal-content modalContentMonthly"
+                style="background: url(assets/images/interactive-dashboard/BG.png);position: relative; background-size:contain;">
+                <div class="modal-body"
+                    style="background-image:url(https://coroebus.in/coroebus-beta/assets/Media/monthly_champion.svg); background-repeat: no-repeat; background-size: contain; position:ralative; min-height: 51vh;">
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="button-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+                    </div>
+                    <div class="row d-flex" *ngIf="seasonalThemeMonthly.length>0">
+                        <div class="d-flex justify-content-between  mb-1 p-1">
+                            <div class="ModalHeading ms-2 mb-2" style="color:#ffff">
+                                {{seasonalThemeMonthly[0].seasonal_theme_title}}
+                            </div>
+
                         </div>
-                        <div class="row d-flex"
-                            *ngIf="seasonalThemeMonthly.length>0">
-                            <div class="d-flex justify-content-between  mb-1 p-1">
-                                <div class="ModalHeading ms-2 mb-2" style="color:#ffff">
-                                    {{seasonalThemeMonthly[0].seasonal_theme_title}}
-                                </div>
-
-                            </div>
-                            <div class="mb-5">
-                                <div class="modalDescription col-11" style="color:#ffff">
-                                    {{seasonalThemeMonthly[0].theme_description}}
-                                </div>
-
-                                <div class="modalDescription d-flex justify-content-end p-1 mt-1"
-                                    style="color:#ffff">
-                                  
-                                    <div> Valid Till
-                                        :{{seasonalThemeMonthly[0].valid_till_date
-                                        | date:"dd/M/yyyy"}}</div>
-                                </div>
+                        <div class="mb-5">
+                            <div class="modalDescription col-11" style="color:#ffff">
+                                {{seasonalThemeMonthly[0].theme_description}}
                             </div>
 
-                            <div class="mt-5">
-                                <div class="d-flex justify-content-center mt-5">
-                                    <img src="{{seasonalThemeMonthly[0].logo}}"
-                                        alt="master_blaster" height="100px" width="100px" style="border-radius:100%;">
+                            <div class="modalDescription d-flex justify-content-end p-1 mt-1" style="color:#ffff">
+
+                                <div> Valid Till
+                                    :{{seasonalThemeMonthly[0].valid_till_date
+                                    | date:"dd/M/yyyy"}}</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5">
+                            <div class="d-flex justify-content-center mt-5">
+                                <img src="{{seasonalThemeMonthly[0].logo}}" alt="master_blaster" height="100px"
+                                    width="100px" style="border-radius:100%;">
 
 
-                                </div>
+                            </div>
 
-                                <div class="d-flex justify-content-center mt-2">
-                                    <button class="btn-reward d-flex justify-content-center align-items-center p-1 gap-1"  style="height: 3.5vh;">
-                                    
-                                        <img src="{{interactive_dashoard_response[0].data.theme_details[0].reward_points_image}}" alt="" height="100%">
-                                    
+                            <div class="d-flex justify-content-center mt-2">
+                                <button class="btn-reward d-flex justify-content-center align-items-center p-1 gap-1"
+                                    style="height: 3.5vh;">
+
+                                    <img src="{{interactive_dashoard_response[0].data.theme_details[0].reward_points_image}}"
+                                        alt="" height="100%">
+
                                     <div>
                                         {{seasonalThemeMonthly[0].reward_point}}
                                     </div>
                                 </button>
 
+                            </div>
+                            <div class="d-flex justify-content-center gap-2 mt-2">
+                                <div class="d-flex flex-column align-items-center">
+                                    <div class="Number">
+                                        {{seasonalThemeMonthly[0].your_rank}}
+
+                                    </div>
+                                    <div class="Words">Your Rank</div>
                                 </div>
-                                <div class="d-flex justify-content-center gap-2 mt-2">
-                                    <div class="d-flex flex-column align-items-center">
-                                        <div class="Number">
-                                            {{seasonalThemeMonthly[0].your_rank}}
-                                            
-                                        </div>
-                                        <div class="Words">Your Rank</div>
-                                    </div>
-                                    <div style="border-left:1px solid #000000;">
+                                <div style="border-left:1px solid #000000;">
 
-                                    </div>
-
-                                    <div class="d-flex flex-column align-items-center">
-                                        <div class="Number">
-                                            {{seasonalThemeMonthly[0].your_score}}
-                                            
-                                        </div>
-                                        <div class="Words">Your Score</div>
-                                    </div>
                                 </div>
-                                
 
-                                <div class="col-12 card-container" style="overflow-x:auto;color:#ffff"
-                                    *ngIf="monthlyTopers.length!=0">
-                                    <div class="mt-3 mb-2">
-                                        <span class="Top5">Top 5 performers who have won the badge</span>
-                                        &nbsp;
-                                        <span class="infoIcon">&#x24D8;</span>
+                                <div class="d-flex flex-column align-items-center">
+                                    <div class="Number">
+                                        {{seasonalThemeMonthly[0].your_score}}
+
                                     </div>
-                                    <div class="d-flex" style="overflow: scroll;">
-                                        <div class="card col-4 p-2 gap-2" *ngFor="let topper of monthlyTopers"
+                                    <div class="Words">Your Score</div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-12 card-container" style="overflow-x:auto;color:#ffff"
+                                *ngIf="monthlyTopers.length!=0">
+                                <div class="mt-3 mb-2">
+                                    <span class="Top5">Top 5 performers who have won the badge</span>
+                                    &nbsp;
+                                    <span class="infoIcon">&#x24D8;</span>
+                                </div>
+                                <div class="d-flex" style="overflow: scroll;">
+                                    <div class="card col-4 p-2 gap-2" *ngFor="let topper of monthlyTopers"
                                         style="background: linear-gradient(180deg, #608CDF 0%, #62B8E9 100%);">
                                         <div class="pic">
                                             <img src="{{topper.profile_mage}}" alt="image" height="40px" width="40px">
@@ -728,37 +761,37 @@
                                         <div class="rank">Rank:{{topper.user_rank}}</div>
                                         <div class="score">{{topper.score}}</div>
                                     </div>
-                                    </div>
-                                  
-
                                 </div>
-                              
 
 
                             </div>
 
 
-                        </div>
-                        <div class="row d-flex justify-content-center align-items-start"
-                            *ngIf="interactive_dashoard_response[0].data.seasonal_theme_monthly.length==0">
-                            <div class="col text-center">
-                                <span style="color:#FFFFFF">Hey Welcome! The Themes will be configured soon. Stay tuned
-                                </span>
-                            </div>
+
                         </div>
 
+
+                    </div>
+                    <div class="row d-flex justify-content-center align-items-start"
+                        *ngIf="interactive_dashoard_response[0].data.seasonal_theme_monthly.length==0">
+                        <div class="col text-center">
+                            <span style="color:#FFFFFF">Hey Welcome! The Themes will be configured soon. Stay tuned
+                            </span>
+                        </div>
                     </div>
 
                 </div>
+
             </div>
         </div>
-    </div> 
+    </div>
+</div>
 
 
 
 
-    
-  <div class="modal fade" id="BoosterModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+
+<div class="modal fade" id="BoosterModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered ">
         <div class="modal-content">
@@ -783,14 +816,19 @@
                             <div class="accordion-body">
                                 <div class="text-center d-flex flex-column align-items-center">
                                     <div class="accordian-title">{{boosterData_response.section_title}}</div>
-                                    <div *ngIf="boosterData_response.section_target!==null|| boosterData_response.section_target=='';then NotnullValue"></div>
+                                    <div
+                                        *ngIf="boosterData_response.section_target!==null|| boosterData_response.section_target=='';then NotnullValue">
+                                    </div>
                                     <ng-template #NotnullValue>
-                                        <div class="accordian-subtitle">Overall Target:{{boosterData_response.section_target}} </div>
+                                        <div class="accordian-subtitle">Overall
+                                            Target:{{boosterData_response.section_target}} </div>
                                     </ng-template>
-                                   
-                                    
+
+
                                     <div class="d-flex justify-content-center gap-2">
-                                        <div *ngIf="boosterData_response.section_Date!==null|| boosterData_response.section_Date=='';then NotnullDate"></div>
+                                        <div
+                                            *ngIf="boosterData_response.section_Date!==null|| boosterData_response.section_Date=='';then NotnullDate">
+                                        </div>
                                         <ng-template #NotnullDate>
                                             <div>
                                                 <img src="assets/images/BoosterAssests/calender.png" alt="">
@@ -799,8 +837,8 @@
                                                 {{boosterData_response.section_Date.slice(0,10)
                                                 | date:'dd/MM/yyyy'}}</div>
                                         </ng-template>
-                                        
-                                        
+
+
 
                                     </div>
                                 </div>
@@ -828,7 +866,7 @@
                                             </div>
                                             <div
                                                 class="d-flex justify-content-center align-items-center mt-2 accordian-label">
-                                                
+
                                                 {{boosterData_response.section_todays_score}}
                                             </div>
                                         </div>
@@ -842,7 +880,7 @@
                                         <div class="skillmuniCharacter">
                                             <img src="{{boosterData_response.booster_rank_details[0].character_img}}"
                                                 alt="" height="100%">
-                                                <div class="shadow"></div>
+                                            <div class="shadow"></div>
                                         </div>
                                         <div
                                             class="ScoreRank accordian-label d-flex flex-column gap-1 align-items-center">
@@ -850,34 +888,46 @@
                                             <div>
                                                 {{boosterData_response.booster_rank_details[0].date_time_stamp_today.slice(0,10)
                                                 | date:'dd/MM/yyyy'}}</div>
-                                                <!-- <div *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='red' then redColor else greenColor"></div>
+                                            <!-- <div *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='red' then redColor else greenColor"></div>
                                                 <div *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='yellow' then equlgreenColor"></div> -->
-    
-                                            <div *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='red'">
-                                                <span  style="color:red">#{{boosterData_response.booster_rank_details[0].today_rank_number}}</span> 
+
+                                            <div
+                                                *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='red'">
+                                                <span
+                                                    style="color:red">#{{boosterData_response.booster_rank_details[0].today_rank_number}}</span>
                                             </div>
-                                            <div *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='green'">
-                                                <span  style="color:green">#{{boosterData_response.booster_rank_details[0].today_rank_number}}</span> 
+                                            <div
+                                                *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='green'">
+                                                <span
+                                                    style="color:green">#{{boosterData_response.booster_rank_details[0].today_rank_number}}</span>
                                             </div>
-                                            <div *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='yellow'">
-                                             <span style="color:green">#{{boosterData_response.booster_rank_details[0].today_rank_number}}</span>
+                                            <div
+                                                *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='yellow'">
+                                                <span
+                                                    style="color:green">#{{boosterData_response.booster_rank_details[0].today_rank_number}}</span>
                                             </div>
-    
-    
+
+
                                             <div>
                                                 {{boosterData_response.booster_rank_details[0].date_time_stamp_yesterday.slice(0,10)
                                                 | date:'dd/MM/yyyy'}}</div>
-                                            
-                                            <div *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='red'">
-                                                <span  style="color:green">#{{boosterData_response.booster_rank_details[0].yesterday_rank_number}}</span> 
+
+                                            <div
+                                                *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='red'">
+                                                <span
+                                                    style="color:green">#{{boosterData_response.booster_rank_details[0].yesterday_rank_number}}</span>
                                             </div>
-                                            <div *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='green'">
-                                                <span  style="color:red">#{{boosterData_response.booster_rank_details[0].yesterday_rank_number}}</span> 
+                                            <div
+                                                *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='green'">
+                                                <span
+                                                    style="color:red">#{{boosterData_response.booster_rank_details[0].yesterday_rank_number}}</span>
                                             </div>
-                                            <div *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='yellow'">
-                                             <span style="color:green">#{{boosterData_response.booster_rank_details[0].yesterday_rank_number}}</span>
+                                            <div
+                                                *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='yellow'">
+                                                <span
+                                                    style="color:green">#{{boosterData_response.booster_rank_details[0].yesterday_rank_number}}</span>
                                             </div>
-    
+
                                         </div>
                                         <div style="border-left:1px solid rgba(0, 0, 0, 0.07);height: 10vh;">
                                         </div>
@@ -888,7 +938,8 @@
                                             </div>
 
                                             <div>
-                                                <div style="height:4vh;" *ngIf="boosterData_response.booster_rank_details[0].ranking_status=='green'">
+                                                <div style="height:4vh;"
+                                                    *ngIf="boosterData_response.booster_rank_details[0].ranking_status=='green'">
                                                     <img src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.up_arrow}}"
                                                         alt="" height="100%">
                                                 </div>
@@ -903,8 +954,8 @@
                                                 <img src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.equal_arrow}}"
                                                     alt="" height="100%">
                                             </div>
-                                          
-                                        
+
+
                                             <div
                                                 *ngIf="boosterData_response.booster_rank_details[0].rank_position_stmt=='Same rank to before.';then equalRank else UnequalRank">
                                             </div>
@@ -912,20 +963,25 @@
                                                 <div class="boosterRankPosition">
                                                     {{boosterData_response.booster_rank_details[0].rank_position_stmt}}
                                                 </div>
-    
+
                                             </ng-template>
                                             <ng-template #UnequalRank>
                                                 <div class="boosterRankPosition">
                                                     {{firstString}}
-                                                     <span *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='green'" style="color: green;">
+                                                    <span
+                                                        *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='green'"
+                                                        style="color: green;">
                                                         {{Digit}}
                                                     </span>
-                                                     <span *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='red'" style="color:red;">
+                                                    <span
+                                                        *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='red'"
+                                                        style="color:red;">
                                                         {{Digit}}
-                                                         </span>
-                                                     <span *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='yellow'">
+                                                    </span>
+                                                    <span
+                                                        *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='yellow'">
                                                         {{Digit}}
-                                                         </span>
+                                                    </span>
                                                     {{LastString}}
                                                 </div>
                                             </ng-template>
@@ -933,7 +989,7 @@
                                     </div>
                                 </div>
 
-                                
+
                                 <div class="d-flex justify-content-center align-items-center">
                                     <hr style="width: 100%;
                                         height: 0px;
@@ -941,79 +997,100 @@
                                         border: 2px solid #000000;">
                                 </div>
 
-                                <div class="row" style="border-radius: 5px;"  style="overflow-y:auto;height: 15vh;">
+                                <div class="row" style="border-radius: 5px;" style="overflow-y:auto;height: 15vh;">
                                     <div class="col-12 d-flex">
                                         <div class="col-3"></div>
                                         <div class="col-8 d-flex  align-items-center ps-1">
-                                                <div class="accordian-label d-flex flex-column align-items-start col-6">
-                                                   
-                                                   <div>{{boosterData_response.section_last_score}}</div> 
-                                                </div>
-                                                <div  class="accordian-label d-flex flex-column  align-items-end col-6">
-                                                    <div>{{boosterData_response.section_todays_score}}</div>
-                                                </div>
+                                            <div class="accordian-label d-flex flex-column align-items-start col-6">
+
+                                                <div>{{boosterData_response.section_last_score}}</div>
+                                            </div>
+                                            <div class="accordian-label d-flex flex-column  align-items-end col-6">
+                                                <div>{{boosterData_response.section_todays_score}}</div>
+                                            </div>
                                         </div>
                                         <div class="col"></div>
                                     </div>
 
-                                    <div class="d-flex justify-content-around align-items-center" *ngFor="let data of boosterData_response.booster_index_details">
+                                    <div class="d-flex justify-content-around align-items-center"
+                                        *ngFor="let data of boosterData_response.booster_index_details">
                                         <div class="col-3 accordian-label">{{data.game_element}}</div>
 
                                         <div class="col-8" style="height:6vh">
                                             <div class="d-flex justify-content-between">
-                                                <div class="accordian-label d-flex flex-column align-items-start justify-content-center col-6">
-                                                   
-                                                
+                                                <div
+                                                    class="accordian-label d-flex flex-column align-items-start justify-content-center col-6">
+
+
                                                     <div>{{data.yesterday_score}}</div>
                                                 </div>
-                                                <div  class="accordian-label d-flex flex-column  align-items-end col-6">
-                                                    
+                                                <div class="accordian-label d-flex flex-column  align-items-end col-6">
+
                                                     <div>{{data.today_score}}</div>
                                                 </div>
                                             </div>
-                                            
-                                            
-                                                <div  class="progress"
-                                                    *ngIf="data.arrow_color==='green';then IfBlock else   elseBlock"> </div>
-                                                <ng-template #IfBlock>
-                                                   
-                                                   
-                                                    <div class="progress">
-                                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [ngStyle]="{'width.%': data.growth_percentage}" aria-valuenow="data.growth_percentage" aria-valuemin="0" aria-valuemax="100%">{{data.growth_percentage.slice(0,5)}}%</div>
-                                                      </div>
-                                                      
-            
-                                                </ng-template>
-                                                <ng-template #elseBlock>
-                                                    <div class="progress border border-success" *ngIf="data.growth_percentage==0">
-                                                        <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" [ngStyle]="{'width.%': data.growth_percentage.slice(1,4)}" aria-valuenow="data.growth_percentage" aria-valuemin="0" aria-valuemax="100%">{{data.growth_percentage.slice(0,4)}}%</div>
-                                                      </div>  
-                                                      <div class="progress border border-danger"*ngIf="data.growth_percentage!=0">
-                                                        <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" [ngStyle]="{'width.%': data.growth_percentage.slice(1,4)}" aria-valuenow="data.growth_percentage" aria-valuemin="0" aria-valuemax="100%">{{data.growth_percentage.slice(1,4)}}%</div>
-                                                      </div>
-                                                </ng-template>
+
+
+                                            <div class="progress"
+                                                *ngIf="data.arrow_color==='green';then IfBlock else   elseBlock"> </div>
+                                            <ng-template #IfBlock>
+
+
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                                                        role="progressbar"
+                                                        [ngStyle]="{'width.%': data.growth_percentage}"
+                                                        aria-valuenow="data.growth_percentage" aria-valuemin="0"
+                                                        aria-valuemax="100%">{{data.growth_percentage.slice(0,5)}}%
+                                                    </div>
+                                                </div>
+
+
+                                            </ng-template>
+                                            <ng-template #elseBlock>
+                                                <div class="progress border border-success"
+                                                    *ngIf="data.growth_percentage==0">
+                                                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated"
+                                                        role="progressbar"
+                                                        [ngStyle]="{'width.%': data.growth_percentage.slice(1,4)}"
+                                                        aria-valuenow="data.growth_percentage" aria-valuemin="0"
+                                                        aria-valuemax="100%">{{data.growth_percentage.slice(0,4)}}%
+                                                    </div>
+                                                </div>
+                                                <div class="progress border border-danger"
+                                                    *ngIf="data.growth_percentage!=0">
+                                                    <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated"
+                                                        role="progressbar"
+                                                        [ngStyle]="{'width.%': data.growth_percentage.slice(1,4)}"
+                                                        aria-valuenow="data.growth_percentage" aria-valuemin="0"
+                                                        aria-valuemax="100%">{{data.growth_percentage.slice(1,4)}}%
+                                                    </div>
+                                                </div>
+                                            </ng-template>
                                         </div>
 
                                         <div *ngIf="data.growth_percentage>0" style="height:4vh;">
-                                        
-                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png"
-                                                alt="" height="100%">
+
+                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                                height="100%">
                                         </div>
 
                                         <div *ngIf="data.growth_percentage<0" style="height:4vh;">
-                                            
-                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""  height="100%">
-                                           
-                                        </div>  
+
+                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                height="100%">
+
+                                        </div>
 
                                         <div *ngIf="data.growth_percentage==0" style="height:4vh;">
-                                            
-                                            <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt=""  height="100%">
-                                           
-                                        </div>  
+
+                                            <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt=""
+                                                height="100%">
+
+                                        </div>
 
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -1022,8 +1099,23 @@
             </div>
         </div>
     </div>
-</div>    
-    
+</div>
+
+
+<div class="modal fade" id="RewardsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content">
+            <div class="d-flex justify-content-end">
+                <button type="button" class="booster_btn_close" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+            <div class="col-12">
+                <img src="assets/images/rewards/pop up.png" style="width: 100%;"/>
+            </div>
+          
+        </div>
+    </div>
+</div>
 
 <!-- <div class="modal fade" id="BoosterModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">

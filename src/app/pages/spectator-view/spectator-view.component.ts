@@ -30,7 +30,7 @@ export class SpectatorViewComponent implements OnInit {
   combineLatest: Subscription
   userSelectionData: any
   _routeSub: Subscription
-
+  spectator_user_id:any
   destroy$: Subject<boolean> = new Subject<boolean>();
   userObj: any
   mergeObj: any
@@ -42,6 +42,7 @@ export class SpectatorViewComponent implements OnInit {
   radioSelectedString: string;
   spectator_ranking_leaderboard: any
   spectator_data: any
+  spectator_data_1:any
   spectator_user_list: any
   first_tab_data: any
   spectator_group_list: any
@@ -57,11 +58,13 @@ status:any
 queryParams:any
 order:any
 searchresponse:any
-pageNumberForSectionView_3: number = 1
+pageNumberForSectionView_3: any = 1
 getBackImagesFromSectionView3:any
 spectator_user_list_view_more:any = []
-
-
+spectator_previous_array:any
+spectator_temporary_array:any=[]
+spectator_game_id:any
+spectator_role_id:any
 @ViewChild("scrollTarget") scrollTarget: ElementRef;
 viewmoreorder:any
   checked1: boolean =true;
@@ -413,7 +416,9 @@ viewmoreorder:any
 
         if(this.spectator_dashoard_response[0].data._personal_data.id_role == '6'){
           if(this.order==1 || this.order == null){
+
             if(this.spectator_data[0].user_list != ''){
+              
               this.spectator_user_list = this.spectator_data[0].user_list;
               this.checked1=true;
               this.checked2=false;
@@ -742,34 +747,7 @@ viewmoreorder:any
         }
 
 
-        if(viewmore){
-          console.log("view");
-          this.spectator_user_list?.forEach((element, index) => {
-            if (element?.label === this.spectator_user_list[index]?.label) {
-              if (element?._data?.length > 0) {
-                this.spectator_user_list[index]?._data?.push(...element?._data)
-                console.log(this.spectator_user_list[index]?._data?.push(...element?._data));
-                
-                this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'center' });
-              }
-            }
-  
-          });
-        }
-               
-        else {
-          this.getBackImagesFromSectionView3=this.spectator_user_list.map((res:any)=>{
-            console.log(res);
-            
-            // this.sectionView3Data=res._data;
-            
-          })
-            
-        
-  
-          
-  
-        }
+    
         this.eventService.broadcast('passDataToHeader', {
           color: this.spectator_dashoard_response[0].data.theme_details[0].dark_color,
           game_logo: this.spectator_dashoard_response[0].data._personal_data.game_logo,
@@ -969,44 +947,121 @@ viewmoreorder:any
 
 
   filterRankwiseLeaderboard(category: any) {
-this.spectSearchStr=null
+      //  debugger
+
+    this.spectSearchStr=null
     this.spectSearList=null
     this.checked = !this.checked;
     this.pageNumberForSectionView_3 = 1
-   
+    
     if (this.checked) {
-      this.spectator_data = this.spectator_ranking_leaderboard.filter((a: any) => {
-        if (a.label === category || category == '') {
-          console.log(a);
-          this.order=a.order
-          console.log(this.order);
-         
-          
-      if( a.user_list!=''){
-        this.spectator_user_list = a.user_list
-        console.log(this.spectator_user_list);
-
-        return a;
+      console.log( this.pageNumberForSectionView_3 );
+      let body = {
+        _userid: this.mergeObj.USERID,
+        _game: this.userObj.games[0].id_coroebus_game,
+        id_theme: this.userObj.themes[0].id_coroebus_theme,
+        page_number: this.pageNumberForSectionView_3,
+        id_coroebus_group: this.selected==undefined? this.spectator_group_list[0].data[0].id_coroebus_group: this.selected
       }
-      else{
-        if(this.userObj.games.length >0){
-          this.getSpectatorViewWebService('viewmore')
+  
+      this.http.spectator_dashboard(body).subscribe((res) => {
+        console.log(res)
+        this.spectator_dashoard_response = res;
+  
+        this.spectator_dashoard_response = Array.of(this.spectator_dashoard_response);
+  
+        console.log(this.spectator_dashoard_response);
+  
+        this.spectator_ranking_leaderboard = this.spectator_dashoard_response[0].data.ranking
+        console.log(this.spectator_ranking_leaderboard);
+        this.spectator_data = this.spectator_dashoard_response[0].data.ranking;
+        console.log(this.spectator_data);
+    
 
-        }
-        else if(this.userObj.games.length ==0){
-          console.log("userobj");
+
+        this.spectator_data_1 = this.spectator_data.filter((a: any) => {
+          console.log(a.label);
+          console.log(category);
           
-          this.getSpectatorViewMore2('viewmore')
-      
-         }
-        // this.getSpectatorViewMore2('viewmore')
+          if (a.label == category) {
+            console.log(a);
+            console.log(a.label);
 
-      }
+            this.order=a.order
+            console.log(this.order);
+            console.log(this.checked);
+            if(this.order==1 || this.order == null){
+
+            
+                
+                this.checked1=true;
+                this.checked2=false;
+                this.checked3=false;
+                this.checked4=false;
+              
+                this.checked=false
+              
+            }
+            else if(this.order==2){
+                this.checked1=false;
+                this.checked2=true;
+                this.checked3=false;
+                this.checked4=false;
+                this.checked=false
+
+             
+             
+            }
+            else if(this.order==3){
+            
+                this.checked1=false;
+                this.checked2=false;
+                this.checked3=true;
+                this.checked4=false;
+                this.checked=false
+
+            
+            }
+            else if(this.order==4){
+             
+                this.checked1=false;
+                this.checked2=false;
+                this.checked3=false;
+                this.checked4=true;
+               
+                this.checked=false
+
+             
+            }
+        // this.checked = false
+            
+        if( a.user_list!=''){
+          this.spectator_user_list = a.user_list
+          console.log(this.spectator_user_list);
          
+          return a;
         }
-        console.log(this.checked);
-        this.checked = false
+        
+        else{
+          if(this.userObj.games.length >0){
+            this.getSpectatorViewWebService('viewmore')
+  
+          }
+          else if(this.userObj.games.length ==0){
+            console.log("userobj");
+            
+            this.getSpectatorViewMore2('viewmore')
+        
+           }
+          // this.getSpectatorViewMore2('viewmore')
+  
+        }
+       
+          }
+        
+        })
       })
+     
     }
     else {
       this.spectator_data = this.spectator_ranking_leaderboard.filter((a: any) => {
@@ -1074,6 +1129,8 @@ this.spectSearchStr=null
   }
 
   viewMore() {
+    console.log(this.spectator_user_list);
+    this.spectator_temporary_array=this.spectator_user_list
     
     console.log("view more");
     this.pageNumberForSectionView_3 = this.pageNumberForSectionView_3 + 1
@@ -1082,12 +1139,155 @@ this.spectSearchStr=null
     
     // this.pageNumberForSectionView_3 = this.pageNumberForSectionView_3 + 1
    if(this.userObj.games.length >0){
-    this.getSpectatorViewWebService('viewmore')
+    // this.getSpectatorViewWebService('viewmore')
+    let body = {
+      _userid: this.mergeObj.USERID,
+      _game: this.userObj.games[0].id_coroebus_game,
+      id_theme: this.userObj.themes[0].id_coroebus_theme,
+      page_number: this.pageNumberForSectionView_3,
+      id_coroebus_group: this.selected==undefined? this.spectator_group_list[0].data[0].id_coroebus_group: this.selected
+    }
+
+    this.http.spectator_dashboard(body).subscribe((res) => {
+      console.log(res)
+      this.spectator_dashoard_response = res;
+
+      this.spectator_dashoard_response = Array.of(this.spectator_dashoard_response);
+
+      console.log(this.spectator_dashoard_response);
+
+      this.spectator_ranking_leaderboard = this.spectator_dashoard_response[0].data.ranking
+      console.log(this.spectator_ranking_leaderboard);
+      this.spectator_data = this.spectator_dashoard_response[0].data.ranking;
+      console.log(this.spectator_data);
+      console.log(this.order);
+
+      ////////////////////////////////////////////////////To show Active Tab 1///////////////////////////////////////////////////////
+
+      if(this.spectator_dashoard_response[0].data._personal_data.id_role == '6'){
+        if(this.order==1 || this.order == null){
+          
+          if(this.spectator_data[0].user_list != ''){
+            
+            this.spectator_user_list = this.spectator_data[0].user_list;
+            this.checked1=true;
+            this.checked2=false;
+            this.checked3=false;
+            this.checked4=false;
+            console.log(this.spectator_user_list);
+            this.spectator_temporary_array.push(...this.spectator_user_list)
+            console.log(this.spectator_temporary_array);
+            this.spectator_user_list=this.spectator_temporary_array
+            
+            
+          }
+          else{
+            console.log("nodata");
+            this.checked1=true;
+            this.checked2=false;
+            this.checked3=false;
+            this.checked4=false;
+            this.openSnackBar('No More data Available','Ok')
+          }
+          
+        }
+        else if(this.order==2){
+          
+          if(this.spectator_data[1].user_list != ''){
+            this.spectator_user_list = this.spectator_data[1].user_list;
+            this.checked1=false;
+            this.checked2=true;
+            this.checked3=false;
+            this.checked4=false;
+            console.log(this.spectator_user_list);
+            
+            
+          }
+          else{
+            this.checked1=false;
+            this.checked2=true;
+            this.checked3=false;
+            this.checked4=false;
+            this.openSnackBar('No More data Available','Ok')
+
+          }
+         
+        }
+        else if(this.order==3){
+          if(this.spectator_data[2].user_list != ''){
+            this.spectator_user_list = this.spectator_data[2].user_list;
+            this.checked1=false;
+            this.checked2=false;
+            this.checked3=true;
+            this.checked4=false;
+            console.log(this.spectator_user_list);
+          }
+          else{
+            this.checked1=false;
+            this.checked2=false;
+            this.checked3=true;
+            this.checked4=false;
+            this.openSnackBar('No More data Available','Ok')
+
+          }
+        }
+        else if(this.order==4){
+          
+
+          if(this.spectator_data[3].user_list != ''){
+            this.spectator_user_list = this.spectator_data[3].user_list;
+            this.checked1=false;
+            this.checked2=false;
+            this.checked3=false;
+            this.checked4=true;
+            console.log(this.spectator_user_list);
+            console.log(this.spectator_user_list);
+            this.spectator_temporary_array.push(...this.spectator_user_list)
+            console.log(this.spectator_temporary_array);
+            this.spectator_user_list=this.spectator_temporary_array
+          }
+          else{
+            this.checked1=false;
+            this.checked2=false;
+            this.checked3=false;
+            this.checked4=true;
+            this.openSnackBar('No More data Available','Ok')
+
+          }
+
+         
+        }
+      }
+
+     
+
+   
+        console.log("view");
+     
+      
+             
+    
+ 
+
+ 
+    })
+
    }
    else if(this.userObj.games.length ==0){
     this.getSpectatorViewMore2('viewmore')
 
    }
     
+  }
+
+  navigatetoDashboard(index:any){
+    console.log(index);
+    
+    console.log(this.spectator_user_list[index].USERID);
+     this.spectator_user_id=this.Util.encryptData(this.spectator_user_list[index].USERID)
+     this.spectator_game_id=this.Util.encryptData(this.spectator_user_list[index].id_coroebus_game)
+     this.spectator_role_id=this.Util.encryptData(this.spectator_user_list[index].id_role)
+
+    this._router.navigateByUrl('dashboard?userID='+this.spectator_user_id +"&gameID="+  this.spectator_game_id +"&roleID="+  this.spectator_role_id)
   }
 }

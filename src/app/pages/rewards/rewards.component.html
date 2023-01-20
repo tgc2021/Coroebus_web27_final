@@ -19,7 +19,9 @@
                 <div class="col-md-3 col-12 col-sm-6 ">
                   <mat-card class="platform_mat_card">
                     <img class="platform_image" src="assets/images/rewards/Platform_reward.jpg"/>
-                    <button class="redeem_btn" type="button" (click)="navigateToLogicalBaniya()">Redeem</button>
+                    <button *ngIf="reward.data.reward_redemption_day==0" class="redeem_btn" type="button" (click)="navigateToLogicalBaniya()">Redeem</button>
+                    <button *ngIf="reward.data.reward_redemption_day!=0" class="redeem_btn" type="button" data-bs-toggle="modal" data-bs-target="#daysremaining">Redeem</button>
+
                   </mat-card>
                 </div>
               </div>
@@ -54,9 +56,14 @@
   
                     </div>
   
-                    <div class="btn_div">
+                    <div class="btn_div" *ngIf="reward.data.reward_redemption_day==0">
                       <!-- <img data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="redeemed_popup_logo"  src="assets/images/rewards/redeemed.png"> -->
                       <button (click)="redemeedOrg(rewardlist)" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"
+                        type="button" class="redeem_btn">Redeem</button>
+                    </div>
+                    <div class="btn_div" *ngIf="reward.data.reward_redemption_day!=0">
+                      <!-- <img data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="redeemed_popup_logo"  src="assets/images/rewards/redeemed.png"> -->
+                      <button  data-bs-toggle="modal" data-bs-target="#daysremaining"
                         type="button" class="redeem_btn">Redeem</button>
                     </div>
                   </div>
@@ -504,4 +511,22 @@
       </div>
     </div>
   </div>
+
+
+  <div class="modal fade" id="daysremaining" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content passbookModal" style="height: 50vh;">
+      <div class="modal-header popup_Header">
+        <h5 class="modal-title1" id="staticBackdropLabel">Redeem Rewards</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="d-flex justify-content-center align-items-center" style="height: 45vh;">
+        <p>You cannot reedem reward for now</p>
+
+      </div>
+
+    </div>
+  </div>
+</div>
 </div>

@@ -1,0 +1,14 @@
+/* Card Slider styles */
+.card-slider {
+    display: flex;
+  }
+  
+  .card {
+    /* Add styles for the unselected cards */
+    height: 10vh;
+  }
+  
+  .card.selected {
+    /* Add styles for the selected card */
+    height: 20vh;
+  }

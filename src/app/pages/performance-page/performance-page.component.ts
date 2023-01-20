@@ -198,32 +198,66 @@ export class PerformancePageComponent implements OnInit {
   async myperformanceProduce() {
     let err: any, res: any;
     let body: any;
-    body = {
-      // "_userid": this.userObj?._personal_data?.USERID,
-      // "_game": this.userSelectionData?.id_coroebus_game,
-      // "_team": this.userObj?.otherInfo?.id_coroebus_team
-
-      "_userid":this.queryParams?.userID ? this.queryParams?.userID : this.userObj?._personal_data?.USERID, 
-      // "_game":this.queryParams?.gameID ?this.queryParams?.gameID : this.userObj?._personal_data?.id_coroebus_game,
-      "_game":this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game ,
-
-      "_team":this.userObj?.otherInfo?.id_coroebus_team
-
-      // "_userid":queryParams?.userID, 
-      // "_game": queryParams?.gameID,
-      // "_team":this.userObj?.otherInfo?.id_coroebus_team
-
-    };
+    
+    if(this.userObj?.otherInfo?.id_coroebus_team != null){
+      body = {
+        // "_userid": this.userObj?._personal_data?.USERID,
+        // "_game": this.userSelectionData?.id_coroebus_game,
+        // "_team": this.userObj?.otherInfo?.id_coroebus_team
   
-    [err, res] = await HttpProtocols.to(PerformanceModel.myperformanceProduce(body))
-    console.log("Graph",body)
-    if (!err && res?.statuscode === 200) {
-      this.graphMasterData = res?.data
-      //this.graphData = this.graphMasterData
-      this.filterGraphData()
-    } else {
-      this.errorProduce = 'Error while getting data'
+        "_userid":this.queryParams?.userID ? this.queryParams?.userID : this.userObj?._personal_data?.USERID, 
+        // "_game":this.queryParams?.gameID ?this.queryParams?.gameID : this.userObj?._personal_data?.id_coroebus_game,
+        "_game":this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game ,
+        // "_team":this.userObj?._personal_data?.id_coroebus_team
+  
+        "_team": this.userObj?.otherInfo?.id_coroebus_team 
+  
+        // "_userid":queryParams?.userID, 
+        // "_game": queryParams?.gameID,
+        // "_team":this.userObj?.otherInfo?.id_coroebus_team
+  
+      };
+    
+      [err, res] = await HttpProtocols.to(PerformanceModel.myperformanceProduce(body))
+      console.log("Graph",body)
+      if (!err && res?.statuscode === 200) {
+        this.graphMasterData = res?.data
+        //this.graphData = this.graphMasterData
+        this.filterGraphData()
+      } else {
+        this.errorProduce = 'Error while getting data'
+      }
     }
+    else {
+      body = {
+        // "_userid": this.userObj?._personal_data?.USERID,
+        // "_game": this.userSelectionData?.id_coroebus_game,
+        // "_team": this.userObj?.otherInfo?.id_coroebus_team
+  
+        "_userid":this.queryParams?.userID ? this.queryParams?.userID : this.userObj?._personal_data?.USERID, 
+        // "_game":this.queryParams?.gameID ?this.queryParams?.gameID : this.userObj?._personal_data?.id_coroebus_game,
+        "_game":this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game ,
+        "_team":this.userObj?._personal_data?.id_coroebus_team
+  
+        // "_team": this.userObj?.otherInfo?.id_coroebus_team 
+  
+        // "_userid":queryParams?.userID, 
+        // "_game": queryParams?.gameID,
+        // "_team":this.userObj?.otherInfo?.id_coroebus_team
+  
+      };
+    
+      [err, res] = await HttpProtocols.to(PerformanceModel.myperformanceProduce(body))
+      console.log("Graph",body)
+      if (!err && res?.statuscode === 200) {
+        this.graphMasterData = res?.data
+        //this.graphData = this.graphMasterData
+        this.filterGraphData()
+      } else {
+        this.errorProduce = 'Error while getting data'
+      }
+    }
+  
   }
   filterGraphData() {
     switch (this.dropDownValue) {

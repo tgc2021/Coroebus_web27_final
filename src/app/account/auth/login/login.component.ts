@@ -20,6 +20,8 @@ import { ApiserviceService } from 'app/apiservice.service';
  */
 export class LoginComponent implements OnInit {
   userid: any;
+  showMainContent: Boolean = true;
+
 
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router,
     private readonly store: Store, private Util: Util,public http:ApiserviceService) { }
@@ -55,6 +57,8 @@ export class LoginComponent implements OnInit {
   );
     
     if(href.includes('userid')){
+      this.showMainContent = false;
+
       // const userId ="Wide018"
       const userId = this.Util.encryptData(this.userid)
       console.log(userId);
@@ -132,12 +136,17 @@ export class LoginComponent implements OnInit {
       if (!err && res?.status === 'success' && res?.statuscode === 200) {
 
         let body={
-          _userid:userId,
+          _userid:userId.toString(),
           _game:"na",
           _device:"W",
           _section:"Login",
+          _refid: "",
           _description:"Login Successful"
         }
+
+        // {"_userid":"Ek/VOOiJgjEigYASBYAX6A==","_section":"Login","_description":"Login Succesfull","_game":"na","_device":"W","_refid":""}
+
+
 
         this.http.engagamentlog(body).subscribe(res=>{
           console.log(res);

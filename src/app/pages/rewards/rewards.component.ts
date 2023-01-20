@@ -39,6 +39,7 @@ export class RewardsComponent implements OnInit, AfterViewInit {
   data1: any;
   data2:any
   modeldata: any;
+  isDisable:boolean=true
   // requestdata: any[] = [];
   // requestdata: Observable<any>;
   term: any;
@@ -136,6 +137,7 @@ export class RewardsComponent implements OnInit, AfterViewInit {
           console.log(this.rewardresponse);
           console.log(this.filterCoreGame);
           this.rewardresponse = Array.of(this.rewardresponse);
+
           console.log(this.rewardresponse);
           this.passbook_response=this.rewardresponse[0].data.points_list[1]._data
           console.log(this.passbook_response);
@@ -495,6 +497,8 @@ console.log(this.userSelectionData);
 
   redemeedOrg(rewardlist: any) {
     console.log(rewardlist);
+    console.log(this.rewardresponse);
+
 
     this.modeldata = rewardlist
 

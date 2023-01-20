@@ -106,6 +106,12 @@
     display: flex;
 }
 
+.web_second_row_tvs{
+    height: 83vh;
+    padding: 0.5em;
+    display: flex;
+    align-items: center;
+}
 .web_third_row {
     height: 15vh;
     padding: 0.5em;
@@ -150,6 +156,17 @@
     border-bottom-right-radius: 15px;
 }
 
+.web_third_umpire_tvs{
+    height: 12vh;
+    position: absolute;
+    bottom: -1em;
+    left: 0.5em;
+    cursor: pointer;
+    border-radius: 10px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
 .web_booster {
     height: 12vh;
     position: absolute;
@@ -163,14 +180,34 @@
    
 }
 
+.web_booster_tvs{
+    height: 12vh;
+    position: absolute;
+    cursor: pointer;
+    bottom: -1em;
+    right: 0.5em;
+    border-radius: 10px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
 .web_right_side {
     height: 85vh;
     padding-right: 0;
 }
 
+.web_right_side_tvs{
+    height: 70vh;
+    padding-right: 0;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .web_character {
     height: 37vh;
     padding-bottom: 1em;
+    cursor: pointer;
 
 }
 
@@ -184,6 +221,14 @@
     height: 65vh;
 }
 
+.inner-upper-card{
+flex-direction: column;
+}
+
+.inner-lower-card{
+    flex-direction: column;
+
+}
 
 .upper_blue_scoreboard {
     height: 15vh;
@@ -191,6 +236,37 @@
     border-radius: 4px;
     margin-top: 0.5em;
     cursor: pointer;
+
+}
+
+.upper_blue_scoreboard_tvs{
+    height: 30vh;
+    background: var(--colorback);
+    border-radius: 8px;
+    margin-top: 0.5em;
+    cursor: pointer;
+    width: 100%;
+}
+
+.upper_blue_scorecard_details_tvs{
+    height: 15vh;
+    width: 100%;
+    margin-left: 0;
+}
+
+.upper_score_board_header_tvs{
+    font-family: "Inter";
+    font-style: normal;
+    color: #ffff;
+    font-weight: 700;
+    font-size: 1.5vw;
+}
+.lower_score_board_header_tvs{
+    font-family: "Inter";
+    font-style: normal;
+    color: #ffff;
+    font-weight: 700;
+    font-size: 1.5vw;
 
 }
 
@@ -202,6 +278,24 @@
     cursor: pointer;
 }
 
+.lower_blue_scorecard_tvs{
+    height: 30vh;
+    background: var(--colorback);
+    border-radius: 8px;
+    margin-top: 0.5em;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 9vh;
+    
+}
+
+.lower_blue_scorecard_details_tvs{
+    height: 19vh;
+    width: 100%;
+   
+}
 
 
 .lower_blue_scorecard,
@@ -223,12 +317,25 @@
     margin-bottom: 0;
 }
 
+.lower_blue_scorecard_detail :nth-child(4) {
+    border-right: none;
+
+}
+
 .lower_blue_scorecard_details :nth-child(4) {
     border-right: none;
 
 }
 
+.web_team_rank_tvs{
+    margin: auto 0;
+    vertical-align: middle;
+}
 
+.web_my_score_tvs{
+    vertical-align: middle;
+    margin: auto 0;
+}
 
 .web_team_rank,
 .web_my_score,
@@ -250,6 +357,15 @@
     height: 84v;
     /* height: 84%; */
     height: 15vh;
+}
+
+.sideline_tvs{
+    display: flex;
+    align-items: center;
+    height: 84v;
+    /* height: 84%; */
+    height: 15vh;
+    width: 0;
 }
 
 .web_sideline_image {
@@ -479,6 +595,7 @@
 }
 .character-png {
     height: 35vh;
+    cursor: pointer;
     // margin-bottom: 1vh;
 }
 

@@ -25,6 +25,7 @@ export class GameSelectionComponent implements OnInit, OnDestroy {
   selectedGame: any
   id_coroebus_theme:any
   showComponent: boolean = false
+  isInteractiveDashboard:any
   constructor(private readonly store: Store, private router: Router, public Util: Util,public http:ApiserviceService) {
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
@@ -61,6 +62,7 @@ this.http.engagamentlog(body).subscribe(res=>{
   async getGame() {
     let err: any, res: any;
     let body: any;
+    
     console.log(this.userObj);
     
     body = {
@@ -75,7 +77,11 @@ this.http.engagamentlog(body).subscribe(res=>{
       const newArr = [];
       while (res?.data?.games.length) newArr.push(res?.data?.games.splice(0, 3));
       this.gameList = newArr
+      console.log(this.gameList);
+      
       this.selectedGame = this.gameList?.[0]?.[0]?.id_coroebus_game
+    
+      
       if (this.gameList?.[0]?.length === 1) {
         this.selectGame()
       }
@@ -94,6 +100,10 @@ this.http.engagamentlog(body).subscribe(res=>{
   }
   handleChange(event, data) {
     this.selectedGame = data?.id_coroebus_game
+    this.isInteractiveDashboard =data?.is_interactive_dashboard
+    console.log(this.isInteractiveDashboard);
+    
+    console.log(this.selectedGame);
     this.selectGame()
   }
   selectGame() {
@@ -113,18 +123,46 @@ this.http.engagamentlog(body).subscribe(res=>{
   
 })
 
-    if(this.id_role==7){
-      this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
-      this.router.navigate(['/spectator/spectatorView']);
-    }
-    else if(this.id_coroebus_theme>4){
-      this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
-      this.router.navigate(['/account/interactive-dashboard']);
-    }
-   else{
+if (this.gameList?.[0]?.length === 1){
+  if(this.id_role==7){
+    this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
+    this.router.navigate(['/spectator/spectatorView']);
+  }
+  else if(this.id_coroebus_theme>4 && this.userObj.games[0].is_interactive_dashboard == '1'){
+    this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
+    this.router.navigate(['/account/interactive-dashboard']);
+    localStorage.setItem("is_interactive_dashboard","1")
+  }
+  else if(this.id_coroebus_theme>4 && this.userObj.games[0].is_interactive_dashboard == '0'){
     this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
     this.router.navigate(['/dashboard']);
-   }
+    localStorage.setItem("is_interactive_dashboard","0")
+
+  }
+ else{
+  this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
+  this.router.navigate(['/dashboard']);
+ }
+}
+else{
+  if(this.id_role==7){
+    this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
+    this.router.navigate(['/spectator/spectatorView']);
+  }
+  else if(this.id_coroebus_theme>4 && this.isInteractiveDashboard == '1'){
+    this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
+    this.router.navigate(['/account/interactive-dashboard']);
+  }
+  else if(this.id_coroebus_theme>4 && this.isInteractiveDashboard == '0'){
+    this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
+    this.router.navigate(['/dashboard']);
+  }
+ else{
+  this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
+  this.router.navigate(['/dashboard']);
+ }
+}
+    
   }
   ngOnDestroy() {
     this.destroy$.next(true);

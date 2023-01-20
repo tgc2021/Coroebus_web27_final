@@ -49,7 +49,9 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
   ProfileImageNewOne:any=null
   id_coroebus_theme :any
   themeObj: any
-
+  id_coroebus_organization: any
+  rewardpoints:any;
+  is_interactive_dashboard:any
   constructor(private eventService: EventService, private router: Router,public dashboard:DefaultComponent,
     public translate: TranslateService, private http: ApiserviceService,
     private readonly store: Store, private cd: ChangeDetectorRef) {
@@ -69,7 +71,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
       console.log(this.userObj)
       console.log(this.menuItems);
       console.log(this.userObj?.games.length);
-      
+
       var menuArr: any
       menuArr = MENU.filter((value, index) => {
         if (value?.label === 'MENUITEMS.PLAY_ZONE') {
@@ -128,6 +130,10 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngOnInit() {
+    this.rewardpoints=localStorage.getItem('reward_points');
+    console.log(this.rewardpoints);
+    this.is_interactive_dashboard=localStorage.getItem("is_interactive_dashboard")
+
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
     ).subscribe(data => {
@@ -139,7 +145,8 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
       this.id_coroebus_theme=this.userObj.themes[0].id_coroebus_theme
       console.log(this.id_coroebus_theme);
    
-   
+   this.id_coroebus_organization=this.userObj._personal_data.id_coroebus_organization
+console.log(this.id_coroebus_organization);
 
     })
 
@@ -265,6 +272,8 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
    * @param item menuItem
    */
   hasItems(item: MenuItem) {
+    
+    
     return item.subItems !== undefined ? item.subItems.length > 0 : false;
   }
   logout() {
@@ -369,6 +378,11 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
         
       })
     }
+    else if(item?.icon === 'home' && this.is_interactive_dashboard=="0"){
+      this.router.navigateByUrl("/dashboard")
+    }
+    
+    
 
     this.menuItems = MENU;
    
