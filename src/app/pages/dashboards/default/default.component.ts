@@ -131,6 +131,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     ).subscribe(([login, theme, game]) => {
       console.log(login, theme, game)
       this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
+      console.log(this.userSelectionData);
+      
       this._routeSub?.unsubscribe()
       this._routeSub = this._route.queryParams.subscribe(queryParams => {
         // do something with the query params
@@ -811,7 +813,7 @@ else if(this.activeTabForSectionView_2 == 4){
         this.arrowStatus = arrowStatus === 'red' ? 'Motivation' : 'Positive'
         console.log(this.arrowStatus);
 
-        this.modalService.open(this.pokeList, { centered: true, windowClass: 'modal-cls' })
+        // this.modalService.open(this.pokeList, { centered: true, windowClass: 'modal-cls' })
 
       } else {
         this.toastService.show(this.pokeDangerTpl, { classname: '', delay: 1500, });

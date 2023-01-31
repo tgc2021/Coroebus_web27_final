@@ -19,8 +19,13 @@
 .web_no_notifications {
     height: 70vh;
     width: 100%;
+    flex-direction: column;
 }
 
+.no_data_image{
+    width: 13vw;
+    padding-bottom: 2vh;
+}
 .web_select_dropdown {
     height: 6vh;
     margin-left: 2vw;
@@ -48,10 +53,10 @@
     font-size: 1.2vw;
     font-weight: 500;
     font-size: 1.2vw;
-    font-weight: 500;
+    font-weight: 400;
     font-family: 'Inter';
     font-style: normal;
-    font-weight: 600;
+   
     /* font-size: 16px; */
     line-height: 25px;
     text-align: center;
@@ -63,6 +68,7 @@
 .web_no_bulletins {
     height: 70vh;
     width: 100%;
+    flex-direction: column;
 }
 
 .web_bulletins_message {
@@ -70,7 +76,7 @@
     font-weight: 500;
     font-family: 'Inter';
     font-style: normal;
-    font-weight: 600;
+    font-weight: 400;
     /* font-size: 16px; */
     line-height: 25px;
     text-align: center;
@@ -479,6 +485,7 @@
 
 .web_spectator_leaderboard_section {
     height: 33vh;
+    overflow-y: auto;
 }
 
 .mobile_spectator_leaderboard_section {

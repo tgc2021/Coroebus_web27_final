@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, Input, OnChanges, ChangeDetectorRef } from '@angular/core';
 import MetisMenu from 'metismenujs/dist/metismenujs';
 import { EventService } from '../../core/services/event.service';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { NgbNavModule, NgbAccordionModule, NgbTooltipModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HttpClient } from '@angular/common/http';
@@ -52,9 +52,11 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
   id_coroebus_organization: any
   rewardpoints:any;
   is_interactive_dashboard:any
+  windowlocation:any
+  spectator_value:any
   constructor(private eventService: EventService, private router: Router,public dashboard:DefaultComponent,
     public translate: TranslateService, private http: ApiserviceService,
-    private readonly store: Store, private cd: ChangeDetectorRef) {
+    private readonly store: Store, private cd: ChangeDetectorRef,public route:ActivatedRoute) {
     router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
         this._activateMenuDropdown();
@@ -134,6 +136,24 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
     console.log(this.rewardpoints);
     this.is_interactive_dashboard=localStorage.getItem("is_interactive_dashboard")
 
+    this.windowlocation=window.location.href
+    console.log(this.windowlocation);
+
+    var url = new URL(this.windowlocation)
+    console.log(url);
+
+    var checkUserID = this.route.queryParams
+      .subscribe(params => {
+        console.log(params); // { orderby: "price" }
+        // this.userid = params.userid;
+        // console.log(this.userid); // price
+        this.spectator_value = params['view'];
+       
+        console.log(this.spectator_value);
+       
+      }
+      );
+   
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
     ).subscribe(data => {
@@ -256,10 +276,14 @@ console.log(this.id_coroebus_organization);
    * Initialize
    */
   initialize(): void {
-    if(this.id_role == 7){
+    if(this.id_role == 7 || this.spectator_value=='spectator'){
+      console.log(this.spectator_value);
+      
       this.menuItems = MENU_SPECTATOR;
       this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
-    }else{
+    }else {
+      console.log(this.spectator_value);
+
       this.menuItems = MENU;
       this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
     }
@@ -381,10 +405,17 @@ console.log(this.id_coroebus_organization);
     else if(item?.icon === 'home' && this.is_interactive_dashboard=="0"){
       this.router.navigateByUrl("/dashboard")
     }
+  
     
     
+if(this.id_role=='7'){
+  this.menuItems=MENU_SPECTATOR
 
-    this.menuItems = MENU;
+}else{
+  this.menuItems = MENU;
+}
+   
+    // this.menuItems=MENU_SPECTATOR
    
     console.log(this.menuItems);
 

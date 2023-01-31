@@ -59,8 +59,12 @@
                     <h6 class="web_notification_header">
                         Notifications
                     </h6>
+                 
 
                     <div class="d-flex justify-content-center align-items-center web_no_notifications">
+                        <div>
+                            <img class="no_data_image" src="assets/images/specatator-dashboard/No_message_spectator.png"/>
+                        </div>
                         <p class="web_notification_message">There's no Notifications you have subscribed to, stay tuned to this section for more.</p>
                     </div>
                     <!-- <div class="web_div_inner_notification">
@@ -386,8 +390,8 @@
 
             <div class="row web_spectator_leaderboard_section" *ngIf="spectSearList != null">
                 <div class="col-12 mt-1" >
-                    <div *ngFor="let spectatorleaderboardreponse of spectSearList[0]._data">
-                        <mat-card class="web_spectator_leaderboard" style="background: url({{spectatorleaderboardreponse.ranking_image}}); background-size: 100% 100%;">
+                    <div *ngFor="let spectatorleaderboardreponse of spectSearList[0]._data;  let i =index" >
+                        <mat-card class="web_spectator_leaderboard" style="background: url({{spectatorleaderboardreponse.ranking_image}}); background-size: 100% 100%;"  (click)="navigatetoSearchDashboard(i)">
                             <div class="row d-flex align-items-center" >
                                 <div class="col-1">
                                     <p class="web_spectator_rank">{{spectatorleaderboardreponse.rankingtable_number}}</p>
@@ -514,6 +518,9 @@
                 </div>
 
                 <div class="d-flex justify-content-center align-items-center web_no_bulletins">
+                    <div>
+                        <img class="no_data_image" src="assets/images/specatator-dashboard/No_message_spectator.png"/>
+                    </div>
                     <p class="web_bulletins_message">There's no bulletin’s you have subscribed to, stay tuned to this section for more.</p>
                 </div>
 

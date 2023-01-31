@@ -506,32 +506,38 @@ console.log(this.interactive_dashoard_response_idOrganisation);
    
     
     if (this.mergeObj.id_coroebus_game != null){
-      const userId = this.Util.encryptData(this.mergeObj.USERID)
-      const game = this.Util.encryptData(this.userSelectionData.id_coroebus_game)
-      const roleid = this.Util.encryptData(this.mergeObj.id_role)
-      const id_coroebus_user = this.Util.encryptData(this.mergeObj.id_coroebus_user)
-      console.log(this.Util.decryptData(userId),this.Util.decryptData(game),this.Util.decryptData(roleid),this.Util.decryptData(id_coroebus_user));
-
-
-      window.open(
-        'http://coroebusbeta.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
-        '_self' // <- This is what makes it open in a new window.
+      if(this.mergeObj.id_role!=8 && this.mergeObj.id_role!=9){
+        const userId = this.Util.encryptData(this.mergeObj.USERID)
+        const game = this.Util.encryptData(this.userSelectionData.id_coroebus_game)
+        const roleid = this.Util.encryptData(this.mergeObj.id_role)
+        // const id_coroebus_user = this.Util.encryptData(this.mergeObj.id_coroebus_user)
+        console.log(this.Util.decryptData(userId),this.Util.decryptData(game),this.Util.decryptData(roleid),this.Util.decryptData(this.mergeObj.id_coroebus_user));
   
-      )
+  
+        window.open(
+          'http://coroebusbeta.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
+          '_self' // <- This is what makes it open in a new window.
+    
+        )
+      }
+    
     }
 
     else{
-      const userId = this.Util.encryptData(this.mergeObj.USERID)
-      const game = this.Util.encryptData(this.mergeObj.id_coroebus_game)
-      const roleid = this.Util.encryptData(this.mergeObj.id_role)
-      const id_coroebus_user = this.Util.encryptData(this.mergeObj.id_coroebus_user)
-      console.log(this.Util.decryptData(userId),this.Util.decryptData(game));
-
-      window.open(
-        'http://coroebusbeta.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
-        '_self' // <- This is what makes it open in a new window.
+      if( this.mergeObj.id_role!=8 && this.mergeObj.id_role!=9){
+        const userId = this.Util.encryptData(this.mergeObj.USERID)
+        const game = this.Util.encryptData(this.mergeObj.id_coroebus_game)
+        const roleid = this.Util.encryptData(this.mergeObj.id_role)
+        // const id_coroebus_user = this.Util.encryptData(this.mergeObj.id_coroebus_user)
+        console.log(this.Util.decryptData(userId),this.Util.decryptData(game));
   
-      )
+        window.open(
+          'http://coroebusbeta.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
+          '_self' // <- This is what makes it open in a new window.
+    
+        )
+      }
+    
     }
    
   }

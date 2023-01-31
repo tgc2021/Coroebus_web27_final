@@ -47,7 +47,11 @@
                     <div class="col-2 web_col_left">
                         <img class="web_my_trophy" (click)="navigateAchievementshelf()"
                             src="{{interactive_dashoard_response[0].data.theme_details[0].my_trophy}}" />
-                        <img class="web_my_rewards" (click)="navigateReward()"
+                        <img class="web_my_rewards" *ngIf="interactive_dashoard_response[0].data._points[2].score>75 && interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"  (click)="navigateReward()"
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}" />
+                            <img class="web_my_rewards" *ngIf="interactive_dashoard_response[0].data._points[2].score<75 && interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'" 
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}" data-bs-toggle="modal" data-bs-target="#RewardsModal"/>
+                            <img class="web_my_rewards" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"  (click)="navigateReward()"
                             src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}" />
                         <img class="web_third_umpire" (click)="navigateToNotification()"
                             src="{{interactive_dashoard_response[0].data.theme_details[0].third_umpire_bt}}" />
@@ -107,7 +111,7 @@
                     </div>
                 </div>
 
-                <div class="lower_blue_scorecard" (click)="navigateDashboard()">
+                <div class="lower_blue_scorecard" (click)="navigateMyPerformance()">
                     <div class="row lower_blue_scorecard_details d-flex justify-content-center">
                         <div class="col-3 web_first_measurement d-block"
                             *ngFor="let points of interactive_dashoard_response[0].data._Point_distribution">
@@ -134,24 +138,40 @@
                                         src="{{interactive_dashoard_response[0].data.theme_details[0].campaigns_bt_web}}" />
 
                                 </div>
+                                
                                 <div class="d-flex justify-content-end">
-                                    <img class="web_daily_image"
-                                        src="{{interactive_dashoard_response[0].data.theme_details[0].daily_bt_web}}"
-                                        (mouseover)="openDailyModal()" data-bs-toggle="modal"
+                                    <img class="web_daily_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
+                                        src="{{interactive_dashoard_response[0].data.theme_details[0].daily_bt_web}}" 
+                                         data-bs-toggle="modal"
+                                        data-bs-target="#DailyModal" />
+
+                                        <img class="web_daily_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"
+                                        src="{{interactive_dashoard_response[0].data.theme_details[0].daily_bt_web}}" (mouseover)="openDailyModal()"
+                                         data-bs-toggle="modal"
                                         data-bs-target="#DailyModal" />
 
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <img class="web_weekly_image"
+                                    <img class="web_weekly_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
                                         src="{{interactive_dashoard_response[0].data.theme_details[0].weekly_bt_web}}"
-                                        (mouseover)="openWeeklyModal()" data-bs-toggle="modal"
+                                         data-bs-toggle="modal"
+                                        data-bs-target="#weeklyModal" />
+
+                                        <img class="web_weekly_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"
+                                        src="{{interactive_dashoard_response[0].data.theme_details[0].weekly_bt_web}}" (mouseover)="openWeeklyModal()"
+                                         data-bs-toggle="modal"
                                         data-bs-target="#weeklyModal" />
 
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <img class="web_monthly_image"
+                                    <img class="web_monthly_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
                                         src="{{interactive_dashoard_response[0].data.theme_details[0].monthly_bt_web}}"
-                                        (mouseover)="openMonthlyModal()" data-bs-toggle="modal"
+                                         data-bs-toggle="modal"
+                                        data-bs-target="#monthlyModal" />
+
+                                        <img class="web_monthly_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"
+                                        src="{{interactive_dashoard_response[0].data.theme_details[0].monthly_bt_web}}" (mouseover)="openMonthlyModal()"
+                                         data-bs-toggle="modal"
                                         data-bs-target="#monthlyModal" />
 
                                 </div>
@@ -172,23 +192,34 @@
                 <div class="row">
                     <div class="col-12 d-flex gap-1 web_buttons_col">
                         <div class="col-3 web_bottom_buttons">
-                            <img class="web_button_image" (click)="navigateToChampionsLeague()"
+                            <img class="web_button_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
                                 src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_web}}" />
+
+                                <img class="web_button_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"
+                                src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_web}}" (click)="navigateToChampionsLeague()" />
                         </div>
 
                         <div class="col-3 web_bottom_buttons">
-                            <img class="web_button_image" (click)="navigateTopersonalMilestone()"
+                            <img class="web_button_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
                                 src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt_web}}" />
+
+                                <img class="web_button_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"
+                                src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt_web}}" (click)="navigateTopersonalMilestone()" />
                         </div>
 
                         <div class="col-3 web_bottom_buttons">
-                            <img class="web_button_image" (click)="navigateToLearningAcademy()"
+                            <img class="web_button_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
                                 src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt_web}}" />
+
+                                <img class="web_button_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"
+                                src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt_web}}" (click)="navigateToLearningAcademy()" />
                         </div>
 
                         <div class="col-3 web_bottom_buttons">
-                            <img (click)="navigateToPlayZone()" class="web_button_image"
+                            <img  class="web_button_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
                                 src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt_web}}" />
+                                <img  class="web_button_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"
+                                src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt_web}}" (click)="navigateToPlayZone()" />
                         </div>
 
                     </div>
@@ -240,7 +271,7 @@
             </div>
 
             <!-- Mobile First ScoreBoard Section -->
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center" (click)="navigateDashboard()">
                 <div class="mobile-first-section d-flex justify-content-evenly align-items-center">
                     <div class="mobile-team-rank text-center col-4 border2px">
                         <div>{{interactive_dashoard_response[0].data._primary.team_rank}}</div>
@@ -261,7 +292,7 @@
                 </div>
             </div>
             <!-- mobile second section -->
-            <div class="d-flex justify-content-center" (click)="navigateDashboard()">
+            <div class="d-flex justify-content-center" (click)="navigateMyPerformance()">
                 <div class="mobile-second-section d-flex flex-column justify-content-around gap-1">
                     <div class="mobile-title text-center pb-2">
                         <span class="mobile-game-title">
@@ -280,19 +311,32 @@
             <div class="d-flex justify-content-center">
                 <div class="mobile-btn-section d-flex justify-content-between align-items-center gap-1">
                     <div style="height:6vh;">
-                        <img (click)="navigateToLearningAcademy()"
+                        <img *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
                             src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt}}"
                             alt="Learning_Academy" width="100%" height="100%">
+
+                            <img *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt}}"
+                            alt="Learning_Academy" width="100%" height="100%" (click)="navigateToLearningAcademy()">
                     </div>
                     <div style="height:6vh;">
-                        <img (click)="navigateTopersonalMilestone()"
+                        <img  *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
                             src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt}}"
                             alt="Personal_Milestone" width="100%" height="100%">
+
+                            <img  *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt}}"
+                            alt="Personal_Milestone" width="100%" height="100%" (click)="navigateTopersonalMilestone()">
                     </div>
                     <div style="height:6vh;">
-                        <img (click)="navigateToPlayZone()"
+                        <img  *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
                             src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt}}" alt="PlayZone"
                             width="100%" height="100%">
+
+                            
+                        <img  *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"
+                        src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt}}" alt="PlayZone"
+                        width="100%" height="100%" (click)="navigateToPlayZone()">
                     </div>
                 </div>
             </div>
@@ -312,17 +356,26 @@
                                     alt="my-trophy" width="100%" height="100%" class="MobileimageBorder">
                             </div>
                             <div class="mobile-my-rewards" style="height:7vh">
-                                <img (click)="navigateReward()"
+                                <img *ngIf="interactive_dashoard_response[0].data._points[2].score>75  && interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'" (click)="navigateReward()"
                                     src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}"
                                     alt="my-rewards" width="100%" height="100%" class="MobileimageBorder">
+                                    <img *ngIf="interactive_dashoard_response[0].data._points[2].score<75  && interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'" data-bs-toggle="modal" data-bs-target="#RewardsModal"
+                                    src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}"
+                                    alt="my-rewards" width="100%" height="100%" class="MobileimageBorder">
+                                    <img *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'" (click)="navigateReward()"  width="100%" height="100%"
+                                    src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}" class="MobileimageBorder">
                             </div>
 
                         </div>
                         <div class="d-flex flex-column gap-5 align-items-start">
                             <div class="mobile-tug-war d-flex justify-content-start" style="height:6vh">
-                                <img (click)="navigateToChampionsLeague()"
+                                <img *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
                                     src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_bt}}"
                                     alt="tug-of-war" height="100%">
+
+                                    <img *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"
+                                    src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_bt}}"
+                                    alt="tug-of-war" height="100%" (click)="navigateToChampionsLeague()">
 
                             </div>
                             <div class="mobile-3rd-umpire" style="height:8vh;">
@@ -350,19 +403,32 @@
                                     alt="CAMPAIGNS" height="100%" width="100%">
                             </div>
                             <div style="height:6vh;">
-                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].Daily}}" alt="Daily"
-                                    height="100%" width="100%" data-bs-toggle="modal" data-bs-target="#DailyModal"
-                                    (mouseover)="openDailyModal()">
+                                <img *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'" src="{{interactive_dashoard_response[0].data.theme_details[0].Daily}}" alt="Daily"
+                                    height="100%" width="100%" data-bs-toggle="modal" data-bs-target="#DailyModal" 
+                                    >
+
+                                    <img *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'" src="{{interactive_dashoard_response[0].data.theme_details[0].Daily}}" alt="Daily"
+                                    height="100%" width="100%" (mouseover)="openDailyModal()" data-bs-toggle="modal" data-bs-target="#DailyModal" 
+                                    >
+
                             </div>
                             <div style="height:6vh;">
-                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].Weekly}}"
+                                <img  *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'" src="{{interactive_dashoard_response[0].data.theme_details[0].Weekly}}"
                                     alt="WEEKLY" height="100%" width="100%" data-bs-toggle="modal"
-                                    data-bs-target="#weeklyModal" (mouseover)="openWeeklyModal()">
+                                    data-bs-target="#weeklyModal" >
+
+                                    <img  *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'" src="{{interactive_dashoard_response[0].data.theme_details[0].Weekly}}"
+                                    alt="WEEKLY" height="100%" width="100%" (mouseover)="openWeeklyModal()" data-bs-toggle="modal"
+                                    data-bs-target="#weeklyModal" >
                             </div>
                             <div style="height:6vh;">
-                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].Monthly}}"
-                                    alt="Monthly" height="100%" width="100%" data-bs-toggle="modal"
-                                    data-bs-target="#monthlyModal" (mouseover)="openMonthlyModal()">
+                                <img  *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'" src="{{interactive_dashoard_response[0].data.theme_details[0].Monthly}}"
+                                    alt="Monthly" height="100%" width="100%"  data-bs-toggle="modal"
+                                    data-bs-target="#monthlyModal" >
+
+                                    <img  *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'" src="{{interactive_dashoard_response[0].data.theme_details[0].Monthly}}"
+                                    alt="Monthly" height="100%" width="100%"  (mouseover)="openMonthlyModal()" data-bs-toggle="modal"
+                                    data-bs-target="#monthlyModal" >
                             </div>
 
                         </div>
@@ -1111,7 +1177,12 @@
             </div>
             <div class="col-12">
                 <img src="assets/images/rewards/pop up.png" style="width: 100%;"/>
+                
+                <button type="button" class="ok_button" (click)="navigateReward()">Ok</button>
+                  
             </div>
+          
+           
           
         </div>
     </div>

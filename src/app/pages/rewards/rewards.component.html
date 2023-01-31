@@ -56,12 +56,12 @@
   
                     </div>
   
-                    <div class="btn_div" *ngIf="reward.data.reward_redemption_day!=0">
+                    <div class="btn_div" *ngIf="reward.data.reward_redemption_day==0">
                       <!-- <img data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="redeemed_popup_logo"  src="assets/images/rewards/redeemed.png"> -->
                       <button (click)="redemeedOrg(rewardlist)" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"
                         type="button" class="redeem_btn">Redeem</button>
                     </div>
-                    <div class="btn_div" *ngIf="reward.data.reward_redemption_day==0">
+                    <div class="btn_div" *ngIf="reward.data.reward_redemption_day!=0">
                       <!-- <img data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="redeemed_popup_logo"  src="assets/images/rewards/redeemed.png"> -->
                       <button  data-bs-toggle="modal" data-bs-target="#daysremaining"
                         type="button" class="redeem_btn">Redeem</button>

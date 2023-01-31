@@ -49,7 +49,7 @@ export class SpectatorViewComponent implements OnInit {
   spectator_group_list_final:any
   spectator_group_list_final_without_0_index:any
   dropdown_id:any;
- 
+  spectator:any
   selected:any;
 filtered :any;
 
@@ -1206,7 +1206,7 @@ viewmoreorder:any
       "_uname": this.spectSearchStr,
       "_order": this.order==undefined? "1": this.order
     };
-   
+   if(this.spectSearchStr.length>2){
     this.http.spectatorSearch(body).subscribe((res) => {
       console.log(res);
       
@@ -1227,16 +1227,30 @@ viewmoreorder:any
       this.searchresponse == Array.of(this.searchresponse)
       console.log(this.searchresponse);
       
-      if(this.searchresponse.data[0]!= null){
-
+      
+      // if(this.searchresponse.data[0]!= null){
+        
+      //   this.openSnackBar('No data Available','Ok')
+      //   this.spectSearList == null
+      // }
+      if(this.searchresponse.data[0]._data==''){
         this.openSnackBar('No data Available','Ok')
-        this.spectSearList == null
       }
-      this.spectSearList = this.searchresponse.data
-      console.log(this.spectSearList);
+      else{
+        this.spectSearList = this.searchresponse.data
+        console.log(this.spectSearList);
+      }
+     
 
     
     })
+   }
+ else if(this.spectSearchStr.length<=2){
+
+  
+  this.openSnackBar('Please enter more than 2 characters to see results','Ok')
+
+ }
 
   }
 
@@ -1829,7 +1843,8 @@ viewmoreorder:any
               console.log(this.spectator_temporary_array);
               this.spectator_user_list=this.spectator_temporary_array
               
-              
+              this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'center' });
+
             }
             else{
               console.log("nodata");
@@ -2873,12 +2888,24 @@ viewmoreorder:any
 
   navigatetoDashboard(index:any){
     console.log(index);
-    
+    this.spectator="spectator"
+
     console.log(this.spectator_user_list[index].USERID);
      this.spectator_user_id=this.Util.encryptData(this.spectator_user_list[index].USERID)
      this.spectator_game_id=this.Util.encryptData(this.spectator_user_list[index].id_coroebus_game)
      this.spectator_role_id=this.Util.encryptData(this.spectator_user_list[index].id_role)
 
-    this._router.navigateByUrl('dashboard?userID='+this.spectator_user_id +"&gameID="+  this.spectator_game_id +"&roleID="+  this.spectator_role_id)
+    this._router.navigateByUrl('dashboard?userID='+this.spectator_user_id +"&gameID="+  this.spectator_game_id +"&roleID="+  this.spectator_role_id +"&view="+  this.spectator)
+  }
+
+  navigatetoSearchDashboard(index:any){
+    console.log(index);
+    this.spectator="spectator"
+    console.log(this.spectSearList[index]._data.USERID);
+     this.spectator_user_id=this.Util.encryptData(this.spectSearList[0]._data[index].USERID)
+     this.spectator_game_id=this.Util.encryptData(this.spectSearList[0]._data[index].id_coroebus_game)
+     this.spectator_role_id=this.Util.encryptData(this.spectSearList[0]._data[index].id_role)
+
+    this._router.navigateByUrl('dashboard?userID='+this.spectator_user_id +"&gameID="+  this.spectator_game_id +"&roleID="+  this.spectator_role_id +"&view="+  this.spectator)
   }
 }

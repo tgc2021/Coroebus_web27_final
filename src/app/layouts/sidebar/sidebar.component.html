@@ -43,20 +43,17 @@
         </li>
 
         <ng-container *ngIf="!item.isTitle && !item.isLayout">
-          <li *ngIf="id_coroebus_organization=='213' && item.icon !='rewards' && rewardpoints<'74'" class="p-2 col" [ngClass]="{'mm-active': item?.link === activeRouterLink}"
+          <!-- <li *ngIf="id_coroebus_organization=='213' && item.icon !='rewards' && rewardpoints<'74'" class="p-2 col" [ngClass]="{'mm-active': item?.link === activeRouterLink}"
             (click)="item?.icon === 'logout' ? logout() : null">
             <a *ngIf="hasItems(item)" href="javascript:void(0);" class="is-parent"
               [ngClass]="{'has-arrow': !item.badge, 'has-dropdown': item.badge}">
-              <!-- <i class="bx {{item.icon}}" *ngIf="item.icon"></i> -->
               <img class="me-1" src="assets/images/svg/menu/{{item.icon}}.svg" alt="">
               <span> {{ item.label | translate }}</span>
               <span class="badge rounded-pill float-end bg-{{item.badge.variant}}" *ngIf="item.badge">{{item.badge.text |translate}}</span>
             </a>
-            <!-- [ngClass]="{'active': item?.link === activeRouterLink}" -->
             <div *ngIf="id_coroebus_theme>4">
               <a [routerLink]="item.link" routerLinkActive="active" download (click)="activeLink(item)"*ngIf="!hasItems(item)" class="side-nav-link-ref"
               style="color:#686868;">
-               <!-- <i class="bx {{ item.icon }}" *ngIf="item.icon"></i> -->
                <img class="me-1" src="assets/images/svg/menu/{{item.icon}}.svg" alt="">
                <ng-container *ngIf="item?.icon === 'logout'; else other">
                
@@ -79,7 +76,6 @@
             <div *ngIf="id_coroebus_theme<4">
               <a [routerLink]="item.link1" download (click)="activeLink(item)"*ngIf="!hasItems(item)" class="side-nav-link-ref"
               style="color:#686868;">
-               <!-- <i class="bx {{ item.icon }}" *ngIf="item.icon"></i> -->
                <img class="me-1" src="assets/images/svg/menu/{{item.icon}}.svg" alt="">
                <ng-container *ngIf="item?.icon === 'logout'; else other">
                
@@ -118,9 +114,9 @@
                 </ul>
               </li>
             </ul>
-          </li>
+          </li> -->
 
-          <li *ngIf="id_coroebus_organization!='213'" class="p-2 col" [ngClass]="{'mm-active': item?.link === activeRouterLink}"
+          <li class="p-2 col" [ngClass]="{'mm-active': item?.link === activeRouterLink}"
             (click)="item?.icon === 'logout' ? logout() : null">
             <a *ngIf="hasItems(item)" href="javascript:void(0);" class="is-parent"
               [ngClass]="{'has-arrow': !item.badge, 'has-dropdown': item.badge}">
