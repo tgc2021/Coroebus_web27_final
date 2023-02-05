@@ -722,10 +722,12 @@ console.log(this.sectionView_2);
     }
   }
   changeTabFilter(name: string, order: any) {
+    // this.spectSearchStr=null
     this.labelNameMy = name
     this.pageNumberForSectionView_3 = 1
     this.activeTabForSectionView_2 = order
     console.log(this.activeTabForSectionView_2);
+    // this.spectSearchStr=null
 
 if(this.activeTabForSectionView_2 == 1){
   let body={

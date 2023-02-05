@@ -339,7 +339,7 @@
                 <div class="col-12 mt-1 web_leaderboard" >
                     <div *ngFor="let spectatorleaderboardreponse of spectator_user_list;  let i =index">
                         <mat-card class="web_spectator_leaderboard" style="background: url({{spectatorleaderboardreponse.ranking_image}}); background-size: 100% 100%;" (click)="navigatetoDashboard(i)">
-                            <div class="row d-flex align-items-center" >
+                            <div class="row d-flex align-items-center spectator_div" >
                                 <div class="col-md-1 col-sm-1 col-1">
                                     <p class="web_spectator_rank">{{spectatorleaderboardreponse.rankingtable_number}}</p>
                                 </div>
@@ -348,9 +348,11 @@
                                         src="{{spectatorleaderboardreponse.rankingtable_logo}}" />
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-5">
-                                    <div>
-                                        <p class="web_spectator_name">{{spectatorleaderboardreponse.rankingtable_name}}</p>
-    
+                                    <div placement="bottom" ngbTooltip="{{spectatorleaderboardreponse.rankingtable_name}}">
+                                        <p class="web_spectator_name" placement="bottom" *ngIf="spectatorleaderboardreponse.rankingtable_name.length<20"
+                                        >{{spectatorleaderboardreponse.rankingtable_name}}</p>
+                                        <p class="web_spectator_name" placement="bottom" *ngIf="spectatorleaderboardreponse.rankingtable_name.length>20"
+                                        >{{spectatorleaderboardreponse.rankingtable_name.slice(0,30).concat('...')}}</p>
                                     </div>
                                     <div>
                                         <p class="web_spectator_team">{{spectatorleaderboardreponse.rankingtable_team}}</p>

@@ -199,11 +199,14 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1281px) {
         margin-top: 7px;
         margin-left: 10px;
         margin-right: 10px;
+        width: 96vw;
     }
 
     .theme-img {
-        width: 115px;
-        height: 115px;
+       
+        margin-left: 7px;
+        margin-top: 7px;
+    
     }
 
 }
@@ -221,11 +224,13 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1281px) {
         margin-top: 7px;
         margin-left: 10px;
         margin-right: 10px;
+        width: 96vw;
     }
 
     .theme-img {
         width: 115px;
         height: 115px;
+        padding-top: 10px;
     }
 }
 

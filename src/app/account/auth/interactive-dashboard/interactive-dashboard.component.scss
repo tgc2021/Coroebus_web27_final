@@ -94,7 +94,7 @@
     background: #FEEE1E;
     border: 4px solid #FEEE1E;
     height: 8vh;
-    min-width: 5vw;
+    width: 8vh;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -215,6 +215,7 @@
     height: 14vh;
     cursor: pointer;
     padding-top: 1em;
+    // width: 74px;
 }
 
 .web_col_right {
@@ -320,7 +321,7 @@ flex-direction: column;
 
 .upper_blue_scorecard_details {
     height: 15vh;
-    margin-left: 2vh;
+    
 }
 
 .lower_blue_scorecard_details {
@@ -356,6 +357,7 @@ flex-direction: column;
     vertical-align: middle;
     margin: auto 0;
     height: 8vh;
+    border-right: 2px solid #ffffff;
     // border-right: 2px solid #ffffff;
     // height: 12vh;
 }
@@ -382,7 +384,7 @@ flex-direction: column;
 }
 
 .web_sideline_image {
-    height: 80%;
+    height: 55%;
 }
 
 .web_my_rank {
@@ -428,12 +430,13 @@ flex-direction: column;
 }
 
 .web_first_measurement_label {
-    font-family: 'Inter';
+    font-family: "Inter";
     font-style: normal;
     font-weight: 700;
-    font-size: 1.2vh;
+    font-size: 1.5vh;
     text-align: center;
     color: #FFFFFF;
+    word-spacing: 100vw;
 
 }
 
@@ -471,7 +474,7 @@ flex-direction: column;
 
 .web_button_image {
     height: 15vh;
-    width: 100%;
+    width: 95%;
     cursor: pointer;
 }
 
@@ -538,7 +541,7 @@ flex-direction: column;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 4vw;
+    
     cursor: pointer;
     ;
     white-space: nowrap;
@@ -555,6 +558,7 @@ flex-direction: column;
     text-overflow: ellipsis;
     width: 36vw;
     margin-bottom: 0;
+    font-size: 4vw;
 }
 
 .mobile_team_name_details {
@@ -562,6 +566,7 @@ flex-direction: column;
     text-overflow: ellipsis;
     width: 36vw;
     margin-bottom: 0;
+    font-size: 3.5vw;
 }
 
 .mobile-reward-section {
@@ -662,7 +667,17 @@ flex-direction: column;
     font-style: normal;
     font-weight: 700;
     font-size: 2.8vw;
+    line-height: 17px;
+    word-spacing: 100vw;
+}
+
+.mobile-sub-name-upper {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2.8vw;
     line-height: 15px;
+   
 }
 
 .border2px {
@@ -673,15 +688,15 @@ flex-direction: column;
     border-right: none;
 }
 .mobile-booster>img{
-    border-radius: 15px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px
+    border-radius: 10px;
+    // border-bottom-left-radius: 20px;
+    // border-bottom-right-radius: 20px
  
 }
 .mobile-3rd-umpire>img{
-    border-radius: 15px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px
+    border-radius: 10px;
+    // border-bottom-left-radius: 20px;
+    // border-bottom-right-radius: 20px
    
     
 
