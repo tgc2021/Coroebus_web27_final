@@ -129,8 +129,8 @@
                                     src="{{sectionView_1?._personal_data?.profile_logo}}">
                             </div>
                         </div>
-                        <div class="row d-flex justify-content-center" placement="bottom"
-                            ngbTooltip="{{sectionView_1?._personal_data?.first_name}}">
+                        <div class="row" placement="bottom"
+                                ngbTooltip="{{sectionView_1?._personal_data?.first_name}}">
                             <div class="col-lg-12 ellipsis">
                                 <div class="d-flex justify-content-center">
                                     <span
@@ -180,7 +180,7 @@
                                                     </span>
                                                 </button>
                                                 <span
-                                                    class="dashboard-level-rank-name">{{gamePoints?.[0]?.label}}s</span>
+                                                    class="dashboard-level-rank-name" >{{gamePoints?.[0]?.label}}s</span>
                                             </div>
                                         </div>
                                         <div class="confetti"
@@ -311,8 +311,8 @@
                                     </div>
 
                                     <div class="media-body user-logo-row ellipsis pt-1" style="height: 6vh;">
-                                        <h5 class="mt-0 text-white name-f-size ellipsis" placement="bottom"
-                                            ngbTooltip=" {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}">
+                                        <h5 class="mt-0 text-white name-f-size ellipsis pt-1" placement="bottom-center"
+                                            ngbTooltip="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}">
                                             {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}
                                         </h5>
                                         <p class="mt-n4 team-name sub-team name-f-size">
@@ -825,7 +825,7 @@
                                             </button>
                                             <div>
                                                 <span class="dashboard-level-rank-name"
-                                                    style="font-size:2vw;">{{gamePoints?.[0]?.label}}</span>
+                                                    style="font-size:2.1vw;">{{gamePoints?.[0]?.label}}</span>
                                             </div>
 
                                         </div>
@@ -871,7 +871,7 @@
                                             </span></button>
                                             <div>
                                                 <span class="dashboard-level-rank-name ellipsis1"
-                                                    style="font-size:2vw;">{{rewardPoints?.[0]?.label}}</span>
+                                                    style="font-size:2.1vw;">{{rewardPoints?.[0]?.label}}</span>
                                             </div>
 
                                         </div>
@@ -926,7 +926,7 @@
                     [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}">
                     <div class="card-div">
                         <div class="card-body">
-                            <div class="float-start dropdown ms-2 font-size-16 font-weight-semibold">
+                            <div class="float-start dropdown ms-2 font-size-16 font-weight-semibold" style="padding-bottom: 1vh;">
                                 Point Distribution
                             </div>
                             <div>
@@ -936,7 +936,7 @@
                                         (click)="getGraphDataById()" *ngFor="let item of sectionView_1?._kpi_score">
                                         <div class="col-6 p-0">
                                             <!-- ngbTooltip="{{item?.point_label}}"   this is inside ellipsis1-->
-                                            <div class="pt-2 mobile-points-dis-name1 ellipsis1">
+                                            <div class="pt-1 mobile-points-dis-name1 ellipsis1">
                                                 {{item?.point_label}}
                                             </div>
                                         </div>
@@ -1040,10 +1040,10 @@
                             *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.length > 0"
                             [style.background-image]="'url(' + rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.ranking_image + ')'"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
-                            <div class="col-6 pt-2">
+                            <div class="col-6" style="padding-top: 1.5vh;">
 
-                                <div class="media d-flex gap-3">
-                                    <span class="col-1 ms-2 text-white position-absolute-">
+                                <div class="media d-flex gap-3" >
+                                    <span class="col-1 ms-2 text-white position-absolute-" style="padding-top: 1vh;">
                                         {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_number}}
                                     </span>
                                     <div style="height:5vh;display:flex;justify-content:center;align-items:center">
@@ -1065,8 +1065,8 @@
 
 
                             </div>
-                            <div class="col-6">
-                                <div class="media d-flex gap-5 pt-2" >
+                            <div class="col-6" style="padding-top: 1.1vh;" >
+                                <div class="media d-flex gap-5 " >
                                     <div style="height:6vh ;" class="d-flex">
                                         <img loading="lazy" class="rounded-circle z-depth-2 team-logo-row" alt=""
                                             src="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.ranking_badge}}"
@@ -1077,7 +1077,7 @@
                                         <h5 class="mt-0 text-white  d-flex justify-content-center gap-3">
 
                                             <span class="name-f-size point-number"
-                                                style="width:7vw;align-self: center;">{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_weightage}}</span>
+                                                style="width:7vw;padding-top: 1.5vh;">{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_weightage}}</span>
 
 
                                             <div style="height:6vh;margin-top: 5%;">
@@ -1111,9 +1111,9 @@
                                 [style.background-image]="'url(' + item?.ranking_image + ')'"
                                 [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                 *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) ">
-                                <div class="col-6 pt-2">
+                                <div class="col-6 " style="padding-top: 1.5vh;">
                                     <div class="media" style="display:flex; column-gap:1rem;align-self: center;">
-                                        <span class="col-1 ms-2 text-white align-self-center">
+                                        <span class="col-1 ms-2 text-white" style="padding-top: 1vh;">
                                             {{item?.rankingtable_number}}
                                         </span>
                                         <div>

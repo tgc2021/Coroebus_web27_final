@@ -20,11 +20,11 @@ import { InteractiveDashboardComponent } from './interactive-dashboard/interacti
 import {MatCardModule} from '@angular/material/card';
 import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderComponent } from './loader/loader.component';
-import { AngularDeviceInformationService } from 'angular-device-information';
+
 
 @NgModule({
   declarations: [LoginComponent, SignupComponent, PasswordresetComponent, TermsAndConditionsComponent, CreateNewPasswordComponent, SecurityQuestionComponent, TvsDashboardComponent, InteractiveDashboardComponent, LoaderComponent],
-  providers:[AngularDeviceInformationService],
+  providers:[],
   imports: [
     CommonModule,
     ReactiveFormsModule,
