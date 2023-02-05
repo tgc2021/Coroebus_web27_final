@@ -13,7 +13,7 @@ import { ApiserviceService } from 'app/apiservice.service';
 import { Util } from '@app/utils/util';
 import { Subscription, combineLatest, Subject, Observable, interval } from 'rxjs';
 import * as userActions from '../../../core/app-state/actions';
-import { AngularDeviceInformationService } from 'angular-device-information';
+
 
 
 @Component({
@@ -190,7 +190,7 @@ export class InteractiveDashboardComponent implements OnInit {
   interactive_dashoard_response_idOrganisation:any
   interactive_dashoard_points:any
 
-  constructor(private readonly store: Store, public element: ElementRef, public Util: Util, private _router: Router, public http: ApiserviceService, private eventService: EventService, private deviceInformationService: AngularDeviceInformationService) { }
+  constructor(private readonly store: Store, public element: ElementRef, public Util: Util, private _router: Router, public http: ApiserviceService, private eventService: EventService) { }
 
   ngOnInit(): void {
 
