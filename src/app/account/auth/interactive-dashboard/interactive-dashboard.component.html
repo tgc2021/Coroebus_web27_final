@@ -58,7 +58,7 @@
                     </div>
 
                     <div class="col-8 d-flex justify-content-center align-items-end">
-                        <img class="web_character"
+                        <img (click)="navigateDashboard()" class="web_character"
                             src="{{interactive_dashoard_response[0].data._personal_data.skillmuni}}" />
                     </div>
 
@@ -76,31 +76,31 @@
                 <div class="upper_blue_scoreboard" (click)="navigateDashboard()">
                     <div class="row upper_blue_scorecard_details d-flex">
 
-                        <div class="col-3 web_team_rank d-block">
+                        <div class="col-4 web_team_rank d-block">
 
                             <p class="web_tem_rank_number">{{interactive_dashoard_response[0].data._primary.team_rank}}
                             </p>
                             <p class="web_tem_rank_label">Team Rank</p>
                         </div>
-                        <div class="col-1 sideline">
+                        <!-- <div class="col-1 sideline">
 
                             <img class="web_sideline_image" src="assets/images/interactive-dashboard/Side Line.png" />
 
-                        </div>
+                        </div> -->
 
-                        <div class="col-3 web_my_score d-block">
+                        <div class="col-4 web_my_score d-block">
 
                             <p class="web_my_score_number">{{interactive_dashoard_response[0].data._points[0].score}}
                             </p>
                             <p class="web_my_score_label">My Score</p>
                         </div>
-                        <div class="col-1 sideline">
+                        <!-- <div class="col-1 sideline">
 
                             <img class="web_sideline_image" src="assets/images/interactive-dashboard/Side Line.png" />
 
-                        </div>
+                        </div> -->
 
-                        <div class="col-3 web_my_rank d-block">
+                        <div class="col-4 web_my_rank d-block">
 
                             <p class="web_my_rank_number">{{interactive_dashoard_response[0].data._primary.my_rank}}</p>
                             <p class="web_my_rank_label">My Rank</p>
@@ -275,19 +275,19 @@
                 <div class="mobile-first-section d-flex justify-content-evenly align-items-center">
                     <div class="mobile-team-rank text-center col-4 border2px">
                         <div>{{interactive_dashoard_response[0].data._primary.team_rank}}</div>
-                        <div class="mobile-sub-name">Team Rank</div>
+                        <div class="mobile-sub-name-upper">Team Rank</div>
                     </div>
                     <div class="text-center col-4 border2px">
                         <div class="mobile-my-score">
                             {{interactive_dashoard_response[0].data._points[0].score}}
                         </div>
-                        <div class="mobile-sub-name">
+                        <div class="mobile-sub-name-upper">
                             My Score
                         </div>
                     </div>
                     <div class="mobile-myRank text-center col-4">
                         <div>{{interactive_dashoard_response[0].data._primary.my_rank}}</div>
-                        <div class="mobile-sub-name">My Rank</div>
+                        <div class="mobile-sub-name-upper">My Rank</div>
                     </div>
                 </div>
             </div>
@@ -349,7 +349,7 @@
                                 background-repeat: no-repeat;
                                 padding: 1%;">
                     <div class="col-3 d-flex flex-column justify-content-between align-items-start gap-3 pt-2 pb-2">
-                        <div class="d-flex flex-column justify-content-between gap-3">
+                        <div class="d-flex flex-column justify-content-between gap-2">
                             <div class="mobile-my-trophy" style="height:7vh">
                                 <img (click)="navigateAchievementshelf()"
                                     src="{{interactive_dashoard_response[0].data.theme_details[0].my_trophy}}"
@@ -388,7 +388,7 @@
 
                     </div>
                     <div class="col-6 d-flex justify-content-center align-self-end character-png">
-                        <img src="{{interactive_dashoard_response[0].data._personal_data.skillmuni}}"
+                        <img (click)="navigateDashboard()" src="{{interactive_dashoard_response[0].data._personal_data.skillmuni}}"
                             alt="character-png">
                     </div>
                     <div class="col-3 d-flex flex-column justify-content-between align-items-end pt-2 pb-2">

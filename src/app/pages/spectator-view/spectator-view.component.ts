@@ -30,13 +30,14 @@ export class SpectatorViewComponent implements OnInit {
   combineLatest: Subscription
   userSelectionData: any
   _routeSub: Subscription
+  medium_color:any
   spectator_user_id:any
   destroy$: Subject<boolean> = new Subject<boolean>();
   userObj: any
   mergeObj: any
   ranking_details: any
   spectator_dashoard_response: any
-
+  bgImage:any
   radioSel: any;
   radioSelected: string;
   radioSelectedString: string;
@@ -65,15 +66,19 @@ spectator_previous_array:any
 spectator_temporary_array:any=[]
 spectator_game_id:any
 spectator_role_id:any
+color: any;
+
 @ViewChild("scrollTarget") scrollTarget: ElementRef;
 viewmoreorder:any
   checked1: boolean =true;
   checked2: boolean =false;
   checked3: boolean =false;
   checked4: boolean =false;
+  passDataToHeaderSub: Subscription
+  headerInfo: any
 
   constructor(private readonly store: Store, public http: ApiserviceService, private eventService: EventService, private _router: Router,
-    private _route: ActivatedRoute,public Util: Util,public snackBar: MatSnackBar) { }
+    private _route: ActivatedRoute,public Util: Util,public snackBar: MatSnackBar, public element: ElementRef) { }
 
  
   ngOnInit(): void {
@@ -87,7 +92,7 @@ viewmoreorder:any
       console.log(login, theme, game)
       this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
       console.log(this.userSelectionData);
-      
+      this.dynamicColor()
       this._routeSub?.unsubscribe()
       this._routeSub = this._route.queryParams.subscribe(queryParams => {
         // do something with the query params
@@ -2907,5 +2912,48 @@ viewmoreorder:any
      this.spectator_role_id=this.Util.encryptData(this.spectSearList[0]._data[index].id_role)
 
     this._router.navigateByUrl('dashboard?userID='+this.spectator_user_id +"&gameID="+  this.spectator_game_id +"&roleID="+  this.spectator_role_id +"&view="+  this.spectator)
+  }
+
+  dynamicColor() {
+    // $('#example').DataTable();
+ 
+
+    this.combineLatest = combineLatest([
+      this.store.select(fromRoot.userLogin),
+      this.store.select(fromRoot.usertheme),
+      this.store.select(fromRoot.usergame),
+    ]
+    ).subscribe(([login, theme, game]) => {
+      this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
+console.log(this.userSelectionData);
+
+    })
+    this.passDataToHeaderSub?.unsubscribe()
+    this.passDataToHeaderSub = this.eventService.subscribe('passDataToHeader', (data) => {
+      this.headerInfo = data
+      console.log(this.headerInfo);
+
+    })
+    if (this.userSelectionData?.otherInfo) {
+      this.headerInfo = this.userSelectionData?.otherInfo
+      console.log(this.headerInfo);
+      this.color = this.headerInfo.color; //yellowcolor
+      console.log(this.color);
+      this.bgImage= this.userSelectionData?.themes[0].theme_background_web
+      console.log(this.bgImage);
+      // this.medium_color= this.headerInfo.bg_image[0].medium_color
+      // console.log(this.medium_color);
+      this.element.nativeElement.style.setProperty('--myvar', `${this.color}`)
+      this.element.nativeElement.style.setProperty('--bgImage', `${this.bgImage}`)
+
+      // this.element.nativeElement.style.setProperty('--mycolor',`${this.color}`)
+      // console.log( this.element.nativeElement.style.setProperty('--myvar',`${this.color}`));
+
+
+    }
+    this._routeSub = this._route.queryParams.subscribe(queryParams => {
+      this.queryParams = queryParams
+      console.log(queryParams)
+    })
   }
 }

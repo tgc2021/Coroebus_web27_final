@@ -85,17 +85,17 @@
                                                     class="media d-flex justify-content-center align-items-center gap-2">
 
                                                     <img loading="lazy" *ngIf="item?.image"
-                                                        src="assets/images/svg/notification/img.png" alt="" height="47">
+                                                        src="assets/images/svg/notification/img.png" alt="" height="47" style="padding: 5px;">
                                                     <img loading="lazy" *ngIf="item?.gif"
-                                                        src="assets/images/svg/notification/txt.png" alt="" height="47">
+                                                        src="assets/images/svg/notification/txt.png" alt="" height="47" style="padding: 5px;">
                                                     <img loading="lazy" *ngIf="item?.video"
-                                                        src="assets/images/svg/notification/v.png" alt="" height="47">
+                                                        src="assets/images/svg/notification/v.png" alt="" height="47" style="padding: 5px;">
                                                     <img loading="lazy" *ngIf="item?.video_path"
-                                                        src="assets/images/svg/notification/v.png" alt="" height="47">
+                                                        src="assets/images/svg/notification/v.png" alt="" height="47" style="padding: 5px;">
                                                     <img loading="lazy"
                                                         *ngIf="(item?.video==='' && item?.gif==='' && item?.image==='' && item?.video_path==='')"
                                                         src="assets/images/svg/dashboard/text-notification-read.png"
-                                                        alt="" height="47">
+                                                        alt="" height="47" style="padding: 5px;">
                                                     <div class="media-body">
                                                         <p class="mt-0 font-size-12 font-weight-semibold">
                                                             {{item?.title.slice(0,15).concat('...')}}</p>
@@ -271,7 +271,7 @@
                     <div class="col-11" style="padding-right:0px;">
                         <input type="text" class="form-control dashboard-searchbar" placeholder="Search People here.."
                             [(ngModel)]="spectSearchStr" aria-label="Search People here.."
-                            aria-describedby="basic-addon2" (keyup.enter)="spectSearch()">
+                            aria-describedby="basic-addon2" (click)="spectSearch()">
                     </div>
                     <div class="col-1 d-flex justify-content-end">
 
@@ -311,8 +311,13 @@
                                     </div>
 
                                     <div class="media-body user-logo-row ellipsis pt-1" style="height: 6vh;">
+<<<<<<< HEAD
                                         <h5 class="mt-0 text-white name-f-size ellipsis pt-1" placement="bottom-center"
                                             ngbTooltip="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}">
+=======
+                                        <h5 class="mt-0 text-white name-f-size ellipsis" placement="bottom"
+                                            ngbTooltip=" {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}">
+>>>>>>> 8273e3f22be1874396bf05f7d43bcac020522f0f
                                             {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}
                                         </h5>
                                         <p class="mt-n4 team-name sub-team name-f-size">
@@ -1013,7 +1018,7 @@
                     <div class="col-10" style="padding-right:0px;">
                         <input type="text" class="form-control dashboard-search" placeholder="Search People here.."
                             [(ngModel)]="spectSearchStr" aria-label="Search People here.."
-                            aria-describedby="basic-addon2" (keyup.enter)="spectSearch()">
+                            aria-describedby="basic-addon2" (click)="spectSearch()">
 
                     </div>
                     <div class="col-2 d-flex justify-content-end">

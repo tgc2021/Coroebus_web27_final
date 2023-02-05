@@ -51,23 +51,23 @@
                                 <button class="accordion-button performance-overalldata-btn" type="button"
                                     [ngStyle]="{'display': 'block'}">
                                    
-                                    <div class="container-fluid">
+                                    <div class="container-fluid-overall">
                                         <div class="row">
-                                            <div class="col-9">
+                                            <div class="col-lg-9 col-md-9 col-7">
                                                 <div class="p-0">
                                                     <span
                                                         class="performance-overall-txt">{{overallData?.[0]?.label}}</span>
                                                 </div>
                                             </div>
                                             
-                                            <div class="col-3 d-flex justify-content-end">
-                                                <span class="text-start performance-game-points-coin">
+                                            <div class="col-lg-3 col-md-3 col-5 d-flex justify-content-center">
+                                                <span class="text-start performance-game-points-coin" >
                                                     <img src="assets/images/svg/dashboard/game-points-coin.png" alt=""
-                                                        height="22">
+                                                        height="20">
                                                 </span>
                                                 <span class="float-end">
                                                 <span
-                                                    class="performance-overall-points ms-2">{{overallData?.[0]?._data?.[0]?.points}}</span>
+                                                    class="performance-overall-points ms-2" style="width: 51%;text-align: end;">{{overallData?.[0]?._data?.[0]?.points}}</span>
                                                 <i class="fa fa-sort-down ms-4 performance-arrow-down invisible"></i>
                                             </span>
                                             </div>
@@ -95,19 +95,19 @@
                                     [attr.aria-controls]="'collapse'+i" [ngStyle]="{'display': 'block'}">
 
                                   
-                                    <div class="container-fluid">
+                                    <div class="container-fluid-top-accordion">
                                         <div class="row">
-                                            <div class="col-lg-10 col-md-10 col-7 g-0">
+                                            <div class="col-lg-10 col-md-10 col-8 g-0">
                                                 <div class="p-0">
                                                     <span
                                                         class="performance-accordion-point-data-label">{{item?._data?.measurement_name}}</span>
                                                 </div>
                                             </div>
                                           
-                                            <div class="col-lg-2 col-md-2 col-5 g-0">
+                                            <div class="col-lg-2 col-md-2 col-4 g-0">
                                                 <span class="text-start performance-game-points-coin">
                                                     <img src="assets/images/svg/dashboard/game-points-coin.png" alt=""
-                                                        height="22">
+                                                        height="15">
                                                 </span>
                                                 <span class="float-end">
                                                     <span class="performance-points">{{item?._data?.points}}</span>
@@ -121,20 +121,20 @@
                             <div [id]="'collapse'+i" class="accordion-collapse collapse" [ngClass]="{ 'show': i == 0 }"
                                 [attr.aria-labelledby]="'heading'+i" data-bs-parent="#accordionExample">
                                 <div class="accordion-body performance-accordion-point-data-body">
-                                    <div class="container-fluid">
+                                    <div class="container-fluid-full">
                                         <div class="row"
                                             *ngFor="let child of item?.kpi_data">
-                                            <div class="col-10">
+                                            <div class="col-lg-10 col-md-10 col-8">
                                                 <div class="p-0">
                                                     <span
                                                         class="performance-accordion-point-data-label">{{child?.kpi_name}}</span>
                                                 </div>
                                             </div>
                                             
-                                            <div class="col-2">
+                                            <div class="col-lg-2 col-md-2 col-4 p-0">
                                                 <span class="text-start performance-game-points-coin">
                                                     <img src="assets/images/svg/dashboard/game-points-coin.png" alt=""
-                                                        height="22">
+                                                        height="15">
                                                 </span>
                                                 <span class="float-end">
                                                     <span class="performance-points">{{child?.points}}</span>
@@ -240,7 +240,7 @@
                                             <div class="col">
                                                 <span class="text-start performance-game-points-coin">
                                                     <img src="assets/images/svg/dashboard/game-points-coin.png" alt=""
-                                                        height="22">
+                                                        height="15">
                                                 </span>
                                                 <span class="float-end">
                                                 <span
@@ -289,7 +289,7 @@
                                             <div class="col">
                                                 <span class="text-start performance-game-points-coin">
                                                     <img src="assets/images/svg/dashboard/game-points-coin.png" alt=""
-                                                        height="22">
+                                                        height="15">
                                                 </span>
                                                 <span class="float-end">
                                                     <span class="performance-points">{{item?._data?.points}}</span>

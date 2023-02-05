@@ -449,11 +449,11 @@ console.log(this.userSelectionData);
 
     if (dots.style.display === "none") {
       dots.style.display = "inline";
-      btnText.innerHTML = "More";
+      btnText.innerHTML = "Show more..";
       (<HTMLInputElement>document.getElementById('more'+index)).style.display = "none";
     } else {
       dots.style.display = "none";
-      btnText.innerHTML = "Less";
+      btnText.innerHTML = "Show less";
       (<HTMLInputElement>document.getElementById('more'+index)).style.display = "inline";
     }
   }
