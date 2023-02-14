@@ -1,6 +1,4 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-
-
 import * as fromRoot from '../../../core/app-state';
 import { Store } from '@ngrx/store';
 import { take, takeUntil } from 'rxjs/operators';
@@ -8,20 +6,20 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '@app/services/event.service';
 import { ToastService } from '@app/services/toast-service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal,NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import { ApiserviceService } from 'app/apiservice.service';
 import { Util } from '@app/utils/util';
 import { Subscription, combineLatest, Subject, Observable, interval } from 'rxjs';
 import * as userActions from '../../../core/app-state/actions';
 
-
-
 @Component({
   selector: 'app-interactive-dashboard',
   templateUrl: './interactive-dashboard.component.html',
-  styleUrls: ['./interactive-dashboard.component.scss']
+  styleUrls: ['./interactive-dashboard.component.scss'],
+  providers: [NgbModalConfig, NgbModal],
 })
 export class InteractiveDashboardComponent implements OnInit {
+
   auto_parts = [
     //Production Cordinates
 
@@ -186,25 +184,25 @@ export class InteractiveDashboardComponent implements OnInit {
   firstString: string;
   Digit: any;
   LastString: any;
+  id:any
   accordioncolor: any
+  
   interactive_dashoard_response_idOrganisation:any
   interactive_dashoard_points:any
 
-  constructor(private readonly store: Store, public element: ElementRef, public Util: Util, private _router: Router, public http: ApiserviceService, private eventService: EventService) { }
-
+  constructor(private readonly store: Store, public element: ElementRef, public Util: Util, private _router: Router, public http: ApiserviceService, private eventService: EventService,config: NgbModalConfig, private modalService: NgbModal) {
+    config.backdrop = 'static';
+		config.keyboard = false;
+    config.centered=true;
+   }
   ngOnInit(): void {
-
-
-
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
     ).subscribe(data => {
       this.userObj = data?.user
       console.log(this.userObj);
-
       this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
       console.log(this.mergeObj);
-
       this.combineLatest = combineLatest([
         this.store.select(fromRoot.userLogin),
         this.store.select(fromRoot.usertheme),
@@ -263,22 +261,15 @@ export class InteractiveDashboardComponent implements OnInit {
           localStorage.setItem('reward_points', this.interactive_dashoard_points);
 
           this.interactive_dashoard_response_idOrganisation=this.interactive_dashoard_response[0].data._personal_data.id_coroebus_organization
-console.log(this.interactive_dashoard_response_idOrganisation);
-
+          console.log(this.interactive_dashoard_response_idOrganisation);
           if (this.interactive_dashoard_response) {
             setTimeout(() => {
               this.isLoading = false;
             }, 5000)
             this.isLoading = true;
           }
-
-
-
-
-
           this.point_distribution = this.interactive_dashoard_response[0].data.theme_details[0].gradient_color_bg
           console.log(this.point_distribution);
-
           this.element.nativeElement.style.setProperty('--myvar', `${this.point_distribution}`)
 
 
@@ -598,5 +589,12 @@ console.log(this.interactive_dashoard_response_idOrganisation);
     this.isMonthlyModalOpen = true;
 
   }
+  open(content:any) {
+    setTimeout(()=>{
+      this.modalService.open(content);
+    },5000)
+		
+	}
+
 
 }
