@@ -74,6 +74,11 @@ viewmoreorder:any
   checked2: boolean =false;
   checked3: boolean =false;
   checked4: boolean =false;
+  checked1Mobile: boolean =true;
+  checked2Mobile: boolean =false;
+  checked3Mobile: boolean =false;
+  checked4Mobile: boolean =false;
+
   passDataToHeaderSub: Subscription
   headerInfo: any
 
@@ -995,6 +1000,7 @@ viewmoreorder:any
           this.spectator_data_1 = this.spectator_data.filter((a: any) => {
             console.log(a.label);
             console.log(category);
+            console.log(this.order);
             
             if (a.label == category) {
               console.log(a);
@@ -1012,6 +1018,11 @@ viewmoreorder:any
                   this.checked3=false;
                   this.checked4=false;
                 
+                  this.checked1Mobile =true;
+                  this.checked2Mobile =false;
+                  this.checked3Mobile =false;
+                  this.checked4Mobile =false;
+                
                   this.checked=false
                 
               }
@@ -1026,11 +1037,16 @@ viewmoreorder:any
                
               }
               else if(this.order==3){
+              console.log('order 3');
               
                   this.checked1=false;
                   this.checked2=false;
                   this.checked3=true;
                   this.checked4=false;
+                  this.checked1Mobile =false;
+                  this.checked2Mobile =false;
+                  this.checked3Mobile =true;
+                  this.checked4Mobile =false;
                   this.checked=false
   
               
@@ -2955,6 +2971,18 @@ console.log(this.userSelectionData);
       // console.log( this.element.nativeElement.style.setProperty('--myvar',`${this.color}`));
 
 
+    }
+    else{
+      this.headerInfo = this.headerInfo?.color
+      console.log(this.headerInfo);
+      this.color = this.headerInfo.color; //yellowcolor
+      console.log(this.color);
+      this.bgImage= this.userSelectionData?.themes[0].theme_background_web
+      console.log(this.bgImage);
+      // this.medium_color= this.headerInfo.bg_image[0].medium_color
+      // console.log(this.medium_color);
+      this.element.nativeElement.style.setProperty('--myvar', `${this.color}`)
+      this.element.nativeElement.style.setProperty('--bgImage', `${this.bgImage}`)
     }
     this._routeSub = this._route.queryParams.subscribe(queryParams => {
       this.queryParams = queryParams

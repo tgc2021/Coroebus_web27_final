@@ -1,11 +1,11 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnChanges, OnDestroy, OnInit } from '@angular/core';
 
-
+import { Location } from '@angular/common';
 import * as fromRoot from '../../../core/app-state';
 import { Store } from '@ngrx/store';
-import { take, takeUntil } from 'rxjs/operators';
+import { filter, take, takeUntil } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { EventService } from '@app/services/event.service';
 import { ToastService } from '@app/services/toast-service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -21,7 +21,7 @@ import * as userActions from '../../../core/app-state/actions';
   templateUrl: './interactive-dashboard.component.html',
   styleUrls: ['./interactive-dashboard.component.scss']
 })
-export class InteractiveDashboardComponent implements OnInit {
+export class InteractiveDashboardComponent implements OnInit,OnDestroy {
   auto_parts = [
     //Production Cordinates
 
@@ -189,12 +189,76 @@ export class InteractiveDashboardComponent implements OnInit {
   accordioncolor: any
   interactive_dashoard_response_idOrganisation:any
   interactive_dashoard_points:any
-
-  constructor(private readonly store: Store, public element: ElementRef, public Util: Util, private _router: Router, public http: ApiserviceService, private eventService: EventService) { }
+  is_about_game:any
+  game_audio:any
+  audio:any
+  audiotoggle: boolean=true;
+  loginvalue:any
+  previousUrl1:any
+  previousUrl: any=[];
+  currentUrl: string;
+  constructor(private readonly store: Store, public element: ElementRef, public Util: Util, private _router: Router, public http: ApiserviceService, private eventService: EventService,public location:Location) {
+   
+   }
 
   ngOnInit(): void {
+    this.game_audio=localStorage.getItem('audio_game')
+    console.log(this.game_audio);
+     
+ this.previousUrl1= this._router.events.pipe(
+    filter((event) => event instanceof NavigationEnd)
+).subscribe((event: NavigationEnd) => {
+   this.previousUrl = this.currentUrl;
+   this.currentUrl = event.url;
+   console.log(this.previousUrl);
+  localStorage.setItem('previousUrl',this.previousUrl)
+   
+});
+this.previousUrl1=localStorage.getItem('previousUrl')
+console.log(this.previousUrl1);
 
+    this.http.previousUrl$.subscribe((previousUrl:string)=>{
+      console.log(previousUrl);
 
+    })
+if(this.previousUrl1=='/account/game/selection'){
+  this.audiotoggle=true
+  this.game_audio=localStorage.getItem('audio_game')
+  console.log(this.game_audio);
+  this.audio = new Audio();
+  this.audio.src = this.game_audio;
+  this.audio.load();
+  this.audio.play();
+}
+else{
+  this.audiotoggle=false
+  this.game_audio=localStorage.getItem('audio_game')
+  console.log(this.game_audio);
+  this.audio = new Audio();
+  this.audio.src = this.game_audio;
+  this.audio.load();
+  this.audio.pause();
+}
+   
+
+//  if( this.previousUrl=='/account/game/selection'){
+//   this.audio = new Audio();
+//   this.audio.src = this.game_audio;
+//   this.audio.load();
+//   this.audio.play();
+//  }
+     
+     
+
+    
+     
+      // this.audiotoggle=false
+    
+    
+    
+    // this.playAudio();
+   
+    
 
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
@@ -218,6 +282,9 @@ export class InteractiveDashboardComponent implements OnInit {
 
       })
 
+    
+
+
       if (this.mergeObj.id_coroebus_game != null) {
         let body = {
           _userid: this.mergeObj.USERID,
@@ -225,16 +292,21 @@ export class InteractiveDashboardComponent implements OnInit {
 
         }
 
-
-
+      
         console.log(body);
         this.http.interactiveDashboard(body).subscribe((res) => {
           console.log(res)
           this.interactive_dashoard_response = res;
+
+          
+          
           this.isLoading = true;
           this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
           console.log(this.interactive_dashoard_response);
-
+          
+          this.is_about_game= localStorage.setItem('is_about_game',this.interactive_dashoard_response[0].data.is_about_game)
+          console.log(this.is_about_game);
+         
           this.http.BoosterData(body).subscribe((res: any) => {
             this.boosterData_response = res.data;
 
@@ -333,8 +405,7 @@ console.log(this.interactive_dashoard_response_idOrganisation);
           //  })
 
         })
-
-
+       
       }
       else {
         let body = {
@@ -343,33 +414,29 @@ console.log(this.interactive_dashoard_response_idOrganisation);
 
         }
 
+        
+
         console.log(body);
         this.http.interactiveDashboard(body).subscribe((res) => {
           console.log(res)
 
 
           this.interactive_dashoard_response = res;
+
+          
+
           this.isLoading = true;
           this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
           console.log(this.interactive_dashoard_response);
+          
+        this.is_about_game= localStorage.setItem('is_about_game',this.interactive_dashoard_response[0].data.is_about_game)
+        console.log(this.is_about_game);
           this.accordioncolor = this.interactive_dashoard_response[0].data.theme_details[0].light_color
           console.log(this.accordioncolor);
 
           this.element.nativeElement.style.setProperty('--accordioncolor', `${this.accordioncolor}`)
 
-          // this.http.BoosterData(body).subscribe((res:any)=>{
-          //   this.boosterData_response=res.data;
-
-          //   console.log(res);
-
-          //    this.StringArray=res.data.booster_rank_details[0].rank_position_stmt.split(" ");
-          //    this.firstString=this.StringArray[0]+" "+this.StringArray[1]+" "+this.StringArray[2];
-          //   this.Digit=this.StringArray[3]
-          //   this.LastString=this.StringArray[4];
-          //   console.log(this.StringArray);
-          //   console.log(this.LastString);
-
-          // })
+         
           if (this.interactive_dashoard_response) {
             setTimeout(() => {
               this.isLoading = false;
@@ -452,6 +519,25 @@ console.log(this.interactive_dashoard_response_idOrganisation);
 
   }
 
+  playpauseaudio(){
+
+  console.log('pause');
+  this.game_audio=localStorage.getItem('audio_game')
+  console.log(this.game_audio);
+      if(this.audiotoggle){
+        this.audio.pause();
+        this.audiotoggle=false
+
+      }
+      else{
+        console.log('play');
+        
+        this.audio.play();
+        this.audiotoggle=true
+
+
+      }
+  }
 
   partClicked(arg, k: any) {
 
@@ -543,6 +629,8 @@ console.log(this.interactive_dashoard_response_idOrganisation);
   }
 
   navigateToLearningAcademy() {
+    // this.audio.stop();
+
     this._router.navigateByUrl("/learning/learningAcademy")
   }
   navigateToNotification() {
@@ -596,6 +684,13 @@ console.log(this.interactive_dashoard_response_idOrganisation);
     this.isDailyModalopen = false;
     this.isWeeklyModalOpen = false;
     this.isMonthlyModalOpen = true;
+
+  }
+
+  ngOnDestroy(): void {
+   this.audio.pause()
+  //  localStorage.removeItem('audio_game');
+  
 
   }
 

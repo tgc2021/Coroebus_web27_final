@@ -298,7 +298,8 @@
                         <div class="row dashboard-rank-row ms-1 mb-2"
                             *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.length > 0"
                             [style.background-image]="'url(' + web_first_tile_image + ')'"
-                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
+                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                            style="border:2px solid">
                             <div class="col  widthText">
                                 <div class="media d-flex align-items-center gap-3" style="height: 8vh;">
                                     <span class="col-1 ms-2 text-white position-absolute-">
@@ -311,7 +312,7 @@
                                     </div>
 
                                     <div class="media-body user-logo-row ellipsis pt-1" style="height: 6vh;">
-                                        <h5 class="mt-0 text-white name-f-size ellipsis pt-1" placement="bottom-center"
+                                        <h5 class="mt-0 text-white name-f-size ellipsis" placement="bottom-center"
                                             ngbTooltip="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}">
                                             {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}
                                         </h5>
@@ -322,7 +323,7 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="media d-flex align-items-center gap-3" style="height: 8vh;">
+                                <div class="media d-flex align-items-center" style="height: 8vh;">
                                     <div class="rounded-circle z-depth-2 team-logo-row d-flex align-items-center"
                                         style="height:5vh;">
                                         <img loading="lazy" class="rounded-circle z-depth-2 " alt=""
@@ -1039,7 +1040,8 @@
                         <div class="row dashboard-rank-row ms-1 mb-1"
                             *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.length > 0"
                             [style.background-image]="'url(' + rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.ranking_image + ')'"
-                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
+                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                            style="border:2px solid">
                             <div class="col-6" style="padding-top: 1.5vh;">
 
                                 <div class="media d-flex gap-3" >
@@ -1111,7 +1113,7 @@
                                 [style.background-image]="'url(' + item?.ranking_image + ')'"
                                 [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                 *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) ">
-                                <div class="col-6 " style="padding-top: 1.5vh;">
+                                <div class="col-6 " style="padding-top: 1vh;">
                                     <div class="media" style="display:flex; column-gap:1rem;align-self: center;">
                                         <span class="col-1 ms-2 text-white" style="padding-top: 1vh;">
                                             {{item?.rankingtable_number}}

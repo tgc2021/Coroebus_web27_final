@@ -7,6 +7,7 @@ import { NgbNavModule, NgbAccordionModule, NgbTooltipModule, NgbModule } from '@
 import { HttpClient } from '@angular/common/http';
 
 import { MENU } from './menu';
+
 import { MENU_SPECTATOR } from './menu_spectator';
 import { MenuItem } from './menu.model';
 import { TranslateService } from '@ngx-translate/core';
@@ -44,6 +45,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
   activeRouterLink: any
   produce1Data: any
   profileLogo:any
+  is_about_game:any
   url: string;
   filepath: any;
   ProfileImageNewOne:any=null
@@ -68,51 +70,55 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
       this.produce1Data = data
       this.profileLogo=this.produce1Data._personal_data?.profile_logo
       this.filepath=this.produce1Data.about_game[0].file_name
-      this.menuItems = MENU;
-      // console.log(this.filepath);
-      console.log(this.userObj)
-      console.log(this.menuItems);
-      console.log(this.userObj?.games.length);
-
-      var menuArr: any
-      menuArr = MENU.filter((value, index) => {
-        if (value?.label === 'MENUITEMS.PLAY_ZONE') {
-          if (this.produce1Data?.is_play_zone === 0) {
-            this.menuItems.splice(0, 1);
-            console.log(this.menuItems, index)
+     
+        this.menuItems = MENU;
+        // console.log(this.filepath);
+        console.log(this.userObj)
+        console.log(this.menuItems);
+        console.log(this.userObj?.games.length);
+  
+        var menuArr: any
+        menuArr = MENU.filter((value, index) => {
+          if (value?.label === 'MENUITEMS.PLAY_ZONE') {
+            if (this.produce1Data?.is_play_zone === 0) {
+              this.menuItems.splice(0, 1);
+              console.log(this.menuItems, index)
+            }
           }
-        }
-        if (value?.label === 'MENUITEMS.GAME_SELECTION') {
-          if ( this.userObj?.games.length==1) {
-            this.menuItems.splice(8, 1);
-            console.log(this.menuItems, index)
+          if (value?.label === 'MENUITEMS.GAME_SELECTION') {
+            if ( this.userObj?.games.length==1) {
+              this.menuItems.splice(8, 1);
+              console.log(this.menuItems, index)
+            }
+            else{
+              
+            }
           }
-          else{
+      
+  
+          if (value?.label === 'MENUITEMS.CHALLENGE_ZONE') {
+            MENU[index]?.subItems.filter((subVal, subIndex) => {
+              if (this.produce1Data?.is_champions_league === "D" || this.userObj?._personal_data?.id_role ==='3' ||this.userObj?._personal_data?.id_role ==='1'||
+              this.userObj?._personal_data?.id_role ==='2' ||this.userObj?._personal_data?.id_role ==='5' ||this.userObj?._personal_data?.id_role ==='7' ||this.userObj?._personal_data?.id_role ==='8' || 
+              this.userObj?._personal_data?.id_role ==='9' ||this.userObj?._personal_data?.id_role ==='10' || this.userObj?._personal_data?.id_role ==='11' ||
+              this.userObj?._personal_data?.id_role ==='12') 
+              {
+                this.menuItems?.[index]?.subItems?.splice(subIndex, 1);
+                console.log(this.menuItems?.[index]?.subItems, subIndex)
+              }
+           
+            });
+            if (MENU[index]?.subItems?.length === 0) {
+              this.menuItems.splice(index,1); 
+            }
             
           }
-        }
-    
-
-        if (value?.label === 'MENUITEMS.CHALLENGE_ZONE') {
-          MENU[index]?.subItems.filter((subVal, subIndex) => {
-            if (this.produce1Data?.is_champions_league === "D" || this.userObj?._personal_data?.id_role ==='3' ||this.userObj?._personal_data?.id_role ==='1'||
-            this.userObj?._personal_data?.id_role ==='2' ||this.userObj?._personal_data?.id_role ==='5' ||this.userObj?._personal_data?.id_role ==='7' ||this.userObj?._personal_data?.id_role ==='8' || 
-            this.userObj?._personal_data?.id_role ==='9' ||this.userObj?._personal_data?.id_role ==='10' || this.userObj?._personal_data?.id_role ==='11' ||
-            this.userObj?._personal_data?.id_role ==='12') 
-            {
-              this.menuItems?.[index]?.subItems?.splice(subIndex, 1);
-              console.log(this.menuItems?.[index]?.subItems, subIndex)
-            }
-         
-          });
-          if (MENU[index]?.subItems?.length === 0) {
-            this.menuItems.splice(index,1); 
-          }
-          
-        }
+        
+        })
+  
       
-      })
-
+     
+     
 
 
 
@@ -127,11 +133,15 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
       })
 
     })
+    // console.log(this.menuItems);
 
   
   }
 
   ngOnInit() {
+   
+    // console.log(this.menuItems);
+    this.is_about_game= localStorage.getItem('is_about_game')
     this.rewardpoints=localStorage.getItem('reward_points');
     console.log(this.rewardpoints);
     this.is_interactive_dashboard=localStorage.getItem("is_interactive_dashboard")
@@ -167,6 +177,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
    
    this.id_coroebus_organization=this.userObj._personal_data.id_coroebus_organization
 console.log(this.id_coroebus_organization);
+
 
     })
 
@@ -278,13 +289,36 @@ console.log(this.id_coroebus_organization);
   initialize(): void {
     if(this.id_role == 7 || this.spectator_value=='spectator'){
       console.log(this.spectator_value);
+     
       
       this.menuItems = MENU_SPECTATOR;
       this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
     }else {
       console.log(this.spectator_value);
-
+    
       this.menuItems = MENU;
+      console.log(this.menuItems);
+      
+     
+      console.log(this.menuItems);
+      console.log(this.is_about_game);
+      this.eventService.subscribe('requestSendForProduce1Data', (data) => {
+        console.log(data);
+        
+      })
+
+      if(this.is_about_game==0){
+       
+       
+        const result = this.menuItems.filter(data => data.icon != 'Aboutgameicon');
+
+        this.menuItems=result;
+
+       
+        console.log(this.menuItems);
+        
+      }
+       
       this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
     }
 

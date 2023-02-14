@@ -613,7 +613,7 @@
 
 
   
-    <div class="row mobile_button_row">
+    <!-- <div class="row mobile_button_row">
         <div class="col-3 mobile_first_tab">
             <input type="radio" id="tab-1" name="mytabs" [checked]="checked1" value="response.data.ranking[0].label" (click)="filterRankwiseLeaderboard(response.data.ranking[0].label)" >
             <label class="mobile_cm_tab" for="tab-1">{{response.data.ranking[0].label}}</label>
@@ -631,7 +631,7 @@
             <input type="radio" id="tab-4" name="mytabs"[checked]="checked4"  value="response.data.ranking[3].label" (click)="filterRankwiseLeaderboard(response.data.ranking[3].label)">
             <label class="mobile_nsm_tab" for="tab-4">{{response.data.ranking[3].label}}</label>
         </div>
-    </div>
+    </div> -->
 
 
     <div class="row search_div_with_icon">
@@ -731,7 +731,7 @@
     <div class="row web_spectator_leaderboard_section" *ngIf="spectSearList != null">
         <div class="col-12 mt-1" >
             <div *ngFor="let spectatorleaderboardreponse of spectSearList[0]._data;  let i =index" >
-                <mat-card class="mobile_spectator_leaderboard" style="background: url({{spectatorleaderboardreponse.ranking_image}}); background-size: 100% 100%;" (click)="navigatetoDashboard(i)">
+                <mat-card class="mobile_spectator_leaderboard" style="background: url({{spectatorleaderboardreponse.ranking_image}}); background-size: 100% 100%;" (click)="navigatetoSearchDashboard(i)">
                     <div class="row d-flex align-items-center spectator_div" >
                         <div class="col-1 d-flex justify-content-center">
                             <p class="mobile_spectator_rank">{{spectatorleaderboardreponse.rankingtable_number}}</p>
@@ -785,7 +785,7 @@
     </div>
 
 
-    <div class="row d-flex justify-content-center">
+    <div class="row d-flex justify-content-start">
         <div class="col-12 mobile_spectator_view_more_btn_div">
             <button class="w-100 btn btn-lg load-more" type="button" (click)="viewMore()">
                 <img src="assets/images/svg/dashboard/load-more.svg" data-holder-rendered="true" height="13">

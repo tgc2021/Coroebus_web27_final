@@ -132,6 +132,7 @@ export const MENU: MenuItem[] = [
         // link: '/spectator/spectatorView'
 
     }, 
+  
     {
         id: 15,
         label: 'About Game',
