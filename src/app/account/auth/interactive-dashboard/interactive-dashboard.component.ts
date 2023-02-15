@@ -198,7 +198,7 @@ export class InteractiveDashboardComponent implements OnInit,OnDestroy {
   previousUrl1:any
   previousUrl: any=[];
   currentUrl: string;
-  constructor(private readonly store: Store, public element: ElementRef, public Util: Util, private _router: Router, public http: ApiserviceService, private eventService: EventService,public location:Location ,public modalService:ApiserviceService) {
+  constructor(private readonly store: Store, public element: ElementRef, public Util: Util, private _router: Router, public http: ApiserviceService, private eventService: EventService,public location:Location ,public modalService:NgbModal) {
    
    }
 

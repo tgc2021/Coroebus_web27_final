@@ -1,5 +1,5 @@
 <!-- Right Sidebar -->
-<div class="right-bar" (clickOutside)="hide()" [exclude]="'.right-bar-toggle'">
+<div class="right-bar web-view" (clickOutside)="hide()" [exclude]="'.right-bar-toggle'">
   <ngx-simplebar class="h-100">
     <div class="rightbar-title px-3 py-4">
       <a href="javascript:void(0);" class="right-bar-toggle float-end" (click)="hide();">
@@ -93,4 +93,14 @@
 <!-- /Right-bar -->
 
 <!-- Right bar overlay-->
-<div class="rightbar-overlay"></div>
+<div class="rightbar-overlay "></div>
+
+<!-- Rotated View -->
+<div class="mobile-view-rotated d-flex flex-column justify-content-center align-items-center">
+  <div class="phone">
+  </div>
+  <div class="message">
+    Please rotate your device!
+  </div>
+  
+</div>
