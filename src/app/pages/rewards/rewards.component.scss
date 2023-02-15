@@ -555,9 +555,15 @@ color: #A5ACB8;
     margin-top: 60px;
    display:flex;
    justify-content: center;
-   min-height: 44vh;
+   height: 27vh;
 }
 
+.organisation_redemption_history_no_data{
+    margin-top: 60px;
+    display:flex;
+    justify-content: center;
+    height: 42vh;
+}
 .no_data_reward_image{
     width: 25vw;
     height: 35vh;

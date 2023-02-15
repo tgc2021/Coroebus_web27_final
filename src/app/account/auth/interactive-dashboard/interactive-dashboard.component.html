@@ -24,8 +24,32 @@
             <div class="col-4 d-flex justify-content-center align-items-center">
                 <img class="web_logo" src="{{interactive_dashoard_response[0].data._personal_data.game_logo}}" />
             </div>
-
-            <div class="col-4 d-flex justify-content-end">
+            <div class="col-3" *ngIf="this.game_audio!='null'">
+                <div *ngIf="this.audiotoggle; then soundon else soundoff"></div>
+                <ng-template #soundon>
+                    <div class="d-flex justify-content-end" >
+                        <div (click)="playpauseaudio()" class="web_sound">
+                            
+                            <img class="web_sound_image" src="assets/images/interactive-dashboard/Sound_on.png"/>
+                        </div>
+                    </div>
+                </ng-template>
+               
+                <ng-template #soundoff>
+                    <div class="d-flex justify-content-end">
+                        <div (click)="playpauseaudio()" class="web_sound">
+                            
+                            <img class="web_sound_image" src="assets/images/interactive-dashboard/Sound_off.png"/>
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+            <div class="col-3" *ngIf="this.game_audio=='null'">
+                <!-- {{this.game_audio}} -->
+            </div>
+           
+            <div class="col-1 d-flex justify-content-end">
+               
                 <div class="web_points_bg">
                     <div class="web_center_div">
                         <img class="web_points"
@@ -257,11 +281,31 @@
                                 </div>
                             </div>
                         </div>
+                        <div *ngIf="this.game_audio!='null'">
+                            <div *ngIf="this.audiotoggle; then soundon else soundoff"></div>
+                            <ng-template #soundon>
+                                <div class="d-flex justify-content-end">
+                                    <div (click)="playpauseaudio()" class="mobile_sound">
+                                        
+                                        <img class="web_sound_image" src="assets/images/interactive-dashboard/Sound_on.png"/>
+                                    </div>
+                                </div>
+                            </ng-template>
+                           
+                            <ng-template #soundoff>
+                                <div class="d-flex justify-content-end">
+                                    <div (click)="playpauseaudio()" class="mobile_sound">
+                                        
+                                        <img class="web_sound_image" src="assets/images/interactive-dashboard/Sound_off.png"/>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </div>
                         <div class="mobile-reward-section">
                             <div class="text-center">
                                 <img src="{{interactive_dashoard_response[0].data.theme_details[0].reward_points_image}}"
                                     alt="" style="height: 4vh;">
-                                <div>{{interactive_dashoard_response[0].data._points[2].score}}</div>
+                                <div style="font-size: 12px;">{{interactive_dashoard_response[0].data._points[2].score}}</div>
                             </div>
 
                         </div>
@@ -378,7 +422,7 @@
                                     alt="tug-of-war" height="100%" (click)="navigateToChampionsLeague()">
 
                             </div>
-                            <div class="mobile-3rd-umpire" style="height:8vh;">
+                            <div class="mobile-3rd-umpire" style="height:8vh;width: 15vw;">
                                 <img (click)="navigateToNotification()"
                                     src="{{interactive_dashoard_response[0].data.theme_details[0].third_umpire_bt}}"
                                     alt="3rd-Umpire" width="100%" height="100%">
@@ -398,7 +442,7 @@
                                 alt="spectator-view" height="100%" width="100%">
                         </div>
                         <div class="campaign-buttons d-flex flex-column gap-1 mt-1">
-                            <div style="height:6vh;">
+                            <div style="height:4vh;">
                                 <img src="{{interactive_dashoard_response[0].data.theme_details[0].campaigns_bt}}"
                                     alt="CAMPAIGNS" height="100%" width="100%" data-bs-toggle="modal" >
                             </div>
@@ -433,7 +477,7 @@
 
                         </div>
                         <div class="mobile-booster" data-bs-toggle="modal" data-bs-target="#BoosterModal"
-                            style="height:8vh;">
+                            style="height:8vh; width: 15vw;">
                             <img src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}"
                                 alt="Booster" height="100%" width="100%">
                         </div>
@@ -499,7 +543,7 @@
             <div class="modal-content "
                 style="background: url(assets/images/interactive-dashboard/BG.png);position: relative; background-size:contain;">
                 <div class="modal-body"
-                    style="background-image:url(https://coroebus.in/coroebus-beta/assets/Media/Daily_champion.svg); background-repeat: no-repeat; background-size:contain; position:ralative;">
+                    style="background-image:url(https://coroebus.in/coroebus-beta/assets/Media/Daily_champion.svg); background-repeat: no-repeat; background-size:contain; position:ralative;min-height: 51vh;">
                     <div class="d-flex justify-content-end">
                         <button type="button" class="button-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                     </div>
@@ -514,7 +558,7 @@
                             <div class="modalDescription col-11">
                                 {{seasonalThemeDaily[0].theme_description}}
                             </div>
-                            <div class="modalDescription d-flex justify-content-start p-1">
+                            <div class="modalDescription d-flex justify-content-start pt-2">
                                 <div> Valid Till:{{seasonalThemeDaily[0].valid_till_date |
                                     date:"dd/M/yyyy"}}</div>
                             </div>
@@ -561,7 +605,7 @@
                                         <div class="row" *ngIf="item.length !=0">
                                             <div class="col-10" style="padding:14px 7px 0px 0px;">
 
-                                                <progress id="file" class="range rangeBgcolor"
+                                                <progress id="file" class="range rangeBgcolor1"
                                                     value="{{item.seasonal_score_percentage}}" max="100">
                                                     {{item.seasonal_score_percentage}}% </progress>
                                             </div>
@@ -636,7 +680,7 @@
                                 {{seasonalThemeWeekly[0].theme_description}}
                             </div>
 
-                            <div class="modalDescription d-flex justify-content-end p-1 mt-2 mb-3">
+                            <div class="modalDescription d-flex justify-content-start pt-2 mt-2 mb-3">
 
                                 <div> Valid Till
                                     :{{seasonalThemeWeekly[0].valid_till_date |
@@ -701,7 +745,7 @@
                                                 <img src="{{topper.profile_mage}}" alt="image" height="40px"
                                                     width="40px">
                                             </div>
-                                            <div class="name">{{topper.first_name.slice(0,10)}}...</div>
+                                            <div class="name" style="white-space: nowrap;">{{topper.first_name.slice(0,10)}}...</div>
                                             <div class="rank">Rank:{{topper.user_rank}}</div>
                                             <div class="score">{{topper.score}}</div>
 
@@ -744,8 +788,8 @@
                 style="background: url(assets/images/interactive-dashboard/BG.png);position: relative; background-size:contain;">
                 <div class="modal-body"
                     style="background-image:url(https://coroebus.in/coroebus-beta/assets/Media/monthly_champion.svg); background-repeat: no-repeat; background-size: contain; position:ralative; min-height: 51vh;">
-                    <div class="d-flex justify-content-end">
-                        <button type="button" class="button-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+                    <div class="d-flex justify-content-end" style="color:#ffff">
+                        <button type="button" class="button-close-monthly" data-bs-dismiss="modal" aria-label="Close">X</button>
                     </div>
                     <div class="row d-flex" *ngIf="seasonalThemeMonthly.length>0">
                         <div class="d-flex justify-content-between  mb-1 p-1">
@@ -759,8 +803,7 @@
                                 {{seasonalThemeMonthly[0].theme_description}}
                             </div>
 
-                            <div class="modalDescription d-flex justify-content-end p-1 mt-1" style="color:#ffff">
-
+                            <div class="modalDescription d-flex justify-content-start pt-2 mt-1" style="color:#ffff">
                                 <div> Valid Till
                                     :{{seasonalThemeMonthly[0].valid_till_date
                                     | date:"dd/M/yyyy"}}</div>
@@ -854,10 +897,9 @@
 </div>
 
 
-
-
-
-<div class="modal fade" id="BoosterModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+<div *ngIf="this.boosterData_response.length!=0;then openboosterModal"></div>
+<ng-template #openboosterModal>
+    <div class="modal fade" id="BoosterModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered ">
         <div class="modal-content">
@@ -873,7 +915,7 @@
                         <h2 class="accordion-headr" id="headingOn" style="background: var(point_distribution)">
                             <button class="accordion-button accordian-label" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
-                                style="color:var(--colorback);background:var(--accordioncolor); font-size: 1vw; ">
+                                style="color:var(--colorback);background:var(--accordioncolor); font-size: 12px; ">
                                 {{boosterData_response.booster_title}}
                             </button>
                         </h2>
@@ -950,10 +992,9 @@
                                         </div>
                                         <div
                                             class="ScoreRank accordian-label d-flex flex-column gap-1 align-items-center">
-                                            <div>Rank</div>
+                                            <!-- <div>Rank</div> -->
                                             <div>
-                                                {{boosterData_response.booster_rank_details[0].date_time_stamp_today.slice(0,10)
-                                                | date:'dd/MM/yyyy'}}</div>
+                                             Today's Rank</div>
                                             <!-- <div *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='red' then redColor else greenColor"></div>
                                                 <div *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='yellow' then equlgreenColor"></div> -->
 
@@ -975,8 +1016,7 @@
 
 
                                             <div>
-                                                {{boosterData_response.booster_rank_details[0].date_time_stamp_yesterday.slice(0,10)
-                                                | date:'dd/MM/yyyy'}}</div>
+                                                Last Rank</div>
 
                                             <div
                                                 *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='red'">
@@ -1004,7 +1044,7 @@
                                             </div>
 
                                             <div>
-                                                <div style="height:4vh;"
+                                                <div style="height:4vh; margin: 0.7vh 0vh;"
                                                     *ngIf="boosterData_response.booster_rank_details[0].ranking_status=='green'">
                                                     <img src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.up_arrow}}"
                                                         alt="" height="100%">
@@ -1166,6 +1206,9 @@
         </div>
     </div>
 </div>
+</ng-template>
+
+
 
 
 <div class="modal fade" id="RewardsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

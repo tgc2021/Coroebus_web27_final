@@ -114,7 +114,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
   ngOnInit() {
-
+    
     // var i=1
     // setTimeout(()=>{this.ShowTime(0)},1000)
     // setInterval(()=>{this.ShowTime(i++),8000})
@@ -249,6 +249,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       })
 
       this.sectionView_1 = res?.data
+console.log(this.sectionView_1.is_about_game);
 
       console.log(this.sectionView_1?.theme_details?.[0]?.dark_color);
       

@@ -70,6 +70,7 @@ export class LoginComponent implements OnInit {
       const [err, res] = await HttpProtocols.to(UserModel.authenticationAndAuthorization(body))
 
       if (!err && res?.status === 'success' && res?.statuscode === 200) {
+        localStorage.setItem('status','success')
         // if flag is 1 then consider it's firstLogin for end user
         if (res?.data?.indicator_flag === 1) {
           this.isfirstLoginSecurityQuestionEWnable = true

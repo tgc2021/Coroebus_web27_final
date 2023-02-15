@@ -291,6 +291,7 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1281px) {
         margin-top: 1px;
     }
 
+    
     .game-footer {
         position: static;
         margin-top: 50px;
@@ -322,6 +323,12 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1281px) {
         margin-top: 1px;
     }
 
+    .pwd-eye {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+    }
+
     .baner-img {
         height: 160px !important;
     }
@@ -348,7 +355,11 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1281px) {
         position: static;
         margin-top: 1px;
     }
-
+.pwd-eye {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+    }
     .baner-img {
         height: 160px !important;
     }
@@ -379,5 +390,10 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 320px) and (max-width
 
     .p-bottom-mobile {
         padding-bottom: 10px;
+    }
+    .pwd-eye {
+        position: absolute;
+        right: 15px;
+        top: 10px;
     }
 }

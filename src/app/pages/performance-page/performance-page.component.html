@@ -40,7 +40,7 @@
     </div>
 
     <div class="card mt-3">
-        <div class="card-title">
+        <div class="card-title d-flex justify-content-center">
             <div class="row w-100 mt-3">
                 <div class="col">
                     <div class="accordion performance-overalldata" id="accordionExample">
@@ -53,24 +53,31 @@
                                    
                                     <div class="container-fluid-overall">
                                         <div class="row">
-                                            <div class="col-lg-9 col-md-9 col-7">
+                                            <div class="col-lg-10 col-md-10 col-7">
                                                 <div class="p-0">
                                                     <span
                                                         class="performance-overall-txt">{{overallData?.[0]?.label}}</span>
                                                 </div>
                                             </div>
                                             
-                                            <div class="col-lg-3 col-md-3 col-5 d-flex justify-content-center">
+                                            <div class="col-lg-1 col-md-1 col-1 d-flex justify-content-start">
                                                 <span class="text-start performance-game-points-coin" >
                                                     <img src="assets/images/svg/dashboard/game-points-coin.png" alt=""
                                                         height="20">
                                                 </span>
-                                                <span class="float-end">
-                                                <span
-                                                    class="performance-overall-points ms-2" style="width: 51%;text-align: end;">{{overallData?.[0]?._data?.[0]?.points}}</span>
-                                                <i class="fa fa-sort-down ms-4 performance-arrow-down invisible"></i>
-                                            </span>
+                                               
                                             </div>
+
+                                            <div class="col-lg-1 col-md-1 col-4 d-flex justify-content-end">
+                                              
+                                                <span class="float-end">
+                                                    <span
+                                                        class="performance-overall-points" style="width: 51%;text-align: end;">{{overallData?.[0]?._data?.[0]?.points}}</span>
+                                                    <i class="fa fa-sort-down ms-4 performance-arrow-down invisible"></i>
+                                                </span>
+                                            </div>
+
+                                           
                                         </div>
                                     </div>
                                 </button>
@@ -82,7 +89,7 @@
                 </div>
             </div>
         </div>
-        <div class="card-body">
+        <div class="card-body d-flex justify-content-center">
             <div class="row w-100 mt-3">
                 <div class="col">
                     <div class="accordion" id="accordionExample">
