@@ -241,6 +241,7 @@ viewmoreorder:any
         _game: this.userObj.games[0].id_coroebus_game,
         id_theme: this.userObj.themes[0].id_coroebus_theme,
         page_number: this.pageNumberForSectionView_3,
+        device_type:"W",
         id_coroebus_group: this.selected==undefined? this.spectator_group_list[0].data[0].id_coroebus_group: this.selected
       }
 
@@ -411,6 +412,8 @@ viewmoreorder:any
         _game: this.userObj.games[0].id_coroebus_game,
         id_theme: this.userObj.themes[0].id_coroebus_theme,
         page_number: this.pageNumberForSectionView_3,
+        device_type:"W",
+
         id_coroebus_group: this.selected==undefined? this.spectator_group_list[0].data[0].id_coroebus_group: this.selected
       }
 
@@ -804,6 +807,8 @@ viewmoreorder:any
       _game: this.userSelectionData.id_coroebus_game,
       id_theme: this.userObj.themes[0].id_coroebus_theme,
       page_number:  this.pageNumberForSectionView_3,
+      device_type:"W",
+
       id_coroebus_group: this.selected==undefined? this.spectator_group_list[0].data[0].id_coroebus_group: this.selected
     }
 
@@ -980,6 +985,8 @@ viewmoreorder:any
           _game: this.userObj.games[0].id_coroebus_game,
           id_theme: this.userObj.themes[0].id_coroebus_theme,
           page_number: this.pageNumberForSectionView_3,
+          device_type:"W",
+
           id_coroebus_group: this.selected==undefined? this.spectator_group_list[0].data[0].id_coroebus_group: this.selected
         }
         this.http.spectator_dashboard(body).subscribe((res) => {
@@ -1097,6 +1104,8 @@ viewmoreorder:any
           _game: this.userSelectionData.id_coroebus_game,
           id_theme: this.userObj.themes[0].id_coroebus_theme,
           page_number:  this.pageNumberForSectionView_3,
+          device_type:"W",
+
           id_coroebus_group: this.selected==undefined? this.spectator_group_list[0].data[0].id_coroebus_group: this.selected
         }
         this.http.spectator_dashboard(body).subscribe((res) => {
@@ -1300,6 +1309,8 @@ viewmoreorder:any
         _game: this.userObj.games[0].id_coroebus_game,
         id_theme: this.userObj.themes[0].id_coroebus_theme,
         page_number: this.pageNumberForSectionView_3,
+        device_type:"W",
+
         id_coroebus_group: this.selected==undefined? this.spectator_group_list[0].data[0].id_coroebus_group: this.selected
       }
       this.http.spectator_dashboard(body).subscribe((res) => {
@@ -1835,6 +1846,8 @@ viewmoreorder:any
         _game: this.userObj.games[0].id_coroebus_game,
         id_theme: this.userObj.themes[0].id_coroebus_theme,
         page_number: this.pageNumberForSectionView_3,
+        device_type:"W",
+
         id_coroebus_group: this.selected==undefined? this.spectator_group_list[0].data[0].id_coroebus_group: this.selected
       }
   
@@ -2378,6 +2391,8 @@ viewmoreorder:any
       _game: this.userSelectionData.id_coroebus_game,
       id_theme: this.userObj.themes[0].id_coroebus_theme,
       page_number:  this.pageNumberForSectionView_3,
+      device_type:"W",
+
       id_coroebus_group: this.selected==undefined? this.spectator_group_list[0].data[0].id_coroebus_group: this.selected
     }
     console.log(body);
