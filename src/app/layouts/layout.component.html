@@ -1,5 +1,15 @@
 <!-- vertical layout -->
-<app-vertical *ngIf="isVerticalLayoutRequested()"></app-vertical>
+<app-vertical *ngIf="isVerticalLayoutRequested()" class="web-view"></app-vertical>
 
 <!-- horizontal layout -->
-<app-horizontal *ngIf="isHorizontalLayoutRequested()"></app-horizontal>
+<app-horizontal *ngIf="isHorizontalLayoutRequested()" class="web-view"></app-horizontal>
+
+<!-- Rotated View -->
+<div class="mobile-view-rotated d-flex flex-column justify-content-center align-items-center">
+    <div class="phone">
+    </div>
+    <div class="message">
+      Please rotate your device!
+    </div>
+    
+  </div>

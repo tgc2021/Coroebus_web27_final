@@ -157,9 +157,9 @@
                     <div class="row campaign_details">
                         <div class="col-12 campaign_full_image  d-flex justify-content-end align-items-end">
                             <div>
-                                <div class="d-flex justify-content-end">
+                                <div class="d-flex justify-content-end ">
                                     <img class="web_campaign_image"
-                                        src="{{interactive_dashoard_response[0].data.theme_details[0].campaigns_bt_web}}" />
+                                        src="{{interactive_dashoard_response[0].data.theme_details[0].campaigns_bt_web}}" (load)="open(content)" />
 
                                 </div>
                                 
@@ -444,7 +444,7 @@
                         <div class="campaign-buttons d-flex flex-column gap-1 mt-1">
                             <div style="height:4vh;">
                                 <img src="{{interactive_dashoard_response[0].data.theme_details[0].campaigns_bt}}"
-                                    alt="CAMPAIGNS" height="100%" width="100%">
+                                    alt="CAMPAIGNS" height="100%" width="100%" data-bs-toggle="modal" >
                             </div>
                             <div style="height:6vh;">
                                 <img *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'" src="{{interactive_dashoard_response[0].data.theme_details[0].Daily}}" alt="Daily"
@@ -495,6 +495,17 @@
     </div>
 
 
+</div>
+
+
+<!-- Rotated View -->
+<div class="mobile-view-rotated d-flex flex-column justify-content-center align-items-center">
+    <div class="phone">
+    </div>
+    <div class="message">
+      Please rotate your device!
+    </div>
+    
 </div>
 
 
@@ -1230,6 +1241,56 @@
         </div>
     </div>
 </div>
+
+
+<!-- Promotional Popup -->
+
+<ng-template #content let-c="close" let-d="dismiss">
+	<div class="d-flex justify-content-end">
+		<button type="button" class="promotional_btn_close" aria-label="Close" (click)="d('Cross click')">X</button>
+	</div>
+
+		<div class="modal-content">
+           
+            <div class="col-12">
+                <img src="assets/images/interactive-dashboard/Popup.png" style="width: 100%;border-radius: 10px;"/>
+
+            </div>
+          
+           
+          
+        </div>
+	
+	
+</ng-template>
+<!-- <div class="modal fade" id="promotionalPopUp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="d-flex justify-content-end">
+                <button type="button" class="booster_btn_close" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+            <div class="col-12">
+                <img src="../../../../assets/images/interactive-dashboard/Popup.png" style="width: 100%;"/>
+                
+                
+                  
+            </div>
+          
+           
+          
+        </div>
+    </div>
+</div> -->
+
+
+
+
+
+
+
+
+
 
 <!-- <div class="modal fade" id="BoosterModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
