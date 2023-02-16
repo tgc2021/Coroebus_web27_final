@@ -119,6 +119,12 @@ export class ApiserviceService {
     return this.Http.post(tempurl,data)
   }
 
+  PromotionalPopUp(data:any){
+    var tempurl= `${this.URLstring}`+ `/${this.Path}/Popup/popup_list`
+    return this.Http.post(tempurl,data)
+
+  }
+
 
 
 }
