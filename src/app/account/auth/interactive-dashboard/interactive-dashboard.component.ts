@@ -198,8 +198,12 @@ export class InteractiveDashboardComponent implements OnInit,OnDestroy {
   previousUrl1:any
   previousUrl: any=[];
   currentUrl: string;
-  constructor(private readonly store: Store, public element: ElementRef, public Util: Util, private _router: Router, public http: ApiserviceService, private eventService: EventService,public location:Location ,public modalService:NgbModal) {
-   
+  promotionalPopUpData: any;
+  promotionalPopupImage: any;
+  constructor(config: NgbModalConfig,private readonly store: Store, public element: ElementRef, public Util: Util, private _router: Router, public http: ApiserviceService, private eventService: EventService,public location:Location ,public modalService:NgbModal) {
+    config.backdrop = 'static';
+		config.keyboard = false;
+    config.centered=true;
    }
 
   ngOnInit(): void {
@@ -291,6 +295,11 @@ else{
 
         }
 
+        // this.http.PromotionalPopUp(body).subscribe((res)=>{
+        //   console.log(res);
+        //   this.promotionalPopUpData=res;
+        //   console.log(this.promotionalPopUpData)
+        // })
       
         console.log(body);
         this.http.interactiveDashboard(body).subscribe((res) => {
@@ -406,7 +415,9 @@ else{
 
         }
 
-        
+        this.http.PromotionalPopUp(body).subscribe((res)=>{
+          console.log(res);
+        })
 
         console.log(body);
         this.http.interactiveDashboard(body).subscribe((res) => {
@@ -679,12 +690,71 @@ else{
 
   }
   open(content:any) {
+    let body = {
+        _userid: this.mergeObj.USERID,
+        _game: this.userSelectionData.id_coroebus_game,
+        _record_count:0
+    }
+
+    this.http.PromotionalPopUp(body).subscribe((res)=>{
+      this.promotionalPopUpData=res;
+      console.log(this.promotionalPopUpData);
+      this.promotionalPopupImage=this.promotionalPopUpData.data[0].list[0].image;
+      console.log(this.promotionalPopupImage);
+   
+    })
     setTimeout(()=>{
+
       this.modalService.open(content);
     },5000)
 		
 	}
 
+
+  promotionalredirection(value:any){
+    console.log(value);
+
+    if(value=="Spectator"){
+      this._router.navigateByUrl('/spectator/spectatorView');
+      // this.modalController.dismiss();
+    }
+    else if(value=="Profile"){
+      this._router.navigateByUrl('/profile');
+      // this.modalController.dismiss();
+    }
+    else if(value=="Myperformance"){
+      this._router.navigateByUrl('/performance/page');
+      // this.modalController.dismiss();
+    }
+    else if(value=="Playzone"){
+      this._router.navigateByUrl('playzone/play');
+     
+    }
+    else if(value=="Seasonal"){
+      this._router.navigateByUrl('Achievement/AchievementShelf');
+      
+    }
+    else if(value=="Rewards"){
+      this._router.navigateByUrl('/rewards/rewardPoints');
+    
+    }
+    // else if(value=="Learning"){
+    //   this.navCtrl.navigateForward(['/learning-academy-tabs']);
+    //   this.modalController.dismiss();
+    // }
+    // else if(value=="Champions"){
+    //   this.navCtrl.navigateForward(['/spectator-view']);
+    //   this.modalController.dismiss();
+    // }
+    // else if(value=="Milestone"){
+    //   this.navCtrl.navigateForward(['/spectator-view']);
+    //   this.modalController.dismiss();
+    // }
+    else{
+      
+
+    }
+  }
 
   ngOnDestroy(): void {
    this.audio.pause()

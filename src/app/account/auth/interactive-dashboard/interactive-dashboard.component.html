@@ -1246,20 +1246,20 @@
 <!-- Promotional Popup -->
 
 <ng-template #content let-c="close" let-d="dismiss">
-	<div class="d-flex justify-content-end">
+	<div class="d-flex  justify-content-end">
 		<button type="button" class="promotional_btn_close" aria-label="Close" (click)="d('Cross click')">X</button>
 	</div>
 
-		<div class="modal-content">
+    <div class="modal-content"  >
            
-            <div class="col-12">
-                <img src="assets/images/interactive-dashboard/Popup.png" style="width: 100%;border-radius: 10px;"/>
+        <div class="col-12" style="background: transparent;">
+            <img src="{{promotionalPopupImage}}" style="width: 100%;border-radius: 10px;" (click)="promotionalredirection(this.promotionalPopUpData.data[0].list[0].title)" />
 
-            </div>
-          
-           
-          
         </div>
+      
+       
+      
+    </div>
 	
 	
 </ng-template>
