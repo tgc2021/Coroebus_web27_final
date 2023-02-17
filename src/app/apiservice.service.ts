@@ -125,6 +125,11 @@ export class ApiserviceService {
 
   }
 
+  updatePopUp(data:any){
+    var tempurl= `${this.URLstring}`+ `/${this.Path}/Popup/popup_update`
+    return this.Http.post(tempurl,data)
+
+  }
 
 
 }
