@@ -140,7 +140,7 @@
                         <div class="col-3 web_first_measurement d-block"
                             *ngFor="let points of interactive_dashoard_response[0].data._Point_distribution">
                             <div>
-                                <p class="web_first_measurement_number">{{points.weightage}}</p>
+                                <p class="web_first_measurement_number">{{points.weightage|number: '1.0-0'}}</p>
 
                             </div>
                             <div>
