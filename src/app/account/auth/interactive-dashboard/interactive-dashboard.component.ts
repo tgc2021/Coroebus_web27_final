@@ -690,11 +690,21 @@ else{
 
   }
   open(content:any) {
-    let body = {
+    if(this.mergeObj.id_coroebus_game != null){
+      var body = {
+        _userid: this.mergeObj.USERID,
+        _game: this.mergeObj.id_coroebus_game,
+        _record_count:0
+    }
+    }
+    else{
+      var body = {
         _userid: this.mergeObj.USERID,
         _game: this.userSelectionData.id_coroebus_game,
         _record_count:0
     }
+    }
+  
 
     this.http.PromotionalPopUp(body).subscribe((res)=>{
       this.promotionalPopUpData=res;
@@ -704,8 +714,10 @@ else{
    
     })
     setTimeout(()=>{
+      if(this.promotionalPopUpData.data[0].list!=''){
+        this.modalService.open(content);
 
-      this.modalService.open(content);
+      }
     },5000)
 		
 	}
@@ -716,26 +728,36 @@ else{
 
     if(value=="Spectator"){
       this._router.navigateByUrl('/spectator/spectatorView');
-      // this.modalController.dismiss();
+      this.modalService.dismissAll();
     }
     else if(value=="Profile"){
       this._router.navigateByUrl('/profile');
+      this.modalService.dismissAll();
+
       // this.modalController.dismiss();
     }
     else if(value=="Myperformance"){
       this._router.navigateByUrl('/performance/page');
+      this.modalService.dismissAll();
+
       // this.modalController.dismiss();
     }
     else if(value=="Playzone"){
       this._router.navigateByUrl('playzone/play');
+      this.modalService.dismissAll();
+
      
     }
     else if(value=="Seasonal"){
       this._router.navigateByUrl('Achievement/AchievementShelf');
+      this.modalService.dismissAll();
+
       
     }
     else if(value=="Rewards"){
       this._router.navigateByUrl('/rewards/rewardPoints');
+      this.modalService.dismissAll();
+
     
     }
     // else if(value=="Learning"){
@@ -751,7 +773,8 @@ else{
     //   this.modalController.dismiss();
     // }
     else{
-      
+     
+
 
     }
   }
