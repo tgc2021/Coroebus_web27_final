@@ -131,5 +131,10 @@ export class ApiserviceService {
 
   }
 
+  spectnotification(data:any){
+    var tempurl= `${this.URLstring}`+ `/${this.Path}/Notification/notification_list`
+    return this.Http.post(tempurl,data)
+
+  }
 
 }

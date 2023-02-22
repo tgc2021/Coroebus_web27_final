@@ -13,6 +13,8 @@ import { HttpProtocols } from '@app/http/http.protocols';
 
 import { DashboardModel } from '@models/dashboard.model';
 import { MatSnackBar } from "@angular/material/snack-bar";  
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NotificationPopupComponent } from '@pages/notification-popup/notification-popup.component';
 
 
 
@@ -25,6 +27,8 @@ export class SpectatorViewComponent implements OnInit {
 
   selectedValue: '0';
   spectSearchStr: any
+  notification_response_data:any
+  notification_response:any
   spectSearchStrTrigger: boolean = false
   spectSearList: any
   combineLatest: Subscription
@@ -67,6 +71,7 @@ spectator_temporary_array:any=[]
 spectator_game_id:any
 spectator_role_id:any
 color: any;
+callNotificationAPIAfterReadSub: Subscription
 
 @ViewChild("scrollTarget") scrollTarget: ElementRef;
 viewmoreorder:any
@@ -83,7 +88,7 @@ viewmoreorder:any
   headerInfo: any
 
   constructor(private readonly store: Store, public http: ApiserviceService, private eventService: EventService, private _router: Router,
-    private _route: ActivatedRoute,public Util: Util,public snackBar: MatSnackBar, public element: ElementRef) { }
+    private _route: ActivatedRoute,public Util: Util,public snackBar: MatSnackBar, public element: ElementRef, private modalService: NgbModal) { }
 
  
   ngOnInit(): void {
@@ -404,6 +409,13 @@ viewmoreorder:any
         this.getSelecteditem()
       })
 
+      let bodyforNotification={
+        _userid: this.mergeObj.USERID,
+        _game: this.userObj.games[0].id_coroebus_game,
+      }
+      this.http.spectnotification(bodyforNotification).subscribe((res) => {
+
+      })
     }
 
     else{
@@ -789,18 +801,47 @@ viewmoreorder:any
 
         this.getSelecteditem()
       })
-      
+      let bodyforNotification={
+        _userid: this.mergeObj.USERID,
+        _game: this.userObj.games[0].id_coroebus_game,
+      }
+      this.http.spectnotification(bodyforNotification).subscribe((res) => {
+        console.log(res);
+
+        this.notification_response=res
+        console.log(this.notification_response);
+        this.notification_response_data = this.notification_response.data[0].list
+        console.log(this.notification_response_data);
+        
+        
+      })
+
+   
     }
  
 
 
-
+    this.callNotificationAPIAfterReadSub?.unsubscribe()
+    this.callNotificationAPIAfterReadSub = this.eventService.subscribe('callNotificationAPIAfterRead', (data) => {
+      this.updateNotificationList(data?.id)
+    })
   
     
     
     
   }
 
+  async updateNotificationList(id: any) {
+    let err: any, res: any;
+    let body: any;
+    body = { "_notificationid": id };
+    [err, res] = await HttpProtocols.to(DashboardModel.notificationUpdate(body))
+    if (!err && res?.statuscode === 200) {
+      this.getSpectatorViewWebService('viemore')
+    } else {
+      // this.notificationList_err = 'Error'
+    }
+  }
   getSpectatorViewMore2(viewmore:any){
     let body = {
       _userid: this.mergeObj.USERID,
@@ -944,9 +985,20 @@ viewmoreorder:any
   
       this.getSelecteditem()
     })
+    let bodyforNotification={
+      _userid: this.mergeObj.USERID,
+      _game: this.userSelectionData.id_coroebus_game,
+    }
+    this.http.spectnotification(bodyforNotification).subscribe((res) => {
+
+    })
   }
 
-  
+  openNotification(data: any) {
+    const modalRef = this.modalService.open(NotificationPopupComponent, { centered: true, windowClass: 'modal-cls' })
+    modalRef.componentInstance.notoficationData = data;
+  }
+
   onOptionsSelected() {
     console.log(this.selected); 
     this.spectSearList =null
