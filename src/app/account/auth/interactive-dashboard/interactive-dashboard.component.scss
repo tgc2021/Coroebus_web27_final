@@ -14,6 +14,7 @@
 }
 
 
+
 .web_view_main{
     background: linear-gradient(var(--myvar));
     overflow: hidden;
@@ -1564,13 +1565,14 @@ flex-direction: column;
     }
     .promotional_btn_close{
         border-radius: 100%;
-        background: black;
-        color:#ffffff;
+        background: white;
+        color: black;
         border: 1px solid #ffffff;
         margin-bottom: 2%;
         position: absolute;
-         top: -12%;
+        top: -12%;
         right: 0%;
+    
     }
     .skillmuniCharacter{
         height: 15vh;

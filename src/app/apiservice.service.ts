@@ -125,6 +125,16 @@ export class ApiserviceService {
 
   }
 
+  updatePopUp(data:any){
+    var tempurl= `${this.URLstring}`+ `/${this.Path}/Popup/popup_update`
+    return this.Http.post(tempurl,data)
 
+  }
+
+  spectnotification(data:any){
+    var tempurl= `${this.URLstring}`+ `/${this.Path}/Notification/notification_list`
+    return this.Http.post(tempurl,data)
+
+  }
 
 }

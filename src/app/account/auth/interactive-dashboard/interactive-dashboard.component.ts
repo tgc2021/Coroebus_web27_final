@@ -295,11 +295,7 @@ else{
 
         }
 
-        // this.http.PromotionalPopUp(body).subscribe((res)=>{
-        //   console.log(res);
-        //   this.promotionalPopUpData=res;
-        //   console.log(this.promotionalPopUpData)
-        // })
+      
       
         console.log(body);
         this.http.interactiveDashboard(body).subscribe((res) => {
@@ -604,7 +600,7 @@ else{
   
   
         window.open(
-          'http://coroebusbeta.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
+          'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
           '_self' // <- This is what makes it open in a new window.
     
         )
@@ -621,7 +617,7 @@ else{
         console.log(this.Util.decryptData(userId),this.Util.decryptData(game));
   
         window.open(
-          'http://coroebusbeta.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
+          'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
           '_self' // <- This is what makes it open in a new window.
     
         )
@@ -711,10 +707,17 @@ else{
       console.log(this.promotionalPopUpData);
       this.promotionalPopupImage=this.promotionalPopUpData.data[0].list[0].image;
       console.log(this.promotionalPopupImage);
-   
+      let body={
+        _popupid:this.promotionalPopUpData.data[0].list[0].id
+      }
+      this.http.updatePopUp(body).subscribe((res)=>{
+        console.log(res);
+        
+      })
     })
     setTimeout(()=>{
       if(this.promotionalPopUpData.data[0].list!=''){
+        
         this.modalService.open(content);
 
       }
@@ -727,35 +730,67 @@ else{
     console.log(value);
 
     if(value=="Spectator"){
+     
       this._router.navigateByUrl('/spectator/spectatorView');
       this.modalService.dismissAll();
+
     }
     else if(value=="Profile"){
+     
       this._router.navigateByUrl('/profile');
       this.modalService.dismissAll();
 
       // this.modalController.dismiss();
     }
     else if(value=="Myperformance"){
+     
       this._router.navigateByUrl('/performance/page');
       this.modalService.dismissAll();
 
       // this.modalController.dismiss();
     }
     else if(value=="Playzone"){
+     
       this._router.navigateByUrl('playzone/play');
       this.modalService.dismissAll();
 
      
     }
     else if(value=="Seasonal"){
+    
       this._router.navigateByUrl('Achievement/AchievementShelf');
       this.modalService.dismissAll();
 
       
     }
     else if(value=="Rewards"){
-      this._router.navigateByUrl('/rewards/rewardPoints');
+    
+      this._router.navigateByUrl('/reward/rewardPoints');
+      this.modalService.dismissAll();
+
+    
+    }
+    else if(value=="Learning"){
+    
+      this._router.navigateByUrl('/learning/learningAcademy');
+      this.modalService.dismissAll();
+
+    
+    }
+    else if(value=="Champions"){
+    
+         
+     this._router.navigateByUrl('/champions_league')
+    
+    
+      this.modalService.dismissAll();
+
+    
+    }
+
+    else if(value=="Milestone"){
+    
+      this._router.navigateByUrl('/personal_milestone');
       this.modalService.dismissAll();
 
     

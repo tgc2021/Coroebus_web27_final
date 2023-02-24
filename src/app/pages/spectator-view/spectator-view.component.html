@@ -60,157 +60,47 @@
                         Notifications
                     </h6>
                  
-
+<!-- 
                     <div class="d-flex justify-content-center align-items-center web_no_notifications">
                         <div>
                             <img class="no_data_image" src="assets/images/specatator-dashboard/No_message_spectator.png"/>
                         </div>
                         <p class="web_notification_message">There's no Notifications you have subscribed to, stay tuned to this section for more.</p>
-                    </div>
-                    <!-- <div class="web_div_inner_notification">
-                        <mat-card class="web_notification">
-                            <div class="row">
-                                <div class="col-3 d-flex align-items-center">
-                                    <img class="web_notification_image"
-                                        src="assets/images/specatator-dashboard/Video_Logo.png" />
-                                </div>
-                                <div class="col-9 d-flex flex-column justify-content-between">
-                                    <div>
-                                        <h6 class="web_notification_title">Spot Games</h6>
-
-                                    </div>
-                                    <div class="d-flex align-items-end">
-                                        <p class="web_notification_details">Today at 9:42 AM</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </mat-card>
-
-                        <mat-card class="web_notification">
-                            <div class="row">
-                                <div class="col-3 d-flex align-items-center">
-                                    <img class="web_notification_image"
-                                        src="assets/images/specatator-dashboard/Video_Logo.png" />
-                                </div>
-                                <div class="col-9 d-flex flex-column justify-content-between">
-                                    <div>
-                                        <h6 class="web_notification_title">Spot Games</h6>
-
-                                    </div>
-                                    <div class="d-flex align-items-end">
-                                        <p class="web_notification_details">Today at 9:42 AM</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </mat-card>
-
-
-
-                        <mat-card class="web_notification">
-                            <div class="row">
-                                <div class="col-3 d-flex align-items-center">
-                                    <img class="web_notification_image"
-                                        src="assets/images/specatator-dashboard/Video_Logo.png" />
-                                </div>
-                                <div class="col-9 d-flex flex-column justify-content-between">
-                                    <div>
-                                        <h6 class="web_notification_title">Spot Games</h6>
-
-                                    </div>
-                                    <div class="d-flex align-items-end">
-                                        <p class="web_notification_details">Today at 9:42 AM</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </mat-card>
-
-
-                        <mat-card class="web_notification">
-                            <div class="row">
-                                <div class="col-3 d-flex align-items-center">
-                                    <img class="web_notification_image"
-                                        src="assets/images/specatator-dashboard/Video_Logo.png" />
-                                </div>
-                                <div class="col-9 d-flex flex-column justify-content-between">
-                                    <div>
-                                        <h6 class="web_notification_title">Spot Games</h6>
-
-                                    </div>
-                                    <div class="d-flex align-items-end">
-                                        <p class="web_notification_details">Today at 9:42 AM</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </mat-card>
-
-
-
-                        <mat-card class="web_notification">
-                            <div class="row">
-                                <div class="col-3 d-flex align-items-center">
-                                    <img class="web_notification_image"
-                                        src="assets/images/specatator-dashboard/Video_Logo.png" />
-                                </div>
-                                <div class="col-9 d-flex flex-column justify-content-between">
-                                    <div>
-                                        <h6 class="web_notification_title">Spot Games</h6>
-
-                                    </div>
-                                    <div class="d-flex align-items-end">
-                                        <p class="web_notification_details">Today at 9:42 AM</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </mat-card>
-
-
-
-                        <mat-card class="web_notification">
-                            <div class="row">
-                                <div class="col-3 d-flex align-items-center">
-                                    <img class="web_notification_image"
-                                        src="assets/images/specatator-dashboard/Video_Logo.png" />
-                                </div>
-                                <div class="col-9 d-flex flex-column justify-content-between">
-                                    <div>
-                                        <h6 class="web_notification_title">Spot Games</h6>
-
-                                    </div>
-                                    <div class="d-flex align-items-end">
-                                        <p class="web_notification_details">Today at 9:42 AM</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </mat-card>
-
-
-
-
-                        <mat-card class="web_notification">
-                            <div class="row">
-                                <div class="col-3 d-flex align-items-center">
-                                    <img class="web_notification_image"
-                                        src="assets/images/specatator-dashboard/Video_Logo.png" />
-                                </div>
-                                <div class="col-9 d-flex flex-column justify-content-between">
-                                    <div>
-                                        <h6 class="web_notification_title">Spot Games</h6>
-
-                                    </div>
-                                    <div class="d-flex align-items-end">
-                                        <p class="web_notification_details">Today at 9:42 AM</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </mat-card>
                     </div> -->
+                 <div class="web_div_inner_notification">
+                        <mat-card  *ngFor="let res of notification_response_data" [ngClass]="res.readStatus=='0'?'yellow-notification-row':'web_notification'" >
+                            <div class="row"  (click)="openNotification(res)">
+                                <div class="col-3 d-flex align-items-center">
+                                    <img class="web_notification_image" loading="lazy" *ngIf="res?.image"
+                                    src="assets/images/svg/notification/img.png" alt="">
+                                <img class="web_notification_image" loading="lazy" *ngIf="res?.gif"
+                                    src="assets/images/svg/notification/txt.png" alt="">
+                                <img class="web_notification_image" loading="lazy" *ngIf="res?.video"
+                                    src="assets/images/svg/notification/v.png" alt="">
+                                <img class="web_notification_image" loading="lazy" *ngIf="res?.video_path"
+                                    src="assets/images/svg/notification/v.png" alt="">
+                                <img class="web_notification_image" loading="lazy"
+                                    *ngIf="(res?.video==='' && res?.gif==='' && res?.image==='' && res?.video_path==='')"
+                                    src="assets/images/svg/dashboard/text-notification-read.png"
+                                    alt="" height="47" style="padding: 5px;">
+
+                                   
+                                </div>
+                                <div class="col-9 d-flex flex-column justify-content-between">
+                                    <div>
+                                        <h6 class="web_notification_title">{{res.title}}</h6>
+
+                                    </div>
+                                    <div class="d-flex align-items-end">
+                                        <p class="web_notification_details">{{res.datetimestamp|date:'fullDate'}}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </mat-card>
+
+                     
+                    </div>
 
                 </div>
 
@@ -519,14 +409,14 @@
                     <h6 class="web_bulletins_header">Bulletins</h6>
                 </div>
 
-                <div class="d-flex justify-content-center align-items-center web_no_bulletins">
+                <!-- <div class="d-flex justify-content-center align-items-center web_no_bulletins">
                     <div>
                         <img class="no_data_image" src="assets/images/specatator-dashboard/No_message_spectator.png"/>
                     </div>
                     <p class="web_bulletins_message">There's no bulletin’s you have subscribed to, stay tuned to this section for more.</p>
-                </div>
+                </div> -->
 
-                <!-- <mat-card class="web_bulletin">
+                 <mat-card class="web_bulletin">
 
                     <div class="row">
                         <div class="col-3"></div>
@@ -573,7 +463,7 @@
                         </div>
                     </div>
 
-                </mat-card> -->
+                </mat-card> 
 
             </mat-card>
 
