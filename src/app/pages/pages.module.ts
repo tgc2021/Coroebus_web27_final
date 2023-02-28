@@ -19,6 +19,7 @@ import { ChampionsLeagueComponent } from './champions-league/champions-league.co
 import { PersonalMilestoneComponent } from './personal-milestone/personal-milestone.component';
 import { MainDashboardComponent } from './main-dashboard/main-dashboard.component';
 import { SkeletonScreenLoaderModule } from '../../../projects/coroebus/skeleton-screen-loader/src/lib/skeleton-screen-loader.module';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SkeletonScreenLoaderModule } from '../../../projects/coroebus/skeleton-
     ChampionsLeagueComponent,
     PersonalMilestoneComponent,
     MainDashboardComponent,
+  
   ],
   imports: [
     CommonModule,
@@ -38,7 +40,7 @@ import { SkeletonScreenLoaderModule } from '../../../projects/coroebus/skeleton-
     DashboardsModule,
     HttpClientModule,
     SkeletonScreenLoaderModule,
-
+    MatCardModule,
     UIModule,
     WidgetModule,
     NgbNavModule,

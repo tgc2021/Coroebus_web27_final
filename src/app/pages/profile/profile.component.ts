@@ -71,6 +71,11 @@ console.log(this.userObj);
       name: [{ value: this.userObj?._personal_data?.first_name, disabled: true }, [Validators.required]],
       emailId: [{ value: this.userObj?._personal_data?.email_id, disabled: true }, [Validators.required]],
       contact: [{ value: this.userObj?._personal_data?.contact_number, disabled: true }, [Validators.required]],
+      designation: [{ value: this.userObj?._personal_data?.user_designation, disabled: true }, [Validators.required]],
+      department: [{ value: this.userObj?._personal_data?.user_department, disabled: true }, [Validators.required]],
+      grade: [{ value: this.userObj?._personal_data?.user_grade, disabled: true }, [Validators.required]],
+      function: [{ value: this.userObj?._personal_data?.user_function, disabled: true }, [Validators.required]],
+
       currentPassword: [{ value: this.Util.decryptData(this.userObj?._personal_data?.password), disabled: true }, [Validators.required]],
       password: [null, {
         validators: [

@@ -32,6 +32,14 @@ export class ApiserviceService {
 
   }
 
+  bulletins(data:any){
+    // var tempurl = ${this.URLstring}+/coroebus-beta-api-levels/Passbook/getReward
+    var tempurl = `${this.URLstring}`+`/${this.Path}/Dashboard/add_ins`
+    return this.Http.post(tempurl,data)
+
+  }
+
+  
   produceDashboard(data:any){
     // var tempurl = ${this.URLstring}+/coroebus-beta-api-levels/Passbook/getReward
     var tempurl = `${this.URLstring}`+`/${this.Path}/dashboard/produce`
@@ -125,6 +133,16 @@ export class ApiserviceService {
 
   }
 
+  updatePopUp(data:any){
+    var tempurl= `${this.URLstring}`+ `/${this.Path}/Popup/popup_update`
+    return this.Http.post(tempurl,data)
 
+  }
+
+  spectnotification(data:any){
+    var tempurl= `${this.URLstring}`+ `/${this.Path}/Notification/notification_list`
+    return this.Http.post(tempurl,data)
+
+  }
 
 }

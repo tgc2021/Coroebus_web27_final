@@ -7,12 +7,12 @@
                 <div class="d-flex gap-3">
                     <div class="web_profile_div d-flex justify-content-center align-items-center">
                         <img class="web_profile_pic" (click)="navigateToProfile()"
-                            src="{{interactive_dashoard_response[0].data._personal_data.profile_logo}}" />
-                    </div>
-                    <div>
-                        <p class="web_profile_name"> {{interactive_dashoard_response[0].data._personal_data.first_name}}
-                        </p>
-                        <p class="web_team_name"> {{interactive_dashoard_response[0].data._personal_data.team_name}}</p>
+                        src="{{interactive_dashoard_response[0].data._personal_data.profile_logo}}" />
+                </div>
+                <div>
+                    <p class="web_profile_name"> {{interactive_dashoard_response[0].data._personal_data.first_name}}
+                    </p>                        
+                    <p class="web_team_name"> {{interactive_dashoard_response[0].data._personal_data.team_name}}</p>
                     </div>
                 </div>
             </div>
@@ -906,8 +906,6 @@
         </div>
     </div>
 </div>
-
-
 <div *ngIf="this.boosterData_response.length!=0;then openboosterModal"></div>
 <ng-template #openboosterModal>
     <div class="modal fade" id="BoosterModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -1222,6 +1220,9 @@
 
 
 
+
+
+
 <div class="modal fade" id="RewardsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered ">
@@ -1253,7 +1254,7 @@
     <div class="modal-content"  >
            
         <div class="col-12" style="background: transparent;">
-            <img src="{{promotionalPopupImage}}" style="width: 100%;border-radius: 10px;" (click)="promotionalredirection(this.promotionalPopUpData.data[0].list[0].title)" />
+            <img src="{{promotionalPopUpData.data[0].list[0].image}}" style="width: 100%; height: 60vh; border-radius: 10px;" (click)="promotionalredirection(this.promotionalPopUpData.data[0].list[0].title)" />
 
         </div>
       
