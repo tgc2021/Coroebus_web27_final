@@ -14,7 +14,7 @@ import {  NgbTooltipModule, NgbNavModule, NgbCollapseModule, NgbModule } from '@
 
 @NgModule({
   declarations: [
-    SpectatorViewComponent
+    SpectatorViewComponent,
   ],
   imports: [
     CommonModule,
