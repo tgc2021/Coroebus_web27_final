@@ -132,8 +132,10 @@ viewmoreorder:any
        
   
       })
+
+      
    
-      this.bulletins()
+      // this.bulletins()
 
     
     })
@@ -549,8 +551,16 @@ viewmoreorder:any
         
 
       })
-      this.bulletins()
-
+      let bodyforBulletins: any;
+      bodyforBulletins = {
+        "_userid": this.mergeObj.USERID,
+        "_game": this.userObj.games[0].id_coroebus_game
+      };
+      this.http.bulletins(bodyforBulletins).subscribe((res) => {
+        console.log(res);
+        this.bulletins_list=res
+        this.addInsList =  this.bulletins_list?.data
+      })
     }
 
     else{
@@ -1531,7 +1541,19 @@ viewmoreorder:any
         
       })
 
-      this.bulletins()
+      let bodyforBulletins: any;
+      bodyforBulletins = {
+        "_userid": this.mergeObj.USERID,
+        "_game": this.userObj.games[0].id_coroebus_game
+      };
+      this.http.bulletins(bodyforBulletins).subscribe((res) => {
+        console.log(res);
+        this.bulletins_list=res
+        this.addInsList =  this.bulletins_list?.data
+      })
+      
+
+      // this.bulletins()
 
     }
  this.dynamicColor()
@@ -1559,18 +1581,9 @@ viewmoreorder:any
     }
   }
 
-bulletins(queryParams?: any){
-  let body: any;
-    body = {
-      "_userid": queryParams?.userID ? queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
-      "_game": queryParams?.gameID ? queryParams?.gameID : this.userSelectionData?.id_coroebus_game
-    };
-    this.http.bulletins(body).subscribe((res) => {
-      console.log(res);
-      this.bulletins_list=res
-      this.addInsList =  this.bulletins_list?.data
-    })
-}
+// bulletins(queryParams?: any){
+  
+// }
   // async addIns(queryParams?: any) {
   //   let err: any, res: any;
   //   let body: any;
@@ -1869,8 +1882,17 @@ bulletins(queryParams?: any){
       console.log(this.notification_response_data);
       
     })
-    this.bulletins()
 
+    let bodyforBulletins: any;
+    bodyforBulletins = {
+      "_userid": this.mergeObj.USERID,
+      "_game": this.userSelectionData.id_coroebus_game
+    };
+    this.http.bulletins(bodyforBulletins).subscribe((res) => {
+      console.log(res);
+      this.bulletins_list=res
+      this.addInsList =  this.bulletins_list?.data
+    })
   }
 
   openNotification(data: any) {

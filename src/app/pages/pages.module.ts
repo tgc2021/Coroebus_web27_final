@@ -20,6 +20,8 @@ import { PersonalMilestoneComponent } from './personal-milestone/personal-milest
 import { MainDashboardComponent } from './main-dashboard/main-dashboard.component';
 import { SkeletonScreenLoaderModule } from '../../../projects/coroebus/skeleton-screen-loader/src/lib/skeleton-screen-loader.module';
 import { MatCardModule } from '@angular/material/card';
+import { TopHierarchyDashboardsComponent } from './top-hierarchy-dashboards/top-hierarchy-dashboards.component';
+import { TopDashboardComponent } from './top-dashboard/top-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { MatCardModule } from '@angular/material/card';
     ChampionsLeagueComponent,
     PersonalMilestoneComponent,
     MainDashboardComponent,
+    TopHierarchyDashboardsComponent,
+    TopDashboardComponent,
   
   ],
   imports: [
@@ -47,7 +51,8 @@ import { MatCardModule } from '@angular/material/card';
     NgbTooltipModule,
     NgbCollapseModule,
     SimplebarAngularModule,
-    LightboxModule
+    LightboxModule,
+    
   ],
 })
 export class PagesModule { }
