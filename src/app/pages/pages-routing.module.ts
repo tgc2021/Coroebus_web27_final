@@ -5,6 +5,8 @@ import { ChampionsLeagueComponent } from './champions-league/champions-league.co
 import { DefaultComponent } from './dashboards/default/default.component';
 import { MainDashboardComponent } from './main-dashboard/main-dashboard.component';
 import { PersonalMilestoneComponent } from './personal-milestone/personal-milestone.component';
+import { TopDashboardComponent } from './top-dashboard/top-dashboard.component';
+import { TopHierarchyDashboardsComponent } from './top-hierarchy-dashboards/top-hierarchy-dashboards.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' },
@@ -21,6 +23,9 @@ const routes: Routes = [
   { path: 'champions_league', component:ChampionsLeagueComponent },
   { path: 'personal_milestone', component:PersonalMilestoneComponent },
   { path: 'main_dashboard', component:MainDashboardComponent },
+  { path: 'top_dashboard', component:TopHierarchyDashboardsComponent },
+  { path: 'topdashboard', component:TopDashboardComponent },
+
 
 
 ];

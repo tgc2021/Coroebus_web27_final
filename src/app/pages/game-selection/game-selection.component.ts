@@ -135,6 +135,25 @@ if (this.gameList?.[0]?.length === 1){
     this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
     this.router.navigate(['/spectator/spectatorView']);
   }
+  // else if(this.id_role==9){
+  //   console.log('idrole 9');
+    
+  //   this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
+  //   this.router.navigate(['/top_dashboard']);
+  // }
+  // else if(this.id_role==8){
+  //   console.log('idrole 8');
+    
+  //   this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
+  //   this.router.navigate(['/top_dashboard']);
+  // }
+
+  // else if(this.id_role==12){
+  //   console.log('idrole 12');
+    
+  //   this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
+  //   this.router.navigate(['/top_dashboard']);
+  // }
   else if(this.id_coroebus_theme>4  && this.gameList[0]?.[0]?.is_interactive_dashboard== '1'){
     
     console.log('rajat');
@@ -159,8 +178,26 @@ else{
     this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
     this.router.navigate(['/spectator/spectatorView']);
   }
+  // else if(this.id_role==9){
+  //   console.log('idrole 9');
+    
+  //   this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
+  //   this.router.navigate(['/top_dashboard']);
+  // }
+  // else if(this.id_role==8){
+  //   console.log('idrole 8');
+    
+  //   this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
+  //   this.router.navigate(['/top_dashboard']);
+  // }
+
+  // else if(this.id_role==12){
+  //   console.log('idrole 12');
+    
+  //   this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
+  //   this.router.navigate(['/topdashboard']);
+  // }
   else if(this.id_coroebus_theme>4 && this.isInteractiveDashboard == '1'){
-    console.log('bhat');
     
     this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
     this.router.navigate(['/account/interactive-dashboard']);

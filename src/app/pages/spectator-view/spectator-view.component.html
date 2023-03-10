@@ -215,7 +215,7 @@
                 <div class="col-12 mt-1 web_leaderboard" >
                     <div *ngFor="let spectatorleaderboardreponse of spectator_user_list;  let i =index" >
                         <mat-card class="web_spectator_leaderboard" 
-                            style="background: url({{tile_bg_img[i].bgImg}}); background-size: 100% 100%;"
+                            style="background: url({{spectatorleaderboardreponse.ranking_image}}); background-size: 100% 100%;"
                             (click)="navigatetoDashboard(i)">
                             <div class="row d-flex align-items-center spectator_div">
                                 <div class="col-1 p-0 d-flex justify-content-center">
@@ -511,26 +511,26 @@
 
 
 
-<!-- 
+
         <div class="row mobile_button_row">
         <div class="col-3 mobile_first_tab">
-            <input type="radio" id="tab-1" name="mytabs" [checked]="checked1" value="response.data.ranking[0].label" (click)="filterRankwiseLeaderboard(response.data.ranking[0].label)" >
-            <label class="mobile_cm_tab" for="tab-1">{{response.data.ranking[0].label}}</label>
+            <input type="radio" id="tab-1-mob" [checked]="checked1" value="response.data.ranking[0].label" (click)="filterRankwiseLeaderboard(response.data.ranking[0].label)" >
+            <label class="mobile_cm_tab" for="tab-1-mob">{{response.data.ranking[0].label}}</label>
 
         </div>
         <div class="col-3 mobile_second_tab">
-            <input type="radio" id="tab-2" name="mytabs" [checked]="checked2" value="response.data.ranking[1].label" (click)="filterRankwiseLeaderboard(response.data.ranking[1].label)">
-            <label class="mobile_am_tab" for="tab-2">{{response.data.ranking[1].label}}</label>
+            <input type="radio" id="tab-2-mob"  [checked]="checked2" value="response.data.ranking[1].label" (click)="filterRankwiseLeaderboard(response.data.ranking[1].label)">
+            <label class="mobile_am_tab" for="tab-2-mob">{{response.data.ranking[1].label}}</label>
         </div>
         <div class="col-3 mobile_third_tab">
-            <input type="radio" id="tab-3" name="mytabs" [checked]="checked3" value="response.data.ranking[2].label" (click)="filterRankwiseLeaderboard(response.data.ranking[2].label)">
-            <label class="mobile_rm_tab" for="tab-3">{{response.data.ranking[2].label}}</label>
+            <input type="radio" id="tab-3-mob"  [checked]="checked3" value="response.data.ranking[2].label" (click)="filterRankwiseLeaderboard(response.data.ranking[2].label)">
+            <label class="mobile_rm_tab" for="tab-3-mob">{{response.data.ranking[2].label}}</label>
         </div>
         <div class="col-3 mobile_fourth_tab">
-            <input type="radio" id="tab-4" name="mytabs"[checked]="checked4"  value="response.data.ranking[3].label" (click)="filterRankwiseLeaderboard(response.data.ranking[3].label)">
-            <label class="mobile_nsm_tab" for="tab-4">{{response.data.ranking[3].label}}</label>
+            <input type="radio" id="tab-4-mob" [checked]="checked4"  value="response.data.ranking[3].label" (click)="filterRankwiseLeaderboard(response.data.ranking[3].label)">
+            <label class="mobile_nsm_tab" for="tab-4-mob">{{response.data.ranking[3].label}}</label>
         </div>
-    </div>  -->
+    </div>  
 
 
         <div class="row search_div_with_icon">

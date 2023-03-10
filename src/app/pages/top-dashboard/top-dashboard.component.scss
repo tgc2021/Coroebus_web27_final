@@ -1,0 +1,126 @@
+.web-view{
+    overflow: hidden;
+}
+.map-view{
+background: url(../../../assets/images/TopHierarchyDashboard/ancient-world-map.png);
+width: 80vw;
+height: 72vh;
+background-size: 100% 100%;
+}
+
+::ng-deep {
+    .page-content {
+
+        padding-top: 9vh !important;
+        padding-left: 0!important;
+        padding-right: 0!important;
+        padding-bottom: 0!important;
+
+    }
+
+}
+
+.right_section{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    height: 88vh;
+}
+
+.top_right_section{
+    width: 20vw;
+    height: 15vh;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.name,.level,.global_index,.pech{
+    font-size: 0.8vw;
+    font-weight: 600;
+    color: #000000;
+}
+
+.bottom_right_section{
+    margin-top: 2vh;
+    width: 19.8vw;
+    height: 73vh;
+    border: 1px solid black;
+}
+
+.first_row_details{
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.image_logo{
+    height: 6vh;
+}
+
+.call_center_name,.rank{
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1vw;
+    font-weight: 600;
+}
+
+.location{
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.7vw;
+    font-weight: 600;
+}
+
+
+.bottom_right_section_height{
+    height: 70vh;
+    overflow: scroll;
+
+}
+
+
+.button-container {
+    // border: 2px solid #000000;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 80vw;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    grid-gap: 2em;
+    align-items: center;
+    cursor: -webkit-grab;
+    cursor: grab;
+    height: 20vh;
+    margin-top: 2vw;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    padding-top: 2vh;
+}
+
+.left_side_div{
+height: 91vh;
+
+}
+
+
+.bottom_button{
+    width: 14vw;
+    height: 14vh;
+    margin-right: 6vw;
+    margin-top: 1vh;
+    background: linear-gradient(180deg, #BFBEBE 51.54%, #FFFFFF 51.61%);
+    border-radius: 1vw;
+}
+
+.bottom_button_labels{
+    color: #61646B;
+    font-family: 'Work Sans';
+font-style: normal;
+font-weight: 500;
+font-size: 1vw;
+}
