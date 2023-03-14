@@ -13,7 +13,7 @@
 }
 ::ng-deep{
     .tooltip-inner {
-        background-color: #104E5B !important;
+        background-color: var(--myvar) !important;
         font-family: 'IBM Plex Sans Thai Looped', sans-serif;
         font-style: normal;
         font-weight: 400;
@@ -130,7 +130,7 @@ color: #000000;
 
 option {
     margin: 5% !important;
-    color: #104E5B;
+    color: var(--myvar);
     font-family: 'Inter', sans-serif;
     padding: 8px 0px;
     gap: 2px;
@@ -189,7 +189,7 @@ input[type="checkbox"]::placeholder {
     left: 1408px;
     top: 177px;
     border-radius: 8px;
-    background: #104E5B;
+    // background-color: var(--myvar);
     border: 1px solid #D1D1D1;
 
 
@@ -296,6 +296,7 @@ input[type="checkbox"]::placeholder {
 }
 .modal-content{
     border-radius: 10px;
+    background-color: transparent;
 }
 .modal-heading>h4{
 font-family: 'Inter';
@@ -320,13 +321,16 @@ color: #54595E;
     position: absolute;
     right:1.5vw;
     top:2vh;
-    color: #E5E5E5;
+    color: white;
 
 }
-.modal-header{
-    position: relative;
-}
+// .modal-header{
+//     position: relative;
+// }
 
+.modal-content{
+    background-color: transparent !important;
+}
 .table {
     margin-top: 5%;
     font-family:'Roboto' sans-serif;
@@ -444,6 +448,10 @@ color: #54595E;
     padding: 2%;
     background-color: #f8fafb;
 }
-.tab-btn:focus{
-    border-bottom:2px solid #104E5B;
+.active_tab-btn{
+    border: none;
+    width: 45vw;
+   background-color: #ffff;
+    // background-color: gray;
+    border-bottom:2px solid gray;
 }

@@ -9,6 +9,7 @@ import { Subject } from 'rxjs';
 import { Util } from '@app/utils/util';
 import { takeUntil } from 'rxjs/operators';
 import { NgbModalConfig,NgbDropdownConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Subscription, combineLatest, Observable } from 'rxjs';
 
 
 @Component({
@@ -48,8 +49,19 @@ export class PlayZoneComponent implements OnInit {
   Passbook: any;
   Ascending: boolean=true;
   Descending:boolean;
+  spinTheWheelURL: string;
+  combineLatest: Subscription
+  userSelectionData: { games?: any; is_heart_points?: any; kpi_name?: any; _personal_data?: any; id_coroebus_game?: any; id_coroebus_theme?: any; coroebus_theme_title?: string; theme_description?: string; logo?: string; theme_label?: string; role_3_label?: string; role_4_label?: string; role_6_label?: string; role_8_label?: string; role_9_label?: string; theme_background?: string; player_label?: string; target_icon?: string; userID?: string; olympic_logo?: string; indicator_flag?: number; theme_flag?: number; terms?: string; is_spectator?: number; is_learningAcademy?: number; is_champions_league?: string; is_personal_challenge?: string; is_fantasy_league?: string; is_seasonal_theme?: string; security_questions?: string; themes?: any; _access_token?: string; _system?: any; otherInfo?: any; };
+  passDataToHeaderSub: any;
+  headerInfo: any;
+  color: any;
+  bgImage: any;
+  element: any;
+  _routeSub: Subscription;
+  queryParams: any;
+  Url: URL;
 
-  constructor(private http: ApiserviceService, private readonly store: Store, private modalService: NgbModal,
+  constructor(private http: ApiserviceService, private readonly store: Store, public modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
    
     private _route: ActivatedRoute, public toastService: ToastService,config: NgbModalConfig,obj: NgbDropdownConfig) { 
@@ -98,12 +110,25 @@ export class PlayZoneComponent implements OnInit {
        
       })
     }) 
+    this.dynamicColor()
   }
   
 
-  open(content) {
+  open(content,data) {
+    // console.log(content);
+    // window.open(`https://coroebusbeta.in/spin_the_wheel?_userid=${this.mergeObj.USERID}&id_spot_engagement=${content.id_spot_engagement}&id_spot_event_setup=${content.id_spot_event_setup}&id_engagement_game=${content.id_engagement_game}&id_spot_stw_log=${content.id_spot_stw_log}&_game=318`, 'windowOpenTab', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no,width=500,height=600,left=500,top=200');
+    this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=318`
+    this.Url=new URL(this.spinTheWheelURL)
     this.modalService.open(content);
+    console.log(this.Url);
+    console.log(data)
+
+
   }
+
+  // open(content) {
+  //   this.modalService.open(content);
+  // }
 
   openDropdown(){
     this.hideDropDown=!this.hideDropDown;
@@ -175,6 +200,49 @@ openEvent(){
 rewardPassBook(){
   this.openEvents=false;
   this.openPassBook=true;
+}
+
+
+dynamicColor() {
+  // $('#example').DataTable();
+ 
+
+  this.combineLatest = combineLatest([
+    this.store.select(fromRoot.userLogin),
+    this.store.select(fromRoot.usertheme),
+    this.store.select(fromRoot.usergame),
+  ]
+  ).subscribe(([login, theme, game]) => {
+    this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
+console.log(this.userSelectionData);
+
+  })
+  this.passDataToHeaderSub?.unsubscribe()
+  this.passDataToHeaderSub = this.eventService.subscribe('passDataToHeader', (data) => {
+    this.headerInfo = data
+    console.log(this.headerInfo);
+
+  })
+  if (this.userSelectionData?.otherInfo) {
+    this.headerInfo = this.userSelectionData?.otherInfo
+    console.log(this.headerInfo);
+    this.color = this.headerInfo.color; //yellowcolor
+    console.log(this.color);
+    this.bgImage= this.userSelectionData?.themes[0].theme_background_web
+    console.log(this.bgImage);
+    
+    this.element.nativeElement.style.setProperty('--myvar', `${this.color}`)
+    this.element.nativeElement.style.setProperty('--bgImage', `${this.bgImage}`)
+
+    // this.element.nativeElement.style.setProperty('--mycolor',`${this.color}`)
+    // console.log( this.element.nativeElement.style.setProperty('--myvar',`${this.color}`));
+
+
+  }
+  this._routeSub = this._route.queryParams.subscribe(queryParams => {
+    this.queryParams = queryParams
+    console.log(queryParams)
+  })
 }
 
 }
