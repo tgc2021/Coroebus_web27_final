@@ -1,330 +1,614 @@
-.web_right_side {
-    height: 15vh;
+@media only screen and (min-width: 360px) and (max-width: 768px) {
+	// do something in this width range.
+    .web-view{
+        display: none;
+    }
+    
 }
 
-.bottom_button_web {
-    height: 15vh;
-    width: 500px;
-
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 2em;
-    overflow-x: auto !important;
-    overflow-y: hidden;
-
-}
-
-
-
-button {
-    height: 12vh;
-    width: 80%;
-    border: 2px solid #000000;
-    cursor: grab;
-}
-
-::ng-deep {
-    .page-content {
-
-        padding: calc(55px + 24px) calc(24px / 2) 0px calc(24px / 2) !important;
+@media only screen and (min-width: 769px) {
+	// do something in this width range.
+    .mobile-view{
+        display: none;
+    }
+    .web_right_side_hos {
+        height: 15vh;
+    }
+    
+    .bottom_button_web {
+        height: 15vh;
+        width: 500px;
+    
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 2em;
+        overflow-x: auto !important;
+        overflow-y: hidden;
+    
+    }
+    .profile_name{
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1vw;
+        margin-top: 0.5vh;
+    }
+   
+    .profile_team_name{
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 0.7vw;
+    }
+    
+    .point_dist_div{
+        height: 19vh;
+        overflow: auto;
 
     }
 
-}
-
-.web-top {
-    height: 20vh;
-    width: 100%;
-    margin-top: 2vh;
-}
-
-.web_bottom {
-    display: flex;
-    gap: 2em;
-    width: 70vw;
-
-}
+    .point_dist_div_4{
+        height: 19vh;
+        overflow-y: scroll;
 
 
 
-.web_bottom_buttons {
-    display: flex;
-
-    width: 20vw;
-    height: 12vh;
-    color: #61646B;
-}
-
-.prof_pic_image {
-    height: 12vh;
-    width: 12vh;
-    border-radius: 50%;
-    margin-left: 1vw;
-    margin-right: 1vw;
-}
-
-.camera_image {
-    position: absolute;
-    top: 0;
-    right: 1vw;
-    z-index: 10;
-    background: white;
-    padding: 6px;
-    width: 4vh;
-    height: 3vh;
-    /* margin: 3px; */
-    border-radius: 50%;
-}
-
-.geme_reward_points_div {
-    background: url(../../../assets/images/TopHierarchyDashboard/gamepoints_background.png);
-    width: 40vw;
-    height: 18vh;
-    background-size: 100% 100%;
-    border: 2px solid rgb(74, 193, 217);
-}
-
-.profile_div {
-    position: relative;
-}
-
-.point_distribution {
-    width: 29vw;
-    margin-left: 2vw;
-}
-
-.right_side {
-    width: 20vw;
-}
-
-.point_one {
-    height: 4vh;
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.5vh;
-    width: 95%;
-}
-
-.point_one_label {
-    font-size: 0.8vw;
-    font-weight: 600;
-
-}
-
-.point_background {
-    background: #F3F2C1;
-    height: 4vh;
-    display: flex;
-    align-items: center;
-    border-radius: 6px;
-}
-
-.button_div {
-    margin-top: 1vh;
-    margin-left: 1vw;
-    width: 77vw;
-    border-radius: 1vw;
-    height: 9vh;
-    background: #596061;
-    padding: 12px;
-}
-
-.button_series {
-    width: 13.5vw;
+    }
+    button {
+        height: 12vh;
+        width: 80%;
+        border: 2px solid #000000;
+        cursor: grab;
+    }
+    
+    ::ng-deep {
+        .page-content {
+    
+            padding: calc(55px + 24px) calc(24px / 2) 0px calc(24px / 2) !important;
+    
+        }
+    
+    }
+    
+    .web-top {
+        height: 20vh;
+        width: 100%;
+        margin-top: 2vh;
+    }
+    
+    .web_bottom {
+        display: flex;
+        gap: 2em;
+        width: 70vw;
+    
+    }
+    
+    
+    
+    .web_bottom_buttons {
+        display: flex;
+    
+        width: 20vw;
+        height: 12vh;
+        color: #61646B;
+    }
+    
+    .prof_pic_image {
+        height: 12vh;
+        width: 12vh;
+        border-radius: 50%;
+        margin-left: 1vw;
+        margin-right: 1vw;
+    }
+    
+    .camera_image {
+        position: absolute;
+        top: 0;
+        right: 1vw;
+        z-index: 10;
+        background: white;
+        padding: 6px;
+        width: 4vh;
+        height: 3vh;
+        /* margin: 3px; */
+        border-radius: 50%;
+    }
+    
+    .geme_reward_points_div {
+        // background: url(../../../assets/images/TopHierarchyDashboard/gamepoints_background.png);
+        width: 40vw;
+        height: 18vh;
+        background-size: 100% 100%;
+        border: 2px solid rgb(74, 193, 217);
+        display: flex;
+    }
+    
+    .profile_div {
+        position: relative;
+    }
+    
+    .point_distribution {
+        width: 29vw;
+        margin-left: 2vw;
+    }
+    
+    .right_side_hos {
+        width: 20vw;
+    }
+    
+    .point_one {
+        height: 4vh;
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5vh;
+        width: 95%;
+    }
+    
+    .point_one_label {
+        font-size: 0.8vw;
+        font-weight: 600;
+    
+    }
+    
+    .point_background {
+        background: #F3F2C1;
+        height: 4vh;
+        display: flex;
+        align-items: center;
+        border-radius: 6px;
+    }
+    
+    .button_div {
+        margin-top: 1vh;
+        margin-left: 1vw;
+        width: 77vw;
+        border-radius: 1vw;
+        height: 9vh;
+        background: #596061;
+        padding: 12px;
+    }
+    
+    .button_series {
+        width: 13.5vw;
         height: 6vh;
-    font-size: 0.9vw;
-    font-weight: 600;
-    background: #ffffff;
-    border-radius: 1vw;
-    border: none;
-    margin-right: 1.3vw;
-    font-family: 'Roboto';
-
-}
-
-
-.button_series1 {
-    width: 13.5vw;
-    height: 6vh;
-    font-size: 0.9vw;
-    font-weight: 600;
-    margin-right: 1.3vw;
-    background: #004EC9;
-    border-radius: 1vw;
-    border: none;
-    box-shadow: 0px 2.15946px 16.196px rgba(0, 0, 0, 0.05);
-    color: white;
-    font-family: 'Roboto';
-
-}
-
-.search_box{
-    margin-top: 2vh;
-    margin-left: 1vw;
-    width: 72vw;
-    height: 7vh;
-    background: #FFFFFF;
-    border: none;
-/* Card / Big */
-
-box-shadow: 0px 0px 0px 1px #E8E8E8, 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 20px 20px rgba(0, 0, 0, 0.08);
-border-radius: 15px;
-}
-
-
-input::placeholder {
-    font-size: 0.8vw;
-}
-
-.search_bar_img{
-    width: 4vw;
-    height: 7vh;
-    background: blue;
-    margin-top: 2vh;
-    margin-left: 1vw;
-    padding: 1vw;
-    border-radius: 1vw;
-}
-
-.leaderboard_rank{
-    margin-left: 1vw;
+        font-size: 0.9vw;
+        font-weight: 600;
+        background: #ffffff;
+        border-radius: 1vw;
+        border: none;
+        margin-right: 1.3vw;
+        font-family: 'Roboto';
+    
+    }
+    
+    
+    .button_series1 {
+        width: 13.5vw;
+        height: 6vh;
+        font-size: 0.9vw;
+        font-weight: 600;
+        margin-right: 1.3vw;
+        background: #004EC9;
+        border-radius: 1vw;
+        border: none;
+        box-shadow: 0px 2.15946px 16.196px rgba(0, 0, 0, 0.05);
+        color: white;
+        font-family: 'Roboto';
+    
+    }
+    
+    .search_box {
+        margin-top: 2vh;
+        margin-left: 1vw;
+        width: 72vw;
+        height: 7vh;
+        background: #FFFFFF;
+        border: none;
+        /* Card / Big */
+    
+        box-shadow: 0px 0px 0px 1px #E8E8E8, 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 20px 20px rgba(0, 0, 0, 0.08);
+        border-radius: 15px;
+    }
+    
+    
+    input::placeholder {
+        font-size: 0.8vw;
+    }
+    
+    .search_bar_img {
+        width: 4vw;
+        height: 7vh;
+        background: blue;
+        margin-top: 2vh;
+        margin-left: 1vw;
+        padding: 1vw;
+        border-radius: 1vw;
+    }
+    
+    .leaderboard_rank {
+        margin-left: 1vw;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1vw;
+    
+    
+    }
+    
+    .leaderboard_label_tile_first{
+        width: 77vh;
+    
+    }
+    .leaderboard_label_tile {
+        height: 14vh;
+       
+        width: 78%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+       
+    
+    }
+    
+    .leaderboard_name {
+        margin-left: 11vw;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1vw;
+    }
+    
+    .leaderboard_points {
+        margin-left: 45vw;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1vw;
+    }
+    
+    .leaderboard_tile {
+        width: 77vw;
+        height: 6vh;
+        margin-bottom: 1vh;
+      
+        display: flex;
+        align-items: center;
+        padding: 0;
+        background: url(../../../assets/images/TopHierarchyDashboard/bluewallpaer.png);
+        background-size: 100% 100%;
+    }
+    
+    .leaderboard_tile_first{
+        width: 77vw;
+        height: 6vh;
+        margin-bottom: 1vh;
+      
+        display: flex;
+        align-items: center;
+        padding: 0;
+        background: url(../../../assets/images/TopHierarchyDashboard/Orange_tile.png);
+        background-size: 100% 100%;
+    }
+    
+    
+    .view_more_button {
+        width: 77vw;
+        height: 6vh;
+        background: #004EC9;
+        color: #ffffff;
+        border: none;
+        font-family: 'Roboto';
+        font-weight: 600;
+        border-radius: 0.4vw;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    .button-container {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        width: 77vw;
+        height: auto;
+        border: none;
+        margin-top: 1vh;
+        cursor: -webkit-grab;
+        cursor: grab;
+    }
+    
+    
+    
+    
+    .bottom_button {
+        width: 14.7vw;
+        height: 14vh;
+        margin-right: 6vw;
+        margin-top: 1vh;
+        background: linear-gradient(180deg, #BFBEBE 51.54%, #FFFFFF 51.61%);
+        border-radius: 1vw;
+    }
+    
+    .button_item {
+        scroll-snap-align: start;
+    
+    }
+    
+    .right_button {
+        width: 14.7vw;
+        height: 14vh;
+    
+        margin-top: 2vh;
+        background: linear-gradient(180deg, #BFBEBE 51.54%, #FFFFFF 51.61%);
+        border-radius: 1vw;
+    }
+    
+    .inner_rightcard {
+        height: 65vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+    
+    .bottom_button_labels {
+        color: #61646B;
+        font-family: 'Work Sans';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1vw;
+    }
+    
+    .right_button_labels {
+        color: #61646B;
+        font-family: 'Work Sans';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1vw;
+    }
+    
+    .governance_card {
+        height: 71vh;
+        background: #D9D9D9;
+    }
+    
+    .governace_title {
+        font-family: 'Work Sans';
+        font-style: normal;
+        font-weight: 600;
+    }
+    
+    .name_hos,
+    .level_hos {
+        font-size: 0.8vw;
+        font-weight: 600;
+        color: #000000;
+    }
+    
+    .button_score,
+    .right_button_score {
+        padding-top: 1vw;
+    }
+    
+    .point_dist_score {
+        font-family: 'Inter';
+        font-weight: 700;
+        font-size: 0.8vw;
+        margin-right: 1vw;
+    }
+    
+    .point_score_div {
+        height: 4vh;
+    }
+    
+    .badge_image {
+        width: 8vw;
+        height: 13vh;
+        margin-left: 2vw;
+    
+    }
+    
+    .badge_div {
+        height: 18vh;
+    }
+    
+    
+    .game_points_div {
+        margin-left: 8vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 17vh;
+        align-items: center;
+    }
+    
+    .game_points_image {
+        height: 4vh;
+        width: 3vw;
+    }
+    
+    .game_points_score {
+        background: #F3F2C1;
+        border: 0.5px solid #53B8BB;
+        box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+        border-radius: 10.61px;
+        width: 6vw;
+        margin-top: 0.5vh;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 0.8vw;
+        padding: 0.2vw;
+        margin-top: 1vh;
+    }
+    
+    .reward_points_div {
+        margin-left: 4vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 17vh;
+        align-items: center;
+    }
+    
+    .reward_points_image {
+        height: 4vh;
+        width: 3vw;
+    }
+    
+    .reward_points_score {
+        background: #F3F2C1;
+        border: 0.5px solid #53B8BB;
+        box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+        border-radius: 10.61px;
+        width: 6vw;
+        margin-top: 0.5vh;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 0.8vw;
+        padding: 0.2vw;
+    }
+    
+    .game_point_label,
+    .reward_point_label {
+        font-family: 'Inter';
+    
+        font-weight: 600;
+        margin-top: 0.3vh;
+        font-size: 0.7vw;
+    
+    
+        color: #FFFFFF;
+    }
+    
+    .leaderboard_rank_score{
     font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 1vw;
-
-
-}
-
-.leaderboard_label_tile{
-width: 77vh;
-}
-
-.leaderboard_name{
-margin-left: 5vw;
-font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 1vw;
-}
-
-.leaderboard_points{
- margin-left: 45vw;
- font-family: 'Inter';
- font-style: normal;
- font-weight: 600;
- font-size: 1vw;
-}
-
-.leaderboard_tile{
-    width: 77vw;
-    height: 6vh;
-    margin-bottom: 1vh;
-    background: url(../../../assets/images/TopHierarchyDashboard/bluewallpaer.png);
-    background-size: 100% 100%;
-}
-
-.view_more_button{
-    width: 77vw;
-    height: 6vh;
-    background: #004EC9;
-    color: #ffffff;
-    border: none;
-    font-family: 'Roboto';
-    font-weight: 600;
-    border-radius: 0.4vw;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.button-container {
-    overflow-x: scroll;
-    overflow-y: hidden;
-    width: 77vw;
-    height: auto;
-    border: none;
-    margin-top: 1vh;
-    cursor: -webkit-grab;
-    cursor: grab;
-}
-
-
-
-
-.bottom_button{
-    width: 14.7vw;
-    height: 14vh;
-    margin-right: 6vw;
-    margin-top: 1vh;
-    background: linear-gradient(180deg, #BFBEBE 51.54%, #FFFFFF 51.61%);
-    border-radius: 1vw;
-}
-
-.right_button{
-    width: 14.7vw;
-    height: 14vh;
-   
-    margin-top: 2vh;
-    background: linear-gradient(180deg, #BFBEBE 51.54%, #FFFFFF 51.61%);
-    border-radius: 1vw;
-}
-
-.inner_rightcard{
-    height: 67vh;
-    overflow: scroll;
-}
-
-.bottom_button_labels{
-    color: #61646B;
-    font-family: 'Work Sans';
-font-style: normal;
-font-weight: 500;
-font-size: 1vw;
-}
-
-.right_button_labels{
-    color: #61646B;
-    font-family: 'Work Sans';
-font-style: normal;
-font-weight: 500;
-font-size: 1vw;
-}
-.governance_card{
-    height: 71vh;
-    background: #D9D9D9;
-}
-
-.governace_title{
-    font-family: 'Work Sans';
     font-style: normal;
     font-weight: 600;
-}
-
-.name,.level{
-    font-size: 0.8vw;
+    font-size: 1vw;
+    color: #FFFFFF;
+    
+    }
+    .leaderboard_rank_score_first,.leaderboard_rank_score{
+        font-family: 'Inter';
+    font-style: normal;
     font-weight: 600;
-    color: #000000;
-}
-
-.button_score,.right_button_score{
-    padding-top: 1vw;
+    font-size: 1vw;
+    color: #FFFFFF;
+    margin-left: 2vw;
+    }
+    
+    .leaderboard_with_fixed_tile{
+    display: flex;
+    flex-direction: column;
+    }
+    
+    .leaderboard_name_and_team_first,.leaderboard_name_and_team{
+        margin-left: 6vw;
+    }
+    
+    .leaderboard_name_label_first,.leaderboard_team_label_first,.leaderboard_name_label,.leaderboard_team_label{
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 0.8vw;
+        color: #ffffff;
+        width: 39vw;
+    }
+    
+    
+    
+    .leaderboard_rank_profile_image_div_first,.leaderboard_rank_profile_image_div{
+        margin-left: 3vw;
+    }
+    
+    .leaderboard_rank_profile_image_first,.leaderboard_rank_profile_image{
+        width: 3vw;
+        height: 5vh;
+        border-radius: 50%;
+        border: 1px solid #FFFFFF;
+    }
+    
+    
+    
+    
+    .leaderboard_rank_badge_image_first,.leaderboard_rank_badge_image{
+        width: 3vw;
+        height: 5vh;
+        border-radius: 50%;
+    }
+    
+    .leaderboard_rank_points_div_first,.leaderboard_rank_points_div{
+        margin-left: 6vw;
+    }
+    
+    .leaderboard_rank_points_label_first,.leaderboard_rank_points_label{
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 0.8vw;
+        color: #ffffff;
+        width: 10vw;
+    }
+    
+    
+    
+    
+    
+    .leaderboard_rank_up_down_arrow_image_first,.leaderboard_rank_up_down_arrow_image{
+        width: 3vw;
+        height: 5vh;
+        border-radius: 50%;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+     
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+        border-radius: 10px;
+    }
+     
+    ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    }
 }

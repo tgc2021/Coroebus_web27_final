@@ -6,7 +6,7 @@
                     <div  style="width: 70vw; position: relative;">
                         <div class="col-12 d-flex" style="height: 15vh;margin-left: 2vw;">
                             <div>
-                                <button class="bottom_button">
+                                <button class="bottom_button" (click)="navigateToIndexwiseDashboard()">
                                     <div class="bottom_button_labels">Net Promoter Score</div>
                                     <div>20</div>
                                 </button>
@@ -56,26 +56,39 @@
        
         <div class="right_card">
             <mat-card class="top_right_section">
-                <div class="name">Name</div>
-                <div class="level">Level</div>
-                <div class="global_index">Global Index</div>
-                <div class="pech">Pech</div>
-
+                <div class="row">
+                    <div class="col-6">
+                        <div class="name">Name:</div>
+                        <div class="level">Level</div>
+                        <div class="global_index">Global Index</div>
+                        <div class="pech">Pech</div>
+    
+                    </div>
+                       
+                    <div class="col-6">
+                        <div class="name">{{buisness_head_response_._personal_data.first_name}}</div>
+                        <div class="level" style="visibility: hidden;">Level</div>
+                        <div class="global_index">{{buisness_head_response_._points[0].score}}</div>
+                        <div class="pech">Pech</div>
+    
+                    </div>
+                </div>
+               
             </mat-card>
             <mat-card class="bottom_right_section">
                 <div class="bottom_right_section_height">
 
-                <div class="row first_row_details d-flex">
-                    <div class="col-1 rank">1</div>
-                    <div class="col-2">
-                        <img class="image_logo" src="assets/images/TopHierarchyDashboard/Icon_Button.png"/>
+                <div class="row first_row_details d-flex call_center_div" *ngFor="let res of buisness_head_response_._ranking_data[0]._data" (click)="navigateToHOSDashboard()">
+                    <div class="col-1 rank">{{res.rankingtable_number}}</div>
+                    <div class="col-2 g-0">
+                        <img class="image_logo" src="{{res.rankingtable_logo}}"/>
                     </div>
                     <div class="col-8">
                         <div class="call_center_name">
-                            Call center name 
+                            {{res.rankingtable_name}} 
                         </div>
                         <div class="location">
-                            Location
+                            {{res.user_location}}
                         </div>
 
                     </div>
@@ -83,177 +96,7 @@
 
 
 
-                <div class="row first_row_details d-flex">
-                    <div class="col-1 rank">2</div>
-                    <div class="col-2">
-                        <img class="image_logo" src="assets/images/TopHierarchyDashboard/Icon_Button.png"/>
-                    </div>
-                    <div class="col-8">
-                        <div class="call_center_name">
-                            Call center name 
-                        </div>
-                        <div class="location">
-                            Location
-                        </div>
-
-                    </div>
-                </div>
-
-
-                <div class="row first_row_details d-flex">
-                    <div class="col-1 rank">3</div>
-                    <div class="col-2">
-                        <img class="image_logo" src="assets/images/TopHierarchyDashboard/Icon_Button.png"/>
-                    </div>
-                    <div class="col-8">
-                        <div class="call_center_name">
-                            Call center name 
-                        </div>
-                        <div class="location">
-                            Location
-                        </div>
-
-                    </div>
-                </div>
-
-
-                <div class="row first_row_details d-flex">
-                    <div class="col-1 rank">4</div>
-                    <div class="col-2">
-                        <img class="image_logo" src="assets/images/TopHierarchyDashboard/Icon_Button.png"/>
-                    </div>
-                    <div class="col-8">
-                        <div class="call_center_name">
-                            Call center name 
-                        </div>
-                        <div class="location">
-                            Location
-                        </div>
-
-                    </div>
-                </div>
-
-
-
-                <div class="row first_row_details d-flex">
-                    <div class="col-1 rank">5</div>
-                    <div class="col-2">
-                        <img class="image_logo" src="assets/images/TopHierarchyDashboard/Icon_Button.png"/>
-                    </div>
-                    <div class="col-8">
-                        <div class="call_center_name">
-                            Call center name 
-                        </div>
-                        <div class="location">
-                            Location
-                        </div>
-
-                    </div>
-                </div>
-
-
-
-                <div class="row first_row_details d-flex">
-                    <div class="col-1 rank">6</div>
-                    <div class="col-2">
-                        <img class="image_logo" src="assets/images/TopHierarchyDashboard/Icon_Button.png"/>
-                    </div>
-                    <div class="col-8">
-                        <div class="call_center_name">
-                            Call center name 
-                        </div>
-                        <div class="location">
-                            Location
-                        </div>
-
-                    </div>
-                </div>
-
-
-
-                <div class="row first_row_details d-flex">
-                    <div class="col-1 rank">7</div>
-                    <div class="col-2">
-                        <img class="image_logo" src="assets/images/TopHierarchyDashboard/Icon_Button.png"/>
-                    </div>
-                    <div class="col-8">
-                        <div class="call_center_name">
-                            Call center name 
-                        </div>
-                        <div class="location">
-                            Location
-                        </div>
-
-                    </div>
-                </div>
-
-
-
-                <div class="row first_row_details d-flex">
-                    <div class="col-1 rank">8</div>
-                    <div class="col-2">
-                        <img class="image_logo" src="assets/images/TopHierarchyDashboard/Icon_Button.png"/>
-                    </div>
-                    <div class="col-8">
-                        <div class="call_center_name">
-                            Call center name 
-                        </div>
-                        <div class="location">
-                            Location
-                        </div>
-
-                    </div>
-                </div>
-
-
-                <div class="row first_row_details d-flex">
-                    <div class="col-1 rank">9</div>
-                    <div class="col-2">
-                        <img class="image_logo" src="assets/images/TopHierarchyDashboard/Icon_Button.png"/>
-                    </div>
-                    <div class="col-8">
-                        <div class="call_center_name">
-                            Call center name 
-                        </div>
-                        <div class="location">
-                            Location
-                        </div>
-
-                    </div>
-                </div>
-                
-                <div class="row first_row_details d-flex">
-                    <div class="col-1 rank">10</div>
-                    <div class="col-2">
-                        <img class="image_logo" src="assets/images/TopHierarchyDashboard/Icon_Button.png"/>
-                    </div>
-                    <div class="col-8">
-                        <div class="call_center_name">
-                            Call center name 
-                        </div>
-                        <div class="location">
-                            Location
-                        </div>
-
-                    </div>
-                </div>
-
-
-                <div class="row first_row_details d-flex">
-                    <div class="col-1 rank">11</div>
-                    <div class="col-2">
-                        <img class="image_logo" src="assets/images/TopHierarchyDashboard/Icon_Button.png"/>
-                    </div>
-                    <div class="col-8">
-                        <div class="call_center_name">
-                            Call center name 
-                        </div>
-                        <div class="location">
-                            Location
-                        </div>
-
-                    </div>
-                </div>
+        
             </div>
 
             </mat-card>
@@ -263,4 +106,138 @@
 
    
     
+</div>
+
+<div class="mobile-view">
+    <div>
+        <mat-card class="mobile_details_card d-flex justify-content-center">
+            <div class="mobile_name">Name</div>
+            <div class="mobile_level">Level</div>
+            <div class="mobile_growth_Index">Growth Index</div>
+            <div class="mobile_pech">pech</div>
+        </mat-card>
+    </div>
+
+    <div class="business-index">
+        <div class="row">
+           <div class="col-6 d-flex justify-content-center align-items-center mobile_bottom_button_div">
+            <button class="mobile_buisness_index">Net Promoter Score
+                <div>40</div>
+            </button>
+           
+           </div>
+           <div class="col-6 d-flex justify-content-center align-items-center mobile_bottom_button_div">
+            <button class="mobile_buisness_index">Customer effort score
+                <div>50</div>
+            </button>
+           
+           </div>
+
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-6 d-flex justify-content-center align-items-center mobile_bottom_button_div">
+             <button class="mobile_buisness_index">Sales index 
+                 <div>60</div>
+             </button>
+            
+            </div>
+            <div class="col-6 d-flex justify-content-center align-items-center mobile_bottom_button_div">
+             <button class="mobile_buisness_index">cost index
+                 <div>70</div>
+             </button>
+            
+            </div>
+ 
+         </div>
+
+         <div class="row mt-2">
+            <div class="col-6 d-flex justify-content-center align-items-center mobile_bottom_button_div">
+             <button class="mobile_buisness_index">Demo 
+                 <div>80</div>
+             </button>
+            
+            </div>
+            <div class="col-6 d-flex justify-content-center align-items-center mobile_bottom_button_div">
+             <button class="mobile_buisness_index">Demo 1
+                 <div>100</div>
+             </button>
+            
+            </div>
+ 
+         </div>
+    </div>
+
+
+    <div>
+        <img class="mobile_map" src="assets/images/TopHierarchyDashboard/mobile_map.png" />
+    </div>
+
+    <div class="mobile_call_center_details">
+       <div class="row mobile_call_center_row d-flex justify-content-center mt-2">
+        <div class="col-1 mobile_name_div d-flex align-items-center">1</div>
+        <div class="col-3">
+            <img class="mobile_image_logo" src="assets/images/TopHierarchyDashboard/Icon_Button.png"/>
+        </div>
+        <div class="col-8 mobile_name_and_location d-flex justify-content-center">
+            <div class="mobile_name">Call Center Name </div>
+            <div class="mobile_location">Location</div>
+
+        </div>
+       </div>
+
+
+       <div class="row mobile_call_center_row d-flex justify-content-center mt-2">
+        <div class="col-1 mobile_name_div d-flex align-items-center">2</div>
+        <div class="col-3">
+            <img class="mobile_image_logo" src="assets/images/TopHierarchyDashboard/Icon_Button.png"/>
+        </div>
+        <div class="col-8 mobile_name_and_location d-flex justify-content-center">
+            <div class="mobile_name">Call Center Name </div>
+            <div class="mobile_location">Location</div>
+
+        </div>
+       </div>
+
+
+
+       <div class="row mobile_call_center_row d-flex justify-content-center mt-2">
+        <div class="col-1 mobile_name_div d-flex align-items-center">3</div>
+        <div class="col-3">
+            <img class="mobile_image_logo" src="assets/images/TopHierarchyDashboard/Icon_Button.png"/>
+        </div>
+        <div class="col-8 mobile_name_and_location d-flex justify-content-center">
+            <div class="mobile_name">Call Center Name </div>
+            <div class="mobile_location">Location</div>
+
+        </div>
+       </div>
+
+
+       <div class="row mobile_call_center_row d-flex justify-content-center mt-2">
+        <div class="col-1 mobile_name_div d-flex align-items-center">4</div>
+        <div class="col-3">
+            <img class="mobile_image_logo" src="assets/images/TopHierarchyDashboard/Icon_Button.png"/>
+        </div>
+        <div class="col-8 mobile_name_and_location d-flex justify-content-center">
+            <div class="mobile_name">Call Center Name </div>
+            <div class="mobile_location">Location</div>
+
+        </div>
+       </div>
+
+
+
+       <div class="row mobile_call_center_row d-flex justify-content-center mt-2">
+        <div class="col-1 mobile_name_div d-flex align-items-center">5</div>
+        <div class="col-3">
+            <img class="mobile_image_logo" src="assets/images/TopHierarchyDashboard/Icon_Button.png"/>
+        </div>
+        <div class="col-8 mobile_name_and_location d-flex justify-content-center">
+            <div class="mobile_name">Call Center Name </div>
+            <div class="mobile_location">Location</div>
+
+        </div>
+       </div>
+    </div>
 </div>

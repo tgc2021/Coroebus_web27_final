@@ -49,7 +49,10 @@ export class TopbarComponent implements OnInit, OnDestroy {
   headerInfo: any
   _routeSub: Subscription
   queryParams: any
+  id_role:any
+  top_toolbar_logo:any
   ngOnInit() {
+    this.top_toolbar_logo= localStorage.getItem('theme_logo')
     this.openMobileMenu = false;
     this.element = document.documentElement;
     this.combineLatest = combineLatest([
@@ -62,8 +65,12 @@ export class TopbarComponent implements OnInit, OnDestroy {
       this.notificationStatus()
       this.handlePolling()
     })
+    this.id_role=this.userSelectionData._personal_data.id_role
+    console.log(this.id_role);
+    
     this.passDataToHeaderSub?.unsubscribe()
     this.passDataToHeaderSub = this.eventService.subscribe('passDataToHeader', (data) => {
+      
       this.headerInfo = data
     })
     if (this.userSelectionData?.otherInfo) {
