@@ -10,8 +10,16 @@
     transform: translate(-50%);
 
 }
-.cardWithBackgroundImage{
 
+.mat_panel_title{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.8vw;
+}
+
+.cardWithBackgroundImage{
+  
     .card-div{
         background: transparent;
         ;
@@ -50,7 +58,7 @@ border-radius: 11px;
 //     overflow-x: hidden;
 // }
 .inner-bulletins-height{
-    margin-top: 4h;
+    margin-top: 10vh !important;
     height: 33vh;
     overflow-x: hidden;
     width: 100%;
@@ -75,6 +83,7 @@ border-radius: 11px;
    width: auto;
    height: 40vh;
    border-radius: 11px;
+ 
 }
 .points-dis-card{
    background-repeat: no-repeat;

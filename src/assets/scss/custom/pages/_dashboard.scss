@@ -304,6 +304,15 @@
     height: 81vh;
  }
 
+ .inner-bulletins-no-height-top {
+    overflow-y: auto;
+    overflow-x: hidden;
+    width:30vw;
+    height: 81vh;
+    margin-top: 11vh;
+ }
+
+
 .dashboard-popup-level::-webkit-scrollbar {
     width: 4px;
 }

@@ -27,11 +27,14 @@ export class GameSelectionComponent implements OnInit, OnDestroy {
   game_audio:any
   showComponent: boolean = false
   isInteractiveDashboard:any
+  game_reponse:any
   constructor(private readonly store: Store, private router: Router, public Util: Util,public http:ApiserviceService) {
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
     ).subscribe(data => {
       this.userObj = data?.user
+     
+      
     })
     this.store.select(fromRoot.usertheme).pipe(
       takeUntil(this.destroy$)
@@ -71,8 +74,9 @@ this.http.engagamentlog(body).subscribe(res=>{
       "id_theme": this.themeObj?.id_coroebus_theme
     };
     
-
-    [err, res] = await HttpProtocols.to(UserModel.getGame(body))
+if(this.userObj._personal_data.id_role!="13"){
+console.log(this.userObj._personal_data.id_role);
+[err, res] = await HttpProtocols.to(UserModel.getGame(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
 
       const newArr = [];
@@ -101,6 +105,16 @@ this.http.engagamentlog(body).subscribe(res=>{
         confirmButtonColor: '#556ee6'
       });
     }
+}
+else{
+  console.log(this.userObj);
+   localStorage.setItem('theme_logo',this.userObj.themes[0].logo)
+  //  localStorage.setItem('theme_color',this.userObj.themes[0].logo)
+
+  this.router.navigate(['/topdashboard']);
+  
+}
+    
   }
   handleChange(event, data) {
     this.selectedGame = data?.id_coroebus_game
@@ -135,12 +149,12 @@ if (this.gameList?.[0]?.length === 1){
     this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
     this.router.navigate(['/spectator/spectatorView']);
   }
-  // else if(this.id_role==9){
-  //   console.log('idrole 9');
+  else if(this.id_role==3){
+    console.log('idrole 3');
     
-  //   this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
-  //   this.router.navigate(['/top_dashboard']);
-  // }
+    this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
+    this.router.navigate(['/top_dashboard']);
+  }
   // else if(this.id_role==8){
   //   console.log('idrole 8');
     

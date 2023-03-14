@@ -21,6 +21,7 @@ export class ThemeSelectionComponent implements OnInit, OnDestroy {
   themeList: any;
   selectedTheme: any
   showComponent: boolean = false
+  themes_reponse:any
   constructor(private readonly store: Store, private router: Router, public Util: Util,public http:ApiserviceService) {
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
@@ -37,6 +38,9 @@ export class ThemeSelectionComponent implements OnInit, OnDestroy {
     let err: any, res: any;
     let body: any;
     body = { "userid": this.userObj?._personal_data?.USERID };
+    this.themes_reponse=await HttpProtocols.to(UserModel.getThemes(body));
+    console.log(this.themes_reponse);
+    
     [err, res] = await HttpProtocols.to(UserModel.getThemes(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
 

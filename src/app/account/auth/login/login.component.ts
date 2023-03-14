@@ -29,7 +29,9 @@ export class LoginComponent implements OnInit {
   submitted = false;
   error = '';
   returnUrl: any;
-
+  userid_bh:any
+  id_org:any
+  id_coroebus_organization_bh:any
   // set the currenr year
   year: number = new Date().getFullYear();
   showHidePwdInput: boolean = false
@@ -135,7 +137,8 @@ export class LoginComponent implements OnInit {
       const body = { "USERID": userId, "PASSWORD": password }
       const [err, res] = await HttpProtocols.to(UserModel.authenticationAndAuthorization(body))
       if (!err && res?.status === 'success' && res?.statuscode === 200) {
-
+        console.log(res);
+        
         let body={
           _userid:userId.toString(),
           _game:"na",
@@ -146,9 +149,14 @@ export class LoginComponent implements OnInit {
         }
 
         // {"_userid":"Ek/VOOiJgjEigYASBYAX6A==","_section":"Login","_description":"Login Succesfull","_game":"na","_device":"W","_refid":""}
-
-
-
+        console.log(this.Util.decryptData(body._userid));
+        this.userid_bh=this.Util.decryptData(body._userid)
+        localStorage.setItem('userid',this.userid_bh)
+        console.log(body);
+        this.id_org=res?.data
+        console.log(this.id_org._personal_data.id_coroebus_organization);
+        this.id_coroebus_organization_bh=this.id_org._personal_data.id_coroebus_organization
+        localStorage.setItem('id_coroebus_org_bh',this.id_coroebus_organization_bh)
         this.http.engagamentlog(body).subscribe(res=>{
           console.log(res);
           

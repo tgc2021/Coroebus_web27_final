@@ -100,6 +100,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   section1_tile_images: any
   web_tile_img:any
   location:any
+  panelOpenState = false;
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,

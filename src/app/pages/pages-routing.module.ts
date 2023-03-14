@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { BusinessIndexMapComponent } from './business-index-map/business-index-map.component';
 import { ChampionsLeagueComponent } from './champions-league/champions-league.component';
 
 import { DefaultComponent } from './dashboards/default/default.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'main_dashboard', component:MainDashboardComponent },
   { path: 'top_dashboard', component:TopHierarchyDashboardsComponent },
   { path: 'topdashboard', component:TopDashboardComponent },
+  { path: 'buisness_index', component:BusinessIndexMapComponent },
 
 
 

@@ -22,6 +22,7 @@ import { SkeletonScreenLoaderModule } from '../../../projects/coroebus/skeleton-
 import { MatCardModule } from '@angular/material/card';
 import { TopHierarchyDashboardsComponent } from './top-hierarchy-dashboards/top-hierarchy-dashboards.component';
 import { TopDashboardComponent } from './top-dashboard/top-dashboard.component';
+import { BusinessIndexMapComponent } from './business-index-map/business-index-map.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { TopDashboardComponent } from './top-dashboard/top-dashboard.component';
     MainDashboardComponent,
     TopHierarchyDashboardsComponent,
     TopDashboardComponent,
+    BusinessIndexMapComponent,
   
   ],
   imports: [

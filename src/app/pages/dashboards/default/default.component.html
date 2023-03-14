@@ -52,62 +52,40 @@
                             [style.background-image]="
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.notification_background + ')' : null">
 
-                            <div class="card-body border-bottom mt-4">
-                                <div class="dropdown ms-2 font-size-16 font-weight-semibold">
-                                    Notification
-                                </div>
-                                <div>
-                                    <div *ngIf="this.NotificationHide"
-                                        class="d-flex justify-content-center align-items-center" style="height:37vh;">
+                            <div class="card-body border-bottom mt-4" style="border:none !important; height: 40vh; overflow:scroll;">
+                                <mat-accordion>
+                                   
+                                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                                         (closed)="panelOpenState = false">
+                                      <mat-expansion-panel-header>
+                                        <mat-panel-title class="mat_panel_title">
+                                          My Campaigns
+                                        </mat-panel-title>
+                                        
+                                      </mat-expansion-panel-header>
+                                      <ul>
+                                        <li style=" font-family: 'Inter'; font-style: normal;font-weight: 600;font-size: 0.8vw;">Daily</li>
+                                        <li style=" font-family: 'Inter'; font-style: normal;font-weight: 600;font-size: 0.8vw;">Weekly</li>
+                                        <li style=" font-family: 'Inter'; font-style: normal;font-weight: 600;font-size: 0.8vw;">Monthly</li>
 
-                                        <div class="buletinsHideFont" style="font-family: 'Inter';
-                                        font-style: normal;
-                                        font-weight: 600;
-                                        font-size: 16px;
-                                        line-height: 25px;
-                                        text-align: center;
-                                        letter-spacing: 0.003em;
-                                       color: #000000;">
-                                            There's no Notifications you have subscribed to, stay tuned to this section
-                                            for
-                                            more.
-                                        </div>
-                                    </div>
+                                      </ul>
+                                    </mat-expansion-panel>
+                                  </mat-accordion>
 
-                                    <div class="inner-notification-height" *ngIf="!this.NotificationHide">
-                                        <!-- {{notificationLists | json}} -->
-                                        <div class="row row-cols-1 mt-2 notification-row ms-1 me-4"
-                                            [ngClass]="{'yellow-notification-row': item?.readStatus === '0'}"
-                                            *ngFor="let item of notificationLists; let i =index"
-                                            (click)="openNotification(item)">
-                                            <div class="col d-flex align-items-center">
-                                                <div
-                                                    class="media d-flex justify-content-center align-items-center gap-2">
-
-                                                    <img loading="lazy" *ngIf="item?.image"
-                                                        src="assets/images/svg/notification/img.png" alt="" height="47" style="padding: 5px;">
-                                                    <img loading="lazy" *ngIf="item?.gif"
-                                                        src="assets/images/svg/notification/txt.png" alt="" height="47" style="padding: 5px;">
-                                                    <img loading="lazy" *ngIf="item?.video"
-                                                        src="assets/images/svg/notification/v.png" alt="" height="47" style="padding: 5px;">
-                                                    <img loading="lazy" *ngIf="item?.video_path"
-                                                        src="assets/images/svg/notification/v.png" alt="" height="47" style="padding: 5px;">
-                                                    <img loading="lazy"
-                                                        *ngIf="(item?.video==='' && item?.gif==='' && item?.image==='' && item?.video_path==='')"
-                                                        src="assets/images/svg/dashboard/text-notification-read.png"
-                                                        alt="" height="47" style="padding: 5px;">
-                                                    <div class="media-body">
-                                                        <p class="mt-0 font-size-12 font-weight-semibold">
-                                                            {{item?.title.slice(0,15).concat('...')}}</p>
-                                                        <span class="notification-text-mutated">
-                                                            {{item?.datetimestamp|date:'fullDate'}}
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                  <mat-accordion>
+                                   
+                                    <mat-expansion-panel class="battleground_accordion mt-2" (opened)="panelOpenState = true"
+                                                         (closed)="panelOpenState = false">
+                                      <mat-expansion-panel-header>
+                                        <mat-panel-title class="mat_panel_title">
+                                          Battle Ground
+                                        </mat-panel-title>
+                                        
+                                      </mat-expansion-panel-header>
+                                      <p>Battle Ground Body</p>
+                                      
+                                    </mat-expansion-panel>
+                                  </mat-accordion>
                             </div>
                         </div>
                     </div>
@@ -544,89 +522,233 @@
 
                 <div>
 
-                    <div class="bulletins-card"
+                    <div class="bulletins-card" 
                         [ngClass]="{'points-bullentins-card-no-height': sectionView_1?.is_land_logos?.length == 0, 'points-bullentins-card': sectionView_1?.is_land_logos?.length != 0}"
                         [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.add_ins_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.add_ins_background == null}"
                         [style.background-image]="
                     sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.add_ins_background + ')' : null">
-                        <div class="card-div">
-                            <div class="float-start dropdown ms-4 mt-3  font-size-16 font-weight-semibold"
-                                style="width: 100%;">
-                                Bulletins
-                            </div>
-                            <div class="card-body pt-2 d-flex flex-column justify-content-center">
+                       <div *ngIf="sectionView_1?.is_land_logos?.length == 0;then one; else two"></div>
+                       <ng-template #one>
+                        <div class="card-div" >
+                            
+                            <div class="card-body pt-2" style="height: 87vh; overflow:scroll;">
+                                <mat-accordion>
+                                   
+                                    <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true"
+                                                         (closed)="panelOpenState = false">
+                                      <mat-expansion-panel-header>
+                                        <mat-panel-title style="font-family: 'Inter';
+                                        font-style: normal;
+                                        font-weight: 600;
+                                        font-size: 0.8vw;">
+                                          My Learning
+                                        </mat-panel-title>
+                                        
+                                      </mat-expansion-panel-header>
+                                      <p>My Learning Body</p>
+                                    </mat-expansion-panel>
+                                  </mat-accordion>
+
+                                  <mat-accordion>
+                                   
+                                    <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true"
+                                                         (closed)="panelOpenState = false">
+                                      <mat-expansion-panel-header>
+                                        <mat-panel-title style="font-family: 'Inter';
+                                        font-style: normal;
+                                        font-weight: 600;
+                                        font-size: 0.8vw;">
+                                          Bulletins
+                                        </mat-panel-title>
+                                        
+                                      </mat-expansion-panel-header>
+                                      <div class="d-flex align-items-center"  style="height: 66vh;">
 
 
-                                <div class="d-flex align-items-center">
-
-
-                                    <div *ngIf="buletinsHide"
-                                        style="display:flex;flex-direction:column;justify-content:center;">
-                                        <br>
-                                        <div class="" style="font-family: 'Inter';
-                                font-style: normal;
-                                font-weight: 600;
-                                font-size: 16px;
-                                line-height: 25px;
-                                text-align: center;
-                                letter-spacing: 0.003em;
-                               color: #000000;
-                               width: 22vw;">
-                                            There's no bulletin’s you have subscribed to, stay tuned to this section for
-                                            more.
+                                        <div *ngIf="buletinsHide"
+                                            style="display:flex;flex-direction:column;justify-content:center;">
+                                            <br>
+                                            <div class="" style="font-family: 'Inter';
+                                    font-style: normal;
+                                    font-weight: 600;
+                                    font-size: 16px;
+                                    line-height: 25px;
+                                    text-align: center;
+                                    letter-spacing: 0.003em;
+                                   color: #000000;
+                                   width: 22vw;">
+                                                There's no bulletin’s you have subscribed to, stay tuned to this section for
+                                                more.
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="mb-2 me-3"></div>
-                                    <div
-                                        [ngClass]="{'inner-bulletins-no-height': sectionView_1?.is_land_logos?.length == 0,'inner-bulletins-height':sectionView_1?.is_land_logos?.length != 0}">
-
-                                        <div class="card bulletins-sub-card" *ngFor="let item of addInsList">
-                                            <div class="card-body bulletins-sub-card-body">
-                                                <p class="spot-engagement ">{{item?.header}}</p>
-                                                <br>
-                                                <div class="media bulletins-media">
-                                                    <img *ngIf="item?.type_ === '1'"
-                                                        src="assets/images/svg/dashboard/add-ins/se.svg" alt=""
-                                                        height="52">
-                                                    <img *ngIf="item?.type_ === '2'"
-                                                        src="assets/images/svg/dashboard/add-ins/spot.svg" alt=""
-                                                        height="52">
-                                                    <img *ngIf="item?.type_ === '3'"
-                                                        src="assets/images/svg/dashboard/add-ins/le.svg" alt=""
-                                                        height="52">
-                                                    <div class="media-body ms-2">
-
-                                                        <h5 class="bulletins-title">{{item?.title}}
-                                                            <p class="bulletins-text-muted" style="margin-bottom:30px;">
-                                                                {{item?.description_}}
-                                                            </p>
-                                                        </h5>
-
-                                                        <img class="bulletins-image-card" src="{{item?.logo}}" alt=""
-                                                            height="95">
+                                        <div class="mb-2 me-3"></div>
+                                        <div
+                                            [ngClass]="{'inner-bulletins-no-height-top': sectionView_1?.is_land_logos?.length == 0,'inner-bulletins-height':sectionView_1?.is_land_logos?.length != 0}">
+    
+                                            <div class="card bulletins-sub-card" *ngFor="let item of addInsList">
+                                                <div class="card-body bulletins-sub-card-body">
+                                                    <p class="spot-engagement ">{{item?.header}}</p>
+                                                    <br>
+                                                    <div class="media bulletins-media">
+                                                        <img *ngIf="item?.type_ === '1'"
+                                                            src="assets/images/svg/dashboard/add-ins/se.svg" alt=""
+                                                            height="52">
+                                                        <img *ngIf="item?.type_ === '2'"
+                                                            src="assets/images/svg/dashboard/add-ins/spot.svg" alt=""
+                                                            height="52">
+                                                        <img *ngIf="item?.type_ === '3'"
+                                                            src="assets/images/svg/dashboard/add-ins/le.svg" alt=""
+                                                            height="52">
+                                                        <div class="media-body ms-2">
+    
+                                                            <h5 class="bulletins-title">{{item?.title}}
+                                                                <p class="bulletins-text-muted" style="margin-bottom:30px;">
+                                                                    {{item?.description_}}
+                                                                </p>
+                                                            </h5>
+    
+                                                            <img class="bulletins-image-card" src="{{item?.logo}}" alt=""
+                                                                height="95">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col text-end">
-                                                        <span class="bulletins-date">{{item?.date_time |
-                                                            date:'fullDate'}}</span>
+                                                    <div class="row">
+                                                        <div class="col text-end">
+                                                            <span class="bulletins-date">{{item?.date_time |
+                                                                date:'fullDate'}}</span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="row border-top">
-                                                    <div class="col text-start">
-                                                        <span class="bulletins-open">Open</span>
+                                                    <div class="row border-top">
+                                                        <div class="col text-start">
+                                                            <span class="bulletins-open">Open</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+    
+    
                                     </div>
+                                    </mat-expansion-panel>
+                                  </mat-accordion>
 
 
-                                </div>
+                              
 
 
                             </div>
                         </div>
+                       </ng-template>
+                       <ng-template #two>
+                        <div class="card-div" >
+                            
+                            <div class="card-body pt-2" style="height: 40vh; overflow:scroll;">
+                                <mat-accordion>
+                                   
+                                    <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true"
+                                                         (closed)="panelOpenState = false">
+                                      <mat-expansion-panel-header>
+                                        <mat-panel-title style="font-family: 'Inter';
+                                        font-style: normal;
+                                        font-weight: 600;
+                                        font-size: 0.8vw;">
+                                          My Learning
+                                        </mat-panel-title>
+                                        
+                                      </mat-expansion-panel-header>
+                                      <p>My Learning Body</p>
+                                    </mat-expansion-panel>
+                                  </mat-accordion>
+
+                                  <mat-accordion>
+                                   
+                                    <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true"
+                                                         (closed)="panelOpenState = false">
+                                      <mat-expansion-panel-header>
+                                        <mat-panel-title style="font-family: 'Inter';
+                                        font-style: normal;
+                                        font-weight: 600;
+                                        font-size: 0.8vw;">
+                                          Bulletins
+                                        </mat-panel-title>
+                                        
+                                      </mat-expansion-panel-header>
+                                      <div class="d-flex align-items-center"  style="height: 20vh;">
+
+
+                                        <div *ngIf="buletinsHide"
+                                            style="display:flex;flex-direction:column;justify-content:center;">
+                                            <br>
+                                            <div class="" style="font-family: 'Inter';
+                                    font-style: normal;
+                                    font-weight: 600;
+                                    font-size: 16px;
+                                    line-height: 25px;
+                                    text-align: center;
+                                    letter-spacing: 0.003em;
+                                   color: #000000;
+                                   width: 22vw;">
+                                                There's no bulletin’s you have subscribed to, stay tuned to this section for
+                                                more.
+                                            </div>
+                                        </div>
+                                        <div class="mb-2 me-3"></div>
+                                        <div
+                                            [ngClass]="{'inner-bulletins-no-height': sectionView_1?.is_land_logos?.length == 0,'inner-bulletins-height':sectionView_1?.is_land_logos?.length != 0}">
+    
+                                            <div class="card bulletins-sub-card" *ngFor="let item of addInsList">
+                                                <div class="card-body bulletins-sub-card-body">
+                                                    <p class="spot-engagement ">{{item?.header}}</p>
+                                                    <br>
+                                                    <div class="media bulletins-media">
+                                                        <img *ngIf="item?.type_ === '1'"
+                                                            src="assets/images/svg/dashboard/add-ins/se.svg" alt=""
+                                                            height="52">
+                                                        <img *ngIf="item?.type_ === '2'"
+                                                            src="assets/images/svg/dashboard/add-ins/spot.svg" alt=""
+                                                            height="52">
+                                                        <img *ngIf="item?.type_ === '3'"
+                                                            src="assets/images/svg/dashboard/add-ins/le.svg" alt=""
+                                                            height="52">
+                                                        <div class="media-body ms-2">
+    
+                                                            <h5 class="bulletins-title">{{item?.title}}
+                                                                <p class="bulletins-text-muted" style="margin-bottom:30px;">
+                                                                    {{item?.description_}}
+                                                                </p>
+                                                            </h5>
+    
+                                                            <img class="bulletins-image-card" src="{{item?.logo}}" alt=""
+                                                                height="95">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col text-end">
+                                                            <span class="bulletins-date">{{item?.date_time |
+                                                                date:'fullDate'}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row border-top">
+                                                        <div class="col text-start">
+                                                            <span class="bulletins-open">Open</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+    
+                                    </div>
+                                    </mat-expansion-panel>
+                                  </mat-accordion>
+
+
+                              
+
+
+                            </div>
+                        </div>
+                       </ng-template>
+                 
 
                     </div>
 
