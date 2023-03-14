@@ -141,10 +141,10 @@ border-radius: 11px;
       
        border-radius: 6.46995px;
        font-weight: 600;
-       font-size: 11px;
+       font-size:1.3vh;
        line-height: 31px;
        width: auto;
-       height: 6vh;
+       height: 5vh;
        left: 4px;
        top: 3.23px;
 }
@@ -231,9 +231,9 @@ border-radius: 11px;
 
 
 .mobile-dashboard-banner-main-rank-img{
-    height: auto;
-    width: 18vw;
-    padding-left: 5%;
+    width: 11vh;
+    height: 11vh;
+    padding-left: 4%;
 }
 .mobile-points-dis-name1{
     background: #F3F2C1;
@@ -322,6 +322,7 @@ border-radius: 11px;
     font-size: 14px;
     // line-height: 100%;
     color: #000000;
+    text-align: center;
     
     
 }

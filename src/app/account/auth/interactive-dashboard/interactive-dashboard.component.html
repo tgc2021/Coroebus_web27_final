@@ -1,7 +1,7 @@
 <!-- Web View Started-->
 <app-loader *ngIf="isLoading"></app-loader>
 <div class="web_view_main d-flex justify-content-center">
-    <div class="web-view" style="width: 75vw;" *ngFor="let response of interactive_dashoard_response">
+    <div class="web-view" style="width: 76vw;" *ngFor="let response of interactive_dashoard_response">
         <div class="row web_first_row">
             <div class="col-4 web_first_col d-flex">
                 <div class="d-flex gap-3">
@@ -137,7 +137,7 @@
 
                 <div class="lower_blue_scorecard" (click)="navigateMyPerformance()">
                     <div class="row lower_blue_scorecard_details d-flex justify-content-center">
-                        <div class="col-3 web_first_measurement d-block"
+                        <div class="col-3 text-center web_first_measurement d-block"
                             *ngFor="let points of interactive_dashoard_response[0].data._Point_distribution">
                             <div>
                                 <p class="web_first_measurement_number">{{points.weightage|number: '1.0-0'}}</p>

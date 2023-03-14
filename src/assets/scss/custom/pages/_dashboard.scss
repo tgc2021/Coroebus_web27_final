@@ -40,8 +40,6 @@
     font-size: 2vh;
     line-height: 150%;
 }
-
-
 .three-data {
     >div:nth-child(3) {
         margin-left: 25%;
@@ -512,6 +510,8 @@
     // width: 279px;
     height: auto;
    min-height: 6vh;
+   display: grid;
+   place-items: center;
     background: #FFFFFF;
     border-radius: 11.4808px;
     box-shadow: 0px 0px 0px 0.619px #e8e8e8, 0px 0px 1.238px rgb(0 0 0 / 12%), 0px 12.38px 12.38px rgb(0 0 0 / 2%);
@@ -519,7 +519,9 @@
 
 .yellow-notification-row {
     background-color: #F3F2C1;
-    width: 100%;
+    display: grid;
+    place-items: center;
+    // width: 100%;
 }
 
 .notification-text-mutated {
@@ -606,9 +608,8 @@
 
 .level-rank-name {
     font-weight: 700;
-    font-size: 1.9vh;
+    font-size: 1.5vh;
     line-height: 150%;
-
     align-items: center;
     text-align: center;
     // text-transform: uppercase;
@@ -692,7 +693,8 @@
 }
 
 .dashboard-banner-main-rank-img {
-    height: 19vh;
+    height: 16vh;
+    width: 16vh;
     // width: 100%;
     padding-left: 1%;
     padding-bottom: 1%;

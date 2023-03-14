@@ -31,6 +31,12 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   gamePoints:any
   web_profile_back_image: any;
   sectionView_1_err:any
+  pageNumberForSectionView_3:number=1;
+  sectionView_3: any;
+  scrollTarget: any;
+  sectionView_3_list: any;
+  activeTabForSectionView_2: any;
+  sectionView_3_err: string;
   constructor(private readonly store: Store, private _route: ActivatedRoute, public Util: Util,public http:ApiserviceService,private eventService: EventService) { }
 
   ngOnInit(): void {
@@ -79,14 +85,15 @@ export class TopHierarchyDashboardsComponent implements OnInit {
 
           this.getUserBannerDataSectionView_1(queryParams)
           // this.getUserBannerDataSectionView_2(queryParams)
-          // this.getUserBannerDataSectionView_3(null, queryParams)
+          this.getUserBannerDataSectionView_3(null, queryParams)
          
           // this.notificationList()
           // this.addIns()
         } else {
           this.getUserBannerDataSectionView_1()
+          this.getUserBannerDataSectionView_3()
           // this.getUserBannerDataSectionView_2()
-          // this.getUserBannerDataSectionView_3()
+         
           // this.notificationList()
           // this.addIns()
 
@@ -181,5 +188,49 @@ console.log(this.sectionView_1);
     } else {
       this.sectionView_1_err = 'Please try after some time'
     }
+  }
+
+  async getUserBannerDataSectionView_3(viewMore?: any, queryParams?: any) {
+    let err: any, res: any;
+    let body: any;
+    body = {
+      "_userid": queryParams?.userID ? queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
+      "_game": queryParams?.gameID ? queryParams?.gameID : this.userSelectionData?.id_coroebus_game, "_section_view": "3", "page_number": this.pageNumberForSectionView_3
+    };
+    [err, res] = await HttpProtocols.to(DashboardModel.getRankingAndOtherDataSectionView_3(body))
+    if (!err && res?.status === 'success' && res?.statuscode === 200) {
+      // this.pokeData = res?.data?._poke_list
+      // if (viewMore) {
+      //   res?.data?._ranking_data?.forEach((element, index) => {
+      //     if (element?.label === this.sectionView_3?._ranking_data[index]?.label) {
+
+      //       if (element?._data?.length > 0) {
+      //         this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data)
+      //         this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'center' });
+      //       }
+      //     }
+
+      //   });
+      // } else {
+      //   this.sectionView_3 = res?.data
+      // }
+      // this.filterRankingData()
+
+
+      console.log(res);
+      this.sectionView_3=res?.data._ranking_data
+      console.log(this.sectionView_3);
+
+      this.sectionView_3_list = this.sectionView_3?._ranking_data?.filter(data => {
+        //console.log(data)
+        if (data.order === this.activeTabForSectionView_2) {
+          return data
+        }
+      })
+      //console.log(this.sectionView_3_list)
+    } else {
+      this.sectionView_3_err = 'Please try after some time'
+    }
+    
   }
 }
