@@ -125,7 +125,7 @@
                                        
                                         
                             
-                                            <iframe src="https://coroebusbeta.in/spin_the_wheel/?_userid=cannon015&id_spot_engagement=125&id_spot_event_setup=247&id_engagement_game=2&id_spot_stw_log=2383&_game=318" title="spin_the_wheel" height="620px" width="100%">
+                                            <iframe [src]='safeUrl' title="spin_the_wheel" height="620px" width="100%">
                                             </iframe>
                                             <!-- <iframe [src]="Url" frameborder="0"></iframe> -->
 
@@ -424,8 +424,8 @@
                                        
                                         
                             
-                                        <iframe [src]="Url" title="spin_the_wheel" height="620px" width="100%">
-                                        </iframe>
+                                    <iframe [src]='safeUrl' title="spin_the_wheel" height="620px" width="100%">
+                                    </iframe>
 
                                 
                                 </ng-template>

@@ -10,6 +10,7 @@ import { Util } from '@app/utils/util';
 import { takeUntil } from 'rxjs/operators';
 import { NgbModalConfig,NgbDropdownConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription, combineLatest, Observable } from 'rxjs';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 
 @Component({
@@ -60,11 +61,12 @@ export class PlayZoneComponent implements OnInit {
   _routeSub: Subscription;
   queryParams: any;
   Url: URL;
+  safeUrl: SafeResourceUrl;
 
   constructor(private http: ApiserviceService, private readonly store: Store, public modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
    
-    private _route: ActivatedRoute, public toastService: ToastService,config: NgbModalConfig,obj: NgbDropdownConfig) { 
+    private _route: ActivatedRoute, public toastService: ToastService,config: NgbModalConfig,obj: NgbDropdownConfig, public sanitizer: DomSanitizer) { 
       config.backdrop = true;
       config.keyboard = false;
       config.centered= true;
@@ -116,12 +118,13 @@ export class PlayZoneComponent implements OnInit {
 
   open(content,data) {
     // console.log(content);
+
     // window.open(`https://coroebusbeta.in/spin_the_wheel?_userid=${this.mergeObj.USERID}&id_spot_engagement=${content.id_spot_engagement}&id_spot_event_setup=${content.id_spot_event_setup}&id_engagement_game=${content.id_engagement_game}&id_spot_stw_log=${content.id_spot_stw_log}&_game=318`, 'windowOpenTab', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no,width=500,height=600,left=500,top=200');
-    this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=318`
+    this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
     this.Url=new URL(this.spinTheWheelURL)
+    this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.spinTheWheelURL)
     this.modalService.open(content);
-    console.log(this.Url);
-    console.log(data)
+   
 
 
   }
