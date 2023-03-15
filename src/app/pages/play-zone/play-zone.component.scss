@@ -65,7 +65,7 @@
     border-radius: 8px;
     width: 66%;
     position: fixed;
-    overflow-y:auto;
+    overflow-y:hidden;
     overflow-x: hidden;
 }
 .subHeading {
@@ -290,6 +290,9 @@ input[type="checkbox"]::placeholder {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content:space-around;
+        height: 65vh;
+        width: 65vw;
+        overflow-y: auto;
         // row-gap: 2rem;
     }
 
