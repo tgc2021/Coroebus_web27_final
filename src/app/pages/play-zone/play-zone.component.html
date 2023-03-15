@@ -123,7 +123,9 @@
 
                                     <ng-template #content let-c="close" let-d="dismiss">
                                        
-                                        
+                                                
+                                    <button type="button" class="btn-close" aria-label="Close"
+                                    (click)="d('Cross click')">x</button>
                             
                                             <iframe [src]='safeUrl' title="spin_the_wheel" height="620px" width="100%">
                                             </iframe>
@@ -423,8 +425,9 @@
                                     
                                        
                                         
-                            
-                                    <iframe [src]='safeUrl' title="spin_the_wheel" height="620px" width="100%">
+                                    <button type="button" class="btn-close" aria-label="Close"
+                                                (click)="d('Cross click')"></button>
+                                    <iframe [src]='safeUrl' title="spin_the_wheel" height="680px" width="100%">
                                     </iframe>
 
                                 

@@ -318,12 +318,17 @@ color: #54595E;
 }
 
 .btn-close{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 100%;
-    border: none;
+    border:2px solid #ffff;
     font-size: 18px;
     position: absolute;
-    right:1.5vw;
-    top:2vh;
+    background: red;
+ 
+    right:0vw;
+    top:-5vh;
     color: white;
 
 }
