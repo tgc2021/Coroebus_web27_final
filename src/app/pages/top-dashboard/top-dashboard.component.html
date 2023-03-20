@@ -1,21 +1,21 @@
-<div class="web-view">
+<div class="web-view" >
     <div class="d-flex">
         <div class="map-view">
             <div class="d-flex align-items-end left_side_div">
-                <div class="button-container">
-                    <div  style="width: 70vw; position: relative;">
+                <div class="button-container" [style.background-color]="buisness_head_response_.theme_details[0].light_color">
+                    <div class="bottom_div" >
                         <div class="col-12 d-flex" style="height: 15vh;margin-left: 2vw;">
                             <div>
-                                <button class="bottom_button" (click)="navigateToIndexwiseDashboard()">
+                                <button class="bottom_button"  (click)="navigateToIndexwiseDashboard()">
                                     <div class="bottom_button_labels">Net Promoter Score</div>
-                                    <div>20</div>
+                                    <div class="bottom_button_labels_score">20</div>
                                 </button>
             
                             </div>
                             <div >
-                                <button class="bottom_button">
+                                <button class="bottom_button" >
                                     <div class="bottom_button_labels">Customer effort score</div>
-                                    <div>30</div>
+                                    <div class="bottom_button_labels_score">30</div>
 
                                 </button>
             
@@ -23,7 +23,7 @@
                             <div>
                                 <button class="bottom_button">
                                     <div class="bottom_button_labels">Sales index </div>
-                                    <div>40</div>
+                                    <div class="bottom_button_labels_score">40</div>
 
                                 </button>
             
@@ -31,19 +31,19 @@
                             <div >
                                 <button class="bottom_button">
                                     <div class="bottom_button_labels">Cost index</div>
-                                    <div>50</div>
+                                    <div class="bottom_button_labels_score">50</div>
 
                                 </button>
             
                             </div>
-                            <div >
+                            <!-- <div >
                                 <button class="bottom_button"></button>
             
                             </div>
                             <div>
                                 <button class="bottom_button"></button>
             
-                            </div>
+                            </div> -->
                         </div>
                      
                     </div>
@@ -55,30 +55,142 @@
         </div>
        
         <div class="right_card">
-            <mat-card class="top_right_section">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="name">Name:</div>
-                        <div class="level">Level</div>
-                        <div class="global_index">Global Index</div>
-                        <div class="pech">Pech</div>
-    
-                    </div>
-                       
-                    <div class="col-6">
-                        <div class="name">{{buisness_head_response_._personal_data.first_name}}</div>
-                        <div class="level" style="visibility: hidden;">Level</div>
-                        <div class="global_index">{{buisness_head_response_._points[0].score}}</div>
-                        <div class="pech">Pech</div>
-    
-                    </div>
-                </div>
-               
-            </mat-card>
+           
             <mat-card class="bottom_right_section">
                 <div class="bottom_right_section_height">
 
-                <div class="row first_row_details d-flex call_center_div" *ngFor="let res of buisness_head_response_._ranking_data[0]._data" (click)="navigateToHOSDashboard()">
+                    <mat-card class="details_card" [style.background-color]="buisness_head_response_.theme_details[0].light_color">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="name d-flex">
+                                    {{buisness_head_response_._personal_data.first_name}}                                    
+                                    <div class="name_details">
+
+        
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <mat-accordion>
+                                       
+                                        <mat-expansion-panel  (opened)="panelOpenState = true"
+                                                             (closed)="panelOpenState = false">
+                                          <mat-expansion-panel-header>
+                                            <mat-panel-title class="growth_index_accordion">
+                                                Growth Index
+                                            </mat-panel-title>
+                                        
+                                          </mat-expansion-panel-header>
+                                          <div class="global_index d-flex mt-4">Global Index
+                                            <div class="global_index_details">
+                                                {{buisness_head_response_._points[0].score}}
+                
+                                            </div>
+                                        </div>
+                                        <hr class="horizontal_row">
+                                        <div class="pech d-flex">{{buisness_head_response_._kpi_score[0].point_label}}
+                                            <div class="pech_details">
+                                                {{buisness_head_response_._kpi_score[0].weightage}}
+                                            </div>
+                                        </div>
+                                        <hr class="horizontal_row">
+                                        <div class="pech d-flex">{{buisness_head_response_._kpi_score[1].point_label}}
+                                            <div class="pech_details">
+                                                {{buisness_head_response_._kpi_score[1].weightage}}
+                                            </div>
+                
+                                        </div>
+                                        <hr class="horizontal_row">
+                                        <div class="pech d-flex">{{buisness_head_response_._kpi_score[2].point_label}}
+                                            <div class="pech_details">
+                                                {{buisness_head_response_._kpi_score[2].weightage}}
+                                            </div>
+                
+                                        </div>
+                                        <hr class="horizontal_row">
+                                        <div class="pech d-flex">{{buisness_head_response_._kpi_score[3].point_label}}
+                                            <div class="pech_details">
+                                                {{buisness_head_response_._kpi_score[3].weightage}}
+                                            </div>
+                
+                                        </div>
+                                        </mat-expansion-panel>
+                                      </mat-accordion>
+
+                                      <mat-accordion class="governance_index" >
+                                       
+                                        <mat-expansion-panel style="margin-top: 2vh" (opened)="panelOpenState = true"
+                                                             (closed)="panelOpenState = false">
+                                          <mat-expansion-panel-header>
+                                            <mat-panel-title class="growth_index_accordion">
+                                                Governance Index
+                                            </mat-panel-title>
+                                        
+                                          </mat-expansion-panel-header>
+                                        <p></p>
+                                        </mat-expansion-panel>
+                                      </mat-accordion>
+                                </div>
+        
+                           
+        
+                            </div>
+                               
+                       
+                        </div>
+                    </mat-card>
+<!-- 
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="name d-flex">
+                                Name 
+                                <div class="name_details">
+                                    {{buisness_head_response_._personal_data.first_name}}
+    
+                                </div>
+                            </div>
+                            
+    
+                            <div class="global_index d-flex">Global Index
+                                <div class="global_index_details">
+                                    {{buisness_head_response_._points[0].score}}
+    
+                                </div>
+                            </div>
+                            <hr class="horizontal_row">
+                            <div class="pech d-flex">{{buisness_head_response_._kpi_score[0].point_label}}
+                                <div class="pech_details">
+                                    {{buisness_head_response_._kpi_score[0].weightage}}
+                                </div>
+                            </div>
+                            <hr class="horizontal_row">
+                            <div class="pech d-flex">{{buisness_head_response_._kpi_score[1].point_label}}
+                                <div class="pech_details">
+                                    {{buisness_head_response_._kpi_score[1].weightage}}
+                                </div>
+    
+                            </div>
+                            <hr class="horizontal_row">
+                            <div class="pech d-flex">{{buisness_head_response_._kpi_score[2].point_label}}
+                                <div class="pech_details">
+                                    {{buisness_head_response_._kpi_score[2].weightage}}
+                                </div>
+    
+                            </div>
+                            <hr class="horizontal_row">
+                            <div class="pech d-flex">{{buisness_head_response_._kpi_score[3].point_label}}
+                                <div class="pech_details">
+                                    {{buisness_head_response_._kpi_score[3].weightage}}
+                                </div>
+    
+                            </div>
+    
+                        </div>
+                           
+                   
+                    </div> -->
+
+                <div class="row first_row_details d-flex call_center_div" *ngFor="let res of buisness_head_response_._ranking_data[0]._data;let i=index" style="background-image: url({{buisness_head_response_._ranking_data[0]._data[i].ranking_image}});" (click)="navigateToHOSDashboard(i)">
                     <div class="col-1 rank">{{res.rankingtable_number}}</div>
                     <div class="col-2 g-0">
                         <img class="image_logo" src="{{res.rankingtable_logo}}"/>
@@ -89,6 +201,15 @@
                         </div>
                         <div class="location">
                             {{res.user_location}}
+                        </div>
+                        <div class="hos_Level">
+                          
+                            {{res.level_label}}
+                         </div>
+
+                      
+                        <div class="hos_Score">
+                           Score: {{res.rankingtable_weightage}}
                         </div>
 
                     </div>
@@ -110,12 +231,74 @@
 
 <div class="mobile-view">
     <div>
-        <mat-card class="mobile_details_card d-flex justify-content-center">
-            <div class="mobile_name">Name</div>
-            <div class="mobile_level">Level</div>
-            <div class="mobile_growth_Index">Growth Index</div>
-            <div class="mobile_pech">pech</div>
+        <mat-card class="mobile_details_card d-flex justify-content-center" [style.background-color]="buisness_head_response_.theme_details[0].light_color">
+            <div class="mobile_name">  {{buisness_head_response_._personal_data.first_name}} </div>
+            <mat-accordion>
+                                       
+                <mat-expansion-panel  (opened)="panelOpenState = true"
+                                     (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title class="growth_index_accordion_mobile mt-2">
+                        Growth Index
+                    </mat-panel-title>
+                
+                  </mat-expansion-panel-header>
+                  <div class="global_index d-flex mt-2">Global Index
+                    <div class="global_index_details">
+                        {{buisness_head_response_._points[0].score}}
+
+                    </div>
+                  </div>
+                  <hr class="horizontal_row">
+                  <div class="pech d-flex">{{buisness_head_response_._kpi_score[0].point_label}}
+                      <div class="pech_details">
+                          {{buisness_head_response_._kpi_score[0].weightage}}
+                      </div>
+                  </div>
+                  <!-- <div class="global_index d-flex mt-4">Global Index
+                    <div class="global_index_details">
+                        {{buisness_head_response_._points[0].score}}
+
+                    </div>
+                </div>
+                <hr class="horizontal_row">
+                <div class="pech d-flex">{{buisness_head_response_._kpi_score[0].point_label}}
+                    <div class="pech_details">
+                        {{buisness_head_response_._kpi_score[0].weightage}}
+                    </div>
+                </div>
+                <hr class="horizontal_row">
+                <div class="pech d-flex">{{buisness_head_response_._kpi_score[1].point_label}}
+                    <div class="pech_details">
+                        {{buisness_head_response_._kpi_score[1].weightage}}
+                    </div>
+
+                </div>
+                <hr class="horizontal_row">
+                <div class="pech d-flex">{{buisness_head_response_._kpi_score[2].point_label}}
+                    <div class="pech_details">
+                        {{buisness_head_response_._kpi_score[2].weightage}}
+                    </div>
+
+                </div>
+                <hr class="horizontal_row">
+                <div class="pech d-flex">{{buisness_head_response_._kpi_score[3].point_label}}
+                    <div class="pech_details">
+                        {{buisness_head_response_._kpi_score[3].weightage}}
+                    </div>
+
+                </div> -->
+                </mat-expansion-panel>
+              </mat-accordion>
+           
         </mat-card>
+    </div>
+
+   
+
+
+    <div>
+        <img class="mobile_map" src="assets/images/TopHierarchyDashboard/mobile_map.png" />
     </div>
 
     <div class="business-index">
@@ -166,11 +349,6 @@
             </div>
  
          </div>
-    </div>
-
-
-    <div>
-        <img class="mobile_map" src="assets/images/TopHierarchyDashboard/mobile_map.png" />
     </div>
 
     <div class="mobile_call_center_details">
@@ -241,3 +419,25 @@
        </div>
     </div>
 </div>
+
+<ng-template #content let-modal >
+    <!-- <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title"></h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div> -->
+    <div class="modal-body">
+        <video width="100%" class="video_player" controls autoplay>
+            <source [src]="safeUrl" type="video/mp4">
+            <source src="mov_bbb.ogg" type="video/ogg">
+            Your browser does not support HTML video.
+          </video>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" [style.background]="dark_color" [style.color]="fontcolor" style="width: 12vw;" (click)="modal.close('Save click')">Skip</button>
+    </div>
+  </ng-template>
+
+
+  

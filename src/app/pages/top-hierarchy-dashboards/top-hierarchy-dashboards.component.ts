@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { combineLatest, Observable, Subject, Subscription } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import * as fromRoot from '../../core/app-state';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Util } from '@app/utils/util';
 import { HttpProtocols } from '@app/http/http.protocols';
 import { DashboardModel } from '@models/dashboard.model';
@@ -31,15 +31,35 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   gamePoints:any
   web_profile_back_image: any;
   sectionView_1_err:any
-  pageNumberForSectionView_3:number=1;
+  pokeData: any;
   sectionView_3: any;
   scrollTarget: any;
   sectionView_3_list: any;
   activeTabForSectionView_2: any;
   sectionView_3_err: string;
-  constructor(private readonly store: Store, private _route: ActivatedRoute, public Util: Util,public http:ApiserviceService,private eventService: EventService) { }
+  dark_color:any
+  medium_color:any
+  pageNumberForSectionView_3: number = 1
+  cameraimage:boolean=true
+  spectator: any;
+  sm_user_id:any;
+  sm_game_id:any;
+  sm_role_id:any;
+  overall_role_id:any
+  game_ID_sm:any
+  game_ID_rm:any
+  constructor(private readonly store: Store, private _route: ActivatedRoute,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef) { }
 
   ngOnInit(): void {
+    
+    if (!localStorage.getItem('foo')) { 
+      localStorage.setItem('foo', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('foo') 
+    }
+
+
     this.isactive = true
 
 
@@ -63,6 +83,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
           console.log(window.location.href);
           this.location = window.location.href
           if (this.location.includes("?")) {
+            this.cameraimage=false
             var replacedUserId = queryParams?.userID.replace(/ /g, '+');
             console.log(replacedUserId);
 
@@ -93,7 +114,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
           this.getUserBannerDataSectionView_1()
           this.getUserBannerDataSectionView_3()
           // this.getUserBannerDataSectionView_2()
-         
+          this.getUserBannerDataSectionView_3()
           // this.notificationList()
           // this.addIns()
 
@@ -102,6 +123,13 @@ export class TopHierarchyDashboardsComponent implements OnInit {
 
 
     })
+
+    this.dark_color=localStorage.getItem('topbar_color')
+    this.element.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
+
+    this.medium_color=localStorage.getItem('medium_color')
+    this.element.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
+
   }
 
 
@@ -170,7 +198,7 @@ console.log(this.sectionView_1);
       })
 
   
-    
+  
     
       this.store.dispatch(userActions.updateUserObj({
         data: {
@@ -199,27 +227,24 @@ console.log(this.sectionView_1);
     };
     [err, res] = await HttpProtocols.to(DashboardModel.getRankingAndOtherDataSectionView_3(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
-      // this.pokeData = res?.data?._poke_list
-      // if (viewMore) {
-      //   res?.data?._ranking_data?.forEach((element, index) => {
-      //     if (element?.label === this.sectionView_3?._ranking_data[index]?.label) {
+      this.pokeData = res?.data?._poke_list
+      if (viewMore) {
+        res?.data?._ranking_data?.forEach((element, index) => {
+          if (element?.label === this.sectionView_3?._ranking_data[index]?.label) {
 
-      //       if (element?._data?.length > 0) {
-      //         this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data)
-      //         this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'center' });
-      //       }
-      //     }
+            if (element?._data?.length > 0) {
+              this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data)
+              this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'center' });
+            }
+          }
 
-      //   });
-      // } else {
-      //   this.sectionView_3 = res?.data
-      // }
+        });
+      } else {
+        this.sectionView_3 = res?.data
+        console.log(this.sectionView_3);
+        
+      }
       // this.filterRankingData()
-
-
-      console.log(res);
-      this.sectionView_3=res?.data._ranking_data
-      console.log(this.sectionView_3);
 
       this.sectionView_3_list = this.sectionView_3?._ranking_data?.filter(data => {
         //console.log(data)
@@ -231,6 +256,125 @@ console.log(this.sectionView_1);
     } else {
       this.sectionView_3_err = 'Please try after some time'
     }
+  }
+
+
+  navigateToSMDashboard(index:any){
+    this.spectator="spectator"
+    console.log(index);
     
+    this.sm_user_id=this.Util.encryptData(this.sectionView_3._ranking_data[3]._data[index].userid)
+    this.game_ID_sm=localStorage.getItem('gameId')
+    this.sm_game_id=this.Util.encryptData(this.game_ID_sm)
+    this.sm_role_id=this.Util.encryptData(this.sectionView_3._ranking_data[3]._data[index].id_role)
+
+    // this.sm_role_id=this.Util.encryptData(this.sectionView_3._ranking_data[3]._data[index].id_role)
+    this.overall_role_id=this.Util.decryptData(this.sm_role_id)
+console.log(this.overall_role_id);
+
+    if(this.overall_role_id==8){
+      this.router.navigateByUrl('/top_dashboard?userID='+this.sm_user_id +"&gameID="+  this.sm_game_id +"&roleID="+  this.sm_role_id)
+
+    }
+else{
+  this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  this.sm_game_id +"&roleID="+  this.sm_role_id)
+
+}
+  }
+ 
+
+  navigateToRMDashboard(index:any){
+    console.log(index);
+    
+    this.sm_user_id=this.Util.encryptData(this.sectionView_3._ranking_data[2]._data[index].userid)
+    this.game_ID_rm=localStorage.getItem('gameId')
+
+    this.sm_game_id=this.Util.encryptData(this.game_ID_rm)
+    this.sm_role_id=this.Util.encryptData(this.sectionView_3._ranking_data[2]._data[index].id_role)
+
+    // this.sm_role_id=this.Util.encryptData(this.sectionView_3._ranking_data[2]._data[index].id_role)
+    this.overall_role_id=this.Util.decryptData(this.sm_role_id)
+console.log(this.overall_role_id);
+this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  this.sm_game_id +"&roleID="+  this.sm_role_id)
+
+  }
+
+  getGraphDataById() {
+    // console.log('Graph data',data);
+    let obj = {
+      _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
+
+      game_id: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
+    }
+    console.log(obj)
+
+    let body={
+      "_userid": this.userSelectionData?._personal_data?.USERID,
+      "_game":this.userSelectionData?.id_coroebus_game,
+      _device:"W",
+      _section:"Performance",
+      _description: "From Points Distribution"
+    }
+  
+  
+    this.http.engagamentlog(body).subscribe(res=>{
+      console.log(res);
+      
+    })
+
+    // this._router.navigate('/performance/page')
+    // this._router.navigate(['/performance/page'], { queryParams: { key: value } })
+    this.router.navigate(['/performance/page'], {
+      relativeTo: this._route,
+      queryParams: {
+        userID: this.Util.encryptData(this.queryParams?.userID),
+        gameID: this.Util.encryptData(this.queryParams?.gameID),
+        // roleID: this.Util.encryptData(this.queryParams?.roleID)
+
+      },
+
+      queryParamsHandling: 'merge',
+      // preserve the existing query params in the route
+      skipLocationChange: false
+      // do not trigger navigation
+
+
+    });
+  }
+
+  getRewards(){
+    console.log('rewards page');
+    
+    let obj = {
+      _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
+
+      game_id: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
+    }
+    console.log(obj)
+
+  
+
+    // this._router.navigate('/performance/page')
+    // this._router.navigate(['/performance/page'], { queryParams: { key: value } })
+    this.router.navigate(['/reward/rewardPoints'], {
+      relativeTo: this._route,
+      queryParams: {
+        userID: this.Util.encryptData(this.queryParams?.userID),
+        gameID: this.Util.encryptData(this.queryParams?.gameID),
+        // roleID: this.Util.encryptData(this.queryParams?.roleID)
+
+      },
+
+      queryParamsHandling: 'merge',
+      // preserve the existing query params in the route
+      skipLocationChange: false
+      // do not trigger navigation
+
+
+    });
+  }
+
+  BackToHome(){
+    this.router.navigateByUrl('topdashboard')
   }
 }
