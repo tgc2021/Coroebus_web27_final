@@ -27,6 +27,10 @@ export class TopbarComponent implements OnInit, OnDestroy {
   countryName;
   valueset;
   passDataToHeaderSub: Subscription
+  userid_bh: string;
+  id_coroebus_org: string;
+  http: any;
+  buisness_head_response: any;
   constructor(@Inject(DOCUMENT) private document: any, private router: Router,
     public languageService: LanguageService,
     public translate: TranslateService,
@@ -51,7 +55,12 @@ export class TopbarComponent implements OnInit, OnDestroy {
   queryParams: any
   id_role:any
   top_toolbar_logo:any
+  topbar_color:any
   ngOnInit() {
+   
+    this.topbar_color= localStorage.getItem('topbar_color')
+    console.log(this.topbar_color);
+    
     this.top_toolbar_logo= localStorage.getItem('theme_logo')
     this.openMobileMenu = false;
     this.element = document.documentElement;
@@ -67,7 +76,8 @@ export class TopbarComponent implements OnInit, OnDestroy {
     })
     this.id_role=this.userSelectionData._personal_data.id_role
     console.log(this.id_role);
-    
+   
+
     this.passDataToHeaderSub?.unsubscribe()
     this.passDataToHeaderSub = this.eventService.subscribe('passDataToHeader', (data) => {
       
@@ -81,6 +91,11 @@ export class TopbarComponent implements OnInit, OnDestroy {
       console.log(queryParams)
     })
   }
+
+ 
+    
+    
+  
   /**
    * Toggle the menu bar when having mobile screen
    */

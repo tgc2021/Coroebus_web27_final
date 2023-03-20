@@ -28,6 +28,10 @@ export class GameSelectionComponent implements OnInit, OnDestroy {
   showComponent: boolean = false
   isInteractiveDashboard:any
   game_reponse:any
+  buisness_head_response:any
+  bodyforbh:any
+  buisness_head_response_:any=[]
+  dark_color:any
   constructor(private readonly store: Store, private router: Router, public Util: Util,public http:ApiserviceService) {
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
@@ -108,14 +112,18 @@ console.log(this.userObj._personal_data.id_role);
 }
 else{
   console.log(this.userObj);
+
    localStorage.setItem('theme_logo',this.userObj.themes[0].logo)
-  //  localStorage.setItem('theme_color',this.userObj.themes[0].logo)
+   localStorage.setItem('topbar_color',this.userObj.themes[0].dark_color)
+   localStorage.setItem('medium_color',this.userObj.themes[0].medium_color)
 
   this.router.navigate(['/topdashboard']);
   
 }
     
   }
+
+  
   handleChange(event, data) {
     this.selectedGame = data?.id_coroebus_game
     this.isInteractiveDashboard =data?.is_interactive_dashboard
@@ -149,8 +157,12 @@ if (this.gameList?.[0]?.length === 1){
     this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
     this.router.navigate(['/spectator/spectatorView']);
   }
-  else if(this.id_role==3){
-    console.log('idrole 3');
+  else if(this.id_role==8){
+    console.log('idrole 8');
+    localStorage.setItem('theme_logo',this.userObj.themes[0].logo)
+    localStorage.setItem('topbar_color',this.userObj.themes[0].dark_color)
+    localStorage.setItem('medium_color',this.userObj.themes[0].medium_color)
+ 
     
     this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
     this.router.navigate(['/top_dashboard']);
@@ -182,6 +194,8 @@ if (this.gameList?.[0]?.length === 1){
     localStorage.setItem("is_interactive_dashboard","0")
 
   }
+
+  
  else{
   this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
   this.router.navigate(['/dashboard']);
@@ -192,6 +206,18 @@ else{
     this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
     this.router.navigate(['/spectator/spectatorView']);
   }
+
+  else if(this.id_role==8){
+    console.log('idrole 8');
+    localStorage.setItem('theme_logo',this.userObj.themes[0].logo)
+    localStorage.setItem('topbar_color',this.userObj.themes[0].dark_color)
+    localStorage.setItem('medium_color',this.userObj.themes[0].medium_color)
+ 
+    
+    this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
+    this.router.navigate(['/top_dashboard']);
+  }
+  
   // else if(this.id_role==9){
   //   console.log('idrole 9');
     

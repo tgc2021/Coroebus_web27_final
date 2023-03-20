@@ -64,7 +64,11 @@ export class RewardsComponent implements OnInit, AfterViewInit {
   collectionSize:any;
   pageSize=10;
   page = 1;
-
+  location:any
+  userid:any
+  gameID:any
+  roleID:any
+  hidedata:boolean=true
   ngOnInit(): void {
 
     if (!localStorage.getItem('foo')) { 
@@ -74,6 +78,61 @@ export class RewardsComponent implements OnInit, AfterViewInit {
       localStorage.removeItem('foo') 
     }
 
+    this.location=window.location.href
+    console.log(this.location);
+    var checkUserID= this._route.queryParams
+    .subscribe(params => {
+      console.log(params); // { orderby: "price" }
+      this.userid = this.Util.decryptData(params.userID) 
+      console.log(this.userid); // price
+      
+      this.gameID = this.Util.decryptData(params.gameID);
+      console.log(this.gameID);
+
+      this.roleID = this.Util.decryptData(params.roleID);
+      console.log(this.roleID);
+
+      localStorage.setItem('reward_userid', this.userid)
+      localStorage.setItem('reward_gameid', this.gameID)
+
+
+    })
+
+    if(this.location.includes('userID')){
+      this.userid=  localStorage.getItem('reward_userid')
+      this.gameID=  localStorage.getItem('reward_gameid')
+      this.hidedata= false
+      let body = {
+        _userid: this.userid,
+        _game: this.gameID,
+      }
+
+      console.log(body);
+      this.http.rewards(body).subscribe((res) => {
+        console.log(res)
+
+      
+
+        this.rewardresponse = res;
+        this.filterCoreGame=res;
+        // this.filterCoreGame=res;
+
+       
+
+         console.log(this.filterCoreGame);
+        console.log(this.rewardresponse);
+        console.log(this.filterCoreGame);
+        this.rewardresponse = Array.of(this.rewardresponse);
+
+        console.log(this.rewardresponse);
+        this.passbook_response=this.rewardresponse[0].data.points_list[1]._data
+        console.log(this.passbook_response);
+        this.collectionSize=this.passbook_response.length
+        console.log(this.collectionSize);
+        
+      })
+
+    }
 
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)

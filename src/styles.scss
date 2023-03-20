@@ -30,6 +30,10 @@
   opacity: 1;
 }
 
+div.mat-expansion-panel-body {
+  padding: 0 10px 16px !important;
+}
+
 @media screen and (min-width:767.1px) and (max-width:1023.9px) and(orientation:portrait) {
   .web-view{
       display: none !important;
@@ -97,7 +101,9 @@
   .mobile-view-rotated{
     display: none !important;
   }
-
+  div.mat-expansion-panel-body {
+    padding: 0 24px 16px !important;
+  }
   
 }
 @media screen and (min-width:1024px) {

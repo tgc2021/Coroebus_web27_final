@@ -23,6 +23,8 @@ import { MatCardModule } from '@angular/material/card';
 import { TopHierarchyDashboardsComponent } from './top-hierarchy-dashboards/top-hierarchy-dashboards.component';
 import { TopDashboardComponent } from './top-dashboard/top-dashboard.component';
 import { BusinessIndexMapComponent } from './business-index-map/business-index-map.component';
+import { IntroductionVideoComponent } from './introduction-video/introduction-video.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -33,12 +35,14 @@ import { BusinessIndexMapComponent } from './business-index-map/business-index-m
     TopHierarchyDashboardsComponent,
     TopDashboardComponent,
     BusinessIndexMapComponent,
+    IntroductionVideoComponent,
   
   ],
   imports: [
     CommonModule,
     FormsModule,
     NgbDropdownModule,
+    MatExpansionModule,
     NgbModalModule,
     PagesRoutingModule,
     NgApexchartsModule,

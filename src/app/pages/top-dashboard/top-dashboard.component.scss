@@ -16,8 +16,10 @@
     height: 90vh;
     overflow: scroll;
 }
+
+
 .mobile_details_card{
-    height: 14vh;
+  
     flex-direction: column;
 }
 .mobile_name,.mobile_level,.mobile_growth_Index,.mobile_pech{
@@ -35,6 +37,12 @@
     width: 100%;
     
 }
+
+.growth_index_accordion_mobile{
+    font-family: 'Work Sans';
+font-style: normal;
+font-weight: 600;
+}
 .business-index{
     height: 19.7vh;
     overflow: scroll;
@@ -44,6 +52,7 @@
 .mobile_map{
     height: 36vh;
     width: 94vw;
+    margin-top: 2vh;
     background-size: 100% 100%;
 }
 
@@ -97,11 +106,48 @@ font-size: 4vw;
         display: none;
         
     }
+    div.mat-expansion-panel-body {
+        padding: 0 10px 16px !important;
+    }
+    .growth_index_accordion{
+        font-size: 1vw;
+        font-weight: 600;
+    }
+
+ 
+    .mat-expansion-panel-header{
+        padding: 0 8px;
+
+    }
+    .modal-header,.modal-footer{
+        border: none;
+    }
+
+    ::ng-deep {
+        .modal-content{
+            border-radius: 0 !important;
+            background:#F7E2AC !important;
+            ;
+        }
+
+    }
+
+    .video_player{
+        height: 70vh;
+    }
+   
+    .details_card{
+        width: 90%;
+        margin: 1vw;
+    }
+    // .btn-outline-dark{
+    //     background: var(--myvar);
+    // }
     .web-view{
         overflow: hidden;
     }
     .map-view{
-    background: url(../../../assets/images/TopHierarchyDashboard/ancient-world-map.png);
+    background: url(../../../assets/images/TopHierarchyDashboard/ancient_map_color.png);
     width: 80vw;
     height: 72vh;
     background-size: 100% 100%;
@@ -128,7 +174,7 @@ font-size: 4vw;
     
     .top_right_section{
         width: 20vw;
-        height: 15vh;
+        height: 35vh;
         border: none;
         display: flex;
         flex-direction: column;
@@ -137,54 +183,79 @@ font-size: 4vw;
     }
     
     .name,.level,.global_index,.pech{
-        font-size: 0.8vw;
+        font-size: 0.9vw;
+        margin-bottom: 1vh;
         font-weight: 600;
         color: #000000;
+        
+    }
+
+    .name_details,.global_index_details,.pech_details{
+        text-align: end;
+        position: absolute;
+        right: 1.2vw;
     }
     
+    .horizontal_row{
+        margin: 0.1vw;
+        color: #FFFFFF;
+    }
     .bottom_right_section{
-        margin-top: 2vh;
         width: 19.8vw;
-        height: 73vh;
+        height: 91vh;
         border: 1px solid black;
+        padding: 0;
+        background-color: var(--mediumColor);
     }
     
     .first_row_details{
-        height: 10vh;
+        height: 12vh;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: center;
     }
+
+    .first_row_details:hover{
+        // background-color: #61646B;
+    }
     
     .image_logo{
         height: 6vh;
-        width: 3.5vw;
+        width: 3vw;
+        margin-left: 0.2vw;
+        border: 1px solid white;
+        border-radius: 5px;
     }
     
     .call_center_name,.rank{
         font-family: 'Work Sans', sans-serif;
         font-size: 1vw;
         font-weight: 600;
+        color: #FFFFFF;
     }
     
-    .location{
+    .location,.hos_Score,.hos_Level{
         font-family: 'Work Sans', sans-serif;
-        font-size: 0.7vw;
+        font-size: 0.8vw;
         font-weight: 600;
+        color: #FFFFFF;
+
     }
     
     
     .bottom_right_section_height{
-        height: 70vh;
+        height: 91vh;
         overflow: scroll;
-    
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     
     
     .button-container {
         // border: 2px solid #000000;
-        overflow-x: scroll;
+        overflow-x: auto;
         overflow-y: hidden;
         width: 80vw;
         height: auto;
@@ -201,6 +272,15 @@ font-size: 4vw;
         padding-right: 2vh;
         padding-top: 2vh;
     }
+
+    .bottom_div{
+        width: 77vw;
+    position: relative;
+    height: 12vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
     
     .left_side_div{
     height: 91vh;
@@ -210,6 +290,8 @@ font-size: 4vw;
     
     .call_center_div{
         cursor: pointer;
+        width: 100%;
+       background-size: 100% 100%;
     }
     
     .bottom_button{
@@ -217,16 +299,31 @@ font-size: 4vw;
         height: 14vh;
         margin-right: 6vw;
         margin-top: 1vh;
-        background: linear-gradient(180deg, #BFBEBE 51.54%, #FFFFFF 51.61%);
-        border-radius: 1vw;
+        background: linear-gradient(180deg,var(--myvar) 51.54%, #FFFFFF 51.61%);
+        border-radius: 0.2vw;
+        color: #000000;
     }
     
     .bottom_button_labels{
-        color: #61646B;
+        color: #FFFFFF;
         font-family: 'Work Sans';
     font-style: normal;
     font-weight: 500;
     font-size: 1vw;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+    .bottom_button_labels_score{
+        font-size: 1vw;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #000000;
+        font-weight: 600;
     }
 }
 
