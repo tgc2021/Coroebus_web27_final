@@ -63,15 +63,15 @@
                                     </div>
                                     <div>
                                         <div
-                                            *ngIf="data.spot_status === 'Open' &&  data._status!=='active'; then ifBlock">
+                                            *ngIf="data.spot_status ==='Open' &&  data._status==='Retracted'; then ifBlockRetracted">
                                         </div>
-                                        <ng-template #ifBlock>
+                                        <ng-template #ifBlockRetracted>
                                             <button class="btn btn-secondary" [disabled]="true">Retracted</button>
                                         </ng-template>
                                         <div
-                                            *ngIf="data.spot_status === 'Opened' &&  data._status!=='active'; then ifBlock1">
+                                            *ngIf="data.spot_status === 'Open' &&  data._status==='expired'; then ifBlockExpired">
                                         </div>
-                                        <ng-template #ifBlock1>
+                                        <ng-template #ifBlockExpired>
                                             <button class="btn btn-danger" [disabled]="true">{{data._status}}</button>
                                         </ng-template>
                                      
@@ -93,15 +93,14 @@
                                             </p>
                                             <div class="d-flex justify-content-end align-items-end">
                                                 <span class="date"
-                                                    style="position: absolute; right: 10px; bottom: 70px;">{{data.end_date
-                                                    |date:"d/M/yyyy 'at' hh:mm a"}}
+                                                    style="">{{data.end_date|date:"d/M/yyyy 'at' hh:mm a"}}
                                                 </span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="d-flex align-items-end justify-content-center">
-                                    <hr  width="98%">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <hr width="98%">
                                 </div>
                                 <div class="d-flex p-1">
                                     <div
@@ -116,16 +115,18 @@
                                     <ng-template #openedBlock>
 
                                         <button style="cursor:pointer;border: none;background: #ffff; margin:3% 5%;"
-                                            [disabled]="true" class="status-openButton">
+                                            [disabled]="true" class="status-openedButton">
                                             {{data.spot_status}}
                                         </button>
                                     </ng-template>
 
                                     <ng-template #content let-c="close" let-d="dismiss">
                                        
-                                                
-                                    <button type="button" class="btn-close" aria-label="Close"
-                                    (click)="d('Cross click')">x</button>
+                                    
+                                        <button type="button" class="btn-close" aria-label="Close"
+                                        (click)="dismiss()">x</button>
+                                      
+                                    
                             
                                             <iframe [src]='safeUrl' title="spin_the_wheel" height="620px" width="100%">
                                             </iframe>
@@ -137,7 +138,7 @@
 
                         </div>
                         <div class="col-12 d-flex justify-content-center align-items-center"
-                            *ngIf="spotEngagementData.length==0">
+                            *ngIf="spotEngagementData.length==0||filterByCategory.length==0">
                             <div class="noContentContainer">
 
                                 <img src="assets/images/playZone/images/spot.svg" alt="" width="100%" height="100%">
@@ -265,7 +266,7 @@
                 </div>
                     
                     <div class="d-flex justify-content-center align-items-center"
-                        *ngIf="spotEngagementPassbook.length<=0">
+                        *ngIf="spotEngagementPassbook.length<=0||Passbook.length<=0">
                         <div class="noContentContainer">
                             <img src="assets/images/playZone/images/spot.svg" alt="" width="90%" height="90%">
                             <span class="noContentContainer-Desc">
@@ -366,13 +367,13 @@
                                     <span class="heading">{{data.spot_type}}</span>
                                 </div>
                                 <div>
-                                    <div *ngIf="data.spot_status === 'Open' &&  data._status!=='active'; then ifBlock">
+                                    <div *ngIf="data.spot_status === 'Open' &&  data._status==='Retracted'; then ifBlock">
                                     </div>
 
                                     <ng-template #ifBlock>
                                         <button class="btn btn-secondary" [disabled]="true">Retracted</button>
                                     </ng-template>
-                                    <div *ngIf="data.spot_status==='Opened' &&  data._status!=='active'; then ifBlock1">
+                                    <div *ngIf="data.spot_status==='Open' &&  data._status==='expired'; then ifBlock1">
                                     </div>
                                     <ng-template #ifBlock1>
                                         <button class="btn btn-danger" [disabled]="true">{{data._status}}</button>

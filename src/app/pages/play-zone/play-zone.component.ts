@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { ApiserviceService } from 'app/apiservice.service';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../core/app-state';
@@ -7,10 +7,13 @@ import { EventService } from '@app/services/event.service';
 import { ToastService } from '@app/services/toast-service';
 import { Subject } from 'rxjs';
 import { Util } from '@app/utils/util';
+import { Location } from '@angular/common';
 import { takeUntil } from 'rxjs/operators';
 import { NgbModalConfig,NgbDropdownConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription, combineLatest, Observable } from 'rxjs';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { MatPaginator } from '@angular/material/paginator';
+
 
 
 @Component({
@@ -19,6 +22,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   styleUrls: ['./play-zone.component.scss']
 })
 export class PlayZoneComponent implements OnInit {
+
   userObj:any;
   // userObj: import("").User;
   filteredData: any;
@@ -68,12 +72,13 @@ export class PlayZoneComponent implements OnInit {
   constructor(private http: ApiserviceService, private readonly store: Store, public modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
    
-    private _route: ActivatedRoute, public toastService: ToastService,config: NgbModalConfig,obj: NgbDropdownConfig, public sanitizer: DomSanitizer) { 
+    private _route: ActivatedRoute, public toastService: ToastService,config: NgbModalConfig,obj: NgbDropdownConfig, public sanitizer: DomSanitizer ,public _location:Location) { 
       config.backdrop = true;
-      config.keyboard = false;
+      config.keyboard = true;
       config.centered= true;
       obj.autoClose=true;
     }
+
   ngOnInit(): void {
 
 
@@ -86,61 +91,86 @@ export class PlayZoneComponent implements OnInit {
       this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
       console.log(this.mergeObj);
 
-      let body = {
-        _userid: this.mergeObj.USERID,
-        _game: this.mergeObj.id_coroebus_game,
-      }
-
-      console.log(body);
-      this.http.playZone(body).subscribe((res:any) => {
-      console.log(res);
-
-      this.spotEngagementData=res.data._spot_engagement_data;
-      console.log(this.spotEngagementData);
-      this.filterByCategory=res.data._spot_engagement_data;
-      });
-
       
+      this.playZone();
+      this.rewardPassbook();
      
-      this.http.playZonePassbook(body).subscribe((res:any)=>{
-        console.log(res);
-        this.rewardPoints=res.data._reward_points;
-       
-        
-        console.log(this.rewardPoints);
-        this.spotEngagementPassbook=res.data._spot_passbook_data;
-        this.Passbook=res.data._spot_passbook_data;
-        console.log(this.spotEngagementPassbook);
-       
-      })
+     
     }) 
+
     this.dynamicColor()
   }
-  
 
+  playZone(){
+    let body = {
+      _userid: this.mergeObj.USERID,
+      _game: this.mergeObj.id_coroebus_game,
+    }
+
+
+    console.log(body);
+   
+    this.http.playZone(body).subscribe((res:any) => {
+    console.log(res);
+
+
+    this.spotEngagementData=res.data._spot_engagement_data;
+    
+    console.log(this.spotEngagementData);
+    this.filterByCategory=res.data._spot_engagement_data;
+    });
+
+  }
+
+  rewardPassbook(){
+    
+    let body = {
+      _userid: this.mergeObj.USERID,
+      _game: this.mergeObj.id_coroebus_game,
+    }
+
+    this.http.playZonePassbook(body).subscribe((res:any)=>{
+      console.log(res);
+      this.rewardPoints=res.data._reward_points;
+      console.log(this.rewardPoints);
+      this.spotEngagementPassbook=res.data._spot_passbook_data;
+      this.Passbook=res.data._spot_passbook_data;
+      console.log(this.spotEngagementPassbook);
+     
+    })
+
+  }
+
+
+ 
   open(content,data) {
     // console.log(content);
-
-    if(data.id_engagement_game==='1'){
-      this.dartGameUrl=`https://coroebus.in/dart_game/`;
+    if(data.id_engagement_game==='2'){
+      this.dartGameUrl=`http://127.0.0.1:5500/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`;
       this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.dartGameUrl);
+    }
+    // else if(data.id_engagement_game==='2'){
+    //   // this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
+    //   this.spinTheWheelURL=`http://127.0.0.1:5501/spin_the_wheel_latest/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
+    //   this.Url=new URL(this.spinTheWheelURL)
 
-    }
-    else if(data.id_engagement_game==='2'){
-      this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
-      this.Url=new URL(this.spinTheWheelURL)
-    
-      this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.spinTheWheelURL)
-    }
+    //   this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.spinTheWheelURL)
+    // }
     else if(data.id_engagement_game==='5'){
       this.skylineGameUrl=`https://coroebusbeta.in/CoroebusSkyline/`
       this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.skylineGameUrl)
-
     }
-    
     this.modalService.open(content);
+    setTimeout(()=>{
+      this.playZone();
+    },100);
+    
+
+
+    
 
   }
+ 
 
   // open(content) {
   //   this.modalService.open(content);
@@ -159,7 +189,7 @@ export class PlayZoneComponent implements OnInit {
       return a;
     })
   }
-
+ 
 checked:boolean=false;
 
 
@@ -217,7 +247,11 @@ rewardPassBook(){
   this.openEvents=false;
   this.openPassBook=true;
 }
+dismiss(){
 
+  window.location.reload();
+ 
+}
 
 dynamicColor() {
   // $('#example').DataTable();
@@ -260,5 +294,8 @@ console.log(this.userSelectionData);
     console.log(queryParams)
   })
 }
+
+
+
 
 }
