@@ -33,6 +33,7 @@
         cursor: pointer;
     
     }
+   
     .upper_right_card_home_btn{
         margin-top: 4vh !important;
     }
@@ -202,7 +203,7 @@
     }
     
     .button_series {
-        width: 13vw;
+        width: 12.6vw;
         height: 6vh;
         font-size: 0.9vw;
         font-weight: 600;
@@ -215,7 +216,20 @@
         color: #000000;
     
     }
-    
+    .active{
+        width: 12.6vw;
+        height: 6vh;
+        font-size: 0.9vw;
+        font-weight: 600;
+        border-radius: 1vw;
+        font-size: 600;
+        border: none;
+        margin-right: 1.3vw;
+        font-family: 'Roboto';
+        color: #FFFFFF;
+        background-color: var(--myvar);
+
+    }
     
     .button_series1 {
         width: 13vw;
@@ -706,6 +720,36 @@
         margin-top: 2vh !important;
     }
 
+    .button_series {
+        width: 12.7vw;
+        height: 6vh;
+        font-size: 0.9vw;
+        font-weight: 600;
+        background: #ffffff;
+        border-radius: 1vw;
+        border: none;
+        margin-right: 1.3vw;
+        color: #000000;
+        font-weight: 600;
+        font-family: 'Roboto';
+    
+    }
+
+    .active{
+        width: 12.7vw;
+        height: 6vh;
+        font-size: 0.9vw;
+        font-weight: 600;
+        border-radius: 1vw;
+        border: none;
+        margin-right: 1.3vw;
+        font-weight: 600;
+        font-family: 'Roboto';
+        color: #FFFFFF;
+        background-color:var(--myvar);
+
+    }
+
     .home_bg{
         height: 5vh;
         cursor: pointer;
@@ -884,20 +928,7 @@
         padding: 12px;
     }
     
-    .button_series {
-        width: 13.5vw;
-        height: 6vh;
-        font-size: 0.9vw;
-        font-weight: 600;
-        background: #ffffff;
-        border-radius: 1vw;
-        border: none;
-        margin-right: 1.3vw;
-        color: #000000;
-        font-weight: 600;
-        font-family: 'Roboto';
-    
-    }
+  
     
     
     .button_series1 {

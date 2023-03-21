@@ -284,12 +284,13 @@
             </div>
             <div class="row">
                 <mat-card class="button_div">
-                    <button style="margin-left: 1vw;" class="button_series1" [class.active]="isactive">Tribal Chieftan
-                        overall</button>
-                    <button class="button_series">Productivity</button>
+                    <button style="margin-left: 1vw;" class="button_series" *ngFor="let item of leaderboard_data_buttons ;let i=index"   [class.active]="i==this.activeClass"  (click)="leaderboard(i)">
+                    {{item.label}}    
+                    </button>
+                    <!-- <button class="button_series">Productivity</button>
                     <button class="button_series">Efficiency</button>
                     <button class="button_series">Capability</button>
-                    <button class="button_series">Happiness</button>
+                    <button class="button_series">Happiness</button> -->
 
                 </mat-card>
 
@@ -353,9 +354,13 @@
 <div *ngIf="sectionView_1._personal_data.id_role==9 ;then sm else rm" ></div>
 <ng-template #sm>
     <div class="leaderboard_label_tile">
-        <mat-card class="leaderboard_tile" *ngFor="let res of sectionView_3._ranking_data[3]._data; let i=index" 
+        <!-- <div>
+            {{leaderboard_data[0]._data | json}}
+        </div> -->
+        <mat-card class="leaderboard_tile" *ngFor="let res of leaderboard_data; let i=index" 
         [style.background-image]="'url(' + res?.ranking_image + ')'"
         (click)="navigateToSMDashboard(i)">
+       
             <div class="leaderboard_rank_score">
                 {{res.rankingtable_number}}
             </div>
@@ -407,7 +412,7 @@
 </ng-template>
 <ng-template #rm>
     <div class="leaderboard_label_tile">
-        <mat-card class="leaderboard_tile" *ngFor="let res of sectionView_3._ranking_data[2]._data; let i=index" 
+        <mat-card class="leaderboard_tile" *ngFor="let res of leaderboard_data; let i=index" 
         [style.background-image]="'url(' + res?.ranking_image + ')'"
         (click)="navigateToRMDashboard(i)">
             <div class="leaderboard_rank_score">
@@ -465,7 +470,7 @@
 
             <div class="row">
                 <div class="div">
-                    <button class="view_more_button">
+                    <button class="view_more_button" (click)="viewMore()">
                         View More
                     </button>
                 </div>

@@ -17,7 +17,7 @@ import * as userActions from '../../core/app-state/actions';
 })
 export class TopHierarchyDashboardsComponent implements OnInit {
   counter: any = 0
-  isactive: boolean = true
+  isactive: boolean 
   combineLatest: Subscription
   userSelectionData: any
   _routeSub: Subscription
@@ -39,6 +39,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   sectionView_3_err: string;
   dark_color:any
   medium_color:any
+  activeClass:any
   pageNumberForSectionView_3: number = 1
   cameraimage:boolean=true
   spectator: any;
@@ -48,6 +49,9 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   overall_role_id:any
   game_ID_sm:any
   game_ID_rm:any
+  leaderboard_data:any
+  leaderboard_data_buttons:any
+  i:any=0
   constructor(private readonly store: Store, private _route: ActivatedRoute,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef) { }
 
   ngOnInit(): void {
@@ -59,9 +63,9 @@ export class TopHierarchyDashboardsComponent implements OnInit {
       localStorage.removeItem('foo') 
     }
 
+    this.activeClass=0
 
-    this.isactive = true
-
+    // this.isactive = true
 
     this.combineLatest = combineLatest([
       this.store.select(fromRoot.userLogin),
@@ -226,6 +230,7 @@ console.log(this.sectionView_1);
     };
     [err, res] = await HttpProtocols.to(DashboardModel.getRankingAndOtherDataSectionView_3(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
+      
       this.pokeData = res?.data?._poke_list
       if (viewMore) {
         res?.data?._ranking_data?.forEach((element, index) => {
@@ -238,9 +243,15 @@ console.log(this.sectionView_1);
           }
 
         });
+        this.leaderboard_data=this.sectionView_3?._ranking_data[0]._data
+        console.log(this.leaderboard_data);
+        this.leaderboard_data_buttons=this.sectionView_3?._ranking_data
+
       } else {
         this.sectionView_3 = res?.data
-        console.log(this.sectionView_3);
+        this.leaderboard_data=this.sectionView_3?._ranking_data[0]._data
+        this.leaderboard_data_buttons=this.sectionView_3?._ranking_data
+        console.log(this.leaderboard_data);
         
       }
       // this.filterRankingData()
@@ -262,16 +273,16 @@ console.log(this.sectionView_1);
     this.spectator="spectator"
     console.log(index);
     
-    this.sm_user_id=this.Util.encryptData(this.sectionView_3._ranking_data[3]._data[index].userid)
+    this.sm_user_id=this.Util.encryptData(this.sectionView_3._ranking_data[0]._data[index].userid)
     this.game_ID_sm=localStorage.getItem('gameId')
     this.sm_game_id=this.Util.encryptData(this.game_ID_sm)
-    this.sm_role_id=this.Util.encryptData(this.sectionView_3._ranking_data[3]._data[index].id_role)
+    this.sm_role_id=this.Util.encryptData(this.sectionView_3._ranking_data[0]._data[index].id_role)
 
     // this.sm_role_id=this.Util.encryptData(this.sectionView_3._ranking_data[3]._data[index].id_role)
     this.overall_role_id=this.Util.decryptData(this.sm_role_id)
 console.log(this.overall_role_id);
 
-    if(this.overall_role_id==8){
+    if(this.overall_role_id==8 || this.overall_role_id==12){
       this.router.navigateByUrl('/top_dashboard?userID='+this.sm_user_id +"&gameID="+  this.sm_game_id +"&roleID="+  this.sm_role_id)
 
     }
@@ -375,5 +386,24 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
 
   BackToHome(){
     this.router.navigateByUrl('topdashboard')
+  }
+
+  leaderboard(event:any=0){
+   console.log(event);
+   
+  //   console.log(this.sectionView_3._ranking_data[event]);
+  // this.leaderboard_data_buttons=this.sectionView_3._ranking_data[event]
+
+   this.leaderboard_data=this.sectionView_3._ranking_data[event]._data
+   console.log(this.leaderboard_data);
+   this.activeClass=event
+   console.log(this.activeClass);
+ 
+   
+  }
+
+  viewMore(){
+    this.pageNumberForSectionView_3 = this.pageNumberForSectionView_3 + 1
+    this.getUserBannerDataSectionView_3('viewMore')
   }
 }
