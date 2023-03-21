@@ -283,9 +283,14 @@
 
             </div>
             <div class="row">
-                <mat-card class="button_div" >
-                    <button style="margin-left: 1vw;" class="button_series1" *ngFor="let label of sectionView_3;let i=index" [class.active[i]]="isactive">
-                        {{label.label}}</button>
+                <mat-card class="button_div">
+                    <button style="margin-left: 1vw;" class="button_series1" [class.active]="isactive">Tribal Chieftan
+                        overall</button>
+                    <button class="button_series">Productivity</button>
+                    <button class="button_series">Efficiency</button>
+                    <button class="button_series">Capability</button>
+                    <button class="button_series">Happiness</button>
+
                 </mat-card>
 
 
