@@ -13,7 +13,7 @@
 }
 ::ng-deep{
     .tooltip-inner {
-        background-color: #104E5B !important;
+        background-color: var(--myvar) !important;
         font-family: 'IBM Plex Sans Thai Looped', sans-serif;
         font-style: normal;
         font-weight: 400;
@@ -65,7 +65,7 @@
     border-radius: 8px;
     width: 66%;
     position: fixed;
-    overflow-y:auto;
+    overflow-y:hidden;
     overflow-x: hidden;
 }
 .subHeading {
@@ -130,7 +130,7 @@ color: #000000;
 
 option {
     margin: 5% !important;
-    color: #104E5B;
+    color: var(--myvar);
     font-family: 'Inter', sans-serif;
     padding: 8px 0px;
     gap: 2px;
@@ -189,7 +189,7 @@ input[type="checkbox"]::placeholder {
     left: 1408px;
     top: 177px;
     border-radius: 8px;
-    background: #104E5B;
+    // background-color: var(--myvar);
     border: 1px solid #D1D1D1;
 
 
@@ -243,7 +243,7 @@ input[type="checkbox"]::placeholder {
 }
 
 .card-container {
-    margin-top: 5%;
+    margin-top: 3%;
 
     .card-title{
         font-family: 'Roboto';
@@ -260,6 +260,7 @@ input[type="checkbox"]::placeholder {
         font-weight: 500;
         line-height: 14px;
         letter-spacing: 0em;
+        height: 12vh;
 
     }
     .btn {
@@ -283,6 +284,20 @@ input[type="checkbox"]::placeholder {
             text-align: center;
             color: #1A5286;
     }
+    .status-openedButton{
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 14px;
+        /* or 101% */
+        display: flex;
+     
+        align-items: center;
+        text-align: center;
+        color: #5e768b;
+
+    }
     
     .cards{
         margin: auto;
@@ -290,12 +305,19 @@ input[type="checkbox"]::placeholder {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content:space-around;
+        height: 65vh;
+        width: 65vw;
+        overflow-y: auto;
         // row-gap: 2rem;
+    }
+    .card-body{
+        height: 20vh;
     }
 
 }
 .modal-content{
     border-radius: 10px;
+    background-color: transparent;
 }
 .modal-heading>h4{
 font-family: 'Inter';
@@ -314,19 +336,27 @@ color: #54595E;
 }
 
 .btn-close{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 100%;
-    border: none;
+    border:2px solid #ffff;
     font-size: 18px;
     position: absolute;
-    right:1.5vw;
-    top:2vh;
-    color: #E5E5E5;
+    background: red;
+ 
+    right:0vw;
+    top:-5vh;
+    color: white;
 
 }
-.modal-header{
-    position: relative;
-}
+// .modal-header{
+//     position: relative;
+// }
 
+.modal-content{
+    background-color: transparent !important;
+}
 .table {
     margin-top: 5%;
     font-family:'Roboto' sans-serif;
@@ -444,6 +474,10 @@ color: #54595E;
     padding: 2%;
     background-color: #f8fafb;
 }
-.tab-btn:focus{
-    border-bottom:2px solid #104E5B;
+.active_tab-btn{
+    border: none;
+    width: 45vw;
+   background-color: #ffff;
+    // background-color: gray;
+    border-bottom:2px solid gray;
 }

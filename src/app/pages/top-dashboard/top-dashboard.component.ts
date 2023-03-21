@@ -32,6 +32,7 @@ export class TopDashboardComponent implements OnInit,AfterViewInit {
   videourl:string
   safeUrl: SafeResourceUrl
   isVideoModalopen:boolean =false
+  GrowthIndexData: any;
   constructor(config: NgbModalConfig, public sanitizer:DomSanitizer, public router:Router,public http:ApiserviceService,public Util: Util,public element: ElementRef,public modalService:NgbModal) {
     config.backdrop = 'static';
 		config.keyboard = false;
@@ -58,6 +59,7 @@ export class TopDashboardComponent implements OnInit,AfterViewInit {
       this.buisness_head_response=res
       this.buisness_head_response_=this.buisness_head_response.data
       console.log(this.buisness_head_response_);
+      this.GrowthIndexData=this.buisness_head_response.data._points
       this.dark_color=localStorage.getItem('topbar_color')
       this.element.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
       this.fontcolor='#FFFFFF'

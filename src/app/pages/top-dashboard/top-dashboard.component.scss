@@ -6,7 +6,15 @@
         .page-content {
           padding-bottom: 0!important;
         }
+        .modal-content{
+            border-radius: 0 !important;
+            background:#F7E2AC !important;
+            ;
+        }
      }
+    
+      
+
 
 .web-view{
     display: none;
@@ -50,40 +58,51 @@ font-weight: 600;
 }
 
 .mobile_map{
-    height: 36vh;
+    height: 50vh;
     width: 94vw;
     margin-top: 2vh;
+    margin-bottom: 2vh;
     background-size: 100% 100%;
 }
 
 .mobile_bottom_button_div{
     flex-direction: column;
 }
-
 .mobile_call_center_details{
-    margin-top: 2vh;
-    border: 1px solid #000000;
-    padding: 2vw;
-    height: 32vh;
-    overflow: scroll;
+    margin-top: 1vh;
+    // border: 1px solid #000000;
+    // padding: 2vw;
+    height: 52vh;
+    overflow-x: hidden;
+    overflow-y:auto;
 }
 
 .mobile_call_center_row{
-    width: 95%;
+    width: 100%;
+    display: flex;
+    row-gap:2%;
+    align-items: center;
+    justify-content: center;
 }
 
 .mobile_name_div{
-    height: 6vh;
+    min-height: 2vh;
+    color: #ffff;
+    font-size: 1.7vh;
+    font-weight: 600;
 }
 
 .mobile_name_and_location{
     flex-direction: column;
+   
     height: 6vh;
   
 }
 .mobile_image_logo{
-width: 100%;
-height: 6vh;
+width: 7vh;
+border: 1px solid #ffff;
+border-radius: 8px;
+height:7vh;
 }
 
 .mobile_name{
@@ -96,8 +115,33 @@ font-size: 4vw;
 .mobile_location{
     font-family: 'Work Sans';
     font-style: normal;
-    font-weight: 600;
-    font-size: 3vw;
+    // font-weight: 600;
+    font-size: 1.5vh;
+    color: #ffff;
+}
+.mobile_hos_Level{
+    font-family: 'Work Sans';
+    font-style: normal;
+    // font-weight: 600;
+    font-size: 1.5vh;
+    color: #ffff;
+
+}
+.mobile_hos_Score{
+    font-family: 'Work Sans';
+    font-style: normal;
+    // font-weight: 600;
+    font-size:1.5vh;
+    color: #ffff;
+    
+}
+.mobile-rank{
+    font-family: "Work Sans";
+    font-style: normal;
+    /* font-weight: 600; */
+    font-size: 2vh;
+    color: #ffff;
+
 }
 }
 
@@ -196,6 +240,16 @@ font-size: 4vw;
         right: 1.2vw;
     }
     
+
+    .global_index_mobile{
+        font-size: 0.9vw;
+        margin-bottom: 1vh;
+        font-weight: 600;
+        color: #000000;
+        
+
+
+    }
     .horizontal_row{
         margin: 0.1vw;
         color: #FFFFFF;

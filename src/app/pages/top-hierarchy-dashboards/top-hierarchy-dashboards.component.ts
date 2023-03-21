@@ -116,6 +116,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
           // this.addIns()
         } else {
           this.getUserBannerDataSectionView_1()
+          this.getUserBannerDataSectionView_3()
           // this.getUserBannerDataSectionView_2()
           this.getUserBannerDataSectionView_3()
           // this.notificationList()

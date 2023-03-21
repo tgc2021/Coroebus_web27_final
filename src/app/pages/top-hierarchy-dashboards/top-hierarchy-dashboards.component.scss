@@ -195,6 +195,8 @@
     .button_div {
         margin-top: 1vh;
         margin-left: 1vw;
+        display: flex;
+        justify-content: space-between;
         width: 77vw;
         border-radius: 1vw;
         height: 9vh;
