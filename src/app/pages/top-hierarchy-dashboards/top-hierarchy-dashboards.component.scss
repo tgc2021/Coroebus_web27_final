@@ -7,17 +7,30 @@
 }
 
 @media only screen and (min-width: 769px) and(max-width:1195px) {
+
+
 	// do something in this width range.
     .mobile-view{
         display: none;
     }
+
+    ::ng-deep{
+        .page-content {
+            padding: 71px 0px 0px 0px !important;
+        }
+
+        .dashboard-bg-image{
+            min-height: 100%;
+        }
+      
+     }
     .web_right_side_hos {
-        height: 87vh;
+        height: 91vh;
         background: var(--mediumColor);
         right: 0;
         width: 20vw;
-        position: absolute;
-        top: 2vh;
+        margin-top: -0.1vh;
+        border-radius: 0;
     }
     
     .home_bg{
@@ -71,6 +84,7 @@
     .point_dist_div{
         height: 19vh;
         overflow: auto;
+        margin-top: 2vh;
 
     }
 
@@ -93,19 +107,12 @@
         right: 1.2vw;
     }
     
-    ::ng-deep {
-        .page-content {
-    
-            padding: calc(55px + 24px) calc(24px / 2) 0px calc(24px / 2) !important;
-    
-        }
-    
-    }
+   
     
     .web-top {
         height: 20vh;
         width: 100%;
-        margin-top: 2vh;
+      
     }
     
     .web_bottom {
@@ -158,6 +165,7 @@
     
     .profile_div {
         position: relative;
+        margin-top: 2vh;
     }
     
     .point_distribution {
@@ -193,8 +201,8 @@
     }
     
     .button_div {
-        margin-top: 1vh;
-        margin-left: 1vw;
+        margin-top: 3vh;
+        margin-left: 2vw;
         display: flex;
         justify-content: space-between;
         width: 77vw;
@@ -250,7 +258,7 @@
     
     .search_box {
         margin-top: 2vh;
-        margin-left: 1vw;
+        margin-left: 2vw;
         width: 72vw;
         height: 7vh;
         background: #FFFFFF;
@@ -320,7 +328,7 @@
         width: 77vw;
         height: 7vh;
         margin-bottom: 1vh;
-      
+       margin-left: 1vw;
         display: flex;
         align-items: center;
         padding: 0;
@@ -350,6 +358,7 @@
         font-family: 'Roboto';
         font-weight: 600;
         border-radius: 0.4vw;
+        margin-left: 1vw;
     }
     
     
@@ -376,7 +385,7 @@
         overflow-x: auto;
         overflow-y: hidden;
         scroll-snap-type: x mandatory;
-        width: 79vw;
+        width: 80vw;
         height: auto;
         border: none;
         margin-top: 1vh;
@@ -416,7 +425,7 @@
         width: 14.7vw;
         height: 13.7vh;
     
-        margin-top: 1.3vh;
+        margin-top: 1.5vh;
         background: linear-gradient(180deg,var(--myvar) 51.54%, #FFFFFF 51.61%);
         border-radius: 0.2vw;
     }
@@ -521,8 +530,9 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        height: 17vh;
+        height: 18vh;
         align-items: center;
+        margin-top: 1vh;
     }
     
     .game_points_image {
@@ -553,6 +563,8 @@
         height: 18vh;
         align-items: center;
         cursor: pointer;
+        margin-top: 1vh;
+
     }
     
     .reward_points_image {
@@ -709,13 +721,23 @@
     .mobile-view{
         display: none;
     }
+    
+    ::ng-deep{
+        .page-content {
+            padding: 71px 0px 0px 0px !important;
+        }
+        .dashboard-bg-image{
+            min-height: 100%;
+        }
+    }
     .web_right_side_hos {
-        height: 87vh;
+        height: 91vh;
         background: var(--mediumColor);
         right: 0;
-        width: 20vw;
-        position: absolute;
-        top: 2vh;
+        width: 21vw;
+        margin-top: -0.1vh;
+        border-radius: 0;
+    
     }
     
     .upper_right_card_home_btn{
@@ -804,7 +826,7 @@
     .point_dist_div{
         height: 19vh;
         overflow: auto;
-
+        margin-top: 2vh;
     }
 
     .point_dist_div_4{
@@ -821,19 +843,12 @@
         cursor: grab;
     }
     
-    ::ng-deep {
-        .page-content {
-    
-            padding: calc(55px + 24px) calc(24px / 2) 0px calc(24px / 2) !important;
-    
-        }
-    
-    }
+  
     
     .web-top {
         height: 20vh;
         width: 100%;
-        margin-top: 2vh;
+       
     }
     
     .web_bottom {
@@ -886,6 +901,7 @@
     
     .profile_div {
         position: relative;
+        margin-top: 2vh ;
     }
     
     .point_distribution {
@@ -921,8 +937,8 @@
     }
     
     .button_div {
-        margin-top: 1vh;
-        margin-left: 1vw;
+        margin-top: 3vh;
+        margin-left: 2vw;
         width: 77vw;
         border-radius: 1vw;
         height: 9vh;
@@ -950,7 +966,7 @@
     
     .search_box {
         margin-top: 2vh;
-        margin-left: 1vw;
+        margin-left: 2vw;
         width: 72vw;
         height: 7vh;
         background: #FFFFFF;
@@ -1021,7 +1037,7 @@
         width: 77vw;
         height: 6vh;
         margin-bottom: 1vh;
-      
+        margin-left: 1vw;
         display: flex;
         align-items: center;
         padding: 0;
@@ -1051,6 +1067,7 @@
         font-family: 'Roboto';
         font-weight: 600;
         border-radius: 0.4vw;
+        margin-left: 1vw;
     }
     
     
@@ -1077,7 +1094,7 @@
         overflow-x: auto;
         overflow-y: hidden;
         scroll-snap-type: x mandatory;
-        width: 79vw;
+        width: 80vw;
         height: auto;
         border: none;
         margin-top: 1vh;
@@ -1118,7 +1135,7 @@
         width: 14.7vw;
         height: 13.7vh;
     
-        margin-top: 1.3vh;
+        margin-top: 1.5vh;
         background: linear-gradient(180deg,var(--myvar) 51.54%, #FFFFFF 51.61%);
         border-radius: 0.2vw;
     }
@@ -1224,8 +1241,9 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        height: 17vh;
+        height: 18vh;
         align-items: center;
+        margin-top: 1vh;
     }
     
     .game_points_image {
@@ -1256,6 +1274,7 @@
         height: 18vh;
         align-items: center;
         cursor: pointer;
+        margin-top: 1vh;
     }
     
     .reward_points_image {
