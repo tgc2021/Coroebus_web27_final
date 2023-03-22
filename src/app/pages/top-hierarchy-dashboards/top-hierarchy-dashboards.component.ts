@@ -9,6 +9,9 @@ import { DashboardModel } from '@models/dashboard.model';
 import { ApiserviceService } from 'app/apiservice.service';
 import { EventService } from '@app/services/event.service';
 import * as userActions from '../../core/app-state/actions';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { ImagecropperComponent } from '@pages/imagecropper/imagecropper.component';
 
 @Component({
   selector: 'app-top-hierarchy-dashboards',
@@ -17,6 +20,7 @@ import * as userActions from '../../core/app-state/actions';
 })
 export class TopHierarchyDashboardsComponent implements OnInit {
   counter: any = 0
+  panelOpenState = false;
   isactive: boolean 
   combineLatest: Subscription
   userSelectionData: any
@@ -64,7 +68,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   notificationList_err: string;
   spectSearFinalList:any=[]
   spectSearFinalList1:any
-  constructor(private readonly store: Store, private _route: ActivatedRoute,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef) { }
+  constructor(private readonly store: Store, public _route: ActivatedRoute,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
   ngOnInit(): void {
     
@@ -93,8 +97,6 @@ export class TopHierarchyDashboardsComponent implements OnInit {
       this._routeSub = this._route.queryParams.subscribe(queryParams => {
         // do something with the query params
         console.log(queryParams?.userID);
-
-
         if (queryParams?.userID) {
           console.log(window.location.href);
           this.location = window.location.href
@@ -301,7 +303,7 @@ console.log(this.sectionView_1);
 
     // this.sm_role_id=this.Util.encryptData(this.sectionView_3._ranking_data[3]._data[index].id_role)
     this.overall_role_id=this.Util.decryptData(this.sm_role_id)
-console.log(this.overall_role_id);
+    console.log(this.overall_role_id);
 
     if(this.overall_role_id==8 || this.overall_role_id==12){
       this.router.navigateByUrl('/top_dashboard?userID='+this.sm_user_id +"&gameID="+  this.sm_game_id +"&roleID="+  this.sm_role_id)
@@ -463,7 +465,34 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
  
    
   }
+  previewFile(event: Event) {
+    const element = event?.currentTarget as HTMLInputElement;
+    let fileList: FileList | null = element.files;
+    if (fileList) {
+      const modalRef = this.modalService.open(ImagecropperComponent, { centered: true, windowClass: 'modal-cls' })
+      modalRef.componentInstance.fileData = event;
+      modalRef.componentInstance.buttonColor = this.sectionView_1?.theme_details?.[0]?.dark_color;
+      modalRef.componentInstance.userObj = this.sectionView_1?._personal_data;
 
+      let body={
+        "_userid":  this.userSelectionData?._personal_data?.USERID,
+        "_game": this.userSelectionData?.id_coroebus_game,
+        _device:"W",
+        _section:"Profile",
+        _description: "Profile Edit from Dashboard"
+      }
+    
+    
+      this.http.engagamentlog(body).subscribe(res=>{
+        console.log(res);
+        
+      })
+      // console.log("FileUpload -> files", fileList);
+    }
+    // this.getUserBannerDataSectionView_2()
+    this.userSelectionData
+  }
+ 
   viewMore(){
     this.pageNumberForSectionView_3 = this.pageNumberForSectionView_3 + 1
     this.getUserBannerDataSectionView_3('viewMore')

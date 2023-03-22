@@ -10,6 +10,7 @@ export const apiMethodsList = {
         '/coroebus-beta-api-levels/firstLogin/updatePassword', // 7 POST {"userid":"l4WbceDSYnGzmGmtTpbDOQ==", "password": "9QVjcHyu0OY8aIHAOXiiBg=="}
     ],
     DASHBOARD: [
+
         '/coroebus-beta-api-levels/dashboard/produce_1', // 0 POST {"_userid":"GOLD015","_game":"197","_section_view":"1","page_number":"1"}
         '/coroebus-beta-api-levels/dashboard/produce_1', // 1 POST {"_userid":"GOLD015","_game":"197","_section_view":"2","page_number":"1"}
         '/coroebus-beta-api-levels/dashboard/produce_1', // 2 POST {"_userid":"GOLD015","_game":"197","_section_view":"3","page_number":"1"}
