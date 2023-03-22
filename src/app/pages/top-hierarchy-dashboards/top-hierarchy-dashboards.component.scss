@@ -6,6 +6,7 @@
     
 }
 
+
 @media only screen and (min-width: 769px) and(max-width:1195px) {
 	// do something in this width range.
     .mobile-view{
@@ -134,16 +135,36 @@
     }
     
     .camera_image {
-        position: absolute;
-        top: 0;
-        right: 1vw;
-        z-index: 10;
-        background: white;
-        padding: 6px;
-        width: 4vh;
-        height: 3vh;
-        /* margin: 3px; */
-        border-radius: 50%;
+        // position: absolute;
+        // top: 0;
+        // right: 1vw;
+        // z-index: 10;
+        // background: white;
+        // padding: 6px;
+        // width: 4vh;
+        // height: 3vh;
+        // /* margin: 3px; */
+        // border-radius: 50%;
+
+        .avatar-upload .avatar-edit input + label {
+            display: inline-block;
+            position: absolute;
+            top: -12vh;
+            right: -4vw;
+            width: 4vh;
+            height: 4vh;
+            /* margin-bottom: 0; */
+            border-radius: 100%;
+            background: #FFFFFF;
+            border: 1px solid transparent;
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+            cursor: pointer;
+            font-weight: normal;
+            transition: all 0.2s ease-in-out;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
     }
     
     .geme_reward_points_div {
@@ -862,16 +883,37 @@
     }
     
     .camera_image {
-        position: absolute;
-        top: 0;
-        right: 1vw;
-        z-index: 10;
-        background: white;
-        padding: 6px;
-        width: 4vh;
-        height: 3vh;
-        /* margin: 3px; */
-        border-radius: 50%;
+        // position: absolute;
+        // top: 0;
+        // right: 1vw;
+        // z-index: 10;
+        // background: white;
+        // padding: 6px;
+        // width: 4vh;
+        // height: 3vh;
+        // /* margin: 3px; */
+        // border-radius: 50%;
+        
+            .avatar-upload .avatar-edit input + label {
+                display: inline-block;
+                position: absolute;
+                top: -12vh;
+                right: -2.5vw;
+                width: 4vh;
+                height: 4vh;
+                /* margin-bottom: 0; */
+                border-radius: 50%;
+                background: #FFFFFF;
+                border: 1px solid transparent;
+                box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+                cursor: pointer;
+                font-weight: normal;
+                transition: all 0.2s ease-in-out;
+                background-repeat: no-repeat;
+                background-position: center;
+            
+    
+        }
     }
     
     .geme_reward_points_div {
@@ -1415,12 +1457,9 @@
         font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
-        font-size: 2vh;
+        font-size: 1.8vh;
         margin-top: 0.5vh;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        cursor: pointer;
+      
 
     }
     .profile_team_name_mobile{
@@ -1436,16 +1475,69 @@
 
     }
     .camera_image_mobile{
-        position: absolute;
-        top: 0;
-        right: 1vw;
-        z-index: 10;
-        background: white;
-        padding: 6px;
-        width: 4vh;
-        height: 4vh;
-        /* margin: 3px; */
-        border-radius: 50%;
+        // position: absolute;
+        // top: 0;
+        // right: 1vw;
+        // z-index: 10;
+        // background: white;
+        // padding: 6px;
+        // width: 4vh;
+        // height: 4vh;
+        // /* margin: 3px; */
+        // border-radius: 50%;
+
+        .mobile-avatar-upload{
+            position: relative;
+            height: auto;
+            width: auto;
+        
+        }
+        .mobile-avatar-upload .mobile-avatar-edit
+        {position: absolute;
+            left:80px;
+            z-index: 1;
+            top: 1%;
+        }
+        .mobile-avatar-upload .mobile-avatar-edit input {
+            display: none;
+        }
+        .mobile-avatar-upload .mobile-avatar-edit input+label{
+            display: inline-block;
+            width: 4vh;
+            height: 4vh;
+            position: absolute;
+            right: -6vw;
+            top: -15vh;
+            margin-bottom: 0;
+            border-radius: 50%;
+            background: #FFFFFF;
+            border: 1px solid transparent;
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+            cursor: pointer;
+            font-weight: normal;
+            transition: all 0.2s ease-in-out;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .mobile-avatar-upload .mobile-avatar-preview {
+            width: 87px;
+            height: 87px;
+            position: relative;
+            border-radius: 100%;
+            margin-bottom: 5%;
+            border: 2.20588px solid #FFFFFF;
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+        }
+        .mobile-avatar-upload .mobile-avatar-preview>img {
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
 
     }
     .badge_div_mobile{
@@ -1644,7 +1736,8 @@
         height: 8vh;
         width: 8vh;
         border-radius: 50%;
-        background-color: var(--myvar);
+        // background-color: var(--myvar);
+        background-color: rgb(243, 242, 193);
         display:flex;
         align-items: center;
         justify-content: center;
@@ -1677,6 +1770,7 @@
         margin-bottom: 1vh;
         display: flex;
         align-items: center;
+        justify-content: space-between;
         padding: 0;
         background: url(../../../assets/images/TopHierarchyDashboard/bluewallpaer.png);
         background-size: 100% 100%;
@@ -1719,7 +1813,11 @@
         font-weight: 500;
         font-size: 3.8vw;
         color: #ffffff;
-        width: 30vw;
+        width: 12ch;
+        white-space: nowrap; 
+       
+        overflow: hidden;
+        text-overflow: ellipsis; 
 
     }
     .leaderboard_team_label_mobile{
@@ -1728,14 +1826,26 @@
         font-weight: 500;
         font-size: 2.8vw;
         color: #ffffff;
-        width: 30vw;
+      
+        white-space: nowrap; 
+  width: 7ch; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
         
     }
     .leaderboard_rank_badge_image_div_mobile{
         width: 10vw;
         height: 6vh;
+        display: flex;
+        justify-content: center;
+        align-items:center;
 
         
+    }
+   .leaderboard_rank_badge_image_mobile{
+        width: 6vh;
+        height: 6vh;
+
     }
     .leaderboard_rank_points_div_mobile{
         font-family: 'Inter';
@@ -1764,6 +1874,23 @@
         font-weight: 600;
         border-radius: 0.4vw;
     }
+
+    .one-data-mobile{
+        .card-container{
+            display: flex;
+        justify-content: center;
+    
+        }
+        
+    }
+    .two-data-mobile{
+        .card-container{
+            display: flex;
+            // gap:;
+            justify-content: space-evenly;
+        }
+    }    
+
     ::ng-deep {
         .page-content {
     
@@ -1771,6 +1898,7 @@
     
         }
     }
+
     
 }
 

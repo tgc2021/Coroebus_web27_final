@@ -553,16 +553,33 @@
 <div class="mobile-view">
     <div class="row">
         <div class="col-4">
-            <div class="prof_pic_mobile">
-                <img class="prof_pic_image_mobile" src="{{sectionView_1._personal_data.profile_logo}}" />
-                
-            </div> 
-            <div  *ngIf="cameraimage" class="cameraimg_mobile">
-                <img class="camera_image_mobile" src="assets/images/TopHierarchyDashboard/Camera.svg" />
+            <div class="prof_pic">
+                <img class="prof_pic_image" src="{{sectionView_1._personal_data.profile_logo}}" height="100%" width="100%" />
+            </div>
+            <div *ngIf="cameraimage"  class="cameraimg">
+
+                <!-- <img class="camera_image" src="assets/images/TopHierarchyDashboard/Camera.svg" /> -->
+                <div   class="camera_image_mobile">
+                    <!-- <img class="camera_image" src="assets/images/TopHierarchyDashboard/Camera.svg" /> -->
+                    <div class="mobile-avatar-upload">
+                        <div class="mobile-avatar-edit" >
+                            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
+                                            (change)="previewFile($event)" />
+                                        <label for="imageUpload"
+                                            [style.background-image]="'url(assets/images/svg/dashboard/camera-icon.svg)'"></label>
+                        </div>
+
+                        <!-- <div class="mobile-avatar-preview  justify-content-center">
+                            <img loading="lazy" id="imagePreview"
+                                src="{{sectionView_1?._personal_data?.profile_logo}}">
+
+                        </div> -->
+                    </div>
+                </div>
             </div>
             <div>
                 <div class="profile_name_mobile d-flex justify-content-center">
-                    {{sectionView_1._personal_data.first_name.slice(0,15)}}..
+                    {{sectionView_1._personal_data.first_name.slice(0,12)}}..
                 </div>
                 <div class="profile_team_name_mobile d-flex justify-content-center">
                     {{sectionView_1._personal_data.organization_name.slice(0,15)}}..
@@ -614,10 +631,11 @@
                         <div class="col-4  text-center" *ngFor="let item of sectionView_1?.is_land_logos">
                             <img src="{{item?.logo}}" class="island_login" alt="" height="100">
                             <br>
-                            <!-- [ngClass]="{'one-data': sectionView_1?.is_land_logos?.length ===1}" -->
+                         
                             <button class="btn btn-primary- text-white level-badge-btn-mobile mt-2"
                                 [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                 [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                              
                                 >
                                 {{item?._data}}
                             </button>
@@ -895,7 +913,7 @@
             </div>
 
             <div class="leaderboard_rank_profile_image_div_mobile">
-                <img class="leaderboard_rank_profile_image_mobile" src="{{res.rankingtable_logo}}" />
+                <img class="leaderboard_rank_profile_image_mobile" src="{{res.rankingtable_logo}}" width="100%" height="100%" />
             </div>
 
             <div class="leaderboard_name_and_team_mobile">

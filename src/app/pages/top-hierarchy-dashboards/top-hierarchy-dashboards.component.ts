@@ -10,6 +10,7 @@ import { ApiserviceService } from 'app/apiservice.service';
 import { EventService } from '@app/services/event.service';
 import * as userActions from '../../core/app-state/actions';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { ImagecropperComponent } from '@pages/imagecropper/imagecropper.component';
 
 @Component({
@@ -55,7 +56,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   leaderboard_data:any
   leaderboard_data_buttons:any
   i:any=0
-  constructor(private readonly store: Store, private _route: ActivatedRoute,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
+  constructor(private readonly store: Store, public _route: ActivatedRoute,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
   ngOnInit(): void {
     
@@ -430,6 +431,7 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
     // this.getUserBannerDataSectionView_2()
     this.userSelectionData
   }
+ 
   viewMore(){
     this.pageNumberForSectionView_3 = this.pageNumberForSectionView_3 + 1
     this.getUserBannerDataSectionView_3('viewMore')
