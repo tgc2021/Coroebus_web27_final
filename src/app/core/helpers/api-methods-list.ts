@@ -10,11 +10,11 @@ export const apiMethodsList = {
         '/coroebus-beta-api-levels/firstLogin/updatePassword', // 7 POST {"userid":"l4WbceDSYnGzmGmtTpbDOQ==", "password": "9QVjcHyu0OY8aIHAOXiiBg=="}
     ],
     DASHBOARD: [
-        '/coroebus-beta-api-levels/dashboard/produce', // 0 POST {"_userid":"GOLD015","_game":"197","_section_view":"1","page_number":"1"}
-        '/coroebus-beta-api-levels/dashboard/produce', // 1 POST {"_userid":"GOLD015","_game":"197","_section_view":"2","page_number":"1"}
-        '/coroebus-beta-api-levels/dashboard/produce', // 2 POST {"_userid":"GOLD015","_game":"197","_section_view":"3","page_number":"1"}
+        '/coroebus-beta-api-levels/dashboard/produce_1', // 0 POST {"_userid":"GOLD015","_game":"197","_section_view":"1","page_number":"1"}
+        '/coroebus-beta-api-levels/dashboard/produce_1', // 1 POST {"_userid":"GOLD015","_game":"197","_section_view":"2","page_number":"1"}
+        '/coroebus-beta-api-levels/dashboard/produce_1', // 2 POST {"_userid":"GOLD015","_game":"197","_section_view":"3","page_number":"1"}
         '/coroebus-beta-api-levels/Dashboard/add_ins', // 3 POST {"_userid":"GOLD015","_game":"197"}
-        '/coroebus-beta-api-levels/dashboard/spect_search', // 4 POST {"_userid":"GOLD015","_game":"98","page_number":1,"_uname":"p2","_order":1}
+        '/coroebus-beta-api-levels/dashboard/spect_search_1', // 4 POST {"_userid":"GOLD015","_game":"98","page_number":1,"_uname":"p2","_order":1}
         '/coroebus-beta-api-levels/Dashboard/levels_buckets', // 5 POST {"_game":"98","_role":"6"}
         '/coroebus-beta-api-levels/Poke/add_poke', // 6 POST {"_userid":"GOLD015","_team":"359","_game":"98","_id_user_poked":"53312","_pokeid":"4"}
         '/coroebus-beta-api-levels/dashboard/levels', // 7 POST {"_userid":"GOLD015","_game":"197"}
@@ -46,11 +46,11 @@ export const apiMethodsList = {
     //     '/coroebus-tgc-api-levels/firstLogin/updatePassword', // 7 POST {"userid":"l4WbceDSYnGzmGmtTpbDOQ==", "password": "9QVjcHyu0OY8aIHAOXiiBg=="}
     // ],
     // DASHBOARD: [
-    //     '/coroebus-tgc-api-levels/dashboard/produce', // 0 POST {"_userid":"GOLD015","_game":"197","_section_view":"1","page_number":"1"}
-    //     '/coroebus-tgc-api-levels/dashboard/produce', // 1 POST {"_userid":"GOLD015","_game":"197","_section_view":"2","page_number":"1"}
-    //     '/coroebus-tgc-api-levels/dashboard/produce', // 2 POST {"_userid":"GOLD015","_game":"197","_section_view":"3","page_number":"1"}
+    //     '/coroebus-tgc-api-levels/dashboard/produce_1', // 0 POST {"_userid":"GOLD015","_game":"197","_section_view":"1","page_number":"1"}
+    //     '/coroebus-tgc-api-levels/dashboard/produce_1', // 1 POST {"_userid":"GOLD015","_game":"197","_section_view":"2","page_number":"1"}
+    //     '/coroebus-tgc-api-levels/dashboard/produce_1', // 2 POST {"_userid":"GOLD015","_game":"197","_section_view":"3","page_number":"1"}
     //     '/coroebus-tgc-api-levels/Dashboard/add_ins', // 3 POST {"_userid":"GOLD015","_game":"197"}
-    //     '/coroebus-tgc-api-levels/dashboard/spect_search', // 4 POST {"_userid":"GOLD015","_game":"98","page_number":1,"_uname":"p2","_order":1}
+    //     '/coroebus-tgc-api-levels/dashboard/spect_search_1', // 4 POST {"_userid":"GOLD015","_game":"98","page_number":1,"_uname":"p2","_order":1}
     //     '/coroebus-tgc-api-levels/Dashboard/levels_buckets', // 5 POST {"_game":"98","_role":"6"}
     //     '/coroebus-tgc-api-levels/Poke/add_poke', // 6 POST {"_userid":"GOLD015","_team":"359","_game":"98","_id_user_poked":"53312","_pokeid":"4"}
     //     '/coroebus-tgc-api-levels/dashboard/levels', // 7 POST {"_userid":"GOLD015","_game":"197"}

@@ -52,6 +52,18 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   leaderboard_data:any
   leaderboard_data_buttons:any
   i:any=0
+  spectSearchStr:any
+  spectSearchStrTrigger: boolean = false
+  activeTabOrderNumberForSectionView_2: any
+  spectSearList: string
+  searchbgimage:any
+  search_bg_tile_image: any;
+  final_web_tile_image: any;
+  section1_tile_images: any;
+  web_tile_img: any;
+  notificationList_err: string;
+  spectSearFinalList:any=[]
+  spectSearFinalList1:any
   constructor(private readonly store: Store, private _route: ActivatedRoute,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef) { }
 
   ngOnInit(): void {
@@ -233,6 +245,7 @@ console.log(this.sectionView_1);
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
       
       this.pokeData = res?.data?._poke_list
+      
       if (viewMore) {
         res?.data?._ranking_data?.forEach((element, index) => {
           if (element?.label === this.sectionView_3?._ranking_data[index]?.label) {
@@ -244,16 +257,23 @@ console.log(this.sectionView_1);
           }
 
         });
+        console.log(this.spectSearchStr);
+        
         this.leaderboard_data=this.sectionView_3?._ranking_data[0]._data
         console.log(this.leaderboard_data);
         this.leaderboard_data_buttons=this.sectionView_3?._ranking_data
+        this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0].order
+
 
       } else {
+        console.log(this.spectSearchStr);
+
         this.sectionView_3 = res?.data
         this.leaderboard_data=this.sectionView_3?._ranking_data[0]._data
         this.leaderboard_data_buttons=this.sectionView_3?._ranking_data
         console.log(this.leaderboard_data);
-        
+        this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0].order
+
       }
       // this.filterRankingData()
 
@@ -310,6 +330,46 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
 
   }
 
+  navigateToSearchSMDashboard(index:any){
+    this.spectSearFinalList=Array.of(this.spectSearList)
+    console.log(this.spectSearFinalList);
+    this.spectSearFinalList1=this.spectSearFinalList[0]
+    this.sm_user_id=this.Util.encryptData(this.spectSearFinalList1[index].userid)
+    this.game_ID_sm=localStorage.getItem('gameId')
+    this.sm_game_id=this.Util.encryptData(this.game_ID_sm)
+    this.sm_role_id=this.Util.encryptData(this.spectSearFinalList1[index].id_role)
+
+    // this.sm_role_id=this.Util.encryptData(this.sectionView_3._ranking_data[3]._data[index].id_role)
+    this.overall_role_id=this.Util.decryptData(this.sm_role_id)
+console.log(this.overall_role_id);
+
+    if(this.overall_role_id==8 || this.overall_role_id==12){
+      this.router.navigateByUrl('/top_dashboard?userID='+this.sm_user_id +"&gameID="+  this.sm_game_id +"&roleID="+  this.sm_role_id)
+
+    }
+else{
+  this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  this.sm_game_id +"&roleID="+  this.sm_role_id)
+
+}
+  }
+
+  navigateToSearchRMDashboard(index:any){
+    this.spectSearFinalList=Array.of(this.spectSearList)
+    console.log(this.spectSearFinalList);
+    this.spectSearFinalList1=this.spectSearFinalList[0]
+
+    this.sm_user_id=this.Util.encryptData(this.spectSearFinalList1[index].userid)
+    this.game_ID_rm=localStorage.getItem('gameId')
+
+    this.sm_game_id=this.Util.encryptData(this.game_ID_rm)
+    this.sm_role_id=this.Util.encryptData(this.spectSearFinalList1[index].id_role)
+
+    // this.sm_role_id=this.Util.encryptData(this.sectionView_3._ranking_data[2]._data[index].id_role)
+    this.overall_role_id=this.Util.decryptData(this.sm_role_id)
+console.log(this.overall_role_id);
+this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  this.sm_game_id +"&roleID="+  this.sm_role_id)
+
+  }
   getGraphDataById() {
     // console.log('Graph data',data);
     let obj = {
@@ -394,6 +454,7 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
    
   //   console.log(this.sectionView_3._ranking_data[event]);
   // this.leaderboard_data_buttons=this.sectionView_3._ranking_data[event]
+  this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[event].order
 
    this.leaderboard_data=this.sectionView_3._ranking_data[event]._data
    console.log(this.leaderboard_data);
@@ -406,5 +467,112 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
   viewMore(){
     this.pageNumberForSectionView_3 = this.pageNumberForSectionView_3 + 1
     this.getUserBannerDataSectionView_3('viewMore')
+  }
+
+  async spectSearch() {
+    let err: any, res: any;
+    let body: any;
+    // this.spectSearchStrTrigger = true
+
+    if (this.spectSearchStr) {
+      this.spectSearchStrTrigger = true
+    } else {
+      this.spectSearchStrTrigger = false
+    }
+
+    // {"_userid":"C1IPL501","_game":"174", "page_number": "1" , "_uname": "a", "_order": "1", "id_coroebus_measurement" : "0"}
+
+   body = {
+      "_userid": this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
+      "_game": this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game,
+      "page_number": this.pageNumberForSectionView_3,
+      "_uname": this.spectSearchStr,
+      "_order": this.activeTabOrderNumberForSectionView_2,
+     "id_coroebus_measurement":this.sectionView_3._ranking_data[this.activeClass].id_coroebus_measurement
+    };
+    [err, res] = await HttpProtocols.to(DashboardModel.spectSearch(body))
+    if (!err && res?.statuscode === 200) {
+
+      let body={
+        _userid:this.userSelectionData?._personal_data?.USERID,
+        _game:this.userSelectionData?.id_coroebus_game,
+        _device:"W",
+        _section:"Dashboard",
+        _description:"Search"
+      }
+  
+      this.http.engagamentlog(body).subscribe(res=>{
+        console.log(res);
+        
+      })
+
+      this.spectSearList = res?.data[0]._data
+      console.log(this.spectSearList);
+    // this.spectSearFinalList=this.spectSearList._data
+      this.searchbgimage= this.spectSearList[0]
+      this.search_bg_tile_image=this.searchbgimage._data
+      console.log(this.search_bg_tile_image);
+
+      this.search_bg_tile_image.map(res=>{
+       
+        this.final_web_tile_image=res
+        console.log(this.final_web_tile_image);
+        
+        console.log(this.getBackImagesFromSectionView1);
+
+        this.getBackImagesFromSectionView1.map(res=>{
+          
+          this.section1_tile_images=res
+          console.log(this.section1_tile_images);
+          console.log(this.final_web_tile_image.ranking_image_level);
+          console.log(this.section1_tile_images.ranking_image_level);
+          if(this.final_web_tile_image.ranking_image_level == this.section1_tile_images.ranking_image_level){
+            console.log('true');
+            
+           this.web_tile_img= this.section1_tile_images.ranking_image
+            console.log(this.web_tile_img);
+            
+           }
+
+           console.log(this.web_tile_img);
+
+
+        })
+        
+         
+    
+      })
+      
+
+    } else {
+      this.notificationList_err = 'Error'
+    }
+
+
+ 
+  }
+
+  getDataBasedOnUserID(data: any) {
+    // console.log(data?.role_id)
+
+    this.router.navigate([], {
+      relativeTo: this._route,
+      queryParams: {
+        userID: this.Util.encryptData(data?._userid),
+        gameID: this.Util.encryptData(data?.game_id),
+        roleID: this.Util.encryptData(data?.role_id?.toString())
+
+      },
+
+      queryParamsHandling: 'merge',
+      // preserve the existing query params in the route
+      skipLocationChange: false
+      // do not trigger navigation
+
+
+    });
+
+
+
   }
 }

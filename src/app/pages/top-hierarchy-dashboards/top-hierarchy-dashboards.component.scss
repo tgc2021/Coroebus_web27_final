@@ -24,6 +24,12 @@
         }
       
      }
+
+     .right_side_hos_Hos{
+        width:21vw
+
+    }
+
     .web_right_side_hos {
         height: 91vh;
         background: var(--mediumColor);
@@ -31,8 +37,13 @@
         width: 20vw;
         margin-top: -0.1vh;
         border-radius: 0;
+
+       
     }
     
+    .right_side_hos_Hos{
+        width:21vw
+    }
     .home_bg{
         height: 5vh;
     }
@@ -169,8 +180,53 @@
     }
     
     .point_distribution {
-        width: 29vw;
+        width: 36vw;
         margin-left: 2vw;
+    }
+
+    .island_logo{
+        width: 8vw;
+        height: 19vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 2vh;
+        margin-right: 2vh;
+        cursor: pointer;
+    }
+
+    .island_image{
+        width: 4vw;
+    }
+
+    .island_points{
+        width: 5vw;
+        border-radius: 5vw;
+        background: var(--myvar);
+        text-align: center;
+        margin-top: 1vh;
+        color: #FFFFFF;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1vw;
+    }
+
+    .island_tag{
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 0.9vw;
+        margin-top: 0.5vh;
+
+    }
+    .point_distribution_sm{
+        width: 26vw;
+        margin-left: 2vw;
+    }
+    .point_inside_div{
+        width: 36vw;
     }
     
     .right_side_hos {
@@ -331,6 +387,7 @@
        margin-left: 1vw;
         display: flex;
         align-items: center;
+        cursor: pointer;
         padding: 0;
         background: url(../../../assets/images/TopHierarchyDashboard/bluewallpaer.png);
         background-size: 100% 100%;
@@ -385,7 +442,7 @@
         overflow-x: auto;
         overflow-y: hidden;
         scroll-snap-type: x mandatory;
-        width: 80vw;
+        width: 81vw;
         height: auto;
         border: none;
         margin-top: 1vh;
@@ -526,7 +583,7 @@
     
     
     .game_points_div {
-        margin-left: 8vw;
+        margin-left: 3vw;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -730,6 +787,12 @@
             min-height: 100%;
         }
     }
+
+    
+    .right_side_hos_Hos{
+        width:21vw
+    }
+
     .web_right_side_hos {
         height: 91vh;
         background: var(--mediumColor);
@@ -905,10 +968,54 @@
     }
     
     .point_distribution {
-        width: 29vw;
+        width: 38vw;
         margin-left: 2vw;
     }
     
+    .point_distribution_sm{
+        width: 26vw;
+        margin-left: 2vw;
+    }
+
+    .island_logo{
+        width: 10vw;
+        height: 19vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 2vh;
+        margin-right: 2vh;
+        cursor: pointer;
+    }
+
+    .island_points{
+        width: 5vw;
+        border-radius: 5vw;
+        background: var(--myvar);
+        text-align: center;
+        margin-top: 1vh;
+        color: #FFFFFF;
+        font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 1vw;
+    }
+
+    .island_image{
+        width: 4vw;
+    }
+
+    .island_tag{
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        margin-top: 0.5vh;
+        font-size: 1vw;
+    }
+    .point_inside_div{
+        width: 36vw;
+    }
     .right_side_hos {
         width: 20vw;
     }
@@ -1039,6 +1146,7 @@
         margin-bottom: 1vh;
         margin-left: 1vw;
         display: flex;
+        cursor: pointer;
         align-items: center;
         padding: 0;
         background: url(../../../assets/images/TopHierarchyDashboard/bluewallpaer.png);
@@ -1237,7 +1345,7 @@
     
     
     .game_points_div {
-        margin-left: 8vw;
+        margin-left: 3vw;
         display: flex;
         flex-direction: column;
         justify-content: center;

@@ -19,7 +19,7 @@
                         </div>
                     </div>
                     <div>
-                        <div style="background: url({{sectionView_1?._personal_data?.background_image_profile_web}});width: 40vw;height: 19vh;background-size: 100% 100%;margin-top: 2vh;display: flex;">
+                        <div style="background: url({{sectionView_1?._personal_data?.background_image_profile_web}});width: 32vw;height: 19vh;background-size: 100% 100%;margin-top: 2vh;display: flex;">
                             <div class="d-flex align-items-center badge_div">
                                 <img class="badge_image" src="{{sectionView_1._personal_data.profile_badge_image}}" />
                             </div>
@@ -44,238 +44,497 @@
                             </div>
                         </div>
                     </div>
-                    <div class="point_distribution">
-                        <div class="point_dist_div">
-                            <mat-card class="point_one" (click)="getGraphDataById()" *ngFor="let item of sectionView_1?._kpi_score">
-                                <div class="row" style="width: 26vw;">
-                                    <div class="col-7 point_background">
-                                        <div class="point_one_label"> {{item?.point_label}}</div>
-                                    </div>
-
-                                    <div class="col-5 point_score_div">
-                                        <div class="row">
-                                            <div class="col-3 d-flex  align-items-center" style="height: 4vh;">
-                                                <img src="assets/images/TopHierarchyDashboard/point_dist_coin.png" />
-                                            </div>
-                                            <div class="col-9 d-flex justify-content-end align-items-center"
-                                                style="height: 4vh;">
-                                                <div class="point_dist_score">{{item?.weightage}}</div>
-
-                                                <div class="">
-                                                    <img src="assets/images/TopHierarchyDashboard/Arrow.png" />
+                    <div *ngIf="sectionView_1._personal_data.id_role==8; then island else pointdist"></div>
+                    <ng-template #island>
+                        <div class="point_distribution_sm">
+                            <div class="point_dist_div">
+                                <mat-card class="point_one" (click)="getGraphDataById()" *ngFor="let item of sectionView_1?._kpi_score">
+                                    <div class="row" style="width: 36vw;">
+                                        <div class="col-7 point_background">
+                                            <div class="point_one_label"> {{item?.point_label}}</div>
+                                        </div>
+    
+                                        <div class="col-5 point_score_div">
+                                            <div class="row">
+                                                <div class="col-3 d-flex  align-items-center" style="height: 4vh;">
+                                                    <img src="assets/images/TopHierarchyDashboard/point_dist_coin.png" />
                                                 </div>
-
+                                                <div class="col-9 d-flex justify-content-end align-items-center"
+                                                    style="height: 4vh;">
+                                                    <div class="point_dist_score">{{item?.weightage}}</div>
+    
+                                                    <div class="">
+                                                        <img src="assets/images/TopHierarchyDashboard/Arrow.png" />
+                                                    </div>
+    
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </mat-card>
-
-                           
+                                </mat-card>
+    
+                               
+                            </div>
                         </div>
-                    </div>
+
+                        <div>
+                            <mat-card  *ngFor="let item of sectionView_1?.is_land_logos"  class="island_logo" [style.background]="sectionView_1.theme_details[0].light_color"> 
+                                <img class="island_image" src="{{item.logo}}"/>
+                                <div class="island_points" (click)="getDataBasedOnUserID(item)">
+                                    {{item._data}}
+                                </div>
+                                <div class="island_tag">
+                                    {{item.label}}
+                                </div>
+
+                        
+                            </mat-card>
+                        </div>
+                    </ng-template>
+                    <ng-template #pointdist>
+                        <div class="point_distribution">
+                            <div class="point_dist_div">
+                                <mat-card class="point_one" (click)="getGraphDataById()" *ngFor="let item of sectionView_1?._kpi_score">
+                                    <div class="row" style="width: 36vw;">
+                                        <div class="col-7 point_background">
+                                            <div class="point_one_label"> {{item?.point_label}}</div>
+                                        </div>
+    
+                                        <div class="col-5 point_score_div">
+                                            <div class="row">
+                                                <div class="col-3 d-flex  align-items-center" style="height: 4vh;">
+                                                    <img src="assets/images/TopHierarchyDashboard/point_dist_coin.png" />
+                                                </div>
+                                                <div class="col-9 d-flex justify-content-end align-items-center"
+                                                    style="height: 4vh;">
+                                                    <div class="point_dist_score">{{item?.weightage}}</div>
+    
+                                                    <div class="">
+                                                        <img src="assets/images/TopHierarchyDashboard/Arrow.png" />
+                                                    </div>
+    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </mat-card>
+    
+                               
+                            </div>
+                        </div>
+                    </ng-template>
+                  
 
 
                     <!-- [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.point_dist_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.point_dist_background == null}" -->
                    <div *ngIf="cameraimage; then withouthomebtn else homebtn"></div>
                    <ng-template #withouthomebtn>
-                    <div class="right_side_hos">
+                    <div *ngIf="sectionView_1._personal_data.id_role==8; then right_sm else right_hos"></div>
+                    <ng-template #right_sm>
+                        <div class="right_side_hos">
                        
-                        <mat-card class="web_right_side_hos">
-
-                            <mat-card class="upper_right_card" [style.background]="sectionView_1.theme_details[0].light_color">
-                                <div class="web_right_top_hos">
-
-                                    <div class="name_hos d-flex">                                        
-                                        {{sectionView_1._personal_data.first_name}}
+                            <mat-card class="web_right_side_hos">
     
-                                        <div class="name-details">
+                                <mat-card class="upper_right_card" [style.background]="sectionView_1.theme_details[0].light_color">
+                                    <div class="web_right_top_hos">
     
+                                        <div class="name_hos d-flex">                                        
+                                            {{sectionView_1._personal_data.first_name}}
+        
+                                            <div class="name-details">
+        
+                                            </div>
+        
                                         </div>
+                                        
+                                        <div class="name_hos d-flex">                                        
+                                            {{sectionView_1._personal_data.level_label}}
+        
+                                            <div class="name-details">
+        
+                                            </div>
+        
+                                        </div>
+        
+                                    </div>
+        
+                                </mat-card>
+                          
+    
+                            <div class="governance_card">
+                                <div class="governace_title d-flex justify-content-center">
+                                    Governance Index
+                                </div>
+                                <div class="inner_rightcard">
+    
+    
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button">
+                                            <div class="right_button_labels">Overall </div>
+                                            <div class="right_button_score">40</div>
+    
+                                        </button>
     
                                     </div>
-                                    
-                                    <div class="name_hos d-flex">                                        
-                                        {{sectionView_1._personal_data.level_label}}
     
-                                        <div class="name-details">
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button">
+                                            <div class="right_button_labels">NHT </div>
+                                            <div class="right_button_score">50</div>
     
-                                        </div>
+                                        </button>
     
                                     </div>
     
-                                </div>
     
-                            </mat-card>
-                      
-
-                        <div class="governance_card">
-                            <div class="governace_title d-flex justify-content-center">
-                                Governance Index
-                            </div>
-                            <div class="inner_rightcard">
-
-
-                                <div class="d-flex justify-content-center">
-                                    <button class="right_button">
-                                        <div class="right_button_labels">Overall </div>
-                                        <div class="right_button_score">40</div>
-
-                                    </button>
-
-                                </div>
-
-                                <div class="d-flex justify-content-center">
-                                    <button class="right_button">
-                                        <div class="right_button_labels">NHT </div>
-                                        <div class="right_button_score">50</div>
-
-                                    </button>
-
-                                </div>
-
-
-                                <div class="d-flex justify-content-center">
-                                    <button class="right_button">
-                                        <div class="right_button_labels">OJT </div>
-                                        <div class="right_button_score">60</div>
-
-                                    </button>
-
-                                </div>
-
-
-                                <div class="d-flex justify-content-center">
-                                    <button class="right_button">
-                                        <div class="right_button_labels">FO </div>
-                                        <div class="right_button_score">40</div>
-
-                                    </button>
-
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    <button class="right_button">
-                                        <div class="right_button_labels">Overall </div>
-                                        <div class="right_button_score">40</div>
-
-                                    </button>
-
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    <button class="right_button">
-                                        <div class="right_button_labels">Overall </div>
-                                        <div class="right_button_score">40</div>
-
-                                    </button>
-
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button">
+                                            <div class="right_button_labels">OJT </div>
+                                            <div class="right_button_score">60</div>
+    
+                                        </button>
+    
+                                    </div>
+    
+    
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button">
+                                            <div class="right_button_labels">FO </div>
+                                            <div class="right_button_score">40</div>
+    
+                                        </button>
+    
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button">
+                                            <div class="right_button_labels">Overall </div>
+                                            <div class="right_button_score">40</div>
+    
+                                        </button>
+    
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button">
+                                            <div class="right_button_labels">Overall </div>
+                                            <div class="right_button_score">40</div>
+    
+                                        </button>
+    
+                                    </div>
                                 </div>
                             </div>
+                           </mat-card>
                         </div>
-                       </mat-card>
-                    </div>
+                    </ng-template>
+                    <ng-template #right_hos>
+                        <div class="right_side_hos">
+                       
+                            <mat-card class="web_right_side_hos">
+    
+                                <mat-card class="upper_right_card" [style.background]="sectionView_1.theme_details[0].light_color">
+                                    <div class="web_right_top_hos">
+    
+                                        <div class="name_hos d-flex">                                        
+                                            {{sectionView_1._personal_data.first_name}}
+        
+                                            <div class="name-details">
+        
+                                            </div>
+        
+                                        </div>
+                                        
+                                        <div class="name_hos d-flex">                                        
+                                            {{sectionView_1._personal_data.level_label}}
+        
+                                            <div class="name-details">
+        
+                                            </div>
+        
+                                        </div>
+        
+                                    </div>
+        
+                                </mat-card>
+                          
+    
+                            <div class="governance_card">
+                                <div class="governace_title d-flex justify-content-center">
+                                    Governance Index
+                                </div>
+                                <div class="inner_rightcard">
+    
+    
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button">
+                                            <div class="right_button_labels">Overall </div>
+                                            <div class="right_button_score">40</div>
+    
+                                        </button>
+    
+                                    </div>
+    
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button">
+                                            <div class="right_button_labels">NHT </div>
+                                            <div class="right_button_score">50</div>
+    
+                                        </button>
+    
+                                    </div>
+    
+    
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button">
+                                            <div class="right_button_labels">OJT </div>
+                                            <div class="right_button_score">60</div>
+    
+                                        </button>
+    
+                                    </div>
+    
+    
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button">
+                                            <div class="right_button_labels">FO </div>
+                                            <div class="right_button_score">40</div>
+    
+                                        </button>
+    
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button">
+                                            <div class="right_button_labels">Overall </div>
+                                            <div class="right_button_score">40</div>
+    
+                                        </button>
+    
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button">
+                                            <div class="right_button_labels">Overall </div>
+                                            <div class="right_button_score">40</div>
+    
+                                        </button>
+    
+                                    </div>
+                                </div>
+                            </div>
+                           </mat-card>
+                        </div>
+                    </ng-template>
+                   
                    </ng-template>
                    <ng-template  #homebtn>
-                    <div class="right_side_hos">
+                    <div *ngIf="sectionView_1._personal_data.id_role==8; then right_sm else right_hos"></div>
+                  
+                    <ng-template #right_sm>
+                        <div class="right_side_hos">
                        
-                        <mat-card class="web_right_side_hos">
-                            <div class="d-flex justify-content-end" (click)="BackToHome()">
-                                <div >
-                                    <img class="home_logo" src="assets/images/TopHierarchyDashboard/home_button.png"/>
-                                </div>
-                                <img class="home_bg" src="assets/images/TopHierarchyDashboard/home_bg.png"/>
-                                
-                                
-                            </div>
-                            <mat-card class="upper_right_card_home_btn" [style.background]="sectionView_1.theme_details[0].light_color">
-                                <div class="web_right_top_hos">
-                                   
-                                    <div class="name_hos d-flex">                                        
-                                        Name:  {{sectionView_1._personal_data.first_name}}
-    
-                                        <div class="name-details">
-    
-                                        </div>
-    
+                            <mat-card class="web_right_side_hos">
+                                <div class="d-flex justify-content-end" (click)="BackToHome()">
+                                    <div >
+                                        <img class="home_logo" />
                                     </div>
+                                    <img class="home_bg" src="assets/images/TopHierarchyDashboard/Homebutton.png"/>
+
                                     
-                                    <div class="name_hos d-flex">                                        
-                                       Level: {{sectionView_1._personal_data.level_label}}
-    
-                                        <div class="name-details">
-    
+                                </div>
+                                <mat-card class="upper_right_card_home_btn" [style.background]="sectionView_1.theme_details[0].light_color">
+                                    <div class="web_right_top_hos">
+                                       
+                                        <div class="name_hos d-flex">                                        
+                                            Name:  {{sectionView_1._personal_data.first_name}}
+        
+                                            <div class="name-details">
+        
+                                            </div>
+        
                                         </div>
+                                        
+                                        <div class="name_hos d-flex">                                        
+                                           Level: {{sectionView_1._personal_data.level_label}}
+        
+                                            <div class="name-details">
+        
+                                            </div>
+        
+                                        </div>
+        
+                                    </div>
+        
+                                </mat-card>
+                          
+    
+                            <div class="governance_card_home_btn">
+                                <div class="governace_title d-flex justify-content-center">
+                                    Governance Index
+                                </div>
+                                <div class="inner_rightcard_home_btn">
+    
+    
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button_home_btn">
+                                            <div class="right_button_labels">Overall </div>
+                                            <div class="right_button_score">40</div>
+    
+                                        </button>
     
                                     </div>
     
-                                </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button_home_btn">
+                                            <div class="right_button_labels">NHT </div>
+                                            <div class="right_button_score">50</div>
     
-                            </mat-card>
-                      
-
-                        <div class="governance_card_home_btn">
-                            <div class="governace_title d-flex justify-content-center">
-                                Governance Index
-                            </div>
-                            <div class="inner_rightcard_home_btn">
-
-
-                                <div class="d-flex justify-content-center">
-                                    <button class="right_button_home_btn">
-                                        <div class="right_button_labels">Overall </div>
-                                        <div class="right_button_score">40</div>
-
-                                    </button>
-
-                                </div>
-
-                                <div class="d-flex justify-content-center">
-                                    <button class="right_button_home_btn">
-                                        <div class="right_button_labels">NHT </div>
-                                        <div class="right_button_score">50</div>
-
-                                    </button>
-
-                                </div>
-
-
-                                <div class="d-flex justify-content-center">
-                                    <button class="right_button_home_btn">
-                                        <div class="right_button_labels">OJT </div>
-                                        <div class="right_button_score">60</div>
-
-                                    </button>
-
-                                </div>
-
-
-                                <div class="d-flex justify-content-center">
-                                    <button class="right_button_home_btn">
-                                        <div class="right_button_labels">FO </div>
-                                        <div class="right_button_score">40</div>
-
-                                    </button>
-
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    <button class="right_button_home_btn">
-                                        <div class="right_button_labels">Overall </div>
-                                        <div class="right_button_score">40</div>
-
-                                    </button>
-
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    <button class="right_button_home_btn">
-                                        <div class="right_button_labels">Overall </div>
-                                        <div class="right_button_score">40</div>
-
-                                    </button>
-
+                                        </button>
+    
+                                    </div>
+    
+    
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button_home_btn">
+                                            <div class="right_button_labels">OJT </div>
+                                            <div class="right_button_score">60</div>
+    
+                                        </button>
+    
+                                    </div>
+    
+    
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button_home_btn">
+                                            <div class="right_button_labels">FO </div>
+                                            <div class="right_button_score">40</div>
+    
+                                        </button>
+    
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button_home_btn">
+                                            <div class="right_button_labels">Overall </div>
+                                            <div class="right_button_score">40</div>
+    
+                                        </button>
+    
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button_home_btn">
+                                            <div class="right_button_labels">Overall </div>
+                                            <div class="right_button_score">40</div>
+    
+                                        </button>
+    
+                                    </div>
                                 </div>
                             </div>
+                           </mat-card>
                         </div>
-                       </mat-card>
-                    </div>
+                    </ng-template>
+                  
+                    <ng-template #right_hos>
+                        <div class="right_side_hos_Hos">
+                       
+                            <mat-card class="web_right_side_hos">
+                                <div class="d-flex justify-content-end" (click)="BackToHome()">
+                                    <div >
+                                        <img class="home_logo" />
+                                    </div>
+                                    <img class="home_bg" src="assets/images/TopHierarchyDashboard/Homebutton.png"/>
+                                    
+                                    
+                                </div>
+                                <mat-card class="upper_right_card_home_btn" [style.background]="sectionView_1.theme_details[0].light_color">
+                                    <div class="web_right_top_hos">
+                                       
+                                        <div class="name_hos d-flex">                                        
+                                            Name:  {{sectionView_1._personal_data.first_name}}
+        
+                                            <div class="name-details">
+        
+                                            </div>
+        
+                                        </div>
+                                        
+                                        <div class="name_hos d-flex">                                        
+                                           Level: {{sectionView_1._personal_data.level_label}}
+        
+                                            <div class="name-details">
+        
+                                            </div>
+        
+                                        </div>
+        
+                                    </div>
+        
+                                </mat-card>
+                          
+    
+                            <div class="governance_card_home_btn">
+                                <div class="governace_title d-flex justify-content-center">
+                                    Governance Index
+                                </div>
+                                <div class="inner_rightcard_home_btn">
+    
+    
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button_home_btn">
+                                            <div class="right_button_labels">Overall </div>
+                                            <div class="right_button_score">40</div>
+    
+                                        </button>
+    
+                                    </div>
+    
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button_home_btn">
+                                            <div class="right_button_labels">NHT </div>
+                                            <div class="right_button_score">50</div>
+    
+                                        </button>
+    
+                                    </div>
+    
+    
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button_home_btn">
+                                            <div class="right_button_labels">OJT </div>
+                                            <div class="right_button_score">60</div>
+    
+                                        </button>
+    
+                                    </div>
+    
+    
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button_home_btn">
+                                            <div class="right_button_labels">FO </div>
+                                            <div class="right_button_score">40</div>
+    
+                                        </button>
+    
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button_home_btn">
+                                            <div class="right_button_labels">Overall </div>
+                                            <div class="right_button_score">40</div>
+    
+                                        </button>
+    
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button class="right_button_home_btn">
+                                            <div class="right_button_labels">Overall </div>
+                                            <div class="right_button_score">40</div>
+    
+                                        </button>
+    
+                                    </div>
+                                </div>
+                            </div>
+                           </mat-card>
+                        </div>
+                    </ng-template>
+                   
                    </ng-template>
                   
 
@@ -297,8 +556,8 @@
 
             </div>
             <div class="row">
-                <input class="search_box" placeholder="Search people here..">
-                <img class="search_bar_img" src="assets/images/TopHierarchyDashboard/Vector.png">
+                <input class="search_box" placeholder="Search people here.." [(ngModel)]="spectSearchStr">
+                <img class="search_bar_img" src="assets/images/TopHierarchyDashboard/Vector.png" (click)="spectSearch()">
 
             </div>
 
@@ -353,115 +612,233 @@
                 </div> -->
 <div *ngIf="sectionView_1._personal_data.id_role==9 ;then sm else rm" ></div>
 <ng-template #sm>
-    <div class="leaderboard_label_tile">
-        <!-- <div>
-            {{leaderboard_data[0]._data | json}}
-        </div> -->
-        <mat-card class="leaderboard_tile" *ngFor="let res of leaderboard_data; let i=index" 
-        [style.background-image]="'url(' + res?.ranking_image + ')'"
-        (click)="navigateToSMDashboard(i)">
-       
-            <div class="leaderboard_rank_score">
-                {{res.rankingtable_number}}
-            </div>
 
-            <div class="leaderboard_rank_profile_image_div">
-                <img class="leaderboard_rank_profile_image" src="{{res.rankingtable_logo}}" />
-            </div>
-
-            <div class="leaderboard_name_and_team">
-                <div class="leaderboard_name_label">
-                    {{res.rankingtable_name}}
+    <div *ngIf="spectSearchStr === ''|| spectSearchStr === undefined ;then withoutsearch else withsearch"></div>
+    <ng-template #withoutsearch>
+        <div  class="leaderboard_label_tile">
+            <!-- <div>
+                {{leaderboard_data[0]._data | json}}
+            </div> -->
+            <mat-card class="leaderboard_tile" *ngFor="let res of leaderboard_data; let i=index" 
+            [style.background-image]="'url(' + res?.ranking_image + ')'"
+            (click)="navigateToSMDashboard(i)">
+           
+                <div class="leaderboard_rank_score">
+                    {{res.rankingtable_number}}
                 </div>
-                <div class="leaderboard_team_label">
-                    {{res.rankingtable_team}}
+    
+                <div class="leaderboard_rank_profile_image_div">
+                    <img class="leaderboard_rank_profile_image" src="{{res.rankingtable_logo}}" />
                 </div>
-            </div>
-
-            <div class="leaderboard_rank_badge_image_div">
-                <img class="leaderboard_rank_badge_image"
-                    src="{{res.ranking_badge}}" />
-            </div>
-
-
-            <div class="leaderboard_rank_points_div">
-                <div class="leaderboard_rank_points_label">{{res.rankingtable_weightage}}</div>
-            </div>
-
-            <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='green'">
-                <img class="leaderboard_rank_up_down_arrow_image"
-                    src="{{sectionView_1.theme_details[0].up_arrow}}" />
-            </div>
-
-            <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='red'">
-                <img class="leaderboard_rank_up_down_arrow_image"
-                    src="{{sectionView_1.theme_details[0].down_arrow}}" />
-            </div>
-
-            <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='yellow'">
-                <img class="leaderboard_rank_up_down_arrow_image"
-                src="{{sectionView_1.theme_details[0].equal_arrow}}" />
-            </div>
-        </mat-card>
-
-
-
-      
-    </div>
-
+    
+                <div class="leaderboard_name_and_team">
+                    <div class="leaderboard_name_label">
+                        {{res.rankingtable_name}}
+                    </div>
+                    <div class="leaderboard_team_label">
+                        {{res.rankingtable_team}}
+                    </div>
+                </div>
+    
+                <div class="leaderboard_rank_badge_image_div">
+                    <img class="leaderboard_rank_badge_image"
+                        src="{{res.ranking_badge}}" />
+                </div>
+    
+    
+                <div class="leaderboard_rank_points_div">
+                    <div class="leaderboard_rank_points_label">{{res.rankingtable_weightage}}</div>
+                </div>
+    
+                <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='green'">
+                    <img class="leaderboard_rank_up_down_arrow_image"
+                        src="{{sectionView_1.theme_details[0].up_arrow}}" />
+                </div>
+    
+                <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='red'">
+                    <img class="leaderboard_rank_up_down_arrow_image"
+                        src="{{sectionView_1.theme_details[0].down_arrow}}" />
+                </div>
+    
+                <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='yellow'">
+                    <img class="leaderboard_rank_up_down_arrow_image"
+                    src="{{sectionView_1.theme_details[0].equal_arrow}}" />
+                </div>
+            </mat-card>
+    
+    
+    
+          
+        </div>
+    </ng-template>
+    <ng-template #withsearch>
+        <div class="leaderboard_label_tile">
+            <!-- <div>
+                {{leaderboard_data[0]._data | json}}
+            </div> -->
+            <mat-card class="leaderboard_tile" *ngFor="let res of spectSearList; let i=index" 
+            [style.background-image]="'url(' + res?.ranking_image + ')'"
+            (click)="navigateToSearchSMDashboard(i)">
+           
+                <div class="leaderboard_rank_score">
+                    {{res.rankingtable_number}}
+                </div>
+    
+                <div class="leaderboard_rank_profile_image_div">
+                    <img class="leaderboard_rank_profile_image" src="{{res.rankingtable_logo}}" />
+                </div>
+    
+                <div class="leaderboard_name_and_team">
+                    <div class="leaderboard_name_label">
+                        {{res.rankingtable_name}}
+                    </div>
+                    <div class="leaderboard_team_label">
+                        {{res.rankingtable_team}}
+                    </div>
+                </div>
+    
+                <div class="leaderboard_rank_badge_image_div">
+                    <img class="leaderboard_rank_badge_image"
+                        src="{{res.ranking_badge}}" />
+                </div>
+    
+    
+                <div class="leaderboard_rank_points_div">
+                    <div class="leaderboard_rank_points_label">{{res.rankingtable_weightage}}</div>
+                </div>
+    
+                <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='green'">
+                    <img class="leaderboard_rank_up_down_arrow_image"
+                        src="{{sectionView_1.theme_details[0].up_arrow}}" />
+                </div>
+    
+                <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='red'">
+                    <img class="leaderboard_rank_up_down_arrow_image"
+                        src="{{sectionView_1.theme_details[0].down_arrow}}" />
+                </div>
+    
+                <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='yellow'">
+                    <img class="leaderboard_rank_up_down_arrow_image"
+                    src="{{sectionView_1.theme_details[0].equal_arrow}}" />
+                </div>
+            </mat-card>
+    
+    
+    
+          
+        </div>
+    </ng-template>
+    
 </ng-template>
 <ng-template #rm>
-    <div class="leaderboard_label_tile">
-        <mat-card class="leaderboard_tile" *ngFor="let res of leaderboard_data; let i=index" 
-        [style.background-image]="'url(' + res?.ranking_image + ')'"
-        (click)="navigateToRMDashboard(i)">
-            <div class="leaderboard_rank_score">
-                {{res.rankingtable_number}}
-            </div>
-
-            <div class="leaderboard_rank_profile_image_div">
-                <img class="leaderboard_rank_profile_image" src="{{res.rankingtable_logo}}" />
-            </div>
-
-            <div class="leaderboard_name_and_team">
-                <div class="leaderboard_name_label">
-                    {{res.rankingtable_name}}
+    <div *ngIf="spectSearchStr === ''|| spectSearchStr === undefined ;then withoutsearch else withsearch"></div>
+    <ng-template #withoutsearch>
+        <div class="leaderboard_label_tile">
+            <mat-card class="leaderboard_tile" *ngFor="let res of leaderboard_data; let i=index" 
+            [style.background-image]="'url(' + res?.ranking_image + ')'"
+            (click)="navigateToRMDashboard(i)">
+                <div class="leaderboard_rank_score">
+                    {{res.rankingtable_number}}
                 </div>
-                <div class="leaderboard_team_label">
-                    {{res.rankingtable_team}}
+    
+                <div class="leaderboard_rank_profile_image_div">
+                    <img class="leaderboard_rank_profile_image" src="{{res.rankingtable_logo}}" />
                 </div>
-            </div>
-
-            <div class="leaderboard_rank_badge_image_div">
-                <img class="leaderboard_rank_badge_image"
-                    src="{{res.ranking_badge}}" />
-            </div>
-
-
-            <div class="leaderboard_rank_points_div">
-                <div class="leaderboard_rank_points_label">{{res.rankingtable_weightage}}</div>
-            </div>
-
-            <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='green'">
-                <img class="leaderboard_rank_up_down_arrow_image"
-                    src="{{sectionView_1.theme_details[0].up_arrow}}" />
-            </div>
-
-            <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='red'">
-                <img class="leaderboard_rank_up_down_arrow_image"
-                    src="{{sectionView_1.theme_details[0].down_arrow}}" />
-            </div>
-
-            <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='yellow'">
-                <img class="leaderboard_rank_up_down_arrow_image"
-                src="{{sectionView_1.theme_details[0].equal_arrow}}" />
-            </div>
-        </mat-card>
-
-
-
-      
-    </div>
+    
+                <div class="leaderboard_name_and_team">
+                    <div class="leaderboard_name_label">
+                        {{res.rankingtable_name}}
+                    </div>
+                    <div class="leaderboard_team_label">
+                        {{res.rankingtable_team}}
+                    </div>
+                </div>
+    
+                <div class="leaderboard_rank_badge_image_div">
+                    <img class="leaderboard_rank_badge_image"
+                        src="{{res.ranking_badge}}" />
+                </div>
+    
+    
+                <div class="leaderboard_rank_points_div">
+                    <div class="leaderboard_rank_points_label">{{res.rankingtable_weightage}}</div>
+                </div>
+    
+                <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='green'">
+                    <img class="leaderboard_rank_up_down_arrow_image"
+                        src="{{sectionView_1.theme_details[0].up_arrow}}" />
+                </div>
+    
+                <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='red'">
+                    <img class="leaderboard_rank_up_down_arrow_image"
+                        src="{{sectionView_1.theme_details[0].down_arrow}}" />
+                </div>
+    
+                <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='yellow'">
+                    <img class="leaderboard_rank_up_down_arrow_image"
+                    src="{{sectionView_1.theme_details[0].equal_arrow}}" />
+                </div>
+            </mat-card>
+    
+    
+    
+          
+        </div>
+    </ng-template>
+    <ng-template #withsearch>
+        <div class="leaderboard_label_tile">
+            <mat-card class="leaderboard_tile" *ngFor="let res of spectSearList; let i=index" 
+            [style.background-image]="'url(' + res?.ranking_image + ')'"
+            (click)="navigateToSearchRMDashboard(i)">
+                <div class="leaderboard_rank_score">
+                    {{res.rankingtable_number}}
+                </div>
+    
+                <div class="leaderboard_rank_profile_image_div">
+                    <img class="leaderboard_rank_profile_image" src="{{res.rankingtable_logo}}" />
+                </div>
+    
+                <div class="leaderboard_name_and_team">
+                    <div class="leaderboard_name_label">
+                        {{res.rankingtable_name}}
+                    </div>
+                    <div class="leaderboard_team_label">
+                        {{res.rankingtable_team}}
+                    </div>
+                </div>
+    
+                <div class="leaderboard_rank_badge_image_div">
+                    <img class="leaderboard_rank_badge_image"
+                        src="{{res.ranking_badge}}" />
+                </div>
+    
+    
+                <div class="leaderboard_rank_points_div">
+                    <div class="leaderboard_rank_points_label">{{res.rankingtable_weightage}}</div>
+                </div>
+    
+                <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='green'">
+                    <img class="leaderboard_rank_up_down_arrow_image"
+                        src="{{sectionView_1.theme_details[0].up_arrow}}" />
+                </div>
+    
+                <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='red'">
+                    <img class="leaderboard_rank_up_down_arrow_image"
+                        src="{{sectionView_1.theme_details[0].down_arrow}}" />
+                </div>
+    
+                <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='yellow'">
+                    <img class="leaderboard_rank_up_down_arrow_image"
+                    src="{{sectionView_1.theme_details[0].equal_arrow}}" />
+                </div>
+            </mat-card>
+    
+    
+    
+          
+        </div>
+    </ng-template>
+    
 
 </ng-template>
                
