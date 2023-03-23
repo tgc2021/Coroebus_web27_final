@@ -10,6 +10,8 @@ import { Store } from '@ngrx/store';
 import * as fromRoot from '../../core/app-state';
 import { map, startWith, switchMap, takeWhile } from 'rxjs/operators';
 import { EventService } from '@app/services/event.service';
+import { ApiserviceService } from 'app/apiservice.service';
+
 @Component({
   selector: 'app-topbar',
   templateUrl: './topbar.component.html',
@@ -29,14 +31,15 @@ export class TopbarComponent implements OnInit, OnDestroy {
   passDataToHeaderSub: Subscription
   userid_bh: string;
   id_coroebus_org: string;
-  http: any;
   buisness_head_response: any;
-  constructor(@Inject(DOCUMENT) private document: any, private router: Router,
+  buisness_head_response_: any;
+  constructor(public http: ApiserviceService, @Inject(DOCUMENT) private document: any, private router: Router,
     public languageService: LanguageService,
     public translate: TranslateService,
     private readonly store: Store,
     private eventService: EventService,
-    private _route: ActivatedRoute) {
+    private _route: ActivatedRoute,
+    ) {
   }
 
 
@@ -56,6 +59,7 @@ export class TopbarComponent implements OnInit, OnDestroy {
   id_role:any
   top_toolbar_logo:any
   topbar_color:any
+  Org_logo:any
   ngOnInit() {
    
     this.topbar_color= localStorage.getItem('topbar_color')
@@ -74,9 +78,26 @@ export class TopbarComponent implements OnInit, OnDestroy {
       this.notificationStatus()
       this.handlePolling()
     })
+    console.log(this.userSelectionData);
+    
     this.id_role=this.userSelectionData._personal_data.id_role
     console.log(this.id_role);
-   
+    let bodyforBH={
+    
+      '_userid': this.userSelectionData?._personal_data?.USERID,
+      '_org': this.userSelectionData?._personal_data?.id_coroebus_organization
+
+      }
+      console.log(bodyforBH);
+      
+      this.http.buisnessHead(bodyforBH).subscribe(res=>{
+        console.log(res);
+        this.buisness_head_response=res
+      this.buisness_head_response_=this.buisness_head_response.data
+      console.log(this.buisness_head_response_);
+      localStorage.setItem('bhresponse',this.buisness_head_response_._personal_data.organization_logo)
+        this.Org_logo=localStorage.getItem('bhresponse')
+      })
 
     this.passDataToHeaderSub?.unsubscribe()
     this.passDataToHeaderSub = this.eventService.subscribe('passDataToHeader', (data) => {
@@ -91,7 +112,7 @@ export class TopbarComponent implements OnInit, OnDestroy {
       console.log(queryParams)
     })
 
-  
+   
   }
 
  
