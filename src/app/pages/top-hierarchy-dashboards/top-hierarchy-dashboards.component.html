@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div>
-                        <div style="background: url({{sectionView_1?._personal_data?.background_image_profile_web}});width: 32vw;height: 19vh;background-size: 100% 100%;margin-top: 2vh;display: flex;">
+                        <div style="background-image: url({{sectionView_1?._personal_data?.background_image_profile_web}});width: 32vw;height: 19vh;background-size: 100% 100%;margin-top: 2vh;display: flex;">
                             <div class="d-flex align-items-center badge_div">
                                 <img class="badge_image" src="{{sectionView_1._personal_data.profile_badge_image}}" />
                             </div>
@@ -145,8 +145,8 @@
 
 
                     <!-- [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.point_dist_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.point_dist_background == null}" -->
-                   <div *ngIf="cameraimage; then withouthomebtn else homebtn"></div>
-                   <ng-template #withouthomebtn>
+                   <!-- <div *ngIf="cameraimage; then withouthomebtn else homebtn"></div> -->
+                   <!-- <ng-template #withouthomebtn> -->
                     <div *ngIf="sectionView_1._personal_data.id_role==8; then right_sm else right_hos"></div>
                     <ng-template #right_sm>
                         <div class="right_side_hos">
@@ -341,8 +341,7 @@
                         </div>
                     </ng-template>
                    
-                   </ng-template>
-                   <ng-template  #homebtn>
+                   <!-- <ng-template  #homebtn>
                     <div *ngIf="sectionView_1._personal_data.id_role==8; then right_sm else right_hos"></div>
                   
                     <ng-template #right_sm>
@@ -553,7 +552,7 @@
                         </div>
                     </ng-template>
                    
-                   </ng-template>
+                   </ng-template> -->
                   
 
                 </div>
@@ -638,7 +637,7 @@
                 {{leaderboard_data[0]._data | json}}
             </div> -->
             <mat-card class="leaderboard_tile" *ngFor="let res of leaderboard_data; let i=index" 
-            [style.background-image]="'url(' + res?.ranking_image + ')'"
+            [style.background-image]="'url(' + res?.ranking_image_web + ')'"
             (click)="navigateToSMDashboard(i)">
            
                 <div class="leaderboard_rank_score">
@@ -695,7 +694,7 @@
                 {{leaderboard_data[0]._data | json}}
             </div> -->
             <mat-card class="leaderboard_tile" *ngFor="let res of spectSearList; let i=index" 
-            [style.background-image]="'url(' + res?.ranking_image + ')'"
+            [style.background-image]="'url(' + res?.ranking_image_web + ')'"
             (click)="navigateToSearchSMDashboard(i)">
            
                 <div class="leaderboard_rank_score">
@@ -753,7 +752,7 @@
     <ng-template #withoutsearch>
         <div class="leaderboard_label_tile">
             <mat-card class="leaderboard_tile" *ngFor="let res of leaderboard_data; let i=index" 
-            [style.background-image]="'url(' + res?.ranking_image + ')'"
+            [style.background-image]="'url(' + res?.ranking_image_web + ')'"
             (click)="navigateToRMDashboard(i)">
                 <div class="leaderboard_rank_score">
                     {{res.rankingtable_number}}
@@ -806,7 +805,7 @@
     <ng-template #withsearch>
         <div class="leaderboard_label_tile">
             <mat-card class="leaderboard_tile" *ngFor="let res of spectSearList; let i=index" 
-            [style.background-image]="'url(' + res?.ranking_image + ')'"
+            [style.background-image]="'url(' + res?.ranking_image_web + ')'"
             (click)="navigateToSearchRMDashboard(i)">
                 <div class="leaderboard_rank_score">
                     {{res.rankingtable_number}}
@@ -1261,7 +1260,7 @@
     <div *ngIf="cameraimage;then mobileHomeBtn"></div>
     <ng-template #mobileHomeBtn>
         <div class="homeBtn" (click)="BackToHome()">
-            <img src="../../../assets/images/TopHierarchyDashboard/home button  1.png" alt="" srcset="">
+            <img src="assets/images/TopHierarchyDashboard/home button  1.png" alt="" srcset="">
         </div>
     </ng-template>
 

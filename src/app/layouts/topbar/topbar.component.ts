@@ -90,11 +90,16 @@ export class TopbarComponent implements OnInit, OnDestroy {
       this.queryParams = queryParams
       console.log(queryParams)
     })
+
+  
   }
 
  
     
-    
+  RedirectionToHome(){
+    this.router.navigateByUrl('topdashboard')
+
+  }
   
   /**
    * Toggle the menu bar when having mobile screen
