@@ -7,7 +7,7 @@
                         <div class="prof_pic">
                             <img class="prof_pic_image" src="{{sectionView_1._personal_data.profile_logo}}" />
                         </div>
-                        <div *ngIf="cameraimage"  class="cameraimg">
+                        <div *ngIf="cameraimage" class="cameraimg">
 
                             <!-- <img class="camera_image" src="assets/images/TopHierarchyDashboard/Camera.svg" /> -->
                             <div   class="camera_image">
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div>
-                        <div style="background-image: url({{sectionView_1?._personal_data?.background_image_profile_web}});width: 32vw;height: 19vh;background-size: 100% 100%;margin-top: 2vh;display: flex;">
+                        <div style="background-image:url({{sectionView_1?._personal_data?.background_image_profile_web}});width: 32vw;height: 19vh;background-size: 100% 100%;margin-top: 2vh;display: flex;">
                             <div class="d-flex align-items-center badge_div">
                                 <img class="badge_image" src="{{sectionView_1._personal_data.profile_badge_image}}" />
                             </div>
@@ -573,7 +573,7 @@
 
             </div>
             <div class="row">
-                <input class="search_box" placeholder="Search people here.." [(ngModel)]="spectSearchStr">
+                <input type="text" class="search_box" placeholder="Search people here.." [(ngModel)]="spectSearchStr">
                 <img class="search_bar_img" src="assets/images/TopHierarchyDashboard/Vector.png" (click)="spectSearch()">
 
             </div>
@@ -630,7 +630,7 @@
 <div *ngIf="sectionView_1._personal_data.id_role==9 ;then sm else rm" ></div>
 <ng-template #sm>
 
-    <div *ngIf="spectSearchStr === ''|| spectSearchStr === undefined ;then withoutsearch else withsearch"></div>
+    <div *ngIf="spectSearchStr ===''|| spectSearchStr == undefined || spectSearList.length>10;then withoutsearch else withsearch"></div>
     <ng-template #withoutsearch>
         <div  class="leaderboard_label_tile">
             <!-- <div>
@@ -748,7 +748,7 @@
     
 </ng-template>
 <ng-template #rm>
-    <div *ngIf="spectSearchStr === ''|| spectSearchStr === undefined ;then withoutsearch else withsearch"></div>
+    <div *ngIf="spectSearchStr ===''|| spectSearchStr === undefined|| spectSearList.length>10 ;then withoutsearch else withsearch"></div>
     <ng-template #withoutsearch>
         <div class="leaderboard_label_tile">
             <mat-card class="leaderboard_tile" *ngFor="let res of leaderboard_data; let i=index" 
@@ -964,7 +964,7 @@
         </div>
         <div class="col-8 ">
             
-                <div style="background: url({{sectionView_1?._personal_data?.background_image_profile_web}});width: 100%;height: 20vh;background-size: 100% 100%;border: 2px solid rgb(74, 193, 217);display: flex;align-items:center;justify-content: space-evenly;">
+                <div style="background-image: url({{sectionView_1?._personal_data?.background_image_profile_web}});width: 100%;height: 20vh;background-size: 100% 100%;border: 2px solid rgb(74, 193, 217);display: flex;align-items:center;justify-content: space-evenly;">
                     <div class="d-flex align-items-center badge_div_mobile">
                         <img class="badge_image_mobile" src="{{sectionView_1._personal_data.profile_badge_image}}" />
                     </div>
@@ -1011,6 +1011,7 @@
                             <button class="btn btn-primary- text-white level-badge-btn-mobile mt-2"
                                 [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                 [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                (click)="getDataBasedOnUserID(item)"
                               
                                 >
                                 {{item?._data}}
@@ -1232,12 +1233,14 @@
 
     <!-- Button Div Section -->
     <div class="row d-flex justify-content-center align-items-center mt-2">
-        <mat-card class="row button_div_mobile" style="width:93vw;display: flex;flex-direction:row;justify-content: space-between;align-items: center;overflow-x:auto;" [style.background]="sectionView_1.theme_details[0].light_color">
-       
-             <button  class="col-2 button_series_mobile" *ngFor="let item of leaderboard_data_buttons ;let i=index"   [class.active]="i==this.activeClass"  (click)="leaderboard(i)">
+        <mat-card class=" button_div_mobile" style="width:93vw;display: flex;flex-direction:row;justify-content:start;align-items: center;overflow-x:auto;flex-wrap:nowrap;column-gap: 1.3em;" [style.background]="sectionView_1.theme_details[0].light_color">
+            <div  *ngFor="let item of leaderboard_data_buttons ;let i=index">
+                <button  class="button_series_mobile"    [class.active]="i==this.activeClass"  (click)="leaderboard(i)">
                     {{item.label}}    
                     </button>
-                   
+            </div>
+            
+     
         </mat-card>
 
 

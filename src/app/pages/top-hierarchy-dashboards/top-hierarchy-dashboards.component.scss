@@ -1584,7 +1584,7 @@ font-size: 1vw;
         font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
-        font-size: 1.8vh;
+        font-size: 1.5vh;
         margin-top: 0.5vh;
       
 
@@ -1593,7 +1593,7 @@ font-size: 1vw;
         font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
-        font-size: 1.8vh;
+        font-size: 1.3vh;
         margin-top: 0.5vh;
         white-space: nowrap;
         overflow: hidden;
@@ -1711,7 +1711,7 @@ font-size: 1vw;
             font-weight: 600;
             margin-top: 0.3vh;
             color:#ffff;
-            font-size: 1.9vh;
+            font-size: 1.5vh;
             text-align: center;
 
         }
@@ -1749,7 +1749,7 @@ font-size: 1vw;
             font-family: "Inter";
             font-weight: 600;
             margin-top: 0.3vh;
-            font-size: 1.9vh;
+            font-size: 1.5vh;
             color: #ffff;
             text-align: center;
 
@@ -1804,30 +1804,31 @@ font-size: 1vw;
        
     }
     .button_series_mobile{
-        min-width: 19.7vw;
-        height: 6vh;
-        font-size: 2.0vh;
+        // min-width: 19.7vw;
+        height: 7vh;
+        font-size: 1.8vh;
         font-weight: 600;
         background: #ffffff;
         border-radius: 1vw;
+        padding: 10px;
         border: none;
-        
-        
+        width: 100px;
         color: #000000;
         font-weight: 600;
         font-family: 'Roboto'
         
     }
     .active{
-        min-width: 19.7vw;
-        height: 6vh;
-        font-size: 2.0vh;
+        // min-width: 19.7vw;
+        height: 7vh;
+        font-size: 1.8vh;
+        padding: 10px;
         font-weight: 600;
         background: var(--myvar);
         border-radius: 1vw;
         margin-left: 2vw;
         border: none;
-      
+        width: 100px;
         color: #ffff;
         font-weight: 600;
         font-family: 'Roboto'
