@@ -119,11 +119,8 @@ export class PlayZoneComponent implements OnInit {
     console.log(this.spotEngagementData);
     this.filterByCategory=res.data._spot_engagement_data;
     });
-
   }
-
   rewardPassbook(){
-    
     let body = {
       _userid: this.mergeObj.USERID,
       _game: this.mergeObj.id_coroebus_game,
@@ -136,13 +133,10 @@ export class PlayZoneComponent implements OnInit {
       this.spotEngagementPassbook=res.data._spot_passbook_data;
       this.Passbook=res.data._spot_passbook_data;
       console.log(this.spotEngagementPassbook);
-     
+  
     })
 
   }
-
-
- 
   open(content,data) {
     // console.log(content);
     if(data.id_engagement_game==='2'){
