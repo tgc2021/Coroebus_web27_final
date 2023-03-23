@@ -56,7 +56,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   leaderboard_data:any
   leaderboard_data_buttons:any
   i:any=0
-  spectSearchStr:any
+  spectSearchStr:any=''
   spectSearchStrTrigger: boolean = false
   activeTabOrderNumberForSectionView_2: any
   spectSearList: string
