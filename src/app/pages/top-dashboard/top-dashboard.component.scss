@@ -1,312 +1,375 @@
-
-
 @media only screen and (min-width: 360px) and (max-width: 768px) {
 
-    ::ng-deep{
+    ::ng-deep {
         .page-content {
-          padding-bottom: 0!important;
+            padding-bottom: 0 !important;
         }
-        .modal-content{
+
+        .modal-content {
             border-radius: 0 !important;
-            background:#F7E2AC !important;
+            background: #F7E2AC !important;
             ;
         }
-     }
-    
-      
+    }
 
 
-.web-view{
-    display: none;
-}
-
-.mobile_view{
-    height: 90vh;
-    overflow: scroll;
-}
 
 
-.mobile_details_card{
-  
-    flex-direction: column;
-}
-.mobile_name,.mobile_level,.mobile_growth_Index,.mobile_pech{
-    font-family: 'Work Sans';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 3vw;
-}
+    .web-view {
+        display: none;
+    }
 
-.mobile_buisness_index{
-    background: linear-gradient(180deg, #BFBEBE 51.54%, #FFFFFF 51.61%);
-    border-radius: 1vw;
-    height: 8vh;
-    font-size: 3.5vw;
-    width: 100%;
-    
-}
+    .mobile_view {
+        height: 90vh;
+        overflow: scroll;
+    }
 
-.growth_index_accordion_mobile{
-    font-family: 'Work Sans';
-font-style: normal;
-font-weight: 600;
-}
-.business-index{
-    height: 19.7vh;
-    overflow: scroll;
-    margin-top: 3vh;
-}
 
-.mobile_map{
-    height: 50vh;
-    width: 94vw;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
-    background-size: 100% 100%;
-}
+    .mobile_details_card {
 
-.mobile_bottom_button_div{
-    flex-direction: column;
-}
-.mobile_call_center_details{
-    margin-top: 1vh;
-    // border: 1px solid #000000;
-    // padding: 2vw;
-    height: 52vh;
-    overflow-x: hidden;
-    overflow-y:auto;
-}
+        flex-direction: column;
+    }
 
-.mobile_call_center_row{
-    width: 100%;
-    display: flex;
-    row-gap:2%;
-    align-items: center;
-    justify-content: center;
-}
+    .mobile_name,
+    .mobile_level,
+    .mobile_growth_Index,
+    .mobile_pech {
+        font-family: 'Work Sans';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 3vw;
+    }
 
-.mobile_name_div{
-    min-height: 2vh;
-    color: #ffff;
-    font-size: 1.7vh;
-    font-weight: 600;
-}
+    .mobile_buisness_index {
+        background: linear-gradient(180deg, #BFBEBE 51.54%, #FFFFFF 51.61%);
+        border-radius: 1vw;
+        height: 8vh;
+        font-size: 3.5vw;
+        width: 100%;
 
-.mobile_name_and_location{
-    flex-direction: column;
-   
-    height: 6vh;
-  
-}
-.mobile_image_logo{
-width: 7vh;
-border: 1px solid #ffff;
-border-radius: 8px;
-height:7vh;
-}
+    }
 
-.mobile_name{
-    font-family: 'Work Sans';
-font-style: normal;
-font-weight: 600;
-font-size: 4vw;
-}
+    .growth_index_accordion_mobile {
+        font-family: 'Work Sans';
+        font-style: normal;
+        font-weight: 600;
+    }
 
-.mobile_location{
-    font-family: 'Work Sans';
-    font-style: normal;
-    // font-weight: 600;
-    font-size: 1.5vh;
-    color: #ffff;
-}
-.mobile_hos_Level{
-    font-family: 'Work Sans';
-    font-style: normal;
-    // font-weight: 600;
-    font-size: 1.5vh;
-    color: #ffff;
+    .business-index {
+        height: 19.7vh;
+        overflow: scroll;
+        margin-top: 3vh;
+    }
 
-}
-.mobile_hos_Score{
-    font-family: 'Work Sans';
-    font-style: normal;
-    // font-weight: 600;
-    font-size:1.5vh;
-    color: #ffff;
-    
-}
-.mobile-rank{
-    font-family: "Work Sans";
-    font-style: normal;
-    /* font-weight: 600; */
-    font-size: 2vh;
-    color: #ffff;
+    .mobile_map {
+        height: 50vh;
+        width: 94vw;
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+        background-size: 100% 100%;
+    }
 
-}
+    .mobile_bottom_button_div {
+        flex-direction: column;
+    }
+
+    .mobile_call_center_details {
+        margin-top: 1vh;
+        // border: 1px solid #000000;
+        // padding: 2vw;
+        height: 52vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .mobile_call_center_row {
+        width: 100%;
+        display: flex;
+        row-gap: 2%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mobile_name_div {
+        min-height: 2vh;
+        color: #ffff;
+        font-size: 1.7vh;
+        font-weight: 600;
+    }
+
+    .mobile_name_and_location {
+        flex-direction: column;
+
+        height: 6vh;
+
+    }
+
+    .mobile_image_logo {
+        width: 7vh;
+        border: 1px solid #ffff;
+        border-radius: 8px;
+        height: 7vh;
+    }
+
+    .mobile_name {
+        font-family: 'Work Sans';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 4vw;
+    }
+
+    .mobile_location {
+        font-family: 'Work Sans';
+        font-style: normal;
+        // font-weight: 600;
+        font-size: 1.5vh;
+        color: #ffff;
+    }
+
+    .mobile_hos_Level {
+        font-family: 'Work Sans';
+        font-style: normal;
+        // font-weight: 600;
+        font-size: 1.5vh;
+        color: #ffff;
+
+    }
+
+    .mobile_hos_Score {
+        font-family: 'Work Sans';
+        font-style: normal;
+        // font-weight: 600;
+        font-size: 1.5vh;
+        color: #ffff;
+
+    }
+
+    .mobile-rank {
+        font-family: "Work Sans";
+        font-style: normal;
+        /* font-weight: 600; */
+        font-size: 2vh;
+        color: #ffff;
+
+    }
 }
 
 @media only screen and (min-width: 769px) {
-    .mobile-view{
+    .mobile-view {
         display: none;
-        
+
     }
+
     div.mat-expansion-panel-body {
         padding: 0 10px 16px !important;
     }
-    .growth_index_accordion{
+
+    .growth_index_accordion {
         font-size: 1vw;
         font-weight: 600;
     }
 
- 
-    .mat-expansion-panel-header{
+    .hos_leaderboard {
+        width: 90%;
+        height: 64vh;
+        overflow-y: auto;
+        padding: 0;
+    }
+
+    .mat-expansion-panel-header {
         padding: 0 8px;
 
     }
-    .modal-header,.modal-footer{
+
+    .modal-header,
+    .modal-footer {
         border: none;
     }
 
     ::ng-deep {
-        .modal-content{
+        .modal-content {
             border-radius: 0 !important;
-            background:#F7E2AC !important;
+            background: #F7E2AC !important;
             ;
         }
 
     }
 
-    .video_player{
+    .video_player {
         height: 70vh;
     }
-   
-    .details_card{
+
+    .details_card {
         width: 90%;
         margin: 1vw;
     }
+
     // .btn-outline-dark{
     //     background: var(--myvar);
     // }
-    .web-view{
+    .web-view {
         overflow: hidden;
     }
-    .map-view{
-    background: url(../../../assets/images/TopHierarchyDashboard/ancient_map_color.png);
-    width: 80vw;
-    height: 72vh;
-    background-size: 100% 100%;
+
+    .map-view {
+        background: url(../../../assets/images/TopHierarchyDashboard/ancient_map_color.png);
+        width: 80vw;
+        height: 72vh;
+        background-size: 100% 100%;
     }
-    
+
     ::ng-deep {
         .page-content {
-    
+
             padding-top: 9vh !important;
-            padding-left: 0!important;
-            padding-right: 0!important;
-            padding-bottom: 0!important;
-    
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            padding-bottom: 0 !important;
+
         }
-    
+
     }
-    
-    .right_section{
+
+    .right_section {
         display: flex;
         flex-direction: column;
         justify-content: end;
         height: 88vh;
     }
-    
-    .top_right_section{
+
+    .top_right_section {
         width: 20vw;
         height: 35vh;
         border: none;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        
+
     }
-    
-    .name,.level,.global_index,.pech{
+
+    .name {
+        font-family: Work Sans;
+        font-size: 1vw;
+        font-weight: 600;
+        line-height: 5vh;
+
+    }
+
+    .leaderboard_div_web{
+        flex-direction: column;
+    }
+    .web_rank_label{
+        font-family: Work Sans;
+font-size: 0.8vw;
+font-weight: 600;
+padding-left: 0;
+
+    }
+
+    .web_name_label{
+        font-family: Work Sans;
+        font-size: 0.8vw;
+        font-weight: 600;
+        margin-left: 4vw;
+    }
+.web_score_label{
+    font-family: Work Sans;
+    font-size: 0.8vw;
+    font-weight: 600;
+    margin-left: 5.5vw;
+}
+
+    .level,
+    .global_index,
+    .pech {
         font-size: 0.9vw;
         margin-bottom: 1vh;
         font-weight: 600;
         color: #000000;
-        
+
     }
 
-    .name_details,.global_index_details,.pech_details{
+    .name_details,
+    .global_index_details,
+    .pech_details {
         text-align: end;
         position: absolute;
         right: 1.2vw;
     }
-    
 
-    .global_index_mobile{
+
+    .global_index_mobile {
         font-size: 0.9vw;
         margin-bottom: 1vh;
         font-weight: 600;
         color: #000000;
-        
+
 
 
     }
-    .horizontal_row{
+
+    .horizontal_row {
         margin: 0.1vw;
         color: #FFFFFF;
     }
-    .bottom_right_section{
+
+    .bottom_right_section {
         width: 19.8vw;
         height: 91vh;
         border: 1px solid black;
         padding: 0;
         background-color: var(--mediumColor);
     }
-    
-    .first_row_details{
-        height: 12vh;
+
+    .first_row_details {
+        height: 10vh;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: center;
+        margin-bottom: 1vh;
     }
 
-    .first_row_details:hover{
+    .first_row_details:hover {
         // background-color: #61646B;
     }
-    
-    .image_logo{
-        height: 6vh;
-        width: 3vw;
-        margin-left: 0.2vw;
+
+    .image_logo {
+        height: 4vh;
+        width: 4vh;
+        /* margin-left: 0.2vw; */
         border: 1px solid white;
-        border-radius: 5px;
+        border-radius: 50%;
     }
-    
-    .call_center_name,.rank{
+
+    .call_center_name,
+    .rank {
         font-family: 'Work Sans', sans-serif;
-        font-size: 1vw;
+        font-size: 0.7vw;
         font-weight: 600;
         color: #FFFFFF;
     }
-    
-    .location,.hos_Score,.hos_Level{
+
+    .location,
+    .hos_Score,
+    .hos_Level {
         font-family: 'Work Sans', sans-serif;
         font-size: 0.8vw;
         font-weight: 600;
         color: #FFFFFF;
 
     }
-    
-    
-    .bottom_right_section_height{
+
+
+    .bottom_right_section_height {
         height: 91vh;
         overflow: scroll;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    
-    
+
+
     .button-container {
         // border: 2px solid #000000;
         overflow-x: auto;
@@ -327,50 +390,50 @@ font-size: 4vw;
         padding-top: 2vh;
     }
 
-    .bottom_div{
+    .bottom_div {
         width: 77vw;
-    position: relative;
-    height: 12vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+        position: relative;
+        height: 12vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-    
-    .left_side_div{
-    height: 91vh;
-    
+
+    .left_side_div {
+        height: 91vh;
+
     }
-    
-    
-    .call_center_div{
+
+
+    .call_center_div {
         cursor: pointer;
-        width: 100%;
-       background-size: 100% 100%;
+        width: 97%;
+        background-size: 100% 100%;
     }
-    
-    .bottom_button{
+
+    .bottom_button {
         width: 14vw;
         height: 14vh;
         margin-right: 6vw;
         margin-top: 1vh;
-        background: linear-gradient(180deg,var(--myvar) 51.54%, #FFFFFF 51.61%);
+        background: linear-gradient(180deg, var(--myvar) 51.54%, #FFFFFF 51.61%);
         border-radius: 0.2vw;
         color: #000000;
     }
-    
-    .bottom_button_labels{
+
+    .bottom_button_labels {
         color: #FFFFFF;
         font-family: 'Work Sans';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1vw;
-    height: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1vw;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .bottom_button_labels_score{
+    .bottom_button_labels_score {
         font-size: 1vw;
         height: 50%;
         display: flex;
@@ -380,4 +443,3 @@ font-size: 4vw;
         font-weight: 600;
     }
 }
-

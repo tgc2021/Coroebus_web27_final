@@ -196,7 +196,55 @@
                    
                     </div> -->
 
-                    <div class="row first_row_details d-flex call_center_div"
+                    <mat-card class="hos_leaderboard" [style.background-color]="buisness_head_response_.theme_details[0].light_color">
+                        <div class="d-flex" style="margin-bottom: 1vh; margin-top: 2vh;margin-left: 0.5vw;">
+                            <div class="web_rank_label">
+                                Rank
+                            </div>
+
+                            <div class="web_name_label">
+                                Name
+                            </div>
+
+                            <div class="web_score_label">
+                                Score
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center leaderboard_div_web" >
+                            <div class="row first_row_details d-flex call_center_div"
+                            *ngFor="let res of buisness_head_response_._ranking_data[0]._data;let i=index"
+                            style="background-image: url({{buisness_head_response_._ranking_data[0]._data[i].ranking_image}});"
+                            (click)="navigateToHOSDashboard(i)">
+                            <div class="col-1 rank">{{res.rankingtable_number}}</div>
+                            <div class="col-2 g-0">
+                                <img class="image_logo" src="{{res.rankingtable_logo}}" />
+                            </div>
+                            <div class="col-6">
+                                <div class="call_center_name">
+                                    {{res.rankingtable_name}}
+                                </div>
+                                <div class="location">
+                                    {{res.user_location}}
+                                </div>
+                                <div class="hos_Level">
+    
+                                    {{res.level_label}}
+                                </div>
+    
+    
+                               
+    
+                            </div>
+                            <div class="col-2">
+                                <div class="hos_Score">
+                                    {{res.rankingtable_weightage}}
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                   
+                        
+                        <!-- <div class="row first_row_details d-flex call_center_div"
                         *ngFor="let res of buisness_head_response_._ranking_data[0]._data;let i=index"
                         style="background-image: url({{buisness_head_response_._ranking_data[0]._data[i].ranking_image}});"
                         (click)="navigateToHOSDashboard(i)">
@@ -222,9 +270,9 @@
                             </div>
 
                         </div>
-                    </div>
-
-
+                    </div> -->
+                    </mat-card>
+                 
 
 
                 </div>

@@ -19,6 +19,7 @@ import * as userActions from '../../core/app-state/actions';
 import { url } from 'inspector';
 import { DefaultComponent } from '@pages/dashboards/default/default.component';
 import { ApiserviceService } from 'app/apiservice.service';
+import { MENU_HOS } from './menu_hos';
 @Component({
   providers:[DefaultComponent ],
 
@@ -293,7 +294,12 @@ console.log(this.id_coroebus_organization);
       
       this.menuItems = MENU_SPECTATOR;
       this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
-    }else {
+    }
+    else  if(this.id_role == 13){
+      this.menuItems = MENU_HOS;
+      this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
+    }
+    else {
       console.log(this.spectator_value);
     
       this.menuItems = MENU;
