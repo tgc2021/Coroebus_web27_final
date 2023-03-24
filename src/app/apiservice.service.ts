@@ -126,9 +126,6 @@ export class ApiserviceService {
     return this.Http.post(tempurl,data)
 
   }
-
-  
-
   engagamentlog(data:any){
     var tempurl= `${this.URLstring}`+ `/${this.Path}/dashboard/engagement_log`
     return this.Http.post(tempurl,data)
@@ -140,10 +137,14 @@ export class ApiserviceService {
 
   }
 
+  campaignsPopup(data:any){
+    var tempurl= `${this.URLstring}`+ `/${this.Path}/DashboardHome/seasonal_theme`
+    return this.Http.post(tempurl,data)
+
+  }
   updatePopUp(data:any){
     var tempurl= `${this.URLstring}`+ `/${this.Path}/Popup/popup_update`
     return this.Http.post(tempurl,data)
-
   }
 
   spectnotification(data:any){

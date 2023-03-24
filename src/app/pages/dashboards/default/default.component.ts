@@ -101,6 +101,22 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   web_tile_img:any
   location:any
   panelOpenState = false;
+  dataForMonthlyPopup:any;
+  monthlyPopup: any;
+  seasonalThemeDaily: any;
+  seasonalThemeMonthly: any;
+  dataForDailyPopup: any;
+  DailyPopup:any;
+  isDailyModalopen: boolean;
+  isWeeklyModalOpen: boolean;
+  isMonthlyModalOpen: boolean;
+  monthlyTopers: any;
+  dataForWeeklyPopup: Object;
+  weeklyPopup: any;
+  seasonalThemeWeekly: any;
+  weeklyTopers: any;
+  seasonal_theme_weekly_badge_details: any;
+  dailyToppers: any;
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -214,14 +230,17 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     else {
       this.edit_image = true
     }
+    
     // console.log(this.userID);
   }
 
 
 
   ngAfterViewInit() {
-
-    this.edit_image
+    this.edit_image;
+    this.openDailyModal();
+    this.openWeeklyModal();
+    this.openMonthlyModal();
   }
 
 
@@ -1088,6 +1107,7 @@ else if(this.activeTabForSectionView_2 == 4){
     } else {
       // this.levelsBucketsList_err = 'Error'
     }
+    
   }
   getDataBasedOnUserIDVIAhierarchyPopupList(data: any, modal: any) {
     modal.dismiss('Cross click')
@@ -1099,6 +1119,8 @@ else if(this.activeTabForSectionView_2 == 4){
     console.log(obj)
     this.getDataBasedOnUserID(obj)
   }
+
+
 
   // ShowTime(i)
   // {
@@ -1112,8 +1134,6 @@ else if(this.activeTabForSectionView_2 == 4){
 
   activeTab() {
     console.log(this.queryParams);
-
-
   }
 
   navigateToRewards() {
@@ -1175,5 +1195,69 @@ else if(this.activeTabForSectionView_2 == 4){
 
     });
   }
+  openDailyModal() {
+    let obj = {
+      _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
 
+      _game: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
+    }
+    this.http.campaignsPopup(obj).subscribe((res)=>{
+      // console.log(res);
+      this.dataForWeeklyPopup=res;
+      this.DailyPopup=this.dataForMonthlyPopup.data;
+      this.seasonalThemeDaily=this.DailyPopup.seasonal_theme_daily;
+      this.dailyToppers=this.weeklyPopup.seasonal_theme_daily_badge_toppers;
+      this.seasonal_theme_weekly_badge_details=this.DailyPopup.seasonal_theme_daily_badge_details;
+      console.log(this.seasonal_theme_weekly_badge_details);
+      
+      
+    })
+    this.isDailyModalopen = true;
+    this.isWeeklyModalOpen = false;
+    this.isMonthlyModalOpen = false;
+
+  }
+  openWeeklyModal() {
+    let obj = {
+      _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
+
+      _game: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
+    }
+    this.http.campaignsPopup(obj).subscribe((res)=>{
+      // console.log(res);
+      this.dataForWeeklyPopup=res;
+      this.weeklyPopup=this.dataForMonthlyPopup.data;
+      this.seasonalThemeWeekly=this.weeklyPopup.seasonal_theme_weekly;
+      this.weeklyTopers=this.weeklyPopup.seasonal_theme_weekly_badge_toppers;
+      this.seasonal_theme_weekly_badge_details=this.weeklyPopup.seasonal_theme_weekly_badge_details;
+      console.log(this.seasonal_theme_weekly_badge_details);
+      
+      
+    })
+    this.isDailyModalopen = false;
+    this.isWeeklyModalOpen = true;
+    this.isMonthlyModalOpen = false;
+
+  }
+  openMonthlyModal() {
+    let obj = {
+      _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
+
+      _game: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
+    }
+    this.http.campaignsPopup(obj).subscribe((res)=>{
+      // console.log(res);
+      this.dataForMonthlyPopup=res;
+      this.monthlyPopup=this.dataForMonthlyPopup.data;
+      this.seasonalThemeMonthly=this.monthlyPopup.seasonal_theme_monthly;
+      this.monthlyTopers=this.monthlyPopup.seasonal_theme_monthly_badge_toppers
+      console.log(this.seasonalThemeMonthly);
+      
+      
+    })
+    this.isDailyModalopen = false;
+    this.isWeeklyModalOpen = false;
+    this.isMonthlyModalOpen = true;
+
+  }
 }
