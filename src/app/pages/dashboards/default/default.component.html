@@ -249,7 +249,11 @@
                 <div class="row no-gutter-" [ngClass]="{'row-cols-2': sectionView_2?._ranking_data?.length === 2,
                                 'row-cols-3': sectionView_2?._ranking_data?.length === 3,
                                 'row-cols-4': sectionView_2?._ranking_data?.length === 4,
-                                'row-cols-1': sectionView_2?._ranking_data?.length === 4}" style="margin-top: 17px;">
+                                'row-cols-1': sectionView_2?._ranking_data?.length === 4}" style="   margin-top: 17px;
+                                display: flex;
+                                flex-direction: row;
+                                flex-wrap: nowrap;
+                                overflow-x: overlay;">
                     <div class="col" *ngFor="let item of sectionView_2?._ranking_data">
                         <a class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2" style="padding-top: 8px;"
                             [ngClass]="{'filter-btn-dashboard-active': activeTabForSectionView_2 === item?.order}"
