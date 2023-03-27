@@ -928,9 +928,9 @@
 <!-- Mobile View Started -->
 <div class="mobile-view">
     <div class="row">
-        <div class="col-4">
-            <div class="prof_pic">
-                <img class="prof_pic_image" src="{{sectionView_1._personal_data.profile_logo}}" height="100%" width="100%" />
+        <div class="col-3">
+            <div class="prof_pic_mobile">
+                <img class="prof_pic_image_mobile"  src="{{sectionView_1._personal_data.profile_logo}}" height="100%" width="100%" />
             </div>
             <div *ngIf="cameraimage"  class="cameraimg">
 
@@ -962,7 +962,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-8 ">
+        <div class="col-9">
             
                 <div style="background-image: url({{sectionView_1?._personal_data?.background_image_profile_web}});width: 100%;height: 20vh;background-size: 100% 100%;border: 2px solid rgb(74, 193, 217);display: flex;align-items:center;justify-content: space-evenly;">
                     <div class="d-flex align-items-center badge_div_mobile">
@@ -1233,7 +1233,7 @@
 
     <!-- Button Div Section -->
     <div class="row d-flex justify-content-center align-items-center mt-2">
-        <mat-card class=" button_div_mobile" style="width:93vw;display: flex;flex-direction:row;justify-content:start;align-items: center;overflow-x:overlay;flex-wrap:nowrap;column-gap: 1.3em;" [style.background]="sectionView_1.theme_details[0].light_color">
+        <mat-card class=" button_div_mobile" style="width:93vw;display: flex;flex-direction:row;justify-content:start;align-items: center;overflow-x:overlay;flex-wrap:nowrap;column-gap:0.5em;" [style.background]="sectionView_1.theme_details[0].light_color">
             <div  *ngFor="let item of leaderboard_data_buttons ;let i=index">
                 <button  class="button_series_mobile"    [class.active]="i==this.activeClass"  (click)="leaderboard(i)">
                     {{item.label}}    

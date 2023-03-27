@@ -445,6 +445,7 @@ else{
 
           this.http.BoosterData(body).subscribe((res: any) => {
             this.boosterData_response = res.data;
+            // console.log(this.boosterData_response);
 
             console.log(res);
 

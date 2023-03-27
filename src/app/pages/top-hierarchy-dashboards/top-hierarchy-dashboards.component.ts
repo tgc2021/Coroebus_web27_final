@@ -79,6 +79,14 @@ export class TopHierarchyDashboardsComponent implements OnInit {
       localStorage.removeItem('foo') 
     }
 
+    this.dark_color=localStorage.getItem('topbar_color')
+    this.element.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
+console.log(this.dark_color);
+
+    this.medium_color=localStorage.getItem('medium_color')
+    this.element.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
+    console.log(this.medium_color);
+
     this.activeClass=0
 
     // this.isactive = true
@@ -318,7 +326,6 @@ else{
 
   navigateToRMDashboard(index:any){
     console.log(index);
-    
     this.sm_user_id=this.Util.encryptData(this.sectionView_3._ranking_data[2]._data[index].userid)
     this.game_ID_rm=localStorage.getItem('gameId')
 
@@ -329,7 +336,6 @@ else{
     this.overall_role_id=this.Util.decryptData(this.sm_role_id)
 console.log(this.overall_role_id);
 this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  this.sm_game_id +"&roleID="+  this.sm_role_id)
-
   }
 
   navigateToSearchSMDashboard(index:any){
