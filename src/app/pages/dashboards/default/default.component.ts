@@ -117,10 +117,16 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   weeklyTopers: any;
   seasonal_theme_weekly_badge_details: any;
   dailyToppers: any;
+  role_id: any;
+  dark_color: any;
+ 
+  medium_color: any;
+  gameID: string;
+  roleID: string;
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
-    private _route: ActivatedRoute, public toastService: ToastService,public http:ApiserviceService) {
+    private _route: ActivatedRoute, public toastService: ToastService,public http:ApiserviceService,public elementref: ElementRef) {
     this.activeSubTabForSectionView_2 = 'My Store'
     this.Edit_image()
   }
@@ -810,6 +816,8 @@ else if(this.activeTabForSectionView_2 == 4){
     
   })
 }
+
+    console.log("Order ",order)
     this.activeTabOrderNumberForSectionView_2 = order
     this.activeSubTabForSectionView_2 = 'My Store'
     this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
@@ -1051,27 +1059,53 @@ else if(this.activeTabForSectionView_2 == 4){
     modalRef.componentInstance.notoficationData = data;
   }
   getDataBasedOnUserID(data: any) {
-    // console.log(data?.role_id)
+    console.log(data?.role_id)
+    this.role_id= data?.role_id.toString();
+    console.log(this.role_id)
+    this.Edit_image();
+ 
+    if(this.role_id==='8'||this.role_id=='9'||this.role_id=='12'){
+      
 
+      this._router.navigate(['/top_dashboard'], {
+        relativeTo: this._route,
+        queryParams: {
+          userID: this.Util.encryptData(data?._userid),
+          gameID: this.Util.encryptData(data?.game_id),
+          roleID: this.Util.encryptData(data?.role_id?.toString())
+  
+        },
+      
+        queryParamsHandling: 'merge',
+        // preserve the existing query params in the route
+        // skipLocationChange: false
+        // do not trigger navigation
+  
+  
+      });
+    }
+    else{
+      this._router.navigate([], {
+        relativeTo: this._route,
+        queryParams: {
+          userID: this.Util.encryptData(data?._userid),
+          gameID: this.Util.encryptData(data?.game_id),
+          roleID: this.Util.encryptData(data?.role_id?.toString())
+  
+        },
+      
+        queryParamsHandling: 'merge',
+        // preserve the existing query params in the route
+        skipLocationChange: false
+        // do not trigger navigation
+  
+  
+      });
+
+    }
+  
     this.Edit_image()
-    this._router.navigate([], {
-      relativeTo: this._route,
-      queryParams: {
-        userID: this.Util.encryptData(data?._userid),
-        gameID: this.Util.encryptData(data?.game_id),
-        roleID: this.Util.encryptData(data?.role_id?.toString())
-
-      },
-
-      queryParamsHandling: 'merge',
-      // preserve the existing query params in the route
-      skipLocationChange: false
-      // do not trigger navigation
-
-
-    });
-    this.Edit_image()
-
+   
 
 
   }
@@ -1257,5 +1291,13 @@ else if(this.activeTabForSectionView_2 == 4){
     this.isWeeklyModalOpen = false;
     this.isMonthlyModalOpen = true;
 
+  }
+  navigateToOtherRole(item){
+    console.log(item);
+    this.userID= this.Util.encryptData(item?.userid);
+    this.gameID= this.Util.encryptData(item?.id_coroebus_game);
+    this.roleID= this.Util.encryptData(item?.id_role);
+     this._router.navigateByUrl('/dashboard?userID='+this.userID +"&gameID="+ this.gameID +"&roleID="+this.roleID)
+    
   }
 }

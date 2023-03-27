@@ -121,13 +121,11 @@
                                       </mat-expansion-panel-header>
 
                                       <div class="d-flex justify-content-between align-items-center mt-4" style="font-weight: 550;font-family: 'Work Sans';">
-                                        <div class="global_index_mobile d-flex ps-2"  style="font-weight: 600;font-family: 'Work Sans';">Champions League
+                                        <div class="global_index_mobile d-flex ps-2"  style="font-weight: 600;font-family: 'Work Sans';    color: dimgray;">Champions League
                                        
                                         </div>
                                         
                                     </div>
-                                    
-                                      
                                     </mat-expansion-panel>
                                   </mat-accordion>
                             </div>
@@ -394,7 +392,7 @@
                         <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
                             [style.background-image]="'url(' + item?.ranking_image_level_img + ')'"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                            *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) ">
+                            *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) " (click)="navigateToOtherRole(item)">
                             <div class="col">
                                 <div class="media d-flex align-items-center gap-3 " style="height: 8vh;">
                                     <span class="col-1 ms-2 text-white position-absolute-s">
@@ -461,7 +459,7 @@
                     <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
                         [style.background-image]="'url(' + web_tile_img + ')'"
                         [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                        *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) ">
+                        *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) " C>
                         <div class="col">
                             <div class="media d-flex align-items-center gap-3 " style="height: 6vh;">
                                 <span class="col-1 ms-2 text-white position-absolute-s">
@@ -597,20 +595,9 @@
                                                             <div class="d-flex justify-content-between align-items-center mt-4" style="font-weight: 550;font-family: 'Work Sans';">
                                                                 <div class="global_index_mobile d-flex ps-2"  style="font-weight: 600;font-family: 'Work Sans';font-size:1.2em"
                                                                 >Learning Academy
-                                                               
                                                                 </div>  
                                                             </div>
-                                                          
-                                                           
-                                                          
-                                            
-                                                           
-                                                           
-                                                           
-                                    
                                                         </div>
-                                     
-                                    
                                     </mat-expansion-panel>
                                   </mat-accordion>
 
@@ -669,7 +656,6 @@
                                                                     {{item?.description_}}
                                                                 </p>
                                                             </h5>
-    
                                                             <img class="bulletins-image-card" src="{{item?.logo}}" alt=""
                                                                 height="95">
                                                         </div>
@@ -1152,7 +1138,11 @@
                 <div class="row no-gutter" [ngClass]="{'row-cols-2': sectionView_2?._ranking_data?.length === 2,
                                 'row-cols-3': sectionView_2?._ranking_data?.length === 3,
                                 'row-cols-4': sectionView_2?._ranking_data?.length === 4,
-                                'row-cols-1': sectionView_2?._ranking_data?.length === 4}" style="margin-top: 17px;">
+                                'row-cols-1': sectionView_2?._ranking_data?.length === 4}" style="margin-top: 17px;
+                                display: flex;
+                                flex-direction: row;
+                                flex-wrap: nowrap;
+                                overflow-x: overlay;">
                     <div class="col" *ngFor="let item of sectionView_2?._ranking_data">
                         <a class="btn btn-xs filter-btn-dashboard  fs-sm me-2 mb-2" style="padding-top: 8px;"
                             [ngClass]="{'filter-btn-dashboard-active': activeTabForSectionView_2 === item?.order}"
