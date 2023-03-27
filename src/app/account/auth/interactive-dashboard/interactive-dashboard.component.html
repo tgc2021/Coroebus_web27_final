@@ -51,7 +51,7 @@
             <div class="col-1 d-flex justify-content-end">
                
                 <div class="web_points_bg">
-                    <div class="web_center_div">
+                    <div class="web_center_div"  (click)="navigateReward()">
                         <img class="web_points"
                             src="{{interactive_dashoard_response[0].data.theme_details[0].reward_points_image}}" />
                         <p class="total_web_points">{{interactive_dashoard_response[0].data._points[2].score}}</p>
