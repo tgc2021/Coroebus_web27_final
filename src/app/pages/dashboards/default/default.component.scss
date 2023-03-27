@@ -340,9 +340,13 @@ color: #000000;
     height: auto;
     border-radius: 11px;
 }
-// .card-container{
-//     display: flex;
-// }
+.card-container{
+    display: flex;
+}
+.card-container-popup{
+    display: block;
+
+}
 .name-f-size-mobile{
     font-size: 16px;
 }
@@ -1056,7 +1060,7 @@ color: #000000;
     border: 2px, solid, #000000;
 }
 
-.card-container {
+.card-container-popup {
     position: relative;
     overflow-x: auto;
     

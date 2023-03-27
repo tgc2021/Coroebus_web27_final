@@ -590,16 +590,24 @@
 
     <div class="mobile_call_center_details d-flex flex-column justify-content-start align-items-center">
     
-    
+        <div class="row" style="width: 100%;
+        font-size: 4vw;
+        font-weight: 600;
+        padding-left: 4%;">
+            <div class="col-1 ">Rank</div>
+            <div class="col-2"></div>
+            <div class="col-6" >Name </div>
+            <div class="col-2">Score</div>
+        </div>
         <div class="row align-self-center mobile_call_center_row   mt-1"
             *ngFor="let res of buisness_head_response_._ranking_data[0]._data;let i=index"
             style="background-image: url({{buisness_head_response_._ranking_data[0]._data[i].ranking_image}});background-size: 100% 100%;"
             (click)="navigateToHOSDashboard(i)">
-            <div class="col-2 mobile-rank d-flex justify-content-center align-items-center">{{res.rankingtable_number}}</div>
+            <div class="col-1 mobile-rank d-flex justify-content-center align-items-center">{{res.rankingtable_number}}</div>
             <div class="col-2 g-0 d-flex align-items-center">
                 <img class="mobile_image_logo" src="{{res.rankingtable_logo}}" />
             </div>
-            <div class="col-8">
+            <div class="col-6">
                 <div class="mobile_name_div ">
                     {{res.rankingtable_name}}
                 </div>
@@ -612,11 +620,14 @@
                 </div>
     
     
-                <div class="mobile_hos_Score">
-                    Score: {{res.rankingtable_weightage}}
-                </div>
     
             </div>
+            <div class="col-2">
+                <div class="mobile_hos_Score">
+                    {{res.rankingtable_weightage}}
+                </div>
+            </div>
+            
         </div>
     
     

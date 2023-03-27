@@ -1252,8 +1252,6 @@ else if(this.activeTabForSectionView_2 == 4){
       this.seasonalThemeMonthly=this.monthlyPopup.seasonal_theme_monthly;
       this.monthlyTopers=this.monthlyPopup.seasonal_theme_monthly_badge_toppers
       console.log(this.seasonalThemeMonthly);
-      
-      
     })
     this.isDailyModalopen = false;
     this.isWeeklyModalOpen = false;
