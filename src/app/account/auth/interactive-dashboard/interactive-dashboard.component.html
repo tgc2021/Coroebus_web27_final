@@ -1146,12 +1146,9 @@
                                                     <div>{{data.yesterday_score}}</div>
                                                 </div>
                                                 <div class="accordian-label d-flex flex-column  align-items-end col-6">
-
                                                     <div>{{data.today_score}}</div>
                                                 </div>
                                             </div>
-
-
                                             <div class="progress"
                                                 *ngIf="data.arrow_color==='green';then IfBlock else   elseBlock"> </div>
                                             <ng-template #IfBlock>
@@ -1162,29 +1159,29 @@
                                                         role="progressbar"
                                                         [ngStyle]="{'width.%': data.growth_percentage}"
                                                         aria-valuenow="data.growth_percentage" aria-valuemin="0"
-                                                        aria-valuemax="100%">{{data.growth_percentage.slice(0,5)}}%
+                                                        aria-valuemax="100%">{{data.growth_percentage}}%
                                                     </div>
                                                 </div>
 
 
                                             </ng-template>
                                             <ng-template #elseBlock>
-                                                <div class="progress border border-success"
+                                                <div class="progress border border-danger"
                                                     *ngIf="data.growth_percentage==0">
-                                                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated"
+                                                    <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated"
                                                         role="progressbar"
                                                         [ngStyle]="{'width.%': data.growth_percentage.slice(1,4)}"
                                                         aria-valuenow="data.growth_percentage" aria-valuemin="0"
-                                                        aria-valuemax="100%">{{data.growth_percentage.slice(0,4)}}%
+                                                        aria-valuemax="100%">{{data.growth_percentage}}%
                                                     </div>
                                                 </div>
                                                 <div class="progress border border-danger"
                                                     *ngIf="data.growth_percentage!=0">
                                                     <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated"
                                                         role="progressbar"
-                                                        [ngStyle]="{'width.%': data.growth_percentage.slice(1,4)}"
+                                                        
                                                         aria-valuenow="data.growth_percentage" aria-valuemin="0"
-                                                        aria-valuemax="100%">{{data.growth_percentage.slice(1,4)}}%
+                                                        aria-valuemax="100%">%
                                                     </div>
                                                 </div>
                                             </ng-template>
@@ -1196,19 +1193,14 @@
                                                 height="100%">
                                         </div>
 
-                                        <div *ngIf="data.growth_percentage<0" style="height:4vh;">
+                                        <div *ngIf="data.growth_percentage<=0" style="height:4vh;">
 
                                             <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
                                                 height="100%">
 
                                         </div>
 
-                                        <div *ngIf="data.growth_percentage==0" style="height:4vh;">
-
-                                            <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt=""
-                                                height="100%">
-
-                                        </div>
+                                       
 
                                     </div>
 
