@@ -76,7 +76,6 @@
                                                             <div class="d-flex justify-content-between align-items-center mt-4" style="font-weight: 550;font-family: 'Work Sans';">
                                                                 <div class="global_index_mobile d-flex ps-2"  style="font-weight: 600;font-family: 'Work Sans';cursor: pointer;" (mouseover)="openWeeklyModal()" data-bs-toggle="modal"
                                                                 data-bs-target="#weeklyModal" >Weekly
-                                                               
                                                                 </div>
                                                                 
                                                             </div>
@@ -166,7 +165,7 @@
                         </div>
                     </div>
                     <div class="col-9 d-flex gap-3">
-                        <div class="bg-image d-flex dashboard-banner mb-3"
+                        <div class="bg-image d-flex  dashboard-banner mb-3"
                             [style.background-image]="'url(' + sectionView_1?._personal_data?.background_image_profile_web + ')'"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
                             <div class="row">
@@ -245,12 +244,14 @@
                 </div>
                 <div style="padding:10px;border-radius:10px" [style.background-image]="
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-                    <div class="row " [ngClass]="{'row-cols-2': sectionView_2?._ranking_data?.length === 2,
+                    <div class="row" [ngClass]="{'row-cols-2': sectionView_2?._ranking_data?.length === 2,
                                     'row-cols-3': sectionView_2?._ranking_data?.length === 3,
                                     'row-cols-4': sectionView_2?._ranking_data?.length === 4,
                                     'row-cols-1': sectionView_2?._ranking_data?.length === 4}" style="   margin-top: 17px;
                                     display: flex;
-                                    
+                                   
+                                    overflow-x: overlay;
+                                    max-width: 48.5vw;
                                     flex-direction: row;
                                     flex-wrap: nowrap;
                                  ">
@@ -1304,7 +1305,7 @@
                                             {{item?.rankingtable_number}}
                                         </span>
                                         <div>
-                                            <div style="height:5vh;display:flex;align-items: center;padding-top: 5%;">
+                                            <div style="height:6vh;width:6vh;display:flex;align-items: center;padding-top: 5%;">
                                                 <img class="rounded-circle z-depth-2 user-logo-row" alt=""
                                                     src="{{item?.rankingtable_logo}}" data-holder-rendered="true"
                                                     height="100%" width="100%" (click)="openHierarchyPopup(item)">

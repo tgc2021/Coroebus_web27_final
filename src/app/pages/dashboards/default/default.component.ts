@@ -752,7 +752,7 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
   changeTabFilter(name: string, order: any) {
    
     // this.spectSearchStr=null
-    this.labelNameMy = name
+    // this.labelNameMy = name
     this.pageNumberForSectionView_3 = 1
     this.activeTabForSectionView_2 = order
     console.log(this.activeTabForSectionView_2);
@@ -781,11 +781,8 @@ else if(this.activeTabForSectionView_2 == 2){
     _section:"Dashboard",
     _description: this.sectionView_2._ranking_data[1].label+' Tab'
   }
-
-
   this.http.engagamentlog(body).subscribe(res=>{
     console.log(res);
-    
   })
 }
 else if(this.activeTabForSectionView_2 == 3){
