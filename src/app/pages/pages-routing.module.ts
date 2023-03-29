@@ -4,6 +4,7 @@ import { BusinessIndexMapComponent } from './business-index-map/business-index-m
 import { ChampionsLeagueComponent } from './champions-league/champions-league.component';
 
 import { DefaultComponent } from './dashboards/default/default.component';
+import { GovernanceIndexComponent } from './governance-index/governance-index.component';
 import { MainDashboardComponent } from './main-dashboard/main-dashboard.component';
 import { PersonalMilestoneComponent } from './personal-milestone/personal-milestone.component';
 import { TopDashboardComponent } from './top-dashboard/top-dashboard.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'top_dashboard', component:TopHierarchyDashboardsComponent },
   { path: 'topdashboard', component:TopDashboardComponent },
   { path: 'buisness_index', component:BusinessIndexMapComponent },
+  { path: 'governance_index', component:GovernanceIndexComponent },
 
 
 

@@ -102,7 +102,7 @@
                                     {{item._data}}
                                 </div>
                                 <div class="island_tag">
-                                    {{item.label}}
+                                    {{item.tag}}
                                 </div>
 
                         
@@ -196,7 +196,7 @@
                                     </div>
     
                                     <div class="d-flex justify-content-center">
-                                        <button class="right_button">
+                                        <button class="right_button" (click)="governance_index()">
                                             <div class="right_button_labels">NHT </div>
                                             <div class="right_button_score">50</div>
     
@@ -292,7 +292,7 @@
                                     </div>
     
                                     <div class="d-flex justify-content-center">
-                                        <button class="right_button">
+                                        <button class="right_button" (click)="governance_index()">
                                             <div class="right_button_labels">NHT </div>
                                             <div class="right_button_score">50</div>
     
@@ -638,7 +638,7 @@
             </div> -->
             <mat-card class="leaderboard_tile" *ngFor="let res of leaderboard_data; let i=index" 
             [style.background-image]="'url(' + res?.ranking_image_web + ')'"
-            (click)="navigateToSMDashboard(i)">
+            (click)="navigateToSMDashboard(res)">
            
                 <div class="leaderboard_rank_score">
                     {{res.rankingtable_number}}
@@ -753,7 +753,7 @@
         <div class="leaderboard_label_tile">
             <mat-card class="leaderboard_tile" *ngFor="let res of leaderboard_data; let i=index" 
             [style.background-image]="'url(' + res?.ranking_image_web + ')'"
-            (click)="navigateToRMDashboard(i)">
+            (click)="navigateToRMDashboard(res)">
                 <div class="leaderboard_rank_score">
                     {{res.rankingtable_number}}
                 </div>

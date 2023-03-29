@@ -25,6 +25,7 @@ import { TopDashboardComponent } from './top-dashboard/top-dashboard.component';
 import { BusinessIndexMapComponent } from './business-index-map/business-index-map.component';
 import { IntroductionVideoComponent } from './introduction-video/introduction-video.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { GovernanceIndexComponent } from './governance-index/governance-index.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     TopDashboardComponent,
     BusinessIndexMapComponent,
     IntroductionVideoComponent,
+    GovernanceIndexComponent,
   
   ],
   imports: [

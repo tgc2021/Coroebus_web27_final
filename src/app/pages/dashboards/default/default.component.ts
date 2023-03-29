@@ -347,6 +347,7 @@ console.log(this.sectionView_1.is_about_game);
       this.sectionView_2 = res?.data
 console.log(this.sectionView_2);
 
+this.labelNameMy= this.sectionView_2?._ranking_data[0].label
       // for(let i=0;i<this.sectionView_2?._ranking_data?.length;i++){
       if (this.queryParams?.roleID == '6' || this.userSelectionData?._personal_data?.id_role == '6') {
         console.log("tab", this.activeTabForSectionView_2);
@@ -511,15 +512,15 @@ console.log(this.sectionView_2);
 
 
       else if (this.queryParams?.roleID === '4' || this.userSelectionData?._personal_data?.id_role === '4') {
-        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[1].order
+        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         
 
         if (this.queryParams?.roleID === '3') {
-          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
 
         }
         else if (this.queryParams?.roleID === '8') {
-          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
 
         }
         // else if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
@@ -556,7 +557,7 @@ console.log(this.sectionView_2);
 
 
       else if (this.queryParams?.roleID === '3' || this.userSelectionData?._personal_data?.id_role === '3') {
-        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
+        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
 
         if (this.queryParams?.roleID === '8') {
           this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
@@ -749,6 +750,7 @@ console.log(this.sectionView_2);
     }
   }
   changeTabFilter(name: string, order: any) {
+   
     // this.spectSearchStr=null
     this.labelNameMy = name
     this.pageNumberForSectionView_3 = 1

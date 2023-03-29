@@ -1,0 +1,65 @@
+.web_view{
+    overflow: hidden;
+}
+
+::ng-deep {
+    .page-content {
+        padding: calc(70px + 24px) calc(24px / 2) 26px calc(24px / 2) !important;
+    }
+    .mat-expansion-panel-header{
+        background:  #F2F2F2;
+        
+    }
+
+    .mat-expansion-panel-header.mat-expanded{
+        background: #F2F2F2;
+        
+    }
+}
+
+.box_container_card{
+    width: 95vw;
+    height: 84vh;
+    overflow: scroll;
+}
+
+.header_card{
+    height: 7vh;
+    width: 100%;
+    background: var(--myvar);
+}
+
+.title_table{
+    font-family: 'Work Sans';
+    padding: 1vw;
+    font-weight: 600;
+}
+
+.header_label{
+    font-family: 'Work Sans';
+    font-weight: 600;
+    font-size: 1vw;
+    color: #ffffff;
+}
+
+.expansion_panel{
+    height: 8vh;
+}
+
+.accordion_sub_title{
+    font-family: 'Work Sans';
+    font-size: 1vw;
+    font-weight: 600;
+    margin-left: 1vw;
+}
+
+.accordion_sub_score{
+    font-family: 'Work Sans';
+    font-size: 1vw;
+    font-weight: 600;
+    margin-right: 2vw;
+}
+
+.sub_title_div{
+    padding: 1vw;
+}

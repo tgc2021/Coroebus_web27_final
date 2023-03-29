@@ -301,13 +301,15 @@ console.log(this.sectionView_1);
 
 
   navigateToSMDashboard(index:any){
-    this.spectator="spectator"
+
     console.log(index);
     
-    this.sm_user_id=this.Util.encryptData(this.sectionView_3._ranking_data[0]._data[index].userid)
-    this.game_ID_sm=localStorage.getItem('gameId')
-    this.sm_game_id=this.Util.encryptData(this.game_ID_sm)
-    this.sm_role_id=this.Util.encryptData(this.sectionView_3._ranking_data[0]._data[index].id_role)
+    this.spectator="spectator"
+    
+    this.sm_user_id=this.Util.encryptData(index.userid)
+    // this.game_ID_sm=localStorage.getItem('gameId')
+    this.sm_game_id=this.Util.encryptData(index.id_coroebus_game)
+    this.sm_role_id=this.Util.encryptData(index.id_role)
 
     // this.sm_role_id=this.Util.encryptData(this.sectionView_3._ranking_data[3]._data[index].id_role)
     this.overall_role_id=this.Util.decryptData(this.sm_role_id)
@@ -326,12 +328,12 @@ else{
 
   navigateToRMDashboard(index:any){
     console.log(index);
-    this.sm_user_id=this.Util.encryptData(this.sectionView_3._ranking_data[2]._data[index].userid)
-    this.game_ID_rm=localStorage.getItem('gameId')
 
-    this.sm_game_id=this.Util.encryptData(this.game_ID_rm)
-    this.sm_role_id=this.Util.encryptData(this.sectionView_3._ranking_data[2]._data[index].id_role)
-
+    this.sm_user_id=this.Util.encryptData(index.userid)
+    // this.game_ID_sm=localStorage.getItem('gameId')
+    this.sm_game_id=this.Util.encryptData(index.id_coroebus_game)
+    this.sm_role_id=this.Util.encryptData(index.id_role)
+  
     // this.sm_role_id=this.Util.encryptData(this.sectionView_3._ranking_data[2]._data[index].id_role)
     this.overall_role_id=this.Util.decryptData(this.sm_role_id)
 console.log(this.overall_role_id);
@@ -349,7 +351,6 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
 
     // this.sm_role_id=this.Util.encryptData(this.sectionView_3._ranking_data[3]._data[index].id_role)
     this.overall_role_id=this.Util.decryptData(this.sm_role_id)
-console.log(this.overall_role_id);
 
     if(this.overall_role_id==8 || this.overall_role_id==12){
       this.router.navigateByUrl('/top_dashboard?userID='+this.sm_user_id +"&gameID="+  this.sm_game_id +"&roleID="+  this.sm_role_id)
@@ -609,5 +610,11 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
 
 
 
+  }
+
+  governance_index(){
+    console.log('gov index');
+    
+    this.router.navigateByUrl('governance_index')
   }
 }

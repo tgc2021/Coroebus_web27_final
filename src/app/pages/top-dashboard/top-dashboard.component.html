@@ -220,7 +220,7 @@
                                 <img class="image_logo" src="{{res.rankingtable_logo}}" />
                             </div>
                             <div class="col-6">
-                                <div class="call_center_name">
+                                <div class="call_center_name" ngbTooltip="{{res.rankingtable_name}}" placement="bottom">
                                     {{res.rankingtable_name}}
                                 </div>
                                 <div class="location">
@@ -314,7 +314,7 @@
                        
                        
                         <div  *ngFor="let kpi_data of buisness_head_response_._kpi_score">
-                            <div class="d-flex justify-content-between align-items-center mt-4" style="font-weight: 550;font-family: 'Work Sans';">
+                            <div class="d-flex justify-content-between align-items-center" style="font-weight: 550;font-family: 'Work Sans';">
                                 <div class="pech " style="font-weight: 600;font-family: 'Work Sans';">
                                     {{ kpi_data.point_label}}   
                                 </div>
