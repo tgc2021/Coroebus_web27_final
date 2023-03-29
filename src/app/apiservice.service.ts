@@ -95,8 +95,6 @@ export class ApiserviceService {
   playZonePassbook(data:any){
     var tempurl = `${this.URLstring}`+`/${this.Path}/SpotDashboard/passbook`
     return this.Http.post(tempurl,data)
-
-
   }
 
   interactiveDashboard(data:any){
@@ -114,13 +112,11 @@ export class ApiserviceService {
     return this.Http.post(tempurl,data)
 
   }
-
   gameRanking_Groups(data:any){
     var tempurl= `${this.URLstring}`+ `/${this.Path}/UserRankingAndBadgeList/gameRanking_Groups`
     return this.Http.post(tempurl,data)
 
   }
-
   spectatorSearch(data:any){
     var tempurl= `${this.URLstring}`+ `/${this.Path}/UserRankingAndBadgeList/spect_search`
     return this.Http.post(tempurl,data)

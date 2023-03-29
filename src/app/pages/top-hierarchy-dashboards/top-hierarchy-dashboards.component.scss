@@ -243,8 +243,9 @@
 
     }
     .point_distribution_sm{
-        width: 26vw;
+        width: 25vw;
         margin-left: 2vw;
+        
     }
     .point_inside_div{
         width: 36vw;
@@ -255,10 +256,11 @@
     }
     
     .point_one {
-        height: 4vh;
+        height: 4.3vh;
         display: flex;
         align-items: center;
         margin-bottom: 0.5vh;
+        
         width: 95%;
         cursor: pointer;
     }
@@ -266,13 +268,13 @@
     .point_one_label {
         font-size: 0.8vw;
         font-weight: 600;
-    
     }
     
     .point_background {
         background: #F3F2C1;
         height: 4vh;
         display: flex;
+        
         align-items: center;
         border-radius: 6px;
     }
@@ -566,7 +568,8 @@
         font-family: 'Work Sans';
         
         font-weight: 600;
-        font-size: 0.9vw;
+       
+        font-size: 1.1vw;
         font-weight: 600;
         color: #000000;
         margin-top: 1vh;
@@ -1018,7 +1021,7 @@
     }
     
     .point_distribution_sm{
-        width: 26vw;
+        width: 25vw;
         margin-left: 2vw;
     }
 
@@ -1066,7 +1069,7 @@ font-size: 1vw;
     }
     
     .point_one {
-        height: 4vh;
+        height: 4.3vh;
         display: flex;
         align-items: center;
         margin-bottom: 0.5vh;
