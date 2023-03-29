@@ -186,7 +186,7 @@
                                         <div class="confetti"
                                             [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'">
                                             <div
-                                                class="col text-center mt-4 d-flex flex-column align-items-center gap-1">
+                                                class="col text-center mt-2  d-flex flex-column align-items-center gap-1">
                                                 <img loading="lazy"
                                                     src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}"
                                                     alt="" class="dashboard-game-point-img"
@@ -206,7 +206,7 @@
                                         <div class="confetti"
                                             [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'">
                                             <div
-                                                class="col text-center mt-4  d-flex flex-column align-items-center gap-1">
+                                                class="col text-center mt-2  d-flex flex-column align-items-center gap-1">
                                                 <img loading="lazy"
                                                     src="{{sectionView_1?.theme_details?.[0]?.reward_points_image}}"
                                                     alt="" class="dashboard-reward-point-img"
@@ -243,55 +243,59 @@
 
                     </div>
                 </div>
+                <div style="padding:10px;border-radius:10px" [style.background-image]="
+                sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                    <div class="row " [ngClass]="{'row-cols-2': sectionView_2?._ranking_data?.length === 2,
+                                    'row-cols-3': sectionView_2?._ranking_data?.length === 3,
+                                    'row-cols-4': sectionView_2?._ranking_data?.length === 4,
+                                    'row-cols-1': sectionView_2?._ranking_data?.length === 4}" style="   margin-top: 17px;
+                                    display: flex;
+                                    
+                                    flex-direction: row;
+                                    flex-wrap: nowrap;
+                                 ">
+                        <div class="col" *ngFor="let item of sectionView_2?._ranking_data">
+                            <a class="btn btn-xs filter-btn-dashboard  fs-sm mb-2" style="padding-top: 8px;"
+                                [ngClass]="{'filter-btn-dashboard-active': activeTabForSectionView_2 === item?.order}"
+                                [ngStyle]="{'background': (activeTabForSectionView_2 ===item?.order) ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
+                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                (click)="changeTabFilter(item?.label,item?.order)">
+                                <span class=" v-align filter-txt-name"
+                                    [ngStyle]="{'color': (activeTabForSectionView_2 === item?.order) ? '#ffffff' : '#000000'}">
+                                    {{item?.label}}
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row row-cols-2" *ngIf="sectionView_3_list?.[0]?._Overall">
+                        <div class="col">
+                            <a class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
+                                [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 ==='My Store'}"
+                                [ngStyle]="{'background': (activeSubTabForSectionView_2 ==='My Store') ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
+                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                (click)="changeSubTabFilter('My Store')">
+                                <span class=" v-align filter-txt-name filter-my-store"
+                                    [ngStyle]="{'color': (activeSubTabForSectionView_2 ==='My Store')?'#ffffff':'#000000'}">
+                                    My {{labelNameMy}}
+                                </span>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
+                                [ngClass]="{'': activeSubTabForSectionView_2 === 'Overall'}"
+                                [ngStyle]="{'background': (activeSubTabForSectionView_2 === 'Overall')? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
+                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                (click)="changeSubTabFilter('Overall')">
+                                <span class=" v-align filter-txt-name filter-my-store"
+                                    [ngStyle]="{'color': (activeSubTabForSectionView_2 === 'Overall') ? '#ffffff' : '#000000'}">
+                                    Overall
+                                </span>
+                            </a>
+                        </div>
                 
-                <div class="row no-gutter-" [ngClass]="{'row-cols-2': sectionView_2?._ranking_data?.length === 2,
-                                'row-cols-3': sectionView_2?._ranking_data?.length === 3,
-                                'row-cols-4': sectionView_2?._ranking_data?.length === 4,
-                                'row-cols-1': sectionView_2?._ranking_data?.length === 4}" style="   margin-top: 17px;
-                                display: flex;
-                                flex-direction: row;
-                                flex-wrap: nowrap;
-                                overflow-x: overlay;">
-                    <div class="col" *ngFor="let item of sectionView_2?._ranking_data">
-                        <a class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2" style="padding-top: 8px;"
-                            [ngClass]="{'filter-btn-dashboard-active': activeTabForSectionView_2 === item?.order}"
-                            [ngStyle]="{'background': (activeTabForSectionView_2 ===item?.order) ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
-                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                            (click)="changeTabFilter(item?.label,item?.order)">
-                            <span class=" v-align filter-txt-name"
-                                [ngStyle]="{'color': (activeTabForSectionView_2 === item?.order) ? '#ffffff' : '#000000'}">
-                                {{item?.label}}
-                            </span>
-                        </a>
                     </div>
                 </div>
-                <div class="row row-cols-2" *ngIf="sectionView_3_list?.[0]?._Overall">
-                    <div class="col" >
-                        <a class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
-                            [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 ==='My Store'}"
-                            [ngStyle]="{'background': (activeSubTabForSectionView_2 === 'My Store') ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
-                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                            (click)="changeSubTabFilter('My Store')">
-                            <span class=" v-align filter-txt-name filter-my-store"
-                                [ngStyle]="{'color': (activeSubTabForSectionView_2 === 'My Store') ? '#ffffff' : '#000000'}">
-                                My {{labelNameMy}}
-                            </span>
-                        </a>
-                    </div>
-                    <div class="col">
-                        <a class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
-                            [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 === 'Overall'}"
-                            [ngStyle]="{'background': (activeSubTabForSectionView_2 === 'Overall') ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
-                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                            (click)="changeSubTabFilter('Overall')">
-                            <span class=" v-align filter-txt-name filter-my-store"
-                                [ngStyle]="{'color': (activeSubTabForSectionView_2 === 'Overall') ? '#ffffff' : '#000000'}">
-                                Overall
-                            </span>
-                        </a>
-                    </div>
-
-                </div>
+              
                 <div class="d-flex flex-row" style="margin-top: 10px;">
                     <div class="col-11" style="padding-right:0px;">
                         <input type="text" class="form-control dashboard-searchbar" placeholder="Search People here.."
@@ -1137,6 +1141,7 @@
 
             </div>
             <div class="col">
+               
                 <div class="row no-gutter" [ngClass]="{'row-cols-2': sectionView_2?._ranking_data?.length === 2,
                                 'row-cols-3': sectionView_2?._ranking_data?.length === 3,
                                 'row-cols-4': sectionView_2?._ranking_data?.length === 4,
