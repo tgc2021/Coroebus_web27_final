@@ -34,6 +34,7 @@
 .cardWithTransparentImage{
 .card-div{
     height: 43vh;
+    width: 20vw;
 }
 
 
@@ -59,7 +60,7 @@ border-radius: 11px;
 // }
 .inner-bulletins-height{
     margin-top: 10vh !important;
-    height: 33vh;
+    height: 28vh;
     overflow-x: hidden;
     width: 100%;
 }
@@ -90,7 +91,7 @@ border-radius: 11px;
    background-position: inherit;
    background-size: cover;
    width: auto;
-   height: 43vh;
+   height:87vh;
    border-radius: 11px;
 }
 .form-control{
@@ -137,7 +138,7 @@ border-radius: 11px;
 }
 
 .points-dis-name1{
-       background: #F3F2C1;
+    //    background: #F3F2C1;
       
        border-radius: 6.46995px;
        font-weight: 600;
@@ -321,11 +322,12 @@ border-radius: 11px;
     background-position: center;
 }
 .mobile-dashboard-user-name{
-    font-weight: 600;
-    font-size: 14px;
-    // line-height: 100%;
+    font-size: 2.2vh;
+    font-family: 'Work Sans';
+    line-height: 100%;
     color: #000000;
-    
+    font-style: normal;
+    text-align: center;
     
 }
 .mobile-dashboard-user-team-name{
@@ -1613,3 +1615,41 @@ color: #000000;
 }
 
 
+.profile-section{
+    height: 33.5vh;
+    width: 17.6vw !important;
+    border-radius: 8px;    
+}
+.box1{
+height: 13vh;
+
+}
+.box2{
+height: 20vh;
+border-radius: 8px;
+
+// border-top: 4px solid #ffffff;
+
+}
+::ng-deep .mat-expansion-indicator::after {
+    color: white;
+  }
+.baddge-section-card{
+    background-repeat: no-repeat;
+    background-position: inherit;
+    background-size: 100% 100%;
+    width:12vw;
+    height:20vh;
+    border-radius: 11px;
+
+  }
+  .bg-image{
+    background-repeat: no-repeat;
+    background-position: inherit;
+    background-size: 100% 100%;
+    width:30vw;
+    height:17vh;
+    border-radius: 8px;
+
+  }
+ 
