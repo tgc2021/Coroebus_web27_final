@@ -1,823 +1,456 @@
 @media only screen and (min-width: 360px) and (max-width: 768px) {
-	// do something in this width range.
-    .web-view{
+
+    // do something in this width range.
+    .web-view {
         display: none;
     }
-    
+
 }
 
-
-@media only screen and (min-width: 769px) and(max-width:1195px) {
-
-
-	// do something in this width range.
-    .mobile-view{
-        display: none;
-    }
-
-    ::ng-deep{
-        .page-content {
-            padding: 71px 0px 0px 0px !important;
-        }
-
-        .dashboard-bg-image{
-            min-height: 100%;
-        }
-      
-     }
-
-     .right_side_hos_Hos{
-        width:21vw
-
-    }
-
-    .web_right_side_hos {
-        height: 91vh;
-        background: var(--mediumColor);
-        right: 0;
-        width: 20vw;
-        margin-top: -0.1vh;
-        border-radius: 0;
-
-       
-    }
-    
-    .right_side_hos_Hos{
-        width:21vw
-    }
-    .home_bg{
-        height: 5vh;
-    }
-
-    .home_logo{
-        width: 3vh;
-        width: 2.5vh;
-        position: absolute;
-        margin-top: 0.7vw;
-        margin-left: 0.8vw;
-        cursor: pointer;
-    
-    }
-   
-    .upper_right_card_home_btn{
-        margin-top: 4vh !important;
-    }
-    .bottom_button_web {
-        height: 15vh;
-        width: 500px;
-    
-        display: flex;
-        justify-content: start;
-        align-items: center;
-        gap: 2em;
-        overflow-x: auto !important;
-        overflow-y: hidden;
-    
-    }
-    .profile_name{
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 0.8vw;
-        margin-top: 0.5vh;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        cursor: pointer;
-    }
-   
-    .profile_team_name{
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 0.7vw;
-    }
-    
-    .point_dist_div{
-        height: 19vh;
-        overflow: auto;
-        margin-top: 2vh;
-
-    }
-
-    .point_dist_div_4{
-        height: 19vh;
-        overflow-y: auto;
+// New Css FOr New GOP
 
 
-
-    }
-    button {
-        height: 12vh;
-        width: 80%;
-        border: 2px solid #000000;
-        cursor: grab;
-    }
-
-    .name-details{
-        position: absolute;
-        right: 1.2vw;
-    }
-    
-   
-    
-    .web-top {
-        height: 20vh;
-        width: 100%;
-      
-    }
-    
-    .web_bottom {
-        display: flex;
-        gap: 2em;
-        width: 70vw;
-    
-    }
-    
-    
-    
-    .web_bottom_buttons {
-        display: flex;
-    
-        width: 20vw;
-        height: 12vh;
-        color: #61646B;
-    }
-    
-    .prof_pic_image {
-        height: 12vh;
-        width: 12vh;
-        border-radius: 50%;
-        margin-left: 1vw;
-        margin-right: 1vw;
-    }
-    
-    .camera_image {
-        // position: absolute;
-        // top: 0;
-        // right: 1vw;
-        // z-index: 10;
-        // background: white;
-        // padding: 6px;
-        // width: 4vh;
-        // height: 3vh;
-        // /* margin: 3px; */
-        // border-radius: 50%;
-
-        .avatar-upload .avatar-edit input + label {
-            display: inline-block;
-            position: absolute;
-            top: -12vh;
-            right: -4vw;
-            width: 4vh;
-            height: 4vh;
-            /* margin-bottom: 0; */
-            border-radius: 100%;
-            background: #FFFFFF;
-            border: 1px solid transparent;
-            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-            cursor: pointer;
-            font-weight: normal;
-            transition: all 0.2s ease-in-out;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-    }
-    
-    .geme_reward_points_div {
-        // background: url(../../../assets/images/TopHierarchyDashboard/gamepoints_background.png);
-        width: 40vw;
-        height: 18vh;
-        background-size: 100% 100%;
-        border: 2px solid rgb(74, 193, 217);
-        display: flex;
-        cursor: pointer;
-    }
-    
-    .profile_div {
-        position: relative;
-        margin-top: 2vh;
-    }
-    
-    .point_distribution {
-        width: 36vw;
-        margin-left: 2vw;
-    }
-
-    .island_logo{
-        width: 8vw;
-        height: 19vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        margin-top: 2vh;
-        margin-right: 2vh;
-        cursor: pointer;
-    }
-
-    .island_image{
-        width: 4vw;
-    }
-
-    .island_points{
-        width: 5vw;
-        border-radius: 5vw;
-        background: var(--myvar);
-        text-align: center;
-        margin-top: 1vh;
-        color: #FFFFFF;
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 1vw;
-    }
-
-    .island_tag{
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 0.9vw;
-        margin-top: 0.5vh;
-
-    }
-    .point_distribution_sm{
-        width: 25vw;
-        margin-left: 2vw;
-        
-    }
-    .point_inside_div{
-        width: 36vw;
-    }
-    
-    .right_side_hos {
-        width: 20vw;
-    }
-    
-    .point_one {
-        height: 4.3vh;
-        display: flex;
-        align-items: center;
-        margin-bottom: 0.5vh;
-        
-        width: 95%;
-        cursor: pointer;
-    }
-    
-    .point_one_label {
-        font-size: 0.8vw;
-        font-weight: 600;
-    }
-    
-    .point_background {
-        background: #F3F2C1;
-        height: 4vh;
-        display: flex;
-        
-        align-items: center;
-        border-radius: 6px;
-    }
-    
-    .button_div {
-        margin-top: 3vh;
-        margin-left: 2vw;
-        display: flex;
-        justify-content: space-between;
-        width: 77vw;
-        border-radius: 1vw;
-        height: 9vh;
-        background: var(--mediumColor);
-        padding: 12px;
-    }
-    
-    .button_series {
-        width: 12.6vw;
-        height: 6vh;
-        font-size: 0.9vw;
-        font-weight: 600;
-        background: #ffffff;
-        border-radius: 1vw;
-        font-size: 600;
-        border: none;
-        margin-right: 1.3vw;
-        font-family: 'Roboto';
-        color: #000000;
-    
-    }
-    .active{
-        width: 12.6vw;
-        height: 6vh;
-        font-size: 0.9vw;
-        font-weight: 600;
-        border-radius: 1vw;
-        font-size: 600;
-        border: none;
-        margin-right: 1.3vw;
-        font-family: 'Roboto';
-        color: #FFFFFF;
-        background-color: var(--myvar);
-
-    }
-    
-    .button_series1 {
-        width: 13vw;
-        height: 6vh;
-        font-size: 0.9vw;
-        font-weight: 600;
-        margin-right: 1.3vw;
-        background: var(--myvar);
-        border-radius: 1vw;
-        border: none;
-        box-shadow: 0px 2.15946px 16.196px rgba(0, 0, 0, 0.05);
-        color: white;
-        font-family: 'Roboto';
-    
-    }
-    
-    .search_box {
-        margin-top: 2vh;
-        margin-left: 2vw;
-        width: 72vw;
-        height: 7vh;
-        background: #FFFFFF;
-        border: none;
-        /* Card / Big */
-    
-        box-shadow: 0px 0px 0px 1px #E8E8E8, 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 20px 20px rgba(0, 0, 0, 0.08);
-        border-radius: 15px;
-    }
-    
-    
-    input::placeholder {
-        font-size: 0.8vw;
-    }
-    
-    .search_bar_img {
-        width: 4vw;
-        height: 7vh;
-        background: var(--myvar);
-        margin-top: 2vh;
-        margin-left: 1vw;
-        padding: 1vw;
-        border-radius: 1vw;
-    }
-    
-    .leaderboard_rank {
-        margin-left: 1vw;
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 1vw;
-    
-    
-    }
-    
-    .leaderboard_label_tile_first{
-        width: 77vh;
-    
-    }
-    .leaderboard_label_tile {
-        height: 24vh;
-       
-        width: 78%;
-        overflow-y: auto;
-        overflow-x: hidden;
-       
-    
-    }
-    
-    .leaderboard_name {
-        margin-left: 11vw;
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 1vw;
-    }
-    
-    .leaderboard_points {
-        margin-left: 45vw;
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 1vw;
-    }
-    
-    .leaderboard_tile {
-        width: 77vw;
-        height: 7vh;
-        margin-bottom: 1vh;
-       margin-left: 1vw;
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        padding: 0;
-        background: url(../../../assets/images/TopHierarchyDashboard/bluewallpaer.png);
-        background-size: 100% 100%;
-    }
-    
-    .leaderboard_tile_first{
-        width: 77vw;
-        height: 6vh;
-        margin-bottom: 1vh;
-      
-        display: flex;
-        align-items: center;
-        padding: 0;
-        background: url(../../../assets/images/TopHierarchyDashboard/Orange_tile.png);
-        background-size: 100% 100%;
-    }
-    
-    
-    .view_more_button {
-        width: 77vw;
-        height: 6vh;
-        background: var(--myvar);
-        color: #ffffff;
-        border: none;
-        font-family: 'Roboto';
-        font-weight: 600;
-        border-radius: 0.4vw;
-        margin-left: 1vw;
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    .button-container {
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-snap-type: x mandatory;
-        width: 81vw;
-        height: auto;
-        border: none;
-        margin-top: 1vh;
-        cursor: -webkit-grab;
-        cursor: grab;
-        background-image: url(../../../assets/images/TopHierarchyDashboard/bottom_section_gop.png);
-    }
-    
-    
-    
-    
-    .bottom_button {
-        width: 14.7vw;
-        height: 14vh;
-        margin-right: 6vw;
-        margin-top: 1vh;
-        background: linear-gradient(180deg,var(--myvar) 51.54%, #FFFFFF 51.61%);
-        border-radius: 0.2vw;
-    }
-    
-    .button_item {
-        scroll-snap-align: start;
-    
-    }
-    
-    .right_button {
-        width: 14.7vw;
-        height: 13.7vh;
-    
-        margin-top: 3vh;
-        background: linear-gradient(180deg,var(--myvar) 51.54%, #FFFFFF 51.61%);
-        border-radius: 0.2vw;
-        
-    }
-
-    .right_button_home_btn{
-        width: 14.7vw;
-        height: 13.7vh;
-    
-        margin-top: 1.5vh;
-        background: linear-gradient(180deg,var(--myvar) 51.54%, #FFFFFF 51.61%);
-        border-radius: 0.2vw;
-    }
-    
-    .inner_rightcard {
-        height: 67vh;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-
-    .inner_rightcard_home_btn{
-        height: 61vh;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-    
-    .bottom_button_labels {
-        color: #FFFFFF;
-        font-family: 'Work Sans';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 1vw;
-        height: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .right_button_labels {
-        color: #FFFFFF;
-        font-family: 'Work Sans';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 1vw;
-        height: 50%;
-        display:flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .governance_card {
-        margin-top: 2vh;
-        height: 71vh;
-        background: var(--mediumColor);
-    }
-    
-    .governance_card_home_btn{
-        margin-top: 2vh;
-        height: 64vh;
-        background: var(--mediumColor);
-    }
-    .governace_title {
-        font-family: 'Work Sans';
-        font-style: normal;
-        font-weight: 600;
-    }
-    
-    .name_hos,
-    .level_hos {
-        font-family: 'Work Sans';
-        
-        font-weight: 600;
-       
-        font-size: 1.1vw;
-        font-weight: 600;
-        color: #000000;
-        margin-top: 1vh;
-    }
-    
-    .button_score,
-    .right_button_score {
-       
-        color: #000000;
-        height: 50%;
-        font-weight: 600;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .point_dist_score {
-        font-family: 'Inter';
-        font-weight: 700;
-        font-size: 0.8vw;
-        margin-right: 1vw;
-    }
-    
-    .point_score_div {
-        height: 4vh;
-    }
-    
-    .badge_image {
-        width: 8vw;
-        height: 13vh;
-        margin-left: 2vw;
-    
-    }
-    
-    .badge_div {
-        height: 18vh;
-    }
-    
-    
-    .game_points_div {
-        margin-left: 3vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 18vh;
-        align-items: center;
-        margin-top: 1vh;
-    }
-    
-    .game_points_image {
-        height: 4vh;
-        width: 3vw;
-    }
-    
-    .game_points_score {
-        background: #F3F2C1;
-        border: 0.5px solid #53B8BB;
-        box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-        border-radius: 10.61px;
-        width: 6vw;
-        margin-top: 0.5vh;
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 0.8vw;
-        padding: 0.2vw;
-        margin-top: 1vh;
-    }
-    
-    .reward_points_div {
-        margin-left: 4vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 18vh;
-        align-items: center;
-        cursor: pointer;
-        margin-top: 1vh;
-
-    }
-    
-    .reward_points_image {
-        height: 4vh;
-        width: 3vw;
-    }
-    
-    .reward_points_score {
-        background: #F3F2C1;
-        border: 0.5px solid #53B8BB;
-        box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-        border-radius: 10.61px;
-        width: 6vw;
-        margin-top: 0.5vh;
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 0.8vw;
-        padding: 0.2vw;
-    }
-    
-    .game_point_label,
-    .reward_point_label {
-        font-family: 'Inter';
-    
-        font-weight: 600;
-        margin-top: 0.3vh;
-        font-size: 0.7vw;
-    
-    
-        color: #FFFFFF;
-    }
-    
-    .leaderboard_rank_score{
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 1vw;
-    color: #FFFFFF;
-    
-    }
-    .leaderboard_rank_score_first,.leaderboard_rank_score{
-        font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 1vw;
-    color: #FFFFFF;
-    margin-left: 2vw;
-    }
-    
-    .leaderboard_with_fixed_tile{
+.profile_panel_container {
+    height: 90vh;
+    background-size: cover;
+    width: 22.5vw;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
-    }
+    padding: 10%;
+
+    // justify-content: center;
+    align-items: center;
+
+    .profile_card {
+        position: relative;
+        width: 19vw;
+        height: 35vh;
+        background: var(--lightColor);
+        border: 3px solid var(--myvar);
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        align-items: center;
+
+        .upper_section {
+            width: 100%;
+            height: 12vh;
+            background: var(--myvar);
+    //         border-bottom-left-radius: 100%;
+    // border-bottom-right-radius: 100%;
     
-    .leaderboard_name_and_team_first,.leaderboard_name_and_team{
-        margin-left: 6vw;
+
+            .level_name {
+                font-family: 'Work Sans';
+                font-style: normal;
+                font-weight: 550;
+                font-size: 2.2vh;
+                line-height: 2.4vh;
+                /* identical to box height, or 120% */
+                text-align: center;
+                letter-spacing: 0.2px;
+                color: #FFFFFF;
+                margin-top: 2vh;
+            }
+        }
+
+        .profile_picture {
+
+            position: absolute;
+            border: 1px solid var(--myvar);
+            border-radius: 50%;
+
+            top: 6vh;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+            .profile_picture_image {
+                width: 10vh;
+                height: 10vh;
+                border-radius: 50%;
+
+            }
+
+        }
+
+        .lower_section {
+            margin-top: 8vh;
+           
+
+            .name_hos {
+                font-family: 'Work Sans';
+                font-style: normal;
+                font-weight: 550;
+                font-size: 2.2vh;
+                line-height: 2.4vh;
+                /* identical to box height, or 120% */
+                text-align: center;
+                letter-spacing: 0.2px;
+                color: #000000;
+
+            }
+
+
+        }
+
+
     }
-    
-    .leaderboard_name_label_first,.leaderboard_team_label_first,.leaderboard_name_label,.leaderboard_team_label{
-        font-family: 'Inter';
+
+    .point_distribution_section {
+        width: 20vw;
+
+        margin-top: 2vh;
+        padding-top: 2vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .point_one {
+            height: 8vh;
+            margin-top: 0.5vh;
+
+            .point_one_label {
+                font-size: 1vw;
+                font-weight: 600;
+            }
+
+            .point_dist_score {
+                font-family: 'Inter';
+                font-weight: 700;
+                font-size: 1vw;
+                margin-right: 1vw;
+            }
+
+        }
+
+        .point_background {
+            background: #F3F2C1;
+            height: 6vh;
+            display: flex;
+            align-items: center;
+            border-radius: 6px;
+        }
+
+
+    }
+
+}
+
+.isLand_panel_container {
+    height: 90vh;
+    background-size: cover;
+    width: 22.5vw;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 10% 10% 5% 10%;
+
+    // justify-content: center;
+    align-items: center;
+
+    .profile_card {
+        position: relative;
+        width: 19vw;
+        height: 35vh;
+        background: var(--lightColor);
+        border: 3px solid var(--myvar);
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        align-items: center;
+
+        .upper_section {
+            width: 100%;
+            height: 12vh;
+            background: var(--myvar);
+            // border-bottom-left-radius: 100%;
+            // border-bottom-right-radius: 100%;
+
+            .level_name {
+                font-family: 'Work Sans';
+                font-style: normal;
+                font-weight: 550;
+                font-size: 2.2vh;
+                line-height: 2.4vh;
+                /* identical to box height, or 120% */
+                text-align: center;
+                letter-spacing: 0.2px;
+                color: #FFFFFF;
+                margin-top: 2vh;
+            }
+        }
+
+        .Overall_score {
+
+            position: absolute;
+            border: 2px solid #79BF06;
+            border-radius: 50%;
+            background-color: #ffff;
+
+            top: 6vh;
+
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+            .Overall_score_Inner_circle {
+                width: 10vh;
+                height: 10vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap:0.6em;
+                border-radius: 50%;
+
+                .overall_score_number {
+                    font-family: 'Work Sans';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 2.2vh;
+                    line-height: 2.4vh;
+                    text-align: center;
+                }
+
+                .overall_score_text {
+                    font-family: 'Work Sans';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 1.8vh;
+                    line-height: 2.0vh;
+                    text-align:center;
+
+                }
+
+            }
+
+        }
+
+        .lower_section {
+            margin-top: 6vh;
+            .Governance_index_points{
+                display: flex;
+                width: 16vw;
+                margin-top: 0.5vh;
+                font-family: "work sans";
+                font-weight: 600;
+                justify-content: space-between;
+
+            }
+
+         
+
+
+        }
+
+
+    }
+
+    .business-index_gop{
+        margin-top: 4vh;
+        width: 19vw;
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Work Sans';
         font-style: normal;
         font-weight: 500;
-        font-size: 0.8vw;
-        color: #ffffff;
-        width: 39vw;
+        font-size: 2.2vh;
+        line-height: 2.4;
+        height: 45vh;
+        border-radius: 8px;
+        background-color: var(--lightColor);
+
+
+        .business_index_container{
+            width: 16vw;
+            height: 37vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction:column;
+            align-items: center;
+
+
+            .business_index_points{
+                width: 10vw;
+                height: 7vh;
+                border: 1px solid black;
+                margin-top: 2vh;
+                border-radius: 10px 10px 10px 10px;
+
+                .upper_side{
+                    width: 10vw;
+                    height: 3.5vh;
+                    border-bottom: 1px solid black;
+                    background-color: var(--myvar);
+                    color:white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 10px 10px 0px 0px;
+
+                }
+                .lower_side{
+                    width: 10vw;
+                    height: 3.5vh;
+                    border: 1px solid black;
+                    color: black;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 0px 0px 10px 10px;
+
+                }
+
+
+            }
+
+        }
+
+
+
+    }
+
+   
+    
+
+}
+.dashboard_section{
+    display: flex;
+    justify-content: center;
+    gap:1em;
+
+    .badge_container{
+        width: 15vw;
+        height: 23vh;
+        border: 1px solid #0000;
+        border-radius: 10px;
+        background-size: cover;
+        display:flex;
+        // box-shadow: 0 0 5px 2px #282a2d;
+        justify-content: center;
+       align-items: center;
+    }
+    .banner_container{
+        width: 40vw;
+        height: 23vh;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+       
+
+
     }
     
     
-    
-    .leaderboard_rank_profile_image_div_first,.leaderboard_rank_profile_image_div{
-        margin-left: 3vw;
-    }
-    
-    .leaderboard_rank_profile_image_first,.leaderboard_rank_profile_image{
-        width: 3vw;
-        height: 5vh;
-        border-radius: 50%;
-        border: 1px solid #FFFFFF;
-    }
-    
-    
-    
-    
-    .leaderboard_rank_badge_image_first,.leaderboard_rank_badge_image{
-        width: 3vw;
-        height: 5vh;
-        border-radius: 50%;
-    }
-    
-    .leaderboard_rank_points_div_first,.leaderboard_rank_points_div{
-        margin-left: 6vw;
-    }
-    
-    .leaderboard_rank_points_label_first,.leaderboard_rank_points_label{
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 0.8vw;
-        color: #ffffff;
-        width: 10vw;
-    }
-    
-    
-    
-    
-    
-    .leaderboard_rank_up_down_arrow_image_first,.leaderboard_rank_up_down_arrow_image{
-        width: 3vw;
-        height: 5vh;
-        border-radius: 50%;
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // ::-webkit-scrollbar {
-    //     width: 12px;
-    // }
-     
-    // ::-webkit-scrollbar-track {
-    //     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-    //     border-radius: 10px;
-    // }
-     
-    // ::-webkit-scrollbar-thumb {
-    //     border-radius: 10px;
-    //     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
-    // }
+}
+
+.button_div {
+    margin-top: 3vh;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-radius: 1vw;
+    height: 9vh;
+    background-size: cover;
+    // background: var(--mediumColor);
+    padding: 12px;
+}
+
+.button_series {
+    width: 15.6vw;
+    height: 6vh;
+    font-size: 0.9vw;
+    font-weight: 600;
+    background: #ffffff;
+    border-radius: 1vw;
+    font-size: 600;
+    border: none;
+   
+    font-family: 'Roboto';
+    color: #000000;
+
+}
+
+.active {
+    width: 15.6vw;
+    height: 6vh;
+    font-size: 0.9vw;
+    font-weight: 600;
+    border-radius: 1vw;
+    font-size: 600;
+    border: none;
+  
+    font-family: 'Roboto';
+    color: #FFFFFF;
+    background-color: var(--myvar);
+
+}
+.search_box {
+    margin-top: 2vh;
+    margin-left: 1vw;
+    width: 44vw;
+    height: 7vh;
+    background: #FFFFFF;
+    border: none;
+    /* Card / Big */
+
+    box-shadow: 0px 0px 0px 1px #E8E8E8, 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 20px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 15px;
+}
+
+
+input::placeholder {
+    font-size: 0.8vw;
+}
+
+.search_bar_img {
+    width: 4vw;
+    height: 7vh;
+    background: var(--myvar);
+    margin-top: 2vh;
+    margin-left: 1vw;
+    padding: 1vw;
+    border-radius: 1vw;
 }
 
 
 
-@media only screen and (min-width: 1196px) {
-	// do something in this width range.
-    .mobile-view{
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (min-width: 768px) {
+
+    .mobile-view {
         display: none;
     }
-    
-    ::ng-deep{
+
+    ::ng-deep {
         .page-content {
             padding: 71px 0px 0px 0px !important;
         }
-        .dashboard-bg-image{
+
+        .dashboard-bg-image {
             min-height: 100%;
         }
     }
 
-    
-    .right_side_hos_Hos{
-        width:21vw
+
+    .right_side_hos_Hos {
+        width: 21vw
     }
 
     .web_right_side_hos {
@@ -827,10 +460,10 @@
         width: 21vw;
         margin-top: -0.1vh;
         border-radius: 0;
-    
+
     }
-    
-    .upper_right_card_home_btn{
+
+    .upper_right_card_home_btn {
         margin-top: 2vh !important;
     }
 
@@ -842,34 +475,34 @@
         background: #ffffff;
         border-radius: 1vw;
         border: none;
-        margin-right: 1.3vw;
+        margin-right: 0.3vw;
         color: #000000;
         font-weight: 600;
         font-family: 'Roboto';
-    
+
     }
 
-    .active{
+    .active {
         width: 12.7vw;
         height: 6vh;
         font-size: 0.9vw;
         font-weight: 600;
         border-radius: 1vw;
         border: none;
-        margin-right: 1.3vw;
+        margin-right: 0.3vw;
         font-weight: 600;
         font-family: 'Roboto';
         color: #FFFFFF;
-        background-color:var(--myvar);
+        background-color: var(--myvar);
 
     }
 
-    .home_bg{
+    .home_bg {
         height: 5vh;
         cursor: pointer;
     }
 
-    .home_logo{
+    .home_logo {
         width: 3vh;
         width: 2.5vh;
         position: absolute;
@@ -877,19 +510,21 @@
         margin-left: 0.6vw;
         cursor: pointer;
     }
+
     .bottom_button_web {
         height: 15vh;
         width: 500px;
-    
+
         display: flex;
         justify-content: start;
         align-items: center;
         gap: 2em;
         overflow-x: auto !important;
         overflow-y: hidden;
-    
+
     }
-    .profile_name{
+
+    .profile_name {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
@@ -900,64 +535,65 @@
         text-overflow: ellipsis;
         cursor: pointer;
     }
-   
-    .profile_team_name{
+
+    .profile_team_name {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
         font-size: 0.7vw;
     }
-    
-    .name-details{
+
+    .name-details {
         position: absolute;
         right: 1.2vw;
     }
 
-    .point_dist_div{
+    .point_dist_div {
         height: 19vh;
         overflow: auto;
         margin-top: 2vh;
     }
 
-    .point_dist_div_4{
+    .point_dist_div_4 {
         height: 19vh;
         overflow-y: auto;
 
 
 
     }
+
     button {
         height: 12vh;
         width: 80%;
         border: 2px solid #000000;
         cursor: grab;
     }
-    
-  
-    
+
+
+
     .web-top {
         height: 20vh;
         width: 100%;
-       
+
     }
-    
+
     .web_bottom {
         display: flex;
         gap: 2em;
         width: 70vw;
-    
+
     }
-    
-    
-    
+
+
+
     .web_bottom_buttons {
         display: flex;
-    
+
         width: 20vw;
         height: 12vh;
         color: #61646B;
     }
-    
+
     .prof_pic_image {
         height: 12vh;
         width: 12vh;
@@ -965,7 +601,7 @@
         margin-left: 1vw;
         margin-right: 1vw;
     }
-    
+
     .camera_image {
         // position: absolute;
         // top: 0;
@@ -977,29 +613,29 @@
         // height: 3vh;
         // /* margin: 3px; */
         // border-radius: 50%;
-        
-            .avatar-upload .avatar-edit input + label {
-                display: inline-block;
-                position: absolute;
-                top: -12vh;
-                right: -2.5vw;
-                width: 4vh;
-                height: 4vh;
-                /* margin-bottom: 0; */
-                border-radius: 50%;
-                background: #FFFFFF;
-                border: 1px solid transparent;
-                box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-                cursor: pointer;
-                font-weight: normal;
-                transition: all 0.2s ease-in-out;
-                background-repeat: no-repeat;
-                background-position: center;
-            
-    
+
+        .avatar-upload .avatar-edit input+label {
+            display: inline-block;
+            position: absolute;
+            top: -12vh;
+            right: -2.5vw;
+            width: 4vh;
+            height: 4vh;
+            /* margin-bottom: 0; */
+            border-radius: 50%;
+            background: #FFFFFF;
+            border: 1px solid transparent;
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+            cursor: pointer;
+            font-weight: normal;
+            transition: all 0.2s ease-in-out;
+            background-repeat: no-repeat;
+            background-position: center;
+
+
         }
     }
-    
+
     .geme_reward_points_div {
         // background: url(../../../assets/images/TopHierarchyDashboard/gamepoints_background.png);
         width: 40vw;
@@ -1009,23 +645,23 @@
         display: flex;
         cursor: pointer;
     }
-    
+
     .profile_div {
         position: relative;
-        margin-top: 2vh ;
+        margin-top: 2vh;
     }
-    
+
     .point_distribution {
         width: 37vw;
         margin-left: 2vw;
     }
-    
-    .point_distribution_sm{
+
+    .point_distribution_sm {
         width: 25vw;
         margin-left: 2vw;
     }
 
-    .island_logo{
+    .island_logo {
         width: 10vw;
         height: 19vh;
         display: flex;
@@ -1037,7 +673,7 @@
         cursor: pointer;
     }
 
-    .island_points{
+    .island_points {
         width: 5vw;
         border-radius: 5vw;
         background: var(--myvar);
@@ -1045,29 +681,31 @@
         margin-top: 1vh;
         color: #FFFFFF;
         font-family: 'Roboto';
-font-style: normal;
-font-weight: 700;
-font-size: 1vw;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1vw;
     }
 
-    .island_image{
+    .island_image {
         width: 4vw;
     }
 
-    .island_tag{
+    .island_tag {
         font-family: 'Roboto';
         font-style: normal;
         font-weight: 700;
         margin-top: 0.5vh;
         font-size: 1vw;
     }
-    .point_inside_div{
+
+    .point_inside_div {
         width: 36vw;
     }
+
     .right_side_hos {
         width: 20vw;
     }
-    
+
     .point_one {
         height: 4.3vh;
         display: flex;
@@ -1076,76 +714,21 @@ font-size: 1vw;
         width: 95%;
         cursor: pointer;
     }
-    
+
     .point_one_label {
         font-size: 0.8vw;
         font-weight: 600;
-    
+
     }
+
+
+ 
+
+
+
+
     
-    .point_background {
-        background: #F3F2C1;
-        height: 4vh;
-        display: flex;
-        align-items: center;
-        border-radius: 6px;
-    }
-    
-    .button_div {
-        margin-top: 3vh;
-        margin-left: 2vw;
-        width: 77vw;
-        border-radius: 1vw;
-        height: 9vh;
-        background: var(--mediumColor);
-        padding: 12px;
-    }
-    
-  
-    
-    
-    .button_series1 {
-        width: 13.5vw;
-        height: 6vh;
-        font-size: 0.9vw;
-        font-weight: 600;
-        margin-right: 1.3vw;
-        background: var(--myvar);
-        border-radius: 1vw;
-        border: none;
-        box-shadow: 0px 2.15946px 16.196px rgba(0, 0, 0, 0.05);
-        color: white;
-        font-family: 'Roboto';
-    
-    }
-    
-    .search_box {
-        margin-top: 2vh;
-        margin-left: 2vw;
-        width: 72vw;
-        height: 7vh;
-        background: #FFFFFF;
-        border: none;
-        /* Card / Big */
-    
-        box-shadow: 0px 0px 0px 1px #E8E8E8, 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 20px 20px rgba(0, 0, 0, 0.08);
-        border-radius: 15px;
-    }
-    
-    
-    input::placeholder {
-        font-size: 0.8vw;
-    }
-    
-    .search_bar_img {
-        width: 4vw;
-        height: 7vh;
-        background: var(--myvar);
-        margin-top: 2vh;
-        margin-left: 1vw;
-        padding: 1vw;
-        border-radius: 1vw;
-    }
+
     
     .leaderboard_rank {
         margin-left: 1vw;
@@ -1153,25 +736,26 @@ font-size: 1vw;
         font-style: normal;
         font-weight: 600;
         font-size: 1vw;
-    
-    
+
+
     }
-    
-    .leaderboard_label_tile_first{
-        width: 77vh;
-        
-    
+
+    .leaderboard_label_tile_first {
+        width: 100%;
+
+
     }
+
     .leaderboard_label_tile {
-        height: 21vh;
-       
-        width: 78%;
+        height: 35vh;
+
+        width: 100%;
         overflow-y: auto;
         overflow-x: hidden;
-       
-    
+
+
     }
-    
+
     .leaderboard_name {
         margin-left: 11vw;
         font-family: 'Inter';
@@ -1179,17 +763,17 @@ font-size: 1vw;
         font-weight: 600;
         font-size: 1vw;
     }
-    
+
     .leaderboard_points {
-        margin-left: 45vw;
+        margin-left: 25vw;
         font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
         font-size: 1vw;
     }
-    
+
     .leaderboard_tile {
-        width: 77vw;
+       width: 100%;
         height: 6vh;
         margin-bottom: 1vh;
         margin-left: 1vw;
@@ -1200,22 +784,22 @@ font-size: 1vw;
         background: url(../../../assets/images/TopHierarchyDashboard/bluewallpaer.png);
         background-size: 100% 100%;
     }
-    
-    .leaderboard_tile_first{
+
+    .leaderboard_tile_first {
         width: 77vw;
         height: 6vh;
         margin-bottom: 1vh;
-      
+
         display: flex;
         align-items: center;
         padding: 0;
         background: url(../../../assets/images/TopHierarchyDashboard/Orange_tile.png);
         background-size: 100% 100%;
     }
-    
-    
+
+
     .view_more_button {
-        width: 77vw;
+        width: 48vw;
         height: 6vh;
         background: var(--myvar);
         color: #ffffff;
@@ -1225,7 +809,7 @@ font-size: 1vw;
         border-radius: 0.4vw;
         margin-left: 1vw;
     }
-    
+
     .button-container {
         overflow-x: auto;
         overflow-y: hidden;
@@ -1239,55 +823,55 @@ font-size: 1vw;
         background-image: url(../../../assets/images/TopHierarchyDashboard/bottom_section_gop.png);
 
     }
-    
-    
-    
-    
+
+
+
+
     .bottom_button {
         width: 14.7vw;
         height: 14vh;
         margin-right: 6vw;
         margin-top: 1vh;
-        background: linear-gradient(180deg,var(--myvar) 51.54%, #FFFFFF 51.61%);
+        background: linear-gradient(180deg, var(--myvar) 51.54%, #FFFFFF 51.61%);
         border-radius: 0.2vw;
     }
-    
+
     .button_item {
         scroll-snap-align: start;
-    
+
     }
-    
+
     .right_button {
         width: 14.7vw;
         height: 13.7vh;
-    
+
         margin-top: 3vh;
-        background: linear-gradient(180deg,var(--myvar) 51.54%, #FFFFFF 51.61%);
+        background: linear-gradient(180deg, var(--myvar) 51.54%, #FFFFFF 51.61%);
         border-radius: 0.2vw;
-        
+
     }
 
-    .right_button_home_btn{
+    .right_button_home_btn {
         width: 14.7vw;
         height: 13.7vh;
-    
+
         margin-top: 1.5vh;
-        background: linear-gradient(180deg,var(--myvar) 51.54%, #FFFFFF 51.61%);
+        background: linear-gradient(180deg, var(--myvar) 51.54%, #FFFFFF 51.61%);
         border-radius: 0.2vw;
     }
-    
+
     .inner_rightcard {
         height: 67vh;
         overflow-y: auto;
         overflow-x: hidden;
     }
 
-    .inner_rightcard_home_btn{
+    .inner_rightcard_home_btn {
         height: 61vh;
         overflow-y: auto;
         overflow-x: hidden;
     }
-    
+
     .bottom_button_labels {
         color: #FFFFFF;
         font-family: 'Work Sans';
@@ -1299,7 +883,7 @@ font-size: 1vw;
         justify-content: center;
         align-items: center;
     }
-    
+
     .right_button_labels {
         color: #FFFFFF;
         font-family: 'Work Sans';
@@ -1307,11 +891,11 @@ font-size: 1vw;
         font-weight: 500;
         font-size: 1vw;
         height: 50%;
-        display:flex;
+        display: flex;
         justify-content: center;
         align-items: center;
     }
-    
+
     .governance_card {
         margin-top: 2vh;
         height: 71vh;
@@ -1319,18 +903,19 @@ font-size: 1vw;
         background: var(--mediumColor);
 
     }
-    .governance_card_home_btn{
+
+    .governance_card_home_btn {
         margin-top: 2vh;
         height: 64vh;
         background: var(--mediumColor);
     }
-    
+
     .governace_title {
         font-family: 'Work Sans';
         font-style: normal;
         font-weight: 600;
     }
-    
+
     .name_hos,
     .level_hos {
         font-size: 0.9vw;
@@ -1338,40 +923,40 @@ font-size: 1vw;
         color: #000000;
         margin-top: 1vh;
     }
-    
+
     .button_score,
     .right_button_score {
-       font-weight: 600;
+        font-weight: 600;
         color: #000000;
         height: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
     }
-    
+
     .point_dist_score {
         font-family: 'Inter';
         font-weight: 700;
         font-size: 0.8vw;
         margin-right: 1vw;
     }
-    
+
     .point_score_div {
         height: 4vh;
     }
-    
+
     .badge_image {
         width: 8vw;
         height: 13vh;
         margin-left: 2vw;
-    
+
     }
-    
+
     .badge_div {
         height: 18vh;
     }
-    
-    
+
+
     .game_points_div {
         margin-left: 3vw;
         display: flex;
@@ -1381,12 +966,12 @@ font-size: 1vw;
         align-items: center;
         margin-top: 1vh;
     }
-    
+
     .game_points_image {
         height: 4vh;
         width: 3vw;
     }
-    
+
     .game_points_score {
         background: #F3F2C1;
         border: 0.5px solid #53B8BB;
@@ -1401,7 +986,7 @@ font-size: 1vw;
         padding: 0.2vw;
         margin-top: 1vh;
     }
-    
+
     .reward_points_div {
         margin-left: 4vw;
         display: flex;
@@ -1412,12 +997,12 @@ font-size: 1vw;
         cursor: pointer;
         margin-top: 1vh;
     }
-    
+
     .reward_points_image {
         height: 4vh;
         width: 3vw;
     }
-    
+
     .reward_points_score {
         background: #F3F2C1;
         border: 0.5px solid #53B8BB;
@@ -1431,81 +1016,92 @@ font-size: 1vw;
         font-size: 0.8vw;
         padding: 0.2vw;
     }
-    
+
     .game_point_label,
     .reward_point_label {
         font-family: 'Inter';
-    
+
         font-weight: 600;
         margin-top: 0.3vh;
         font-size: 0.7vw;
-    
-    
+
+
         color: #FFFFFF;
     }
-    
-    .leaderboard_rank_score{
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 1vw;
-    color: #FFFFFF;
-    
-    }
-    .leaderboard_rank_score_first,.leaderboard_rank_score{
+
+    .leaderboard_rank_score {
         font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 1vw;
-    color: #FFFFFF;
-    margin-left: 2vw;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1vw;
+        color: #FFFFFF;
+
     }
-    
-    .leaderboard_with_fixed_tile{
-    display: flex;
-    flex-direction: column;
+
+    .leaderboard_rank_score_first,
+    .leaderboard_rank_score {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1vw;
+        color: #FFFFFF;
+        margin-left: 2vw;
     }
-    
-    .leaderboard_name_and_team_first,.leaderboard_name_and_team{
+
+    .leaderboard_with_fixed_tile {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .leaderboard_name_and_team_first,
+    .leaderboard_name_and_team {
         margin-left: 6vw;
     }
-    
-    .leaderboard_name_label_first,.leaderboard_team_label_first,.leaderboard_name_label,.leaderboard_team_label{
+
+    .leaderboard_name_label_first,
+    .leaderboard_team_label_first,
+    .leaderboard_name_label,
+    .leaderboard_team_label {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 500;
         font-size: 0.8vw;
         color: #ffffff;
-        width: 39vw;
+        width: 20vw;
     }
-    
-    
-    
-    .leaderboard_rank_profile_image_div_first,.leaderboard_rank_profile_image_div{
+
+
+
+    .leaderboard_rank_profile_image_div_first,
+    .leaderboard_rank_profile_image_div {
         margin-left: 3vw;
     }
-    
-    .leaderboard_rank_profile_image_first,.leaderboard_rank_profile_image{
+
+    .leaderboard_rank_profile_image_first,
+    .leaderboard_rank_profile_image {
         width: 3vw;
         height: 5vh;
         border-radius: 50%;
         border: 1px solid #FFFFFF;
     }
-    
-    
-    
-    
-    .leaderboard_rank_badge_image_first,.leaderboard_rank_badge_image{
+
+
+
+
+    .leaderboard_rank_badge_image_first,
+    .leaderboard_rank_badge_image {
         width: 3vw;
         height: 5vh;
         border-radius: 50%;
     }
-    
-    .leaderboard_rank_points_div_first,.leaderboard_rank_points_div{
+
+    .leaderboard_rank_points_div_first,
+    .leaderboard_rank_points_div {
         margin-left: 6vw;
     }
-    
-    .leaderboard_rank_points_label_first,.leaderboard_rank_points_label{
+
+    .leaderboard_rank_points_label_first,
+    .leaderboard_rank_points_label {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 500;
@@ -1513,61 +1109,64 @@ font-size: 1vw;
         color: #ffffff;
         width: 10vw;
     }
-    
-    
-    
-    
-    
-    .leaderboard_rank_up_down_arrow_image_first,.leaderboard_rank_up_down_arrow_image{
+
+
+
+
+
+    .leaderboard_rank_up_down_arrow_image_first,
+    .leaderboard_rank_up_down_arrow_image {
         width: 3vw;
         height: 5vh;
         border-radius: 50%;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // ::-webkit-scrollbar {
-    //     width: 12px;
-    // }
-     
-    // ::-webkit-scrollbar-track {
-    //     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-    //     border-radius: 10px;
-    // }
-     
-    // ::-webkit-scrollbar-thumb {
-    //     border-radius: 10px;
-    //     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
-    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(196, 174, 174, 0.3); 
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.8); 
+         
+    }
 }
 
 
 // Mobile View Started
 @media screen and (min-width:270px) and (max-width:767px) {
 
-    .web-view{
-        display:none
+    .web-view {
+        display: none
     }
-    .prof_pic_mobile{
+
+    .prof_pic_mobile {
         height: 12vh;
         width: 12vh;
         border-radius: 50%;
@@ -1576,27 +1175,28 @@ font-size: 1vw;
         display: grid;
         place-content: center;
 
-        .prof_pic_image_mobile{
+        .prof_pic_image_mobile {
             height: 12vh;
             width: 12vh;
             border-radius: 50%;
-        
+
             margin-left: 1vw;
             margin-right: 1vw
         }
     }
-    
-    .profile_name_mobile{
+
+    .profile_name_mobile {
         font-family: 'Inter';
         font-style: normal;
-        text-align:center;
+        text-align: center;
         font-weight: 600;
         font-size: 1.5vh;
         margin-top: 0.5vh;
-      
+
 
     }
-    .profile_team_name_mobile{
+
+    .profile_team_name_mobile {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
@@ -1608,7 +1208,8 @@ font-size: 1vw;
         cursor: pointer;
 
     }
-    .camera_image_mobile{
+
+    .camera_image_mobile {
         // position: absolute;
         // top: 0;
         // right: 1vw;
@@ -1620,22 +1221,25 @@ font-size: 1vw;
         // /* margin: 3px; */
         // border-radius: 50%;
 
-        .mobile-avatar-upload{
+        .mobile-avatar-upload {
             position: relative;
             height: auto;
             width: auto;
-        
+
         }
-        .mobile-avatar-upload .mobile-avatar-edit
-        {position: absolute;
-            left:80px;
+
+        .mobile-avatar-upload .mobile-avatar-edit {
+            position: absolute;
+            left: 80px;
             z-index: 1;
             top: 1%;
         }
+
         .mobile-avatar-upload .mobile-avatar-edit input {
             display: none;
         }
-        .mobile-avatar-upload .mobile-avatar-edit input+label{
+
+        .mobile-avatar-upload .mobile-avatar-edit input+label {
             display: inline-block;
             width: 4vh;
             height: 4vh;
@@ -1653,7 +1257,7 @@ font-size: 1vw;
             background-repeat: no-repeat;
             background-position: center;
         }
-        
+
         .mobile-avatar-upload .mobile-avatar-preview {
             width: 87px;
             height: 87px;
@@ -1663,6 +1267,7 @@ font-size: 1vw;
             border: 2.20588px solid #FFFFFF;
             box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
         }
+
         .mobile-avatar-upload .mobile-avatar-preview>img {
             width: 100%;
             height: 100%;
@@ -1671,31 +1276,35 @@ font-size: 1vw;
             background-repeat: no-repeat;
             background-position: center;
         }
-        
+
 
     }
-    .badge_div_mobile{
+
+    .badge_div_mobile {
         height: 18vh;
 
     }
-    .badge_image_mobile{
+
+    .badge_image_mobile {
         width: 10vh;
         height: 10vh;
-        
+
 
     }
-    .game_points_div_mobile{
-        display: grid;
-       place-items: center;
-        height: 13vh;
-       
 
-        .game_points_image_mobile{
+    .game_points_div_mobile {
+        display: grid;
+        place-items: center;
+        height: 13vh;
+
+
+        .game_points_image_mobile {
             height: 4vh;
             width: 4vh;
 
         }
-        .game_points_score_mobile{
+
+        .game_points_score_mobile {
             // background: var(--mediumColor);
             border: 0.5px solid #53B8BB;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -1713,11 +1322,12 @@ font-size: 1vw;
             margin-top: 1vh;
 
         }
-        .game_point_label_mobile{
+
+        .game_point_label_mobile {
             font-family: "Inter";
             font-weight: 600;
             margin-top: 0.3vh;
-            color:#ffff;
+            color: #ffff;
             font-size: 1.5vh;
             width: 15vw;
             text-align: center;
@@ -1725,17 +1335,19 @@ font-size: 1vw;
         }
 
     }
-    .reward_points_div_mobile{
+
+    .reward_points_div_mobile {
         display: grid;
         place-items: center;
         height: 13vh;
 
-         .reward_points_image_mobile{
+        .reward_points_image_mobile {
             height: 4vh;
             width: 4vh;
 
         }
-        .reward_points_score_mobile{
+
+        .reward_points_score_mobile {
             // background: var(--mediumColor);
             border: 0.5px solid #53B8BB;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -1753,7 +1365,8 @@ font-size: 1vw;
             margin-top: 1vh;
 
         }
-        .reward_point_label_mobile{
+
+        .reward_point_label_mobile {
             font-family: "Inter";
             font-weight: 600;
             margin-top: 0.3vh;
@@ -1763,29 +1376,30 @@ font-size: 1vw;
             text-align: center;
 
         }
-        
+
 
     }
 
-    .point_distribution_mobile{
+    .point_distribution_mobile {
         height: 22vh;
         width: 95vw;
         margin-top: 2vh;
         overflow-y: auto;
-       .point_background_mobile{
-        // background: var(--mediumColor);
-        height: 4vh;
-        display: flex;
-        align-items: center;
-        border-radius: 6px;
 
-       }
+        .point_background_mobile {
+            // background: var(--mediumColor);
+            height: 4vh;
+            display: flex;
+            align-items: center;
+            border-radius: 6px;
 
-        .point_dist_div_mobile{
+        }
+
+        .point_dist_div_mobile {
             // height: 40vh;
-            
 
-            .point_one_mobile{
+
+            .point_one_mobile {
                 height: 4vh;
                 display: flex;
                 align-items: center;
@@ -1793,27 +1407,29 @@ font-size: 1vw;
                 margin-bottom: 0.5vh;
                 width: 93vw;
                 cursor: pointer;
-                .point_one_label_mobile{
+
+                .point_one_label_mobile {
                     font-size: 2.1vh;
                     font-weight: 600;
                     margin-right: 2vw;
                 }
 
             }
-           
-    
-        }
-        
-        
-       
-        
-        
 
-       
-    
-       
+
+        }
+
+
+
+
+
+
+
+
+
     }
-    .button_series_mobile{
+
+    .button_series_mobile {
         // min-width: 19.7vw;
         height: 7vh;
         font-size: 1.6vh;
@@ -1826,9 +1442,10 @@ font-size: 1vw;
         color: #000000;
         font-weight: 600;
         font-family: 'Roboto'
-        
+
     }
-    .active{
+
+    .active {
         // min-width: 19.7vw;
         height: 7vh;
         font-size: 1.6vh;
@@ -1838,13 +1455,14 @@ font-size: 1vw;
         border-radius: 7px;
         // margin-left: 2vw;
         border: none;
-        width:20vw;
+        width: 20vw;
         color: #ffff;
         font-weight: 600;
         font-family: 'Roboto'
 
     }
-    .search_box_mobile{
+
+    .search_box_mobile {
         margin-top: 2vh;
         margin-left: 1vw;
         width: 100%;
@@ -1856,7 +1474,8 @@ font-size: 1vw;
         border-radius: 15px;
 
     }
-    .search_btn_div{
+
+    .search_btn_div {
         width: 12.5vw;
         height: 7vh;
         background: var(--myvar);
@@ -1868,20 +1487,22 @@ font-size: 1vw;
         border-radius: 1vw;
 
     }
-    .homeBtn{
+
+    .homeBtn {
         height: 8vh;
         width: 8vh;
         border-radius: 50%;
         // background-color: var(--myvar);
         background-color: rgb(243, 242, 193);
-        display:flex;
+        display: flex;
         align-items: center;
         justify-content: center;
         position: fixed;
         right: 1vw;
-        top:45vh;
+        top: 45vh;
     }
-    .leaderBoard-container-mobile{
+
+    .leaderBoard-container-mobile {
         width: 100vw;
         display: flex;
         justify-content: center;
@@ -1889,20 +1510,23 @@ font-size: 1vw;
         margin-top: 2vh;
 
     }
-    .leaderboard_label_mobile{
+
+    .leaderboard_label_mobile {
         width: 92vw;
     }
-    .leaderboard_label_tile_mobile{
+
+    .leaderboard_label_tile_mobile {
         height: 40vh;
-       
+
         width: 100%;
         overflow-y: auto;
         overflow-x: hidden;
 
     }
-    .leaderboard_tile_mobile{
+
+    .leaderboard_tile_mobile {
         width: 100%;
-        height: 7vh;
+        height: 8vh;
         margin-bottom: 1vh;
         display: flex;
         align-items: center;
@@ -1912,7 +1536,8 @@ font-size: 1vw;
         background-size: 100% 100%;
 
     }
-    .leaderboard_rank_score_mobile{
+
+    .leaderboard_rank_score_mobile {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
@@ -1924,66 +1549,74 @@ font-size: 1vw;
         color: #FFFFFF;
 
     }
-    .leaderboard_rank_profile_image_div_mobile{
+
+    .leaderboard_rank_profile_image_div_mobile {
 
         // margin-left: 3vw;
         display: flex;
         justify-content: center;
         align-items: center;
-        .leaderboard_rank_profile_image_mobile{
-        width: 5vh;
-        height: 5vh;
-        border-radius: 50%;
-        border: 1px solid #FFFFFF;
+
+        .leaderboard_rank_profile_image_mobile {
+            width: 5vh;
+            height: 5vh;
+            border-radius: 50%;
+            border: 1px solid #FFFFFF;
         }
-        
+
 
     }
-    .leaderboard_name_and_team_mobile{
+
+    .leaderboard_name_and_team_mobile {
         margin-left: 6vw;
 
     }
-    .leaderboard_name_label_mobile{
+
+    .leaderboard_name_label_mobile {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 500;
         font-size: 3.8vw;
         color: #ffffff;
         width: 12ch;
-        white-space: nowrap; 
-       
+        white-space: nowrap;
+
         overflow: hidden;
-        text-overflow: ellipsis; 
+        text-overflow: ellipsis;
 
     }
-    .leaderboard_team_label_mobile{
+
+    .leaderboard_team_label_mobile {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 500;
         font-size: 2.8vw;
         color: #ffffff;
-      
-        white-space: nowrap; 
-  width: 7ch; 
-  overflow: hidden;
-  text-overflow: ellipsis; 
-        
+
+        white-space: nowrap;
+        width: 7ch;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
     }
-    .leaderboard_rank_badge_image_div_mobile{
+
+    .leaderboard_rank_badge_image_div_mobile {
         width: 10vw;
         height: 6vh;
         display: flex;
         justify-content: center;
-        align-items:center;
+        align-items: center;
 
-        
+
     }
-   .leaderboard_rank_badge_image_mobile{
+
+    .leaderboard_rank_badge_image_mobile {
         width: 6vh;
         height: 6vh;
 
     }
-    .leaderboard_rank_points_div_mobile{
+
+    .leaderboard_rank_points_div_mobile {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 500;
@@ -1991,16 +1624,18 @@ font-size: 1vw;
         color: #ffffff;
         width: 14vw;
         text-align: center;
-    
+
 
     }
-    .leaderboard_rank_up_down_arrow_div_mobile{
+
+    .leaderboard_rank_up_down_arrow_div_mobile {
         width: 10vw;
         height: 6vh;
         margin-left: 5vw;
 
     }
-    .view_more_button_mobile{
+
+    .view_more_button_mobile {
         width: 107%;
         height: 6vh;
         background: var(--myvar);
@@ -2011,30 +1646,30 @@ font-size: 1vw;
         border-radius: 0.4vw;
     }
 
-    .one-data-mobile{
-        .card-container{
+    .one-data-mobile {
+        .card-container {
             display: flex;
-        justify-content: center;
-    
+            justify-content: center;
+
         }
-        
+
     }
-    .two-data-mobile{
-        .card-container{
+
+    .two-data-mobile {
+        .card-container {
             display: flex;
             // gap:;
             justify-content: space-evenly;
         }
-    }    
+    }
 
     ::ng-deep {
         .page-content {
-    
+
             padding: calc(55px + 24px) calc(24px / 2) 0px calc(24px / 2) !important;
-    
+
         }
     }
 
-    
-}
 
+}

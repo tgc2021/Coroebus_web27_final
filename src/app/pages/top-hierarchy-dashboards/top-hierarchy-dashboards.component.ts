@@ -68,6 +68,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   notificationList_err: string;
   spectSearFinalList:any=[]
   spectSearFinalList1:any
+  light_color: string;
   constructor(private readonly store: Store, public _route: ActivatedRoute,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -85,6 +86,10 @@ console.log(this.dark_color);
 
     this.medium_color=localStorage.getItem('medium_color')
     this.element.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
+
+    this.light_color=localStorage.getItem('light_color')
+    this.element.nativeElement.style.setProperty('--lightColor', `${this.light_color}`)
+
     console.log(this.medium_color);
 
     this.activeClass=0
