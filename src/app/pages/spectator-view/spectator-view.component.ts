@@ -97,7 +97,7 @@ viewmoreorder:any
   tile_web_image: any;
   tile_web_image_final: any;
   tile_bg_img: any=[];
-
+  bgImageWeb:any
   constructor(private readonly store: Store, public http: ApiserviceService, private eventService: EventService, private _router: Router,
     private _route: ActivatedRoute,public Util: Util,public snackBar: MatSnackBar, public element: ElementRef, private modalService: NgbModal) { }
 
@@ -133,7 +133,7 @@ viewmoreorder:any
   
       })
 
-      
+      this.bgImageWeb=localStorage.getItem('bg_image')
    
       // this.bulletins()
 
@@ -560,6 +560,8 @@ viewmoreorder:any
         console.log(res);
         this.bulletins_list=res
         this.addInsList =  this.bulletins_list?.data
+        console.log(this.addInsList);
+        
       })
     }
 
@@ -1550,6 +1552,8 @@ viewmoreorder:any
         console.log(res);
         this.bulletins_list=res
         this.addInsList =  this.bulletins_list?.data
+        console.log(this.addInsList);
+
       })
       
 
@@ -1892,6 +1896,8 @@ viewmoreorder:any
       console.log(res);
       this.bulletins_list=res
       this.addInsList =  this.bulletins_list?.data
+      console.log(this.addInsList);
+
     })
   }
 

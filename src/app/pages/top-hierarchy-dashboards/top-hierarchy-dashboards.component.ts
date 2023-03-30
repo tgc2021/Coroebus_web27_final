@@ -191,6 +191,7 @@ console.log(this.dark_color);
 
       this.sectionView_1 = res?.data
 console.log(this.sectionView_1);
+localStorage.setItem('bg_image',this.sectionView_1?.theme_details?.[0]?.point_dist_background)
 
       console.log(this.sectionView_1?.theme_details?.[0]?.dark_color);
       

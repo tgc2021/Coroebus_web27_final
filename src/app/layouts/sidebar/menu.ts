@@ -14,7 +14,9 @@ export const MENU: MenuItem[] = [
         },
         subItems: [],
         link: '/account/interactive-dashboard',
-        link1: '/dashboard'
+        link1: '/dashboard',
+        link2: '/top_dashboard'
+
     },
     {
         id: 3,
@@ -24,7 +26,9 @@ export const MENU: MenuItem[] = [
         },
         subItems: [],
         link: '/profile',
-        link1: '/profile'
+        link1: '/profile',
+        link2: '/profile'
+
 
     },
     {
@@ -35,7 +39,9 @@ export const MENU: MenuItem[] = [
         },
         subItems: [],
         link: '/performance/page',
-        link1: '/performance/page'
+        link1: '/performance/page',
+        link2: '/performance/page'
+
 
     },
     {
@@ -46,7 +52,9 @@ export const MENU: MenuItem[] = [
         },
         subItems: [],
         link: '/playzone/play',
-        link1: '/playzone/play'
+        link1: '/playzone/play',
+        link2: '/playzone/play',
+
 
     },
     {
@@ -57,7 +65,9 @@ export const MENU: MenuItem[] = [
         },
         subItems: [],
         link: '/Achievement/AchievementShelf',
-        link1: '/Achievement/AchievementShelf'
+        link1: '/Achievement/AchievementShelf',
+        link2: '/Achievement/AchievementShelf',
+
 
     },
     {
@@ -68,7 +78,9 @@ export const MENU: MenuItem[] = [
         },
         subItems: [],
         link: '/reward/rewardPoints',
-        link1: '/reward/rewardPoints'
+        link1: '/reward/rewardPoints',
+        link2: '/reward/rewardPoints',
+
 
     },
     {
@@ -79,7 +91,9 @@ export const MENU: MenuItem[] = [
         },
         subItems: [],
         link: '/spectator/spectatorView',
-        link1: '/spectator/spectatorView'
+        link1: '/spectator/spectatorView',
+        link2: '/spectator/spectatorView'
+
 
     },
     {   
@@ -90,7 +104,9 @@ export const MENU: MenuItem[] = [
         },
         subItems: [],
         link: 'account/theme/selection' ,
-        link1: 'account/theme/selection' 
+        link1: 'account/theme/selection',
+        link2: 'account/theme/selection' 
+
 
         
     },
@@ -118,6 +134,7 @@ export const MENU: MenuItem[] = [
                 label: 'MENUITEMS.CHAMPIONS_LEAGUE',
                 link: '/champions_league',
                 link1: '/champions_league',
+                link2: '/champions_league',
                 parentId: 12
             },
         ]

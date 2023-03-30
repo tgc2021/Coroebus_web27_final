@@ -276,6 +276,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
       this.sectionView_1 = res?.data
 console.log(this.sectionView_1.is_about_game);
+localStorage.setItem('bg_image',this.sectionView_1?.theme_details?.[0]?.point_dist_background)
 
       console.log(this.sectionView_1?.theme_details?.[0]?.dark_color);
       

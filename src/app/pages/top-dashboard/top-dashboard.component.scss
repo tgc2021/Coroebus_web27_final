@@ -178,6 +178,7 @@
         width: 90%;
         height: 64vh;
         overflow-y: auto;
+        overflow-x: hidden;
         padding: 0;
     }
 
@@ -218,7 +219,7 @@
 
     .map-view {
         background: url(../../../assets/images/TopHierarchyDashboard/ancient_map_color.png);
-        width: 80vw;
+        width: 77vw;
         height: 72vh;
         background-size: 100% 100%;
     }
@@ -275,13 +276,16 @@ padding-left: 0;
         font-family: Work Sans;
         font-size: 0.8vw;
         font-weight: 600;
-        margin-left: 4vw;
+        width: 29%;
+        text-align: end;
     }
 .web_score_label{
     font-family: Work Sans;
     font-size: 0.8vw;
     font-weight: 600;
-    margin-left: 5.5vw;
+    width: 48%;
+    /* margin-left: 7.5vw; */
+    text-align: end;
 }
 
     .level,
@@ -319,7 +323,7 @@ padding-left: 0;
     }
 
     .bottom_right_section {
-        width: 19.8vw;
+        width: 23vw;
         height: 91vh;
         border: 1px solid black;
         padding: 0;
@@ -342,11 +346,14 @@ padding-left: 0;
     .image_logo {
         height: 4vh;
         width: 4vh;
-        /* margin-left: 0.2vw; */
+       
         border: 1px solid white;
         border-radius: 50%;
     }
 
+    .name_section{
+        width: 55%;
+    }
    .call_center_name{
     font-family: 'Work Sans', sans-serif;
     font-size: 1vw;
@@ -359,23 +366,30 @@ padding-left: 0;
 
     .rank {
         font-family: 'Work Sans', sans-serif;
-        font-size: 0.6vw;
-        font-weight: 600;
+        font-size: 0.8vw;
+        font-weight: 500;
         color: #FFFFFF;
+        display: flex;
+        align-items: center;
     }
 
     .location{
         font-family: 'Work Sans', sans-serif;
         font-size: 0.8vw;
-        font-weight: 600;
+        font-weight: 500;
         color: #FFFFFF;
     }
 
-    .hos_Score,
+    .hos_Score{
+        font-family: 'Work Sans', sans-serif;
+        font-size: 0.8vw;
+        font-weight: 500;
+        color: #FFFFFF;
+    }
     .hos_Level {
         font-family: 'Work Sans', sans-serif;
         font-size: 0.8vw;
-        font-weight: 600;
+        font-weight: 500;
         color: #FFFFFF;
 
     }
