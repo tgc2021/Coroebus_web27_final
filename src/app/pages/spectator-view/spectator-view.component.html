@@ -28,20 +28,20 @@
 
         <!------------------------------------------------- Notification  ----------------------------------------------------->
         <div class="col-3 notification">
-            <mat-card class="web_notification_card">
+            <div class="web_notification_card" style="background-image: url({{bgImageWeb}});   padding: 1vw;">
                 <div>
                     <h6 class="web_notification_header">
                         Notifications
                     </h6>
 
-                    <!-- 
-                    <div class="d-flex justify-content-center align-items-center web_no_notifications">
+                    
+                    <div *ngIf="notification_response_data == []" class="d-flex justify-content-center align-items-center web_no_notifications">
                         <div>
                             <img class="no_data_image" src="assets/images/specatator-dashboard/No_message_spectator.png"/>
                         </div>
                         <p class="web_notification_message">There's no Notifications you have subscribed to, stay tuned to this section for more.</p>
-                    </div> -->
-                    <div class="web_div_inner_notification">
+                    </div> 
+                    <div *ngIf="notification_response_data != []" class="web_div_inner_notification">
                         <mat-card *ngFor="let res of notification_response_data"
                             [ngClass]="res.readStatus=='0'?'yellow-notification-row':'web_notification'">
                             <div class="row" (click)="openNotification(res)">
@@ -79,7 +79,7 @@
 
                 </div>
 
-            </mat-card>
+            </div>
         </div>
 
 
@@ -93,9 +93,9 @@
                     </div>
 
 
-                    <div class="d-flex align-items-center web_select_div">
+                    <div class="d-flex align-items-center web_select_div" *ngIf="spectator_group_list[0].data.length>1">
 
-                        <select class="web_select_dropdown" [(ngModel)]="selected" name="status" placeholder="select"
+                        <select  class="web_select_dropdown" [(ngModel)]="selected" name="status" placeholder="select"
                             (ngModelChange)="onOptionsSelected()">
                             <option class="web_option" *ngFor="let web_dropdown_reponse of spectator_group_list[0].data"
                                 [ngValue]="web_dropdown_reponse.id_coroebus_group">{{web_dropdown_reponse.group_name}}
@@ -406,11 +406,21 @@
         <!------------------------------------------------- Bulletins  ----------------------------------------------------->
 
         <div class="col-3 web_bulletins">
-            <mat-card class="web_bulletins_card">
+            <div class="web_bulletins_card" style="background-image: url({{bgImageWeb}});   padding: 1vw;">
 
                 <div>
                     <h6 class="web_bulletins_header">Bulletins</h6>
                 </div>
+                <div *ngIf="addInsList.length == 0; then nobulletins else bulletins"></div>
+                <ng-template #nobulletins>
+                    <div class="d-flex justify-content-center align-items-center web_no_notifications">
+                        <div>
+                            <img class="no_data_image" src="assets/images/specatator-dashboard/No_message_spectator.png"/>
+                        </div>
+                        <p class="web_notification_message">There's no Bulletins you have subscribed to, stay tuned to this section for more.</p>
+                    </div>
+                </ng-template>
+              <ng-template #bulletins>
                 <div class="inner_height">
                     <mat-card class="web_bulletin" *ngFor="let item of addInsList">
 
@@ -467,11 +477,13 @@
             
                     </mat-card>  
                 </div>
+              </ng-template>
+              
                             
                
 
 
-            </mat-card>
+            </div>>
 
         </div>
     </div>

@@ -118,7 +118,24 @@ export class TopbarComponent implements OnInit, OnDestroy {
  
     
   RedirectionToHome(){
-    this.router.navigateByUrl('topdashboard')
+    console.log(this.id_role);
+    
+    if(this.id_role==13){
+      this.router.navigateByUrl('topdashboard')
+    }
+    else if(this.id_role == 8 || this.id_role == 9 ){
+      console.log('back');
+      
+      this.router.navigateByUrl('top_dashboard')
+
+    }
+    else if(this.id_role == 6 || this.id_role == 4 || this.id_role == 3 ){
+      console.log('back');
+      
+      this.router.navigateByUrl('account/interactive-dashboard')
+
+    }
+
 
   }
   
