@@ -267,7 +267,7 @@
         }
 
         .lower_section {
-            margin-top: 6vh;
+            margin-top: 5vh;
             .Governance_index_points{
                 display: flex;
                 width: 16vw;
@@ -1073,18 +1073,21 @@ input::placeholder {
         height: 4vh;
         width: 3vw;
     }
-
     .game_points_score {
-        background: #F3F2C1;
+        background: #FFFFFF;
         border: 0.5px solid #53B8BB;
-        box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 10.61px;
-        width: 6vw;
+        width: 7vw;
+        height: 4.5vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         margin-top: 0.5vh;
         font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
-        font-size: 0.8vw;
+        font-size: 1.2vw;
         padding: 0.2vw;
         margin-top: 1vh;
     }
@@ -1106,16 +1109,20 @@ input::placeholder {
     }
 
     .reward_points_score {
-        background: #F3F2C1;
+        background: #FFFFFF;
         border: 0.5px solid #53B8BB;
-        box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 10.61px;
-        width: 6vw;
+        width: 7vw;
+        height: 4.5vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         margin-top: 0.5vh;
         font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
-        font-size: 0.8vw;
+        font-size: 1.2vw;
         padding: 0.2vw;
     }
 
@@ -1125,7 +1132,7 @@ input::placeholder {
 
         font-weight: 600;
         margin-top: 0.3vh;
-        font-size: 0.7vw;
+        font-size: 1.0vw;
 
 
         color: #FFFFFF;
