@@ -75,7 +75,42 @@
 
             }
 
+
         }
+        .camera_image {
+            // position: absolute;
+            // top: 0;
+            // right: 1vw;
+            // z-index: 10;
+            // background: white;
+            // padding: 6px;
+            // width: 4vh;
+            // height: 3vh;
+            // /* margin: 3px; */
+            // border-radius: 50%;
+    
+            .avatar-upload .avatar-edit input+label {
+                display: inline-block;
+                position: absolute;
+                top: -52px;
+                left: 17px;
+                width: 3vh;
+                height: 3vh;
+                /* margin-bottom: 0; */
+                border-radius: 50%;
+                background: #FFFFFF;
+                border: 1px solid transparent;
+                box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+                cursor: pointer;
+                font-weight: normal;
+                transition: all 0.2s ease-in-out;
+                background-repeat: no-repeat;
+                background-position: center;
+    
+    
+            }
+        }
+    
 
         .lower_section {
             margin-top: 8vh;
@@ -286,10 +321,10 @@
             }
         }
 
-        .Overall_score {
+        .Island_score {
 
             position: absolute;
-            border: 2px solid #79BF06;
+            border: 2px solid black;
             border-radius: 50%;
             background-color: #ffff;
 
@@ -702,40 +737,7 @@ input::placeholder {
         margin-right: 1vw;
     }
 
-    .camera_image {
-        // position: absolute;
-        // top: 0;
-        // right: 1vw;
-        // z-index: 10;
-        // background: white;
-        // padding: 6px;
-        // width: 4vh;
-        // height: 3vh;
-        // /* margin: 3px; */
-        // border-radius: 50%;
-
-        .avatar-upload .avatar-edit input+label {
-            display: inline-block;
-            position: absolute;
-            top: -12vh;
-            right: -2.5vw;
-            width: 4vh;
-            height: 4vh;
-            /* margin-bottom: 0; */
-            border-radius: 50%;
-            background: #FFFFFF;
-            border: 1px solid transparent;
-            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-            cursor: pointer;
-            font-weight: normal;
-            transition: all 0.2s ease-in-out;
-            background-repeat: no-repeat;
-            background-position: center;
-
-
-        }
-    }
-
+    
     .geme_reward_points_div {
         // background: url(../../../assets/images/TopHierarchyDashboard/gamepoints_background.png);
         width: 40vw;
@@ -1058,7 +1060,7 @@ input::placeholder {
 
 
     .game_points_div {
-        margin-left: 3vw;
+        // margin-left: 3vw;
         display: flex;
         flex-direction: column;
         justify-content: center;
