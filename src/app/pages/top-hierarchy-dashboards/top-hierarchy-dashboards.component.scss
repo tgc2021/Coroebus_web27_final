@@ -1749,6 +1749,20 @@ input::placeholder {
             justify-content: space-evenly;
         }
     }
+    .search_bar_img_mobile{
+    width: 13vw;
+    height: 7vh;
+    background: var(--myvar);
+    margin-top: 2vh;
+    /* margin-left: 1vw; */
+    padding: 3vw;
+    border-radius: 2vw;
+   
+    }
+
+    .search_bar_img_mobile_div{
+        padding-left: 0;
+    }
 
     ::ng-deep {
         .page-content {
