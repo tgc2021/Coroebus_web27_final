@@ -9,6 +9,9 @@
 
 // New Css FOr New GOP
 
+::ng-deep .mat-expansion-indicator::after {
+    color: white;
+}
 
 .profile_panel_container {
     height: 90vh;
@@ -146,14 +149,15 @@
     display: flex;
     flex-direction: column;
     padding: 10% 10% 5% 10%;
-
+    overflow-y: auto;
+    overflow-x:hidden;
     // justify-content: center;
     align-items: center;
 
     .profile_card {
         position: relative;
         width: 19vw;
-        height: 35vh;
+        height: 33vh;
         background: var(--lightColor);
         border: 3px solid var(--myvar);
         border-radius: 8px;
@@ -247,6 +251,104 @@
 
     }
 
+    // CSS For Ranking Section
+    .Ranking_section_card {
+        position: relative;
+        width: 19vw;
+        height: 25vh;
+        margin-bottom: 2vh;
+        background: var(--lightColor);
+        border: 3px solid var(--myvar);
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        align-items: center;
+
+        .upper_section {
+            width: 100%;
+            height: 12vh;
+            background: var(--myvar);
+            // border-bottom-left-radius: 100%;
+            // border-bottom-right-radius: 100%;
+
+            .level_name {
+                font-family: 'Work Sans';
+                font-style: normal;
+                font-weight: 550;
+                font-size: 2.2vh;
+                line-height: 2.4vh;
+                /* identical to box height, or 120% */
+                text-align: center;
+                letter-spacing: 0.2px;
+                color: #FFFFFF;
+                margin-top: 2vh;
+            }
+        }
+
+        .Overall_score {
+
+            position: absolute;
+            border: 2px solid #79BF06;
+            border-radius: 50%;
+            background-color: #ffff;
+
+            top: 6vh;
+
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+            .Overall_score_Inner_circle {
+                width: 10vh;
+                height: 10vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap:0.6em;
+                border-radius: 50%;
+
+                .overall_score_number {
+                    font-family: 'Work Sans';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 2.2vh;
+                    line-height: 2.4vh;
+                    text-align: center;
+                }
+
+                .overall_score_text {
+                    font-family: 'Work Sans';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 1.8vh;
+                    line-height: 2.0vh;
+                    text-align:center;
+
+                }
+
+            }
+
+        }
+
+        .lower_section {
+            margin-top: 6vh;
+            .Governance_index_points{
+                display: flex;
+                width: 16vw;
+                margin-top: 0.5vh;
+                font-family: "work sans";
+                font-weight: 600;
+                justify-content: space-between;
+
+            }
+
+         
+
+
+        }
+
+
+    }
     .business-index_gop{
         margin-top: 4vh;
         width: 19vw;
@@ -279,7 +381,6 @@
                 border: 1px solid black;
                 margin-top: 2vh;
                 border-radius: 10px 10px 10px 10px;
-
                 .upper_side{
                     width: 10vw;
                     height: 3.5vh;
@@ -481,7 +582,6 @@ input::placeholder {
         font-family: 'Roboto';
 
     }
-
     .active {
         width: 12.7vw;
         height: 6vh;
@@ -765,7 +865,7 @@ input::placeholder {
     }
 
     .leaderboard_points {
-        margin-left: 25vw;
+        margin-left: 20vw;
         font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
@@ -773,10 +873,10 @@ input::placeholder {
     }
 
     .leaderboard_tile {
-       width: 100%;
+       width:48vw;
         height: 6vh;
         margin-bottom: 1vh;
-        margin-left: 1vw;
+        // margin-left: 1vw;
         display: flex;
         cursor: pointer;
         align-items: center;
@@ -807,7 +907,7 @@ input::placeholder {
         font-family: 'Roboto';
         font-weight: 600;
         border-radius: 0.4vw;
-        margin-left: 1vw;
+        // margin-left: 1vw;
     }
 
     .button-container {
@@ -1067,7 +1167,7 @@ input::placeholder {
         font-weight: 500;
         font-size: 0.8vw;
         color: #ffffff;
-        width: 20vw;
+        width: 9vw;
     }
 
 
@@ -1092,6 +1192,7 @@ input::placeholder {
     .leaderboard_rank_badge_image {
         width: 3vw;
         height: 5vh;
+        margin-left: 6vw;
         border-radius: 50%;
     }
 
@@ -1107,7 +1208,7 @@ input::placeholder {
         font-weight: 500;
         font-size: 0.8vw;
         color: #ffffff;
-        width: 10vw;
+        width: 5vw;
     }
 
 
@@ -1120,22 +1221,6 @@ input::placeholder {
         height: 5vh;
         border-radius: 50%;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

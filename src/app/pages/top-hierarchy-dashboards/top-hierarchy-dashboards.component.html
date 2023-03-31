@@ -9,6 +9,27 @@
                     <div class="upper_section">
                         <div class="level_name">{{sectionView_1._personal_data.level_label}}</div>
                     </div>
+                    <div *ngIf="cameraimage" class="cameraimg">
+
+                        <!-- <img class="camera_image" src="assets/images/TopHierarchyDashboard/Camera.svg" /> -->
+                        <div class="camera_image">
+                            <!-- <img class="camera_image" src="assets/images/TopHierarchyDashboard/Camera.svg" /> -->
+                            <div class="avatar-upload">
+                                <div class="avatar-edit">
+                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
+                                        (change)="previewFile($event)" />
+                                    <label for="imageUpload"
+                                        [style.background-image]="'url(assets/images/svg/dashboard/camera-icon.svg)'"></label>
+                                </div>
+
+                                <!-- <div class="mobile-avatar-preview  justify-content-center">
+                                    <img loading="lazy" id="imagePreview"
+                                        src="{{sectionView_1?._personal_data?.profile_logo}}">
+    
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
                     <div class="profile_picture">
                         <img class="profile_picture_image" src="{{sectionView_1._personal_data.profile_logo}}" height="100%" width="" />
                     </div>
@@ -82,10 +103,7 @@
                         (click)="leaderboard(i)">
                         {{item.label}}
                     </button>
-                    <!-- <button class="button_series">Productivity</button>
-                    <button class="button_series">Efficiency</button>
-                    <button class="button_series">Capability</button>
-                    <button class="button_series">Happiness</button> -->
+                  
 
                 </div>
 
@@ -110,43 +128,7 @@
                 </div>
     
                 <div class="row leaderboard_with_fixed_tile">
-                    <!-- <div class="leaderboard_label_tile_first">
-                        <mat-card class="leaderboard_tile_first">
-                            <div class="leaderboard_rank_score_first">
-                                1
-                            </div>
-    
-                            <div class="leaderboard_rank_profile_image_div_first">
-                                <img class="leaderboard_rank_profile_image_first" src="assets/images/prof.jpg" />
-                            </div>
-    
-                            <div class="leaderboard_name_and_team_first">
-                                <div class="leaderboard_name_label_first">
-                                    Rajat Bhat
-                                </div>
-                                <div class="leaderboard_team_label_first">
-                                    Fearless Ferraries
-                                </div>
-                            </div>
-    
-                            <div class="leaderboard_rank_badge_image_div_first">
-                                <img class="leaderboard_rank_badge_image_first"
-                                    src="assets/images/TopHierarchyDashboard/Badge.png" />
-                            </div>
-    
-    
-                            <div class="leaderboard_rank_points_div_first">
-                                <div class="leaderboard_rank_points_label_first">9845</div>
-                            </div>
-    
-                            <div class="leaderboard_rank_up_down_arrow_div_first">
-                                <img class="leaderboard_rank_up_down_arrow_image_first"
-                                    src="assets/images/TopHierarchyDashboard/DownArrow.png" />
-                            </div>
-                        </mat-card>
-    
-    
-                    </div> -->
+                    
                     <div *ngIf="sectionView_1._personal_data.id_role==9 ;then sm else rm"></div>
                     <ng-template #sm>
     
@@ -155,9 +137,7 @@
                         </div>
                         <ng-template #withoutsearch>
                             <div class="leaderboard_label_tile">
-                                <!-- <div>
-                    {{leaderboard_data[0]._data | json}}
-                </div> -->
+                              
                                 <mat-card class="leaderboard_tile" *ngFor="let res of leaderboard_data; let i=index"
                                     [style.background-image]="'url(' + res?.ranking_image_web + ')'"
                                     (click)="navigateToSMDashboard(res)">
@@ -402,7 +382,32 @@
             <div class="isLand_panel_container"
                 [style.background-image]="
             sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+            <!-- Ranking Section -->
+            <div class="Ranking_section_card" *ngFor="let item of sectionView_1?.is_land_logos">
+                <div class="upper_section">
+                    <!-- <div class="level_name">{{sectionView_1._personal_data.level_label}}</div> -->
+                    <div class="level_name">{{item.label}}</div>
+                </div>
+                <div class="Overall_score">
+                    <!-- <img class="profile_picture_image" src="{{sectionView_1._personal_data.profile_logo}}" height="100%" width="" /> -->
+                    <div class="Overall_score_Inner_circle">
+                        <img src="{{item.logo}}" alt="is_LandLogo" width="100%" height="100%"> 
+                       
+                    </div>
+                </div>
+                <div class="lower_section">
+                    <button class="btn btn-primary- text-white mt-1" style="height:5vh;width:6vw;display: flex;justify-content: center;align-items: center;border-radius:20px"
+                    [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
+                    [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                    (click)="getDataBasedOnUserID(item)">
+                    {{item._data}}
+                    </button>
+                   
+                
+                </div>
 
+            </div>
+            <!-- Governance Index -->
             <div class="profile_card">
                 <div class="upper_section">
                     <!-- <div class="level_name">{{sectionView_1._personal_data.level_label}}</div> -->
@@ -439,41 +444,133 @@
 
             </div>
 
-            <div class="business-index_gop">
-                <div>
-                    Business Index
+            <div *ngIf=" sectionView_1?._personal_data.id_role=='9';then BuisenessIndexForHOS else BuisenessIndexForSM"></div>
+            <ng-template #BuisenessIndexForHOS>     
+                <div class="business-index_gop">
+                    <div>
+
+                        Business Index
+                    </div>
+    
+                    <div class="business_index_container">
+                        <div class="business_index_points">
+                            <div class="upper_side">NPS</div>
+                            <div class="lower_side">0.5</div>
+    
+                        </div>
+                        <div class="business_index_points">
+                            <div class="upper_side">CSAT</div>
+                            <div class="lower_side">0.5</div>
+    
+                        </div>
+                        <div class="business_index_points">
+                            <div class="upper_side">CES</div>
+                            <div class="lower_side">0.5</div>
+    
+                        </div>
+                        <div class="business_index_points">
+                            <div class="upper_side">Sales</div>
+                            <div class="lower_side">0.5</div>
+    
+                        </div>
+                        <div class="business_index_points">
+                            <div class="upper_side">Cost/Call</div>
+                            <div class="lower_side">0.5</div>
+                        </div>
+    
+    
+                    </div>
+                    
                 </div>
+            </ng-template>
 
-                <div class="business_index_container">
-                    <div class="business_index_points">
-                        <div class="upper_side">NPS</div>
-                        <div class="lower_side">0.5</div>
-
-                    </div>
-                    <div class="business_index_points">
-                        <div class="upper_side">CSAT</div>
-                        <div class="lower_side">0.5</div>
-
-                    </div>
-                    <div class="business_index_points">
-                        <div class="upper_side">CES</div>
-                        <div class="lower_side">0.5</div>
-
-                    </div>
-                    <div class="business_index_points">
-                        <div class="upper_side">Sales</div>
-                        <div class="lower_side">0.5</div>
-
-                    </div>
-                    <div class="business_index_points">
-                        <div class="upper_side">Cost/Call</div>
-                        <div class="lower_side">0.5</div>
-                    </div>
-
-
+            <ng-template #BuisenessIndexForSM>
+                <div style="display: flex;justify-content: center; align-items: center;margin-top: 1vh;">
+                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mt-1" style="width: 19vw;font-family: 'Work sans';">
+                            <mat-expansion-panel-header  [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
+                                <mat-panel-title style="color: #ffff;display:flex;justify-content: center;">
+                                    <strong> Business Index</strong>
+            
+                                </mat-panel-title>
+            
+                            </mat-expansion-panel-header>
+                           
+                            <div>
+                                <div class="d-flex justify-content-between align-items-center mt-4"
+                                    style="font-weight: 550;font-family: 'Work Sans';">
+                                    <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">Net
+                                        Promoter Score
+            
+                                    </div>
+                                    <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                                        <!-- {{GrowthIndexData[0].score}} -->
+            
+                                        0000
+            
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-4"
+                                    style="font-weight: 550;font-family: 'Work Sans';">
+                                    <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">
+                                        Customer Effort Score
+            
+                                    </div>
+                                    <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                                        <!-- {{GrowthIndexData[0].score}} -->
+            
+                                        0000
+            
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-4"
+                                    style="font-weight: 550;font-family: 'Work Sans';">
+                                    <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">Sales
+                                        Index
+            
+                                    </div>
+                                    <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                                        <!-- {{GrowthIndexData[0].score}} -->
+            
+                                        0000
+            
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-4"
+                                    style="font-weight: 550;font-family: 'Work Sans';">
+                                    <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">Cost
+                                        Index
+            
+                                    </div>
+                                    <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                                        <!-- {{GrowthIndexData[0].score}} -->
+            
+                                        0000
+            
+                                    </div>
+                                </div>
+            
+            
+            
+                                <!-- <div  *ngFor="let kpi_data of buisness_head_response_._kpi_score">
+                                    <div class="d-flex justify-content-between align-items-center" style="font-weight: 550;font-family: 'Work Sans';">
+                                        <div class="pech ">
+                                            {{ kpi_data.point_label}}
+                                            
+                                        </div>
+                                        <div class="pech_details">
+                                            {{ kpi_data.weightage}}
+                                        </div>
+                                    </div>
+                                    
+                                </div> -->
+            
+                            </div>
+            
+            
+                        </mat-expansion-panel>
                 </div>
-                
-            </div>
+            </ng-template>
+            
 
 
             </div>
