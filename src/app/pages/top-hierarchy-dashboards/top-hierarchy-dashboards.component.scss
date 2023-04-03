@@ -62,15 +62,16 @@
         .profile_picture {
 
             position: absolute;
-            border: 1px solid var(--myvar);
+           
             border-radius: 50%;
-
+            border: 1px solid var(--myvar);
             top: 6vh;
             filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
             .profile_picture_image {
                 width: 10vh;
                 height: 10vh;
+               
                 border-radius: 50%;
 
             }
@@ -191,7 +192,7 @@
     .profile_card {
         position: relative;
         width: 19vw;
-        height: 33vh;
+        height: 35vh;
         background: var(--lightColor);
         border: 3px solid var(--myvar);
         border-radius: 8px;
@@ -408,7 +409,6 @@
             flex-direction:column;
             align-items: center;
 
-
             .business_index_points{
                 width: 10vw;
                 height: 7vh;
@@ -504,7 +504,7 @@
     font-weight: 500;
     background: #ffffff;
     border-radius: 1vw;
-    font-size: 600;
+    font-size: 500;
     border: none;
    
     font-family: 'Roboto';
@@ -518,7 +518,7 @@
     font-size:2vh;
     font-weight: 500;
     border-radius: 1vw;
-    font-size: 600;
+    font-size: 500;
     border: none;
   
     font-family: 'Roboto';
@@ -604,9 +604,11 @@ input::placeholder {
     }
 
     .button_series {
-        width: 12.7vw;
+        width: 15.7vw;
+
         height: 6vh;
         font-size: 1.6vh;
+        padding: 1%;
         font-family: 'Work Sans';
         background: #ffffff;
         border-radius: 1vw;
@@ -617,7 +619,8 @@ input::placeholder {
        
     }
     .active {
-        width: 12.7vw;
+        width: 15.7vw;
+
         height: 6vh;
         font-size:1.6vh;
         font-weight: 600;
@@ -625,7 +628,7 @@ input::placeholder {
         font-family: 'Work Sans';
         border: none;
         margin-right: 0.3vw;
-        font-weight: 600;
+        font-weight: 500;
        
         color: #FFFFFF;
         background-color: var(--myvar);
@@ -908,7 +911,7 @@ input::placeholder {
         background: var(--myvar);
         color: #ffffff;
         border: none;
-        font-family: 'work sans';
+        font-family: 'Work sans';
         font-weight: 600;
         border-radius: 0.4vw;
         // margin-left: 1vw;
@@ -1552,7 +1555,7 @@ input::placeholder {
         border: none;
         width: 20vw;
         color: #ffff;
-        font-weight: 600;
+        font-weight: 500;
         font-family: 'Roboto'
 
     }
