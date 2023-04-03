@@ -26,6 +26,8 @@ import { BusinessIndexMapComponent } from './business-index-map/business-index-m
 import { IntroductionVideoComponent } from './introduction-video/introduction-video.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { GovernanceIndexComponent } from './governance-index/governance-index.component';
+import { TableauModule } from 'ngx-tableau';
+import { BusinessHeadMapComponent } from './business-head-map/business-head-map.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { GovernanceIndexComponent } from './governance-index/governance-index.co
     BusinessIndexMapComponent,
     IntroductionVideoComponent,
     GovernanceIndexComponent,
+    BusinessHeadMapComponent,
   
   ],
   imports: [
@@ -49,6 +52,7 @@ import { GovernanceIndexComponent } from './governance-index/governance-index.co
     PagesRoutingModule,
     NgApexchartsModule,
     ReactiveFormsModule,
+    TableauModule,
     DashboardsModule,
     HttpClientModule,
     SkeletonScreenLoaderModule,

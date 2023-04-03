@@ -1177,7 +1177,7 @@ else if(this.activeTabForSectionView_2 == 4){
 
     if (url_string.includes("?")) {
       console.log("spectator view");
-
+      this._router.navigate(['reward/rewardPoints'])
     }
     else if (url_string.includes("")) {
       this._router.navigate(['reward/rewardPoints'])
