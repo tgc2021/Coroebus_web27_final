@@ -94,7 +94,7 @@
                                             (click)="getGraphDataById()" *ngFor="let item of sectionView_1?._kpi_score">
                                             <div class="col-6 p-0">
                                                 <div  [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.light_color}"
-                                                    class="ms-2 points-dis-name1 ellipsis d-flex align-items-center ps-3">
+                                                    class="ms-2 points-dis-name1 ellipsis d-flex align-items-center justify-content-center">
                                                     {{item?.point_label}}
                                                 </div>
                                             </div>
@@ -362,21 +362,24 @@
                 </div> -->
 
 
-                <div style="padding:10px;border-radius:10px"
+                <div style="padding:10px;border-radius:10px;background-size: cover;"
                     [style.background-image]="
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
                     <div class="row" [ngClass]="{'row-cols-2': sectionView_2?._ranking_data?.length === 2,
                                     'row-cols-3': sectionView_2?._ranking_data?.length === 3,
                                     'row-cols-4': sectionView_2?._ranking_data?.length === 4,
-                                    'row-cols-1': sectionView_2?._ranking_data?.length === 4}" style="padding:1% 0%;
+                                    'row-cols-1': sectionView_2?._ranking_data?.length === 4}" 
+                                    style="padding:1% 0%;
                                     display: flex;
-                                   
-                                    overflow-x: overlay;
-                                    max-width: 48.5vw;
                                     flex-direction: row;
                                     flex-wrap: nowrap;
+                                    width:48vw;
                                  ">
-                        <div class="col" *ngFor="let item of sectionView_2?._ranking_data">
+                        <div class="col" 
+                        style="overflow-x: auto;
+                        width: 45.5vw;
+                        flex-direction: row;
+                        flex-wrap: nowrap;" *ngFor="let item of sectionView_2?._ranking_data">
                             <a class="btn btn-xs filter-btn-dashboard  fs-sm mb-2" style="padding-top: 8px;"
                                 [ngClass]="{'filter-btn-dashboard-active': activeTabForSectionView_2 === item?.order}"
                                 [ngStyle]="{'background': (activeTabForSectionView_2 ===item?.order) ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
@@ -433,7 +436,7 @@
                 </div>
                 <!-- Dashboard Table Started -->
                 <div class="mt-2">
-                    <div class="row row">
+                    <div class="row" style="color:#ffff">
                         <div class="col-2">
                             <span class="rank_h">Rank</span>
                         </div>
