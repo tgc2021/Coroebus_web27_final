@@ -165,8 +165,8 @@
         }
 
         .point_background {
-            background: #F3F2C1;
-            height: 6vh;
+            background: var(--lightColor);
+            height: 7vh;
             display: flex;
             align-items: center;
             border-radius: 6px;
@@ -290,7 +290,7 @@
     .Ranking_section_card {
         position: relative;
         width: 19vw;
-        height: 25vh;
+        height: 28vh;
         margin-bottom: 2vh;
         background: var(--lightColor);
         border: 3px solid var(--myvar);
@@ -904,14 +904,13 @@ input::placeholder {
         background-size: 100% 100%;
     }
 
-
     .view_more_button {
         width: 49vw;
         height: 6vh;
         background: var(--myvar);
         color: #ffffff;
         border: none;
-        font-family: 'Work sans';
+        font-family:'Work sans';
         font-weight: 600;
         border-radius: 0.4vw;
         // margin-left: 1vw;
@@ -931,9 +930,6 @@ input::placeholder {
 
     }
 
-
-
-
     .bottom_button {
         width: 14.7vw;
         height: 14vh;
@@ -945,7 +941,6 @@ input::placeholder {
 
     .button_item {
         scroll-snap-align: start;
-
     }
 
     .right_button {
