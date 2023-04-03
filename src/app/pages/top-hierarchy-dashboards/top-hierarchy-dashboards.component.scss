@@ -184,8 +184,7 @@
     display: flex;
     flex-direction: column;
     padding: 10% 10% 5% 10%;
-    overflow-y: auto;
-    overflow-x:hidden;
+  
     // justify-content: center;
     align-items: center;
 
@@ -433,6 +432,7 @@
                     height: 3.5vh;
                     border: 1px solid black;
                     color: black;
+                    background: #ffff;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -606,27 +606,27 @@ input::placeholder {
     .button_series {
         width: 12.7vw;
         height: 6vh;
-        font-size: 0.9vw;
-        font-weight: 600;
+        font-size: 1.1vw;
+        font-family: 'Work Sans';
         background: #ffffff;
         border-radius: 1vw;
         border: none;
         margin-right: 0.3vw;
         color: #000000;
         font-weight: 600;
-        font-family: 'Roboto';
-
+       
     }
     .active {
         width: 12.7vw;
         height: 6vh;
         font-size: 0.9vw;
         font-weight: 600;
-        border-radius: 1vw;
+        font-size: 1.1vw;
+        font-family: 'Work Sans';
         border: none;
         margin-right: 0.3vw;
         font-weight: 600;
-        font-family: 'Roboto';
+       
         color: #FFFFFF;
         background-color: var(--myvar);
 
@@ -850,8 +850,9 @@ input::placeholder {
 
     .leaderboard_label_tile {
         height: 35vh;
-
+        margin-left: 0.5vw;
         width: 100%;
+        margin-left: 1vw;
         overflow-y: auto;
         overflow-x: hidden;
 
@@ -875,10 +876,11 @@ input::placeholder {
     }
 
     .leaderboard_tile {
-       width:48vw;
+        width: 48.5vw;
         height: 6vh;
+        margin-left: -1vw;
         margin-bottom: 1vh;
-        // margin-left: 1vw;
+        border-radius: 8px;
         display: flex;
         cursor: pointer;
         align-items: center;
@@ -901,12 +903,12 @@ input::placeholder {
 
 
     .view_more_button {
-        width: 48vw;
+        width: 49vw;
         height: 6vh;
         background: var(--myvar);
         color: #ffffff;
         border: none;
-        font-family: 'Roboto';
+        font-family: 'work sans';
         font-weight: 600;
         border-radius: 0.4vw;
         // margin-left: 1vw;
@@ -1058,13 +1060,12 @@ input::placeholder {
         height: 18vh;
     }
 
-
     .game_points_div {
         // margin-left: 3vw;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        height: 18vh;
+        height: 17vh;
         align-items: center;
         margin-top: 1vh;
     }
@@ -1097,7 +1098,7 @@ input::placeholder {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        height: 18vh;
+        height: 17vh;
         align-items: center;
         cursor: pointer;
         margin-top: 1vh;

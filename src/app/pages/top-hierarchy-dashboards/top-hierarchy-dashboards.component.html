@@ -92,7 +92,7 @@
             </div>
             <div class="banner_container"  [style.background-image]="
             sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-            <div style="background-image:url({{sectionView_1?._personal_data?.background_image_profile_web}});width: 32vw;height: 17vh;background-size: 100% 100%;border-radius:10px;display:flex;justify-content: space-evenly;">
+            <div style="background-image:url({{sectionView_1?._personal_data?.background_image_profile_web}});width: 32vw;height: 20vh;background-size: 100% 100%;border-radius:10px;display:flex;justify-content: space-evenly;">
                 <div *ngIf="sectionView_1._personal_data.id_role!=9;then rewardPoints"></div>
                 <ng-template #rewardPoints>
                     <div class="game_points_div">
@@ -139,7 +139,9 @@
 
             <!-- LeaderBoard -->
             <div class="row">
-                <div class="row" style="margin-top: 1.2vh; margin-left: 0vw;">
+                <div class="row" style="color: #ffff;
+                margin-top: 1.2vh;
+                margin-left: -1vw;">
                     <div class="leaderboard_label d-flex">
                         <div class="leaderboard_rank">Rank</div>
                         <div class="leaderboard_name">Name</div>
@@ -401,11 +403,13 @@
            
         </div>
         <!-- Right Section -->
-        <div class="col-3 d-flex justify-content-center align-items-center mt-2">
+        <div class="col-3 d-flex justify-content-center align-items-center mt-2 ">
             <div class="isLand_panel_container"
                 [style.background-image]="
             sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-            <!-- Ranking Section -->
+            <div style="height: 85vh;  overflow-y: auto;
+            overflow-x:hidden;"> 
+                <!-- Ranking Section -->
             <div class="Ranking_section_card" *ngFor="let item of sectionView_1?.is_land_logos">
                 <div class="upper_section">
                     <!-- <div class="level_name">{{sectionView_1._personal_data.level_label}}</div> -->
@@ -470,7 +474,7 @@
             <div *ngIf=" sectionView_1?._personal_data.id_role=='9';then BuisenessIndexForHOS else BuisenessIndexForSM"></div>
             <ng-template #BuisenessIndexForHOS>     
                 <div class="business-index_gop">
-                    <div>
+                    <div style="font-family: 'Work sans';">
 
                         Business Index
                     </div>
@@ -511,7 +515,7 @@
                 <div style="display: flex;justify-content: center; align-items: center;margin-top: 1vh;">
                         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mt-1" style="width: 19vw;font-family: 'Work sans';">
                             <mat-expansion-panel-header  [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
-                                <mat-panel-title style="color: #ffff;display:flex;justify-content: center;">
+                                <mat-panel-title style="color: #ffff;display:flex;justify-content: center;font-family: Work Sans;">
                                     <strong> Business Index</strong>
             
                                 </mat-panel-title>
@@ -593,6 +597,8 @@
                         </mat-expansion-panel>
                 </div>
             </ng-template>
+            </div>
+            
             
 
 
