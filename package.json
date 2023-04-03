@@ -88,6 +88,7 @@
     "ngx-lightbox": "^2.4.0",
     "ngx-mask": "^12.0.0",
     "ngx-owl-carousel-o": "^6.0.0",
+    "ngx-tableau": "^1.2.0",
     "ngx-ui-switch": "^10.0.2",
     "ngx-youtube-player": "^9.1.0",
     "parse-error": "^0.2.0",

@@ -2,7 +2,7 @@
     
     <div class="d-flex">
         <div class="map-view">
-           
+          <!-- <app-business-head-map></app-business-head-map> -->
             <div class="d-flex align-items-end left_side_div">
                
                 <div class="button-container"
@@ -68,7 +68,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="name d-flex">
-                                    {{buisness_head_response_._personal_data.first_name}}
+                                   Name: {{buisness_head_response_._personal_data.first_name}}
                                     <div class="name_details">
 
 
@@ -317,6 +317,7 @@
 </div>
 
 <div class="mobile-view">
+    
     <div>
         <mat-card class="mobile_details_card d-flex justify-content-center"
             [style.background-color]="buisness_head_response_.theme_details[0].light_color">
@@ -401,6 +402,8 @@
 
 
     <div>
+        <!-- <app-business-head-map></app-business-head-map> -->
+
         <img class="mobile_map" src="assets/images/TopHierarchyDashboard/mobile_map.png" />
     </div>
 

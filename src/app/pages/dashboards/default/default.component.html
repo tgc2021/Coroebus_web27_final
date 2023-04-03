@@ -170,7 +170,7 @@
                                                 src="{{sectionView_1?.theme_details?.[0]?.reward_points_image}}"
                                                 alt="" class="dashboard-reward-point-img"
                                                 style="padding-bottom: 7px;">
-                                            <button *ngIf="rewardPoints?.[0]?.score>75"
+                                            <button 
                                                 class="btn btn-primary- text-white dashboard-banner-point-btn"
                                                 [ngStyle]="{'background': '#FFFFFF'}"
                                                 [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -180,7 +180,7 @@
                                                 <span class="dashboard-banner-point-btn-text text-center">
                                                     {{rewardPoints?.[0]?.score}}
                                                 </span></button>
-                                            <button *ngIf="rewardPoints?.[0]?.score<75"
+                                            <!-- <button *ngIf="rewardPoints?.[0]?.score<75"
                                                 class="btn btn-primary- text-white dashboard-banner-point-btn"
                                                 [ngStyle]="{'background':'#FFFFFF'}"
                                                 [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -188,7 +188,7 @@
 
                                                 <span class="dashboard-banner-point-btn-text text-center">
                                                     {{rewardPoints?.[0]?.score}}
-                                                </span></button>
+                                                </span></button> -->
 
                                             <span
                                                 class="dashboard-level-rank-name">{{rewardPoints?.[0]?.label}}s</span>
@@ -1320,7 +1320,7 @@
                                                 {{rewardPoints?.[0]?.score}}
                                             </span></button>
 
-                                            <button
+                                            <!-- <button
                                             class="btn btn-primary- text-white text-center dashboard-banner-point-btn-mobile"
                                             *ngIf="rewardPoints?.[0]?.score<75 && userSelectionData._personal_data.id_coroebus_organization=='213'"  [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}"
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -1328,7 +1328,7 @@
                                             <span
                                                 class="dashboard-banner-point-btn-text d-flex justify-content-center">
                                                 {{rewardPoints?.[0]?.score}}
-                                            </span></button>
+                                            </span></button> -->
 
                                             <button
                                             class="btn btn-primary- text-white text-center dashboard-banner-point-btn-mobile"

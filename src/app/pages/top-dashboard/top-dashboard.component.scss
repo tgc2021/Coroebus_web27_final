@@ -268,6 +268,7 @@
 font-size: 0.8vw;
 font-weight: 600;
 padding-left: 0;
+margin-left: 3%;
 
     }
 
@@ -275,7 +276,7 @@ padding-left: 0;
         font-family: Work Sans;
         font-size: 0.8vw;
         font-weight: 600;
-        width: 29%;
+        width: 26%;
         text-align: end;
     }
 .web_score_label{
@@ -330,7 +331,7 @@ padding-left: 0;
     }
 
     .first_row_details {
-        height: 10vh;
+        height: 8.5vh;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -440,7 +441,7 @@ padding-left: 0;
 
     .call_center_div {
         cursor: pointer;
-        width: 97%;
+        width: 90%;
         background-size: 100% 100%;
     }
 
@@ -450,8 +451,8 @@ padding-left: 0;
         margin-right: 6vw;
         margin-top: 1vh;
         background: linear-gradient(180deg, var(--myvar) 51.54%, #FFFFFF 51.61%);
-        border-radius: 0.2vw;
-        color: #000000;
+        border-radius: 0.4vw;
+        border: 1px solid #AD9773;
     }
 
     .bottom_button_labels {

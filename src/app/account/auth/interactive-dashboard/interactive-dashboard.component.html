@@ -89,7 +89,7 @@
                     <div class="col-2 d-flex justify-content-end web_col_right">
                         <img class="web_spectator_view" (click)="navigateToSpectatorView()"
                             src="{{interactive_dashoard_response[0].data.theme_details[0].spectator_bt}}" />
-                        <img class="web_booster" data-bs-toggle="modal" data-bs-target="#BoosterModal"
+                        <img class="web_booster" data-bs-toggle="modal" data-bs-target="#BoosterModal" (mouseover)="booster_data()"
                             src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}" />
 
                     </div>
@@ -911,7 +911,7 @@
 
 
 
-<div *ngIf="this.boosterData_response.length!=0;then openboosterModal"></div>
+<div *ngIf="boosterData_response;then openboosterModal"></div>
 <ng-template #openboosterModal>
     <div class="modal fade" id="BoosterModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">

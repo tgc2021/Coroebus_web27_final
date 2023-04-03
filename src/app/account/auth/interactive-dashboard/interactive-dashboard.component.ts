@@ -311,19 +311,19 @@ else{
           this.is_about_game= localStorage.setItem('is_about_game',this.interactive_dashoard_response[0].data.is_about_game)
           console.log(this.is_about_game);
          
-          this.http.BoosterData(body).subscribe((res: any) => {
-            this.boosterData_response = res.data;
+          // this.http.BoosterData(body).subscribe((res: any) => {
+          //   this.boosterData_response = res.data;
 
-            console.log(res);
+          //   console.log(res);
 
-            this.StringArray = res.data.booster_rank_details[0].rank_position_stmt.split(" ");
-            this.firstString = this.StringArray[0] + " " + this.StringArray[1] + " " + this.StringArray[2];
-            this.Digit = this.StringArray[3]
-            this.LastString = this.StringArray[4];
-            console.log(this.StringArray);
-            console.log(this.LastString);
+          //   this.StringArray = res.data.booster_rank_details[0].rank_position_stmt.split(" ");
+          //   this.firstString = this.StringArray[0] + " " + this.StringArray[1] + " " + this.StringArray[2];
+          //   this.Digit = this.StringArray[3]
+          //   this.LastString = this.StringArray[4];
+          //   console.log(this.StringArray);
+          //   console.log(this.LastString);
 
-          })
+          // })
 
           this.seasonalThemeDaily = this.interactive_dashoard_response[0].data.seasonal_theme_daily;
 
@@ -443,20 +443,7 @@ else{
             this.isLoading = true;
           }
 
-          this.http.BoosterData(body).subscribe((res: any) => {
-            this.boosterData_response = res.data;
-            // console.log(this.boosterData_response);
-
-            console.log(res);
-
-            this.StringArray = res.data.booster_rank_details[0].rank_position_stmt.split(" ");
-            this.firstString = this.StringArray[0] + " " + this.StringArray[1] + " " + this.StringArray[2];
-            this.Digit = this.StringArray[3]
-            this.LastString = this.StringArray[4];
-            console.log(this.StringArray);
-            console.log(this.LastString);
-
-          })
+    
           this.seasonalThemeDaily = this.interactive_dashoard_response[0].data.seasonal_theme_daily;
 
           this.seasonalThemeWeekly = this.interactive_dashoard_response[0].data.seasonal_theme_weekly;
@@ -519,6 +506,50 @@ else{
 
   }
 
+
+  booster_data(){
+    if (this.mergeObj.id_coroebus_game != null) {
+      let body = {
+        _userid: this.mergeObj.USERID,
+        _game: this.mergeObj.id_coroebus_game,
+
+      }
+      this.http.BoosterData(body).subscribe((res: any) => {
+        this.boosterData_response = res.data;
+
+        console.log(res);
+
+        this.StringArray = res.data.booster_rank_details[0].rank_position_stmt.split(" ");
+        this.firstString = this.StringArray[0] + " " + this.StringArray[1] + " " + this.StringArray[2];
+        this.Digit = this.StringArray[3]
+        this.LastString = this.StringArray[4];
+        console.log(this.StringArray);
+        console.log(this.LastString);
+
+      })
+    }
+    else {
+      let body = {
+        _userid: this.mergeObj.USERID,
+        _game: this.userSelectionData.id_coroebus_game,
+
+      }
+      this.http.BoosterData(body).subscribe((res: any) => {
+        this.boosterData_response = res.data;
+        // console.log(this.boosterData_response);
+
+        console.log(res);
+
+        this.StringArray = res.data.booster_rank_details[0].rank_position_stmt.split(" ");
+        this.firstString = this.StringArray[0] + " " + this.StringArray[1] + " " + this.StringArray[2];
+        this.Digit = this.StringArray[3]
+        this.LastString = this.StringArray[4];
+        console.log(this.StringArray);
+        console.log(this.LastString);
+
+      })
+    }
+  }
   playpauseaudio(){
 
   console.log('pause');

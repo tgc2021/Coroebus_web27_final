@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, ElementRef, OnInit,ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RoutesRecognized } from '@angular/router';
 import { ApiserviceService } from 'app/apiservice.service';
 import { Util } from '@app/utils/util';
 import { NgbModal,NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer,SafeResourceUrl } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-top-dashboard',
   templateUrl: './top-dashboard.component.html',
@@ -37,10 +38,13 @@ export class TopDashboardComponent implements OnInit,AfterViewInit {
     config.backdrop = 'static';
 		config.keyboard = false;
     config.centered=true;
-    
+   
    }
 
   ngOnInit(): void {
+
+ 
+
     window.scrollTo(0,1)
 
     this.isVideoModalopen = true;
@@ -74,6 +78,7 @@ export class TopDashboardComponent implements OnInit,AfterViewInit {
   }
 
   ngAfterViewInit() {
+
     this.openModal();
   }
   navigateToIndexwiseDashboard(){
