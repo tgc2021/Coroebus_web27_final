@@ -451,7 +451,12 @@ console.log(this.id_coroebus_organization);
 if(this.id_role=='7'){
   this.menuItems=MENU_SPECTATOR
 
-}else{
+}
+else if(this.id_role=='13'){
+  this.menuItems=MENU_HOS
+
+}
+else{
   this.menuItems = MENU;
 }
    
