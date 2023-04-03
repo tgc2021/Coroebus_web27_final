@@ -1,1215 +1,1234 @@
+
+
 <div class="web-view">
-    <div class="row">
-        <!-- Left Section -->
-        <div class="col-3 d-flex justify-content-center align-items-center mt-2">
-            <div class="profile_panel_container"
-                [style.background-image]="
-                sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-                <div class="profile_card">
-                    <div class="upper_section">
-                        <div class="level_name">{{sectionView_1._personal_data.level_label}}</div>
-                    </div>
-                    <div *ngIf="cameraimage" class="cameraimg">
+    <div class="row"
+        *ngIf="!(sectionView_1 && leaderboard_data && sectionView_3); else dashboardTpl">
+        <div class="col-lg-12">
+            <dashboard-pages-skeleton></dashboard-pages-skeleton>
 
-                        <!-- <img class="camera_image" src="assets/images/TopHierarchyDashboard/Camera.svg" /> -->
-                        <div class="camera_image">
-                            <!-- <img class="camera_image" src="assets/images/TopHierarchyDashboard/Camera.svg" /> -->
-                            <div class="avatar-upload">
-                                <div class="avatar-edit">
-                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
-                                        (change)="previewFile($event)" />
-                                    <label for="imageUpload"
-                                        [style.background-image]="'url(assets/images/svg/dashboard/camera-icon.svg)'"></label>
-                                </div>
-
-                                <!-- <div class="mobile-avatar-preview  justify-content-center">
-                                    <img loading="lazy" id="imagePreview"
-                                        src="{{sectionView_1?._personal_data?.profile_logo}}">
+        </div>
+    </div>
+    <ng-template #dashboardTpl>
+        <div class="row">
+            <!-- Left Section -->
+            <div class="col-3 d-flex justify-content-center align-items-center mt-2">
+                <div class="profile_panel_container"
+                    [style.background-image]="
+                    sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                    <div class="profile_card">
+                        <div class="upper_section">
+                            <div class="level_name">{{sectionView_1._personal_data.level_label}}</div>
+                        </div>
+                        <div *ngIf="cameraimage" class="cameraimg">
     
-                                </div> -->
+                            <!-- <img class="camera_image" src="assets/images/TopHierarchyDashboard/Camera.svg" /> -->
+                            <div class="camera_image">
+                                <!-- <img class="camera_image" src="assets/images/TopHierarchyDashboard/Camera.svg" /> -->
+                                <div class="avatar-upload">
+                                    <div class="avatar-edit">
+                                        <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
+                                            (change)="previewFile($event)" />
+                                        <label for="imageUpload"
+                                            [style.background-image]="'url(assets/images/svg/dashboard/camera-icon.svg)'"></label>
+                                    </div>
+    
+                                    <!-- <div class="mobile-avatar-preview  justify-content-center">
+                                        <img loading="lazy" id="imagePreview"
+                                            src="{{sectionView_1?._personal_data?.profile_logo}}">
+        
+                                    </div> -->
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="profile_picture">
-                        <img class="profile_picture_image" src="{{sectionView_1._personal_data.profile_logo}}" height="100%" width="" />
-                    </div>
-                    <div class="lower_section">
-                        <div class="name_hos">
-                            {{sectionView_1._personal_data.first_name}}
+                        <div class="profile_picture">
+                            <img class="profile_picture_image" src="{{sectionView_1._personal_data.profile_logo}}" height="100%" width="" />
                         </div>
-                        <hr  style="color:black">
-                        <div class="name_hos">
-                            {{sectionView_1._personal_data.brand_name}}
+                        <div class="lower_section">
+                            <div class="name_hos">
+                                {{sectionView_1._personal_data.first_name}}
+                            </div>
+                            <hr  style="color:black">
+                            <div class="name_hos">
+                                {{sectionView_1._personal_data.brand_name}}
+                            </div>
+    
                         </div>
-
+    
                     </div>
-
-                </div>
-
-                <div  class="point_distribution_section">
-                    <mat-card class="point_one" (click)="getGraphDataById()"
-                                    *ngFor="let item of sectionView_1?._kpi_score">
-                                    <div class="row" style="width: 22vw;">
-                                        <div class="col-7 point_background">
-                                            <div class="point_one_label"> {{item?.point_label}}</div>
-                                        </div>
-
-                                        <div class="col-5 point_score_div">
-                                            <div class="row " style="display: flex;flex-wrap: nowrap;justify-content:space-between; gap:1em">
-                                                <div class="col-2 d-flex  align-items-center" style="height: 6vh;">
-                                                    <!-- <img
-                                                        src="assets/images/TopHierarchyDashboard/point_dist_coin.png" /> -->
-                                                </div>
-                                                <div class="col-9 d-flex justify-content-end align-items-center"
-                                                    style="height: 6vh;">
-                                                    <div class="point_dist_score">{{item?.weightage}}</div>
-
-                                                    <div class="col d-flex justify-content-end align-items-center me-2">
-                                                        <img src="assets/images/TopHierarchyDashboard/Arrow.png" />
+    
+                    <div  class="point_distribution_section">
+                        <mat-card class="point_one" (click)="getGraphDataById()"
+                                        *ngFor="let item of sectionView_1?._kpi_score">
+                                        <div class="row" style="width: 22vw;">
+                                            <div class="col-7 point_background">
+                                                <div class="point_one_label"> {{item?.point_label}}</div>
+                                            </div>
+    
+                                            <div class="col-5 point_score_div">
+                                                <div class="row " style="display: flex;flex-wrap: nowrap;justify-content:space-between; gap:1em">
+                                                    <div class="col-2 d-flex  align-items-center" style="height: 6vh;">
+                                                        <!-- <img
+                                                            src="assets/images/TopHierarchyDashboard/point_dist_coin.png" /> -->
                                                     </div>
-
+                                                    <div class="col-9 d-flex justify-content-end align-items-center"
+                                                        style="height: 6vh;">
+                                                        <div class="point_dist_score">{{item?.weightage}}</div>
+    
+                                                        <div class="col d-flex justify-content-end align-items-center me-2">
+                                                            <img src="assets/images/TopHierarchyDashboard/Arrow.png" />
+                                                        </div>
+    
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                    </mat-card>
+                        </mat-card>
+                    </div>
+                    
+    
+    
+    
+    
+                </div>
+            </div>
+            <!-- Dashboard Section -->
+            <div class="col-6 mt-2 ">
+                <div class="dashboard_section">
+                    <div class="badge_container " 
+                [style.background-image]="
+                sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                <img src="{{sectionView_1._personal_data.profile_badge_image}}" alt="badge_img" height="80%" width="80%">
+                    
+                </div>
+                <div class="banner_container"  [style.background-image]="
+                sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                <div style="background-image:url({{sectionView_1?._personal_data?.background_image_profile_web}});width: 32vw;height: 20vh;background-size: 100% 100%;border-radius:10px;display:flex;justify-content: space-evenly;">
+                    <div *ngIf="sectionView_1._personal_data.id_role!=9;then rewardPoints"></div>
+                    <ng-template #rewardPoints>
+                        <div class="game_points_div">
+                            <img class="game_points_image"
+                                src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}" />
+                            <div class="game_points_score d-flex justify-content-center">
+                                {{gamePoints?.[0]?.score}}
+                            </div>
+                            <div class="game_point_label">{{gamePoints?.[0]?.label}}s</div>
+                        </div>
+            
+                        <div class="reward_points_div" (click)="getRewards()">
+                            <img class="reward_points_image"
+                                src="{{sectionView_1?.theme_details?.[0]?.reward_points_image}}" />
+                            <div class="reward_points_score d-flex justify-content-center">
+                                {{sectionView_1?._points?.[2]?.score}}
+                            </div>
+                            <div class="reward_point_label">{{sectionView_1?._points?.[2]?.label}}</div>
+            
+                        </div>
+                    </ng-template>
+                </div>
+                </div>
                 </div>
                 
-
-
-
-
-            </div>
-        </div>
-        <!-- Dashboard Section -->
-        <div class="col-6 mt-2 ">
-            <div class="dashboard_section">
-                <div class="badge_container " 
-            [style.background-image]="
-            sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-            <img src="{{sectionView_1._personal_data.profile_badge_image}}" alt="badge_img" height="80%" width="80%">
-                
-            </div>
-            <div class="banner_container"  [style.background-image]="
-            sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-            <div style="background-image:url({{sectionView_1?._personal_data?.background_image_profile_web}});width: 32vw;height: 20vh;background-size: 100% 100%;border-radius:10px;display:flex;justify-content: space-evenly;">
-                <div *ngIf="sectionView_1._personal_data.id_role!=9;then rewardPoints"></div>
-                <ng-template #rewardPoints>
-                    <div class="game_points_div">
-                        <img class="game_points_image"
-                            src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}" />
-                        <div class="game_points_score d-flex justify-content-center">
-                            {{gamePoints?.[0]?.score}}
+                <div class="leaderBoard mt-2">
+                    <div class="button_div"  [style.background-image]="
+                    sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                        <button style="margin-left: 1vw;" class="button_series"
+                            *ngFor="let item of leaderboard_data_buttons ;let i=index" [class.active]="i==this.activeClass"
+                            (click)="leaderboard(i)">
+                            {{item.label}}
+                        </button>
+                      
+    
+                    </div>
+    
+                </div>
+                <div class="row">
+                    <input type="text" class="search_box" placeholder="Search people here.." [(ngModel)]="spectSearchStr">
+                    <img class="search_bar_img" src="assets/images/TopHierarchyDashboard/Vector.png"
+                        (click)="spectSearch()">
+                </div>
+    
+                <!-- LeaderBoard -->
+                <div class="row">
+                    <div class="row" style="color: #ffff;
+                    margin-top: 1.2vh;
+                    margin-left: -1vw;">
+                        <div class="leaderboard_label d-flex">
+                            <div class="leaderboard_rank">Rank</div>
+                            <div class="leaderboard_name">Name</div>
+                            <div class="leaderboard_points">Points</div>
                         </div>
-                        <div class="game_point_label">{{gamePoints?.[0]?.label}}s</div>
                     </div>
         
-                    <div class="reward_points_div" (click)="getRewards()">
-                        <img class="reward_points_image"
-                            src="{{sectionView_1?.theme_details?.[0]?.reward_points_image}}" />
-                        <div class="reward_points_score d-flex justify-content-center">
-                            {{sectionView_1?._points?.[2]?.score}}
-                        </div>
-                        <div class="reward_point_label">{{sectionView_1?._points?.[2]?.label}}</div>
+                    <div class="row leaderboard_with_fixed_tile">
+                        
+                        <div *ngIf="sectionView_1._personal_data.id_role==9 ;then sm else rm"></div>
+                        <ng-template #sm>
         
+                            <div
+                                *ngIf="spectSearchStr ===''|| spectSearchStr == undefined || spectSearList.length>10;then withoutsearch else withsearch">
+                            </div>
+                            <ng-template #withoutsearch>
+                                <div class="leaderboard_label_tile">
+                                  
+                                    <mat-card class="leaderboard_tile" *ngFor="let res of leaderboard_data; let i=index"
+                                        [style.background-image]="'url(' + res?.ranking_image_web + ')'"
+                                        (click)="navigateToSMDashboard(res)">
+        
+                                        <div class="leaderboard_rank_score">
+                                            {{res.rankingtable_number}}
+                                        </div>
+        
+                                        <div class="leaderboard_rank_profile_image_div">
+                                            <img class="leaderboard_rank_profile_image" src="{{res.rankingtable_logo}}" />
+                                        </div>
+        
+                                        <div class="leaderboard_name_and_team">
+                                            <div class="leaderboard_name_label">
+                                                {{res.rankingtable_name}}
+                                            </div>
+                                            <div class="leaderboard_team_label">
+                                                {{res.rankingtable_team}}
+                                            </div>
+                                        </div>
+        
+                                        <div class="leaderboard_rank_badge_image_div">
+                                            <img class="leaderboard_rank_badge_image" src="{{res.ranking_badge}}" />
+                                        </div>
+        
+        
+                                        <div class="leaderboard_rank_points_div">
+                                            <div class="leaderboard_rank_points_label">{{res.rankingtable_weightage}}</div>
+                                        </div>
+        
+                                        <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='green'">
+                                            <img class="leaderboard_rank_up_down_arrow_image"
+                                                src="{{sectionView_1.theme_details[0].up_arrow}}" />
+                                        </div>
+        
+                                        <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='red'">
+                                            <img class="leaderboard_rank_up_down_arrow_image"
+                                                src="{{sectionView_1.theme_details[0].down_arrow}}" />
+                                        </div>
+        
+                                        <div class="leaderboard_rank_up_down_arrow_div"
+                                            *ngIf="res.rankingtable_arrow=='yellow'">
+                                            <img class="leaderboard_rank_up_down_arrow_image"
+                                                src="{{sectionView_1.theme_details[0].equal_arrow}}" />
+                                        </div>
+                                    </mat-card>
+        
+        
+        
+        
+                                </div>
+                            </ng-template>
+                            <ng-template #withsearch>
+                                <div class="leaderboard_label_tile">
+                                    <!-- <div>
+                        {{leaderboard_data[0]._data | json}}
+                    </div> -->
+                                    <mat-card class="leaderboard_tile" *ngFor="let res of spectSearList; let i=index"
+                                        [style.background-image]="'url(' + res?.ranking_image_web + ')'"
+                                        (click)="navigateToSearchSMDashboard(i)">
+        
+                                        <div class="leaderboard_rank_score">
+                                            {{res.rankingtable_number}}
+                                        </div>
+        
+                                        <div class="leaderboard_rank_profile_image_div">
+                                            <img class="leaderboard_rank_profile_image" src="{{res.rankingtable_logo}}" />
+                                        </div>
+        
+                                        <div class="leaderboard_name_and_team">
+                                            <div class="leaderboard_name_label">
+                                                {{res.rankingtable_name}}
+                                            </div>
+                                            <div class="leaderboard_team_label">
+                                                {{res.rankingtable_team}}
+                                            </div>
+                                        </div>
+        
+                                        <div class="leaderboard_rank_badge_image_div">
+                                            <img class="leaderboard_rank_badge_image" src="{{res.ranking_badge}}" />
+                                        </div>
+        
+        
+                                        <div class="leaderboard_rank_points_div">
+                                            <div class="leaderboard_rank_points_label">{{res.rankingtable_weightage}}</div>
+                                        </div>
+        
+                                        <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='green'">
+                                            <img class="leaderboard_rank_up_down_arrow_image"
+                                                src="{{sectionView_1.theme_details[0].up_arrow}}" />
+                                        </div>
+        
+                                        <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='red'">
+                                            <img class="leaderboard_rank_up_down_arrow_image"
+                                                src="{{sectionView_1.theme_details[0].down_arrow}}" />
+                                        </div>
+        
+                                        <div class="leaderboard_rank_up_down_arrow_div"
+                                            *ngIf="res.rankingtable_arrow=='yellow'">
+                                            <img class="leaderboard_rank_up_down_arrow_image"
+                                                src="{{sectionView_1.theme_details[0].equal_arrow}}" />
+                                        </div>
+                                    </mat-card>
+        
+        
+        
+        
+                                </div>
+                            </ng-template>
+        
+                        </ng-template>
+                        <ng-template #rm>
+                            <div
+                                *ngIf="spectSearchStr ===''|| spectSearchStr === undefined|| spectSearList.length>10 ;then withoutsearch else withsearch">
+                            </div>
+                            <ng-template #withoutsearch>
+                                <div class="leaderboard_label_tile">
+                                    <mat-card class="leaderboard_tile" *ngFor="let res of leaderboard_data; let i=index"
+                                        [style.background-image]="'url(' + res?.ranking_image_web + ')'"
+                                        (click)="navigateToRMDashboard(res)">
+                                        <div class="leaderboard_rank_score">
+                                            {{res.rankingtable_number}}
+                                        </div>
+        
+                                        <div class="leaderboard_rank_profile_image_div">
+                                            <img class="leaderboard_rank_profile_image" src="{{res.rankingtable_logo}}" />
+                                        </div>
+        
+                                        <div class="leaderboard_name_and_team">
+                                            <div class="leaderboard_name_label">
+                                                {{res.rankingtable_name}}
+                                            </div>
+                                            <div class="leaderboard_team_label">
+                                                {{res.rankingtable_team}}
+                                            </div>
+                                        </div>
+        
+                                        <div class="leaderboard_rank_badge_image_div">
+                                            <img class="leaderboard_rank_badge_image" src="{{res.ranking_badge}}" />
+                                        </div>
+        
+        
+                                        <div class="leaderboard_rank_points_div">
+                                            <div class="leaderboard_rank_points_label">{{res.rankingtable_weightage}}</div>
+                                        </div>
+        
+                                        <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='green'">
+                                            <img class="leaderboard_rank_up_down_arrow_image"
+                                                src="{{sectionView_1.theme_details[0].up_arrow}}" />
+                                        </div>
+        
+                                        <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='red'">
+                                            <img class="leaderboard_rank_up_down_arrow_image"
+                                                src="{{sectionView_1.theme_details[0].down_arrow}}" />
+                                        </div>
+        
+                                        <div class="leaderboard_rank_up_down_arrow_div"
+                                            *ngIf="res.rankingtable_arrow=='yellow'">
+                                            <img class="leaderboard_rank_up_down_arrow_image"
+                                                src="{{sectionView_1.theme_details[0].equal_arrow}}" />
+                                        </div>
+                                    </mat-card>
+        
+        
+        
+        
+                                </div>
+                            </ng-template>
+                            <ng-template #withsearch>
+                                <div class="leaderboard_label_tile">
+                                    <mat-card class="leaderboard_tile" *ngFor="let res of spectSearList; let i=index"
+                                        [style.background-image]="'url(' + res?.ranking_image_web + ')'"
+                                        (click)="navigateToSearchRMDashboard(i)">
+                                        <div class="leaderboard_rank_score">
+                                            {{res.rankingtable_number}}
+                                        </div>
+        
+                                        <div class="leaderboard_rank_profile_image_div">
+                                            <img class="leaderboard_rank_profile_image" src="{{res.rankingtable_logo}}" />
+                                        </div>
+        
+                                        <div class="leaderboard_name_and_team">
+                                            <div class="leaderboard_name_label">
+                                                {{res.rankingtable_name}}
+                                            </div>
+                                            <div class="leaderboard_team_label">
+                                                {{res.rankingtable_team}}
+                                            </div>
+                                        </div>
+        
+                                        <div class="leaderboard_rank_badge_image_div">
+                                            <img class="leaderboard_rank_badge_image" src="{{res.ranking_badge}}" />
+                                        </div>
+        
+        
+                                        <div class="leaderboard_rank_points_div">
+                                            <div class="leaderboard_rank_points_label">{{res.rankingtable_weightage}}</div>
+                                        </div>
+        
+                                        <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='green'">
+                                            <img class="leaderboard_rank_up_down_arrow_image"
+                                                src="{{sectionView_1.theme_details[0].up_arrow}}" />
+                                        </div>
+        
+                                        <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='red'">
+                                            <img class="leaderboard_rank_up_down_arrow_image"
+                                                src="{{sectionView_1.theme_details[0].down_arrow}}" />
+                                        </div>
+        
+                                        <div class="leaderboard_rank_up_down_arrow_div"
+                                            *ngIf="res.rankingtable_arrow=='yellow'">
+                                            <img class="leaderboard_rank_up_down_arrow_image"
+                                                src="{{sectionView_1.theme_details[0].equal_arrow}}" />
+                                        </div>
+                                    </mat-card>
+        
+        
+        
+        
+                                </div>
+                            </ng-template>
+        
+        
+                        </ng-template>
+        
+        
+                    </div>
+        
+                    <div class="row">
+                        <div class="div">
+                            <button class="view_more_button" (click)="viewMore()">
+                                View More
+                            </button>
+                        </div>
+                    </div>
+        
+                </div>
+               
+            </div>
+            <!-- Right Section -->
+            <div class="col-3 d-flex justify-content-center align-items-center mt-2 ">
+                <div class="isLand_panel_container"
+                    [style.background-image]="
+                sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                <div style="height: 85vh;  overflow-y: auto;
+                overflow-x:hidden;"> 
+                    <!-- Ranking Section -->
+                <div class="Ranking_section_card" *ngFor="let item of sectionView_1?.is_land_logos">
+                    <div class="upper_section">
+                        <!-- <div class="level_name">{{sectionView_1._personal_data.level_label}}</div> -->
+                        <div class="level_name">{{item.label}}</div>
+                    </div>
+                    <div class="Island_score">
+                        <!-- <img class="profile_picture_image" src="{{sectionView_1._personal_data.profile_logo}}" height="100%" width="" /> -->
+                        <div class="Overall_score_Inner_circle">
+                            <img src="{{item.logo}}" alt="is_LandLogo" width="100%" height="100%"> 
+                           
+                        </div>
+                    </div>
+                    <div class="lower_section">
+                        <button class="btn btn-primary- text-white mt-1" style="height:5vh;width:6vw;display: flex;justify-content: center;align-items: center;border-radius:20px"
+                        [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
+                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                        (click)="getDataBasedOnUserID(item)">
+                        {{item._data}}
+                        </button>
+                       
+                    
+                    </div>
+    
+                </div>
+                <!-- Governance Index -->
+                <div class="profile_card">
+                    <div class="upper_section">
+                        <!-- <div class="level_name">{{sectionView_1._personal_data.level_label}}</div> -->
+                        <div class="level_name">Governance Index</div>
+                    </div>
+                    <div class="Overall_score">
+                        <!-- <img class="profile_picture_image" src="{{sectionView_1._personal_data.profile_logo}}" height="100%" width="" /> -->
+                        <div class="Overall_score_Inner_circle">
+                            <div class="overall_score_number">3.5</div>
+                            <div class="overall_score_text">Overall</div>
+                        </div>
+                    </div>
+                    <div class="lower_section">
+                        <div class="Governance_index_points">
+                    
+                            <div>NHT</div>
+                            <div>3.5</div>
+                        </div>
+                        <div class="Governance_index_points">
+                            <div>OJT</div>
+                            <div>3.5</div>
+                        </div>
+                        <div class="Governance_index_points">
+                            <div>Floor</div>
+                            <div>3.5</div>
+                        </div>
+                        <div class="Governance_index_points">
+                    
+                            <div >Calibration</div>
+                            <div >3.5</div>
+                        </div>
+                    
+                    </div>
+    
+                </div>
+    
+                <div *ngIf=" sectionView_1?._personal_data.id_role=='9';then BuisenessIndexForHOS else BuisenessIndexForSM"></div>
+                <ng-template #BuisenessIndexForHOS>     
+                    <div class="business-index_gop">
+                        <div style="font-family: 'Work sans';">
+    
+                            Business Index
+                        </div>
+        
+                        <div class="business_index_container">
+                            <div class="business_index_points">
+                                <div class="upper_side">NPS</div>
+                                <div class="lower_side">0.5</div>
+        
+                            </div>
+                            <div class="business_index_points">
+                                <div class="upper_side">CSAT</div>
+                                <div class="lower_side">0.5</div>
+        
+                            </div>
+                            <div class="business_index_points">
+                                <div class="upper_side">CES</div>
+                                <div class="lower_side">0.5</div>
+        
+                            </div>
+                            <div class="business_index_points">
+                                <div class="upper_side">Sales</div>
+                                <div class="lower_side">0.5</div>
+        
+                            </div>
+                            <div class="business_index_points">
+                                <div class="upper_side">Cost/Call</div>
+                                <div class="lower_side">0.5</div>
+                            </div>
+        
+        
+                        </div>
+                        
                     </div>
                 </ng-template>
-            </div>
-            </div>
-            </div>
-            
-            <div class="leaderBoard mt-2">
-                <div class="button_div"  [style.background-image]="
-                sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-                    <button style="margin-left: 1vw;" class="button_series"
-                        *ngFor="let item of leaderboard_data_buttons ;let i=index" [class.active]="i==this.activeClass"
-                        (click)="leaderboard(i)">
-                        {{item.label}}
-                    </button>
-                  
-
-                </div>
-
-            </div>
-            <div class="row">
-                <input type="text" class="search_box" placeholder="Search people here.." [(ngModel)]="spectSearchStr">
-                <img class="search_bar_img" src="assets/images/TopHierarchyDashboard/Vector.png"
-                    (click)="spectSearch()">
-            </div>
-
-            <!-- LeaderBoard -->
-            <div class="row">
-                <div class="row" style="color: #ffff;
-                margin-top: 1.2vh;
-                margin-left: -1vw;">
-                    <div class="leaderboard_label d-flex">
-                        <div class="leaderboard_rank">Rank</div>
-                        <div class="leaderboard_name">Name</div>
-                        <div class="leaderboard_points">Points</div>
     
+                <ng-template #BuisenessIndexForSM>
+                    <div style="display: flex;justify-content: center; align-items: center;margin-top: 1vh;">
+                            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mt-1" style="width: 19vw;font-family: 'Work sans';">
+                                <mat-expansion-panel-header  [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
+                                    <mat-panel-title style="color: #ffff;display:flex;justify-content: center;font-family: Work Sans;">
+                                        <strong> Business Index</strong>
+                
+                                    </mat-panel-title>
+                
+                                </mat-expansion-panel-header>
+                               
+                                <div>
+                                    <div class="d-flex justify-content-between align-items-center mt-4"
+                                        style="font-weight: 550;font-family: 'Work Sans';">
+                                        <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">Net
+                                            Promoter Score
+                
+                                        </div>
+                                        <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                                            <!-- {{GrowthIndexData[0].score}} -->
+                
+                                            0000
+                
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mt-4"
+                                        style="font-weight: 550;font-family: 'Work Sans';">
+                                        <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">
+                                            Customer Effort Score
+                
+                                        </div>
+                                        <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                                            <!-- {{GrowthIndexData[0].score}} -->
+                
+                                            0000
+                
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mt-4"
+                                        style="font-weight: 550;font-family: 'Work Sans';">
+                                        <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">Sales
+                                            Index
+                
+                                        </div>
+                                        <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                                            <!-- {{GrowthIndexData[0].score}} -->
+                
+                                            0000
+                
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mt-4"
+                                        style="font-weight: 550;font-family: 'Work Sans';">
+                                        <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">Cost
+                                            Index
+                
+                                        </div>
+                                        <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                                            <!-- {{GrowthIndexData[0].score}} -->
+                
+                                            0000
+                
+                                        </div>
+                                    </div>
+                
+                
+                
+                                    <!-- <div  *ngFor="let kpi_data of buisness_head_response_._kpi_score">
+                                        <div class="d-flex justify-content-between align-items-center" style="font-weight: 550;font-family: 'Work Sans';">
+                                            <div class="pech ">
+                                                {{ kpi_data.point_label}}
+                                                
+                                            </div>
+                                            <div class="pech_details">
+                                                {{ kpi_data.weightage}}
+                                            </div>
+                                        </div>
+                                        
+                                    </div> -->
+                
+                                </div>
+                
+                
+                            </mat-expansion-panel>
                     </div>
+                </ng-template>
+                </div>
+                
+                
     
     
                 </div>
-    
-                <div class="row leaderboard_with_fixed_tile">
-                    
-                    <div *ngIf="sectionView_1._personal_data.id_role==9 ;then sm else rm"></div>
-                    <ng-template #sm>
-    
-                        <div
-                            *ngIf="spectSearchStr ===''|| spectSearchStr == undefined || spectSearList.length>10;then withoutsearch else withsearch">
-                        </div>
-                        <ng-template #withoutsearch>
-                            <div class="leaderboard_label_tile">
-                              
-                                <mat-card class="leaderboard_tile" *ngFor="let res of leaderboard_data; let i=index"
-                                    [style.background-image]="'url(' + res?.ranking_image_web + ')'"
-                                    (click)="navigateToSMDashboard(res)">
-    
-                                    <div class="leaderboard_rank_score">
-                                        {{res.rankingtable_number}}
-                                    </div>
-    
-                                    <div class="leaderboard_rank_profile_image_div">
-                                        <img class="leaderboard_rank_profile_image" src="{{res.rankingtable_logo}}" />
-                                    </div>
-    
-                                    <div class="leaderboard_name_and_team">
-                                        <div class="leaderboard_name_label">
-                                            {{res.rankingtable_name}}
-                                        </div>
-                                        <div class="leaderboard_team_label">
-                                            {{res.rankingtable_team}}
-                                        </div>
-                                    </div>
-    
-                                    <div class="leaderboard_rank_badge_image_div">
-                                        <img class="leaderboard_rank_badge_image" src="{{res.ranking_badge}}" />
-                                    </div>
-    
-    
-                                    <div class="leaderboard_rank_points_div">
-                                        <div class="leaderboard_rank_points_label">{{res.rankingtable_weightage}}</div>
-                                    </div>
-    
-                                    <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='green'">
-                                        <img class="leaderboard_rank_up_down_arrow_image"
-                                            src="{{sectionView_1.theme_details[0].up_arrow}}" />
-                                    </div>
-    
-                                    <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='red'">
-                                        <img class="leaderboard_rank_up_down_arrow_image"
-                                            src="{{sectionView_1.theme_details[0].down_arrow}}" />
-                                    </div>
-    
-                                    <div class="leaderboard_rank_up_down_arrow_div"
-                                        *ngIf="res.rankingtable_arrow=='yellow'">
-                                        <img class="leaderboard_rank_up_down_arrow_image"
-                                            src="{{sectionView_1.theme_details[0].equal_arrow}}" />
-                                    </div>
-                                </mat-card>
-    
-    
-    
-    
-                            </div>
-                        </ng-template>
-                        <ng-template #withsearch>
-                            <div class="leaderboard_label_tile">
-                                <!-- <div>
-                    {{leaderboard_data[0]._data | json}}
-                </div> -->
-                                <mat-card class="leaderboard_tile" *ngFor="let res of spectSearList; let i=index"
-                                    [style.background-image]="'url(' + res?.ranking_image_web + ')'"
-                                    (click)="navigateToSearchSMDashboard(i)">
-    
-                                    <div class="leaderboard_rank_score">
-                                        {{res.rankingtable_number}}
-                                    </div>
-    
-                                    <div class="leaderboard_rank_profile_image_div">
-                                        <img class="leaderboard_rank_profile_image" src="{{res.rankingtable_logo}}" />
-                                    </div>
-    
-                                    <div class="leaderboard_name_and_team">
-                                        <div class="leaderboard_name_label">
-                                            {{res.rankingtable_name}}
-                                        </div>
-                                        <div class="leaderboard_team_label">
-                                            {{res.rankingtable_team}}
-                                        </div>
-                                    </div>
-    
-                                    <div class="leaderboard_rank_badge_image_div">
-                                        <img class="leaderboard_rank_badge_image" src="{{res.ranking_badge}}" />
-                                    </div>
-    
-    
-                                    <div class="leaderboard_rank_points_div">
-                                        <div class="leaderboard_rank_points_label">{{res.rankingtable_weightage}}</div>
-                                    </div>
-    
-                                    <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='green'">
-                                        <img class="leaderboard_rank_up_down_arrow_image"
-                                            src="{{sectionView_1.theme_details[0].up_arrow}}" />
-                                    </div>
-    
-                                    <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='red'">
-                                        <img class="leaderboard_rank_up_down_arrow_image"
-                                            src="{{sectionView_1.theme_details[0].down_arrow}}" />
-                                    </div>
-    
-                                    <div class="leaderboard_rank_up_down_arrow_div"
-                                        *ngIf="res.rankingtable_arrow=='yellow'">
-                                        <img class="leaderboard_rank_up_down_arrow_image"
-                                            src="{{sectionView_1.theme_details[0].equal_arrow}}" />
-                                    </div>
-                                </mat-card>
-    
-    
-    
-    
-                            </div>
-                        </ng-template>
-    
-                    </ng-template>
-                    <ng-template #rm>
-                        <div
-                            *ngIf="spectSearchStr ===''|| spectSearchStr === undefined|| spectSearList.length>10 ;then withoutsearch else withsearch">
-                        </div>
-                        <ng-template #withoutsearch>
-                            <div class="leaderboard_label_tile">
-                                <mat-card class="leaderboard_tile" *ngFor="let res of leaderboard_data; let i=index"
-                                    [style.background-image]="'url(' + res?.ranking_image_web + ')'"
-                                    (click)="navigateToRMDashboard(res)">
-                                    <div class="leaderboard_rank_score">
-                                        {{res.rankingtable_number}}
-                                    </div>
-    
-                                    <div class="leaderboard_rank_profile_image_div">
-                                        <img class="leaderboard_rank_profile_image" src="{{res.rankingtable_logo}}" />
-                                    </div>
-    
-                                    <div class="leaderboard_name_and_team">
-                                        <div class="leaderboard_name_label">
-                                            {{res.rankingtable_name}}
-                                        </div>
-                                        <div class="leaderboard_team_label">
-                                            {{res.rankingtable_team}}
-                                        </div>
-                                    </div>
-    
-                                    <div class="leaderboard_rank_badge_image_div">
-                                        <img class="leaderboard_rank_badge_image" src="{{res.ranking_badge}}" />
-                                    </div>
-    
-    
-                                    <div class="leaderboard_rank_points_div">
-                                        <div class="leaderboard_rank_points_label">{{res.rankingtable_weightage}}</div>
-                                    </div>
-    
-                                    <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='green'">
-                                        <img class="leaderboard_rank_up_down_arrow_image"
-                                            src="{{sectionView_1.theme_details[0].up_arrow}}" />
-                                    </div>
-    
-                                    <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='red'">
-                                        <img class="leaderboard_rank_up_down_arrow_image"
-                                            src="{{sectionView_1.theme_details[0].down_arrow}}" />
-                                    </div>
-    
-                                    <div class="leaderboard_rank_up_down_arrow_div"
-                                        *ngIf="res.rankingtable_arrow=='yellow'">
-                                        <img class="leaderboard_rank_up_down_arrow_image"
-                                            src="{{sectionView_1.theme_details[0].equal_arrow}}" />
-                                    </div>
-                                </mat-card>
-    
-    
-    
-    
-                            </div>
-                        </ng-template>
-                        <ng-template #withsearch>
-                            <div class="leaderboard_label_tile">
-                                <mat-card class="leaderboard_tile" *ngFor="let res of spectSearList; let i=index"
-                                    [style.background-image]="'url(' + res?.ranking_image_web + ')'"
-                                    (click)="navigateToSearchRMDashboard(i)">
-                                    <div class="leaderboard_rank_score">
-                                        {{res.rankingtable_number}}
-                                    </div>
-    
-                                    <div class="leaderboard_rank_profile_image_div">
-                                        <img class="leaderboard_rank_profile_image" src="{{res.rankingtable_logo}}" />
-                                    </div>
-    
-                                    <div class="leaderboard_name_and_team">
-                                        <div class="leaderboard_name_label">
-                                            {{res.rankingtable_name}}
-                                        </div>
-                                        <div class="leaderboard_team_label">
-                                            {{res.rankingtable_team}}
-                                        </div>
-                                    </div>
-    
-                                    <div class="leaderboard_rank_badge_image_div">
-                                        <img class="leaderboard_rank_badge_image" src="{{res.ranking_badge}}" />
-                                    </div>
-    
-    
-                                    <div class="leaderboard_rank_points_div">
-                                        <div class="leaderboard_rank_points_label">{{res.rankingtable_weightage}}</div>
-                                    </div>
-    
-                                    <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='green'">
-                                        <img class="leaderboard_rank_up_down_arrow_image"
-                                            src="{{sectionView_1.theme_details[0].up_arrow}}" />
-                                    </div>
-    
-                                    <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='red'">
-                                        <img class="leaderboard_rank_up_down_arrow_image"
-                                            src="{{sectionView_1.theme_details[0].down_arrow}}" />
-                                    </div>
-    
-                                    <div class="leaderboard_rank_up_down_arrow_div"
-                                        *ngIf="res.rankingtable_arrow=='yellow'">
-                                        <img class="leaderboard_rank_up_down_arrow_image"
-                                            src="{{sectionView_1.theme_details[0].equal_arrow}}" />
-                                    </div>
-                                </mat-card>
-    
-    
-    
-    
-                            </div>
-                        </ng-template>
-    
-    
-                    </ng-template>
-    
-    
-                </div>
-    
-                <div class="row">
-                    <div class="div">
-                        <button class="view_more_button" (click)="viewMore()">
-                            View More
-                        </button>
-                    </div>
-                </div>
-    
             </div>
-           
         </div>
-        <!-- Right Section -->
-        <div class="col-3 d-flex justify-content-center align-items-center mt-2 ">
-            <div class="isLand_panel_container"
-                [style.background-image]="
-            sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-            <div style="height: 85vh;  overflow-y: auto;
-            overflow-x:hidden;"> 
-                <!-- Ranking Section -->
-            <div class="Ranking_section_card" *ngFor="let item of sectionView_1?.is_land_logos">
-                <div class="upper_section">
-                    <!-- <div class="level_name">{{sectionView_1._personal_data.level_label}}</div> -->
-                    <div class="level_name">{{item.label}}</div>
+    </ng-template>
+   
+</div>
+
+<!-- Mobile View Started -->
+<div class="mobile-view">
+    <div class="row"
+    *ngIf="!(sectionView_1 && leaderboard_data && sectionView_3); else dashboardTplMobile">
+    <div class="col-lg-12">
+        <dashboard-pages-skeleton></dashboard-pages-skeleton>
+
+    </div>
+</div>
+    <ng-template #dashboardTplMobile>
+        <div class="row">
+            <div class="col-3">
+                <div class="prof_pic_mobile">
+                    <img class="prof_pic_image_mobile" src="{{sectionView_1._personal_data.profile_logo}}" height="100%"
+                        width="100%" />
                 </div>
-                <div class="Island_score">
-                    <!-- <img class="profile_picture_image" src="{{sectionView_1._personal_data.profile_logo}}" height="100%" width="" /> -->
-                    <div class="Overall_score_Inner_circle">
-                        <img src="{{item.logo}}" alt="is_LandLogo" width="100%" height="100%"> 
-                       
+                <div *ngIf="cameraimage" class="cameraimg">
+    
+                    <!-- <img class="camera_image" src="assets/images/TopHierarchyDashboard/Camera.svg" /> -->
+                    <div class="camera_image_mobile">
+                        <!-- <img class="camera_image" src="assets/images/TopHierarchyDashboard/Camera.svg" /> -->
+                        <div class="mobile-avatar-upload">
+                            <div class="mobile-avatar-edit">
+                                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
+                                    (change)="previewFile($event)" />
+                                <label for="imageUpload"
+                                    [style.background-image]="'url(assets/images/svg/dashboard/camera-icon.svg)'"></label>
+                            </div>
+    
+                            <!-- <div class="mobile-avatar-preview  justify-content-center">
+                                <img loading="lazy" id="imagePreview"
+                                    src="{{sectionView_1?._personal_data?.profile_logo}}">
+    
+                            </div> -->
+                        </div>
                     </div>
                 </div>
-                <div class="lower_section">
-                    <button class="btn btn-primary- text-white mt-1" style="height:5vh;width:6vw;display: flex;justify-content: center;align-items: center;border-radius:20px"
-                    [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
-                    [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                    (click)="getDataBasedOnUserID(item)">
-                    {{item._data}}
-                    </button>
-                   
-                
+                <div>
+                    <div class="profile_name_mobile d-flex justify-content-center">
+                        {{sectionView_1._personal_data.first_name.slice(0,12)}}..
+                    </div>
+                    <div class="profile_team_name_mobile d-flex justify-content-center">
+                        {{sectionView_1._personal_data.organization_name.slice(0,15)}}..
+                    </div>
                 </div>
-
             </div>
-            <!-- Governance Index -->
-            <div class="profile_card">
-                <div class="upper_section">
-                    <!-- <div class="level_name">{{sectionView_1._personal_data.level_label}}</div> -->
-                    <div class="level_name">Governance Index</div>
-                </div>
-                <div class="Overall_score">
-                    <!-- <img class="profile_picture_image" src="{{sectionView_1._personal_data.profile_logo}}" height="100%" width="" /> -->
-                    <div class="Overall_score_Inner_circle">
-                        <div class="overall_score_number">3.5</div>
-                        <div class="overall_score_text">Overall</div>
+            <div class="col-9">
+    
+                <div
+                    style="background-image: url({{sectionView_1?._personal_data?.background_image_profile_web}});width: 100%;height: 20vh;background-size: 100% 100%;border: 2px solid rgb(74, 193, 217);display: flex;align-items:center;justify-content: space-evenly;">
+                    <div class="d-flex align-items-center badge_div_mobile">
+                        <img class="badge_image_mobile" src="{{sectionView_1._personal_data.profile_badge_image}}" />
+                    </div>
+    
+                    <div class="game_points_div_mobile">
+                        <img class="game_points_image_mobile"
+                            src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}" />
+                        <div class="game_points_score_mobile d-flex justify-content-center"
+                            [style.background]="sectionView_1.theme_details[0].light_color">
+                            {{gamePoints?.[0]?.score}}
+                        </div>
+                        <div class="game_point_label_mobile">{{gamePoints?.[0]?.label}}s</div>
+                    </div>
+    
+                    <div class="reward_points_div_mobile" (click)="getRewards()">
+                        <img class="reward_points_image_mobile"
+                            src="{{sectionView_1?.theme_details?.[0]?.reward_points_image}}" />
+                        <div class="reward_points_score_mobile d-flex justify-content-center"
+                            [style.background]="sectionView_1.theme_details[0].light_color">
+                             {{sectionView_1?._points?.[2]?.score}}
+                        </div>
+                        <div class="reward_point_label_mobile">{{sectionView_1?._points?.[2]?.label}}</div>
+                        
                     </div>
                 </div>
-                <div class="lower_section">
-                    <div class="Governance_index_points">
-                
-                        <div>NHT</div>
-                        <div>3.5</div>
-                    </div>
-                    <div class="Governance_index_points">
-                        <div>OJT</div>
-                        <div>3.5</div>
-                    </div>
-                    <div class="Governance_index_points">
-                        <div>Floor</div>
-                        <div>3.5</div>
-                    </div>
-                    <div class="Governance_index_points">
-                
-                        <div >Calibration</div>
-                        <div >3.5</div>
-                    </div>
-                
-                </div>
-
+    
+    
             </div>
-
-            <div *ngIf=" sectionView_1?._personal_data.id_role=='9';then BuisenessIndexForHOS else BuisenessIndexForSM"></div>
-            <ng-template #BuisenessIndexForHOS>     
-                <div class="business-index_gop">
-                    <div style="font-family: 'Work sans';">
-
-                        Business Index
-                    </div>
+        </div>
+        <!-- Rank Section -->
+        <div class="col-12 RankSection mb-2">
     
-                    <div class="business_index_container">
-                        <div class="business_index_points">
-                            <div class="upper_side">NPS</div>
-                            <div class="lower_side">0.5</div>
+            <div class="" *ngIf="sectionView_1?.is_land_logos?.length > 0">
+                <div class="card-body border-bottom- p-0">
+                    <div class="row" [ngClass]="{'one-data-mobile': sectionView_1?.is_land_logos?.length == 1,
+                    'two-data-mobile': sectionView_1?.is_land_logos?.length === 2,
+                    'three-data-mobile': sectionView_1?.is_land_logos?.length === 3,
+                    'four-data-mobile':sectionView_1?.is_land_logos?.length === 3}
+                    ">
+                        <div class="col-12 card-container" style="overflow-y:auto;">
+    
+                            <div class="col-4  text-center" *ngFor="let item of sectionView_1?.is_land_logos">
+                                <img src="{{item?.logo}}" class="island_login" alt="" height="100">
+                                <br>
+    
+                                <button class="btn btn-primary- text-white level-badge-btn-mobile mt-2"
+                                    [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
+                                    [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                    (click)="getDataBasedOnUserID(item)">
+                                    {{item?._data}}
+                                </button>
+                                <br><span class="level-rank-name">{{item?.tag}}</span>
+    
+                            </div>
+    
     
                         </div>
-                        <div class="business_index_points">
-                            <div class="upper_side">CSAT</div>
-                            <div class="lower_side">0.5</div>
-    
-                        </div>
-                        <div class="business_index_points">
-                            <div class="upper_side">CES</div>
-                            <div class="lower_side">0.5</div>
-    
-                        </div>
-                        <div class="business_index_points">
-                            <div class="upper_side">Sales</div>
-                            <div class="lower_side">0.5</div>
-    
-                        </div>
-                        <div class="business_index_points">
-                            <div class="upper_side">Cost/Call</div>
-                            <div class="lower_side">0.5</div>
-                        </div>
-    
     
                     </div>
-                    
                 </div>
-            </ng-template>
-
-            <ng-template #BuisenessIndexForSM>
-                <div style="display: flex;justify-content: center; align-items: center;margin-top: 1vh;">
-                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mt-1" style="width: 19vw;font-family: 'Work sans';">
-                            <mat-expansion-panel-header  [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
-                                <mat-panel-title style="color: #ffff;display:flex;justify-content: center;font-family: Work Sans;">
-                                    <strong> Business Index</strong>
-            
-                                </mat-panel-title>
-            
-                            </mat-expansion-panel-header>
-                           
-                            <div>
-                                <div class="d-flex justify-content-between align-items-center mt-4"
-                                    style="font-weight: 550;font-family: 'Work Sans';">
-                                    <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">Net
-                                        Promoter Score
-            
-                                    </div>
-                                    <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
-                                        <!-- {{GrowthIndexData[0].score}} -->
-            
-                                        0000
-            
+            </div>
+        </div>
+        <!-- Points Distribution -->
+        <div class="row">
+            <div class="col">
+                <div class="point_distribution_mobile">
+                    <div class="point_dist_div_mobile">
+                        <mat-card class="point_one_mobile" (click)="getGraphDataById()"
+                            *ngFor="let item of sectionView_1?._kpi_score">
+                            <div class="row"
+                                style="width: 95vw;display: flex; justify-content: center; align-items: center;">
+                                <div class="col-7 point_background_mobile"
+                                    [style.background]="sectionView_1.theme_details[0].light_color">
+                                    <div class="point_one_label_mobile"> {{item?.point_label}}</div>
+                                </div>
+    
+                                <div class="col-5 point_score_div">
+                                    <div class="row">
+                                        <div class="col-3 d-flex  align-items-center" style="height: 4vh;">
+                                            <img src="assets/images/TopHierarchyDashboard/point_dist_coin.png" />
+                                        </div>
+                                        <div class="col-9 d-flex justify-content-end align-items-center"
+                                            style="height: 4vh;">
+                                            <div class="point_one_label_mobile">{{item?.weightage}}</div>
+    
+                                            <div class="">
+                                                <img src="assets/images/TopHierarchyDashboard/Arrow.png" />
+                                            </div>
+    
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="d-flex justify-content-between align-items-center mt-4"
-                                    style="font-weight: 550;font-family: 'Work Sans';">
-                                    <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">
-                                        Customer Effort Score
-            
+                            </div>
+                        </mat-card>
+    
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Accordian -->
+        <div class="row">
+            <div class="col ">
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mt-1">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title class="growth_index_accordion_mobile ">
+                            <strong> Business Index</strong>
+    
+                        </mat-panel-title>
+    
+                    </mat-expansion-panel-header>
+                    <hr class="horizontal_row" style="font-weight: 550;font-family: 'Work Sans';">
+                    <div>
+                        <div class="d-flex justify-content-between align-items-center mt-4"
+                            style="font-weight: 550;font-family: 'Work Sans';">
+                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">Net
+                                Promoter Score
+    
+                            </div>
+                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                                <!-- {{GrowthIndexData[0].score}} -->
+    
+                                0000
+    
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-4"
+                            style="font-weight: 550;font-family: 'Work Sans';">
+                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">
+                                Customer Effort Score
+    
+                            </div>
+                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                                <!-- {{GrowthIndexData[0].score}} -->
+    
+                                0000
+    
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-4"
+                            style="font-weight: 550;font-family: 'Work Sans';">
+                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">Sales
+                                Index
+    
+                            </div>
+                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                                <!-- {{GrowthIndexData[0].score}} -->
+    
+                                0000
+    
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-4"
+                            style="font-weight: 550;font-family: 'Work Sans';">
+                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">Cost
+                                Index
+    
+                            </div>
+                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                                <!-- {{GrowthIndexData[0].score}} -->
+    
+                                0000
+    
+                            </div>
+                        </div>
+    
+    
+    
+                        <!-- <div  *ngFor="let kpi_data of buisness_head_response_._kpi_score">
+                            <div class="d-flex justify-content-between align-items-center" style="font-weight: 550;font-family: 'Work Sans';">
+                                <div class="pech ">
+                                    {{ kpi_data.point_label}}
+                                    
+                                </div>
+                                <div class="pech_details">
+                                    {{ kpi_data.weightage}}
+                                </div>
+                            </div>
+                            
+                        </div> -->
+    
+                    </div>
+    
+    
+                </mat-expansion-panel>
+    
+    
+                <!-- Accordian mat-expansion For Governance Index -->
+    
+    
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mt-2">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title class="growth_index_accordion_mobile">
+                            <strong>Governance Index</strong>
+                        </mat-panel-title>
+    
+                    </mat-expansion-panel-header>
+                    <hr class="horizontal_row" style="font-weight: 550;font-family: 'Work Sans';">
+                    <div>
+                        <!-- <div class="d-flex justify-content-between align-items-center mt-1" style="font-weight: 550;font-family: 'Work Sans';">
+                                    <div class="global_index_mobile d-flex"  style="font-weight: 600;font-family: 'Work Sans';">Index
+                                   
                                     </div>
                                     <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
-                                        <!-- {{GrowthIndexData[0].score}} -->
-            
-                                        0000
+                                        {{GrowthIndexData[0].score}}
             
                                     </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-4"
-                                    style="font-weight: 550;font-family: 'Work Sans';">
-                                    <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">Sales
-                                        Index
-            
-                                    </div>
-                                    <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
-                                        <!-- {{GrowthIndexData[0].score}} -->
-            
-                                        0000
-            
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-4"
-                                    style="font-weight: 550;font-family: 'Work Sans';">
-                                    <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">Cost
-                                        Index
-            
-                                    </div>
-                                    <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
-                                        <!-- {{GrowthIndexData[0].score}} -->
-            
-                                        0000
-            
-                                    </div>
-                                </div>
-            
-            
-            
-                                <!-- <div  *ngFor="let kpi_data of buisness_head_response_._kpi_score">
-                                    <div class="d-flex justify-content-between align-items-center" style="font-weight: 550;font-family: 'Work Sans';">
-                                        <div class="pech ">
+                                </div> -->
+                        <div class="d-flex justify-content-between align-items-center mt-4"
+                            style="font-weight: 550;font-family: 'Work Sans';">
+                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">
+                                Overall
+    
+                            </div>
+                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                                <!-- {{GrowthIndexData[0].score}} -->
+    
+                                0000
+    
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-4"
+                            style="font-weight: 550;font-family: 'Work Sans';">
+                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">NHT
+    
+                            </div>
+                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                                <!-- {{GrowthIndexData[0].score}} -->
+    
+                                0000
+    
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-4"
+                            style="font-weight: 550;font-family: 'Work Sans';">
+                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">OJT
+    
+                            </div>
+                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                                <!-- {{GrowthIndexData[0].score}} -->
+    
+                                0000
+    
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-4"
+                            style="font-weight: 550;font-family: 'Work Sans';">
+                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">FO
+    
+                            </div>
+                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                                <!-- {{GrowthIndexData[0].score}} -->
+    
+                                0000
+    
+                            </div>
+                        </div>
+    
+    
+    
+                        <!-- <div  *ngFor="let kpi_data of buisness_head_response_._kpi_score">
+                                    <div class="d-flex justify-content-between align-items-center mt-4" style="font-weight: 550;font-family: 'Work Sans';">
+                                        <div class="pech " style="font-weight: 600;font-family: 'Work Sans';">
                                             {{ kpi_data.point_label}}
                                             
                                         </div>
-                                        <div class="pech_details">
+                                        <div class="pech_details" style="font-weight: 600;font-family: 'Work Sans';">
                                             {{ kpi_data.weightage}}
                                         </div>
                                     </div>
                                     
                                 </div> -->
-            
-                            </div>
-            
-            
-                        </mat-expansion-panel>
+    
+                    </div>
+    
+                </mat-expansion-panel>
+    
+    
+            </div>
+    
+        </div>
+    
+        <!-- Button Div Section -->
+        <div class="row d-flex justify-content-center align-items-center mt-2">
+            <mat-card class=" button_div_mobile"
+                style="width:93vw;display: flex;flex-direction:row;justify-content:start;align-items: center;overflow-x:overlay;flex-wrap:nowrap;column-gap:0.5em;"
+                [style.background]="sectionView_1.theme_details[0].light_color">
+                <div *ngFor="let item of leaderboard_data_buttons ;let i=index">
+                    <button class="button_series_mobile" [class.active]="i==this.activeClass" (click)="leaderboard(i)">
+                        {{item.label}}
+                    </button>
                 </div>
+            </mat-card>
+        </div>
+        <!-- Search Bar Section -->
+    
+        <div class="row">
+            <div class="col-10">
+                <input class="search_box_mobile ps-2" placeholder="Search people here.." [(ngModel)]="spectSearchStr">
+            </div>
+            <div class="col-2 search_bar_img_mobile_div">
+                <img class="search_bar_img_mobile" src="assets/images/TopHierarchyDashboard/Vector.png" (click)="spectSearch()">
+            </div>
+        </div>
+        <!-- Home Btn -->
+        <div *ngIf="cameraimage;then mobileHomeBtn"></div>
+        <ng-template #mobileHomeBtn>
+            <div class="homeBtn" (click)="BackToHome()">
+                <img src="assets/images/TopHierarchyDashboard/home button  1.png" alt="" srcset="">
+            </div>
+        </ng-template>
+    
+        <!-- LeaderBoard -->
+    
+        <div class="row leaderBoard-container-mobile">
+            <div class="row">
+                <div class="leaderboard_rank_mobile col-2 text-start"><b>Rank</b> </div>
+                <div class="leaderboard_name_mobile col-5 text-start ms-3"><b> Name</b> </div>
+                <div class="leaderboard_points_mobile col-2 ms-3"><b> Points</b> </div>
+    
+            </div>
+    
+            <div *ngIf="sectionView_1._personal_data.id_role==9 ;then smMobile else rmMobile"></div>
+            <ng-template #smMobile>
+                <div
+                    *ngIf="spectSearchStr ===''|| spectSearchStr == undefined || spectSearList.length>10;then withoutsearchMobile else withsearchMobile">
+                </div>
+                <ng-template #withoutsearchMobile>
+                    <div class="leaderboard_label_tile_mobile">
+                        <!-- <div>
+                    {{leaderboard_data[0]._data | json}}
+                </div> -->
+                        <mat-card class="leaderboard_tile_mobile" *ngFor="let res of leaderboard_data; let i=index"
+                            [style.background-image]="'url(' + res?.ranking_image + ')'" (click)="navigateToSMDashboard(i)">
+    
+                            <div class="leaderboard_rank_score_mobile">
+                                {{res.rankingtable_number}}
+                            </div>
+    
+                            <div class="leaderboard_rank_profile_image_div_mobile">
+                                <img class="leaderboard_rank_profile_image_mobile" src="{{res.rankingtable_logo}}"
+                                    width="100%" height="100%" />
+                            </div>
+    
+                            <div class="leaderboard_name_and_team_mobile">
+                                <div class="leaderboard_name_label_mobile">
+                                    {{res.rankingtable_name}}
+                                </div>
+                                <div class="leaderboard_team_label_mobile">
+                                    {{res.rankingtable_team}}
+                                </div>
+                            </div>
+    
+                            <div class="leaderboard_rank_badge_image_div_mobile">
+                                <img class="leaderboard_rank_badge_image_mobile" src="{{res.ranking_badge}}" height="100%"
+                                    width="100%" />
+                            </div>
+    
+    
+                            <div class="leaderboard_rank_points_div_mobile">
+                                <div class="leaderboard_rank_points_label_mobile">{{res.rankingtable_weightage}}</div>
+                            </div>
+    
+                            <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='green'">
+                                <img class="leaderboard_rank_up_down_arrow_image_mobile"
+                                    src="{{sectionView_1.theme_details[0].up_arrow}}" height="90%" width="90%" />
+                            </div>
+    
+                            <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='red'">
+                                <img class="leaderboard_rank_up_down_arrow_image_mobile"
+                                    src="{{sectionView_1.theme_details[0].down_arrow}}" height="90%" width="90%" />
+                            </div>
+    
+                            <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='yellow'">
+                                <img class="leaderboard_rank_up_down_arrow_image_mobile"
+                                    src="{{sectionView_1.theme_details[0].equal_arrow}}" height="90%" width="90%" />
+                            </div>
+                        </mat-card>
+    
+    
+    
+    
+                    </div>
+                </ng-template>
+                <ng-template #withsearchMobile>
+                    <div class="leaderboard_label_tile_mobile">
+                        <!-- <div>
+                    {{leaderboard_data[0]._data | json}}
+                </div> -->
+                        <mat-card class="leaderboard_tile_mobile" *ngFor="let res of spectSearList; let i=index"
+                            [style.background-image]="'url(' + res?.ranking_image + ')'" (click)="navigateToSMDashboard(i)">
+    
+                            <div class="leaderboard_rank_score_mobile">
+                                {{res.rankingtable_number}}
+                            </div>
+    
+                            <div class="leaderboard_rank_profile_image_div_mobile">
+                                <img class="leaderboard_rank_profile_image_mobile" src="{{res.rankingtable_logo}}"
+                                    width="100%" height="100%" />
+                            </div>
+    
+                            <div class="leaderboard_name_and_team_mobile">
+                                <div class="leaderboard_name_label_mobile">
+                                    {{res.rankingtable_name}}
+                                </div>
+                                <div class="leaderboard_team_label_mobile">
+                                    {{res.rankingtable_team}}
+                                </div>
+                            </div>
+    
+                            <div class="leaderboard_rank_badge_image_div_mobile">
+                                <img class="leaderboard_rank_badge_image_mobile" src="{{res.ranking_badge}}" height="100%"
+                                    width="100%" />
+                            </div>
+    
+    
+                            <div class="leaderboard_rank_points_div_mobile">
+                                <div class="leaderboard_rank_points_label_mobile">{{res.rankingtable_weightage}}</div>
+                            </div>
+    
+                            <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='green'">
+                                <img class="leaderboard_rank_up_down_arrow_image_mobile"
+                                    src="{{sectionView_1.theme_details[0].up_arrow}}" height="90%" width="90%" />
+                            </div>
+    
+                            <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='red'">
+                                <img class="leaderboard_rank_up_down_arrow_image_mobile"
+                                    src="{{sectionView_1.theme_details[0].down_arrow}}" height="90%" width="90%" />
+                            </div>
+    
+                            <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='yellow'">
+                                <img class="leaderboard_rank_up_down_arrow_image_mobile"
+                                    src="{{sectionView_1.theme_details[0].equal_arrow}}" height="90%" width="90%" />
+                            </div>
+                        </mat-card>
+    
+    
+    
+    
+                    </div>
+                </ng-template>
+    
             </ng-template>
-            </div>
-            
-            
-
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Mobile View Started -->
-<div class="mobile-view">
-    <div class="row">
-        <div class="col-3">
-            <div class="prof_pic_mobile">
-                <img class="prof_pic_image_mobile" src="{{sectionView_1._personal_data.profile_logo}}" height="100%"
-                    width="100%" />
-            </div>
-            <div *ngIf="cameraimage" class="cameraimg">
-
-                <!-- <img class="camera_image" src="assets/images/TopHierarchyDashboard/Camera.svg" /> -->
-                <div class="camera_image_mobile">
-                    <!-- <img class="camera_image" src="assets/images/TopHierarchyDashboard/Camera.svg" /> -->
-                    <div class="mobile-avatar-upload">
-                        <div class="mobile-avatar-edit">
-                            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
-                                (change)="previewFile($event)" />
-                            <label for="imageUpload"
-                                [style.background-image]="'url(assets/images/svg/dashboard/camera-icon.svg)'"></label>
-                        </div>
-
-                        <!-- <div class="mobile-avatar-preview  justify-content-center">
-                            <img loading="lazy" id="imagePreview"
-                                src="{{sectionView_1?._personal_data?.profile_logo}}">
-
-                        </div> -->
-                    </div>
+            <ng-template #rmMobile>
+                <div
+                    *ngIf="spectSearchStr ===''|| spectSearchStr === undefined|| spectSearList.length>10 ;then withoutsearchMobile else withsearchMobile">
                 </div>
-            </div>
-            <div>
-                <div class="profile_name_mobile d-flex justify-content-center">
-                    {{sectionView_1._personal_data.first_name.slice(0,12)}}..
-                </div>
-                <div class="profile_team_name_mobile d-flex justify-content-center">
-                    {{sectionView_1._personal_data.organization_name.slice(0,15)}}..
-                </div>
-            </div>
-        </div>
-        <div class="col-9">
-
-            <div
-                style="background-image: url({{sectionView_1?._personal_data?.background_image_profile_web}});width: 100%;height: 20vh;background-size: 100% 100%;border: 2px solid rgb(74, 193, 217);display: flex;align-items:center;justify-content: space-evenly;">
-                <div class="d-flex align-items-center badge_div_mobile">
-                    <img class="badge_image_mobile" src="{{sectionView_1._personal_data.profile_badge_image}}" />
-                </div>
-
-                <div class="game_points_div_mobile">
-                    <img class="game_points_image_mobile"
-                        src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}" />
-                    <div class="game_points_score_mobile d-flex justify-content-center"
-                        [style.background]="sectionView_1.theme_details[0].light_color">
-                        {{gamePoints?.[0]?.score}}
-                    </div>
-                    <div class="game_point_label_mobile">{{gamePoints?.[0]?.label}}s</div>
-                </div>
-
-                <div class="reward_points_div_mobile" (click)="getRewards()">
-                    <img class="reward_points_image_mobile"
-                        src="{{sectionView_1?.theme_details?.[0]?.reward_points_image}}" />
-                    <div class="reward_points_score_mobile d-flex justify-content-center"
-                        [style.background]="sectionView_1.theme_details[0].light_color">
-                         {{sectionView_1?._points?.[2]?.score}}
-                    </div>
-                    <div class="reward_point_label_mobile">{{sectionView_1?._points?.[2]?.label}}</div>
-                    
-                </div>
-            </div>
-
-
-        </div>
-    </div>
-    <!-- Rank Section -->
-    <div class="col-12 RankSection mb-2">
-
-        <div class="" *ngIf="sectionView_1?.is_land_logos?.length > 0">
-            <div class="card-body border-bottom- p-0">
-                <div class="row" [ngClass]="{'one-data-mobile': sectionView_1?.is_land_logos?.length == 1,
-                'two-data-mobile': sectionView_1?.is_land_logos?.length === 2,
-                'three-data-mobile': sectionView_1?.is_land_logos?.length === 3,
-                'four-data-mobile':sectionView_1?.is_land_logos?.length === 3}
-                ">
-                    <div class="col-12 card-container" style="overflow-y:auto;">
-
-                        <div class="col-4  text-center" *ngFor="let item of sectionView_1?.is_land_logos">
-                            <img src="{{item?.logo}}" class="island_login" alt="" height="100">
-                            <br>
-
-                            <button class="btn btn-primary- text-white level-badge-btn-mobile mt-2"
-                                [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
-                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                (click)="getDataBasedOnUserID(item)">
-                                {{item?._data}}
-                            </button>
-                            <br><span class="level-rank-name">{{item?.tag}}</span>
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Points Distribution -->
-    <div class="row">
-        <div class="col">
-            <div class="point_distribution_mobile">
-                <div class="point_dist_div_mobile">
-                    <mat-card class="point_one_mobile" (click)="getGraphDataById()"
-                        *ngFor="let item of sectionView_1?._kpi_score">
-                        <div class="row"
-                            style="width: 95vw;display: flex; justify-content: center; align-items: center;">
-                            <div class="col-7 point_background_mobile"
-                                [style.background]="sectionView_1.theme_details[0].light_color">
-                                <div class="point_one_label_mobile"> {{item?.point_label}}</div>
+                <ng-template #withoutsearchMobile>
+                    <div class="leaderboard_label_tile_mobile">
+                        <mat-card class="leaderboard_tile_mobile" *ngFor="let res of leaderboard_data; let i=index"
+                            [style.background-image]="'url(' + res?.ranking_image + ')'" (click)="navigateToRMDashboard(i)">
+                            <div class="leaderboard_rank_score_mobile">
+                                {{res.rankingtable_number}}
                             </div>
-
-                            <div class="col-5 point_score_div">
-                                <div class="row">
-                                    <div class="col-3 d-flex  align-items-center" style="height: 4vh;">
-                                        <img src="assets/images/TopHierarchyDashboard/point_dist_coin.png" />
-                                    </div>
-                                    <div class="col-9 d-flex justify-content-end align-items-center"
-                                        style="height: 4vh;">
-                                        <div class="point_one_label_mobile">{{item?.weightage}}</div>
-
-                                        <div class="">
-                                            <img src="assets/images/TopHierarchyDashboard/Arrow.png" />
-                                        </div>
-
-                                    </div>
+    
+                            <div class="leaderboard_rank_profile_image_div_mobile">
+                                <img class="leaderboard_rank_profile_image_mobile" src="{{res.rankingtable_logo}}"
+                                    height="100%" width="100%" />
+                            </div>
+    
+                            <div class="leaderboard_name_and_team_mobile">
+                                <div class="leaderboard_name_label_mobile">
+                                    {{res.rankingtable_name}}
+                                </div>
+                                <div class="leaderboard_team_label_mobile">
+                                    {{res.rankingtable_team}}
                                 </div>
                             </div>
-                        </div>
-                    </mat-card>
-
-
+    
+                            <div class="leaderboard_rank_badge_image_div_mobile">
+                                <img class="leaderboard_rank_badge_image_mobile" src="{{res.ranking_badge}}" />
+                            </div>
+    
+    
+                            <div class="leaderboard_rank_points_div_mobile">
+                                <div class="leaderboard_rank_points_label_mobile">{{res.rankingtable_weightage}}</div>
+                            </div>
+    
+                            <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='green'">
+                                <img class="leaderboard_rank_up_down_arrow_image_mobile"
+                                    src="{{sectionView_1.theme_details[0].up_arrow}}" height="90%" width="90%" />
+                            </div>
+    
+                            <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='red'">
+                                <img class="leaderboard_rank_up_down_arrow_image_mobile"
+                                    src="{{sectionView_1.theme_details[0].down_arrow}}" height="90%" width="90%" />
+                            </div>
+    
+                            <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='yellow'">
+                                <img class="leaderboard_rank_up_down_arrow_image_mobile"
+                                    src="{{sectionView_1.theme_details[0].equal_arrow}}" height="90%" width="90%" />
+                            </div>
+                        </mat-card>
+    
+                    </div>
+    
+                </ng-template>
+                <ng-template #withsearchMobile>
+                    <div class="leaderboard_label_tile_mobile">
+                        <mat-card class="leaderboard_tile_mobile" *ngFor="let res of spectSearList; let i=index"
+                            [style.background-image]="'url(' + res?.ranking_image + ')'" (click)="navigateToRMDashboard(i)">
+                            <div class="leaderboard_rank_score_mobile">
+                                {{res.rankingtable_number}}
+                            </div>
+    
+                            <div class="leaderboard_rank_profile_image_div_mobile">
+                                <img class="leaderboard_rank_profile_image_mobile" src="{{res.rankingtable_logo}}"
+                                    height="100%" width="100%" />
+                            </div>
+    
+                            <div class="leaderboard_name_and_team_mobile">
+                                <div class="leaderboard_name_label_mobile">
+                                    {{res.rankingtable_name}}
+                                </div>
+                                <div class="leaderboard_team_label_mobile">
+                                    {{res.rankingtable_team}}
+                                </div>
+                            </div>
+    
+                            <div class="leaderboard_rank_badge_image_div_mobile">
+                                <img class="leaderboard_rank_badge_image_mobile" src="{{res.ranking_badge}}" />
+                            </div>
+    
+    
+                            <div class="leaderboard_rank_points_div_mobile">
+                                <div class="leaderboard_rank_points_label_mobile">{{res.rankingtable_weightage}}</div>
+                            </div>
+    
+                            <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='green'">
+                                <img class="leaderboard_rank_up_down_arrow_image_mobile"
+                                    src="{{sectionView_1.theme_details[0].up_arrow}}" height="90%" width="90%" />
+                            </div>
+    
+                            <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='red'">
+                                <img class="leaderboard_rank_up_down_arrow_image_mobile"
+                                    src="{{sectionView_1.theme_details[0].down_arrow}}" height="90%" width="90%" />
+                            </div>
+    
+                            <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='yellow'">
+                                <img class="leaderboard_rank_up_down_arrow_image_mobile"
+                                    src="{{sectionView_1.theme_details[0].equal_arrow}}" height="90%" width="90%" />
+                            </div>
+                        </mat-card>
+    
+                    </div>
+    
+                </ng-template>
+            </ng-template>
+    
+            <div class="row">
+                <div class="d-flex justify-content-center col">
+                    <button class="view_more_button_mobile col-12" (click)="viewMore()">
+                        View More
+                    </button>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- Accordian -->
-    <div class="row">
-        <div class="col ">
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mt-1">
-                <mat-expansion-panel-header>
-                    <mat-panel-title class="growth_index_accordion_mobile ">
-                        <strong> Business Index</strong>
-
-                    </mat-panel-title>
-
-                </mat-expansion-panel-header>
-                <hr class="horizontal_row" style="font-weight: 550;font-family: 'Work Sans';">
-                <div>
-                    <div class="d-flex justify-content-between align-items-center mt-4"
-                        style="font-weight: 550;font-family: 'Work Sans';">
-                        <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">Net
-                            Promoter Score
-
-                        </div>
-                        <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
-                            <!-- {{GrowthIndexData[0].score}} -->
-
-                            0000
-
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center mt-4"
-                        style="font-weight: 550;font-family: 'Work Sans';">
-                        <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">
-                            Customer Effort Score
-
-                        </div>
-                        <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
-                            <!-- {{GrowthIndexData[0].score}} -->
-
-                            0000
-
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center mt-4"
-                        style="font-weight: 550;font-family: 'Work Sans';">
-                        <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">Sales
-                            Index
-
-                        </div>
-                        <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
-                            <!-- {{GrowthIndexData[0].score}} -->
-
-                            0000
-
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center mt-4"
-                        style="font-weight: 550;font-family: 'Work Sans';">
-                        <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">Cost
-                            Index
-
-                        </div>
-                        <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
-                            <!-- {{GrowthIndexData[0].score}} -->
-
-                            0000
-
-                        </div>
-                    </div>
-
-
-
-                    <!-- <div  *ngFor="let kpi_data of buisness_head_response_._kpi_score">
-                        <div class="d-flex justify-content-between align-items-center" style="font-weight: 550;font-family: 'Work Sans';">
-                            <div class="pech ">
-                                {{ kpi_data.point_label}}
-                                
-                            </div>
-                            <div class="pech_details">
-                                {{ kpi_data.weightage}}
-                            </div>
-                        </div>
-                        
-                    </div> -->
-
-                </div>
-
-
-            </mat-expansion-panel>
-
-
-            <!-- Accordian mat-expansion For Governance Index -->
-
-
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mt-2">
-                <mat-expansion-panel-header>
-                    <mat-panel-title class="growth_index_accordion_mobile">
-                        <strong>Governance Index</strong>
-                    </mat-panel-title>
-
-                </mat-expansion-panel-header>
-                <hr class="horizontal_row" style="font-weight: 550;font-family: 'Work Sans';">
-                <div>
-                    <!-- <div class="d-flex justify-content-between align-items-center mt-1" style="font-weight: 550;font-family: 'Work Sans';">
-                                <div class="global_index_mobile d-flex"  style="font-weight: 600;font-family: 'Work Sans';">Index
-                               
-                                </div>
-                                <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
-                                    {{GrowthIndexData[0].score}}
-        
-                                </div>
-                            </div> -->
-                    <div class="d-flex justify-content-between align-items-center mt-4"
-                        style="font-weight: 550;font-family: 'Work Sans';">
-                        <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">
-                            Overall
-
-                        </div>
-                        <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
-                            <!-- {{GrowthIndexData[0].score}} -->
-
-                            0000
-
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center mt-4"
-                        style="font-weight: 550;font-family: 'Work Sans';">
-                        <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">NHT
-
-                        </div>
-                        <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
-                            <!-- {{GrowthIndexData[0].score}} -->
-
-                            0000
-
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center mt-4"
-                        style="font-weight: 550;font-family: 'Work Sans';">
-                        <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">OJT
-
-                        </div>
-                        <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
-                            <!-- {{GrowthIndexData[0].score}} -->
-
-                            0000
-
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center mt-4"
-                        style="font-weight: 550;font-family: 'Work Sans';">
-                        <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">FO
-
-                        </div>
-                        <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
-                            <!-- {{GrowthIndexData[0].score}} -->
-
-                            0000
-
-                        </div>
-                    </div>
-
-
-
-                    <!-- <div  *ngFor="let kpi_data of buisness_head_response_._kpi_score">
-                                <div class="d-flex justify-content-between align-items-center mt-4" style="font-weight: 550;font-family: 'Work Sans';">
-                                    <div class="pech " style="font-weight: 600;font-family: 'Work Sans';">
-                                        {{ kpi_data.point_label}}
-                                        
-                                    </div>
-                                    <div class="pech_details" style="font-weight: 600;font-family: 'Work Sans';">
-                                        {{ kpi_data.weightage}}
-                                    </div>
-                                </div>
-                                
-                            </div> -->
-
-                </div>
-
-            </mat-expansion-panel>
-
-
-        </div>
-
-    </div>
-
-    <!-- Button Div Section -->
-    <div class="row d-flex justify-content-center align-items-center mt-2">
-        <mat-card class=" button_div_mobile"
-            style="width:93vw;display: flex;flex-direction:row;justify-content:start;align-items: center;overflow-x:overlay;flex-wrap:nowrap;column-gap:0.5em;"
-            [style.background]="sectionView_1.theme_details[0].light_color">
-            <div *ngFor="let item of leaderboard_data_buttons ;let i=index">
-                <button class="button_series_mobile" [class.active]="i==this.activeClass" (click)="leaderboard(i)">
-                    {{item.label}}
-                </button>
-            </div>
-        </mat-card>
-    </div>
-    <!-- Search Bar Section -->
-
-    <div class="row">
-        <div class="col-10">
-            <input class="search_box_mobile ps-2" placeholder="Search people here.." [(ngModel)]="spectSearchStr">
-        </div>
-        <div class="col-2 search_bar_img_mobile_div">
-            <img class="search_bar_img_mobile" src="assets/images/TopHierarchyDashboard/Vector.png" (click)="spectSearch()">
-        </div>
-    </div>
-    <!-- Home Btn -->
-    <div *ngIf="cameraimage;then mobileHomeBtn"></div>
-    <ng-template #mobileHomeBtn>
-        <div class="homeBtn" (click)="BackToHome()">
-            <img src="assets/images/TopHierarchyDashboard/home button  1.png" alt="" srcset="">
+    
+    
+    
+    
         </div>
     </ng-template>
-
-    <!-- LeaderBoard -->
-
-    <div class="row leaderBoard-container-mobile">
-        <div class="row">
-            <div class="leaderboard_rank_mobile col-2 text-start"><b>Rank</b> </div>
-            <div class="leaderboard_name_mobile col-5 text-start ms-3"><b> Name</b> </div>
-            <div class="leaderboard_points_mobile col-2 ms-3"><b> Points</b> </div>
-
-        </div>
-
-        <div *ngIf="sectionView_1._personal_data.id_role==9 ;then smMobile else rmMobile"></div>
-        <ng-template #smMobile>
-            <div
-                *ngIf="spectSearchStr ===''|| spectSearchStr == undefined || spectSearList.length>10;then withoutsearchMobile else withsearchMobile">
-            </div>
-            <ng-template #withoutsearchMobile>
-                <div class="leaderboard_label_tile_mobile">
-                    <!-- <div>
-                {{leaderboard_data[0]._data | json}}
-            </div> -->
-                    <mat-card class="leaderboard_tile_mobile" *ngFor="let res of leaderboard_data; let i=index"
-                        [style.background-image]="'url(' + res?.ranking_image + ')'" (click)="navigateToSMDashboard(i)">
-
-                        <div class="leaderboard_rank_score_mobile">
-                            {{res.rankingtable_number}}
-                        </div>
-
-                        <div class="leaderboard_rank_profile_image_div_mobile">
-                            <img class="leaderboard_rank_profile_image_mobile" src="{{res.rankingtable_logo}}"
-                                width="100%" height="100%" />
-                        </div>
-
-                        <div class="leaderboard_name_and_team_mobile">
-                            <div class="leaderboard_name_label_mobile">
-                                {{res.rankingtable_name}}
-                            </div>
-                            <div class="leaderboard_team_label_mobile">
-                                {{res.rankingtable_team}}
-                            </div>
-                        </div>
-
-                        <div class="leaderboard_rank_badge_image_div_mobile">
-                            <img class="leaderboard_rank_badge_image_mobile" src="{{res.ranking_badge}}" height="100%"
-                                width="100%" />
-                        </div>
-
-
-                        <div class="leaderboard_rank_points_div_mobile">
-                            <div class="leaderboard_rank_points_label_mobile">{{res.rankingtable_weightage}}</div>
-                        </div>
-
-                        <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='green'">
-                            <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                src="{{sectionView_1.theme_details[0].up_arrow}}" height="90%" width="90%" />
-                        </div>
-
-                        <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='red'">
-                            <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                src="{{sectionView_1.theme_details[0].down_arrow}}" height="90%" width="90%" />
-                        </div>
-
-                        <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='yellow'">
-                            <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                src="{{sectionView_1.theme_details[0].equal_arrow}}" height="90%" width="90%" />
-                        </div>
-                    </mat-card>
-
-
-
-
-                </div>
-            </ng-template>
-            <ng-template #withsearchMobile>
-                <div class="leaderboard_label_tile_mobile">
-                    <!-- <div>
-                {{leaderboard_data[0]._data | json}}
-            </div> -->
-                    <mat-card class="leaderboard_tile_mobile" *ngFor="let res of spectSearList; let i=index"
-                        [style.background-image]="'url(' + res?.ranking_image + ')'" (click)="navigateToSMDashboard(i)">
-
-                        <div class="leaderboard_rank_score_mobile">
-                            {{res.rankingtable_number}}
-                        </div>
-
-                        <div class="leaderboard_rank_profile_image_div_mobile">
-                            <img class="leaderboard_rank_profile_image_mobile" src="{{res.rankingtable_logo}}"
-                                width="100%" height="100%" />
-                        </div>
-
-                        <div class="leaderboard_name_and_team_mobile">
-                            <div class="leaderboard_name_label_mobile">
-                                {{res.rankingtable_name}}
-                            </div>
-                            <div class="leaderboard_team_label_mobile">
-                                {{res.rankingtable_team}}
-                            </div>
-                        </div>
-
-                        <div class="leaderboard_rank_badge_image_div_mobile">
-                            <img class="leaderboard_rank_badge_image_mobile" src="{{res.ranking_badge}}" height="100%"
-                                width="100%" />
-                        </div>
-
-
-                        <div class="leaderboard_rank_points_div_mobile">
-                            <div class="leaderboard_rank_points_label_mobile">{{res.rankingtable_weightage}}</div>
-                        </div>
-
-                        <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='green'">
-                            <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                src="{{sectionView_1.theme_details[0].up_arrow}}" height="90%" width="90%" />
-                        </div>
-
-                        <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='red'">
-                            <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                src="{{sectionView_1.theme_details[0].down_arrow}}" height="90%" width="90%" />
-                        </div>
-
-                        <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='yellow'">
-                            <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                src="{{sectionView_1.theme_details[0].equal_arrow}}" height="90%" width="90%" />
-                        </div>
-                    </mat-card>
-
-
-
-
-                </div>
-            </ng-template>
-
-        </ng-template>
-        <ng-template #rmMobile>
-            <div
-                *ngIf="spectSearchStr ===''|| spectSearchStr === undefined|| spectSearList.length>10 ;then withoutsearchMobile else withsearchMobile">
-            </div>
-            <ng-template #withoutsearchMobile>
-                <div class="leaderboard_label_tile_mobile">
-                    <mat-card class="leaderboard_tile_mobile" *ngFor="let res of leaderboard_data; let i=index"
-                        [style.background-image]="'url(' + res?.ranking_image + ')'" (click)="navigateToRMDashboard(i)">
-                        <div class="leaderboard_rank_score_mobile">
-                            {{res.rankingtable_number}}
-                        </div>
-
-                        <div class="leaderboard_rank_profile_image_div_mobile">
-                            <img class="leaderboard_rank_profile_image_mobile" src="{{res.rankingtable_logo}}"
-                                height="100%" width="100%" />
-                        </div>
-
-                        <div class="leaderboard_name_and_team_mobile">
-                            <div class="leaderboard_name_label_mobile">
-                                {{res.rankingtable_name}}
-                            </div>
-                            <div class="leaderboard_team_label_mobile">
-                                {{res.rankingtable_team}}
-                            </div>
-                        </div>
-
-                        <div class="leaderboard_rank_badge_image_div_mobile">
-                            <img class="leaderboard_rank_badge_image_mobile" src="{{res.ranking_badge}}" />
-                        </div>
-
-
-                        <div class="leaderboard_rank_points_div_mobile">
-                            <div class="leaderboard_rank_points_label_mobile">{{res.rankingtable_weightage}}</div>
-                        </div>
-
-                        <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='green'">
-                            <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                src="{{sectionView_1.theme_details[0].up_arrow}}" height="90%" width="90%" />
-                        </div>
-
-                        <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='red'">
-                            <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                src="{{sectionView_1.theme_details[0].down_arrow}}" height="90%" width="90%" />
-                        </div>
-
-                        <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='yellow'">
-                            <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                src="{{sectionView_1.theme_details[0].equal_arrow}}" height="90%" width="90%" />
-                        </div>
-                    </mat-card>
-
-                </div>
-
-            </ng-template>
-            <ng-template #withsearchMobile>
-                <div class="leaderboard_label_tile_mobile">
-                    <mat-card class="leaderboard_tile_mobile" *ngFor="let res of spectSearList; let i=index"
-                        [style.background-image]="'url(' + res?.ranking_image + ')'" (click)="navigateToRMDashboard(i)">
-                        <div class="leaderboard_rank_score_mobile">
-                            {{res.rankingtable_number}}
-                        </div>
-
-                        <div class="leaderboard_rank_profile_image_div_mobile">
-                            <img class="leaderboard_rank_profile_image_mobile" src="{{res.rankingtable_logo}}"
-                                height="100%" width="100%" />
-                        </div>
-
-                        <div class="leaderboard_name_and_team_mobile">
-                            <div class="leaderboard_name_label_mobile">
-                                {{res.rankingtable_name}}
-                            </div>
-                            <div class="leaderboard_team_label_mobile">
-                                {{res.rankingtable_team}}
-                            </div>
-                        </div>
-
-                        <div class="leaderboard_rank_badge_image_div_mobile">
-                            <img class="leaderboard_rank_badge_image_mobile" src="{{res.ranking_badge}}" />
-                        </div>
-
-
-                        <div class="leaderboard_rank_points_div_mobile">
-                            <div class="leaderboard_rank_points_label_mobile">{{res.rankingtable_weightage}}</div>
-                        </div>
-
-                        <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='green'">
-                            <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                src="{{sectionView_1.theme_details[0].up_arrow}}" height="90%" width="90%" />
-                        </div>
-
-                        <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='red'">
-                            <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                src="{{sectionView_1.theme_details[0].down_arrow}}" height="90%" width="90%" />
-                        </div>
-
-                        <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='yellow'">
-                            <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                src="{{sectionView_1.theme_details[0].equal_arrow}}" height="90%" width="90%" />
-                        </div>
-                    </mat-card>
-
-                </div>
-
-            </ng-template>
-        </ng-template>
-
-        <div class="row">
-            <div class="d-flex justify-content-center col">
-                <button class="view_more_button_mobile col-12" (click)="viewMore()">
-                    View More
-                </button>
-            </div>
-        </div>
-
-
-
-
-    </div>
+    
 
 
 </div>

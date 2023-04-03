@@ -68,7 +68,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   notificationList_err: string;
   spectSearFinalList:any=[]
   spectSearFinalList1:any
-  light_color: string;
+  light_color: any;
   constructor(private readonly store: Store, public _route: ActivatedRoute,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
   ngOnInit(): void {
