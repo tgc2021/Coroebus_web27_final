@@ -140,7 +140,7 @@
 
 
                             <div class="media ms-2">
-                                <div class="row row-cols-3 w-100 d-flex justify-content-around align-items-center" style="height: 8vh;">
+                                <div class="row row-cols-3 w-100 d-flex justify-content-around align-items-center" style="height: 7vh;">
                                    
                                     <div class="confetti"
                                         [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'">
@@ -455,7 +455,7 @@
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                             style="border:2px solid">
                             <div class="col  widthText">
-                                <div class="media d-flex align-items-center gap-3" style="height: 8vh;">
+                                <div class="media d-flex align-items-center gap-3" style="height: 7vh;">
                                     <span class="col-1 ms-2 text-white position-absolute-">
                                         {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_number}}
                                     </span>
@@ -466,7 +466,7 @@
                                     </div>
 
                                     <div class="media-body user-logo-row ellipsis pt-1" style="height: 6vh;">
-                                        <h5 class="mt-0 text-white name-f-size ellipsis" placement="bottom-center"
+                                        <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom-center"
                                             ngbTooltip="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}">
                                             {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}
                                         </h5>
@@ -477,7 +477,7 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="media d-flex align-items-center" style="height: 8vh;">
+                                <div class="media d-flex align-items-center gap-2" style="height: 7vh;">
                                     <div class="rounded-circle z-depth-2 team-logo-row d-flex align-items-center"
                                         style="height:5vh;">
                                         <img loading="lazy" class="rounded-circle z-depth-2 " alt=""
@@ -525,7 +525,7 @@
                             *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) "
                             (click)="navigateToOtherRole(item)">
                             <div class="col">
-                                <div class="media d-flex align-items-center gap-3 " style="height: 8vh;">
+                                <div class="media d-flex align-items-center gap-3 " style="height: 7vh;">
                                     <span class="col-1 ms-2 text-white position-absolute-s">
                                         {{item?.rankingtable_number}}
                                     </span>
@@ -543,7 +543,7 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="media me-1" style="height: 8vh; display: flex;align-items:center">
+                                <div class="media me-1" style="height: 7vh; display: flex;align-items:center">
                                     <div class="rounded-circle z-depth-2 team-logo-row " style="height:5vh;">
                                         <img alt="" src="{{item?.ranking_badge}}" data-holder-rendered="true"
                                             height="100%" width="100%">

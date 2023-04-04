@@ -34,6 +34,7 @@ export class TopDashboardComponent implements OnInit,AfterViewInit {
   safeUrl: SafeResourceUrl
   isVideoModalopen:boolean =false
   GrowthIndexData: any;
+  openIntroVideo: boolean=false;
   constructor(config: NgbModalConfig, public sanitizer:DomSanitizer, public router:Router,public http:ApiserviceService,public Util: Util,public element: ElementRef,public modalService:NgbModal) {
     config.backdrop = 'static';
 		config.keyboard = false;
@@ -43,7 +44,7 @@ export class TopDashboardComponent implements OnInit,AfterViewInit {
 
   ngOnInit(): void {
 
- 
+  
 
     window.scrollTo(0,1)
 

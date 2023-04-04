@@ -102,7 +102,8 @@
                 </div>
                 <div class="banner_container"  [style.background-image]="
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-                <div style="background-image:url({{sectionView_1?._personal_data?.background_image_profile_web}});width: 32vw;height: 20vh;background-size: 100% 100%;border-radius:10px;display:flex;justify-content: space-evenly;">
+                <div style="background-image:url({{sectionView_1?._personal_data?.background_image_profile_web}});width: 32vw;height: 20vh;background-size: 100% 100%;border-radius:10px;display:flex;    justify-content: center;
+                align-items: center;gap:12vw">
                     <div *ngIf="sectionView_1._personal_data.id_role!=9;then rewardPoints"></div>
                     <ng-template #rewardPoints>
                         <div class="game_points_div">
@@ -120,7 +121,7 @@
                             <div class="reward_points_score d-flex justify-content-center">
                                 {{sectionView_1?._points?.[2]?.score}}
                             </div>
-                            <div class="reward_point_label">{{sectionView_1?._points?.[2]?.label}}</div>
+                            <div class="reward_point_label">{{sectionView_1?._points?.[2]?.label}}s</div>
             
                         </div>
                     </ng-template>
@@ -143,8 +144,9 @@
                 </div>
                 <div class="row">
                     <input type="text" class="search_box" placeholder="Search people here.." [(ngModel)]="spectSearchStr">
-                    <img class="search_bar_img" src="assets/images/TopHierarchyDashboard/Vector.png"
-                        (click)="spectSearch()">
+                    <i class="search_bar_img fa fa-search d-flex justify-content-center align-items-center"aria-hidden="true" (click)="spectSearch()"></i>
+                 
+                        
                 </div>
     
                 <!-- LeaderBoard -->
