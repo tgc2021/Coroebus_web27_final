@@ -1,4 +1,5 @@
 <div class="web-view">
+  
     <div class="d-flex">
         <div class="map-view">
             <div class="d-flex align-items-end left_side_div">
@@ -209,7 +210,7 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-center align-items-center leaderboard_div_web" >
-                            <div class="row first_row_details d-flex call_center_div"
+                            <div class="responsive row first_row_details d-flex call_center_div"
                             *ngFor="let res of buisness_head_response_._ranking_data[0]._data;let i=index"
                             style="background-image: url({{buisness_head_response_._ranking_data[0]._data[i].ranking_image}});"
                             (click)="navigateToHOSDashboard(i)">
@@ -643,15 +644,18 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div> -->
-    <div class="modal-body">
-        <video width="100%" class="video_player" controls autoplay>
-            <source [src]="safeUrl" type="video/mp4">
-            <source src="mov_bbb.ogg" type="video/ogg">
-            Your browser does not support HTML video.
-        </video>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" [style.background]="dark_color" [style.color]="fontcolor"
-            style="width: 15vw;" (click)="modal.close('Save click')">Skip</button>
-    </div>
+    <!-- <div *ngIf="VideoHide1"> </div> -->
+   
+        <div class="modal-body">
+            <video width="100%" class="video_player" controls autoplay>
+                <source [src]="safeUrl" type="video/mp4">
+                <source src="mov_bbb.ogg" type="video/ogg">
+                Your browser does not support HTML video.
+            </video>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" [style.background]="dark_color" [style.color]="fontcolor"
+                style="width: 15vw;" (click)="close(content)">Skip</button>
+        </div>
+   
 </ng-template>

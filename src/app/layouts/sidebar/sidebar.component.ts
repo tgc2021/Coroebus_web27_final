@@ -132,7 +132,14 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
      
       
       })
+      menuArr1 = MENU_HOS.filter((value, index) => {
+      
+       
+    
 
+     
+      
+      })
     })
     // console.log(this.menuItems);
 
@@ -451,10 +458,17 @@ console.log(this.id_coroebus_organization);
 if(this.id_role=='7'){
   this.menuItems=MENU_SPECTATOR
 
-}else{
+}
+else{
   this.menuItems = MENU;
 }
-   
+if(this.id_role=='13'){
+  this.menuItems=MENU_HOS
+
+}
+else{
+  this.menuItems = MENU;
+}
     // this.menuItems=MENU_SPECTATOR
    
     console.log(this.menuItems);
