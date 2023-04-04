@@ -70,7 +70,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
       console.log(data)
       this.produce1Data = data
       this.profileLogo=this.produce1Data._personal_data?.profile_logo
-      this.filepath=this.produce1Data.about_game[0].file_name
+      this.filepath=this.produce1Data.about_game[0].file_name;
      
         this.menuItems = MENU;
         // console.log(this.filepath);
@@ -313,7 +313,7 @@ console.log(this.id_coroebus_organization);
         
       })
 
-      if(this.is_about_game==0){
+      if(this.is_about_game==0||this.is_about_game==null){
        
        
         const result = this.menuItems.filter(data => data.icon != 'Aboutgameicon');

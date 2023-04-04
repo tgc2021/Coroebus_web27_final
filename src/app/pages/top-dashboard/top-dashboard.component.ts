@@ -1,9 +1,11 @@
 import { AfterViewInit, Component, ElementRef, OnInit,ViewChild } from '@angular/core';
 import { Router, RoutesRecognized } from '@angular/router';
 import { ApiserviceService } from 'app/apiservice.service';
+import { Location } from '@angular/common';
 import { Util } from '@app/utils/util';
 import { NgbModal,NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer,SafeResourceUrl } from '@angular/platform-browser';
+import { log } from 'console';
 
 @Component({
   selector: 'app-top-dashboard',
@@ -35,7 +37,9 @@ export class TopDashboardComponent implements OnInit,AfterViewInit {
   isVideoModalopen:boolean =false
   GrowthIndexData: any;
   openIntroVideo: boolean=false;
-  constructor(config: NgbModalConfig, public sanitizer:DomSanitizer, public router:Router,public http:ApiserviceService,public Util: Util,public element: ElementRef,public modalService:NgbModal) {
+  previousUrl: void;
+  isVideoHide: any;
+  constructor(config: NgbModalConfig, public sanitizer:DomSanitizer, public router:Router,public http:ApiserviceService,public Util: Util,public element: ElementRef,public modalService:NgbModal,public location:Location) {
     config.backdrop = 'static';
 		config.keyboard = false;
     config.centered=true;
@@ -43,9 +47,9 @@ export class TopDashboardComponent implements OnInit,AfterViewInit {
    }
 
   ngOnInit(): void {
-
-  
-
+    const isVideoHidden=localStorage.getItem('VideoHide'); 
+  this.isVideoHide=JSON.parse(isVideoHidden);
+  console.log(isVideoHidden);
     window.scrollTo(0,1)
 
     this.isVideoModalopen = true;
@@ -80,7 +84,11 @@ export class TopDashboardComponent implements OnInit,AfterViewInit {
 
   ngAfterViewInit() {
 
-    this.openModal();
+    
+    if(this.isVideoHide){
+      this.openModal();
+      
+    }
   }
   navigateToIndexwiseDashboard(){
     this.router.navigateByUrl('/buisness_index')
@@ -100,6 +108,10 @@ export class TopDashboardComponent implements OnInit,AfterViewInit {
   }
   openModal(){
     this.modalService.open(this.content, {size: 'lg', centered: true });
+  }
+  close(content){
+    localStorage.setItem('VideoHide','false');
+    this.modalService.dismissAll();
   }
 
 }

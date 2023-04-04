@@ -51,7 +51,7 @@
                 font-weight: 550;
                 font-size: 2.2vh;
                 line-height: 2.4vh;
-                /* identical to box height, or 120% */
+                
                 text-align: center;
                 letter-spacing: 0.2px;
                 color: #FFFFFF;
@@ -60,11 +60,9 @@
         }
 
         .profile_picture {
-
             position: absolute;
-           
             border-radius: 50%;
-            border: 1px solid var(--myvar);
+            border: 2px solid var(--myvar);
             top: 6vh;
             filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
@@ -115,8 +113,7 @@
 
         .lower_section {
             margin-top: 8vh;
-           
-
+        
             .name_hos {
                 font-family: 'Work Sans';
                 font-style: normal;
@@ -127,7 +124,6 @@
                 text-align: center;
                 letter-spacing: 0.2px;
                 color: #000000;
-
             }
 
 
@@ -152,7 +148,7 @@
             margin-top: 0.5vh;
 
             .point_one_label {
-                font-size: 1vw;
+                font-size: 0.9vw;
                 font-weight: 600;
             }
 
@@ -501,7 +497,7 @@
 .button_series {
     width: 15.6vw;
     height: 6vh;
-    font-size:1.6vh;
+    font-size:0.9vw;
     font-weight: 500;
     background: #ffffff;
     border-radius: 1vw;
@@ -516,7 +512,7 @@
 .active {
     width: 15.6vw;
     height: 6vh;
-    font-size:1.6vh;
+    font-size:0.9vw;
     font-weight: 500;
     border-radius: 1vw;
     font-size: 500;
@@ -610,7 +606,7 @@ input::placeholder {
         width: 15.7vw;
 
         height: 6vh;
-        font-size: 1.6vh;
+        font-size: 0.9vw;
         padding: 1%;
         font-family: 'Work Sans';
         background: #ffffff;
@@ -625,9 +621,9 @@ input::placeholder {
         width: 15.7vw;
 
         height: 6vh;
-        font-size:1.6vh;
+        font-size:0.9vw;
         font-weight: 600;
-        font-size: 1.6vh;
+        // font-size: 1.6vh;
         font-family: 'Work Sans';
         border: none;
         margin-right: 0.3vw;
@@ -866,7 +862,7 @@ input::placeholder {
     }
 
     .leaderboard_name {
-        margin-left: 11vw;
+        margin-left: 8vw;
         font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
@@ -874,7 +870,7 @@ input::placeholder {
     }
 
     .leaderboard_points {
-        margin-left: 20vw;
+        margin-left: 23vw;
         font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
@@ -1166,7 +1162,7 @@ input::placeholder {
 
     .leaderboard_name_and_team_first,
     .leaderboard_name_and_team {
-        margin-left: 6vw;
+        margin-left: 3vw;
     }
 
     .leaderboard_name_label_first,
@@ -1176,9 +1172,9 @@ input::placeholder {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 500;
-        font-size: 0.8vw;
+        font-size: 1vw;
         color: #ffffff;
-        width: 9vw;
+        width: 12vw;
     }
 
 

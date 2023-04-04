@@ -443,7 +443,7 @@
                         <div class="col-3 pe-5">
                             <span class="name_h">Name</span>
                         </div>
-                        <div class="offset-4 col-2">
+                        <div class="offset-4 col-2 ps-4">
                             <span class="points_h" style="margin: 0px;">Points</span>
                         </div>
                     </div>
@@ -535,7 +535,7 @@
                                             width="41" (click)="openHierarchyPopup(item)">
                                     </div>
 
-                                    <div class="media-body user-logo-row ellipsis" style="height: 6vh;">
+                                    <div class="media-body user-logo-row ellipsis" style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
                                         <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
                                             ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}</h5>
                                         <p class="mt-n4 team-name sub-team name-f-size">{{item?.rankingtable_team}}</p>
@@ -553,7 +553,7 @@
                                         <h5 class="mt-0 text-white" style="display: flex;
                                         justify-content: end;
                                         align-items: center;
-                                        gap: 4rem;">
+                                        gap: 3vw;">
                                             <div style="height: 6vh; display:flex;align-items: center;">
                                                 <span
                                                     class="name-f-size point-number mt-1">{{item?.rankingtable_weightage}}</span>
@@ -754,14 +754,15 @@
                                                     style="display:flex;flex-direction:column;justify-content:center;">
                                                     <br>
                                                     <div class="" style="font-family: 'Inter';
-                                    font-style: normal;
-                                    font-weight: 600;
-                                    font-size: 16px;
-                                    line-height: 25px;
-                                    text-align: center;
-                                    letter-spacing: 0.003em;
-                                   color: #000000;
-                                   width: 22vw;">
+                                                                    font-style: normal;
+                                                                    font-weight: 600;
+                                                                    font-size: 16px;
+                                                                    line-height: 25px;
+                                                                    text-align: center;
+                                                                   margin-left: 2vw;
+                                                                    letter-spacing: 0.003em;
+                                                                color: #000000;
+                                                                width: 22vw;">
                                                         There's no bulletin’s you have subscribed to, stay tuned to this
                                                         section for
                                                         more.
@@ -943,14 +944,15 @@
     
     
                                                     <div *ngIf="buletinsHide"
-                                                        style="display:flex;flex-direction:column;justify-content:center;">
-                                                        <br>
+                                                        style="display:flex;flex-direction:column;justify-content:center;align-items: center;">
+                                                        
                                                         <div class="" style="font-family: 'Inter';
                                                                             font-style: normal;
                                                                             font-weight: 600;
                                                                             font-size: 16px;
                                                                             line-height: 25px;
                                                                             text-align: center;
+                                                                            margin-left: auto;
                                                                             letter-spacing: 0.003em;
                                                                             color: #000000;
                                                                             width: 15vw;">

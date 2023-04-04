@@ -17,7 +17,7 @@
                     sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
                     <div class="profile_card">
                         <div class="upper_section">
-                            <div class="level_name">{{sectionView_1._personal_data.level_label}}</div>
+                            <div class="level_name">{{sectionView_1._personal_data.role_name}}</div>
                         </div>
                         <div *ngIf="cameraimage" class="cameraimg">
     
@@ -47,7 +47,7 @@
                             <div class="name_hos">
                                 {{sectionView_1._personal_data.first_name}}
                             </div>
-                            <hr  style="color:black">
+                            <hr  style="color:black;width:16vw;opacity: 1.0;">
                             <div class="name_hos">
                                 {{sectionView_1._personal_data.brand_name}}
                             </div>
@@ -57,6 +57,32 @@
                     </div>
     
                     <div  class="point_distribution_section">
+                        <mat-card class="point_one" (click)="getGraphDataById()"
+                                        >
+                                        <div class="row" style="width: 22vw;">
+                                            <div class="col-7 point_background">
+                                                <div class="point_one_label"> Overall Growth Index</div>
+                                            </div>
+    
+                                            <div class="col-5 point_score_div">
+                                                <div class="row " style="display: flex;flex-wrap: nowrap;justify-content:space-between; gap:1em">
+                                                    <div class="col-2 d-flex  align-items-center" style="height: 6vh;">
+                                                        <!-- <img
+                                                            src="assets/images/TopHierarchyDashboard/point_dist_coin.png" /> -->
+                                                    </div>
+                                                    <div class="col-9 d-flex justify-content-end align-items-center"
+                                                        style="height: 6vh;">
+                                                        <div class="point_dist_score">{{sectionView_1._points[0].score}}</div>
+    
+                                                        <div class="col  d-flex justify-content-end align-items-center me-2">
+                                                            <img src="assets/images/TopHierarchyDashboard/Arrow.png" />
+                                                        </div>
+    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                        </mat-card>
                         <mat-card class="point_one" (click)="getGraphDataById()"
                                         *ngFor="let item of sectionView_1?._kpi_score">
                                         <div class="row" style="width: 22vw;">
@@ -71,9 +97,8 @@
                                                             src="assets/images/TopHierarchyDashboard/point_dist_coin.png" /> -->
                                                     </div>
                                                     <div class="col-9 d-flex justify-content-end align-items-center"
-                                                        style="height: 7vh;">
+                                                        style="height: 6vh;">
                                                         <div class="point_dist_score">{{item?.weightage}}</div>
-    
                                                         <div class="col  d-flex justify-content-end align-items-center me-2">
                                                             <img src="assets/images/TopHierarchyDashboard/Arrow.png" />
                                                         </div>
@@ -106,18 +131,25 @@
                 align-items: center;gap:12vw">
                     <div *ngIf="sectionView_1._personal_data.id_role!=9;then rewardPoints"></div>
                     <ng-template #rewardPoints>
-                        <div class="game_points_div">
-                            <img class="game_points_image"
+                        <div class="game_points_div" >
+                            <div [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'" style="height: 8vh;width: 7vw;display: flex;justify-content: center;align-items:center">
+                                <img class="game_points_image" 
                                 src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}" />
+                            </div>
+                           
                             <div class="game_points_score d-flex justify-content-center">
                                 {{gamePoints?.[0]?.score}}
                             </div>
                             <div class="game_point_label">{{gamePoints?.[0]?.label}}s</div>
                         </div>
             
-                        <div class="reward_points_div" (click)="getRewards()">
-                            <img class="reward_points_image"
-                                src="{{sectionView_1?.theme_details?.[0]?.reward_points_image}}" />
+                        <div class="reward_points_div" (click)="getRewards()" >
+                            <div [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'" style="height: 8vh;
+                            width: 7vw;display: flex;justify-content: center;align-items:center" >
+                                <img class="reward_points_image" 
+                                src="{{sectionView_1?.theme_details?.[0]?.reward_points_image}}"/>
+                            </div>
+                            
                             <div class="reward_points_score d-flex justify-content-center">
                                 {{sectionView_1?._points?.[2]?.score}}
                             </div>

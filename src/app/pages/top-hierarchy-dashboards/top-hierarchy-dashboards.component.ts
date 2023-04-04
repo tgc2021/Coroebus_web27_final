@@ -69,9 +69,11 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   spectSearFinalList:any=[]
   spectSearFinalList1:any
   light_color: any;
+  isVideoHide: any;
   constructor(private readonly store: Store, public _route: ActivatedRoute,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
   ngOnInit(): void {
+  
     
     if (!localStorage.getItem('foo')) { 
       localStorage.setItem('foo', 'no reload') 
@@ -79,6 +81,8 @@ export class TopHierarchyDashboardsComponent implements OnInit {
     } else {
       localStorage.removeItem('foo') 
     }
+
+
 
     this.dark_color=localStorage.getItem('topbar_color')
     this.element.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
@@ -190,8 +194,8 @@ console.log(this.dark_color);
       })
 
       this.sectionView_1 = res?.data
-console.log(this.sectionView_1);
-localStorage.setItem('bg_image',this.sectionView_1?.theme_details?.[0]?.point_dist_background)
+      console.log(this.sectionView_1._points[0].score);
+      localStorage.setItem('bg_image',this.sectionView_1?.theme_details?.[0]?.point_dist_background)
 
       console.log(this.sectionView_1?.theme_details?.[0]?.dark_color);
       
