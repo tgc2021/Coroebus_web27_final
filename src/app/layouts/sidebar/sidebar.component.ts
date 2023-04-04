@@ -359,6 +359,7 @@ console.log(this.id_coroebus_organization);
     document.body.style.backgroundImage = "url('')"
     localStorage.clear()
     this.store.dispatch(userActions.logout(null))
+    location.reload()
     location.href = '#/account/login';
     // this.router.navigate(['/account/login'], { queryParams: { returnUrl: location.hash } })
   }

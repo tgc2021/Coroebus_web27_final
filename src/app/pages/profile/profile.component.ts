@@ -1,5 +1,5 @@
 import { CustomValidators } from '@account/auth/custom-validators';
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpProtocols } from '@app/http/http.protocols';
 import { EventService } from '@app/services/event.service';
@@ -31,8 +31,11 @@ export class ProfileComponent implements OnInit, OnDestroy {
   ProfileImageNew:any=null
   ProfileImageNewOne:any=null
   @Input() name
+  dark_color: string;
+  medium_color: string;
+  light_color: string;
   constructor(public formBuilder: FormBuilder, private readonly store: Store,
-    private Util: Util, private modalService: NgbModal, private eventService: EventService, public http:ApiserviceService) { }
+    private Util: Util, private modalService: NgbModal, private eventService: EventService, public http:ApiserviceService,public element: ElementRef) { }
 
   ngOnInit(): void {
         // setTimeout(() => { this.ngOnInit() }, 1000 * 1)
@@ -48,6 +51,19 @@ console.log(this.userObj);
       console.log(this.mergeObj);
 
     })
+
+    this.dark_color=localStorage.getItem('topbar_color')
+    this.element.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
+console.log(this.dark_color);
+
+    this.medium_color=localStorage.getItem('medium_color')
+    this.element.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
+
+    this.light_color=localStorage.getItem('light_color')
+    this.element.nativeElement.style.setProperty('--lightColor', `${this.light_color}`)
+
+    console.log(this.medium_color);
+
     this.ProfileImageNewOne=JSON.parse(localStorage.getItem('Profile'))
     console.log( this.ProfileImageNewOne);
 

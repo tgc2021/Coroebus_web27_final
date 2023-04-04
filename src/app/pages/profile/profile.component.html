@@ -17,10 +17,14 @@
                                             <span class="text-white"> Change
                                                 Photo</span>
                                         </button> -->
-                                        <label [ngStyle]="{'background': userObj?.otherInfo?.color}"
+                                        <label *ngIf="userObj?.otherInfo?.color ==null" [ngStyle]="{'background': dark_color}"
                                             class="profile-upload-img"> Change Photo
                                             <input class="d-none" type="file" size="60" (change)="openFile($event)">
                                         </label>
+                                        <label *ngIf="userObj?.otherInfo?.color !=null" [ngStyle]="{'background': userObj?.otherInfo?.color}"
+                                        class="profile-upload-img"> Change Photo
+                                        <input class="d-none" type="file" size="60" (change)="openFile($event)">
+                                    </label>
                                     </figcaption>
                                     <figcaption class="figure-caption profile-first_name">
                                         {{userObj?._personal_data?.first_name}}
@@ -193,7 +197,10 @@
                                     </div>
                                     <div class="col-xl-2 profile-top-4"></div>
                                     <div class="col-xl-6 mt-2">
-                                        <button type="submit" class="btn " [disabled]="userForm.invalid"
+                                        <button *ngIf="userObj?.otherInfo?.color ==null" type="submit" class="btn " [disabled]="userForm.invalid"
+                                            [ngStyle]="{'background': dark_color}">
+                                            <span class="text-white">Update</span></button>
+                                            <button *ngIf="userObj?.otherInfo?.color !=null" type="submit" class="btn " [disabled]="userForm.invalid"
                                             [ngStyle]="{'background': userObj?.otherInfo?.color}">
                                             <span class="text-white">Update</span></button>
                                         <span class="text-danger ms-5" *ngIf="error">{{error? error : ''}}</span>

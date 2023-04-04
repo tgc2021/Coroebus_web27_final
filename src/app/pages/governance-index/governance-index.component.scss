@@ -15,8 +15,13 @@
         background: #F2F2F2;
         
     }
+    .mat-expansion-indicator::after {
+        color: black;
+    }
 }
-
+.box_container{
+    flex-direction: column;
+}
 .box_container_card{
     width: 95vw;
     height: 84vh;

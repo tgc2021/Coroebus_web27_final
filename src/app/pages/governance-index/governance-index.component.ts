@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
+import { ApiserviceService } from 'app/apiservice.service';
+import { log } from 'console';
 
 @Component({
   selector: 'app-governance-index',
@@ -9,11 +11,32 @@ export class GovernanceIndexComponent implements OnInit {
   dark_color: string;
   fontcolor: string;
   medium_color: string;
-
-  constructor(public element: ElementRef) { }
+  theme_id:any
+  org_id:any
+  governance_index_:any
+  governance_index_response:any
+  constructor(public element: ElementRef,public http: ApiserviceService) { }
   panelOpenState = false;
 
   ngOnInit(): void {
+  
+    this.theme_id=localStorage.getItem('tid')
+    this.org_id=localStorage.getItem('orgid')
+
+    let body={
+      _thid:this.theme_id,
+      _orgid:this.org_id
+
+      // _orgid:215
+    }
+
+    this.http.governance_index(body).subscribe((res) => {
+      console.log(res)
+      this.governance_index_=res
+      this.governance_index_response=this.governance_index_.data
+      console.log(this.governance_index_response);
+      
+    })
 
     this.dark_color=localStorage.getItem('topbar_color')
     this.element.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)

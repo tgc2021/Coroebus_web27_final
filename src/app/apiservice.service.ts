@@ -9,10 +9,10 @@ import { BehaviorSubject,Observable } from 'rxjs';
 export class ApiserviceService {
 
   URLstring = environment.apiURL
-     Path='coroebus-beta-api-levels';
+    //  Path='coroebus-beta-api-levels';
   open: any;
     
-    // Path='coroebus-tgc-api-levels'
+    Path='coroebus-tgc-api-levels'
   constructor(public Http:HttpClient) { }
 
 
@@ -42,6 +42,13 @@ export class ApiserviceService {
   buisnessHead(data:any){
     // var tempurl = ${this.URLstring}+/coroebus-beta-api-levels/Passbook/getReward
     var tempurl = `${this.URLstring}`+`/${this.Path}/Dashboard/produce_bh`
+    return this.Http.post(tempurl,data)
+
+  }
+
+  governance_index(data:any){
+    // var tempurl = ${this.URLstring}+/coroebus-beta-api-levels/Passbook/getReward
+    var tempurl = `${this.URLstring}`+`/${this.Path}/Dashboard/governance_index_report`
     return this.Http.post(tempurl,data)
 
   }

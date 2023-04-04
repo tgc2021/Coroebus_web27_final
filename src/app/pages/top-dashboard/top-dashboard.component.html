@@ -68,7 +68,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="name d-flex">
-                                   Name: {{buisness_head_response_._personal_data.first_name}}
+                                   Name : {{buisness_head_response_._personal_data.first_name}}
                                     <div class="name_details">
 
 
@@ -80,13 +80,13 @@
 
                                         <mat-expansion-panel (opened)="panelOpenState = true"
                                             (closed)="panelOpenState = false">
-                                            <mat-expansion-panel-header>
+                                            <mat-expansion-panel-header style="width: 97%;">
                                                 <mat-panel-title class="growth_index_accordion">
                                                     Growth Index
                                                 </mat-panel-title>
 
                                             </mat-expansion-panel-header>
-                                            <div class="global_index d-flex mt-4">Index
+                                            <div class="global_index d-flex mt-1">Index
                                                 <div class="global_index_details">
                                                     {{buisness_head_response_._points[0].score}}
 
@@ -130,13 +130,18 @@
 
                                         <mat-expansion-panel style="margin-top: 2vh" (opened)="panelOpenState = true"
                                             (closed)="panelOpenState = false">
-                                            <mat-expansion-panel-header>
+                                            <mat-expansion-panel-header style="width: 97%;">
                                                 <mat-panel-title class="growth_index_accordion">
                                                     Governance Index
                                                 </mat-panel-title>
 
                                             </mat-expansion-panel-header>
-                                            <p></p>
+                                            <div class="pech d-flex" *ngFor="let response of buisness_head_response_._governance_score">
+                                                {{response.point_label}}
+                                                <div class="pech_details">
+                                                    {{response.weightage}}
+                                                </div>
+                                            </div>
                                         </mat-expansion-panel>
                                     </mat-accordion>
                                 </div>

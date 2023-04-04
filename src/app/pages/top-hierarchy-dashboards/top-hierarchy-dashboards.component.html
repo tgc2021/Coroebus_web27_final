@@ -442,7 +442,7 @@
     
                 </div>
                 <!-- Governance Index -->
-                <div class="profile_card">
+                <div class="profile_card" (click)="navigateToGovernanceIndex()">
                     <div class="upper_section">
                         <!-- <div class="level_name">{{sectionView_1._personal_data.level_label}}</div> -->
                         <div class="level_name">Governance Index</div>
@@ -450,17 +450,17 @@
                     <div class="Overall_score">
                         <!-- <img class="profile_picture_image" src="{{sectionView_1._personal_data.profile_logo}}" height="100%" width="" /> -->
                         <div class="Overall_score_Inner_circle">
-                            <div class="overall_score_number">3.5</div>
-                            <div class="overall_score_text">Overall</div>
+                            <div class="overall_score_number">{{sectionView_1._governance_score[0].weightage}}</div>
+                            <div class="overall_score_text">{{sectionView_1._governance_score[0].point_label}}</div>
                         </div>
                     </div>
                     <div class="lower_section">
-                        <div class="Governance_index_points">
+                        <div class="Governance_index_points" *ngFor="let res of sectionView_1._governance_score ; let j=index">
                     
-                            <div>NHT</div>
-                            <div>3.5</div>
+                            <div *ngIf="j !=0">{{res.point_label}}</div>
+                            <div *ngIf="j !=0">{{res.weightage}}</div>
                         </div>
-                        <div class="Governance_index_points">
+                        <!-- <div class="Governance_index_points">
                             <div>OJT</div>
                             <div>3.5</div>
                         </div>
@@ -472,7 +472,7 @@
                     
                             <div >Calibration</div>
                             <div >3.5</div>
-                        </div>
+                        </div> -->
                     
                     </div>
     
