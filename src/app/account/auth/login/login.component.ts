@@ -157,6 +157,8 @@ export class LoginComponent implements OnInit {
         console.log(this.id_org._personal_data.id_coroebus_organization);
         this.id_coroebus_organization_bh=this.id_org._personal_data.id_coroebus_organization
         localStorage.setItem('id_coroebus_org_bh',this.id_coroebus_organization_bh)
+        localStorage.setItem('VideoHide','true');
+        
         this.http.engagamentlog(body).subscribe(res=>{
           console.log(res);
           

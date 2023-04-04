@@ -52,7 +52,7 @@
                 font-weight: 550;
                 font-size: 2.2vh;
                 line-height: 2.4vh;
-                /* identical to box height, or 120% */
+                
                 text-align: center;
                 letter-spacing: 0.2px;
                 color: #FFFFFF;
@@ -61,11 +61,9 @@
         }
 
         .profile_picture {
-
             position: absolute;
-           
             border-radius: 50%;
-            border: 1px solid var(--myvar);
+            border: 2px solid var(--myvar);
             top: 6vh;
             filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
@@ -116,8 +114,7 @@
 
         .lower_section {
             margin-top: 8vh;
-           
-
+        
             .name_hos {
                 font-family: 'Work Sans';
                 font-style: normal;
@@ -128,7 +125,6 @@
                 text-align: center;
                 letter-spacing: 0.2px;
                 color: #000000;
-
             }
 
 
@@ -139,6 +135,7 @@
 
     .point_distribution_section {
         width: 20vw;
+        border-radius: 9.28px;
 
         margin-top: 2vh;
         padding-top: 2vh;
@@ -148,11 +145,11 @@
         align-items: center;
 
         .point_one {
-            height: 8vh;
+            height: 7vh;
             margin-top: 0.5vh;
 
             .point_one_label {
-                font-size: 1vw;
+                font-size: 0.9vw;
                 font-weight: 600;
             }
 
@@ -166,7 +163,7 @@
         }
 
         .point_background {
-            background: #F3F2C1;
+            background: var(--lightColor);
             height: 6vh;
             display: flex;
             align-items: center;
@@ -292,7 +289,7 @@
     .Ranking_section_card {
         position: relative;
         width: 19vw;
-        height: 25vh;
+        height: 28.8vh;
         margin-bottom: 2vh;
         background: var(--lightColor);
         border: 3px solid var(--myvar);
@@ -502,7 +499,7 @@
 .button_series {
     width: 15.6vw;
     height: 6vh;
-    font-size:2vh;
+    font-size:0.9vw;
     font-weight: 500;
     background: #ffffff;
     border-radius: 1vw;
@@ -517,7 +514,7 @@
 .active {
     width: 15.6vw;
     height: 6vh;
-    font-size:2vh;
+    font-size:0.9vw;
     font-weight: 500;
     border-radius: 1vw;
     font-size: 500;
@@ -550,7 +547,9 @@ input::placeholder {
     width: 4vw;
     height: 7vh;
     background: var(--myvar);
+    color: #FFFFFF;
     margin-top: 2vh;
+    font-size: 2.2vh;
     margin-left: 1vw;
     padding: 1vw;
     border-radius: 1vw;
@@ -609,7 +608,7 @@ input::placeholder {
         width: 15.7vw;
 
         height: 6vh;
-        font-size: 1.6vh;
+        font-size: 0.9vw;
         padding: 1%;
         font-family: 'Work Sans';
         background: #ffffff;
@@ -624,9 +623,9 @@ input::placeholder {
         width: 15.7vw;
 
         height: 6vh;
-        font-size:1.6vh;
+        font-size:0.9vw;
         font-weight: 600;
-        font-size: 1.1vw;
+        // font-size: 1.6vh;
         font-family: 'Work Sans';
         border: none;
         margin-right: 0.3vw;
@@ -865,7 +864,7 @@ input::placeholder {
     }
 
     .leaderboard_name {
-        margin-left: 11vw;
+        margin-left: 8vw;
         font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
@@ -873,7 +872,7 @@ input::placeholder {
     }
 
     .leaderboard_points {
-        margin-left: 20vw;
+        margin-left: 23vw;
         font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
@@ -906,14 +905,13 @@ input::placeholder {
         background-size: 100% 100%;
     }
 
-
     .view_more_button {
         width: 49vw;
         height: 6vh;
         background: var(--myvar);
         color: #ffffff;
         border: none;
-        font-family: 'Work sans';
+        font-family:'Work sans';
         font-weight: 600;
         border-radius: 0.4vw;
         // margin-left: 1vw;
@@ -933,9 +931,6 @@ input::placeholder {
 
     }
 
-
-
-
     .bottom_button {
         width: 14.7vw;
         height: 14vh;
@@ -947,7 +942,6 @@ input::placeholder {
 
     .button_item {
         scroll-snap-align: start;
-
     }
 
     .right_button {
@@ -1099,7 +1093,7 @@ input::placeholder {
     }
 
     .reward_points_div {
-        margin-left: 4vw;
+        // margin-left: 4vw;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -1170,7 +1164,7 @@ input::placeholder {
 
     .leaderboard_name_and_team_first,
     .leaderboard_name_and_team {
-        margin-left: 6vw;
+        margin-left: 3vw;
     }
 
     .leaderboard_name_label_first,
@@ -1180,9 +1174,9 @@ input::placeholder {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 500;
-        font-size: 0.8vw;
+        font-size: 1vw;
         color: #ffffff;
-        width: 9vw;
+        width: 12vw;
     }
 
 
