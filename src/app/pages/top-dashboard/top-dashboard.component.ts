@@ -4,6 +4,7 @@ import { ApiserviceService } from 'app/apiservice.service';
 import { Util } from '@app/utils/util';
 import { NgbModal,NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer,SafeResourceUrl } from '@angular/platform-browser';
+import { log } from 'console';
 @Component({
   selector: 'app-top-dashboard',
   templateUrl: './top-dashboard.component.html',
@@ -15,7 +16,7 @@ export class TopDashboardComponent implements OnInit,AfterViewInit {
   panelOpenState = false;
 
   @ViewChild('content') content;
-
+  VideoHide:boolean=true
   userid_bh:any
   id_coroebus_org:any
   buisness_head_response:any
@@ -33,6 +34,10 @@ export class TopDashboardComponent implements OnInit,AfterViewInit {
   safeUrl: SafeResourceUrl
   isVideoModalopen:boolean =false
   GrowthIndexData: any;
+  modalReference: any;
+  videoshow:Boolean=true;
+  value:string;
+  VideoHide1: boolean=true;
   constructor(config: NgbModalConfig, public sanitizer:DomSanitizer, public router:Router,public http:ApiserviceService,public Util: Util,public element: ElementRef,public modalService:NgbModal) {
     config.backdrop = 'static';
 		config.keyboard = false;
@@ -42,9 +47,14 @@ export class TopDashboardComponent implements OnInit,AfterViewInit {
 
   ngOnInit(): void {
     window.scrollTo(0,1)
+  this.modalService.dismissAll()
+  console.log(this.VideoHide1);
 
     this.isVideoModalopen = true;
-
+    this.value=localStorage.getItem('VideoHide')
+    this.VideoHide1=JSON.parse(this.value);
+    console.log(this.VideoHide1);
+    
     this.userid_bh=localStorage.getItem('userid')
     this.id_coroebus_org=localStorage.getItem('id_coroebus_org_bh')
    
@@ -68,14 +78,22 @@ export class TopDashboardComponent implements OnInit,AfterViewInit {
 
      this.videourl=`https://www.youtube.com/0c31548b-b457-4b9b-9159-ba7a08ee2d74`
       this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.videourl)
+
     })
     
    
   }
 
   ngAfterViewInit() {
+    console.log(this.VideoHide1);
+    
+    if(this.VideoHide1){
     this.openModal();
+
+    }
+   
   }
+ 
   navigateToIndexwiseDashboard(){
     this.router.navigateByUrl('/buisness_index')
   }
@@ -95,5 +113,15 @@ export class TopDashboardComponent implements OnInit,AfterViewInit {
   openModal(){
     this.modalService.open(this.content, {size: 'lg', centered: true });
   }
-
-}
+  close(content)
+  {
+    this.VideoHide=false
+  this.modalService.dismissAll(content)
+  localStorage.setItem('VideoHide','false')
+  console.log(this.VideoHide);
+  
+  }
+  ngOnDestroy(){
+    this.close(this.content)
+  }
+}3

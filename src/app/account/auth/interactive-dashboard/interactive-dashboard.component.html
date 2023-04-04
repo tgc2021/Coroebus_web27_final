@@ -1,5 +1,5 @@
 <!-- Web View Started-->
-<app-loader *ngIf="isLoading"></app-loader>
+<!-- <app-loader *ngIf="isLoading"></app-loader> -->
 <div class="web_view_main d-flex justify-content-center">
     <div class="web-view" style="width: 76vw;" *ngFor="let response of interactive_dashoard_response">
         <div class="row web_first_row">
@@ -13,6 +13,7 @@
                     <p class="web_profile_name"> {{interactive_dashoard_response[0].data._personal_data.first_name}}
                     </p>                        
                     <p class="web_team_name"> {{interactive_dashoard_response[0].data._personal_data.team_name}}</p>
+              
                     </div>
                 </div>
             </div>
@@ -89,7 +90,7 @@
                     <div class="col-2 d-flex justify-content-end web_col_right">
                         <img class="web_spectator_view" (click)="navigateToSpectatorView()"
                             src="{{interactive_dashoard_response[0].data.theme_details[0].spectator_bt}}" />
-                        <img class="web_booster" data-bs-toggle="modal" data-bs-target="#BoosterModal"
+                        <img class="web_booster" data-bs-toggle="modal" data-bs-target="#BoosterModal"    (click)="Boosterdata()"
                             src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}" />
 
                     </div>
@@ -477,6 +478,7 @@
 
                         </div>
                         <div class="mobile-booster" data-bs-toggle="modal" data-bs-target="#BoosterModal"
+                        (click)="Boosterdata()"
                             style="height:8vh; width: 15vw;">
                             <img src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}"
                                 alt="Booster" height="100%" width="100%">
@@ -911,10 +913,11 @@
 
 
 
-<div *ngIf="this.boosterData_response.length!=0;then openboosterModal"></div>
+<div *ngIf="lengthOfboosterData_response1!=0;then openboosterModal"></div>
+
 <ng-template #openboosterModal>
     <div class="modal fade" id="BoosterModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    aria-labelledby="staticBackdropLabel" aria-hidden="true" *ngIf="isMonthlyModalOpen">
     <div class="modal-dialog modal-dialog-centered ">
         <div class="modal-content">
             <div class="d-flex justify-content-end">
@@ -1006,12 +1009,9 @@
                                         </div>
                                         <div
                                             class="ScoreRank accordian-label d-flex flex-column gap-1 align-items-center">
-                                            <!-- <div>Rank</div> -->
                                             <div>
                                              Today's Rank</div>
-                                            <!-- <div *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='red' then redColor else greenColor"></div>
-                                                <div *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='yellow' then equlgreenColor"></div> -->
-
+                                          
                                             <div
                                                 *ngIf="boosterData_response.booster_rank_details[0].ranking_status =='red'">
                                                 <span

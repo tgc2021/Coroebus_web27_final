@@ -14,7 +14,8 @@ export const MENU: MenuItem[] = [
         },
         subItems: [],
         link: '/account/interactive-dashboard',
-        link1: '/dashboard'
+        link1: '/dashboard',
+        link2:'/topdashboard'
     },
     {
         id: 3,

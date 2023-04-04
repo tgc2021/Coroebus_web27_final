@@ -13,6 +13,7 @@ import { ApiserviceService } from 'app/apiservice.service';
 import { Util } from '@app/utils/util';
 import { Subscription, combineLatest, Subject, Observable, interval } from 'rxjs';
 import * as userActions from '../../../core/app-state/actions';
+import { log } from 'console';
 
 @Component({
   selector: 'app-interactive-dashboard',
@@ -200,6 +201,8 @@ export class InteractiveDashboardComponent implements OnInit,OnDestroy {
   currentUrl: string;
   promotionalPopUpData: any;
   promotionalPopupImage: any;
+  boosterData_response1: any;
+  lengthOfboosterData_response1: any;
   constructor(config: NgbModalConfig,private readonly store: Store, public element: ElementRef, public Util: Util, private _router: Router, public http: ApiserviceService, private eventService: EventService,public location:Location ,public modalService:NgbModal) {
     config.backdrop = 'static';
 		config.keyboard = false;
@@ -311,19 +314,7 @@ else{
           this.is_about_game= localStorage.setItem('is_about_game',this.interactive_dashoard_response[0].data.is_about_game)
           console.log(this.is_about_game);
          
-          this.http.BoosterData(body).subscribe((res: any) => {
-            this.boosterData_response = res.data;
-
-            console.log(res);
-
-            this.StringArray = res.data.booster_rank_details[0].rank_position_stmt.split(" ");
-            this.firstString = this.StringArray[0] + " " + this.StringArray[1] + " " + this.StringArray[2];
-            this.Digit = this.StringArray[3]
-            this.LastString = this.StringArray[4];
-            console.log(this.StringArray);
-            console.log(this.LastString);
-
-          })
+       
 
           this.seasonalThemeDaily = this.interactive_dashoard_response[0].data.seasonal_theme_daily;
 
@@ -443,20 +434,7 @@ else{
             this.isLoading = true;
           }
 
-          this.http.BoosterData(body).subscribe((res: any) => {
-            this.boosterData_response = res.data;
-            // console.log(this.boosterData_response);
-
-            console.log(res);
-
-            this.StringArray = res.data.booster_rank_details[0].rank_position_stmt.split(" ");
-            this.firstString = this.StringArray[0] + " " + this.StringArray[1] + " " + this.StringArray[2];
-            this.Digit = this.StringArray[3]
-            this.LastString = this.StringArray[4];
-            console.log(this.StringArray);
-            console.log(this.LastString);
-
-          })
+       
           this.seasonalThemeDaily = this.interactive_dashoard_response[0].data.seasonal_theme_daily;
 
           this.seasonalThemeWeekly = this.interactive_dashoard_response[0].data.seasonal_theme_weekly;
@@ -822,4 +800,38 @@ else{
 
   }
 
+  Boosterdata(){
+    let body = {
+      _userid: this.mergeObj.USERID,
+      _game: this.mergeObj.id_coroebus_game,
+
+    }
+    console.log("hello");
+    
+      this.http.BoosterData(body).subscribe((res: any) => {
+            this.boosterData_response = res.data;
+            // console.log(this.boosterData_response);
+
+            console.log(res);
+            console.log("this.boostrata",this.boosterData_response);
+        
+            this.boosterData_response1 = Array.of(this.boosterData_response);
+            
+            console.log(this.boosterData_response1.length);
+            this.lengthOfboosterData_response1=this.boosterData_response1.length
+            console.log(this.boosterData_response1 );
+            console.log( "lengthOfboosterData_response1",this.lengthOfboosterData_response1);
+            console.log(typeof(this.lengthOfboosterData_response1));
+                        
+            
+            this.StringArray = res.data.booster_rank_details[0].rank_position_stmt.split(" ");
+            this.firstString = this.StringArray[0] + " " + this.StringArray[1] + " " + this.StringArray[2];
+            this.Digit = this.StringArray[3]
+            this.LastString = this.StringArray[4];
+            console.log(this.StringArray);
+            console.log(this.LastString);
+
+          })
+  
+  }
 }

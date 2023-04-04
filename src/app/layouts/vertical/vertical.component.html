@@ -3,7 +3,7 @@
   <app-topbar (settingsButtonClicked)="onSettingsButtonClicked()" (mobileMenuButtonClicked)="onToggleMobileMenu()">
   </app-topbar>
 
-  <app-sidebar [isCondensed]="isCondensed"></app-sidebar>
+  <app-sidebar [ngClass]="{'d-none': isCondensed}"></app-sidebar>
 
   <div class="main-content">
     <div class="page-content" style="background: url({{bgImage}}); background-size: cover; height: 100vh; overflow-y:scroll; overflow-x: hidden;">

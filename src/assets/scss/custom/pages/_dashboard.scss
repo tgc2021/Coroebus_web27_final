@@ -274,6 +274,15 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
+.dashboard-center-table1{
+    max-height:26vh;
+    // -ms-overflow-style: none;
+    // /* for Internet Explorer, Edge */
+    // scrollbar-width: none;
+    // /* for Firefox */
+    overflow-y: auto;
+    overflow-x: hidden;
+}
 .dashboard-center-table-forNSM{
     max-height: 34.2vh;
    
@@ -706,7 +715,7 @@
     border: 0.5px solid;
     box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
     border-radius: 10.61px;
-    height: 5vh;
+    height:4.6vh;
     width: 8vw;
 }
 .dashboard-banner-point-btn-mobile {

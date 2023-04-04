@@ -82,6 +82,8 @@ export class TopbarComponent implements OnInit, OnDestroy {
     
     this.id_role=this.userSelectionData._personal_data.id_role
     console.log(this.id_role);
+
+
     let bodyforBH={
     
       '_userid': this.userSelectionData?._personal_data?.USERID,
