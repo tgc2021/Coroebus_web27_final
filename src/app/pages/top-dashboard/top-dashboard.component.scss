@@ -224,12 +224,12 @@
 
     ::ng-deep {
         .page-content {
-
-            padding-top: 8.4vh !important;
+            padding-top: 8.2vh !important;
             padding-left: 0 !important;
             padding-right: 0 !important;
             padding-bottom: 0 !important;
-            margin-right: -2px !important;
+            margin-right: -0.4% !important;
+            // margin-top: -0.4% !important;
 
         }
     }
@@ -324,7 +324,7 @@ margin-left: 3%;
 
     .bottom_right_section {
         width: 23vw;
-        height: 92vh;
+        height: 92.1vh;
         // border: 1px solid black;
         padding: 0;
         background-color: var(--mediumColor);
@@ -396,7 +396,7 @@ margin-left: 3%;
 
 
     .bottom_right_section_height {
-        height: 92vh;
+        height: 92.1vh;
         overflow: scroll;
         display: flex;
         flex-direction: column;
@@ -434,7 +434,7 @@ margin-left: 3%;
     }
 
     .left_side_div {
-        height: 92vh;
+        height: 92.1vh;
     }
 
 
