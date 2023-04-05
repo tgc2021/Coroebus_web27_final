@@ -37,7 +37,7 @@
 
         <div class="right_card">
 
-            <mat-card class="bottom_right_section">
+            <div class="bottom_right_section">
                 <div class="bottom_right_section_height">
 
                     <mat-card class="details_card"
@@ -57,7 +57,7 @@
 
                                         <mat-expansion-panel (opened)="panelOpenState = true"
                                             (closed)="panelOpenState = false">
-                                            <mat-expansion-panel-header style="width: 97%;">
+                                            <mat-expansion-panel-header>
                                                 <mat-panel-title class="growth_index_accordion">
                                                     Growth Index
                                                 </mat-panel-title>
@@ -107,7 +107,7 @@
 
                                         <mat-expansion-panel style="margin-top: 2vh" (opened)="panelOpenState = true"
                                             (closed)="panelOpenState = false">
-                                            <mat-expansion-panel-header style="width: 97%;">
+                                            <mat-expansion-panel-header>
                                                 <mat-panel-title class="growth_index_accordion">
                                                     Governance Index
                                                 </mat-panel-title>
@@ -221,7 +221,7 @@
         
                                 </div>
 
-                                <div class="d-flex align-items-center" style="width: 18%;">
+                                <div class="d-flex justify-content-center align-items-center" style="width: 18%;">
                                     <div class="hos_Score">
                                         {{res.rankingtable_weightage}}
                                     </div>
@@ -289,7 +289,7 @@
 
                 </div>
 
-            </mat-card>
+            </div>
 
         </div>
     </div>

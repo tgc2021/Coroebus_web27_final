@@ -183,8 +183,7 @@
     }
 
     .mat-expansion-panel-header {
-        padding: 0 8px;
-
+        padding: 0px 15px 0px 8px;
     }
 
     .modal-header,
@@ -225,14 +224,14 @@
 
     ::ng-deep {
         .page-content {
-
-            padding-top: 71px !important;
+            padding-top: 8.2vh !important;
             padding-left: 0 !important;
             padding-right: 0 !important;
             padding-bottom: 0 !important;
+            margin-right: -0.4% !important;
+            // margin-top: -0.4% !important;
 
         }
-
     }
 
     .right_section {
@@ -240,6 +239,7 @@
         flex-direction: column;
         justify-content: end;
         height: 88vh;
+        border-radius: none;
     }
 
     .top_right_section {
@@ -324,14 +324,14 @@ margin-left: 3%;
 
     .bottom_right_section {
         width: 23vw;
-        height: 91vh;
+        height: 92.1vh;
         // border: 1px solid black;
         padding: 0;
         background-color: var(--mediumColor);
     }
 
     .first_row_details {
-        height: 8.5vh;
+        height: 8.7vh;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -340,7 +340,7 @@ margin-left: 3%;
     }
 
     .first_row_details:hover {
-        // background-color: #61646B;
+        
     }
 
     .image_logo {
@@ -375,20 +375,20 @@ margin-left: 3%;
 
     .location{
         font-family: 'Work Sans', sans-serif;
-        font-size: 0.8vw;
+        font-size: 0.9vw;
         font-weight: 500;
         color: #FFFFFF;
     }
 
     .hos_Score{
         font-family: 'Work Sans', sans-serif;
-        font-size: 0.8vw;
+        font-size: 0.9vw;
         font-weight: 500;
         color: #FFFFFF;
     }
     .hos_Level {
         font-family: 'Work Sans', sans-serif;
-        font-size: 0.8vw;
+        font-size: 0.9vw;
         font-weight: 500;
         color: #FFFFFF;
 
@@ -396,7 +396,7 @@ margin-left: 3%;
 
 
     .bottom_right_section_height {
-        height: 91vh;
+        height: 92.1vh;
         overflow: scroll;
         display: flex;
         flex-direction: column;
@@ -434,8 +434,7 @@ margin-left: 3%;
     }
 
     .left_side_div {
-        height: 92vh;
-
+        height: 92.1vh;
     }
 
 

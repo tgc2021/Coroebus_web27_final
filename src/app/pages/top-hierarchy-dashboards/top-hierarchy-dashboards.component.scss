@@ -113,7 +113,11 @@
     
 
         .lower_section {
-            margin-top: 8vh;
+            margin-top: 6vh;
+            display: flex;
+            flex-direction: column;
+            align-items:center;
+            justify-content: center;
         
             .name_hos {
                 font-family: 'Work Sans';
@@ -878,7 +882,7 @@ input::placeholder {
     }
 
     .leaderboard_points {
-        margin-left: 23vw;
+        // margin-left: 23vw;
         font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
