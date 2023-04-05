@@ -2,44 +2,24 @@
     
     <div class="d-flex">
         <div class="map-view">
-          <!-- <app-business-head-map></app-business-head-map> -->
+            <div>
+                <!-- <app-business-head-map></app-business-head-map> -->
+
+            </div>
             <div class="d-flex align-items-end left_side_div">
                
                 <div class="button-container"
                     [style.background-color]="buisness_head_response_.theme_details[0].light_color">
                     <div class="bottom_div">
                         <div class="col-12 d-flex" style="height: 15vh;margin-left: 2vw;">
-                            <div>
+                            <div *ngFor="let response of buisness_head_response_._business_score">
                                 <button class="bottom_button" (click)="navigateToIndexwiseDashboard()">
-                                    <div class="bottom_button_labels">Net Promoter Score</div>
-                                    <div class="bottom_button_labels_score">20</div>
+                                    <div class="bottom_button_labels">{{response.point_label}}</div>
+                                    <div class="bottom_button_labels_score">{{response.weightage}}</div>
                                 </button>
 
                             </div>
-                            <div>
-                                <button class="bottom_button">
-                                    <div class="bottom_button_labels">Customer effort score</div>
-                                    <div class="bottom_button_labels_score">30</div>
-
-                                </button>
-
-                            </div>
-                            <div>
-                                <button class="bottom_button">
-                                    <div class="bottom_button_labels">Sales index </div>
-                                    <div class="bottom_button_labels_score">40</div>
-
-                                </button>
-
-                            </div>
-                            <div>
-                                <button class="bottom_button">
-                                    <div class="bottom_button_labels">Cost index</div>
-                                    <div class="bottom_button_labels_score">50</div>
-
-                                </button>
-
-                            </div>
+                            
                             <!-- <div >
                                 <button class="bottom_button"></button>
             

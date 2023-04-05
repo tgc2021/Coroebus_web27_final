@@ -9,6 +9,7 @@ import { MainDashboardComponent } from './main-dashboard/main-dashboard.componen
 import { PersonalMilestoneComponent } from './personal-milestone/personal-milestone.component';
 import { TopDashboardComponent } from './top-dashboard/top-dashboard.component';
 import { TopHierarchyDashboardsComponent } from './top-hierarchy-dashboards/top-hierarchy-dashboards.component';
+import { BusinessReportComponent } from './business-report/business-report.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' },
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'buisness_index', component:BusinessIndexMapComponent },
   { path: 'governance_index', component:GovernanceIndexComponent },
 
+  { path: 'business_report', component:BusinessReportComponent },
 
 
 ];

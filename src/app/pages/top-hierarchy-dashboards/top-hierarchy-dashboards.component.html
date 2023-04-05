@@ -527,30 +527,12 @@
                         </div>
         
                         <div class="business_index_container">
-                            <div class="business_index_points">
-                                <div class="upper_side">NPS</div>
-                                <div class="lower_side">0.5</div>
+                            <div class="business_index_points" *ngFor="let business_response of sectionView_1._business_score">
+                                <div class="upper_side">{{business_response.point_label}}</div>
+                                <div class="lower_side">{{business_response.weightage}}</div>
         
                             </div>
-                            <div class="business_index_points">
-                                <div class="upper_side">CSAT</div>
-                                <div class="lower_side">0.5</div>
-        
-                            </div>
-                            <div class="business_index_points">
-                                <div class="upper_side">CES</div>
-                                <div class="lower_side">0.5</div>
-        
-                            </div>
-                            <div class="business_index_points">
-                                <div class="upper_side">Sales</div>
-                                <div class="lower_side">0.5</div>
-        
-                            </div>
-                            <div class="business_index_points">
-                                <div class="upper_side">Cost/Call</div>
-                                <div class="lower_side">0.5</div>
-                            </div>
+                           
         
         
                         </div>
@@ -571,58 +553,20 @@
                                
                                 <div>
                                     <div class="d-flex justify-content-between align-items-center mt-4"
-                                        style="font-weight: 550;font-family: 'Work Sans';">
+                                        style="font-weight: 550;font-family: 'Work Sans';" *ngFor="let bus_response of sectionView_1._business_score">
                                         <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">Net
-                                            Promoter Score
+                                            {{bus_response.point_label}}
                 
                                         </div>
                                         <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
                                             <!-- {{GrowthIndexData[0].score}} -->
                 
-                                            0000
+                                            {{bus_response.weightage}}
+
                 
                                         </div>
                                     </div>
-                                    <div class="d-flex justify-content-between align-items-center mt-4"
-                                        style="font-weight: 550;font-family: 'Work Sans';">
-                                        <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">
-                                            Customer Effort Score
-                
-                                        </div>
-                                        <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
-                                            <!-- {{GrowthIndexData[0].score}} -->
-                
-                                            0000
-                
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center mt-4"
-                                        style="font-weight: 550;font-family: 'Work Sans';">
-                                        <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">Sales
-                                            Index
-                
-                                        </div>
-                                        <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
-                                            <!-- {{GrowthIndexData[0].score}} -->
-                
-                                            0000
-                
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center mt-4"
-                                        style="font-weight: 550;font-family: 'Work Sans';">
-                                        <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">Cost
-                                            Index
-                
-                                        </div>
-                                        <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
-                                            <!-- {{GrowthIndexData[0].score}} -->
-                
-                                            0000
-                
-                                        </div>
-                                    </div>
-                
+                                 
                 
                 
                                     <!-- <div  *ngFor="let kpi_data of buisness_head_response_._kpi_score">
