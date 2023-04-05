@@ -366,8 +366,8 @@ margin-left: 3%;
 
     .rank {
         font-family: 'Work Sans', sans-serif;
-        font-size: 0.8vw;
-        font-weight: 500;
+        font-size: 1vw;
+        font-weight: 600;
         color: #FFFFFF;
         display: flex;
         align-items: center;
@@ -382,14 +382,14 @@ margin-left: 3%;
 
     .hos_Score{
         font-family: 'Work Sans', sans-serif;
-        font-size: 0.9vw;
-        font-weight: 500;
+        font-size: 1vw;
+        font-weight: 600;
         color: #FFFFFF;
     }
     .hos_Level {
         font-family: 'Work Sans', sans-serif;
         font-size: 0.9vw;
-        font-weight: 500;
+        font-weight:500;
         color: #FFFFFF;
 
     }
@@ -412,16 +412,15 @@ margin-left: 3%;
         height: auto;
         display: flex;
         flex-direction: row;
-        justify-content: start;
-        grid-gap: 2em;
         align-items: center;
-        cursor: -webkit-grab;
-        cursor: grab;
+        // justify-content:start;
+        // grid-gap: 2em;
+        // align-items: center;
+        // cursor: -webkit-grab;
+        // cursor: grab;
         height: 20vh;
-        margin-top: 2vw;
-        padding-left: 2vh;
-        padding-right: 2vh;
-        padding-top: 2vh;
+       
+       
     }
 
     .bottom_div {
