@@ -74,7 +74,7 @@
                                                     </div>
                                                     <div class="col-9 d-flex justify-content-end align-items-center"
                                                         style="height: 6vh;">
-                                                        <div class="point_dist_score">{{sectionView_1._points[0].score}}</div>
+                                                        <div class="point_dist_score text-end">{{sectionView_1._points[0].score}}</div>
     
                                                         <div class="col  d-flex justify-content-end align-items-center me-2">
                                                             <img src="assets/images/TopHierarchyDashboard/Arrow.png" />
@@ -100,7 +100,7 @@
                                                     </div>
                                                     <div class="col-9 d-flex justify-content-end align-items-center"
                                                         style="height: 6vh;">
-                                                        <div class="point_dist_score">{{item?.weightage}}</div>
+                                                        <div class="point_dist_score text-end">{{item?.weightage}}</div>
                                                         <div class="col  d-flex justify-content-end align-items-center me-2">
                                                             <img src="assets/images/TopHierarchyDashboard/Arrow.png" />
                                                         </div>
@@ -219,7 +219,7 @@
                                         </div>
         
                                         <div class="leaderboard_name_and_team">
-                                            <div class="leaderboard_name_label" ngbTooltip="{{res.rankingtable_name}}" >
+                                            <div class="leaderboard_name_label" ngbTooltip="{{res.rankingtable_name}}" placement="bottom" >
                                                 {{res.rankingtable_name}}
                                             </div>
                                             <div class="leaderboard_team_label">
@@ -276,7 +276,7 @@
                                         </div>
         
                                         <div class="leaderboard_name_and_team">
-                                            <div class="leaderboard_name_label" title="{{res.rankingtable_name}}">
+                                            <div class="leaderboard_name_label" ngbTooltip="{{res.rankingtable_name}}" placement="bottom">
                                                 {{res.rankingtable_name}}
                                             </div>
                                             <div class="leaderboard_team_label">
@@ -335,7 +335,8 @@
                                         </div>
         
                                         <div class="leaderboard_name_and_team">
-                                            <div class="leaderboard_name_label">
+                                            <div class="leaderboard_name_label" ngbTooltip="{{res.rankingtable_name}}" placement="bottom">
+                            
                                                 {{res.rankingtable_name}}
                                             </div>
                                             <div class="leaderboard_team_label">
@@ -388,7 +389,7 @@
                                         </div>
         
                                         <div class="leaderboard_name_and_team">
-                                            <div class="leaderboard_name_label">
+                                            <div class="leaderboard_name_label" ngbTooltip="{{res.rankingtable_name}}" placement="bottom">
                                                 {{res.rankingtable_name}}
                                             </div>
                                             <div class="leaderboard_team_label">
@@ -573,7 +574,7 @@
                                
                                 <div>
                                     <div class="d-flex justify-content-between align-items-center mt-4"
-                                        style="font-weight: 550;font-family: 'Work Sans';">
+                                        style="font-weight: 550;font-family: 'Work Sans';width:97%">
                                         <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">Net
                                             Promoter Score
                 
@@ -1053,10 +1054,10 @@
                             </div>
     
                             <div class="leaderboard_name_and_team_mobile">
-                                <div class="leaderboard_name_label_mobile">
+                                <div class="leaderboard_name_label_mobile" ngbTooltip="{{res.rankingtable_name}}" placement="bottom">
                                     {{res.rankingtable_name}}
                                 </div>
-                                <div class="leaderboard_team_label_mobile">
+                                <div class="leaderboard_team_label_mobile" >
                                     {{res.rankingtable_team}}
                                 </div>
                             </div>
@@ -1110,7 +1111,7 @@
                             </div>
     
                             <div class="leaderboard_name_and_team_mobile">
-                                <div class="leaderboard_name_label_mobile">
+                                <div class="leaderboard_name_label_mobile" ngbTooltip="{{res.rankingtable_name}}" placement="bottom">
                                     {{res.rankingtable_name}}
                                 </div>
                                 <div class="leaderboard_team_label_mobile">
@@ -1169,7 +1170,7 @@
                             </div>
     
                             <div class="leaderboard_name_and_team_mobile">
-                                <div class="leaderboard_name_label_mobile">
+                                <div class="leaderboard_name_label_mobile" ngbTooltip="{{res.rankingtable_name}}" placement="bottom">
                                     {{res.rankingtable_name}}
                                 </div>
                                 <div class="leaderboard_team_label_mobile">
@@ -1219,7 +1220,7 @@
                             </div>
     
                             <div class="leaderboard_name_and_team_mobile">
-                                <div class="leaderboard_name_label_mobile">
+                                <div class="leaderboard_name_label_mobile" ngbTooltip="{{res.rankingtable_name}}" placement="bottom">
                                     {{res.rankingtable_name}}
                                 </div>
                                 <div class="leaderboard_team_label_mobile">

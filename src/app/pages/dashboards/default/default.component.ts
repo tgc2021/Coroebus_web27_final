@@ -1170,9 +1170,10 @@ else if(this.activeTabForSectionView_2 == 4){
     console.log(this.queryParams);
   }
 
-  navigateToRewards() {
+  navigateToRewards(data) {
+    console.log(data);
     var url_string = window.location.href
-    // console.log(url_string);
+    console.log(url_string);
     var userID = url_string.includes("?"); // true
 
     if (url_string.includes("?")) {
