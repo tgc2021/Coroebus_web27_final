@@ -6,6 +6,9 @@ import { Util } from '@app/utils/util';
 import { NgbModal,NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer,SafeResourceUrl } from '@angular/platform-browser';
 import { log } from 'console';
+import { Subscription,combineLatest } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../core/app-state';
 
 @Component({
   selector: 'app-top-dashboard',
@@ -38,8 +41,10 @@ export class TopDashboardComponent implements OnInit,AfterViewInit {
   GrowthIndexData: any;
   openIntroVideo: boolean=false;
   previousUrl: void;
+  combineLatest: Subscription
+  userSelectionData:any
   isVideoHide: any;
-  constructor(config: NgbModalConfig, public sanitizer:DomSanitizer, public router:Router,public http:ApiserviceService,public Util: Util,public element: ElementRef,public modalService:NgbModal,public location:Location) {
+  constructor(private readonly store: Store,config: NgbModalConfig, public sanitizer:DomSanitizer, public router:Router,public http:ApiserviceService,public Util: Util,public element: ElementRef,public modalService:NgbModal,public location:Location) {
     config.backdrop = 'static';
 		config.keyboard = false;
     config.centered=true;
@@ -54,13 +59,29 @@ export class TopDashboardComponent implements OnInit,AfterViewInit {
 
     this.isVideoModalopen = true;
 
+    this.combineLatest = combineLatest([
+      this.store.select(fromRoot.userLogin),
+      this.store.select(fromRoot.usertheme),
+      this.store.select(fromRoot.usergame),
+    ]
+    ).subscribe(([login, theme, game]) => {
+      console.log(login, theme, game)
+      this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
+      console.log(this.userSelectionData);
+
+   
+
+
+    })
+
     this.userid_bh=localStorage.getItem('userid')
     this.id_coroebus_org=localStorage.getItem('id_coroebus_org_bh')
    
     let body={
     
-    '_userid': this.userid_bh,
-    '_org': this.id_coroebus_org
+
+    '_userid': this.userid_bh!=null ? this.userid_bh:  this.userSelectionData._personal_data?.USERID,
+    '_org': this.id_coroebus_org==null ? this.id_coroebus_org : this.userSelectionData._personal_data?.id_coroebus_organization
     }
     
     this.http.buisnessHead(body).subscribe(res=>{
