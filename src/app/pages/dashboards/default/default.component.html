@@ -9,7 +9,7 @@
     <ng-template #dashboardTpl>
 
         <div class="row">
-            <div class="col-3 pointsDistributionSection c">
+            <div class="col-3 pointsDistributionSection">
                 <div>
                     <div class="points-dis-card"
                         [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.point_dist_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.point_dist_background == null}"
@@ -88,9 +88,9 @@
                                     </div>
                                 
                                 </div>
-                                <div>
+                                <div >
                                     <div class="inner-points-height d-flex flex-column justify-content-center gap-2 p-2">
-                                        <div class="row  points-row ms-2 d-flex align-items-center "
+                                        <div class="row  points-row  d-flex align-items-center "
                                             (click)="getGraphDataById()" *ngFor="let item of sectionView_1?._kpi_score">
                                             <div class="col-6 p-0">
                                                 <div  [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.light_color}"
@@ -759,7 +759,7 @@
                                                                     font-size: 16px;
                                                                     line-height: 25px;
                                                                     text-align: center;
-                                                                   margin-left: 2vw;
+                                                                   margin-left: 1vw;
                                                                     letter-spacing: 0.003em;
                                                                 color: #000000;
                                                                 width: 22vw;">
@@ -952,7 +952,7 @@
                                                                             font-size: 16px;
                                                                             line-height: 25px;
                                                                             text-align: center;
-                                                                            margin-left: auto;
+                                                                            margin-left: 1vw;
                                                                             letter-spacing: 0.003em;
                                                                             color: #000000;
                                                                             width: 15vw;">
