@@ -4,12 +4,11 @@
         <div class="map-view">
           <!-- <app-business-head-map></app-business-head-map> -->
             <div class="d-flex align-items-end left_side_div">
-               
                 <div class="button-container"
                     [style.background-color]="buisness_head_response_.theme_details[0].light_color">
-                    <div class="bottom_div">
-                        <div class="col-12 d-flex" style="height: 15vh;margin-left: 2vw;">
-                            <div *ngFor="let response of buisness_head_response_._business_score">
+                    <div class="button_div">
+                        <div class="col-12 d-flex" style="height: 15vh;margin-left: 1.5vw;">
+                            <div  *ngFor="let response of buisness_head_response_._business_score">
                                 <button class="bottom_button" (click)="navigateToIndexwiseDashboard()">
                                     <div class="bottom_button_labels">{{response.point_label}}</div>
                                     <div class="bottom_button_labels_score">{{response.weightage}}</div>
