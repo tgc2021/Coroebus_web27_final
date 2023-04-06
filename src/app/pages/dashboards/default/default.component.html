@@ -45,7 +45,8 @@
     
                                 </div>
                             </div>
-                            <hr style="height: 2px;padding: 0px 10px;">
+                            <hr style="height: 2px;padding: 0px 10px;margin-top: 2vh;
+                            margin-bottom: 2vh;">
                             <div class="row" placement="bottom" *ngIf="sectionView_1?._personal_data?.team_name" ngbTooltip="{{sectionView_1?._personal_data?.team_name}}">
 
                             <div class="col-lg-12 ellipsis">
@@ -125,11 +126,12 @@
                     <div class="baddge-section-card d-flex justify-content-center align-items-center" [style.background-image]="
                     sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
                         <div>
-                            <img loading="lazy" class="dashboard-banner-main-rank-img" style="border-radius: 10px;;padding:5%"
+                            <img loading="lazy" class="dashboard-banner-main-rank-img" style="height: 15vh;
+                            width: 15vh;
+                            border-radius: 100%;"
                             src="{{sectionView_1?._personal_data?.profile_badge_image}}"
-                            alt="Generic placeholder image" height="60%" width="60%">
+                            alt="Generic placeholder image" >
                         </div>
-                  
                     </div>
                     </div>
                     
