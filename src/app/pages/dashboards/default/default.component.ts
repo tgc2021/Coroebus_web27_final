@@ -1186,6 +1186,37 @@ else if(this.activeTabForSectionView_2 == 4){
   }
 
 
+  getRewards(){
+    console.log('rewards page');
+    
+    let obj = {
+      _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
+
+      game_id: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
+    }
+    console.log(obj)
+
+  
+
+    // this._router.navigate('/performance/page')
+    // this._router.navigate(['/performance/page'], { queryParams: { key: value } })
+    this._router.navigate(['/reward/rewardPoints'], {
+      relativeTo: this._route,
+      queryParams: {
+        userID: this.Util.encryptData(this.queryParams?.userID),
+        gameID: this.Util.encryptData(this.queryParams?.gameID),
+        // roleID: this.Util.encryptData(this.queryParams?.roleID)
+
+      },
+
+      queryParamsHandling: 'merge',
+      // preserve the existing query params in the route
+      skipLocationChange: false
+      // do not trigger navigation
+
+
+    });
+  }
 
   getGraphDataById() {
     // console.log('Graph data',data);

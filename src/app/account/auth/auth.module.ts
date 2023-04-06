@@ -20,10 +20,12 @@ import { InteractiveDashboardComponent } from './interactive-dashboard/interacti
 import {MatCardModule} from '@angular/material/card';
 import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderComponent } from './loader/loader.component';
+import { BusinessReportComponent } from './business-report/business-report.component';
+import { TableauModule } from 'ngx-tableau';
 
 
 @NgModule({
-  declarations: [LoginComponent, SignupComponent, PasswordresetComponent, TermsAndConditionsComponent, CreateNewPasswordComponent, SecurityQuestionComponent, TvsDashboardComponent, InteractiveDashboardComponent, LoaderComponent],
+  declarations: [LoginComponent, SignupComponent, PasswordresetComponent, TermsAndConditionsComponent, CreateNewPasswordComponent, SecurityQuestionComponent, TvsDashboardComponent, InteractiveDashboardComponent, LoaderComponent, BusinessReportComponent],
   providers:[],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { LoaderComponent } from './loader/loader.component';
     NgbProgressbarModule,
     UIModule,
     AuthRoutingModule,
-    CarouselModule
+    CarouselModule,
+    TableauModule
   ]
 })
 export class AuthModule { }
