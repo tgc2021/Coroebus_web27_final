@@ -30,6 +30,13 @@
     }
 }
 
+::ng-deep{
+    .card{
+        border: none;
+
+    }
+}
+
 
 .cardWithTransparentImage{
 .card-div{
@@ -96,7 +103,7 @@ border-radius: 11px;
    background-position: inherit;
    background-size: cover;
    width: auto;
-   height:87vh;
+   height:90vh;
    border-radius: 11px;
 }
 .form-control{

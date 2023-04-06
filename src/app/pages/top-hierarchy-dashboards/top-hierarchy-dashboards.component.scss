@@ -151,7 +151,7 @@
         .point_one {
             height: 7vh;
             margin-top: 0.5vh;
-
+            border-radius: 8px;
             .point_one_label {
                 font-size: 0.8vw;
                 font-weight: 600;
@@ -159,8 +159,8 @@
 
             .point_dist_score {
                 font-family: 'Inter';
-                font-weight: 700;
-                font-size: 1vw;
+                font-weight: 600;
+                font-size: 0.9vw;
                 margin-right: 1vw;
             }
 
@@ -1077,9 +1077,9 @@ input::placeholder {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        height: 17vh;
+        height: 16vh;
         align-items: center;
-        margin-top: 1vh;
+        // margin-top: 1vh;
     }
 
     .game_points_image {
@@ -1110,10 +1110,10 @@ input::placeholder {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        height: 17vh;
+        height: 16vh;
         align-items: center;
         cursor: pointer;
-        margin-top: 1vh;
+        // margin-top: 1vh;
     }
 
     .reward_points_image {
@@ -1217,13 +1217,14 @@ input::placeholder {
     .leaderboard_rank_badge_image {
         width: 3vw;
         height: 5vh;
-        margin-left: 6vw;
+       
         border-radius: 50%;
     }
 
     .leaderboard_rank_points_div_first,
     .leaderboard_rank_points_div {
-        margin-left: 6vw;
+        margin-left: 8vw;
+        text-align: end;
     }
 
     .leaderboard_rank_points_label_first,

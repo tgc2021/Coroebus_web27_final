@@ -124,17 +124,18 @@
                     <div class="badge_container " 
                 [style.background-image]="
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-                <img src="{{sectionView_1._personal_data.profile_badge_image}}" alt="badge_img" height="80%" width="80%">
+                <img src="{{sectionView_1._personal_data.profile_badge_image}}" alt="badge_img" height="60%" width="60%">
                     
                 </div>
+                
                 <div class="banner_container"  [style.background-image]="
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-                <div style="background-image:url({{sectionView_1?._personal_data?.background_image_profile_web}});width: 32vw;height: 20vh;background-size: 100% 100%;border-radius:10px;display:flex;    justify-content: center;
+                <div style="background-image:url({{sectionView_1?._personal_data?.background_image_profile_web}});width: 33vw;height: 20vh;background-size: 100% 100%;border-radius:10px;display:flex;    justify-content: center;
                 align-items: center;gap:12vw">
                     <div *ngIf="sectionView_1._personal_data.id_role!=9;then rewardPoints"></div>
                     <ng-template #rewardPoints>
                         <div class="game_points_div" >
-                            <div [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'" style="height: 8vh;width: 7vw;display: flex;justify-content: center;align-items:center">
+                            <div [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'" style="height: 6vh;width: 7vw;display: flex;justify-content: center;align-items:center">
                                 <img class="game_points_image" 
                                 src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}" />
                             </div>
@@ -146,7 +147,7 @@
                         </div>
             
                         <div class="reward_points_div" (click)="getRewards()" >
-                            <div [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'" style="height: 8vh;
+                            <div [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'" style="height: 6vh;
                             width: 7vw;display: flex;justify-content: center;align-items:center" >
                                 <img class="reward_points_image" 
                                 src="{{sectionView_1?.theme_details?.[0]?.reward_points_image}}"/>
@@ -236,17 +237,17 @@
                                             <div class="leaderboard_rank_points_label">{{res.rankingtable_weightage}}</div>
                                         </div>
         
-                                        <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='green'">
+                                        <div class="leaderboard_rank_up_down_arrow_div " style="margin-left: 5vw;" *ngIf="res.rankingtable_arrow=='green'">
                                             <img class="leaderboard_rank_up_down_arrow_image"
                                                 src="{{sectionView_1.theme_details[0].up_arrow}}" />
                                         </div>
         
-                                        <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='red'">
+                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 5vw;" *ngIf="res.rankingtable_arrow=='red'">
                                             <img class="leaderboard_rank_up_down_arrow_image"
                                                 src="{{sectionView_1.theme_details[0].down_arrow}}" />
                                         </div>
         
-                                        <div class="leaderboard_rank_up_down_arrow_div"
+                                        <div class="leaderboard_rank_up_down_arrow_div " style="margin-left: 5vw;"
                                             *ngIf="res.rankingtable_arrow=='yellow'">
                                             <img class="leaderboard_rank_up_down_arrow_image"
                                                 src="{{sectionView_1.theme_details[0].equal_arrow}}" />
@@ -293,17 +294,17 @@
                                             <div class="leaderboard_rank_points_label">{{res.rankingtable_weightage}}</div>
                                         </div>
         
-                                        <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='green'">
+                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 5vw;" *ngIf="res.rankingtable_arrow=='green'">
                                             <img class="leaderboard_rank_up_down_arrow_image"
                                                 src="{{sectionView_1.theme_details[0].up_arrow}}" />
                                         </div>
         
-                                        <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='red'">
+                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 5vw;" *ngIf="res.rankingtable_arrow=='red'">
                                             <img class="leaderboard_rank_up_down_arrow_image"
                                                 src="{{sectionView_1.theme_details[0].down_arrow}}" />
                                         </div>
         
-                                        <div class="leaderboard_rank_up_down_arrow_div"
+                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 5vw;"
                                             *ngIf="res.rankingtable_arrow=='yellow'">
                                             <img class="leaderboard_rank_up_down_arrow_image"
                                                 src="{{sectionView_1.theme_details[0].equal_arrow}}" />
@@ -353,17 +354,17 @@
                                             <div class="leaderboard_rank_points_label">{{res.rankingtable_weightage}}</div>
                                         </div>
         
-                                        <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='green'">
+                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 5vw;" *ngIf="res.rankingtable_arrow=='green'">
                                             <img class="leaderboard_rank_up_down_arrow_image"
                                                 src="{{sectionView_1.theme_details[0].up_arrow}}" />
                                         </div>
         
-                                        <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='red'">
+                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 5vw;" *ngIf="res.rankingtable_arrow=='red'">
                                             <img class="leaderboard_rank_up_down_arrow_image"
                                                 src="{{sectionView_1.theme_details[0].down_arrow}}" />
                                         </div>
         
-                                        <div class="leaderboard_rank_up_down_arrow_div"
+                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 5vw;"
                                             *ngIf="res.rankingtable_arrow=='yellow'">
                                             <img class="leaderboard_rank_up_down_arrow_image"
                                                 src="{{sectionView_1.theme_details[0].equal_arrow}}" />
@@ -406,17 +407,17 @@
                                             <div class="leaderboard_rank_points_label">{{res.rankingtable_weightage}}</div>
                                         </div>
         
-                                        <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='green'">
+                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 5vw;" *ngIf="res.rankingtable_arrow=='green'">
                                             <img class="leaderboard_rank_up_down_arrow_image"
                                                 src="{{sectionView_1.theme_details[0].up_arrow}}" />
                                         </div>
         
-                                        <div class="leaderboard_rank_up_down_arrow_div" *ngIf="res.rankingtable_arrow=='red'">
+                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 5vw;" *ngIf="res.rankingtable_arrow=='red'">
                                             <img class="leaderboard_rank_up_down_arrow_image"
                                                 src="{{sectionView_1.theme_details[0].down_arrow}}" />
                                         </div>
         
-                                        <div class="leaderboard_rank_up_down_arrow_div"
+                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 5vw;"
                                             *ngIf="res.rankingtable_arrow=='yellow'">
                                             <img class="leaderboard_rank_up_down_arrow_image"
                                                 src="{{sectionView_1.theme_details[0].equal_arrow}}" />

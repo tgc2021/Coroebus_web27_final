@@ -9,9 +9,9 @@
     <ng-template #dashboardTpl>
 
         <div class="row">
-            <div class="col-3 pointsDistributionSection">
-                <div>
-                    <div class="points-dis-card"
+            <div class="col-3 pointsDistributionSection ">
+                <div >
+                    <div class="points-dis-card d-flex flex-column align-items-center justify-content-start "
                         [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.point_dist_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.point_dist_background == null}"
                         [style.background-image]="
                     sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
@@ -31,7 +31,7 @@
                                      <label for="imageUpload"
                                         [style.background-image]="'url(assets/images/svg/dashboard/camera-icon.svg)'"></label> 
                                 </div>
-                                <div class="avatar-preview">
+                                <div class="avatar-preview" style="border:3px solid" [style.border-color]="sectionView_1?.theme_details?.[0]?.dark_color">
                                     <img loading="lazy" id="imagePreview"
                                         src="{{sectionView_1?._personal_data?.profile_logo}}">
                                 </div>
@@ -103,7 +103,7 @@
                                                     src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}"
                                                     alt="" height="25">
                                             </div>
-                                            <div class="col-2 text-end font-size-10 font-weight-semibold" style="min-width: 2vw;text-align: center;font-size: 1vw;">
+                                            <div class="col-2 text-end font-size-10 font-weight-semibold" style="min-width: 2vw;text-align: center;">
                                                 {{item?.weightage}}
                                             </div>
                                             <div class="col  d-flex justify-content-end align-items-center">
@@ -121,19 +121,19 @@
             </div>
             <div class="col-6  DashboardSection">
                 <div class="row">
-                    <div class="col-3 px-2 pb-5">
+                    <div class="col-3  pb-3">
                     <div class="baddge-section-card d-flex justify-content-center align-items-center" [style.background-image]="
                     sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-                        <div class="p-2">
+                        <div>
                             <img loading="lazy" class="dashboard-banner-main-rank-img" style="border-radius: 10px;;padding:5%"
                             src="{{sectionView_1?._personal_data?.profile_badge_image}}"
-                            alt="Generic placeholder image">
+                            alt="Generic placeholder image" height="60%" width="60%">
                         </div>
                   
                     </div>
                     </div>
                     
-                    <div class="col-9 px-2 pb-5 d-flex justify-content-center">
+                    <div class="col-9  pb-3 d-flex justify-content-center">
                         <div class="baddge-section-card" style="width: 36vw;" [style.background-image]="
                         sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
                         <div  class="d-flex justify-content-center align-items-center" style="height: 23vh;">
@@ -492,7 +492,7 @@
                                         <h5 class="mt-0 text-white" style="display: flex;
                                         justify-content: end;
                                         align-items: center;
-                                        gap: 4rem;">
+                                        gap: 3rem;">
                                             <span
                                                 class="name-f-size point-number">{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_weightage}}</span>
                                             <div style="height:5vh">
@@ -528,7 +528,7 @@
                             *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) "
                             (click)="navigateToOtherRole(item)">
                             <div class="col">
-                                <div class="media d-flex align-items-center gap-3 " style="height: 7vh;">
+                                <div class="media d-flex align-items-center gap-3  " style="height: 7vh;">
                                     <span class="col-1 ms-2 text-white position-absolute-s">
                                         {{item?.rankingtable_number}}
                                     </span>
@@ -591,12 +591,14 @@
                         <!-- {{spectSearList | json}} -->
                         <!-- {{spectSearchStr ? 'true': 'false'}} -->
                         <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
-                            [style.background-image]="'url(' + web_tile_img + ')'"
+                           
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                             *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) "
-                            (click)="navigateToOtherRole(item)">
+                            (click)="navigateToOtherRole(item)"
+                            [style.background-image]="!spectSearchStrTrigger? 'url(' + item.ranking_image_level_img + ')':'url('+web_tile_img+')'
+                            ">
                             <div class="col">
-                                <div class="media d-flex align-items-center gap-3 " style="height: 6vh;">
+                                <div class="media d-flex align-items-center gap-3  " style="height: 7vh;">
                                     <span class="col-1 ms-2 text-white position-absolute-s">
                                         {{item?.rankingtable_number}}
                                     </span>
@@ -606,7 +608,7 @@
                                             width="41" (click)="openHierarchyPopup(item)">
                                     </div>
 
-                                    <div class="media-body user-logo-row ellipsis" style="height: 6vh;">
+                                    <div class="media-body user-logo-row ellipsis" style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
                                         <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
                                             ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}</h5>
                                         <p class="mt-n4 team-name sub-team name-f-size">{{item?.rankingtable_team}}</p>
@@ -614,7 +616,7 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="media me-1" style="height: 6vh; display: flex;align-items:center">
+                                <div class="media me-1" style="height: 7vh; display: flex;align-items:center">
                                     <div class="rounded-circle z-depth-2 team-logo-row " style="height:5vh;width:5vh">
                                         <img alt="" src="{{item?.ranking_badge}}" data-holder-rendered="true"
                                             height="100%" width="100%">
@@ -622,9 +624,9 @@
 
                                     <div class="media-body text-center">
                                         <h5 class="mt-0 text-white" style="display: flex;
-                                    justify-content: end;
-                                    align-items: center;
-                                    gap: 4rem;">
+                                        justify-content: end;
+                                        align-items: center;
+                                        gap: 3vw;">
                                             <div style="height: 6vh; display:flex;align-items: center;">
                                                 <span
                                                     class="name-f-size point-number mt-1">{{item?.rankingtable_weightage}}</span>
@@ -708,7 +710,8 @@
                         [ngClass]="{'points-bullentins-card-no-height': sectionView_1?.is_land_logos?.length == 0, 'points-bullentins-card': sectionView_1?.is_land_logos?.length != 0}"
                         [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.add_ins_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.add_ins_background == null}"
                         [style.background-image]="
-                    sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.add_ins_background + ')' : null">
+                    sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.add_ins_background + ')' : null"
+                    style="background-size: cover;">
                         <div *ngIf="sectionView_1?.is_land_logos?.length == 0;then one; else two"></div>
                         <ng-template #one>
                             <div class="card-div">
@@ -904,8 +907,8 @@
                         </ng-template>
                         <ng-template #two>
                             <div class="card-div">
-                                <div style="height: 40vh;display: flex;justify-content:center;align-items:center ">
-                                    <div class="card-body px-4 py-4" style="height: 38vh; overflow-y:auto;">
+                                <div style="height: 44vh;display: flex;justify-content:center;align-items:center ">
+                                    <div class="card-body px-4 py-5" style="height: 42vh; overflow-y:auto;">
                                         <mat-accordion>
     
                                             <mat-expansion-panel  class="mt-3" (opened)="panelOpenState = true"

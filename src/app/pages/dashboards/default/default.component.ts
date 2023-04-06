@@ -1294,6 +1294,7 @@ else if(this.activeTabForSectionView_2 == 4){
 
   }
   navigateToOtherRole(item){
+    
     console.log(item);
     this.userID= this.Util.encryptData(item?.userid);
     this.gameID= this.Util.encryptData(item?.id_coroebus_game);
