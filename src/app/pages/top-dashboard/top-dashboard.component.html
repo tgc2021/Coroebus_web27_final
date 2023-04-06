@@ -18,7 +18,6 @@
                                     <div class="bottom_button_labels">{{response.point_label}}</div>
                                     <div class="bottom_button_labels_score">{{response.weightage}}</div>
                                 </button>
-
                             </div>
                             
                           
@@ -127,56 +126,7 @@
 
                         </div>
                     </mat-card>
-                    <!-- 
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="name d-flex">
-                                Name 
-                                <div class="name_details">
-                                    {{buisness_head_response_._personal_data.first_name}}
-    
-                                </div>
-                            </div>
-                            
-    
-                            <div class="global_index d-flex">Global Index
-                                <div class="global_index_details">
-                                    {{buisness_head_response_._points[0].score}}
-    
-                                </div>
-                            </div>
-                            <hr class="horizontal_row">
-                            <div class="pech d-flex">{{buisness_head_response_._kpi_score[0].point_label}}
-                                <div class="pech_details">
-                                    {{buisness_head_response_._kpi_score[0].weightage}}
-                                </div>
-                            </div>
-                            <hr class="horizontal_row">
-                            <div class="pech d-flex">{{buisness_head_response_._kpi_score[1].point_label}}
-                                <div class="pech_details">
-                                    {{buisness_head_response_._kpi_score[1].weightage}}
-                                </div>
-    
-                            </div>
-                            <hr class="horizontal_row">
-                            <div class="pech d-flex">{{buisness_head_response_._kpi_score[2].point_label}}
-                                <div class="pech_details">
-                                    {{buisness_head_response_._kpi_score[2].weightage}}
-                                </div>
-    
-                            </div>
-                            <hr class="horizontal_row">
-                            <div class="pech d-flex">{{buisness_head_response_._kpi_score[3].point_label}}
-                                <div class="pech_details">
-                                    {{buisness_head_response_._kpi_score[3].weightage}}
-                                </div>
-    
-                            </div>
-    
-                        </div>
-                           
-                   
-                    </div> -->
+                    
 
                     <mat-card class="hos_leaderboard" [style.background-color]="buisness_head_response_.theme_details[0].light_color">
                         <div class="d-flex" style="margin-bottom: 1vh; margin-top: 2vh;margin-left: 0.5vw;">
@@ -191,7 +141,7 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-center align-items-center leaderboard_div_web" >
-                            <div class="row first_row_details d-flex call_center_div"
+                            <div class="row first_row_details d-flex call_center_div mt-2"
                             *ngFor="let res of buisness_head_response_._ranking_data[0]._data;let i=index"
                             style="background-image: url({{buisness_head_response_._ranking_data[0]._data[i].ranking_image}});"
                             (click)="navigateToHOSDashboard(i)">
@@ -225,61 +175,12 @@
                                 </div>
                             </div>
                            
-                            <!-- <div class="">
-                                <img class="image_logo" src="{{res.rankingtable_logo}}" />
-                            </div>
-                            <div class="">
-                                <div class="call_center_name" ngbTooltip="{{res.rankingtable_name}}" placement="bottom">
-                                    {{res.rankingtable_name}}
-                                </div>
-                                <div class="location">
-                                    {{res.user_location}}
-                                </div>
-                                <div class="hos_Level">
-    
-                                    {{res.level_label}}
-                                </div>
-    
-    
-                               
-    
-                            </div>
-                            <div class="">
-                                <div class="hos_Score">
-                                    {{res.rankingtable_weightage}}
-                                </div>
-                            </div> -->
+                           
                         </div>
                         </div>
                    
                         
-                        <!-- <div class="row first_row_details d-flex call_center_div"
-                        *ngFor="let res of buisness_head_response_._ranking_data[0]._data;let i=index"
-                        style="background-image: url({{buisness_head_response_._ranking_data[0]._data[i].ranking_image}});"
-                        (click)="navigateToHOSDashboard(i)">
-                        <div class="col-1 rank">{{res.rankingtable_number}}</div>
-                        <div class="col-2 g-0">
-                            <img class="image_logo" src="{{res.rankingtable_logo}}" />
-                        </div>
-                        <div class="col-8">
-                            <div class="call_center_name">
-                                {{res.rankingtable_name}}
-                            </div>
-                            <div class="location">
-                                {{res.user_location}}
-                            </div>
-                            <div class="hos_Level">
-
-                                {{res.level_label}}
-                            </div>
-
-
-                            <div class="hos_Score">
-                                Score: {{res.rankingtable_weightage}}
-                            </div>
-
-                        </div>
-                    </div> -->
+                       
                     </mat-card>
                  
 
@@ -336,41 +237,6 @@
                         </div>
                        
                     </div>
-            
-                   
-                    <!-- <div class="global_index d-flex mt-4">Global Index
-                    <div class="global_index_details">
-                        {{buisness_head_response_._points[0].score}}
-
-                    </div>
-                </div>
-                <hr class="horizontal_row">
-                <div class="pech d-flex">{{buisness_head_response_._kpi_score[0].point_label}}
-                    <div class="pech_details">
-                        {{buisness_head_response_._kpi_score[0].weightage}}
-                    </div>
-                </div>
-                <hr class="horizontal_row">
-                <div class="pech d-flex">{{buisness_head_response_._kpi_score[1].point_label}}
-                    <div class="pech_details">
-                        {{buisness_head_response_._kpi_score[1].weightage}}
-                    </div>
-
-                </div>
-                <hr class="horizontal_row">
-                <div class="pech d-flex">{{buisness_head_response_._kpi_score[2].point_label}}
-                    <div class="pech_details">
-                        {{buisness_head_response_._kpi_score[2].weightage}}
-                    </div>
-
-                </div>
-                <hr class="horizontal_row">
-                <div class="pech d-flex">{{buisness_head_response_._kpi_score[3].point_label}}
-                    <div class="pech_details">
-                        {{buisness_head_response_._kpi_score[3].weightage}}
-                    </div>
-
-                </div> -->
                 </mat-expansion-panel>
             </mat-accordion>
 

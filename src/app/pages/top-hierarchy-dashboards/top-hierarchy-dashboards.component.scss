@@ -63,7 +63,7 @@
         .profile_picture {
             position: absolute;
             border-radius: 50%;
-            border: 2px solid var(--myvar);
+            border: 3px solid var(--myvar);
             top: 6vh;
             filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
@@ -151,16 +151,16 @@
         .point_one {
             height: 7vh;
             margin-top: 0.5vh;
-
+            border-radius: 8px;
             .point_one_label {
-                font-size: 0.9vw;
+                font-size: 0.8vw;
                 font-weight: 600;
             }
 
             .point_dist_score {
                 font-family: 'Inter';
-                font-weight: 700;
-                font-size: 1vw;
+                font-weight: 600;
+                font-size: 0.9vw;
                 margin-right: 1vw;
             }
 
@@ -327,7 +327,7 @@
         .Island_score {
 
             position: absolute;
-            border: 2px solid black;
+            border: 3px solid var(--myvar);
             border-radius: 50%;
             background-color: #ffff;
 
@@ -388,7 +388,7 @@
 
     }
     .business-index_gop{
-        margin-top: 4vh;
+        margin-top: 2vh;
         width: 19vw;
         display: flex;
         flex-direction:column;
@@ -399,7 +399,7 @@
         font-weight: 500;
         font-size: 2.2vh;
         line-height: 2.4;
-        height: 45vh;
+        height: 46vh;
         border-radius: 8px;
         background-color: var(--lightColor);
 
@@ -873,19 +873,20 @@ input::placeholder {
         margin-left: 8vw;
         font-family: 'Inter';
         font-style: normal;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        width: 90%;
+        // overflow: hidden;
+        // text-overflow: ellipsis;
+        // white-space: nowrap;
+        // width: 90%;
         font-weight: 600;
         font-size: 1vw;
     }
 
     .leaderboard_points {
-        // margin-left: 23vw;
+        margin-left: 23vw;
         font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
+        
         font-size: 1vw;
     }
 
@@ -1052,6 +1053,8 @@ input::placeholder {
         font-weight: 700;
         font-size: 0.8vw;
         margin-right: 1vw;
+        min-width: 4vw;
+        text-align: end;
     }
 
     .point_score_div {
@@ -1074,9 +1077,9 @@ input::placeholder {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        height: 17vh;
+        height: 16vh;
         align-items: center;
-        margin-top: 1vh;
+        // margin-top: 1vh;
     }
 
     .game_points_image {
@@ -1107,10 +1110,10 @@ input::placeholder {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        height: 17vh;
+        height: 16vh;
         align-items: center;
         cursor: pointer;
-        margin-top: 1vh;
+        // margin-top: 1vh;
     }
 
     .reward_points_image {
@@ -1214,13 +1217,14 @@ input::placeholder {
     .leaderboard_rank_badge_image {
         width: 3vw;
         height: 5vh;
-        margin-left: 6vw;
+       
         border-radius: 50%;
     }
 
     .leaderboard_rank_points_div_first,
     .leaderboard_rank_points_div {
-        margin-left: 6vw;
+        margin-left: 8vw;
+        text-align: end;
     }
 
     .leaderboard_rank_points_label_first,
