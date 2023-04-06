@@ -1204,9 +1204,9 @@ input::placeholder {
 
     .leaderboard_rank_profile_image_first,
     .leaderboard_rank_profile_image {
-        width: 3vw;
+        width: 5vh;
         height: 5vh;
-        border-radius: 50%;
+        border-radius: 100%;
         border: 1px solid #FFFFFF;
     }
 
@@ -1217,13 +1217,13 @@ input::placeholder {
     .leaderboard_rank_badge_image {
         width: 3vw;
         height: 5vh;
-       
+       margin-left: 8vw;
         border-radius: 50%;
     }
 
     .leaderboard_rank_points_div_first,
     .leaderboard_rank_points_div {
-        margin-left: 8vw;
+        
         text-align: end;
     }
 
