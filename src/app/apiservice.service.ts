@@ -156,4 +156,10 @@ export class ApiserviceService {
 
   }
 
+  challangeRecived(data:any){
+    var tempurl = `${this.URLstring}`+`/${this.Path}/DashboardChampionsLeague/new_challenge_list`
+    return this.Http.post(tempurl,data)
+
+  }
+
 }

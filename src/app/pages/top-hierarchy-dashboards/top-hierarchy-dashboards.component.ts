@@ -529,8 +529,11 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
     // this.spectSearchStrTrigger = true
 
     if (this.spectSearchStr) {
+
       this.spectSearchStrTrigger = true
-    } else {
+    } 
+    else {
+
       this.spectSearchStrTrigger = false
     }
 
@@ -633,6 +636,6 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
   governance_index(){
     console.log('gov index');
     
-    this.router.navigateByUrl('governance_index')
+    this.router.navigateByUrl('governance_index');
   }
 }
