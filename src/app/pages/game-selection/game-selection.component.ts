@@ -157,6 +157,8 @@ if (this.gameList?.[0]?.length === 1){
   localStorage.setItem('theme_logo',this.userObj.themes[0].logo)
   localStorage.setItem('topbar_color',this.userObj.themes[0].dark_color)
   localStorage.setItem('medium_color',this.userObj.themes[0].medium_color)
+  localStorage.setItem('light_color',this.userObj.themes[0].light_color)
+
 
   if(this.id_role==7){
     this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
@@ -221,6 +223,8 @@ else{
   localStorage.setItem('theme_logo',this.userObj.themes[0].logo)
   localStorage.setItem('topbar_color',this.userObj.themes[0].dark_color)
   localStorage.setItem('medium_color',this.userObj.themes[0].medium_color)
+  localStorage.setItem('light_color',this.userObj.themes[0].light_color)
+
   
   if(this.id_role==7){
     this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))

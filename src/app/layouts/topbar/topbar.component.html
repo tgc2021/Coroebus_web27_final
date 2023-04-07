@@ -113,53 +113,7 @@
         <div class="dropdown d-inline-block" ngbDropdown>
           <img class="home_btn" style="cursor: pointer; height:3vh;margin-right: 1vw;" src="assets/images/TopHierarchyDashboard/home_button.png" (click)="RedirectionToHome()">
 
-          <button type="button" class="d-none- btn header-item noti-icon" id="page-header-notifications-dropdown"
-             ngbDropdownToggle>
-            <!-- <i class="bx bx-bell bx-tada"></i> -->
-            <!-- <img src="assets/images/svg/dashboard/notification-icon.svg" class="bx-tada" alt="notification"> -->
-            <!-- [ngClass]="{'bx-tada': notificationStatusList?._count>0}" -->
-            <img src="https://coroebusbeta.in/coroebus-beta/assets/Notification/notificationbell.gif" alt="notification" style="height:3vh" >
-            <!-- <span class="badge bg-danger rounded-pill notification-badge">3</span> -->
-          </button>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0 d-none"
-            aria-labelledby="page-header-notifications-dropdown" ngbDropdownMenu>
-            <div class="p-3">
-              <div class="row align-items-center">
-                <div class="col">
-                  <h6 class="m-0">{{ 'HEADER.NOTIFICATIONS.TITLE' | translate}} </h6>
-                </div>
-                <div class="col-auto">
-                  <a href="javascript: void(0);" class="small">{{ 'HEADER.NOTIFICATIONS.VIEW_ALL' | translate}}</a>
-                </div>
-              </div>
-            </div>
-            <ngx-simplebar style="position: relative; height: 230px;">
-              <a href="javascript: void(0);" class="text-reset notification-item">
-                <div class="media d-none">
-                  <div class="avatar-xs me-3">
-                    <span class="avatar-title bg-primary rounded-circle font-size-16">
-                      <i class="bx bx-cart"></i>
-                    </span>
-                  </div>
-                  <div class="media-body">
-                    <h6 class="mt-0 mb-1">{{ 'HEADER.NOTIFICATIONS.FIRST.TITLE' | translate}}</h6>
-                    <div class="font-size-12 text-muted">
-                      <p class="mb-1">{{ 'HEADER.NOTIFICATIONS.FIRST.TEXT' | translate}}</p>
-                      <p class="mb-0"><i class="mdi mdi-clock-outline"></i>
-                        {{ 'HEADER.NOTIFICATIONS.FIRST.TIME' | translate}}</p>
-                    </div>
-                  </div>
-                </div>
-              </a>
-  
-            </ngx-simplebar>
-            <div class="p-2 border-top d-grid">
-              <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
-                <i class="mdi mdi-arrow-right-circle me-1"></i> <span key="t-view-more">{{
-                  'HEADER.NOTIFICATIONS.LOAD_MORE' | translate}}</span>
-              </a>
-            </div>
-          </div>
+         
         </div>
       </div>
 

@@ -621,7 +621,7 @@ input::placeholder {
         margin-right: 0.3vw;
         color: #000000;
         font-weight: 600;
-       
+       line-height: 2.1vh;
     }
     .active {
         width: 15.7vw;
@@ -637,6 +637,7 @@ input::placeholder {
        
         color: #FFFFFF;
         background-color: var(--myvar);
+        line-height: 2.1vh;
 
     }
 

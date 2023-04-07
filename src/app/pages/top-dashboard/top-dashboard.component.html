@@ -5,7 +5,7 @@
             <div style="max-height: 30vh;">
                 <!-- <app-business-head-map></app-business-head-map>  -->
                 <ngx-tableau 
-                tableauVizUrl="https://public.tableau.com/views/Growth_Index_Map/GrowthIndexMap?:language=en-US&:display_count=n&:origin=viz_share_link"
+                tableauVizUrl="https://public.tableau.com/views/Growth_Index_Map/Growth_Index_Map?:language=en-US&:display_count=n&:origin=viz_share_link"
                 ></ngx-tableau>
             </div>
             <div class="d-flex align-items-end left_side_div">
@@ -113,6 +113,25 @@
                                                 {{response.point_label}}
                                                 <div class="pech_details">
                                                     {{response.weightage}}
+                                                </div>
+                                            </div>
+                                        </mat-expansion-panel>
+                                    </mat-accordion>
+
+                                    <mat-accordion class="governance_index">
+
+                                        <mat-expansion-panel style="margin-top: 2vh" (opened)="panelOpenState = true"
+                                            (closed)="panelOpenState = false">
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title class="growth_index_accordion">
+                                                    Business Index
+                                                </mat-panel-title>
+
+                                            </mat-expansion-panel-header>
+                                            <div class="pech d-flex" *ngFor="let businessresponse of buisness_head_response_._business_score">
+                                                {{businessresponse.point_label}}
+                                                <div class="pech_details">
+                                                    {{businessresponse.weightage}}
                                                 </div>
                                             </div>
                                         </mat-expansion-panel>
