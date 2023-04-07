@@ -387,9 +387,15 @@ overflow:scroll;
 }
 
 .web_button_row {
-    height: 7vh;
-    width: 99%;
-    margin-left: 1vh;
+    height: 10vh;
+    border-radius: 10px;
+    // width: 99%;
+    background-size: cover;
+    margin-left: 1vw;
+    width: 48vw;
+    display: flex;
+    align-items: center;
+    // border: 1px solid black;
 }
 
 .cm_tab,
@@ -439,7 +445,7 @@ overflow:scroll;
 }
 
 .load-more {
-    background: rgb(0, 78, 201);
+    background: var(--myvar);
     color: white;
 }
 

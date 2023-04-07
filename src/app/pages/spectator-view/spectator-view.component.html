@@ -143,7 +143,7 @@
 
 
 
-            <div class="row web_button_row" >
+            <div class="row web_button_row" style="background-image: url({{bgImageWeb}});" >
                 <div class="col-3 first_tab">
                     <input type="radio" id="tab-1" name="mytabs" [checked]="checked1"
                         value="response.data.ranking[0].label"
@@ -169,6 +169,8 @@
                         (click)="filterRankwiseLeaderboard(response.data.ranking[3].label)">
                     <label class="nsm_tab" for="tab-4">{{response.data.ranking[3].label}}</label>
                 </div>
+                
+
             </div>
 
 
@@ -189,17 +191,17 @@
                 </div>
             </div>
 
-            <div class="row mt-1 leaderboard_header_label">
+            <div class="row mt-1 leaderboard_header_label" >
                 <div class="col-2">
-                    <p class="web_spectator_label">Rank</p>
+                    <p class="web_spectator_label" style="color: #ffff !important;">Rank</p>
                 </div>
 
                 <div class="col-6">
-                    <p class="web_spectator_label_name">Name</p>
+                    <p class="web_spectator_label_name" style="color: #ffff !important;">Name</p>
                 </div>
 
                 <div class="col-4">
-                    <p class="web_spectator_label_points">Points</p>
+                    <p class="web_spectator_label_points" style="color: #ffff !important;padding-left: 3%;">Points</p>
                 </div>
 
             </div>
