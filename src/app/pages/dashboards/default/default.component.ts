@@ -123,6 +123,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   medium_color: any;
   gameID: string;
   roleID: string;
+  data: any;
+  count: any=0;
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -144,6 +146,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // this.emojiSelected(0,1)
 
+    // this.challengeRecievedCount()
+
     this.activeTab()
     this.Edit_image()
     this.combineLatest = combineLatest([
@@ -154,6 +158,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     ).subscribe(([login, theme, game]) => {
       console.log(login, theme, game)
       this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
+      this.challengeRecievedCount()
       console.log(this.userSelectionData);
       
       this._routeSub?.unsubscribe()
@@ -223,7 +228,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     })
 
   }
-
+ 
   Edit_image() {
     setTimeout(() => { this.Edit_image() }, 1000 * 1)
     var url_string = window.location.href
@@ -372,10 +377,7 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
           if (item.ranking_image_level === this.firstrowbackimage) {
 
             this.web_first_tile_image = item.ranking_image
-            console.log(this.web_first_tile_image);
-
-
-
+            console.log(this.web_first_tile_image)
           }
 
         }
@@ -1302,4 +1304,176 @@ else if(this.activeTabForSectionView_2 == 4){
      this._router.navigateByUrl('/dashboard?userID='+this.userID +"&gameID="+ this.gameID +"&roleID="+this.roleID)
     
   }
+
+  navigateToNewChallenge(){
+  
+    let  _userid=this.userSelectionData?._personal_data?.USERID;
+    let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
+    let id_role=this.userSelectionData?.games[0]?.id_role;
+    let id_coroebus_user=this.userSelectionData?._personal_data.id_coroebus_user;
+
+    console.log(this.userSelectionData);
+
+
+
+    const userId = this.Util.encryptData(_userid)
+    const game = this.Util.encryptData(id_coroebus_game)
+    const roleid = this.Util.encryptData(id_role)
+
+    
+    if(this.userSelectionData.is_champions_league=='A'){
+      
+      window.open(
+      'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+      '_self' // <- This is what makes it open in a new window.
+
+      // 'http://localhost:56671/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+      // '_self'
+   
+
+    )
+
+    }
+    
+     
+     
+       
+
+      
+      
+      
+    }
+
+  navigateToOnGoingChallenge(){
+  
+      let  _userid=this.userSelectionData?._personal_data?.USERID;
+      let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
+      let id_role=this.userSelectionData?.games[0]?.id_role;
+      let id_coroebus_user=this.userSelectionData?._personal_data.id_coroebus_user;
+  
+      console.log(this.userSelectionData);
+  
+  
+  
+      const userId = this.Util.encryptData(_userid)
+      const game = this.Util.encryptData(id_coroebus_game)
+      const roleid = this.Util.encryptData(id_role)
+  
+      
+      if(this.userSelectionData.is_champions_league=='A'){
+        
+        window.open(
+        'http://coroebus.in/champions_league/#/home/onGoing?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+        '_self' // <- This is what makes it open in a new window.
+
+        // 'http://localhost:56671/champions_league/#/home/onGoing?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+        // '_self'
+     
+  
+      )
+  
+      }
+      
+       
+       
+         
+  
+        
+        
+        
+    }
+
+  navigateToChallengeRecieved(){
+
+    let  _userid=this.userSelectionData?._personal_data?.USERID;
+      let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
+      let id_role=this.userSelectionData?.games[0]?.id_role;
+      let id_coroebus_user=this.userSelectionData?._personal_data.id_coroebus_user;
+  
+      console.log(this.userSelectionData);
+  
+  
+  
+      const userId = this.Util.encryptData(_userid)
+      const game = this.Util.encryptData(id_coroebus_game)
+      const roleid = this.Util.encryptData(id_role)
+  
+      
+      if(this.userSelectionData.is_champions_league=='A'){
+        
+        window.open(
+        'http://coroebus.in/champions_league/#/home/challengeRecieved?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+        '_self' // <- This is what makes it open in a new window.
+
+        // 'http://localhost:56671/champions_league/#/home/challengeRecieved?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+        // '_self'
+     
+  
+      )
+  
+        }
+      
+
+  }
+  navigateToStatistics(){
+
+    let  _userid=this.userSelectionData?._personal_data?.USERID;
+      let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
+      let id_role=this.userSelectionData?.games[0]?.id_role;
+      let id_coroebus_user=this.userSelectionData?._personal_data.id_coroebus_user;
+  
+      console.log(this.userSelectionData);
+  
+  
+  
+      const userId = this.Util.encryptData(_userid)
+      const game = this.Util.encryptData(id_coroebus_game)
+      const roleid = this.Util.encryptData(id_role)
+  
+      
+      if(this.userSelectionData.is_champions_league=='A'){
+        
+        window.open(
+        'http://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+        '_self' // <- This is what makes it open in a new window.
+
+        //  'http://localhost:56671/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+        // '_self' // <- This is what makes it open in a new window.
+        
+     
+  
+      )
+  
+        }
+      
+
+  }
+
+
+  challengeRecievedCount(){
+      console.log("Neeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeew",this.userSelectionData);
+    
+      let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
+      let id_role=this.userSelectionData?.games[0]?.id_role;
+      let id_coroebus_user=this.userSelectionData?._personal_data.id_coroebus_user;
+
+    let bodyforChallengeRecieved={
+      "_game": id_coroebus_game,
+      "_id_role": id_role,
+      "id_coroebus_user": id_coroebus_user
+
+    }
+    this.http.challangeRecived(bodyforChallengeRecieved).subscribe((res)=>{
+      console.log(res);
+      this.data=res;
+      this.count=this.data.length;
+      console.log(this.count);
+    })
+    
+      
+  }
+
+  
+
+  
 }

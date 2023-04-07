@@ -137,6 +137,32 @@ border-radius: 11px;
 
  
 }
+.subsectionofChampionsLeague{
+    list-style: none;
+    font-size: 1.6vh;
+
+    div{
+        padding: 5px;
+        padding-left:2% ;
+    }
+
+    .counter{
+        background: red;
+        color:#ffff;
+        height: 3vh;
+        width: 3vh;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    
+}
+.subsectionofChampionsLeague>div:hover{
+    background-color: gray;
+}
+
 
 // .RankSection{
 //     .card{
