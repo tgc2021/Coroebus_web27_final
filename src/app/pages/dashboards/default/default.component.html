@@ -716,228 +716,39 @@
                     style="background-size: cover;">
                         <div *ngIf="sectionView_1?.is_land_logos?.length == 0;then one; else two"></div>
                         <ng-template #one>
-                            <div class="card-div">
-
-                                <div class="card-body px-4 py-4" style="height: 87vh; overflow:scroll;">
-                                    <mat-accordion>
-
-                                        <mat-expansion-panel class="mt-3" (opened)="panelOpenState = true"
-                                            (closed)="panelOpenState = false">
-                                            <mat-expansion-panel-header>
-                                                <mat-panel-title class="growth_index_accordion_mobile ">
-                                                    <strong>My Learning</strong>
-
-                                                </mat-panel-title>
-
-                                            </mat-expansion-panel-header>
-                                            <hr class="horizontal_row"
-                                                style="font-weight: 550;font-family: 'Work Sans';">
-                                            <div>
-                                                <div class="d-flex justify-content-between align-items-center mt-4"
-                                                    style="font-weight: 550;font-family: 'Work Sans';">
-                                                    <div class="global_index_mobile d-flex ps-2"
-                                                        style="font-weight: 600;font-family: 'Work Sans';font-size:1.2em">
-                                                        Learning Academy
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </mat-expansion-panel>
-                                    </mat-accordion>
-
-                                    <mat-accordion>
-
-                                        <mat-expansion-panel class="mt-3" (opened)="panelOpenState = true"
-                                            (closed)="panelOpenState = false">
-                                            <mat-expansion-panel-header>
-                                                <mat-panel-title class="growth_index_accordion_mobile ">
-                                                    <strong>Bulletins</strong>
-
-                                                </mat-panel-title>
-
-                                            </mat-expansion-panel-header>
-                                            <div class="d-flex align-items-center" style="height: 66vh;">
-
-
-                                                <div *ngIf="buletinsHide"
-                                                    style="display:flex;flex-direction:column;justify-content:center;">
-                                                    <br>
-                                                    <div class="" style="font-family: 'Inter';
-                                                                    font-style: normal;
-                                                                    font-weight: 600;
-                                                                    font-size: 16px;
-                                                                    line-height: 25px;
-                                                                    text-align: center;
-                                                                   margin-left: 1vw;
-                                                                    letter-spacing: 0.003em;
-                                                                color: #000000;
-                                                                width: 22vw;">
-                                                        There's no bulletin’s you have subscribed to, stay tuned to this
-                                                        section for
-                                                        more.
-                                                    </div>
-                                                </div>
-                                                <div class="mb-2 me-3"></div>
-                                                <div
-                                                    [ngClass]="{'inner-bulletins-no-height-top': sectionView_1?.is_land_logos?.length == 0,'inner-bulletins-height':sectionView_1?.is_land_logos?.length != 0}">
-
-                                                    <div class="card bulletins-sub-card"
-                                                        *ngFor="let item of addInsList">
-                                                        <div class="card-body bulletins-sub-card-body">
-                                                            <p class="spot-engagement ">{{item?.header}}</p>
-                                                            <br>
-                                                            <div class="media bulletins-media">
-                                                                <img *ngIf="item?.type_ === '1'"
-                                                                    src="assets/images/svg/dashboard/add-ins/se.svg"
-                                                                    alt="" height="52">
-                                                                <img *ngIf="item?.type_ === '2'"
-                                                                    src="assets/images/svg/dashboard/add-ins/spot.svg"
-                                                                    alt="" height="52">
-                                                                <img *ngIf="item?.type_ === '3'"
-                                                                    src="assets/images/svg/dashboard/add-ins/le.svg"
-                                                                    alt="" height="52">
-                                                                <div class="media-body ms-2">
-
-                                                                    <h5 class="bulletins-title">{{item?.title}}
-                                                                        <p class="bulletins-text-muted"
-                                                                            style="margin-bottom:30px;">
-                                                                            {{item?.description_}}
-                                                                        </p>
-                                                                    </h5>
-                                                                    <img class="bulletins-image-card"
-                                                                        src="{{item?.logo}}" alt="" height="95">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col text-end">
-                                                                    <span class="bulletins-date">{{item?.date_time |
-                                                                        date:'fullDate'}}</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row border-top">
-                                                                <div class="col text-start">
-                                                                    <span class="bulletins-open">Open</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                            </div>
-                                        </mat-expansion-panel>
-                                    </mat-accordion>
-
-                                    <mat-accordion>
-
-                                        <mat-expansion-panel class="mt-3" (opened)="panelOpenState = true"
-                                            (closed)="panelOpenState = false">
-                                            <mat-expansion-panel-header>
-                                                <mat-panel-title class="growth_index_accordion_mobile ">
-                                                    <strong>My Campaigns</strong>
-
-                                                </mat-panel-title>
-
-                                            </mat-expansion-panel-header>
-                                      
-                                            <div>
-                                                <div class="d-flex justify-content-between align-items-center mt-4"
-                                                    style="font-weight: 550;font-family: 'Work Sans';">
-                                                    <div class="global_index_mobile d-flex ps-2"
-                                                        style="font-weight: 600;font-family: 'Work Sans';cursor: pointer;"
-                                                        (mouseover)="openDailyModal()" data-bs-toggle="modal"
-                                                        data-bs-target="#dailyModal">Daily
-
-                                                    </div>
-
-                                                </div>
-                                                <div class="d-flex justify-content-between align-items-center mt-4"
-                                                    style="font-weight: 550;font-family: 'Work Sans';">
-                                                    <div class="global_index_mobile d-flex ps-2"
-                                                        style="font-weight: 600;font-family: 'Work Sans';cursor: pointer;"
-                                                        (mouseover)="openWeeklyModal()" data-bs-toggle="modal"
-                                                        data-bs-target="#weeklyModal">Weekly
-                                                    </div>
-
-                                                </div>
-                                                <div class="d-flex justify-content-between align-items-center mt-4"
-                                                    style="font-weight: 550;font-family: 'Work Sans';">
-                                                    <div class="global_index_mobile d-flex ps-2"
-                                                        style="font-weight: 600;font-family: 'Work Sans';cursor: pointer;"
-                                                        (mouseover)="openMonthlyModal()" data-bs-toggle="modal"
-                                                        data-bs-target="#monthlyModal">Monthly
-
-                                                    </div>
-
-                                                </div>
-
-
-
-
-
-                                            </div>
-                                        </mat-expansion-panel>
-
-                                    </mat-accordion>
-
-                                    <!-- <mat-accordion>
-
-                                        <mat-expansion-panel class="battleground_accordion mt-3"
-                                            (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                                            <mat-expansion-panel-header>
-                                                <mat-panel-title class="growth_index_accordion_mobile ">
-                                                    <strong>Battle Ground</strong>
-                                                </mat-panel-title>
-
-                                            </mat-expansion-panel-header>
-
-                                            <div class="d-flex justify-content-between align-items-center mt-4"
-                                                style="font-weight: 550;font-family: 'Work Sans';">
-                                                <div class="global_index_mobile d-flex ps-2"
-                                                    style="font-weight: 600;font-family: 'Work Sans';    color: dimgray;">
-                                                    Champions League
-
-                                                </div>
-                                                
-
-                                            </div>
-                                        </mat-expansion-panel>
-                                    </mat-accordion> -->
-
-
-
-                                </div>
-                            </div>
+                           <!-- Empty container -->
                         </ng-template>
                         <ng-template #two>
                             <div class="card-div">
-                                <div style="height: 44vh;display: flex;justify-content:center;align-items:center ">
-                                    <div class="card-body px-4 py-2" style="height: 42vh; overflow-y:auto;display: flex; flex-direction: column;justify-content: space-evenly;">
+                                <div style="height: 44vh;display: flex;justify-content:center;align-items:center;">
+                                    <div class="card-body px-4 " style="height: 42vh; overflow-y:auto;display: flex; flex-direction: column;justify-content:start;gap:0.5em">
                                         <mat-accordion>
-    
-                                            <mat-expansion-panel  class="mt-2" (opened)="panelOpenState = true"
-                                                (closed)="panelOpenState = false">
-                                                <mat-expansion-panel-header  [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
+                                        
+                                            <div class="red_indicator"></div>
+                                            <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                                <mat-expansion-panel-header [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
                                                     <mat-panel-title style="font-family: 'Inter';
-                                            font-style: normal;
-                                            font-weight: 600;
-                                            color: #FFFFFF;">
+                                                                                    font-style: normal;
+                                                                                    font-weight: 600;
+                                                                                    color: #FFFFFF;">
                                                         My Learning
                                                     </mat-panel-title>
-    
+
                                                 </mat-expansion-panel-header>
+                                                <div class="d-flex flex-column align-items-start gap-2  mt-3">
+                                                    <div class="inner_content">Excel Basic</div>
+                                                    <div class="inner_content">Strategic Probolem solving</div>
+                                                    <div class="inner_content">Conflict Resolution</div>
+                                                    <div class="inner_content">Home Loan Process</div>
+                                                    <div class="inner_content">Assesment Home Loan Process</div>
+                                                </div>
                                                 
-                                             <div class="d-flex justify-content-between align-items-center mt-3"
-                                             style="font-weight: 550;font-family: 'Work Sans';">
-                                             <div class="global_index_mobile d-flex ps-2"
-                                                 style="font-weight: 600;font-family: 'Work Sans';    color: dimgray;">
-                                                 My Learning Body
-                                             </div>
-                                               </div>
+                                                
                                             </mat-expansion-panel>
                                         </mat-accordion>
     
                                         <mat-accordion>
-    
+                                            <div class="red_indicator"></div>
                                             <mat-expansion-panel class="battleground_accordion mt-2"
                                                 (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                                 <mat-expansion-panel-header [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
@@ -946,14 +757,73 @@
                                                     </mat-panel-title>
     
                                                 </mat-expansion-panel-header>
+
+                                                <div class="d-flex p-2 mt-1" style="border-radius:5px;font-family:'Roboto'">
+                                                    <div class="triviaBanner d-flex align-items-start mt-2 p-2">
+                                                        <div style="height:13vh;width:5vw;">
+                                                            <img src="assets/images/xxss_share_prizes_with_instagram_roulette 1 (1).png" alt="trivia_banner" height="100%" width="100%">
+                                                        </div>
+    
+    
+    
+                                                    </div>
+                                                    <div class="triviaDescription d-flex flex-column gap-1  mt-2">
+                                                        <div class="triviaTitle">
+                                                            <strong>
+                                                                Spin the Wheel and win excited rewards
+                                                            </strong>
+                                                             
+                                                            
+                                                        </div>
+                                                        <p>
+                                                            Hurray! You have won a chance to spin the wheel and win exiting reward.
+
+                                                        </p>
+                                                        <div class="text-end" style="font-size:1vh;font-family: 'Work sans';color:#A5ACB8">
+                                                            21/05/2022
+                                                        </div>
+    
+                                                    </div>
+    
+                                                </div>
+
+                                                <div class="d-flex p-2 mt-1" style="border-radius:5px;font-family:'Roboto';background-color: #F7E2AC;">
+                                                    <div class="triviaBanner d-flex align-items-start mt-2 p-2">
+                                                        <div style="height:13vh;width:5vw;">
+                                                            <img src="assets/images/xxss_share_prizes_with_instagram_roulette 1 (1).png" alt="trivia_banner" height="100%" width="100%">
+                                                        </div>
+    
+    
+    
+                                                    </div>
+                                                    <div class="triviaDescription d-flex flex-column gap-1  mt-2">
+                                                        <div class="triviaTitle">
+                                                            <strong>
+                                                                Spin the Wheel and win excited rewards
+                                                            </strong>
+                                                             
+                                                            
+                                                        </div>
+                                                        <p>
+                                                            Hurray! You have won a chance to spin the wheel and win exiting reward.
+
+                                                        </p>
+                                                        <div class="text-end" style="font-size:1vh;font-family: 'Work sans';color:#A5ACB8">
+                                                            21/05/2022
+                                                        </div>
+    
+                                                    </div>
+    
+                                                </div>
     
                                               
                                             </mat-expansion-panel>
+                                           
                                         </mat-accordion>
 
 
                                         <mat-accordion>
-    
+                                            <div class="red_indicator"></div>
                                             <mat-expansion-panel  class="mt-2" (opened)="panelOpenState = true"
                                                 (closed)="panelOpenState = false">
                                                 <mat-expansion-panel-header  [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
@@ -1040,7 +910,7 @@
     
     
                                         <mat-accordion>
-    
+                                            <div class="red_indicator"></div>
                                             <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true"
                                                 (closed)="panelOpenState = false">
                                                 <mat-expansion-panel-header [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}" >
@@ -1050,49 +920,45 @@
                                                     </mat-panel-title>
     
                                                 </mat-expansion-panel-header>
-                                             
                                                 <div>
-                                                    <div class="d-flex justify-content-between align-items-center mt-4"
-                                                        style="font-weight: 550;font-family: 'Work Sans';">
-                                                        <div class="global_index_mobile d-flex ps-2"
-                                                            style="font-weight: 600;font-family: 'Work Sans';cursor: pointer;"
-                                                            (mouseover)="openDailyModal()" data-bs-toggle="modal"
-                                                            data-bs-target="#dailyModal">Daily
-    
-                                                        </div>
-    
+                                                    <div class="inner_content d-flex justify-content-between" (mouseover)="openDailyModal()" data-bs-toggle="modal"
+                                                    data-bs-target="#dailyModal"  >
+                                                       <div class="col-6">Daily</div> 
+                                                       <div class="badge-container col" *ngFor="let dailyBadges of seasonalThemeDailyBadges;let i=index" >
+                                                            <div   *ngIf="i<3">
+                                                                <img src="{{dailyBadges.seasonal_badge_logo}}" alt="badge" width="100%" height="100%">
+                                                            </div>
+                                                           
+                                                       </div>
                                                     </div>
-                                                    <div class="d-flex justify-content-between align-items-center mt-4"
-                                                        style="font-weight: 550;font-family: 'Work Sans';">
-                                                        <div class="global_index_mobile d-flex ps-2"
-                                                            style="font-weight: 600;font-family: 'Work Sans';cursor: pointer;"
-                                                            (mouseover)="openWeeklyModal()" data-bs-toggle="modal"
-                                                            data-bs-target="#weeklyModal">Weekly
+                                                    <div class="inner_content d-flex justify-content-between" (mouseover)="openWeeklyModal()" data-bs-toggle="modal"
+                                                    data-bs-target="#weeklyModal">
+                                                        <div class="col-6" >Weekly</div> 
+                                                        <div class="badge-container col"*ngFor="let WeeklyBadge of seasonalThemeWeeklyBadges;let i=index" >
+                                                             <div  [ngClass]="WeeklyBadge.seasonal_score_achived>WeeklyBadge.seasonal_score_target?'activeBadge':'deActiveBadge' " *ngIf="i<3">
+                                                                <img src="{{WeeklyBadge.seasonal_badge_logo}}" alt="" height="100%" width="100%">
+                                                             </div>
+                                                             
                                                         </div>
-    
-                                                    </div>
-                                                    <div class="d-flex justify-content-between align-items-center mt-4"
-                                                        style="font-weight: 550;font-family: 'Work Sans';">
-                                                        <div class="global_index_mobile d-flex ps-2"
-                                                            style="font-weight: 600;font-family: 'Work Sans';cursor: pointer;"
-                                                            (mouseover)="openMonthlyModal()" data-bs-toggle="modal"
-                                                            data-bs-target="#monthlyModal">Monthly
-    
-                                                        </div>
-    
-                                                    </div>
-    
-    
-    
-    
-    
+                                                     </div>
+                                                     <div class="inner_content d-flex justify-content-between" style="border:none" (mouseover)="openMonthlyModal()" data-bs-toggle="modal"
+                                                     data-bs-target="#monthlyModal">
+                                                        <div class="col-6">Monthly</div> 
+                                                        <div class="badge-container col" *ngFor="let monthlyBadge of seasonalThemeMonthlyBadges;let i=index">
+                                                            <div [ngClass]="monthlyBadge.seasonal_score_achived>monthlyBadge.seasonal_score_target?'activeBadge':'deActiveBadge' " *ngIf="i<3" >
+                                                               <img src="{{seasonalThemeMonthlyBadges.seasonal_badge_logo}}" alt="" height="100%" width="100%">
+                                                            </div>
+                                                           
+                                                       </div>
+                                                     </div>
                                                 </div>
+                                                
                                             </mat-expansion-panel>
     
                                         </mat-accordion>
     
                                         <mat-accordion>
-    
+                                            <div class="red_indicator" *ngIf="challengeReacieved>0"></div>
                                             <mat-expansion-panel class="battleground_accordion mt-2"
                                                 (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                                 <mat-expansion-panel-header [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
@@ -1104,20 +970,36 @@
     
                                                 <div class="d-flex flex-column justify-content-between align-items-start mt-3 "
                                                     style="font-weight: 550;font-family: 'Work Sans';">
-                                                    <div class="global_index_mobile d-flex ps-2 pb-3"
-                                                        style="font-weight: 600;font-family: 'Work Sans';    color: dimgray;">
-                                                        Champions League
-    
-                                                    </div>
-                                                    <div class="subsectionofChampionsLeague  w-100">
-                                                        <div (click)="navigateToNewChallenge()">New Challenge</div>
-                                                        <div (click)="navigateToOnGoingChallenge()">Ongoing  Challenge</div>
-                                                        <div (click)="navigateToChallengeRecieved()" class="d-flex justify-content-between">
-                                                            <div>Challenge Recieved</div>
-                                                            <div class="counter">{{count}}</div>
+                                                    
+                                                    <div class="d-flex flex-column justify-content-between">
+                                                        <div class="inner_content" (click)="navigateToNewChallenge()">New Challenge</div>
+                                                        <div class="inner_content" style=" border-bottom: 0.5px solid #A5ACB8;" (click)="navigateToOnGoingChallenge()" class="d-flex justify-content-between">
+                                                            <div class="ps-3" style="  font-weight: 600;
+                                                            font-family: 'Work Sans';
+                                                            font-size:1.6vh;
+                                                           
+                                                            display:flex;
+                                                            height:5vh;
+                                                            align-items:center">Ongoing Challenges</div>
+                                                            <div style="display:flex;
+                                                            height:5vh;
+                                                            align-items:center">{{onGoingChallenges}}</div>
+                                                        </div>
+                                                        <div class="inner_content" style=" border-bottom: 0.5px solid #A5ACB8;" (click)="navigateToChallengeRecieved()" class="d-flex justify-content-between">
+                                                            <div class="ps-3" style="  font-weight: 600;
+                                                            font-family: 'Work Sans';
+                                                            font-size:1.6vh;
+                                                             display: flex;
+                                                             height:5vh;
+                                                             
+                                                            align-items: center;
+                                                           ">Challenge Recieved</div>
+                                                            <div style="display:flex;
+                                                            height:5vh;
+                                                            align-items:center">{{challengeReacieved}}</div>
                                                             
                                                         </div>
-                                                        <div (click)="navigateToStatistics()">Statistics</div>
+                                                        <div class="inner_content" style="border-bottom:none" (click)="navigateToStatistics()">Statistics</div>
                                                     </div>
     
                                                 </div>

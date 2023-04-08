@@ -161,5 +161,9 @@ export class ApiserviceService {
     return this.Http.post(tempurl,data)
 
   }
+  produceInfo(data:any){
+    var tempurl = `${this.URLstring}`+`/${this.Path}/Dashboard/produce_info`
+    return this.Http.post(tempurl,data)
 
+  }
 }
