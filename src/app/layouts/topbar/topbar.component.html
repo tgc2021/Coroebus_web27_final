@@ -2,13 +2,13 @@
 <ng-template #one>
   <header id="page-topbar"  [ngStyle]="{'background': headerInfo?.color}">
     <!-- <img src="assets/images/svg/logo/toolbar-bg.svg" height="180" alt=""> -->
-    <div class="navbar-header">
+    <div class="navbar-header" (click)="closeMenuTop()" style="position: relative; pointer-events:initial !important;">
       <div class="d-flex">
         <!-- LOGO -->
   
   
-        <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn"
-          (click)="toggleMobileMenu($event)">
+        <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn" 
+          (click)="toggleMobileMenu($event);$event.stopPropagation();">
           <i class="fa fa-fw fa-bars"></i>
         </button>
       </div>
@@ -84,40 +84,43 @@
 <ng-template #two>
   <header id="page-topbar"  [ngStyle]="{'background': topbar_color}">
     <!-- <img src="assets/images/svg/logo/toolbar-bg.svg" height="180" alt=""> -->
-    <div class="navbar-header">
-      <div class="d-flex">
-        <!-- LOGO -->
-  
-  
-        <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn"
-          (click)="toggleMobileMenu($event)">
-          <i class="fa fa-fw fa-bars"></i>
-        </button>
-      </div>
-  
-      <div class="d-flex">
-      <span class="top-bar-game-name text-white">
-        <img src="{{Org_logo}}" class="top-bar-game-logo" alt="Logo">
-        <!-- {{headerInfo?.game_name}} -->
+    <div class="navbar-header"  (click)="closeMenuTop()">
+     
+          <div class="d-flex">
+            <!-- LOGO -->
+      
+      
+            <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn"
+              (click)="toggleMobileMenu($event);$event.stopPropagation();">
+              <i class="fa fa-fw fa-bars"></i>
+            </button>
+          </div>
+      
+        
+          <div class="d-flex align-items-center">
+            <span class="top-bar-game-name text-white">
+              <img src="{{Org_logo}}" class="top-bar-game-logo" alt="Logo">
+              <!-- {{headerInfo?.game_name}} -->
+             
+            </span>
+            </div>
        
-      </span>
-      </div>
-  
       
-
-  
-
-      <div class="d-flex">
-
+     
+          <div class="d-flex">
       
-        <div class="dropdown d-inline-block" ngbDropdown>
-          <img class="home_btn" style="cursor: pointer; height:3vh;margin-right: 1vw;" src="assets/images/TopHierarchyDashboard/home_button.png" (click)="RedirectionToHome()">
+            
+            <div class="dropdown d-inline-block" ngbDropdown>
+              <img class="home_btn" style="cursor: pointer; height:3vh;margin-right: 1vw;" src="assets/images/TopHierarchyDashboard/home_button.png" (click)="RedirectionToHome()">
+    
+             
+            </div>
+          </div>
+    
 
-         
-        </div>
-      </div>
-
+     
 
     </div>
   </header>
 </ng-template>
+

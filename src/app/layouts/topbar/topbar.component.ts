@@ -48,6 +48,8 @@ export class TopbarComponent implements OnInit, OnDestroy {
 
   @Output() settingsButtonClicked = new EventEmitter();
   @Output() mobileMenuButtonClicked = new EventEmitter();
+  @Output() closemenu = new EventEmitter();
+
   notificationStatusList: any
   userSelectionData: any
   combineLatest: Subscription
@@ -61,7 +63,7 @@ export class TopbarComponent implements OnInit, OnDestroy {
   topbar_color:any
   Org_logo:any
   ngOnInit() {
-   
+  
     this.topbar_color= localStorage.getItem('topbar_color')
     console.log(this.topbar_color);
     
@@ -146,6 +148,7 @@ export class TopbarComponent implements OnInit, OnDestroy {
     event.preventDefault();
     this.mobileMenuButtonClicked.emit();
     this.eventService.broadcast('requestForProduce1Data')
+
   }
   /**
    * Logout the user
@@ -175,5 +178,12 @@ export class TopbarComponent implements OnInit, OnDestroy {
       switchMap(() => this.notificationStatus()),
       map(res => console.log(res))
     ).subscribe(res => { }, err => { })
+  }
+
+  closeMenuTop(){
+    this.closemenu.emit();
+console.log("hello");
+
+    
   }
 }
