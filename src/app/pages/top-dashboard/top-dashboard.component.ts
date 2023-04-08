@@ -81,7 +81,7 @@ export class TopDashboardComponent implements OnInit,AfterViewInit {
     
 
     '_userid': this.userid_bh!=null ? this.userid_bh:  this.userSelectionData._personal_data?.USERID,
-    '_org': this.id_coroebus_org==null ? this.id_coroebus_org : this.userSelectionData._personal_data?.id_coroebus_organization
+    '_org': this.id_coroebus_org!=null ? this.id_coroebus_org : this.userSelectionData._personal_data?.id_coroebus_organization
     }
     
     this.http.buisnessHead(body).subscribe(res=>{
