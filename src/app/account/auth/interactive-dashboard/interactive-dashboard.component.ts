@@ -665,8 +665,18 @@ else{
 
   navigateToLearningAcademy() {
     // this.audio.stop();
+    const userId = this.mergeObj.USERID;
+    const game = this.mergeObj.id_coroebus_game;
+    const teamid=this.mergeObj.id_coroebus_team;
 
-    this._router.navigateByUrl("/learning/learningAcademy")
+    console.log(userId,game,teamid);
+    window.open(
+      // 'http://localhost:62267/#/LearningAcademy/badges/?_userid='+userId+"&_game="+game+"&_team="+teamid, '_self'
+      'http://localhost:62267/#/LearningAcademy/badges/?_userid='+userId+"&_game="+game+"&_team="+teamid,'_self'
+
+    )
+
+    // this._router.navigateByUrl("/learning/learningAcademy")
   }
   navigateToNotification() {
     this._router.navigateByUrl("/notification/list")

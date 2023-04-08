@@ -757,64 +757,39 @@
                                                     </mat-panel-title>
     
                                                 </mat-expansion-panel-header>
-
-                                                <div class="d-flex p-2 mt-1" style="border-radius:5px;font-family:'Roboto'">
-                                                    <div class="triviaBanner d-flex align-items-start mt-2 p-2">
-                                                        <div style="height:13vh;width:5vw;">
-                                                            <img src="assets/images/xxss_share_prizes_with_instagram_roulette 1 (1).png" alt="trivia_banner" height="100%" width="100%">
+                                               
+                                                
+                                                <div *ngFor="let triviaData of triviaCornerData">
+                                                    <div class="d-flex p-2 mt-1" style="border-radius:5px;font-family:'Roboto';" [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'">
+                                                        <div class="triviaBanner d-flex align-items-start mt-2 p-2">
+                                                            <div style="height:13vh;width:5vw;">
+                                                                <img src="{{triviaData.brief_graphics}}" alt="trivia_banner" height="100%" width="100%">
+                                                            </div>
+        
+        
+        
                                                         </div>
+                                                        <div class="triviaDescription d-flex flex-column gap-1  mt-2" style="width:100%;height:100%">
+                                                            <div class="triviaTitle">
+                                                                <strong>
+                                                                   {{triviaData.brief_title}}
+                                                                </strong>
+                                                                 
+                                                                
+                                                            </div>
+                                                            <p>
+                                                                {{triviaData.brief_summary}}
     
-    
-    
+                                                            </p>
+                                                            <div  style="font-size:1vh;font-family: 'Work sans';color:#A5ACB8;text-align:end">
+                                                                {{triviaData.created_at|date:'dd/MM/YYYY'}}
+                                                            </div>
+        
+                                                        </div>
+        
                                                     </div>
-                                                    <div class="triviaDescription d-flex flex-column gap-1  mt-2">
-                                                        <div class="triviaTitle">
-                                                            <strong>
-                                                                Spin the Wheel and win excited rewards
-                                                            </strong>
-                                                             
-                                                            
-                                                        </div>
-                                                        <p>
-                                                            Hurray! You have won a chance to spin the wheel and win exiting reward.
-
-                                                        </p>
-                                                        <div class="text-end" style="font-size:1vh;font-family: 'Work sans';color:#A5ACB8">
-                                                            21/05/2022
-                                                        </div>
-    
-                                                    </div>
-    
                                                 </div>
-
-                                                <div class="d-flex p-2 mt-1" style="border-radius:5px;font-family:'Roboto';background-color: #F7E2AC;">
-                                                    <div class="triviaBanner d-flex align-items-start mt-2 p-2">
-                                                        <div style="height:13vh;width:5vw;">
-                                                            <img src="assets/images/xxss_share_prizes_with_instagram_roulette 1 (1).png" alt="trivia_banner" height="100%" width="100%">
-                                                        </div>
-    
-    
-    
-                                                    </div>
-                                                    <div class="triviaDescription d-flex flex-column gap-1  mt-2">
-                                                        <div class="triviaTitle">
-                                                            <strong>
-                                                                Spin the Wheel and win excited rewards
-                                                            </strong>
-                                                             
-                                                            
-                                                        </div>
-                                                        <p>
-                                                            Hurray! You have won a chance to spin the wheel and win exiting reward.
-
-                                                        </p>
-                                                        <div class="text-end" style="font-size:1vh;font-family: 'Work sans';color:#A5ACB8">
-                                                            21/05/2022
-                                                        </div>
-    
-                                                    </div>
-    
-                                                </div>
+                                               
     
                                               
                                             </mat-expansion-panel>
@@ -924,10 +899,24 @@
                                                     <div class="inner_content d-flex justify-content-between" (mouseover)="openDailyModal()" data-bs-toggle="modal"
                                                     data-bs-target="#dailyModal"  >
                                                        <div class="col-6">Daily</div> 
-                                                       <div class="badge-container col" *ngFor="let dailyBadges of seasonalThemeDailyBadges;let i=index" >
-                                                            <div   *ngIf="i<3">
-                                                                <img src="{{dailyBadges.seasonal_badge_logo}}" alt="badge" width="100%" height="100%">
-                                                            </div>
+                                                       <div class="badge-container col" *ngFor="let dailyBadges of seasonalThemeDailyBadges;let i=index;" >
+                                                        <!-- <div>{{dailyBadges.seasonal_score_achived}}</div>
+                                                        <div>{{dailyBadges.seasonal_score_target}}</div> -->
+                                                        
+                                                            <div *ngIf="dailyBadges.active_class == '1';then activeBadge else DeactiveBadge "></div>
+
+                                                            <ng-template #activeBadge>
+                                                               
+                                                                <div  class="activeBadge"   *ngIf="i<3">
+                                                                    <img src="{{dailyBadges.seasonal_badge_logo}}" alt="badge" width="100%" height="100%">
+                                                                </div>
+                                                            </ng-template>
+                                                            <ng-template #DeactiveBadge>
+                                                                <div  class="deActiveBadge" *ngIf="i<3">
+                                                                    <img src="{{dailyBadges.seasonal_badge_logo}}" alt="badge" width="100%" height="100%">
+                                                                </div>
+                                                            </ng-template>
+                                                            
                                                            
                                                        </div>
                                                     </div>
@@ -935,7 +924,7 @@
                                                     data-bs-target="#weeklyModal">
                                                         <div class="col-6" >Weekly</div> 
                                                         <div class="badge-container col"*ngFor="let WeeklyBadge of seasonalThemeWeeklyBadges;let i=index" >
-                                                             <div  [ngClass]="WeeklyBadge.seasonal_score_achived>WeeklyBadge.seasonal_score_target?'activeBadge':'deActiveBadge' " *ngIf="i<3">
+                                                             <div  [ngClass]="WeeklyBadge.active_class == '1'?'activeBadge':'deActiveBadge' " *ngIf="i<3">
                                                                 <img src="{{WeeklyBadge.seasonal_badge_logo}}" alt="" height="100%" width="100%">
                                                              </div>
                                                              
@@ -944,9 +933,9 @@
                                                      <div class="inner_content d-flex justify-content-between" style="border:none" (mouseover)="openMonthlyModal()" data-bs-toggle="modal"
                                                      data-bs-target="#monthlyModal">
                                                         <div class="col-6">Monthly</div> 
-                                                        <div class="badge-container col" *ngFor="let monthlyBadge of seasonalThemeMonthlyBadges;let i=index">
-                                                            <div [ngClass]="monthlyBadge.seasonal_score_achived>monthlyBadge.seasonal_score_target?'activeBadge':'deActiveBadge' " *ngIf="i<3" >
-                                                               <img src="{{seasonalThemeMonthlyBadges.seasonal_badge_logo}}" alt="" height="100%" width="100%">
+                                                        <div class="badge-container" *ngFor="let monthlyBadge of seasonalThemeMonthlyBadges;let i=index">
+                                                            <div  [ngClass]="monthlyBadge.active_class == '1'?'activeBadge':'deActiveBadge' " *ngIf="i<3" >
+                                                               <img src="{{monthlyBadge.seasonal_badge_logo}}" alt="" height="100%" width="100%">
                                                             </div>
                                                            
                                                        </div>
