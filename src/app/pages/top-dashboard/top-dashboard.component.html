@@ -3,10 +3,19 @@
     <div class="d-flex">
         <div class="map-view">
             <div style="max-height: 30vh;">
-                <!-- <app-business-head-map></app-business-head-map>  -->
-                <ngx-tableau 
-                tableauVizUrl="https://public.tableau.com/views/Growth_Index_Map/Growth_Index_Map?:language=en-US&:display_count=n&:origin=viz_share_link"
-                ></ngx-tableau>
+                <!-- <div>{{dataMap | json}}</div> -->
+                <!-- <app-business-head-map [dataMapIndex]="dataMap"></app-business-head-map>  -->
+                <!-- <div *ngIf="bi==null; then map else bi" ></div> -->
+               
+                    <ngx-tableau 
+                    tableauVizUrl="{{dataMap}}"
+                    ></ngx-tableau>
+                <!-- <ng-template #bi>
+                    <ngx-tableau 
+                    tableauVizUrl="{{dataMap}}"
+                    ></ngx-tableau>
+                </ng-template> -->
+              
             </div>
             <div class="d-flex align-items-end left_side_div">
                 <!-- <div class="button-container"
@@ -128,7 +137,7 @@
                                                 </mat-panel-title>
 
                                             </mat-expansion-panel-header>
-                                            <div class="pech d-flex" *ngFor="let businessresponse of buisness_head_response_._business_score">
+                                            <div class="pech d-flex" *ngFor="let businessresponse of buisness_head_response_._business_score" style="cursor: pointer;" (click)="navigateToBIMap(businessresponse)">
                                                 {{businessresponse.point_label}}
                                                 <div class="pech_details">
                                                     {{businessresponse.weightage}}
