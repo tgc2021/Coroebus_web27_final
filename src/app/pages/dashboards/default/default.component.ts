@@ -125,6 +125,11 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   roleID: string;
   data: any;
   count: any=0;
+  seasonalThemeDailyBadges: any;
+  seasonalThemeWeeklyBadges: any;
+  seasonalThemeMonthlyBadges: any;
+  onGoingChallenges: any;
+  challengeReacieved: any;
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -158,9 +163,10 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     ).subscribe(([login, theme, game]) => {
       console.log(login, theme, game)
       this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
-      this.challengeRecievedCount()
+      
       console.log(this.userSelectionData);
       
+      this.GetDataFromProduceInfo();
       this._routeSub?.unsubscribe()
       this._routeSub = this._route.queryParams.subscribe(queryParams => {
         // do something with the query params
@@ -1483,27 +1489,59 @@ else if(this.activeTabForSectionView_2 == 4){
   }
 
 
-  challengeRecievedCount(){
-      console.log("Neeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeew",this.userSelectionData);
+  // challengeRecievedCount(){
+  //     console.log("Neeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeew",this.userSelectionData);
     
-      let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
-      let id_role=this.userSelectionData?.games[0]?.id_role;
-      let id_coroebus_user=this.userSelectionData?._personal_data.id_coroebus_user;
+  //     let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
+  //     let id_role=this.userSelectionData?.games[0]?.id_role;
+  //     let id_coroebus_user=this.userSelectionData?._personal_data.id_coroebus_user;
 
-    let bodyforChallengeRecieved={
-      "_game": id_coroebus_game,
-      "_id_role": id_role,
-      "id_coroebus_user": id_coroebus_user
+  //   let bodyforChallengeRecieved={
+  //     "_game": id_coroebus_game,
+  //     "_id_role": id_role,
+  //     "id_coroebus_user": id_coroebus_user
 
-    }
-    this.http.challangeRecived(bodyforChallengeRecieved).subscribe((res)=>{
-      console.log(res);
-      this.data=res;
-      this.count=this.data.length;
-      console.log(this.count);
-    })
+  //   }
+  //   this.http.challangeRecived(bodyforChallengeRecieved).subscribe((res)=>{
+  //     console.log(res);
+  //     this.data=res;
+  //     this.count=this.data.length;
+  //     console.log(this.count);
+  //   })
     
       
+  // }
+
+  GetDataFromProduceInfo(){
+
+    console.log(this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData.id_coroebus_game
+      )
+      
+    
+      let obj = {
+        _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
+        _game: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
+      }
+
+      this.http.produceInfo(obj).subscribe((res)=>{
+        console.log(res);
+
+        this.data=res;
+
+        // Data For Campaign Theme
+        this.seasonalThemeDailyBadges=this.data.data.seasonal_theme_daily_badge_details;
+        this.seasonalThemeWeeklyBadges=this.data.data.seasonal_theme_weekly_badge_details;
+        this.seasonalThemeMonthlyBadges=this.data.data.seasonal_theme_monthly_badge_details;
+        console.log(this.seasonalThemeDailyBadges)
+
+        // Champions League Data
+        this.onGoingChallenges=this.data.data.challenge_list;
+        this.challengeReacieved=this.data.data.new_challenge_list;
+
+        console.log(this.onGoingChallenges)
+      })
+    
+
   }
 
   

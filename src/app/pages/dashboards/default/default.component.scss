@@ -162,6 +162,120 @@ border-radius: 11px;
 .subsectionofChampionsLeague>div:hover{
     background-color: gray;
 }
+mat-accordion{
+    position: relative;
+    .red_indicator{
+        position: absolute;
+        top:0px;
+        right: -0.35vw;
+        background: red;
+        height: 1.6vh;
+        width: 1.6vh;
+        z-index: 1;
+        border-radius: 100%;
+
+        -webkit-animation: 2s blink ease infinite;
+        -moz-animation: 2s blink ease infinite;
+        -ms-animation: 2s blink ease infinite;
+        -o-animation: 2s blink ease infinite;
+        animation: 2s blink ease infinite;
+    }
+    
+
+
+}
+@keyframes blink {
+    from, to {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  @-moz-keyframes blink {
+    from, to {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  @-webkit-keyframes blink {
+    from, to {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  @-ms-keyframes blink {
+    from, to {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  @-o-keyframes blink {
+    from, to {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+.inner_content{
+    font-weight: 600;
+    font-family: 'Work Sans';
+    font-size:1.6vh;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background: #FFFFFF;
+    border-bottom: 0.5px solid #A5ACB8;
+   padding-left: 1vw;
+    width: 18vw;
+    .badge-container{
+        width: 10vw;
+        height: 5vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .activeBadge{
+            width: 4vh;
+            height: 4vh;
+            border: 1px solid #0000;
+            margin-left: 0.5vw;
+            background: #D9D9D9;
+            color: #000000;
+            border-radius: 4px;
+        }
+        .deActiveBadge{
+            width: 4vh;
+            height: 4vh;
+            border: 1px solid #0000;
+            margin-left: 0.5vw;
+            background: #D9D9D9;
+            color: #000000;
+            filter: grayscale(100%);
+            border-radius: 4px;
+        }
+    }
+    
+   
+    
+
+
+}
+
+
+
 
 
 // .RankSection{
