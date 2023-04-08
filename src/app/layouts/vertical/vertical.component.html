@@ -1,11 +1,11 @@
-<div id="layout-wrapper">
+<div id="layout-wrapper" >
 
-  <app-topbar (settingsButtonClicked)="onSettingsButtonClicked()" (mobileMenuButtonClicked)="onToggleMobileMenu()">
+  <app-topbar (closemenu)="closeMenu()" (settingsButtonClicked)="onSettingsButtonClicked()" (mobileMenuButtonClicked)="onToggleMobileMenu()">
   </app-topbar>
 
-  <app-sidebar [isCondensed]="isCondensed"></app-sidebar>
+  <app-sidebar [isCondensed]="isCondensed" ></app-sidebar>
 
-  <div class="main-content">
+  <div class="main-content" (click)="closeMenu()">
     <div class="page-content" style="background: url({{bgImage}}); background-size: cover; height: 100vh; overflow-y:scroll; overflow-x: hidden;">
       <app-progress-bar [hidden]="!busy" class="progress-host"></app-progress-bar>
       <!-- content -->

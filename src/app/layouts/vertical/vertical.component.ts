@@ -11,6 +11,7 @@ import { observeOn } from 'rxjs/operators';
 import { EventService } from '../../core/services/event.service';
 
 import { SIDEBAR_TYPE } from "../layouts.model";
+import { log } from 'console';
 
 @Component({
   selector: 'app-vertical',
@@ -181,8 +182,13 @@ console.log(this.userSelectionData);
   /**
    * On mobile toggle button clicked
    */
+  
   onToggleMobileMenu() {
+
+    
     this.isCondensed = !this.isCondensed;
+    console.log(this.isCondensed );
+
     document.body.classList.toggle('sidebar-enable');
     document.body.classList.toggle('vertical-collpsed');
     if (window.screen.width <= 768) {
@@ -190,7 +196,19 @@ console.log(this.userSelectionData);
     }
     this.changeSidebar(this.sidebartype);
   }
+  closeMenu(){
+    this.isCondensed =true;
+   console.log(this.isCondensed);
   
+  // document.body.classList.toggle('sidebar-enable');
+  // document.body.classList.remove('sidebar-enable');
+  // document.body.classList.toggle('vertical-collpsed');
+  }
+  close(){
+    this.isCondensed =true;
+    console.log(this.isCondensed);
+   
+  }
 }
 
 
