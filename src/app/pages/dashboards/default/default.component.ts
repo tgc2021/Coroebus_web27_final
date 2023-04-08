@@ -130,6 +130,12 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   seasonalThemeMonthlyBadges: any;
   onGoingChallenges: any;
   challengeReacieved: any;
+  a:number=10;
+  b:number=20;
+  scoreTarget: any;
+  scoreAchieved: any;
+  triviaCornerData: any;
+  isNumber(val): boolean { return typeof val === 'number'; }
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -1532,13 +1538,27 @@ else if(this.activeTabForSectionView_2 == 4){
         this.seasonalThemeDailyBadges=this.data.data.seasonal_theme_daily_badge_details;
         this.seasonalThemeWeeklyBadges=this.data.data.seasonal_theme_weekly_badge_details;
         this.seasonalThemeMonthlyBadges=this.data.data.seasonal_theme_monthly_badge_details;
-        console.log(this.seasonalThemeDailyBadges)
+       
+        // for( let seasonalThemeDailyBadges of this.seasonalThemeDailyBadges){
+        //   this.scoreTarget=Number(this.seasonalThemeDailyBadges.seasonal_score_target);
+        //   this.scoreAchieved= Number(this.seasonalThemeDailyBadges.seasonal_score_achived);
+        //   console.log(this.scoreTarget)
+        // }
+       
+
+        // for(let badges of this.seasonalThemeDailyBadges){
+        //   console.log(badges)
+        // }
 
         // Champions League Data
         this.onGoingChallenges=this.data.data.challenge_list;
         this.challengeReacieved=this.data.data.new_challenge_list;
 
         console.log(this.onGoingChallenges)
+
+        // Trivia Corner Data
+
+        this.triviaCornerData=this.data.data.trivia_corner;
       })
     
 
