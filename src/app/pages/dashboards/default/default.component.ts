@@ -135,7 +135,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   scoreTarget: any;
   scoreAchieved: any;
   triviaCornerData: any;
-  isNumber(val): boolean { return typeof val === 'number'; }
+  hideTriviaIndicator: boolean;
+  
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -172,7 +173,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       
       console.log(this.userSelectionData);
       
-      this.GetDataFromProduceInfo();
+      // this.GetDataFromProduceInfo();
       this._routeSub?.unsubscribe()
       this._routeSub = this._route.queryParams.subscribe(queryParams => {
         // do something with the query params
@@ -206,6 +207,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
           this.getUserBannerDataSectionView_1(queryParams)
           this.getUserBannerDataSectionView_2(queryParams)
           this.getUserBannerDataSectionView_3(null, queryParams)
+          this.GetDataFromProduceInfo(queryParams)
           // this.notificationList(queryParams)
           // this.addIns(queryParams)
           this.notificationList()
@@ -214,6 +216,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
           this.getUserBannerDataSectionView_1()
           this.getUserBannerDataSectionView_2()
           this.getUserBannerDataSectionView_3()
+          this.GetDataFromProduceInfo(queryParams)
+
           this.notificationList()
           this.addIns()
 
@@ -1518,7 +1522,7 @@ else if(this.activeTabForSectionView_2 == 4){
       
   // }
 
-  GetDataFromProduceInfo(){
+  GetDataFromProduceInfo(data:any){
 
     console.log(this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData.id_coroebus_game
       )
@@ -1528,7 +1532,7 @@ else if(this.activeTabForSectionView_2 == 4){
         _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
         _game: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
       }
-
+      console.log("check body",obj)
       this.http.produceInfo(obj).subscribe((res)=>{
         console.log(res);
 
@@ -1538,17 +1542,12 @@ else if(this.activeTabForSectionView_2 == 4){
         this.seasonalThemeDailyBadges=this.data.data.seasonal_theme_daily_badge_details;
         this.seasonalThemeWeeklyBadges=this.data.data.seasonal_theme_weekly_badge_details;
         this.seasonalThemeMonthlyBadges=this.data.data.seasonal_theme_monthly_badge_details;
-       
-        // for( let seasonalThemeDailyBadges of this.seasonalThemeDailyBadges){
-        //   this.scoreTarget=Number(this.seasonalThemeDailyBadges.seasonal_score_target);
-        //   this.scoreAchieved= Number(this.seasonalThemeDailyBadges.seasonal_score_achived);
-        //   console.log(this.scoreTarget)
-        // }
-       
-
-        // for(let badges of this.seasonalThemeDailyBadges){
-        //   console.log(badges)
-        // }
+         
+        this.seasonalThemeDailyBadges.every((res)=>{
+          if(res.active_class == '1'){
+            
+          }
+        })
 
         // Champions League Data
         this.onGoingChallenges=this.data.data.challenge_list;
@@ -1559,6 +1558,15 @@ else if(this.activeTabForSectionView_2 == 4){
         // Trivia Corner Data
 
         this.triviaCornerData=this.data.data.trivia_corner;
+
+        this.triviaCornerData.every((res)=>{
+          console.log(true)
+          if(res.view_status!='Read')
+          {
+            this.hideTriviaIndicator=true;
+            // console.log(hideTriviaIndicator)
+          }
+        })
       })
     
 
