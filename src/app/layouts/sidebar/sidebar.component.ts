@@ -67,6 +67,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
       }
     });
     this.eventService.subscribe('requestSendForProduce1Data', (data) => {
+      
       console.log(data)
       this.produce1Data = data
       this.profileLogo=this.produce1Data._personal_data?.profile_logo
@@ -294,10 +295,23 @@ console.log(this.id_coroebus_organization);
       
       this.menuItems = MENU_SPECTATOR;
       this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
+     
     }
     else  if(this.id_role == 13){
+      
       this.menuItems = MENU_HOS;
       this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
+      if(this.is_about_game==0||this.is_about_game==null){
+       
+       
+        const result = this.menuItems.filter(data => data.icon != 'Aboutgameicon');
+
+        this.menuItems=result;
+
+       
+        console.log(this.menuItems);
+        
+      }
     }
     else {
       console.log(this.spectator_value);
@@ -305,6 +319,9 @@ console.log(this.id_coroebus_organization);
       this.menuItems = MENU;
       console.log(this.menuItems);
       
+     console.log(this.userObj?.games.length==1);
+     console.log(this.userObj?.games.length);
+     console.log(this.userObj?.games);
      
       console.log(this.menuItems);
       console.log(this.is_about_game);
@@ -324,7 +341,25 @@ console.log(this.id_coroebus_organization);
         console.log(this.menuItems);
         
       }
+      if(this.id_role == 9 || this.id_role == 8 ||this.id_role == 12){
+        const result = this.menuItems.filter(data => data.icon != 'ChallengeZoneicon');
+     console.log('rol i 9,8,12');
+     
+        this.menuItems=result;
+
        
+        console.log(this.menuItems);
+        
+      }
+     if(this.userObj?.games.length==1){
+        const result = this.menuItems.filter(data => data.icon != 'game');
+        console.log('Game selsection Page');
+        
+           this.menuItems=result;
+   
+          
+           console.log(this.menuItems);
+      }
       this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
     }
 
@@ -454,6 +489,10 @@ if(this.id_role=='7'){
 
 }
 else if(this.id_role=='13'){
+  this.menuItems=MENU_HOS
+
+}
+else if(this.id_role=='9'){
   this.menuItems=MENU_HOS
 
 }
