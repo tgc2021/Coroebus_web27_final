@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router, RoutesRecognized } from '@angular/router';
 import { ApiserviceService } from 'app/apiservice.service';
-import { Location } from '@angular/common';
+import { DOCUMENT, Location } from '@angular/common';
 import { Util } from '@app/utils/util';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -47,10 +47,13 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
   dataMap: any
   map:any
   bi:any
-  constructor(private readonly store: Store,public route:ActivatedRoute, config: NgbModalConfig, public sanitizer: DomSanitizer, public router: Router, public http: ApiserviceService, public Util: Util, public element: ElementRef, public modalService: NgbModal, public location: Location) {
+  mapUrl:any
+  constructor(private readonly store: Store,public route:ActivatedRoute, config: NgbModalConfig, public sanitizer: DomSanitizer, public router: Router, public http: ApiserviceService, public Util: Util, public element: ElementRef, public modalService: NgbModal, public location: Location, @Inject(DOCUMENT) private _document: Document) {
     config.backdrop = 'static';
     config.keyboard = false;
     config.centered = true;
+
+   
 
   }
   
@@ -146,24 +149,13 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
   navigateToBIMap(data: any) {
 
     console.log(data);
-
-    // this.dataMap = 'https://public.tableau.com/views/Cost_Report/Cost_Report?:language=en-US&:display_count=n&:origin=viz_share_link'
+    this.mapUrl=data.map_url
    
-    window.open('https://coroebusbeta.in/b2b-beta-web/#/topdashboard?map=https:%2F%2Fpublic.tableau.com%2Fviews%2FCost_Report%2FCost_Report%3F:language%3Den-US%26:display_count%3Dn%26:origin%3Dviz_share_link',
-    '_self'
-    )
-
+    this.location.replaceState("?map="+ this.mapUrl);
+    location.reload();
    
-    // this.router.navigateByUrl("/topdashboard?map="+this.dataMap)
     console.log(this.dataMap);
-    // if (!localStorage.getItem('foo')) { 
-    //   localStorage.setItem('foo', 'no reload') 
-    //   location.reload() 
-    // } else {
-    //   localStorage.removeItem('foo') 
-    // }
-    
-    //  location.reload()
+  
      
   }
   navigateToIndexwiseDashboard() {
