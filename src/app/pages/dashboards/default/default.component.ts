@@ -1495,7 +1495,6 @@ else if(this.activeTabForSectionView_2 == 4){
       const roleid = this.Util.encryptData(id_role)
       const spectStaus='yes'
 
-      
       if(this.userSelectionData.is_champions_league=='A'){
         if(!this.hideBattleGround){
           window.open(
