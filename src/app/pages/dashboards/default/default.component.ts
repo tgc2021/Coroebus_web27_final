@@ -1524,6 +1524,16 @@ else if(this.activeTabForSectionView_2 == 4){
 
   }
 
+  navigateToM2ost(){
+    window.open(
+      // https://www.m2ost.in/m2ostproductionapiSSO/api/m2ostSSO?param=empid$103$empemail$empname$TGC
+    
+      'https://www.m2ost.in/m2ostproductionapiSSO/api/m2ostSSO?param=',
+      'blank'
+   
+
+    )
+  }
 
   // challengeRecievedCount(){
   //     console.log("Neeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeew",this.userSelectionData);
