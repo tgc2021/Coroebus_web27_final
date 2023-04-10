@@ -11,11 +11,14 @@ import { ImagecropperComponent } from '@pages/imagecropper/imagecropper.componen
 import { EventService } from '@app/services/event.service';
 import { NotificationPopupComponent } from '@pages/notification-popup/notification-popup.component';
 import * as userActions from '../../../core/app-state/actions';
+import * as _ from 'lodash';
+
 import { ActivatedRoute, Event as Events, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { ToastService } from '@app/services/toast-service';
 import { $ } from 'protractor';
 import { table } from 'console';
 import { ApiserviceService } from 'app/apiservice.service';
+import { type } from 'jquery';
 @Component({
   selector: 'app-default',
   templateUrl: './default.component.html',
@@ -143,6 +146,12 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   monthlyBadgesActive: boolean;
   
 
+  seasonalScoreAchived: any=[]
+  seasonalScoreTarget:any=[]
+  arrtrue:any=[]
+  trues:any=[]
+  badgePercentage: number;
+  seasonal_theme_monthly_badge_details: any;
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
     private _route: ActivatedRoute, public toastService: ToastService,public http:ApiserviceService,public elementref: ElementRef) {
@@ -1302,12 +1311,55 @@ else if(this.activeTabForSectionView_2 == 4){
       this.dataForDailyPopup=res;
       this.DailyPopup=this.dataForMonthlyPopup.data;
       this.seasonalThemeDaily=this.DailyPopup.seasonal_theme_daily;
+      this.seasonalThemeDailyBadges=this.DailyPopup.seasonal_theme_daily_badge_details
+      console.log(this.seasonalThemeDailyBadges);
+        console.log(this.seasonalThemeDailyBadges[0].seasonal_score_achived==this.seasonalThemeDailyBadges[0].seasonal_score_target);
+        
+        for(let i=0;i<this.seasonalThemeDailyBadges.length;i++){
+          
+         this.seasonalScoreAchived.push(this.seasonalThemeDailyBadges[i].seasonal_score_achived)
+         this.seasonalScoreTarget.push(this.seasonalThemeDailyBadges[i].seasonal_score_target)      
+         this.arrtrue.push(this.seasonalScoreAchived[i]>this.seasonalScoreTarget[i])
+         
+      
+          // const arr = _.toArray(this.selectedCourses);
+          // console.log(arr);
+      
+          // const trues = _.filter(arr, (r) => r === true).length;
+          // console.log(trues);
+          // const arrLength = this.boxes.length;
+          // console.log(arrLength);
+          // this.coursesPercentage = (trues / arrLength) * 100;
+          // console.log(this.coursesPercentage);
+        }
+        // this.trues.push(this.arrtrue[0]==true)
+        const trues = _.filter(this.arrtrue, (r) => r === true);
+        
+        console.log(trues.length)
+        this.badgePercentage = (trues.length / this.seasonalScoreAchived.length) * 100;
+        console.log(this.badgePercentage);
+        
+        console.log(this.arrtrue);
+
+  console.log(this.trues);
+  
+  console.log(this.seasonalScoreAchived);
+  console.log(this.seasonalScoreTarget);
+
+
+      console.log(this.seasonalThemeDaily.length);
+      console.log(typeof(this.seasonalThemeDaily.length));
+    
       this.dailyToppers=this.weeklyPopup.seasonal_theme_daily_badge_toppers;
       this.seasonal_theme_weekly_badge_details=this.DailyPopup.seasonal_theme_daily_badge_details;
       console.log(this.seasonal_theme_weekly_badge_details);
       
       
     })
+    this.seasonalScoreAchived=[]
+    this.seasonalScoreTarget=[]
+    this.arrtrue=[]
+    this.trues=[]
     this.isDailyModalopen = true;
     this.isWeeklyModalOpen = false;
     this.isMonthlyModalOpen = false;
@@ -1326,8 +1378,9 @@ else if(this.activeTabForSectionView_2 == 4){
       this.seasonalThemeWeekly=this.weeklyPopup.seasonal_theme_weekly;
       this.weeklyTopers=this.weeklyPopup.seasonal_theme_weekly_badge_toppers;
       this.seasonal_theme_weekly_badge_details=this.weeklyPopup.seasonal_theme_weekly_badge_details;
+      console.log(this.seasonal_theme_weekly_badge_details.length);
       console.log(this.seasonal_theme_weekly_badge_details);
-      
+
       
     })
     this.isDailyModalopen = false;
@@ -1346,6 +1399,9 @@ else if(this.activeTabForSectionView_2 == 4){
       this.dataForMonthlyPopup=res;
       this.monthlyPopup=this.dataForMonthlyPopup.data;
       this.seasonalThemeMonthly=this.monthlyPopup.seasonal_theme_monthly;
+      this.seasonal_theme_monthly_badge_details=this.monthlyPopup.seasonal_theme_monthly_badge_details;
+      console.log(this.seasonal_theme_monthly_badge_details.length);
+      
       this.monthlyTopers=this.monthlyPopup.seasonal_theme_monthly_badge_toppers
       console.log(this.seasonalThemeMonthly);
     })

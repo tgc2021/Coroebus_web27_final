@@ -1625,12 +1625,49 @@
                         <div class="d-flex justify-content-center" style="height:35vh;width:100%">
                             <div  style="height:25vh;width:25vh">
                                 <img src="{{seasonalThemeDaily[0].logo}}" alt="logo" height="100%" width="100%">
-                            </div>
-                            
+                            </div>           
                         </div>
-                       
-                       
-                        
+                      
+                        <div> 
+                            <div class="col-12 d-flex justify-content-end" style="padding:14px 7px 0px 0px;">
+                               <div class="col-4 d-flex justify-content-end" *ngFor="let item of seasonalThemeDailyBadges;let i =index">
+                                
+                                 <div *ngIf="item.active_class == '1';then activeBadge else DeactiveBadge "></div>
+
+                                 <ng-template #activeBadge>
+                                    <div>
+                                        <div  class="activeBadge" *ngIf="i<3">
+                                            <img src="{{item.seasonal_badge_logo}}" alt="badge" width="40px" height="40px" style="border-radius: 50%;">
+                                        </div>
+                                        <div style="border-right: 2px solid #D3D6DA;height: 20px;margin-right: 20px;">
+      
+                                        </div> 
+                                    </div>
+                                     
+                                 </ng-template>
+                                 <ng-template #DeactiveBadge>
+                                    <div>
+                                        <div  class="deActiveBadge" *ngIf="i<3" style=" filter: grayscale(100%);">
+                                            <img src="{{item.seasonal_badge_logo}}" alt="badge" width="40px" height="40px" style="border-radius: 50%;">
+                                        </div>
+                                        <div style="border-right: 2px solid #D3D6DA;height: 20px;margin-right: 20px;">
+      
+                                        </div> 
+                                    </div>
+                                    
+                                 </ng-template>
+                                 
+                                 
+                               </div>
+                            </div>
+                            <div class="col-12" style="margin-top: -5px; padding: 0px 7px 0px 0px;">
+                                <progress id="file" class="range rangeBgcolor1"
+                                    value="" max="100">
+                                     </progress>
+                            </div>
+                        </div>
+                      
+
                     </div>
                     <div class="row d-flex justify-content-center align-items-start" style="height:35vh;"
                         *ngIf="seasonalThemeDaily.length==0">
@@ -1646,20 +1683,22 @@
         </div>
     </div>
 </div>
+
+
+
+
 <div class="weeklyModal" *ngIf="isWeeklyModalOpen">
     <div class="modal  fade bd-example-modal-sm" id="weeklyModal" data-bs-backdrop="static" data-bs-keyboard="false"
         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modalDialogWeekly modal-dialog-centered">
-            <div class="modal-content modalContentWeekly"
-                style="background: url(assets/images/interactive-dashboard/BG.png);position: relative; background-size:contain;">
-                <div class="modal-body"
-                    style="background-image:url(https://coroebus.in/coroebus-beta/assets/Media/weekly_champion.svg); background-repeat: no-repeat; background-size: contain; position:ralative; min-height: 51vh;">
+            <div class="modal-content modalContentWeekly">
+                <div class="modal-body">
                     <div class="d-flex justify-content-end">
                         <button type="button" class="button-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                     </div>
                     <div class="row d-flex" *ngIf="seasonalThemeWeekly.length>0">
                         <div class="d-flex justify-content-between  mb-1 p-1">
-                            <div class="ModalHeading ms-2">
+                            <div class="ModalHeading ms-2 mb-2" >
                                 {{seasonalThemeWeekly[0].seasonal_theme_title}}
                             </div>
 
@@ -1669,85 +1708,80 @@
                                 {{seasonalThemeWeekly[0].theme_description}}
                             </div>
 
-                            <div class="modalDescription d-flex justify-content-start pt-2 mt-2 mb-3">
-
+                            <div class="modalDescription d-flex justify-content-start pt-2 mt-1">
                                 <div> Valid Till
-                                    :{{seasonalThemeWeekly[0].valid_till_date |
-                                    date:"dd/M/yyyy"}}</div>
+                                    :{{seasonalThemeWeekly[0].valid_till_date
+                                    | date:"dd/M/yyyy"}}</div>
                             </div>
                         </div>
 
-                        <div class="mt-5">
+                        <div class="">
                             <div class="d-flex justify-content-center">
-                                <img src="{{seasonalThemeWeekly[0].logo}}" alt="master_blaster" height="100px"
-                                    width="100px" style="border-radius:100%;">
-
-                            </div>
-
-
-                            <div class="d-flex justify-content-center mt-2">
-                                <button class="btn-reward d-flex justify-content-center align-items-center p-1 gap-1"
-                                    style="height: 3.5vh;">
-
-                                    <img src="https://coroebusbeta.in/coroebus-beta/assets/ThemeBackground/TB-16687580468959.png?813021266"
-                                        alt="" height="100%">
-
-                                    <div>
-                                        {{seasonalThemeWeekly[0].reward_point}}
-                                    </div>
-                                </button>
-
-                            </div>
-                            <div class="d-flex justify-content-center gap-2 mt-1">
-                                <div class="d-flex flex-column align-items-center">
-                                    <div class="Number">
-                                        {{seasonal_theme_weekly_badge_details[0].your_rank}}
-
-                                    </div>
-                                    <div class="Words">Your Rank</div>
-                                </div>
-                                <div style="border-left:1px solid #000000;height:60px">
-
-                                </div>
-                                <div class="d-flex flex-column align-items-center">
-                                    <div class="Number">
-                                        {{seasonal_theme_weekly_badge_details[0].your_score}}
-
-                                    </div>
-                                    <div class="Words">Your Score</div>
+                                <div class="d-flex justify-content-center" style="height: 25vh; width: 25vh;">
+                                    <img src="{{seasonalThemeWeekly[0].logo}}" height="100%" width="100%" alt="master_blaster">
                                 </div>
                             </div>
-
-
-                            <div class="col-12 card-container-popup" style="overflow-x:auto;"
-                                *ngIf="weeklyTopers.length!=0">
+                               
+                        <div> 
+                            <div class="col-12 d-flex justify-content-end" style="padding:14px 7px 0px 0px;">
+                                <div class="col d-flex justify-content-end" *ngFor="let item of seasonal_theme_weekly_badge_details;let i =index">
+                                  <div *ngIf="item.active_class == '1';then activeBadge else DeactiveBadge "></div>
+                                  <ng-template #activeBadge>
+                                     <div>
+                                         <div  class="activeBadge" *ngIf="i<3">
+                                             <img src="{{item.seasonal_badge_logo}}" alt="badge" width="40px" height="40px" style="border-radius: 50%;">
+                                         </div>
+                                         <div style="border-right: 2px solid #D3D6DA;height: 20px;margin-right: 20px;">
+       
+                                         </div> 
+                                     </div>
+                                      
+                                  </ng-template>
+                                  <ng-template #DeactiveBadge>
+                                     <div>
+                                         <div  class="deActiveBadge" *ngIf="i<3" style=" filter: grayscale(100%);">
+                                             <img src="{{item.seasonal_badge_logo}}" alt="badge" width="40px" height="40px" style="border-radius: 50%;">
+                                         </div>
+                                         <div *ngIf="i<3" style="border-right: 2px solid #D3D6DA;height: 20px;margin-right: 20px;">
+       
+                                         </div> 
+                                     </div>
+                                     
+                                  </ng-template>
+                                  
+                                  
+                                </div>
+                              
+                             </div>
+                         
+                            <div class="col-12" style="margin-top: -5px; padding: 0px 7px 0px 0px;">
+                                <progress id="file" class="range rangeBgcolor1"
+                                    value="" max="100">
+                                     </progress>
+                            </div>
+                        </div>
+                        
+                            <!-- <div class="col-12 card-container-popup" style="overflow-x:auto;color:#ffff"
+                                *ngIf="monthlyTopers.length!=0">
                                 <div class="mt-3 mb-2">
                                     <span class="Top5">Top 5 performers who have won the badge</span>
                                     &nbsp;
                                     <span class="infoIcon">&#x24D8;</span>
                                 </div>
                                 <div class="d-flex" style="overflow: scroll;">
-                                    <div class="card col-4 p-2 gap-2" *ngFor="let topper of weeklyTopers;let i =index"
-                                        style="background: #D9FFDE;">
-                                        <div class="d-flex flex-column align-items-center">
-                                            <div class="pic">
-                                                <img src="{{topper.profile_mage}}" alt="image" height="40px"
-                                                    width="40px">
-                                            </div>
-                                            <div class="name" style="white-space: nowrap;">{{topper.first_name.slice(0,10)}}...</div>
-                                            <div class="rank">Rank:{{topper.user_rank}}</div>
-                                            <div class="score">{{topper.score}}</div>
-
+                                    <div class="card col-4 p-2 gap-2" *ngFor="let topper of monthlyTopers"
+                                        style="background: linear-gradient(180deg, #608CDF 0%, #62B8E9 100%);">
+                                        <div class="pic">
+                                            <img src="{{topper.profile_mage}}" alt="image" height="40px" width="40px">
                                         </div>
-
+                                        <div class="name">{{topper.first_name.slice(0,10)}}...</div>
+                                        <div class="rank">Rank:{{topper.user_rank}}</div>
+                                        <div class="score">{{topper.score}}</div>
                                     </div>
                                 </div>
 
 
-
-
-                            </div>
-
+                            </div> -->
 
 
 
@@ -1799,17 +1833,112 @@
                             </div>
                         </div>
 
-                        <div class="mt-5">
-                            <div class="d-flex justify-content-center mt-5">
-                                <img src="{{seasonalThemeMonthly[0].logo}}" alt="master_blaster" height="100px"
-                                    width="100px" style="border-radius:100%;">
-
-
+                        <div class="">
+                            <div class="d-flex justify-content-center">
+                                <div class="d-flex justify-content-center" style="height: 25vh; width: 25vh;">
+                                    <img src="{{seasonalThemeMonthly[0].logo}}" height="100%" width="100%" alt="master_blaster">
+                                </div>
                             </div>
-                            
-
-                            
-                            <div class="col-12 card-container-popup" style="overflow-x:auto;color:#ffff"
+                               
+                        <div> 
+                            <div *ngIf="seasonal_theme_monthly_badge_details.length==2" class="col-12 d-flex justify-content-end" style="padding:14px 7px 0px 0px;">
+                               <div class="col-6 d-flex justify-content-end" *ngFor="let item of seasonal_theme_monthly_badge_details;let i =index">
+                                 <div *ngIf="item.active_class == '1';then activeBadge else DeactiveBadge "></div>
+                                 <ng-template #activeBadge>
+                                    <div>
+                                        <div  class="activeBadge" *ngIf="i<3">
+                                            <img src="{{item.seasonal_badge_logo}}" alt="badge" width="40px" height="40px" style="border-radius: 50%;">
+                                        </div>
+                                        <div style="border-right: 2px solid #D3D6DA;height: 20px;margin-right: 20px;">
+      
+                                        </div> 
+                                    </div>
+                                     
+                                 </ng-template>
+                                 <ng-template #DeactiveBadge>
+                                    <div>
+                                        <div  class="deActiveBadge" *ngIf="i<3" style=" filter: grayscale(100%);">
+                                            <img src="{{item.seasonal_badge_logo}}" alt="badge" width="40px" height="40px" style="border-radius: 50%;">
+                                        </div>
+                                        <div style="border-right: 2px solid #D3D6DA;height: 20px;margin-right: 20px;">
+      
+                                        </div> 
+                                    </div>
+                                    
+                                 </ng-template>
+                                 
+                                 
+                               </div>
+                             
+                            </div>
+                            <div *ngIf="seasonal_theme_monthly_badge_details.length==3" class="col-12 d-flex justify-content-end" style="padding:14px 7px 0px 0px;">
+                                <div class="col-4 d-flex justify-content-end" *ngFor="let item of seasonal_theme_monthly_badge_details;let i =index">
+                                  <div *ngIf="item.active_class == '1';then activeBadge else DeactiveBadge "></div>
+                                  <ng-template #activeBadge>
+                                     <div>
+                                         <div  class="activeBadge" *ngIf="i<3">
+                                             <img src="{{item.seasonal_badge_logo}}" alt="badge" width="40px" height="40px" style="border-radius: 50%;">
+                                         </div>
+                                         <div style="border-right: 2px solid #D3D6DA;height: 20px;margin-right: 20px;">
+       
+                                         </div> 
+                                     </div>
+                                      
+                                  </ng-template>
+                                  <ng-template #DeactiveBadge>
+                                     <div>
+                                         <div  class="deActiveBadge" *ngIf="i<3" style=" filter: grayscale(100%);">
+                                             <img src="{{item.seasonal_badge_logo}}" alt="badge" width="40px" height="40px" style="border-radius: 50%;">
+                                         </div>
+                                         <div style="border-right: 2px solid #D3D6DA;height: 20px;margin-right: 20px;">
+       
+                                         </div> 
+                                     </div>
+                                     
+                                  </ng-template>
+                                  
+                                  
+                                </div>
+                              
+                             </div>
+                             <div *ngIf="seasonal_theme_monthly_badge_details.length==4" class="col-12 d-flex justify-content-end" style="padding:14px 7px 0px 0px;">
+                                <div class="col-3 d-flex justify-content-end" *ngFor="let item of seasonal_theme_monthly_badge_details;let i =index">
+                                  <div *ngIf="item.active_class == '1';then activeBadge else DeactiveBadge "></div>
+                                  <ng-template #activeBadge>
+                                     <div>
+                                         <div  class="activeBadge" *ngIf="i<3">
+                                             <img src="{{item.seasonal_badge_logo}}" alt="badge" width="40px" height="40px" style="border-radius: 50%;">
+                                         </div>
+                                         <div style="border-right: 2px solid #D3D6DA;height: 20px;margin-right: 20px;">
+       
+                                         </div> 
+                                     </div>
+                                      
+                                  </ng-template>
+                                  <ng-template #DeactiveBadge>
+                                     <div>
+                                         <div  class="deActiveBadge" *ngIf="i<3" style=" filter: grayscale(100%);">
+                                             <img src="{{item.seasonal_badge_logo}}" alt="badge" width="40px" height="40px" style="border-radius: 50%;">
+                                         </div>
+                                         <div style="border-right: 2px solid #D3D6DA;height: 20px;margin-right: 20px;">
+       
+                                         </div> 
+                                     </div>
+                                     
+                                  </ng-template>
+                                  
+                                  
+                                </div>
+                              
+                             </div>
+                            <div class="col-12" style="margin-top: -5px; padding: 0px 7px 0px 0px;">
+                                <progress id="file" class="range rangeBgcolor1"
+                                    value="" max="100">
+                                     </progress>
+                            </div>
+                        </div>
+                        
+                            <!-- <div class="col-12 card-container-popup" style="overflow-x:auto;color:#ffff"
                                 *ngIf="monthlyTopers.length!=0">
                                 <div class="mt-3 mb-2">
                                     <span class="Top5">Top 5 performers who have won the badge</span>
@@ -1829,7 +1958,7 @@
                                 </div>
 
 
-                            </div>
+                            </div> -->
 
 
 
