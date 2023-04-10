@@ -760,7 +760,7 @@
                                                
                                                 
                                                 <div *ngFor="let triviaData of triviaCornerData">
-                                                    <div class="d-flex p-2 mt-1" style="border-radius:5px;font-family:'Roboto';" [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'">
+                                                    <div class="d-flex p-2 mt-1" style="border-radius:5px;font-family:'Work sans';" [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'">
                                                         <div class="triviaBanner d-flex align-items-start mt-2 p-2">
                                                             <div style="height:13vh;width:5vw;">
                                                                 <img src="{{triviaData.brief_graphics}}" alt="trivia_banner" height="100%" width="100%">
@@ -777,7 +777,7 @@
                                                                  
                                                                 
                                                             </div>
-                                                            <p>
+                                                            <p style="font-size:1.2vh">
                                                                 {{triviaData.brief_summary}}
     
                                                             </p>
