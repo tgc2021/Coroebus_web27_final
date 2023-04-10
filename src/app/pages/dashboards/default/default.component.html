@@ -724,7 +724,7 @@
                                     <div class="card-body px-4 " style="height: 42vh; overflow-y:auto;display: flex; flex-direction: column;justify-content:start;gap:0.5em">
                                         <mat-accordion>
                                         
-                                            <div class="red_indicator"></div>
+                                            <!-- <div class="red_indicator"></div> -->
                                             <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                                 <mat-expansion-panel-header [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
                                                     <mat-panel-title style="font-family: 'Inter';
@@ -798,7 +798,7 @@
 
 
                                         <mat-accordion>
-                                            <div class="red_indicator"></div>
+                                            <!-- <div class="red_indicator"></div> -->
                                             <mat-expansion-panel  class="mt-2" (opened)="panelOpenState = true"
                                                 (closed)="panelOpenState = false">
                                                 <mat-expansion-panel-header  [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
@@ -885,7 +885,7 @@
     
     
                                         <mat-accordion>
-                                            <div class="red_indicator"></div>
+                                            <div class="red_indicator" *ngIf="dailyBadgesActive || weeklyBadgesActive || monthlyBadgesActive"></div>
                                             <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true"
                                                 (closed)="panelOpenState = false">
                                                 <mat-expansion-panel-header [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}" >

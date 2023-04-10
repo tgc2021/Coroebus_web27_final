@@ -136,6 +136,10 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   scoreAchieved: any;
   triviaCornerData: any;
   hideTriviaIndicator: boolean;
+  dailyBadges: boolean;
+  dailyBadgesActive: boolean;
+  weeklyBadgesActive: boolean;
+  monthlyBadgesActive: boolean;
   
 
   constructor(private readonly store: Store, private modalService: NgbModal,
@@ -1543,12 +1547,24 @@ else if(this.activeTabForSectionView_2 == 4){
         this.seasonalThemeWeeklyBadges=this.data.data.seasonal_theme_weekly_badge_details;
         this.seasonalThemeMonthlyBadges=this.data.data.seasonal_theme_monthly_badge_details;
          
-        this.seasonalThemeDailyBadges.every((res)=>{
+        this.seasonalThemeDailyBadges.forEach((res)=>{
           if(res.active_class == '1'){
-            
+            this.dailyBadgesActive=true;
           }
         })
 
+        this.seasonalThemeWeeklyBadges.forEach((res)=>{
+          if(res.active_class == '1'){
+            this.weeklyBadgesActive=true;
+          }
+        })
+
+        this.seasonalThemeMonthlyBadges.forEach((res)=>{
+          if(res.active_class == '1'){
+            this.monthlyBadgesActive=true;
+          }
+        })
+        
         // Champions League Data
         this.onGoingChallenges=this.data.data.challenge_list;
         this.challengeReacieved=this.data.data.new_challenge_list;
@@ -1559,7 +1575,7 @@ else if(this.activeTabForSectionView_2 == 4){
 
         this.triviaCornerData=this.data.data.trivia_corner;
 
-        this.triviaCornerData.every((res)=>{
+        this.triviaCornerData.forEach((res)=>{
           console.log(true)
           if(res.view_status!='Read')
           {
