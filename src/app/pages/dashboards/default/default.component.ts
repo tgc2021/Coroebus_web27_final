@@ -1388,7 +1388,7 @@ else if(this.activeTabForSectionView_2 == 4){
       // 'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
       // '_self' // <- This is what makes it open in a new window.
 
-      'http://localhost:4202/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+      'http://coroebusbeta.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
       '_self'
    
 
@@ -1424,7 +1424,7 @@ else if(this.activeTabForSectionView_2 == 4){
       if(this.userSelectionData.is_champions_league=='A'){
         
         window.open(
-        'http://localhost:4202/champions_league/#/home/onGoing?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+        'http://coroebusbeta.in/champions_league/#/home/onGoing?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
         '_self' // <- This is what makes it open in a new window.
 
         // 'http://localhost:56671/champions_league/#/home/onGoing?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
@@ -1501,13 +1501,13 @@ else if(this.activeTabForSectionView_2 == 4){
           window.open(
             // 'http://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"spect="+"yes",
             // '_self' // <- This is what makes it open in a new window.
-             'http://localhost:4202/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total",
+             'http://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total",
             '_self' // <- This is what makes it open in a new window.
           )
         }
      else{
       window.open(
-        'http://localhost:4202/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
+        'http://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
         '_self' // <- This is what makes it open in a new window.
 
         //  'http://localhost:56671/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
