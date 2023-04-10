@@ -139,17 +139,15 @@ export class PlayZoneComponent implements OnInit {
   }
   open(content,data) {
     // console.log(content);
-    if(data.id_engagement_game==='2'){
-      this.dartGameUrl=`http://127.0.0.1:5500/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`;
-      this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.dartGameUrl);
+    if(data.id_engagement_game==='1'){
+      // this.dartGameUrl=`http://127.0.0.1:5500/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`;
+      // this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.dartGameUrl);
     }
-    // else if(data.id_engagement_game==='2'){
-    //   // this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
-    //   this.spinTheWheelURL=`http://127.0.0.1:5501/spin_the_wheel_latest/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
-    //   this.Url=new URL(this.spinTheWheelURL)
-
-    //   this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.spinTheWheelURL)
-    // }
+    else if(data.id_engagement_game==='2'){
+      this.spinTheWheelURL=`this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.dartGameUrl);`
+      this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.spinTheWheelURL);
+    }
+   
     else if(data.id_engagement_game==='5'){
       this.skylineGameUrl=`https://coroebusbeta.in/CoroebusSkyline/`
       this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.skylineGameUrl)
