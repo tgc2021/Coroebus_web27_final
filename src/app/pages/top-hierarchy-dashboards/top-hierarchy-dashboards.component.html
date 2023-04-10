@@ -44,14 +44,12 @@
                             <img class="profile_picture_image" src="{{sectionView_1._personal_data.profile_logo}}" height="100%" width="" />
                         </div>
                         <div class="lower_section">
-                            <div class="name_hos">
+                            <div class="name_hos" ngbTooltip="{{sectionView_1._personal_data.first_name}}" placement="bottom">
                                 {{sectionView_1._personal_data.first_name}}
                             </div>
-                            
-
                             <hr  style="color:black;width:16vw;opacity: 1.0;">
                             <div class="name_hos">
-                                {{sectionView_1._personal_data.brand_name}}
+                                {{sectionView_1._personal_data.user_department}}
                             </div>
     
                         </div>
@@ -532,7 +530,19 @@
         
                         <div class="business_index_container">
                             <div class="business_index_points" *ngFor="let business_response of sectionView_1._business_score">
-                                <div class="upper_side">{{business_response.point_label}}</div>
+                                <div class="upper_side">
+                                    <div style="white-space: nowrap;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    width:17ch;
+                                    text-align:center
+                                    "
+                                    ngbTooltip="{{business_response.point_label}}" placement="bottom"
+                                    >
+                                        {{business_response.point_label}}
+                                    </div>
+                                    
+                                </div>
                                 <div class="lower_side">{{business_response.weightage}}</div>
         
                             </div>

@@ -125,8 +125,14 @@
                 font-weight: 550;
                 font-size: 2.2vh;
                 line-height: 2.4vh;
+                
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width:23ch;
+                text-align:center;
                 /* identical to box height, or 120% */
-                text-align: center;
+             
                 letter-spacing: 0.2px;
                 color: #000000;
             }
@@ -276,7 +282,7 @@
                 width: 16vw;
                 margin-top: 0.5vh;
                 font-family: "work sans";
-                font-weight: 600;
+                font-weight: 500;
                 justify-content: space-between;
 
             }
@@ -425,6 +431,11 @@
                     background-color: var(--myvar);
                     color:white;
                     display: flex;
+                    font-size:0.8vw;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    
                     justify-content: center;
                     align-items: center;
                     border-radius: 10px 10px 0px 0px;
@@ -1034,20 +1045,20 @@ input::placeholder {
     .governace_title {
         font-family: 'Work Sans';
         font-style: normal;
-        font-weight: 600;
+        font-weight: 500;
     }
 
     .name_hos,
     .level_hos {
         font-size: 0.9vw;
-        font-weight: 600;
+        font-weight: 500;
         color: #000000;
         margin-top: 1vh;
     }
 
     .button_score,
     .right_button_score {
-        font-weight: 600;
+        font-weight: 500;
         color: #000000;
         height: 50%;
         display: flex;

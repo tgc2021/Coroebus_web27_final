@@ -136,6 +136,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   scoreAchieved: any;
   triviaCornerData: any;
   hideTriviaIndicator: boolean;
+  hideBattleGround: boolean=false;
   
 
   constructor(private readonly store: Store, private modalService: NgbModal,
@@ -184,6 +185,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
           console.log(window.location.href);
           this.location=window.location.href
           if(this.location.includes("?")){
+            this.hideBattleGround=true;
              var replacedUserId = queryParams?.userID.replace(/ /g, '+');
          console.log(replacedUserId);
         
@@ -265,9 +267,9 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     this.edit_image;
-    this.openDailyModal();
+    this.openDailyModal('daily');
     this.openWeeklyModal();
-    this.openMonthlyModal();
+    this.openMonthlyModal('monthly');
   }
 
 
@@ -1279,15 +1281,15 @@ else if(this.activeTabForSectionView_2 == 4){
 
     });
   }
-  openDailyModal() {
+  openDailyModal(queryParams) {
     let obj = {
       _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
 
       _game: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
     }
-    this.http.campaignsPopup(obj).subscribe((res)=>{
+    this.http.produceInfo(obj).subscribe((res)=>{
       // console.log(res);
-      this.dataForWeeklyPopup=res;
+      this.dataForDailyPopup=res;
       this.DailyPopup=this.dataForMonthlyPopup.data;
       this.seasonalThemeDaily=this.DailyPopup.seasonal_theme_daily;
       this.dailyToppers=this.weeklyPopup.seasonal_theme_daily_badge_toppers;
@@ -1323,13 +1325,13 @@ else if(this.activeTabForSectionView_2 == 4){
     this.isMonthlyModalOpen = false;
 
   }
-  openMonthlyModal() {
+  openMonthlyModal(queryParams) {
     let obj = {
       _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
 
       _game: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
     }
-    this.http.campaignsPopup(obj).subscribe((res)=>{
+    this.http.produceInfo(obj).subscribe((res)=>{
       // console.log(res);
       this.dataForMonthlyPopup=res;
       this.monthlyPopup=this.dataForMonthlyPopup.data;
@@ -1481,17 +1483,19 @@ else if(this.activeTabForSectionView_2 == 4){
   
       
       if(this.userSelectionData.is_champions_league=='A'){
-        
-        window.open(
-        'http://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
-        '_self' // <- This is what makes it open in a new window.
-
-        //  'http://localhost:56671/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
-        // '_self' // <- This is what makes it open in a new window.
-        
+        if(this.hideBattleGround){
+          window.open(
+            'http://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"spect="+"yes",
+            '_self' // <- This is what makes it open in a new window.
+    
+            //  'http://localhost:56671/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+            // '_self' // <- This is what makes it open in a new window.
+            
+         
+      
+          )
+        }
      
-  
-      )
   
         }
       
