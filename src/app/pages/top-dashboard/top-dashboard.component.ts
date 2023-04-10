@@ -48,6 +48,7 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
   map:any
   bi:any
   mapUrl:any
+  map_bh:any
   constructor(private readonly store: Store,public route:ActivatedRoute, config: NgbModalConfig, public sanitizer: DomSanitizer, public router: Router, public http: ApiserviceService, public Util: Util, public element: ElementRef, public modalService: NgbModal, public location: Location, @Inject(DOCUMENT) private _document: Document) {
     config.backdrop = 'static';
     config.keyboard = false;
@@ -83,6 +84,34 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
 
     })
 
+    this.userid_bh = localStorage.getItem('userid')
+    this.id_coroebus_org = localStorage.getItem('id_coroebus_org_bh')
+
+    let body = {
+
+
+      '_userid': this.userid_bh != null ? this.userid_bh : this.userSelectionData._personal_data?.USERID,
+      '_org': this.id_coroebus_org != null ? this.id_coroebus_org : this.userSelectionData._personal_data?.id_coroebus_organization
+    }
+
+    this.http.buisnessHead(body).subscribe(res => {
+      console.log(res);
+      this.buisness_head_response = res
+      this.buisness_head_response_ = this.buisness_head_response.data
+      console.log(this.buisness_head_response_);
+      this.map_bh=this.buisness_head_response_._personal_data.map_url
+      localStorage.setItem('res',this.map_bh)
+      this.GrowthIndexData = this.buisness_head_response.data._points
+      this.dark_color = localStorage.getItem('topbar_color')
+      this.element.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
+      this.fontcolor = '#FFFFFF'
+      this.medium_color = localStorage.getItem('medium_color')
+      this.element.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
+
+      this.videourl = `https://www.youtube.com/0c31548b-b457-4b9b-9159-ba7a08ee2d74`
+      this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.videourl)
+    })
+
     var href = window.location.href;
     console.log(href)
     var url = new URL(href)
@@ -106,35 +135,12 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
   else{
     console.log('growth');
     
-    this.dataMap='https://public.tableau.com/views/Growth_Index_Map/Growth_Index_Map?:language=en-US&:display_count=n&:origin=viz_share_link'
+    this.dataMap= localStorage.getItem('res')
+    console.log(this.dataMap);
+    
 
   }
-    this.userid_bh = localStorage.getItem('userid')
-    this.id_coroebus_org = localStorage.getItem('id_coroebus_org_bh')
-
-    let body = {
-
-
-      '_userid': this.userid_bh != null ? this.userid_bh : this.userSelectionData._personal_data?.USERID,
-      '_org': this.id_coroebus_org != null ? this.id_coroebus_org : this.userSelectionData._personal_data?.id_coroebus_organization
-    }
-
-    this.http.buisnessHead(body).subscribe(res => {
-      console.log(res);
-      this.buisness_head_response = res
-      this.buisness_head_response_ = this.buisness_head_response.data
-      console.log(this.buisness_head_response_);
-      this.GrowthIndexData = this.buisness_head_response.data._points
-      this.dark_color = localStorage.getItem('topbar_color')
-      this.element.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
-      this.fontcolor = '#FFFFFF'
-      this.medium_color = localStorage.getItem('medium_color')
-      this.element.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
-
-      this.videourl = `https://www.youtube.com/0c31548b-b457-4b9b-9159-ba7a08ee2d74`
-      this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.videourl)
-    })
-
+   
 
   }
 
