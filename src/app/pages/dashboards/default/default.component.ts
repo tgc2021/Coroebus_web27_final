@@ -210,6 +210,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
           this.getUserBannerDataSectionView_2(queryParams)
           this.getUserBannerDataSectionView_3(null, queryParams)
           this.GetDataFromProduceInfo(queryParams)
+          // this.navigateToStatistics(queryParams)
           // this.notificationList(queryParams)
           // this.addIns(queryParams)
           this.notificationList()
@@ -219,6 +220,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
           this.getUserBannerDataSectionView_2()
           this.getUserBannerDataSectionView_3()
           this.GetDataFromProduceInfo(queryParams)
+          // this.navigateToStatistics()
 
           this.notificationList()
           this.addIns()
@@ -690,8 +692,12 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
     let body: any;
     body = {
       "_userid": queryParams?.userID ? queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
+      
       "_game": queryParams?.gameID ? queryParams?.gameID : this.userSelectionData?.id_coroebus_game, "_section_view": "3", "page_number": this.pageNumberForSectionView_3
     };
+    localStorage.setItem('body_userid',body._userid);
+    localStorage.setItem('body_game',body._game);
+
     [err, res] = await HttpProtocols.to(DashboardModel.getRankingAndOtherDataSectionView_3(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
       this.pokeData = res?.data?._poke_list
@@ -1358,8 +1364,8 @@ else if(this.activeTabForSectionView_2 == 4){
   
     let  _userid=this.userSelectionData?._personal_data?.USERID;
     let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
-    let id_role=this.userSelectionData?.games[0]?.id_role;
-    let id_coroebus_user=this.userSelectionData?._personal_data.id_coroebus_user;
+    let id_role=this.sectionView_1._personal_data.id_role;
+    let id_coroebus_user=this.sectionView_1._personal_data.id_coroebus_user;
 
     console.log(this.userSelectionData);
 
@@ -1368,18 +1374,18 @@ else if(this.activeTabForSectionView_2 == 4){
     const userId = this.Util.encryptData(_userid)
     const game = this.Util.encryptData(id_coroebus_game)
     const roleid = this.Util.encryptData(id_role)
-
+    const spectStaus='yes'
     
     if(this.userSelectionData.is_champions_league=='A'){
       
       window.open(
-       'http://coroebusbeta.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+      //  'http://coroebusbeta.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
 
       // 'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
-      '_self' // <- This is what makes it open in a new window.
+      // '_self' // <- This is what makes it open in a new window.
 
-      // 'http://localhost:56671/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
-      // '_self'
+      'http://localhost:4202/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+      '_self'
    
 
     )
@@ -1399,8 +1405,8 @@ else if(this.activeTabForSectionView_2 == 4){
   
       let  _userid=this.userSelectionData?._personal_data?.USERID;
       let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
-      let id_role=this.userSelectionData?.games[0]?.id_role;
-      let id_coroebus_user=this.userSelectionData?._personal_data.id_coroebus_user;
+      let id_role=this.sectionView_1._personal_data.id_role;
+      let id_coroebus_user=this.sectionView_1._personal_data.id_coroebus_user;
   
       console.log(this.userSelectionData);
   
@@ -1414,7 +1420,7 @@ else if(this.activeTabForSectionView_2 == 4){
       if(this.userSelectionData.is_champions_league=='A'){
         
         window.open(
-        'http://coroebusbeta.in/champions_league/#/home/onGoing?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+        'http://localhost:4202/champions_league/#/home/onGoing?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
         '_self' // <- This is what makes it open in a new window.
 
         // 'http://localhost:56671/champions_league/#/home/onGoing?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
@@ -1438,8 +1444,8 @@ else if(this.activeTabForSectionView_2 == 4){
 
     let  _userid=this.userSelectionData?._personal_data?.USERID;
       let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
-      let id_role=this.userSelectionData?.games[0]?.id_role;
-      let id_coroebus_user=this.userSelectionData?._personal_data.id_coroebus_user;
+      let id_role=this.sectionView_1._personal_data.id_role;
+      let id_coroebus_user=this.sectionView_1._personal_data.id_coroebus_user;
   
       console.log(this.userSelectionData);
   
@@ -1466,12 +1472,15 @@ else if(this.activeTabForSectionView_2 == 4){
       
 
   }
-  navigateToStatistics(){
+  navigateToStatistics(queryParams?: any){
 
-    let  _userid=this.userSelectionData?._personal_data?.USERID;
-      let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
-      let id_role=this.userSelectionData?.games[0]?.id_role;
-      let id_coroebus_user=this.userSelectionData?._personal_data.id_coroebus_user;
+    // localStorage.setItem('body_userid',body._userid);
+    // localStorage.setItem('body_game',body._game);
+
+     let  _userid = localStorage.getItem('body_userid');
+      let id_coroebus_game = localStorage.getItem('body_game');
+      let id_role=this.sectionView_1._personal_data.id_role;
+      let id_coroebus_user=this.sectionView_1._personal_data.id_coroebus_user;
   
       console.log(this.userSelectionData);
   
@@ -1480,22 +1489,31 @@ else if(this.activeTabForSectionView_2 == 4){
       const userId = this.Util.encryptData(_userid)
       const game = this.Util.encryptData(id_coroebus_game)
       const roleid = this.Util.encryptData(id_role)
-  
+      const spectStaus='yes'
+
       
       if(this.userSelectionData.is_champions_league=='A'){
-        if(this.hideBattleGround){
+        if(!this.hideBattleGround){
           window.open(
-            'http://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"spect="+"yes",
-            '_self' // <- This is what makes it open in a new window.
-    
-            //  'http://localhost:56671/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+            // 'http://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"spect="+"yes",
             // '_self' // <- This is what makes it open in a new window.
-            
-         
-      
+             'http://localhost:4202/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total",
+            '_self' // <- This is what makes it open in a new window.
           )
         }
+     else{
+      window.open(
+        'http://localhost:4202/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
+        '_self' // <- This is what makes it open in a new window.
+
+        //  'http://localhost:56671/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+        // '_self' // <- This is what makes it open in a new window.
+        
      
+  
+      )
+
+     }
   
         }
       
