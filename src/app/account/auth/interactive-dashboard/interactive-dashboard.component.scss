@@ -770,6 +770,12 @@ flex-direction: column;
     background: transparent;
     border: none;
     color: white;
+    height: 3vh;
+    width:3vh ;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modalBodyBooster {
@@ -897,6 +903,7 @@ flex-direction: column;
 }
 
 .button-close {
+    
     height: 22px;
     width: 22px;
     font-size: 12px;
@@ -906,6 +913,9 @@ flex-direction: column;
     border: 1px solid #000000;
     background: transparent;
     padding-top: 2px;
+    height:3vh;
+    width:3vh;
+    border-radius: 100%;
 }
 .button-close-monthly{
     height: 22px;

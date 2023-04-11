@@ -142,6 +142,9 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   weeklyBadgesActive: boolean;
   monthlyBadgesActive: boolean;
   seasonal_theme_daily_badge_details: any;
+  totalTargetScore: any;
+  totalTargetScoreForWeekly: number;
+  seasonal_theme_monthly_badge_details: any;
   
 
   constructor(private readonly store: Store, private modalService: NgbModal,
@@ -235,7 +238,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
     })
-
+  
+  
    
     
     this.callSectionView_1APISub?.unsubscribe()
@@ -251,6 +255,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     this.requestForProduce1Data = this.eventService.subscribe('requestForProduce1Data', (data) => {
       this.eventService.broadcast('requestSendForProduce1Data', this.sectionView_1)
     })
+
+    
 
   }
  
@@ -1305,7 +1311,8 @@ else if(this.activeTabForSectionView_2 == 4){
       this.seasonalThemeDaily=this.DailyPopup.seasonal_theme_daily;
       this.dailyToppers=this.weeklyPopup.seasonal_theme_daily_badge_toppers;
       this.seasonal_theme_daily_badge_details=this.DailyPopup.seasonal_theme_daily_badge_details;
-      console.log(this.seasonal_theme_weekly_badge_details);
+      this.totalTargetScore=Number(this.seasonal_theme_daily_badge_details[0].seasonal_score_target)+Number(this.seasonal_theme_daily_badge_details[1].seasonal_score_target)+Number(this.seasonal_theme_daily_badge_details[2].seasonal_score_target);
+      console.log(this.totalTargetScore);
       
       
     })
@@ -1327,6 +1334,9 @@ else if(this.activeTabForSectionView_2 == 4){
       this.seasonalThemeWeekly=this.weeklyPopup.seasonal_theme_weekly;
       this.weeklyTopers=this.weeklyPopup.seasonal_theme_weekly_badge_toppers;
       this.seasonal_theme_weekly_badge_details=this.weeklyPopup.seasonal_theme_weekly_badge_details;
+
+      this.totalTargetScoreForWeekly=Number(this.seasonal_theme_weekly_badge_details[0].seasonal_score_target)+Number(this.seasonal_theme_weekly_badge_details[1].seasonal_score_target)+Number(this.seasonal_theme_weekly_badge_details[2].seasonal_score_target);
+      console.log(this.totalTargetScore);
       console.log(this.seasonal_theme_weekly_badge_details);
       
       
@@ -1347,7 +1357,11 @@ else if(this.activeTabForSectionView_2 == 4){
       this.dataForMonthlyPopup=res;
       this.monthlyPopup=this.dataForMonthlyPopup.data;
       this.seasonalThemeMonthly=this.monthlyPopup.seasonal_theme_monthly;
-      this.monthlyTopers=this.monthlyPopup.seasonal_theme_monthly_badge_toppers
+      // this.monthlyTopers=this.monthlyPopup.seasonal_theme_monthly_badge_toppers;
+      this.seasonal_theme_monthly_badge_details=this.weeklyPopup.seasonal_theme_monthly_badge_details;
+
+      this.totalTargetScore=Number(this.seasonal_theme_monthly_badge_details[0].seasonal_monthly_target)+Number(this.seasonal_theme_monthly_badge_details[1].seasonal_score_target)+Number(this.seasonal_theme_monthly_badge_details[2].seasonal_score_target);
+
       console.log(this.seasonalThemeMonthly);
     })
     this.isDailyModalopen = false;
