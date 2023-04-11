@@ -51,10 +51,58 @@
                     </div>
                 </div>
                 <div class="row card-container" id="cardContainer">
-                    <div class="col-12 cards">
+                    <div class="row cards" >
+                        <div class="card col-5" style="align-self: start;">
+                            <div >
+                                <div class="ps-3 subHeading">
+                                    <div>
+                                        <span class="text">&nbsp;Type &nbsp;:</span>&nbsp;
+                                        <span class="heading">Play Cubicalls</span>
+                                    </div>
+                                    <div>
+                                       
+                                     
+                                    </div>
+                                </div>
+                                <div class="card-body d-flex gap-2 mt-2">
+                                        <div class="col-5">
+                                                <div  style="width:16vh; height:16vh">
+                                                    <img src="assets/images/cubicall 300x 300.png" alt="Logo" height="100%" width="100%">
+                                                </div>
+                                            <div>
+                                        </div>
+                                    </div>
+                                    <div class="col-7 ps-2">
+                                        <div>
+                                            <h6 class="mb-3 card-title">Cubicall</h6>
+                                            <p class="card-description">
+                                                Powerful game console for all.
+                                            </p>
+                                            <div class="d-flex justify-content-end align-items-end">
+                                                <span class="date"
+                                                    >21/03/2023
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <hr width="98%">
+                                </div>
+                                <div class="d-flex p-2">
+                                    <div (click)="navigateToCubicalls()">Open
+                                    </div>
+                                    
+
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
 
                         <div class="card col-5"
                             *ngFor="let data of spotEngagementData|filterPipe:spot_type  |filter:term1">
+                           
                             <div [ngStyle]="{'opacity':data._status==='active' ? 1 : 0.7}">
                                 <div class="ps-3 subHeading">
                                     <div>
@@ -137,7 +185,7 @@
                             </div>
 
                         </div>
-                        <div class="col-12 d-flex justify-content-center align-items-center"
+                        <!-- <div class="col-12 d-flex justify-content-center align-items-center"
                             *ngIf="spotEngagementData.length==0||filterByCategory.length==0">
                             <div class="noContentContainer">
 
@@ -146,7 +194,7 @@
                                     Stay tuned! You might soon get a chance to play and earn rewards.
                                 </span>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -162,7 +210,7 @@
                         </div>
 
                     </div>
-                    <div class="d-flex gap-2 mt-3">
+                    <div class="d-flex gap-2 mt-4">
                         <div style="height:5vh">
 
                             <div class="row">
@@ -218,7 +266,7 @@
                                 aria-expanded="false">
                         </button>
                     </div>
-                    <div>
+                    <div style="overflow-y: auto;height: 70vh;overflow-x: hidden;">
                         <table class="table  table-striped m-2">
                         <thead>
                             <tr>
@@ -248,7 +296,7 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody >
                             <tr *ngFor="let passbookData of Passbook |filter:term |orderBy: key:reverse;let i=index">
                                 <td scope="row">{{i+1}}</td>
                                 <td>

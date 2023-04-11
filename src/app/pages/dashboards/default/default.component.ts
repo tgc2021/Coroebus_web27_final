@@ -144,6 +144,10 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   dailyBadgesActive: boolean;
   weeklyBadgesActive: boolean;
   monthlyBadgesActive: boolean;
+  seasonal_theme_daily_badge_details: any;
+  totalTargetScore: any;
+  totalTargetScoreForWeekly: number;
+  seasonal_theme_monthly_badge_details: any;
   
 
   seasonalScoreAchived: any=[]
@@ -151,7 +155,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   arrtrue:any=[]
   trues:any=[]
   badgePercentage: number;
-  seasonal_theme_monthly_badge_details: any;
+  // seasonal_theme_monthly_badge_details: any;
   empid:any
   empemail:any
   empname:any
@@ -248,7 +252,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
     })
-
+  
+  
    
     
     this.callSectionView_1APISub?.unsubscribe()
@@ -264,6 +269,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     this.requestForProduce1Data = this.eventService.subscribe('requestForProduce1Data', (data) => {
       this.eventService.broadcast('requestSendForProduce1Data', this.sectionView_1)
     })
+
+    
 
   }
  
@@ -288,7 +295,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     this.edit_image;
     this.openDailyModal('daily');
-    this.openWeeklyModal();
+    this.openWeeklyModal('weekly');
     this.openMonthlyModal('monthly');
   }
 
@@ -1356,8 +1363,9 @@ else if(this.activeTabForSectionView_2 == 4){
       console.log(typeof(this.seasonalThemeDaily.length));
     
       this.dailyToppers=this.weeklyPopup.seasonal_theme_daily_badge_toppers;
-      this.seasonal_theme_weekly_badge_details=this.DailyPopup.seasonal_theme_daily_badge_details;
-      console.log(this.seasonal_theme_weekly_badge_details);
+      this.seasonal_theme_daily_badge_details=this.DailyPopup.seasonal_theme_daily_badge_details;
+      this.totalTargetScore=Number(this.seasonal_theme_daily_badge_details[0].seasonal_score_target)+Number(this.seasonal_theme_daily_badge_details[1].seasonal_score_target)+Number(this.seasonal_theme_daily_badge_details[2].seasonal_score_target);
+      console.log(this.totalTargetScore);
       
       
     })
@@ -1370,20 +1378,22 @@ else if(this.activeTabForSectionView_2 == 4){
     this.isMonthlyModalOpen = false;
 
   }
-  openWeeklyModal() {
+  openWeeklyModal(queryParams) {
     let obj = {
       _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
 
       _game: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
     }
-    this.http.campaignsPopup(obj).subscribe((res)=>{
+    this.http.produceInfo(obj).subscribe((res)=>{
       // console.log(res);
       this.dataForWeeklyPopup=res;
       this.weeklyPopup=this.dataForMonthlyPopup.data;
       this.seasonalThemeWeekly=this.weeklyPopup.seasonal_theme_weekly;
       this.weeklyTopers=this.weeklyPopup.seasonal_theme_weekly_badge_toppers;
       this.seasonal_theme_weekly_badge_details=this.weeklyPopup.seasonal_theme_weekly_badge_details;
-      console.log(this.seasonal_theme_weekly_badge_details.length);
+
+      this.totalTargetScoreForWeekly=Number(this.seasonal_theme_weekly_badge_details[0].seasonal_score_target)+Number(this.seasonal_theme_weekly_badge_details[1].seasonal_score_target)+Number(this.seasonal_theme_weekly_badge_details[2].seasonal_score_target);
+      console.log(this.totalTargetScore);
       console.log(this.seasonal_theme_weekly_badge_details);
 
       
@@ -1404,14 +1414,14 @@ else if(this.activeTabForSectionView_2 == 4){
       this.dataForMonthlyPopup=res;
       this.monthlyPopup=this.dataForMonthlyPopup.data;
       this.seasonalThemeMonthly=this.monthlyPopup.seasonal_theme_monthly;
+
       this.seasonal_theme_monthly_badge_details=this.monthlyPopup.seasonal_theme_monthly_badge_details;
       console.log(this.seasonal_theme_monthly_badge_details.length);
       
-      this.monthlyTopers=this.monthlyPopup.seasonal_theme_monthly_badge_toppers
+
       console.log(this.seasonalThemeMonthly);
     })
     this.isDailyModalopen = false;
-    this.isWeeklyModalOpen = false;
     this.isMonthlyModalOpen = true;
 
   }
@@ -1556,7 +1566,6 @@ else if(this.activeTabForSectionView_2 == 4){
       const roleid = this.Util.encryptData(id_role)
       const spectStaus='yes'
 
-      
       if(this.userSelectionData.is_champions_league=='A'){
         console.log(this.hideBattleGround);
         
