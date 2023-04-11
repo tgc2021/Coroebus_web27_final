@@ -141,6 +141,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   dailyBadgesActive: boolean;
   weeklyBadgesActive: boolean;
   monthlyBadgesActive: boolean;
+  seasonal_theme_daily_badge_details: any;
   
 
   constructor(private readonly store: Store, private modalService: NgbModal,
@@ -274,7 +275,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     this.edit_image;
     this.openDailyModal('daily');
-    this.openWeeklyModal();
+    this.openWeeklyModal('weekly');
     this.openMonthlyModal('monthly');
   }
 
@@ -1303,7 +1304,7 @@ else if(this.activeTabForSectionView_2 == 4){
       this.DailyPopup=this.dataForMonthlyPopup.data;
       this.seasonalThemeDaily=this.DailyPopup.seasonal_theme_daily;
       this.dailyToppers=this.weeklyPopup.seasonal_theme_daily_badge_toppers;
-      this.seasonal_theme_weekly_badge_details=this.DailyPopup.seasonal_theme_daily_badge_details;
+      this.seasonal_theme_daily_badge_details=this.DailyPopup.seasonal_theme_daily_badge_details;
       console.log(this.seasonal_theme_weekly_badge_details);
       
       
@@ -1313,13 +1314,13 @@ else if(this.activeTabForSectionView_2 == 4){
     this.isMonthlyModalOpen = false;
 
   }
-  openWeeklyModal() {
+  openWeeklyModal(queryParams) {
     let obj = {
       _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
 
       _game: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
     }
-    this.http.campaignsPopup(obj).subscribe((res)=>{
+    this.http.produceInfo(obj).subscribe((res)=>{
       // console.log(res);
       this.dataForWeeklyPopup=res;
       this.weeklyPopup=this.dataForMonthlyPopup.data;

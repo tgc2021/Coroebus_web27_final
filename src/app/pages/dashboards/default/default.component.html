@@ -897,7 +897,7 @@
                                                 </mat-expansion-panel-header>
                                                 <div>
                                                     <div class="inner_content d-flex justify-content-between" (mouseover)="openDailyModal('data')" data-bs-toggle="modal"
-                                                    data-bs-target="#dailyModal"  >
+                                                    data-bs-target="#dailyModal">
                                                        <div class="col-6">Daily</div> 
                                                        <div class="badge-container col" *ngFor="let dailyBadges of seasonalThemeDailyBadges;let i=index;" >
                                                         <!-- <div>{{dailyBadges.seasonal_score_achived}}</div>
@@ -920,7 +920,7 @@
                                                            
                                                        </div>
                                                     </div>
-                                                    <div class="inner_content d-flex justify-content-between" (mouseover)="openWeeklyModal()" data-bs-toggle="modal"
+                                                    <div class="inner_content d-flex justify-content-between" (mouseover)="openWeeklyModal('weekly')" data-bs-toggle="modal"
                                                     data-bs-target="#weeklyModal">
                                                         <div class="col-6" >Weekly</div> 
                                                         <div class="badge-container col"*ngFor="let WeeklyBadge of seasonalThemeWeeklyBadges;let i=index" >
@@ -1628,7 +1628,76 @@
                             </div>
                             
                         </div>
+                        <div>
+                            <div class="row" style="width:90%">
+                                
+                                <div class="col-2">
+                                    <div style="height:6vh;width:6vh;border-radius:100%">
+                                        <!-- <img src="{{seasonal_theme_weekly_badge_details[0].seasonal_badge_logo}}" alt="" height="100%" width="100%"> -->
+                                    </div>
+                                </div>
+                                <div class="col d-flex flex-column justify-content-center align-items-center " >
+                                    <div style="height:6vh;width:6vh;border-radius:50%" [ngClass]="seasonal_theme_daily_badge_details[1].seasonal_score_achived<=50?'inActiveBadge':'ActiveBadge'" >
+                                        <img src="{{seasonal_theme_daily_badge_details[0].seasonal_badge_logo}}" alt="" height="100%" width="100%">
+                                        
+                                    </div>
+                                    <div class="d-flex justify-content-center" >
+                                        <div  style="height:3vh;border-left: 1px solid black;"></div>
+                                    </div>
+                                    
+                                    
+                                </div>
+                                <div class="col d-flex flex-column justify-content-center align-items-center " >
+                                    <div style="height:6vh;width:6vh;border-radius:50%" [ngClass]="seasonal_theme_daily_badge_details[1].seasonal_score_achived<=100?'deActiveBadge':'actBadge'" >
+                                        <img  src="{{seasonal_theme_daily_badge_details[1].seasonal_badge_logo}}" alt="" height="100%" width="100%">
+                                        
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <div style="height:3vh;border-left: 1px solid black;"></div>
+                                    </div>
+                                    
+                                    
+                                </div>
+                                <div class="col d-flex flex-column justify-content-center align-items-center " >
+                                    <div style="height:6vh;width:6vh;border-radius:50%" [ngClass]="seasonal_theme_daily_badge_details[2].seasonal_score_achived<=150?'deActiveBadge':'actBadge'">
+                                        <img  src="{{seasonal_theme_daily_badge_details[2].seasonal_badge_logo}}" alt="" height="100%" width="100%">
+                                        
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <div style="height:3vh;border-left: 1px solid black;"></div>
+                                    </div>
+                                    
+                                    
+                                </div>
+
+                            </div>
+                          
+                            <div class="animation-bar-1">
+                                <span class="d-flex justify-content-center"  [style.background-size.%]="seasonal_theme_daily_badge_details[2].seasonal_score_target" [style.width.%]="((seasonal_theme_daily_badge_details[0].seasonal_score_achived/seasonal_theme_daily_badge_details[2].seasonal_score_target)*(100))">
+                                                                        
+                                </span>
+                                
+
+                            </div>
+                            <div class="animation-bar" [style.margin-left.%]="((seasonal_theme_daily_badge_details[0].seasonal_score_achived/seasonal_theme_daily_badge_details[2].seasonal_score_target)*(100))">
+                               
+                                <div class="d-flex flex-column">
+                                    <div class="border-left"></div>
+                                    <div class="Progressscore">
+                                        {{seasonal_theme_daily_badge_details[0].seasonal_score_achived}}
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                           </div>
+                            
+
+                           
+                            
+                          
+                        
                        
+                        
                        
                         
                     </div>
@@ -1651,9 +1720,9 @@
         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modalDialogWeekly modal-dialog-centered">
             <div class="modal-content modalContentWeekly"
-                style="background: url(assets/images/interactive-dashboard/BG.png);position: relative; background-size:contain;">
+             >
                 <div class="modal-body"
-                    style="background-image:url(https://coroebus.in/coroebus-beta/assets/Media/weekly_champion.svg); background-repeat: no-repeat; background-size: contain; position:ralative; min-height: 51vh;">
+                    style="min-height: 51vh;">
                     <div class="d-flex justify-content-end">
                         <button type="button" class="button-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                     </div>
@@ -1685,38 +1754,8 @@
                             </div>
 
 
-                            <div class="d-flex justify-content-center mt-2">
-                                <button class="btn-reward d-flex justify-content-center align-items-center p-1 gap-1"
-                                    style="height: 3.5vh;">
-
-                                    <img src="https://coroebusbeta.in/coroebus-beta/assets/ThemeBackground/TB-16687580468959.png?813021266"
-                                        alt="" height="100%">
-
-                                    <div>
-                                        {{seasonalThemeWeekly[0].reward_point}}
-                                    </div>
-                                </button>
-
-                            </div>
-                            <div class="d-flex justify-content-center gap-2 mt-1">
-                                <div class="d-flex flex-column align-items-center">
-                                    <div class="Number">
-                                        {{seasonal_theme_weekly_badge_details[0].your_rank}}
-
-                                    </div>
-                                    <div class="Words">Your Rank</div>
-                                </div>
-                                <div style="border-left:1px solid #000000;height:60px">
-
-                                </div>
-                                <div class="d-flex flex-column align-items-center">
-                                    <div class="Number">
-                                        {{seasonal_theme_weekly_badge_details[0].your_score}}
-
-                                    </div>
-                                    <div class="Words">Your Score</div>
-                                </div>
-                            </div>
+                          
+                           
 
 
                             <div class="col-12 card-container-popup" style="overflow-x:auto;"
