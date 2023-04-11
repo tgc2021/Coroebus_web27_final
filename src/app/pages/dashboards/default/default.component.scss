@@ -386,10 +386,13 @@ mat-accordion{
     .mobile-view {
         display: none;
     }
+    .inner_content{
+        width: 11vw;
+    }
 }
 
 
-.mobile-dashboard-banner-main-rank-img{
+.mobile-dashboard-banner-main-rank-img{   
     height: auto;
     width: 18vw;
     padding-left: 5%;
