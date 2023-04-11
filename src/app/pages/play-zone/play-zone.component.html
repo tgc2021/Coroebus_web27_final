@@ -210,7 +210,7 @@
                         </div>
 
                     </div>
-                    <div class="d-flex gap-2 mt-3">
+                    <div class="d-flex gap-2 mt-4">
                         <div style="height:5vh">
 
                             <div class="row">
@@ -266,7 +266,7 @@
                                 aria-expanded="false">
                         </button>
                     </div>
-                    <div>
+                    <div style="overflow-y: auto;height: 70vh;overflow-x: hidden;">
                         <table class="table  table-striped m-2">
                         <thead>
                             <tr>
@@ -296,7 +296,7 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody >
                             <tr *ngFor="let passbookData of Passbook |filter:term |orderBy: key:reverse;let i=index">
                                 <td scope="row">{{i+1}}</td>
                                 <td>

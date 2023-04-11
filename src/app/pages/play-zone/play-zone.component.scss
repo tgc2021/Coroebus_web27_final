@@ -79,7 +79,7 @@
     display: flex;
     flex:wrap;
     justify-content: center;
-    overflow-y: auto;
+    // overflow-y: auto;
     margin: 1%;
     margin-top: 1%;
     padding: 1%;
@@ -89,7 +89,7 @@
     width: 30%;
     position: fixed;
     right: 0;
-    overflow-y: auto;
+    // overflow-y: auto;
     overflow-x: hidden;
 }
 .drop-down-card{
@@ -310,7 +310,6 @@ input[type="checkbox"]::placeholder {
         overflow-y: auto;
         // row-gap: 2rem;
         .card{
-           
             width: 28vw;
             height: 35vh;
 
