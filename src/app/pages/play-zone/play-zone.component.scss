@@ -304,11 +304,17 @@ input[type="checkbox"]::placeholder {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content:space-around;
+        justify-content:space-between;
         height: 65vh;
         width: 65vw;
         overflow-y: auto;
         // row-gap: 2rem;
+        .card{
+           
+            width: 28vw;
+            height: 35vh;
+
+        }
     }
     .card-body{
         height: 20vh;
