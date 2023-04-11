@@ -118,11 +118,11 @@
             </div>
             <!-- Dashboard Section -->
             <div class="col-6 mt-2 ">
-                <div class="dashboard_section">
+                <div class="dashboard_section" >
                     <div class="badge_container " 
                 [style.background-image]="
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-                <img src="{{sectionView_1._personal_data.profile_badge_image}}" alt="badge_img" height="60%" width="60%">
+                <img (click)="getDataBasedOnUserIDHos(sectionView_1?.is_land_logos)" src="{{sectionView_1._personal_data.profile_badge_image}}" alt="badge_img" height="60%" width="60%">
                     
                 </div>
                 

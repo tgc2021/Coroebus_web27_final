@@ -152,6 +152,11 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   trues:any=[]
   badgePercentage: number;
   seasonal_theme_monthly_badge_details: any;
+  empid:any
+  empemail:any
+  empname:any
+  emporg:any
+
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
     private _route: ActivatedRoute, public toastService: ToastService,public http:ApiserviceService,public elementref: ElementRef) {
@@ -1519,7 +1524,7 @@ else if(this.activeTabForSectionView_2 == 4){
       if(this.userSelectionData.is_champions_league=='A'){
         
         window.open(
-        'http://coroebus.in/champions_league/#/home/challengeRecieved?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+        'http://coroebusbeta.in/champions_league/#/home/challengeRecieved?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
         '_self' // <- This is what makes it open in a new window.
 
         // 'http://localhost:56671/champions_league/#/home/challengeRecieved?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
@@ -1553,7 +1558,11 @@ else if(this.activeTabForSectionView_2 == 4){
 
       
       if(this.userSelectionData.is_champions_league=='A'){
-        if(!this.hideBattleGround){
+        console.log(this.hideBattleGround);
+        
+        if(this.hideBattleGround){
+          console.log('no hide');
+          
           window.open(
             // 'http://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"spect="+"yes",
             // '_self' // <- This is what makes it open in a new window.
@@ -1562,8 +1571,11 @@ else if(this.activeTabForSectionView_2 == 4){
           )
         }
      else{
+      console.log('hide');
+
       window.open(
-        'http://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
+        
+        'https://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
         '_self' // <- This is what makes it open in a new window.
 
         //  'http://localhost:56671/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
@@ -1580,11 +1592,42 @@ else if(this.activeTabForSectionView_2 == 4){
 
   }
 
+  navigateToStatisticsSpect(queryParams?: any){
+    let  _userid = localStorage.getItem('body_userid');
+    let id_coroebus_game = localStorage.getItem('body_game');
+    let id_role=this.sectionView_1._personal_data.id_role;
+    let id_coroebus_user=this.sectionView_1._personal_data.id_coroebus_user;
+
+    console.log(this.userSelectionData);
+
+
+
+    const userId = this.Util.encryptData(_userid)
+    const game = this.Util.encryptData(id_coroebus_game)
+    const roleid = this.Util.encryptData(id_role)
+    const spectStaus='yes'
+
+    window.open(
+        
+      'http://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
+      '_self' // <- This is what makes it open in a new window.
+
+      //  'http://localhost:56671/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+      // '_self' // <- This is what makes it open in a new window.
+      
+   
+
+    )
+  }
   navigateToM2ost(){
+    this.empid= this.sectionView_1._personal_data.EMPLOYEEID
+    this.empemail=this.sectionView_1._personal_data.email_id
+    this.empname=this.sectionView_1._personal_data.first_name
+    this.emporg=this.sectionView_1._personal_data.organization_name
     window.open(
       // https://www.m2ost.in/m2ostproductionapiSSO/api/m2ostSSO?param=empid$103$empemail$empname$TGC
     
-      'https://www.m2ost.in/m2ostproductionapiSSO/api/m2ostSSO?param=',
+      'https://www.m2ost.in/m2ostproductionapiSSO/api/m2ostSSO?param='+this.empid +'$103$'+this.empemail+'$'+this.empname+'$'+this.emporg,
       'blank'
    
 

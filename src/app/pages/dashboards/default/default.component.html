@@ -737,10 +737,10 @@
                                                 </mat-expansion-panel-header>
                                                 <div class="d-flex flex-column align-items-start gap-2  mt-3">
                                                     <div class="inner_content" (click)="navigateToM2ost()">Excel Basic</div>
-                                                    <div class="inner_content">Strategic Probolem solving</div>
-                                                    <div class="inner_content">Conflict Resolution</div>
-                                                    <div class="inner_content">Home Loan Process</div>
-                                                    <div class="inner_content">Assesment Home Loan Process</div>
+                                                    <div class="inner_content" (click)="navigateToM2ost()">Strategic Probolem solving</div>
+                                                    <div class="inner_content" (click)="navigateToM2ost()">Conflict Resolution</div>
+                                                    <div class="inner_content" (click)="navigateToM2ost()">Home Loan Process</div>
+                                                    <div class="inner_content" (click)="navigateToM2ost()">Assesment Home Loan Process</div>
                                                 </div>
                                                 
                                                 
@@ -961,10 +961,10 @@
                                                     style="font-weight: 550;font-family: 'Work Sans';">
                                                     
                                                     <div class="d-flex flex-column justify-content-between">
-                                                        <div  *ngIf="!hideBattleGround;then hideForOtherRole"></div>
+                                                        <div  *ngIf="!hideBattleGround;then hideForOtherRole else donthide"></div>
                                                         <ng-template #hideForOtherRole>
                                                             <div class="inner_content" (click)="navigateToNewChallenge()">New Challenge</div>
-                                                            <div class="inner_content" style=" border-bottom: 0.5px solid #A5ACB8;" (click)="navigateToOnGoingChallenge()" class="d-flex justify-content-between">
+                                                            <div class="inner_content" style=" border-bottom: 0.5px solid #A5ACB8; cursor: pointer;" (click)="navigateToOnGoingChallenge()" class="d-flex justify-content-between">
                                                                 <div class="ps-3" style="  font-weight: 600;
                                                                 font-family: 'Work Sans';
                                                                 font-size:1.6vh;
@@ -976,7 +976,37 @@
                                                                 height:5vh;
                                                                 align-items:center">{{onGoingChallenges}}</div>
                                                             </div>
-                                                            <div class="inner_content" style=" border-bottom: 0.5px solid #A5ACB8;" (click)="navigateToChallengeRecieved()" class="d-flex justify-content-between">
+                                                            <div class="inner_content" style=" border-bottom: 0.5px solid #A5ACB8; cursor: pointer;" (click)="navigateToChallengeRecieved()" class="d-flex justify-content-between">
+                                                                <div class="ps-3" style="  font-weight: 600;
+                                                                font-family: 'Work Sans';
+                                                                font-size:1.6vh;
+                                                                 display: flex;
+                                                                 height:5vh;
+                                                                 
+                                                                align-items: center;
+                                                               ">Challenge Recieved</div>
+                                                                <div style="display:flex;
+                                                                height:5vh;
+                                                                align-items:center">{{challengeReacieved}}</div>
+                                                                
+                                                            </div>
+                                                        </ng-template>
+
+                                                        <ng-template #donthide>
+                                                            <div class="inner_content">New Challenge</div>
+                                                            <div class="inner_content" style=" border-bottom: 0.5px solid #A5ACB8;"  class="d-flex justify-content-between">
+                                                                <div class="ps-3" style="  font-weight: 600;
+                                                                font-family: 'Work Sans';
+                                                                font-size:1.6vh;
+                                                               
+                                                                display:flex;
+                                                                height:5vh;
+                                                                align-items:center">Ongoing Challenges</div>
+                                                                <div style="display:flex;
+                                                                height:5vh;
+                                                                align-items:center">{{onGoingChallenges}}</div>
+                                                            </div>
+                                                            <div class="inner_content" style=" border-bottom: 0.5px solid #A5ACB8;"  class="d-flex justify-content-between">
                                                                 <div class="ps-3" style="  font-weight: 600;
                                                                 font-family: 'Work Sans';
                                                                 font-size:1.6vh;

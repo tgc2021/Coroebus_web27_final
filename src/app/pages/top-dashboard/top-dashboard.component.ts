@@ -152,6 +152,7 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
     }
   }
 
+ 
   navigateToBIMap(data: any) {
 
     console.log(data);
