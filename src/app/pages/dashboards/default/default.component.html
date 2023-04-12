@@ -758,7 +758,7 @@
     
                                                 </mat-expansion-panel-header>
                                                 <div *ngFor="let triviaData of triviaCornerData">
-                                                    <div class="d-flex p-2 mt-1" style="border-radius:5px;font-family:'Work sans';" [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'">
+                                                    <div class="d-flex p-2 mt-1" style="border-radius:5px;font-family:'Work sans';" [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'" (click)="navigateToBriefQuetion(triviaData)">
                                                         <div class="triviaBanner d-flex align-items-start mt-2 p-2">
                                                             <div style="height:13vh;width:5vw;border-radius:5vh">
                                                                 <img src="{{triviaData.brief_graphics}}" alt="trivia_banner" height="100%" width="100%">
@@ -1854,7 +1854,7 @@
 </ng-template>
 
 <!-- Monthly Modal -->
-<div *ngIf="isMonthlyModalOpen;then monthly"></div>
+<!-- <div *ngIf="isMonthlyModalOpen;then monthly"></div>
 <ng-template #monthly>
     <div class="monthlyModal" >
         <div class="modal  fade bd-example-modal-sm" id="monthlyModal" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -1905,7 +1905,7 @@
                         <div class="animation-bar" *ngIf="seasonal_theme_monthly_badge_details.length!=0" >
                             <div class="badges_row" style="width:100%" >
                                 
-                                <!-- <div></div> -->
+                              
                                 <div   class="d-flex flex-column justify-content-center align-items-center " >
                                     <div style="height:6vh;width:6vh;border-radius:50%" [ngClass]="seasonal_theme_monthly_badge_details[0].active_class=='0'?'inActiveBadge':'ActiveBadge'" >
                                         <img src="{{seasonal_theme_monthly_badge_details[0].seasonal_badge_logo}}" alt="" height="100%" width="100%">
@@ -1980,7 +1980,7 @@
             </div>
         </div>
     </div>
-</ng-template>
+</ng-template> -->
 
 
 

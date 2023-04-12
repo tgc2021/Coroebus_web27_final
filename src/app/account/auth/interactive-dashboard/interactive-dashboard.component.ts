@@ -662,22 +662,26 @@ else{
     }
    
   }
-
   navigateToLearningAcademy() {
     // this.audio.stop();
     const userId = this.mergeObj.USERID;
     const game = this.mergeObj.id_coroebus_game;
     const teamid=this.mergeObj.id_coroebus_team;
-
+  
     console.log(userId,game,teamid);
+    // console.log('http://localhost:4200/#/LearningAcademy/library?_game='+game+"&_userid¸="+userId+"&_team="+teamid,'_self' );
+    
+   
     window.open(
-      // 'http://localhost:62267/#/LearningAcademy/badges/?_userid='+userId+"&_game="+game+"&_team="+teamid, '_self'
-      'http://localhost:62267/#/LearningAcademy/badges/?_userid='+userId+"&_game="+game+"&_team="+teamid,'_self'
+      
+      'https://coroebusbeta.in/Learning_academy/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid,'_self'
+      // 'https://coroebus.in/Learning_academy/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid,'_self'
 
+      
     )
-
-    // this._router.navigateByUrl("/learning/learningAcademy")
+    
   }
+
   navigateToNotification() {
     this._router.navigateByUrl("/notification/list")
   }
@@ -770,8 +774,6 @@ else{
     },5000)
 		
 	}
-
-
   promotionalredirection(value:any){
     console.log(value);
 

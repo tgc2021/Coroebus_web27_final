@@ -187,7 +187,7 @@ console.log(this.userSelectionData);
 
     
     this.isCondensed = !this.isCondensed;
-    console.log(this.isCondensed );
+    console.log(this.isCondensed);
 
     document.body.classList.toggle('sidebar-enable');
     document.body.classList.toggle('vertical-collpsed');
