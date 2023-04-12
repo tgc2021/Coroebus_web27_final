@@ -187,7 +187,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
         // do something with the query params
         console.log(queryParams?.userID);
        
-
+      
         if (queryParams?.userID) {
           console.log(window.location.href);
           this.location=window.location.href
@@ -1114,12 +1114,12 @@ else if(this.activeTabForSectionView_2 == 4){
     else{
       this._router.navigate([], {
         relativeTo: this._route,
-        queryParams: {
-          userID: this.Util.encryptData(data?._userid),
-          gameID: this.Util.encryptData(data?.game_id),
-          roleID: this.Util.encryptData(data?.role_id?.toString())
+        // queryParams: {
+        //   userID: this.Util.encryptData(data?._userid),
+        //   gameID: this.Util.encryptData(data?.game_id),
+        //   roleID: this.Util.encryptData(data?.role_id?.toString())
   
-        },
+        // },
       
         queryParamsHandling: 'merge',
         // preserve the existing query params in the route
@@ -1522,7 +1522,7 @@ else if(this.activeTabForSectionView_2 == 4){
   }
   navigateToStatistics(){
 
-    let  _userid=this.userSelectionData?._personal_data?.USERID;
+     let  _userid=this.userSelectionData?._personal_data?.USERID;
       let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
       let id_role=this.userSelectionData?.games[0]?.id_role;
       let id_coroebus_user=this.userSelectionData?._personal_data.id_coroebus_user;
@@ -1630,7 +1630,33 @@ else if(this.activeTabForSectionView_2 == 4){
 
   }
 
+
+  navigateToBriefQuetion(data:any){
+  console.log(data);
+  let id_coroebus_team='0';
+  console.log(data._game,data._userid,id_coroebus_team,data._categoryid,data.id_learning_academy_brief,data._subcategoryid,data.brief_type);
+  console.log(data.id_learning_academy_brief);
   
+   console.log('http://localhost:4200/#/LearningAcademy/library_game='+data._game+"&_userid="+data._userid+"&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+"&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type);
+
+   if(data.view_status!='Read'){
+    window.open(
+      'https://coroebusbeta.in/Learning_academy/#/LearningAcademy/library?_game='+data._game+"&_userid="+data._userid+"&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+"&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type,
+  
+     '_self'
+   )
+   }
+  else{
+    this.modalService.dismissAll('Cross click')
+    Swal.fire({
+      title: '',
+      text: 'Quetion is Already Given',
+      // imageUrl: 'assets/images/svg/logo/logo.svg',
+      imageHeight: 40,
+      confirmButtonColor: '#556ee6'
+    });
+  }
+  }
 
   
 }
