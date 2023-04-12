@@ -735,13 +735,26 @@
                                                     </mat-panel-title>
 
                                                 </mat-expansion-panel-header>
-                                                <div class="d-flex flex-column align-items-start gap-2  mt-3">
-                                                    <div class="inner_content" (click)="navigateToM2ost()">Excel Basic</div>
-                                                    <div class="inner_content" (click)="navigateToM2ost()">Strategic Probolem solving</div>
-                                                    <div class="inner_content" (click)="navigateToM2ost()">Conflict Resolution</div>
-                                                    <div class="inner_content" (click)="navigateToM2ost()">Home Loan Process</div>
-                                                    <div class="inner_content" (click)="navigateToM2ost()">Assesment Home Loan Process</div>
-                                                </div>
+                                                <div *ngIf="!hideBattleGround then redirectm2ost else dontredirect"></div>
+                                                <ng-template #redirectm2ost>
+                                                    <div class="d-flex flex-column align-items-start gap-2  mt-3" >
+                                                        <div class="inner_content" (click)="navigateToM2ost()">Excel Basic</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost()">Strategic Probolem solving</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost()">Conflict Resolution</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost()">Home Loan Process</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost()">Assesment Home Loan Process</div>
+                                                    </div>
+                                                </ng-template>
+                                               
+                                                <ng-template #dontredirect>
+                                                    <div class="d-flex flex-column align-items-start gap-2  mt-3" >
+                                                        <div class="inner_content">Excel Basic</div>
+                                                        <div class="inner_content" >Strategic Probolem solving</div>
+                                                        <div class="inner_content" >Conflict Resolution</div>
+                                                        <div class="inner_content" >Home Loan Process</div>
+                                                        <div class="inner_content" >Assesment Home Loan Process</div>
+                                                    </div>
+                                                </ng-template>
                                                 
                                                 
                                             </mat-expansion-panel>
@@ -758,37 +771,75 @@
     
                                                 </mat-expansion-panel-header>
                                                 <div *ngFor="let triviaData of triviaCornerData">
-                                                    <div class="d-flex p-2 mt-1" style="border-radius:5px;font-family:'Work sans';" [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'" (click)="navigateToBriefQuetion(triviaData)">
-                                                        <div class="triviaBanner d-flex align-items-start mt-2 p-2">
-                                                            <div style="height:13vh;width:5vw;border-radius:5vh">
-                                                                <img src="{{triviaData.brief_graphics}}" alt="trivia_banner" height="100%" width="100%">
+                                                    <div *ngIf="!hideBattleGround then redirect_la else dontredirect_la"></div>
+                                                    <ng-template #redirect_la>
+                                                        <div class="d-flex p-2 mt-1" style="border-radius:5px;font-family:'Work sans';" [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'" (click)="navigateToBriefQuetion(triviaData)">
+                                                            <div class="triviaBanner d-flex align-items-start mt-2 p-2">
+                                                                <div style="height:13vh;width:5vw;border-radius:5vh">
+                                                                    <img src="{{triviaData.brief_graphics}}" alt="trivia_banner" height="100%" width="100%">
+                                                                </div>
+            
+            
+            
                                                             </div>
+                                                            <div class="triviaDescription d-flex flex-column gap-1 p-1 mt-2" style="width:100%;height:20vh">
+                                                                <div class="triviaTitle">
+                                                                    <strong>
+                                                                       {{triviaData.brief_title}}
+                                                                    </strong>
+                                                                     
+                                                                    
+                                                                </div>
+                                                                <p style="font-size:1.2vh;
+                                                                overflow: hidden;
+                                                                text-overflow: ellipsis;
+                                                                ">
+                                                                    {{triviaData.brief_summary}}
         
-        
-        
+                                                                </p>
+                                                                <div  style="font-size:1vh;font-family: 'Work sans';color:#A5ACB8;text-align:end">
+                                                                    {{triviaData.created_at|date:'dd/MM/YYYY'}}
+                                                                </div>
+            
+                                                            </div>
+            
                                                         </div>
-                                                        <div class="triviaDescription d-flex flex-column gap-1 p-1 mt-2" style="width:100%;height:20vh">
-                                                            <div class="triviaTitle">
-                                                                <strong>
-                                                                   {{triviaData.brief_title}}
-                                                                </strong>
-                                                                 
-                                                                
+                                                    </ng-template>
+                                                    <ng-template #dontredirect_la>
+                                                        <div class="d-flex p-2 mt-1" style="border-radius:5px;font-family:'Work sans';" [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'" >
+                                                            <div class="triviaBanner d-flex align-items-start mt-2 p-2">
+                                                                <div style="height:13vh;width:5vw;border-radius:5vh">
+                                                                    <img src="{{triviaData.brief_graphics}}" alt="trivia_banner" height="100%" width="100%">
+                                                                </div>
+            
+            
+            
                                                             </div>
-                                                            <p style="font-size:1.2vh;
-                                                            overflow: hidden;
-                                                            text-overflow: ellipsis;
-                                                            ">
-                                                                {{triviaData.brief_summary}}
-    
-                                                            </p>
-                                                            <div  style="font-size:1vh;font-family: 'Work sans';color:#A5ACB8;text-align:end">
-                                                                {{triviaData.created_at|date:'dd/MM/YYYY'}}
-                                                            </div>
+                                                            <div class="triviaDescription d-flex flex-column gap-1 p-1 mt-2" style="width:100%;height:20vh">
+                                                                <div class="triviaTitle">
+                                                                    <strong>
+                                                                       {{triviaData.brief_title}}
+                                                                    </strong>
+                                                                     
+                                                                    
+                                                                </div>
+                                                                <p style="font-size:1.2vh;
+                                                                overflow: hidden;
+                                                                text-overflow: ellipsis;
+                                                                ">
+                                                                    {{triviaData.brief_summary}}
         
+                                                                </p>
+                                                                <div  style="font-size:1vh;font-family: 'Work sans';color:#A5ACB8;text-align:end">
+                                                                    {{triviaData.created_at|date:'dd/MM/YYYY'}}
+                                                                </div>
+            
+                                                            </div>
+            
                                                         </div>
-        
-                                                    </div>
+                                                    </ng-template>
+                                                  
+
                                                 </div>
                                                
     
@@ -961,7 +1012,7 @@
                                                 <div class="d-flex flex-column justify-content-between align-items-start mt-3 "
                                                     style="font-weight: 550;font-family: 'Work Sans';">
                                                     
-                                                    <div class="d-flex flex-column justify-content-between">
+                                                    <div class="d-flex flex-column justify-content-between" style="width: 100%;">
                                                         <div  *ngIf="!hideBattleGround;then hideForOtherRole else donthide"></div>
                                                         <ng-template #hideForOtherRole>
                                                             <div class="inner_content" (click)="navigateToNewChallenge()">New Challenge</div>
@@ -1628,7 +1679,7 @@
 <!-- Daily Popup Module -->
 
 <!-- DailyModal -->
-<div *ngIf="isDailyModalopen;then Daily"></div>
+<!-- <div *ngIf="isDailyModalopen;then Daily"></div>
 <ng-template #Daily>
     <div class="DailyModal">
         <div class="modal  fade bd-example-modal-sm" id="dailyModal" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -1637,9 +1688,9 @@
                 <div class="modal-content ">
                     <div class="modal-body">
                         <div class="d-flex justify-content-end">
-                            <button type="button" class="button-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+                            <button type="button" class="button-close" data-bs-dismiss="modal" aria-label="Close" (click)="navigateToDashboard()">X</button>
                         </div>
-                        <div class="popupheight popupDaily row d-flex" *ngIf="seasonalThemeDaily.length!=0">
+                        <div class="popupheight popupDaily row d-flex" *ngIf="seasonalThemeDaily.length>0">
                             <div class="d-flex  justify-content-between mb-2">
                                 <div class="ModalHeading">
                                     {{seasonalThemeDaily[0].seasonal_theme_title}}
@@ -1798,7 +1849,7 @@
 
 
                             </div>
-                            <div class="animation-bar" *ngIf="seasonal_theme_weekly_badge_details!=0">
+                            <div class="animation-bar" *ngIf="seasonal_theme_weekly_badge_details.length!=0">
                                 <div class="badges_row" style="width:100%">
 
                                     <div></div>
@@ -1860,9 +1911,7 @@
                                         <div class="Progressscore">
                                             {{seasonal_theme_weekly_badge_details[0].seasonal_score_achived}}
                                         </div>
-                                        <!-- <div class="name">{{topper.first_name.slice(0,10)}}...</div>
-                                        <div class="rank">Rank:{{topper.user_rank}}</div>
-                                        <div class="score">{{topper.score}}</div> -->
+                                       
                                     </div>
                                 </div> 
 
@@ -1883,7 +1932,7 @@
         </div>
     </div>
 
-</ng-template>
+</ng-template> -->
 
 <!-- Monthly Modal -->
 <!-- <div *ngIf="isMonthlyModalOpen;then monthly"></div>

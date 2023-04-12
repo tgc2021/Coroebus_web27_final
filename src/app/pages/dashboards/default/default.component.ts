@@ -1454,12 +1454,12 @@ else if(this.activeTabForSectionView_2 == 4){
     if(this.userSelectionData.is_champions_league=='A'){
       
       window.open(
-      //  'http://coroebusbeta.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+      //  'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
 
       // 'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
       // '_self' // <- This is what makes it open in a new window.
 
-      'http://coroebusbeta.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+      'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
       '_self'
    
 
@@ -1495,7 +1495,7 @@ else if(this.activeTabForSectionView_2 == 4){
       if(this.userSelectionData.is_champions_league=='A'){
         
         window.open(
-        'http://coroebusbeta.in/champions_league/#/home/onGoing?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+        'http://coroebus.in/champions_league/#/home/onGoing?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
         '_self' // <- This is what makes it open in a new window.
 
         // 'http://localhost:56671/champions_league/#/home/onGoing?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
@@ -1534,7 +1534,7 @@ else if(this.activeTabForSectionView_2 == 4){
       if(this.userSelectionData.is_champions_league=='A'){
         
         window.open(
-        'http://coroebusbeta.in/champions_league/#/home/challengeRecieved?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+        'http://coroebus.in/champions_league/#/home/challengeRecieved?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
         '_self' // <- This is what makes it open in a new window.
 
         // 'http://localhost:56671/champions_league/#/home/challengeRecieved?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
@@ -1573,9 +1573,9 @@ else if(this.activeTabForSectionView_2 == 4){
           console.log('no hide');
           
           window.open(
-            // 'http://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"spect="+"yes",
+            // 'http://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"spect="+"yes",
             // '_self' // <- This is what makes it open in a new window.
-             'http://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total",
+             'http://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total",
             '_self' // <- This is what makes it open in a new window.
           )
         }
@@ -1584,7 +1584,7 @@ else if(this.activeTabForSectionView_2 == 4){
 
       window.open(
         
-        'https://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
+        'https://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
         '_self' // <- This is what makes it open in a new window.
 
         //  'http://localhost:56671/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
@@ -1618,7 +1618,7 @@ else if(this.activeTabForSectionView_2 == 4){
 
     window.open(
         
-      'http://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
+      'http://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
       '_self' // <- This is what makes it open in a new window.
 
       //  'http://localhost:56671/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
@@ -1628,6 +1628,10 @@ else if(this.activeTabForSectionView_2 == 4){
 
     )
   }
+
+  navigateToDashboard(){
+    location.reload()
+  }
   navigateToM2ost(){
     this.empid= this.sectionView_1._personal_data.EMPLOYEEID
     this.empemail=this.sectionView_1._personal_data.email_id
@@ -1636,7 +1640,7 @@ else if(this.activeTabForSectionView_2 == 4){
     window.open(
       // https://www.m2ost.in/m2ostproductionapiSSO/api/m2ostSSO?param=empid$103$empemail$empname$TGC
     
-      'https://www.m2ost.in/m2ostproductionapiSSO/api/m2ostSSO?param='+this.empid +'$103$'+this.empemail+'$'+this.empname+'$'+this.emporg,
+      'https://www.m2ost.in/m2ostproductionapiSSO/api/m2ostSSO?param='+this.empid +'$113$'+this.empemail+'$'+this.empname+'$'+this.emporg,
       'blank'
    
 
@@ -1741,7 +1745,7 @@ else if(this.activeTabForSectionView_2 == 4){
   
      if(data.view_status!='Read'){
       window.open(
-        'https://coroebusbeta.in/Learning_academy/#/LearningAcademy/library?_game='+data._game+"&_userid="+data._userid+"&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+"&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type,
+        'https://coroebus.in/Learning_academy/#/LearningAcademy/library?_game='+data._game+"&_userid="+data._userid+"&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+"&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type,
     
        '_self'
      )

@@ -50,7 +50,7 @@ export class LearningAcademyComponent implements OnInit {
     console.log(userId,game,teamid);
     window.open(
       // 'http://localhost:62267/#/LearningAcademy/badges/?_userid='+userId+"&_game="+game+"&_team="+teamid, '_self'
-      'https://coroebusbeta.in/Learning_academy/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid,'_self'
+      'https://coroebus.in/Learning_academy/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid,'_self'
 
     )
       
