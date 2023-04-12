@@ -728,9 +728,9 @@
                                             <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                                 <mat-expansion-panel-header [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
                                                     <mat-panel-title style="font-family: 'Inter';
-                                                                                    font-style: normal;
-                                                                                    font-weight: 600;
-                                                                                    color: #FFFFFF;">
+                                                                            font-style: normal;
+                                                                            font-weight: 600;
+                                                                            color: #FFFFFF;">
                                                         My Learning
                                                     </mat-panel-title>
 
@@ -758,16 +758,16 @@
     
                                                 </mat-expansion-panel-header>
                                                 <div *ngFor="let triviaData of triviaCornerData">
-                                                    <div class="d-flex p-2 mt-1" style="border-radius:5px;font-family:'Work sans';" [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'" (click)="navigateToBriefQuetion(triviaData)">
+                                                    <div class="d-flex p-2 mt-1" style="border-radius:5px;font-family:'Work sans';position:relative" [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'" (click)="navigateToBriefQuetion(triviaData)">
                                                         <div class="triviaBanner d-flex align-items-start mt-2 p-2">
-                                                            <div style="height:13vh;width:5vw;border-radius:5vh">
+                                                            <div style="height:8vh;width:5vw;border-radius:5vh">
                                                                 <img src="{{triviaData.brief_graphics}}" alt="trivia_banner" height="100%" width="100%">
                                                             </div>
         
         
         
                                                         </div>
-                                                        <div class="triviaDescription d-flex flex-column gap-1 p-1 mt-2" style="width:100%;height:20vh">
+                                                        <div class="triviaDescription d-flex flex-column gap-3 p-1 mt-2" style="width:100%;min-height:15vh;">
                                                             <div class="triviaTitle">
                                                                 <strong>
                                                                    {{triviaData.brief_title}}
@@ -782,7 +782,7 @@
                                                                 {{triviaData.brief_summary}}
     
                                                             </p>
-                                                            <div  style="font-size:1vh;font-family: 'Work sans';color:#A5ACB8;text-align:end">
+                                                            <div  style="position:absolute;top:80%;right:5%;font-size:1vh;font-family: 'Work sans';color:#A5ACB8;text-align:end">
                                                                 {{triviaData.created_at|date:'dd/MM/YYYY'}}
                                                             </div>
         
@@ -1426,15 +1426,15 @@
                                 <b>Points</b>
                             </div>
                         </div>
-                        <div class="row dashboard-rank-row ms-1 mb-1"
+                        <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
                             *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.length > 0"
                             [style.background-image]="'url(' + rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.ranking_image + ')'"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                             style="border:2px solid">
-                            <div class="col-6" style="padding-top: 1.5vh;">
+                            <div class="col-6" style="padding-top: 1.1vh;">
 
                                 <div class="media d-flex gap-3" >
-                                    <span class="col-1 ms-2 text-white position-absolute-" style="padding-top: 1vh;">
+                                    <span class="col-1 ms-2 text-white position-absolute-" style="padding-top: 1.1vh;">
                                         {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_number}}
                                     </span>
                                     <div style="height:5vh;display:flex;justify-content:center;align-items:center">
