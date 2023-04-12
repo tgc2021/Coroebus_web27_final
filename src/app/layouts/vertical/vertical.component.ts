@@ -11,7 +11,6 @@ import { observeOn } from 'rxjs/operators';
 import { EventService } from '../../core/services/event.service';
 
 import { SIDEBAR_TYPE } from "../layouts.model";
-import { log } from 'console';
 
 @Component({
   selector: 'app-vertical',

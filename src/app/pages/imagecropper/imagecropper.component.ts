@@ -9,7 +9,6 @@ import { ImageCropperComponent } from 'ngx-image-cropper';
 import Swal from 'sweetalert2';
 import * as fromRoot from '../../core/app-state';
 import { Store } from '@ngrx/store';
-import { EventEmitter } from 'stream';
 import { Subscription } from 'rxjs';
 import { ApiserviceService } from 'app/apiservice.service';
 

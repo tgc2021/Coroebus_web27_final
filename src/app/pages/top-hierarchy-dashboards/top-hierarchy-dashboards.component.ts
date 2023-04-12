@@ -432,7 +432,9 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
     });
   }
 
-  getRewards(){
+  getRewards(data:any){
+    console.log(data);
+    
     console.log('rewards page');
     
     let obj = {
@@ -442,6 +444,7 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
     }
     console.log(obj)
 
+    localStorage.setItem('rewardid',obj._userid)
   
 
     // this._router.navigate('/performance/page')

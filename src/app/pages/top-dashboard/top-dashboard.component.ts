@@ -5,7 +5,6 @@ import { DOCUMENT, Location } from '@angular/common';
 import { Util } from '@app/utils/util';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { log } from 'console';
 import { Subscription, combineLatest } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../core/app-state';

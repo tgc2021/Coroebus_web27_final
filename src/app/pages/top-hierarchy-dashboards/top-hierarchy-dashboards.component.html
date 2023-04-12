@@ -144,7 +144,7 @@
                             <div class="game_point_label">{{gamePoints?.[0]?.label}}s</div>
                         </div>
             
-                        <div class="reward_points_div" (click)="getRewards()" >
+                        <div class="reward_points_div" (click)="getRewards(sectionView_1)" >
                             <div [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'" style="height: 6vh;
                             width: 7vw;display: flex;justify-content: center;align-items:center" >
                                 <img class="reward_points_image" 
@@ -695,7 +695,7 @@
                         <div class="game_point_label_mobile">{{gamePoints?.[0]?.label}}s</div>
                     </div>
     
-                    <div class="reward_points_div_mobile" (click)="getRewards()">
+                    <div class="reward_points_div_mobile" (click)="getRewards(sectionView_1)">
                         <img class="reward_points_image_mobile"
                             src="{{sectionView_1?.theme_details?.[0]?.reward_points_image}}" />
                         <div class="reward_points_score_mobile d-flex justify-content-center"

@@ -15,8 +15,6 @@ import * as _ from 'lodash';
 
 import { ActivatedRoute, Event as Events, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { ToastService } from '@app/services/toast-service';
-import { $ } from 'protractor';
-import { table } from 'console';
 import { ApiserviceService } from 'app/apiservice.service';
 import { type } from 'jquery';
 @Component({
@@ -1239,6 +1237,7 @@ else if(this.activeTabForSectionView_2 == 4){
 
 
   getRewards(){
+    
     console.log('rewards page');
     
     let obj = {
@@ -1248,10 +1247,11 @@ else if(this.activeTabForSectionView_2 == 4){
     }
     console.log(obj)
 
-  
+    localStorage.setItem('rewardid',obj._userid)
 
     // this._router.navigate('/performance/page')
     // this._router.navigate(['/performance/page'], { queryParams: { key: value } })
+
     this._router.navigate(['/reward/rewardPoints'], {
       relativeTo: this._route,
       queryParams: {

@@ -16,7 +16,6 @@ import * as fromRoot from '../../core/app-state';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import * as userActions from '../../core/app-state/actions';
-import { url } from 'inspector';
 import { DefaultComponent } from '@pages/dashboards/default/default.component';
 import { ApiserviceService } from 'app/apiservice.service';
 import { MENU_HOS } from './menu_hos';

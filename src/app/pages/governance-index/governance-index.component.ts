@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { ApiserviceService } from 'app/apiservice.service';
-import { log } from 'console';
 
 @Component({
   selector: 'app-governance-index',
