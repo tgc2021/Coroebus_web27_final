@@ -701,6 +701,8 @@ else{
   }
 
   navigateReward() {
+    localStorage.setItem('rewardid',this.mergeObj.USERID)
+
     this._router.navigateByUrl("/reward/rewardPoints")
 
   }

@@ -176,7 +176,7 @@
     
                 </div>
                 <div class="row">
-                    <input type="text" class="search_box" placeholder="Search people here.." [(ngModel)]="spectSearchStr">
+                    <input type="text" class="search_box" placeholder="Search people here.."  [(ngModel)]="spectSearchStr" appClearvalue (keyup)="checkEmpty()">
                     <i class="search_bar_img fa fa-search d-flex justify-content-center align-items-center"aria-hidden="true" (click)="spectSearch()"></i>
                  
                         

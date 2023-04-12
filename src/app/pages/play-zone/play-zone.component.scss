@@ -256,11 +256,13 @@ input[type="checkbox"]::placeholder {
     }
     .card-description {
         font-family: 'Inter', sans-serif;
-        font-size: 9px;
+        // font-size: 9px;
+        font-size: 1.3vh;
+
         font-weight: 500;
         line-height: 14px;
         letter-spacing: 0em;
-        height: 12vh;
+        min-height: 10vh;
 
     }
     .btn {
@@ -311,7 +313,8 @@ input[type="checkbox"]::placeholder {
         // row-gap: 2rem;
         .card{
             width: 28vw;
-            height: 35vh;
+           
+            min-height: 33vh;;
 
         }
     }

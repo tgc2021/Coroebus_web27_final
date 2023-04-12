@@ -18,6 +18,7 @@ import { ImagecropperComponent } from '@pages/imagecropper/imagecropper.componen
   templateUrl: './top-hierarchy-dashboards.component.html',
   styleUrls: ['./top-hierarchy-dashboards.component.scss']
 })
+
 export class TopHierarchyDashboardsComponent implements OnInit {
   counter: any = 0
   panelOpenState = false;
@@ -70,6 +71,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   spectSearFinalList1:any
   light_color: any;
   isVideoHide: any;
+  emptyInput: boolean=true;
   constructor(private readonly store: Store, public _route: ActivatedRoute,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -481,7 +483,7 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
 
   leaderboard(event:any=0){
    console.log(event);
-   
+   this.spectSearchStr=null
   //   console.log(this.sectionView_3._ranking_data[event]);
   // this.leaderboard_data_buttons=this.sectionView_3._ranking_data[event]
   this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[event].order
@@ -526,6 +528,19 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
     this.getUserBannerDataSectionView_3('viewMore')
   }
 
+  checkEmpty(){
+    console.log('empty');
+    
+    if(this.spectSearchStr==''){
+      console.log(this.spectSearchStr);
+      
+      this.spectSearchStr=null
+      this.emptyInput==true;
+      // this.spectSearchStr.setValue('');
+      this.ngOnInit()
+    }
+  }
+  
   async spectSearch() {
     let err: any, res: any;
     let body: any;
@@ -607,7 +622,6 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
     } else {
       this.notificationList_err = 'Error'
     }
-
 
  
   }

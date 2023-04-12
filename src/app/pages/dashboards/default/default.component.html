@@ -459,8 +459,8 @@
                             [style.background-image]="'url(' + web_first_tile_image + ')'"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                             style="border:2px solid">
-                            <div class="col  widthText">
-                                <div class="media d-flex align-items-center gap-3" style="height: 7vh;">
+                            <div class="col ">
+                                <div class="media d-flex align-items-center gap-2" style="height: 7vh;">
                                     <span class="col-1 ms-2 text-white position-absolute-">
                                         {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_number}}
                                     </span>
@@ -951,7 +951,7 @@
                                                     <div class="inner_content d-flex justify-content-between" (mouseover)="openDailyModal('data')" data-bs-toggle="modal"
                                                     data-bs-target="#dailyModal">
                                                        <div class="col-6">Daily</div> 
-                                                       <div class="badge-container col" *ngFor="let dailyBadges of seasonalThemeDailyBadges;let i=index;" >
+                                                       <div class="badge-container col-6" *ngFor="let dailyBadges of seasonalThemeDailyBadges;let i=index;" >
                                                         <!-- <div>{{dailyBadges.seasonal_score_achived}}</div>
                                                         <div>{{dailyBadges.seasonal_score_target}}</div> -->
                                                         
@@ -975,7 +975,7 @@
                                                     <div class="inner_content d-flex justify-content-between" (mouseover)="openWeeklyModal('weekly')" data-bs-toggle="modal"
                                                     data-bs-target="#weeklyModal">
                                                         <div class="col-6" >Weekly</div> 
-                                                        <div class="badge-container col"*ngFor="let WeeklyBadge of seasonalThemeWeeklyBadges;let i=index" >
+                                                        <div class="badge-container col-6"*ngFor="let WeeklyBadge of seasonalThemeWeeklyBadges;let i=index" >
                                                              <div  [ngClass]="WeeklyBadge.active_class == '1'?'activeBadge':'deActiveBadge' " *ngIf="i<3">
                                                                 <img src="{{WeeklyBadge.seasonal_badge_logo}}" alt="" height="100%" width="100%">
                                                              </div>
@@ -985,7 +985,7 @@
                                                      <div class="inner_content d-flex justify-content-between" style="border:none" (mouseover)="openMonthlyModal('monthlyModal')" data-bs-toggle="modal"
                                                      data-bs-target="#monthlyModal">
                                                         <div class="col-6">Monthly</div> 
-                                                        <div class="badge-container col" *ngFor="let monthlyBadge of seasonalThemeMonthlyBadges;let i=index">
+                                                        <div class="badge-container col-6" *ngFor="let monthlyBadge of seasonalThemeMonthlyBadges;let i=index">
                                                             <div  [ngClass]="monthlyBadge.active_class == '1'?'activeBadge':'deActiveBadge' " *ngIf="i<3" >
                                                                <img src="{{monthlyBadge.seasonal_badge_logo}}" alt="" height="100%" width="100%">
                                                             </div>
@@ -1010,17 +1010,17 @@
                                                 </mat-expansion-panel-header>
     
                                                 <div class="d-flex flex-column justify-content-between align-items-start mt-3 "
-                                                    style="font-weight: 550;font-family: 'Work Sans';">
+                                                    style="font-weight: 550;font-family: 'Work Sans';" style="width: 100%;">
                                                     
-                                                    <div class="d-flex flex-column justify-content-between" style="width: 100%;">
-                                                        <div  *ngIf="!hideBattleGround;then hideForOtherRole else donthide"></div>
+                                                    <div class="d-flex flex-column justify-content-between"  style="width: 100%;">
+                                                        <div  *ngIf="!hideBattleGround;then hideForOtherRole"></div>
                                                         <ng-template #hideForOtherRole>
-                                                            <div class="inner_content" (click)="navigateToNewChallenge()">New Challenge</div>
-                                                            <div class="inner_content" style=" border-bottom: 0.5px solid #A5ACB8; cursor: pointer;" (click)="navigateToOnGoingChallenge()" class="d-flex justify-content-between">
+                                                            <div class="inner_content" style="width:100%" (click)="navigateToNewChallenge()">New Challenge</div>
+                                                            <div class="inner_content" style=" border-bottom: 0.5px solid #A5ACB8;" (click)="navigateToOnGoingChallenge()" class="d-flex justify-content-between">
                                                                 <div class="ps-3" style="  font-weight: 600;
                                                                 font-family: 'Work Sans';
                                                                 font-size:1.6vh;
-                                                               
+                                                               width: 100%;
                                                                 display:flex;
                                                                 height:5vh;
                                                                 align-items:center">Ongoing Challenges</div>
@@ -1064,7 +1064,7 @@
                                                                 font-size:1.6vh;
                                                                  display: flex;
                                                                  height:5vh;
-                                                                 
+                                                                width:500;
                                                                 align-items: center;
                                                                ">Challenge Recieved</div>
                                                                 <div style="display:flex;
@@ -1074,7 +1074,7 @@
                                                             </div>
                                                         </ng-template>
                                                        
-                                                        <div class="inner_content" style="border-bottom:none" (click)="navigateToStatistics()">Statistics</div>
+                                                        <div class="inner_content" style="border-bottom:none;width:100%" (click)="navigateToStatistics()">Statistics</div>
                                                     </div>
     
                                                 </div>
@@ -1770,16 +1770,6 @@
                                     </div>
                                 </div>
                                </div>
-                                
-    
-                               
-                                
-                              
-                            
-                           
-                            
-                           
-                            
                         </div>
                         <div class="row d-flex justify-content-center align-items-start" style="height:35vh;"
                             *ngIf="seasonalThemeDaily.length==0">
