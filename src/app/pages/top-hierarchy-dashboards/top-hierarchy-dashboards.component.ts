@@ -257,6 +257,9 @@ console.log(this.dark_color);
   }
 
   async getUserBannerDataSectionView_3(viewMore?: any, queryParams?: any) {
+    console.log(viewMore);
+    
+    console.log(queryParams);
     let err: any, res: any;
     let body: any;
     body = {
@@ -525,7 +528,9 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
  
   viewMore(){
     this.pageNumberForSectionView_3 = this.pageNumberForSectionView_3 + 1
-    this.getUserBannerDataSectionView_3('viewMore')
+    console.log(this.queryParams);
+    
+    this.getUserBannerDataSectionView_3(1,this.queryParams)
   }
 
   checkEmpty(){

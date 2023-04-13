@@ -711,6 +711,10 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
 
 
   async getUserBannerDataSectionView_3(viewMore?: any, queryParams?: any) {
+    console.log(viewMore);
+    
+    console.log(queryParams);
+    
     let err: any, res: any;
     let body: any;
     body = {
@@ -725,11 +729,22 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
       this.pokeData = res?.data?._poke_list
       if (viewMore) {
+        console.log('inside viewmore');
+        
         res?.data?._ranking_data?.forEach((element, index) => {
+          console.log(element,index);
+          console.log(this.sectionView_3?._ranking_data[index]?.label);
+          
           if (element?.label === this.sectionView_3?._ranking_data[index]?.label) {
+            console.log(element?._Overall?.length);
+            
+            if (element?._Overall?.length > 0 || element?._data?.length > 0) {
+              console.log(this.sectionView_3?._ranking_data[index]?._Overall?.push(...element?._Overall));
+              console.log(this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data));
 
-            if (element?._data?.length > 0) {
+              this.sectionView_3?._ranking_data[index]?._Overall?.push(...element?._Overall)
               this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data)
+
               this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'center' });
             }
           }
@@ -904,8 +919,11 @@ else if(this.activeTabForSectionView_2 == 4){
     }
   }
   viewMore() {
+    
     this.pageNumberForSectionView_3 = this.pageNumberForSectionView_3 + 1
-    this.getUserBannerDataSectionView_3('viewMore')
+    console.log(this.queryParams);
+    
+    this.getUserBannerDataSectionView_3(1,this.queryParams)
   }
 
   async notificationList(queryParams?: any) {
