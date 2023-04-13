@@ -350,7 +350,7 @@
 
                                                     <span class="dashboard-banner-point-btn-text text-center">
                                                         {{rewardPoints?.[0]?.score}}
-                                                    </span></button>
+                                           </span></button>
 
                                                 <span
                                                     class="dashboard-level-rank-name">{{rewardPoints?.[0]?.label}}s</span>
@@ -430,7 +430,7 @@
                     <div class="col-11" style="padding-right:0px;">
                         <input type="text" class="form-control dashboard-searchbar" placeholder="Search People here.."
                             [(ngModel)]="spectSearchStr" aria-label="Search People here.."
-                            aria-describedby="basic-addon2" (click)="spectSearch()">
+                            aria-describedby="basic-addon2" >
                     </div>
                     <div class="col-1 d-flex justify-content-end">
 
@@ -440,7 +440,8 @@
                     </div>
                 </div>
                 <!-- Dashboard Table Started -->
-                <div class="mt-2">
+                <div class="mt-2" [style.background-image]="
+                sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null" style="background-size:cover;border-radius:10px" >
                     <div class="row" style="color:#ffff;font-size: 1vw !important;">
                         <div class="col-2">
                             <span class="rank_h">Rank</span>
@@ -519,7 +520,7 @@
                         </div>
                     </div>
                     
-                    <div *ngIf="spectSearchStr === ''"
+                    <div *ngIf="spectSearchStr == ''"
                     [ngClass]="sectionView_1?._personal_data.id_role=='6'? 'dashboard-center-table':'dashboard-center-table1'"
                         class="">
                         <!-- {{spectSearList | json}} -->
@@ -1403,7 +1404,7 @@
                     <div class="col-10" style="padding-right:0px;">
                         <input type="text" class="form-control dashboard-search" placeholder="Search People here.."
                             [(ngModel)]="spectSearchStr" aria-label="Search People here.."
-                            aria-describedby="basic-addon2" (click)="spectSearch()">
+                            aria-describedby="basic-addon2" >
 
                     </div>
                     <div class="col-2 d-flex justify-content-end">

@@ -956,9 +956,13 @@ else if(this.activeTabForSectionView_2 == 4){
 
     if (this.spectSearchStr) {
       this.spectSearchStrTrigger = true
-    } else {
-      this.spectSearchStrTrigger = false
     }
+  
+    // else{
+    //   this.spectSearchStrTrigger = false;
+
+    // }
+    
     body = {
       "_userid": this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
       "_game": this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game,
