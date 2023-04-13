@@ -72,6 +72,8 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   light_color: any;
   isVideoHide: any;
   emptyInput: boolean=true;
+  lengthLeaderBoardData: any;
+  lengthSearchList: number;
   constructor(private readonly store: Store, public _route: ActivatedRoute,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -284,7 +286,8 @@ console.log(this.dark_color);
         });
         console.log(this.spectSearchStr);
         
-        this.leaderboard_data=this.sectionView_3?._ranking_data[0]._data
+        this.leaderboard_data=this.sectionView_3?._ranking_data[0]._data;
+        this.lengthLeaderBoardData=this.leaderboard_data.length;
         console.log(this.leaderboard_data);
         this.leaderboard_data_buttons=this.sectionView_3?._ranking_data
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0].order
@@ -586,7 +589,8 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
         
       })
 
-      this.spectSearList = res?.data[0]._data
+      this.spectSearList = res?.data[0]._data;
+      this.lengthSearchList=this.spectSearList.length;
       console.log(this.spectSearList);
     // this.spectSearFinalList=this.spectSearList._data
       this.searchbgimage= this.spectSearList[0]

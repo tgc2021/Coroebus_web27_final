@@ -79,9 +79,9 @@
                                                 Powerful game console for all.
                                             </p>
                                             <div class="d-flex justify-content-end align-items-end">
-                                                <span class="date"
+                                                <!-- <span class="date"
                                                     >21/03/2023
-                                                </span>
+                                                </span> -->
                                             </div>
                                         </div>
                                     </div>
@@ -90,7 +90,7 @@
                                     <hr width="98%">
                                 </div>
                                 <div class="d-flex p-1">
-                                    <div (click)="navigateToCubicalls()" class="status-openButton">Open
+                                    <div (click)="navigateToCubicalls()" class="status-openButton" type="button">Open
                                     </div>
                                     
 
@@ -176,8 +176,11 @@
                                       
                                     
                             
-                                            <iframe [src]='safeUrl' title="spin_the_wheel" height="620px" width="100%">
+                                            <iframe [src]='safeUrl' title="spin_the_wheel" height="680px" width="100%">
                                             </iframe>
+                                            <!-- <iframe src='https://www.playtolearn.in/cubi-call/' title="spin_the_wheel" height="680px" width="100%">
+                                            </iframe> -->
+                                            
                                             <!-- <iframe [src]="Url" frameborder="0"></iframe> -->
 
                                     </ng-template>
@@ -473,6 +476,8 @@
                                 <ng-template #content1 let-c="close" let-d="dismiss">
                                     <button type="button" class="btn-close" aria-label="Close"
                                                 (click)="d('Cross click')">X</button>
+                                    <!-- <iframe [src]='safeUrl' title="spin_the_wheel" height="560px" width="100%">
+                                    </iframe> -->
                                     <iframe [src]='safeUrl' title="spin_the_wheel" height="560px" width="100%">
                                     </iframe>
 
