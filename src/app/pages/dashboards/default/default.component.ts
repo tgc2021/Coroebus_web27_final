@@ -267,7 +267,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     this.requestForProduce1Data = this.eventService.subscribe('requestForProduce1Data', (data) => {
       this.eventService.broadcast('requestSendForProduce1Data', this.sectionView_1)
     })
-
+    
+  
     
 
   }
@@ -295,6 +296,11 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     this.openDailyModal('daily');
     this.openWeeklyModal('weekly');
     this.openMonthlyModal('monthly');
+    setTimeout(()=>{
+      // this.changeTabFilter('',this.b)
+      this.changeSubTabFilter('My Store')
+    },3000)
+   
   }
 
 
@@ -988,10 +994,10 @@ else if(this.activeTabForSectionView_2 == 4){
       this.spectSearchStrTrigger = true
     }
   
-    // else{
-    //   this.spectSearchStrTrigger = false;
+    else{
+      this.spectSearchStrTrigger = false;
 
-    // }
+    }
     
     body = {
       "_userid": this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,

@@ -9,6 +9,7 @@ import { Subscription, combineLatest } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../core/app-state';
 
+
 @Component({
   selector: 'app-top-dashboard',
   templateUrl: './top-dashboard.component.html',
@@ -43,7 +44,7 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
   combineLatest: Subscription
   userSelectionData: any
   isVideoHide: any;
-  dataMap: any
+  dataMap: any=''
   map:any
   bi:any
   mapUrl:any
@@ -125,7 +126,7 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
     }
   );
   this.bi=  localStorage.getItem('map')
-  if( this.bi!= 'undefined'){
+  if( this.bi!='undefined'){
      this.dataMap=this.bi
 
      console.log(this.dataMap);
@@ -133,9 +134,16 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
   }
   else{
     console.log('growth');
+  
+      this.dataMap= localStorage.getItem('res')
+      console.log(this.dataMap);
+     
+
     
-    this.dataMap= localStorage.getItem('res')
-    console.log(this.dataMap);
+      
+
+  
+  
     
 
   }
@@ -186,6 +194,8 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
   close(content) {
     localStorage.setItem('VideoHide', 'false');
     this.modalService.dismissAll();
+    location.reload()
+
   }
 
 }
