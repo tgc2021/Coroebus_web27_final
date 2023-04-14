@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { HttpProtocols } from '@app/http/http.protocols';
 import { DashboardModel } from '@models/dashboard.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -159,7 +159,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   empname:any
   emporg:any
 
-  constructor(private readonly store: Store, private modalService: NgbModal,
+  constructor(private readonly store: Store, private modalService: NgbModal,private renderer:Renderer2,
     public Util: Util, private eventService: EventService, private _router: Router,
     private _route: ActivatedRoute, public toastService: ToastService,public http:ApiserviceService,public elementref: ElementRef) {
     this.activeSubTabForSectionView_2 = 'My Store'
@@ -247,8 +247,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
         }
       });
-
-
+    
     })
   
   
@@ -711,6 +710,7 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
 
 
   async getUserBannerDataSectionView_3(viewMore?: any, queryParams?: any) {
+    // debugger
     console.log(viewMore);
     
     console.log(queryParams);
@@ -767,6 +767,7 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
     }
   }
   filterRankingData() {
+    
     this.sectionView_3._ranking_data = this.sectionView_3?._ranking_data?.filter((firstLevel) => {
       firstLevel = firstLevel?.[this.activeSubTabForSectionView_2 === 'My Store' ? '_data' : '_Overall']?.filter((secondLevel) => {
         secondLevel = this.sectionView_1?._back_images?.filter((compareData) => {
@@ -979,6 +980,22 @@ else if(this.activeTabForSectionView_2 == 4){
     }
   }
 
+  checkEmpty(){
+   
+    this.spectSearList=null
+
+    if(this.spectSearchStr==''){
+      console.log(this.spectSearchStr);
+      
+      this.spectSearchStr=''
+      this.spectSearchStrTrigger = false
+      this.spectSearch()
+   
+      // this.spectSearchStr.setValue('');
+      // this.ngOnInit()
+    }
+  }
+
   async spectSearch() {
     let err: any, res: any;
     let body: any;
@@ -1186,6 +1203,7 @@ else if(this.activeTabForSectionView_2 == 4){
 
   changeSubTabFilter(tabName: string) {
     this.activeSubTabForSectionView_2 = tabName
+     
     this.filterRankingData()
   }
   async openHierarchyPopup(data?: any) {

@@ -532,17 +532,21 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
     
     this.getUserBannerDataSectionView_3(1,this.queryParams)
   }
+ 
+
 
   checkEmpty(){
-    console.log('empty');
-    
+    this.spectSearList=null
+
     if(this.spectSearchStr==''){
-      console.log(this.spectSearchStr);
       
-      this.spectSearchStr=null
+      this.spectSearchStr=''
       this.emptyInput==true;
+      this.spectSearchStrTrigger = false
+      this.spectSearch()
+   
       // this.spectSearchStr.setValue('');
-      this.ngOnInit()
+      // this.ngOnInit()
     }
   }
   
@@ -622,7 +626,6 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
          
     
       })
-      
 
     } else {
       this.notificationList_err = 'Error'

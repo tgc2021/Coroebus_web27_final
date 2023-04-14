@@ -475,7 +475,7 @@
                     background-color: var(--myvar);
                     color:white;
                     display: flex;
-                    font-size:0.8vw;
+                    font-size:2.2vh;
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
@@ -495,6 +495,7 @@
                     justify-content: center;
                     align-items: center;
                     border-radius: 0px 0px 10px 10px;
+                    font-size: 2.2vh;
 
                 }
 
@@ -528,8 +529,8 @@
        align-items: center;
        cursor: pointer;
        img{
-        height: 15vh;
-        width: 15vh;
+        height: 16vh;
+        width: 16vh;
         border-radius: 100%;
        }
     }

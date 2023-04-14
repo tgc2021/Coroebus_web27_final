@@ -399,12 +399,12 @@
                     </div>
                     <div class="row row-cols-2" *ngIf="sectionView_3_list?.[0]?._Overall">
                         <div class="col">
-                            <a class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
+                            <a id="myButton" class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2" 
                                 [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 ==='My Store'}"
                                 [ngStyle]="{'background': (activeSubTabForSectionView_2 ==='My Store') ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
                                 [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                 (click)="changeSubTabFilter('My Store')">
-                                <span class=" v-align filter-txt-name filter-my-store"
+                                <span class=" v-align filter-txt-name filter-my-store"  (click)="changeSubTabFilter('My Store')"
                                     [ngStyle]="{'color': (activeSubTabForSectionView_2 ==='My Store')?'#ffffff':'#000000'}">
                                     My {{labelNameMy}}
                                 </span>
@@ -429,7 +429,7 @@
                 <div class="d-flex flex-row" style="margin-top: 10px;">
                     <div class="col-11" style="padding-right:0px;">
                         <input type="text" class="form-control dashboard-searchbar" placeholder="Search People here.."
-                            [(ngModel)]="spectSearchStr" aria-label="Search People here.."
+                            [(ngModel)]="spectSearchStr" aria-label="Search People here.." (keyup)="checkEmpty()"
                             aria-describedby="basic-addon2" >
                     </div>
                     <div class="col-1 d-flex justify-content-end">
@@ -1488,7 +1488,7 @@
                 <div class="d-flex gap-1 justify-content-between" style="margin-top: 17px;">
                     <div class="col-10" style="padding-right:0px;">
                         <input type="text" class="form-control dashboard-search" placeholder="Search People here.."
-                            [(ngModel)]="spectSearchStr" aria-label="Search People here.."
+                            [(ngModel)]="spectSearchStr" aria-label="Search People here.." (keyup)="checkEmpty()"
                             aria-describedby="basic-addon2" >
 
                     </div>
