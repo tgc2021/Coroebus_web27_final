@@ -8,7 +8,7 @@
                 <!-- <div *ngIf="bi==null; then map else bi" ></div> -->
                
                     <ngx-tableau 
-                    tableauVizUrl="{{dataMap}}"
+                    [tableauVizUrl]="dataMap"
                     ></ngx-tableau>
                 <!-- <ng-template #bi>
                     <ngx-tableau 

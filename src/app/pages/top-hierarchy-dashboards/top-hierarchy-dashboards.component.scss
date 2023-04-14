@@ -921,7 +921,7 @@ input::placeholder {
     }
 
     .leaderboard_label_tile {
-        height: 35vh;
+         height: 43vh;
         margin-left: 0.5vw;
         width: 100%;
       
@@ -930,6 +930,17 @@ input::placeholder {
         overflow-y: auto;
         overflow-x: hidden;
 
+
+    }
+    .leaderboard_label_tile_length{
+        height: 35vh;
+        margin-left: 0.5vw;
+        width: 100%;
+      
+  
+        margin-left: 1vw;
+        overflow-y: auto;
+        overflow-x: hidden;
 
     }
 
@@ -981,7 +992,8 @@ input::placeholder {
     }
 
     .view_more_button {
-        width: 49vw;
+      
+        width: 47.3vw;
         height: 6vh;
         background: var(--myvar);
         color: #ffffff;
@@ -989,6 +1001,7 @@ input::placeholder {
         font-family:'Work sans';
         font-weight: 600;
         border-radius: 0.4vw;
+        margin-bottom: 1vh;
         // margin-left: 1vw;
     }
 

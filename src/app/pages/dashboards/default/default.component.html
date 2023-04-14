@@ -526,10 +526,11 @@
                         <!-- {{spectSearList | json}} -->
                         <!-- {{spectSearchStr ? 'true': 'false'}} -->
                         <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
-                            [style.background-image]="'url(' + item?.ranking_image_level_img + ')'"
+                       
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                             *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) "
-                            (click)="navigateToOtherRole(item)">
+                            (click)="navigateToOtherRole(item)"
+                            [style.background-image]="'url('+item?.ranking_image_level_img +')'">
                             <div class="col">
                                 <div class="media d-flex align-items-center gap-3  " style="height: 7vh;">
                                     <span class="col-1 ms-2 text-white position-absolute-s">
