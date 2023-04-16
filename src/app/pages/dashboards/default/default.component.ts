@@ -158,6 +158,13 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   empemail:any
   empname:any
   emporg:any
+  seasonalThemeDaily1: any;
+  seasonalThemeWeekly2: any;
+  seasonalThemeMonthl3: any;
+  seasonalThemeDailyBadges1: any;
+  seasonalThemeWeeklyBadges2: any;
+  seasonalThemeMonthlyBadges3: any;
+  totalTargetScoreForMontly: number;
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -293,9 +300,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     this.edit_image;
-    this.openDailyModal('daily');
-    this.openWeeklyModal('weekly');
-    this.openMonthlyModal('monthly');
+    
     setTimeout(()=>{
       // this.changeTabFilter('',this.b)
       this.changeSubTabFilter('My Store')
@@ -1340,119 +1345,9 @@ else if(this.activeTabForSectionView_2 == 4){
 
     });
   }
-  openDailyModal(queryParams) {
-    let obj = {
-      _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
-
-      _game: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
-    }
-    this.http.produceInfo(obj).subscribe((res)=>{
-      // console.log(res);
-      this.dataForDailyPopup=res;
-      this.DailyPopup=this.dataForMonthlyPopup.data;
-      this.seasonalThemeDaily=this.DailyPopup.seasonal_theme_daily;
-      this.seasonalThemeDailyBadges=this.DailyPopup.seasonal_theme_daily_badge_details
-      console.log(this.seasonalThemeDailyBadges);
-        console.log(this.seasonalThemeDailyBadges[0].seasonal_score_achived==this.seasonalThemeDailyBadges[0].seasonal_score_target);
-        
-        for(let i=0;i<this.seasonalThemeDailyBadges.length;i++){
-          
-         this.seasonalScoreAchived.push(this.seasonalThemeDailyBadges[i].seasonal_score_achived)
-         this.seasonalScoreTarget.push(this.seasonalThemeDailyBadges[i].seasonal_score_target)      
-         this.arrtrue.push(this.seasonalScoreAchived[i]>this.seasonalScoreTarget[i])
-         
-      
-          // const arr = _.toArray(this.selectedCourses);
-          // console.log(arr);
-      
-          // const trues = _.filter(arr, (r) => r === true).length;
-          // console.log(trues);
-          // const arrLength = this.boxes.length;
-          // console.log(arrLength);
-          // this.coursesPercentage = (trues / arrLength) * 100;
-          // console.log(this.coursesPercentage);
-        }
-        // this.trues.push(this.arrtrue[0]==true)
-        const trues = _.filter(this.arrtrue, (r) => r === true);
-        
-        console.log(trues.length)
-        this.badgePercentage = (trues.length / this.seasonalScoreAchived.length) * 100;
-        console.log(this.badgePercentage);
-        
-        console.log(this.arrtrue);
-
-  console.log(this.trues);
-  
-  console.log(this.seasonalScoreAchived);
-  console.log(this.seasonalScoreTarget);
 
 
-      console.log(this.seasonalThemeDaily.length);
-      console.log(typeof(this.seasonalThemeDaily.length));
-    
-      this.dailyToppers=this.weeklyPopup.seasonal_theme_daily_badge_toppers;
-      this.seasonal_theme_daily_badge_details=this.DailyPopup.seasonal_theme_daily_badge_details;
-      this.totalTargetScore=Number(this.seasonal_theme_daily_badge_details[0].seasonal_score_target)+Number(this.seasonal_theme_daily_badge_details[1].seasonal_score_target)+Number(this.seasonal_theme_daily_badge_details[2].seasonal_score_target);
-      console.log(this.totalTargetScore);
-      
-      
-    })
-    this.seasonalScoreAchived=[]
-    this.seasonalScoreTarget=[]
-    this.arrtrue=[]
-    this.trues=[]
-    this.isDailyModalopen = true;
-    this.isWeeklyModalOpen = false;
-    this.isMonthlyModalOpen = false;
 
-  }
-  openWeeklyModal(queryParams) {
-    let obj = {
-      _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
-
-      _game: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
-    }
-    this.http.produceInfo(obj).subscribe((res)=>{
-      // console.log(res);
-      this.dataForWeeklyPopup=res;
-      this.weeklyPopup=this.dataForMonthlyPopup.data;
-      this.seasonalThemeWeekly=this.weeklyPopup.seasonal_theme_weekly;
-      this.weeklyTopers=this.weeklyPopup.seasonal_theme_weekly_badge_toppers;
-      this.seasonal_theme_weekly_badge_details=this.weeklyPopup.seasonal_theme_weekly_badge_details;
-
-      this.totalTargetScoreForWeekly=Number(this.seasonal_theme_weekly_badge_details[0].seasonal_score_target)+Number(this.seasonal_theme_weekly_badge_details[1].seasonal_score_target)+Number(this.seasonal_theme_weekly_badge_details[2].seasonal_score_target);
-      console.log(this.totalTargetScore);
-      console.log(this.seasonal_theme_weekly_badge_details);
-
-      
-    })
-    this.isDailyModalopen = false;
-    this.isWeeklyModalOpen = true;
-    this.isMonthlyModalOpen = false;
-
-  }
-  openMonthlyModal(queryParams) {
-    let obj = {
-      _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
-
-      _game: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
-    }
-    this.http.produceInfo(obj).subscribe((res)=>{
-      // console.log(res);
-      this.dataForMonthlyPopup=res;
-      this.monthlyPopup=this.dataForMonthlyPopup.data;
-      this.seasonalThemeMonthly=this.monthlyPopup.seasonal_theme_monthly;
-
-      this.seasonal_theme_monthly_badge_details=this.monthlyPopup.seasonal_theme_monthly_badge_details;
-      console.log(this.seasonal_theme_monthly_badge_details.length);
-      
-
-      console.log(this.seasonalThemeMonthly);
-    })
-    this.isDailyModalopen = false;
-    this.isMonthlyModalOpen = true;
-
-  }
   navigateToOtherRole(item){
     
     console.log(item);
@@ -1698,40 +1593,52 @@ else if(this.activeTabForSectionView_2 == 4){
       
   // }
 
-  GetDataFromProduceInfo(data:any){
+  GetDataFromProduceInfo(queryParams?:any){
 
-    console.log(this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData.id_coroebus_game
+    console.log(queryParams.gameID 
       )
       
     
       let obj = {
-        _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
-        _game: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
+        _userid:queryParams?.userID ? queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
+        _game:queryParams?.gameID ?queryParams?.gameID : this.userSelectionData?.id_coroebus_game
       }
       console.log("check body",obj)
       this.http.produceInfo(obj).subscribe((res)=>{
         console.log(res);
 
         this.data=res;
+        // console.log(this.data.data.seasonal_theme_daily.length==undefined);
+        // console.log(this.data.data.seasonal_theme_daily==undefined);
+      
+        this.seasonalThemeDaily1=this.data.data.seasonal_theme_daily
+        this.seasonalThemeWeekly2=this.data.data.seasonal_theme_weekly;
+        this.seasonalThemeMonthl3=this.data.data.seasonal_theme_monthly
+        console.log( this.seasonalThemeDaily1==undefined);
+          
+        this.seasonalThemeDailyBadges1=this.data.data.seasonal_theme_daily_badge_details;
+        this.totalTargetScore=Number(this.seasonalThemeDailyBadges1[0].seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[1].seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[2].seasonal_score_target);
 
-        // Data For Campaign Theme
-        this.seasonalThemeDailyBadges=this.data.data.seasonal_theme_daily_badge_details;
-        this.seasonalThemeWeeklyBadges=this.data.data.seasonal_theme_weekly_badge_details;
-        this.seasonalThemeMonthlyBadges=this.data.data.seasonal_theme_monthly_badge_details;
-         
-        this.seasonalThemeDailyBadges.forEach((res)=>{
+
+        this.seasonalThemeWeeklyBadges2=this.data.data.seasonal_theme_weekly_badge_details;
+        this.totalTargetScoreForWeekly=Number(this.seasonalThemeWeeklyBadges2[0].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[1].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[2].seasonal_score_target);
+
+        this.seasonalThemeMonthlyBadges3=this.data.data.seasonal_theme_monthly_badge_details;
+        this.totalTargetScoreForMontly=Number(this.seasonalThemeMonthlyBadges3[0].seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[1].seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[2].seasonal_score_target);
+
+        this.seasonalThemeDailyBadges1.forEach((res)=>{
           if(res.active_class == '1'){
             this.dailyBadgesActive=true;
           }
         })
 
-        this.seasonalThemeWeeklyBadges.forEach((res)=>{
+        this.seasonalThemeWeeklyBadges2.forEach((res)=>{
           if(res.active_class == '1'){
             this.weeklyBadgesActive=true;
           }
         })
 
-        this.seasonalThemeMonthlyBadges.forEach((res)=>{
+        this.seasonalThemeMonthlyBadges3.forEach((res)=>{
           if(res.active_class == '1'){
             this.monthlyBadgesActive=true;
           }
@@ -1760,6 +1667,25 @@ else if(this.activeTabForSectionView_2 == 4){
 
   }
 
+  openDailyModal() {
+    this.isDailyModalopen = true;
+    this.isWeeklyModalOpen = false;
+    this.isMonthlyModalOpen = false;
+
+  }
+  openWeeklyModal() {
+    this.isDailyModalopen = false;
+    this.isWeeklyModalOpen = true;
+    this.isMonthlyModalOpen = false;
+
+  }
+  openMonthlyModal() {
+    this.isDailyModalopen = false;
+    this.isWeeklyModalOpen = false;
+    this.isMonthlyModalOpen = true;
+
+  }
+  
 
 
 
