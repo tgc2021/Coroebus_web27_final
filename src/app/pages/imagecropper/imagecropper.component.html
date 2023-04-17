@@ -21,7 +21,9 @@
   <div class="row row-cols-1 mt-5">
     <div class="col text-center">
       <a class="btn" (click)="close()">Close</a>
-      <a class="btn text-white" [ngStyle]="{'background': buttonColor}" (click)="cropAndSave()">Crop & Save</a>
+      <a *ngIf="buttonColor !=null" class="btn text-white" [ngStyle]="{'background': buttonColor}" (click)="cropAndSave()">Crop & Save</a>
+      <a *ngIf="buttonColor ==null" class="btn text-white" [ngStyle]="{'background': dark_color}" (click)="cropAndSave()">Crop & Save</a>
+
     </div>
 
   </div>

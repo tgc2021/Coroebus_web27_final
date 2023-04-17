@@ -373,7 +373,7 @@ flex-direction: column;
 .web_first_measurement {
     vertical-align: middle;
     margin: auto 0;
-    height: 8vh;
+    height: 6vh;
     border-right: 2px solid #ffffff;
     // border-right: 2px solid #ffffff;
     // height: 12vh;
@@ -407,6 +407,7 @@ flex-direction: column;
 .web_my_rank {
     vertical-align: middle;
     margin: auto 0;
+    height: 6vh;
 }
 
 .web_tem_rank_number,
@@ -1596,13 +1597,17 @@ flex-direction: column;
         border-radius: 60%;
         margin-top:-12%;
     }
-// @media (min-width: 2000px) and (max-width: 2048px) {
-//     .box-container {
-
-//         height: 1536px;
-//         /* padding-bottom: 0; */
-//     }
-// }
+@media (min-width: 1000px) and (max-width: 1280px) {
+    .web_first_measurement_label {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.1vh !important;
+        text-align: center;
+        color: #FFFFFF;
+        word-spacing: 100vw;
+    }
+}
 
 // @media (min-width: 2550px) and (max-width: 2560px) {
 //     .box-container {

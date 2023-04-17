@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { HttpProtocols } from '@app/http/http.protocols';
 import { EventService } from '@app/services/event.service';
 import { ProfileModel } from '@models/profile.model';
@@ -29,9 +29,12 @@ export class ImagecropperComponent implements OnInit {
   
   ProfileImageNew1: any=null;
   crop: Subscription
+  dark_color: any;
+  medium_color: any;
+  light_color: any;
 
 
-  constructor(public activeModal: NgbActiveModal, private readonly store: Store, private eventService: EventService,private Util: Util, public http:ApiserviceService) { }
+  constructor(public activeModal: NgbActiveModal, private readonly store: Store, private eventService: EventService,private Util: Util, public http:ApiserviceService,public element: ElementRef) { }
   croppedImage: any = '';
   error: any
   @ViewChild(ImageCropperComponent, { static: true }) imageCropper: ImageCropperComponent;
@@ -39,6 +42,17 @@ export class ImagecropperComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.fileData)
 
+    this.dark_color=localStorage.getItem('topbar_color')
+    this.element.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
+console.log(this.dark_color);
+
+    this.medium_color=localStorage.getItem('medium_color')
+    this.element.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
+
+    this.light_color=localStorage.getItem('light_color')
+    this.element.nativeElement.style.setProperty('--lightColor', `${this.light_color}`)
+
+    console.log(this.medium_color);
   }
 
   /**

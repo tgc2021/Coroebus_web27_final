@@ -158,6 +158,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   empemail:any
   empname:any
   emporg:any
+  spectator_temporary_array: any=[];
 
   constructor(private readonly store: Store, private modalService: NgbModal,private renderer:Renderer2,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -742,14 +743,15 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
           console.log(this.sectionView_3?._ranking_data[index]?.label);
           
           if (element?.label === this.sectionView_3?._ranking_data[index]?.label) {
-            console.log(element?._Overall?.length);
+            console.log(element?._Overall);
             
             if (element?._Overall?.length > 0 || element?._data?.length > 0) {
-              console.log(this.sectionView_3?._ranking_data[index]?._Overall?.push(...element?._Overall));
-              console.log(this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data));
+              
+              // console.log(this.sectionView_3?._ranking_data[index]?._Overall?.push(...element?._Overall));
+              // console.log(this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data));
 
               this.sectionView_3?._ranking_data[index]?._Overall?.push(...element?._Overall)
-              this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data)
+              // this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data)
 
               this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'center' });
             }
@@ -759,7 +761,7 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
       } else {
         this.sectionView_3 = res?.data
       }
-      this.filterRankingData()
+      // this.filterRankingData()
 
       this.sectionView_3_list = this.sectionView_3?._ranking_data?.filter(data => {
         //console.log(data)
@@ -1210,7 +1212,7 @@ else if(this.activeTabForSectionView_2 == 4){
   changeSubTabFilter(tabName: string) {
     this.activeSubTabForSectionView_2 = tabName
      
-    this.filterRankingData()
+    // this.filterRankingData()
   }
   async openHierarchyPopup(data?: any) {
     console.log(data)
