@@ -945,7 +945,7 @@ input::placeholder {
     }
 
     .leaderboard_name {
-        margin-left: 8.2vw;
+        margin-left: 7.8vw;
         font-family: 'Work sans';
         font-style: normal;
        
@@ -1879,4 +1879,18 @@ input::placeholder {
     }
 
 
+}
+
+@media screen and (min-width:1023px)  and (max-width:1180px) {
+
+    .leaderboard_name{
+        margin-left: 8.8vw;
+    }
+    .leaderboard_points{
+        margin-left: 22vw;
+    }
+    .leaderboard_rank_badge_image{
+        margin-left: 6vw;
+    }
+    
 }
