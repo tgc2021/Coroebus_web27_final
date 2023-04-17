@@ -70,6 +70,7 @@ export class PlayZoneComponent implements OnInit {
   skylineGameUrl: string;
   spinTheWheel: string;
   cubeBlasters: string;
+  cubicallUrl: string;
 
   constructor(private http: ApiserviceService, private readonly store: Store, public modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -167,15 +168,39 @@ export class PlayZoneComponent implements OnInit {
 
       this.modalService.open(content,{size: 'lg'});
     }
-   
-   
+  }
 
-
-    
+  openSpinTheWheels(content){
+    this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel/`
+      this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.spinTheWheelURL);
+      this.modalService.open(content,{size: 'lg'});
 
   }
-  
+  openCubeBlasters(content){
+    this.cubeBlasters=`https://coroebusbeta.in/cube_blasters`
+    this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.cubeBlasters)
+    this.modalService.open(content,{size: 'lg'});
 
+
+  }
+  openCubicall(content){
+    this.cubicallUrl=`https://www.playtolearn.in/cubi-call/`
+    this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.cubicallUrl);
+    this.modalService.open(content,{size: 'lg'});
+
+  }
+  openDartGame(content){
+    this.dartGameUrl=`https://coroebus.in/dart_game/`
+    this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.dartGameUrl)
+    this.modalService.open(content);
+  }
+  openSkyline(content){
+    this.skylineGameUrl=`https://coroebusbeta.in/CoroebusSkyline/`
+    this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.skylineGameUrl)
+
+    this.modalService.open(content,{size: 'lg'});
+
+  }
  
 
   // open(content) {
