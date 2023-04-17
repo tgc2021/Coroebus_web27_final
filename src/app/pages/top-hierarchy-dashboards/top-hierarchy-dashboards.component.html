@@ -468,7 +468,7 @@
                     <div class="Island_score">
                         <!-- <img class="profile_picture_image" src="{{sectionView_1._personal_data.profile_logo}}" height="100%" width="" /> -->
                         <div class="Overall_score_Inner_circle">
-                            <img src="{{item.logo}}" alt="is_LandLogo" width="100%" height="100%"> 
+                            <img src="{{item.logo}}" alt="is_LandLogo" width="100%" height="100%" style="border-radius: 100%;"> 
                            
                         </div>
                     </div>
@@ -574,11 +574,11 @@
                 </ng-template>
     
                 <ng-template #BuisenessIndexForSM>
-                    <div style="display: flex;justify-content: center; align-items: center;margin-top: 1vh;">
+                    <div style="display: flex;justify-content: center; align-items: center;margin-top: 1vh;font-family: Work sans;">
                             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mt-1" style="width: 19vw;font-family: 'Work sans';">
                                 <mat-expansion-panel-header  [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
-                                    <mat-panel-title style="color: #ffff;display:flex;justify-content: center;font-family: Work Sans;">
-                                        <strong> Business Index</strong>
+                                    <mat-panel-title style="color: #ffff;font-weight:500;display:flex;justify-content: center;font-family: 'Work Sans';font-size:2.2vh">
+                                        <span> Business Index</span>
                 
                                     </mat-panel-title>
                 
