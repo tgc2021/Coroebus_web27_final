@@ -91,7 +91,7 @@
                         <div class="card-body border-bottom-0 p-3" style="height: 43vh;">
                             <div class="float-start w-100 mb-2 text-center">
                                 <div class="dashboard-user-name">
-                                    Point Distribution
+                                    Points Distribution
                                 </div>
 
                             </div>
@@ -530,7 +530,7 @@
                         </div>
                     </div>
 
-                    <div *ngIf="spectSearchStr == ''"
+                    <div  *ngIf="spectSearchStr ==''|| spectSearchStr == undefined || spectSearList.length>10||spectSearchStr==null;"
                         [ngClass]="sectionView_1?._personal_data.id_role=='6'? 'dashboard-center-table':'dashboard-center-table1'"
                         class="">
                         <!-- {{spectSearList | json}} -->
@@ -548,7 +548,7 @@
                                     <div style="height:5vh;display:flex;align-items: center;">
                                         <img class="rounded-circle z-depth-2 user-logo-row" alt=""
                                             src="{{item?.rankingtable_logo}}" data-holder-rendered="true" height="100%"
-                                            width="41" (click)="openHierarchyPopup(item)">
+                                            width="41" >
                                     </div>
 
                                     <div class="media-body user-logo-row ellipsis"
@@ -617,7 +617,7 @@
                                     <div style="height:5vh;display:flex;align-items: center;">
                                         <img class="rounded-circle z-depth-2 user-logo-row" alt=""
                                             src="{{item?.rankingtable_logo}}" data-holder-rendered="true" height="100%"
-                                            width="41" (click)="openHierarchyPopup(item)">
+                                            width="41">
                                     </div>
 
                                     <div class="media-body user-logo-row ellipsis"
@@ -1450,7 +1450,7 @@
                         <div class="card-body">
                             <div class="float-start dropdown ms-2 font-size-16 font-weight-semibold"
                                 style="padding-bottom: 1vh;">
-                                Point Distribution
+                                Points Distribution
                             </div>
                             <div>
                                 <div class="mb-4 me-3"></div>
@@ -1651,7 +1651,7 @@
                                                 style="height:6vh;width:6vh;display:flex;align-items: center;padding-top: 5%;">
                                                 <img class="rounded-circle z-depth-2 user-logo-row" alt=""
                                                     src="{{item?.rankingtable_logo}}" data-holder-rendered="true"
-                                                    height="100%" width="100%" (click)="openHierarchyPopup(item)">
+                                                    height="100%" width="100%" >
                                             </div>
                                         </div>
 

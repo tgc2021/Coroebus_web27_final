@@ -71,7 +71,7 @@ export class RewardsComponent implements OnInit, AfterViewInit,OnDestroy {
   roleID:any
   rewardid:any
   hidedata:boolean=true
-  rewardSpect:boolean=false
+  rewardSpect:boolean
   ngOnInit(): void {
 
     if (!localStorage.getItem('foo')) { 
@@ -80,7 +80,7 @@ export class RewardsComponent implements OnInit, AfterViewInit,OnDestroy {
     } else {
       localStorage.removeItem('foo') 
     }
-
+    this.rewardSpect=false
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
     ).subscribe(data => {
@@ -104,12 +104,152 @@ export class RewardsComponent implements OnInit, AfterViewInit,OnDestroy {
   
       })
 
-      if(this.mergeObj.id_coroebus_game != null){
-        let body = {
-          _userid: this.mergeObj.USERID,
-          _game: this.mergeObj.id_coroebus_game,
-        }
+      this.location=window.location.href
+      console.log(this.location);
+      var checkUserID= this._route.queryParams
+      .subscribe(params => {
+        this.rewardSpect=true
+        console.log(params); // { orderby: "price" }
+        this.userid = this.Util.decryptData(params.userID) 
+        console.log(this.Util.decryptData(params.userID)); // price
+        
+        this.gameID = this.Util.decryptData(params.gameID);
+        console.log(this.gameID);
   
+        this.roleID = this.Util.decryptData(params.roleID);
+        console.log(this.roleID);
+  
+        localStorage.setItem('reward_userid', this.userid)
+        localStorage.setItem('reward_gameid', this.gameID)
+  
+  
+      })
+
+      console.log(this.userid);
+      console.log(this.gameID);
+
+      if(this.mergeObj.id_coroebus_game != null){
+        console.log(this.rewardSpect);
+        console.log(this.mergeObj.USERID);
+        console.log(this.mergeObj.id_coroebus_game);
+
+        if(this.location.includes('?')){
+          this.userid= localStorage.getItem('reward_userid');
+          this.gameID=  localStorage.getItem('reward_gameid')
+          console.log(this.hidedata);
+          console.log(this.userid);
+          console.log(this.mergeObj.USERID);
+
+          if(this.userid !=null){
+            let body = {
+        
+              _userid:  this.userid,
+              _game:   this.gameID
+            }
+            console.log(body);
+            this.http.rewards(body).subscribe((res) => {
+              console.log(res)
+    
+              let body={
+                _userid:this.mergeObj.USERID,
+                _game:this.mergeObj.id_coroebus_game,
+                _device:"W",
+                _section:"Rewards Page",
+                _description:"Rewards Page"
+              }
+          
+              this.http.engagamentlog(body).subscribe(res=>{
+                console.log(res);
+                
+              })
+    
+              // console.log( res.data.points_list[0].label);
+      
+              // const response = res.data.points_list[0].label
+      
+              // this.requestdata=responce
+      
+              this.rewardresponse = res;
+              this.filterCoreGame=res;
+              // this.filterCoreGame=res;
+      
+             
+      
+               console.log(this.filterCoreGame);
+              console.log(this.rewardresponse);
+              console.log(this.filterCoreGame);
+              this.rewardresponse = Array.of(this.rewardresponse);
+    
+              console.log(this.rewardresponse);
+              this.passbook_response=this.rewardresponse[0].data.points_list[1]._data
+              console.log(this.passbook_response);
+              this.collectionSize=this.passbook_response.length
+              console.log(this.collectionSize);
+              
+            })
+  
+            this.hidedata =false
+            console.log(this.hidedata);
+          }
+         
+          else{
+            let body = {
+        
+              _userid: this.mergeObj.USERID,
+              _game:   this.mergeObj.id_coroebus_game
+            }
+            console.log(body);
+            this.http.rewards(body).subscribe((res) => {
+              console.log(res)
+    
+              let body={
+                _userid:this.mergeObj.USERID,
+                _game:this.mergeObj.id_coroebus_game,
+                _device:"W",
+                _section:"Rewards Page",
+                _description:"Rewards Page"
+              }
+          
+              this.http.engagamentlog(body).subscribe(res=>{
+                console.log(res);
+                
+              })
+    
+              // console.log( res.data.points_list[0].label);
+      
+              // const response = res.data.points_list[0].label
+      
+              // this.requestdata=responce
+      
+              this.rewardresponse = res;
+              this.filterCoreGame=res;
+              // this.filterCoreGame=res;
+      
+             
+      
+               console.log(this.filterCoreGame);
+              console.log(this.rewardresponse);
+              console.log(this.filterCoreGame);
+              this.rewardresponse = Array.of(this.rewardresponse);
+    
+              console.log(this.rewardresponse);
+              this.passbook_response=this.rewardresponse[0].data.points_list[1]._data
+              console.log(this.passbook_response);
+              this.collectionSize=this.passbook_response.length
+              console.log(this.collectionSize);
+              
+            })
+  
+            this.hidedata =true
+            console.log(this.hidedata);
+          }
+        }
+       else{
+        let body = {
+        
+          _userid:  this.mergeObj.USERID,
+          _game:    this.mergeObj.id_coroebus_game
+        }
         console.log(body);
         this.http.rewards(body).subscribe((res) => {
           console.log(res)
@@ -151,14 +291,20 @@ export class RewardsComponent implements OnInit, AfterViewInit,OnDestroy {
           console.log(this.collectionSize);
           
         })
+       }
+  
+   
+
+     
       }
 
       else if(this.userObj.games.length == 0){
         let body = {
-          _userid: this.mergeObj.USERID,
-          _game: this.userSelectionData.id_coroebus_game,
+          _userid:  this.rewardSpect==false? this.mergeObj.USERID:this.userid,
+          _game:    this.rewardSpect==false?this.mergeObj.id_coroebus_game:this.gameID,
         }
-  
+
+ 
         console.log(body);
         this.http.rewards(body).subscribe((res) => {
           console.log(res)
@@ -201,69 +347,6 @@ export class RewardsComponent implements OnInit, AfterViewInit,OnDestroy {
     
     })
 
-    this.location=window.location.href
-    console.log(this.location);
-    var checkUserID= this._route.queryParams
-    .subscribe(params => {
-      this.rewardSpect=true
-      console.log(params); // { orderby: "price" }
-      this.userid = this.Util.decryptData(params.userID) 
-      console.log(this.Util.decryptData(params.userID)); // price
-      
-      this.gameID = this.Util.decryptData(params.gameID);
-      console.log(this.gameID);
-
-      this.roleID = this.Util.decryptData(params.roleID);
-      console.log(this.roleID);
-
-      localStorage.setItem('reward_userid', this.userid)
-      localStorage.setItem('reward_gameid', this.gameID)
-
-
-    })
-
-    this.userid=  localStorage.getItem('reward_userid')
-    if(this.userid!=null){
-      console.log(this.rewardSpect);
-      
-      this.rewardid=localStorage.getItem('rewardid')
-      if(this.rewardid!=this.mergeObj.USERID && this.rewardSpect ){
-        this.userid=  localStorage.getItem('reward_userid')
-        this.gameID=  localStorage.getItem('reward_gameid')
-        this.hidedata= false
-        let body = {
-          _userid: this.userid,
-          _game: this.gameID,
-        }
-  
-        console.log(body);
-        this.http.rewards(body).subscribe((res) => {
-          console.log(res)
-  
-        
-  
-          this.rewardresponse = res;
-          this.filterCoreGame=res;
-          // this.filterCoreGame=res;
-  
-         
-  
-           console.log(this.filterCoreGame);
-          console.log(this.rewardresponse);
-          console.log(this.filterCoreGame);
-          this.rewardresponse = Array.of(this.rewardresponse);
-  
-          console.log(this.rewardresponse);
-          this.passbook_response=this.rewardresponse[0].data.points_list[1]._data
-          console.log(this.passbook_response);
-          this.collectionSize=this.passbook_response.length
-          console.log(this.collectionSize);
-          
-        })
-  
-      }
-  
-    }
 
  
   
