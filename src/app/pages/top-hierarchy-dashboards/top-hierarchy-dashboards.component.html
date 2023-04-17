@@ -245,17 +245,17 @@
                                         <div class="leaderboard_rank_points_label">{{res.rankingtable_weightage}}</div>
                                     </div>
     
-                                    <div class="leaderboard_rank_up_down_arrow_div " style="margin-left: 3vw;" *ngIf="res.rankingtable_arrow=='green'">
+                                    <div class="leaderboard_rank_up_down_arrow_div " style="margin-left: 2vw;display:flex; justify-content: center;" *ngIf="res.rankingtable_arrow=='green'">
                                         <img class="leaderboard_rank_up_down_arrow_image"
                                             src="{{sectionView_1.theme_details[0].up_arrow}}" />
                                     </div>
     
-                                    <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 3vw;" *ngIf="res.rankingtable_arrow=='red'">
+                                    <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 2vw;display:flex; justify-content: center;" *ngIf="res.rankingtable_arrow=='red'">
                                         <img class="leaderboard_rank_up_down_arrow_image"
                                             src="{{sectionView_1.theme_details[0].down_arrow}}" />
                                     </div>
     
-                                    <div class="leaderboard_rank_up_down_arrow_div " style="margin-left: 3vw;"
+                                    <div class="leaderboard_rank_up_down_arrow_div " style="margin-left: 2vw;display:flex; justify-content: center;"
                                         *ngIf="res.rankingtable_arrow=='yellow'">
                                         <img class="leaderboard_rank_up_down_arrow_image"
                                             src="{{sectionView_1.theme_details[0].equal_arrow}}" />
@@ -293,17 +293,17 @@
                                         <div class="leaderboard_rank_points_label">{{res.rankingtable_weightage}}</div>
                                     </div>
     
-                                    <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 3vw;" *ngIf="res.rankingtable_arrow=='green'">
+                                    <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 2vw;display:flex; justify-content: center;" *ngIf="res.rankingtable_arrow=='green'">
                                         <img class="leaderboard_rank_up_down_arrow_image"
                                             src="{{sectionView_1.theme_details[0].up_arrow}}" />
                                     </div>
     
-                                    <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 3vw;" *ngIf="res.rankingtable_arrow=='red'">
+                                    <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 2vw;display:flex; justify-content: center;" *ngIf="res.rankingtable_arrow=='red'">
                                         <img class="leaderboard_rank_up_down_arrow_image"
                                             src="{{sectionView_1.theme_details[0].down_arrow}}" />
                                     </div>
     
-                                    <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 3vw;"
+                                    <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 2vw;display:flex; justify-content: center;"
                                         *ngIf="res.rankingtable_arrow=='yellow'">
                                         <img class="leaderboard_rank_up_down_arrow_image"
                                             src="{{sectionView_1.theme_details[0].equal_arrow}}" />
@@ -351,17 +351,17 @@
                                             <div class="leaderboard_rank_points_label">{{res.rankingtable_weightage}}</div>
                                         </div>
         
-                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 3vw;" *ngIf="res.rankingtable_arrow=='green'">
+                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 2vw;display:flex; justify-content: center;" *ngIf="res.rankingtable_arrow=='green'">
                                             <img class="leaderboard_rank_up_down_arrow_image"
                                                 src="{{sectionView_1.theme_details[0].up_arrow}}" />
                                         </div>
         
-                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 3vw;" *ngIf="res.rankingtable_arrow=='red'">
+                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 2vw;display:flex; justify-content: center;" *ngIf="res.rankingtable_arrow=='red'">
                                             <img class="leaderboard_rank_up_down_arrow_image"
                                                 src="{{sectionView_1.theme_details[0].down_arrow}}" />
                                         </div>
         
-                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 3vw;"
+                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 2vw;display:flex; justify-content: center;"
                                             *ngIf="res.rankingtable_arrow=='yellow'">
                                             <img class="leaderboard_rank_up_down_arrow_image"
                                                 src="{{sectionView_1.theme_details[0].equal_arrow}}" />
@@ -499,7 +499,7 @@
                                     width:17ch;
                                     text-align:center
                                     "
-                                    ngbTooltip="{{business_response.point_label_fullname}}" placement="bottom"
+                                    ngbTooltip="{{business_response.point_indicator}}" placement="bottom"
                                     >
                                         {{business_response.point_label}}
                                     </div>
@@ -530,7 +530,7 @@
                                 <div>
                                     <div class="d-flex justify-content-between align-items-center mt-4"
                                         style="font-weight: 550;font-family: 'Work Sans';width:97%" *ngFor="let bus_response of sectionView_1._business_score">
-                                        <div class="global_index_mobile d-flex" style="font-weight: 500;font-family: 'Work Sans';" ngbTooltip="{{bus_response.point_label_fullname}}" placement="bottom">
+                                        <div class="global_index_mobile d-flex" style="font-weight: 500;font-family: 'Work Sans';" >
                                             {{bus_response.point_label}}
                 
                                         </div>
