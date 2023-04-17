@@ -1161,7 +1161,7 @@ input::placeholder {
 
     .game_points_image {
         height: 4vh;
-        width: 3vw;
+        width: 4vh;
     }
     .game_points_score {
         background: #FFFFFF;
@@ -1195,7 +1195,7 @@ input::placeholder {
 
     .reward_points_image {
         height: 4vh;
-        width: 3vw;
+        width: 4vh;
     }
 
     .reward_points_score {
@@ -1233,7 +1233,9 @@ input::placeholder {
         font-style: normal;
         font-weight: 600;
         font-size: 1vw;
+        text-align: end;
         color: #FFFFFF;
+        width: 2.5vw;
 
     }
 
@@ -1244,7 +1246,9 @@ input::placeholder {
         font-weight: 600;
         font-size: 1vw;
         color: #FFFFFF;
-        margin-left: 2vw;
+        text-align: end;
+        // margin-left: 2vw;
+        width: 2.5vw;
     }
 
     .leaderboard_with_fixed_tile {

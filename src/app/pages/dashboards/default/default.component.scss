@@ -324,6 +324,7 @@ mat-accordion{
     width: 5vh;
     border-radius: 100%;
     img{
+        border-radius: 100%;
         filter: grayscale(100%);
     }
     
@@ -335,6 +336,7 @@ mat-accordion{
     width: 5vh;
     border-radius: 100%;
     img{
+        border-radius: 100%;
         filter: grayscale(0%);
     }
    
@@ -1803,8 +1805,8 @@ border-radius: 8px;
 }
 .badges_row{
     display: flex;
-    justify-content: center;
-    gap:23%;
+    justify-content: start;
+    // gap:23%;
     
 
 }

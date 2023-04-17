@@ -181,6 +181,8 @@ console.log(this.id_coroebus_organization);
 
 
     })
+    // localStorage.setItem('rewardid',this.userObj?._personal_data?.USERID)
+
 
     this.initialize();
 

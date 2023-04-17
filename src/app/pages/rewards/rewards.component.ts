@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subscription, combineLatest, Subject, Observable } from 'rxjs';
 import * as fromRoot from '../../core/app-state';
@@ -21,7 +21,7 @@ declare var $;
   templateUrl: './rewards.component.html',
   styleUrls: ['./rewards.component.scss']
 })
-export class RewardsComponent implements OnInit, AfterViewInit {
+export class RewardsComponent implements OnInit, AfterViewInit,OnDestroy {
   @ViewChild('dataTable', { static: false }) table;
   dataTable: any;
 
@@ -222,43 +222,50 @@ export class RewardsComponent implements OnInit, AfterViewInit {
 
     })
 
-    this.rewardid=localStorage.getItem('rewardid')
-    if(this.rewardid!=this.mergeObj.USERID && this.rewardSpect ){
-      this.userid=  localStorage.getItem('reward_userid')
-      this.gameID=  localStorage.getItem('reward_gameid')
-      this.hidedata= false
-      let body = {
-        _userid: this.userid,
-        _game: this.gameID,
-      }
-
-      console.log(body);
-      this.http.rewards(body).subscribe((res) => {
-        console.log(res)
-
+    this.userid=  localStorage.getItem('reward_userid')
+    if(this.userid!=null){
+      console.log(this.rewardSpect);
       
-
-        this.rewardresponse = res;
-        this.filterCoreGame=res;
-        // this.filterCoreGame=res;
-
-       
-
-         console.log(this.filterCoreGame);
-        console.log(this.rewardresponse);
-        console.log(this.filterCoreGame);
-        this.rewardresponse = Array.of(this.rewardresponse);
-
-        console.log(this.rewardresponse);
-        this.passbook_response=this.rewardresponse[0].data.points_list[1]._data
-        console.log(this.passbook_response);
-        this.collectionSize=this.passbook_response.length
-        console.log(this.collectionSize);
+      this.rewardid=localStorage.getItem('rewardid')
+      if(this.rewardid!=this.mergeObj.USERID && this.rewardSpect ){
+        this.userid=  localStorage.getItem('reward_userid')
+        this.gameID=  localStorage.getItem('reward_gameid')
+        this.hidedata= false
+        let body = {
+          _userid: this.userid,
+          _game: this.gameID,
+        }
+  
+        console.log(body);
+        this.http.rewards(body).subscribe((res) => {
+          console.log(res)
+  
         
-      })
-
+  
+          this.rewardresponse = res;
+          this.filterCoreGame=res;
+          // this.filterCoreGame=res;
+  
+         
+  
+           console.log(this.filterCoreGame);
+          console.log(this.rewardresponse);
+          console.log(this.filterCoreGame);
+          this.rewardresponse = Array.of(this.rewardresponse);
+  
+          console.log(this.rewardresponse);
+          this.passbook_response=this.rewardresponse[0].data.points_list[1]._data
+          console.log(this.passbook_response);
+          this.collectionSize=this.passbook_response.length
+          console.log(this.collectionSize);
+          
+        })
+  
+      }
+  
     }
 
+ 
   
     this.dynamicColor()
   }
@@ -662,4 +669,11 @@ console.log(this.userSelectionData);
     // this.dataTable.DataTable();
   }
 
+
+  ngOnDestroy():void{
+    localStorage.removeItem('reward_userid') 
+    localStorage.removeItem('rewardid') 
+
+
+  }
 }
