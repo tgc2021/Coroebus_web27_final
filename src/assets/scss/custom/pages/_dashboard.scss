@@ -21,24 +21,39 @@
 }
 
 .rank_h {
-    margin-left: 5%;
+    margin-left: 1.2vw;
     font-weight: 600;
-    font-size: 2vh;
+    font-size: 1.6vh;
     line-height: 150%;
+    margin-top: 3%;
+   display: flex;
+   align-items: center;
+   padding: 2%; 
 }
 
 .name_h {
     margin-left: 3%;
+    margin-top: 3%;
     font-weight: 600;
-    font-size: 2vh;
+    font-size: 1.6vh;
     line-height: 150%;
+    display: flex;
+    padding: 2%;
+    align-items: center;
+ 
 }
 
 .points_h {
+    margin-top: 3%;
     margin-left: 94%;
     font-weight: 600;
-    font-size: 2vh;
+    font-size: 1.6vh;
+    
+    display: flex;
+  
+    align-items: center;
     line-height: 150%;
+    padding: 2%;
 }
 .three-data {
     >div:nth-child(3) {

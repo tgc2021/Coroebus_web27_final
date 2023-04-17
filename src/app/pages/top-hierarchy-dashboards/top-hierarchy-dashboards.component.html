@@ -197,7 +197,7 @@
                     <div class="row" style="color: #ffff;
                     margin-top: 1.2vh;
                     margin-left: -1vw;">
-                        <div class="leaderboard_label d-flex">
+                        <div class="leaderboard_label d-flex align-items-center mb-1">
                             <div class="leaderboard_rank">Rank</div>
                             <div class="leaderboard_name">Name</div>
                             <div class="leaderboard_points">Points</div>
@@ -499,7 +499,7 @@
                                     width:17ch;
                                     text-align:center
                                     "
-                                    ngbTooltip="{{business_response.point_label}}" placement="bottom"
+                                    ngbTooltip="{{business_response.point_label_fullname}}" placement="bottom"
                                     >
                                         {{business_response.point_label}}
                                     </div>
@@ -530,7 +530,7 @@
                                 <div>
                                     <div class="d-flex justify-content-between align-items-center mt-4"
                                         style="font-weight: 550;font-family: 'Work Sans';width:97%" *ngFor="let bus_response of sectionView_1._business_score">
-                                        <div class="global_index_mobile d-flex" style="font-weight: 500;font-family: 'Work Sans';">
+                                        <div class="global_index_mobile d-flex" style="font-weight: 500;font-family: 'Work Sans';" ngbTooltip="{{bus_response.point_label_fullname}}" placement="bottom">
                                             {{bus_response.point_label}}
                 
                                         </div>
