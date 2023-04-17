@@ -993,16 +993,17 @@ else if(this.activeTabForSectionView_2 == 4){
     }
   }
 
+  
+
   checkEmpty(){
-   
     this.spectSearList=null
 
     if(this.spectSearchStr==''){
-      console.log(this.spectSearchStr);
       
       this.spectSearchStr=''
+      // this.emptyInput==true;
       this.spectSearchStrTrigger = false
-      this.spectSearch()
+      // this.spectSearch()
    
       // this.spectSearchStr.setValue('');
       // this.ngOnInit()

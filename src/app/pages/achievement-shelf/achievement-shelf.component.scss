@@ -603,7 +603,7 @@ margin-bottom: 5px;
 }
 .badge_total_count{
     position:absolute;
-    left: 45%;
+    left: 48%;
     right: 50%;
     transform: translate(-50%, -50%);
     top: 34px;
@@ -1599,6 +1599,19 @@ color: #000000;
         right: 16px;
         margin-top: 3px;
     }
+
+    .summit_details{
+        padding-left: 2vw;
+    }
+
+    .name_div{
+        padding-left: 2vw;
+
+    }
+    
+.content::before{
+right: calc(50% - 104px);
+}   
 }
 @media (min-width: 1200px) and (max-width: 1279px){
     
@@ -1607,9 +1620,18 @@ color: #000000;
     }
     
     
+    .summit_details{
+        padding-left: 2vw;
+    }
+
+    .name_div{
+        padding-left: 2vw;
+
+    }
     
-    
-    
+.content::before{
+right: calc(50% - 104px);
+}    
     
     
 }
