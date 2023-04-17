@@ -465,61 +465,66 @@
                     </div>
                     <div class="me-1 mt-1">
                         <!-- {{rankingDataFirstRowForSectionView_2 | json}} -->
-                        <div class="row dashboard-rank-row ms-1 mb-2"
-                            *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.length > 0"
-                            [style.background-image]="'url(' + web_first_tile_image + ')'"
-                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                            style="border:2px solid">
-                            <div class="col ">
-                                <div class="media d-flex align-items-center gap-2" style="height: 7vh;">
-                                    <span class="col-1 ms-2 text-white position-absolute-">
+                       
+
+                        <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
+                        *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.length > 0"
+                        [style.background-image]="'url(' + web_first_tile_image + ')'"
+                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                            [style.background-image]="'url('+web_first_tile_image +')'">
+                            <div class="col">
+                                <div class="media d-flex align-items-center gap-3  " style="height: 7vh;">
+                                    <span class="col-1 ms-2 text-white position-absolute-s">
                                         {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_number}}
                                     </span>
-                                    <div style="height:5vh;">
-                                        <img loading="lazy" class="rounded-circle z-depth-2 user-logo-row" alt=""
-                                            src="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_logo}}"
-                                            data-holder-rendered="trplacementue" height="100%" width="41">
+                                    <div style="height:5vh;display:flex;align-items: center;">
+                                        <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                        src="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_logo}}"
+                                        data-holder-rendered="true" height="100%"
+                                            width="41" >
                                     </div>
 
-                                    <div class="media-body user-logo-row ellipsis pt-1" style="height: 6vh;">
-                                        <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom-center"
+                                    <div class="media-body user-logo-row ellipsis"
+                                        style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
+                                        <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
                                             ngbTooltip="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}">
                                             {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}
                                         </h5>
-                                        <p class="mt-n4 team-name sub-team name-f-size">
-                                            {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_team}}
-                                        </p>
+                                        <p class="mt-n4 team-name sub-team name-f-size"> {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_team}}</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="media d-flex align-items-center gap-2" style="height: 7vh;">
-                                    <div class="rounded-circle z-depth-2 team-logo-row d-flex align-items-center"
-                                        style="height:5vh;width:5vh">
-                                        <img loading="lazy" class="rounded-circle z-depth-2 " alt=""
-                                            src="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.ranking_badge}}"
-                                            data-holder-rendered="true" height="100%" width="100%">
+                                <div class="media me-1" style="height: 7vh; display: flex;align-items:center">
+                                    <div class="rounded-circle z-depth-2 team-logo-row " style="height:5vh;width:5vh">
+                                        <img alt="" src="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.ranking_badge}}" data-holder-rendered="true"
+                                            height="100%" width="100%">
                                     </div>
 
-                                    <div class="media-body text-center pt-1">
+                                    <div class="media-body text-center">
                                         <h5 class="mt-0 text-white" style="display: flex;
                                         justify-content: end;
                                         align-items: center;
-                                        gap: 3rem;">
-                                            <span
-                                                class="name-f-size point-number">{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_weightage}}</span>
-                                            <div style="height:5vh">
-                                                <img loading="lazy" class=" f-right up-arrow" alt=""
+                                        gap: 3vw;">
+                                            <div style="height: 6vh; display:flex;align-items: center;">
+                                                <span
+                                                    class="name-f-size point-number mt-1">{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_weightage}}</span>
+                                            </div>
+
+                                            <div style="height:5vh;">
+                                                <img class="mt-1 f-right up-arrow" alt=""
                                                     src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
                                                     data-holder-rendered="true" height="100%"
                                                     *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow === 'red'"
                                                     (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
-                                                <img loading="lazy" class=" f-right up-arrow" alt=""
+
+                                                <img class="mt-1 f-right up-arrow" alt=""
                                                     src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
                                                     data-holder-rendered="true" height="100%"
                                                     *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow !== 'red'"
                                                     (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
                                             </div>
+
 
 
                                         </h5>
