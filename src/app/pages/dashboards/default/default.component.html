@@ -2095,22 +2095,20 @@
 
 
                                     </div>
-                                    <div *ngIf="seasonalThemeMonthlyBadges3.length>2;then 3rdBadge"></div>
-                                    <ng-template #3rdBadge>
-                                        <div class="d-flex flex-column justify-content-center align-items-center col ">
-                                            <div style="height:6vh;width:6vh;border-radius:50%"
-                                                [ngClass]="seasonalThemeMonthlyBadges3[2].active_class=='0'?'inActiveBadge':'ActiveBadge'">
-                                                <img src="{{seasonalThemeMonthlyBadges3[2].seasonal_badge_logo}}" alt=""
-                                                    height="100%" width="100%">
-
-                                            </div>
-                                            <div class="d-flex justify-content-center">
-                                                <div style="height:3vh;border-left: 1px solid black;"></div>
-                                            </div>
-
+                                    <div class="d-flex flex-column justify-content-center align-items-center col ">
+                                        <div style="height:6vh;width:6vh;border-radius:50%"
+                                            [ngClass]="seasonalThemeMonthlyBadges3[2].active_class=='0'?'inActiveBadge':'ActiveBadge'">
+                                            <img src="{{seasonalThemeMonthlyBadges3[2].seasonal_badge_logo}}" alt=""
+                                                height="100%" width="100%">
 
                                         </div>
-                                    </ng-template>
+                                        <div class="d-flex justify-content-center">
+                                            <div style="height:3vh;border-left: 1px solid black;"></div>
+                                        </div>
+
+
+                                    </div>
+                                   
 
 
                                 </div>
