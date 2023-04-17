@@ -71,6 +71,7 @@ export class RewardsComponent implements OnInit, AfterViewInit {
   roleID:any
   rewardid:any
   hidedata:boolean=true
+  rewardSpect:boolean=false
   ngOnInit(): void {
 
     if (!localStorage.getItem('foo')) { 
@@ -204,6 +205,7 @@ export class RewardsComponent implements OnInit, AfterViewInit {
     console.log(this.location);
     var checkUserID= this._route.queryParams
     .subscribe(params => {
+      this.rewardSpect=true
       console.log(params); // { orderby: "price" }
       this.userid = this.Util.decryptData(params.userID) 
       console.log(this.Util.decryptData(params.userID)); // price
@@ -221,7 +223,7 @@ export class RewardsComponent implements OnInit, AfterViewInit {
     })
 
     this.rewardid=localStorage.getItem('rewardid')
-    if(this.rewardid!=this.mergeObj.USERID){
+    if(this.rewardid!=this.mergeObj.USERID && this.rewardSpect ){
       this.userid=  localStorage.getItem('reward_userid')
       this.gameID=  localStorage.getItem('reward_gameid')
       this.hidedata= false
