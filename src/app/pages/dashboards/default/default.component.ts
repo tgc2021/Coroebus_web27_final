@@ -1194,6 +1194,7 @@ else if(this.activeTabForSectionView_2 == 4){
     }
     else{
       this.pageNumberForSectionView_3=1
+      this.activeSubTabForSectionView_2 = 'My Store'    
       this._router.navigate([], {
         relativeTo: this._route,
         queryParams: {
@@ -1377,7 +1378,7 @@ else if(this.activeTabForSectionView_2 == 4){
 
 
   navigateToOtherRole(item){
-    
+    this.activeSubTabForSectionView_2 = 'My Store'    
     console.log(item);
     this.userID= this.Util.encryptData(item?.userid);
     this.gameID= this.Util.encryptData(item?.id_coroebus_game);
