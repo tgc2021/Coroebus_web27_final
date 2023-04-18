@@ -74,6 +74,7 @@ export class PlayZoneComponent implements OnInit {
   dark_color: string;
   medium_color: string;
   light_color: string;
+  cubeBlastersUrl: string;
 
   constructor(private http: ApiserviceService, private readonly store: Store, public modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -196,8 +197,8 @@ console.log(this.dark_color);
   }
 
   openCubeBlasters(content){
-    this.cubeBlasters=`https://coroebusbeta.in/cube_blasters`
-    this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.cubeBlasters)
+    this.cubeBlastersUrl=`https://coroebusbeta.in/cube_blasters/`
+    this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.cubeBlastersUrl)
     this.modalService.open(content,{size: 'lg'});
 
 
