@@ -45,7 +45,7 @@
                         </button>
                     </div>
                     <div>
-                        <button class="btn-sm-2 col-1" [style.background-color]="dark_color">
+                        <button class="btn-sm-2 col-1" [style.background-color]="color==null? dark_color:color">
                             <img src="assets/images/playZone/images/Vector.png" alt="">
                         </button>
                     </div>
@@ -89,7 +89,7 @@
                                 <div class="d-flex align-items-center justify-content-center">
                                     <hr width="98%">
                                 </div>
-                                <div class="d-flex p-1">
+                                <div class="d-flex align-items-center p-1">
                                     <div (click)="openCubicall(content)" class="status-openButton" type="button">Open
                                     </div>
                                     
@@ -138,7 +138,7 @@
                                 <div class="d-flex align-items-center justify-content-center">
                                     <hr width="98%">
                                 </div>
-                                <div class="d-flex p-1">
+                                <div class="d-flex  align-items-center p-1">
                                     <div (click)="openSpinTheWheels(content)" class="status-openButton" type="button">Open
                                     </div>  
                                 </div>
@@ -183,7 +183,7 @@
                                 <div class="d-flex align-items-center justify-content-center">
                                     <hr width="98%">
                                 </div>
-                                <div class="d-flex p-1">
+                                <div class="d-flex  align-items-center p-1">
                                     <div (click)="openCubeBlasters(content)" class="status-openButton" type="button">Open
                                     </div>
                                     
@@ -232,7 +232,7 @@
                                 <div class="d-flex align-items-center justify-content-center">
                                     <hr width="98%">
                                 </div>
-                                <div class="d-flex p-1">
+                                <div class="d-flex  align-items-center p-1">
                                     <div (click)="openDartGame(content)" class="status-openButton" type="button">Open
                                     </div>
                                     
@@ -278,7 +278,7 @@
                                 <div class="d-flex align-items-center justify-content-center">
                                     <hr width="98%">
                                 </div>
-                                <div class="d-flex p-1">
+                                <div class="d-flex  align-items-center p-1">
                                     <div (click)="openSkyline(content)" class="status-openButton" type="button">Open
                                     </div>
                                     
@@ -452,7 +452,7 @@
                                 X
                             </button>
                         </div>
-                        <button class="btn-sm-2" [style.background-color]="dark_color">
+                        <button class="btn-sm-2" [style.background-color]="color==null? dark_color:color">
                             <img src="assets/images/playZone/images/Vector.png" alt="" type="button"
                                 id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
@@ -744,7 +744,7 @@
                                     X
                                 </button>
                             </div>
-                            <button class="btn-sm-2" [style.background-color]="dark_color">
+                            <button class="btn-sm-2" [style.background-color]="color==null? 'dark_color':'color'">
                                 <img src="assets/images/playZone/images/Vector.png" alt="">
 
                             </button>

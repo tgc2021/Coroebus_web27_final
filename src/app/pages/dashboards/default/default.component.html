@@ -451,7 +451,7 @@
                 <div class="mt-2"
                     [style.background-image]="
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null"
-                    style="background-size:cover;border-radius:10px">
+                    style="background-size:cover;border-radius:10px;padding:1%">
                     <div class="row" style="color:#ffff;font-size: 1vw !important;">
                         <div class="col-2">
                             <span class="rank_h">Rank</span>
@@ -2026,7 +2026,7 @@
                 <div class="modal-content modalContentMonthly">
                     <div class="modal-body" style="min-height: 30vh;">
                         <div class="d-flex justify-content-end" style="color:#0000">
-                            <button type="button" class="button-close-monthly" data-bs-dismiss="modal"
+                            <button type="button" class="button-close" data-bs-dismiss="modal"
                                 aria-label="Close">X</button>
                         </div>
                         <div *ngIf="seasonalThemeMonthl3!=undefined;then month"></div>
