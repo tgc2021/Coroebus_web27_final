@@ -229,7 +229,7 @@ mat-accordion{
     }
   }
 
-.inner_content{
+.inner_content,.inner_content_daily1{
     font-weight: 600;
     font-family: 'Work Sans';
     font-size:1.6vh;
@@ -1883,10 +1883,13 @@ border-radius: 8px;
         margin-left: 3vw;
     }
   .inner_content{
-    width: 65%;
+    width: 100%;
   }
     
-    
+  .inner_content_daily1{
+    width: 65%;
+
+  }
     
 }
 
