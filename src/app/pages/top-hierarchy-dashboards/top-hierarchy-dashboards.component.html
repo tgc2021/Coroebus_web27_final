@@ -124,7 +124,7 @@
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
                 <div *ngIf="sectionView_1._personal_data.id_role=='9' then redirectToBH else dontredirect"></div>
                 <ng-template #redirectToBH>
-                    <img (click)="getDataBasedOnUserIDHos(sectionView_1?.is_land_logos)" src="{{sectionView_1._personal_data.profile_badge_image}}" alt="badge_img" height="60%" width="60%">
+                    <img (click)="getDataBasedOnUserIDHos(sectionView_1?._business_user[0])" src="{{sectionView_1._personal_data.profile_badge_image}}" alt="badge_img" height="60%" width="60%">
 
                 </ng-template>
                 <ng-template #dontredirect>

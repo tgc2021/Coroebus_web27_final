@@ -663,26 +663,26 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
   }
 
   getDataBasedOnUserIDHos(data: any) {
-    // console.log(data?.role_id)
+    console.log(data)
+    localStorage.setItem('userid',data.USERID)
 
     this.router.navigate(['/topdashboard'], {
       relativeTo: this._route,
       queryParams: {
-        userID: this.Util.encryptData(data?._userid),
-        gameID: this.Util.encryptData(data?.game_id),
-        roleID: this.Util.encryptData(data?.role_id?.toString())
-
+        userID: this.Util.encryptData(data?.USERID),
+        // gameID: this.Util.encryptData(data?.game_id),
+        // roleID: this.Util.encryptData(data?.role_id?.toString())
+       
       },
-
+     
       queryParamsHandling: 'merge',
       // preserve the existing query params in the route
       // skipLocationChange: false
       // do not trigger navigation
 
-
     });
 
-
+   
 
   }
   governance_index(){

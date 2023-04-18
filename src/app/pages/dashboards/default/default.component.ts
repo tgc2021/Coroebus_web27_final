@@ -188,6 +188,12 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     // this.emojiSelected(0,1)
 
     // this.challengeRecievedCount()
+    if (!localStorage.getItem('foo')) { 
+      localStorage.setItem('foo', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('foo') 
+    }
 
     this.activeTab()
     this.Edit_image()
@@ -1187,6 +1193,7 @@ else if(this.activeTabForSectionView_2 == 4){
       });
     }
     else{
+      this.pageNumberForSectionView_3=1
       this._router.navigate([], {
         relativeTo: this._route,
         queryParams: {
@@ -1560,9 +1567,11 @@ else if(this.activeTabForSectionView_2 == 4){
     const roleid = this.Util.encryptData(id_role)
     const spectStaus='yes'
 
+    console.log('http://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus);
+    
     window.open(
         
-      'http://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
+      'http://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
       '_self' // <- This is what makes it open in a new window.
 
       //  'http://localhost:56671/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,

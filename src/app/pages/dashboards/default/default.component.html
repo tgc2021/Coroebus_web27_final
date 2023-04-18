@@ -794,8 +794,7 @@
 
                                                 </mat-expansion-panel-header>
                                                 <div *ngFor="let triviaData of triviaCornerData">
-                                                    <div
-                                                        *ngIf="!hideBattleGround then redirect_la else dontredirect_la">
+                                                    <div *ngIf="!hideBattleGround then redirect_la else dontredirect_la">
                                                     </div>
                                                     <ng-template #redirect_la>
                                                         <div *ngFor="let triviaData of triviaCornerData">
@@ -845,7 +844,7 @@
                                                             <div class="d-flex p-2 mt-1"
                                                                 style="border-radius:5px;font-family:'Work sans';position:relative"
                                                                 [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'"
-                                                                (click)="navigateToBriefQuetion(triviaData)">
+                                                               >
                                                                 <div
                                                                     class="triviaBanner d-flex align-items-start mt-2 p-2">
                                                                     <div style="height:8vh;width:5vw;border-radius:5vh">
@@ -1060,9 +1059,9 @@
 
                                                     <div class="d-flex flex-column justify-content-between"
                                                         style="width: 100%;">
-                                                        <div *ngIf="!hideBattleGround;then hideForOtherRole"></div>
+                                                        <div *ngIf="!hideBattleGround;then hideForOtherRole else donthide"></div>
                                                         <ng-template #hideForOtherRole>
-                                                            <div class="inner_content" style="width:100%"
+                                                            <div class="inner_content ps-3" style="width:100%"
                                                                 (click)="navigateToNewChallenge()">New Challenge</div>
                                                             <div class="inner_content"
                                                                 style=" border-bottom: 0.5px solid #A5ACB8;"
@@ -1096,10 +1095,12 @@
                                                                 align-items:center">{{challengeReacieved}}</div>
 
                                                             </div>
+                                                            <div class="inner_content ps-3" style="border-bottom:none;width:100%"
+                                                            (click)="navigateToStatistics()">Statistics</div>
                                                         </ng-template>
 
                                                         <ng-template #donthide>
-                                                            <div class="inner_content">New Challenge</div>
+                                                            <div class="inner_content ps-3">New Challenge</div>
                                                             <div class="inner_content"
                                                                 style=" border-bottom: 0.5px solid #A5ACB8;"
                                                                 class="d-flex justify-content-between">
@@ -1130,10 +1131,12 @@
                                                                 align-items:center">{{challengeReacieved}}</div>
 
                                                             </div>
+
+                                                            <div class="inner_content ps-3" style="border-bottom:none;width:100%"
+                                                            (click)="navigateToStatisticsSpect()">Statistics</div>
                                                         </ng-template>
 
-                                                        <div class="inner_content" style="border-bottom:none;width:100%"
-                                                            (click)="navigateToStatistics()">Statistics</div>
+                                                     
                                                     </div>
 
                                                 </div>
