@@ -993,6 +993,9 @@ else if(this.activeTabForSectionView_2 == 4){
       if (this.addInsList.length === 0) {
         this.buletinsHide = true
       }
+      else{
+        this.buletinsHide = false;
+      }
 
     } else {
       this.notificationList_err = 'Error'
@@ -1393,11 +1396,7 @@ else if(this.activeTabForSectionView_2 == 4){
     let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
     let id_role=this.sectionView_1._personal_data.id_role;
     let id_coroebus_user=this.sectionView_1._personal_data.id_coroebus_user;
-
     console.log(this.userSelectionData);
-
-
-
     const userId = this.Util.encryptData(_userid)
     const game = this.Util.encryptData(id_coroebus_game)
     const roleid = this.Util.encryptData(id_role)
