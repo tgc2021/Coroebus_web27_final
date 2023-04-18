@@ -45,7 +45,7 @@
                         </button>
                     </div>
                     <div>
-                        <button class="btn-sm-2 col-1" [style.background-color]="dark_color">
+                        <button class="btn-sm-2 col-1" [style.background-color]="color==null? dark_color:color">
                             <img src="assets/images/playZone/images/Vector.png" alt="">
                         </button>
                     </div>
@@ -452,7 +452,7 @@
                                 X
                             </button>
                         </div>
-                        <button class="btn-sm-2" [style.background-color]="dark_color">
+                        <button class="btn-sm-2" [style.background-color]="color==null? dark_color:color">
                             <img src="assets/images/playZone/images/Vector.png" alt="" type="button"
                                 id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
@@ -744,7 +744,7 @@
                                     X
                                 </button>
                             </div>
-                            <button class="btn-sm-2" [style.background-color]="dark_color">
+                            <button class="btn-sm-2" [style.background-color]="color==null? 'dark_color':'color'">
                                 <img src="assets/images/playZone/images/Vector.png" alt="">
 
                             </button>
