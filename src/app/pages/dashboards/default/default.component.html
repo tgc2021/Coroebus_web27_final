@@ -1061,7 +1061,7 @@
                                                         style="width: 100%;">
                                                         <div *ngIf="!hideBattleGround;then hideForOtherRole else donthide"></div>
                                                         <ng-template #hideForOtherRole>
-                                                            <div class="inner_content" style="width:100%"
+                                                            <div class="inner_content ps-3" style="width:100%"
                                                                 (click)="navigateToNewChallenge()">New Challenge</div>
                                                             <div class="inner_content"
                                                                 style=" border-bottom: 0.5px solid #A5ACB8;"
@@ -1095,12 +1095,12 @@
                                                                 align-items:center">{{challengeReacieved}}</div>
 
                                                             </div>
-                                                            <div class="inner_content" style="border-bottom:none;width:100%"
+                                                            <div class="inner_content ps-3" style="border-bottom:none;width:100%"
                                                             (click)="navigateToStatistics()">Statistics</div>
                                                         </ng-template>
 
                                                         <ng-template #donthide>
-                                                            <div class="inner_content">New Challenge</div>
+                                                            <div class="inner_content ps-3">New Challenge</div>
                                                             <div class="inner_content"
                                                                 style=" border-bottom: 0.5px solid #A5ACB8;"
                                                                 class="d-flex justify-content-between">
@@ -1132,7 +1132,7 @@
 
                                                             </div>
 
-                                                            <div class="inner_content" style="border-bottom:none;width:100%"
+                                                            <div class="inner_content ps-3" style="border-bottom:none;width:100%"
                                                             (click)="navigateToStatisticsSpect()">Statistics</div>
                                                         </ng-template>
 
