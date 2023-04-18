@@ -170,12 +170,18 @@ export class PlayZoneComponent implements OnInit {
     }
   }
 
+
+
+  // By Default 
+
   openSpinTheWheels(content){
-    this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel/`
+
+    // this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel/`
+    this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel/?_userid=Cannon014&id_spot_engagement=126&id_spot_event_setup=248&id_engagement_game=2&id_spot_stw_log=2301&_game=318`
       this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.spinTheWheelURL);
       this.modalService.open(content,{size: 'lg'});
-
   }
+
   openCubeBlasters(content){
     this.cubeBlasters=`https://coroebusbeta.in/cube_blasters`
     this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.cubeBlasters)
@@ -190,7 +196,7 @@ export class PlayZoneComponent implements OnInit {
 
   }
   openDartGame(content){
-    this.dartGameUrl=`https://coroebus.in/dart_game/`
+    this.dartGameUrl=`https://coroebusbeta.in/dart_game/`
     this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.dartGameUrl)
     this.modalService.open(content);
   }
