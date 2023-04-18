@@ -131,6 +131,7 @@
                             border-radius: 100%;"
                             src="{{sectionView_1?._personal_data?.profile_badge_image}}"
                             alt="Generic placeholder image" >
+                         
                         </div>
                     </div>
                     </div>
@@ -584,7 +585,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div #scrollTarget></div>
+                        <div #scrollTarget>
+                            
+                        </div>
                     </div>
 
 
@@ -724,7 +727,7 @@
                                     <div class="card-body px-4 " style="height: 42vh; overflow-y:auto;display: flex; flex-direction: column;justify-content:start;gap:0.5em">
                                         <mat-accordion>
                                         
-                                            <div class="red_indicator"></div>
+                                            <!-- <div class="red_indicator"></div> -->
                                             <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                                 <mat-expansion-panel-header [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
                                                     <mat-panel-title style="font-family: 'Inter';
@@ -736,11 +739,11 @@
 
                                                 </mat-expansion-panel-header>
                                                 <div class="d-flex flex-column align-items-start gap-2  mt-3">
-                                                    <div class="inner_content">Excel Basic</div>
-                                                    <div class="inner_content">Strategic Probolem solving</div>
-                                                    <div class="inner_content">Conflict Resolution</div>
-                                                    <div class="inner_content">Home Loan Process</div>
-                                                    <div class="inner_content">Assesment Home Loan Process</div>
+                                                    <div class="inner_content" (click)="navigateToM2ost()">Excel Basic</div>
+                                                    <div class="inner_content" (click)="navigateToM2ost()">Strategic Probolem solving</div>
+                                                    <div class="inner_content" (click)="navigateToM2ost()">Conflict Resolution</div>
+                                                    <div class="inner_content" (click)="navigateToM2ost()">Home Loan Process</div>
+                                                    <div class="inner_content" (click)="navigateToM2ost()">Assesment Home Loan Process</div>
                                                 </div>
                                                 
                                                 
@@ -757,19 +760,17 @@
                                                     </mat-panel-title>
     
                                                 </mat-expansion-panel-header>
-                                               
-                                                
-                                                <div *ngFor="let triviaData of triviaCornerData;let i=index">
-                                                    <div class="d-flex p-2 mt-1" style="border-radius:5px;font-family:'Roboto';" [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'" (click)="navigateToBriefQuetion(triviaData)">
+                                                <div *ngFor="let triviaData of triviaCornerData">
+                                                    <div class="d-flex p-2 mt-1" style="border-radius:5px;font-family:'Work sans';" [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'" (click)="navigateToBriefQuetion(triviaData)">
                                                         <div class="triviaBanner d-flex align-items-start mt-2 p-2">
-                                                            <div style="height:13vh;width:5vw;">
+                                                            <div style="height:13vh;width:5vw;border-radius:5vh">
                                                                 <img src="{{triviaData.brief_graphics}}" alt="trivia_banner" height="100%" width="100%">
                                                             </div>
         
-    
+        
         
                                                         </div>
-                                                        <div class="triviaDescription d-flex flex-column gap-1  mt-2" style="width:100%;height:100%">
+                                                        <div class="triviaDescription d-flex flex-column gap-1 p-1 mt-2" style="width:100%;height:20vh">
                                                             <div class="triviaTitle">
                                                                 <strong>
                                                                    {{triviaData.brief_title}}
@@ -777,7 +778,10 @@
                                                                  
                                                                 
                                                             </div>
-                                                            <p>
+                                                            <p style="font-size:1.2vh;
+                                                            overflow: hidden;
+                                                            text-overflow: ellipsis;
+                                                            ">
                                                                 {{triviaData.brief_summary}}
     
                                                             </p>
@@ -798,7 +802,7 @@
 
 
                                         <mat-accordion>
-                                            <div class="red_indicator"></div>
+                                            <!-- <div class="red_indicator"></div> -->
                                             <mat-expansion-panel  class="mt-2" (opened)="panelOpenState = true"
                                                 (closed)="panelOpenState = false">
                                                 <mat-expansion-panel-header  [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
@@ -885,7 +889,7 @@
     
     
                                         <mat-accordion>
-                                            <div class="red_indicator"></div>
+                                            <div class="red_indicator" *ngIf="dailyBadgesActive || weeklyBadgesActive || monthlyBadgesActive"></div>
                                             <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true"
                                                 (closed)="panelOpenState = false">
                                                 <mat-expansion-panel-header [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}" >
@@ -896,10 +900,10 @@
     
                                                 </mat-expansion-panel-header>
                                                 <div>
-                                                    <div class="inner_content d-flex justify-content-between" (mouseover)="openDailyModal('data')" data-bs-toggle="modal"
-                                                    data-bs-target="#dailyModal"  >
+                                                    <div class="inner_content d-flex justify-content-between" (mouseover)="openDailyModal()" data-bs-toggle="modal"
+                                                    data-bs-target="#dailyModal">
                                                        <div class="col-6">Daily</div> 
-                                                       <div class="badge-container col" *ngFor="let dailyBadges of seasonalThemeDailyBadges;let i=index;" >
+                                                       <div class="badge-container col" *ngFor="let dailyBadges of seasonalThemeDailyBadges1;let i=index;" >
                                                         <!-- <div>{{dailyBadges.seasonal_score_achived}}</div>
                                                         <div>{{dailyBadges.seasonal_score_target}}</div> -->
                                                         
@@ -923,17 +927,17 @@
                                                     <div class="inner_content d-flex justify-content-between" (mouseover)="openWeeklyModal()" data-bs-toggle="modal"
                                                     data-bs-target="#weeklyModal">
                                                         <div class="col-6" >Weekly</div> 
-                                                        <div class="badge-container col"*ngFor="let WeeklyBadge of seasonalThemeWeeklyBadges;let i=index" >
+                                                        <div class="badge-container col"*ngFor="let WeeklyBadge of seasonalThemeWeeklyBadges2;let i=index" >
                                                              <div  [ngClass]="WeeklyBadge.active_class == '1'?'activeBadge':'deActiveBadge' " *ngIf="i<3">
                                                                 <img src="{{WeeklyBadge.seasonal_badge_logo}}" alt="" height="100%" width="100%">
                                                              </div>
                                                              
                                                         </div>
                                                      </div>
-                                                     <div class="inner_content d-flex justify-content-between" style="border:none" (mouseover)="openMonthlyModal('data')" data-bs-toggle="modal"
+                                                     <div class="inner_content d-flex justify-content-between" style="border:none" (mouseover)="openMonthlyModal()" data-bs-toggle="modal"
                                                      data-bs-target="#monthlyModal">
                                                         <div class="col-6">Monthly</div> 
-                                                        <div class="badge-container" *ngFor="let monthlyBadge of seasonalThemeMonthlyBadges;let i=index">
+                                                        <div class="badge-container col" *ngFor="let monthlyBadge of seasonalThemeMonthlyBadges3;let i=index">
                                                             <div  [ngClass]="monthlyBadge.active_class == '1'?'activeBadge':'deActiveBadge' " *ngIf="i<3" >
                                                                <img src="{{monthlyBadge.seasonal_badge_logo}}" alt="" height="100%" width="100%">
                                                             </div>
@@ -961,10 +965,10 @@
                                                     style="font-weight: 550;font-family: 'Work Sans';">
                                                     
                                                     <div class="d-flex flex-column justify-content-between">
-                                                        <div  *ngIf="!hideBattleGround;then hideForOtherRole"></div>
+                                                        <div  *ngIf="!hideBattleGround;then hideForOtherRole else donthide"></div>
                                                         <ng-template #hideForOtherRole>
                                                             <div class="inner_content" (click)="navigateToNewChallenge()">New Challenge</div>
-                                                            <div class="inner_content" style=" border-bottom: 0.5px solid #A5ACB8;" (click)="navigateToOnGoingChallenge()" class="d-flex justify-content-between">
+                                                            <div class="inner_content" style=" border-bottom: 0.5px solid #A5ACB8; cursor: pointer;" (click)="navigateToOnGoingChallenge()" class="d-flex justify-content-between">
                                                                 <div class="ps-3" style="  font-weight: 600;
                                                                 font-family: 'Work Sans';
                                                                 font-size:1.6vh;
@@ -976,7 +980,37 @@
                                                                 height:5vh;
                                                                 align-items:center">{{onGoingChallenges}}</div>
                                                             </div>
-                                                            <div class="inner_content" style=" border-bottom: 0.5px solid #A5ACB8;" (click)="navigateToChallengeRecieved()" class="d-flex justify-content-between">
+                                                            <div class="inner_content" style=" border-bottom: 0.5px solid #A5ACB8; cursor: pointer;" (click)="navigateToChallengeRecieved()" class="d-flex justify-content-between">
+                                                                <div class="ps-3" style="  font-weight: 600;
+                                                                font-family: 'Work Sans';
+                                                                font-size:1.6vh;
+                                                                 display: flex;
+                                                                 height:5vh;
+                                                                 
+                                                                align-items: center;
+                                                               ">Challenge Recieved</div>
+                                                                <div style="display:flex;
+                                                                height:5vh;
+                                                                align-items:center">{{challengeReacieved}}</div>
+                                                                
+                                                            </div>
+                                                        </ng-template>
+
+                                                        <ng-template #donthide>
+                                                            <div class="inner_content">New Challenge</div>
+                                                            <div class="inner_content" style=" border-bottom: 0.5px solid #A5ACB8;"  class="d-flex justify-content-between">
+                                                                <div class="ps-3" style="  font-weight: 600;
+                                                                font-family: 'Work Sans';
+                                                                font-size:1.6vh;
+                                                               
+                                                                display:flex;
+                                                                height:5vh;
+                                                                align-items:center">Ongoing Challenges</div>
+                                                                <div style="display:flex;
+                                                                height:5vh;
+                                                                align-items:center">{{onGoingChallenges}}</div>
+                                                            </div>
+                                                            <div class="inner_content" style=" border-bottom: 0.5px solid #A5ACB8;"  class="d-flex justify-content-between">
                                                                 <div class="ps-3" style="  font-weight: 600;
                                                                 font-family: 'Work Sans';
                                                                 font-size:1.6vh;
@@ -1597,369 +1631,399 @@
 <!-- Daily Popup Module -->
 
 <!-- DailyModal -->
-<div class="DailyModal" *ngIf="isDailyModalopen">
-    <div class="modal  fade bd-example-modal-sm" id="dailyModal" data-bs-backdrop="static" data-bs-keyboard="false"
-        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modalDialogDaily modal-dialog-centered">
-            <div class="modal-content ">
-                <div class="modal-body">
-                    <div class="d-flex justify-content-end">
-                        <button type="button" class="button-close" data-bs-dismiss="modal" aria-label="Close">X</button>
-                    </div>
-                    <div class="popupheight popupDaily row d-flex" *ngIf="seasonalThemeDaily.length>0">
-                        <div class="d-flex  justify-content-between mb-2">
-                            <div class="ModalHeading">
-                                {{seasonalThemeDaily[0].seasonal_theme_title}}
-                            </div>
-
+<div *ngIf="isDailyModalopen;then Daily"></div>
+<ng-template #Daily>
+    <div class="DailyModal">
+        <div class="modal  fade bd-example-modal-sm" id="dailyModal" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modalDialogDaily modal-dialog-centered">
+                <div class="modal-content ">
+                    <div class="modal-body">
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="button-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                         </div>
-                        <div class="">
-                            <div class="modalDescription col-11">
-                                {{seasonalThemeDaily[0].theme_description}}
-                            </div>
-                            <div class="modalDescription d-flex justify-content-start pt-2">
-                                <div> Valid Till:{{seasonalThemeDaily[0].valid_till_date |
-                                    date:"dd/M/yyyy"}}</div>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-center" style="height:35vh;width:100%">
-                            <div  style="height:25vh;width:25vh">
-                                <img src="{{seasonalThemeDaily[0].logo}}" alt="logo" height="100%" width="100%">
-                            </div>           
-                        </div>
-                      
-                        <div> 
-                            <div class="col-12 d-flex justify-content-end" style="padding:14px 7px 0px 0px;">
-                               <div class="col-4 d-flex justify-content-end" *ngFor="let item of seasonalThemeDailyBadges;let i =index">
-                                
-                                 <div *ngIf="item.active_class == '1';then activeBadge else DeactiveBadge "></div>
-
-                                 <ng-template #activeBadge>
-                                    <div>
-                                        <div  class="activeBadge" *ngIf="i<3">
-                                            <img src="{{item.seasonal_badge_logo}}" alt="badge" width="40px" height="40px" style="border-radius: 50%;">
-                                        </div>
-                                        <div style="border-right: 2px solid #D3D6DA;height: 20px;margin-right: 20px;">
-      
-                                        </div> 
+                        <div *ngIf="seasonalThemeDaily1!=undefined;then daily"></div>
+                        <ng-template #daily>
+                            <div class="popupheight popupDaily row d-flex" *ngIf="seasonalThemeDaily1.length!=0">
+                                <div class="d-flex  justify-content-between mb-2">
+                                    <div class="ModalHeading">
+                                        {{seasonalThemeDaily1[0].seasonal_theme_title}}
                                     </div>
-                                     
-                                 </ng-template>
-                                 <ng-template #DeactiveBadge>
-                                    <div>
-                                        <div  class="deActiveBadge" *ngIf="i<3" style=" filter: grayscale(100%);">
-                                            <img src="{{item.seasonal_badge_logo}}" alt="badge" width="40px" height="40px" style="border-radius: 50%;">
-                                        </div>
-                                        <div style="border-right: 2px solid #D3D6DA;height: 20px;margin-right: 20px;">
-      
-                                        </div> 
+        
+                                </div>
+                                <div >
+                                    <div class="modalDescription col-11">
+                                        {{seasonalThemeDaily1[0].theme_description}}
+                                    </div>
+                                    <div class="modalDescription d-flex justify-content-start pt-2">
+                                        <div> Valid Till:{{seasonalThemeDaily1[0].valid_till_date |
+                                            date:"dd/M/yyyy"}}</div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-center" style="height:35vh;width:100%">
+                                    <div  style="height:25vh;width:25vh">
+                                        <img src="{{seasonalThemeDaily1[0].logo}}" alt="logo" height="100%" width="100%">
                                     </div>
                                     
-                                 </ng-template>
-                                 
-                                 
-                               </div>
-                            </div>
-                            <div class="col-12" style="margin-top: -5px; padding: 0px 7px 0px 0px;">
-                                <progress id="file" class="range rangeBgcolor1"
-                                    value="" max="100">
-                                     </progress>
-                            </div>
-                        </div>
-                      
-
-                    </div>
-                    <div class="row d-flex justify-content-center align-items-start" style="height:35vh;"
-                        *ngIf="seasonalThemeDaily.length==0">
-                        <div class="col text-center">
-                            <span>Hey Welcome! The Themes will be configured soon. Stay tuned </span>
-                        </div>
-                    </div>
-
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-<div class="weeklyModal" *ngIf="isWeeklyModalOpen">
-    <div class="modal  fade bd-example-modal-sm" id="weeklyModal" data-bs-backdrop="static" data-bs-keyboard="false"
-        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modalDialogWeekly modal-dialog-centered">
-            <div class="modal-content modalContentWeekly">
-                <div class="modal-body">
-                    <div class="d-flex justify-content-end">
-                        <button type="button" class="button-close" data-bs-dismiss="modal" aria-label="Close">X</button>
-                    </div>
-                    <div class="row d-flex" *ngIf="seasonalThemeWeekly.length>0">
-                        <div class="d-flex justify-content-between  mb-1 p-1">
-                            <div class="ModalHeading ms-2 mb-2" >
-                                {{seasonalThemeWeekly[0].seasonal_theme_title}}
-                            </div>
-
-                        </div>
-                        <div class="mb-5">
-                            <div class="modalDescription col-11">
-                                {{seasonalThemeWeekly[0].theme_description}}
-                            </div>
-
-                            <div class="modalDescription d-flex justify-content-start pt-2 mt-1">
-                                <div> Valid Till
-                                    :{{seasonalThemeWeekly[0].valid_till_date
-                                    | date:"dd/M/yyyy"}}</div>
-                            </div>
-                        </div>
-
-                        <div class="">
-                            <div class="d-flex justify-content-center">
-                                <div class="d-flex justify-content-center" style="height: 25vh; width: 25vh;">
-                                    <img src="{{seasonalThemeWeekly[0].logo}}" height="100%" width="100%" alt="master_blaster">
                                 </div>
-                            </div>
-                               
-                        <div> 
-                            <div class="col-12 d-flex justify-content-end" style="padding:14px 7px 0px 0px;">
-                                <div class="col d-flex justify-content-end" *ngFor="let item of seasonal_theme_weekly_badge_details;let i =index">
-                                  <div *ngIf="item.active_class == '1';then activeBadge else DeactiveBadge "></div>
-                                  <ng-template #activeBadge>
-                                     <div>
-                                         <div  class="activeBadge" *ngIf="i<3">
-                                             <img src="{{item.seasonal_badge_logo}}" alt="badge" width="40px" height="40px" style="border-radius: 50%;">
-                                         </div>
-                                         <div style="border-right: 2px solid #D3D6DA;height: 20px;margin-right: 20px;">
-       
-                                         </div> 
-                                     </div>
-                                      
-                                  </ng-template>
-                                  <ng-template #DeactiveBadge>
-                                     <div>
-                                         <div  class="deActiveBadge" *ngIf="i<3" style=" filter: grayscale(100%);">
-                                             <img src="{{item.seasonal_badge_logo}}" alt="badge" width="40px" height="40px" style="border-radius: 50%;">
-                                         </div>
-                                         <div *ngIf="i<3" style="border-right: 2px solid #D3D6DA;height: 20px;margin-right: 20px;">
-       
-                                         </div> 
-                                     </div>
-                                     
-                                  </ng-template>
-                                  
-                                  
+                            </div> 
+                        </ng-template>
+                        <div *ngIf="seasonalThemeDailyBadges1!=undefined;then dailybadge"></div>
+                          <ng-template #dailybadge>
+                            <div class="animation-bar" *ngIf="seasonalThemeDailyBadges1.length!=0">
+                                <div class="badges_row" style="width:100%" >
+                                    
+                                    <div></div>
+                                    <div   class="d-flex flex-column justify-content-center align-items-center " >
+                                        <div style="height:6vh;width:6vh;border-radius:50%" [ngClass]="seasonalThemeDailyBadges1[0].active_class == '0'?'inActiveBadge':'ActiveBadge'" >
+                                            <img src="{{seasonalThemeDailyBadges1[0].seasonal_badge_logo}}" alt="" height="100%" width="100%">
+                                            
+                                        </div>
+                                        <div class="d-flex justify-content-center" >
+                                            <div  style="height:3vh;border-left: 1px solid black;"></div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    <div   class="d-flex flex-column justify-content-center align-items-center " >
+                                        <div style="height:6vh;width:6vh;border-radius:50%" [ngClass]="seasonalThemeDailyBadges1[1].active_class == '0'?'inActiveBadge':'ActiveBadge'"  >
+                                            <img  src="{{seasonalThemeDailyBadges1[1].seasonal_badge_logo}}" alt="" height="100%" width="100%">
+                                            
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <div style="height:3vh;border-left: 1px solid black;"></div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    <div  class="d-flex flex-column justify-content-center align-items-center " >
+                                        <div style="height:6vh;width:6vh;border-radius:50%" [ngClass]="seasonalThemeDailyBadges1[2].active_class == '0'?'inActiveBadge':'ActiveBadge'" >
+                                            <img  src="{{seasonalThemeDailyBadges1[2].seasonal_badge_logo}}" alt="" height="100%" width="100%">
+                                            
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <div style="height:3vh;border-left: 1px solid black;"></div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+    
                                 </div>
                               
-                             </div>
-                         
-                            <div class="col-12" style="margin-top: -5px; padding: 0px 7px 0px 0px;">
-                                <progress id="file" class="range rangeBgcolor1"
-                                    value="" max="100">
-                                     </progress>
-                            </div>
-                        </div>
-                        
-                            <!-- <div class="col-12 card-container-popup" style="overflow-x:auto;color:#ffff"
-                                *ngIf="monthlyTopers.length!=0">
-                                <div class="mt-3 mb-2">
-                                    <span class="Top5">Top 5 performers who have won the badge</span>
-                                    &nbsp;
-                                    <span class="infoIcon">&#x24D8;</span>
+                                <div class="animation-bar-1">
+                                    <span class="d-flex justify-content-center"  [style.background-size.%]="totalTargetScore" [style.width.%]="((seasonalThemeDailyBadges1[0].seasonal_score_achived/totalTargetScore)*(100))">
+                                                                            
+                                    </span>
+                                    
+    
                                 </div>
-                                <div class="d-flex" style="overflow: scroll;">
-                                    <div class="card col-4 p-2 gap-2" *ngFor="let topper of monthlyTopers"
-                                        style="background: linear-gradient(180deg, #608CDF 0%, #62B8E9 100%);">
-                                        <div class="pic">
-                                            <img src="{{topper.profile_mage}}" alt="image" height="40px" width="40px">
+                                <div class="animation-bar" [style.margin-left.%]="((seasonalThemeDailyBadges1[0].seasonal_score_achived/totalTargetScore)*(100))">
+                                   
+                                    <div class="d-flex flex-column">
+                                        <div class="border-left"></div>
+                                        <div class="Progressscore">
+                                            {{seasonalThemeDailyBadges1[0].seasonal_score_achived}}
                                         </div>
-                                        <div class="name">{{topper.first_name.slice(0,10)}}...</div>
-                                        <div class="rank">Rank:{{topper.user_rank}}</div>
-                                        <div class="score">{{topper.score}}</div>
+                                        
                                     </div>
                                 </div>
-
-
-                            </div> -->
-
-
-
-                        </div>
-
-
-                    </div>
-                    <div class="row d-flex justify-content-center align-items-start"
-                        *ngIf="this.seasonalThemeWeekly.length==0">
+                               </div>
+                          </ng-template>
+                          
+                
+                       <ng-template #daily>
+                        <div class="row d-flex justify-content-center align-items-start" style="height:35vh;"
+                        *ngIf="seasonalThemeDaily1.length==0">
                         <div class="col text-center">
                             <span>Hey Welcome! The Themes will be configured soon. Stay tuned </span>
                         </div>
                     </div>
-
+                       </ng-template>
+                     
+    
+    
+                    </div>
+    
                 </div>
             </div>
         </div>
     </div>
-</div>
+</ng-template>
+
+<div *ngIf="isWeeklyModalOpen;then weekly"></div>
+<ng-template #weekly>
+
+    <div class="weeklyModal">
+        <div class="modal  fade bd-example-modal-sm" id="weeklyModal" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modalDialogWeekly modal-dialog-centered">
+                <div class="modal-content modalContentWeekly">
+                    <div class="modal-body" style="min-height: 51vh;">
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="button-close" data-bs-dismiss="modal"
+                                aria-label="Close">X</button>
+                        </div>
+                        <div *ngIf="seasonalThemeWeekly2!=undefined ;then week"></div>
+                        <ng-template #week>
+                            <div class="row d-flex" *ngIf="seasonalThemeWeekly2.length!=0">
+                                <div class="d-flex justify-content-between  mb-1 p-1">
+                                    <div class="ModalHeading ms-2">
+                                        {{seasonalThemeWeekly2[0].seasonal_theme_title}}
+                                    </div>
+    
+                                </div>
+                                <div class="">
+                                    <div class="modalDescription col-11">
+                                        {{seasonalThemeWeekly2[0].theme_description}}
+                                    </div>
+    
+                                    <div class="modalDescription d-flex justify-content-start pt-2 mt-2 mb-3">
+    
+                                        <div> Valid Till
+                                            :{{seasonalThemeWeekly2[0].valid_till_date |
+                                            date:"dd/M/yyyy"}}</div>
+                                    </div>
+                                </div>
+    
+                                <div class="">
+                                    <div class="d-flex justify-content-center" style="height:35vh;width:100%">
+                                        <div  style="height:25vh;width:25vh">
+                                            <img src="{{seasonalThemeWeekly2[0].logo}}" alt="logo" height="100%" width="100%">
+                                        </div>
+                                        
+                                    </div>
+    
+                                </div>
+                         </div> 
+    
+                        </ng-template>
+                         <div *ngIf="seasonalThemeWeeklyBadges2!=undefined;then weekbadge"></div>
+                         <ng-template #weekbadge>
+                            <div class="animation-bar" *ngIf="seasonalThemeWeeklyBadges2!=0">
+                                <div class="badges_row" style="width:100%">
+
+                                    <div></div>
+                                    <div class="d-flex flex-column justify-content-center align-items-center ">
+                                        <div style="height:6vh;width:6vh;border-radius:50%"
+                                        [ngClass]="seasonalThemeWeeklyBadges2[0].active_class == '0'?'inActiveBadge':'ActiveBadge'">
+                                            <img src="{{seasonalThemeWeeklyBadges2[0].seasonal_badge_logo}}"
+                                                alt="" height="100%" width="100%">
+
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <div style="height:3vh;border-left: 1px solid black;"></div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center align-items-center ">
+                                        <div style="height:6vh;width:6vh;border-radius:50%"
+                                        [ngClass]="seasonalThemeWeeklyBadges2[1].active_class == '0'?'inActiveBadge':'ActiveBadge'">
+                                            <img src="{{seasonalThemeWeeklyBadges2[1].seasonal_badge_logo}}"
+                                                alt="" height="100%" width="100%">
+
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <div style="height:3vh;border-left: 1px solid black;"></div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center align-items-center ">
+                                        <div style="height:6vh;width:6vh;border-radius:50%"
+                                        [ngClass]="seasonalThemeWeeklyBadges2[1].active_class == '0'?'inActiveBadge':'ActiveBadge'">
+                                            <img src="{{seasonalThemeWeeklyBadges2[2].seasonal_badge_logo}}"
+                                                alt="" height="100%" width="100%">
+
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <div style="height:3vh;border-left: 1px solid black;"></div>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+
+                                <div class="animation-bar-1">
+                                    <span class="d-flex justify-content-center"
+                                        [style.background-size.%]="totalTargetScoreForWeekly"
+                                        [style.width.%]="((seasonalThemeWeeklyBadges2[0].seasonal_score_achived/totalTargetScoreForWeekly)*(100))">
+                                    </span>
+
+
+                                </div>
+                                <div class="animation-bar"
+                                    [style.margin-left.%]="((seasonalThemeWeeklyBadges2[0].seasonal_score_achived/totalTargetScoreForWeekly)*(100))">
+
+                                    <div class="d-flex flex-column">
+                                        <div class="border-left"></div>
+                                        <div class="Progressscore">
+                                            {{seasonalThemeWeeklyBadges2[0].seasonal_score_achived}}
+                                        </div>
+                                        <!-- <div class="name">{{topper.first_name.slice(0,10)}}...</div>
+                                        <div class="rank">Rank:{{topper.user_rank}}</div>
+                                        <div class="score">{{topper.score}}</div> -->
+                                    </div>
+                                </div> 
+
+
+
+                            </div>
+                         </ng-template>
+                         
+                            <ng-template>
+                                <div class="row d-flex justify-content-center align-items-start"
+                                *ngIf="this.seasonalThemeWeekly2.length==0">
+                                <div class="col text-center">
+                                    <span>Hey Welcome! The Themes will be configured soon. Stay tuned </span>
+                                </div>
+                            </div>
+                            </ng-template>
+                         
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ng-template>
 
 <!-- Monthly Modal -->
-<!-- 
-<div class="monthlyModal" *ngIf="isMonthlyModalOpen">
-    <div class="modal  fade bd-example-modal-sm" id="monthlyModal" data-bs-backdrop="static" data-bs-keyboard="false"
-        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modalDialogMonthly modal-dialog-centered ">
-            <div class="modal-content modalContentMonthly">
-                <div class="modal-body"
-                    style="min-height: 51vh;">
-                    <div class="d-flex justify-content-end" style="color:#0000">
-                        <button type="button" class="button-close-monthly" data-bs-dismiss="modal" aria-label="Close">X</button>
-                    </div>
-                    <div class="row d-flex">
-                        <div class="d-flex justify-content-between  mb-1 p-1">
-                            <div class="ModalHeading ms-2 mb-2" >
-                                {{seasonalThemeMonthly[0].seasonal_theme_title}}
-                            </div>
-
+<div *ngIf="isMonthlyModalOpen;then monthly"></div>
+<ng-template #monthly>
+    <div class="monthlyModal" >
+        <div class="modal  fade bd-example-modal-sm" id="monthlyModal" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modalDialogMonthly modal-dialog-centered ">
+                <div class="modal-content modalContentMonthly">
+                    <div class="modal-body"
+                        style="min-height: 30vh;">
+                        <div class="d-flex justify-content-end" style="color:#0000">
+                            <button type="button" class="button-close-monthly" data-bs-dismiss="modal" aria-label="Close">X</button>
                         </div>
-                        <div class="mb-5">
-                            <div class="modalDescription col-11">
-                                {{seasonalThemeMonthly[0].theme_description}}
-                            </div>
-
-                            <div class="modalDescription d-flex justify-content-start pt-2 mt-1">
-                                <div> Valid Till
-                                    :{{seasonalThemeMonthly[0].valid_till_date
-                                    | date:"dd/M/yyyy"}}</div>
-                            </div>
-                        </div>
-
-                        <div class="">
-                            <div class="d-flex justify-content-center">
-                                <div class="d-flex justify-content-center" style="height: 25vh; width: 25vh;">
-                                    <img src="{{seasonalThemeMonthly[0].logo}}" height="100%" width="100%" alt="master_blaster">
-                                </div>
-                            </div>
-                               
-                        <div> 
-                            <div *ngIf="seasonal_theme_monthly_badge_details.length==2" class="col-12 d-flex justify-content-end" style="padding:14px 7px 0px 0px;">
-                               <div class="col-6 d-flex justify-content-end" *ngFor="let item of seasonal_theme_monthly_badge_details;let i =index">
-                                 <div *ngIf="item.active_class == '1';then activeBadge else DeactiveBadge "></div>
-                                 <ng-template #activeBadge>
-                                    <div>
-                                        <div  class="activeBadge" *ngIf="i<3">
-                                            <img src="{{item.seasonal_badge_logo}}" alt="badge" width="40px" height="40px" style="border-radius: 50%;">
-                                        </div>
-                                        <div style="border-right: 2px solid #D3D6DA;height: 20px;margin-right: 20px;">
-      
-                                        </div> 
-                                    </div>
-                                     
-                                 </ng-template>
-                                 <ng-template #DeactiveBadge>
-                                    <div>
-                                        <div  class="deActiveBadge" *ngIf="i<3" style=" filter: grayscale(100%);">
-                                            <img src="{{item.seasonal_badge_logo}}" alt="badge" width="40px" height="40px" style="border-radius: 50%;">
-                                        </div>
-                                        <div style="border-right: 2px solid #D3D6DA;height: 20px;margin-right: 20px;">
-      
-                                        </div> 
-                                    </div>
-                                    
-                                 </ng-template>
-                                 
-                                 
-                               </div>
-                             
-                            </div>
-                            <div *ngIf="seasonal_theme_monthly_badge_details.length==3" class="col-12 d-flex justify-content-end" style="padding:14px 7px 0px 0px;">
-                                <div class="col-4 d-flex justify-content-end" *ngFor="let item of seasonal_theme_monthly_badge_details;let i =index">
-                                  <div *ngIf="item.active_class == '1';then activeBadge else DeactiveBadge "></div>
-                                  <ng-template #activeBadge>
-                                     <div>
-                                         <div  class="activeBadge" *ngIf="i<3">
-                                             <img src="{{item.seasonal_badge_logo}}" alt="badge" width="40px" height="40px" style="border-radius: 50%;">
-                                         </div>
-                                         <div style="border-right: 2px solid #D3D6DA;height: 20px;margin-right: 20px;">
-       
-                                         </div> 
-                                     </div>
-                                      
-                                  </ng-template>
-                                  <ng-template #DeactiveBadge>
-                                     <div>
-                                         <div  class="deActiveBadge" *ngIf="i<3" style=" filter: grayscale(100%);">
-                                             <img src="{{item.seasonal_badge_logo}}" alt="badge" width="40px" height="40px" style="border-radius: 50%;">
-                                         </div>
-                                         <div style="border-right: 2px solid #D3D6DA;height: 20px;margin-right: 20px;">
-       
-                                         </div> 
-                                     </div>
-                                     
-                                  </ng-template>
-                                  
-                                  
-                                </div>
-                              
-                             </div>
-                             <div *ngIf="seasonal_theme_monthly_badge_details.length==4" class="col-12 d-flex justify-content-end" style="padding:14px 7px 0px 0px;">
-                                <div class="col-3 d-flex justify-content-end" *ngFor="let item of seasonal_theme_monthly_badge_details;let i =index">
-                                  <div *ngIf="item.active_class == '1';then activeBadge else DeactiveBadge "></div>
-                                  <ng-template #activeBadge>
-                                     <div>
-                                         <div  class="activeBadge" *ngIf="i<3">
-                                             <img src="{{item.seasonal_badge_logo}}" alt="badge" width="40px" height="40px" style="border-radius: 50%;">
-                                         </div>
-                                         <div style="border-right: 2px solid #D3D6DA;height: 20px;margin-right: 20px;">
-       
-                                         </div> 
-                                     </div>
-                                      
-                                  </ng-template>
-                                  <ng-template #DeactiveBadge>
-                                     <div>
-                                         <div  class="deActiveBadge" *ngIf="i<3" style=" filter: grayscale(100%);">
-                                             <img src="{{item.seasonal_badge_logo}}" alt="badge" width="40px" height="40px" style="border-radius: 50%;">
-                                         </div>
-                                         <div style="border-right: 2px solid #D3D6DA;height: 20px;margin-right: 20px;">
-       
-                                         </div> 
-                                     </div>
-                                     
-                                  </ng-template>
-                                  
-                                  
-                                </div>
-                              
-                             </div>
-                            <div class="col-12" style="margin-top: -5px; padding: 0px 7px 0px 0px;">
-                                <progress id="file" class="range rangeBgcolor1"
-                                    value="" max="100">
-                                     </progress>
-                            </div>
-                        </div>
+                        <div *ngIf="seasonalThemeMonthl3!=undefined;then month"></div>
+                        <div *ngIf="seasonalThemeMonthlyBadges3!=undefined;then monthbadge"></div>
                         
-                         
-
-
-
+                        <ng-template #month>
+                            <div class="row d-flex"  *ngIf="seasonalThemeMonthl3!=0">
+                                <div class="d-flex justify-content-between  mb-1 p-1">
+                                    <div class="ModalHeading ms-2 mb-2" >
+                                        {{seasonalThemeMonthl3[0].seasonal_theme_title}}
+                                    </div>
+        
+                                </div>
+                                <div class="">
+                                    <div class="modalDescription col-11">
+                                        {{seasonalThemeMonthl3[0].theme_description}}
+                                    </div>
+        
+                                    <div class="modalDescription d-flex justify-content-start pt-2 mt-1">
+                                        <div> Valid Till
+                                            :{{seasonalThemeMonthl3[0].valid_till_date
+                                            | date:"dd/M/yyyy"}}</div>
+                                    </div>
+                                </div>
+        
+                                <div class="">
+                                    <div class="d-flex justify-content-center" style="height:35vh;width:100%">
+                                        <div  style="height:25vh;width:25vh">
+                                            <img src="{{seasonalThemeMonthl3[0].logo}}" alt="logo" height="100%" width="100%">
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+        
+        
+                            </div>
+                        </ng-template>
+                     
+                        <ng-template #monthbadge>
+                            <div class="animation-bar" *ngIf="seasonalThemeMonthlyBadges3.length!=0" >
+                                <div class="badges_row" style="width:100%" >
+                                    
+                                  
+                                    <div   class="d-flex flex-column justify-content-center align-items-center " >
+                                        <div style="height:6vh;width:6vh;border-radius:50%" [ngClass]="seasonalThemeMonthlyBadges3[0].active_class=='0'?'inActiveBadge':'ActiveBadge'" >
+                                            <img src="{{seasonalThemeMonthlyBadges3[0].seasonal_badge_logo}}" alt="" height="100%" width="100%">
+                                            
+                                        </div>
+                                        <div class="d-flex justify-content-center" >
+                                            <div  style="height:3vh;border-left: 1px solid black;"></div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    <div   class="d-flex flex-column justify-content-center align-items-center " >
+                                        <div style="height:6vh;width:6vh;border-radius:50%" >
+                                            <img  [ngClass]="seasonalThemeMonthlyBadges3[1].active_class=='0'?'inActiveBadge':'ActiveBadge'"  src="{{seasonalThemeMonthlyBadges3[1].seasonal_badge_logo}}" alt="" height="100%" width="100%">
+                                            
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <div style="height:3vh;border-left: 1px solid black;"></div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    <div *ngIf="seasonalThemeMonthlyBadges3.length>2;then 3rdBadge"></div>
+                                    <ng-template #3rdBadge>
+                                        <div  class="d-flex flex-column justify-content-center align-items-center "  >
+                                            <div style="height:6vh;width:6vh;border-radius:50%" [ngClass]="seasonalThemeMonthlyBadges3[2].active_class=='0'?'inActiveBadge':'ActiveBadge'">
+                                                <img  src="{{seasonalThemeMonthlyBadges3[2].seasonal_badge_logo}}" alt="" height="100%" width="100%">
+                                                
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <div style="height:3vh;border-left: 1px solid black;"></div>
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                    </ng-template>
+                                    
+        
+                                </div>
+                              
+                                <div class="animation-bar-1">
+                                    <span class="d-flex justify-content-center"  [style.background-size.%]="totalTargetScore" [style.width.%]="((seasonalThemeMonthlyBadges3[0].seasonal_score_achived/totalTargetScore)*(100))">                                     
+                                    </span>
+                                    
+        
+                                </div>
+                                <div class="animation-bar" [style.margin-left.%]="((seasonalThemeMonthlyBadges3[0].seasonal_score_achived/totalTargetScore)*(100))">
+                                   
+                                    <div class="d-flex flex-column">
+                                        <div class="border-left"></div>
+                                        <div class="Progressscore">
+                                            {{seasonalThemeMonthlyBadges3[0].seasonal_score_achived}}
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                               
+        
+        
+                            </div>
+                        </ng-template>
+                        
+                         <ng-template #month>
+                            <div class="row d-flex justify-content-center align-items-start"
+                            *ngIf="seasonalThemeMonthl3.length==0">
+                            <div class="col text-center">
+                                <span style="color:#FFFFFF">Hey Welcome! The Themes will be configured soon. Stay tuned
+                                </span>
+                            </div>
                         </div>
-
-
+                         </ng-template>
+                      
+    
                     </div>
-                    <div class="row d-flex justify-content-center align-items-start"
-                        *ngIf="seasonalThemeMonthly.length==0">
-                        <div class="col text-center">
-                            <span style="color:#FFFFFF">Hey Welcome! The Themes will be configured soon. Stay tuned
-                            </span>
-                        </div>
-                    </div>
-
+    
                 </div>
-
             </div>
         </div>
     </div>
-</div> -->
+</ng-template>
+
 
 
 
@@ -1987,8 +2051,3 @@
 <div class="mobile-view-rotated d-flex flex-column justify-content-center align-items-center">
     <div class="phone">
     </div>
-    <div class="message">
-      Please rotate your device!
-    </div>
-    
-</div>

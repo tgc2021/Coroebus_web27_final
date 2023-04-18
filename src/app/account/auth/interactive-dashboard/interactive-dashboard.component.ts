@@ -675,8 +675,8 @@ else{
    
     window.open(
       // 'http://localhost:62267/#/LearningAcademy/badges/?_userid='+userId+"&_game="+game+"&_team="+teamid, '_self'
-      // 'https://localhost:4200/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid,'_self'
-      'https://coroebusbeta.in/Learning_academy/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid,'_self'
+      'http://localhost:4200/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid,'_self'
+      // 'https://coroebusbeta.in/Learning_academy/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid,'_self'
 
       
     )

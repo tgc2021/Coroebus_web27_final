@@ -15,8 +15,6 @@ import * as _ from 'lodash';
 
 import { ActivatedRoute, Event as Events, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { ToastService } from '@app/services/toast-service';
-import { $ } from 'protractor';
-import { table } from 'console';
 import { ApiserviceService } from 'app/apiservice.service';
 import { type } from 'jquery';
 @Component({
@@ -140,12 +138,34 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   triviaCornerData: any;
   hideTriviaIndicator: boolean;
   hideBattleGround: boolean=false;
+  dailyBadges: boolean;
+  dailyBadgesActive: boolean;
+  weeklyBadgesActive: boolean;
+  monthlyBadgesActive: boolean;
+  seasonal_theme_daily_badge_details: any;
+  totalTargetScore: any;
+  totalTargetScoreForWeekly: number;
+  totalTargetScoreForMontly:number
+  seasonal_theme_monthly_badge_details: any;
+  
+
   seasonalScoreAchived: any=[]
   seasonalScoreTarget:any=[]
   arrtrue:any=[]
   trues:any=[]
   badgePercentage: number;
-  seasonal_theme_monthly_badge_details: any;
+  // seasonal_theme_monthly_badge_details: any;
+  empid:any
+  empemail:any
+  empname:any
+  emporg:any
+  seasonalThemeDailyBadges1: any;
+  seasonalThemeWeeklyBadges2: any;
+  seasonalThemeMonthlyBadges3: any;
+  seasonalThemeWeekly2: any;
+  seasonalThemeDaily1: any;
+  seasonalThemeMonthl3: any;
+
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
     private _route: ActivatedRoute, public toastService: ToastService,public http:ApiserviceService,public elementref: ElementRef) {
@@ -187,7 +207,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
         // do something with the query params
         console.log(queryParams?.userID);
        
-      
+
         if (queryParams?.userID) {
           console.log(window.location.href);
           this.location=window.location.href
@@ -217,6 +237,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
           this.getUserBannerDataSectionView_2(queryParams)
           this.getUserBannerDataSectionView_3(null, queryParams)
           this.GetDataFromProduceInfo(queryParams)
+          // this.navigateToStatistics(queryParams)
           // this.notificationList(queryParams)
           // this.addIns(queryParams)
           this.notificationList()
@@ -226,6 +247,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
           this.getUserBannerDataSectionView_2()
           this.getUserBannerDataSectionView_3()
           this.GetDataFromProduceInfo(queryParams)
+          // this.navigateToStatistics()
 
           this.notificationList()
           this.addIns()
@@ -235,7 +257,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
     })
-
+  
+  
    
     
     this.callSectionView_1APISub?.unsubscribe()
@@ -251,6 +274,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     this.requestForProduce1Data = this.eventService.subscribe('requestForProduce1Data', (data) => {
       this.eventService.broadcast('requestSendForProduce1Data', this.sectionView_1)
     })
+
+    
 
   }
  
@@ -273,10 +298,10 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
   ngAfterViewInit() {
-    this.edit_image;
-    this.openDailyModal('daily');
-    this.openWeeklyModal();
-    this.openMonthlyModal('monthly');
+    // this.edit_image;
+    // this.openDailyModal('daily');
+    // this.openWeeklyModal('weekly');
+    // this.openMonthlyModal('monthly');
   }
 
 
@@ -695,19 +720,29 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
   async getUserBannerDataSectionView_3(viewMore?: any, queryParams?: any) {
     let err: any, res: any;
     let body: any;
+    console.log(viewMore);
+    
     body = {
       "_userid": queryParams?.userID ? queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
+      
       "_game": queryParams?.gameID ? queryParams?.gameID : this.userSelectionData?.id_coroebus_game, "_section_view": "3", "page_number": this.pageNumberForSectionView_3
     };
+    localStorage.setItem('body_userid',body._userid);
+    localStorage.setItem('body_game',body._game);
+
     [err, res] = await HttpProtocols.to(DashboardModel.getRankingAndOtherDataSectionView_3(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
       this.pokeData = res?.data?._poke_list
       if (viewMore) {
         res?.data?._ranking_data?.forEach((element, index) => {
           if (element?.label === this.sectionView_3?._ranking_data[index]?.label) {
-
+               console.log(element?.label);
+               console.log(this.sectionView_3?._ranking_data[index]?.label);
+               
             if (element?._data?.length > 0) {
               this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data)
+              console.log(this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data));
+              
               this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'center' });
             }
           }
@@ -883,7 +918,7 @@ else if(this.activeTabForSectionView_2 == 4){
   }
   viewMore() {
     this.pageNumberForSectionView_3 = this.pageNumberForSectionView_3 + 1
-    this.getUserBannerDataSectionView_3('viewMore')
+    this.getUserBannerDataSectionView_3('viewMore',this.queryParams)
   }
 
   async notificationList(queryParams?: any) {
@@ -1090,7 +1125,6 @@ else if(this.activeTabForSectionView_2 == 4){
     this.role_id= data?.role_id.toString();
     console.log(this.role_id)
     this.Edit_image();
- 
     if(this.role_id==='8'||this.role_id=='9'||this.role_id=='12'){
       
 
@@ -1114,12 +1148,12 @@ else if(this.activeTabForSectionView_2 == 4){
     else{
       this._router.navigate([], {
         relativeTo: this._route,
-        // queryParams: {
-        //   userID: this.Util.encryptData(data?._userid),
-        //   gameID: this.Util.encryptData(data?.game_id),
-        //   roleID: this.Util.encryptData(data?.role_id?.toString())
+        queryParams: {
+          userID: this.Util.encryptData(data?._userid),
+          gameID: this.Util.encryptData(data?.game_id),
+          roleID: this.Util.encryptData(data?.role_id?.toString())
   
-        // },
+        },
       
         queryParamsHandling: 'merge',
         // preserve the existing query params in the route
@@ -1133,7 +1167,8 @@ else if(this.activeTabForSectionView_2 == 4){
   
     this.Edit_image()
    
-
+    this.activeSubTabForSectionView_2 = 'My Store'
+    
 
   }
 
@@ -1212,9 +1247,83 @@ else if(this.activeTabForSectionView_2 == 4){
 
     }
   }
+  GetDataFromProduceInfo(queryParams?:any){
+
+    console.log(queryParams.gameID 
+      )
+      
+    
+      let obj = {
+        _userid:queryParams?.userID ? queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
+        _game:queryParams?.gameID ?queryParams?.gameID : this.userSelectionData?.id_coroebus_game
+      }
+      console.log("check body",obj)
+      this.http.produceInfo(obj).subscribe((res)=>{
+        console.log(res);
+
+        this.data=res;
+        // console.log(this.data.data.seasonal_theme_daily.length==undefined);
+        // console.log(this.data.data.seasonal_theme_daily==undefined);
+      
+        this.seasonalThemeDaily1=this.data.data.seasonal_theme_daily
+        this.seasonalThemeWeekly2=this.data.data.seasonal_theme_weekly;
+        this.seasonalThemeMonthl3=this.data.data.seasonal_theme_monthly
+        console.log( this.seasonalThemeDaily1==undefined);
+          
+        this.seasonalThemeDailyBadges1=this.data.data.seasonal_theme_daily_badge_details;
+        this.totalTargetScore=Number(this.seasonalThemeDailyBadges1[0].seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[1].seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[2].seasonal_score_target);
+
+
+        this.seasonalThemeWeeklyBadges2=this.data.data.seasonal_theme_weekly_badge_details;
+        this.totalTargetScoreForWeekly=Number(this.seasonalThemeWeeklyBadges2[0].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[1].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[2].seasonal_score_target);
+
+        this.seasonalThemeMonthlyBadges3=this.data.data.seasonal_theme_monthly_badge_details;
+        this.totalTargetScoreForMontly=Number(this.seasonalThemeMonthlyBadges3[0].seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[1].seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[2].seasonal_score_target);
+
+        this.seasonalThemeDailyBadges1.forEach((res)=>{
+          if(res.active_class == '1'){
+            this.dailyBadgesActive=true;
+          }
+        })
+
+        this.seasonalThemeWeeklyBadges2.forEach((res)=>{
+          if(res.active_class == '1'){
+            this.weeklyBadgesActive=true;
+          }
+        })
+
+        this.seasonalThemeMonthlyBadges3.forEach((res)=>{
+          if(res.active_class == '1'){
+            this.monthlyBadgesActive=true;
+          }
+        })
+        
+        // Champions League Data
+        this.onGoingChallenges=this.data.data.challenge_list;
+        this.challengeReacieved=this.data.data.new_challenge_list;
+
+        console.log(this.onGoingChallenges)
+
+        // Trivia Corner Data
+
+        this.triviaCornerData=this.data.data.trivia_corner;
+
+        this.triviaCornerData.forEach((res)=>{
+          console.log(true)
+          if(res.view_status!='Read')
+          {
+            this.hideTriviaIndicator=true;
+            // console.log(hideTriviaIndicator)
+          }
+        })
+      })
+    
+
+  }
 
 
   getRewards(){
+    
     console.log('rewards page');
     
     let obj = {
@@ -1224,10 +1333,11 @@ else if(this.activeTabForSectionView_2 == 4){
     }
     console.log(obj)
 
-  
+    localStorage.setItem('rewardid',obj._userid)
 
     // this._router.navigate('/performance/page')
     // this._router.navigate(['/performance/page'], { queryParams: { key: value } })
+
     this._router.navigate(['/reward/rewardPoints'], {
       relativeTo: this._route,
       queryParams: {
@@ -1288,111 +1398,19 @@ else if(this.activeTabForSectionView_2 == 4){
 
     });
   }
-  openDailyModal(queryParams) {
-    let obj = {
-      _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
-
-      _game: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
-    }
-    this.http.produceInfo(obj).subscribe((res)=>{
-      // console.log(res);
-      this.dataForDailyPopup=res;
-      this.DailyPopup=this.dataForMonthlyPopup.data;
-      this.seasonalThemeDaily=this.DailyPopup.seasonal_theme_daily;
-      this.seasonalThemeDailyBadges=this.DailyPopup.seasonal_theme_daily_badge_details
-      console.log(this.seasonalThemeDailyBadges);
-        console.log(this.seasonalThemeDailyBadges[0].seasonal_score_achived==this.seasonalThemeDailyBadges[0].seasonal_score_target);
-        
-        for(let i=0;i<this.seasonalThemeDailyBadges.length;i++){
-          
-         this.seasonalScoreAchived.push(this.seasonalThemeDailyBadges[i].seasonal_score_achived)
-         this.seasonalScoreTarget.push(this.seasonalThemeDailyBadges[i].seasonal_score_target)      
-         this.arrtrue.push(this.seasonalScoreAchived[i]>this.seasonalScoreTarget[i])
-         
-      
-          // const arr = _.toArray(this.selectedCourses);
-          // console.log(arr);
-      
-          // const trues = _.filter(arr, (r) => r === true).length;
-          // console.log(trues);
-          // const arrLength = this.boxes.length;
-          // console.log(arrLength);
-          // this.coursesPercentage = (trues / arrLength) * 100;
-          // console.log(this.coursesPercentage);
-        }
-        // this.trues.push(this.arrtrue[0]==true)
-        const trues = _.filter(this.arrtrue, (r) => r === true);
-        
-        console.log(trues.length)
-        this.badgePercentage = (trues.length / this.seasonalScoreAchived.length) * 100;
-        console.log(this.badgePercentage);
-        
-        console.log(this.arrtrue);
-
-  console.log(this.trues);
-  
-  console.log(this.seasonalScoreAchived);
-  console.log(this.seasonalScoreTarget);
-
-
-      console.log(this.seasonalThemeDaily.length);
-      console.log(typeof(this.seasonalThemeDaily.length));
-    
-      this.dailyToppers=this.weeklyPopup.seasonal_theme_daily_badge_toppers;
-      this.seasonal_theme_weekly_badge_details=this.DailyPopup.seasonal_theme_daily_badge_details;
-      console.log(this.seasonal_theme_weekly_badge_details);
-      
-      
-    })
-    this.seasonalScoreAchived=[]
-    this.seasonalScoreTarget=[]
-    this.arrtrue=[]
-    this.trues=[]
+  openDailyModal() {
     this.isDailyModalopen = true;
     this.isWeeklyModalOpen = false;
     this.isMonthlyModalOpen = false;
 
   }
   openWeeklyModal() {
-    let obj = {
-      _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
-
-      _game: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
-    }
-    this.http.campaignsPopup(obj).subscribe((res)=>{
-      // console.log(res);
-      this.dataForWeeklyPopup=res;
-      this.weeklyPopup=this.dataForMonthlyPopup.data;
-      this.seasonalThemeWeekly=this.weeklyPopup.seasonal_theme_weekly;
-      this.weeklyTopers=this.weeklyPopup.seasonal_theme_weekly_badge_toppers;
-      this.seasonal_theme_weekly_badge_details=this.weeklyPopup.seasonal_theme_weekly_badge_details;
-      console.log(this.seasonal_theme_weekly_badge_details.length);
-      console.log(this.seasonal_theme_weekly_badge_details);
-
-      
-    })
     this.isDailyModalopen = false;
     this.isWeeklyModalOpen = true;
     this.isMonthlyModalOpen = false;
 
   }
-  openMonthlyModal(queryParams) {
-    let obj = {
-      _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
-
-      _game: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
-    }
-    this.http.produceInfo(obj).subscribe((res)=>{
-      // console.log(res);
-      this.dataForMonthlyPopup=res;
-      this.monthlyPopup=this.dataForMonthlyPopup.data;
-      this.seasonalThemeMonthly=this.monthlyPopup.seasonal_theme_monthly;
-      this.seasonal_theme_monthly_badge_details=this.monthlyPopup.seasonal_theme_monthly_badge_details;
-      console.log(this.seasonal_theme_monthly_badge_details.length);
-      
-      this.monthlyTopers=this.monthlyPopup.seasonal_theme_monthly_badge_toppers
-      console.log(this.seasonalThemeMonthly);
-    })
+  openMonthlyModal() {
     this.isDailyModalopen = false;
     this.isWeeklyModalOpen = false;
     this.isMonthlyModalOpen = true;
@@ -1404,16 +1422,16 @@ else if(this.activeTabForSectionView_2 == 4){
     this.userID= this.Util.encryptData(item?.userid);
     this.gameID= this.Util.encryptData(item?.id_coroebus_game);
     this.roleID= this.Util.encryptData(item?.id_role);
-     this._router.navigateByUrl('/dashboard?userID='+this.userID +"&gameID="+ this.gameID +"&roleID="+this.roleID)
-    
+    this._router.navigateByUrl('/dashboard?userID='+this.userID +"&gameID="+ this.gameID +"&roleID="+this.roleID)
+    this.activeSubTabForSectionView_2='My Store'
   }
 
   navigateToNewChallenge(){
   
     let  _userid=this.userSelectionData?._personal_data?.USERID;
     let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
-    let id_role=this.userSelectionData?.games[0]?.id_role;
-    let id_coroebus_user=this.userSelectionData?._personal_data.id_coroebus_user;
+    let id_role=this.sectionView_1._personal_data.id_role;
+    let id_coroebus_user=this.sectionView_1._personal_data.id_coroebus_user;
 
     console.log(this.userSelectionData);
 
@@ -1422,18 +1440,18 @@ else if(this.activeTabForSectionView_2 == 4){
     const userId = this.Util.encryptData(_userid)
     const game = this.Util.encryptData(id_coroebus_game)
     const roleid = this.Util.encryptData(id_role)
-
+    const spectStaus='yes'
     
     if(this.userSelectionData.is_champions_league=='A'){
       
       window.open(
-       'http://coroebusbeta.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+      //  'http://coroebusbeta.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
 
       // 'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
-      '_self' // <- This is what makes it open in a new window.
+      // '_self' // <- This is what makes it open in a new window.
 
-      // 'http://localhost:56671/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
-      // '_self'
+      'http://coroebusbeta.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+      '_self'
    
 
     )
@@ -1453,8 +1471,8 @@ else if(this.activeTabForSectionView_2 == 4){
   
       let  _userid=this.userSelectionData?._personal_data?.USERID;
       let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
-      let id_role=this.userSelectionData?.games[0]?.id_role;
-      let id_coroebus_user=this.userSelectionData?._personal_data.id_coroebus_user;
+      let id_role=this.sectionView_1._personal_data.id_role;
+      let id_coroebus_user=this.sectionView_1._personal_data.id_coroebus_user;
   
       console.log(this.userSelectionData);
   
@@ -1492,8 +1510,8 @@ else if(this.activeTabForSectionView_2 == 4){
 
     let  _userid=this.userSelectionData?._personal_data?.USERID;
       let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
-      let id_role=this.userSelectionData?.games[0]?.id_role;
-      let id_coroebus_user=this.userSelectionData?._personal_data.id_coroebus_user;
+      let id_role=this.sectionView_1._personal_data.id_role;
+      let id_coroebus_user=this.sectionView_1._personal_data.id_coroebus_user;
   
       console.log(this.userSelectionData);
   
@@ -1507,7 +1525,7 @@ else if(this.activeTabForSectionView_2 == 4){
       if(this.userSelectionData.is_champions_league=='A'){
         
         window.open(
-        'http://coroebus.in/champions_league/#/home/challengeRecieved?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+        'http://coroebusbeta.in/champions_league/#/home/challengeRecieved?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
         '_self' // <- This is what makes it open in a new window.
 
         // 'http://localhost:56671/champions_league/#/home/challengeRecieved?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
@@ -1520,12 +1538,15 @@ else if(this.activeTabForSectionView_2 == 4){
       
 
   }
-  navigateToStatistics(){
+  navigateToStatistics(queryParams?: any){
 
-     let  _userid=this.userSelectionData?._personal_data?.USERID;
-      let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
-      let id_role=this.userSelectionData?.games[0]?.id_role;
-      let id_coroebus_user=this.userSelectionData?._personal_data.id_coroebus_user;
+    // localStorage.setItem('body_userid',body._userid);
+    // localStorage.setItem('body_game',body._game);
+
+     let  _userid = localStorage.getItem('body_userid');
+      let id_coroebus_game = localStorage.getItem('body_game');
+      let id_role=this.sectionView_1._personal_data.id_role;
+      let id_coroebus_user=this.sectionView_1._personal_data.id_coroebus_user;
   
       console.log(this.userSelectionData);
   
@@ -1534,28 +1555,84 @@ else if(this.activeTabForSectionView_2 == 4){
       const userId = this.Util.encryptData(_userid)
       const game = this.Util.encryptData(id_coroebus_game)
       const roleid = this.Util.encryptData(id_role)
-  
-      
+      const spectStaus='yes'
+
       if(this.userSelectionData.is_champions_league=='A'){
+        console.log(this.hideBattleGround);
+        
         if(this.hideBattleGround){
+          console.log('no hide');
+          
           window.open(
-            'http://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"spect="+"yes",
-            '_self' // <- This is what makes it open in a new window.
-    
-            //  'http://localhost:56671/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+            // 'http://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"spect="+"yes",
             // '_self' // <- This is what makes it open in a new window.
-            
-         
-      
+             'http://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total",
+            '_self' // <- This is what makes it open in a new window.
           )
         }
+     else{
+      console.log('hide');
+
+      window.open(
+        
+        'https://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
+        '_self' // <- This is what makes it open in a new window.
+
+        //  'http://localhost:56671/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+        // '_self' // <- This is what makes it open in a new window.
+        
      
+  
+      )
+
+     }
   
         }
       
 
   }
 
+  navigateToStatisticsSpect(queryParams?: any){
+    let  _userid = localStorage.getItem('body_userid');
+    let id_coroebus_game = localStorage.getItem('body_game');
+    let id_role=this.sectionView_1._personal_data.id_role;
+    let id_coroebus_user=this.sectionView_1._personal_data.id_coroebus_user;
+
+    console.log(this.userSelectionData);
+
+
+
+    const userId = this.Util.encryptData(_userid)
+    const game = this.Util.encryptData(id_coroebus_game)
+    const roleid = this.Util.encryptData(id_role)
+    const spectStaus='yes'
+
+    window.open(
+        
+      'http://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
+      '_self' // <- This is what makes it open in a new window.
+
+      //  'http://localhost:56671/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+      // '_self' // <- This is what makes it open in a new window.
+      
+   
+
+    )
+  }
+  navigateToM2ost(){
+    this.empid= this.sectionView_1._personal_data.EMPLOYEEID
+    this.empemail=this.sectionView_1._personal_data.email_id
+    this.empname=this.sectionView_1._personal_data.first_name
+    this.emporg=this.sectionView_1._personal_data.organization_name
+    window.open(
+      // https://www.m2ost.in/m2ostproductionapiSSO/api/m2ostSSO?param=empid$103$empemail$empname$TGC
+    
+      'https://www.m2ost.in/m2ostproductionapiSSO/api/m2ostSSO?param='+this.empid +'$103$'+this.empemail+'$'+this.empname+'$'+this.emporg,
+      'blank'
+   
+
+    )
+  }
 
   // challengeRecievedCount(){
   //     console.log("Neeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeew",this.userSelectionData);
@@ -1580,83 +1657,40 @@ else if(this.activeTabForSectionView_2 == 4){
       
   // }
 
-  GetDataFromProduceInfo(data:any){
+ 
 
-    console.log(this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData.id_coroebus_game
-      )
-      
-    
-      let obj = {
-        _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
-        _game: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
-      }
-      console.log("check body",obj)
-      this.http.produceInfo(obj).subscribe((res)=>{
-        console.log(res);
-
-        this.data=res;
-
-        // Data For Campaign Theme
-        this.seasonalThemeDailyBadges=this.data.data.seasonal_theme_daily_badge_details;
-        this.seasonalThemeWeeklyBadges=this.data.data.seasonal_theme_weekly_badge_details;
-        this.seasonalThemeMonthlyBadges=this.data.data.seasonal_theme_monthly_badge_details;
-         
-        this.seasonalThemeDailyBadges.every((res)=>{
-          if(res.active_class == '1'){
-            
-          }
-        })
-
-        // Champions League Data
-        this.onGoingChallenges=this.data.data.challenge_list;
-        this.challengeReacieved=this.data.data.new_challenge_list;
-
-        console.log(this.onGoingChallenges)
-
-        // Trivia Corner Data
-
-        this.triviaCornerData=this.data.data.trivia_corner;
-
-        this.triviaCornerData.every((res)=>{
-          console.log(true)
-          if(res.view_status!='Read')
-          {
-            this.hideTriviaIndicator=true;
-            // console.log(hideTriviaIndicator)
-          }
-        })
-      })
-    
-
-  }
 
 
   navigateToBriefQuetion(data:any){
-  console.log(data);
-  let id_coroebus_team='0';
-  console.log(data._game,data._userid,id_coroebus_team,data._categoryid,data.id_learning_academy_brief,data._subcategoryid,data.brief_type);
-  console.log(data.id_learning_academy_brief);
+    console.log(data);
+    let id_coroebus_team='0';
+    console.log(data._game,data._userid,id_coroebus_team,data._categoryid,data.id_learning_academy_brief,data._subcategoryid,data.brief_type);
+    console.log(data.id_learning_academy_brief);
+    
+     console.log('http://localhost:4200/#/LearningAcademy/library_game='+data._game+"&_userid="+data._userid+"&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+"&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type);
   
-   console.log('http://localhost:4200/#/LearningAcademy/library_game='+data._game+"&_userid="+data._userid+"&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+"&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type);
-
-   if(data.view_status!='Read'){
-    window.open(
-      'https://coroebusbeta.in/Learning_academy/#/LearningAcademy/library?_game='+data._game+"&_userid="+data._userid+"&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+"&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type,
+     if(data.view_status!='Read'){
+      window.open(
+        'http://localhost:4200/#/LearningAcademy/library?_game='+data._game+"&_userid="+data._userid+"&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+"&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type,
+    
+        '_self'
+      //   'https://coroebusbeta.in/Learning_academy/#/LearningAcademy/library?_game='+data._game+"&_userid="+data._userid+"&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+"&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type,
+    
+      //  '_self'
+     )
+     }
+    else{
+      this.modalService.dismissAll('Cross click')
+      Swal.fire({
+        title: '',
+        text: 'Answer is Already Given',
+        // imageUrl: 'assets/images/svg/logo/logo.svg',
+        imageHeight: 40,
+        confirmButtonColor: '#556ee6'
+      });
+    }
+    }
   
-     '_self'
-   )
-   }
-  else{
-    this.modalService.dismissAll('Cross click')
-    Swal.fire({
-      title: '',
-      text: 'Quetion is Already Given',
-      // imageUrl: 'assets/images/svg/logo/logo.svg',
-      imageHeight: 40,
-      confirmButtonColor: '#556ee6'
-    });
-  }
-  }
 
   
 }
