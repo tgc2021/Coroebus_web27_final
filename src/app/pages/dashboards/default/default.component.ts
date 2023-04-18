@@ -188,6 +188,12 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     // this.emojiSelected(0,1)
 
     // this.challengeRecievedCount()
+    if (!localStorage.getItem('foo')) { 
+      localStorage.setItem('foo', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('foo') 
+    }
 
     this.activeTab()
     this.Edit_image()
@@ -1187,6 +1193,7 @@ else if(this.activeTabForSectionView_2 == 4){
       });
     }
     else{
+      this.pageNumberForSectionView_3=1
       this._router.navigate([], {
         relativeTo: this._route,
         queryParams: {
