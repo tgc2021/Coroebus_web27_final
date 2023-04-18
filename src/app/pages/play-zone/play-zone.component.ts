@@ -71,6 +71,9 @@ export class PlayZoneComponent implements OnInit {
   spinTheWheel: string;
   cubeBlasters: string;
   cubicallUrl: string;
+  dark_color: string;
+  medium_color: string;
+  light_color: string;
 
   constructor(private http: ApiserviceService, private readonly store: Store, public modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -101,13 +104,23 @@ export class PlayZoneComponent implements OnInit {
      
     }) 
 
+    this.dark_color=localStorage.getItem('topbar_color')
+    this.element.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
+console.log(this.dark_color);
+
+    this.medium_color=localStorage.getItem('medium_color')
+    this.element.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
+
+    this.light_color=localStorage.getItem('light_color')
+    this.element.nativeElement.style.setProperty('--lightColor', `${this.light_color}`)
+
     this.dynamicColor()
   }
 
   playZone(){
     let body = {
       _userid: this.mergeObj.USERID,
-      _game: this.mergeObj.id_coroebus_game,
+      _game: 183,
     }
 
 
@@ -126,7 +139,7 @@ export class PlayZoneComponent implements OnInit {
   rewardPassbook(){
     let body = {
       _userid: this.mergeObj.USERID,
-      _game: this.mergeObj.id_coroebus_game,
+      _game: 183,
     }
 
     this.http.playZonePassbook(body).subscribe((res:any)=>{

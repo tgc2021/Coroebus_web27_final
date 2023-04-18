@@ -189,6 +189,9 @@ input[type="checkbox"]::placeholder {
     left: 1408px;
     top: 177px;
     border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     // background-color: var(--myvar);
     border: 1px solid #D1D1D1;
 
