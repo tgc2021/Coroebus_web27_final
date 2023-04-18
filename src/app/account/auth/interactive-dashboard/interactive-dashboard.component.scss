@@ -904,16 +904,19 @@ flex-direction: column;
 }
 
 .button-close {
-    
     height: 22px;
     width: 22px;
     font-size: 12px;
+    border-radius: 50%;
     font-weight: bold;
     border-radius: 100%;
     /* color: #000000; */
     border: 1px solid #000000;
     background: transparent;
     padding-top: 2px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
     height:3vh;
     width:3vh;
     border-radius: 100%;
@@ -922,10 +925,14 @@ flex-direction: column;
     height: 22px;
     width: 22px;
     font-size: 12px;
+    border-radius: 50%;
     font-weight: bold;
     border-radius: 100%;
     color:#ffff;
     border:1px solid #ffff;
+    display:flex;
+    justify-content:center;
+    align-items: center;
     background: transparent;
     padding-top: 2px;
 
