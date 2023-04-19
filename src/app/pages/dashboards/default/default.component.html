@@ -1850,7 +1850,7 @@
 
 <!-- Campaigns Modal -->
 <!-- DailyModal -->
-<div *ngIf="isDailyModalopen;then Daily"></div>
+<!-- <div *ngIf="isDailyModalopen;then Daily"></div>
 <ng-template #Daily>
     <div class="DailyModal">
         <div class="modal fade bd-example-modal-sm" id="dailyModal" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -1893,7 +1893,6 @@
                         <ng-template #dailybadge>
                             <div class="animation-bar" *ngIf="seasonalThemeDailyBadges1.length!=0">
                                 <div class="badges_row" [style.width.%]="100" >
-                                        <!-- <div>{{((seasonalThemeDailyBadges1[0].seasonal_score_target)/(seasonalThemeDailyBadges1[2].seasonal_score_target))*100|json}}</div> -->
                                     
                                     <div class="d-flex flex-column justify-content-center" [style.margin-left.%]="((seasonalThemeDailyBadges1[0].seasonal_score_target)/(seasonalThemeDailyBadges1[2].seasonal_score_target))*100">
                                         
@@ -1971,9 +1970,9 @@
             </div>
         </div>
     </div>
-</ng-template>
+</ng-template> -->
 
-<div *ngIf="isWeeklyModalOpen;then weekly"></div>
+<!-- <div *ngIf="isWeeklyModalOpen;then weekly"></div>
 <ng-template #weekly>
 
     <div class="weeklyModal">
@@ -2085,9 +2084,7 @@
                                         <div class="Progressscore">
                                             {{seasonalThemeWeeklyBadges2[0].seasonal_score_achived}}
                                         </div>
-                                        <!-- <div class="name">{{topper.first_name.slice(0,10)}}...</div>
-                                        <div class="rank">Rank:{{topper.user_rank}}</div>
-                                        <div class="score">{{topper.score}}</div> -->
+                                        
                                     </div>
                                 </div>
 
@@ -2111,10 +2108,10 @@
         </div>
     </div>
 
-</ng-template>
+</ng-template> -->
 
 <!-- Monthly Modal -->
-<div *ngIf="isMonthlyModalOpen;then monthly"></div>
+<!-- <div *ngIf="isMonthlyModalOpen;then monthly"></div>
 <ng-template #monthly>
     <div class="monthlyModal">
         <div class="modal fade bd-example-modal-sm" id="monthlyModal" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -2255,7 +2252,7 @@
             </div>
         </div>
     </div>
-</ng-template>
+</ng-template> -->
 
 
 
