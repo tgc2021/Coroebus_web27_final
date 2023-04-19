@@ -881,12 +881,28 @@
                                                                 (click)="navigateToBriefQuetion(triviaData)">
                                                                 <div
                                                                     class="triviaBanner d-flex align-items-start mt-2 p-2">
+<!--                                                                     
                                                                     <div style="height:8vh;width:5vw;border-radius:5vh">
                                                                         <img src="{{triviaData.brief_graphics}}"
                                                                             alt="trivia_banner" height="100%"
                                                                             width="100%">
-                                                                    </div>
-
+                                                                    </div> -->
+                                                                    <div *ngIf="triviaData.brief_graphics.split('.').pop()=='mp4';then mp4player"></div>
+                                                                    <div *ngIf="triviaData.brief_graphics.split('.').pop() == 'png'||triviaData.brief_graphics.split('.').pop()=='gif'||triviaData.brief_graphics.split('.').pop()== 'jpg'||triviaData.brief_graphics.split('.').pop()=='jpeg';then imgplay"> </div>
+                                                            
+                                                                    <ng-template #imgplay>
+                                                                        <div style="height:8vh;width:5vw;border-radius:5vh">
+                                                                            <img src="../../../../assets/images/svg/notification/img.png" alt="trivia_banner" height="100%" width="100%">
+                                                                        </div>
+                                                                    </ng-template>
+                                                                   
+                                                         
+                                                                   
+                                                                <ng-template #mp4player>
+                                                                        <div style="height:8vh;width:5vw;border-radius:5vh">
+                                                                            <img src="../../../../assets/images/svg/notification/v.png" alt="trivia_banner" height="100%" width="100%">
+                                                                        </div>
+                                                                </ng-template>
 
 
                                                                 </div>
@@ -924,11 +940,27 @@
                                                                >
                                                                 <div
                                                                     class="triviaBanner d-flex align-items-start mt-2 p-2">
-                                                                    <div style="height:8vh;width:5vw;border-radius:5vh">
+                                                                    <!-- <div style="height:8vh;width:5vw;border-radius:5vh">
                                                                         <img src="{{triviaData.brief_graphics}}"
                                                                             alt="trivia_banner" height="100%"
                                                                             width="100%">
-                                                                    </div>
+                                                                    </div> -->
+                                                                    <div *ngIf="triviaData.brief_graphics.split('.').pop()=='mp4';then mp4player"></div>
+                                                                    <div *ngIf="triviaData.brief_graphics.split('.').pop() == 'png'||triviaData.brief_graphics.split('.').pop()=='gif'||triviaData.brief_graphics.split('.').pop()== 'jpg'||triviaData.brief_graphics.split('.').pop()=='jpeg';then imgplay"> </div>
+                                                            
+                                                                    <ng-template #imgplay>
+                                                                        <div style="height:8vh;width:5vw;border-radius:5vh">
+                                                                            <img src="../../../../assets/images/svg/notification/img.png" alt="trivia_banner" height="100%" width="100%">
+                                                                        </div>
+                                                                    </ng-template>
+                                                                   
+                                                         
+                                                                   
+                                                                <ng-template #mp4player>
+                                                                        <div style="height:8vh;width:5vw;border-radius:5vh">
+                                                                            <img src="../../../../assets/images/svg/notification/v.png" alt="trivia_banner" height="100%" width="100%">
+                                                                        </div>
+                                                                </ng-template>
 
 
 
