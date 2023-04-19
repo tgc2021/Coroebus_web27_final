@@ -154,7 +154,8 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
 
     if (this.isVideoHide) {
-      this.openModal();
+      this.close('content')
+      // this.openModal();
 
     }
   }
@@ -188,9 +189,9 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
     this.router.navigateByUrl('/top_dashboard?userID=' + this.hos_user_id + "&gameID=" + this.hos_game_id + "&roleID=" + this.hos_role_id)
 
   }
-  openModal() {
-    this.modalService.open(this.content, { size: 'lg', centered: true });
-  }
+  // openModal() {
+  //   this.modalService.open(this.content, { size: 'lg', centered: true });
+  // }
   close(content) {
     localStorage.setItem('VideoHide', 'false');
     this.modalService.dismissAll();

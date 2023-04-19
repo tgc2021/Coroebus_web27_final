@@ -1571,7 +1571,7 @@ else if(this.activeTabForSectionView_2 == 4){
     
     window.open(
         
-      'http://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
+      'http://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
       '_self' // <- This is what makes it open in a new window.
 
       //  'http://localhost:56671/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
