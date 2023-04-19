@@ -298,7 +298,7 @@ console.log(this.id_coroebus_organization);
       this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
      
     }
-    else  if(this.id_role == 13){
+    else  if(this.id_role == 13 ){
       
       this.menuItems = MENU_HOS;
       this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
@@ -314,6 +314,7 @@ console.log(this.id_coroebus_organization);
         
       }
     }
+  
     else {
       console.log(this.spectator_value);
     
@@ -494,7 +495,7 @@ else if(this.id_role=='13'){
 
 }
 else if(this.id_role=='9'){
-  this.menuItems=MENU_HOS
+  this.menuItems=MENU
 
 }
 else{
