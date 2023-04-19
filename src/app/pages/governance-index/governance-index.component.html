@@ -9,10 +9,10 @@
                 <hr>
                 <mat-card class="header_card">
                     <div class="d-flex" style="width: 100%;">
-                        <div class="left_side" style="width: 92%;">
+                        <div class="left_side" style="width: 91%;">
                             <p class="header_label">Elements</p>
                         </div>
-                        <div class="right_side" style="width: 8%;">
+                        <div class="right_side" style="width: 9%;">
                             <p  class="header_label">Score</p>
 
                         </div>
@@ -26,9 +26,8 @@
                                 <div class="row" style="width: 100%;">
                                     <div class="col-11">
                                         <strong>{{response.process_data.process_name}}</strong>
-
                                     </div>
-                                    <div class="col-1 " style="text-align: end;">
+                                    <div class="col-1" style="text-align: center;">
                                         <strong>{{response.process_data.weightage}}</strong>
 
                                     </div>
@@ -36,20 +35,16 @@
                             </mat-panel-title>
 
                         </mat-expansion-panel-header>
-
-                        <div>
-                            <div>
-                                <div class="row sub_title_div" *ngFor="let responsesub of response.kpi_data">
-                                    <div class="col-11">
-                                        <div class="accordion_sub_title">{{responsesub.kpi_name}}</div>
-                                    </div>
-                                    <div class="col-1">
-                                        <div class="accordion_sub_score"  style="text-align: start;">&nbsp;{{responsesub.weightage}}</div>
-                                    </div>
-                                </div>
-                                
+                        <div class="row" style="width: 100%;" class="row sub_title_div" *ngFor="let responsesub of response.kpi_data">
+                            <div class="col-11">
+                                <div class="accordion_sub_title">{{responsesub.kpi_name}}</div>
+                            </div>
+                            <div class="col-1" style="padding-left: 1.3vw;">
+                                <div class="accordion_sub_score">{{responsesub.weightage}}</div>
                             </div>
                         </div>
+
+                     
 
                     </mat-expansion-panel>
                 </div>
