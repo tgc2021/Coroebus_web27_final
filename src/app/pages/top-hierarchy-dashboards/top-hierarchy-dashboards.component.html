@@ -216,7 +216,7 @@
                             <ng-template #withoutsearch>
                                 <div [ngClass]="lengthLeaderBoardData>19 ?'leaderboard_label_tile_length':'leaderboard_label_tile'">
                                   <div *ngIf="sectionView_1._personal_data.id_role=='9'">
-                                    <mat-card class="leaderboard_tile" *ngFor="let res of leaderboard_data; let i=index" 
+                                    <mat-card style="cursor: pointer;" class="leaderboard_tile" *ngFor="let res of leaderboard_data; let i=index" 
                                     [style.background-image]="'url(' + res?.ranking_image_web + ')'"
                                     (click)="navigateToSMDashboard(res)">
     
