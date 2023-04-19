@@ -1227,6 +1227,8 @@ else if(this.activeTabForSectionView_2 == 4){
 
 
   changeSubTabFilter(tabName: string) {
+    console.log(tabName);
+    
     this.activeSubTabForSectionView_2 = tabName
      
     // this.filterRankingData()
