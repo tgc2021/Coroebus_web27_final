@@ -1519,8 +1519,7 @@ else if(this.activeTabForSectionView_2 == 4){
       const roleid = this.Util.encryptData(id_role)
       const spectStaus='yes'
 
-      if(this.userSelectionData.is_champions_league=='A'){
-        console.log(this.hideBattleGround);
+      
         
         if(this.hideBattleGround){
           console.log('no hide');
@@ -1532,29 +1531,33 @@ else if(this.activeTabForSectionView_2 == 4){
             '_self' // <- This is what makes it open in a new window.
           )
         }
-     else{
-      console.log('hide');
 
-      window.open(
+    //  else{
+    //   console.log('hide');
+
+    //   window.open(
         
-        'https://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
-        '_self' // <- This is what makes it open in a new window.
+    //     'https://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
+    //     '_self' // <- This is what makes it open in a new window.
 
-        //  'http://localhost:56671/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
-        // '_self' // <- This is what makes it open in a new window.
+    //     //  'http://localhost:56671/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+    //     // '_self' // <- This is what makes it open in a new window.
         
      
   
-      )
+    //   )
 
-     }
+    //  }
   
-        }
+        
       
 
   }
 
-  navigateToStatisticsSpect(queryParams?: any){
+  navigateToStatisticsSpect(queryParams?: any)
+  
+  {
+
     let  _userid = localStorage.getItem('body_userid');
     let id_coroebus_game = localStorage.getItem('body_game');
     let id_role=this.sectionView_1._personal_data.id_role;
@@ -1568,19 +1571,14 @@ else if(this.activeTabForSectionView_2 == 4){
     const game = this.Util.encryptData(id_coroebus_game)
     const roleid = this.Util.encryptData(id_role)
     const spectStaus='yes'
-
-    console.log('http://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus);
+    console.log(spectStaus);
+    // console.log('http://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus);
     
     window.open(
-        
       'http://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
       '_self' // <- This is what makes it open in a new window.
-
       //  'http://localhost:56671/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
       // '_self' // <- This is what makes it open in a new window.
-      
-   
-
     )
   }
 
