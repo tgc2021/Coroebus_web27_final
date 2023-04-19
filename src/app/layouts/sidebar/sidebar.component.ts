@@ -294,7 +294,7 @@ console.log(this.id_coroebus_organization);
       console.log(this.spectator_value);
      
       
-      this.menuItems = MENU_SPECTATOR;
+      this.menuItems = MENU;
       this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
      
     }
@@ -487,7 +487,7 @@ console.log(this.id_coroebus_organization);
     
     
 if(this.id_role=='7'){
-  this.menuItems=MENU_SPECTATOR
+  this.menuItems=MENU
 
 }
 else if(this.id_role=='13'){

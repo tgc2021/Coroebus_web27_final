@@ -5445,8 +5445,15 @@ viewmoreorder:any
      this.spectator_user_id=this.Util.encryptData(this.spectator_user_list[index].USERID)
      this.spectator_game_id=this.Util.encryptData(this.spectator_user_list[index].id_coroebus_game)
      this.spectator_role_id=this.Util.encryptData(this.spectator_user_list[index].id_role)
+     if(this.spectator_user_list[index].id_role == '9' || this.spectator_user_list[index].id_role == '8'){
+      this._router.navigateByUrl('top_dashboard?userID='+this.spectator_user_id +"&gameID="+  this.spectator_game_id +"&roleID="+  this.spectator_role_id +"&view="+  this.spectator)
 
-    this._router.navigateByUrl('dashboard?userID='+this.spectator_user_id +"&gameID="+  this.spectator_game_id +"&roleID="+  this.spectator_role_id +"&view="+  this.spectator)
+     }
+     else{
+      this._router.navigateByUrl('dashboard?userID='+this.spectator_user_id +"&gameID="+  this.spectator_game_id +"&roleID="+  this.spectator_role_id +"&view="+  this.spectator)
+
+     }
+
   }
 
   navigatetoSearchDashboard(index:any){
@@ -5456,8 +5463,14 @@ viewmoreorder:any
      this.spectator_user_id=this.Util.encryptData(this.spectSearList[0]._data[index].USERID)
      this.spectator_game_id=this.Util.encryptData(this.spectSearList[0]._data[index].id_coroebus_game)
      this.spectator_role_id=this.Util.encryptData(this.spectSearList[0]._data[index].id_role)
+     if(this.spectator_user_list[index].id_role == '9' || this.spectator_user_list[index].id_role == '8'){
+      this._router.navigateByUrl('top_dashboard?userID='+this.spectator_user_id +"&gameID="+  this.spectator_game_id +"&roleID="+  this.spectator_role_id +"&view="+  this.spectator)
 
-    this._router.navigateByUrl('dashboard?userID='+this.spectator_user_id +"&gameID="+  this.spectator_game_id +"&roleID="+  this.spectator_role_id +"&view="+  this.spectator)
+    }
+    else{
+      this._router.navigateByUrl('dashboard?userID='+this.spectator_user_id +"&gameID="+  this.spectator_game_id +"&roleID="+  this.spectator_role_id +"&view="+  this.spectator)
+
+    }
   }
 
 
