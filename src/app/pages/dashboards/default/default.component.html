@@ -758,7 +758,7 @@
                                                         <div class="inner_content" (click)="navigateToM2ost()">Excel
                                                             Basic</div>
                                                         <div class="inner_content" (click)="navigateToM2ost()">Strategic
-                                                            Problem solving</div>
+                                                            Problem Solving</div>
                                                         <div class="inner_content" (click)="navigateToM2ost()">Conflict
                                                             Resolution</div>
                                                         <div class="inner_content" (click)="navigateToM2ost()">Home Loan
@@ -929,10 +929,10 @@
                                                     <div
                                                         [ngClass]="{'inner-bulletins-no-height': sectionView_1?.is_land_logos?.length == 0,'inner-bulletins-height':sectionView_1?.is_land_logos?.length != 0}">
 
-                                                        <div class="card bulletins-sub-card"
+                                                        <div class="card bulletins-sub-card me-1"
                                                             *ngFor="let item of addInsList">
                                                             <div class="card-body bulletins-sub-card-body">
-                                                                <p class="spot-engagement ">{{item?.header}}</p>
+                                                                <p class="spot-engagement ps-1 pt-0 text-dark ">{{item?.header}}</p>
                                                                 <br>
                                                                 <div class="media bulletins-media">
                                                                     <img *ngIf="item?.type_ === '1'"
@@ -948,7 +948,7 @@
 
                                                                         <h5 class="bulletins-title">{{item?.title}}
                                                                             <p class="bulletins-text-muted"
-                                                                                style="margin-bottom:30px;">
+                                                                                style="margin-bottom:0px;">
                                                                                 {{item?.description_}}
                                                                             </p>
                                                                         </h5>
@@ -1092,10 +1092,9 @@
                                                                 <div style="display:flex;
                                                                 height:5vh;
                                                                 align-items:center">{{challengeReacieved}}</div>
-
                                                             </div>
                                                             <div class="inner_content ps-3" style="border-bottom:none;width:100%"
-                                                            (click)="navigateToStatistics()">Statistics</div>
+                                                            (click)="navigateToStatisticsSpect()">Statistics</div>
                                                         </ng-template>
 
                                                         <ng-template #donthide>
@@ -1785,29 +1784,23 @@
                         <ng-template #dailybadge>
                             <div class="animation-bar" *ngIf="seasonalThemeDailyBadges1.length!=0">
                                 <div class="badges_row" [style.width.%]="100" >
-
+                                        <!-- <div>{{((seasonalThemeDailyBadges1[0].seasonal_score_target)/(seasonalThemeDailyBadges1[2].seasonal_score_target))*100|json}}</div> -->
                                     
-                                    <div class="d-flex flex-column justify-content-center  " [style.margin-left.%]="(((seasonalThemeDailyBadges1[0].seasonal_score_target)/(totalTargetScore))*100)">
+                                    <div class="d-flex flex-column justify-content-center" [style.margin-left.%]="((seasonalThemeDailyBadges1[0].seasonal_score_target)/(seasonalThemeDailyBadges1[2].seasonal_score_target))*100">
                                         
                                         <div style="height:6vh;width:6vh;border-radius:50%"
                                             [ngClass]="seasonalThemeDailyBadges1[0].active_class == '0'?'inActiveBadge':'ActiveBadge'">
-                                            <img src="{{seasonalThemeDailyBadges1[0].seasonal_badge_logo}}" alt=""
-                                                height="100%" width="100%">
-
+                                            <img src="{{seasonalThemeDailyBadges1[0].seasonal_badge_logo}}" alt="" height="100%" width="100%">
                                         </div>
                                         <div class="d-flex justify-content-center">
                                             <div style="height:3vh;border-left: 2px solid #8EC912;"></div>
                                         </div>
-
-
                                     </div>
-                                    <div class="d-flex flex-column justify-content-center " [style.margin-left.%]="(((seasonalThemeDailyBadges1[1].seasonal_score_target)/(totalTargetScore))*100)/2">
-                                       
+                                    <div class="d-flex flex-column justify-content-center " [style.margin-left.%]="(((seasonalThemeDailyBadges1[1].seasonal_score_target)/(seasonalThemeDailyBadges1[2].seasonal_score_target))*100)">
                                         <div style="height:6vh;width:6vh;border-radius:50%"
                                             [ngClass]="seasonalThemeDailyBadges1[1].active_class == '0'?'inActiveBadge':'ActiveBadge'">
                                             <img src="{{seasonalThemeDailyBadges1[1].seasonal_badge_logo}}" alt=""
                                                 height="100%" width="100%">
-
                                         </div>
                                         <div class="d-flex justify-content-center">
                                             <div style="height:3vh;border-left: 2px solid #8EC912;"></div>
@@ -1815,7 +1808,7 @@
 
 
                                     </div>
-                                    <div class="d-flex flex-column justify-content-center " [style.margin-left.%]="(((seasonalThemeDailyBadges1[2].seasonal_score_target)/(totalTargetScore))*100)/3">
+                                    <div class="d-flex flex-column justify-content-center " [style.margin-left.%]="(((seasonalThemeDailyBadges1[2].seasonal_score_target)/(seasonalThemeDailyBadges1[2].seasonal_score_target))*100)-66">
                                         
                                         <div style="height:6vh;width:6vh;border-radius:50%"
                                             [ngClass]="seasonalThemeDailyBadges1[2].active_class == '0'?'inActiveBadge':'ActiveBadge'">
@@ -1834,22 +1827,18 @@
 
                                 <div class="animation-bar-1">
                                     <span class="d-flex justify-content-center"
-                                        [style.background-size.%]="totalTargetScore"
-                                        [style.width.%]="((seasonalThemeDailyBadges1[0].seasonal_score_achived/totalTargetScore)*(100))">
+                                        [style.background-size.%]="seasonalThemeDailyBadges1[2].seasonal_score_target"
+                                        [style.width.%]="((seasonalThemeDailyBadges1[0].seasonal_score_achived))">
 
                                     </span>
-
-
                                 </div>
                                 <div class="animation-bar"
-                                    [style.margin-left.%]="((seasonalThemeDailyBadges1[0].seasonal_score_achived/totalTargetScore)*(100))">
-
+                                    [style.margin-left.%]="((seasonalThemeDailyBadges1[0].seasonal_score_achived))">
                                     <div class="d-flex flex-column">
                                         <div class="border-left"></div>
                                         <div class="Progressscore">
                                             {{seasonalThemeDailyBadges1[0].seasonal_score_achived}}
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
