@@ -18,6 +18,7 @@ import { ImagecropperComponent } from '@pages/imagecropper/imagecropper.componen
   templateUrl: './top-hierarchy-dashboards.component.html',
   styleUrls: ['./top-hierarchy-dashboards.component.scss']
 })
+
 export class TopHierarchyDashboardsComponent implements OnInit {
   counter: any = 0
   panelOpenState = false;
@@ -70,6 +71,9 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   spectSearFinalList1:any
   light_color: any;
   isVideoHide: any;
+  emptyInput: boolean=true;
+  lengthLeaderBoardData: any;
+  lengthSearchList: number;
   constructor(private readonly store: Store, public _route: ActivatedRoute,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -255,6 +259,9 @@ console.log(this.dark_color);
   }
 
   async getUserBannerDataSectionView_3(viewMore?: any, queryParams?: any) {
+    console.log(viewMore);
+    
+    console.log(queryParams);
     let err: any, res: any;
     let body: any;
     body = {
@@ -279,7 +286,8 @@ console.log(this.dark_color);
         });
         console.log(this.spectSearchStr);
         
-        this.leaderboard_data=this.sectionView_3?._ranking_data[0]._data
+        this.leaderboard_data=this.sectionView_3?._ranking_data[0]._data;
+        this.lengthLeaderBoardData=this.leaderboard_data.length;
         console.log(this.leaderboard_data);
         this.leaderboard_data_buttons=this.sectionView_3?._ranking_data
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0].order
@@ -432,7 +440,9 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
     });
   }
 
-  getRewards(){
+  getRewards(data:any){
+    console.log(data);
+    
     console.log('rewards page');
     
     let obj = {
@@ -442,6 +452,7 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
     }
     console.log(obj)
 
+    localStorage.setItem('rewardid',obj._userid)
   
 
     // this._router.navigate('/performance/page')
@@ -478,7 +489,7 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
 
   leaderboard(event:any=0){
    console.log(event);
-   
+   this.spectSearchStr=null
   //   console.log(this.sectionView_3._ranking_data[event]);
   // this.leaderboard_data_buttons=this.sectionView_3._ranking_data[event]
   this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[event].order
@@ -520,9 +531,28 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
  
   viewMore(){
     this.pageNumberForSectionView_3 = this.pageNumberForSectionView_3 + 1
-    this.getUserBannerDataSectionView_3('viewMore')
+    console.log(this.queryParams);
+    
+    this.getUserBannerDataSectionView_3(1,this.queryParams)
   }
+ 
 
+
+  checkEmpty(){
+    this.spectSearList=null
+
+    if(this.spectSearchStr==''){
+      
+      this.spectSearchStr=''
+      this.emptyInput==true;
+      this.spectSearchStrTrigger = false
+      this.spectSearch()
+   
+      // this.spectSearchStr.setValue('');
+      // this.ngOnInit()
+    }
+  }
+  
   async spectSearch() {
     let err: any, res: any;
     let body: any;
@@ -563,7 +593,8 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
         
       })
 
-      this.spectSearList = res?.data[0]._data
+      this.spectSearList = res?.data[0]._data;
+      this.lengthSearchList=this.spectSearList.length;
       console.log(this.spectSearList);
     // this.spectSearFinalList=this.spectSearList._data
       this.searchbgimage= this.spectSearList[0]
@@ -599,12 +630,10 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
          
     
       })
-      
 
     } else {
       this.notificationList_err = 'Error'
     }
-
 
  
   }
@@ -633,6 +662,29 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
 
   }
 
+  getDataBasedOnUserIDHos(data: any) {
+    console.log(data)
+    localStorage.setItem('userid',data.USERID)
+
+    this.router.navigate(['/topdashboard'], {
+      relativeTo: this._route,
+      queryParams: {
+        userID: this.Util.encryptData(data?.USERID),
+        // gameID: this.Util.encryptData(data?.game_id),
+        // roleID: this.Util.encryptData(data?.role_id?.toString())
+       
+      },
+     
+      queryParamsHandling: 'merge',
+      // preserve the existing query params in the route
+      // skipLocationChange: false
+      // do not trigger navigation
+
+    });
+
+   
+
+  }
   governance_index(){
     console.log('gov index');
     

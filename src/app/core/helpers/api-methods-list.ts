@@ -35,7 +35,6 @@ export const apiMethodsList = {
 
 
     // Production Url
-
     AUTHENTICATE: [
         '/coroebus-tgc-api-levels/authenticate/access_token', // 0 POST { "USERID": "l4WbceDSYnGzmGmtTpbDOQ==", "PASSWORD": "9QVjcHyu0OY8aIHAOXiiBg=="}
         '/coroebus-tgc-api-levels/authenticate/get_games', // 1 POST {"userid":"GOLD015","id_theme":"5"} 

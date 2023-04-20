@@ -26,7 +26,7 @@
     align-items: center;
 
     .profile_card {
-        cursor: pointer;
+        cursor: poWork sans;
         position: relative;
         width: 19vw;
         height: 35vh;
@@ -71,7 +71,7 @@
                 width: 10vh;
                 height: 10vh;
                
-                border-radius: 50%;
+                border-radius: 100%;
 
             }
 
@@ -101,7 +101,7 @@
                 background: #FFFFFF;
                 border: 1px solid transparent;
                 box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-                cursor: pointer;
+                cursor: poWork sans;
                 font-weight: normal;
                 transition: all 0.2s ease-in-out;
                 background-repeat: no-repeat;
@@ -129,7 +129,7 @@
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
-                width:23ch;
+                width:17ch;
                 text-align:center;
                 /* identical to box height, or 120% */
              
@@ -164,7 +164,7 @@
             }
 
             .point_dist_score {
-                font-family: 'Inter';
+                font-family: 'Work sans';
                 font-weight: 600;
                 font-size: 0.9vw;
                 margin-right: 1vw;
@@ -198,7 +198,7 @@
     align-items: center;
 
     .profile_card {
-        cursor: pointer;
+        cursor: poWork sans;
         position: relative;
         width: 19vw;
         height: 35vh;
@@ -231,10 +231,53 @@
             }
         }
 
-        .Overall_score {
+        .overall_score_success {
 
             position: absolute;
             border: 2px solid #79BF06;
+            border-radius: 50%;
+            background-color: #ffff;
+
+            top: 6vh;
+
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+            .Overall_score_Inner_circle {
+                width: 10vh;
+                height: 10vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap:0.6em;
+                border-radius: 100%;
+
+                .overall_score_number {
+                    font-family: 'Work Sans';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 2.2vh;
+                    line-height: 2.4vh;
+                    text-align: center;
+                }
+
+                .overall_score_text {
+                    font-family: 'Work Sans';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 1.8vh;
+                    line-height: 2.0vh;
+                    text-align:center;
+
+                }
+
+            }
+
+
+        }
+        .Overall_score_fail{
+            position: absolute;
+            border: 2px solid red;
             border-radius: 50%;
             background-color: #ffff;
 
@@ -272,6 +315,7 @@
                 }
 
             }
+
 
         }
 
@@ -349,7 +393,7 @@
                 justify-content: center;
                 align-items: center;
                 gap:0.6em;
-                border-radius: 50%;
+                border-radius:100%;
 
                 .overall_score_number {
                     font-family: 'Work Sans';
@@ -431,7 +475,7 @@
                     background-color: var(--myvar);
                     color:white;
                     display: flex;
-                    font-size:0.8vw;
+                    font-size:2.2vh;
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
@@ -451,6 +495,7 @@
                     justify-content: center;
                     align-items: center;
                     border-radius: 0px 0px 10px 10px;
+                    font-size: 2.2vh;
 
                 }
 
@@ -475,16 +520,17 @@
     .badge_container{
         width: 15vw;
         height: 23vh;
-        border: 1px solid #0000;
+        // border: 1px solid #0000;
         border-radius: 10px;
         background-size: cover;
         display:flex;
         // box-shadow: 0 0 5px 2px #282a2d;
         justify-content: center;
        align-items: center;
+       cursor: poWork sans;
        img{
-        height: 15vh;
-        width: 15vh;
+        height: 16vh;
+        width: 16vh;
         border-radius: 100%;
        }
     }
@@ -660,7 +706,7 @@ input::placeholder {
 
     .home_bg {
         height: 5vh;
-        cursor: pointer;
+        cursor: poWork sans;
     }
 
     .home_logo {
@@ -669,7 +715,7 @@ input::placeholder {
         position: absolute;
         margin-top: 0.6vw;
         margin-left: 0.6vw;
-        cursor: pointer;
+        cursor: poWork sans;
     }
 
     .bottom_button_web {
@@ -686,7 +732,7 @@ input::placeholder {
     }
 
     .profile_name {
-        font-family: 'Inter';
+        font-family: 'Work sans';
         font-style: normal;
         font-weight: 600;
         font-size: 0.8vw;
@@ -698,7 +744,7 @@ input::placeholder {
     }
 
     .profile_team_name {
-        font-family: 'Inter';
+        font-family: 'Work sans';
         font-style: normal;
         font-weight: 600;
         font-size: 0.7vw;
@@ -771,7 +817,7 @@ input::placeholder {
         background-size: 100% 100%;
         border: 2px solid rgb(74, 193, 217);
         display: flex;
-        cursor: pointer;
+        cursor: poWork sans;
     }
 
     .profile_div {
@@ -798,7 +844,7 @@ input::placeholder {
         flex-direction: column;
         margin-top: 2vh;
         margin-right: 2vh;
-        cursor: pointer;
+        cursor: poWork sans;
     }
 
     .island_points {
@@ -808,7 +854,7 @@ input::placeholder {
         text-align: center;
         margin-top: 1vh;
         color: #FFFFFF;
-        font-family: 'Roboto';
+        font-family: 'Work sans';
         font-style: normal;
         font-weight: 700;
         font-size: 1vw;
@@ -819,7 +865,7 @@ input::placeholder {
     }
 
     .island_tag {
-        font-family: 'Roboto';
+        font-family: 'Work sans';
         font-style: normal;
         font-weight: 700;
         margin-top: 0.5vh;
@@ -840,7 +886,7 @@ input::placeholder {
         align-items: center;
         margin-bottom: 0.5vh;
         width: 95%;
-        cursor: pointer;
+        cursor: poWork sans;
     }
 
     .point_one_label {
@@ -860,7 +906,7 @@ input::placeholder {
     
     .leaderboard_rank {
         margin-left: 1vw;
-        font-family: 'Inter';
+        font-family: 'Work sans';
         font-style: normal;
         font-weight: 600;
         font-size: 1vw;
@@ -875,7 +921,7 @@ input::placeholder {
     }
 
     .leaderboard_label_tile {
-        height: 35vh;
+         height: 43vh;
         margin-left: 0.5vw;
         width: 100%;
       
@@ -886,11 +932,23 @@ input::placeholder {
 
 
     }
+    .leaderboard_label_tile_length{
+        height: 35vh;
+        margin-left: 0.5vw;
+        width: 100%;
+      
+  
+        margin-left: 1vw;
+        overflow-y: auto;
+        overflow-x: hidden;
+
+    }
 
     .leaderboard_name {
-        margin-left: 8vw;
-        font-family: 'Inter';
+        margin-left: 7.8vw;
+        font-family: 'Work sans';
         font-style: normal;
+       
         // overflow: hidden;
         // text-overflow: ellipsis;
         // white-space: nowrap;
@@ -901,7 +959,7 @@ input::placeholder {
 
     .leaderboard_points {
         margin-left: 23vw;
-        font-family: 'Inter';
+        font-family: 'Work sans';
         font-style: normal;
         font-weight: 600;
         
@@ -915,7 +973,7 @@ input::placeholder {
         margin-bottom: 1vh;
         border-radius: 8px;
         display: flex;
-        cursor: pointer;
+        cursor: poWork sans;
         align-items: center;
         padding: 0;
         background: url(../../../assets/images/TopHierarchyDashboard/bluewallpaer.png);
@@ -935,7 +993,8 @@ input::placeholder {
     }
 
     .view_more_button {
-        width: 49vw;
+      
+        width: 47.3vw;
         height: 6vh;
         background: var(--myvar);
         color: #ffffff;
@@ -943,6 +1002,7 @@ input::placeholder {
         font-family:'Work sans';
         font-weight: 600;
         border-radius: 0.4vw;
+        margin-bottom: 1vh;
         // margin-left: 1vw;
     }
 
@@ -1067,7 +1127,7 @@ input::placeholder {
     }
 
     .point_dist_score {
-        font-family: 'Inter';
+        font-family: 'Work sans';
         font-weight: 700;
         font-size: 0.8vw;
         margin-right: 1vw;
@@ -1102,7 +1162,7 @@ input::placeholder {
 
     .game_points_image {
         height: 4vh;
-        width: 3vw;
+        width: 4vh;
     }
     .game_points_score {
         background: #FFFFFF;
@@ -1115,7 +1175,7 @@ input::placeholder {
         justify-content: center;
         align-items: center;
         margin-top: 0.5vh;
-        font-family: 'Inter';
+        font-family: 'Work sans';
         font-style: normal;
         font-weight: 600;
         font-size: 1.2vw;
@@ -1136,9 +1196,8 @@ input::placeholder {
 
     .reward_points_image {
         height: 4vh;
-        width: 3vw;
+        width: 4vh;
     }
-
     .reward_points_score {
         background: #FFFFFF;
         border: 0.5px solid #53B8BB;
@@ -1150,7 +1209,7 @@ input::placeholder {
         justify-content: center;
         align-items: center;
         margin-top: 0.5vh;
-        font-family: 'Inter';
+        font-family: 'Work sans';
         font-style: normal;
         font-weight: 600;
         font-size: 1.2vw;
@@ -1159,7 +1218,7 @@ input::placeholder {
 
     .game_point_label,
     .reward_point_label {
-        font-family: 'Inter';
+        font-family: 'Work sans';
 
         font-weight: 600;
         margin-top: 0.3vh;
@@ -1170,22 +1229,26 @@ input::placeholder {
     }
 
     .leaderboard_rank_score {
-        font-family: 'Inter';
+        font-family: 'Work sans';
         font-style: normal;
         font-weight: 600;
         font-size: 1vw;
+        text-align: end;
         color: #FFFFFF;
+        width: 2.5vw;
 
     }
 
     .leaderboard_rank_score_first,
     .leaderboard_rank_score {
-        font-family: 'Inter';
+        font-family: 'Work sans';
         font-style: normal;
         font-weight: 600;
         font-size: 1vw;
         color: #FFFFFF;
-        margin-left: 2vw;
+        text-align: end;
+        // margin-left: 2vw;
+        width: 2.5vw;
     }
 
     .leaderboard_with_fixed_tile {
@@ -1202,7 +1265,7 @@ input::placeholder {
     .leaderboard_team_label_first,
     .leaderboard_name_label,
     .leaderboard_team_label {
-        font-family: 'Inter';
+        font-family: 'Work sans';
         font-style: normal;
         font-weight: 500;
         font-size: 1vw;
@@ -1233,7 +1296,7 @@ input::placeholder {
 
     .leaderboard_rank_badge_image_first,
     .leaderboard_rank_badge_image {
-        width: 3vw;
+        width: 5vh;
         height: 5vh;
        margin-left: 8vw;
         border-radius: 50%;
@@ -1247,7 +1310,7 @@ input::placeholder {
 
     .leaderboard_rank_points_label_first,
     .leaderboard_rank_points_label {
-        font-family: 'Inter';
+        font-family: 'Work sans';
         font-style: normal;
         font-weight: 500;
         font-size: 0.8vw;
@@ -1315,7 +1378,7 @@ input::placeholder {
     }
 
     .profile_name_mobile {
-        font-family: 'Inter';
+        font-family: 'Work sans';
         font-style: normal;
         text-align: center;
         font-weight: 600;
@@ -1326,7 +1389,7 @@ input::placeholder {
     }
 
     .profile_team_name_mobile {
-        font-family: 'Inter';
+        font-family: 'Work sans';
         font-style: normal;
         font-weight: 600;
         font-size: 1.3vh;
@@ -1334,7 +1397,7 @@ input::placeholder {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        cursor: pointer;
+        cursor: poWork sans;
 
     }
 
@@ -1380,7 +1443,7 @@ input::placeholder {
             background: #FFFFFF;
             border: 1px solid transparent;
             box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-            cursor: pointer;
+            cursor: poWork sans;
             font-weight: normal;
             transition: all 0.2s ease-in-out;
             background-repeat: no-repeat;
@@ -1441,7 +1504,7 @@ input::placeholder {
             min-width: 12vw;
             height: 4vh;
             margin-top: 0.5vh;
-            font-family: "Inter";
+            font-family: "Work sans";
             font-style: normal;
             display: grid;
             place-items: center;
@@ -1453,7 +1516,7 @@ input::placeholder {
         }
 
         .game_point_label_mobile {
-            font-family: "Inter";
+            font-family: "Work sans";
             font-weight: 600;
             margin-top: 0.3vh;
             color: #ffff;
@@ -1484,7 +1547,7 @@ input::placeholder {
             min-width: 12vw;
             height: 4vh;
             margin-top: 0.5vh;
-            font-family: "Inter";
+            font-family: "Work sans";
             font-style: normal;
             display: grid;
             place-items: center;
@@ -1496,7 +1559,7 @@ input::placeholder {
         }
 
         .reward_point_label_mobile {
-            font-family: "Inter";
+            font-family: "Work sans";
             font-weight: 600;
             margin-top: 0.3vh;
             font-size: 1.5vh;
@@ -1535,7 +1598,7 @@ input::placeholder {
                 justify-content: center;
                 margin-bottom: 0.5vh;
                 width: 93vw;
-                cursor: pointer;
+                cursor: poWork sans;
 
                 .point_one_label_mobile {
                     font-size: 2.1vh;
@@ -1570,7 +1633,7 @@ input::placeholder {
         width: 20vw;
         color: #000000;
         font-weight: 600;
-        font-family: 'Roboto'
+        font-family: 'Work sans'
 
     }
 
@@ -1587,7 +1650,7 @@ input::placeholder {
         width: 20vw;
         color: #ffff;
         font-weight: 500;
-        font-family: 'Roboto'
+        font-family: 'Work sans'
 
     }
 
@@ -1667,7 +1730,7 @@ input::placeholder {
     }
 
     .leaderboard_rank_score_mobile {
-        font-family: 'Inter';
+        font-family: 'Work sans';
         font-style: normal;
         font-weight: 600;
         font-size: 3vw;
@@ -1702,7 +1765,7 @@ input::placeholder {
     }
 
     .leaderboard_name_label_mobile {
-        font-family: 'Inter';
+        font-family: 'Work sans';
         font-style: normal;
         font-weight: 500;
         font-size: 3.8vw;
@@ -1716,7 +1779,7 @@ input::placeholder {
     }
 
     .leaderboard_team_label_mobile {
-        font-family: 'Inter';
+        font-family: 'Work sans';
         font-style: normal;
         font-weight: 500;
         font-size: 2.8vw;
@@ -1746,7 +1809,7 @@ input::placeholder {
     }
 
     .leaderboard_rank_points_div_mobile {
-        font-family: 'Inter';
+        font-family: 'Work sans';
         font-style: normal;
         font-weight: 500;
         font-size: 3.8vw;
@@ -1770,7 +1833,7 @@ input::placeholder {
         background: var(--myvar);
         color: #ffffff;
         border: none;
-        font-family: 'Roboto';
+        font-family: 'Work sans';
         font-weight: 600;
         border-radius: 0.4vw;
     }
@@ -1815,4 +1878,18 @@ input::placeholder {
     }
 
 
+}
+
+@media screen and (min-width:1023px)  and (max-width:1180px) {
+
+    .leaderboard_name{
+        margin-left: 8.8vw;
+    }
+    .leaderboard_points{
+        margin-left: 22vw;
+    }
+    .leaderboard_rank_badge_image{
+        margin-left: 6vw;
+    }
+    
 }

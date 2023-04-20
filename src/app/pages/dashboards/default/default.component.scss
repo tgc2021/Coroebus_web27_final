@@ -10,19 +10,17 @@ ModalHeading.ok_button{
     transform: translate(-50%);
 
 }
-
 .mat_panel_title{
-    font-family: 'Inter';
+    font-family: 'Work sans';
     font-style: normal;
     font-weight: 600;
     font-size: 0.8vw;
 }
-
 .cardWithBackgroundImage{
   
     .card-div{
         background: transparent;
-        ;
+        
     }
     .card-less-height{
         background: transparent;
@@ -103,7 +101,7 @@ border-radius: 11px;
    background-position: inherit;
    background-size: cover;
    width: auto;
-   height:90vh;
+   height:92vh;
    border-radius: 11px;
 }
 .form-control{
@@ -229,7 +227,51 @@ mat-accordion{
     }
   }
 
-.inner_content{
+.inner_content,.inner_content_daily1{
+    font-weight: 600;
+    font-family: 'Work Sans';
+    font-size:1.6vh;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background: #FFFFFF;
+    border-bottom: 0.5px solid #A5ACB8;
+   padding-left: 1vw;
+    width: 95%;
+    .badge-container{
+        width: 10vw;
+        height: 5vh;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        .activeBadge{
+            width: 4vh;
+            height: 4vh;
+            border: 1px solid #0000;
+            margin-left: 0.5vw;
+            background: #D9D9D9;
+            color: #000000;
+            border-radius: 4px;
+        }
+        .deActiveBadge{
+            width: 4vh;
+            height: 4vh;
+            border: 1px solid #0000;
+            margin-left: 0.5vw;
+            background: #D9D9D9;
+            color: #000000;
+            filter: grayscale(100%);
+            border-radius: 4px;
+        }
+    }
+        
+   
+    
+
+
+}
+.inner_content-daily{
     font-weight: 600;
     font-family: 'Work Sans';
     font-size:1.6vh;
@@ -280,6 +322,7 @@ mat-accordion{
     width: 5vh;
     border-radius: 100%;
     img{
+        border-radius: 100%;
         filter: grayscale(100%);
     }
     
@@ -291,6 +334,7 @@ mat-accordion{
     width: 5vh;
     border-radius: 100%;
     img{
+        border-radius: 100%;
         filter: grayscale(0%);
     }
    
@@ -389,7 +433,6 @@ mat-accordion{
     .dailyCenterCircle {
         height: 21vh;
     }
-
     .ok_button{
         position: absolute;
         padding: 10px;
@@ -401,6 +444,7 @@ mat-accordion{
         /* border: 1px solid yellow; */
         transform: translate(-50%);
     
+
     }
 
 }
@@ -408,6 +452,9 @@ mat-accordion{
 @media screen and (min-width:1023.9px) {
     .mobile-view {
         display: none;
+    }
+    .inner_content-daily{
+        width:11vw;
     }
 }
 
@@ -723,7 +770,6 @@ color: #000000;
     text-overflow: ellipsis;
     text-align: center;
 }
-
 .team_name_details {
     position: absolute;
     top: -20px;
@@ -740,7 +786,6 @@ color: #000000;
     text-overflow: ellipsis;
     text-align: center;
 }
-
 .profile_pic {
     position: absolute;
     cursor: pointer;
@@ -748,7 +793,6 @@ color: #000000;
     top: 9%;
     transform: translate(-50%, 0px);
 }
-
 .league_name {
     border-bottom: 25px solid #BF302E;
     border-right: 16px solid transparent;
@@ -924,6 +968,7 @@ color: #000000;
 .title_interactive {
     display: flex;
     justify-content: space-between;
+
 }
 
 
@@ -1142,7 +1187,7 @@ color: #000000;
 }
 
 .modalDescription {
-    font-family: 'Inter';
+    font-family: 'Work sans';
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
@@ -1153,14 +1198,14 @@ color: #000000;
 .btn-reward {
     width: 79px;
     height: 25px;
-    font-family: "Inter";
+    font-family: "Work sans";
     border: none !important;
     background-color: #D9FFDE !important;
     border-radius: 3px;
 }
 
 .Number {
-    font-family: 'Roboto';
+    font-family: 'Work sans';
     font-style: normal;
     font-weight: 800;
     font-size: 32px !important;
@@ -1209,7 +1254,7 @@ color: #000000;
 }
 
 .Top5 {
-    font-family: 'Inter';
+    font-family: 'Work sans';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -1245,7 +1290,7 @@ color: #000000;
         }
 
         .name .rank .score {
-            font-family: 'Inter';
+            font-family: 'Work sans';
             font-weight: 500;
             font-size: 14px;
             text-align: center;
@@ -1328,7 +1373,7 @@ color: #000000;
 .my_name {
     position: absolute;
     top: -20px;
-    font-family: 'Swis721 Cn BT';
+    font-family: 'Work sans';
     font-style: normal;
     font-weight: 700;
     font-size: 10px;
@@ -1366,7 +1411,7 @@ color: #000000;
 .my_name_details {
     position: absolute;
     top: -20px;
-    font-family: 'Swis721 Cn BT';
+    font-family:'Swis721 Cn BT';
     font-style: normal;
     font-weight: 700;
     font-size: 10px;
@@ -1756,8 +1801,8 @@ border-radius: 8px;
 }
 .badges_row{
     display: flex;
-    justify-content: center;
-    gap:23%;
+    // justify-content: start;
+    // gap:23%;
     
 
 }
@@ -1773,9 +1818,6 @@ border-radius: 8px;
     text-align:center;
     display:grid;
     place-content: center;
-
-    
-
 }
 .animation-bar-1 span {
     position: relative;
@@ -1830,5 +1872,27 @@ border-radius: 8px;
 //     }
 // }
 
+
+@media screen and (min-width:1023px)  and (max-width:1180px) {
+    .name_h{
+        margin-left: 3vw;
+    }
+  .inner_content{
+    width: 100%;
+  }
+    
+  .inner_content_daily1{
+    width: 65%;
+
+  }
+    
+}
+.bulletins-sub-card-body{
+    background: #FFFFFF;
+    box-shadow: 0px 0px 0px 0.765385px #E8E8E8, 0px 0px 1.53077px rgba(0, 0, 0, 0.12), 0px 15.3077px 15.3077px rgba(0, 0, 0, 0.02);
+    border-radius: 11.4808px;
+    border: 1px solid #cfc6c6;
+    padding: 5px 10px;
+}
 
  

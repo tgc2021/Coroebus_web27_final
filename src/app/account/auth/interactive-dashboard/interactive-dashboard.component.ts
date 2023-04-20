@@ -635,7 +635,7 @@ else{
           // 'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
           // '_self'
           
-            'http://coroebusbeta.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
+            'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
           '_self'
     
         )
@@ -654,7 +654,7 @@ else{
         window.open(
           // 'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
           // '_self' // <- This is what makes it open in a new window.
-        'http://coroebusbeta.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
+        'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
 
         )
       }
@@ -662,7 +662,6 @@ else{
     }
    
   }
-
   navigateToLearningAcademy() {
     // this.audio.stop();
     const userId = this.mergeObj.USERID;
@@ -670,13 +669,13 @@ else{
     const teamid=this.mergeObj.id_coroebus_team;
   
     console.log(userId,game,teamid);
-    console.log('http://localhost:4200/#/LearningAcademy/library?_game='+game+"&_userid¸="+userId+"&_team="+teamid,'_self' );
+    // console.log('http://localhost:4200/#/LearningAcademy/library?_game='+game+"&_userid¸="+userId+"&_team="+teamid,'_self' );
     
    
     window.open(
-      // 'http://localhost:62267/#/LearningAcademy/badges/?_userid='+userId+"&_game="+game+"&_team="+teamid, '_self'
-      'http://localhost:4200/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid,'_self'
-      // 'https://coroebusbeta.in/Learning_academy/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid,'_self'
+      
+      'https://coroebus.in/Learning_academy/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid,'_self'
+      // 'https://coroebus.in/Learning_academy/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid,'_self'
 
       
     )
@@ -702,6 +701,8 @@ else{
   }
 
   navigateReward() {
+    localStorage.setItem('rewardid',this.mergeObj.USERID)
+
     this._router.navigateByUrl("/reward/rewardPoints")
 
   }
@@ -775,8 +776,6 @@ else{
     },5000)
 		
 	}
-
-
   promotionalredirection(value:any){
     console.log(value);
 

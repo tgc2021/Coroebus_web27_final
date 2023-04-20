@@ -1,4 +1,18 @@
 @media (min-width: 800px) and (max-width: 1280px) {
+    ::ng-deep {
+        .modal-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            pointer-events: auto;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 0.3rem;
+            outline: 0;
+        }
+    }
     .profile-pwd-eye {
         right: -14px !important;
         top: 40px !important;
@@ -18,6 +32,20 @@
 }
 
 @media (min-width: 1360px) and (max-width: 1366px) {
+    ::ng-deep {
+        .modal-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            pointer-events: auto;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 0.3rem;
+            outline: 0;
+        }
+    }
     .profile-pwd-eye {
         right: -4px !important;
         top: 41px !important;
@@ -37,6 +65,20 @@
 }
 
 @media (min-width: 1400px) and (max-width: 1440px) {
+    ::ng-deep {
+        .modal-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            pointer-events: auto;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 0.3rem;
+            outline: 0;
+        }
+    }
     .profile-pwd-eye {
         right: 12px !important;
         top: 42px !important;
@@ -56,6 +98,20 @@
 }
 
 @media (min-width: 1580px) and (max-width: 1600px) {
+    ::ng-deep {
+        .modal-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            pointer-events: auto;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 0.3rem;
+            outline: 0;
+        }
+    }
     .profile-pwd-eye {
         right: 46px !important;
         top: 40px !important;
@@ -75,6 +131,20 @@
 }
 
 @media (min-width: 1620px) and (max-width: 1680px) {
+    ::ng-deep {
+        .modal-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            pointer-events: auto;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 0.3rem;
+            outline: 0;
+        }
+    }
     .profile-pwd-eye {
         right: 62px !important;
         top: 41px !important;
@@ -94,6 +164,20 @@
 }
 
 @media (min-width: 1900px) and (max-width: 1920px) {
+    ::ng-deep {
+        .modal-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            pointer-events: auto;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 0.3rem;
+            outline: 0;
+        }
+    }
     .profile-pwd-eye {
         right: 111px !important;
         top: 41px !important;
@@ -113,6 +197,20 @@
 }
 
 @media (min-width: 2020px) and (max-width: 2048px) {
+    ::ng-deep {
+        .modal-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            pointer-events: auto;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 0.3rem;
+            outline: 0;
+        }
+    }
     .profile-pwd-eye {
         right: 144px !important;
         top: 40px !important;
@@ -132,6 +230,20 @@
 }
 
 @media (min-width: 2049px) and (max-width: 2560px) {
+    ::ng-deep {
+        .modal-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            pointer-events: auto;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 0.3rem;
+            outline: 0;
+        }
+    }
     .profile-pwd-eye {
         right: 20px !important;
         top: 47px !important;

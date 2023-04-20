@@ -13,8 +13,6 @@ import { NotificationPopupComponent } from '@pages/notification-popup/notificati
 import * as userActions from '../../core/app-state/actions';
 import { ActivatedRoute, Event as Events, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { ToastService } from '@app/services/toast-service';
-import { $ } from 'protractor';
-import { table } from 'console';
 
 
 @Component({

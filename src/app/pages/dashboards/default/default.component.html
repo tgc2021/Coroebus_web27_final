@@ -1,4 +1,4 @@
-<div class="web-view container-fluid">
+    <div class="web-view container-fluid">
     <div class="row"
         *ngIf="!(sectionView_1 && rankingDataFirstRowForSectionView_2 && sectionView_3); else dashboardTpl">
         <div class="col-lg-12">
@@ -10,183 +10,192 @@
 
         <div class="row">
             <div class="col-3 pointsDistributionSection ">
-                <div >
+                <div>
                     <div class="points-dis-card d-flex flex-column align-items-center justify-content-start "
                         [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.point_dist_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.point_dist_background == null}"
                         [style.background-image]="
                     sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
                         <div class="card-div p-3 d-flex justify-content-center">
-                           
-                             <div class="profile-section" [style.border-color]="sectionView_1?.theme_details?.[0]?.dark_color"
-                            style="border:2px solid">
-                              <div class="box1 p-3" 
-                              [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
-                               <div class="d-flex justify-content-center pb-2" style="color: #FFFFFF;">
-                               {{sectionView_1?._personal_data?.role_name}}
-                               </div>
-                               <div class="avatar-upload d-flex justify-content-center" [style.border-color]="sectionView_1?.theme_details?.[0]?.dark_color">
-                                <div class="avatar-edit" *ngIf="edit_image">
-                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
-                                        (change)="previewFile($event)" />
-                                     <label for="imageUpload"
-                                        [style.background-image]="'url(assets/images/svg/dashboard/camera-icon.svg)'"></label> 
-                                </div>
-                                <div class="avatar-preview" style="border:3px solid" [style.border-color]="sectionView_1?.theme_details?.[0]?.dark_color">
-                                    <img loading="lazy" id="imagePreview"
-                                        src="{{sectionView_1?._personal_data?.profile_logo}}">
-                                </div>
-                            </div>
-                            <div class="row" placement="bottom" ngbTooltip="{{sectionView_1?._personal_data?.first_name}}">
-                                <div class="col-lg-12 ellipsis">
-                                    <div class="d-flex justify-content-center">
-                                        <span
-                                            class="dashboard-user-name ellipsis pb-1">{{sectionView_1?._personal_data?.first_name}}</span>
+
+                            <div class="profile-section"
+                                [style.border-color]="sectionView_1?.theme_details?.[0]?.dark_color"
+                                style="border:2px solid">
+                                <div class="box1 p-3"
+                                    [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
+                                    <div class="d-flex justify-content-center pb-2" style="color: #FFFFFF;">
+                                        {{sectionView_1?._personal_data?.role_name}}
                                     </div>
-    
-                                </div>
-                            </div>
-                            <hr style="height: 2px;padding: 0px 10px;margin-top: 2vh;
+                                    <div class="avatar-upload d-flex justify-content-center"
+                                        [style.border-color]="sectionView_1?.theme_details?.[0]?.dark_color">
+                                        <div class="avatar-edit" *ngIf="edit_image">
+                                            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
+                                                (change)="previewFile($event)" />
+                                            <label for="imageUpload"
+                                                [style.background-image]="'url(assets/images/svg/dashboard/camera-icon.svg)'"></label>
+                                        </div>
+                                        <div class="avatar-preview" style="border:3px solid"
+                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.dark_color">
+                                            <img loading="lazy" id="imagePreview"
+                                                src="{{sectionView_1?._personal_data?.profile_logo}}">
+                                        </div>
+                                    </div>
+                                    <div class="row" placement="bottom"
+                                        ngbTooltip="{{sectionView_1?._personal_data?.first_name}}">
+                                        <div class="col-lg-12 ellipsis">
+                                            <div class="d-flex justify-content-center">
+                                                <span
+                                                    class="dashboard-user-name ellipsis pb-1">{{sectionView_1?._personal_data?.first_name}}</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <hr style="height: 2px;padding: 0px 10px;margin-top: 2vh;
                             margin-bottom: 2vh;">
-                            <div class="row" placement="bottom" *ngIf="sectionView_1?._personal_data?.team_name" ngbTooltip="{{sectionView_1?._personal_data?.team_name}}">
+                                    <div class="row" placement="bottom" *ngIf="sectionView_1?._personal_data?.team_name"
+                                        ngbTooltip="{{sectionView_1?._personal_data?.team_name}}">
 
-                            <div class="col-lg-12 ellipsis">
-                                <div class="d-flex justify-content-center">
-                                    <span
-                                        class="dashboard-user-name ellipsis pb-1">{{sectionView_1?._personal_data?.team_name}}</span>
-                                </div>
+                                        <div class="col-lg-12 ellipsis">
+                                            <div class="d-flex justify-content-center">
+                                                <span
+                                                    class="dashboard-user-name ellipsis pb-1">{{sectionView_1?._personal_data?.team_name}}</span>
+                                            </div>
 
-                            </div>
-                            </div>
-
-                            <div class="row" *ngIf="sectionView_1?._personal_data?.brand_name" placement="bottom" ngbTooltip="{{sectionView_1?._personal_data?.brand_name}}">
-                                <div class="col-lg-12 ellipsis">
-                                    <div class="d-flex justify-content-center">
-                                        <span
-                                            class="dashboard-user-name ellipsis pb-1">{{sectionView_1?._personal_data?.brand_name}}</span>
+                                        </div>
                                     </div>
-    
-                                </div>
-                                </div>
-                            </div>
 
-                              <div class="box2"
-                              [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}">
-                            
+                                    <div class="row" *ngIf="sectionView_1?._personal_data?.brand_name"
+                                        placement="bottom" ngbTooltip="{{sectionView_1?._personal_data?.brand_name}}">
+                                        <div class="col-lg-12 ellipsis">
+                                            <div class="d-flex justify-content-center">
+                                                <span
+                                                    class="dashboard-user-name ellipsis pb-1">{{sectionView_1?._personal_data?.brand_name}}</span>
+                                            </div>
 
-                            
-                              </div>
-                             </div>
-                             
-                            
-
-                            
-                        </div>
-
-                         <div class="card-body border-bottom-0 p-3" style="height: 43vh;">
-                                <div class="float-start w-100 mb-2 text-center">
-                                    <div class="dashboard-user-name">
-                                        Point Distribution
-                                    </div>
-                                
-                                </div>
-                                <div >
-                                    <div class="inner-points-height d-flex flex-column justify-content-center gap-2 p-2">
-                                        <div class="row  points-row  d-flex flex-row align-items-center"
-                                            (click)="getGraphDataById()" *ngFor="let item of sectionView_1?._kpi_score">
-                                            <div class="col-6 p-0">
-                                                <div  [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.light_color}"
-                                                    class="ms-2 points-dis-name1 ellipsis d-flex align-items-center justify-content-center">
-                                                    {{item?.point_label}}
-                                                </div>
-                                            </div>
-                                            <div class="col-2 text-end">
-                                                <img loading="lazy" class="align-self-start float-end"
-                                                    src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}"
-                                                    alt="" height="25">
-                                            </div>
-                                            <div class="col-2 text-end font-size-10 font-weight-semibold" style="min-width: 2vw;text-align: center;">
-                                                {{item?.weightage}}
-                                            </div>
-                                            <div class="col  d-flex justify-content-end align-items-center">
-                                                <img src="assets/images/TopHierarchyDashboard/Arrow.png" />
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                            </div> 
-                        
-                 
+                                <div class="box2"
+                                    [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}">
+
+
+
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+                        <div class="card-body border-bottom-0 p-3" style="height: 43vh;">
+                            <div class="float-start w-100 mb-2 text-center">
+                                <div class="dashboard-user-name">
+                                    Points Distribution
+                                </div>
+
+                            </div>
+                            <div>
+                                <div class="inner-points-height d-flex flex-column justify-content-center gap-2 p-2">
+                                    <div class="row  points-row  d-flex flex-row align-items-center"
+                                        (click)="getGraphDataById()" *ngFor="let item of sectionView_1?._kpi_score">
+                                        <div class="col-6 p-0">
+                                            <div [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.light_color}"
+                                                class="ms-2 points-dis-name1 ellipsis d-flex align-items-center justify-content-center">
+                                                {{item?.point_label}}
+                                            </div>
+                                        </div>
+                                        <div class="col-2 text-end">
+                                            <img loading="lazy" class="align-self-start float-end"
+                                                src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}" alt=""
+                                                height="25">
+                                        </div>
+                                        <div class="col-2 text-end font-size-10 font-weight-semibold"
+                                            style="min-width: 2vw;text-align: center;">
+                                            {{item?.weightage}}
+                                        </div>
+                                        <div class="col  d-flex justify-content-end align-items-center">
+                                            <img src="assets/images/TopHierarchyDashboard/Arrow.png" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
                     </div>
                 </div>
             </div>
             <div class="col-6  DashboardSection">
                 <div class="row">
                     <div class="col-3  pb-3">
-                    <div class="baddge-section-card d-flex justify-content-center align-items-center" [style.background-image]="
+                        <div class="baddge-section-card d-flex justify-content-center align-items-center"
+                            [style.background-image]="
                     sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-                        <div>
-                            <img loading="lazy" class="dashboard-banner-main-rank-img" style="height: 15vh;
+                            <div>
+                                <img loading="lazy" class="dashboard-banner-main-rank-img" style="height: 15vh;
                             width: 15vh;
-                            border-radius: 100%;"
-                            src="{{sectionView_1?._personal_data?.profile_badge_image}}"
-                            alt="Generic placeholder image" >
-                         
+                            border-radius: 100%;" src="{{sectionView_1?._personal_data?.profile_badge_image}}"
+                                    alt="Generic placeholder image">
+                            </div>
                         </div>
                     </div>
-                    </div>
-                    
+
                     <div class="col-9  pb-3 d-flex justify-content-center">
-                        <div class="baddge-section-card" style="width: 36vw;" [style.background-image]="
+                        <div class="baddge-section-card" style="width: 36vw;"
+                            [style.background-image]="
                         sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-                        <div  class="d-flex justify-content-center align-items-center" style="height: 23vh;">
-                            <div class="bg-image" [style.background-image]="'url(' + sectionView_1?._personal_data?.background_image_profile_web + ')'"
-                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
-    
+                            <div class="d-flex justify-content-center align-items-center" style="height: 23vh;">
+                                <div class="bg-image"
+                                    [style.background-image]="'url(' + sectionView_1?._personal_data?.background_image_profile_web + ')'"
+                                    [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
 
 
-                            <div class="media ms-2">
-                                <div class="row row-cols-3 w-100 d-flex justify-content-around align-items-center" style="height: 7vh;">
-                                   
-                                    <div class="confetti"
-                                        [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'">
-                                        <div
-                                            class="col text-center mt-2  d-flex flex-column align-items-center gap-1">
-                                            <img loading="lazy"
-                                                src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}"
-                                                alt="" class="dashboard-game-point-img"
-                                                style="padding-bottom: 7px;">
-                                            <button
-                                                class="btn btn-primary- text-white text-center dashboard-banner-point-btn"
-                                                [ngStyle]="{'background':'#FFFFFF'}"
-                                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
-                                                <span class="dashboard-banner-point-btn-text text-center">
-                                                    {{gamePoints?.[0]?.score}}
-                                                </span>
-                                            </button>
-                                            <span
-                                                class="dashboard-level-rank-name">{{gamePoints?.[0]?.label}}s</span>
-                                        </div>
-                                    </div>
-                                    <div class="confetti"
-                                        [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'">
-                                        <div
-                                            class="col text-center mt-2  d-flex flex-column align-items-center gap-1">
-                                            <img loading="lazy"
-                                                src="{{sectionView_1?.theme_details?.[0]?.reward_points_image}}"
-                                                alt="" class="dashboard-reward-point-img"
-                                                style="padding-bottom: 7px;">
-                                            <button 
-                                                class="btn btn-primary- text-white dashboard-banner-point-btn"
-                                                [ngStyle]="{'background': '#FFFFFF'}"
-                                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                                (click)="getRewards()">
+
+                                    <div class="media ms-2">
+                                        <div class="row row-cols-3 w-100 d-flex justify-content-around align-items-center"
+                                            style="height: 7vh;">
+
+                                            <div class="confetti"
+                                                [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'">
+                                                <div
+                                                    class="col text-center mt-2  d-flex flex-column align-items-center gap-1">
+                                                    <img loading="lazy"
+                                                        src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}"
+                                                        alt="" class="dashboard-game-point-img"
+                                                        style="padding-bottom: 7px;">
+                                                    <button
+                                                        class="btn btn-primary- text-white text-center dashboard-banner-point-btn"
+                                                        [ngStyle]="{'background':'#FFFFFF'}"
+                                                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
+                                                        <span class="dashboard-banner-point-btn-text text-center">
+                                                            {{gamePoints?.[0]?.score}}
+                                                        </span>
+                                                    </button>
+                                                    <span
+                                                        class="dashboard-level-rank-name">{{gamePoints?.[0]?.label}}s</span>
+                                                </div>
+                                            </div>
+                                            <div class="confetti"
+                                                [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'">
+                                                <div
+                                                    class="col text-center mt-2  d-flex flex-column align-items-center gap-1">
+                                                    <img loading="lazy"
+                                                        src="{{sectionView_1?.theme_details?.[0]?.reward_points_image}}"
+                                                        alt="" class="dashboard-reward-point-img"
+                                                        style="padding-bottom: 7px;">
+                                                    <button
+                                                        class="btn btn-primary- text-white dashboard-banner-point-btn"
+                                                        [ngStyle]="{'background': '#FFFFFF'}"
+                                                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                                        (click)="getRewards()">
 
 
-                                                <span class="dashboard-banner-point-btn-text text-center">
-                                                    {{rewardPoints?.[0]?.score}}
-                                                </span></button>
-                                            <!-- <button *ngIf="rewardPoints?.[0]?.score<75"
+                                                        <span class="dashboard-banner-point-btn-text text-center">
+                                                            {{rewardPoints?.[0]?.score}}
+                                                        </span></button>
+                                                    <!-- <button *ngIf="rewardPoints?.[0]?.score<75"
                                                 class="btn btn-primary- text-white dashboard-banner-point-btn"
                                                 [ngStyle]="{'background':'#FFFFFF'}"
                                                 [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -196,15 +205,15 @@
                                                     {{rewardPoints?.[0]?.score}}
                                                 </span></button> -->
 
-                                            <span
-                                                class="dashboard-level-rank-name">{{rewardPoints?.[0]?.label}}s</span>
+                                                    <span
+                                                        class="dashboard-level-rank-name">{{rewardPoints?.[0]?.label}}s</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            </div>
-                        </div>
-               
+
                             <!-- <div class="bg-image d-flex  dashboard-banner mb-3"
                             [style.background-image]="'url(' + sectionView_1?._personal_data?.background_image_profile_web + ')'"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
@@ -277,11 +286,11 @@
                             </div>
                         </div> -->
 
-                    
+
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- <div class="">
                     <div class=" col-3" [style.background-image]="
                     sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
@@ -351,7 +360,7 @@
 
                                                     <span class="dashboard-banner-point-btn-text text-center">
                                                         {{rewardPoints?.[0]?.score}}
-                                                    </span></button>
+                                           </span></button>
 
                                                 <span
                                                     class="dashboard-level-rank-name">{{rewardPoints?.[0]?.label}}s</span>
@@ -374,15 +383,13 @@
                     <div class="row" [ngClass]="{'row-cols-2': sectionView_2?._ranking_data?.length === 2,
                                     'row-cols-3': sectionView_2?._ranking_data?.length === 3,
                                     'row-cols-4': sectionView_2?._ranking_data?.length === 4,
-                                    'row-cols-1': sectionView_2?._ranking_data?.length === 4}" 
-                                    style="padding:1% 0%;
+                                    'row-cols-1': sectionView_2?._ranking_data?.length === 4}" style="padding:1% 0%;
                                     display: flex;
                                     flex-direction: row;
                                     flex-wrap: nowrap;
                                     width:48vw;
                                  ">
-                        <div class="col" 
-                        style="overflow-x: auto;
+                        <div class="col" style="overflow-x: auto;
                         width: 45.5vw;
                         flex-direction: row;
                         flex-wrap: nowrap;" *ngFor="let item of sectionView_2?._ranking_data">
@@ -400,12 +407,12 @@
                     </div>
                     <div class="row row-cols-2" *ngIf="sectionView_3_list?.[0]?._Overall">
                         <div class="col">
-                            <a class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
+                            <a id="myButton" class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2" 
                                 [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 ==='My Store'}"
                                 [ngStyle]="{'background': (activeSubTabForSectionView_2 ==='My Store') ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
                                 [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                 (click)="changeSubTabFilter('My Store')">
-                                <span class=" v-align filter-txt-name filter-my-store"
+                                <span class=" v-align filter-txt-name filter-my-store"  (click)="changeSubTabFilter('My Store')"
                                     [ngStyle]="{'color': (activeSubTabForSectionView_2 ==='My Store')?'#ffffff':'#000000'}">
                                     My {{labelNameMy}}
                                 </span>
@@ -430,8 +437,8 @@
                 <div class="d-flex flex-row" style="margin-top: 10px;">
                     <div class="col-11" style="padding-right:0px;">
                         <input type="text" class="form-control dashboard-searchbar" placeholder="Search People here.."
-                            [(ngModel)]="spectSearchStr" aria-label="Search People here.."
-                            aria-describedby="basic-addon2" (click)="spectSearch()">
+                            [(ngModel)]="spectSearchStr" aria-label="Search People here.." (keyup)="checkEmpty()"
+                            aria-describedby="basic-addon2" >
                     </div>
                     <div class="col-1 d-flex justify-content-end">
 
@@ -441,7 +448,10 @@
                     </div>
                 </div>
                 <!-- Dashboard Table Started -->
-                <div class="mt-2">
+                <div class="mt-2"
+                    [style.background-image]="
+                sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null"
+                    style="background-size:cover;border-radius:10px;padding:1%">
                     <div class="row" style="color:#ffff;font-size: 1vw !important;">
                         <div class="col-2">
                             <span class="rank_h">Rank</span>
@@ -449,87 +459,169 @@
                         <div class="col-3 pe-5">
                             <span class="name_h">Name</span>
                         </div>
-                        <div class="offset-4 col-2 ps-4">
-                            <span class="points_h" style="margin: 0px;">Points</span>
+                        <div class="offset-4 col-2 ps-4 mt-1">
+                            <span class="points_h" style="margin-left: -5px;">Points</span>
                         </div>
                     </div>
-                    <div class="me-1 mt-1">
-                        <!-- {{rankingDataFirstRowForSectionView_2 | json}} -->
-                        <div class="row dashboard-rank-row ms-1 mb-2"
+                    <div *ngIf="activeSubTabForSectionView_2 === 'My Store' ; then mystore else overall"></div>
+                    <ng-template #mystore>
+                        <div class="me-1 mt-1">
+                            <!-- {{rankingDataFirstRowForSectionView_2 | json}} -->
+                           
+    
+                            <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
                             *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.length > 0"
                             [style.background-image]="'url(' + web_first_tile_image + ')'"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                            style="border:2px solid">
-                            <div class="col  widthText">
-                                <div class="media d-flex align-items-center gap-3" style="height: 7vh;">
-                                    <span class="col-1 ms-2 text-white position-absolute-">
-                                        {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_number}}
-                                    </span>
-                                    <div style="height:5vh;">
-                                        <img loading="lazy" class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                [style.background-image]="'url('+web_first_tile_image +')'">
+                                <div class="col">
+                                    <div class="media d-flex align-items-center gap-3  " style="height: 7vh;">
+                                        <span class="col-1 ms-2 text-white position-absolute-s">
+                                            {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_number}}
+                                        </span>
+                                        <div style="height:5vh;display:flex;align-items: center;">
+                                            <img class="rounded-circle z-depth-2 user-logo-row" alt=""
                                             src="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_logo}}"
-                                            data-holder-rendered="trplacementue" height="100%" width="41">
-                                    </div>
-
-                                    <div class="media-body user-logo-row ellipsis pt-1" style="height: 6vh;">
-                                        <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom-center"
-                                            ngbTooltip="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}">
-                                            {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}
-                                        </h5>
-                                        <p class="mt-n4 team-name sub-team name-f-size">
-                                            {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_team}}
-                                        </p>
+                                            data-holder-rendered="true" height="100%"
+                                                width="41" >
+                                        </div>
+    
+                                        <div class="media-body user-logo-row ellipsis"
+                                            style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
+                                            <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
+                                                ngbTooltip="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}">
+                                                {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}
+                                            </h5>
+                                            <p class="mt-n4 team-name sub-team name-f-size"> {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_team}}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col">
-                                <div class="media d-flex align-items-center gap-2" style="height: 7vh;">
-                                    <div class="rounded-circle z-depth-2 team-logo-row d-flex align-items-center"
-                                        style="height:5vh;width:5vh">
-                                        <img loading="lazy" class="rounded-circle z-depth-2 " alt=""
-                                            src="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.ranking_badge}}"
-                                            data-holder-rendered="true" height="100%" width="100%">
-                                    </div>
-
-                                    <div class="media-body text-center pt-1">
-                                        <h5 class="mt-0 text-white" style="display: flex;
-                                        justify-content: end;
-                                        align-items: center;
-                                        gap: 3rem;">
-                                            <span
-                                                class="name-f-size point-number">{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_weightage}}</span>
-                                            <div style="height:5vh">
-                                                <img loading="lazy" class=" f-right up-arrow" alt=""
-                                                    src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
-                                                    data-holder-rendered="true" height="100%"
-                                                    *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow === 'red'"
-                                                    (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
-                                                <img loading="lazy" class=" f-right up-arrow" alt=""
-                                                    src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
-                                                    data-holder-rendered="true" height="100%"
-                                                    *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow !== 'red'"
-                                                    (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
-                                            </div>
-
-
-                                        </h5>
-                                        <!-- <p class="mt-n4 team-name sub-team">India Maste</p> -->
+                                <div class="col">
+                                    <div class="media me-1" style="height: 7vh; display: flex;align-items:center">
+                                        <div class="rounded-circle z-depth-2 team-logo-row " style="height:5vh;width:5vh">
+                                            <img alt="" src="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.ranking_badge}}" data-holder-rendered="true"
+                                                height="100%" width="100%">
+                                        </div>
+    
+                                        <div class="media-body text-center">
+                                            <h5 class="mt-0 text-white" style="display: flex;
+                                            justify-content: end;
+                                            align-items: center;
+                                            gap: 3vw;">
+                                                <div style="height: 6vh; display:flex;align-items: center;">
+                                                    <span
+                                                        class="name-f-size point-number mt-1">{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_weightage}}</span>
+                                                </div>
+    
+                                                <div style="height:5vh;">
+                                                    <img class="mt-1 f-right up-arrow" alt=""
+                                                        src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
+                                                        data-holder-rendered="true" height="100%"
+                                                        *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow === 'red'"
+                                                        (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
+    
+                                                    <img class="mt-1 f-right up-arrow" alt=""
+                                                        src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
+                                                        data-holder-rendered="true" height="100%"
+                                                        *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow !== 'red'"
+                                                        (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
+                                                </div>
+    
+    
+    
+                                            </h5>
+                                            <!-- <p class="mt-n4 team-name sub-team">India Maste</p> -->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div *ngIf="spectSearchStr === ''"
-                    [ngClass]="sectionView_1?._personal_data.id_role=='6'? 'dashboard-center-table':'dashboard-center-table1'"
+                    </ng-template>
+                    <ng-template #overall>
+                        <div class="me-1 mt-1">
+                            <!-- {{rankingDataFirstRowForSectionView_2 | json}} -->
+                           
+    
+                            <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
+                            *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.length > 0"
+                            [style.background-image]="'url(' + web_first_tile_image + ')'"
+                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                [style.background-image]="'url('+web_first_tile_image +')'">
+                                <div class="col">
+                                    <div class="media d-flex align-items-center gap-3  " style="height: 7vh;">
+                                        <span class="col-1 ms-2 text-white position-absolute-s">
+                                            {{rankingDataFirstRowForSectionView_2?.[0]?._Overall?.[0]?.rankingtable_number}}
+                                        </span>
+                                        <div style="height:5vh;display:flex;align-items: center;">
+                                            <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                            src="{{rankingDataFirstRowForSectionView_2?.[0]?._Overall?.[0]?.rankingtable_logo}}"
+                                            data-holder-rendered="true" height="100%"
+                                                width="41" >
+                                        </div>
+    
+                                        <div class="media-body user-logo-row ellipsis"
+                                            style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
+                                            <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
+                                                ngbTooltip="{{rankingDataFirstRowForSectionView_2?.[0]?._Overall?.[0]?.rankingtable_name}}">
+                                                {{rankingDataFirstRowForSectionView_2?.[0]?._Overall?.[0]?.rankingtable_name}}
+                                            </h5>
+                                            <p class="mt-n4 team-name sub-team name-f-size"> {{rankingDataFirstRowForSectionView_2?.[0]?._Overall?.[0]?.rankingtable_team}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="media me-1" style="height: 7vh; display: flex;align-items:center">
+                                        <div class="rounded-circle z-depth-2 team-logo-row " style="height:5vh;width:5vh">
+                                            <img alt="" src="{{rankingDataFirstRowForSectionView_2?.[0]?._Overall?.[0]?.ranking_badge}}" data-holder-rendered="true"
+                                                height="100%" width="100%">
+                                        </div>
+    
+                                        <div class="media-body text-center">
+                                            <h5 class="mt-0 text-white" style="display: flex;
+                                            justify-content: end;
+                                            align-items: center;
+                                            gap: 3vw;">
+                                                <div style="height: 6vh; display:flex;align-items: center;">
+                                                    <span
+                                                        class="name-f-size point-number mt-1">{{rankingDataFirstRowForSectionView_2?.[0]?._Overall?.[0]?.rankingtable_weightage}}</span>
+                                                </div>
+    
+                                                <div style="height:5vh;">
+                                                    <img class="mt-1 f-right up-arrow" alt=""
+                                                        src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
+                                                        data-holder-rendered="true" height="100%"
+                                                        *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._Overall?.[0]?.rankingtable_arrow === 'red'"
+                                                        (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
+    
+                                                    <img class="mt-1 f-right up-arrow" alt=""
+                                                        src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
+                                                        data-holder-rendered="true" height="100%"
+                                                        *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._Overall?.[0]?.rankingtable_arrow !== 'red'"
+                                                        (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
+                                                </div>
+    
+    
+    
+                                            </h5>
+                                            <!-- <p class="mt-n4 team-name sub-team">India Maste</p> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                   
+
+                    <div  *ngIf="spectSearchStr ==''|| spectSearchStr == undefined || spectSearList.length>10||spectSearchStr==null;"
+                        [ngClass]="sectionView_1?._personal_data.id_role=='6'? 'dashboard-center-table':'dashboard-center-table1'"
                         class="">
                         <!-- {{spectSearList | json}} -->
                         <!-- {{spectSearchStr ? 'true': 'false'}} -->
                         <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
-                            [style.background-image]="'url(' + item?.ranking_image_level_img + ')'"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                             *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) "
-                            (click)="navigateToOtherRole(item)">
+                            (click)="navigateToOtherRole(item)"
+                            [style.background-image]="'url('+item?.ranking_image_web +')'">
                             <div class="col">
                                 <div class="media d-flex align-items-center gap-3  " style="height: 7vh;">
                                     <span class="col-1 ms-2 text-white position-absolute-s">
@@ -538,10 +630,11 @@
                                     <div style="height:5vh;display:flex;align-items: center;">
                                         <img class="rounded-circle z-depth-2 user-logo-row" alt=""
                                             src="{{item?.rankingtable_logo}}" data-holder-rendered="true" height="100%"
-                                            width="41" (click)="openHierarchyPopup(item)">
+                                            width="41" >
                                     </div>
 
-                                    <div class="media-body user-logo-row ellipsis" style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
+                                    <div class="media-body user-logo-row ellipsis"
+                                        style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
                                         <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
                                             ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}</h5>
                                         <p class="mt-n4 team-name sub-team name-f-size">{{item?.rankingtable_team}}</p>
@@ -596,11 +689,9 @@
                         <!-- {{spectSearList | json}} -->
                         <!-- {{spectSearchStr ? 'true': 'false'}} -->
                         <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
-                           
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                             *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) "
-                            (click)="navigateToOtherRole(item)"
-                            [style.background-image]="!spectSearchStrTrigger? 'url(' + item.ranking_image_level_img + ')':'url('+web_tile_img+')'
+                            (click)="navigateToOtherRole(item)" [style.background-image]="!spectSearchStrTrigger? 'url(' + item.ranking_image_level_img + ')':'url('+web_tile_img+')'
                             ">
                             <div class="col">
                                 <div class="media d-flex align-items-center gap-3  " style="height: 7vh;">
@@ -610,10 +701,11 @@
                                     <div style="height:5vh;display:flex;align-items: center;">
                                         <img class="rounded-circle z-depth-2 user-logo-row" alt=""
                                             src="{{item?.rankingtable_logo}}" data-holder-rendered="true" height="100%"
-                                            width="41" (click)="openHierarchyPopup(item)">
+                                            width="41">
                                     </div>
 
-                                    <div class="media-body user-logo-row ellipsis" style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
+                                    <div class="media-body user-logo-row ellipsis"
+                                        style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
                                         <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
                                             ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}</h5>
                                         <p class="mt-n4 team-name sub-team name-f-size">{{item?.rankingtable_team}}</p>
@@ -716,110 +808,218 @@
                         [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.add_ins_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.add_ins_background == null}"
                         [style.background-image]="
                     sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.add_ins_background + ')' : null"
-                    style="background-size: cover;">
+                        style="background-size: cover;">
                         <div *ngIf="sectionView_1?.is_land_logos?.length == 0;then one; else two"></div>
                         <ng-template #one>
-                           <!-- Empty container -->
+                            <!-- Empty container -->
                         </ng-template>
                         <ng-template #two>
                             <div class="card-div">
                                 <div style="height: 44vh;display: flex;justify-content:center;align-items:center;">
-                                    <div class="card-body px-4 " style="height: 42vh; overflow-y:auto;display: flex; flex-direction: column;justify-content:start;gap:0.5em">
+                                    <div class="card-body px-4 "
+                                        style="height: 42vh; overflow-y:auto;display: flex; flex-direction: column;justify-content:start;gap:0.5em">
                                         <mat-accordion>
-                                        
+
                                             <!-- <div class="red_indicator"></div> -->
-                                            <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                                                <mat-expansion-panel-header [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
-                                                    <mat-panel-title style="font-family: 'Inter';
-                                                                                    font-style: normal;
-                                                                                    font-weight: 600;
-                                                                                    color: #FFFFFF;">
+                                            <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true"
+                                                (closed)="panelOpenState = false">
+                                                <mat-expansion-panel-header
+                                                    [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
+                                                    <mat-panel-title style="color: #ffff;font-weight:500;display:flex;justify-content: start;font-family: 'Work Sans';font-size:2.2vh">
                                                         My Learning
                                                     </mat-panel-title>
 
                                                 </mat-expansion-panel-header>
-                                                <div class="d-flex flex-column align-items-start gap-2  mt-3">
-                                                    <div class="inner_content" (click)="navigateToM2ost()">Excel Basic</div>
-                                                    <div class="inner_content" (click)="navigateToM2ost()">Strategic Probolem solving</div>
-                                                    <div class="inner_content" (click)="navigateToM2ost()">Conflict Resolution</div>
-                                                    <div class="inner_content" (click)="navigateToM2ost()">Home Loan Process</div>
-                                                    <div class="inner_content" (click)="navigateToM2ost()">Assesment Home Loan Process</div>
+                                                <div *ngIf="!hideBattleGround then redirectm2ost else dontredirect">
                                                 </div>
-                                                
-                                                
+                                                <ng-template #redirectm2ost>
+                                                    <div class="d-flex flex-column align-items-start gap-2  mt-3">
+                                                        <div class="inner_content" (click)="navigateToM2ost()">Excel
+                                                            Basic</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost()">Strategic
+                                                            Problem Solving</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost()">Conflict
+                                                            Resolution</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost()">Home Loan
+                                                            Process</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost()">Assesment
+                                                            Home Loan Process</div>
+                                                    </div>
+                                                </ng-template>
+
+                                                <ng-template #dontredirect>
+                                                    <div class="d-flex flex-column align-items-start gap-2  mt-3">
+                                                        <div class="inner_content">Excel Basic</div>
+                                                        <div class="inner_content">Strategic Problem solving</div>
+                                                        <div class="inner_content">Conflict Resolution</div>
+                                                        <div class="inner_content">Home Loan Process</div>
+                                                        <div class="inner_content">Assesment Home Loan Process</div>
+                                                    </div>
+                                                </ng-template>
+
+
                                             </mat-expansion-panel>
                                         </mat-accordion>
-    
+
                                         <mat-accordion>
                                             <div class="red_indicator" *ngIf="hideTriviaIndicator"></div>
                                             <mat-expansion-panel class="battleground_accordion mt-2"
                                                 (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                                                <mat-expansion-panel-header [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
-                                                    <mat-panel-title class="growth_index_accordion_mobile ">
-                                                        <strong style="color: #FFFFFF;">Trivia Corner</strong>
+                                                <mat-expansion-panel-header
+                                                    [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
+                                                    <mat-panel-title class="growth_index_accordion_mobile " style="color: #ffff;font-weight:500;display:flex;justify-content: start;font-family: 'Work Sans';font-size:2.2vh">
+                                                        <span style="color: #FFFFFF;">Trivia Corner</span>
                                                     </mat-panel-title>
-    
+
                                                 </mat-expansion-panel-header>
                                                 <div *ngFor="let triviaData of triviaCornerData">
-                                                    <div class="d-flex p-2 mt-1" style="border-radius:5px;font-family:'Work sans';" [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'" (click)="navigateToBriefQuetion(triviaData)">
-                                                        <div class="triviaBanner d-flex align-items-start mt-2 p-2">
-                                                            <div style="height:13vh;width:5vw;border-radius:5vh">
-                                                                <img src="{{triviaData.brief_graphics}}" alt="trivia_banner" height="100%" width="100%">
-                                                            </div>
-        
-        
-        
-                                                        </div>
-                                                        <div class="triviaDescription d-flex flex-column gap-1 p-1 mt-2" style="width:100%;height:20vh">
-                                                            <div class="triviaTitle">
-                                                                <strong>
-                                                                   {{triviaData.brief_title}}
-                                                                </strong>
-                                                                 
-                                                                
-                                                            </div>
-                                                            <p style="font-size:1.2vh;
-                                                            overflow: hidden;
-                                                            text-overflow: ellipsis;
-                                                            ">
-                                                                {{triviaData.brief_summary}}
-    
-                                                            </p>
-                                                            <div  style="font-size:1vh;font-family: 'Work sans';color:#A5ACB8;text-align:end">
-                                                                {{triviaData.created_at|date:'dd/MM/YYYY'}}
-                                                            </div>
-        
-                                                        </div>
-        
+                                                    <div *ngIf="!hideBattleGround then redirect_la else dontredirect_la">
                                                     </div>
+                                                    <ng-template #redirect_la>
+                                                        
+                                                            <div class="d-flex p-2 mt-1"
+                                                                style="border-radius:5px;font-family:'Work sans';position:relative"
+                                                                [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'"
+                                                                (click)="navigateToBriefQuetion(triviaData)">
+                                                                <div
+                                                                    class="triviaBanner d-flex align-items-start mt-2 p-2">
+<!--                                                                     
+                                                                    <div style="height:8vh;width:5vw;border-radius:5vh">
+                                                                        <img src="{{triviaData.brief_graphics}}"
+                                                                            alt="trivia_banner" height="100%"
+                                                                            width="100%">
+                                                                    </div> -->
+                                                                    <div *ngIf="triviaData.brief_graphics.split('.').pop()=='mp4';then mp4player"></div>
+                                                                    <div *ngIf="triviaData.brief_graphics.split('.').pop() == 'png'||triviaData.brief_graphics.split('.').pop()=='gif'||triviaData.brief_graphics.split('.').pop()== 'jpg'||triviaData.brief_graphics.split('.').pop()=='jpeg';then imgplay"> </div>
+                                                            
+                                                                    <ng-template #imgplay>
+                                                                        <div style="height:8vh;width:5vw;border-radius:5vh">
+                                                                            <img src="assets/images/svg/notification/img.png" alt="trivia_banner" height="100%" width="100%">
+                                                                        </div>
+                                                                    </ng-template>
+                                                                   
+                                                         
+                                                                   
+                                                                <ng-template #mp4player>
+                                                                        <div style="height:8vh;width:5vw;border-radius:5vh">
+                                                                            <img src="assets/images/svg/notification/v.png" alt="trivia_banner" height="100%" width="100%">
+                                                                        </div>
+                                                                </ng-template>
+
+
+                                                                </div>
+                                                                <div class="triviaDescription d-flex flex-column gap-3 p-1 mt-2"
+                                                                    style="width:100%;min-height:15vh;">
+                                                                    <div class="triviaTitle">
+                                                                        <strong>
+                                                                            {{triviaData.brief_title}}
+                                                                        </strong>
+
+
+                                                                    </div>
+                                                                    <p style="font-size:1.2vh;
+                                                                    overflow: hidden;
+                                                                    text-overflow: ellipsis;
+                                                                    ">
+                                                                        {{triviaData.brief_summary}}
+
+                                                                    </p>
+                                                                    <div
+                                                                        style="position:absolute;top:80%;right:5%;font-size:1vh;font-family: 'Work sans';color:#A5ACB8;text-align:end">
+                                                                        {{triviaData.created_at|date:'dd/MM/YYYY'}}
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+                                                        
+                                                    </ng-template>
+                                                    <ng-template #dontredirect_la>
+                                                      
+                                                            <div class="d-flex p-2 mt-1"
+                                                                style="border-radius:5px;font-family:'Work sans';position:relative"
+                                                                [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'"
+                                                               >
+                                                                <div
+                                                                    class="triviaBanner d-flex align-items-start mt-2 p-2">
+                                                                    <!-- <div style="height:8vh;width:5vw;border-radius:5vh">
+                                                                        <img src="{{triviaData.brief_graphics}}"
+                                                                            alt="trivia_banner" height="100%"
+                                                                            width="100%">
+                                                                    </div> -->
+                                                                    <div *ngIf="triviaData.brief_graphics.split('.').pop()=='mp4';then mp4player"></div>
+                                                                    <div *ngIf="triviaData.brief_graphics.split('.').pop() == 'png'||triviaData.brief_graphics.split('.').pop()=='gif'||triviaData.brief_graphics.split('.').pop()== 'jpg'||triviaData.brief_graphics.split('.').pop()=='jpeg';then imgplay"> </div>
+                                                            
+                                                                    <ng-template #imgplay>
+                                                                        <div style="height:8vh;width:5vw;border-radius:5vh">
+                                                                            <img src="assets/images/svg/notification/img.png" alt="trivia_banner" height="100%" width="100%">
+                                                                        </div>
+                                                                    </ng-template>
+                                                                   
+                                                         
+                                                                   
+                                                                <ng-template #mp4player>
+                                                                        <div style="height:8vh;width:5vw;border-radius:5vh">
+                                                                            <img src="assets/images/svg/notification/v.png" alt="trivia_banner" height="100%" width="100%">
+                                                                        </div>
+                                                                </ng-template>
+
+
+
+                                                                </div>
+                                                                <div class="triviaDescription d-flex flex-column gap-3 p-1 mt-2"
+                                                                    style="width:100%;min-height:15vh;">
+                                                                    <div class="triviaTitle">
+                                                                        <strong>
+                                                                            {{triviaData.brief_title}}
+                                                                        </strong>
+
+
+                                                                    </div>
+                                                                    <p style="font-size:1.2vh;
+                                                                    overflow: hidden;
+                                                                    text-overflow: ellipsis;
+                                                                    ">
+                                                                        {{triviaData.brief_summary}}
+
+                                                                    </p>
+                                                                    <div
+                                                                        style="position:absolute;top:80%;right:5%;font-size:1vh;font-family: 'Work sans';color:#A5ACB8;text-align:end">
+                                                                        {{triviaData.created_at|date:'dd/MM/YYYY'}}
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+                                                    </ng-template>
+
+
                                                 </div>
-                                               
-    
-                                              
+
+
+
                                             </mat-expansion-panel>
-                                           
+
                                         </mat-accordion>
 
 
                                         <mat-accordion>
                                             <!-- <div class="red_indicator"></div> -->
-                                            <mat-expansion-panel  class="mt-2" (opened)="panelOpenState = true"
+                                            <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true"
                                                 (closed)="panelOpenState = false">
-                                                <mat-expansion-panel-header  [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
-                                                    <mat-panel-title style="font-family: 'Inter';
-                                            font-style: normal;
-                                            font-weight: 600;color: #FFFFFF;
-                                            ">
+                                                <mat-expansion-panel-header
+                                                    [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
+                                                    <mat-panel-title style="color: #ffff;font-weight:500;display:flex;justify-content: start;font-family: 'Work Sans';font-size:2.2vh">
                                                         Bulletins
                                                     </mat-panel-title>
-    
+
                                                 </mat-expansion-panel-header>
                                                 <div class="d-flex align-items-center" style="height: 20vh;">
-    
-    
+
+
                                                     <div *ngIf="buletinsHide"
                                                         style="display:flex;flex-direction:column;justify-content:center;align-items: center;">
-                                                        
+
                                                         <div class="" style="font-family: 'Inter';
                                                                             font-style: normal;
                                                                             font-weight: 600;
@@ -830,7 +1030,8 @@
                                                                             letter-spacing: 0.003em;
                                                                             color: #000000;
                                                                             width: 15vw;">
-                                                            There's no bulletin’s you have subscribed to, stay tuned to this
+                                                            There's no bulletin’s you have subscribed to, stay tuned to
+                                                            this
                                                             section for
                                                             more.
                                                         </div>
@@ -838,11 +1039,11 @@
                                                     <div class="mb-2 me-3"></div>
                                                     <div
                                                         [ngClass]="{'inner-bulletins-no-height': sectionView_1?.is_land_logos?.length == 0,'inner-bulletins-height':sectionView_1?.is_land_logos?.length != 0}">
-    
-                                                        <div class="card bulletins-sub-card"
+
+                                                        <div class="card bulletins-sub-card me-1"
                                                             *ngFor="let item of addInsList">
                                                             <div class="card-body bulletins-sub-card-body">
-                                                                <p class="spot-engagement ">{{item?.header}}</p>
+                                                                <p class="spot-engagement ps-1 pt-0 text-dark ">{{item?.header}}</p>
                                                                 <br>
                                                                 <div class="media bulletins-media">
                                                                     <img *ngIf="item?.type_ === '1'"
@@ -855,14 +1056,14 @@
                                                                         src="assets/images/svg/dashboard/add-ins/le.svg"
                                                                         alt="" height="52">
                                                                     <div class="media-body ms-2">
-    
+
                                                                         <h5 class="bulletins-title">{{item?.title}}
                                                                             <p class="bulletins-text-muted"
-                                                                                style="margin-bottom:30px;">
+                                                                                style="margin-bottom:0px;">
                                                                                 {{item?.description_}}
                                                                             </p>
                                                                         </h5>
-    
+
                                                                         <img class="bulletins-image-card"
                                                                             src="{{item?.logo}}" alt="" height="95">
                                                                     </div>
@@ -881,26 +1082,26 @@
                                                             </div>
                                                         </div>
                                                     </div>
-    
-    
+
+
                                                 </div>
                                             </mat-expansion-panel>
                                         </mat-accordion>
-    
-    
+
+
                                         <mat-accordion>
                                             <div class="red_indicator" *ngIf="dailyBadgesActive || weeklyBadgesActive || monthlyBadgesActive"></div>
                                             <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true"
                                                 (closed)="panelOpenState = false">
                                                 <mat-expansion-panel-header [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}" >
-                                                    <mat-panel-title class="growth_index_accordion_mobile ">
-                                                        <strong style="color: #FFFFFF;">My Campaigns</strong>
+                                                    <mat-panel-title class="growth_index_accordion_mobile " style="color: #ffff;font-weight:500;display:flex;justify-content: start;font-family: 'Work Sans';font-size:2.2vh">
+                                                        <span>My Campaigns</span>
     
                                                     </mat-panel-title>
     
                                                 </mat-expansion-panel-header>
                                                 <div>
-                                                    <div class="inner_content d-flex justify-content-between" (mouseover)="openDailyModal()" data-bs-toggle="modal"
+                                                    <div class="inner_content_daily1 d-flex justify-content-between" (mouseover)="openDailyModal()" data-bs-toggle="modal"
                                                     data-bs-target="#dailyModal">
                                                        <div class="col-6">Daily</div> 
                                                        <div class="badge-container col" *ngFor="let dailyBadges of seasonalThemeDailyBadges1;let i=index;" >
@@ -924,7 +1125,7 @@
                                                            
                                                        </div>
                                                     </div>
-                                                    <div class="inner_content d-flex justify-content-between" (mouseover)="openWeeklyModal()" data-bs-toggle="modal"
+                                                    <div class="inner_content_daily1 d-flex justify-content-between" (mouseover)="openWeeklyModal()" data-bs-toggle="modal"
                                                     data-bs-target="#weeklyModal">
                                                         <div class="col-6" >Weekly</div> 
                                                         <div class="badge-container col"*ngFor="let WeeklyBadge of seasonalThemeWeeklyBadges2;let i=index" >
@@ -934,7 +1135,7 @@
                                                              
                                                         </div>
                                                      </div>
-                                                     <div class="inner_content d-flex justify-content-between" style="border:none" (mouseover)="openMonthlyModal()" data-bs-toggle="modal"
+                                                     <div class="inner_content_daily1 d-flex justify-content-between" style="border:none" (mouseover)="openMonthlyModal()" data-bs-toggle="modal"
                                                      data-bs-target="#monthlyModal">
                                                         <div class="col-6">Monthly</div> 
                                                         <div class="badge-container col" *ngFor="let monthlyBadge of seasonalThemeMonthlyBadges3;let i=index">
@@ -949,96 +1150,114 @@
                                             </mat-expansion-panel>
     
                                         </mat-accordion>
-    
+
                                         <mat-accordion>
                                             <div class="red_indicator" *ngIf="challengeReacieved>0"></div>
                                             <mat-expansion-panel class="battleground_accordion mt-2"
                                                 (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                                                <mat-expansion-panel-header [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
-                                                    <mat-panel-title class="growth_index_accordion_mobile ">
-                                                        <strong style="color: #FFFFFF;">Battle Ground</strong>
+                                                <mat-expansion-panel-header
+                                                    [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
+                                                    <mat-panel-title class="growth_index_accordion_mobile " style="color: #ffff;font-weight:500;display:flex;justify-content: start;font-family: 'Work Sans';font-size:2.2vh">
+                                                        <span>Battleground</span>
                                                     </mat-panel-title>
-    
+
                                                 </mat-expansion-panel-header>
-    
+
                                                 <div class="d-flex flex-column justify-content-between align-items-start mt-3 "
-                                                    style="font-weight: 550;font-family: 'Work Sans';">
-                                                    
-                                                    <div class="d-flex flex-column justify-content-between">
-                                                        <div  *ngIf="!hideBattleGround;then hideForOtherRole else donthide"></div>
+                                                    style="font-weight: 550;font-family: 'Work Sans';"
+                                                    style="width: 100%;">
+
+                                                    <div class="d-flex flex-column justify-content-between"
+                                                        style="width: 100%;">
+                                                        <div *ngIf="!hideBattleGround;then hideForOtherRole else donthide"></div>
                                                         <ng-template #hideForOtherRole>
-                                                            <div class="inner_content" (click)="navigateToNewChallenge()">New Challenge</div>
-                                                            <div class="inner_content" style=" border-bottom: 0.5px solid #A5ACB8; cursor: pointer;" (click)="navigateToOnGoingChallenge()" class="d-flex justify-content-between">
+                                                            <div class="inner_content ps-3"  style="width:100%;cursor: pointer;"
+                                                                (click)="navigateToNewChallenge()">New Challenge</div>
+                                                            <div class="inner_content"
+                                                                style=" border-bottom: 0.5px solid #A5ACB8; cursor: pointer;"
+                                                                (click)="navigateToOnGoingChallenge()"
+                                                                class="d-flex justify-content-between">
                                                                 <div class="ps-3" style="  font-weight: 600;
                                                                 font-family: 'Work Sans';
                                                                 font-size:1.6vh;
-                                                               
+                                                               width: 100%;
                                                                 display:flex;
                                                                 height:5vh;
-                                                                align-items:center">Ongoing Challenges</div>
+                                                                align-items:center;cursor: pointer; ">Ongoing Challenge</div>
                                                                 <div style="display:flex;
                                                                 height:5vh;
                                                                 align-items:center">{{onGoingChallenges}}</div>
                                                             </div>
-                                                            <div class="inner_content" style=" border-bottom: 0.5px solid #A5ACB8; cursor: pointer;" (click)="navigateToChallengeRecieved()" class="d-flex justify-content-between">
+                                                            <div class="inner_content"
+                                                                style=" border-bottom: 0.5px solid #A5ACB8; cursor: pointer;"
+                                                                (click)="navigateToChallengeRecieved()"
+                                                                class="d-flex justify-content-between">
                                                                 <div class="ps-3" style="  font-weight: 600;
                                                                 font-family: 'Work Sans';
                                                                 font-size:1.6vh;
                                                                  display: flex;
                                                                  height:5vh;
-                                                                 
+                                                                 cursor: pointer;
                                                                 align-items: center;
-                                                               ">Challenge Recieved</div>
+                                                               ">Challenge Received</div>
                                                                 <div style="display:flex;
                                                                 height:5vh;
                                                                 align-items:center">{{challengeReacieved}}</div>
-                                                                
                                                             </div>
+                                                            <div class="inner_content ps-3" style="border-bottom:none;width:100%"
+                                                            (click)="navigateToStatistics()">Statistics</div>
                                                         </ng-template>
 
                                                         <ng-template #donthide>
-                                                            <div class="inner_content">New Challenge</div>
-                                                            <div class="inner_content" style=" border-bottom: 0.5px solid #A5ACB8;"  class="d-flex justify-content-between">
+                                                            <div class="inner_content ps-3">New Challenge</div>
+                                                            <div class="inner_content"
+                                                                style=" border-bottom: 0.5px solid #A5ACB8;"
+                                                                class="d-flex justify-content-between">
                                                                 <div class="ps-3" style="  font-weight: 600;
                                                                 font-family: 'Work Sans';
                                                                 font-size:1.6vh;
                                                                
                                                                 display:flex;
                                                                 height:5vh;
-                                                                align-items:center">Ongoing Challenges</div>
+                                                                align-items:center">Ongoing Challenge</div>
                                                                 <div style="display:flex;
                                                                 height:5vh;
                                                                 align-items:center">{{onGoingChallenges}}</div>
                                                             </div>
-                                                            <div class="inner_content" style=" border-bottom: 0.5px solid #A5ACB8;"  class="d-flex justify-content-between">
+                                                            <div class="inner_content"
+                                                                style=" border-bottom: 0.5px solid #A5ACB8;"
+                                                                class="d-flex justify-content-between">
                                                                 <div class="ps-3" style="  font-weight: 600;
                                                                 font-family: 'Work Sans';
                                                                 font-size:1.6vh;
                                                                  display: flex;
                                                                  height:5vh;
-                                                                 
+                                                                width:500;
                                                                 align-items: center;
-                                                               ">Challenge Recieved</div>
+                                                               ">Challenge Received</div>
                                                                 <div style="display:flex;
                                                                 height:5vh;
                                                                 align-items:center">{{challengeReacieved}}</div>
-                                                                
+
                                                             </div>
+
+                                                            <div class="inner_content ps-3" style="border-bottom:none;width:100%"
+                                                            (click)="navigateToStatisticsSpect()">Statistics</div>
                                                         </ng-template>
-                                                       
-                                                        <div class="inner_content" style="border-bottom:none" (click)="navigateToStatistics()">Statistics</div>
+
+                                                     
                                                     </div>
-    
+
                                                 </div>
                                             </mat-expansion-panel>
                                         </mat-accordion>
-    
 
-                                        
-    
+
+
+
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </ng-template>
 
@@ -1259,14 +1478,15 @@
                                             </div>
 
                                             <button
-                                            class="btn btn-primary- text-white text-center dashboard-banner-point-btn-mobile"
-                                            *ngIf="rewardPoints?.[0]?.score>75 && userSelectionData._personal_data.id_coroebus_organization=='213'"  [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}"
-                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                            (click)="navigateToRewards(sectionView_1)">
-                                            <span
-                                                class="dashboard-banner-point-btn-text d-flex justify-content-center">
-                                                {{rewardPoints?.[0]?.score}}
-                                            </span></button>
+                                                class="btn btn-primary- text-white text-center dashboard-banner-point-btn-mobile"
+                                                *ngIf="rewardPoints?.[0]?.score>75 && userSelectionData._personal_data.id_coroebus_organization=='213'"
+                                                [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}"
+                                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                                (click)="navigateToRewards(sectionView_1)">
+                                                <span
+                                                    class="dashboard-banner-point-btn-text d-flex justify-content-center">
+                                                    {{rewardPoints?.[0]?.score}}
+                                                </span></button>
 
                                             <!-- <button
                                             class="btn btn-primary- text-white text-center dashboard-banner-point-btn-mobile"
@@ -1279,14 +1499,15 @@
                                             </span></button> -->
 
                                             <button
-                                            class="btn btn-primary- text-white text-center dashboard-banner-point-btn-mobile"
-                                            *ngIf="userSelectionData._personal_data.id_coroebus_organization!='213'"  [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}"
-                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                            (click)="navigateToRewards(sectionView_1)">
-                                            <span
-                                                class="dashboard-banner-point-btn-text d-flex justify-content-center">
-                                                {{rewardPoints?.[0]?.score}}
-                                            </span></button>
+                                                class="btn btn-primary- text-white text-center dashboard-banner-point-btn-mobile"
+                                                *ngIf="userSelectionData._personal_data.id_coroebus_organization!='213'"
+                                                [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}"
+                                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                                (click)="navigateToRewards(sectionView_1)">
+                                                <span
+                                                    class="dashboard-banner-point-btn-text d-flex justify-content-center">
+                                                    {{rewardPoints?.[0]?.score}}
+                                                </span></button>
                                             <div>
                                                 <span class="dashboard-level-rank-name ellipsis1"
                                                     style="font-size:2.1vw;">{{rewardPoints?.[0]?.label}}</span>
@@ -1344,8 +1565,9 @@
                     [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}">
                     <div class="card-div">
                         <div class="card-body">
-                            <div class="float-start dropdown ms-2 font-size-16 font-weight-semibold" style="padding-bottom: 1vh;">
-                                Point Distribution
+                            <div class="float-start dropdown ms-2 font-size-16 font-weight-semibold"
+                                style="padding-bottom: 1vh;">
+                                Points Distribution
                             </div>
                             <div>
                                 <div class="mb-4 me-3"></div>
@@ -1378,7 +1600,7 @@
 
             </div>
             <div class="col">
-               
+
                 <div class="row no-gutter" [ngClass]="{'row-cols-2': sectionView_2?._ranking_data?.length === 2,
                                 'row-cols-3': sectionView_2?._ranking_data?.length === 3,
                                 'row-cols-4': sectionView_2?._ranking_data?.length === 4,
@@ -1435,8 +1657,8 @@
                 <div class="d-flex gap-1 justify-content-between" style="margin-top: 17px;">
                     <div class="col-10" style="padding-right:0px;">
                         <input type="text" class="form-control dashboard-search" placeholder="Search People here.."
-                            [(ngModel)]="spectSearchStr" aria-label="Search People here.."
-                            aria-describedby="basic-addon2" (click)="spectSearch()">
+                            [(ngModel)]="spectSearchStr" aria-label="Search People here.." (keyup)="checkEmpty()"
+                            aria-describedby="basic-addon2" >
 
                     </div>
                     <div class="col-2 d-flex justify-content-end">
@@ -1459,15 +1681,15 @@
                                 <b>Points</b>
                             </div>
                         </div>
-                        <div class="row dashboard-rank-row ms-1 mb-1"
+                        <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
                             *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.length > 0"
                             [style.background-image]="'url(' + rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.ranking_image + ')'"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                             style="border:2px solid">
-                            <div class="col-6" style="padding-top: 1.5vh;">
+                            <div class="col-6" style="padding-top: 1.1vh;">
 
-                                <div class="media d-flex gap-3" >
-                                    <span class="col-1 ms-2 text-white position-absolute-" style="padding-top: 1vh;">
+                                <div class="media d-flex gap-3">
+                                    <span class="col-1 ms-2 text-white position-absolute-" style="padding-top: 1.1vh;">
                                         {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_number}}
                                     </span>
                                     <div style="height:5vh;display:flex;justify-content:center;align-items:center">
@@ -1476,7 +1698,8 @@
                                             data-holder-rendered="trplacementue" height="100%" width="100%">
                                     </div>
 
-                                    <div class="media-body user-logo-row ellipsis" style="display: flex; flex-direction: column;row-gap:5px;" >
+                                    <div class="media-body user-logo-row ellipsis"
+                                        style="display: flex; flex-direction: column;row-gap:5px;">
                                         <h5 class="mt-0  text-white name-f-size mobile-ellipsis" placement="bottom"
                                             ngbTooltip=" {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}">
                                             {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}
@@ -1489,7 +1712,7 @@
 
 
                             </div>
-                            <div class="col-6" style="padding-top: 1.1vh;" >
+                            <div class="col-6" style="padding-top: 1.1vh;">
                                 <div class="media d-flex gap-5 ">
                                     <div style="height:6vh ;" class="d-flex">
                                         <img loading="lazy" class="rounded-circle z-depth-2 team-logo-row" alt=""
@@ -1541,15 +1764,17 @@
                                             {{item?.rankingtable_number}}
                                         </span>
                                         <div>
-                                            <div style="height:6vh;width:6vh;display:flex;align-items: center;padding-top: 5%;">
+                                            <div
+                                                style="height:6vh;width:6vh;display:flex;align-items: center;padding-top: 5%;">
                                                 <img class="rounded-circle z-depth-2 user-logo-row" alt=""
                                                     src="{{item?.rankingtable_logo}}" data-holder-rendered="true"
-                                                    height="100%" width="100%" (click)="openHierarchyPopup(item)">
+                                                    height="100%" width="100%" >
                                             </div>
                                         </div>
 
 
-                                        <div class="media-body user-logo-row ellipsis" style="display: flex; flex-direction: column;row-gap:5px;">
+                                        <div class="media-body user-logo-row ellipsis"
+                                            style="display: flex; flex-direction: column;row-gap:5px;">
                                             <h5 class="mt-0 text-white name-f-size mobile-ellipsis" placement="bottom"
                                                 ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}
                                             </h5>
@@ -1626,32 +1851,29 @@
 </div>
 
 <!-- Campaigns Modal -->
-
-
-<!-- Daily Popup Module -->
-
 <!-- DailyModal -->
-<div *ngIf="isDailyModalopen;then Daily"></div>
+<!-- <div *ngIf="isDailyModalopen;then Daily"></div>
 <ng-template #Daily>
     <div class="DailyModal">
-        <div class="modal  fade bd-example-modal-sm" id="dailyModal" data-bs-backdrop="static" data-bs-keyboard="false"
+        <div class="modal fade bd-example-modal-sm" id="dailyModal" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogDaily modal-dialog-centered">
                 <div class="modal-content ">
                     <div class="modal-body">
                         <div class="d-flex justify-content-end">
-                            <button type="button" class="button-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+                            <button type="button" class="button-close" data-bs-dismiss="modal"
+                                aria-label="Close">X</button>
                         </div>
                         <div *ngIf="seasonalThemeDaily1!=undefined;then daily"></div>
                         <ng-template #daily>
                             <div class="popupheight popupDaily row d-flex" *ngIf="seasonalThemeDaily1.length!=0">
-                                <div class="d-flex  justify-content-between mb-2">
+                                <div class="d-flex justify-content-between mb-2">
                                     <div class="ModalHeading">
                                         {{seasonalThemeDaily1[0].seasonal_theme_title}}
                                     </div>
-        
+
                                 </div>
-                                <div >
+                                <div>
                                     <div class="modalDescription col-11">
                                         {{seasonalThemeDaily1[0].theme_description}}
                                     </div>
@@ -1661,100 +1883,102 @@
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-center" style="height:35vh;width:100%">
-                                    <div  style="height:25vh;width:25vh">
-                                        <img src="{{seasonalThemeDaily1[0].logo}}" alt="logo" height="100%" width="100%">
+                                    <div style="height:25vh;width:25vh">
+                                        <img src="{{seasonalThemeDaily1[0].logo}}" alt="logo" height="100%"
+                                            width="100%">
                                     </div>
-                                    
+
                                 </div>
-                            </div> 
+                            </div>
                         </ng-template>
                         <div *ngIf="seasonalThemeDailyBadges1!=undefined;then dailybadge"></div>
-                          <ng-template #dailybadge>
+                        <ng-template #dailybadge>
                             <div class="animation-bar" *ngIf="seasonalThemeDailyBadges1.length!=0">
-                                <div class="badges_row" style="width:100%" >
+                                <div class="badges_row" [style.width.%]="100" >
                                     
-                                    <div></div>
-                                    <div   class="d-flex flex-column justify-content-center align-items-center " >
-                                        <div style="height:6vh;width:6vh;border-radius:50%" [ngClass]="seasonalThemeDailyBadges1[0].active_class == '0'?'inActiveBadge':'ActiveBadge'" >
+                                    <div class="d-flex flex-column justify-content-center" [style.margin-left.%]="((seasonalThemeDailyBadges1[0].seasonal_score_target)/(seasonalThemeDailyBadges1[2].seasonal_score_target))*100">
+                                        
+                                        <div style="height:6vh;width:6vh;border-radius:50%"
+                                            [ngClass]="seasonalThemeDailyBadges1[0].active_class == '0'?'inActiveBadge':'ActiveBadge'">
                                             <img src="{{seasonalThemeDailyBadges1[0].seasonal_badge_logo}}" alt="" height="100%" width="100%">
-                                            
-                                        </div>
-                                        <div class="d-flex justify-content-center" >
-                                            <div  style="height:3vh;border-left: 1px solid black;"></div>
-                                        </div>
-                                        
-                                        
-                                    </div>
-                                    <div   class="d-flex flex-column justify-content-center align-items-center " >
-                                        <div style="height:6vh;width:6vh;border-radius:50%" [ngClass]="seasonalThemeDailyBadges1[1].active_class == '0'?'inActiveBadge':'ActiveBadge'"  >
-                                            <img  src="{{seasonalThemeDailyBadges1[1].seasonal_badge_logo}}" alt="" height="100%" width="100%">
-                                            
                                         </div>
                                         <div class="d-flex justify-content-center">
-                                            <div style="height:3vh;border-left: 1px solid black;"></div>
+                                            <div style="height:3vh;border-left: 2px solid #8EC912;"></div>
                                         </div>
-                                        
-                                        
                                     </div>
-                                    <div  class="d-flex flex-column justify-content-center align-items-center " >
-                                        <div style="height:6vh;width:6vh;border-radius:50%" [ngClass]="seasonalThemeDailyBadges1[2].active_class == '0'?'inActiveBadge':'ActiveBadge'" >
-                                            <img  src="{{seasonalThemeDailyBadges1[2].seasonal_badge_logo}}" alt="" height="100%" width="100%">
-                                            
+                                    <div class="d-flex flex-column justify-content-center " [style.margin-left.%]="(((seasonalThemeDailyBadges1[1].seasonal_score_target)/(seasonalThemeDailyBadges1[2].seasonal_score_target))*100)">
+                                        <div style="height:6vh;width:6vh;border-radius:50%"
+                                            [ngClass]="seasonalThemeDailyBadges1[1].active_class == '0'?'inActiveBadge':'ActiveBadge'">
+                                            <img src="{{seasonalThemeDailyBadges1[1].seasonal_badge_logo}}" alt=""
+                                                height="100%" width="100%">
                                         </div>
                                         <div class="d-flex justify-content-center">
-                                            <div style="height:3vh;border-left: 1px solid black;"></div>
+                                            <div style="height:3vh;border-left: 2px solid #8EC912;"></div>
                                         </div>
-                                        
-                                        
+
+
                                     </div>
-    
+                                    <div class="d-flex flex-column justify-content-center " [style.margin-left.%]="(((seasonalThemeDailyBadges1[2].seasonal_score_target)/(seasonalThemeDailyBadges1[2].seasonal_score_target))*100)-66">
+                                        
+                                        <div style="height:6vh;width:6vh;border-radius:50%"
+                                            [ngClass]="seasonalThemeDailyBadges1[2].active_class == '0'?'inActiveBadge':'ActiveBadge'">
+                                            <img src="{{seasonalThemeDailyBadges1[2].seasonal_badge_logo}}" alt=""
+                                                height="100%" width="100%">
+
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <div style="height:3vh;border-left: 2px solid #8EC912;"></div>
+                                        </div>
+
+
+                                    </div>
+
                                 </div>
-                              
+
                                 <div class="animation-bar-1">
-                                    <span class="d-flex justify-content-center"  [style.background-size.%]="totalTargetScore" [style.width.%]="((seasonalThemeDailyBadges1[0].seasonal_score_achived/totalTargetScore)*(100))">
-                                                                            
+                                    <span class="d-flex justify-content-center"
+                                        [style.background-size.%]="seasonalThemeDailyBadges1[2].seasonal_score_target"
+                                        [style.width.%]="((seasonalThemeDailyBadges1[0].seasonal_score_achived))">
+
                                     </span>
-                                    
-    
                                 </div>
-                                <div class="animation-bar" [style.margin-left.%]="((seasonalThemeDailyBadges1[0].seasonal_score_achived/totalTargetScore)*(100))">
-                                   
+                                <div class="animation-bar"
+                                    [style.margin-left.%]="((seasonalThemeDailyBadges1[0].seasonal_score_achived))">
                                     <div class="d-flex flex-column">
                                         <div class="border-left"></div>
                                         <div class="Progressscore">
                                             {{seasonalThemeDailyBadges1[0].seasonal_score_achived}}
                                         </div>
-                                        
                                     </div>
                                 </div>
-                               </div>
-                          </ng-template>
-                          
-                
-                       <ng-template #daily>
-                        <div class="row d-flex justify-content-center align-items-start" style="height:35vh;"
-                        *ngIf="seasonalThemeDaily1.length==0">
-                        <div class="col text-center">
-                            <span>Hey Welcome! The Themes will be configured soon. Stay tuned </span>
-                        </div>
+                            </div>
+                        </ng-template>
+
+
+                        <ng-template #daily>
+                            <div class="row d-flex justify-content-center align-items-start" style="height:35vh;"
+                                *ngIf="seasonalThemeDaily1.length==0">
+                                <div class="col text-center">
+                                    <span>Hey Welcome! The Themes will be configured soon. Stay tuned </span>
+                                </div>
+                            </div>
+                        </ng-template>
+
+
+
                     </div>
-                       </ng-template>
-                     
-    
-    
-                    </div>
-    
+
                 </div>
             </div>
         </div>
     </div>
-</ng-template>
+</ng-template> -->
 
-<div *ngIf="isWeeklyModalOpen;then weekly"></div>
+<!-- <div *ngIf="isWeeklyModalOpen;then weekly"></div>
 <ng-template #weekly>
 
     <div class="weeklyModal">
-        <div class="modal  fade bd-example-modal-sm" id="weeklyModal" data-bs-backdrop="static" data-bs-keyboard="false"
+        <div class="modal fade bd-example-modal-sm" id="weeklyModal" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogWeekly modal-dialog-centered">
                 <div class="modal-content modalContentWeekly">
@@ -1766,48 +1990,49 @@
                         <div *ngIf="seasonalThemeWeekly2!=undefined ;then week"></div>
                         <ng-template #week>
                             <div class="row d-flex" *ngIf="seasonalThemeWeekly2.length!=0">
-                                <div class="d-flex justify-content-between  mb-1 p-1">
+                                <div class="d-flex justify-content-between mb-1 p-1">
                                     <div class="ModalHeading ms-2">
                                         {{seasonalThemeWeekly2[0].seasonal_theme_title}}
                                     </div>
-    
+
                                 </div>
                                 <div class="">
                                     <div class="modalDescription col-11">
                                         {{seasonalThemeWeekly2[0].theme_description}}
                                     </div>
-    
+
                                     <div class="modalDescription d-flex justify-content-start pt-2 mt-2 mb-3">
-    
+
                                         <div> Valid Till
                                             :{{seasonalThemeWeekly2[0].valid_till_date |
                                             date:"dd/M/yyyy"}}</div>
                                     </div>
                                 </div>
-    
+
                                 <div class="">
                                     <div class="d-flex justify-content-center" style="height:35vh;width:100%">
-                                        <div  style="height:25vh;width:25vh">
-                                            <img src="{{seasonalThemeWeekly2[0].logo}}" alt="logo" height="100%" width="100%">
+                                        <div style="height:25vh;width:25vh">
+                                            <img src="{{seasonalThemeWeekly2[0].logo}}" alt="logo" height="100%"
+                                                width="100%">
                                         </div>
-                                        
+
                                     </div>
-    
+
                                 </div>
-                         </div> 
-    
+                            </div>
+
                         </ng-template>
-                         <div *ngIf="seasonalThemeWeeklyBadges2!=undefined;then weekbadge"></div>
-                         <ng-template #weekbadge>
+                        <div *ngIf="seasonalThemeWeeklyBadges2!=undefined;then weekbadge"></div>
+                        <ng-template #weekbadge>
                             <div class="animation-bar" *ngIf="seasonalThemeWeeklyBadges2!=0">
-                                <div class="badges_row" style="width:100%">
+                                <div class="badges_row" [style.width.%]="100">
 
-                                    <div></div>
-                                    <div class="d-flex flex-column justify-content-center align-items-center ">
+                                    
+                                    <div class="d-flex flex-column justify-content-center " [style.margin-left.%]="(((seasonalThemeWeeklyBadges2[0].seasonal_score_target)/(totalTargetScoreForWeekly))*100)/2">
                                         <div style="height:6vh;width:6vh;border-radius:50%"
-                                        [ngClass]="seasonalThemeWeeklyBadges2[0].active_class == '0'?'inActiveBadge':'ActiveBadge'">
-                                            <img src="{{seasonalThemeWeeklyBadges2[0].seasonal_badge_logo}}"
-                                                alt="" height="100%" width="100%">
+                                            [ngClass]="seasonalThemeWeeklyBadges2[0].active_class == '0'?'inActiveBadge':'ActiveBadge'">
+                                            <img src="{{seasonalThemeWeeklyBadges2[0].seasonal_badge_logo}}" alt=""
+                                                height="100%" width="100%">
 
                                         </div>
                                         <div class="d-flex justify-content-center">
@@ -1816,11 +2041,11 @@
 
 
                                     </div>
-                                    <div class="d-flex flex-column justify-content-center align-items-center ">
+                                    <div class="d-flex flex-column justify-content-center  " [style.margin-left.%]="(((seasonalThemeWeeklyBadges2[1].seasonal_score_target)/(totalTargetScoreForWeekly))*100)/2">
                                         <div style="height:6vh;width:6vh;border-radius:50%"
-                                        [ngClass]="seasonalThemeWeeklyBadges2[1].active_class == '0'?'inActiveBadge':'ActiveBadge'">
-                                            <img src="{{seasonalThemeWeeklyBadges2[1].seasonal_badge_logo}}"
-                                                alt="" height="100%" width="100%">
+                                            [ngClass]="seasonalThemeWeeklyBadges2[1].active_class == '0'?'inActiveBadge':'ActiveBadge'">
+                                            <img src="{{seasonalThemeWeeklyBadges2[1].seasonal_badge_logo}}" alt=""
+                                                height="100%" width="100%">
 
                                         </div>
                                         <div class="d-flex justify-content-center">
@@ -1829,11 +2054,11 @@
 
 
                                     </div>
-                                    <div class="d-flex flex-column justify-content-center align-items-center ">
+                                    <div class="d-flex flex-column justify-content-center  " [style.margin-left.%]="(((seasonalThemeWeeklyBadges2[2].seasonal_score_target)/(totalTargetScoreForWeekly))*100)/3">
                                         <div style="height:6vh;width:6vh;border-radius:50%"
-                                        [ngClass]="seasonalThemeWeeklyBadges2[1].active_class == '0'?'inActiveBadge':'ActiveBadge'">
-                                            <img src="{{seasonalThemeWeeklyBadges2[2].seasonal_badge_logo}}"
-                                                alt="" height="100%" width="100%">
+                                            [ngClass]="seasonalThemeWeeklyBadges2[1].active_class == '0'?'inActiveBadge':'ActiveBadge'">
+                                            <img src="{{seasonalThemeWeeklyBadges2[2].seasonal_badge_logo}}" alt=""
+                                                height="100%" width="100%">
 
                                         </div>
                                         <div class="d-flex justify-content-center">
@@ -1861,191 +2086,176 @@
                                         <div class="Progressscore">
                                             {{seasonalThemeWeeklyBadges2[0].seasonal_score_achived}}
                                         </div>
-                                        <!-- <div class="name">{{topper.first_name.slice(0,10)}}...</div>
-                                        <div class="rank">Rank:{{topper.user_rank}}</div>
-                                        <div class="score">{{topper.score}}</div> -->
+                                        
                                     </div>
-                                </div> 
+                                </div>
 
 
 
                             </div>
-                         </ng-template>
-                         
-                            <ng-template>
-                                <div class="row d-flex justify-content-center align-items-start"
+                        </ng-template>
+
+                        <ng-template>
+                            <div class="row d-flex justify-content-center align-items-start"
                                 *ngIf="this.seasonalThemeWeekly2.length==0">
                                 <div class="col text-center">
                                     <span>Hey Welcome! The Themes will be configured soon. Stay tuned </span>
                                 </div>
                             </div>
-                            </ng-template>
-                         
+                        </ng-template>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-</ng-template>
+</ng-template> -->
 
 <!-- Monthly Modal -->
-<div *ngIf="isMonthlyModalOpen;then monthly"></div>
+<!-- <div *ngIf="isMonthlyModalOpen;then monthly"></div>
 <ng-template #monthly>
-    <div class="monthlyModal" >
-        <div class="modal  fade bd-example-modal-sm" id="monthlyModal" data-bs-backdrop="static" data-bs-keyboard="false"
+    <div class="monthlyModal">
+        <div class="modal fade bd-example-modal-sm" id="monthlyModal" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogMonthly modal-dialog-centered ">
                 <div class="modal-content modalContentMonthly">
-                    <div class="modal-body"
-                        style="min-height: 30vh;">
+                    <div class="modal-body" style="min-height: 30vh;">
                         <div class="d-flex justify-content-end" style="color:#0000">
-                            <button type="button" class="button-close-monthly" data-bs-dismiss="modal" aria-label="Close">X</button>
+                            <button type="button" class="button-close" data-bs-dismiss="modal"
+                                aria-label="Close">X</button>
                         </div>
                         <div *ngIf="seasonalThemeMonthl3!=undefined;then month"></div>
                         <div *ngIf="seasonalThemeMonthlyBadges3!=undefined;then monthbadge"></div>
-                        
+
                         <ng-template #month>
-                            <div class="row d-flex"  *ngIf="seasonalThemeMonthl3!=0">
-                                <div class="d-flex justify-content-between  mb-1 p-1">
-                                    <div class="ModalHeading ms-2 mb-2" >
+                            <div class="row d-flex" *ngIf="seasonalThemeMonthl3!=0">
+                                <div class="d-flex justify-content-between mb-1 p-1">
+                                    <div class="ModalHeading ms-2 mb-2">
                                         {{seasonalThemeMonthl3[0].seasonal_theme_title}}
                                     </div>
-        
+
                                 </div>
                                 <div class="">
                                     <div class="modalDescription col-11">
                                         {{seasonalThemeMonthl3[0].theme_description}}
                                     </div>
-        
                                     <div class="modalDescription d-flex justify-content-start pt-2 mt-1">
                                         <div> Valid Till
                                             :{{seasonalThemeMonthl3[0].valid_till_date
                                             | date:"dd/M/yyyy"}}</div>
                                     </div>
                                 </div>
-        
+
                                 <div class="">
                                     <div class="d-flex justify-content-center" style="height:35vh;width:100%">
-                                        <div  style="height:25vh;width:25vh">
-                                            <img src="{{seasonalThemeMonthl3[0].logo}}" alt="logo" height="100%" width="100%">
+                                        <div style="height:25vh;width:25vh">
+                                            <img src="{{seasonalThemeMonthl3[0].logo}}" alt="logo" height="100%"
+                                                width="100%">
                                         </div>
-                                        
+
                                     </div>
                                 </div>
-        
-        
+
+
                             </div>
                         </ng-template>
-                     
+
                         <ng-template #monthbadge>
-                            <div class="animation-bar" *ngIf="seasonalThemeMonthlyBadges3.length!=0" >
-                                <div class="badges_row" style="width:100%" >
-                                    
-                                  
-                                    <div   class="d-flex flex-column justify-content-center align-items-center " >
-                                        <div style="height:6vh;width:6vh;border-radius:50%" [ngClass]="seasonalThemeMonthlyBadges3[0].active_class=='0'?'inActiveBadge':'ActiveBadge'" >
-                                            <img src="{{seasonalThemeMonthlyBadges3[0].seasonal_badge_logo}}" alt="" height="100%" width="100%">
-                                            
-                                        </div>
-                                        <div class="d-flex justify-content-center" >
-                                            <div  style="height:3vh;border-left: 1px solid black;"></div>
-                                        </div>
-                                        
-                                        
-                                    </div>
-                                    <div   class="d-flex flex-column justify-content-center align-items-center " >
-                                        <div style="height:6vh;width:6vh;border-radius:50%" >
-                                            <img  [ngClass]="seasonalThemeMonthlyBadges3[1].active_class=='0'?'inActiveBadge':'ActiveBadge'"  src="{{seasonalThemeMonthlyBadges3[1].seasonal_badge_logo}}" alt="" height="100%" width="100%">
-                                            
+                            <div class="animation-bar" *ngIf="seasonalThemeMonthlyBadges3.length!=0">
+                                <div class="badges_row" style="width:100%">
+
+
+                                    <div class="d-flex flex-column justify-content-center align-items-center col ">
+                                        <div style="height:6vh;width:6vh;border-radius:50%"
+                                            [ngClass]="seasonalThemeMonthlyBadges3[0].active_class=='0'?'inActiveBadge':'ActiveBadge'">
+                                            <img src="{{seasonalThemeMonthlyBadges3[0].seasonal_badge_logo}}" alt=""
+                                                height="100%" width="100%">
+
                                         </div>
                                         <div class="d-flex justify-content-center">
                                             <div style="height:3vh;border-left: 1px solid black;"></div>
                                         </div>
-                                        
-                                        
+
+
                                     </div>
-                                    <div *ngIf="seasonalThemeMonthlyBadges3.length>2;then 3rdBadge"></div>
-                                    <ng-template #3rdBadge>
-                                        <div  class="d-flex flex-column justify-content-center align-items-center "  >
-                                            <div style="height:6vh;width:6vh;border-radius:50%" [ngClass]="seasonalThemeMonthlyBadges3[2].active_class=='0'?'inActiveBadge':'ActiveBadge'">
-                                                <img  src="{{seasonalThemeMonthlyBadges3[2].seasonal_badge_logo}}" alt="" height="100%" width="100%">
-                                                
-                                            </div>
-                                            <div class="d-flex justify-content-center">
-                                                <div style="height:3vh;border-left: 1px solid black;"></div>
-                                            </div>
-                                            
-                                            
+                                    <div class="d-flex flex-column justify-content-center align-items-center col">
+                                        <div style="height:6vh;width:6vh;border-radius:50%">
+                                            <img [ngClass]="seasonalThemeMonthlyBadges3[1].active_class=='0'?'inActiveBadge':'ActiveBadge'"
+                                                src="{{seasonalThemeMonthlyBadges3[1].seasonal_badge_logo}}" alt=""
+                                                height="100%" width="100%">
+
                                         </div>
-                                    </ng-template>
-                                    
-        
-                                </div>
-                              
-                                <div class="animation-bar-1">
-                                    <span class="d-flex justify-content-center"  [style.background-size.%]="totalTargetScore" [style.width.%]="((seasonalThemeMonthlyBadges3[0].seasonal_score_achived/totalTargetScore)*(100))">                                     
-                                    </span>
-                                    
-        
-                                </div>
-                                <div class="animation-bar" [style.margin-left.%]="((seasonalThemeMonthlyBadges3[0].seasonal_score_achived/totalTargetScore)*(100))">
+                                        <div class="d-flex justify-content-center">
+                                            <div style="height:3vh;border-left: 1px solid black;"></div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center align-items-center col ">
+                                        <div style="height:6vh;width:6vh;border-radius:50%"
+                                            [ngClass]="seasonalThemeMonthlyBadges3[2].active_class=='0'?'inActiveBadge':'ActiveBadge'">
+                                            <img src="{{seasonalThemeMonthlyBadges3[2].seasonal_badge_logo}}" alt=""
+                                                height="100%" width="100%">
+
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <div style="height:3vh;border-left: 1px solid black;"></div>
+                                        </div>
+
+
+                                    </div>
                                    
+
+
+                                </div>
+
+                                <div class="animation-bar-1">
+                                    <span class="d-flex justify-content-center"
+                                        [style.background-size.%]="totalTargetScore"
+                                        [style.width.%]="((seasonalThemeMonthlyBadges3[0].seasonal_score_achived/totalTargetScore)*(100))">
+                                    </span>
+
+
+                                </div>
+                                <div class="animation-bar"
+                                    [style.margin-left.%]="((seasonalThemeMonthlyBadges3[0].seasonal_score_achived/totalTargetScore)*(100))">
+
                                     <div class="d-flex flex-column">
                                         <div class="border-left"></div>
                                         <div class="Progressscore">
                                             {{seasonalThemeMonthlyBadges3[0].seasonal_score_achived}}
                                         </div>
-                                        
+
                                     </div>
                                 </div>
-                               
-        
-        
+
+
+
                             </div>
                         </ng-template>
-                        
-                         <ng-template #month>
+
+                        <ng-template #month>
                             <div class="row d-flex justify-content-center align-items-start"
-                            *ngIf="seasonalThemeMonthl3.length==0">
-                            <div class="col text-center">
-                                <span style="color:#FFFFFF">Hey Welcome! The Themes will be configured soon. Stay tuned
-                                </span>
+                                *ngIf="seasonalThemeMonthl3.length==0">
+                                <div class="col text-center">
+                                    <span style="color:#FFFFFF">Hey Welcome! The Themes will be configured soon. Stay
+                                        tuned
+                                    </span>
+                                </div>
                             </div>
-                        </div>
-                         </ng-template>
-                      
-    
+                        </ng-template>
+
+
                     </div>
-    
+
                 </div>
             </div>
         </div>
     </div>
-</ng-template>
+</ng-template> -->
 
 
-
-
-
-
-<!-- 
-<div class="modal fade" id="RewardsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered ">
-        <div class="modal-content" style="border-radius:0 !important;">
-            <div class="d-flex justify-content-end">
-                <button type="button" class="booster_btn_close" data-bs-dismiss="modal" aria-label="Close">X</button>
-            </div>
-            <div class="col-12">
-                <img src="assets/images/rewards/pop up.png" style="width: 100%;"/>
-                <button type="button" class="ok_button" (click)="navigateToRewards()">Ok</button>
-
-            </div>
-          
-        </div>
-    </div>
-</div> -->
 
 <!-- Rotated View -->
 <div class="mobile-view-rotated d-flex flex-column justify-content-center align-items-center">

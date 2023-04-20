@@ -79,7 +79,7 @@
     display: flex;
     flex:wrap;
     justify-content: center;
-    overflow-y: auto;
+    // overflow-y: auto;
     margin: 1%;
     margin-top: 1%;
     padding: 1%;
@@ -89,7 +89,7 @@
     width: 30%;
     position: fixed;
     right: 0;
-    overflow-y: auto;
+    // overflow-y: auto;
     overflow-x: hidden;
 }
 .drop-down-card{
@@ -189,6 +189,9 @@ input[type="checkbox"]::placeholder {
     left: 1408px;
     top: 177px;
     border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     // background-color: var(--myvar);
     border: 1px solid #D1D1D1;
 
@@ -256,11 +259,13 @@ input[type="checkbox"]::placeholder {
     }
     .card-description {
         font-family: 'Inter', sans-serif;
-        font-size: 9px;
+        // font-size: 9px;
+        font-size: 1.3vh;
+
         font-weight: 500;
         line-height: 14px;
         letter-spacing: 0em;
-        height: 12vh;
+        min-height: 10vh;
 
     }
     .btn {
@@ -271,6 +276,7 @@ input[type="checkbox"]::placeholder {
         // top: 291px;
         border-radius: 0px;
     }
+
     .status-openButton{
             font-family: 'Inter';
             font-style: normal;
@@ -279,7 +285,7 @@ input[type="checkbox"]::placeholder {
             line-height: 14px;
             /* or 101% */
             display: flex;
-         
+            
             align-items: center;
             text-align: center;
             color: #1A5286;
@@ -304,11 +310,17 @@ input[type="checkbox"]::placeholder {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content:space-around;
+        justify-content:space-between;
         height: 65vh;
         width: 65vw;
         overflow-y: auto;
         // row-gap: 2rem;
+        .card{
+            width: 28vw;
+            border: 1px solid lightgray;
+            min-height: 33vh;;
+
+        }
     }
     .card-body{
         height: 20vh;

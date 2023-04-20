@@ -43,20 +43,6 @@ export const MENU_HOS: MenuItem[] = [
     },
    
    
-    {
-        id: 10,
-        label:'MENUITEMS.LEARNING',
-        icon: 'learning',
-        subItems: [
-            {
-                id: 11,
-                label: 'MENUITEMS.LEARNING_ACADEMY',
-                link: '/learning/learningAcademy',
-                link1: '/learning/learningAcademy',
-                parentId: 10
-            },
-        ]
-    },
    
     {
         id: 14,

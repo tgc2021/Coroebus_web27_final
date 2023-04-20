@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { HttpProtocols } from '@app/http/http.protocols';
 import { DashboardModel } from '@models/dashboard.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -145,7 +145,6 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   seasonal_theme_daily_badge_details: any;
   totalTargetScore: any;
   totalTargetScoreForWeekly: number;
-  totalTargetScoreForMontly:number
   seasonal_theme_monthly_badge_details: any;
   
 
@@ -159,14 +158,16 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   empemail:any
   empname:any
   emporg:any
+  spectator_temporary_array: any=[];
+  seasonalThemeDaily1: any;
+  seasonalThemeWeekly2: any;
+  seasonalThemeMonthl3: any;
   seasonalThemeDailyBadges1: any;
   seasonalThemeWeeklyBadges2: any;
   seasonalThemeMonthlyBadges3: any;
-  seasonalThemeWeekly2: any;
-  seasonalThemeDaily1: any;
-  seasonalThemeMonthl3: any;
+  totalTargetScoreForMontly: number;
 
-  constructor(private readonly store: Store, private modalService: NgbModal,
+  constructor(private readonly store: Store, private modalService: NgbModal,private renderer:Renderer2,
     public Util: Util, private eventService: EventService, private _router: Router,
     private _route: ActivatedRoute, public toastService: ToastService,public http:ApiserviceService,public elementref: ElementRef) {
     this.activeSubTabForSectionView_2 = 'My Store'
@@ -187,6 +188,12 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     // this.emojiSelected(0,1)
 
     // this.challengeRecievedCount()
+    if (!localStorage.getItem('foo')) { 
+      localStorage.setItem('foo', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('foo') 
+    }
 
     this.activeTab()
     this.Edit_image()
@@ -254,8 +261,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
         }
       });
-
-
+    
     })
   
   
@@ -274,6 +280,9 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     this.requestForProduce1Data = this.eventService.subscribe('requestForProduce1Data', (data) => {
       this.eventService.broadcast('requestSendForProduce1Data', this.sectionView_1)
     })
+    
+  
+    
 
     
 
@@ -298,10 +307,13 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
   ngAfterViewInit() {
-    // this.edit_image;
-    // this.openDailyModal('daily');
-    // this.openWeeklyModal('weekly');
-    // this.openMonthlyModal('monthly');
+    this.edit_image;
+    
+    setTimeout(()=>{
+      // this.changeTabFilter('',this.b)
+      this.changeSubTabFilter('My Store')
+    },3000)
+   
   }
 
 
@@ -718,6 +730,11 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
 
 
   async getUserBannerDataSectionView_3(viewMore?: any, queryParams?: any) {
+    // debugger
+    console.log(viewMore);
+    
+    console.log(queryParams);
+    
     let err: any, res: any;
     let body: any;
     console.log(viewMore);
@@ -734,15 +751,23 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
       this.pokeData = res?.data?._poke_list
       if (viewMore) {
+        console.log('inside viewmore');
+        
         res?.data?._ranking_data?.forEach((element, index) => {
+          console.log(element,index);
+          console.log(this.sectionView_3?._ranking_data[index]?.label);
+          
           if (element?.label === this.sectionView_3?._ranking_data[index]?.label) {
-               console.log(element?.label);
-               console.log(this.sectionView_3?._ranking_data[index]?.label);
-               
-            if (element?._data?.length > 0) {
-              this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data)
-              console.log(this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data));
+            console.log(element?._Overall);
+            
+            if (element?._Overall?.length > 0 || element?._data?.length > 0) {
               
+              // console.log(this.sectionView_3?._ranking_data[index]?._Overall?.push(...element?._Overall));
+              // console.log(this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data));
+
+              this.sectionView_3?._ranking_data[index]?._Overall?.push(...element?._Overall)
+              // this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data)
+
               this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'center' });
             }
           }
@@ -751,7 +776,7 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
       } else {
         this.sectionView_3 = res?.data
       }
-      this.filterRankingData()
+      // this.filterRankingData()
 
       this.sectionView_3_list = this.sectionView_3?._ranking_data?.filter(data => {
         //console.log(data)
@@ -765,6 +790,7 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
     }
   }
   filterRankingData() {
+    
     this.sectionView_3._ranking_data = this.sectionView_3?._ranking_data?.filter((firstLevel) => {
       firstLevel = firstLevel?.[this.activeSubTabForSectionView_2 === 'My Store' ? '_data' : '_Overall']?.filter((secondLevel) => {
         secondLevel = this.sectionView_1?._back_images?.filter((compareData) => {
@@ -917,8 +943,11 @@ else if(this.activeTabForSectionView_2 == 4){
     }
   }
   viewMore() {
+    
     this.pageNumberForSectionView_3 = this.pageNumberForSectionView_3 + 1
-    this.getUserBannerDataSectionView_3('viewMore',this.queryParams)
+    console.log(this.queryParams);
+    
+    this.getUserBannerDataSectionView_3(1,this.queryParams)
   }
 
   async notificationList(queryParams?: any) {
@@ -968,9 +997,29 @@ else if(this.activeTabForSectionView_2 == 4){
       if (this.addInsList.length === 0) {
         this.buletinsHide = true
       }
+      else{
+        this.buletinsHide = false;
+      }
 
     } else {
       this.notificationList_err = 'Error'
+    }
+  }
+
+  
+
+  checkEmpty(){
+    this.spectSearList=null
+
+    if(this.spectSearchStr==''){
+      
+      this.spectSearchStr=''
+      // this.emptyInput==true;
+      this.spectSearchStrTrigger = false
+      // this.spectSearch()
+   
+      // this.spectSearchStr.setValue('');
+      // this.ngOnInit()
     }
   }
 
@@ -981,9 +1030,13 @@ else if(this.activeTabForSectionView_2 == 4){
 
     if (this.spectSearchStr) {
       this.spectSearchStrTrigger = true
-    } else {
-      this.spectSearchStrTrigger = false
     }
+  
+    else{
+      this.spectSearchStrTrigger = false;
+
+    }
+    
     body = {
       "_userid": this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
       "_game": this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game,
@@ -1146,6 +1199,8 @@ else if(this.activeTabForSectionView_2 == 4){
       });
     }
     else{
+      this.pageNumberForSectionView_3=1
+      this.activeSubTabForSectionView_2 = 'My Store'    
       this._router.navigate([], {
         relativeTo: this._route,
         queryParams: {
@@ -1176,8 +1231,11 @@ else if(this.activeTabForSectionView_2 == 4){
 
 
   changeSubTabFilter(tabName: string) {
+    console.log(tabName);
+    
     this.activeSubTabForSectionView_2 = tabName
-    this.filterRankingData()
+     
+    // this.filterRankingData()
   }
   async openHierarchyPopup(data?: any) {
     console.log(data)
@@ -1246,79 +1304,6 @@ else if(this.activeTabForSectionView_2 == 4){
       this._router.navigate(['reward/rewardPoints'])
 
     }
-  }
-  GetDataFromProduceInfo(queryParams?:any){
-
-    console.log(queryParams.gameID 
-      )
-      
-    
-      let obj = {
-        _userid:queryParams?.userID ? queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
-        _game:queryParams?.gameID ?queryParams?.gameID : this.userSelectionData?.id_coroebus_game
-      }
-      console.log("check body",obj)
-      this.http.produceInfo(obj).subscribe((res)=>{
-        console.log(res);
-
-        this.data=res;
-        // console.log(this.data.data.seasonal_theme_daily.length==undefined);
-        // console.log(this.data.data.seasonal_theme_daily==undefined);
-      
-        this.seasonalThemeDaily1=this.data.data.seasonal_theme_daily
-        this.seasonalThemeWeekly2=this.data.data.seasonal_theme_weekly;
-        this.seasonalThemeMonthl3=this.data.data.seasonal_theme_monthly
-        console.log( this.seasonalThemeDaily1==undefined);
-          
-        this.seasonalThemeDailyBadges1=this.data.data.seasonal_theme_daily_badge_details;
-        this.totalTargetScore=Number(this.seasonalThemeDailyBadges1[0].seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[1].seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[2].seasonal_score_target);
-
-
-        this.seasonalThemeWeeklyBadges2=this.data.data.seasonal_theme_weekly_badge_details;
-        this.totalTargetScoreForWeekly=Number(this.seasonalThemeWeeklyBadges2[0].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[1].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[2].seasonal_score_target);
-
-        this.seasonalThemeMonthlyBadges3=this.data.data.seasonal_theme_monthly_badge_details;
-        this.totalTargetScoreForMontly=Number(this.seasonalThemeMonthlyBadges3[0].seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[1].seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[2].seasonal_score_target);
-
-        this.seasonalThemeDailyBadges1.forEach((res)=>{
-          if(res.active_class == '1'){
-            this.dailyBadgesActive=true;
-          }
-        })
-
-        this.seasonalThemeWeeklyBadges2.forEach((res)=>{
-          if(res.active_class == '1'){
-            this.weeklyBadgesActive=true;
-          }
-        })
-
-        this.seasonalThemeMonthlyBadges3.forEach((res)=>{
-          if(res.active_class == '1'){
-            this.monthlyBadgesActive=true;
-          }
-        })
-        
-        // Champions League Data
-        this.onGoingChallenges=this.data.data.challenge_list;
-        this.challengeReacieved=this.data.data.new_challenge_list;
-
-        console.log(this.onGoingChallenges)
-
-        // Trivia Corner Data
-
-        this.triviaCornerData=this.data.data.trivia_corner;
-
-        this.triviaCornerData.forEach((res)=>{
-          console.log(true)
-          if(res.view_status!='Read')
-          {
-            this.hideTriviaIndicator=true;
-            // console.log(hideTriviaIndicator)
-          }
-        })
-      })
-    
-
   }
 
 
@@ -1398,26 +1383,11 @@ else if(this.activeTabForSectionView_2 == 4){
 
     });
   }
-  openDailyModal() {
-    this.isDailyModalopen = true;
-    this.isWeeklyModalOpen = false;
-    this.isMonthlyModalOpen = false;
 
-  }
-  openWeeklyModal() {
-    this.isDailyModalopen = false;
-    this.isWeeklyModalOpen = true;
-    this.isMonthlyModalOpen = false;
 
-  }
-  openMonthlyModal() {
-    this.isDailyModalopen = false;
-    this.isWeeklyModalOpen = false;
-    this.isMonthlyModalOpen = true;
 
-  }
   navigateToOtherRole(item){
-    
+    this.activeSubTabForSectionView_2 = 'My Store'    
     console.log(item);
     this.userID= this.Util.encryptData(item?.userid);
     this.gameID= this.Util.encryptData(item?.id_coroebus_game);
@@ -1432,11 +1402,7 @@ else if(this.activeTabForSectionView_2 == 4){
     let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
     let id_role=this.sectionView_1._personal_data.id_role;
     let id_coroebus_user=this.sectionView_1._personal_data.id_coroebus_user;
-
     console.log(this.userSelectionData);
-
-
-
     const userId = this.Util.encryptData(_userid)
     const game = this.Util.encryptData(id_coroebus_game)
     const roleid = this.Util.encryptData(id_role)
@@ -1445,12 +1411,12 @@ else if(this.activeTabForSectionView_2 == 4){
     if(this.userSelectionData.is_champions_league=='A'){
       
       window.open(
-      //  'http://coroebusbeta.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+      //  'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
 
       // 'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
       // '_self' // <- This is what makes it open in a new window.
 
-      'http://coroebusbeta.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+      'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
       '_self'
    
 
@@ -1486,7 +1452,7 @@ else if(this.activeTabForSectionView_2 == 4){
       if(this.userSelectionData.is_champions_league=='A'){
         
         window.open(
-        'http://coroebusbeta.in/champions_league/#/home/onGoing?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+        'http://coroebus.in/champions_league/#/home/onGoing?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
         '_self' // <- This is what makes it open in a new window.
 
         // 'http://localhost:56671/champions_league/#/home/onGoing?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
@@ -1557,42 +1523,45 @@ else if(this.activeTabForSectionView_2 == 4){
       const roleid = this.Util.encryptData(id_role)
       const spectStaus='yes'
 
-      if(this.userSelectionData.is_champions_league=='A'){
-        console.log(this.hideBattleGround);
+      
         
         if(this.hideBattleGround){
           console.log('no hide');
           
           window.open(
-            // 'http://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"spect="+"yes",
+            // 'http://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"spect="+"yes",
             // '_self' // <- This is what makes it open in a new window.
-             'http://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total",
+             'http://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total",
             '_self' // <- This is what makes it open in a new window.
           )
         }
-     else{
-      console.log('hide');
 
-      window.open(
+    //  else{
+    //   console.log('hide');
+
+    //   window.open(
         
-        'https://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
-        '_self' // <- This is what makes it open in a new window.
+    //     'https://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
+    //     '_self' // <- This is what makes it open in a new window.
 
-        //  'http://localhost:56671/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
-        // '_self' // <- This is what makes it open in a new window.
+    //     //  'http://localhost:56671/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+    //     // '_self' // <- This is what makes it open in a new window.
         
      
   
-      )
+    //   )
 
-     }
+    //  }
   
-        }
+        
       
 
   }
 
-  navigateToStatisticsSpect(queryParams?: any){
+  navigateToStatisticsSpect(queryParams?: any)
+  
+  {
+
     let  _userid = localStorage.getItem('body_userid');
     let id_coroebus_game = localStorage.getItem('body_game');
     let id_role=this.sectionView_1._personal_data.id_role;
@@ -1606,18 +1575,19 @@ else if(this.activeTabForSectionView_2 == 4){
     const game = this.Util.encryptData(id_coroebus_game)
     const roleid = this.Util.encryptData(id_role)
     const spectStaus='yes'
-
+    console.log(spectStaus);
+    // console.log('http://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus);
+    
     window.open(
-        
-      'http://coroebusbeta.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
+      'http://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
       '_self' // <- This is what makes it open in a new window.
-
       //  'http://localhost:56671/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
       // '_self' // <- This is what makes it open in a new window.
-      
-   
-
     )
+  }
+
+  navigateToDashboard(){
+    location.reload()
   }
   navigateToM2ost(){
     this.empid= this.sectionView_1._personal_data.EMPLOYEEID
@@ -1627,7 +1597,7 @@ else if(this.activeTabForSectionView_2 == 4){
     window.open(
       // https://www.m2ost.in/m2ostproductionapiSSO/api/m2ostSSO?param=empid$103$empemail$empname$TGC
     
-      'https://www.m2ost.in/m2ostproductionapiSSO/api/m2ostSSO?param='+this.empid +'$103$'+this.empemail+'$'+this.empname+'$'+this.emporg,
+      'https://www.m2ost.in/m2ostproductionapiSSO/api/m2ostSSO?param='+this.empid +'$113$'+this.empemail+'$'+this.empname+'$'+this.emporg,
       'blank'
    
 
@@ -1657,7 +1627,99 @@ else if(this.activeTabForSectionView_2 == 4){
       
   // }
 
- 
+  GetDataFromProduceInfo(queryParams?:any){
+
+    console.log(queryParams.gameID 
+      )
+      
+    
+      let obj = {
+        _userid:queryParams?.userID ? queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
+        _game:queryParams?.gameID ?queryParams?.gameID : this.userSelectionData?.id_coroebus_game
+      }
+      console.log("check body",obj)
+      this.http.produceInfo(obj).subscribe((res)=>{
+        console.log(res);
+
+        this.data=res;
+        // console.log(this.data.data.seasonal_theme_daily.length==undefined);
+        // console.log(this.data.data.seasonal_theme_daily==undefined);
+      
+        this.seasonalThemeDaily1=this.data.data.seasonal_theme_daily
+        this.seasonalThemeWeekly2=this.data.data.seasonal_theme_weekly;
+        this.seasonalThemeMonthl3=this.data.data.seasonal_theme_monthly
+        console.log( this.seasonalThemeDaily1==undefined);
+          
+        this.seasonalThemeDailyBadges1=this.data.data.seasonal_theme_daily_badge_details;
+        this.totalTargetScore=Number(this.seasonalThemeDailyBadges1[0].seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[1].seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[2].seasonal_score_target);
+
+
+        this.seasonalThemeWeeklyBadges2=this.data.data.seasonal_theme_weekly_badge_details;
+        this.totalTargetScoreForWeekly=Number(this.seasonalThemeWeeklyBadges2[0].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[1].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[2].seasonal_score_target);
+
+        this.seasonalThemeMonthlyBadges3=this.data.data.seasonal_theme_monthly_badge_details;
+        this.totalTargetScoreForMontly=Number(this.seasonalThemeMonthlyBadges3[0].seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[1].seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[2].seasonal_score_target);
+
+        this.seasonalThemeDailyBadges1.forEach((res)=>{
+          if(res.active_class == '1'){
+            this.dailyBadgesActive=true;
+          }
+        })
+
+        this.seasonalThemeWeeklyBadges2.forEach((res)=>{
+          if(res.active_class == '1'){
+            this.weeklyBadgesActive=true;
+          }
+        })
+
+        this.seasonalThemeMonthlyBadges3.forEach((res)=>{
+          if(res.active_class == '1'){
+            this.monthlyBadgesActive=true;
+          }
+        })
+        
+        // Champions League Data
+        this.onGoingChallenges=this.data.data.challenge_list;
+        this.challengeReacieved=this.data.data.new_challenge_list;
+
+        console.log(this.onGoingChallenges)
+
+        // Trivia Corner Data
+
+        this.triviaCornerData=this.data.data.trivia_corner;
+
+        this.triviaCornerData.forEach((res)=>{
+          console.log(true)
+          if(res.view_status!='Read')
+          {
+            this.hideTriviaIndicator=true;
+            // console.log(hideTriviaIndicator)
+          }
+        })
+      })
+    
+
+  }
+
+  openDailyModal() {
+    this.isDailyModalopen = true;
+    this.isWeeklyModalOpen = false;
+    this.isMonthlyModalOpen = false;
+
+  }
+  openWeeklyModal() {
+    this.isDailyModalopen = false;
+    this.isWeeklyModalOpen = true;
+    this.isMonthlyModalOpen = false;
+
+  }
+  openMonthlyModal() {
+    this.isDailyModalopen = false;
+    this.isWeeklyModalOpen = false;
+    this.isMonthlyModalOpen = true;
+
+  }
+  
 
 
 
@@ -1671,12 +1733,9 @@ else if(this.activeTabForSectionView_2 == 4){
   
      if(data.view_status!='Read'){
       window.open(
-        'http://localhost:4200/#/LearningAcademy/library?_game='+data._game+"&_userid="+data._userid+"&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+"&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type,
+        'https://coroebus.in/Learning_academy/#/LearningAcademy/library?_game='+data._game+"&_userid="+data._userid+"&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+"&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type,
     
-        '_self'
-      //   'https://coroebusbeta.in/Learning_academy/#/LearningAcademy/library?_game='+data._game+"&_userid="+data._userid+"&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+"&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type,
-    
-      //  '_self'
+       '_self'
      )
      }
     else{

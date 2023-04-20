@@ -11,7 +11,6 @@ import { observeOn } from 'rxjs/operators';
 import { EventService } from '../../core/services/event.service';
 
 import { SIDEBAR_TYPE } from "../layouts.model";
-import { log } from 'console';
 
 @Component({
   selector: 'app-vertical',
@@ -187,7 +186,7 @@ console.log(this.userSelectionData);
 
     
     this.isCondensed = !this.isCondensed;
-    console.log(this.isCondensed );
+    console.log(this.isCondensed);
 
     document.body.classList.toggle('sidebar-enable');
     document.body.classList.toggle('vertical-collpsed');

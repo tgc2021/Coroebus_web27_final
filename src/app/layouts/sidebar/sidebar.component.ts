@@ -16,7 +16,6 @@ import * as fromRoot from '../../core/app-state';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import * as userActions from '../../core/app-state/actions';
-import { url } from 'inspector';
 import { DefaultComponent } from '@pages/dashboards/default/default.component';
 import { ApiserviceService } from 'app/apiservice.service';
 import { MENU_HOS } from './menu_hos';
@@ -182,6 +181,8 @@ console.log(this.id_coroebus_organization);
 
 
     })
+    // localStorage.setItem('rewardid',this.userObj?._personal_data?.USERID)
+
 
     this.initialize();
 
@@ -293,11 +294,11 @@ console.log(this.id_coroebus_organization);
       console.log(this.spectator_value);
      
       
-      this.menuItems = MENU_SPECTATOR;
+      this.menuItems = MENU;
       this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
      
     }
-    else  if(this.id_role == 13){
+    else  if(this.id_role == 13 ){
       
       this.menuItems = MENU_HOS;
       this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
@@ -313,6 +314,7 @@ console.log(this.id_coroebus_organization);
         
       }
     }
+  
     else {
       console.log(this.spectator_value);
     
@@ -485,7 +487,7 @@ console.log(this.id_coroebus_organization);
     
     
 if(this.id_role=='7'){
-  this.menuItems=MENU_SPECTATOR
+  this.menuItems=MENU
 
 }
 else if(this.id_role=='13'){
@@ -493,7 +495,7 @@ else if(this.id_role=='13'){
 
 }
 else if(this.id_role=='9'){
-  this.menuItems=MENU_HOS
+  this.menuItems=MENU
 
 }
 else{

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { log } from 'console';
 
 @Component({
   selector: 'app-business-report',

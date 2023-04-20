@@ -373,7 +373,7 @@ flex-direction: column;
 .web_first_measurement {
     vertical-align: middle;
     margin: auto 0;
-    height: 8vh;
+    height: 6vh;
     border-right: 2px solid #ffffff;
     // border-right: 2px solid #ffffff;
     // height: 12vh;
@@ -407,6 +407,7 @@ flex-direction: column;
 .web_my_rank {
     vertical-align: middle;
     margin: auto 0;
+    height: 6vh;
 }
 
 .web_tem_rank_number,
@@ -440,7 +441,7 @@ flex-direction: column;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
-    font-size: 1.5vh;
+    font-size: 1.3vh;
     text-align: center;
     color: #FFFFFF;
     margin-bottom: 0;
@@ -450,7 +451,7 @@ flex-direction: column;
     font-family: "Inter";
     font-style: normal;
     font-weight: 700;
-    font-size: 1.5vh;
+    font-size: 1.3vh;
     text-align: center;
     color: #FFFFFF;
     word-spacing: 100vw;
@@ -770,6 +771,12 @@ flex-direction: column;
     background: transparent;
     border: none;
     color: white;
+    height: 3vh;
+    width:3vh ;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modalBodyBooster {
@@ -900,21 +907,32 @@ flex-direction: column;
     height: 22px;
     width: 22px;
     font-size: 12px;
+    border-radius: 50%;
     font-weight: bold;
     border-radius: 100%;
     /* color: #000000; */
     border: 1px solid #000000;
     background: transparent;
     padding-top: 2px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    height:3vh;
+    width:3vh;
+    border-radius: 100%;
 }
 .button-close-monthly{
     height: 22px;
     width: 22px;
     font-size: 12px;
+    border-radius: 50%;
     font-weight: bold;
     border-radius: 100%;
     color:#ffff;
     border:1px solid #ffff;
+    display:flex;
+    justify-content:center;
+    align-items: center;
     background: transparent;
     padding-top: 2px;
 
@@ -1586,13 +1604,17 @@ flex-direction: column;
         border-radius: 60%;
         margin-top:-12%;
     }
-// @media (min-width: 2000px) and (max-width: 2048px) {
-//     .box-container {
-
-//         height: 1536px;
-//         /* padding-bottom: 0; */
-//     }
-// }
+@media (min-width: 1000px) and (max-width: 1280px) {
+    .web_first_measurement_label {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.1vh !important;
+        text-align: center;
+        color: #FFFFFF;
+        word-spacing: 100vw;
+    }
+}
 
 // @media (min-width: 2550px) and (max-width: 2560px) {
 //     .box-container {

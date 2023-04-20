@@ -68,6 +68,13 @@ export class PlayZoneComponent implements OnInit {
   safeUrl: SafeResourceUrl;
   dartGameUrl: string;
   skylineGameUrl: string;
+  spinTheWheel: string;
+  cubeBlasters: string;
+  cubicallUrl: string;
+  dark_color: string;
+  medium_color: string;
+  light_color: string;
+  cubeBlastersUrl: string;
 
   constructor(private http: ApiserviceService, private readonly store: Store, public modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -98,13 +105,23 @@ export class PlayZoneComponent implements OnInit {
      
     }) 
 
+    this.dark_color=localStorage.getItem('topbar_color')
+    this.element.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
+console.log(this.dark_color);
+
+    this.medium_color=localStorage.getItem('medium_color')
+    this.element.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
+
+    this.light_color=localStorage.getItem('light_color')
+    this.element.nativeElement.style.setProperty('--lightColor', `${this.light_color}`)
+
     this.dynamicColor()
   }
 
   playZone(){
     let body = {
       _userid: this.mergeObj.USERID,
-      _game: this.mergeObj.id_coroebus_game,
+      _game: 183,
     }
 
 
@@ -123,7 +140,7 @@ export class PlayZoneComponent implements OnInit {
   rewardPassbook(){
     let body = {
       _userid: this.mergeObj.USERID,
-      _game: this.mergeObj.id_coroebus_game,
+      _game: 183,
     }
 
     this.http.playZonePassbook(body).subscribe((res:any)=>{
@@ -139,29 +156,69 @@ export class PlayZoneComponent implements OnInit {
   }
   open(content,data) {
     // console.log(content);
-    if(data.id_engagement_game==='2'){
-      this.dartGameUrl=`http://127.0.0.1:5500/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`;
-      this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.dartGameUrl);
-    }
-    // else if(data.id_engagement_game==='2'){
-    //   // this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
-    //   this.spinTheWheelURL=`http://127.0.0.1:5501/spin_the_wheel_latest/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
-    //   this.Url=new URL(this.spinTheWheelURL)
+    if(data.id_engagement_game==='1'){
 
-    //   this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.spinTheWheelURL)
-    // }
+      this.dartGameUrl=`https://coroebus.in/dart_game/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`;
+      // this.dartGameUrl=`http://127.0.0.1:5501/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`;
+      this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.dartGameUrl);
+      this.modalService.open(content);
+    }
+    else if(data.id_engagement_game==='2'){
+     
+      this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
+      this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.spinTheWheelURL);
+      this.modalService.open(content,{size: 'lg'});
+    }
+   
     else if(data.id_engagement_game==='5'){
       this.skylineGameUrl=`https://coroebusbeta.in/CoroebusSkyline/`
+      // this.skylineGameUrl=`http://127.0.0.1:5500/MiniGame_cube_Busters/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
       this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.skylineGameUrl)
+      this.modalService.open(content,{size: 'lg'});
     }
+    else if(data.id_engagement_game==='6'){
+      this.cubeBlasters=`http://127.0.0.1:5500/MiniGame_cube_Busters/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
+      this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.cubeBlasters)
+
+      this.modalService.open(content,{size: 'lg'});
+    }
+  }
+
+
+
+  // By Default 
+
+  openSpinTheWheels(content){
+
+    // this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel/`
+    this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel/?_userid=Cannon014&id_spot_engagement=126&id_spot_event_setup=248&id_engagement_game=2&id_spot_stw_log=2301&_game=318`
+      this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.spinTheWheelURL);
+      this.modalService.open(content,{size: 'lg'});
+  }
+
+  openCubeBlasters(content){
+    this.cubeBlastersUrl=`https://coroebusbeta.in/cube_blasters/`
+    this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.cubeBlastersUrl)
+    this.modalService.open(content,{size: 'lg'});
+
+
+  }
+  openCubicall(content){
+    this.cubicallUrl=`https://www.playtolearn.in/cubi-call/`
+    this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.cubicallUrl);
+    this.modalService.open(content,{size: 'lg'});
+
+  }
+  openDartGame(content){
+    this.dartGameUrl=`https://coroebusbeta.in/dart_game/`
+    this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.dartGameUrl)
     this.modalService.open(content);
-    setTimeout(()=>{
-      this.playZone();
-    },100);
-    
+  }
+  openSkyline(content){
+    this.skylineGameUrl=`https://coroebusbeta.in/CoroebusSkyline/`
+    this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.skylineGameUrl)
 
-
-    
+    this.modalService.open(content,{size: 'lg'});
 
   }
  
@@ -289,6 +346,22 @@ console.log(this.userSelectionData);
   })
 }
 
+navigateToCubicalls(){
+
+    window.open(
+      //  'http://coroebusbeta.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+
+      // 'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+      // '_self' // <- This is what makes it open in a new window.
+
+      'https://www.playtolearn.in/cubi-call/','_self'
+     
+   
+
+    
+
+  )
+}
 
 
 

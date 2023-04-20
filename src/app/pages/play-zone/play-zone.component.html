@@ -1,4 +1,4 @@
-<div class="account-pages">
+<!-- <div class="account-pages">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -19,9 +19,801 @@
             </div>
         </div>
     </div>
-</div> 
+</div>  -->
+
+<div class="PlayZone-web-view">
+    <div class="row">
+        <div class="col-12 d-flex gap-2">
+            <div class="col-8 playZone-container">
+                <h5>Play Zone</h5>
+                <div class="subHeading mb-3">
+                    <span class="text">Welcome to Play Zone! Start playing and earning Rewards!</span>
+                </div>
+                <div class="d-flex gap-1">
+                    <select class="form-control  form-select" [(ngModel)]="spot_type"
+                        aria-label=".form-select-lg example">
+                        <option value="Performance" class="form-option m-5">Performance</option>
+                        <option value="Engagement" class="form-option m-5">Engagement</option>
+                        <option value="" selected="selected" class="form-option m-5">All</option>
+                    </select>
+                   
+                    <div class="searchBar col-9" style="display: inline;">
+                        <input type="text" class="form-control" placeholder="Search" aria-label="Search People here.."
+                            aria-describedby="basic-addon2" [(ngModel)]="term1">
+                        <button type="button" (click)="clearText()" class="clearBtn">
+                            X
+                        </button>
+                    </div>
+                    <div>
+                        <button class="btn-sm-2 col-1" [style.background-color]="color==null? dark_color:color">
+                            <img src="assets/images/playZone/images/Vector.png" alt="">
+                        </button>
+                    </div>
+                </div>
+                <div class="row card-container" id="cardContainer">
+                    <div class="row cards" >
+                        <div class="card col-5" style="align-self: start;">
+                            <div >
+                                <div class="ps-3 subHeading">
+                                    <div>
+                                        <span class="text">&nbsp;Type &nbsp;:</span>&nbsp;
+                                        <span class="heading">Engagement</span>
+                                    </div>
+                                    <div>
+                                       
+                                     
+                                    </div>
+                                </div>
+                                <div class="card-body d-flex gap-2 mt-2">
+                                        <div class="col-5">
+                                                <div  style="width:16vh; height:16vh">
+                                                    <img src="assets/images/playZone/images/cubicall logo updated.png" alt="Logo" height="80%" width="80%">
+                                                </div>
+                                            <div>
+                                        </div>
+                                    </div>
+                                    <div class="col-7 ps-2">
+                                        <div>
+                                            <h6 class="mb-3 card-title">Cubicall</h6>
+                                            <p class="card-description">
+                                               6 Games packed in 1 cube.
+                                            </p>
+                                            <div class="d-flex justify-content-end align-items-end">
+                                                <!-- <span class="date"
+                                                    >21/03/2023
+                                                </span> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <hr width="98%">
+                                </div>
+                                <div class="d-flex align-items-center p-1">
+                                    <div (click)="openCubicall(content)" class="status-openButton" type="button">Open
+                                    </div>
+                                    
+
+                                    
+                                </div>
+                            </div>
+                        </div>
+                          <!--Default Cards  -->
+
+                        <!-- spin the wheel -->
+                        <div class="card col-5" style="align-self: start;">
+                            <div >
+                                <div class="ps-3 subHeading">
+                                    <div>
+                                        <span class="text">&nbsp;Type &nbsp;:</span>&nbsp;
+                                        <span class="heading">Engagement</span>
+                                    </div>
+                                    <div>
+                                       
+                                     
+                                    </div>
+                                </div>
+                                <div class="card-body d-flex gap-2 mt-2">
+                                        <div class="col-5">
+                                                <div  style="width:16vh; height:16vh">
+                                                    <img src="assets/images/playZone/images/spin_the_wheel.jpg" alt="Logo" height="80%" width="80%">
+                                                </div>
+                                            <div>
+                                        </div>
+                                    </div>
+                                    <div class="col-7 ps-2">
+                                        <div>
+                                            <h6 class="mb-3 card-title">Spin the Wheel</h6>
+                                            <p class="card-description">
+                                               Ready,set,spin & win big
+                                            </p>
+                                            <div class="d-flex justify-content-end align-items-end">
+                                                <!-- <span class="date"
+                                                    >21/03/2023
+                                                </span> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <hr width="98%">
+                                </div>
+                                <div class="d-flex  align-items-center p-1">
+                                    <div (click)="openSpinTheWheels(content)" class="status-openButton" type="button">Open
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cube Blasters -->
+                        <div class="card col-5" style="align-self: start;">
+                            <div >
+                                <div class="ps-3 subHeading">
+                                    <div>
+                                        <span class="text">&nbsp;Type &nbsp;:</span>&nbsp;
+                                        <span class="heading">Engagement</span>
+                                    </div>
+                                    <div>
+                                       
+                                     
+                                    </div>
+                                </div>
+                                <div class="card-body d-flex gap-2 mt-2">
+                                        <div class="col-5">
+                                                <div  style="width:16vh; height:16vh">
+                                                    <img src="assets/images/playZone/images/cubeBlasters.jpg" alt="Logo" height="80%" width="80%">
+                                                </div>
+                                            <div>
+                                        </div>
+                                    </div>
+                                    <div class="col-7 ps-2">
+                                        <div>
+                                            <h6 class="mb-3 card-title">Cube Blasters</h6>
+                                            <p class="card-description">
+                                               Slash It All!!!
+                                            </p>
+                                            <div class="d-flex justify-content-end align-items-end">
+                                                <!-- <span class="date"
+                                                    >21/03/2023
+                                                </span> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <hr width="98%">
+                                </div>
+                                <div class="d-flex  align-items-center p-1">
+                                    <div (click)="openCubeBlasters(content)" class="status-openButton" type="button">Open
+                                    </div>
+                                    
+
+                                    
+                                </div>
+                            </div>
+                        </div>
 
 
+                        <!-- Dart Game -->
+                        <div class="card col-5" style="align-self: start;">
+                            <div >
+                                <div class="ps-3 subHeading">
+                                    <div>
+                                        <span class="text">&nbsp;Type &nbsp;:</span>&nbsp;
+                                        <span class="heading">Engagement</span>
+                                    </div>
+                                    <div>
+                                       
+                                     
+                                    </div>
+                                </div>
+                                <div class="card-body d-flex gap-2 mt-2">
+                                        <div class="col-5">
+                                                <div  style="width:16vh; height:16vh">
+                                                    <img src="assets/images/playZone/images/Dart_game_logo.jpg" alt="Logo" height="80%" width="80%">
+                                                </div>
+                                            <div>
+                                        </div>
+                                    </div>
+                                    <div class="col-7 ps-2">
+                                        <div>
+                                            <h6 class="mb-3 card-title">Dart Game</h6>
+                                            <p class="card-description">
+                                                Unleash your inner bullseye.
+                                            </p>
+                                            <div class="d-flex justify-content-end align-items-end">
+                                                <!-- <span class="date"
+                                                    >21/03/2023
+                                                </span> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <hr width="98%">
+                                </div>
+                                <div class="d-flex  align-items-center p-1">
+                                    <div (click)="openDartGame(content)" class="status-openButton" type="button">Open
+                                    </div>
+                                    
+
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Sky line-->
+                        <div class="card col-5" style="align-self: start;">
+                            <div >
+                                <div class="ps-3 subHeading">
+                                    <div>
+                                        <span class="text">&nbsp;Type &nbsp;:</span>&nbsp;
+                                        <span class="heading">Engagement</span>
+                                    </div>
+                                    <div>
+
+                                    </div>
+                                </div>
+                                <div class="card-body d-flex gap-2 mt-2">
+                                        <div class="col-5">
+                                                <div  style="width:16vh; height:16vh">
+                                                    <img src="assets/images/playZone/images/skyline logo.png" alt="Logo" height="80%" width="80%">
+                                                </div>
+                                            <div>
+                                        </div>
+                                    </div>
+                                    <div class="col-7 ps-2">
+                                        <div>
+                                            <h6 class="mb-3 card-title">Sky line</h6>
+                                            <p class="card-description">
+                                                Aim for the sky, and no one can stop you from reaching the top.
+                                            </p>
+                                            <div class="d-flex justify-content-end align-items-end">
+                                                <!-- <span class="date"
+                                                    >21/03/2023
+                                                </span> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <hr width="98%">
+                                </div>
+                                <div class="d-flex  align-items-center p-1">
+                                    <div (click)="openSkyline(content)" class="status-openButton" type="button">Open
+                                    </div>
+                                    
+
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <!-- Dynamic Playzone Cards started -->
+                        <!-- <div class="card col-5"
+                            *ngFor="let data of spotEngagementData|filterPipe:spot_type  |filter:term1">
+                           
+                            <div [ngStyle]="{'opacity':data._status==='active' ? 1 : 0.7}">
+                                <div class="ps-3 subHeading">
+                                    <div>
+                                        <span class="text">&nbsp;Type &nbsp;:</span>&nbsp;
+                                        <span class="heading">{{data.spot_type}}</span>
+                                    </div>
+                                    <div>
+                                        <div
+                                            *ngIf="data.spot_status ==='Open' &&  data._status==='Retracted'; then ifBlockRetracted">
+                                        </div>
+                                        <ng-template #ifBlockRetracted>
+                                            <button class="btn btn-secondary" [disabled]="true">Retracted</button>
+                                        </ng-template>
+                                        <div
+                                            *ngIf="data.spot_status === 'Open' &&  data._status==='expired'; then ifBlockExpired">
+                                        </div>
+                                        <ng-template #ifBlockExpired>
+                                            <button class="btn btn-danger" [disabled]="true">{{data._status}}</button>
+                                        </ng-template>
+                                     
+                                    </div>
+                                </div>
+                                <div class="card-body d-flex gap-2">
+                                        <div class="col-5">
+                                                <div  style="width:10vw; height:16vh">
+                                                    <img src="{{data.logo}}" alt="Logo" height="100%" width="100%">
+                                                </div>
+                                            <div>
+                                        </div>
+                                    </div>
+                                    <div class="col-7">
+                                        <div>
+                                            <h6 class="mb-3 card-title">{{data.spot_engagement_title}}</h6>
+                                            <p class="card-description">
+                                                {{data.spot_engagement_description}}
+                                            </p>
+                                            <div class="d-flex justify-content-end align-items-end">
+                                                <span class="date"
+                                                    style="">{{data.end_date|date:"d/M/yyyy 'at' hh:mm a"}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <hr width="98%">
+                                </div>
+                                <div class="d-flex p-1">
+                                    <div
+                                        *ngIf="data.spot_status==='Open' && data._status==='active'; then openBlock;else openedBlock">
+                                    </div>
+                                    <ng-template #openBlock>
+                                        <button style="cursor:pointer;border: none;background: #ffff; margin:3% 5%;"
+                                            class="status-openButton" (click)="open(content,data)">
+                                            {{data.spot_status}}
+                                        </button>
+                                    </ng-template>
+                                    <ng-template #openedBlock>
+
+                                        <button style="cursor:pointer;border: none;background: #ffff; margin:3% 5%;"
+                                            [disabled]="true" class="status-openedButton">
+                                            {{data.spot_status}}
+                                        </button>
+                                    </ng-template>
+
+                                    
+                                </div>
+                            </div>
+
+                        </div> -->
+                        <ng-template #content let-c="close" let-d="dismiss">
+                                       
+                                    
+                            <button type="button" class="btn-close" aria-label="Close"
+                            (click)="dismiss()">x</button>
+                          
+                        
+                
+                                <iframe [src]='safeUrl' title="spin_the_wheel" height="680px" width="100%">
+                                </iframe>
+                                
+
+                        </ng-template>
+
+                        <!-- <div class="col-12 d-flex justify-content-center align-items-center"
+                            *ngIf="spotEngagementData.length==0||filterByCategory.length==0">
+                            <div class="noContentContainer">
+
+                                <img src="assets/images/playZone/images/spot.svg" alt="" width="100%" height="100%">
+                                <span class="noContentContainer-Desc">
+                                    Stay tuned! You might soon get a chance to play and earn rewards.
+                                </span>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 reward-container">
+                <div class="reward-content col-12" *ngIf="spotEngagementPassbook.length>=0">
+                    <div class="rewardHeading">
+                        <span class="heading">Reward passbook</span>
+                        <div class="d-flex gap-2 mb-2">
+                            <span>
+                                <img src="assets/images/playZone/images/Reward point0 1.png" alt="reward">
+                            </span>
+                            <!-- <span class="heading">{{rewardPoints}}</span> -->
+                            <span class="heading">0</span>
+                        </div>
+
+                    </div>
+                    <div class="d-flex gap-2 mt-4">
+                        <div style="height:5vh">
+
+                            <div class="row">
+                                <div class="col">
+                                    <div ngbDropdown class="d-inline-block" style="font-family:'Inter';">
+                                        <img src="assets/images/playZone/images/Group 6078.png" type="button"
+                                            alt="filter" id="dropdownBasic1" ngbDropdownToggle>
+                                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="m-2"
+                                            style="width:20vw;">
+                                            <label class="container" ngbDropdownItem>
+                                                <span class="DropdownHeading">Status</span>
+                                            </label>
+                                            <label class="container" ngbDropdownItem
+                                                (change)="sortList('date_time_stamp')">
+                                                <input type="checkbox">&nbsp;Latest&nbsp;
+                                                <span class="checkmark"></span>
+                                            </label>
+                                           
+
+                                            <label class="container" ngbDropdownItem>
+                                                <span class="DropdownHeading">Engagement type</span>
+                                            </label>
+                                            <label class="container" ngbDropdownItem>
+                                                <input type="checkbox"  (change)="filterPassBook('Performance')" data-value="Performance" >&nbsp;Performance&nbsp;
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <label class="container" ngbDropdownItem
+                                                (change)="filterPassBook('Engagement')">
+                                                <input type="checkbox" data-value="Performance">&nbsp;Engagement&nbsp;
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <label class="container" ngbDropdownItem (change)="filterPassBook('')">
+                                                <input type="checkbox">&nbsp;All
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="RewardsearchBar">
+                            <input type="text" class="form-control" placeholder="Search here" aria-label="Search"
+                                aria-describedby="basic-addon2" [(ngModel)]="term">
+                            <button type="button" (click)="clearText()" class="rewardClearBtn">
+                                X
+                            </button>
+                        </div>
+                        <button class="btn-sm-2" [style.background-color]="color==null? dark_color:color">
+                            <img src="assets/images/playZone/images/Vector.png" alt="" type="button"
+                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                        </button>
+                    </div>
+                    <div style="overflow-y: auto;height: 10vh;overflow-x: hidden;">
+                        <table class="table  table-striped m-2">
+                        <thead>
+                            <tr>
+                                <th scope="col">Sr No.</th>
+                                <th scope="col">Event</th>
+                                <th scope="col">
+                                    <div class="d-flex gap-2">
+                                        Date
+                                        <div class="d-flex flex-column justify-content-center gap-2">
+                                            <img src="assets/images/playZone/images/filterUp.png" alt=""
+                                                (click)="sortList('date_time_stamp')" width="12px" *ngIf="reverse">
+                                            <img src="assets/images/playZone/images/filterDown.png" alt=""
+                                                (click)="sortList('date_time_stamp')" width="12px" *ngIf="!reverse">
+                                        </div>
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div class="d-flex gap-2">
+                                        Points
+                                        <div class="d-flex flex-column justify-content-center gap-2">
+                                            <img src="assets/images/playZone/images/filterUp.png" alt=""
+                                                (click)="filterByPointsDsc()" width="12px" *ngIf="Ascending">
+                                            <img src="assets/images/playZone/images/filterDown.png" alt=""
+                                                (click)="filterByPointsAsc()" width="12px" *ngIf="Descending">
+                                        </div>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody >
+                            <tr *ngFor="let passbookData of Passbook |filter:term |orderBy: key:reverse;let i=index">
+                                <td scope="row">{{i+1}}</td>
+                                <td>
+                                    <span [ngbTooltip]="tooltipContent" placement="bottom"
+                                        id=table-row>{{passbookData.game_name.slice(0,10)}}&nbsp;...</span>
+                                </td>
+                                <td>{{passbookData.date_time_stamp|date:'dd/MM/yyyy'}}</td>
+                                <td>{{passbookData.reward_point}}</td>
+                                <ng-template #tooltipContent>
+                                    {{passbookData.game_name}}
+                                </ng-template>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                    
+                    <div class="d-flex justify-content-center align-items-center"
+                        *ngIf="spotEngagementPassbook.length<=0||Passbook.length<=0">
+                        <div class="noContentContainer">
+                            <img src="assets/images/playZone/images/spot.svg" alt="" width="90%" height="90%">
+                            <span class="noContentContainer-Desc">
+                                Stay tuned! You might soon get a chance to play and earn rewards.
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+<div class="playzone-mobile-view">
+    <div class="row">
+        <div class="col">
+            <div class="mobile-playzone-container">
+
+                <div class="col-10">
+                    <h5>Play Zone</h5>
+                    <div class="mb-1">
+                        <span class="text">Welcome to Play Zone! Start playing and earning Rewards!</span>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <img src="assets/images/playZone/images/Reward point0 1.png" alt="">&nbsp;
+                    <span class="heading">{{rewardPoints}}</span>
+                </div>
+            </div>
+            <div>
+
+                <div class="d-flex justify-content-around m-2 mb-3 gap-2 tab">
+                    <button (click)="openEvent()" [ngClass]="openEvents?'active_tab-btn':'tab-btn'">Events</button>
+                    <button (click)="rewardPassBook()" [ngClass]="openPassBook?'active_tab-btn':'tab-btn'" >Reward passbook</button>
+                </div>
+                <div>
+                    <ng-container *ngIf="openEvents">
+                        <div class="d-flex gap-1 mb-2">
+                            <div class="col-2.5">
+                                <div style="height:5vh">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div ngbDropdown class="d-inline-block">
+                                                <img src="assets/images/playZone/images/Group 6078.png" type="button"
+                                                    alt="filter" id="dropdownBasic2" ngbDropdownToggle>
+
+                                                <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="m-2"
+                                                    style="width:60vw;">
+                                                    <label class="container" ngbDropdownItem
+                                                        (click)="filter('Performance')">
+                                                        &nbsp;Performance&nbsp;
+                                                    </label>
+
+                                                    <label class="container" ngbDropdownItem
+                                                        (click)="filter('Engagement')">
+                                                        &nbsp;Engagement&nbsp;
+
+                                                    </label>
+                                                    <label class="container" ngbDropdownItem (click)="filter('')">
+                                                        &nbsp;All
+
+                                                    </label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="RewardsearchBar col-8">
+                                <input type="text" class="form-control" placeholder="Search"
+                                    aria-label="Search People here.." aria-describedby="basic-addon2"
+                                    [(ngModel)]="term">
+                                <button type="button" (click)="clearText()" class="rewardClearBtn">
+                                    X
+                                </button>
+                            </div>
+                            <button class="btn-sm-2" [style.background-color]="dark_color">
+                                <img src="assets/images/playZone/images/Vector.png" alt="">
+
+                            </button>
+                        </div>
+                        <div class="card col-12" *ngFor="let data of filterByCategory|filter:term"
+                            [ngStyle]="{'opacity':data._status==='active' ? 1 : 0.7}">
+                            <div class="p-2 subHeading">
+                                <div>
+                                    <span class="text">Type &nbsp;:</span>&nbsp;
+                                    <span class="heading">{{data.spot_type}}</span>
+                                </div>
+                                <div>
+                                    <div *ngIf="data.spot_status === 'Open' &&  data._status==='Retracted'; then ifBlock">
+                                    </div>
+
+                                    <ng-template #ifBlock>
+                                        <button class="btn btn-secondary" [disabled]="true">Retracted</button>
+                                    </ng-template>
+                                    <div *ngIf="data.spot_status==='Open' &&  data._status==='expired'; then ifBlock1">
+                                    </div>
+                                    <ng-template #ifBlock1>
+                                        <button class="btn btn-danger" [disabled]="true">{{data._status}}</button>
+                                    </ng-template>
+                                   
+                                </div>
+                            </div>
+                            <div class="card-body d-flex gap-2">
+                                <div class="col-5">
+                                    <div class="p-1" style="height:19vh;width:19vh;">
+                                        <img src="{{data.logo}}" alt="Logo" height="100%" width="100%">
+                                    </div>
+                                </div>
+                                <div class="col-7">
+                                    <div>
+                                        <h6 class="mb-3">{{data.spot_engagement_title}}</h6>
+                                        <p class="mobile-card-description">
+                                            {{data.spot_engagement_description}}
+                                        </p>
+                                        <div class="d-flex justify-content-end align-items-end mt-2">
+                                            <span class="date"
+                                                style="position: absolute; bottom:60px; right:10px">{{data.end_date |
+                                                date:"d/M/yyyy 'at' hh:mm a"}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <hr  width="98%">
+                            </div>
+                            
+                            <div class="d-flex  mb-2 ms-4" style="cursor:pointer;">
+                                <div
+                                    *ngIf="data.spot_status==='Open' && data._status==='active'; then openedBlock;else openBlock">
+                                </div>
+                                <ng-template #openedBlock>
+                                    <button style="cursor:pointer;border: none;background: #ffff;"
+                                        class="mobile-status-openButton" (click)="open(content1,data)">
+                                        {{data.spot_status}}
+                                    </button>
+                                </ng-template>
+                                <ng-template #openBlock>
+
+                                    <button style="cursor:pointer;border: none;background: #ffff;" [disabled]="true"
+                                        class="status-openButton">
+                                        {{data.spot_status}}
+                                    </button>
+                                </ng-template>
+                                <ng-template #content1 let-c="close" let-d="dismiss">
+                                    <button type="button" class="btn-close" aria-label="Close"
+                                                (click)="d('Cross click')">X</button>
+                                    <!-- <iframe [src]='safeUrl' title="spin_the_wheel" height="560px" width="100%">
+                                    </iframe> -->
+                                    <iframe [src]='safeUrl' title="spin_the_wheel" height="560px" width="100%">
+                                    </iframe>
+
+                                
+                                </ng-template>
+                            </div>
+                        </div>
+                        <div class="col-12 d-flex justify-content-center align-items-center h-100"
+                            *ngIf="Passbook.length<=0">
+                            <div class="mobile-noContentContainer">
+                                <img src="assets/images/playZone/images/spot.svg" alt="" width="90%" height="90%">
+                                <span class="mobile-noContentContainer-Desc">
+                                    Stay tuned! You might soon get a chance to play and earn rewards.
+                                </span>
+                            </div>
+
+
+                        </div>
+                    </ng-container>
+
+                    <ng-container *ngIf="openPassBook">
+                        <div class="d-flex gap-1 mb-2">
+                            <div class="col-2.5">
+                                <div style="height:5vh">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <div ngbDropdown class="d-inline-block">
+                                                <img src="assets/images/playZone/images/Group 6078.png" type="button"
+                                                    alt="filter" id="dropdownBasic2" ngbDropdownToggle>
+                                                <div ngbDropdownMenu aria-labelledby="dropdownBasic" class="m-2"
+                                                    style="width:60vw;">
+                                                    <label class="container" ngbDropdownItem>
+                                                        <span class="DropdownHeading">Status</span>
+                                                    </label>
+                                                    <label class="container" ngbDropdownItem
+                                                        (change)="sortList('date_time_stamp')">
+                                                        <input type="checkbox">&nbsp;Latest&nbsp;
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                   
+
+                                                    <label class="container" ngbDropdownItem>
+                                                        <span class="DropdownHeading">Engagement type</span>
+                                                    </label>
+                                                    <label class="container" ngbDropdownItem
+                                                        (change)="filterPassBook('Performance')">
+                                                        <input type="checkbox"
+                                                            data-value="Performance">&nbsp;Performance&nbsp;
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <label class="container" ngbDropdownItem
+                                                        (change)="filterPassBook('Engagement')">
+                                                        <input type="checkbox"
+                                                            data-value="Performance">&nbsp;Engagement&nbsp;
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <label class="container" ngbDropdownItem
+                                                        (change)="filterPassBook('')">
+                                                        <input type="checkbox">&nbsp;All
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="RewardsearchBar col-8">
+                                <input type="text" class="form-control" placeholder="Search"
+                                    aria-label="Search People here.." aria-describedby="basic-addon2"
+                                    [(ngModel)]="term">
+                                <button type="button" (click)="clearText()" class="rewardClearBtn">
+                                    X
+                                </button>
+                            </div>
+                            <button class="btn-sm-2" [style.background-color]="color==null? 'dark_color':'color'">
+                                <img src="assets/images/playZone/images/Vector.png" alt="">
+
+                            </button>
+                        </div>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Sr No.</th>
+                                    <th scope="col">Event</th>
+                                    <th scope="col">
+                                        <div class="d-flex gap-2">
+                                            Date
+                                            <div class="d-flex flex-column justify-content-center gap-2">
+                                                <img src="assets/images/playZone/images/filterUp.png" alt=""
+                                                    (click)="sortList('date_time_stamp')" width="12px" *ngIf="reverse">
+                                                <img src="assets/images/playZone/images/filterDown.png" alt=""
+                                                    (click)="sortList('date_time_stamp')" width="12px" *ngIf="!reverse">
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="d-flex gap-2">
+                                            Points
+                                            <div class="d-flex flex-column justify-content-center gap-2">
+                                                <img src="assets/images/playZone/images/filterUp.png" alt=""
+                                                    (click)="filterByPointsDsc()" width="12px" *ngIf="Ascending">
+                                                <img src="assets/images/playZone/images/filterDown.png" alt=""
+                                                    (click)="filterByPointsAsc()" width="12px" *ngIf="Descending">
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr
+                                    *ngFor="let passbookData of Passbook |filter:term|orderBy: key : reverse  ;let i=index ">
+                                    <td scope="row">{{i+1}}</td>
+                                    <td>
+                                        <span [ngbTooltip]="tooltipContent" placement="bottom"
+                                            id=table-row>{{passbookData.game_name.slice(0,10)}}&nbsp;...</span>
+                                    </td>
+                                    <td>{{passbookData.date_time_stamp|date:'dd/MM/yyyy'}}</td>
+                                    <td>{{passbookData.reward_point}}</td>
+                                    <ng-template #tooltipContent>
+                                        {{passbookData.game_name}}
+                                    </ng-template>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="col-12 d-flex justify-content-center align-items-center"
+                            *ngIf="Passbook.length<=0">
+                            <div class="mobile-noContentContainer">
+                                <img src="assets/images/playZone/images/spot.svg" alt="" width="90%" height="90%">
+                                <span class="mobile-noContentContainer-Desc">
+                                    Stay tuned! You might soon get a chance to play and earn rewards.
+                                </span>
+                            </div>
+                        </div>
+                    </ng-container>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
 
 <!-- Rotated View -->
 <div class="mobile-view-rotated d-flex flex-column justify-content-center align-items-center">

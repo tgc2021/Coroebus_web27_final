@@ -13,3 +13,26 @@
     height: 20vh;
   }
   
+
+  .account-pages{
+    background-color: #ffff;
+    height: 91vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    
+    
+}
+::ng-deep{
+    .page-content {
+        padding: 71px 0px 0px 0px !important;
+    }
+    
+    
+
+
+}

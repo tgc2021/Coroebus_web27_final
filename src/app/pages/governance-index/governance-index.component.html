@@ -2,9 +2,59 @@
     <div class="box_container d-flex justify-content-center align-items-center">
         <mat-card class="box_container_card" >
 <div  *ngFor="let res of governance_index_response; let i=index">
-            <div class="header_card_div">
+            <div class="header_card_div" *ngIf="res._data.point_label !='Calibration'">
                 <div>
-                    <h4 class="title_table">{{res._data.point_label}}</h4>
+                    <h4 class="title_table" >{{res._data.point_label}}</h4>
+                </div>
+                <hr>
+                <mat-card class="header_card">
+                    <div class="d-flex" style="width: 100%;">
+                        <div class="left_side" style="width: 91%;">
+                            <p class="header_label">Elements</p>
+                        </div>
+                        <div class="right_side" style="width: 9%;">
+                            <p  class="header_label">Score</p>
+
+                        </div>
+                    </div>
+                </mat-card>
+                
+                <div class="accordion mt-2" *ngFor="let response of res._data_kpi">
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header style="height: 8vh;">
+                            <mat-panel-title class="growth_index_accordion_mobile">
+                                <div class="row" style="width: 100%;">
+                                    <div class="col-11">
+                                        <strong>{{response.process_data.process_name}}</strong>
+                                    </div>
+                                    <div class="col-1" style="text-align: center;">
+                                        <strong>{{response.process_data.weightage}}</strong>
+
+                                    </div>
+                                </div>
+                            </mat-panel-title>
+
+                        </mat-expansion-panel-header>
+                        <div class="row" style="width: 100%;" class="row sub_title_div" *ngFor="let responsesub of response.kpi_data">
+                            <div class="col-11">
+                                <div class="accordion_sub_title">{{responsesub.kpi_name}}</div>
+                            </div>
+                            <div class="col-1" style="padding-left: 1.3vw;">
+                                <div class="accordion_sub_score">{{responsesub.weightage}}</div>
+                            </div>
+                        </div>
+
+                     
+
+                    </mat-expansion-panel>
+                </div>
+
+               
+            </div>
+
+            <div class="header_card_div" *ngIf="res._data.point_label =='Calibration'">
+                <div>
+                    <h4 class="title_table" >{{res._data.point_label}}</h4>
                 </div>
                 <hr>
                 <mat-card class="header_card">
@@ -18,18 +68,17 @@
                         </div>
                     </div>
                 </mat-card>
-
-                <div class="accordion mt-2" *ngFor="let response of res._data_kpi">
+                <div class="accordion mt-2" >
                     <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                         <mat-expansion-panel-header style="height: 8vh;">
                             <mat-panel-title class="growth_index_accordion_mobile">
                                 <div class="row" style="width: 100%;">
                                     <div class="col-11">
-                                        <strong>{{response.process_data.process_name}}</strong>
+                                        <strong>{{calibrationData.process_name}}</strong>
 
                                     </div>
                                     <div class="col-1 " style="text-align: end;">
-                                        <strong>{{response.process_data.weightage}}</strong>
+                                        <strong>{{calibrationData.weightage}}</strong>
 
                                     </div>
                                 </div>
@@ -37,24 +86,16 @@
 
                         </mat-expansion-panel-header>
 
-                        <div>
-                            <div>
-                                <div class="row sub_title_div" *ngFor="let responsesub of response.kpi_data">
-                                    <div class="col-11">
-                                        <div class="accordion_sub_title">{{responsesub.kpi_name}}</div>
-                                    </div>
-                                    <div class="col-1">
-                                        <div class="accordion_sub_score"  style="text-align: center;">{{responsesub.weightage}}</div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
+                       
 
                     </mat-expansion-panel>
                 </div>
 
+
+                    
                
+
+
             </div>
         </div>
         </mat-card>

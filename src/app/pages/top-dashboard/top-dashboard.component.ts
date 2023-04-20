@@ -5,10 +5,10 @@ import { DOCUMENT, Location } from '@angular/common';
 import { Util } from '@app/utils/util';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { log } from 'console';
 import { Subscription, combineLatest } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../core/app-state';
+
 
 @Component({
   selector: 'app-top-dashboard',
@@ -44,10 +44,11 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
   combineLatest: Subscription
   userSelectionData: any
   isVideoHide: any;
-  dataMap: any
+  dataMap: any=''
   map:any
   bi:any
   mapUrl:any
+  map_bh:any
   constructor(private readonly store: Store,public route:ActivatedRoute, config: NgbModalConfig, public sanitizer: DomSanitizer, public router: Router, public http: ApiserviceService, public Util: Util, public element: ElementRef, public modalService: NgbModal, public location: Location, @Inject(DOCUMENT) private _document: Document) {
     config.backdrop = 'static';
     config.keyboard = false;
@@ -83,32 +84,6 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
 
     })
 
-    var href = window.location.href;
-    console.log(href)
-    var url = new URL(href)
-    console.log(url);
-  
-    var checkUserID= this.route.queryParams
-    .subscribe(params => {
-      console.log(params); // { orderby: "price" }
-      this.map = params.map;
-      console.log(this.map); // price
-      localStorage.setItem('map',this.map)
-    }
-  );
-  this.bi=  localStorage.getItem('map')
-  if( this.bi!= 'undefined'){
-     this.dataMap=this.bi
-
-     console.log(this.dataMap);
-     
-  }
-  else{
-    console.log('growth');
-    
-    this.dataMap='https://public.tableau.com/views/Growth_Index_Map/Growth_Index_Map?:language=en-US&:display_count=n&:origin=viz_share_link'
-
-  }
     this.userid_bh = localStorage.getItem('userid')
     this.id_coroebus_org = localStorage.getItem('id_coroebus_org_bh')
 
@@ -124,6 +99,8 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
       this.buisness_head_response = res
       this.buisness_head_response_ = this.buisness_head_response.data
       console.log(this.buisness_head_response_);
+      this.map_bh=this.buisness_head_response_._personal_data.map_url
+      localStorage.setItem('res',this.map_bh)
       this.GrowthIndexData = this.buisness_head_response.data._points
       this.dark_color = localStorage.getItem('topbar_color')
       this.element.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
@@ -135,17 +112,55 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
       this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.videourl)
     })
 
+    var href = window.location.href;
+    console.log(href)
+    var url = new URL(href)
+    console.log(url);
+  
+    var checkUserID= this.route.queryParams
+    .subscribe(params => {
+      console.log(params); // { orderby: "price" }
+      this.map = params.map;
+      console.log(this.map); // price
+      localStorage.setItem('map',this.map)
+    }
+  );
+  this.bi=  localStorage.getItem('map')
+  if( this.bi!='undefined'){
+     this.dataMap=this.bi
+
+     console.log(this.dataMap);
+     
+  }
+  else{
+    console.log('growth');
+  
+      this.dataMap= localStorage.getItem('res')
+      console.log(this.dataMap);
+     
+
+    
+      
+
+  
+  
+    
+
+  }
+   
 
   }
 
   ngAfterViewInit() {
 
     if (this.isVideoHide) {
-      this.openModal();
+      this.close('content')
+      // this.openModal();
 
     }
   }
 
+ 
   navigateToBIMap(data: any) {
 
     console.log(data);
@@ -174,12 +189,14 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
     this.router.navigateByUrl('/top_dashboard?userID=' + this.hos_user_id + "&gameID=" + this.hos_game_id + "&roleID=" + this.hos_role_id)
 
   }
-  openModal() {
-    this.modalService.open(this.content, { size: 'lg', centered: true });
-  }
+  // openModal() {
+  //   this.modalService.open(this.content, { size: 'lg', centered: true });
+  // }
   close(content) {
     localStorage.setItem('VideoHide', 'false');
     this.modalService.dismissAll();
+    location.reload()
+
   }
 
 }
