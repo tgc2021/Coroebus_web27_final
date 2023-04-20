@@ -84,22 +84,25 @@ export class TopbarComponent implements OnInit, OnDestroy {
     
     this.id_role=this.userSelectionData._personal_data.id_role
     console.log(this.id_role);
-    let bodyforBH={
+    if(this.id_role== 13){
+      let bodyforBH={
     
-      '_userid': this.userSelectionData?._personal_data?.USERID,
-      '_org': this.userSelectionData?._personal_data?.id_coroebus_organization
-
-      }
-      console.log(bodyforBH);
-      
-      this.http.buisnessHead(bodyforBH).subscribe(res=>{
-        console.log(res);
-        this.buisness_head_response=res
-      this.buisness_head_response_=this.buisness_head_response.data
-      console.log(this.buisness_head_response_);
-      localStorage.setItem('bhresponse',this.buisness_head_response_._personal_data.organization_logo)
-        this.Org_logo=localStorage.getItem('bhresponse')
-      })
+        '_userid': this.userSelectionData?._personal_data?.USERID,
+        '_org': this.userSelectionData?._personal_data?.id_coroebus_organization
+  
+        }
+        console.log(bodyforBH);
+        
+        this.http.buisnessHead(bodyforBH).subscribe(res=>{
+          console.log(res);
+          this.buisness_head_response=res
+        this.buisness_head_response_=this.buisness_head_response.data
+        console.log(this.buisness_head_response_);
+        localStorage.setItem('bhresponse',this.buisness_head_response_._personal_data.organization_logo)
+          this.Org_logo=localStorage.getItem('bhresponse')
+        })
+    }
+    
 
     this.passDataToHeaderSub?.unsubscribe()
     this.passDataToHeaderSub = this.eventService.subscribe('passDataToHeader', (data) => {

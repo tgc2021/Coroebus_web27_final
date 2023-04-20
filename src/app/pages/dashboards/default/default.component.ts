@@ -1521,8 +1521,7 @@ else if(this.activeTabForSectionView_2 == 4){
 
       
         
-        if(this.hideBattleGround){
-          console.log('no hide');
+      
           
           window.open(
             // 'http://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"spect="+"yes",
@@ -1530,7 +1529,7 @@ else if(this.activeTabForSectionView_2 == 4){
              'http://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total",
             '_self' // <- This is what makes it open in a new window.
           )
-        }
+        
 
     //  else{
     //   console.log('hide');
