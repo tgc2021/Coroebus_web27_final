@@ -19,6 +19,8 @@ import * as fromRoot from '../../core/app-state';
 })
 export class TopDashboardComponent implements OnInit, AfterViewInit {
   panelOpenState = false;
+  panelOpenState1=false;
+  panelOpenState2=false;
 
   @ViewChild('content') content;
 
