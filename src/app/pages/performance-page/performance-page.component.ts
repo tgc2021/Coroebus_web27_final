@@ -228,6 +228,8 @@ export class PerformancePageComponent implements OnInit {
       console.log("Graph",body)
       if (!err && res?.statuscode === 200) {
         this.graphMasterData = res?.data
+        console.log(this.graphMasterData);
+        
         //this.graphData = this.graphMasterData
         this.filterGraphData()
       } else {

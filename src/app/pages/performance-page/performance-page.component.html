@@ -1,17 +1,23 @@
 <div class="container-fluid web-view performance-container">
     <div class="row performance-filter-row">
         
-        <div class="col-lg-2 col-md-2 col-3 d-flex mt-3">
+        <div class="col-lg-3 col-md-3 col-4 d-flex ">
            
-            <span class="performance-filter-txt">
+            <!-- <span class="performance-filter-txt">
                 Filter
                 <i class="fa fa-filter"></i>
-            </span>
-           
+            </span> -->
+           <span>
+            <img class="prof_pic_my_performance" src="{{graphMasterData._personal_data[0].profile_logo}}"/>
+           </span>
+<div>
+    <div class="name_my_performance">Name  : {{graphMasterData._personal_data[0].first_name}}</div>
+    <div class="level_my_performance">Level  : {{graphMasterData._personal_data[0].role_name}}</div>
 
+</div>
         </div>
 
-        <div class="col-lg-8 col-md-8 col-5 d-flex justify-content-end">
+        <div class="col-lg-7 col-md-7 col-4 d-flex justify-content-end">
             <div class="historical-live-btn mt-2" role="group" aria-label="Basic radio toggle button group"
             *ngIf="(userObj?._personal_data?.id_role === '3' || userObj?._personal_data?.id_role === '4')">
             <input type="radio" class="btn-check" name="Historical" id="Historical" autocomplete="off"
@@ -30,7 +36,7 @@
         </div>
         </div>
 
-        <div class="col-lg-2 col-md-2 col-4 mt-1">
+        <div class="col-lg-2 col-md-2 col-4">
             <select class="form-select performance-filter-select" aria-label="Default select example"
             [(ngModel)]="dropDownValue" (change)="onChange($event.target.value)">
             <option [attr.selected]="item?.mapTo?.indexOf(buttonFilterActive) > -2 ? true : null"
