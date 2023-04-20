@@ -23,34 +23,34 @@
 .rank_h {
     margin-left: 1.2vw;
     font-weight: 600;
-    font-size: 1.6vh;
+    font-size: 1.8vh;
     line-height: 150%;
     margin-top: 3%;
    display: flex;
    align-items: center;
    padding: 2%; 
+   font-family: 'Inter';
 }
 
 .name_h {
     margin-left: 3%;
     margin-top: 3%;
     font-weight: 600;
-    font-size: 1.6vh;
+    font-size: 1.8vh;
     line-height: 150%;
     display: flex;
     padding: 2%;
     align-items: center;
- 
+    font-family: 'Inter';
 }
 
 .points_h {
     margin-top: 3%;
     margin-left: 94%;
     font-weight: 600;
-    font-size: 1.6vh;
-    
+    font-size: 1.8vh;
+    font-family: 'Inter';
     display: flex;
-  
     align-items: center;
     line-height: 150%;
     padding: 2%;
@@ -589,7 +589,7 @@
     line-height: 150%;
     margin-left: 3.6rem;
     margin-bottom: 3px;
-    font-family: 'Work Sans';
+    font-family: 'Inter';
     color:#292929;
     padding: 10px 0px 0px 10px;
 }
@@ -629,13 +629,12 @@
 }
 
 .level-rank-name {
-    font-weight: 700;
-    font-size: 1.5vh;
+    font-weight: 500;
+    font-size: 2vh;
     line-height: 150%;
     align-items: center;
     text-align: center;
-    // text-transform: uppercase;
-
+    font-family:'Inter' ;
     color: #000000;
 }
 
@@ -644,6 +643,7 @@
     font-size: 15.1162px;
     line-height: 18px;
     color: #FFFFFF;
+    font-family:'Inter' ;
 }
 
 .avatar-upload {
@@ -699,12 +699,17 @@
     background-position: center;
 }
 .dashboard-user-name {
-    font-size: 2.2vh;
-    font-family: 'Work Sans';
+    font-size: 2vh;
+    font-family: 'Inter';
     line-height: 100%;
     color: #000000;
+    font-weight: 500;
     font-style: normal;
     text-align: center;
+    line-height: 2.4vh;
+
+    letter-spacing: 0.2px;
+
 }
 .dashboard-user-teamname {
    
@@ -751,18 +756,18 @@
 .dashboard-banner-point-btn-text {
     font-weight: 600;
     font-size: 2vh;
-    font-family: "Work sans";
+    font-family: "Inter";
     align-items: center;
     text-align: center;
     color: #000000;
 }
 
 .dashboard-level-rank-name {
-    font-weight: 600;
-    font-size: 1vw;
+    font-weight: 500;
+    font-size: 1.6vh;
     // font-size: .7rem;
     // line-height: 100%;
-    font-family: "Work sans";
+    font-family: "Inter";
    text-align: center;
     color: #FFFFFF;
 }

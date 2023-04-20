@@ -284,6 +284,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   
     
 
+    
+
   }
  
   Edit_image() {
@@ -735,6 +737,8 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
     
     let err: any, res: any;
     let body: any;
+    console.log(viewMore);
+    
     body = {
       "_userid": queryParams?.userID ? queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
       
@@ -1174,7 +1178,6 @@ else if(this.activeTabForSectionView_2 == 4){
     this.role_id= data?.role_id.toString();
     console.log(this.role_id)
     this.Edit_image();
- 
     if(this.role_id==='8'||this.role_id=='9'||this.role_id=='12'){
       
 
@@ -1219,7 +1222,8 @@ else if(this.activeTabForSectionView_2 == 4){
   
     this.Edit_image()
    
-
+    this.activeSubTabForSectionView_2 = 'My Store'
+    
 
   }
 
@@ -1388,8 +1392,8 @@ else if(this.activeTabForSectionView_2 == 4){
     this.userID= this.Util.encryptData(item?.userid);
     this.gameID= this.Util.encryptData(item?.id_coroebus_game);
     this.roleID= this.Util.encryptData(item?.id_role);
-     this._router.navigateByUrl('/dashboard?userID='+this.userID +"&gameID="+ this.gameID +"&roleID="+this.roleID)
-    
+    this._router.navigateByUrl('/dashboard?userID='+this.userID +"&gameID="+ this.gameID +"&roleID="+this.roleID)
+    this.activeSubTabForSectionView_2='My Store'
   }
 
   navigateToNewChallenge(){
@@ -1487,7 +1491,7 @@ else if(this.activeTabForSectionView_2 == 4){
       if(this.userSelectionData.is_champions_league=='A'){
         
         window.open(
-        'http://coroebus.in/champions_league/#/home/challengeRecieved?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+        'http://coroebusbeta.in/champions_league/#/home/challengeRecieved?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
         '_self' // <- This is what makes it open in a new window.
 
         // 'http://localhost:56671/champions_league/#/home/challengeRecieved?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,

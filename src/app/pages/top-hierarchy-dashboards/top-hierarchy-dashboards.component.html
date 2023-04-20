@@ -73,7 +73,6 @@
                                                     <div class="col-9 d-flex justify-content-end align-items-center"
                                                         style="height: 6vh;">
                                                         <div class="point_dist_score text-end">{{sectionView_1._points[0].score}}</div>
-    
                                                         <div class="col  d-flex justify-content-end align-items-center me-2">
                                                             <img src="assets/images/TopHierarchyDashboard/Arrow.png" />
                                                         </div>
@@ -124,12 +123,28 @@
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
                 <div *ngIf="sectionView_1._personal_data.id_role=='9' then redirectToBH else dontredirect"></div>
                 <ng-template #redirectToBH>
-                    <img (click)="getDataBasedOnUserIDHos(sectionView_1?._business_user[0])" src="{{sectionView_1._personal_data.profile_badge_image}}" alt="badge_img" height="60%" width="60%">
+                    <div class="">
+                        <div>
+                            <img (click)="getDataBasedOnUserIDHos(sectionView_1?._business_user[0])" src="{{sectionView_1._personal_data.profile_badge_image}}" alt="badge_img" height="60%" width="60%">
+                        </div>
+                        <div class="badge-level_name d-flex justify-content-center">
+                            <span>Level</span> 
+                        </div> 
+                    </div>
+        
 
                 </ng-template>
                 <ng-template #dontredirect>
+                    <div>
+                        
+                
+                   <div>
                     <img src="{{sectionView_1._personal_data.profile_badge_image}}" alt="badge_img" height="60%" width="60%">
-
+                   </div> 
+                    <div class="badge-level_name d-flex justify-content-center">
+                       <span>Level</span> 
+                    </div>
+                </div>
                 </ng-template>
                     
                 </div>
@@ -424,7 +439,7 @@
                         {{item._data}}
                         </button>
                         <div class="text-center mt-1">
-                            <span style="font-weight:500">Rank</span>
+                            <span style="font-weight:400;font-family:'Inter';font-size: 2vh;line-height: 2.4vh;">Rank</span>
                         </div>
                     </div>
     
@@ -489,7 +504,7 @@
                 <div *ngIf=" sectionView_1?._personal_data.id_role=='9';then BuisenessIndexForHOS else BuisenessIndexForSM"></div>
                 <ng-template #BuisenessIndexForHOS>     
                     <div class="business-index_gop">
-                        <div style="font-family: 'Work sans';font-weight: 500;">
+                        <div style="font-family: 'Inter';font-weight: 400;">
     
                             Business Index
                         </div>
@@ -521,10 +536,10 @@
                 </ng-template>
     
                 <ng-template #BuisenessIndexForSM>
-                    <div style="display: flex;justify-content: center; align-items: center;margin-top: 1vh;font-family: Work sans;">
-                            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mt-1" style="width: 19vw;font-family: 'Work sans';">
+                    <div style="display: flex;justify-content: center; align-items: center;margin-top: 1vh;font-family: Inter;">
+                            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mt-1" style="width: 19vw;font-family: 'Inter';">
                                 <mat-expansion-panel-header  [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
-                                    <mat-panel-title style="color: #ffff;font-weight:500;display:flex;justify-content: center;font-family: 'Work Sans';font-size:2.2vh">
+                                    <mat-panel-title style="color: #ffff;font-weight:500;display:flex;justify-content: center;font-family: 'Inter';font-size:2.2vh">
                                         <span> Business Index</span>
                 
                                     </mat-panel-title>
@@ -533,12 +548,12 @@
                                
                                 <div>
                                     <div class="d-flex justify-content-between align-items-center mt-4"
-                                        style="font-weight: 550;font-family: 'Work Sans';width:97%" *ngFor="let bus_response of sectionView_1._business_score">
-                                        <div class="global_index_mobile d-flex" style="font-weight: 500;font-family: 'Work Sans';" >
+                                        style="font-weight: 550;font-family: 'Inter';width:97%" *ngFor="let bus_response of sectionView_1._business_score">
+                                        <div class="global_index_mobile d-flex" style="font-weight: 500;font-family: 'Inter';" >
                                             {{bus_response.point_label}}
                 
                                         </div>
-                                        <div class="global_index_details  " style="font-weight: 500;font-family: 'Work Sans';">
+                                        <div class="global_index_details  " style="font-weight: 500;font-family: 'Inter';">
                                             <!-- {{GrowthIndexData[0].score}} -->
                 
                                             {{bus_response.weightage}}
@@ -550,7 +565,7 @@
                 
                 
                                     <!-- <div  *ngFor="let kpi_data of buisness_head_response_._kpi_score">
-                                        <div class="d-flex justify-content-between align-items-center" style="font-weight: 550;font-family: 'Work Sans';">
+                                        <div class="d-flex justify-content-between align-items-center" style="font-weight: 550;font-family: 'Inter';">
                                             <div class="pech ">
                                                 {{ kpi_data.point_label}}
                                                 
@@ -739,15 +754,15 @@
                         </mat-panel-title>
     
                     </mat-expansion-panel-header>
-                    <hr class="horizontal_row" style="font-weight: 550;font-family: 'Work Sans';">
+                    <hr class="horizontal_row" style="font-weight: 550;font-family: 'Inter';">
                     <div>
                         <div class="d-flex justify-content-between align-items-center mt-4"
-                            style="font-weight: 550;font-family: 'Work Sans';">
-                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">Net
+                            style="font-weight: 550;font-family: 'Inter';">
+                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Inter';">Net
                                 Promoter Score
     
                             </div>
-                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Inter';">
                                 <!-- {{GrowthIndexData[0].score}} -->
     
                                 0000
@@ -755,12 +770,12 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center mt-4"
-                            style="font-weight: 550;font-family: 'Work Sans';">
-                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">
+                            style="font-weight: 550;font-family: 'Inter';">
+                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Inter';">
                                 Customer Effort Score
     
                             </div>
-                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Inter';">
                                 <!-- {{GrowthIndexData[0].score}} -->
     
                                 0000
@@ -768,12 +783,12 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center mt-4"
-                            style="font-weight: 550;font-family: 'Work Sans';">
-                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">Sales
+                            style="font-weight: 550;font-family: 'Inter';">
+                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Inter';">Sales
                                 Index
     
                             </div>
-                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Inter';">
                                 <!-- {{GrowthIndexData[0].score}} -->
     
                                 0000
@@ -781,12 +796,12 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center mt-4"
-                            style="font-weight: 550;font-family: 'Work Sans';">
-                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">Cost
+                            style="font-weight: 550;font-family: 'Inter';">
+                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Inter';">Cost
                                 Index
     
                             </div>
-                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Inter';">
                                 <!-- {{GrowthIndexData[0].score}} -->
     
                                 0000
@@ -797,7 +812,7 @@
     
     
                         <!-- <div  *ngFor="let kpi_data of buisness_head_response_._kpi_score">
-                            <div class="d-flex justify-content-between align-items-center" style="font-weight: 550;font-family: 'Work Sans';">
+                            <div class="d-flex justify-content-between align-items-center" style="font-weight: 550;font-family: 'Inter';">
                                 <div class="pech ">
                                     {{ kpi_data.point_label}}
                                     
@@ -825,24 +840,24 @@
                         </mat-panel-title>
     
                     </mat-expansion-panel-header>
-                    <hr class="horizontal_row" style="font-weight: 550;font-family: 'Work Sans';">
+                    <hr class="horizontal_row" style="font-weight: 550;font-family: 'Inter';">
                     <div>
-                        <!-- <div class="d-flex justify-content-between align-items-center mt-1" style="font-weight: 550;font-family: 'Work Sans';">
-                                    <div class="global_index_mobile d-flex"  style="font-weight: 600;font-family: 'Work Sans';">Index
+                        <!-- <div class="d-flex justify-content-between align-items-center mt-1" style="font-weight: 550;font-family: 'Inter';">
+                                    <div class="global_index_mobile d-flex"  style="font-weight: 600;font-family: 'Inter';">Index
                                    
                                     </div>
-                                    <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                                    <div class="global_index_details  " style="font-weight: 600;font-family: 'Inter';">
                                         {{GrowthIndexData[0].score}}
             
                                     </div>
                                 </div> -->
                         <div class="d-flex justify-content-between align-items-center mt-4"
-                            style="font-weight: 550;font-family: 'Work Sans';">
-                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">
+                            style="font-weight: 550;font-family: 'Inter';">
+                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Inter';">
                                 Overall
     
                             </div>
-                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Inter';">
                                 <!-- {{GrowthIndexData[0].score}} -->
     
                                 0000
@@ -850,11 +865,11 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center mt-4"
-                            style="font-weight: 550;font-family: 'Work Sans';">
-                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">NHT
+                            style="font-weight: 550;font-family: 'Inter';">
+                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Inter';">NHT
     
                             </div>
-                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Inter';">
                                 <!-- {{GrowthIndexData[0].score}} -->
     
                                 0000
@@ -862,11 +877,11 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center mt-4"
-                            style="font-weight: 550;font-family: 'Work Sans';">
-                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">OJT
+                            style="font-weight: 550;font-family: 'Inter';">
+                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Inter';">OJT
     
                             </div>
-                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Inter';">
                                 <!-- {{GrowthIndexData[0].score}} -->
     
                                 0000
@@ -874,11 +889,11 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center mt-4"
-                            style="font-weight: 550;font-family: 'Work Sans';">
-                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Work Sans';">FO
+                            style="font-weight: 550;font-family: 'Inter';">
+                            <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Inter';">FO
     
                             </div>
-                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Work Sans';">
+                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Inter';">
                                 <!-- {{GrowthIndexData[0].score}} -->
     
                                 0000
@@ -889,12 +904,12 @@
     
     
                         <!-- <div  *ngFor="let kpi_data of buisness_head_response_._kpi_score">
-                                    <div class="d-flex justify-content-between align-items-center mt-4" style="font-weight: 550;font-family: 'Work Sans';">
-                                        <div class="pech " style="font-weight: 600;font-family: 'Work Sans';">
+                                    <div class="d-flex justify-content-between align-items-center mt-4" style="font-weight: 550;font-family: 'Inter';">
+                                        <div class="pech " style="font-weight: 600;font-family: 'Inter';">
                                             {{ kpi_data.point_label}}
                                             
                                         </div>
-                                        <div class="pech_details" style="font-weight: 600;font-family: 'Work Sans';">
+                                        <div class="pech_details" style="font-weight: 600;font-family: 'Inter';">
                                             {{ kpi_data.weightage}}
                                         </div>
                                     </div>

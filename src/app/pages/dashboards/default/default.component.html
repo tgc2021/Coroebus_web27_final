@@ -22,7 +22,14 @@
                                 style="border:2px solid">
                                 <div class="box1 p-3"
                                     [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
-                                    <div class="d-flex justify-content-center pb-2" style="color: #FFFFFF;">
+                                    <div class="d-flex justify-content-center pb-2"
+                                    style="color: #FFFFFF;font-family: 'Inter';
+                                    font-style: normal;
+                                    font-weight: 400;
+                                    font-size: 2.2vh;
+                                    line-height: 2.4vh;
+                                    text-align: center;
+                                    letter-spacing: 0.2px;">
                                         {{sectionView_1?._personal_data?.role_name}}
                                     </div>
                                     <div class="avatar-upload d-flex justify-content-center"
@@ -133,12 +140,19 @@
                         <div class="baddge-section-card d-flex justify-content-center align-items-center"
                             [style.background-image]="
                     sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                           <div>
                             <div>
                                 <img loading="lazy" class="dashboard-banner-main-rank-img" style="height: 15vh;
                             width: 15vh;
                             border-radius: 100%;" src="{{sectionView_1?._personal_data?.profile_badge_image}}"
                                     alt="Generic placeholder image">
                             </div>
+                            <div class="badge-level_name d-flex justify-content-center" [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}">
+                                Level
+                            </div> 
+                           </div>
+                         
+
                         </div>
                     </div>
 
@@ -678,7 +692,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div #scrollTarget></div>
+                        <div #scrollTarget>
+                            
+                        </div>
                     </div>
 
 
@@ -823,7 +839,7 @@
                                                 (closed)="panelOpenState = false">
                                                 <mat-expansion-panel-header
                                                     [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
-                                                    <mat-panel-title style="color: #ffff;font-weight:500;display:flex;justify-content: start;font-family: 'Work Sans';font-size:2.2vh">
+                                                    <mat-panel-title style="color: #ffff;font-weight:500;display:flex;justify-content: start;font-family: 'Inter';font-size:2vh">
                                                         My Learning
                                                     </mat-panel-title>
 
@@ -865,7 +881,7 @@
                                                 (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                                 <mat-expansion-panel-header
                                                     [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
-                                                    <mat-panel-title class="growth_index_accordion_mobile " style="color: #ffff;font-weight:500;display:flex;justify-content: start;font-family: 'Work Sans';font-size:2.2vh">
+                                                    <mat-panel-title class="growth_index_accordion_mobile " style="color: #ffff;font-weight:500;display:flex;justify-content: start;font-family: 'Inter';font-size:2vh">
                                                         <span style="color: #FFFFFF;">Trivia Corner</span>
                                                     </mat-panel-title>
 
@@ -876,7 +892,7 @@
                                                     <ng-template #redirect_la>
                                                         
                                                             <div class="d-flex p-2 mt-1"
-                                                                style="border-radius:5px;font-family:'Work sans';position:relative"
+                                                                style="border-radius:5px;font-family:'Inter';position:relative"
                                                                 [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'"
                                                                 (click)="navigateToBriefQuetion(triviaData)">
                                                                 <div
@@ -923,7 +939,7 @@
 
                                                                     </p>
                                                                     <div
-                                                                        style="position:absolute;top:80%;right:5%;font-size:1vh;font-family: 'Work sans';color:#A5ACB8;text-align:end">
+                                                                        style="position:absolute;top:80%;right:5%;font-size:1vh;font-family: 'Inter';color:#A5ACB8;text-align:end">
                                                                         {{triviaData.created_at|date:'dd/MM/YYYY'}}
                                                                     </div>
 
@@ -935,7 +951,7 @@
                                                     <ng-template #dontredirect_la>
                                                       
                                                             <div class="d-flex p-2 mt-1"
-                                                                style="border-radius:5px;font-family:'Work sans';position:relative"
+                                                                style="border-radius:5px;font-family:'Inter';position:relative"
                                                                 [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'"
                                                                >
                                                                 <div
@@ -982,7 +998,7 @@
 
                                                                     </p>
                                                                     <div
-                                                                        style="position:absolute;top:80%;right:5%;font-size:1vh;font-family: 'Work sans';color:#A5ACB8;text-align:end">
+                                                                        style="position:absolute;top:80%;right:5%;font-size:1vh;font-family: 'Inter';color:#A5ACB8;text-align:end">
                                                                         {{triviaData.created_at|date:'dd/MM/YYYY'}}
                                                                     </div>
 
@@ -1007,7 +1023,7 @@
                                                 (closed)="panelOpenState = false">
                                                 <mat-expansion-panel-header
                                                     [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
-                                                    <mat-panel-title style="color: #ffff;font-weight:500;display:flex;justify-content: start;font-family: 'Work Sans';font-size:2.2vh">
+                                                    <mat-panel-title style="color: #ffff;font-weight:500;display:flex;justify-content: start;font-family: 'Inter';font-size:2vh">
                                                         Bulletins
                                                     </mat-panel-title>
 
@@ -1092,7 +1108,7 @@
                                             <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true"
                                                 (closed)="panelOpenState = false">
                                                 <mat-expansion-panel-header [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}" >
-                                                    <mat-panel-title class="growth_index_accordion_mobile " style="color: #ffff;font-weight:500;display:flex;justify-content: start;font-family: 'Work Sans';font-size:2.2vh">
+                                                    <mat-panel-title class="growth_index_accordion_mobile " style="color: #ffff;font-weight:500;display:flex;justify-content: start;font-family: 'Inter';font-size:2vh">
                                                         <span>My Campaigns</span>
     
                                                     </mat-panel-title>
@@ -1155,14 +1171,14 @@
                                                 (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                                 <mat-expansion-panel-header
                                                     [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
-                                                    <mat-panel-title class="growth_index_accordion_mobile " style="color: #ffff;font-weight:500;display:flex;justify-content: start;font-family: 'Work Sans';font-size:2.2vh">
+                                                    <mat-panel-title class="growth_index_accordion_mobile " style="color: #ffff;font-weight:500;display:flex;justify-content: start;font-family: 'Inter';font-size:2vh">
                                                         <span>Battleground</span>
                                                     </mat-panel-title>
 
                                                 </mat-expansion-panel-header>
 
                                                 <div class="d-flex flex-column justify-content-between align-items-start mt-3 "
-                                                    style="font-weight: 550;font-family: 'Work Sans';"
+                                                    style="font-weight: 550;font-family: 'Inter';"
                                                     style="width: 100%;">
 
                                                     <div class="d-flex flex-column justify-content-between"
@@ -1176,7 +1192,7 @@
                                                                 (click)="navigateToOnGoingChallenge()"
                                                                 class="d-flex justify-content-between">
                                                                 <div class="ps-3" style="  font-weight: 600;
-                                                                font-family: 'Work Sans';
+                                                                font-family: 'Inter';
                                                                 font-size:1.6vh;
                                                                width: 100%;
                                                                 display:flex;
@@ -1191,7 +1207,7 @@
                                                                 (click)="navigateToChallengeRecieved()"
                                                                 class="d-flex justify-content-between">
                                                                 <div class="ps-3" style="  font-weight: 600;
-                                                                font-family: 'Work Sans';
+                                                                font-family: 'Inter';
                                                                 font-size:1.6vh;
                                                                  display: flex;
                                                                  height:5vh;
@@ -1212,7 +1228,7 @@
                                                                 style=" border-bottom: 0.5px solid #A5ACB8;"
                                                                 class="d-flex justify-content-between">
                                                                 <div class="ps-3" style="  font-weight: 600;
-                                                                font-family: 'Work Sans';
+                                                                font-family: 'Inter';
                                                                 font-size:1.6vh;
                                                                
                                                                 display:flex;
@@ -1226,7 +1242,7 @@
                                                                 style=" border-bottom: 0.5px solid #A5ACB8;"
                                                                 class="d-flex justify-content-between">
                                                                 <div class="ps-3" style="  font-weight: 600;
-                                                                font-family: 'Work Sans';
+                                                                font-family: 'Inter';
                                                                 font-size:1.6vh;
                                                                  display: flex;
                                                                  height:5vh;
@@ -2138,7 +2154,6 @@
                                     <div class="modalDescription col-11">
                                         {{seasonalThemeMonthl3[0].theme_description}}
                                     </div>
-
                                     <div class="modalDescription d-flex justify-content-start pt-2 mt-1">
                                         <div> Valid Till
                                             :{{seasonalThemeMonthl3[0].valid_till_date

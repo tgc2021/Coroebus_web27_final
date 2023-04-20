@@ -67,4 +67,4 @@ export const apiMethodsList = {
         '/coroebus-tgc-api-levels/Myperformance/points_list', // 0 POST {"_userid":"GOLD031","_game":"98"}
         '/coroebus-tgc-api-levels/Myperformance/produce', // 1 POST {"_userid":"GOLD007","_team":"617","_game":"197"}
     ]
-}
+}   
