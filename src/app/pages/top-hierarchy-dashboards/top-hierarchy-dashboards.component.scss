@@ -26,7 +26,7 @@
     align-items: center;
 
     .profile_card {
-        cursor: poWork sans;
+        cursor: poInter;
         position: relative;
         width: 19vw;
         height: 35vh;
@@ -47,9 +47,9 @@
     
 
             .level_name {
-                font-family: 'Work Sans';
+                font-family: 'Inter';
                 font-style: normal;
-                font-weight: 550;
+                font-weight: 400;
                 font-size: 2.2vh;
                 line-height: 2.4vh;
                 
@@ -101,7 +101,7 @@
                 background: #FFFFFF;
                 border: 1px solid transparent;
                 box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-                cursor: poWork sans;
+                cursor: poInter;
                 font-weight: normal;
                 transition: all 0.2s ease-in-out;
                 background-repeat: no-repeat;
@@ -120,10 +120,10 @@
             justify-content: center;
         
             .name_hos {
-                font-family: 'Work Sans';
+                font-family: 'Inter';
                 font-style: normal;
-                font-weight: 550;
-                font-size: 2.2vh;
+                font-weight: 400;
+                font-size: 2vh;
                 line-height: 2.4vh;
                 
                 white-space: nowrap;
@@ -159,12 +159,14 @@
             margin-top: 0.5vh;
             border-radius: 8px;
             .point_one_label {
-                font-size: 0.8vw;
+                font-size:1.5vh;
                 font-weight: 600;
+                font-family: 'Inter';
+
             }
 
             .point_dist_score {
-                font-family: 'Work sans';
+                font-family: 'Inter';
                 font-weight: 600;
                 font-size: 0.9vw;
                 margin-right: 1vw;
@@ -198,7 +200,7 @@
     align-items: center;
 
     .profile_card {
-        cursor: poWork sans;
+        cursor: poInter;
         position: relative;
         width: 19vw;
         height: 35vh;
@@ -218,9 +220,9 @@
             // border-bottom-right-radius: 100%;
 
             .level_name {
-                font-family: 'Work Sans';
+                font-family: 'Inter';
                 font-style: normal;
-                font-weight: 550;
+                font-weight: 400;
                 font-size: 2.2vh;
                 line-height: 2.4vh;
                 /* identical to box height, or 120% */
@@ -253,7 +255,7 @@
                 border-radius: 100%;
 
                 .overall_score_number {
-                    font-family: 'Work Sans';
+                    font-family: 'Inter';
                     font-style: normal;
                     font-weight: 500;
                     font-size: 2.2vh;
@@ -262,7 +264,7 @@
                 }
 
                 .overall_score_text {
-                    font-family: 'Work Sans';
+                    font-family: 'Inter';
                     font-style: normal;
                     font-weight: 500;
                     font-size: 1.8vh;
@@ -296,7 +298,7 @@
                 border-radius: 50%;
 
                 .overall_score_number {
-                    font-family: 'Work Sans';
+                    font-family: 'Inter';
                     font-style: normal;
                     font-weight: 500;
                     font-size: 2.2vh;
@@ -305,7 +307,7 @@
                 }
 
                 .overall_score_text {
-                    font-family: 'Work Sans';
+                    font-family: 'Inter';
                     font-style: normal;
                     font-weight: 500;
                     font-size: 1.8vh;
@@ -325,8 +327,9 @@
                 display: flex;
                 width: 16vw;
                 margin-top: 0.5vh;
-                font-family: "work sans";
-                font-weight: 500;
+                font-family: "Inter";
+                font-weight: 400;
+                font-size: 2vh;
                 justify-content: space-between;
 
             }
@@ -361,9 +364,9 @@
             // border-bottom-right-radius: 100%;
 
             .level_name {
-                font-family: 'Work Sans';
+                font-family: 'Inter';
                 font-style: normal;
-                font-weight: 550;
+                font-weight: 400;
                 font-size: 2.2vh;
                 line-height: 2.4vh;
                 /* identical to box height, or 120% */
@@ -396,7 +399,7 @@
                 border-radius:100%;
 
                 .overall_score_number {
-                    font-family: 'Work Sans';
+                    font-family: 'Inter';
                     font-style: normal;
                     font-weight: 500;
                     font-size: 2.2vh;
@@ -405,7 +408,7 @@
                 }
 
                 .overall_score_text {
-                    font-family: 'Work Sans';
+                    font-family: 'Inter';
                     font-style: normal;
                     font-weight: 500;
                     font-size: 1.8vh;
@@ -424,7 +427,7 @@
                 display: flex;
                 width: 16vw;
                 margin-top: 0.5vh;
-                font-family: "work sans";
+                font-family: "Inter";
                 font-weight: 600;
                 justify-content: space-between;
 
@@ -444,7 +447,7 @@
         flex-direction:column;
         justify-content: center;
         align-items: center;
-        font-family: 'Work Sans';
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 500;
         font-size: 2.2vh;
@@ -475,7 +478,7 @@
                     background-color: var(--myvar);
                     color:white;
                     display: flex;
-                    font-size:2.2vh;
+                    font-size:2vh;
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
@@ -495,7 +498,7 @@
                     justify-content: center;
                     align-items: center;
                     border-radius: 0px 0px 10px 10px;
-                    font-size: 2.2vh;
+                    font-size: 1.8vh;
 
                 }
 
@@ -527,7 +530,7 @@
         // box-shadow: 0 0 5px 2px #282a2d;
         justify-content: center;
        align-items: center;
-       cursor: poWork sans;
+       cursor: poInter;
        img{
         height: 16vh;
         width: 16vh;
@@ -677,7 +680,7 @@ input::placeholder {
         height: 6vh;
         font-size: 0.9vw;
         padding: 1%;
-        font-family: 'Work Sans';
+        font-family: 'Inter';
         background: #ffffff;
         border-radius: 1vw;
         border: none;
@@ -693,7 +696,7 @@ input::placeholder {
         font-size:0.9vw;
         font-weight: 600;
         // font-size: 1.6vh;
-        font-family: 'Work Sans';
+        font-family: 'Inter';
         border: none;
         margin-right: 0.3vw;
         font-weight: 500;
@@ -706,7 +709,7 @@ input::placeholder {
 
     .home_bg {
         height: 5vh;
-        cursor: poWork sans;
+        cursor: poInter;
     }
 
     .home_logo {
@@ -715,7 +718,7 @@ input::placeholder {
         position: absolute;
         margin-top: 0.6vw;
         margin-left: 0.6vw;
-        cursor: poWork sans;
+        cursor: poInter;
     }
 
     .bottom_button_web {
@@ -732,7 +735,7 @@ input::placeholder {
     }
 
     .profile_name {
-        font-family: 'Work sans';
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
         font-size: 0.8vw;
@@ -744,7 +747,7 @@ input::placeholder {
     }
 
     .profile_team_name {
-        font-family: 'Work sans';
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
         font-size: 0.7vw;
@@ -817,7 +820,7 @@ input::placeholder {
         background-size: 100% 100%;
         border: 2px solid rgb(74, 193, 217);
         display: flex;
-        cursor: poWork sans;
+        cursor: poInter;
     }
 
     .profile_div {
@@ -844,7 +847,7 @@ input::placeholder {
         flex-direction: column;
         margin-top: 2vh;
         margin-right: 2vh;
-        cursor: poWork sans;
+        cursor: poInter;
     }
 
     .island_points {
@@ -854,7 +857,7 @@ input::placeholder {
         text-align: center;
         margin-top: 1vh;
         color: #FFFFFF;
-        font-family: 'Work sans';
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
         font-size: 1vw;
@@ -865,7 +868,7 @@ input::placeholder {
     }
 
     .island_tag {
-        font-family: 'Work sans';
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
         margin-top: 0.5vh;
@@ -886,7 +889,7 @@ input::placeholder {
         align-items: center;
         margin-bottom: 0.5vh;
         width: 95%;
-        cursor: poWork sans;
+        cursor: poInter;
     }
 
     .point_one_label {
@@ -906,7 +909,7 @@ input::placeholder {
     
     .leaderboard_rank {
         margin-left: 1vw;
-        font-family: 'Work sans';
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
         font-size: 1vw;
@@ -946,7 +949,7 @@ input::placeholder {
 
     .leaderboard_name {
         margin-left: 7.8vw;
-        font-family: 'Work sans';
+        font-family: 'Inter';
         font-style: normal;
        
         // overflow: hidden;
@@ -959,7 +962,7 @@ input::placeholder {
 
     .leaderboard_points {
         margin-left: 23vw;
-        font-family: 'Work sans';
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
         
@@ -973,7 +976,7 @@ input::placeholder {
         margin-bottom: 1vh;
         border-radius: 8px;
         display: flex;
-        cursor: poWork sans;
+        cursor: poInter;
         align-items: center;
         padding: 0;
         background: url(../../../assets/images/TopHierarchyDashboard/bluewallpaer.png);
@@ -999,7 +1002,7 @@ input::placeholder {
         background: var(--myvar);
         color: #ffffff;
         border: none;
-        font-family:'Work sans';
+        font-family:'Inter';
         font-weight: 600;
         border-radius: 0.4vw;
         margin-bottom: 1vh;
@@ -1066,7 +1069,7 @@ input::placeholder {
 
     .bottom_button_labels {
         color: #FFFFFF;
-        font-family: 'Work Sans';
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 500;
         font-size: 1vw;
@@ -1078,7 +1081,7 @@ input::placeholder {
 
     .right_button_labels {
         color: #FFFFFF;
-        font-family: 'Work Sans';
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 500;
         font-size: 1vw;
@@ -1103,7 +1106,7 @@ input::placeholder {
     }
 
     .governace_title {
-        font-family: 'Work Sans';
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 500;
     }
@@ -1111,7 +1114,7 @@ input::placeholder {
     .name_hos,
     .level_hos {
         font-size: 0.9vw;
-        font-weight: 500;
+        font-weight: 400;
         color: #000000;
         margin-top: 1vh;
     }
@@ -1127,7 +1130,7 @@ input::placeholder {
     }
 
     .point_dist_score {
-        font-family: 'Work sans';
+        font-family: 'Inter';
         font-weight: 700;
         font-size: 0.8vw;
         margin-right: 1vw;
@@ -1175,7 +1178,7 @@ input::placeholder {
         justify-content: center;
         align-items: center;
         margin-top: 0.5vh;
-        font-family: 'Work sans';
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
         font-size: 1.2vw;
@@ -1209,7 +1212,7 @@ input::placeholder {
         justify-content: center;
         align-items: center;
         margin-top: 0.5vh;
-        font-family: 'Work sans';
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
         font-size: 1.2vw;
@@ -1218,7 +1221,7 @@ input::placeholder {
 
     .game_point_label,
     .reward_point_label {
-        font-family: 'Work sans';
+        font-family: 'Inter';
 
         font-weight: 600;
         margin-top: 0.3vh;
@@ -1229,7 +1232,7 @@ input::placeholder {
     }
 
     .leaderboard_rank_score {
-        font-family: 'Work sans';
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
         font-size: 1vw;
@@ -1241,7 +1244,7 @@ input::placeholder {
 
     .leaderboard_rank_score_first,
     .leaderboard_rank_score {
-        font-family: 'Work sans';
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
         font-size: 1vw;
@@ -1265,7 +1268,7 @@ input::placeholder {
     .leaderboard_team_label_first,
     .leaderboard_name_label,
     .leaderboard_team_label {
-        font-family: 'Work sans';
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 500;
         font-size: 1vw;
@@ -1310,7 +1313,7 @@ input::placeholder {
 
     .leaderboard_rank_points_label_first,
     .leaderboard_rank_points_label {
-        font-family: 'Work sans';
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 500;
         font-size: 0.8vw;
@@ -1378,7 +1381,7 @@ input::placeholder {
     }
 
     .profile_name_mobile {
-        font-family: 'Work sans';
+        font-family: 'Inter';
         font-style: normal;
         text-align: center;
         font-weight: 600;
@@ -1389,7 +1392,7 @@ input::placeholder {
     }
 
     .profile_team_name_mobile {
-        font-family: 'Work sans';
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
         font-size: 1.3vh;
@@ -1397,7 +1400,7 @@ input::placeholder {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        cursor: poWork sans;
+        cursor: poInter;
 
     }
 
@@ -1443,7 +1446,7 @@ input::placeholder {
             background: #FFFFFF;
             border: 1px solid transparent;
             box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-            cursor: poWork sans;
+            cursor: poInter;
             font-weight: normal;
             transition: all 0.2s ease-in-out;
             background-repeat: no-repeat;
@@ -1504,7 +1507,7 @@ input::placeholder {
             min-width: 12vw;
             height: 4vh;
             margin-top: 0.5vh;
-            font-family: "Work sans";
+            font-family: "Inter";
             font-style: normal;
             display: grid;
             place-items: center;
@@ -1516,7 +1519,7 @@ input::placeholder {
         }
 
         .game_point_label_mobile {
-            font-family: "Work sans";
+            font-family: "Inter";
             font-weight: 600;
             margin-top: 0.3vh;
             color: #ffff;
@@ -1547,7 +1550,7 @@ input::placeholder {
             min-width: 12vw;
             height: 4vh;
             margin-top: 0.5vh;
-            font-family: "Work sans";
+            font-family: "Inter";
             font-style: normal;
             display: grid;
             place-items: center;
@@ -1559,7 +1562,7 @@ input::placeholder {
         }
 
         .reward_point_label_mobile {
-            font-family: "Work sans";
+            font-family: "Inter";
             font-weight: 600;
             margin-top: 0.3vh;
             font-size: 1.5vh;
@@ -1598,12 +1601,13 @@ input::placeholder {
                 justify-content: center;
                 margin-bottom: 0.5vh;
                 width: 93vw;
-                cursor: poWork sans;
+                cursor: pointer;
 
                 .point_one_label_mobile {
                     font-size: 2.1vh;
-                    font-weight: 600;
+                    font-weight: 550;
                     margin-right: 2vw;
+                    font-family: 'Inter';
                 }
 
             }
@@ -1633,7 +1637,7 @@ input::placeholder {
         width: 20vw;
         color: #000000;
         font-weight: 600;
-        font-family: 'Work sans'
+        font-family: 'Inter'
 
     }
 
@@ -1650,7 +1654,7 @@ input::placeholder {
         width: 20vw;
         color: #ffff;
         font-weight: 500;
-        font-family: 'Work sans'
+        font-family: 'Inter'
 
     }
 
@@ -1730,7 +1734,7 @@ input::placeholder {
     }
 
     .leaderboard_rank_score_mobile {
-        font-family: 'Work sans';
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
         font-size: 3vw;
@@ -1765,7 +1769,7 @@ input::placeholder {
     }
 
     .leaderboard_name_label_mobile {
-        font-family: 'Work sans';
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 500;
         font-size: 3.8vw;
@@ -1779,7 +1783,7 @@ input::placeholder {
     }
 
     .leaderboard_team_label_mobile {
-        font-family: 'Work sans';
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 500;
         font-size: 2.8vw;
@@ -1809,7 +1813,7 @@ input::placeholder {
     }
 
     .leaderboard_rank_points_div_mobile {
-        font-family: 'Work sans';
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 500;
         font-size: 3.8vw;
@@ -1833,7 +1837,7 @@ input::placeholder {
         background: var(--myvar);
         color: #ffffff;
         border: none;
-        font-family: 'Work sans';
+        font-family: 'Inter';
         font-weight: 600;
         border-radius: 0.4vw;
     }
@@ -1892,4 +1896,17 @@ input::placeholder {
         margin-left: 6vw;
     }
     
+}
+.badge-level_name{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.2vh;
+    line-height: 2.4vh;
+    text-align: center;
+    letter-spacing: 0.2px;
+    color: #000000;
+    padding: 1vh;
+    background: var(--lightColor); 
+   border-radius: 10px;
 }

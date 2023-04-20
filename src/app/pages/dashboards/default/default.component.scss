@@ -11,7 +11,7 @@ ModalHeading.ok_button{
 
 }
 .mat_panel_title{
-    font-family: 'Work sans';
+    font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
     font-size: 0.8vw;
@@ -229,7 +229,7 @@ mat-accordion{
 
 .inner_content,.inner_content_daily1{
     font-weight: 600;
-    font-family: 'Work Sans';
+    font-family: 'Inter';
     font-size:1.6vh;
     height: 5vh;
     display: flex;
@@ -273,7 +273,7 @@ mat-accordion{
 }
 .inner_content-daily{
     font-weight: 600;
-    font-family: 'Work Sans';
+    font-family: 'Inter';
     font-size:1.6vh;
     height: 5vh;
     display: flex;
@@ -369,7 +369,9 @@ mat-accordion{
        width: auto;
        height: 5.5vh;
        width: 80%;
-     
+       font-size: 1.5vh;
+       font-weight: 600;
+       font-family: "Inter";
 }
 .inner-notification-height {
    height: 33vh;
@@ -404,6 +406,7 @@ mat-accordion{
 .text-white{
     font-size: 1vw;
     font-weight: 500;
+    font-family: 'Inter';
     margin-bottom: 0;
 
 }
@@ -548,7 +551,7 @@ mat-accordion{
 }
 .mobile-dashboard-user-name{
     font-size: 2.2vh;
-    font-family: 'Work Sans';
+    font-family: 'Inter';
     line-height: 100%;
     color: #000000;
     font-style: normal;
@@ -1187,7 +1190,7 @@ color: #000000;
 }
 
 .modalDescription {
-    font-family: 'Work sans';
+    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
@@ -1198,14 +1201,14 @@ color: #000000;
 .btn-reward {
     width: 79px;
     height: 25px;
-    font-family: "Work sans";
+    font-family: "Inter";
     border: none !important;
     background-color: #D9FFDE !important;
     border-radius: 3px;
 }
 
 .Number {
-    font-family: 'Work sans';
+    font-family: 'Inter';
     font-style: normal;
     font-weight: 800;
     font-size: 32px !important;
@@ -1254,7 +1257,7 @@ color: #000000;
 }
 
 .Top5 {
-    font-family: 'Work sans';
+    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -1290,7 +1293,7 @@ color: #000000;
         }
 
         .name .rank .score {
-            font-family: 'Work sans';
+            font-family: 'Inter';
             font-weight: 500;
             font-size: 14px;
             text-align: center;
@@ -1373,7 +1376,7 @@ color: #000000;
 .my_name {
     position: absolute;
     top: -20px;
-    font-family: 'Work sans';
+    font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
     font-size: 10px;
@@ -1807,7 +1810,7 @@ border-radius: 8px;
 
 }
 .Progressscore{
-    font-size:1.1vw;font-weight: 600;font-family:'Work sans';
+    font-size:1.1vw;font-weight: 600;font-family:'Inter';
     height:35px;
     width:35px;
     border-radius:50%;
@@ -1894,5 +1897,17 @@ border-radius: 8px;
     border: 1px solid #cfc6c6;
     padding: 5px 10px;
 }
-
+.badge-level_name{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.2vh;
+    line-height: 2.4vh;
+    text-align: center;
+    letter-spacing: 0.2px;
+    color: #000000;
+    padding: 1vh;
+    border-radius: 10px;    
+    margin-top: 1vh;
+}
  
