@@ -406,6 +406,18 @@ color: #54595E;
             text-align: center;
     }
 }
+.noContentContainer-Desc {
+   
+   
+    border-radius: nullpx;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.003em;
+    color: #878787;
+    text-align: center;
+}
 
 @media screen and (min-width:270px) and (max-width:960px) {
     .PlayZone-web-view {
