@@ -1641,6 +1641,21 @@ else if(this.activeTabForSectionView_2 == 4){
         console.log(res);
 
         this.data=res;
+        // Trivia Corner Data
+
+        this.triviaCornerData=this.data.data.trivia_corner;
+        console.log(this.triviaCornerData);
+
+        this.triviaCornerData.forEach((res)=>{
+          console.log(res);
+          
+          console.log(true)
+          if(res.view_status!='Read')
+          {
+            this.hideTriviaIndicator=true;
+            // console.log(hideTriviaIndicator)
+          }
+        })
         // console.log(this.data.data.seasonal_theme_daily.length==undefined);
         // console.log(this.data.data.seasonal_theme_daily==undefined);
       
@@ -1683,18 +1698,7 @@ else if(this.activeTabForSectionView_2 == 4){
 
         console.log(this.onGoingChallenges)
 
-        // Trivia Corner Data
-
-        this.triviaCornerData=this.data.data.trivia_corner;
-
-        this.triviaCornerData.forEach((res)=>{
-          console.log(true)
-          if(res.view_status!='Read')
-          {
-            this.hideTriviaIndicator=true;
-            // console.log(hideTriviaIndicator)
-          }
-        })
+        
       })
     
 
