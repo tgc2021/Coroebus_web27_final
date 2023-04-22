@@ -68,17 +68,59 @@
 
                                             </mat-expansion-panel-header>
                                             <div class="global_index d-flex mt-1">Overall
-                                                <div class="global_index_details">
-                                                    {{buisness_head_response_._points[0].score}}
+                                                <div class="global_index_details d-flex">
+                                                    <div>
+                                                        {{buisness_head_response_._points[0].score}}
+                                                    </div>
+                                                    
+                                                    <div>
+                                                        <div  style="height:2.5vh;">
+    
+                                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                                                height="100%" >
+                                                        </div>
+                        
+                                                        <!-- <div *ngIf="res.rankingtable_arrow!='green' && j !=0"  style="height:2.5vh;">
+                        
+                                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                                height="100%">
+                        
+                                                        </div> -->
+                                                    </div>
 
                                                 </div>
+                                                
+                                               
                                             </div>
+                                            
                                             <hr class="horizontal_row">
                                             <div class="pech d-flex"  *ngFor="let response of buisness_head_response_._kpi_score"  style="cursor: pointer;" (click)="navigateToBIMap(response)">
                                                 {{response.point_label}}
-                                                <div class="pech_details">
+                                                <div class="pech_details d-flex">
                                                     {{response.weightage}}
+                                                    <div class="d-flex justify-content-end ">
+                                                        
+                                                        <div *ngIf="response.ranking_arrow=='green'" style="height:2.5vh;">
+    
+                                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                                                height="100%" >
+                                                        </div>
+                        
+                                                        <div *ngIf="response.ranking_arrow=='red'"  style="height:2.5vh;">
+                        
+                                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                                height="100%">
+                        
+                                                        </div>
+                                                        <div *ngIf="response.ranking_arrow=='yellow'"  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
+                        
+                                                           <div style="height: 1.2vh;width:1.2vh;border-radius:100%;background-color:orange ;"></div>
+                        
+                                                        </div>
+
+                                                    </div>
                                                 </div>
+                                                
                                             </div>
                                            
                                         </mat-expansion-panel>
@@ -91,10 +133,34 @@
                                             </mat-panel-title>
 
                                         </mat-expansion-panel-header>
-                                        <div class="pech d-flex" *ngFor="let response of buisness_head_response_._governance_score"  >
+                                        <div class="pech d-flex" *ngFor="let response of buisness_head_response_._governance_score">
                                             {{response.point_label}}
-                                            <div class="pech_details">
-                                                {{response.weightage}}
+                                            <div class="pech_details d-flex">
+                                                <div >
+                                                    {{response.weightage}}
+                                                </div>
+                                                
+                                                <div class="d-flex justify-content-end ">
+                                                        
+                                                    <div *ngIf="response.rankingtable_arrow=='green'" style="height:2.5vh;">
+
+                                                        <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                                            height="100%" >
+                                                    </div>
+                    
+                                                    <div *ngIf="response.rankingtable_arrow=='red'"  style="height:2.5vh;">
+                    
+                                                        <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                            height="100%">
+                    
+                                                    </div>
+                                                    <div *ngIf="response.rankingtable_arrow=='yellow'"  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
+                    
+                                                       <div style="height: 1.2vh;width:1.2vh;border-radius:100%;background-color:orange ;"></div>
+                    
+                                                    </div>
+
+                                                </div>
                                             </div>
                                         </div>
                                     </mat-expansion-panel>

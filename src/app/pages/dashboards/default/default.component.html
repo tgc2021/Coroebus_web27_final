@@ -852,9 +852,9 @@
                                         <mat-accordion>
 
                                             <!-- <div class="red_indicator"></div> -->
-                                            <mat-expansion-panel class="mt-1" (opened)="panelOpenState = true"
+                                            <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true"
                                                 (closed)="panelOpenState = false">
-                                                <mat-expansion-panel-header
+                                                <mat-expansion-panel-header 
                                                     [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
                                                     <mat-panel-title style="color: #ffff;font-weight:500;display:flex;justify-content: start;font-family: 'Inter';font-size:2vh">
                                                         My Learning
@@ -1132,7 +1132,7 @@
     
                                                 </mat-expansion-panel-header>
                                                 <div>
-                                                    <div class="inner_content_daily1 d-flex justify-content-between" (mouseover)="openDailyModal()" data-bs-toggle="modal"
+                                                    <div class="inner_content_daily1 d-flex justify-content-between mt-3" (mouseover)="openDailyModal()" data-bs-toggle="modal"
                                                     data-bs-target="#dailyModal">
                                                        <div class="col-6">Daily</div> 
                                                        <div class="badge-container col" *ngFor="let dailyBadges of seasonalThemeDailyBadges1;let i=index;" >
