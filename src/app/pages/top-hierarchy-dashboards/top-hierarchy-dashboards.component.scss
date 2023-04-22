@@ -531,8 +531,8 @@
        align-items: center;
        cursor: poInter;
        img{
-        height: 16vh;
-        width: 16vh;
+        height: 15vh;
+        width: 15vh;
         border-radius: 100%;
        }
     }
@@ -1907,5 +1907,6 @@ input::placeholder {
     color: #000000;
     padding: 1vh;
     background: var(--lightColor); 
-   border-radius: 10px;
+    border-radius: 10px;
+    margin-top: 1vh;
 }

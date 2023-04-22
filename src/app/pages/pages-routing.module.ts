@@ -11,6 +11,7 @@ import { TopDashboardComponent } from './top-dashboard/top-dashboard.component';
 import { TopHierarchyDashboardsComponent } from './top-hierarchy-dashboards/top-hierarchy-dashboards.component';
 import { BusinessReportComponent } from './business-report/business-report.component';
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'topdashboard' },
   { path: 'dashboard', component: DefaultComponent, pathMatch: 'full' },
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'governance_index', component:GovernanceIndexComponent },
 
   { path: 'business_report', component:BusinessReportComponent },
+ 
 
 
 ];

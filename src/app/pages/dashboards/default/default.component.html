@@ -1883,7 +1883,7 @@
 
 <!-- Campaigns Modal -->
 <!-- DailyModal -->
-<div *ngIf="isDailyModalopen;then Daily"></div>
+ <div *ngIf="isDailyModalopen;then Daily"></div>
 <ng-template #Daily>
     <div class="DailyModal">
         <div class="modal fade bd-example-modal-sm" id="dailyModal" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -1924,10 +1924,10 @@
                         </ng-template>
                         <div *ngIf="seasonalThemeDailyBadges1!=undefined;then dailybadge"></div>
                         <ng-template #dailybadge>
-                            <div class="container"  *ngIf="seasonalThemeDailyBadges1.length!=0">
-                                <div class="badges_row" [style.width.%]="100" >
+                            <div class="animation-bar" *ngIf="seasonalThemeDailyBadges1.length!=0">
+                                <div class="badges_row" [style.width.%]="93" style="position: relative;">
                                     
-                                    <div class="d-flex flex-column justify-content-center" [style.margin-left.%]="((seasonalThemeDailyBadges1[0].seasonal_score_target)/(seasonalThemeDailyBadges1[2].seasonal_score_target))*100">
+                                    <div class="d-flex flex-column justify-content-center align-items-center" [style.margin-left.%]="((seasonalThemeDailyBadges1[0].seasonal_score_target)/(seasonalThemeDailyBadges1[2].seasonal_score_target))*100">
                                         
                                         <div style="height:6vh;width:6vh;border-radius:50%"
                                             [ngClass]="seasonalThemeDailyBadges1[0].active_class == '0'?'inActiveBadge':'ActiveBadge'">
@@ -1937,7 +1937,7 @@
                                             <div style="height:3vh;border-left: 2px solid #8EC912;"></div>
                                         </div>
                                     </div>
-                                    <div class="d-flex flex-column justify-content-center " [style.margin-left.%]="(((seasonalThemeDailyBadges1[1].seasonal_score_target)/(seasonalThemeDailyBadges1[2].seasonal_score_target))*100)">
+                                     <div class="d-flex flex-column justify-content-center " style="position: absolute;" [style.margin-left.%]="(((seasonalThemeDailyBadges1[1].seasonal_score_target)/(seasonalThemeDailyBadges1[2].seasonal_score_target))*100)">
                                         <div style="height:6vh;width:6vh;border-radius:50%"
                                             [ngClass]="seasonalThemeDailyBadges1[1].active_class == '0'?'inActiveBadge':'ActiveBadge'">
                                             <img src="{{seasonalThemeDailyBadges1[1].seasonal_badge_logo}}" alt=""
@@ -1949,7 +1949,7 @@
 
 
                                     </div>
-                                    <div class="d-flex flex-column justify-content-center " [style.margin-left.%]="(((seasonalThemeDailyBadges1[2].seasonal_score_target)/(seasonalThemeDailyBadges1[2].seasonal_score_target))*100)-66">
+                                     <div class="d-flex flex-column justify-content-center " [style.margin-left.%]="(((seasonalThemeDailyBadges1[2].seasonal_score_target)/(seasonalThemeDailyBadges1[2].seasonal_score_target))*100)" style="position: absolute;" >
                                         
                                         <div style="height:6vh;width:6vh;border-radius:50%"
                                             [ngClass]="seasonalThemeDailyBadges1[2].active_class == '0'?'inActiveBadge':'ActiveBadge'">
@@ -1962,19 +1962,32 @@
                                         </div>
 
 
-                                    </div>
+                                    </div>  
 
-                                </div>
+                                </div> 
 
-                                <div class="animation-bar-1">
+                                <div class="animation-bar-1" style="width: 100%;">
                                     <span class="d-flex justify-content-center"
-                                        [style.background-size.%]="seasonalThemeDailyBadges1[2].seasonal_score_target"
-                                        [style.width.%]="((seasonalThemeDailyBadges1[0].seasonal_score_achived))">
+                                        [style.background-size.%]="100"
+                                        [style.width.%]="((seasonalThemeDailyBadges1[2].seasonal_score_percentage))">
 
                                     </span>
                                 </div>
+                                <div *ngIf="seasonalThemeDailyBadges1[2].seasonal_score_percentage<98 then valuepercentage else maxpercentage"></div>
+                              <ng-template #valuepercentage>
                                 <div class="animation-bar"
-                                    [style.margin-left.%]="((seasonalThemeDailyBadges1[0].seasonal_score_achived))">
+                                [style.margin-left.%]="((seasonalThemeDailyBadges1[2].seasonal_score_percentage))">
+                                <div class="d-flex flex-column">
+                                    <div class="border-left"></div>
+                                    <div class="Progressscore">
+                                        {{seasonalThemeDailyBadges1[0].seasonal_score_achived}}
+                                    </div>
+                                </div>
+                            </div>
+                              </ng-template>
+                                <ng-template #maxpercentage>
+                                    <div class="animation-bar"
+                                    [style.margin-left.%]="98">
                                     <div class="d-flex flex-column">
                                         <div class="border-left"></div>
                                         <div class="Progressscore">
@@ -1982,6 +1995,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                </ng-template>
                             </div>
                         </ng-template>
 
@@ -2005,7 +2019,7 @@
     </div>
 </ng-template>
 
-<!-- <div *ngIf="isWeeklyModalOpen;then weekly"></div>
+ <div *ngIf="isWeeklyModalOpen;then weekly"></div>
 <ng-template #weekly>
 
     <div class="weeklyModal">
@@ -2055,75 +2069,83 @@
                         </ng-template>
                         <div *ngIf="seasonalThemeWeeklyBadges2!=undefined;then weekbadge"></div>
                         <ng-template #weekbadge>
-                            <div class="animation-bar" *ngIf="seasonalThemeWeeklyBadges2!=0">
-                                <div class="badges_row" [style.width.%]="100">
-
+                           
+                            <div class="animation-bar" *ngIf="seasonalThemeWeeklyBadges2.length!=0">
+                                <div class="badges_row" [style.width.%]="93" style="position: relative;">
                                     
-                                    <div class="d-flex flex-column justify-content-center " [style.margin-left.%]="(((seasonalThemeWeeklyBadges2[0].seasonal_score_target)/(totalTargetScoreForWeekly))*100)/2">
+                                    <div class="d-flex flex-column justify-content-center align-items-center" [style.margin-left.%]="((seasonalThemeWeeklyBadges2[0].seasonal_score_target)/(seasonalThemeWeeklyBadges2[2].seasonal_score_target))*100">
+                                        
                                         <div style="height:6vh;width:6vh;border-radius:50%"
                                             [ngClass]="seasonalThemeWeeklyBadges2[0].active_class == '0'?'inActiveBadge':'ActiveBadge'">
-                                            <img src="{{seasonalThemeWeeklyBadges2[0].seasonal_badge_logo}}" alt=""
-                                                height="100%" width="100%">
-
+                                            <img src="{{seasonalThemeWeeklyBadges2[0].seasonal_badge_logo}}" alt="" height="100%" width="100%">
                                         </div>
                                         <div class="d-flex justify-content-center">
-                                            <div style="height:3vh;border-left: 1px solid black;"></div>
+                                            <div style="height:3vh;border-left: 2px solid #8EC912;"></div>
                                         </div>
-
-
                                     </div>
-                                    <div class="d-flex flex-column justify-content-center  " [style.margin-left.%]="(((seasonalThemeWeeklyBadges2[1].seasonal_score_target)/(totalTargetScoreForWeekly))*100)/2">
+                                     <div class="d-flex flex-column justify-content-center " style="position: absolute;" [style.margin-left.%]="(((seasonalThemeWeeklyBadges2[1].seasonal_score_target)/(seasonalThemeDailyBadges1[2].seasonal_score_target))*100)">
                                         <div style="height:6vh;width:6vh;border-radius:50%"
                                             [ngClass]="seasonalThemeWeeklyBadges2[1].active_class == '0'?'inActiveBadge':'ActiveBadge'">
                                             <img src="{{seasonalThemeWeeklyBadges2[1].seasonal_badge_logo}}" alt=""
                                                 height="100%" width="100%">
-
                                         </div>
                                         <div class="d-flex justify-content-center">
-                                            <div style="height:3vh;border-left: 1px solid black;"></div>
+                                            <div style="height:3vh;border-left: 2px solid #8EC912;"></div>
                                         </div>
 
 
                                     </div>
-                                    <div class="d-flex flex-column justify-content-center  " [style.margin-left.%]="(((seasonalThemeWeeklyBadges2[2].seasonal_score_target)/(totalTargetScoreForWeekly))*100)/3">
+                                     <div class="d-flex flex-column justify-content-center " [style.margin-left.%]="(((seasonalThemeWeeklyBadges2[2].seasonal_score_target)/(seasonalThemeWeeklyBadges2[2].seasonal_score_target))*100)" style="position: absolute;" >
+                                        
                                         <div style="height:6vh;width:6vh;border-radius:50%"
-                                            [ngClass]="seasonalThemeWeeklyBadges2[1].active_class == '0'?'inActiveBadge':'ActiveBadge'">
+                                            [ngClass]="seasonalThemeWeeklyBadges2[2].active_class == '0'?'inActiveBadge':'ActiveBadge'">
                                             <img src="{{seasonalThemeWeeklyBadges2[2].seasonal_badge_logo}}" alt=""
                                                 height="100%" width="100%">
 
                                         </div>
                                         <div class="d-flex justify-content-center">
-                                            <div style="height:3vh;border-left: 1px solid black;"></div>
+                                            <div style="height:3vh;border-left: 2px solid #8EC912;"></div>
                                         </div>
 
 
-                                    </div>
+                                    </div>  
 
-                                </div>
+                                </div> 
 
-                                <div class="animation-bar-1">
+                                <div class="animation-bar-1" style="width: 100%;">
                                     <span class="d-flex justify-content-center"
-                                        [style.background-size.%]="totalTargetScoreForWeekly"
-                                        [style.width.%]="((seasonalThemeWeeklyBadges2[0].seasonal_score_achived/totalTargetScoreForWeekly)*(100))">
+                                        [style.background-size.%]="100"
+                                        [style.width.%]="((seasonalThemeWeeklyBadges2[2].seasonal_score_percentage))">
+
                                     </span>
-
-
                                 </div>
+                                <div *ngIf="seasonalThemeWeeklyBadges2[2].seasonal_score_percentage<98 then valuepercentage else maxpercentage"></div>
+                              <ng-template #valuepercentage>
                                 <div class="animation-bar"
-                                    [style.margin-left.%]="((seasonalThemeWeeklyBadges2[0].seasonal_score_achived/totalTargetScoreForWeekly)*(100))">
-
+                                [style.margin-left.%]="((seasonalThemeWeeklyBadges2[2].seasonal_score_percentage))">
+                                <div class="d-flex flex-column">
+                                    <div class="border-left"></div>
+                                    <div class="Progressscore">
+                                        {{seasonalThemeWeeklyBadges2[0].seasonal_score_achived}}
+                                    </div>
+                                </div>
+                            </div>
+                              </ng-template>
+                                <ng-template #maxpercentage>
+                                    <div class="animation-bar"
+                                    [style.margin-left.%]="98">
                                     <div class="d-flex flex-column">
                                         <div class="border-left"></div>
                                         <div class="Progressscore">
                                             {{seasonalThemeWeeklyBadges2[0].seasonal_score_achived}}
                                         </div>
-                                        
                                     </div>
                                 </div>
-
-
-
+                                </ng-template>
                             </div>
+                         
+
+
                         </ng-template>
 
                         <ng-template>
@@ -2141,10 +2163,10 @@
         </div>
     </div>
 
-</ng-template> -->
+</ng-template> 
 
 <!-- Monthly Modal -->
-<!-- <div *ngIf="isMonthlyModalOpen;then monthly"></div>
+<div *ngIf="isMonthlyModalOpen;then monthly"></div>
 <ng-template #monthly>
     <div class="monthlyModal">
         <div class="modal fade bd-example-modal-sm" id="monthlyModal" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -2194,6 +2216,79 @@
 
                         <ng-template #monthbadge>
                             <div class="animation-bar" *ngIf="seasonalThemeMonthlyBadges3.length!=0">
+                                <div class="badges_row" [style.width.%]="93" style="position: relative;">
+                                    
+                                    <div class="d-flex flex-column justify-content-center align-items-center" [style.margin-left.%]="((seasonalThemeMonthlyBadges3[0].seasonal_score_target)/(seasonalThemeMonthlyBadges3[2].seasonal_score_target))*100">
+                                        
+                                        <div style="height:6vh;width:6vh;border-radius:50%"
+                                            [ngClass]="seasonalThemeMonthlyBadges3[0].active_class == '0'?'inActiveBadge':'ActiveBadge'">
+                                            <img src="{{seasonalThemeMonthlyBadges3[0].seasonal_badge_logo}}" alt="" height="100%" width="100%">
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <div style="height:3vh;border-left: 2px solid #8EC912;"></div>
+                                        </div>
+                                    </div>
+                                     <div class="d-flex flex-column justify-content-center " style="position: absolute;" [style.margin-left.%]="(((seasonalThemeMonthlyBadges3[1].seasonal_score_target)/(seasonalThemeMonthlyBadges3[2].seasonal_score_target))*100)">
+                                        <div style="height:6vh;width:6vh;border-radius:50%"
+                                            [ngClass]="seasonalThemeMonthlyBadges3[1].active_class == '0'?'inActiveBadge':'ActiveBadge'">
+                                            <img src="{{seasonalThemeMonthlyBadges3[1].seasonal_badge_logo}}" alt=""
+                                                height="100%" width="100%">
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <div style="height:3vh;border-left: 2px solid #8EC912;"></div>
+                                        </div>
+
+
+                                    </div>
+                                     <div class="d-flex flex-column justify-content-center " [style.margin-left.%]="(((seasonalThemeMonthlyBadges3[2].seasonal_score_target)/(seasonalThemeMonthlyBadges3[2].seasonal_score_target))*100)" style="position: absolute;" >
+                                        
+                                        <div style="height:6vh;width:6vh;border-radius:50%"
+                                            [ngClass]="seasonalThemeMonthlyBadges3[2].active_class == '0'?'inActiveBadge':'ActiveBadge'">
+                                            <img src="{{seasonalThemeMonthlyBadges3[2].seasonal_badge_logo}}" alt=""
+                                                height="100%" width="100%">
+
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <div style="height:3vh;border-left: 2px solid #8EC912;"></div>
+                                        </div>
+
+
+                                    </div>  
+
+                                </div> 
+
+                                <div class="animation-bar-1" style="width: 100%;">
+                                    <span class="d-flex justify-content-center"
+                                        [style.background-size.%]="100"
+                                        [style.width.%]="((seasonalThemeMonthlyBadges3[2].seasonal_score_percentage))">
+
+                                    </span>
+                                </div>
+                                <div *ngIf="seasonalThemeMonthlyBadges3[2].seasonal_score_percentage<98 then valuepercentage else maxpercentage"></div>
+                              <ng-template #valuepercentage>
+                                <div class="animation-bar"
+                                [style.margin-left.%]="((seasonalThemeMonthlyBadges3[2].seasonal_score_percentage))">
+                                <div class="d-flex flex-column">
+                                    <div class="border-left"></div>
+                                    <div class="Progressscore">
+                                        {{seasonalThemeMonthlyBadges3[0].seasonal_score_achived}}
+                                    </div>
+                                </div>
+                            </div>
+                              </ng-template>
+                                <ng-template #maxpercentage>
+                                    <div class="animation-bar"
+                                    [style.margin-left.%]="98">
+                                    <div class="d-flex flex-column">
+                                        <div class="border-left"></div>
+                                        <div class="Progressscore"  [style.margin-left.%]="90">
+                                            {{seasonalThemeMonthlyBadges3[0].seasonal_score_achived}}
+                                        </div>
+                                    </div>
+                                </div>
+                                </ng-template>
+                            </div>
+                            <!-- <div class="animation-bar" *ngIf="seasonalThemeMonthlyBadges3.length!=0">
                                 <div class="badges_row" style="width:100%">
 
 
@@ -2263,7 +2358,7 @@
 
 
 
-                            </div>
+                            </div> -->
                         </ng-template>
 
                         <ng-template #month>
@@ -2284,7 +2379,7 @@
             </div>
         </div>
     </div>
-</ng-template> -->
+</ng-template>
 
 
 

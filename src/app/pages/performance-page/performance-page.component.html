@@ -36,14 +36,7 @@
         </div>
         </div>
 
-        <div class="col-lg-2 col-md-2 col-4">
-            <select class="form-select performance-filter-select" aria-label="Default select example"
-            [(ngModel)]="dropDownValue" (change)="onChange($event.target.value)">
-            <option [attr.selected]="item?.mapTo?.indexOf(buttonFilterActive) > -2 ? true : null"
-                *ngFor="let item of dropDownFilterData" value="{{item?.value}}">
-                {{item?.value}}</option>
-        </select>
-        </div>
+     
         
     </div>
 
@@ -165,22 +158,33 @@
             </div>
         </div>
     </div>
-    <ng-container *ngIf="graphData?.length > 0">
-        <div class="card" *ngFor="let item of graphData;let i=index">
-            <div class="card-body">
-                <div class="d-flex justify-content-center">
-                   
-                    <p class="graph_label">{{item?.graph_label}}</p>
-
-                </div>
-                <apx-chart class="apex-charts" dir="ltr" [series]="[splineAreaChart?.series[i]]"
-                    [chart]="splineAreaChart?.chart" [dataLabels]="splineAreaChart?.dataLabels"
-                    [stroke]="splineAreaChart?.stroke" [colors]="splineAreaChart?.colors"
-                    [xaxis]="splineAreaChart?.xaxis[i]" [grid]="splineAreaChart?.grid"
-                    [tooltip]="splineAreaChart?.tooltip"></apx-chart>
-            </div>
+    <div class="graph_container">
+        <div class="col-lg-2 col-md-2 col-4" style="display: flex; justify-content: end; width: 100%;">
+            <select class="form-select performance-filter-select" aria-label="Default select example" style="width: 12vw;margin: 2vh;"
+            [(ngModel)]="dropDownValue" (change)="onChange($event.target.value)">
+            <option [attr.selected]="item?.mapTo?.indexOf(buttonFilterActive) > -2 ? true : null"
+                *ngFor="let item of dropDownFilterData" value="{{item?.value}}">
+                {{item?.value}}</option>
+        </select>
         </div>
-    </ng-container>
+        <ng-container *ngIf="graphData?.length > 0">
+            <div class="card" *ngFor="let item of graphData;let i=index">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                       
+                        <p class="graph_label">{{item?.graph_label}}</p>
+    
+                    </div>
+                    <apx-chart class="apex-charts" dir="ltr" [series]="[splineAreaChart?.series[i]]"
+                        [chart]="splineAreaChart?.chart" [dataLabels]="splineAreaChart?.dataLabels"
+                        [stroke]="splineAreaChart?.stroke" [colors]="splineAreaChart?.colors"
+                        [xaxis]="splineAreaChart?.xaxis[i]" [grid]="splineAreaChart?.grid"
+                        [tooltip]="splineAreaChart?.tooltip"></apx-chart>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+  
 </div>
 
 <!-- Rotated View -->
