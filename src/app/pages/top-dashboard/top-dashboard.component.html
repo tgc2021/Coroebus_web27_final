@@ -59,7 +59,7 @@
                                 <div>
                                     <mat-accordion>
 
-                                        <mat-expansion-panel (opened)="panelOpenState =true"
+                                        <mat-expansion-panel  (opened)="panelOpenState =true"
                                             (closed)="panelOpenState = false">
                                             <mat-expansion-panel-header style="color: black !important;">
                                                 <mat-panel-title class="growth_index_accordion">
@@ -74,76 +74,57 @@
                                                 </div>
                                             </div>
                                             <hr class="horizontal_row">
-                                            <div class="pech d-flex">
-                                                {{buisness_head_response_._kpi_score[0].point_label}}
-                                                <div class="pech_details">
-                                                    {{buisness_head_response_._kpi_score[0].weightage}}
-                                                </div>
-                                            </div>
-                                            <hr class="horizontal_row">
-                                            <div class="pech d-flex">
-                                                {{buisness_head_response_._kpi_score[1].point_label}}
-                                                <div class="pech_details">
-                                                    {{buisness_head_response_._kpi_score[1].weightage}}
-                                                </div>
-
-                                            </div>
-                                            <hr class="horizontal_row">
-                                            <div class="pech d-flex">
-                                                {{buisness_head_response_._kpi_score[2].point_label}}
-                                                <div class="pech_details">
-                                                    {{buisness_head_response_._kpi_score[2].weightage}}
-                                                </div>
-
-                                            </div>
-                                            <hr class="horizontal_row">
-                                            <div class="pech d-flex">
-                                                {{buisness_head_response_._kpi_score[3].point_label}}
-                                                <div class="pech_details">
-                                                    {{buisness_head_response_._kpi_score[3].weightage}}
-                                                </div>
-
-                                            </div>
-                                        </mat-expansion-panel>
-                                    </mat-accordion>
-
-                                    <mat-accordion class="governance_index">
-
-                                        <mat-expansion-panel style="margin-top: 2vh" (opened)="panelOpenState1 = true"
-                                            (closed)="panelOpenState1 = false">
-                                            <mat-expansion-panel-header>
-                                                <mat-panel-title class="growth_index_accordion">
-                                                    Governance Index
-                                                </mat-panel-title>
-
-                                            </mat-expansion-panel-header>
-                                            <div class="pech d-flex" *ngFor="let response of buisness_head_response_._governance_score">
+                                            <div class="pech d-flex"  *ngFor="let response of buisness_head_response_._kpi_score"  style="cursor: pointer;" (click)="navigateToBIMap(response)">
                                                 {{response.point_label}}
                                                 <div class="pech_details">
                                                     {{response.weightage}}
                                                 </div>
                                             </div>
+                                           
                                         </mat-expansion-panel>
+
+                                        <mat-expansion-panel style="margin-top: 2vh" (opened)="panelOpenState1 = true"
+                                        (closed)="panelOpenState1 = false">
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title class="growth_index_accordion">
+                                                Governance Index
+                                            </mat-panel-title>
+
+                                        </mat-expansion-panel-header>
+                                        <div class="pech d-flex" *ngFor="let response of buisness_head_response_._governance_score"  >
+                                            {{response.point_label}}
+                                            <div class="pech_details">
+                                                {{response.weightage}}
+                                            </div>
+                                        </div>
+                                    </mat-expansion-panel>
+
+
+                                    <mat-expansion-panel style="margin-top: 2vh" (opened)="panelOpenState2 = true"
+                                    (closed)="panelOpenState2 = false">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title class="growth_index_accordion">
+                                            Business Index
+                                        </mat-panel-title>
+
+                                    </mat-expansion-panel-header>
+                                    <div class="pech d-flex" *ngFor="let businessresponse of buisness_head_response_._business_score" style="cursor: pointer;" (click)="navigateToBIMap(businessresponse)">
+                                        {{businessresponse.point_label}}
+                                        <div class="pech_details">
+                                            {{businessresponse.weightage}}
+                                        </div>
+                                    </div>
+                                </mat-expansion-panel>
+                                    </mat-accordion>
+
+                                    <!-- <mat-accordion class="governance_index">
+                                        
+                                       
                                     </mat-accordion>
 
                                     <mat-accordion class="governance_index">
 
-                                        <mat-expansion-panel style="margin-top: 2vh" (opened)="panelOpenState2 = true"
-                                            (closed)="panelOpenState2 = false">
-                                            <mat-expansion-panel-header>
-                                                <mat-panel-title class="growth_index_accordion">
-                                                    Business Index
-                                                </mat-panel-title>
-
-                                            </mat-expansion-panel-header>
-                                            <div class="pech d-flex" *ngFor="let businessresponse of buisness_head_response_._business_score" style="cursor: pointer;" (click)="navigateToBIMap(businessresponse)">
-                                                {{businessresponse.point_label}}
-                                                <div class="pech_details">
-                                                    {{businessresponse.weightage}}
-                                                </div>
-                                            </div>
-                                        </mat-expansion-panel>
-                                    </mat-accordion>
+                                    </mat-accordion> -->
                                 </div>
 
 
@@ -153,7 +134,7 @@
 
                         </div>
                     </mat-card>
-                    <mat-card class="hos_leaderboard" [style.background-color]="buisness_head_response_.theme_details[0].light_color">
+                    <mat-card class="label_container" style="border-bottom-left-radius: 0;border-bottom-right-radius: 0; padding: 0 !important; width: 90%;" [style.background-color]="buisness_head_response_.theme_details[0].light_color">
                         <div class="d-flex" style="margin-bottom: 1vh; margin-top: 2vh;margin-left: 0.5vw;" >
                             <div class="web_rank_label">
                                 Rank
@@ -165,6 +146,10 @@
                                 Score
                             </div>
                         </div>
+                    </mat-card>
+                    <mat-card class="hos_leaderboard" [style.background-color]="buisness_head_response_.theme_details[0].light_color">
+                 
+                      
                         <div class="d-flex justify-content-center align-items-center leaderboard_div_web">
                             <div class="row first_row_details d-flex call_center_div mt-2"
                             *ngFor="let res of buisness_head_response_._ranking_data[0]._data;let i=index"

@@ -30,6 +30,7 @@ import { TableauModule } from 'ngx-tableau';
 import { BusinessHeadMapComponent } from './business-head-map/business-head-map.component';
 import { BusinessReportComponent } from './business-report/business-report.component';
 
+
 @NgModule({
   declarations: [
     NotificationPopupComponent,
@@ -42,7 +43,8 @@ import { BusinessReportComponent } from './business-report/business-report.compo
     IntroductionVideoComponent,
     GovernanceIndexComponent,
     BusinessHeadMapComponent,
-    BusinessReportComponent,
+    BusinessReportComponent
+  
   
   ],
   imports: [

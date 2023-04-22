@@ -75,6 +75,7 @@ export class PlayZoneComponent implements OnInit {
   medium_color: string;
   light_color: string;
   cubeBlastersUrl: string;
+  id_role: any;
 
   constructor(private http: ApiserviceService, private readonly store: Store, public modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -98,6 +99,9 @@ export class PlayZoneComponent implements OnInit {
       this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
       console.log(this.mergeObj);
 
+      this.id_role=this.mergeObj.id_role;
+      console.log(this.id_role);
+
       
       this.playZone();
       this.rewardPassbook();
@@ -119,9 +123,10 @@ console.log(this.dark_color);
   }
 
   playZone(){
+    console.log(this.mergeObj)
     let body = {
       _userid: this.mergeObj.USERID,
-      _game: 183,
+      _game: this.mergeObj.id_coroebus_game,
     }
 
 
@@ -140,7 +145,7 @@ console.log(this.dark_color);
   rewardPassbook(){
     let body = {
       _userid: this.mergeObj.USERID,
-      _game: 183,
+      _game: this.mergeObj.id_coroebus_game,
     }
 
     this.http.playZonePassbook(body).subscribe((res:any)=>{
@@ -157,8 +162,8 @@ console.log(this.dark_color);
   open(content,data) {
     // console.log(content);
     if(data.id_engagement_game==='1'){
-
-      this.dartGameUrl=`https://coroebus.in/dart_game/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`;
+      // this.dartGameUrl=`http://127.0.0.1:5501/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
+       this.dartGameUrl=`https://coroebusbeta.in/dart_game/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`;
       // this.dartGameUrl=`http://127.0.0.1:5501/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`;
       this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.dartGameUrl);
       this.modalService.open(content);
@@ -166,25 +171,26 @@ console.log(this.dark_color);
     else if(data.id_engagement_game==='2'){
      
       this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
-      this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.spinTheWheelURL);
+      // this.spinTheWheelURL=`http://127.0.0.1:5501/spin_the_wheel_latest/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
+      this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.spinTheWheelURL)
       this.modalService.open(content,{size: 'lg'});
     }
-   
     else if(data.id_engagement_game==='5'){
-      this.skylineGameUrl=`https://coroebusbeta.in/CoroebusSkyline/`
+      this.skylineGameUrl=`https://coroebusbeta.in/CoroebusSkyline/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
       // this.skylineGameUrl=`http://127.0.0.1:5500/MiniGame_cube_Busters/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
       this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.skylineGameUrl)
+      console.log(this.skylineGameUrl);
       this.modalService.open(content,{size: 'lg'});
     }
     else if(data.id_engagement_game==='6'){
-      this.cubeBlasters=`http://127.0.0.1:5500/MiniGame_cube_Busters/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
-      this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.cubeBlasters)
-
+      this.cubeBlasters=`https://coroebusbeta.in/cube_blasters/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
+      console.log(this.cubeBlastersUrl);
+      //  this.cubeBlastersUrl=`https://coroebusbeta.in/cube_blasters?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
+      this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.cubeBlasters);
+      
       this.modalService.open(content,{size: 'lg'});
     }
   }
-
-
 
   // By Default 
 
@@ -289,11 +295,9 @@ reverse = false;
     this.reverse = !this.reverse;
   }
 openEvent(){
-
   this.openEvents=true;
   this.openPassBook=false;
 }
-
 rewardPassBook(){
   this.openEvents=false;
   this.openPassBook=true;

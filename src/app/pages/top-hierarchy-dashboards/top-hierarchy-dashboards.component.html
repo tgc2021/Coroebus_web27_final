@@ -450,7 +450,7 @@
                         <!-- <div class="level_name">{{sectionView_1._personal_data.level_label}}</div> -->
                         <div class="level_name">Governance Index</div>
                     </div>
-                    <div class="Overall_score" *ngIf="sectionView_1._governance_score.length!=0" [ngbTooltip]="(sectionView_1._auto_fail==1) ?  'Auto-fail' : 'Not-auto-fail'" placement="bottom" [ngClass]="sectionView_1._auto_fail==1?'Overall_score_fail':'overall_score_success'">
+                    <div class="Overall_score" *ngIf="sectionView_1._governance_score.length!=0" [ngbTooltip]="(sectionView_1._auto_fail==1) ?  'Auto Fail' : 'No Auto Fail'" placement="bottom" [ngClass]="sectionView_1._auto_fail==1?'Overall_score_fail':'overall_score_success'">
                         <!-- <img class="profile_picture_image" src="{{sectionView_1._personal_data.profile_logo}}" height="100%" width="" /> -->
                        <ng-template #Overall_score_fail>
                             

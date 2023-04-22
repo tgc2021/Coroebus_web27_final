@@ -187,9 +187,10 @@
     .hos_leaderboard {
         width: 90%;
         height: 64vh;
-        overflow-y: hidden;
+        overflow-y: scroll;
         overflow-x: hidden;
         padding: 0;
+        border-radius: 0;
     }
     .mat-expansion-panel-header {
         padding: 0px 15px 0px 8px;

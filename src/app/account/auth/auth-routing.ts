@@ -12,6 +12,8 @@ import { AuthGuard } from '@app/guards/auth.guard';
 import { TvsDashboardComponent } from './tvs-dashboard/tvs-dashboard.component';
 import { InteractiveDashboardComponent } from './interactive-dashboard/interactive-dashboard.component';
 import { BusinessReportComponent } from './business-report/business-report.component';
+import { GrowthReportComponent } from './growth-report/growth-report.component';
+import { GovernanceReportComponent } from './governance-report/governance-report.component';
 const routes: Routes = [
     {
         path: 'login',
@@ -35,6 +37,16 @@ const routes: Routes = [
     {
         path: 'business-report',
         component: BusinessReportComponent
+       
+    },
+    {
+        path: 'growth_report',
+        component: GrowthReportComponent
+       
+    },
+    {
+        path: 'governance_report',
+        component: GovernanceReportComponent
        
     },
     {
