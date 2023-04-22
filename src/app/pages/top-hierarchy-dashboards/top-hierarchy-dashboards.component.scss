@@ -26,7 +26,7 @@
     align-items: center;
 
     .profile_card {
-        cursor: poInter;
+        cursor: pointer;
         position: relative;
         width: 19vw;
         height: 35vh;
@@ -169,7 +169,7 @@
                 font-family: 'Inter';
                 font-weight: 600;
                 font-size: 0.9vw;
-                margin-right: 1vw;
+                margin-right: 0.2vw;
             }
 
         }
@@ -236,7 +236,7 @@
         .overall_score_success {
 
             position: absolute;
-            border: 2px solid #79BF06;
+            border: 2.5px solid #79BF06;
             border-radius: 50%;
             background-color: #ffff;
 
@@ -253,7 +253,6 @@
                 align-items: center;
                 gap:0.6em;
                 border-radius: 100%;
-
                 .overall_score_number {
                     font-family: 'Inter';
                     font-style: normal;
@@ -279,7 +278,7 @@
         }
         .Overall_score_fail{
             position: absolute;
-            border: 2px solid red;
+            border: 2.5px solid red;
             border-radius: 50%;
             background-color: #ffff;
 
@@ -532,8 +531,8 @@
        align-items: center;
        cursor: poInter;
        img{
-        height: 16vh;
-        width: 16vh;
+        height: 15vh;
+        width: 15vh;
         border-radius: 100%;
        }
     }
@@ -1908,5 +1907,6 @@ input::placeholder {
     color: #000000;
     padding: 1vh;
     background: var(--lightColor); 
-   border-radius: 10px;
+    border-radius: 10px;
+    margin-top: 1vh;
 }

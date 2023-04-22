@@ -1,9 +1,14 @@
+.graph_container{
+    background: transparent;
+}
+
 .historical-live-btn{
     width: 30%;
     display: flex;
     justify-content: end;
     height: 55px;
 }
+
 
 
 .performance-filter-select{
@@ -54,6 +59,29 @@
     margin-left: auto;
 }
 
+.prof_pic_my_performance{
+    height: 55px;
+    width: 55px;
+    border-radius: 100%;
+}
+
+.name_my_performance{
+    font-family: 'Inter';
+    font-size: 0.9vw;
+    font-weight: 600;
+    padding-top: 8px;
+    padding-left: 12px;
+
+}
+
+.level_my_performance{
+    font-family: 'Inter';
+    font-size: 0.9vw;
+    font-weight: 600;
+    padding-left: 12px;
+    padding-top: 2px;
+
+}
 @media (min-width: 770px) and (max-width: 1024px)  {
     .historical-live-btn {
         width: 50%;
@@ -83,7 +111,25 @@
     padding: 0;
     }
 }
-
+@media (min-width: 768px) and (max-width: 1024px) {
+    .name_my_performance{
+        font-family: 'Inter';
+        font-size: 1.2vw;
+        font-weight: 600;
+        padding-top: 8px;
+        padding-left: 12px;
+    
+    }
+    
+    .level_my_performance{
+        font-family: 'Inter';
+        font-size: 1.2vw;
+        font-weight: 600;
+        padding-left: 12px;
+        padding-top: 2px;
+    
+    }
+}
 @media (min-width: 1400px) and (max-width: 1440px) {
     // .historical-live-btn {
     //     margin-left: -20%;

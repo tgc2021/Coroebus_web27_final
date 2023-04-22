@@ -3,11 +3,13 @@
     left: 0px;
     // top: 80px;
     background: #FFFFFF;
-    margin-top: -1%;
+    margin: 0 0 0 0;
+    display: flex;
+    align-items: center;
 }
 
 .performance-container {
-    width: 101%;
+    width: 100%;
 }
 
 .performance-filter-primary {
@@ -112,9 +114,9 @@ only screen and (-o-min-device-pixel-ratio: 1.25/1) and (min-width: 1281px),
 only screen and (min-device-pixel-ratio: 1.25) and (min-width: 1281px),
 only screen and (min-resolution: 200dpi) and (min-width: 1281px),
 only screen and (min-resolution: 1.25dppx) and (min-width: 1281px) {
-    .performance-game-points-coin {
-        margin-left: 30%;
-    }
+    // .performance-game-points-coin {
+    //     margin-left: 20%;
+    // }
 }
 
 /* 
@@ -136,14 +138,50 @@ only screen and (min-resolution: 1.25dppx) and (min-width: 1025px) and (max-widt
   ##Screen = B/w 768px to 1024px
 */
 
-@media (min-width: 768px) and (max-width: 1024px) {}
+@media (min-width: 768px) and (max-width: 1024px) {
+    .name_my_performance{
+        font-family: 'Inter';
+        font-size: 1.5vw;
+        font-weight: 600;
+        padding-top: 8px;
+        padding-left: 12px;
+    
+    }
+    
+    .level_my_performance{
+        font-family: 'Inter';
+        font-size: 1.5vw;
+        font-weight: 600;
+        padding-left: 12px;
+        padding-top: 2px;
+    
+    }
+}
 
 /* 
   ##Device = Tablets, Ipads (landscape)
   ##Screen = B/w 768px to 1024px
 */
 
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {}
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .name_my_performance{
+        font-family: 'Inter';
+        font-size: 1vw;
+        font-weight: 600;
+        padding-top: 8px;
+        padding-left: 12px;
+    
+    }
+    
+    .level_my_performance{
+        font-family: 'Inter';
+        font-size: 1vw;
+        font-weight: 600;
+        padding-left: 12px;
+        padding-top: 2px;
+    
+    }
+}
 
 /* 
   ##Device = Low Resolution Tablets, Mobiles (Landscape)

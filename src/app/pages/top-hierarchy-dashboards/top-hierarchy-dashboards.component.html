@@ -72,7 +72,12 @@
                                                     </div>
                                                     <div class="col-9 d-flex justify-content-end align-items-center"
                                                         style="height: 6vh;">
-                                                        <div class="point_dist_score text-end">{{sectionView_1._points[0].score}}</div>
+                                                        <div class="point_dist_score text-end col ">{{sectionView_1._points[0].score}}</div>
+                                                        <div   style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
+                        
+                                                            <div style="height: 1.2vh;width:1.3vw;border-radius:100%;background-color:transparent ;"></div>
+                         
+                                                         </div>
                                                         <div class="col  d-flex justify-content-end align-items-center me-2">
                                                             <img src="assets/images/TopHierarchyDashboard/Arrow.png" />
                                                         </div>
@@ -98,6 +103,25 @@
                                                     <div class="col-9 d-flex justify-content-end align-items-center"
                                                         style="height: 6vh;">
                                                         <div class="point_dist_score text-end">{{item?.weightage}}</div>
+                                                        <div class="col d-flex align-items-center">
+                                                            <div  style="height:2.5vh;" *ngIf="item.ranking_arrow=='green'">
+
+                                                                <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                                                    height="100%" >
+                                                            </div>
+                            
+                                                            <div *ngIf="item.ranking_arrow=='red'"  style="height:2.5vh;">
+                            
+                                                                <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                                    height="100%">
+                            
+                                                            </div>
+                                                            <div *ngIf="item.ranking_arrow=='yellow'"  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
+                        
+                                                                <div style="height: 1.2vh;width:1.2vh;border-radius:100%;background-color:orange ;"></div>
+                             
+                                                             </div>
+                                                        </div>
                                                         <div class="col  d-flex justify-content-end align-items-center me-2">
                                                             <img src="assets/images/TopHierarchyDashboard/Arrow.png" />
                                                         </div>
@@ -450,9 +474,12 @@
                         <!-- <div class="level_name">{{sectionView_1._personal_data.level_label}}</div> -->
                         <div class="level_name">Governance Index</div>
                     </div>
-                    <div class="Overall_score" *ngIf="sectionView_1._governance_score.length!=0" [ngClass]="sectionView_1._auto_fail==1?'Overall_score_fail':'overall_score_success'">
+                    <div class="Overall_score" *ngIf="sectionView_1._governance_score.length!=0" [ngbTooltip]="(sectionView_1._auto_fail==1) ?  'Auto Fail' : 'No Auto Fail'" placement="bottom" [ngClass]="sectionView_1._auto_fail==1?'Overall_score_fail':'overall_score_success'">
                         <!-- <img class="profile_picture_image" src="{{sectionView_1._personal_data.profile_logo}}" height="100%" width="" /> -->
+                       <ng-template #Overall_score_fail>
+                            
                        
+                       </ng-template>
                         <div class="Overall_score_Inner_circle"  >
                             <div class="overall_score_number">{{sectionView_1._governance_score[0].weightage}}</div>
                             <div class="overall_score_text">{{sectionView_1._governance_score[0].point_label}}</div>
@@ -550,13 +577,30 @@
                                             {{bus_response.point_label}}
                 
                                         </div>
-                                        <div class="global_index_details  " style="font-weight: 500;font-family: 'Inter';">
-                                            <!-- {{GrowthIndexData[0].score}} -->
+                                        <div class="d-flex">
+                                            <div class="global_index_details  " style="font-weight: 500;font-family: 'Inter';">
+                                                <!-- {{GrowthIndexData[0].score}} -->
+                    
+                                                {{bus_response.weightage}}
+    
+                    
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <div  style="height:2.5vh;">
+    
+                                                    <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                                        height="100%" >
+                                                </div>
                 
-                                            {{bus_response.weightage}}
-
+                                                <!-- <div *ngIf="res.rankingtable_arrow!='green' && j !=0"  style="height:2.5vh;">
                 
+                                                    <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                        height="100%">
+                
+                                                </div> -->
+                                            </div>
                                         </div>
+                                        
                                     </div>
                                  
                 

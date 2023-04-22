@@ -1525,8 +1525,7 @@ else if(this.activeTabForSectionView_2 == 4){
 
       
         
-        if(this.hideBattleGround){
-          console.log('no hide');
+      
           
           window.open(
             // 'http://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"spect="+"yes",
@@ -1534,7 +1533,7 @@ else if(this.activeTabForSectionView_2 == 4){
              'http://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total",
             '_self' // <- This is what makes it open in a new window.
           )
-        }
+        
 
     //  else{
     //   console.log('hide');
@@ -1642,6 +1641,21 @@ else if(this.activeTabForSectionView_2 == 4){
         console.log(res);
 
         this.data=res;
+        // Trivia Corner Data
+
+        this.triviaCornerData=this.data.data.trivia_corner;
+        console.log(this.triviaCornerData);
+
+        this.triviaCornerData.forEach((res)=>{
+          console.log(res);
+          
+          console.log(true)
+          if(res.view_status!='Read')
+          {
+            this.hideTriviaIndicator=true;
+            // console.log(hideTriviaIndicator)
+          }
+        })
         // console.log(this.data.data.seasonal_theme_daily.length==undefined);
         // console.log(this.data.data.seasonal_theme_daily==undefined);
       
@@ -1684,18 +1698,7 @@ else if(this.activeTabForSectionView_2 == 4){
 
         console.log(this.onGoingChallenges)
 
-        // Trivia Corner Data
-
-        this.triviaCornerData=this.data.data.trivia_corner;
-
-        this.triviaCornerData.forEach((res)=>{
-          console.log(true)
-          if(res.view_status!='Read')
-          {
-            this.hideTriviaIndicator=true;
-            // console.log(hideTriviaIndicator)
-          }
-        })
+        
       })
     
 

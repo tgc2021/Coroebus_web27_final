@@ -22,10 +22,12 @@ import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderComponent } from './loader/loader.component';
 import { BusinessReportComponent } from './business-report/business-report.component';
 import { TableauModule } from 'ngx-tableau';
+import { GrowthReportComponent } from './growth-report/growth-report.component';
+import { GovernanceReportComponent } from './governance-report/governance-report.component';
 
 
 @NgModule({
-  declarations: [LoginComponent, SignupComponent, PasswordresetComponent, TermsAndConditionsComponent, CreateNewPasswordComponent, SecurityQuestionComponent, TvsDashboardComponent, InteractiveDashboardComponent, LoaderComponent, BusinessReportComponent],
+  declarations: [LoginComponent, SignupComponent, PasswordresetComponent, TermsAndConditionsComponent, CreateNewPasswordComponent, SecurityQuestionComponent, TvsDashboardComponent, InteractiveDashboardComponent, LoaderComponent, BusinessReportComponent, GrowthReportComponent, GovernanceReportComponent],
   providers:[],
   imports: [
     CommonModule,

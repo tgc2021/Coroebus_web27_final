@@ -127,7 +127,9 @@ console.log(this.dark_color);
   }
 
   close() {
+    
     this.activeModal.close();
+    location.reload()
   }
 
 

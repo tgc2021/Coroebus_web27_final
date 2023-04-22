@@ -83,7 +83,7 @@ border-radius: 11px;
 .pointsDistributionSection{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
 }
 .points-notification-card
@@ -225,6 +225,50 @@ mat-accordion{
     50% {
       opacity: 1;
     }
+  }
+
+  .inner_content_new_challange{
+    font-weight: 600;
+    font-family: 'Work Sans';
+    font-size:1.6vh;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+  
+    background: #FFFFFF;
+    border-bottom: 0.5px solid #A5ACB8;
+   padding-left: 1vw;
+    width: 95%;
+    .badge-container{
+        width: 10vw;
+        height: 5vh;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        .activeBadge{
+            width: 4vh;
+            height: 4vh;
+            border: 1px solid #0000;
+            margin-left: 0.5vw;
+            background: #D9D9D9;
+            color: #000000;
+            border-radius: 4px;
+        }
+        .deActiveBadge{
+            width: 4vh;
+            height: 4vh;
+            border: 1px solid #0000;
+            margin-left: 0.5vw;
+            background: #D9D9D9;
+            color: #000000;
+            filter: grayscale(100%);
+            border-radius: 4px;
+        }
+    }
+        
+   
+    
+
   }
 
 .inner_content,.inner_content_daily1{
@@ -1814,7 +1858,8 @@ border-radius: 8px;
     height:35px;
     width:35px;
     border-radius:50%;
-    margin-left:-4%;
+    // margin-left:-10%;
+    margin-left: -1.2vw;
     color:#8EC912;
     font-size:3vh;
     // border:1px solid black;
