@@ -166,6 +166,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   seasonalThemeWeeklyBadges2: any;
   seasonalThemeMonthlyBadges3: any;
   totalTargetScoreForMontly: number;
+  kpiName: any;
 
   constructor(private readonly store: Store, private modalService: NgbModal,private renderer:Renderer2,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -1729,17 +1730,51 @@ else if(this.activeTabForSectionView_2 == 4){
   navigateToBriefQuetion(data:any){
     console.log(data);
     let id_coroebus_team='0';
+    const gameName=this.sectionView_1?._personal_data?.game_name;
+    const teamName=this.sectionView_1?._personal_data?.team_name;
+    console.log(this.sectionView_1?._personal_data.external_kpi_data.length);
     console.log(data._game,data._userid,id_coroebus_team,data._categoryid,data.id_learning_academy_brief,data._subcategoryid,data.brief_type);
     console.log(data.id_learning_academy_brief);
     
      console.log('http://localhost:4200/#/LearningAcademy/library_game='+data._game+"&_userid="+data._userid+"&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+"&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type);
   
      if(data.view_status!='Read'){
-      window.open(
-        'https://coroebus.in/Learning_academy/#/LearningAcademy/library?_game='+data._game+"&_userid="+data._userid+"&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+"&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type,
+  
+    if(this.sectionView_1?._personal_data.external_kpi_data.length){
+    this.kpiName=this.sectionView_1?._personal_data.external_kpi_data[0].kpi_name;
+    console.log(this.kpiName);
+    const isAttemted=this.sectionView_1?._personal_data.external_kpi_data[0].is_attempted;
+    const isCorrect=this.sectionView_1?._personal_data.external_kpi_data[0].is_correct;
+
+    // console.log(userId,game,teamid);
+    // console.log('http://localhost:4200/#/LearningAcademy/library?_game='+game+"&_userid¸="+userId+"&_team="+teamid,'_self' );
     
-       '_self'
-     )
+//  console.log(     'http://localhost:4201/#/LearningAcademy/library?_game='+data._game+"&_userid="+data._userid+
+//  "&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+
+//  "&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type+"&_game_name="+gameName+
+//  "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'
+// );
+   
+    window.open(
+          'https://coroebus.in/Learning_academy/#/LearningAcademy/library?_game='+data._game+"&_userid="+data._userid+
+    "&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+
+    "&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type+"&_game_name="+gameName+
+    "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'  
+    )
+    
+   }
+   else{
+    console.log("sdfksdfs nkdnkskj");
+    this.modalService.dismissAll('Cross click')
+    Swal.fire({
+      title: '',
+      text: 'Introducing Trivia Corner exclusively for Players and Captains',
+      // imageUrl: 'assets/images/svg/logo/logo.svg',
+      imageHeight: 40,
+      confirmButtonColor:this.sectionView_1?.theme_details?.[0]?.dark_color
+    });
+   }
+   
      }
     else{
       this.modalService.dismissAll('Cross click')
@@ -1748,7 +1783,7 @@ else if(this.activeTabForSectionView_2 == 4){
         text: 'Answer is Already Given',
         // imageUrl: 'assets/images/svg/logo/logo.svg',
         imageHeight: 40,
-        confirmButtonColor: '#556ee6'
+        confirmButtonColor: this.sectionView_1?.theme_details?.[0]?.dark_color
       });
     }
     }
