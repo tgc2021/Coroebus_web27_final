@@ -136,7 +136,8 @@
                                                 </div>
                                                 <div *ngIf="item.ranking_arrow=='yellow'"  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
                         
-                                                    <div style="height: 1.2vh;width:1.2vh;border-radius:100%;background-color:orange ;"></div>
+                                                    <!-- <div style="height: 1.2vh;width:1.2vh;border-radius:100%;background-color:orange ;"></div> -->
+                                                    <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
                  
                                                  </div>
                                                 <div >
@@ -555,13 +556,18 @@
                                                     <img class="mt-1 f-right up-arrow" alt=""
                                                         src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
                                                         data-holder-rendered="true" height="100%"
-                                                        *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow === 'red'"
+                                                        *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow === 'green'"
                                                         (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
     
                                                     <img class="mt-1 f-right up-arrow" alt=""
                                                         src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
                                                         data-holder-rendered="true" height="100%"
-                                                        *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow !== 'red'"
+                                                        *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow == 'red'"
+                                                        (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
+                                                        <img class="mt-1 f-right up-arrow" alt=""
+                                                        src="../../../../assets/images/BoosterAssests/EQ-16687580462022.png"
+                                                        data-holder-rendered="true" height="60%" width="60%"
+                                                        *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow == 'yellow'"
                                                         (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
                                                 </div>
     
@@ -634,7 +640,13 @@
                                                     <img class="mt-1 f-right up-arrow" alt=""
                                                         src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
                                                         data-holder-rendered="true" height="100%"
-                                                        *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._Overall?.[0]?.rankingtable_arrow !== 'red'"
+                                                        *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._Overall?.[0]?.rankingtable_arrow === 'green'"
+                                                        (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
+
+                                                        <img class="mt-1 f-right up-arrow" alt=""
+                                                        src="assets/images/BoosterAssests/EQ-16687580462022.png"
+                                                        data-holder-rendered="true" height="60%" width="60%"
+                                                        *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._Overall?.[0]?.rankingtable_arrow === 'yellow'"
                                                         (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
                                                 </div>
     
