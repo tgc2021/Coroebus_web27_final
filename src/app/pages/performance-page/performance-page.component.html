@@ -1,7 +1,7 @@
 <div class="container-fluid web-view performance-container">
     <div class="row performance-filter-row">
         
-        <div class="col-lg-3 col-md-3 col-4 d-flex ">
+        <div class="col-lg-12 col-md-12 col-12 d-flex ">
            
             <!-- <span class="performance-filter-txt">
                 Filter
@@ -17,24 +17,7 @@
 </div>
         </div>
 
-        <div class="col-lg-7 col-md-7 col-4 d-flex justify-content-end">
-            <div class="historical-live-btn mt-2" role="group" aria-label="Basic radio toggle button group"
-            *ngIf="(userObj?._personal_data?.id_role === '3' || userObj?._personal_data?.id_role === '4')">
-            <input type="radio" class="btn-check" name="Historical" id="Historical" autocomplete="off"
-                [attr.checked]="buttonFilterActive === 'Historical' ? true: null">
-            <label class="btn btn-outline-primary performance-filter-primary" for="Historical"
-                [ngStyle]="{'background': buttonFilterActive === 'Historical' ? userObj?.otherInfo?.color : 'inherit'}"
-                [ngClass]="{'text-black': buttonFilterActive !== 'Historical'}"
-                (click)="buttonFilter('Historical')">Historical</label>
-
-            <input type="radio" class="btn-check" name="Live" id="Live" autocomplete="off"
-                [attr.checked]="buttonFilterActive === 'Live' ? true : null">
-            <label class="btn btn-outline-primary performance-filter-primary" for="Live"
-                [ngStyle]="{'background': buttonFilterActive === 'Live' ? userObj?.otherInfo?.color : 'inherit'}"
-                [ngClass]="{'text-black': buttonFilterActive !== 'Live'}"
-                (click)="buttonFilter('Live')">Live</label>
-        </div>
-        </div>
+      
 
      
         
@@ -159,14 +142,37 @@
         </div>
     </div>
     <div class="graph_container">
-        <div class="col-lg-2 col-md-2 col-4" style="display: flex; justify-content: end; width: 100%;">
-            <select class="form-select performance-filter-select" aria-label="Default select example" style="width: 12vw;margin: 2vh;"
-            [(ngModel)]="dropDownValue" (change)="onChange($event.target.value)">
-            <option [attr.selected]="item?.mapTo?.indexOf(buttonFilterActive) > -2 ? true : null"
-                *ngFor="let item of dropDownFilterData" value="{{item?.value}}">
-                {{item?.value}}</option>
-        </select>
+        <div class="row" style="background-color: #ffffff; width: 100%; margin-left: 0.1vw;margin-bottom: 2vh;border-radius: 0.25rem;">
+            
+            <div class="col-lg-2 col-md-2 col-6" style="display: flex; justify-content: end; width: 100%; align-items: center;">
+                <div class="col-lg-10 col-md-10 col-6 d-flex justify-content-end">
+                    <div class="historical-live-btn mt-2" role="group" aria-label="Basic radio toggle button group"
+                    *ngIf="(userObj?._personal_data?.id_role === '3' || userObj?._personal_data?.id_role === '4')">
+                    <input type="radio" class="btn-check" name="Historical" id="Historical" autocomplete="off"
+                        [attr.checked]="buttonFilterActive === 'Historical' ? true: null">
+                    <label class="btn btn-outline-primary performance-filter-primary" for="Historical"
+                        [ngStyle]="{'background': buttonFilterActive === 'Historical' ? userObj?.otherInfo?.color : 'inherit'}"
+                        [ngClass]="{'text-black': buttonFilterActive !== 'Historical'}"
+                        (click)="buttonFilter('Historical')">Historical</label>
+        
+                    <input type="radio" class="btn-check" name="Live" id="Live" autocomplete="off"
+                        [attr.checked]="buttonFilterActive === 'Live' ? true : null">
+                    <label class="btn btn-outline-primary performance-filter-primary" for="Live"
+                        [ngStyle]="{'background': buttonFilterActive === 'Live' ? userObj?.otherInfo?.color : 'inherit'}"
+                        [ngClass]="{'text-black': buttonFilterActive !== 'Live'}"
+                        (click)="buttonFilter('Live')">Live</label>
+                </div>
+                </div>
+                <select class="form-select performance-filter-select" aria-label="Default select example" style="width: 12vw;margin: 2vh; "
+                [(ngModel)]="dropDownValue" (change)="onChange($event.target.value)">
+                <option [attr.selected]="item?.mapTo?.indexOf(buttonFilterActive) > -2 ? true : null"
+                    *ngFor="let item of dropDownFilterData" value="{{item?.value}}">
+                    {{item?.value}}</option>
+            </select>
+            </div>
         </div>
+       
+
         <ng-container *ngIf="graphData?.length > 0">
             <div class="card" *ngFor="let item of graphData;let i=index">
                 <div class="card-body">

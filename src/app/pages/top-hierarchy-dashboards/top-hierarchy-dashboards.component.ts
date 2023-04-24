@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { combineLatest, Observable, Subject, Subscription } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import * as fromRoot from '../../core/app-state';
@@ -73,7 +73,12 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   isVideoHide: any;
   emptyInput: boolean=true;
   lengthLeaderBoardData: any;
+  about_game_pdf:any
   lengthSearchList: number;
+  hierarchyPopupList: any
+  firstUserData: any;
+  @ViewChild('hierarchyPopup') hierarchyPopup;
+
   constructor(private readonly store: Store, public _route: ActivatedRoute,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -203,6 +208,13 @@ console.log(this.dark_color);
 
       console.log(this.sectionView_1?.theme_details?.[0]?.dark_color);
       
+
+      if(this.sectionView_1?.is_about_game==1){
+        this.about_game_pdf= this.sectionView_1?.about_game[0].file_name
+        console.log( this.about_game_pdf);
+        localStorage.setItem('about_game_pdf',this.about_game_pdf)
+      }
+
       this.pokeAnimationData = this.sectionView_1._poked_data
       // this.pokeAnimationData1=this.sectionView_1._poked_data[0].poke_description
 
@@ -689,5 +701,43 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
     console.log('gov index');
     
     this.router.navigateByUrl('governance_index');
+  }
+
+  async openHierarchyPopup(data?: any) {
+    console.log(data)
+    let err: any, res: any;
+    let body: any;
+    // body = {
+    //   "_userid": this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
+    //   "_game": this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
+    // };
+    body = {
+      "_userid": data?.userid,
+      "_game": data?.id_coroebus_game
+    };
+    [err, res] = await HttpProtocols.to(DashboardModel.hierarchyPopup(body))
+    if (!err && res?.statuscode === 200) {
+      this.hierarchyPopupList = res?.data
+      this.firstUserData = this.hierarchyPopupList[0]
+      console.log(this.firstUserData);
+
+      console.log(this.hierarchyPopupList);
+
+      this.modalService.open(this.hierarchyPopup, { centered: true, windowClass: 'modal-cls' });
+    } else {
+      // this.levelsBucketsList_err = 'Error'
+    }
+    
+  }
+
+  getDataBasedOnUserIDVIAhierarchyPopupList(data: any, modal: any) {
+    modal.dismiss('Cross click')
+    let obj = {
+      _userid: data?.USERID,
+      game_id: data?.id_coroebus_game,
+      role_id: data?.id_role
+    }
+    console.log(obj)
+    this.getDataBasedOnUserID(obj)
   }
 }

@@ -167,7 +167,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   seasonalThemeMonthlyBadges3: any;
   totalTargetScoreForMontly: number;
   kpiName: any;
-
+  about_game_pdf:any
   constructor(private readonly store: Store, private modalService: NgbModal,private renderer:Renderer2,
     public Util: Util, private eventService: EventService, private _router: Router,
     private _route: ActivatedRoute, public toastService: ToastService,public http:ApiserviceService,public elementref: ElementRef) {
@@ -249,7 +249,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
           // this.notificationList(queryParams)
           // this.addIns(queryParams)
           this.notificationList()
-          this.addIns()
+          this.addIns(queryParams)
         } else {
           this.getUserBannerDataSectionView_1()
           this.getUserBannerDataSectionView_2()
@@ -279,6 +279,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     })
     this.requestForProduce1Data?.unsubscribe()
     this.requestForProduce1Data = this.eventService.subscribe('requestForProduce1Data', (data) => {
+      
+      
       this.eventService.broadcast('requestSendForProduce1Data', this.sectionView_1)
     })
     
@@ -373,6 +375,12 @@ localStorage.setItem('bg_image',this.sectionView_1?.theme_details?.[0]?.point_di
 
       this.web_profile_back_image= this.sectionView_1._back_images[1]._data[0].ranking_image_profile;
       console.log(this.web_profile_back_image);
+
+      if(this.sectionView_1?.is_about_game==1){
+        this.about_game_pdf= this.sectionView_1?.about_game[0].file_name
+        console.log( this.about_game_pdf);
+        localStorage.setItem('about_game_pdf',this.about_game_pdf)
+      }
       
      
       this.eventService.broadcast('passDataToHeader', {
@@ -986,6 +994,9 @@ else if(this.activeTabForSectionView_2 == 4){
   async addIns(queryParams?: any) {
     let err: any, res: any;
     let body: any;
+    console.log( queryParams?.userID);
+    console.log(this.userSelectionData?._personal_data?.USERID);
+
     body = {
       "_userid": queryParams?.userID ? queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
       "_game": queryParams?.gameID ? queryParams?.gameID : this.userSelectionData?.id_coroebus_game

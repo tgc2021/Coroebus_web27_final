@@ -56,6 +56,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
   is_interactive_dashboard:any
   windowlocation:any
   spectator_value:any
+  about_game:any
   constructor(private eventService: EventService, private router: Router,public dashboard:DefaultComponent,
     public translate: TranslateService, private http: ApiserviceService,
     private readonly store: Store, private cd: ChangeDetectorRef,public route:ActivatedRoute) {
@@ -73,7 +74,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
       this.filepath=this.produce1Data.about_game[0].file_name;
      
         this.menuItems = MENU;
-        // console.log(this.filepath);
+        console.log(this.filepath);
         console.log(this.userObj)
         console.log(this.menuItems);
         console.log(this.userObj?.games.length);
@@ -299,20 +300,19 @@ console.log(this.id_coroebus_organization);
      
     }
     else  if(this.id_role == 13 ){
-      
       this.menuItems = MENU_HOS;
       this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
-      if(this.is_about_game==0||this.is_about_game==null){
+      // if(this.is_about_game==0||this.is_about_game==null){
        
        
-        const result = this.menuItems.filter(data => data.icon != 'Aboutgameicon');
+      //   const result = this.menuItems.filter(data => data.icon != 'Aboutgameicon');
 
-        this.menuItems=result;
+      //   this.menuItems=result;
 
        
-        console.log(this.menuItems);
+      //   console.log(this.menuItems);
         
-      }
+      // }
     }
   
     else {
@@ -332,26 +332,27 @@ console.log(this.id_coroebus_organization);
         
       })
 
-      if(this.is_about_game==0||this.is_about_game==null){
+      // if(this.is_about_game==0||this.is_about_game==null){
        
        
-        const result = this.menuItems.filter(data => data.icon != 'Aboutgameicon');
+      //   const result = this.menuItems.filter(data => data.icon != 'Aboutgameicon');
 
-        this.menuItems=result;
+      //   this.menuItems=result;
 
        
-        console.log(this.menuItems);
+      //   console.log(this.menuItems);
         
-      }
+      // }
       if(this.id_role == 9 || this.id_role == 8 ||this.id_role == 12){
+        
         const result = this.menuItems.filter(data => data.icon != 'ChallengeZoneicon');
-     console.log('rol i 9,8,12');
+        console.log('rol i 9,8,12');
      
         this.menuItems=result;
 
        
         console.log(this.menuItems);
-        
+      
       }
      if(this.userObj?.games.length==1){
         const result = this.menuItems.filter(data => data.icon != 'game');
@@ -426,14 +427,19 @@ console.log(this.id_coroebus_organization);
       window.open(this.url, '_blank');
       
     }
-    else if(item?.icon === 'Aboutgameicon'){
+    // else if(item?.icon === 'Aboutgameicon'){
    
-      this.url = this.filepath;
-      window.open(this.url, '_blank');
-    }
+    //   this.url = this.filepath;
+    //   window.open(this.url, '_blank');
+    // }
     else if(item?.icon === 'Aboutgameicon'){
-      this.url = this.filepath;
+      this.about_game= localStorage.getItem('about_game_pdf')
+      console.log( this.about_game);
+      
+      this.url = this.filepath != null? this.filepath:this.about_game;
       window.open(this.url, '_blank');
+      location.reload()
+
     }
     else if(item?.icon === 'myper'){
       let body={

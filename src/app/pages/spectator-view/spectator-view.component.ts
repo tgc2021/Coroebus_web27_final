@@ -139,7 +139,7 @@ viewmoreorder:any
 
     
     })
-
+// this.filterRankwiseLeaderboard('Citizen')
 
     this.dynamicColor()
 
@@ -778,7 +778,7 @@ viewmoreorder:any
 
         ////////////////////////////////////////////////////To show Active Tab 2///////////////////////////////////////////////////////
 
-        else if(this.spectator_dashoard_response[0].data._personal_data.id_role == '4'){
+        else if(this.spectator_dashoard_response[0].data._personal_data.id_role == '4' || this.spectator_dashoard_response[0].data._personal_data.id_role == '10' ){
           if(this.order==1 ){
             if(this.spectator_data[0].user_list != ''){
               this.spectator_user_list = this.spectator_data[0].user_list;
@@ -1930,6 +1930,7 @@ viewmoreorder:any
 
   filterRankwiseLeaderboard(category: any) {
       //  debugger
+console.log(category);
 
     this.spectSearchStr=null
     this.spectSearList=null
@@ -2555,7 +2556,7 @@ viewmoreorder:any
   
               ////////////////////////////////////////////////////To show Active Tab 2///////////////////////////////////////////////////////
   
-        else if(this.spectator_dashoard_response[0].data._personal_data.id_role == '4'){
+        else if(this.spectator_dashoard_response[0].data._personal_data.id_role == '4' || this.spectator_dashoard_response[0].data._personal_data.id_role =='10'){
           if(this.order==1 ){
             if(this.spectator_data[0].user_list != ''){
               this.spectator_user_list = this.spectator_data[0].user_list;
@@ -3383,7 +3384,7 @@ viewmoreorder:any
   
         ////////////////////////////////////////////////////To show Active Tab 1///////////////////////////////////////////////////////
   
-        if(this.spectator_dashoard_response[0].data._personal_data.id_role == '6'){
+        if(this.spectator_dashoard_response[0].data._personal_data.id_role == '6' || this.spectator_dashoard_response[0].data._personal_data.id_role == '10'){
           if(this.order==1 || this.order == null){
             
             if(this.spectator_data[0].user_list != ''){
@@ -4627,7 +4628,7 @@ viewmoreorder:any
 
             ////////////////////////////////////////////////////To show Active Tab 2///////////////////////////////////////////////////////
 
-      else if(this.spectator_dashoard_response[0].data._personal_data.id_role == '4'){
+      else if(this.spectator_dashoard_response[0].data._personal_data.id_role == '4' || this.spectator_dashoard_response[0].data._personal_data.id_role == '10' ){
         if(this.order==1 ){
           if(this.spectator_data[0].user_list != ''){
             this.spectator_user_list = this.spectator_data[0].user_list;

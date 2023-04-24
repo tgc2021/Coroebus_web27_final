@@ -204,6 +204,7 @@ export class InteractiveDashboardComponent implements OnInit,OnDestroy {
   produce1data: any;
   kpidata: any;
   kpiName: any;
+  about_game_pdf:any
   constructor(config: NgbModalConfig,private readonly store: Store, public element: ElementRef, public Util: Util, private _router: Router, public http: ApiserviceService, private eventService: EventService,public location:Location ,public modalService:NgbModal) {
     config.backdrop = 'static';
 		config.keyboard = false;
@@ -305,8 +306,13 @@ else{
         this.http.interactiveDashboard(body).subscribe((res) => {
           console.log(res)
           this.interactive_dashoard_response = res;
-
+          console.log(this.interactive_dashoard_response);
           
+          if(this.interactive_dashoard_response?.data.is_about_game==1){
+            this.about_game_pdf= this.interactive_dashoard_response?.data.about_game[0].file_name
+            console.log( this.about_game_pdf);
+            localStorage.setItem('about_game_pdf',this.about_game_pdf)
+          }
           
           this.isLoading = true;
           this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
@@ -444,7 +450,11 @@ else{
 
           this.interactive_dashoard_response = res;
 
-          
+          if(this.interactive_dashoard_response.data.is_about_game==1){
+            this.about_game_pdf= this.interactive_dashoard_response.data.about_game[0].file_name
+            console.log( this.about_game_pdf);
+            localStorage.setItem('about_game_pdf',this.about_game_pdf)
+          }
 
           this.isLoading = true;
           this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
