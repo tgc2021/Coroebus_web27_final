@@ -12,7 +12,7 @@ export class LoaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.element.nativeElement.style.setProperty('--myvar', `${this.bgColor}`)
-    console.log(this.bgColor);
+    
   }
 
 }

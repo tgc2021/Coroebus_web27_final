@@ -73,7 +73,7 @@ export class SecurityQuestionComponent implements OnInit, OnDestroy {
           }
         ]
       }
-      console.log(body)
+      
       const [err, res] = await HttpProtocols.to(UserModel.setSecurityQuestion(body))
       if (!err && res?.status === 'success' && res?.statuscode === 200) {
        

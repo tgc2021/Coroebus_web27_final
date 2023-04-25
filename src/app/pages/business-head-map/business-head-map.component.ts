@@ -11,11 +11,11 @@ export class BusinessHeadMapComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.dataMapIndex);
-    console.log('bi page');
+    
+    
     
     this.data_Map=this.dataMapIndex
-    console.log(this.data_Map);
+    
     
   }
 
