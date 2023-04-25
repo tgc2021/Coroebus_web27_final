@@ -49,17 +49,17 @@ export class ProfileComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy$)
     ).subscribe(data => {
       this.userObj = data?.user
-
+console.log(this.userObj);
 
       this.initForm()
       this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
-      
+      console.log(this.mergeObj);
 
     })
 
     this.dark_color=localStorage.getItem('topbar_color')
     this.element.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
-
+console.log(this.dark_color);
 
     this.medium_color=localStorage.getItem('medium_color')
     this.element.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
@@ -67,10 +67,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.light_color=localStorage.getItem('light_color')
     this.element.nativeElement.style.setProperty('--lightColor', `${this.light_color}`)
 
-    
+    console.log(this.medium_color);
 
     this.ProfileImageNewOne=JSON.parse(localStorage.getItem('Profile'))
-    
+    console.log( this.ProfileImageNewOne);
 
     let body={
       _userid:this.userObj?._personal_data?.USERID,
@@ -81,7 +81,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
 
     this.http.engagamentlog(body).subscribe(res=>{
-      
+      console.log(res);
       
     })
 
@@ -145,17 +145,17 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
 
     this.http.engagamentlog(body).subscribe(res=>{
-      
+      console.log(res);
       
     })
 
-    
+    console.log(fileList)
     if (fileList) {
       const modalRef = this.modalService.open(ImagecropperComponent, { centered: true, windowClass: 'modal-cls' })
       modalRef.componentInstance.fileData = event;
       modalRef.componentInstance.buttonColor = this.userObj?.otherInfo?.color;
       modalRef.componentInstance.userObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo };
-      
+      console.log("FileUpload -> files", fileList);
     }
    
 
@@ -192,7 +192,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
       },
     };
     [err, res] = await HttpProtocols.to(ProfileModel.updateProfilePic(body))
-    //
+    //console.log(body)
     if (!err && res?.statuscode === 200) {
 
       let body={
@@ -204,13 +204,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
       }
   
       this.http.engagamentlog(body).subscribe(res=>{
-        
+        console.log(res);
         
       })
 
       this.eventService.broadcast('callSectionView_1API')
       this.ProfileImageNew=res?.data?._personal_data?.profile_logo
-      
+      console.log(this.ProfileImageNew);
       
       Swal.fire({
         title: '',
@@ -220,7 +220,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         confirmButtonColor: '#556ee6'
       }).then((result) => {
         this.Util.goto('/dashboard')
-        
+        console.log(result);
         
       })
     } else {
@@ -228,7 +228,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
   }
 re(){
-  
+  console.log(this.eventService.broadcast('crop')
   );
   
 
