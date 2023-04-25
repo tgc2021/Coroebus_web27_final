@@ -199,13 +199,13 @@ console.log(this.dark_color);
 
   // By Default 
 
-  openSpinTheWheels(content){
+  // openSpinTheWheels(content){
 
-    // this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel/`
-    this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel/?_userid=Cannon014&id_spot_engagement=126&id_spot_event_setup=248&id_engagement_game=2&id_spot_stw_log=2301&_game=318`
-      this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.spinTheWheelURL);
-      this.modalService.open(content,{size: 'lg'});
-  }
+  //   // this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel/`
+  //   this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel/?_userid=Cannon014&id_spot_engagement=126&id_spot_event_setup=248&id_engagement_game=2&id_spot_stw_log=2301&_game=318`
+  //     this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.spinTheWheelURL);
+  //     this.modalService.open(content,{size: 'lg'});
+  // }
 
   openCubeBlasters(content){
     this.cubeBlastersUrl=`https://coroebusbeta.in/cube_blasters/`
