@@ -885,28 +885,62 @@
                                                 <div *ngIf="!hideBattleGround then redirectm2ost else dontredirect">
                                                 </div>
                                                 <ng-template #redirectm2ost>
-                                                    <div class="d-flex flex-column align-items-start gap-2  mt-2">
-                                                        <div class="inner_content" (click)="navigateToM2ost()">Excel
-                                                            Basic</div>
-                                                        <div class="inner_content" (click)="navigateToM2ost()">Strategic
-                                                            Problem Solving</div>
-                                                        <div class="inner_content" (click)="navigateToM2ost()">Conflict
-                                                            Resolution</div>
-                                                        <div class="inner_content" (click)="navigateToM2ost()">Home Loan
-                                                            Process</div>
-                                                        <div class="inner_content" (click)="navigateToM2ost()">Assesment
-                                                            Home Loan Process</div>
+
+                                                    <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==6">
+                                                        <div class="inner_content" (click)="navigateToM2ost('2289')">Call Centre Basics</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2293')">
+                                                            Objection Handling</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2301')">Conflict Management</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2302')">Power of Speech</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2291')">Telephone Etiquette</div>
+                                                    </div>
+
+
+                                                    <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==3 ">
+                                                        <div class="inner_content" (click)="navigateToM2ost('2273')">Mental Wellbeing</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2297')">Influencing Skills</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2284')">Interpersonal Skills</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2301')">Conflict Management</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2292')">Communication Styles</div>
+                                                    </div>
+
+                                                    <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==4 || sectionView_1._personal_data.id_role== 10">
+                                                        <div class="inner_content" (click)="navigateToM2ost('2300')">Client Centricity</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2295')">Coaching Skills</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2299')">Problem Solving</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2301')">Conflict Management</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2296')">Decision Making</div>
                                                     </div>
                                                 </ng-template>
 
                                                 <ng-template #dontredirect>
-                                                    <div class="d-flex flex-column align-items-start gap-2  mt-3">
-                                                        <div class="inner_content">Excel Basic</div>
-                                                        <div class="inner_content">Strategic Problem solving</div>
-                                                        <div class="inner_content">Conflict Resolution</div>
-                                                        <div class="inner_content">Home Loan Process</div>
-                                                        <div class="inner_content">Assesment Home Loan Process</div>
+                                                  
+                                                    <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==6">
+                                                        <div class="inner_content" >Call Centre Basics</div>
+                                                        <div class="inner_content" >
+                                                            Objection Handling</div>
+                                                        <div class="inner_content" >Conflict Management</div>
+                                                        <div class="inner_content" >Power of Speech</div>
+                                                        <div class="inner_content">Telephone Etiquette</div>
                                                     </div>
+
+
+                                                    <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==3">
+                                                        <div class="inner_content" >Mental Wellbeing</div>
+                                                        <div class="inner_content" >Influencing Skills</div>
+                                                        <div class="inner_content" >Interpersonal Skills</div>
+                                                        <div class="inner_content" >Conflict Management</div>
+                                                        <div class="inner_content" >Communication Styles</div>
+                                                    </div>
+
+                                                    <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==4  || sectionView_1._personal_data.id_role==10">
+                                                        <div class="inner_content" >Client Centricity</div>
+                                                        <div class="inner_content" >Coaching Skills</div>
+                                                        <div class="inner_content" >Interpersonal Skills</div>
+                                                        <div class="inner_content" >Conflict Management</div>
+                                                        <div class="inner_content" >Communication Styles</div>
+                                                    </div>
+
                                                 </ng-template>
 
 

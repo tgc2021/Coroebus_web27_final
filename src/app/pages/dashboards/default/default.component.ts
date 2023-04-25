@@ -278,11 +278,11 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       this.updateNotificationList(data?.id)
     })
     this.requestForProduce1Data?.unsubscribe()
-    this.requestForProduce1Data = this.eventService.subscribe('requestForProduce1Data', (data) => {
+    // this.requestForProduce1Data = this.eventService.subscribe('requestForProduce1Data', (data) => {
       
       
-      this.eventService.broadcast('requestSendForProduce1Data', this.sectionView_1)
-    })
+    //   this.eventService.broadcast('requestSendForProduce1Data', this.sectionView_1)
+    // })
     
   
     
@@ -1600,7 +1600,9 @@ else if(this.activeTabForSectionView_2 == 4){
   navigateToDashboard(){
     location.reload()
   }
-  navigateToM2ost(){
+  navigateToM2ost(categoryID:any){
+    console.log(categoryID);
+    
     this.empid= this.sectionView_1._personal_data.EMPLOYEEID
     this.empemail=this.sectionView_1._personal_data.email_id
     this.empname=this.sectionView_1._personal_data.first_name
@@ -1608,7 +1610,7 @@ else if(this.activeTabForSectionView_2 == 4){
     window.open(
       // https://www.m2ost.in/m2ostproductionapiSSO/api/m2ostSSO?param=empid$103$empemail$empname$TGC
     
-      'https://www.m2ost.in/m2ostproductionapiSSO/api/m2ostSSO?param='+this.empid +'$113$'+this.empemail+'$'+this.empname+'$'+this.emporg,
+      'https://www.m2ost.in/m2ostSSOWithCategory/api/m2ostSSOWithCat?param='+this.empid +'$113$'+this.empemail+'$'+this.empname+'$'+'GOP'+'$'+categoryID,
       'blank'
    
 
