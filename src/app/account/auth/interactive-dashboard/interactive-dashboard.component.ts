@@ -205,6 +205,19 @@ export class InteractiveDashboardComponent implements OnInit,OnDestroy {
   kpidata: any;
   kpiName: any;
   about_game_pdf:any
+  data: any;
+  seasonalThemeDaily1: any;
+  seasonalThemeWeekly2: any;
+  seasonalThemeMonthl3: any;
+  seasonalThemeDailyBadges1: any;
+  totalTargetScore: number;
+  seasonalThemeWeeklyBadges2: any;
+  totalTargetScoreForWeekly: number;
+  seasonalThemeMonthlyBadges3: any;
+  totalTargetScoreForMontly: number;
+  dailyBadgesActive: boolean;
+  weeklyBadgesActive: boolean;
+  monthlyBadgesActive: boolean;
   constructor(config: NgbModalConfig,private readonly store: Store, public element: ElementRef, public Util: Util, private _router: Router, public http: ApiserviceService, private eventService: EventService,public location:Location ,public modalService:NgbModal) {
     config.backdrop = 'static';
 		config.keyboard = false;
@@ -530,32 +543,22 @@ else{
         })
 
 
-
-        //   let body1={
-        //     _userid:this.mergeObj.USERID,
-        //     _section:"testing",
-        //    _description:"dashboard/produce",
-        //    _game:this.userSelectionData.id_coroebus_game
-        //  }
-        //  console.log(body1);
-
-
-        //  this.http.engagamentlog(body1).subscribe((res) => {
-        //    console.log(res)
-
-
-
-
-        //  })
+        
       }
 
     })
 
-
+   
 
 
 
   }
+
+ngAfterViewInit():void{
+
+  this.GetDataFromProduceInfo()
+}
+
 
 
   booster_data(){
@@ -798,7 +801,64 @@ else{
   navigateMyPerformance(){
     this._router.navigateByUrl("performance/page")
 
-  }
+  }    
+  
+  GetDataFromProduceInfo(){
+    let obj = {
+      _userid: this.mergeObj.USERID,
+      _game: this.userSelectionData.id_coroebus_game,
+    }
+    console.log("check body",obj)
+    this.http.produceInfo(obj).subscribe((res)=>{
+      console.log(res);
+
+      this.data=res;
+   
+    
+      this.seasonalThemeDaily1=this.data.data.seasonal_theme_daily
+      this.seasonalThemeWeekly2=this.data.data.seasonal_theme_weekly;
+      this.seasonalThemeMonthl3=this.data.data.seasonal_theme_monthly
+      console.log( this.seasonalThemeDaily1==undefined);
+        
+      this.seasonalThemeDailyBadges1=this.data.data.seasonal_theme_daily_badge_details;
+      this.totalTargetScore=Number(this.seasonalThemeDailyBadges1[0].seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[1].seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[2].seasonal_score_target);
+
+
+      this.seasonalThemeWeeklyBadges2=this.data.data.seasonal_theme_weekly_badge_details;
+      this.totalTargetScoreForWeekly=Number(this.seasonalThemeWeeklyBadges2[0].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[1].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[2].seasonal_score_target);
+
+      this.seasonalThemeMonthlyBadges3=this.data.data.seasonal_theme_monthly_badge_details;
+      this.totalTargetScoreForMontly=Number(this.seasonalThemeMonthlyBadges3[0].seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[1].seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[2].seasonal_score_target);
+
+      this.seasonalThemeDailyBadges1.forEach((res)=>{
+        if(res.active_class == '1'){
+          this.dailyBadgesActive=true;
+        }
+      })
+
+      this.seasonalThemeWeeklyBadges2.forEach((res)=>{
+        if(res.active_class == '1'){
+          this.weeklyBadgesActive=true;
+        }
+      })
+
+      this.seasonalThemeMonthlyBadges3.forEach((res)=>{
+        if(res.active_class == '1'){
+          this.monthlyBadgesActive=true;
+        }
+      })
+      
+     
+      
+
+      
+    })
+  
+
+}
+
+
+  
   openDailyModal() {
     this.isDailyModalopen = true;
     this.isWeeklyModalOpen = false;
