@@ -76,6 +76,7 @@ export class PlayZoneComponent implements OnInit {
   light_color: string;
   cubeBlastersUrl: string;
   id_role: any;
+  tgcToolBoxUrl: string;
 
   constructor(private http: ApiserviceService, private readonly store: Store, public modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -162,45 +163,49 @@ console.log(this.dark_color);
   open(content,data) {
     // console.log(content);
     if(data.id_engagement_game==='1'){
+      console.log(data)
       // this.dartGameUrl=`http://127.0.0.1:5501/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
-       this.dartGameUrl=`https://coroebusbeta.in/dart_game/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`;
+      console.log(this.dartGameUrl);
+       this.dartGameUrl=`https://coroebus.in/dart_game/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`;
       // this.dartGameUrl=`http://127.0.0.1:5501/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`;
       this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.dartGameUrl);
       this.modalService.open(content);
     }
     else if(data.id_engagement_game==='2'){
      
-      this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
-      // this.spinTheWheelURL=`http://127.0.0.1:5501/spin_the_wheel_latest/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
+      this.spinTheWheelURL=`https://coroebus.in/spin_the_wheel/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
+      // this.spinTheWheelURL=`http://127.0.0.1:5502/spin_the_wheel_latest/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
       this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.spinTheWheelURL)
       this.modalService.open(content,{size: 'lg'});
     }
     else if(data.id_engagement_game==='5'){
-      this.skylineGameUrl=`https://coroebusbeta.in/CoroebusSkyline/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
+      this.skylineGameUrl=`https://coroebus.in/CoroebusSkyline/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
+
+      // this.skylineGameUrl=`https://coroebusbeta.in/CoroebusSkyline/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
       // this.skylineGameUrl=`http://127.0.0.1:5500/MiniGame_cube_Busters/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
       this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.skylineGameUrl)
       console.log(this.skylineGameUrl);
       this.modalService.open(content,{size: 'lg'});
     }
     else if(data.id_engagement_game==='6'){
-      this.cubeBlasters=`https://coroebusbeta.in/cube_blasters/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
+      this.cubeBlasters=`https://coroebus.in/cube_blasters/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
       console.log(this.cubeBlastersUrl);
-      //  this.cubeBlastersUrl=`https://coroebusbeta.in/cube_blasters?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
+      // this.cubeBlasters=`http://127.0.0.1:5500/MiniGame_cube_Busters/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
       this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.cubeBlasters);
       
-      this.modalService.open(content,{size: 'lg'});
+      this.modalService.open(content,{size: 'xl'});
     }
   }
 
   // By Default 
 
-  openSpinTheWheels(content){
+  // openSpinTheWheels(content){
 
-    // this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel/`
-    this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel/?_userid=Cannon014&id_spot_engagement=126&id_spot_event_setup=248&id_engagement_game=2&id_spot_stw_log=2301&_game=318`
-      this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.spinTheWheelURL);
-      this.modalService.open(content,{size: 'lg'});
-  }
+  //   // this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel/`
+  //   this.spinTheWheelURL=`https://coroebusbeta.in/spin_the_wheel/?_userid=Cannon014&id_spot_engagement=126&id_spot_event_setup=248&id_engagement_game=2&id_spot_stw_log=2301&_game=318`
+  //     this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.spinTheWheelURL);
+  //     this.modalService.open(content,{size: 'lg'});
+  // }
 
   openCubeBlasters(content){
     this.cubeBlastersUrl=`https://coroebusbeta.in/cube_blasters/`
@@ -226,6 +231,14 @@ console.log(this.dark_color);
     this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.skylineGameUrl)
 
     this.modalService.open(content,{size: 'lg'});
+
+  }
+
+  openTGCToolBox(content){
+    this.tgcToolBoxUrl=`https://coroebus.in/TGCToolbox/`
+    this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.tgcToolBoxUrl)
+
+    this.modalService.open(content,{size: 'xl'});
 
   }
  
@@ -366,6 +379,14 @@ navigateToCubicalls(){
     
 
   )
+}
+navigateToToolBox(){
+
+  window.open()
+
+
+
+
 }
 
 
