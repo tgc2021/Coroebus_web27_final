@@ -219,7 +219,7 @@ console.log(this.dark_color);
         imageHeight: 40,
         confirmButtonColor: '#556ee6'
       }).then((result) => {
-        this.Util.goto('/dashboard')
+        this.Util.goto('/top_dashboard')
         console.log(result);
         
       })
