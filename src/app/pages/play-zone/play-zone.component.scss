@@ -20,6 +20,7 @@
         line-height: 18px;
         /* Grey / Light */
         color: #F5F5F5;   
+
     }
     // .page-content {
     //   padding: 71px 30px 60px 0px;
@@ -309,11 +310,11 @@ input[type="checkbox"]::placeholder {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content:space-between;
+        justify-content:stretch;
         height: 65vh;
-        width: 65vw;
+         width: 99%;
         overflow-y: auto;
-        // row-gap: 2rem;
+        gap: 3rem;
         .card{
             width: 28vw;
             height: 33vh;

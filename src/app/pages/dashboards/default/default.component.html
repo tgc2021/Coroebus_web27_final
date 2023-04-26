@@ -1129,10 +1129,10 @@
                                                         <div class="card bulletins-sub-card me-1"
                                                             *ngFor="let item of addInsList">
                                                             <div class="card-body bulletins-sub-card-body">
-                                                                <p class="spot-engagement ps-1 pt-0 text-dark ">{{item?.header}}</p>
-                                                                <br>
+                                                                <!-- <p class="spot-engagement ps-1 pt-0 text-dark ">{{item?.header}}</p> -->
+                                                                
                                                                 <div class="media bulletins-media">
-                                                                    <img *ngIf="item?.type_ === '1'"
+                                                                    <!-- <img *ngIf="item?.type_ === '1'"
                                                                         src="assets/images/svg/dashboard/add-ins/se.svg"
                                                                         alt="" height="52">
                                                                     <img *ngIf="item?.type_ === '2'"
@@ -1140,18 +1140,19 @@
                                                                         alt="" height="52">
                                                                     <img *ngIf="item?.type_ === '3'"
                                                                         src="assets/images/svg/dashboard/add-ins/le.svg"
-                                                                        alt="" height="52">
-                                                                    <div class="media-body ms-2">
+                                                                        alt="" height="52"> -->
+                                                                    <div class="media-body  d-flex gap-2">
+                                                                        <img class="bulletins-image-card"
+                                                                            src="{{item?.logo}}" alt="" height="55">
 
                                                                         <h5 class="bulletins-title">{{item?.title}}
                                                                             <p class="bulletins-text-muted"
-                                                                                style="margin-bottom:0px;">
+                                                                                style="margin-bottom:0px;color: #232323;">
                                                                                 {{item?.description_}}
                                                                             </p>
                                                                         </h5>
 
-                                                                        <img class="bulletins-image-card"
-                                                                            src="{{item?.logo}}" alt="" height="95">
+                                                                        
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -1162,7 +1163,7 @@
                                                                 </div>
                                                                 <div class="row border-top">
                                                                     <div class="col text-start">
-                                                                        <span class="bulletins-open">Open</span>
+                                                                        <span class="bulletins-open" style="font-weight:600" (click)="navigateToPlayzone()">Open</span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1363,7 +1364,7 @@
 
 
 
-
+<!-- 
     <ng-template #content let-modal>
         <div class="level-buckets content-buckets">
             <div class="modal-header border-bottom-0 p-0">
@@ -1374,14 +1375,12 @@
                     </div>
                     <div class="col pt-2">
                         <i class="fa fa-times float-end" (click)="modal.dismiss('Cross click')"></i>
-                        <!-- <button type="button" class="float-end" aria-label="Close" >
-                            X
-                        </button> -->
+                       
                     </div>
                 </div>
             </div>
             <div class="modal-body dashboard-popup-level">
-                <!-- {{levelsBucketsList | json}} -->
+                
                 <div class="row table-header mb-2" [ngClass]="{'row-cols-3': false,'row-cols-4': true}">
                     <div class="col-2">
                         <span class="font-size-14 ms-4">League</span>
@@ -1419,7 +1418,7 @@
         </div>
 
     </ng-template>
-   <!-- <ng-template #hierarchyPopup let-modal>
+   <ng-template #hierarchyPopup let-modal>
         <div class="level-buckets hierarchyPopup-buckets">
             <div class="modal-header border-bottom-0 p-0">
                 <div class="row w-100">
@@ -2435,6 +2434,21 @@
     </div>
 </ng-template>
 
+
+<!-- Bulletins_game_open -->
+<!-- <ng-template #content let-c="close" let-d="dismiss">
+                                       
+                                    
+    <button type="button" class="btn-close" aria-label="Close"
+    (click)="dismiss()">x</button>
+   
+
+
+        <iframe [src]='safeUrl' title="spin_the_wheel" height="680px" width="100%">
+        </iframe>
+        
+
+</ng-template> -->
 
 
 <!-- Rotated View -->
