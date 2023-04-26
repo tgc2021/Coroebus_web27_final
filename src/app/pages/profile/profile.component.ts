@@ -219,7 +219,16 @@ console.log(this.dark_color);
         imageHeight: 40,
         confirmButtonColor: '#556ee6'
       }).then((result) => {
-        this.Util.goto('/top_dashboard')
+        if(res?.data?._personal_data?.id_role==13){
+          this.Util.goto('/topdashboard')
+        }else if(res?.data?._personal_data?.id_role==9|| res?.data?._personal_data?.id_role==8){
+          this.Util.goto('/top_dashboard')
+
+        }
+        else{
+          this.Util.goto('/account/interactive-dashboard')
+
+        }
         console.log(result);
         
       })

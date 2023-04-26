@@ -349,19 +349,40 @@ console.log(this.id_coroebus_organization);
         console.log('rol i 9,8,12');
         this.menuItems=result;
         console.log(this.menuItems);
+
+     
+
         
         if(this.id_role==9){
           const result = this.menuItems.filter(data => data.icon != 'rewards');
+          
           this.menuItems=result;
           console.log(this.menuItems);
-          
+
+          const result1 = this.menuItems.filter(data => data.label != 'Achievement Shelf');
+          this.menuItems=result1;
+          console.log(this.menuItems);
+
+
+          const result2 = this.menuItems.filter(data => data.icon != 'learning');
+          this.menuItems=result2;
+          console.log(this.menuItems);
+
         }
-     
+      else if(this.id_role==8){
+        const result2 = this.menuItems.filter(data => data.icon != 'learning');
+        this.menuItems=result2;
+        console.log(this.menuItems);
+
+
+      }
 
        
         console.log(this.menuItems);
       
       }
+
+   
      if(this.userObj?.games.length==1){
         const result = this.menuItems.filter(data => data.icon != 'game');
         console.log('Game selsection Page');

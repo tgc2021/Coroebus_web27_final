@@ -1507,7 +1507,7 @@ else if(this.activeTabForSectionView_2 == 4){
       if(this.userSelectionData.is_champions_league=='A'){
         
         window.open(
-        'http://coroebusbeta.in/champions_league/#/home/challengeRecieved?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
+        'http://coroebus.in/champions_league/#/home/challengeRecieved?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
         '_self' // <- This is what makes it open in a new window.
 
         // 'http://localhost:56671/champions_league/#/home/challengeRecieved?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
@@ -1788,16 +1788,19 @@ else if(this.activeTabForSectionView_2 == 4){
     )
     
    }
+
+  
    else{
-    console.log("sdfksdfs nkdnkskj");
-    this.modalService.dismissAll('Cross click')
-    Swal.fire({
-      title: '',
-      text: 'Introducing Trivia Corner exclusively for Players and Captains',
-      // imageUrl: 'assets/images/svg/logo/logo.svg',
-      imageHeight: 40,
-      confirmButtonColor:this.sectionView_1?.theme_details?.[0]?.dark_color
-    });
+    this.kpiName='Game OF Phone';
+    const isAttemted='8'
+    const isCorrect='8'
+
+    window.open(
+      'https://coroebus.in/Learning_academy/#/LearningAcademy/library?_game='+data._game+"&_userid="+data._userid+
+"&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+
+"&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type+"&_game_name="+gameName+
+"&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'  
+)
    }
    
      }

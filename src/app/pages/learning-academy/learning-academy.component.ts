@@ -112,15 +112,17 @@ export class LearningAcademyComponent implements OnInit {
     
    }
    else{
-    console.log("sdfksdfs nkdnkskj");
-    this.modalService.dismissAll('Cross click')
-    Swal.fire({
-      title: '',
-      text: 'Introducing Trivia Corner exclusively for Players and Captains',
-      // imageUrl: 'assets/images/svg/logo/logo.svg',
-      imageHeight: 40,
-      confirmButtonColor:this.userSelectionData.themes[0].dark_color
-    });
+    this.kpiName='Game OF Phone';
+    const isAttemted='8'
+    const isCorrect='8'
+
+    window.open(
+      
+      'https://coroebus.in/Learning_academy/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
+      "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'
+  
+        
+      )
    }
    
   }
