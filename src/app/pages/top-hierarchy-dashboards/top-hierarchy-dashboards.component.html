@@ -264,7 +264,7 @@
                                     <div class="leaderboard_rank_score">
                                         {{res.rankingtable_number}}
                                     </div>
-    
+                                    <!-- (click)="openHierarchyPopup(res)" -->
                                     <div class="leaderboard_rank_profile_image_div">
                                         <img class="leaderboard_rank_profile_image" src="{{res.rankingtable_logo}}" />
                                     </div>
@@ -377,7 +377,7 @@
                                         <div class="leaderboard_rank_score">
                                             {{res.rankingtable_number}}
                                         </div>
-        
+                                        <!-- (click)="openHierarchyPopup(res)" -->
                                         <div class="leaderboard_rank_profile_image_div">
                                             <img class="leaderboard_rank_profile_image" src="{{res.rankingtable_logo}}" />
                                         </div>
@@ -1267,6 +1267,48 @@
         </div>
     </ng-template>
     
+    <!-- <ng-template #hierarchyPopup let-modal>
+        <div class="level-buckets hierarchyPopup-buckets">
+            <div class="modal-header border-bottom-0 p-0">
+                <div class="row w-100">
+                    <div class="col-12 pt-2">
+                        <i class="fa fa-times float-end" (click)="modal.dismiss('Cross click')"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body dashboard-popup-level">
 
+                <div class="row  hierarchy-popup-list hierarchy-popup-list-border mb-3 p-2 ms-5 w-75"
+                    *ngFor="let item of hierarchyPopupList"
+                    (click)="getDataBasedOnUserIDVIAhierarchyPopupList(item,modal)">
+                    <div class=" col-6 pt-2">
+                        <div class="media">
+                            <img loading="lazy" class="mr-3 rounded-circle" height="45" width="45"
+                                src="{{item?.userlogo}}" alt="Generic placeholder image">
+                            <div class="media-body">
+                                <h5 class="mt-0 hierarchy-popup-list-team_name ms-2">{{item?.team_name}}
+                                    <p class="hierarchy-popup-list-first_name mb-0">
+                                        {{item?.first_name}}
+                                    </p>
+                                    <p class="hierarchy-popup-list-role_name">
+                                        {{item?.role_name}}
+                                    </p>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 pt-2">
+                        <img loading="lazy" class="mr-3 rounded-circle float-end hierarchy-popup-list-right-arrow"
+                            height="12" width="8" src="assets/images/svg/dashboard/right-arrow.svg"
+                            alt="Generic placeholder image">
+                        <img loading="lazy" class="mr-3 rounded-circle float-end" height="45" width="45"
+                            src="{{item?.teamlogo}}" alt="Generic placeholder image">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </ng-template> -->
 
 </div>

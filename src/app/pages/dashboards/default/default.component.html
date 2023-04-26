@@ -519,7 +519,7 @@
                                             {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_number}}
                                         </span>
                                         <div style="height:5vh;display:flex;align-items: center;">
-                                            <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                            <img class="rounded-circle z-depth-2 user-logo-row" alt="" 
                                             src="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_logo}}"
                                             data-holder-rendered="true" height="100%"
                                                 width="41" >
@@ -677,8 +677,9 @@
                                     <span class="col-1 ms-2 text-white position-absolute-s">
                                         {{item?.rankingtable_number}}
                                     </span>
+                                    <!-- (click)="openHierarchyPopup(item)" -->
                                     <div style="height:5vh;display:flex;align-items: center;">
-                                        <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                        <img class="rounded-circle z-depth-2 user-logo-row" alt="" 
                                             src="{{item?.rankingtable_logo}}" data-holder-rendered="true" height="100%"
                                             width="41" >
                                     </div>
@@ -748,8 +749,9 @@
                                     <span class="col-1 ms-2 text-white position-absolute-s">
                                         {{item?.rankingtable_number}}
                                     </span>
+                                    <!-- (click)="openHierarchyPopup(item)" -->
                                     <div style="height:5vh;display:flex;align-items: center;">
-                                        <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                        <img class="rounded-circle z-depth-2 user-logo-row" alt="" 
                                             src="{{item?.rankingtable_logo}}" data-holder-rendered="true" height="100%"
                                             width="41">
                                     </div>
@@ -883,28 +885,62 @@
                                                 <div *ngIf="!hideBattleGround then redirectm2ost else dontredirect">
                                                 </div>
                                                 <ng-template #redirectm2ost>
-                                                    <div class="d-flex flex-column align-items-start gap-2  mt-2">
-                                                        <div class="inner_content" (click)="navigateToM2ost()">Excel
-                                                            Basic</div>
-                                                        <div class="inner_content" (click)="navigateToM2ost()">Strategic
-                                                            Problem Solving</div>
-                                                        <div class="inner_content" (click)="navigateToM2ost()">Conflict
-                                                            Resolution</div>
-                                                        <div class="inner_content" (click)="navigateToM2ost()">Home Loan
-                                                            Process</div>
-                                                        <div class="inner_content" (click)="navigateToM2ost()">Assesment
-                                                            Home Loan Process</div>
+
+                                                    <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==6">
+                                                        <div class="inner_content" (click)="navigateToM2ost('2289')">Call Centre Basics</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2293')">
+                                                            Objection Handling</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2301')">Conflict Management</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2302')">Power of Speech</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2291')">Telephone Etiquette</div>
+                                                    </div>
+
+
+                                                    <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==3 ">
+                                                        <div class="inner_content" (click)="navigateToM2ost('2273')">Mental Wellbeing</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2297')">Influencing Skills</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2284')">Interpersonal Skills</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2301')">Conflict Management</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2292')">Communication Styles</div>
+                                                    </div>
+
+                                                    <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==4 || sectionView_1._personal_data.id_role== 10">
+                                                        <div class="inner_content" (click)="navigateToM2ost('2300')">Client Centricity</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2295')">Coaching Skills</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2299')">Problem Solving</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2301')">Conflict Management</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2296')">Decision Making</div>
                                                     </div>
                                                 </ng-template>
 
                                                 <ng-template #dontredirect>
-                                                    <div class="d-flex flex-column align-items-start gap-2  mt-3">
-                                                        <div class="inner_content">Excel Basic</div>
-                                                        <div class="inner_content">Strategic Problem solving</div>
-                                                        <div class="inner_content">Conflict Resolution</div>
-                                                        <div class="inner_content">Home Loan Process</div>
-                                                        <div class="inner_content">Assesment Home Loan Process</div>
+                                                  
+                                                    <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==6">
+                                                        <div class="inner_content" >Call Centre Basics</div>
+                                                        <div class="inner_content" >
+                                                            Objection Handling</div>
+                                                        <div class="inner_content" >Conflict Management</div>
+                                                        <div class="inner_content" >Power of Speech</div>
+                                                        <div class="inner_content">Telephone Etiquette</div>
                                                     </div>
+
+
+                                                    <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==3">
+                                                        <div class="inner_content" >Mental Wellbeing</div>
+                                                        <div class="inner_content" >Influencing Skills</div>
+                                                        <div class="inner_content" >Interpersonal Skills</div>
+                                                        <div class="inner_content" >Conflict Management</div>
+                                                        <div class="inner_content" >Communication Styles</div>
+                                                    </div>
+
+                                                    <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==4  || sectionView_1._personal_data.id_role==10">
+                                                        <div class="inner_content" >Client Centricity</div>
+                                                        <div class="inner_content" >Coaching Skills</div>
+                                                        <div class="inner_content" >Interpersonal Skills</div>
+                                                        <div class="inner_content" >Conflict Management</div>
+                                                        <div class="inner_content" >Communication Styles</div>
+                                                    </div>
+
                                                 </ng-template>
 
 
@@ -1381,8 +1417,8 @@
             </div>
         </div>
 
-    </ng-template> -->
-    <ng-template #hierarchyPopup let-modal>
+    </ng-template>
+   <ng-template #hierarchyPopup let-modal>
         <div class="level-buckets hierarchyPopup-buckets">
             <div class="modal-header border-bottom-0 p-0">
                 <div class="row w-100">
@@ -1392,7 +1428,6 @@
                 </div>
             </div>
             <div class="modal-body dashboard-popup-level">
-                <!-- {{hierarchyPopupList | json}} -->
 
                 <div class="row  hierarchy-popup-list hierarchy-popup-list-border mb-3 p-2 ms-5 w-75"
                     *ngFor="let item of hierarchyPopupList"
@@ -1425,7 +1460,7 @@
 
             </div>
         </div>
-    </ng-template>
+    </ng-template>  -->
 </div>
 <!-- Mobile view started -->
 
@@ -2401,7 +2436,7 @@
 
 
 <!-- Bulletins_game_open -->
-<ng-template #content let-c="close" let-d="dismiss">
+<!-- <ng-template #content let-c="close" let-d="dismiss">
                                        
                                     
     <button type="button" class="btn-close" aria-label="Close"
@@ -2413,7 +2448,7 @@
         </iframe>
         
 
-</ng-template>
+</ng-template> -->
 
 
 <!-- Rotated View -->

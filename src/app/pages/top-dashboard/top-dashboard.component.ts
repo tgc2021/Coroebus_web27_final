@@ -51,6 +51,7 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
   bi:any
   mapUrl:any
   map_bh:any
+  about_game_pdf:any
   constructor(private readonly store: Store,public route:ActivatedRoute, config: NgbModalConfig, public sanitizer: DomSanitizer, public router: Router, public http: ApiserviceService, public Util: Util, public element: ElementRef, public modalService: NgbModal, public location: Location, @Inject(DOCUMENT) private _document: Document) {
     config.backdrop = 'static';
     config.keyboard = false;
@@ -100,6 +101,13 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
       console.log(res);
       this.buisness_head_response = res
       this.buisness_head_response_ = this.buisness_head_response.data
+
+      if(this.buisness_head_response_?.is_about_game==1){
+        this.about_game_pdf= this.buisness_head_response_?.about_game[0].file_name
+        console.log( this.about_game_pdf);
+        localStorage.setItem('about_game_pdf',this.about_game_pdf)
+      }
+
       console.log(this.buisness_head_response_);
       this.map_bh=this.buisness_head_response_._personal_data.map_url
       localStorage.setItem('res',this.map_bh)
@@ -162,7 +170,10 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
     }
   }
 
- 
+  OverallGrowth(){
+    this.location.replaceState("");
+    location.reload()
+  }
   navigateToBIMap(data: any) {
 
     console.log(data);

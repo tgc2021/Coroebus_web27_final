@@ -109,6 +109,11 @@ export class ApiserviceService {
     return this.Http.post(tempurl,data)
   }
 
+  produce1(data:any){
+    var tempurl = `${this.URLstring}`+`/${this.Path}/DashboardHome/produce`
+    return this.Http.post(tempurl,data)
+  }
+
   spectator_dashboard(data:any){
     var tempurl = `${this.URLstring}`+`/${this.Path}/UserRankingAndBadgeList/gameRanking`
     return this.Http.post(tempurl,data)

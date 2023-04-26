@@ -170,16 +170,9 @@ throw new Error('Method not implemented.');
   seasonalThemeWeeklyBadges2: any;
   seasonalThemeMonthlyBadges3: any;
   totalTargetScoreForMontly: number;
-  mergeObj: any;
-  safeUrl: any;
-
-  spinTheWheelURL: any;
-  skylineGameUrl: any;
-  cubeBlasters: any;
-  dartGameUrl:any;
-  cubeBlastersUrl: any;
-
-  constructor(private readonly store: Store, private modalService: NgbModal,private renderer:Renderer2,public sanitizer: DomSanitizer,
+  kpiName: any;
+  about_game_pdf:any
+  constructor(private readonly store: Store, private modalService: NgbModal,private renderer:Renderer2,
     public Util: Util, private eventService: EventService, private _router: Router,
     private _route: ActivatedRoute, public toastService: ToastService,public http:ApiserviceService,public elementref: ElementRef) {
     this.activeSubTabForSectionView_2 = 'My Store'
@@ -260,7 +253,7 @@ throw new Error('Method not implemented.');
           // this.notificationList(queryParams)
           // this.addIns(queryParams)
           this.notificationList()
-          this.addIns()
+          this.addIns(queryParams)
         } else {
           this.getUserBannerDataSectionView_1()
           this.getUserBannerDataSectionView_2()
@@ -289,9 +282,11 @@ throw new Error('Method not implemented.');
       this.updateNotificationList(data?.id)
     })
     this.requestForProduce1Data?.unsubscribe()
-    this.requestForProduce1Data = this.eventService.subscribe('requestForProduce1Data', (data) => {
-      this.eventService.broadcast('requestSendForProduce1Data', this.sectionView_1)
-    })
+    // this.requestForProduce1Data = this.eventService.subscribe('requestForProduce1Data', (data) => {
+      
+      
+    //   this.eventService.broadcast('requestSendForProduce1Data', this.sectionView_1)
+    // })
     
   
     
@@ -384,6 +379,12 @@ localStorage.setItem('bg_image',this.sectionView_1?.theme_details?.[0]?.point_di
 
       this.web_profile_back_image= this.sectionView_1._back_images[1]._data[0].ranking_image_profile;
       console.log(this.web_profile_back_image);
+
+      if(this.sectionView_1?.is_about_game==1){
+        this.about_game_pdf= this.sectionView_1?.about_game[0].file_name
+        console.log( this.about_game_pdf);
+        localStorage.setItem('about_game_pdf',this.about_game_pdf)
+      }
       
      
       this.eventService.broadcast('passDataToHeader', {
@@ -997,6 +998,9 @@ else if(this.activeTabForSectionView_2 == 4){
   async addIns(queryParams?: any) {
     let err: any, res: any;
     let body: any;
+    console.log( queryParams?.userID);
+    console.log(this.userSelectionData?._personal_data?.USERID);
+
     body = {
       "_userid": queryParams?.userID ? queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
       "_game": queryParams?.gameID ? queryParams?.gameID : this.userSelectionData?.id_coroebus_game
@@ -1600,7 +1604,9 @@ else if(this.activeTabForSectionView_2 == 4){
   navigateToDashboard(){
     location.reload()
   }
-  navigateToM2ost(){
+  navigateToM2ost(categoryID:any){
+    console.log(categoryID);
+    
     this.empid= this.sectionView_1._personal_data.EMPLOYEEID
     this.empemail=this.sectionView_1._personal_data.email_id
     this.empname=this.sectionView_1._personal_data.first_name
@@ -1608,7 +1614,7 @@ else if(this.activeTabForSectionView_2 == 4){
     window.open(
       // https://www.m2ost.in/m2ostproductionapiSSO/api/m2ostSSO?param=empid$103$empemail$empname$TGC
     
-      'https://www.m2ost.in/m2ostproductionapiSSO/api/m2ostSSO?param='+this.empid +'$113$'+this.empemail+'$'+this.empname+'$'+this.emporg,
+      'https://www.m2ost.in/m2ostSSOWithCategory/api/m2ostSSOWithCat?param='+this.empid +'$113$'+this.empemail+'$'+this.empname+'$'+'GOP'+'$'+categoryID,
       'blank'
    
 
@@ -1749,17 +1755,51 @@ else if(this.activeTabForSectionView_2 == 4){
   navigateToBriefQuetion(data:any){
     console.log(data);
     let id_coroebus_team='0';
+    const gameName=this.sectionView_1?._personal_data?.game_name;
+    const teamName=this.sectionView_1?._personal_data?.team_name;
+    console.log(this.sectionView_1?._personal_data.external_kpi_data.length);
     console.log(data._game,data._userid,id_coroebus_team,data._categoryid,data.id_learning_academy_brief,data._subcategoryid,data.brief_type);
     console.log(data.id_learning_academy_brief);
     
      console.log('http://localhost:4200/#/LearningAcademy/library_game='+data._game+"&_userid="+data._userid+"&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+"&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type);
   
      if(data.view_status!='Read'){
-      window.open(
-        'https://coroebus.in/Learning_academy/#/LearningAcademy/library?_game='+data._game+"&_userid="+data._userid+"&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+"&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type,
+  
+    if(this.sectionView_1?._personal_data.external_kpi_data.length){
+    this.kpiName=this.sectionView_1?._personal_data.external_kpi_data[0].kpi_name;
+    console.log(this.kpiName);
+    const isAttemted=this.sectionView_1?._personal_data.external_kpi_data[0].is_attempted;
+    const isCorrect=this.sectionView_1?._personal_data.external_kpi_data[0].is_correct;
+
+    // console.log(userId,game,teamid);
+    // console.log('http://localhost:4200/#/LearningAcademy/library?_game='+game+"&_userid¸="+userId+"&_team="+teamid,'_self' );
     
-       '_self'
-     )
+//  console.log(     'http://localhost:4201/#/LearningAcademy/library?_game='+data._game+"&_userid="+data._userid+
+//  "&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+
+//  "&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type+"&_game_name="+gameName+
+//  "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'
+// );
+   
+    window.open(
+          'https://coroebus.in/Learning_academy/#/LearningAcademy/library?_game='+data._game+"&_userid="+data._userid+
+    "&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+
+    "&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type+"&_game_name="+gameName+
+    "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'  
+    )
+    
+   }
+   else{
+    console.log("sdfksdfs nkdnkskj");
+    this.modalService.dismissAll('Cross click')
+    Swal.fire({
+      title: '',
+      text: 'Introducing Trivia Corner exclusively for Players and Captains',
+      // imageUrl: 'assets/images/svg/logo/logo.svg',
+      imageHeight: 40,
+      confirmButtonColor:this.sectionView_1?.theme_details?.[0]?.dark_color
+    });
+   }
+   
      }
     else{
       this.modalService.dismissAll('Cross click')
@@ -1768,7 +1808,7 @@ else if(this.activeTabForSectionView_2 == 4){
         text: 'Answer is Already Given',
         // imageUrl: 'assets/images/svg/logo/logo.svg',
         imageHeight: 40,
-        confirmButtonColor: '#556ee6'
+        confirmButtonColor: this.sectionView_1?.theme_details?.[0]?.dark_color
       });
     }
     }

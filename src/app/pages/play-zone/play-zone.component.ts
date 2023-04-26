@@ -215,7 +215,7 @@ console.log(this.dark_color);
 
   }
   openCubicall(content){
-    this.cubicallUrl=`https://www.playtolearn.in/cubi-call/?UserLogin_Id=${this.mergeObj.USERID}&Name=${this.mergeObj.first_name}&IdOrganization=${this.mergeObj.id_coroebus_organization}`
+    this.cubicallUrl=`https://www.playtolearn.in/CubiCall/`
     console.log(this.cubicallUrl)
     this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.cubicallUrl);
     this.modalService.open(content,{size: 'lg'});

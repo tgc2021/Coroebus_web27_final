@@ -13,6 +13,7 @@ import { ApiserviceService } from 'app/apiservice.service';
 import { Util } from '@app/utils/util';
 import { Subscription, combineLatest, Subject, Observable, interval } from 'rxjs';
 import * as userActions from '../../../core/app-state/actions';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-interactive-dashboard',
@@ -200,6 +201,10 @@ export class InteractiveDashboardComponent implements OnInit,OnDestroy {
   currentUrl: string;
   promotionalPopUpData: any;
   promotionalPopupImage: any;
+  produce1data: any;
+  kpidata: any;
+  kpiName: any;
+  about_game_pdf:any
   data: any;
   seasonalThemeDaily1: any;
   seasonalThemeWeekly2: any;
@@ -314,8 +319,13 @@ else{
         this.http.interactiveDashboard(body).subscribe((res) => {
           console.log(res)
           this.interactive_dashoard_response = res;
-
+          console.log(this.interactive_dashoard_response);
           
+          if(this.interactive_dashoard_response?.data.is_about_game==1){
+            this.about_game_pdf= this.interactive_dashoard_response?.data.about_game[0].file_name
+            console.log( this.about_game_pdf);
+            localStorage.setItem('about_game_pdf',this.about_game_pdf)
+          }
           
           this.isLoading = true;
           this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
@@ -416,6 +426,24 @@ else{
 
         })
        
+        let body1 = {
+          _userid: this.mergeObj.USERID,
+          _game: this.mergeObj.id_coroebus_game,
+          _section_view: "1", 
+          page_number: "1", 
+          device_type: "W"
+        }
+
+      
+        this.http.produce1(body1).subscribe((res) => {
+          console.log(res)
+          this.produce1data = res;
+          console.log(this.produce1data.data._personal_data.external_kpi_data);
+          this.kpidata=this.produce1data.data._personal_data.external_kpi_data
+          console.log(this.kpidata.length);
+          
+        })
+
       }
       else {
         let body = {
@@ -435,7 +463,11 @@ else{
 
           this.interactive_dashoard_response = res;
 
-          
+          if(this.interactive_dashoard_response.data.is_about_game==1){
+            this.about_game_pdf= this.interactive_dashoard_response.data.about_game[0].file_name
+            console.log( this.about_game_pdf);
+            localStorage.setItem('about_game_pdf',this.about_game_pdf)
+          }
 
           this.isLoading = true;
           this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
@@ -489,6 +521,25 @@ else{
           }));
 
 
+        })
+        
+
+        let body1 = {
+          _userid: this.mergeObj.USERID,
+          _game: this.userSelectionData.id_coroebus_game,
+          _section_view: "1", 
+          page_number: "1", 
+          device_type: "W"
+        }
+
+      
+        this.http.produce1(body1).subscribe((res) => {
+          console.log(res)
+          this.produce1data = res;
+          console.log(this.produce1data.data._personal_data.external_kpi_data);
+          this.kpidata=this.produce1data.data._personal_data.external_kpi_data
+          console.log(this.kpidata.length);
+          
         })
 
 
@@ -553,6 +604,7 @@ ngAfterViewInit():void{
       })
     }
   }
+
   playpauseaudio(){
 
   console.log('pause');
@@ -665,24 +717,52 @@ ngAfterViewInit():void{
     }
    
   }
+
+
   navigateToLearningAcademy() {
     // this.audio.stop();
+    console.log(this.mergeObj);
+    
     const userId = this.mergeObj.USERID;
     const game = this.mergeObj.id_coroebus_game;
     const teamid=this.mergeObj.id_coroebus_team;
-  
+    const gameName=this.mergeObj.game_name;
+    const teamName=this.mergeObj.team_name;
+    console.log(this.kpidata.length);
+    if(this.kpidata.length!=0){
+    this.kpiName=this.kpidata[0].kpi_name;
+    console.log(this.kpiName);
+    const isAttemted=this.kpidata[0].is_attempted;
+    const isCorrect=this.kpidata[0].is_correct;
+
     console.log(userId,game,teamid);
     // console.log('http://localhost:4200/#/LearningAcademy/library?_game='+game+"&_userid¸="+userId+"&_team="+teamid,'_self' );
     
+//  console.log(   'http://localhost:4200/#/LearningAcademy/library?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
+//  "&_team_name="+teamName+"&_game_name="+gameName+
+//   "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self','_self'
+// );
    
     window.open(
-      
-      'https://coroebus.in/Learning_academy/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid,'_self'
-      // 'https://coroebus.in/Learning_academy/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid,'_self'
+          'https://coroebus.in/Learning_academy/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
+    "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'
 
       
     )
     
+   }
+   else{
+    console.log("sdfksdfs nkdnkskj");
+    this.modalService.dismissAll('Cross click')
+    Swal.fire({
+      title: '',
+      text: 'Introducing Trivia Corner exclusively for Players and Captains',
+      // imageUrl: 'assets/images/svg/logo/logo.svg',
+      imageHeight: 40,
+      confirmButtonColor:this.interactive_dashoard_response[0].data.theme_details[0].dark_color
+    });
+   }
+   
   }
 
   navigateToNotification() {
