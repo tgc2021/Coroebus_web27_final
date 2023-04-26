@@ -76,7 +76,31 @@
                                                         <div   style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
                         
                                                             <div style="height: 1.2vh;width:1.3vw;border-radius:100%;background-color:transparent ;"></div>
-                         
+                                                            <div class="col d-flex align-items-center">
+                                                                <div  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;" *ngIf="sectionView_1._points[0].ranking_arrow=='green'">
+    
+                                                                    <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                                                        height="100%" >
+                                                                </div>
+                                                                <div  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;" *ngIf="sectionView_1._points[0].ranking_arrow=='red'">
+    
+                                                                    <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                                        height="100%" >
+                                                                </div>
+                                                                <!-- <div style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;" *ngIf="sectionView_1._points[0].ranking_arrow=='red'"  >
+                                
+                                                                    <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                                        height="100%">
+                                
+                                                                </div> -->
+                                                                <div *ngIf="sectionView_1._points[0].ranking_arrow=='yellow'"  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
+                            
+                                                                   
+                                                                        <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
+                                                                    
+                                 
+                                                                 </div>
+                                                            </div>
                                                          </div>
                                                         <div class="col  d-flex justify-content-end align-items-center me-2">
                                                             <img src="assets/images/TopHierarchyDashboard/Arrow.png" />
@@ -566,10 +590,36 @@
                                     </div>
                                     
                                 </div>
-                                <div class="lower_side">{{business_response.weightage}}</div>
+                                <div class="lower_side d-flex justify-content-center gap-4">
+                                    <div></div>
+                                    <div>&nbsp;&nbsp;&nbsp;{{business_response.weightage}}</div>
+                                    <div class="d-flex">
+                              
+                              
+                                        <div *ngIf="business_response.ranking_arrow=='green'" style="height:2.5vh; display: flex;">
         
+                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                                height="100%" >
+                                        </div>
+        
+                                        <div *ngIf="business_response.ranking_arrow=='red'"  style="height:2.5vh; display: flex;">
+        
+                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                height="100%">
+        
+                                        </div>
+                                        <div *ngIf="business_response.ranking_arrow=='yellow' "  style="height:1.5vh; display: flex;">
+        
+                                            <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt=""
+                                                height="100%" width="100%">
+        
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                      
                             </div>
-                           
+                       
         
         
                         </div>
@@ -596,12 +646,34 @@
                 
                                         </div>
                                         <div class="d-flex">
-                                            <div class="global_index_details  " style="font-weight: 500;font-family: 'Inter';">
+                                            <div class="global_index_details  " style="font-weight: 500;font-family: 'Inter';margin-right: 1vw;">
                                                 <!-- {{GrowthIndexData[0].score}} -->
                     
                                                 {{bus_response.weightage}}
     
                     
+                                            </div>
+                                            <div class="d-flex ">
+                              
+                              
+                                                <div *ngIf="bus_response.ranking_arrow=='green'" style="height:2.5vh; display: flex;">
+                
+                                                    <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                                        height="100%" >
+                                                </div>
+                
+                                                <div *ngIf="bus_response.ranking_arrow=='red'"  style="height:2.5vh; display: flex;">
+                
+                                                    <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                        height="100%">
+                
+                                                </div>
+                                                <div *ngIf="bus_response.ranking_arrow=='yellow' "  style="height:2.5vh;width:2.5vh; display: flex;justify-content:center;align-items:center">
+                
+                                                    <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt=""
+                                                        height="60%" width="60%">
+                
+                                                </div>
                                             </div>
                                             <div class="d-flex align-items-center">
                                                 <!-- <div  style="height:2.5vh;">
