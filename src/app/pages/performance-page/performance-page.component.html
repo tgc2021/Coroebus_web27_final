@@ -176,19 +176,19 @@
                                                     
                                                     <span >
                                                        
-                                                        <div  style="height:2.5vh;" *ngIf="child?.ranking_arrow=='green'">
+                                                        <div  style="height:2.5vh;" *ngIf="item?._data?.ranking_arrow=='green'">
 
                                                             <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
                                                                 height="100%" >
                                                         </div>
                                                  <!-- <div> {{overallData?.[0]?._data?.[0]?.ranking_arrow|json}}</div>       -->
-                                                        <div *ngIf="child?.ranking_arrow=='red'"  style="height:2.5vh;">
+                                                        <div *ngIf="item?._data?.ranking_arrow=='red'"  style="height:2.5vh;">
                         
                                                             <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
                                                                 height="100%">
                         
                                                         </div>
-                                                        <div *ngIf="child?.ranking_arrow=='yellow'" style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
+                                                        <div *ngIf="item?._data?.ranking_arrow=='yellow'" style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
                     
                                                             <!-- <div style="height: 1.2vh;width:1.2vh;border-radius:100%;background-color:orange ;"></div> -->
                                                             <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
