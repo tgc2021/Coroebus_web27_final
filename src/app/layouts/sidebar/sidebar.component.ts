@@ -347,8 +347,16 @@ console.log(this.id_coroebus_organization);
         
         const result = this.menuItems.filter(data => data.icon != 'ChallengeZoneicon');
         console.log('rol i 9,8,12');
-     
         this.menuItems=result;
+        console.log(this.menuItems);
+        
+        if(this.id_role==9){
+          const result = this.menuItems.filter(data => data.icon != 'rewards');
+          this.menuItems=result;
+          console.log(this.menuItems);
+          
+        }
+     
 
        
         console.log(this.menuItems);
