@@ -67,7 +67,7 @@
                                                 </mat-panel-title>
 
                                             </mat-expansion-panel-header>
-                                            <div class="global_index d-flex mt-1" (click)="OverallGrowth()">Overall
+                                            <div class="global_index d-flex mt-1" style="cursor: pointer;" (click)="OverallGrowth()">Overall
                                                 <div class="global_index_details d-flex">
                                                     <div>
                                                         {{buisness_head_response_._points[0].score}}
@@ -134,7 +134,7 @@
                                             </mat-panel-title>
 
                                         </mat-expansion-panel-header>
-                                        <div class="pech d-flex" *ngFor="let response of buisness_head_response_._governance_score">
+                                        <div class="pech d-flex" style="cursor: pointer;" *ngFor="let response of buisness_head_response_._governance_score" (click)="navigateToBIMap(response)">
                                             {{response.point_label}}
                                             <div class="pech_details d-flex">
                                                 <div >
