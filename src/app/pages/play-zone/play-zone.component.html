@@ -434,7 +434,7 @@
                     </div>
                 </div>
             </div>
-            <div  *ngIf="id_role!=13;then PassbookForOtherRole else passBookForBHROle "></div>
+            <div  *ngIf="id_role!=13 && id_role!=9;then PassbookForOtherRole else passBookForBHROle "></div>
             <ng-template #PassbookForOtherRole>
                 <div class="col-3 reward-container">
                     <div class="reward-content col-12">
