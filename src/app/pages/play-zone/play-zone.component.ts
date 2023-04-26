@@ -161,7 +161,7 @@ console.log(this.dark_color);
 
   }
   open(content,data) {
-    // console.log(content);
+    console.log(data);
     if(data.id_engagement_game==='1'){
       console.log(data)
       // this.dartGameUrl=`http://127.0.0.1:5501/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`

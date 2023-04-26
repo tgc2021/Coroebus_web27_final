@@ -24,27 +24,27 @@
 <div class="PlayZone-web-view">
     <div class="row">
         <div class="col-12 d-flex gap-2">
-            <div class="col-8 playZone-container">
+            <div class="col-8 playZone-container"  [style.width]="id_role==13||id_role==9?'96%':''">
                 <h5>Play Zone</h5>
                 <div class="subHeading mb-3">
                     <span class="text">Welcome to Play Zone! Start playing and earning Rewards!</span>
                 </div>
-                <div class="d-flex gap-1">
+                <div class="d-flex gap-1" >
                     <select class="form-control  form-select" [(ngModel)]="spot_type"
-                        aria-label=".form-select-lg example">
+                        aria-label=".form-select-lg example" [style.display]="id_role==13||id_role==9?'none':''">
                         <option value="Performance" class="form-option m-5">Performance</option>
                         <option value="Engagement" class="form-option m-5">Engagement</option>
                         <option value="" selected="selected" class="form-option m-5">All</option>
                     </select>
                    
-                    <div class="searchBar col-9" style="display: inline;">
+                    <div class="searchBar col-9" style="display: inline;" [style.display]="id_role==13||id_role==9?'none':''">
                         <input type="text" class="form-control" placeholder="Search" aria-label="Search People here.."
                             aria-describedby="basic-addon2" [(ngModel)]="term1">
                         <button type="button" (click)="clearText()" class="clearBtn">
                             X
                         </button>
                     </div>
-                    <div>
+                    <div  [style.display]="id_role==13||id_role==9?'none':''">
                         <button class="btn-sm-2 col-1" [style.background-color]="color==null? dark_color:color">
                             <img src="assets/images/playZone/images/Vector.png" alt="">
                         </button>
@@ -52,12 +52,12 @@
                 </div>
                 <div class="row card-container" id="cardContainer">
                     <div class="row cards" >
-                        <div class="card col-5" style="align-self: start;">
+                        <div class="card col-5" >
                             <div >
                                 <div class="ps-3 subHeading">
                                     <div>
                                         <span class="text">&nbsp;Type &nbsp;:</span>&nbsp;
-                                        <span class="heading">Engagement</span>
+                                        <span class="heading">Default</span>
                                     </div>
                                     <div>
                                        
@@ -105,7 +105,7 @@
                                 <div class="ps-3 subHeading">
                                     <div>
                                         <span class="text">&nbsp;Type &nbsp;:</span>&nbsp;
-                                        <span class="heading">Engagement</span>
+                                        <span class="heading">Default</span>
                                     </div>
                                     <div>
                                        
@@ -388,14 +388,14 @@
                                         *ngIf="data.spot_status==='Open' && data._status==='active'; then openBlock;else openedBlock">
                                     </div>
                                     <ng-template #openBlock>
-                                        <button style="cursor:pointer;border: none;background: #ffff; margin:3% 5%;"
+                                        <button style="cursor:pointer;border: none;background: #ffff; "
                                             class="status-openButton" (click)="open(content,data)">
                                             {{data.spot_status}}
                                         </button>
                                     </ng-template>
                                     <ng-template #openedBlock>
 
-                                        <button style="cursor:pointer;border: none;background: #ffff; margin:3% 5%;"
+                                        <button style="cursor:pointer;border: none;background: #ffff;"
                                             [disabled]="true" class="status-openedButton">
                                             {{data.spot_status}}
                                         </button>
@@ -413,9 +413,7 @@
                                     
                             <button type="button" class="btn-close" aria-label="Close"
                             (click)="dismiss()">x</button>
-                          
-                        
-                
+
                                 <iframe [src]='safeUrl' title="spin_the_wheel" height="680px" width="100%">
                                 </iframe>
                                 
@@ -574,7 +572,7 @@
                 </div>
             </ng-template>
            <ng-template #passBookForBHROle>
-            <div class="col-3 reward-container">
+            <div class="col-3 reward-container" style="display:none">
                 <div class="reward-content col-12">
                     
                 
@@ -585,11 +583,7 @@
                                     
                                         <img src="assets/images/playZone/images/spot.svg" alt="" width="100%" height="100%">
                                     
-                                    <!-- <div class="noContentContainer-Desc">
-                                        Stay tuned! You might soon get a chance to play a Games.
-                                    </div> -->
-                               
-                                <!-- <span  class="heading">{{rewardPoints}}</span> -->
+                                   
         
                             </div>
     

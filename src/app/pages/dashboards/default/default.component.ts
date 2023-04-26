@@ -17,12 +17,16 @@ import { ActivatedRoute, Event as Events, NavigationEnd, NavigationStart, Router
 import { ToastService } from '@app/services/toast-service';
 import { ApiserviceService } from 'app/apiservice.service';
 import { type } from 'jquery';
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-default',
   templateUrl: './default.component.html',
   styleUrls: ['./default.component.scss']
 })
 export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
+dismiss() {
+throw new Error('Method not implemented.');
+}
 
   hideSkeleton: boolean = false;
   sectionView_1: any
@@ -166,8 +170,16 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   seasonalThemeWeeklyBadges2: any;
   seasonalThemeMonthlyBadges3: any;
   totalTargetScoreForMontly: number;
+  mergeObj: any;
+  safeUrl: any;
 
-  constructor(private readonly store: Store, private modalService: NgbModal,private renderer:Renderer2,
+  spinTheWheelURL: any;
+  skylineGameUrl: any;
+  cubeBlasters: any;
+  dartGameUrl:any;
+  cubeBlastersUrl: any;
+
+  constructor(private readonly store: Store, private modalService: NgbModal,private renderer:Renderer2,public sanitizer: DomSanitizer,
     public Util: Util, private eventService: EventService, private _router: Router,
     private _route: ActivatedRoute, public toastService: ToastService,public http:ApiserviceService,public elementref: ElementRef) {
     this.activeSubTabForSectionView_2 = 'My Store'
@@ -992,7 +1004,7 @@ else if(this.activeTabForSectionView_2 == 4){
     [err, res] = await HttpProtocols.to(DashboardModel.addIns(body))
     if (!err && res?.statuscode === 200) {
       this.addInsList = res?.data
-      // console.log(this.addInsList);
+      console.log(this.addInsList);
 
       if (this.addInsList.length === 0) {
         this.buletinsHide = true
@@ -1724,7 +1736,15 @@ else if(this.activeTabForSectionView_2 == 4){
   }
   
 
+  
 
+  navigateToPlayzone(){
+    if(this.edit_image){
+      this._router.navigateByUrl("/playzone/play")
+    }
+   
+
+  }
 
   navigateToBriefQuetion(data:any){
     console.log(data);
