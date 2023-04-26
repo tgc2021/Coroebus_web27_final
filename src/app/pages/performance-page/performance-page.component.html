@@ -41,6 +41,9 @@
                                                 <div class="p-0">
                                                     <span
                                                         class="performance-overall-txt">{{overallData?.[0]?.label}}</span>
+                                                        <span>
+                                                        
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div class="col-lg-1 col-md-1 col-2 d-flex justify-content-start">
@@ -53,9 +56,30 @@
 
                                             <div class="col-lg-1 col-md-1 col-4 d-flex justify-content-end">
                                               
-                                                <span class="float-end">
+                                                <span class="float-end d-flex gap-2">
                                                     <span
-                                                        class="performance-overall-points" style="width: 51%;text-align: end;">&nbsp;&nbsp;{{overallData?.[0]?._data?.[0]?.points}}</span>
+                                                        class="performance-overall-points" style="width: 100%;text-align: end;">&nbsp;&nbsp;{{overallData?.[0]?._data?.[0]?.points}}</span>
+                                                        <span >
+                                                            <div  style="height:2.5vh;" *ngIf="overallData?.[0]?._data?.[0]?.ranking_arrow=='green'">
+    
+                                                                <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                                                    height="100%" >
+                                                            </div>
+                                                     <!-- <div> {{overallData?.[0]?._data?.[0]?.ranking_arrow|json}}</div>       -->
+                                                            <div *ngIf="overallData?.[0]?._data?.[0]?.ranking_arrow=='red'"  style="height:2.5vh;">
+                            
+                                                                <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                                    height="100%">
+                            
+                                                            </div>
+                                                            <div *ngIf="overallData?.[0]?._data?.[0]?.ranking_arrow=='yellow'"  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
+                        
+                                                                <!-- <div style="height: 1.2vh;width:1.2vh;border-radius:100%;background-color:orange ;"></div> -->
+                                                                <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
+                             
+                                                             </div>
+                                                        
+                                                    </span>
                                                     <!-- <i class="fa fa-sort-down ms-4 performance-arrow-down invisible"></i> -->
                                                 </span>
                                             </div>
@@ -97,8 +121,30 @@
                                                 <span class="text-start">
                                                     <img src="assets/images/svg/dashboard/game-points-coin.png" alt="" height="15">
                                                 </span>
-                                                <span class="float-end">
+                                                <span class="float-end d-flex gap-2">
                                                     <span class="performance-points">{{item?._data?.points}}</span>
+                                                   
+                                                    <span >
+                                                        <div  style="height:2.5vh;" *ngIf="item?._data?.ranking_arrow=='green'">
+
+                                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                                                height="100%" >
+                                                        </div>
+                                                 <!-- <div> {{overallData?.[0]?._data?.[0]?.ranking_arrow|json}}</div>       -->
+                                                        <div *ngIf="item?._data?.ranking_arrow=='red'"  style="height:2.5vh;">
+                        
+                                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                                height="100%">
+                        
+                                                        </div>
+                                                        <div *ngIf="item?._data?.ranking_arrow=='yellow'" style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
+                    
+                                                            <!-- <div style="height: 1.2vh;width:1.2vh;border-radius:100%;background-color:orange ;"></div> -->
+                                                            <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
+                         
+                                                         </div>
+                                                    
+                                                </span>
                                                     <i class="fa fa-sort-down ms-4 performance-arrow-down"></i>
                                                 </span>
                                             </div>
@@ -124,10 +170,33 @@
                                                     <img src="assets/images/svg/dashboard/game-points-coin.png" alt=""
                                                         height="15">
                                                 </span>
-                                                <span class="float-end">
+                                                <span class="float-end d-flex gap-2">
+                                                    <div></div>
                                                     <span class="performance-points">{{child?.points}}</span>
-                                                    <i
-                                                        class="fa fa-sort-down ms-4 performance-arrow-down invisible"></i>
+                                                    
+                                                    <span >
+                                                       
+                                                        <div  style="height:2.5vh;" *ngIf="child?.ranking_arrow=='green'">
+
+                                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                                                height="100%" >
+                                                        </div>
+                                                 <!-- <div> {{overallData?.[0]?._data?.[0]?.ranking_arrow|json}}</div>       -->
+                                                        <div *ngIf="child?.ranking_arrow=='red'"  style="height:2.5vh;">
+                        
+                                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                                height="100%">
+                        
+                                                        </div>
+                                                        <div *ngIf="child?.ranking_arrow=='yellow'" style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
+                    
+                                                            <!-- <div style="height: 1.2vh;width:1.2vh;border-radius:100%;background-color:orange ;"></div> -->
+                                                            <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
+                         
+                                                         </div>
+                                                    
+                                                </span>
+                                                    <i class="fa fa-sort-down ms-4 performance-arrow-down invisible"></i>
                                                 </span>
                                             </div>
                                         </div>

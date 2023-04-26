@@ -116,12 +116,12 @@
                                                 src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}" alt=""
                                                 height="25">
                                         </div>
-                                        <div class="col-2 d-flex align-items-center " >
+                                        <div class="col-2 d-flex justify-content-center align-items-center gap-3 " >
                                             <div class=" text-end font-size-10 font-weight-semibold"
                                                 style="min-width: 2vw;text-align: center;">
                                                 {{item?.weightage}}
                                             </div>
-                                            <div class="d-flex align-items-center ms-2">
+                                            <div class="d-flex  justify-content-center align-items-center pb-1  ">
                                                 <div  style="height:2.5vh;" *ngIf="item.ranking_arrow=='green'">
     
                                                     <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
@@ -867,7 +867,7 @@
                         </ng-template>
                         <ng-template #two>
                             <div class="card-div">
-                                <div style="height: 44vh;display: flex;justify-content:center;align-items:center;">
+                                <div style="height: 44vh; padding:2%; display: flex;justify-content:center;align-items:center;">
                                     <div class="card-body px-4 "
                                         style="height: 42vh; overflow-y:auto;display: flex; flex-direction: column;justify-content:start;gap:0.5em">
                                         <mat-accordion>

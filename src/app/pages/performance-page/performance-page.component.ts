@@ -55,6 +55,7 @@ export class PerformancePageComponent implements OnInit {
   }]
   dropDownFilterData: any
   dropDownValue: any
+  id_role: any;
   constructor(private readonly store: Store ,private graph:DefaultComponent,public Util: Util, private _route: ActivatedRoute,public http:ApiserviceService) {
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
@@ -188,7 +189,9 @@ export class PerformancePageComponent implements OnInit {
     [err, res] = await HttpProtocols.to(PerformanceModel.pointsList(body))
     //console.log(body)
     if (!err && res?.statuscode === 200) {
-      this.pointsListData = res?.data
+      this.pointsListData = res?.data;
+
+      
       this.overallData = res?.data?.filter(data => data?.label === 'Overall Score')
       this.childData = res?.data?.filter(data => {
         console.log(data?.label, data?.label === 'Index')
@@ -227,8 +230,11 @@ export class PerformancePageComponent implements OnInit {
       [err, res] = await HttpProtocols.to(PerformanceModel.myperformanceProduce(body))
       console.log("Graph",body)
       if (!err && res?.statuscode === 200) {
-        this.graphMasterData = res?.data
+        this.graphMasterData = res?.data;
+        
         console.log(this.graphMasterData);
+        this.id_role=this.graphMasterData._personal_data[0].id_role;
+        console.log(this.id_role);
         
         //this.graphData = this.graphMasterData
         this.filterGraphData()
