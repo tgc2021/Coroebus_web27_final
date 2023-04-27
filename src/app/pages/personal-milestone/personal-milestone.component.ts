@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-personal-milestone',
@@ -14,10 +14,13 @@ export class PersonalMilestoneComponent implements OnInit {
   ];
 
   currentCardIndex = 0;
-
-  constructor() { }
+  dark_color:any
+  constructor(private element:ElementRef) { }
 
   ngOnInit(): void {
+    this.dark_color= localStorage.getItem('topbar_color')
+    this.element.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
+
     setInterval(() => {
       this.currentCardIndex++;
       if (this.currentCardIndex >= this.cards.length) {
