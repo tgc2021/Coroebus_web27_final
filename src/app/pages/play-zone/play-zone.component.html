@@ -25,7 +25,7 @@
 <div class="PlayZone-web-view">
     <div class="row">
         <div class="col-12 d-flex gap-2">
-            <div class="col-8 playZone-container"  [style.width]="id_role==13||id_role==9?'96%':''" [style.margin-top.%]="id_role==13||id_role==9?'2':''">
+            <div class="col-8 playZone-container"  [style.width]="id_role==13||id_role==9?'98%':''" [style.margin-top.%]="id_role==13||id_role==9?'0':''">
                 <h5>Play Zone</h5>
                 <div class="subHeading mb-3">
                     <span class="text">Welcome to Play Zone! Start playing and earning Rewards!</span>
@@ -90,7 +90,7 @@
                                 <div class="d-flex align-items-center justify-content-center">
                                     <hr width="98%">
                                 </div>
-                                <div class="d-flex align-items-center p-1">
+                                <div class="d-flex align-items-center p-1" style="height:5vh">
                                     <div (click)="openCubicall(content)" class="status-openButton" type="button">Open
                                     </div>
                                     
@@ -139,8 +139,8 @@
                                 <div class="d-flex align-items-center justify-content-center">
                                     <hr width="98%">
                                 </div>
-                                <div class="d-flex align-items-center p-1">
-                                    <div class="status-openButton" type="button" (click)="openTGCToolBox(content)">Open
+                                <div class="d-flex align-items-center p-1" style="height:5vh">
+                                    <div class="status-openButton" type="button"  (click)="openTGCToolBox(content)">Open
                                     </div>
                                     
 
@@ -230,7 +230,7 @@
                                     <div class="d-flex align-items-center justify-content-center">
                                         <hr width="98%">
                                     </div>
-                                    <div class="d-flex  align-items-center p-1">
+                                    <div class="d-flex  align-items-center p-1" style="height:5vh">
                                         <div (click)="openCubeBlasters(content)" class="status-openButton" type="button">Open
                                         </div>
                                         
@@ -277,7 +277,7 @@
                                     <div class="d-flex align-items-center justify-content-center">
                                         <hr width="98%">
                                     </div>
-                                    <div class="d-flex  align-items-center p-1">
+                                    <div class="d-flex  align-items-center p-1" style="height:5vh">
                                         <div (click)="openDartGame(content)" class="status-openButton" type="button">Open
                                         </div>
                                         
@@ -321,7 +321,7 @@
                                     <div class="d-flex align-items-center justify-content-center">
                                         <hr width="98%">
                                     </div>
-                                    <div class="d-flex  align-items-center p-1">
+                                    <div class="d-flex  align-items-center p-1" style="height:5vh">
                                         <div (click)="openSkyline(content)" class="status-openButton" type="button">Open
                                         </div>
                                         
@@ -384,7 +384,7 @@
                                 <div class="d-flex align-items-center justify-content-center">
                                     <hr width="98%">
                                 </div>
-                                <div class="d-flex p-1">
+                                <div class="d-flex align-items-center p-1" style="height:4vh" >
                                     <div
                                         *ngIf="data.spot_status==='Open' && data._status==='active'; then openBlock;else openedBlock">
                                     </div>
