@@ -40,9 +40,9 @@ export class LoginComponent implements OnInit {
   async ngOnInit() {
 
     var href = window.location.href;
-    console.log(href)
+    
     var url = new URL(href)
-    console.log(url);
+    
 
     document.body.classList.add('auth-body-bg')
     this.loginForm = this.formBuilder.group({
@@ -51,9 +51,9 @@ export class LoginComponent implements OnInit {
     });
     var checkUserID= this.route.queryParams
     .subscribe(params => {
-      console.log(params); // { orderby: "price" }
+      
       this.userid = params.userid;
-      console.log(this.userid); // price
+      
       
     }
   );
@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
 
       // const userId ="Wide018"
       const userId = this.Util.encryptData(this.userid)
-      console.log(userId);
+      
       
       // this.Util.encryptData(checkUserID)
       const autologin= "1"
@@ -113,13 +113,13 @@ export class LoginComponent implements OnInit {
     // get return url from route parameters or default to '/'
     // tslint:disable-next-line: no-string-literal
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'];
-    console.log("return url",this.returnUrl)
+    
 
     if (this.returnUrl) {
       this.returnUrl = undefined
       // window.location.reload()
     }
-    console.log(this.returnUrl)
+    
   }// convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
 
@@ -137,7 +137,7 @@ export class LoginComponent implements OnInit {
       const body = { "USERID": userId, "PASSWORD": password }
       const [err, res] = await HttpProtocols.to(UserModel.authenticationAndAuthorization(body))
       if (!err && res?.status === 'success' && res?.statuscode === 200) {
-        console.log(res);
+        
         
         let body={
           _userid:userId.toString(),
@@ -149,18 +149,18 @@ export class LoginComponent implements OnInit {
         }
 
         // {"_userid":"Ek/VOOiJgjEigYASBYAX6A==","_section":"Login","_description":"Login Succesfull","_game":"na","_device":"W","_refid":""}
-        console.log(this.Util.decryptData(body._userid));
+        
         this.userid_bh=this.Util.decryptData(body._userid)
         localStorage.setItem('userid',this.userid_bh)
-        console.log(body);
+        
         this.id_org=res?.data
-        console.log(this.id_org._personal_data.id_coroebus_organization);
+        
         this.id_coroebus_organization_bh=this.id_org._personal_data.id_coroebus_organization
         localStorage.setItem('id_coroebus_org_bh',this.id_coroebus_organization_bh)
         localStorage.setItem('VideoHide','true');
         
         this.http.engagamentlog(body).subscribe(res=>{
-          console.log(res);
+          
           
         })
         // if flag is 1 then consider it's firstLogin for end user
@@ -197,7 +197,7 @@ export class LoginComponent implements OnInit {
         }
 
         this.http.engagamentlog(body).subscribe(res=>{
-          console.log(res);
+          
           
         })
 
@@ -232,16 +232,3 @@ export class LoginComponent implements OnInit {
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -65,7 +65,7 @@ export class TopbarComponent implements OnInit, OnDestroy {
   ngOnInit() {
   
     this.topbar_color= localStorage.getItem('topbar_color')
-    console.log(this.topbar_color);
+    // console.log(this.topbar_color);
     
     this.top_toolbar_logo= localStorage.getItem('theme_logo')
     this.openMobileMenu = false;
@@ -80,10 +80,10 @@ export class TopbarComponent implements OnInit, OnDestroy {
       this.notificationStatus()
       this.handlePolling()
     })
-    console.log(this.userSelectionData);
+    // console.log(this.userSelectionData);
     
     this.id_role=this.userSelectionData._personal_data.id_role
-    console.log(this.id_role);
+    // console.log(this.id_role);
     if(this.id_role== 13){
       let bodyforBH={
     
@@ -91,13 +91,13 @@ export class TopbarComponent implements OnInit, OnDestroy {
         '_org': this.userSelectionData?._personal_data?.id_coroebus_organization
   
         }
-        console.log(bodyforBH);
+        // console.log(bodyforBH);
         
         this.http.buisnessHead(bodyforBH).subscribe(res=>{
-          console.log(res);
+          // console.log(res);
           this.buisness_head_response=res
         this.buisness_head_response_=this.buisness_head_response.data
-        console.log(this.buisness_head_response_);
+        // console.log(this.buisness_head_response_);
         localStorage.setItem('bhresponse',this.buisness_head_response_._personal_data.organization_logo)
           this.Org_logo=localStorage.getItem('bhresponse')
         })
@@ -114,7 +114,7 @@ export class TopbarComponent implements OnInit, OnDestroy {
     }
     this._routeSub = this._route.queryParams.subscribe(queryParams => {
       this.queryParams = queryParams
-      console.log(queryParams)
+      // console.log(queryParams)
     })
 
    
@@ -123,19 +123,19 @@ export class TopbarComponent implements OnInit, OnDestroy {
  
     
   RedirectionToHome(){
-    console.log(this.id_role);
+    // console.log(this.id_role);
     
     if(this.id_role==13){
       this.router.navigateByUrl('topdashboard')
     }
     else if(this.id_role == 8 || this.id_role == 9 ){
-      console.log('back');
+      // console.log('back');
       
       this.router.navigateByUrl('top_dashboard')
 
     }
     else if(this.id_role == 6 || this.id_role == 4 || this.id_role == 3 || this.id_role == 10){
-      console.log('back');
+      // console.log('back');
       
       this.router.navigateByUrl('account/interactive-dashboard')
 
@@ -179,13 +179,13 @@ export class TopbarComponent implements OnInit, OnDestroy {
     this.pollingNotificationSubscription?.unsubscribe()
     this.pollingNotificationSubscription = interval(30000).pipe(
       switchMap(() => this.notificationStatus()),
-      map(res => console.log(res))
+      map(res => {})
     ).subscribe(res => { }, err => { })
   }
 
   closeMenuTop(){
     this.closemenu.emit();
-console.log("hello");
+// console.log("hello");
 
     
   }

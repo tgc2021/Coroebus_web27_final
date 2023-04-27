@@ -220,34 +220,34 @@ export class InteractiveDashboardComponent implements OnInit,OnDestroy {
   monthlyBadgesActive: boolean;
   constructor(config: NgbModalConfig,private readonly store: Store, public element: ElementRef, public Util: Util, private _router: Router, public http: ApiserviceService, private eventService: EventService,public location:Location ,public modalService:NgbModal) {
     config.backdrop = 'static';
-		config.keyboard = false;
+    config.keyboard = false;
     config.centered=true;
    }
 
   ngOnInit(): void {
     this.game_audio=localStorage.getItem('audio_game')
-    console.log(this.game_audio);
+    
      
  this.previousUrl1= this._router.events.pipe(
     filter((event) => event instanceof NavigationEnd)
 ).subscribe((event: NavigationEnd) => {
    this.previousUrl = this.currentUrl;
    this.currentUrl = event.url;
-   console.log(this.previousUrl);
+   
   localStorage.setItem('previousUrl',this.previousUrl)
    
 });
 this.previousUrl1=localStorage.getItem('previousUrl')
-console.log(this.previousUrl1);
+
 
     this.http.previousUrl$.subscribe((previousUrl:string)=>{
-      console.log(previousUrl);
+      
 
     })
 if(this.previousUrl1=='/account/game/selection'){
   this.audiotoggle=true
   this.game_audio=localStorage.getItem('audio_game')
-  console.log(this.game_audio);
+  
   this.audio = new Audio();
   this.audio.src = this.game_audio;
   this.audio.load();
@@ -256,7 +256,7 @@ if(this.previousUrl1=='/account/game/selection'){
 else{
   this.audiotoggle=false
   this.game_audio=localStorage.getItem('audio_game')
-  console.log(this.game_audio);
+  
   this.audio = new Audio();
   this.audio.src = this.game_audio;
   this.audio.load();
@@ -287,18 +287,18 @@ else{
       takeUntil(this.destroy$)
     ).subscribe(data => {
       this.userObj = data?.user
-      console.log(this.userObj);
+      
       this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
-      console.log(this.mergeObj);
+      
       this.combineLatest = combineLatest([
         this.store.select(fromRoot.userLogin),
         this.store.select(fromRoot.usertheme),
         this.store.select(fromRoot.usergame),
       ]
       ).subscribe(([login, theme, game]) => {
-        console.log(login, theme, game)
+        
         this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
-        console.log(this.userSelectionData);
+        
 
 
       })
@@ -315,36 +315,36 @@ else{
 
       
       
-        console.log(body);
+        
         this.http.interactiveDashboard(body).subscribe((res) => {
-          console.log(res)
+          
           this.interactive_dashoard_response = res;
-          console.log(this.interactive_dashoard_response);
+          
           
           if(this.interactive_dashoard_response?.data.is_about_game==1){
             this.about_game_pdf= this.interactive_dashoard_response?.data.about_game[0].file_name
-            console.log( this.about_game_pdf);
+            
             localStorage.setItem('about_game_pdf',this.about_game_pdf)
           }
           
           this.isLoading = true;
           this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
-          console.log(this.interactive_dashoard_response);
+          
           
           this.is_about_game= localStorage.setItem('is_about_game',this.interactive_dashoard_response[0].data.is_about_game)
-          console.log(this.is_about_game);
+          
          
           // this.http.BoosterData(body).subscribe((res: any) => {
           //   this.boosterData_response = res.data;
 
-          //   console.log(res);
+          //   
 
           //   this.StringArray = res.data.booster_rank_details[0].rank_position_stmt.split(" ");
           //   this.firstString = this.StringArray[0] + " " + this.StringArray[1] + " " + this.StringArray[2];
           //   this.Digit = this.StringArray[3]
           //   this.LastString = this.StringArray[4];
-          //   console.log(this.StringArray);
-          //   console.log(this.LastString);
+          //   
+          //   
 
           // })
 
@@ -353,16 +353,16 @@ else{
           this.seasonalThemeWeekly = this.interactive_dashoard_response[0].data.seasonal_theme_weekly;
           this.seasonalThemeMonthly = this.interactive_dashoard_response[0].data.seasonal_theme_monthly;
 
-          console.log(this.seasonalThemeWeekly)
-          console.log(this.interactive_dashoard_response);
+          
+          
 
           this.interactive_dashoard_points=this.interactive_dashoard_response[0].data._points[2].score
-          console.log(this.interactive_dashoard_points);
+          
           
           localStorage.setItem('reward_points', this.interactive_dashoard_points);
 
           this.interactive_dashoard_response_idOrganisation=this.interactive_dashoard_response[0].data._personal_data.id_coroebus_organization
-          console.log(this.interactive_dashoard_response_idOrganisation);
+          
           if (this.interactive_dashoard_response) {
             setTimeout(() => {
               this.isLoading = false;
@@ -370,17 +370,17 @@ else{
             this.isLoading = true;
           }
           this.point_distribution = this.interactive_dashoard_response[0].data.theme_details[0].gradient_color_bg
-          console.log(this.point_distribution);
+          
           this.element.nativeElement.style.setProperty('--myvar', `${this.point_distribution}`)
 
 
           this.scorecardcolor = this.interactive_dashoard_response[0].data.theme_details[0].scoreboard_color_bg
-          console.log(this.scorecardcolor);
+          
 
           this.element.nativeElement.style.setProperty('--colorback', `${this.scorecardcolor}`)
 
           this.accordioncolor = this.interactive_dashoard_response[0].data.theme_details[0].light_color
-          console.log(this.accordioncolor);
+          
 
           this.element.nativeElement.style.setProperty('--accordioncolor', `${this.accordioncolor}`)
 
@@ -389,7 +389,7 @@ else{
           this.monthlyTopers = this.interactive_dashoard_response[0].data.seasonal_theme_monthly_badge_toppers;
           this.logo = this.interactive_dashoard_response[0].data.seasonal_theme_monthly[0];
 
-          console.log("=------->>", this.dailyToppers);
+          
 
 
           this.eventService.broadcast('passDataToHeader', {
@@ -417,7 +417,7 @@ else{
           //  }
 
           //  this.http.engagamentlog(body2).subscribe((res) => {
-          //    console.log(res)
+          //    
 
 
 
@@ -436,11 +436,11 @@ else{
 
       
         this.http.produce1(body1).subscribe((res) => {
-          console.log(res)
+          
           this.produce1data = res;
-          console.log(this.produce1data.data._personal_data.external_kpi_data);
+          
           this.kpidata=this.produce1data.data._personal_data.external_kpi_data
-          console.log(this.kpidata.length);
+          
           
         })
 
@@ -453,30 +453,30 @@ else{
         }
 
         this.http.PromotionalPopUp(body).subscribe((res)=>{
-          console.log(res);
+          
         })
 
-        console.log(body);
+        
         this.http.interactiveDashboard(body).subscribe((res) => {
-          console.log(res)
+          
 
 
           this.interactive_dashoard_response = res;
 
           if(this.interactive_dashoard_response.data.is_about_game==1){
             this.about_game_pdf= this.interactive_dashoard_response.data.about_game[0].file_name
-            console.log( this.about_game_pdf);
+            
             localStorage.setItem('about_game_pdf',this.about_game_pdf)
           }
 
           this.isLoading = true;
           this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
-          console.log(this.interactive_dashoard_response);
+          
           
         this.is_about_game= localStorage.setItem('is_about_game',this.interactive_dashoard_response[0].data.is_about_game)
-        console.log(this.is_about_game);
+        
           this.accordioncolor = this.interactive_dashoard_response[0].data.theme_details[0].light_color
-          console.log(this.accordioncolor);
+          
 
           this.element.nativeElement.style.setProperty('--accordioncolor', `${this.accordioncolor}`)
 
@@ -495,13 +495,13 @@ else{
           this.seasonalThemeMonthly = this.interactive_dashoard_response[0].data.seasonal_theme_monthly;
 
           this.point_distribution = this.interactive_dashoard_response[0].data.theme_details[0].gradient_color_bg
-          console.log(this.point_distribution);
+          
 
           this.element.nativeElement.style.setProperty('--myvar', `${this.point_distribution}`)
 
 
           this.scorecardcolor = this.interactive_dashoard_response[0].data.theme_details[0].scoreboard_color_bg
-          console.log(this.scorecardcolor);
+          
 
           this.element.nativeElement.style.setProperty('--colorback', `${this.scorecardcolor}`)
 
@@ -534,11 +534,11 @@ else{
 
       
         this.http.produce1(body1).subscribe((res) => {
-          console.log(res)
+          
           this.produce1data = res;
-          console.log(this.produce1data.data._personal_data.external_kpi_data);
+          
           this.kpidata=this.produce1data.data._personal_data.external_kpi_data
-          console.log(this.kpidata.length);
+          
           
         })
 
@@ -571,14 +571,14 @@ ngAfterViewInit():void{
       this.http.BoosterData(body).subscribe((res: any) => {
         this.boosterData_response = res.data;
 
-        console.log(res);
+        
 
         this.StringArray = res.data.booster_rank_details[0].rank_position_stmt.split(" ");
         this.firstString = this.StringArray[0] + " " + this.StringArray[1] + " " + this.StringArray[2];
         this.Digit = this.StringArray[3]
         this.LastString = this.StringArray[4];
-        console.log(this.StringArray);
-        console.log(this.LastString);
+        
+        
 
       })
     }
@@ -590,16 +590,16 @@ ngAfterViewInit():void{
       }
       this.http.BoosterData(body).subscribe((res: any) => {
         this.boosterData_response = res.data;
-        // console.log(this.boosterData_response);
+        // 
 
-        console.log(res);
+        
 
         this.StringArray = res.data.booster_rank_details[0].rank_position_stmt.split(" ");
         this.firstString = this.StringArray[0] + " " + this.StringArray[1] + " " + this.StringArray[2];
         this.Digit = this.StringArray[3]
         this.LastString = this.StringArray[4];
-        console.log(this.StringArray);
-        console.log(this.LastString);
+        
+        
 
       })
     }
@@ -607,16 +607,16 @@ ngAfterViewInit():void{
 
   playpauseaudio(){
 
-  console.log('pause');
+  
   this.game_audio=localStorage.getItem('audio_game')
-  console.log(this.game_audio);
+  
       if(this.audiotoggle){
         this.audio.pause();
         this.audiotoggle=false
 
       }
       else{
-        console.log('play');
+        
         
         this.audio.play();
         this.audiotoggle=true
@@ -627,11 +627,11 @@ ngAfterViewInit():void{
 
   partClicked(arg, k: any) {
 
-    console.log(k);
-    console.log("---->", arg);
-    // console.log(arg);
+    
+    
+    // 
     if (arg.type == 'Lerning Academy') {
-      console.log("Learning Academy");
+      
       this._router.navigateByUrl("/learning/learningAcademy")
 
 
@@ -683,7 +683,7 @@ ngAfterViewInit():void{
         const game = this.Util.encryptData(this.userSelectionData.id_coroebus_game)
         const roleid = this.Util.encryptData(this.mergeObj.id_role)
         // const id_coroebus_user = this.Util.encryptData(this.mergeObj.id_coroebus_user)
-        console.log(this.Util.decryptData(userId),this.Util.decryptData(game),this.Util.decryptData(roleid),this.Util.decryptData(this.mergeObj.id_coroebus_user));
+        
   
   
         window.open(
@@ -704,7 +704,7 @@ ngAfterViewInit():void{
         const game = this.Util.encryptData(this.mergeObj.id_coroebus_game)
         const roleid = this.Util.encryptData(this.mergeObj.id_role)
         // const id_coroebus_user = this.Util.encryptData(this.mergeObj.id_coroebus_user)
-        console.log(this.Util.decryptData(userId),this.Util.decryptData(game));
+        
   
         window.open(
           // 'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
@@ -721,24 +721,24 @@ ngAfterViewInit():void{
 
   navigateToLearningAcademy() {
     // this.audio.stop();
-    console.log(this.mergeObj);
+    
     
     const userId = this.mergeObj.USERID;
     const game = this.mergeObj.id_coroebus_game;
     const teamid=this.mergeObj.id_coroebus_team;
     const gameName=this.mergeObj.game_name;
     const teamName=this.mergeObj.team_name;
-    console.log(this.kpidata.length);
+    
     if(this.kpidata.length!=0){
     this.kpiName=this.kpidata[0].kpi_name;
-    console.log(this.kpiName);
+    
     const isAttemted=this.kpidata[0].is_attempted;
     const isCorrect=this.kpidata[0].is_correct;
 
-    console.log(userId,game,teamid);
-    // console.log('http://localhost:4200/#/LearningAcademy/library?_game='+game+"&_userid¸="+userId+"&_team="+teamid,'_self' );
     
-//  console.log(   'http://localhost:4200/#/LearningAcademy/library?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
+    // 
+    
+//  
 //  "&_team_name="+teamName+"&_game_name="+gameName+
 //   "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self','_self'
 // );
@@ -752,15 +752,18 @@ ngAfterViewInit():void{
     
    }
    else{
-    console.log("sdfksdfs nkdnkskj");
-    this.modalService.dismissAll('Cross click')
-    Swal.fire({
-      title: '',
-      text: 'Introducing Trivia Corner exclusively for Players and Captains',
-      // imageUrl: 'assets/images/svg/logo/logo.svg',
-      imageHeight: 40,
-      confirmButtonColor:this.interactive_dashoard_response[0].data.theme_details[0].dark_color
-    });
+
+    this.kpiName='Game OF Phone';
+    const isAttemted='8'
+    const isCorrect='8'
+    window.open(
+      'https://coroebus.in/Learning_academy/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
+"&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'
+
+  
+)
+
+   
    }
    
   }
@@ -808,9 +811,9 @@ ngAfterViewInit():void{
       _userid: this.mergeObj.USERID,
       _game: this.userSelectionData.id_coroebus_game,
     }
-    console.log("check body",obj)
+    
     this.http.produceInfo(obj).subscribe((res)=>{
-      console.log(res);
+      
 
       this.data=res;
    
@@ -818,7 +821,7 @@ ngAfterViewInit():void{
       this.seasonalThemeDaily1=this.data.data.seasonal_theme_daily
       this.seasonalThemeWeekly2=this.data.data.seasonal_theme_weekly;
       this.seasonalThemeMonthl3=this.data.data.seasonal_theme_monthly
-      console.log( this.seasonalThemeDaily1==undefined);
+      
         
       this.seasonalThemeDailyBadges1=this.data.data.seasonal_theme_daily_badge_details;
       this.totalTargetScore=Number(this.seasonalThemeDailyBadges1[0].seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[1].seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[2].seasonal_score_target);
@@ -896,14 +899,14 @@ ngAfterViewInit():void{
 
     this.http.PromotionalPopUp(body).subscribe((res)=>{
       this.promotionalPopUpData=res;
-      console.log(this.promotionalPopUpData);
+      
       this.promotionalPopupImage=this.promotionalPopUpData.data[0].list[0].image;
-      console.log(this.promotionalPopupImage);
+      
       let body={
         _popupid:this.promotionalPopUpData.data[0].list[0].id
       }
       this.http.updatePopUp(body).subscribe((res)=>{
-        console.log(res);
+        
         
       })
     })
@@ -914,10 +917,10 @@ ngAfterViewInit():void{
 
       }
     },5000)
-		
-	}
+    
+  }
   promotionalredirection(value:any){
-    console.log(value);
+    
 
     if(value=="Spectator"){
      

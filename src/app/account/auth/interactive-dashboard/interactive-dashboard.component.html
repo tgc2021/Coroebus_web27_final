@@ -18,7 +18,7 @@
             </div>
             <!-- <div class="col-2 web_second_col">
                    
-    
+   
                 </div> -->
 
             <div class="col-4 d-flex justify-content-center align-items-center">
@@ -29,7 +29,7 @@
                 <ng-template #soundon>
                     <div class="d-flex justify-content-end" >
                         <div (click)="playpauseaudio()" class="web_sound">
-                            
+                           
                             <img class="web_sound_image" src="assets/images/interactive-dashboard/Sound_on.png"/>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                 <ng-template #soundoff>
                     <div class="d-flex justify-content-end">
                         <div (click)="playpauseaudio()" class="web_sound">
-                            
+                           
                             <img class="web_sound_image" src="assets/images/interactive-dashboard/Sound_off.png"/>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                             src="{{interactive_dashoard_response[0].data.theme_details[0].my_trophy}}" />
                         <img class="web_my_rewards" *ngIf="interactive_dashoard_response[0].data._points[2].score>75 && interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"  (click)="navigateReward()"
                             src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}" />
-                            <img class="web_my_rewards" *ngIf="interactive_dashoard_response[0].data._points[2].score<75 && interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'" 
+                            <img class="web_my_rewards" *ngIf="interactive_dashoard_response[0].data._points[2].score<75 && interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
                             src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}" data-bs-toggle="modal" data-bs-target="#RewardsModal"/>
                             <img class="web_my_rewards" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"  (click)="navigateReward()"
                             src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}" />
@@ -162,10 +162,10 @@
                                         src="{{interactive_dashoard_response[0].data.theme_details[0].campaigns_bt_web}}" (load)="open(content)" />
 
                                 </div>
-                                
+                               
                                 <div class="d-flex justify-content-end">
                                     <img class="web_daily_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
-                                        src="{{interactive_dashoard_response[0].data.theme_details[0].daily_bt_web}}" 
+                                        src="{{interactive_dashoard_response[0].data.theme_details[0].daily_bt_web}}"
                                          data-bs-toggle="modal"
                                         data-bs-target="#DailyModal" />
 
@@ -286,7 +286,7 @@
                             <ng-template #soundon>
                                 <div class="d-flex justify-content-end">
                                     <div (click)="playpauseaudio()" class="mobile_sound">
-                                        
+                                       
                                         <img class="web_sound_image" src="assets/images/interactive-dashboard/Sound_on.png"/>
                                     </div>
                                 </div>
@@ -295,7 +295,7 @@
                             <ng-template #soundoff>
                                 <div class="d-flex justify-content-end">
                                     <div (click)="playpauseaudio()" class="mobile_sound">
-                                        
+                                       
                                         <img class="web_sound_image" src="assets/images/interactive-dashboard/Sound_off.png"/>
                                     </div>
                                 </div>
@@ -377,7 +377,7 @@
                             src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt}}" alt="PlayZone"
                             width="100%" height="100%">
 
-                            
+                           
                         <img  *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"
                         src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt}}" alt="PlayZone"
                         width="100%" height="100%" (click)="navigateToPlayZone()">
@@ -448,11 +448,11 @@
                             </div>
                             <div style="height:6vh;">
                                 <img *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'" src="{{interactive_dashoard_response[0].data.theme_details[0].Daily}}" alt="Daily"
-                                    height="100%" width="100%" data-bs-toggle="modal" data-bs-target="#DailyModal" 
+                                    height="100%" width="100%" data-bs-toggle="modal" data-bs-target="#DailyModal"
                                     >
 
                                     <img *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'" src="{{interactive_dashoard_response[0].data.theme_details[0].Daily}}" alt="Daily"
-                                    height="100%" width="100%" (mouseover)="openDailyModal()" data-bs-toggle="modal" data-bs-target="#DailyModal" 
+                                    height="100%" width="100%" (mouseover)="openDailyModal()" data-bs-toggle="modal" data-bs-target="#DailyModal"
                                     >
 
                             </div>
@@ -505,7 +505,7 @@
     <div class="message">
       Please rotate your device!
     </div>
-    
+   
 </div>
 
 
@@ -953,9 +953,9 @@
                         <ng-template #dailybadge>
                             <div class="animation-bar" *ngIf="seasonalThemeDailyBadges1.length!=0">
                                 <div class="badges_row" [style.width.%]="93" style="position: relative;">
-                                    
+                                   
                                     <div class="d-flex flex-column justify-content-center align-items-center" [style.margin-left.%]="((seasonalThemeDailyBadges1[0].seasonal_score_target)/(seasonalThemeDailyBadges1[2].seasonal_score_target))*100">
-                                        
+                                       
                                         <div style="height:6vh;width:6vh;border-radius:50%"
                                             [ngClass]="seasonalThemeDailyBadges1[0].active_class == '0'?'inActiveBadge':'ActiveBadge'">
                                             <img src="{{seasonalThemeDailyBadges1[0].seasonal_badge_logo}}" alt="" height="100%" width="100%">
@@ -977,7 +977,7 @@
 
                                     </div>
                                      <div class="d-flex flex-column justify-content-center " [style.margin-left.%]="(((seasonalThemeDailyBadges1[2].seasonal_score_target)/(seasonalThemeDailyBadges1[2].seasonal_score_target))*100)" style="position: absolute;" >
-                                        
+                                       
                                         <div style="height:6vh;width:6vh;border-radius:50%"
                                             [ngClass]="seasonalThemeDailyBadges1[2].active_class == '0'?'inActiveBadge':'ActiveBadge'">
                                             <img src="{{seasonalThemeDailyBadges1[2].seasonal_badge_logo}}" alt=""
@@ -991,7 +991,7 @@
 
                                     </div>  
 
-                                </div> 
+                                </div>
 
                                 <div class="animation-bar-1" style="width: 100%;">
                                     <span class="d-flex justify-content-center"
@@ -1099,9 +1099,9 @@
                            
                             <div class="animation-bar" *ngIf="seasonalThemeWeeklyBadges2.length!=0">
                                 <div class="badges_row" [style.width.%]="93" style="position: relative;">
-                                    
+                                   
                                     <div class="d-flex flex-column justify-content-center align-items-center" [style.margin-left.%]="((seasonalThemeWeeklyBadges2[0].seasonal_score_target)/(seasonalThemeWeeklyBadges2[2].seasonal_score_target))*100">
-                                        
+                                       
                                         <div style="height:6vh;width:6vh;border-radius:50%"
                                             [ngClass]="seasonalThemeWeeklyBadges2[0].active_class == '0'?'inActiveBadge':'ActiveBadge'">
                                             <img src="{{seasonalThemeWeeklyBadges2[0].seasonal_badge_logo}}" alt="" height="100%" width="100%">
@@ -1123,7 +1123,7 @@
 
                                     </div>
                                      <div class="d-flex flex-column justify-content-center " [style.margin-left.%]="(((seasonalThemeWeeklyBadges2[2].seasonal_score_target)/(seasonalThemeWeeklyBadges2[2].seasonal_score_target))*100)" style="position: absolute;" >
-                                        
+                                       
                                         <div style="height:6vh;width:6vh;border-radius:50%"
                                             [ngClass]="seasonalThemeWeeklyBadges2[2].active_class == '0'?'inActiveBadge':'ActiveBadge'">
                                             <img src="{{seasonalThemeWeeklyBadges2[2].seasonal_badge_logo}}" alt=""
@@ -1137,7 +1137,7 @@
 
                                     </div>  
 
-                                </div> 
+                                </div>
 
                                 <div class="animation-bar-1" style="width: 100%;">
                                     <span class="d-flex justify-content-center"
@@ -1190,7 +1190,7 @@
         </div>
     </div>
 
-</ng-template> 
+</ng-template>
 
 <!-- Monthly Modal -->
 <div *ngIf="isMonthlyModalOpen;then monthly"></div>
@@ -1244,9 +1244,9 @@
                         <ng-template #monthbadge>
                             <div class="animation-bar" *ngIf="seasonalThemeMonthlyBadges3.length!=0">
                                 <div class="badges_row" [style.width.%]="93" style="position: relative;">
-                                    
+                                   
                                     <div class="d-flex flex-column justify-content-center align-items-center" [style.margin-left.%]="((seasonalThemeMonthlyBadges3[0].seasonal_score_target)/(seasonalThemeMonthlyBadges3[2].seasonal_score_target))*100">
-                                        
+                                       
                                         <div style="height:6vh;width:6vh;border-radius:50%"
                                             [ngClass]="seasonalThemeMonthlyBadges3[0].active_class == '0'?'inActiveBadge':'ActiveBadge'">
                                             <img src="{{seasonalThemeMonthlyBadges3[0].seasonal_badge_logo}}" alt="" height="100%" width="100%">
@@ -1268,7 +1268,7 @@
 
                                     </div>
                                      <div class="d-flex flex-column justify-content-center " [style.margin-left.%]="(((seasonalThemeMonthlyBadges3[2].seasonal_score_target)/(seasonalThemeMonthlyBadges3[2].seasonal_score_target))*100)" style="position: absolute;" >
-                                        
+                                       
                                         <div style="height:6vh;width:6vh;border-radius:50%"
                                             [ngClass]="seasonalThemeMonthlyBadges3[2].active_class == '0'?'inActiveBadge':'ActiveBadge'">
                                             <img src="{{seasonalThemeMonthlyBadges3[2].seasonal_badge_logo}}" alt=""
@@ -1282,7 +1282,7 @@
 
                                     </div>  
 
-                                </div> 
+                                </div>
 
                                 <div class="animation-bar-1" style="width: 100%;">
                                     <span class="d-flex justify-content-center"
@@ -1630,7 +1630,7 @@
                                         </div>
                                         <div class="col"></div>
                                     </div>
-                                
+                               
                                     <div class="d-flex justify-content-around align-items-center"
                                    
                                         *ngFor="let data of boosterData_response.booster_index_details">
@@ -1678,7 +1678,7 @@
                                                     *ngIf="data.growth_percentage!=0">
                                                     <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated"
                                                         role="progressbar"
-                                                        
+                                                       
                                                         aria-valuenow="data.growth_percentage" aria-valuemin="0"
                                                         aria-valuemax="100%">%
                                                     </div>
@@ -1729,13 +1729,13 @@
             </div>
             <div class="col-12">
                 <img src="assets/images/rewards/pop up.png" style="width: 100%;"/>
-                
+               
                 <button type="button" class="ok_button" (click)="navigateReward()">Ok</button>
-                  
+                 
             </div>
-          
+         
            
-          
+         
         </div>
     </div>
 </div>
@@ -1744,9 +1744,9 @@
 <!-- Promotional Popup -->
 
 <ng-template #content let-c="close" let-d="dismiss">
-	<div class="d-flex  justify-content-end">
-		<button type="button" class="promotional_btn_close" aria-label="Close" (click)="d('Cross click')">X</button>
-	</div>
+<div class="d-flex  justify-content-end">
+<button type="button" class="promotional_btn_close" aria-label="Close" (click)="d('Cross click')">X</button>
+</div>
 
     <div class="modal-content"  >
            
@@ -1754,12 +1754,12 @@
             <img src="{{promotionalPopUpData.data[0].list[0].image}}" style="width: 100%; height: 60vh; border-radius: 10px;" (click)="promotionalredirection(this.promotionalPopUpData.data[0].list[0].title)" />
 
         </div>
-      
+     
        
-      
+     
     </div>
-	
-	
+
+
 </ng-template>
 <!-- <div class="modal fade" id="promotionalPopUp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -1770,13 +1770,13 @@
             </div>
             <div class="col-12">
                 <img src="../../../../assets/images/interactive-dashboard/Popup.png" style="width: 100%;"/>
-                
-                
-                  
+               
+               
+                 
             </div>
-          
+         
            
-          
+         
         </div>
     </div>
 </div> -->
