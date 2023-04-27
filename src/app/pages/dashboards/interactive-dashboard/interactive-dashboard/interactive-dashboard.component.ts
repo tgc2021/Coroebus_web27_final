@@ -74,16 +74,16 @@ export class InteractiveDashboardComponent implements OnInit {
       takeUntil(this.destroy$)
     ).subscribe(data => {
       this.userObj = data?.user
-      console.log(this.userObj);
+      
 
       this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
-      console.log(this.mergeObj);
+      
 
       let body = {
         _game: this.mergeObj.id_coroebus_game,
       }
 
-      console.log(body);
+      
    
     
 
@@ -95,7 +95,7 @@ export class InteractiveDashboardComponent implements OnInit {
   mergeObj: any
 
   async interactiveDashboard() {
-    console.log("0)(0");
+    
     
     
 
@@ -104,11 +104,11 @@ export class InteractiveDashboardComponent implements OnInit {
   }
 
   partClicked(arg) {
-    // console.log(arg);
-    console.log("---->", arg);
-    // console.log(arg);
+    // 
+    
+    // 
     if (arg.type == 'Lerning Academy') {
-      console.log("Learning Academy");
+      
       
     }
     

@@ -208,31 +208,31 @@ throw new Error('Method not implemented.');
       this.store.select(fromRoot.usergame),
     ]
     ).subscribe(([login, theme, game]) => {
-      console.log(login, theme, game)
+      
       this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
       
-      console.log(this.userSelectionData);
+      
       
       // this.GetDataFromProduceInfo();
       this._routeSub?.unsubscribe()
       this._routeSub = this._route.queryParams.subscribe(queryParams => {
         // do something with the query params
-        console.log(queryParams?.userID);
+        
        
 
         if (queryParams?.userID) {
-          console.log(window.location.href);
+          
           this.location=window.location.href
           if(this.location.includes("?")){
             this.hideBattleGround=true;
              var replacedUserId = queryParams?.userID.replace(/ /g, '+');
-         console.log(replacedUserId);
+         
         
          var replacedGameId = queryParams?.gameID.replace(/ /g, '+');
-         console.log(replacedGameId);
+         
 
          var replacedRoleId = queryParams?.roleID.replace(/ /g, '+');
-         console.log(replacedRoleId);
+         
             queryParams = { userID: this.Util.decryptData(replacedUserId), gameID: this.Util.decryptData(replacedGameId), roleID: this.Util.decryptData(replacedRoleId) }
 
           }
@@ -241,7 +241,7 @@ throw new Error('Method not implemented.');
 
           }
           this.queryParams = queryParams
-          console.log(this.queryParams);
+          
 
        
 
@@ -298,9 +298,9 @@ throw new Error('Method not implemented.');
   Edit_image() {
     setTimeout(() => { this.Edit_image() }, 1000 * 1)
     var url_string = window.location.href
-    // console.log(url_string);
+    // 
     var userID = url_string.includes("?"); // true
-    // console.log(userID)
+    // 
     if (userID === true) {
       this.edit_image = false
     }
@@ -308,7 +308,7 @@ throw new Error('Method not implemented.');
       this.edit_image = true
     }
     
-    // console.log(this.userID);
+    // 
   }
 
 
@@ -344,28 +344,28 @@ throw new Error('Method not implemented.');
       }
   
       this.http.engagamentlog(body).subscribe(res=>{
-        console.log(res);
+        
         
       })
 
       this.sectionView_1 = res?.data
-console.log(this.sectionView_1.is_about_game);
+
 localStorage.setItem('bg_image',this.sectionView_1?.theme_details?.[0]?.point_dist_background)
 
-      console.log(this.sectionView_1?.theme_details?.[0]?.dark_color);
+      
       
       this.pokeAnimationData = this.sectionView_1._poked_data
       // this.pokeAnimationData1=this.sectionView_1._poked_data[0].poke_description
 
-      console.log(this.pokeAnimationData);
+      
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       this.getBackImagesFromSectionView1 = this.sectionView_1._back_images[1]._data;
 
       this.getBackImages.push(...this.getBackImagesFromSectionView1);
 
 
-      console.log(this.getBackImages);
-      console.log("Section_view1_Data.....", this.getBackImagesFromSectionView1);
+      
+      
       ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       // alert(this.pokeAnimationData)
@@ -378,11 +378,11 @@ localStorage.setItem('bg_image',this.sectionView_1?.theme_details?.[0]?.point_di
       document.body.style.backgroundImage = 'url(' + bgImg + ')'
 
       this.web_profile_back_image= this.sectionView_1._back_images[1]._data[0].ranking_image_profile;
-      console.log(this.web_profile_back_image);
+      
 
       if(this.sectionView_1?.is_about_game==1){
         this.about_game_pdf= this.sectionView_1?.about_game[0].file_name
-        console.log( this.about_game_pdf);
+        
         localStorage.setItem('about_game_pdf',this.about_game_pdf)
       }
       
@@ -426,23 +426,23 @@ localStorage.setItem('bg_image',this.sectionView_1?.theme_details?.[0]?.point_di
     [err, res] = await HttpProtocols.to(DashboardModel.getCenterDataSectionView_2(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
       this.sectionView_2 = res?.data
-console.log(this.sectionView_2);
+
 
 this.labelNameMy= this.sectionView_2?._ranking_data[0].label
       // for(let i=0;i<this.sectionView_2?._ranking_data?.length;i++){
       if (this.queryParams?.roleID == '6' || this.userSelectionData?._personal_data?.id_role == '6') {
-        console.log("tab", this.activeTabForSectionView_2);
-        console.log("tab bool", this.queryParams?.roleID);
+        
+        
 
         // this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
-        console.log(this.activeTabForSectionView_2);
+        
 
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
 
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
 
-        console.log();
+        
 
         this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
 
@@ -452,7 +452,7 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
           if (item.ranking_image_level === this.firstrowbackimage) {
 
             this.web_first_tile_image = item.ranking_image
-            console.log(this.web_first_tile_image)
+            
           }
 
         }
@@ -467,23 +467,23 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
           this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
 
           this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-          console.log(this.firstrowbackimage);
+          
   
           for (let item of this.getBackImages) {
-            console.log(item.ranking_image_level);
-            console.log(this.firstrowbackimage);
+            
+            
   
             if (item.ranking_image_level === this.firstrowbackimage) {
   
               this.web_first_tile_image = item.ranking_image
-              console.log(this.web_first_tile_image);
+              
   
   
   
             }
   
           }
-          console.log('Active tab 2');
+          
 
 
         }
@@ -491,18 +491,18 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
           this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
           this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
           this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
-          console.log('Active tab 3');
+          
           this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-          console.log(this.firstrowbackimage);
+          
   
           for (let item of this.getBackImages) {
-            console.log(item.ranking_image_level);
-            console.log(this.firstrowbackimage);
+            
+            
   
             if (item.ranking_image_level === this.firstrowbackimage) {
   
               this.web_first_tile_image = item.ranking_image
-              console.log(this.web_first_tile_image);
+              
   
   
   
@@ -516,23 +516,23 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
           this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
           this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
           this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-          console.log(this.firstrowbackimage);
+          
   
           for (let item of this.getBackImages) {
-            console.log(item.ranking_image_level);
-            console.log(this.firstrowbackimage);
+            
+            
   
             if (item.ranking_image_level === this.firstrowbackimage) {
   
               this.web_first_tile_image = item.ranking_image
-              console.log(this.web_first_tile_image);
+              
   
   
   
             }
   
           }
-          console.log('Active tab 4');
+          
 
         }
         else if (this.queryParams?.roleID == '' || this.queryParams?.roleID == null || this.queryParams?.roleID === 'undefined' || (this.queryParams?.roleID == this.userSelectionData?._personal_data?.id_role)) {
@@ -540,39 +540,39 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
           this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
           this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
           this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-          console.log(this.firstrowbackimage);
+          
   
           for (let item of this.getBackImages) {
-            console.log(item.ranking_image_level);
-            console.log(this.firstrowbackimage);
+            
+            
   
             if (item.ranking_image_level === this.firstrowbackimage) {
   
               this.web_first_tile_image = item.ranking_image
-              console.log(this.web_first_tile_image);
+              
   
   
   
             }
   
           }
-          console.log('Active tab 1');
+          
 
 
         }
         else {
           this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
-          console.log('Active tab 1');   this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-          console.log(this.firstrowbackimage);
+          
+          
   
           for (let item of this.getBackImages) {
-            console.log(item.ranking_image_level);
-            console.log(this.firstrowbackimage);
+            
+            
   
             if (item.ranking_image_level === this.firstrowbackimage) {
   
               this.web_first_tile_image = item.ranking_image
-              console.log(this.web_first_tile_image);
+              
   
   
   
@@ -603,27 +603,27 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
         }
         // else if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
         //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
-        //   console.log("id 4");            
+        //   
 
         // }
-        console.log("tab", this.activeTabForSectionView_2);
-        console.log("tab bool", this.queryParams?.roleID === '4' || this.userSelectionData?._personal_data?.id_role === '4');
+        
+        
 
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
         // }
 
         this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-        console.log(this.firstrowbackimage);
+        
 
         for (let item of this.getBackImages) {
-          console.log(item.ranking_image_level);
-          console.log(this.firstrowbackimage);
+          
+          
 
           if (item.ranking_image_level === this.firstrowbackimage) {
 
             this.web_first_tile_image = item.ranking_image
-            console.log(this.web_first_tile_image);
+            
 
 
 
@@ -643,25 +643,25 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
         }
         // else if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
         //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
-        //   console.log("id 4");            
+        //   
 
         // }
-        console.log(this.activeTabForSectionView_2);
+        
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
         // }
 
         this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-        console.log(this.firstrowbackimage);
+        
 
         for (let item of this.getBackImages) {
-          console.log(item.ranking_image_level);
-          console.log(this.firstrowbackimage);
+          
+          
 
           if (item.ranking_image_level === this.firstrowbackimage) {
 
             this.web_first_tile_image = item.ranking_image
-            console.log(this.web_first_tile_image);
+            
 
 
 
@@ -675,25 +675,25 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
 
         // if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
         //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
-        //   console.log("id 4");            
+        //   
 
         // }
-        console.log(this.activeTabForSectionView_2);
+        
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
         // }
 
         this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-        console.log(this.firstrowbackimage);
+        
 
         for (let item of this.getBackImages) {
-          console.log(item.ranking_image_level);
-          console.log(this.firstrowbackimage);
+          
+          
 
           if (item.ranking_image_level === this.firstrowbackimage) {
 
             this.web_first_tile_image = item.ranking_image
-            console.log(this.web_first_tile_image);
+            
 
 
 
@@ -710,24 +710,24 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
 
         // if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
         //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
-        //   console.log("id 4");            
+        //   
 
         // }
-        console.log(this.activeTabForSectionView_2);
+        
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
         // }
         this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-        console.log(this.firstrowbackimage);
+        
 
         for (let item of this.getBackImages) {
-          console.log(item.ranking_image_level);
-          console.log(this.firstrowbackimage);
+          
+          
 
           if (item.ranking_image_level === this.firstrowbackimage) {
 
             this.web_first_tile_image = item.ranking_image
-            console.log(this.web_first_tile_image);
+            
 
 
 
@@ -744,13 +744,13 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
 
   async getUserBannerDataSectionView_3(viewMore?: any, queryParams?: any) {
     // debugger
-    console.log(viewMore);
     
-    console.log(queryParams);
+    
+    
     
     let err: any, res: any;
     let body: any;
-    console.log(viewMore);
+    
     
     body = {
       "_userid": queryParams?.userID ? queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
@@ -764,19 +764,19 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
       this.pokeData = res?.data?._poke_list
       if (viewMore) {
-        console.log('inside viewmore');
+        
         
         res?.data?._ranking_data?.forEach((element, index) => {
-          console.log(element,index);
-          console.log(this.sectionView_3?._ranking_data[index]?.label);
+          
+          
           
           if (element?.label === this.sectionView_3?._ranking_data[index]?.label) {
-            console.log(element?._Overall);
+            
             
             if (element?._Overall?.length > 0 || element?._data?.length > 0) {
               
-              // console.log(this.sectionView_3?._ranking_data[index]?._Overall?.push(...element?._Overall));
-              // console.log(this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data));
+              // 
+              // 
 
               this.sectionView_3?._ranking_data[index]?._Overall?.push(...element?._Overall)
               // this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data)
@@ -792,12 +792,12 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
       // this.filterRankingData()
 
       this.sectionView_3_list = this.sectionView_3?._ranking_data?.filter(data => {
-        //console.log(data)
+        //
         if (data.order === this.activeTabForSectionView_2) {
           return data
         }
       })
-      //console.log(this.sectionView_3_list)
+      //
     } else {
       this.sectionView_3_err = 'Please try after some time'
     }
@@ -815,7 +815,7 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
             })
           } else {
             compareData?._data?.filter((backImages) => {
-              // console.log(secondLevel?.ranking_image_level, backImages?.ranking_image_level, secondLevel?.ranking_image_level === backImages?.ranking_image_level)
+              // 
               if (secondLevel?.ranking_image_level === backImages?.ranking_image_level) {
                 secondLevel.ranking_image_level_img = backImages?.ranking_image
               }
@@ -857,7 +857,7 @@ this.labelNameMy= this.sectionView_2?._ranking_data[0].label
     // this.labelNameMy = name
     this.pageNumberForSectionView_3 = 1
     this.activeTabForSectionView_2 = order
-    console.log(this.activeTabForSectionView_2);
+    
     // this.spectSearchStr=null
 
 if(this.activeTabForSectionView_2 == 1){
@@ -871,7 +871,7 @@ if(this.activeTabForSectionView_2 == 1){
 
 
   this.http.engagamentlog(body).subscribe(res=>{
-    console.log(res);
+    
     
   })
 }
@@ -884,7 +884,7 @@ else if(this.activeTabForSectionView_2 == 2){
     _description: this.sectionView_2._ranking_data[1].label+' Tab'
   }
   this.http.engagamentlog(body).subscribe(res=>{
-    console.log(res);
+    
   })
 }
 else if(this.activeTabForSectionView_2 == 3){
@@ -898,7 +898,7 @@ else if(this.activeTabForSectionView_2 == 3){
 
 
   this.http.engagamentlog(body).subscribe(res=>{
-    console.log(res);
+    
     
   })
 }
@@ -913,12 +913,12 @@ else if(this.activeTabForSectionView_2 == 4){
 
 
   this.http.engagamentlog(body).subscribe(res=>{
-    console.log(res);
+    
     
   })
 }
 
-    console.log("Order ",order)
+    
     this.activeTabOrderNumberForSectionView_2 = order
     this.activeSubTabForSectionView_2 = 'My Store'
     this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
@@ -929,21 +929,21 @@ else if(this.activeTabForSectionView_2 == 4){
   }
   upDownArrow(arrowStatus: string, rowData: any) {
     // alert('TODO: Add Poke popup-> ' + arrowStatus)
-    //console.log(rowData)
+    //
     if (rowData?.userid !== this.userSelectionData?._personal_data?.USERID) {
       let roleCheckArray = this.Util.pokeMapping()
       if (this.queryParams?.roleID) {
-        console.log(this.queryParams?.roleID)
+        
         //roleCheckArray = roleCheckArray?.filter(data => data?.roleID === this.sectionView_1?._personal_data?.id_role)
         roleCheckArray = roleCheckArray?.filter(data => data?.roleID === this.queryParams?.roleID)
       } else {
         roleCheckArray = roleCheckArray?.filter(data => data?.roleID === this.userSelectionData?._personal_data?.id_role)
       }
-      //console.log(this.queryParams)
+      //
       if (roleCheckArray?.[0]?.canPokeTo?.indexOf(rowData?.id_role) > -1) {
         this.pokeRowData = rowData
         this.arrowStatus = arrowStatus === 'red' ? 'Motivation' : 'Positive'
-        console.log(this.arrowStatus);
+        
 
         // this.modalService.open(this.pokeList, { centered: true, windowClass: 'modal-cls' })
 
@@ -958,7 +958,7 @@ else if(this.activeTabForSectionView_2 == 4){
   viewMore() {
     
     this.pageNumberForSectionView_3 = this.pageNumberForSectionView_3 + 1
-    console.log(this.queryParams);
+    
     
     this.getUserBannerDataSectionView_3(1,this.queryParams)
   }
@@ -973,7 +973,7 @@ else if(this.activeTabForSectionView_2 == 4){
     [err, res] = await HttpProtocols.to(DashboardModel.notificationList(body))
     if (!err && res?.statuscode === 200) {
       this.notificationLists = res?.data?.[0]?.list
-      // console.log(res?.data?.[0]?.list);
+      // 
 
       if (this.notificationLists === "") {
         this.NotificationHide = true
@@ -998,8 +998,8 @@ else if(this.activeTabForSectionView_2 == 4){
   async addIns(queryParams?: any) {
     let err: any, res: any;
     let body: any;
-    console.log( queryParams?.userID);
-    console.log(this.userSelectionData?._personal_data?.USERID);
+    
+    
 
     body = {
       "_userid": queryParams?.userID ? queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
@@ -1008,7 +1008,7 @@ else if(this.activeTabForSectionView_2 == 4){
     [err, res] = await HttpProtocols.to(DashboardModel.addIns(body))
     if (!err && res?.statuscode === 200) {
       this.addInsList = res?.data
-      console.log(this.addInsList);
+      // 
 
       if (this.addInsList.length === 0) {
         this.buletinsHide = true
@@ -1072,39 +1072,39 @@ else if(this.activeTabForSectionView_2 == 4){
       }
   
       this.http.engagamentlog(body).subscribe(res=>{
-        console.log(res);
+        
         
       })
 
       this.spectSearList = res?.data
-      console.log(this.spectSearList);
+      
     
       this.searchbgimage= this.spectSearList[0]
       this.search_bg_tile_image=this.searchbgimage._data
-      console.log(this.search_bg_tile_image);
+      
 
       this.search_bg_tile_image.map(res=>{
        
         this.final_web_tile_image=res
-        console.log(this.final_web_tile_image);
         
-        console.log(this.getBackImagesFromSectionView1);
+        
+        
 
         this.getBackImagesFromSectionView1.map(res=>{
           
           this.section1_tile_images=res
-          console.log(this.section1_tile_images);
-          console.log(this.final_web_tile_image.ranking_image_level);
-          console.log(this.section1_tile_images.ranking_image_level);
+          
+          
+          
           if(this.final_web_tile_image.ranking_image_level == this.section1_tile_images.ranking_image_level){
-            console.log('true');
+            
             
            this.web_tile_img= this.section1_tile_images.ranking_image
-            console.log(this.web_tile_img);
+            
             
            }
 
-           console.log(this.web_tile_img);
+           
 
 
         })
@@ -1125,7 +1125,7 @@ else if(this.activeTabForSectionView_2 == 4){
     this.idSelected = event === 'Positive' ? 0 : 1
     this.pokeidselected = this.emojiText[this.idSelected]._data[id].poke_description
     this.emoji = this.emojiText[this.idSelected]._data[id].poke_description
-    //  console.log(this.idSelected);
+    //  
 
 
   }
@@ -1177,10 +1177,10 @@ else if(this.activeTabForSectionView_2 == 4){
     
     
       this.http.engagamentlog(body).subscribe(res=>{
-        console.log(res);
+        
         
       })
-      // console.log("FileUpload -> files", fileList);
+      // 
     }
     this.getUserBannerDataSectionView_2()
     this.userSelectionData
@@ -1190,9 +1190,9 @@ else if(this.activeTabForSectionView_2 == 4){
     modalRef.componentInstance.notoficationData = data;
   }
   getDataBasedOnUserID(data: any) {
-    console.log(data?.role_id)
+    
     this.role_id= data?.role_id.toString();
-    console.log(this.role_id)
+    
     this.Edit_image();
     if(this.role_id==='8'||this.role_id=='9'||this.role_id=='12'){
       
@@ -1247,14 +1247,14 @@ else if(this.activeTabForSectionView_2 == 4){
 
 
   changeSubTabFilter(tabName: string) {
-    console.log(tabName);
+    
     
     this.activeSubTabForSectionView_2 = tabName
      
     // this.filterRankingData()
   }
   async openHierarchyPopup(data?: any) {
-    console.log(data)
+    
     let err: any, res: any;
     let body: any;
     // body = {
@@ -1269,9 +1269,9 @@ else if(this.activeTabForSectionView_2 == 4){
     if (!err && res?.statuscode === 200) {
       this.hierarchyPopupList = res?.data
       this.firstUserData = this.hierarchyPopupList[0]
-      console.log(this.firstUserData);
+      
 
-      console.log(this.hierarchyPopupList);
+      
 
       this.modalService.open(this.hierarchyPopup, { centered: true, windowClass: 'modal-cls' });
     } else {
@@ -1286,7 +1286,7 @@ else if(this.activeTabForSectionView_2 == 4){
       game_id: data?.id_coroebus_game,
       role_id: data?.id_role
     }
-    console.log(obj)
+    
     this.getDataBasedOnUserID(obj)
   }
 
@@ -1303,17 +1303,17 @@ else if(this.activeTabForSectionView_2 == 4){
   // }
 
   activeTab() {
-    console.log(this.queryParams);
+    
   }
 
   navigateToRewards(data) {
-    console.log(data);
+    
     var url_string = window.location.href
-    console.log(url_string);
+    
     var userID = url_string.includes("?"); // true
 
     if (url_string.includes("?")) {
-      console.log("spectator view");
+      
       this._router.navigate(['reward/rewardPoints'])
     }
     else if (url_string.includes("")) {
@@ -1325,14 +1325,14 @@ else if(this.activeTabForSectionView_2 == 4){
 
   getRewards(){
     
-    console.log('rewards page');
+    
     
     let obj = {
       _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
 
       game_id: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
     }
-    console.log(obj)
+    
 
     localStorage.setItem('rewardid',obj._userid)
 
@@ -1358,13 +1358,13 @@ else if(this.activeTabForSectionView_2 == 4){
   }
 
   getGraphDataById() {
-    // console.log('Graph data',data);
+    // 
     let obj = {
       _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
 
       game_id: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
     }
-    console.log(obj)
+    
 
     let body={
       "_userid": this.userSelectionData?._personal_data?.USERID,
@@ -1376,7 +1376,7 @@ else if(this.activeTabForSectionView_2 == 4){
   
   
     this.http.engagamentlog(body).subscribe(res=>{
-      console.log(res);
+      
       
     })
 
@@ -1404,7 +1404,7 @@ else if(this.activeTabForSectionView_2 == 4){
 
   navigateToOtherRole(item){
     this.activeSubTabForSectionView_2 = 'My Store'    
-    console.log(item);
+    
     this.userID= this.Util.encryptData(item?.userid);
     this.gameID= this.Util.encryptData(item?.id_coroebus_game);
     this.roleID= this.Util.encryptData(item?.id_role);
@@ -1418,7 +1418,7 @@ else if(this.activeTabForSectionView_2 == 4){
     let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
     let id_role=this.sectionView_1._personal_data.id_role;
     let id_coroebus_user=this.sectionView_1._personal_data.id_coroebus_user;
-    console.log(this.userSelectionData);
+    
     const userId = this.Util.encryptData(_userid)
     const game = this.Util.encryptData(id_coroebus_game)
     const roleid = this.Util.encryptData(id_role)
@@ -1456,7 +1456,7 @@ else if(this.activeTabForSectionView_2 == 4){
       let id_role=this.sectionView_1._personal_data.id_role;
       let id_coroebus_user=this.sectionView_1._personal_data.id_coroebus_user;
   
-      console.log(this.userSelectionData);
+      
   
   
   
@@ -1495,7 +1495,7 @@ else if(this.activeTabForSectionView_2 == 4){
       let id_role=this.sectionView_1._personal_data.id_role;
       let id_coroebus_user=this.sectionView_1._personal_data.id_coroebus_user;
   
-      console.log(this.userSelectionData);
+      
   
   
   
@@ -1530,7 +1530,7 @@ else if(this.activeTabForSectionView_2 == 4){
       let id_role=this.sectionView_1._personal_data.id_role;
       let id_coroebus_user=this.sectionView_1._personal_data.id_coroebus_user;
   
-      console.log(this.userSelectionData);
+      
   
   
   
@@ -1552,7 +1552,7 @@ else if(this.activeTabForSectionView_2 == 4){
         
 
     //  else{
-    //   console.log('hide');
+    //   
 
     //   window.open(
         
@@ -1582,7 +1582,7 @@ else if(this.activeTabForSectionView_2 == 4){
     let id_role=this.sectionView_1._personal_data.id_role;
     let id_coroebus_user=this.sectionView_1._personal_data.id_coroebus_user;
 
-    console.log(this.userSelectionData);
+    
 
 
 
@@ -1590,8 +1590,8 @@ else if(this.activeTabForSectionView_2 == 4){
     const game = this.Util.encryptData(id_coroebus_game)
     const roleid = this.Util.encryptData(id_role)
     const spectStaus='yes'
-    console.log(spectStaus);
-    // console.log('http://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus);
+    
+    // 
     
     window.open(
       'http://coroebus.in/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user+"&status="+"total"+"&spect="+spectStaus,
@@ -1622,7 +1622,7 @@ else if(this.activeTabForSectionView_2 == 4){
   }
 
   // challengeRecievedCount(){
-  //     console.log("Neeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeew",this.userSelectionData);
+  //     
     
   //     let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
   //     let id_role=this.userSelectionData?.games[0]?.id_role;
@@ -1635,10 +1635,10 @@ else if(this.activeTabForSectionView_2 == 4){
 
   //   }
   //   this.http.challangeRecived(bodyforChallengeRecieved).subscribe((res)=>{
-  //     console.log(res);
+  //     
   //     this.data=res;
   //     this.count=this.data.length;
-  //     console.log(this.count);
+  //     
   //   })
     
       
@@ -1646,41 +1646,41 @@ else if(this.activeTabForSectionView_2 == 4){
 
   GetDataFromProduceInfo(queryParams?:any){
 
-    console.log(queryParams.gameID 
-      )
+    // 
+    //   )
       
     
       let obj = {
         _userid:queryParams?.userID ? queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
         _game:queryParams?.gameID ?queryParams?.gameID : this.userSelectionData?.id_coroebus_game
       }
-      console.log("check body",obj)
+      
       this.http.produceInfo(obj).subscribe((res)=>{
-        console.log(res);
+        
 
         this.data=res;
         // Trivia Corner Data
 
         this.triviaCornerData=this.data.data.trivia_corner;
-        console.log(this.triviaCornerData);
+        
 
         this.triviaCornerData.forEach((res)=>{
-          console.log(res);
           
-          console.log(true)
+          
+          
           if(res.view_status!='Read')
           {
             this.hideTriviaIndicator=true;
-            // console.log(hideTriviaIndicator)
+            // 
           }
         })
-        // console.log(this.data.data.seasonal_theme_daily.length==undefined);
-        // console.log(this.data.data.seasonal_theme_daily==undefined);
+        // 
+        // 
       
         this.seasonalThemeDaily1=this.data.data.seasonal_theme_daily
         this.seasonalThemeWeekly2=this.data.data.seasonal_theme_weekly;
         this.seasonalThemeMonthl3=this.data.data.seasonal_theme_monthly
-        console.log( this.seasonalThemeDaily1==undefined);
+        
           
         this.seasonalThemeDailyBadges1=this.data.data.seasonal_theme_daily_badge_details;
         this.totalTargetScore=Number(this.seasonalThemeDailyBadges1[0].seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[1].seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[2].seasonal_score_target);
@@ -1714,7 +1714,7 @@ else if(this.activeTabForSectionView_2 == 4){
         this.onGoingChallenges=this.data.data.challenge_list;
         this.challengeReacieved=this.data.data.new_challenge_list;
 
-        console.log(this.onGoingChallenges)
+        
 
         
       })
@@ -1753,28 +1753,28 @@ else if(this.activeTabForSectionView_2 == 4){
   }
 
   navigateToBriefQuetion(data:any){
-    console.log(data);
+    
     let id_coroebus_team='0';
     const gameName=this.sectionView_1?._personal_data?.game_name;
     const teamName=this.sectionView_1?._personal_data?.team_name;
-    console.log(this.sectionView_1?._personal_data.external_kpi_data.length);
-    console.log(data._game,data._userid,id_coroebus_team,data._categoryid,data.id_learning_academy_brief,data._subcategoryid,data.brief_type);
-    console.log(data.id_learning_academy_brief);
     
-     console.log('http://localhost:4200/#/LearningAcademy/library_game='+data._game+"&_userid="+data._userid+"&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+"&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type);
+    
+    
+    
+     
   
      if(data.view_status!='Read'){
   
     if(this.sectionView_1?._personal_data.external_kpi_data.length){
     this.kpiName=this.sectionView_1?._personal_data.external_kpi_data[0].kpi_name;
-    console.log(this.kpiName);
+    
     const isAttemted=this.sectionView_1?._personal_data.external_kpi_data[0].is_attempted;
     const isCorrect=this.sectionView_1?._personal_data.external_kpi_data[0].is_correct;
 
-    // console.log(userId,game,teamid);
-    // console.log('http://localhost:4200/#/LearningAcademy/library?_game='+game+"&_userid¸="+userId+"&_team="+teamid,'_self' );
+    // 
+    // 
     
-//  console.log(     'http://localhost:4201/#/LearningAcademy/library?_game='+data._game+"&_userid="+data._userid+
+//  
 //  "&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+
 //  "&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type+"&_game_name="+gameName+
 //  "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'

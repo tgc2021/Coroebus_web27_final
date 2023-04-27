@@ -26,7 +26,7 @@ export class HttpProtocols {
         return [null, data]
       })
       .catch((err: any) => {
-        console.log(err)
+        
         if (parse === false) {
           return [err]
         }

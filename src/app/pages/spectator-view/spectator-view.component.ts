@@ -113,10 +113,10 @@ viewmoreorder:any
       takeUntil(this.destroy$)
     ).subscribe(data => {
       this.userObj = data?.user
-      console.log(this.userObj);
+      
 
       this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
-      console.log(this.mergeObj);
+      
      
       this.combineLatest = combineLatest([
         this.store.select(fromRoot.userLogin),
@@ -124,9 +124,9 @@ viewmoreorder:any
         this.store.select(fromRoot.usergame),
       ]
       ).subscribe(([login, theme, game]) => {
-        console.log(login, theme, game)
+        
         this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
-       console.log(this.userSelectionData);
+       
        this.getDashboardGroup()
 
        
@@ -152,22 +152,22 @@ viewmoreorder:any
   getButtonValue(event: Event) {
 
     let elementId: string = (event.target as Element).id;
-    console.log(elementId);
+    
 
     if (elementId == 'tab-1') {
-      console.log('cm_button');
+      
 
     }
     else if (elementId == 'tab-2') {
-      console.log('am_button');
+      
 
     }
     else if (elementId == 'tab-3') {
-      console.log('rm_button');
+      
 
     }
     else if (elementId == 'tab-4') {
-      console.log('nsm_button');
+      
 
     }
 
@@ -176,10 +176,10 @@ viewmoreorder:any
 
   getSelecteditem() {
     this.radioSel = this.spectator_dashoard_response.find(Item => this.spectator_dashoard_response.value === this.radioSelected);
-    console.log(this.radioSel);
+    
 
     this.radioSelectedString = JSON.stringify(this.radioSel);
-    console.log(this.radioSelectedString);
+    
 
   }
 
@@ -195,17 +195,17 @@ viewmoreorder:any
     let body_gamerankingList = {
       _game: this.userObj.games[0].id_coroebus_game,
     }
-    console.log(body_gamerankingList);
+    
 
     this.http.gameRanking_Groups(body_gamerankingList).subscribe((res) => {
-      console.log(res)
+      
 
       this.spectator_group_list = res
       this.spectator_group_list = Array.of(this.spectator_group_list);
 
-      console.log(this.spectator_group_list);
+      
    
-      console.log(this.spectator_group_list[0].data[0].id_coroebus_group != null && this.mergeObj.id_role == 7);
+      
 
 
       this.selected= this.spectator_group_list[0].data[0].id_coroebus_group
@@ -221,15 +221,15 @@ viewmoreorder:any
     let body_gamerankingList = {
       _game: this.mergeObj.id_coroebus_game,
     }
-    console.log(body_gamerankingList);
+    
 
     this.http.gameRanking_Groups(body_gamerankingList).subscribe((res) => {
-      console.log(res)
+      
 
       this.spectator_group_list = res
       this.spectator_group_list = Array.of(this.spectator_group_list);
 
-      console.log(this.spectator_group_list);
+      
 
       this.selected= this.spectator_group_list[0].data[0].id_coroebus_group
 
@@ -244,7 +244,7 @@ viewmoreorder:any
 
   getSpectatorViewWebService(viewmore:any){
     if (this.mergeObj.id_role == 7 && this.spectator_group_list[0].data[0].id_coroebus_group != null) {
-      console.log(this.mergeObj.id_role);
+      
 
       
       let body = {
@@ -256,21 +256,21 @@ viewmoreorder:any
         id_coroebus_group: this.selected==undefined? this.spectator_group_list[0].data[0].id_coroebus_group: this.selected
       }
 
-      console.log(body);
+      
       this.http.spectator_dashboard(body).subscribe((res) => {
-        console.log(res)
+        
         
         this.spectator_dashoard_response = res;
         this.spectator_user_list_view_more=res
 
         this.spectator_dashoard_response = Array.of(this.spectator_dashoard_response);
 
-        console.log(this.spectator_dashoard_response);
+        
 
         this.spectator_ranking_leaderboard = this.spectator_dashoard_response[0].data.ranking
-        console.log(this.spectator_ranking_leaderboard);
+        
         this.spectator_data = this.spectator_dashoard_response[0].data.ranking;
-        console.log(this.spectator_data);
+        
         if(this.order==1 || this.order == null){
           if(this.spectator_data[0].user_list != ''){
             this.spectator_user_list = this.spectator_data[0].user_list;
@@ -279,25 +279,25 @@ viewmoreorder:any
             this.checked3=false;
             this.checked4=false;
 
-            console.log(this.spectator_user_list);
+            
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -307,7 +307,7 @@ viewmoreorder:any
               })
           }
           else{
-            console.log("nodata");
+            
             this.checked1=true;
             this.checked2=false;
             this.checked3=false;
@@ -324,25 +324,25 @@ viewmoreorder:any
             this.checked2=true;
             this.checked3=false;
             this.checked4=false;
-            console.log(this.spectator_user_list);
+            
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -368,25 +368,25 @@ viewmoreorder:any
             this.checked2=false;
             this.checked3=true;
             this.checked4=false;
-            console.log(this.spectator_user_list);
+            
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -412,25 +412,25 @@ viewmoreorder:any
             this.checked2=false;
             this.checked3=false;
             this.checked4=true;
-            console.log(this.spectator_user_list);
+            
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -453,30 +453,30 @@ viewmoreorder:any
 
         
         if(viewmore){
-          console.log("view");
+          
           this.spectator_user_list?.forEach((element, index) => {
             if (element?.label === this.spectator_user_list[index]?.label) {
               if (element?._data?.length > 0) {
                 this.spectator_user_list[index]?._data?.push(...element?._data)
-                console.log(this.spectator_user_list[index]?._data?.push(...element?._data));
+                
                 this.spectator_user_list.map((res)=>{
-                  console.log(res);
+                  
                   this.tileimages=res.id_ranking_image
-                  console.log(this.tileimages);
+                  
                   this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                  console.log(this.back_images);
+                  
                   
                   this.back_images.map((res)=>{
-                    console.log(res);
+                    
                     this.back_image_level=res.ranking_image_level
                     this.tile_web_image= res.ranking_image
-                    console.log(this.back_image_level);
+                    
                     if(this.tileimages==this.back_image_level){
-                      console.log(this.back_image_level);
+                      
                        this.tile_web_image_final=this.tile_web_image
-                      console.log(this.tile_web_image_final);
+                      
                       this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                      console.log(this.tile_bg_img);
+                      
                       
                     }
                   })
@@ -493,7 +493,7 @@ viewmoreorder:any
                
         else {
           this.getBackImagesFromSectionView3=this.spectator_user_list.map((res:any)=>{
-            console.log(res);
+            
             
             // this.sectionView3Data=res._data;
             
@@ -507,7 +507,7 @@ viewmoreorder:any
 
 
         // this.spectator_user_list = this.spectator_data[0].user_list
-        // console.log(this.spectator_user_list);
+        // 
 
           this.eventService.broadcast('passDataToHeader', {
           color: this.spectator_dashoard_response[0].data.theme_details[0].dark_color,
@@ -545,9 +545,9 @@ viewmoreorder:any
       }
       this.http.spectnotification(bodyforNotification).subscribe((res) => {
         this.notification_response=res
-        console.log(this.notification_response);
+        
         this.notification_response_data = this.notification_response.data[0].list
-        console.log(this.notification_response_data);
+        
         
 
       })
@@ -557,10 +557,10 @@ viewmoreorder:any
         "_game": this.userObj.games[0].id_coroebus_game
       };
       this.http.bulletins(bodyforBulletins).subscribe((res) => {
-        console.log(res);
+        
         this.bulletins_list=res
         this.addInsList =  this.bulletins_list?.data
-        console.log(this.addInsList);
+        
         
       })
     }
@@ -577,20 +577,20 @@ viewmoreorder:any
         id_coroebus_group: this.selected==undefined? this.spectator_group_list[0].data[0].id_coroebus_group: this.selected
       }
 
-      console.log(body);
+      
       this.http.spectator_dashboard(body).subscribe((res) => {
-        console.log(res)
+        
         this.spectator_dashoard_response = res;
 
         this.spectator_dashoard_response = Array.of(this.spectator_dashoard_response);
 
-        console.log(this.spectator_dashoard_response);
+        
 
         this.spectator_ranking_leaderboard = this.spectator_dashoard_response[0].data.ranking
-        console.log(this.spectator_ranking_leaderboard);
+        
         this.spectator_data = this.spectator_dashoard_response[0].data.ranking;
-        console.log(this.spectator_data);
-        console.log(this.order);
+        
+        
 
         ////////////////////////////////////////////////////To show Active Tab 1///////////////////////////////////////////////////////
 
@@ -604,25 +604,25 @@ viewmoreorder:any
               this.checked2=false;
               this.checked3=false;
               this.checked4=false;
-              console.log(this.spectator_user_list);
+              
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -632,7 +632,7 @@ viewmoreorder:any
                 })
             }
             else{
-              console.log("nodata");
+              
               this.checked1=true;
               this.checked2=false;
               this.checked3=false;
@@ -648,25 +648,25 @@ viewmoreorder:any
               this.checked2=true;
               this.checked3=false;
               this.checked4=false;
-              console.log(this.spectator_user_list);
+              
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -692,25 +692,25 @@ viewmoreorder:any
               this.checked2=false;
               this.checked3=true;
               this.checked4=false;
-              console.log(this.spectator_user_list);
+              
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -736,25 +736,25 @@ viewmoreorder:any
               this.checked2=false;
               this.checked3=false;
               this.checked4=true;
-              console.log(this.spectator_user_list);
+              
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -786,25 +786,25 @@ viewmoreorder:any
               this.checked2=false;
               this.checked3=false;
               this.checked4=false;
-              console.log(this.spectator_user_list);
+              
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -814,7 +814,7 @@ viewmoreorder:any
                 })
             }
             else{
-              console.log("nodata");
+              
               this.checked1=true;
               this.checked2=false;
               this.checked3=false;
@@ -830,25 +830,25 @@ viewmoreorder:any
               this.checked2=true;
               this.checked3=false;
               this.checked4=false;
-              console.log(this.spectator_user_list);
+              
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -875,25 +875,25 @@ viewmoreorder:any
               this.checked2=false;
               this.checked3=true;
               this.checked4=false;
-              console.log(this.spectator_user_list);
+              
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -919,25 +919,25 @@ viewmoreorder:any
               this.checked2=false;
               this.checked3=false;
               this.checked4=true;
-              console.log(this.spectator_user_list);
+              
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -969,25 +969,25 @@ viewmoreorder:any
               this.checked2=false;
               this.checked3=false;
               this.checked4=false;
-              console.log(this.spectator_user_list);
+              
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -997,7 +997,7 @@ viewmoreorder:any
                 })
             }
             else{
-              console.log("nodata");
+              
               this.checked1=true;
               this.checked2=false;
               this.checked3=false;
@@ -1013,25 +1013,25 @@ viewmoreorder:any
               this.checked2=true;
               this.checked3=false;
               this.checked4=false;
-              console.log(this.spectator_user_list);
+              
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -1058,25 +1058,25 @@ viewmoreorder:any
               this.checked2=false;
               this.checked3=true;
               this.checked4=false;
-              console.log(this.spectator_user_list);
+              
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -1102,25 +1102,25 @@ viewmoreorder:any
               this.checked2=false;
               this.checked3=false;
               this.checked4=true;
-              console.log(this.spectator_user_list);
+              
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -1152,25 +1152,25 @@ viewmoreorder:any
               this.checked2=false;
               this.checked3=false;
               this.checked4=false;
-              console.log(this.spectator_user_list);
+              
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -1181,7 +1181,7 @@ viewmoreorder:any
               
             }
             else{
-              console.log("nodata");
+              
               this.checked1=true;
               this.checked2=false;
               this.checked3=false;
@@ -1197,25 +1197,25 @@ viewmoreorder:any
               this.checked2=true;
               this.checked3=false;
               this.checked4=false;
-              console.log(this.spectator_user_list);
+              
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -1241,25 +1241,25 @@ viewmoreorder:any
               this.checked2=false;
               this.checked3=true;
               this.checked4=false;
-              console.log(this.spectator_user_list);
+              
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -1285,25 +1285,25 @@ viewmoreorder:any
               this.checked2=false;
               this.checked3=false;
               this.checked4=true;
-              console.log(this.spectator_user_list);
+              
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -1333,25 +1333,25 @@ viewmoreorder:any
               this.checked2=false;
               this.checked3=false;
               this.checked4=false;
-              console.log(this.spectator_user_list);
+              
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -1362,7 +1362,7 @@ viewmoreorder:any
               
             }
             else{
-              console.log("nodata");
+              
               this.checked1=true;
               this.checked2=false;
               this.checked3=false;
@@ -1378,25 +1378,25 @@ viewmoreorder:any
               this.checked2=true;
               this.checked3=false;
               this.checked4=false;
-              console.log(this.spectator_user_list);
+              
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -1422,25 +1422,25 @@ viewmoreorder:any
               this.checked2=false;
               this.checked3=true;
               this.checked4=false;
-              console.log(this.spectator_user_list);
+              
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -1466,25 +1466,25 @@ viewmoreorder:any
               this.checked2=false;
               this.checked3=false;
               this.checked4=true;
-              console.log(this.spectator_user_list);
+              
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -1533,12 +1533,12 @@ viewmoreorder:any
         _game: this.userObj.games[0].id_coroebus_game,
       }
       this.http.spectnotification(bodyforNotification).subscribe((res) => {
-        console.log(res);
+        
 
         this.notification_response=res
-        console.log(this.notification_response);
+        
         this.notification_response_data = this.notification_response.data[0].list
-        console.log(this.notification_response_data);
+        
         
         
       })
@@ -1549,10 +1549,10 @@ viewmoreorder:any
         "_game": this.userObj.games[0].id_coroebus_game
       };
       this.http.bulletins(bodyforBulletins).subscribe((res) => {
-        console.log(res);
+        
         this.bulletins_list=res
         this.addInsList =  this.bulletins_list?.data
-        console.log(this.addInsList);
+        
 
       })
       
@@ -1598,7 +1598,7 @@ viewmoreorder:any
   //   [err, res] = await HttpProtocols.to(DashboardModel.addIns(body))
   //   if (!err && res?.statuscode === 200) {
   //     this.addInsList = res?.data
-  //     // console.log(this.addInsList);
+  //     // 
 
   //     if (this.addInsList.length === 0) {
   //       this.buletinsHide = true
@@ -1619,20 +1619,20 @@ viewmoreorder:any
       id_coroebus_group: this.selected==undefined? this.spectator_group_list[0].data[0].id_coroebus_group: this.selected
     }
 
-    console.log(body);
+    
 
     this.http.spectator_dashboard(body).subscribe((res) => {
-      console.log(res)
+      
       this.spectator_dashoard_response = res;
 
       this.spectator_dashoard_response = Array.of(this.spectator_dashoard_response);
 
-      console.log(this.spectator_dashoard_response);
+      
 
       this.spectator_ranking_leaderboard = this.spectator_dashoard_response[0].data.ranking
-      console.log(this.spectator_ranking_leaderboard);
+      
       this.spectator_data = this.spectator_dashoard_response[0].data.ranking;
-      console.log(this.spectator_data);
+      
     
       if(this.order==1 || this.order == null){
         if(this.spectator_data[0].user_list != ''){
@@ -1641,25 +1641,25 @@ viewmoreorder:any
           this.checked2=false;
           this.checked3=false;
           this.checked4=false;
-          console.log(this.spectator_user_list);
+          
           this.spectator_user_list.map((res)=>{
-            console.log(res);
+            
             this.tileimages=res.id_ranking_image
-            console.log(this.tileimages);
+            
             this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-            console.log(this.back_images);
+            
             
             this.back_images.map((res)=>{
-              console.log(res);
+              
               this.back_image_level=res.ranking_image_level
               this.tile_web_image= res.ranking_image
-              console.log(this.back_image_level);
+              
               if(this.tileimages==this.back_image_level){
-                console.log(this.back_image_level);
+                
                  this.tile_web_image_final=this.tile_web_image
-                console.log(this.tile_web_image_final);
+                
                 this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                console.log(this.tile_bg_img);
+                
                 
               }
             })
@@ -1675,7 +1675,7 @@ viewmoreorder:any
           this.checked4=false;
           this.openSnackBar('No More data Available','Ok')
 
-          console.log("nodata");
+          
           
         }
         
@@ -1687,25 +1687,25 @@ viewmoreorder:any
           this.checked2=true;
           this.checked3=false;
           this.checked4=false;
-          console.log(this.spectator_user_list);
+          
           this.spectator_user_list.map((res)=>{
-            console.log(res);
+            
             this.tileimages=res.id_ranking_image
-            console.log(this.tileimages);
+            
             this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-            console.log(this.back_images);
+            
             
             this.back_images.map((res)=>{
-              console.log(res);
+              
               this.back_image_level=res.ranking_image_level
               this.tile_web_image= res.ranking_image
-              console.log(this.back_image_level);
+              
               if(this.tileimages==this.back_image_level){
-                console.log(this.back_image_level);
+                
                  this.tile_web_image_final=this.tile_web_image
-                console.log(this.tile_web_image_final);
+                
                 this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                console.log(this.tile_bg_img);
+                
                 
               }
             })
@@ -1731,25 +1731,25 @@ viewmoreorder:any
           this.checked2=false;
           this.checked3=true;
           this.checked4=false;
-          console.log(this.spectator_user_list);
+          
           this.spectator_user_list.map((res)=>{
-            console.log(res);
+            
             this.tileimages=res.id_ranking_image
-            console.log(this.tileimages);
+            
             this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-            console.log(this.back_images);
+            
             
             this.back_images.map((res)=>{
-              console.log(res);
+              
               this.back_image_level=res.ranking_image_level
               this.tile_web_image= res.ranking_image
-              console.log(this.back_image_level);
+              
               if(this.tileimages==this.back_image_level){
-                console.log(this.back_image_level);
+                
                  this.tile_web_image_final=this.tile_web_image
-                console.log(this.tile_web_image_final);
+                
                 this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                console.log(this.tile_bg_img);
+                
                 
               }
             })
@@ -1775,25 +1775,25 @@ viewmoreorder:any
           this.checked2=false;
           this.checked3=false;
           this.checked4=true;
-          console.log(this.spectator_user_list);
+          
           this.spectator_user_list.map((res)=>{
-            console.log(res);
+            
             this.tileimages=res.id_ranking_image
-            console.log(this.tileimages);
+            
             this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-            console.log(this.back_images);
+            
             
             this.back_images.map((res)=>{
-              console.log(res);
+              
               this.back_image_level=res.ranking_image_level
               this.tile_web_image= res.ranking_image
-              console.log(this.back_image_level);
+              
               if(this.tileimages==this.back_image_level){
-                console.log(this.back_image_level);
+                
                  this.tile_web_image_final=this.tile_web_image
-                console.log(this.tile_web_image_final);
+                
                 this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                console.log(this.tile_bg_img);
+                
                 
               }
             })
@@ -1817,30 +1817,30 @@ viewmoreorder:any
 
  
       if(viewmore){
-        console.log("view");
+        
         this.spectator_user_list?.forEach((element, index) => {
           if (element?.label === this.spectator_user_list[index]?.label) {
             if (element?._data?.length > 0) {
               this.spectator_user_list[index]?._data?.push(...element?._data)
-              console.log(this.spectator_user_list[index]?._data?.push(...element?._data));
+              
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -1857,7 +1857,7 @@ viewmoreorder:any
              
       else {
         this.getBackImagesFromSectionView3=this.spectator_user_list.map((res:any)=>{
-          console.log(res);
+          
           
           // this.sectionView3Data=res._data;
           
@@ -1881,9 +1881,9 @@ viewmoreorder:any
     }
     this.http.spectnotification(bodyforNotification).subscribe((res) => {
       this.notification_response=res
-      console.log(this.notification_response);
+      
       this.notification_response_data = this.notification_response.data[0].list
-      console.log(this.notification_response_data);
+      
       
     })
 
@@ -1893,10 +1893,10 @@ viewmoreorder:any
       "_game": this.userSelectionData.id_coroebus_game
     };
     this.http.bulletins(bodyforBulletins).subscribe((res) => {
-      console.log(res);
+      
       this.bulletins_list=res
       this.addInsList =  this.bulletins_list?.data
-      console.log(this.addInsList);
+      
 
     })
   }
@@ -1907,7 +1907,7 @@ viewmoreorder:any
   }
 
   onOptionsSelected() {
-    console.log(this.selected); 
+    
     this.spectSearList =null
     // this.getDashboardGroup()
     this.pageNumberForSectionView_3 = 1
@@ -1930,7 +1930,7 @@ viewmoreorder:any
 
   filterRankwiseLeaderboard(category: any) {
       //  debugger
-console.log(category);
+
 
     this.spectSearchStr=null
     this.spectSearList=null
@@ -1938,7 +1938,7 @@ console.log(category);
     this.pageNumberForSectionView_3 = 1
     
     if (this.checked) {
-      console.log( this.pageNumberForSectionView_3 );
+      
       if(this.userObj.games.length >0){
         let body = {
           _userid: this.mergeObj.USERID,
@@ -1950,32 +1950,32 @@ console.log(category);
           id_coroebus_group: this.selected==undefined? this.spectator_group_list[0].data[0].id_coroebus_group: this.selected
         }
         this.http.spectator_dashboard(body).subscribe((res) => {
-          console.log(res)
+          
           this.spectator_dashoard_response = res;
     
           this.spectator_dashoard_response = Array.of(this.spectator_dashoard_response);
     
-          console.log(this.spectator_dashoard_response);
+          
     
           this.spectator_ranking_leaderboard = this.spectator_dashoard_response[0].data.ranking
-          console.log(this.spectator_ranking_leaderboard);
+          
           this.spectator_data = this.spectator_dashoard_response[0].data.ranking;
-          console.log(this.spectator_data);
+          
       
   
   
           this.spectator_data_1 = this.spectator_data.filter((a: any) => {
-            console.log(a.label);
-            console.log(category);
-            console.log(this.order);
+            
+            
+            
             
             if (a.label == category) {
-              console.log(a);
-              console.log(a.label);
+              
+              
   
               this.order=a.order
-              console.log(this.order);
-              console.log(this.checked);
+              
+              
               if(this.order==1 || this.order == null){
   
               
@@ -1997,12 +1997,12 @@ console.log(category);
                   this.checked4=false;
                   this.checked=false
   
-               console.log(this.tile_bg_img);
+               
                
                
               }
               else if(this.order==3){
-              console.log('order 3');
+              
               
                   this.checked1=false;
                   this.checked2=false;
@@ -2028,29 +2028,29 @@ console.log(category);
               
           if( a.user_list!=''){
             this.spectator_user_list = a.user_list
-            console.log(this.spectator_user_list);
-            this.tile_bg_img=[]
-            console.log( this.tile_bg_img);
             
-            console.log(this.spectator_user_list);
+            this.tile_bg_img=[]
+            
+            
+            
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                // console.log(res);
+                // 
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -2068,7 +2068,7 @@ console.log(category);
     
             }
             else if(this.userObj.games.length ==0){
-              console.log("userobj");
+              
               
               this.getSpectatorViewMore2('viewmore')
           
@@ -2093,35 +2093,35 @@ console.log(category);
           id_coroebus_group: this.selected==undefined? this.spectator_group_list[0].data[0].id_coroebus_group: this.selected
         }
         this.http.spectator_dashboard(body).subscribe((res) => {
-          console.log(res)
+          
           this.spectator_dashoard_response = res;
     
           this.spectator_dashoard_response = Array.of(this.spectator_dashoard_response);
     
-          console.log(this.spectator_dashoard_response);
+          
     
           this.spectator_ranking_leaderboard = this.spectator_dashoard_response[0].data.ranking
-          console.log(this.spectator_ranking_leaderboard);
+          
           this.spectator_data = this.spectator_dashoard_response[0].data.ranking;
-          console.log(this.spectator_data);
+          
       
   
   
           this.spectator_data_1 = this.spectator_data.filter((a: any) => {
-            console.log(a.label);
-            console.log(category);
+            
+            
             
             if (a.label == category) {
-              console.log(a);
-              console.log(a.label);
+              
+              
   
               this.order=a.order
-              console.log(this.order);
-              console.log(this.checked);
+              
+              
 
-              console.log( this.tile_bg_img);
+              
             
-              console.log(this.spectator_user_list);
+              
             
               if(this.order==1 || this.order == null){
   
@@ -2170,29 +2170,29 @@ console.log(category);
               
           if( a.user_list!=''){
             this.spectator_user_list = a.user_list
-            console.log(this.spectator_user_list);
-            this.tile_bg_img=[]
-            console.log( this.tile_bg_img);
             
-            console.log(this.spectator_user_list);
+            this.tile_bg_img=[]
+            
+            
+            
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -2210,7 +2210,7 @@ console.log(category);
     
             }
             else if(this.userObj.games.length ==0){
-              console.log("userobj");
+              
               
               this.getSpectatorViewMore2('viewmore')
           
@@ -2261,7 +2261,7 @@ console.log(category);
     };
    if(this.spectSearchStr.length>2){
     this.http.spectatorSearch(body).subscribe((res) => {
-      console.log(res);
+      
       
       let body={
         _userid:this.userObj?._personal_data?.USERID,
@@ -2272,13 +2272,13 @@ console.log(category);
       }
   
       this.http.engagamentlog(body).subscribe(res=>{
-        console.log(res);
+        
         
       })
 
       this.searchresponse= res
       this.searchresponse == Array.of(this.searchresponse)
-      console.log(this.searchresponse);
+      
       
       
       // if(this.searchresponse.data[0]!= null){
@@ -2291,7 +2291,7 @@ console.log(category);
       }
       else{
         this.spectSearList = this.searchresponse.data
-        console.log(this.spectSearList);
+        
       }
      
 
@@ -2308,13 +2308,13 @@ console.log(category);
   }
 
   viewMore() {
-    console.log(this.spectator_user_list);
+    
     this.spectator_temporary_array=this.spectator_user_list
     
-    console.log("view more");
+    
     this.pageNumberForSectionView_3 = this.pageNumberForSectionView_3 + 1
     this.viewmoreorder=this.order
-    console.log(this.viewmoreorder);
+    
     
     // this.pageNumberForSectionView_3 = this.pageNumberForSectionView_3 + 1
    if(this.userObj.games.length >0){
@@ -2332,18 +2332,18 @@ console.log(category);
         id_coroebus_group: this.selected==undefined? this.spectator_group_list[0].data[0].id_coroebus_group: this.selected
       }
       this.http.spectator_dashboard(body).subscribe((res) => {
-        console.log(res)
+        
         this.spectator_dashoard_response = res;
   
         this.spectator_dashoard_response = Array.of(this.spectator_dashoard_response);
   
-        console.log(this.spectator_dashoard_response);
+        
   
         this.spectator_ranking_leaderboard = this.spectator_dashoard_response[0].data.ranking
-        console.log(this.spectator_ranking_leaderboard);
+        
         this.spectator_data = this.spectator_dashoard_response[0].data.ranking;
-        console.log(this.spectator_data);
-        console.log(this.order);
+        
+        
   
         ////////////////////////////////////////////////////To show Active Tab 1///////////////////////////////////////////////////////
   
@@ -2357,29 +2357,29 @@ console.log(category);
               this.checked2=false;
               this.checked3=false;
               this.checked4=false;
-              console.log(this.spectator_user_list);
+              
               this.spectator_temporary_array.push(...this.spectator_user_list)
-              console.log(this.spectator_temporary_array);
+              
               this.spectator_user_list=this.spectator_temporary_array
              
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -2390,7 +2390,7 @@ console.log(category);
               
             }
             else{
-              console.log("nodata");
+              
               this.checked1=true;
               this.checked2=false;
               this.checked3=false;
@@ -2407,31 +2407,31 @@ console.log(category);
               this.checked2=true;
               this.checked3=false;
               this.checked4=false;
-              console.log(this.spectator_user_list);
-              console.log(this.spectator_user_list);
-              console.log(this.spectator_user_list);
+              
+              
+              
               this.spectator_temporary_array.push(...this.spectator_user_list)
-              console.log(this.spectator_temporary_array);
+              
               this.spectator_user_list=this.spectator_temporary_array
 
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -2458,31 +2458,31 @@ console.log(category);
               this.checked2=false;
               this.checked3=true;
               this.checked4=false;
-              console.log(this.spectator_user_list);
-              console.log(this.spectator_user_list);
-              console.log(this.spectator_user_list);
+              
+              
+              
               this.spectator_temporary_array.push(...this.spectator_user_list)
-              console.log(this.spectator_temporary_array);
+              
               this.spectator_user_list=this.spectator_temporary_array
 
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -2509,30 +2509,30 @@ console.log(category);
               this.checked2=false;
               this.checked3=false;
               this.checked4=true;
-              console.log(this.spectator_user_list);
-              console.log(this.spectator_user_list);
+              
+              
               this.spectator_temporary_array.push(...this.spectator_user_list)
-              console.log(this.spectator_temporary_array);
+              
               this.spectator_user_list=this.spectator_temporary_array
 
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -2564,28 +2564,28 @@ console.log(category);
               this.checked2=false;
               this.checked3=false;
               this.checked4=false;
-              console.log(this.spectator_user_list);
+              
               this.spectator_temporary_array.push(...this.spectator_user_list)
-              console.log(this.spectator_temporary_array);
+              
               this.spectator_user_list=this.spectator_temporary_array
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -2595,7 +2595,7 @@ console.log(category);
                 })
             }
             else{
-              console.log("nodata");
+              
               this.checked1=true;
               this.checked2=false;
               this.checked3=false;
@@ -2611,29 +2611,29 @@ console.log(category);
               this.checked2=true;
               this.checked3=false;
               this.checked4=false;
-              console.log(this.spectator_user_list);
+              
               this.spectator_temporary_array.push(...this.spectator_user_list)
-              console.log(this.spectator_temporary_array);
+              
               this.spectator_user_list=this.spectator_temporary_array
             
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -2659,28 +2659,28 @@ console.log(category);
               this.checked2=false;
               this.checked3=true;
               this.checked4=false;
-              console.log(this.spectator_user_list);
+              
               this.spectator_temporary_array.push(...this.spectator_user_list)
-              console.log(this.spectator_temporary_array);
+              
               this.spectator_user_list=this.spectator_temporary_array
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -2706,28 +2706,28 @@ console.log(category);
               this.checked2=false;
               this.checked3=false;
               this.checked4=true;
-              console.log(this.spectator_user_list);
+              
               this.spectator_temporary_array.push(...this.spectator_user_list)
-              console.log(this.spectator_temporary_array);
+              
               this.spectator_user_list=this.spectator_temporary_array
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -2759,29 +2759,29 @@ console.log(category);
             this.checked2=false;
             this.checked3=false;
             this.checked4=false;
-            console.log(this.spectator_user_list);
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
 
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -2791,7 +2791,7 @@ console.log(category);
               })
           }
           else{
-            console.log("nodata");
+            
             this.checked1=true;
             this.checked2=false;
             this.checked3=false;
@@ -2807,29 +2807,29 @@ console.log(category);
             this.checked2=true;
             this.checked3=false;
             this.checked4=false;
-            console.log(this.spectator_user_list);
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
 
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -2855,29 +2855,29 @@ console.log(category);
             this.checked2=false;
             this.checked3=true;
             this.checked4=false;
-            console.log(this.spectator_user_list);
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
 
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -2903,29 +2903,29 @@ console.log(category);
             this.checked2=false;
             this.checked3=false;
             this.checked4=true;
-            console.log(this.spectator_user_list);
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
 
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -2957,28 +2957,28 @@ console.log(category);
             this.checked2=false;
             this.checked3=false;
             this.checked4=false;
-            console.log(this.spectator_user_list);
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -2988,7 +2988,7 @@ console.log(category);
               })
           }
           else{
-            console.log("nodata");
+            
             this.checked1=true;
             this.checked2=false;
             this.checked3=false;
@@ -3004,28 +3004,28 @@ console.log(category);
             this.checked2=true;
             this.checked3=false;
             this.checked4=false;
-            console.log(this.spectator_user_list);
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -3052,28 +3052,28 @@ console.log(category);
             this.checked2=false;
             this.checked3=true;
             this.checked4=false;
-            console.log(this.spectator_user_list);
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -3099,28 +3099,28 @@ console.log(category);
             this.checked2=false;
             this.checked3=false;
             this.checked4=true;
-            console.log(this.spectator_user_list);
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -3154,29 +3154,29 @@ console.log(category);
             this.checked2=false;
             this.checked3=false;
             this.checked4=false;
-            console.log(this.spectator_user_list);
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -3186,7 +3186,7 @@ console.log(category);
               })
           }
           else{
-            console.log("nodata");
+            
             this.checked1=true;
             this.checked2=false;
             this.checked3=false;
@@ -3203,30 +3203,30 @@ console.log(category);
             this.checked2=true;
             this.checked3=false;
             this.checked4=false;
-            console.log(this.spectator_user_list);
-            console.log(this.spectator_user_list);
-            console.log(this.spectator_user_list);
+            
+            
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -3252,30 +3252,30 @@ console.log(category);
             this.checked2=false;
             this.checked3=true;
             this.checked4=false;
-            console.log(this.spectator_user_list);
-            console.log(this.spectator_user_list);
-            console.log(this.spectator_user_list);
+            
+            
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -3302,29 +3302,29 @@ console.log(category);
             this.checked2=false;
             this.checked3=false;
             this.checked4=true;
-            console.log(this.spectator_user_list);
-            console.log(this.spectator_user_list);
+            
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -3347,7 +3347,7 @@ console.log(category);
       }
   
       
-          console.log("view");
+          
        
         
                
@@ -3369,18 +3369,18 @@ console.log(category);
       }
   
       this.http.spectator_dashboard(body).subscribe((res) => {
-        console.log(res)
+        
         this.spectator_dashoard_response = res;
   
         this.spectator_dashoard_response = Array.of(this.spectator_dashoard_response);
   
-        console.log(this.spectator_dashoard_response);
+        
   
         this.spectator_ranking_leaderboard = this.spectator_dashoard_response[0].data.ranking
-        console.log(this.spectator_ranking_leaderboard);
+        
         this.spectator_data = this.spectator_dashoard_response[0].data.ranking;
-        console.log(this.spectator_data);
-        console.log(this.order);
+        
+        
   
         ////////////////////////////////////////////////////To show Active Tab 1///////////////////////////////////////////////////////
   
@@ -3394,28 +3394,28 @@ console.log(category);
               this.checked2=false;
               this.checked3=false;
               this.checked4=false;
-              console.log(this.spectator_user_list);
+              
               this.spectator_temporary_array.push(...this.spectator_user_list)
-              console.log(this.spectator_temporary_array);
+              
               this.spectator_user_list=this.spectator_temporary_array
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -3427,7 +3427,7 @@ console.log(category);
 
             }
             else{
-              console.log("nodata");
+              
               this.checked1=true;
               this.checked2=false;
               this.checked3=false;
@@ -3444,30 +3444,30 @@ console.log(category);
               this.checked2=true;
               this.checked3=false;
               this.checked4=false;
-              console.log(this.spectator_user_list);
-              console.log(this.spectator_user_list);
-              console.log(this.spectator_user_list);
+              
+              
+              
               this.spectator_temporary_array.push(...this.spectator_user_list)
-              console.log(this.spectator_temporary_array);
+              
               this.spectator_user_list=this.spectator_temporary_array
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -3494,30 +3494,30 @@ console.log(category);
               this.checked2=false;
               this.checked3=true;
               this.checked4=false;
-              console.log(this.spectator_user_list);
-              console.log(this.spectator_user_list);
-              console.log(this.spectator_user_list);
+              
+              
+              
               this.spectator_temporary_array.push(...this.spectator_user_list)
-              console.log(this.spectator_temporary_array);
+              
               this.spectator_user_list=this.spectator_temporary_array
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -3544,29 +3544,29 @@ console.log(category);
               this.checked2=false;
               this.checked3=false;
               this.checked4=true;
-              console.log(this.spectator_user_list);
-              console.log(this.spectator_user_list);
+              
+              
               this.spectator_temporary_array.push(...this.spectator_user_list)
-              console.log(this.spectator_temporary_array);
+              
               this.spectator_user_list=this.spectator_temporary_array
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -3598,28 +3598,28 @@ console.log(category);
               this.checked2=false;
               this.checked3=false;
               this.checked4=false;
-              console.log(this.spectator_user_list);
+              
               this.spectator_temporary_array.push(...this.spectator_user_list)
-              console.log(this.spectator_temporary_array);
+              
               this.spectator_user_list=this.spectator_temporary_array
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -3629,7 +3629,7 @@ console.log(category);
                 })
             }
             else{
-              console.log("nodata");
+              
               this.checked1=true;
               this.checked2=false;
               this.checked3=false;
@@ -3645,28 +3645,28 @@ console.log(category);
               this.checked2=true;
               this.checked3=false;
               this.checked4=false;
-              console.log(this.spectator_user_list);
+              
               this.spectator_temporary_array.push(...this.spectator_user_list)
-              console.log(this.spectator_temporary_array);
+              
               this.spectator_user_list=this.spectator_temporary_array
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -3693,28 +3693,28 @@ console.log(category);
               this.checked2=false;
               this.checked3=true;
               this.checked4=false;
-              console.log(this.spectator_user_list);
+              
               this.spectator_temporary_array.push(...this.spectator_user_list)
-              console.log(this.spectator_temporary_array);
+              
               this.spectator_user_list=this.spectator_temporary_array
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -3740,28 +3740,28 @@ console.log(category);
               this.checked2=false;
               this.checked3=false;
               this.checked4=true;
-              console.log(this.spectator_user_list);
+              
               this.spectator_temporary_array.push(...this.spectator_user_list)
-              console.log(this.spectator_temporary_array);
+              
               this.spectator_user_list=this.spectator_temporary_array
               this.spectator_user_list.map((res)=>{
-                console.log(res);
+                
                 this.tileimages=res.id_ranking_image
-                console.log(this.tileimages);
+                
                 this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-                console.log(this.back_images);
+                
                 
                 this.back_images.map((res)=>{
-                  console.log(res);
+                  
                   this.back_image_level=res.ranking_image_level
                   this.tile_web_image= res.ranking_image
-                  console.log(this.back_image_level);
+                  
                   if(this.tileimages==this.back_image_level){
-                    console.log(this.back_image_level);
+                    
                      this.tile_web_image_final=this.tile_web_image
-                    console.log(this.tile_web_image_final);
+                    
                     this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                    console.log(this.tile_bg_img);
+                    
                     
                   }
                 })
@@ -3793,28 +3793,28 @@ console.log(category);
             this.checked2=false;
             this.checked3=false;
             this.checked4=false;
-            console.log(this.spectator_user_list);
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -3824,7 +3824,7 @@ console.log(category);
               })
           }
           else{
-            console.log("nodata");
+            
             this.checked1=true;
             this.checked2=false;
             this.checked3=false;
@@ -3840,28 +3840,28 @@ console.log(category);
             this.checked2=true;
             this.checked3=false;
             this.checked4=false;
-            console.log(this.spectator_user_list);
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -3887,28 +3887,28 @@ console.log(category);
             this.checked2=false;
             this.checked3=true;
             this.checked4=false;
-            console.log(this.spectator_user_list);
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -3934,28 +3934,28 @@ console.log(category);
             this.checked2=false;
             this.checked3=false;
             this.checked4=true;
-            console.log(this.spectator_user_list);
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -3987,28 +3987,28 @@ console.log(category);
             this.checked2=false;
             this.checked3=false;
             this.checked4=false;
-            console.log(this.spectator_user_list);
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -4018,7 +4018,7 @@ console.log(category);
               })
           }
           else{
-            console.log("nodata");
+            
             this.checked1=true;
             this.checked2=false;
             this.checked3=false;
@@ -4034,28 +4034,28 @@ console.log(category);
             this.checked2=true;
             this.checked3=false;
             this.checked4=false;
-            console.log(this.spectator_user_list);
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -4083,28 +4083,28 @@ console.log(category);
             this.checked2=false;
             this.checked3=true;
             this.checked4=false;
-            console.log(this.spectator_user_list);
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -4130,28 +4130,28 @@ console.log(category);
             this.checked2=false;
             this.checked3=false;
             this.checked4=true;
-            console.log(this.spectator_user_list);
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -4185,28 +4185,28 @@ console.log(category);
             this.checked2=false;
             this.checked3=false;
             this.checked4=false;
-            console.log(this.spectator_user_list);
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -4217,7 +4217,7 @@ console.log(category);
             
           }
           else{
-            console.log("nodata");
+            
             this.checked1=true;
             this.checked2=false;
             this.checked3=false;
@@ -4234,30 +4234,30 @@ console.log(category);
             this.checked2=true;
             this.checked3=false;
             this.checked4=false;
-            console.log(this.spectator_user_list);
-            console.log(this.spectator_user_list);
-            console.log(this.spectator_user_list);
+            
+            
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -4284,30 +4284,30 @@ console.log(category);
             this.checked2=false;
             this.checked3=true;
             this.checked4=false;
-            console.log(this.spectator_user_list);
-            console.log(this.spectator_user_list);
-            console.log(this.spectator_user_list);
+            
+            
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -4334,30 +4334,30 @@ console.log(category);
             this.checked2=false;
             this.checked3=false;
             this.checked4=true;
-            console.log(this.spectator_user_list);
-            console.log(this.spectator_user_list);
+            
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
 
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -4380,7 +4380,7 @@ console.log(category);
       }
   
       
-          console.log("view");
+          
        
         
                
@@ -4406,21 +4406,21 @@ console.log(category);
 
       id_coroebus_group: this.selected==undefined? this.spectator_group_list[0].data[0].id_coroebus_group: this.selected
     }
-    console.log(body);
+    
     
     this.http.spectator_dashboard(body).subscribe((res) => {
-      console.log(res)
+      
       this.spectator_dashoard_response = res;
 
       this.spectator_dashoard_response = Array.of(this.spectator_dashoard_response);
 
-      console.log(this.spectator_dashoard_response);
+      
 
       this.spectator_ranking_leaderboard = this.spectator_dashoard_response[0].data.ranking
-      console.log(this.spectator_ranking_leaderboard);
+      
       this.spectator_data = this.spectator_dashoard_response[0].data.ranking;
-      console.log(this.spectator_data);
-      console.log(this.order);
+      
+      
 
       ////////////////////////////////////////////////////To show Active Tab 1///////////////////////////////////////////////////////
 
@@ -4434,29 +4434,29 @@ console.log(category);
             this.checked2=false;
             this.checked3=false;
             this.checked4=false;
-            console.log(this.spectator_user_list);
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -4466,7 +4466,7 @@ console.log(category);
               })
           }
           else{
-            console.log("nodata");
+            
             this.checked1=true;
             this.checked2=false;
             this.checked3=false;
@@ -4483,30 +4483,30 @@ console.log(category);
             this.checked2=true;
             this.checked3=false;
             this.checked4=false;
-            console.log(this.spectator_user_list);
-            console.log(this.spectator_user_list);
-            console.log(this.spectator_user_list);
+            
+            
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -4532,30 +4532,30 @@ console.log(category);
             this.checked2=false;
             this.checked3=true;
             this.checked4=false;
-            console.log(this.spectator_user_list);
-            console.log(this.spectator_user_list);
-            console.log(this.spectator_user_list);
+            
+            
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -4582,29 +4582,29 @@ console.log(category);
             this.checked2=false;
             this.checked3=false;
             this.checked4=true;
-            console.log(this.spectator_user_list);
-            console.log(this.spectator_user_list);
+            
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -4636,28 +4636,28 @@ console.log(category);
             this.checked2=false;
             this.checked3=false;
             this.checked4=false;
-            console.log(this.spectator_user_list);
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -4668,7 +4668,7 @@ console.log(category);
           
           }
           else{
-            console.log("nodata");
+            
             this.checked1=true;
             this.checked2=false;
             this.checked3=false;
@@ -4684,29 +4684,29 @@ console.log(category);
             this.checked2=true;
             this.checked3=false;
             this.checked4=false;
-            console.log(this.spectator_user_list);
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
           
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -4732,28 +4732,28 @@ console.log(category);
             this.checked2=false;
             this.checked3=true;
             this.checked4=false;
-            console.log(this.spectator_user_list);
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -4780,28 +4780,28 @@ console.log(category);
             this.checked2=false;
             this.checked3=false;
             this.checked4=true;
-            console.log(this.spectator_user_list);
+            
             this.spectator_temporary_array.push(...this.spectator_user_list)
-            console.log(this.spectator_temporary_array);
+            
             this.spectator_user_list=this.spectator_temporary_array
             this.spectator_user_list.map((res)=>{
-              console.log(res);
+              
               this.tileimages=res.id_ranking_image
-              console.log(this.tileimages);
+              
               this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-              console.log(this.back_images);
+              
               
               this.back_images.map((res)=>{
-                console.log(res);
+                
                 this.back_image_level=res.ranking_image_level
                 this.tile_web_image= res.ranking_image
-                console.log(this.back_image_level);
+                
                 if(this.tileimages==this.back_image_level){
-                  console.log(this.back_image_level);
+                  
                    this.tile_web_image_final=this.tile_web_image
-                  console.log(this.tile_web_image_final);
+                  
                   this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                  console.log(this.tile_bg_img);
+                  
                   
                 }
               })
@@ -4833,29 +4833,29 @@ console.log(category);
           this.checked2=false;
           this.checked3=false;
           this.checked4=false;
-          console.log(this.spectator_user_list);
+          
           this.spectator_temporary_array.push(...this.spectator_user_list)
-          console.log(this.spectator_temporary_array);
+          
           this.spectator_user_list=this.spectator_temporary_array
 
           this.spectator_user_list.map((res)=>{
-            console.log(res);
+            
             this.tileimages=res.id_ranking_image
-            console.log(this.tileimages);
+            
             this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-            console.log(this.back_images);
+            
             
             this.back_images.map((res)=>{
-              console.log(res);
+              
               this.back_image_level=res.ranking_image_level
               this.tile_web_image= res.ranking_image
-              console.log(this.back_image_level);
+              
               if(this.tileimages==this.back_image_level){
-                console.log(this.back_image_level);
+                
                  this.tile_web_image_final=this.tile_web_image
-                console.log(this.tile_web_image_final);
+                
                 this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                console.log(this.tile_bg_img);
+                
                 
               }
             })
@@ -4865,7 +4865,7 @@ console.log(category);
             })
         }
         else{
-          console.log("nodata");
+          
           this.checked1=true;
           this.checked2=false;
           this.checked3=false;
@@ -4881,29 +4881,29 @@ console.log(category);
           this.checked2=true;
           this.checked3=false;
           this.checked4=false;
-          console.log(this.spectator_user_list);
+          
           this.spectator_temporary_array.push(...this.spectator_user_list)
-          console.log(this.spectator_temporary_array);
+          
           this.spectator_user_list=this.spectator_temporary_array
 
           this.spectator_user_list.map((res)=>{
-            console.log(res);
+            
             this.tileimages=res.id_ranking_image
-            console.log(this.tileimages);
+            
             this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-            console.log(this.back_images);
+            
             
             this.back_images.map((res)=>{
-              console.log(res);
+              
               this.back_image_level=res.ranking_image_level
               this.tile_web_image= res.ranking_image
-              console.log(this.back_image_level);
+              
               if(this.tileimages==this.back_image_level){
-                console.log(this.back_image_level);
+                
                  this.tile_web_image_final=this.tile_web_image
-                console.log(this.tile_web_image_final);
+                
                 this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                console.log(this.tile_bg_img);
+                
                 
               }
             })
@@ -4929,29 +4929,29 @@ console.log(category);
           this.checked2=false;
           this.checked3=true;
           this.checked4=false;
-          console.log(this.spectator_user_list);
+          
           this.spectator_temporary_array.push(...this.spectator_user_list)
-          console.log(this.spectator_temporary_array);
+          
           this.spectator_user_list=this.spectator_temporary_array
 
           this.spectator_user_list.map((res)=>{
-            console.log(res);
+            
             this.tileimages=res.id_ranking_image
-            console.log(this.tileimages);
+            
             this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-            console.log(this.back_images);
+            
             
             this.back_images.map((res)=>{
-              console.log(res);
+              
               this.back_image_level=res.ranking_image_level
               this.tile_web_image= res.ranking_image
-              console.log(this.back_image_level);
+              
               if(this.tileimages==this.back_image_level){
-                console.log(this.back_image_level);
+                
                  this.tile_web_image_final=this.tile_web_image
-                console.log(this.tile_web_image_final);
+                
                 this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                console.log(this.tile_bg_img);
+                
                 
               }
             })
@@ -4977,29 +4977,29 @@ console.log(category);
           this.checked2=false;
           this.checked3=false;
           this.checked4=true;
-          console.log(this.spectator_user_list);
+          
           this.spectator_temporary_array.push(...this.spectator_user_list)
-          console.log(this.spectator_temporary_array);
+          
           this.spectator_user_list=this.spectator_temporary_array
 
           this.spectator_user_list.map((res)=>{
-            console.log(res);
+            
             this.tileimages=res.id_ranking_image
-            console.log(this.tileimages);
+            
             this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-            console.log(this.back_images);
+            
             
             this.back_images.map((res)=>{
-              console.log(res);
+              
               this.back_image_level=res.ranking_image_level
               this.tile_web_image= res.ranking_image
-              console.log(this.back_image_level);
+              
               if(this.tileimages==this.back_image_level){
-                console.log(this.back_image_level);
+                
                  this.tile_web_image_final=this.tile_web_image
-                console.log(this.tile_web_image_final);
+                
                 this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                console.log(this.tile_bg_img);
+                
                 
               }
             })
@@ -5031,29 +5031,29 @@ console.log(category);
           this.checked2=false;
           this.checked3=false;
           this.checked4=false;
-          console.log(this.spectator_user_list);
+          
           this.spectator_temporary_array.push(...this.spectator_user_list)
-          console.log(this.spectator_temporary_array);
+          
           this.spectator_user_list=this.spectator_temporary_array
 
           this.spectator_user_list.map((res)=>{
-            console.log(res);
+            
             this.tileimages=res.id_ranking_image
-            console.log(this.tileimages);
+            
             this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-            console.log(this.back_images);
+            
             
             this.back_images.map((res)=>{
-              console.log(res);
+              
               this.back_image_level=res.ranking_image_level
               this.tile_web_image= res.ranking_image
-              console.log(this.back_image_level);
+              
               if(this.tileimages==this.back_image_level){
-                console.log(this.back_image_level);
+                
                  this.tile_web_image_final=this.tile_web_image
-                console.log(this.tile_web_image_final);
+                
                 this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                console.log(this.tile_bg_img);
+                
                 
               }
             })
@@ -5064,7 +5064,7 @@ console.log(category);
           
         }
         else{
-          console.log("nodata");
+          
           this.checked1=true;
           this.checked2=false;
           this.checked3=false;
@@ -5080,29 +5080,29 @@ console.log(category);
           this.checked2=true;
           this.checked3=false;
           this.checked4=false;
-          console.log(this.spectator_user_list);
+          
           this.spectator_temporary_array.push(...this.spectator_user_list)
-          console.log(this.spectator_temporary_array);
+          
           this.spectator_user_list=this.spectator_temporary_array
 
           this.spectator_user_list.map((res)=>{
-            console.log(res);
+            
             this.tileimages=res.id_ranking_image
-            console.log(this.tileimages);
+            
             this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-            console.log(this.back_images);
+            
             
             this.back_images.map((res)=>{
-              console.log(res);
+              
               this.back_image_level=res.ranking_image_level
               this.tile_web_image= res.ranking_image
-              console.log(this.back_image_level);
+              
               if(this.tileimages==this.back_image_level){
-                console.log(this.back_image_level);
+                
                  this.tile_web_image_final=this.tile_web_image
-                console.log(this.tile_web_image_final);
+                
                 this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                console.log(this.tile_bg_img);
+                
                 
               }
             })
@@ -5130,28 +5130,28 @@ console.log(category);
           this.checked2=false;
           this.checked3=true;
           this.checked4=false;
-          console.log(this.spectator_user_list);
+          
           this.spectator_temporary_array.push(...this.spectator_user_list)
-          console.log(this.spectator_temporary_array);
+          
           this.spectator_user_list=this.spectator_temporary_array
           this.spectator_user_list.map((res)=>{
-            console.log(res);
+            
             this.tileimages=res.id_ranking_image
-            console.log(this.tileimages);
+            
             this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-            console.log(this.back_images);
+            
             
             this.back_images.map((res)=>{
-              console.log(res);
+              
               this.back_image_level=res.ranking_image_level
               this.tile_web_image= res.ranking_image
-              console.log(this.back_image_level);
+              
               if(this.tileimages==this.back_image_level){
-                console.log(this.back_image_level);
+                
                  this.tile_web_image_final=this.tile_web_image
-                console.log(this.tile_web_image_final);
+                
                 this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                console.log(this.tile_bg_img);
+                
                 
               }
             })
@@ -5177,28 +5177,28 @@ console.log(category);
           this.checked2=false;
           this.checked3=false;
           this.checked4=true;
-          console.log(this.spectator_user_list);
+          
           this.spectator_temporary_array.push(...this.spectator_user_list)
-          console.log(this.spectator_temporary_array);
+          
           this.spectator_user_list=this.spectator_temporary_array
           this.spectator_user_list.map((res)=>{
-            console.log(res);
+            
             this.tileimages=res.id_ranking_image
-            console.log(this.tileimages);
+            
             this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-            console.log(this.back_images);
+            
             
             this.back_images.map((res)=>{
-              console.log(res);
+              
               this.back_image_level=res.ranking_image_level
               this.tile_web_image= res.ranking_image
-              console.log(this.back_image_level);
+              
               if(this.tileimages==this.back_image_level){
-                console.log(this.back_image_level);
+                
                  this.tile_web_image_final=this.tile_web_image
-                console.log(this.tile_web_image_final);
+                
                 this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                console.log(this.tile_bg_img);
+                
                 
               }
             })
@@ -5232,28 +5232,28 @@ console.log(category);
           this.checked2=false;
           this.checked3=false;
           this.checked4=false;
-          console.log(this.spectator_user_list);
+          
           this.spectator_temporary_array.push(...this.spectator_user_list)
-          console.log(this.spectator_temporary_array);
+          
           this.spectator_user_list=this.spectator_temporary_array
           this.spectator_user_list.map((res)=>{
-            console.log(res);
+            
             this.tileimages=res.id_ranking_image
-            console.log(this.tileimages);
+            
             this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-            console.log(this.back_images);
+            
             
             this.back_images.map((res)=>{
-              console.log(res);
+              
               this.back_image_level=res.ranking_image_level
               this.tile_web_image= res.ranking_image
-              console.log(this.back_image_level);
+              
               if(this.tileimages==this.back_image_level){
-                console.log(this.back_image_level);
+                
                  this.tile_web_image_final=this.tile_web_image
-                console.log(this.tile_web_image_final);
+                
                 this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                console.log(this.tile_bg_img);
+                
                 
               }
             })
@@ -5264,7 +5264,7 @@ console.log(category);
           
         }
         else{
-          console.log("nodata");
+          
           this.checked1=true;
           this.checked2=false;
           this.checked3=false;
@@ -5281,30 +5281,30 @@ console.log(category);
           this.checked2=true;
           this.checked3=false;
           this.checked4=false;
-          console.log(this.spectator_user_list);
-          console.log(this.spectator_user_list);
-          console.log(this.spectator_user_list);
+          
+          
+          
           this.spectator_temporary_array.push(...this.spectator_user_list)
-          console.log(this.spectator_temporary_array);
+          
           this.spectator_user_list=this.spectator_temporary_array
           this.spectator_user_list.map((res)=>{
-            console.log(res);
+            
             this.tileimages=res.id_ranking_image
-            console.log(this.tileimages);
+            
             this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-            console.log(this.back_images);
+            
             
             this.back_images.map((res)=>{
-              console.log(res);
+              
               this.back_image_level=res.ranking_image_level
               this.tile_web_image= res.ranking_image
-              console.log(this.back_image_level);
+              
               if(this.tileimages==this.back_image_level){
-                console.log(this.back_image_level);
+                
                  this.tile_web_image_final=this.tile_web_image
-                console.log(this.tile_web_image_final);
+                
                 this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                console.log(this.tile_bg_img);
+                
                 
               }
             })
@@ -5330,30 +5330,30 @@ console.log(category);
           this.checked2=false;
           this.checked3=true;
           this.checked4=false;
-          console.log(this.spectator_user_list);
-          console.log(this.spectator_user_list);
-          console.log(this.spectator_user_list);
+          
+          
+          
           this.spectator_temporary_array.push(...this.spectator_user_list)
-          console.log(this.spectator_temporary_array);
+          
           this.spectator_user_list=this.spectator_temporary_array
           this.spectator_user_list.map((res)=>{
-            console.log(res);
+            
             this.tileimages=res.id_ranking_image
-            console.log(this.tileimages);
+            
             this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-            console.log(this.back_images);
+            
             
             this.back_images.map((res)=>{
-              console.log(res);
+              
               this.back_image_level=res.ranking_image_level
               this.tile_web_image= res.ranking_image
-              console.log(this.back_image_level);
+              
               if(this.tileimages==this.back_image_level){
-                console.log(this.back_image_level);
+                
                  this.tile_web_image_final=this.tile_web_image
-                console.log(this.tile_web_image_final);
+                
                 this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                console.log(this.tile_bg_img);
+                
                 
               }
             })
@@ -5380,29 +5380,29 @@ console.log(category);
           this.checked2=false;
           this.checked3=false;
           this.checked4=true;
-          console.log(this.spectator_user_list);
-          console.log(this.spectator_user_list);
+          
+          
           this.spectator_temporary_array.push(...this.spectator_user_list)
-          console.log(this.spectator_temporary_array);
+          
           this.spectator_user_list=this.spectator_temporary_array
           this.spectator_user_list.map((res)=>{
-            console.log(res);
+            
             this.tileimages=res.id_ranking_image
-            console.log(this.tileimages);
+            
             this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
-            console.log(this.back_images);
+            
             
             this.back_images.map((res)=>{
-              console.log(res);
+              
               this.back_image_level=res.ranking_image_level
               this.tile_web_image= res.ranking_image
-              console.log(this.back_image_level);
+              
               if(this.tileimages==this.back_image_level){
-                console.log(this.back_image_level);
+                
                  this.tile_web_image_final=this.tile_web_image
-                console.log(this.tile_web_image_final);
+                
                 this.tile_bg_img.push({'bgImg':this.tile_web_image_final})
-                console.log(this.tile_bg_img);
+                
                 
               }
             })
@@ -5425,7 +5425,7 @@ console.log(category);
     }
 
     
-        console.log("view");
+        
      
       
              
@@ -5439,10 +5439,10 @@ console.log(category);
   }
 
   navigatetoDashboard(index:any){
-    console.log(index);
+    
     this.spectator="spectator"
 
-    console.log(this.spectator_user_list[index].USERID);
+    
      this.spectator_user_id=this.Util.encryptData(this.spectator_user_list[index].USERID)
      this.spectator_game_id=this.Util.encryptData(this.spectator_user_list[index].id_coroebus_game)
      this.spectator_role_id=this.Util.encryptData(this.spectator_user_list[index].id_role)
@@ -5458,9 +5458,9 @@ console.log(category);
   }
 
   navigatetoSearchDashboard(index:any){
-    console.log(index);
+    
     this.spectator="spectator"
-    console.log(this.spectSearList[index]._data.USERID);
+    
      this.spectator_user_id=this.Util.encryptData(this.spectSearList[0]._data[index].USERID)
      this.spectator_game_id=this.Util.encryptData(this.spectSearList[0]._data[index].id_coroebus_game)
      this.spectator_role_id=this.Util.encryptData(this.spectSearList[0]._data[index].id_role)
@@ -5486,40 +5486,40 @@ console.log(category);
     ]
     ).subscribe(([login, theme, game]) => {
       this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
-console.log(this.userSelectionData);
+
 
     })
     this.passDataToHeaderSub?.unsubscribe()
     this.passDataToHeaderSub = this.eventService.subscribe('passDataToHeader', (data) => {
       this.headerInfo = data
-      console.log(this.headerInfo);
+      
       this.color = this.headerInfo.color; //yellowcolor
-      console.log(this.color);
+      
       this.bgImage= this.userSelectionData?.themes[0].theme_background_web
-      console.log(this.bgImage);
+      
       
       this.element.nativeElement.style.setProperty('--myvar', `${this.color}`)
       this.element.nativeElement.style.setProperty('--bgImage', `${this.bgImage}`)
     })
     if (this.userSelectionData?.otherInfo) {
       this.headerInfo = this.userSelectionData?.otherInfo
-      console.log(this.headerInfo);
+      
       this.color = this.headerInfo.color; //yellowcolor
-      console.log(this.color);
+      
       this.bgImage= this.userSelectionData?.themes[0].theme_background_web
-      console.log(this.bgImage);
+      
       
       this.element.nativeElement.style.setProperty('--myvar', `${this.color}`)
       this.element.nativeElement.style.setProperty('--bgImage', `${this.bgImage}`)
 
       // this.element.nativeElement.style.setProperty('--mycolor',`${this.color}`)
-      // console.log( this.element.nativeElement.style.setProperty('--myvar',`${this.color}`));
+      // 
 
 
     }
     this._routeSub = this._route.queryParams.subscribe(queryParams => {
       this.queryParams = queryParams
-      console.log(queryParams)
+      
     })
   }
 }

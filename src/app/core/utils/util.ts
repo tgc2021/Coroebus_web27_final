@@ -36,7 +36,7 @@ export class Util {
             padding: CryptoJs.pad.Pkcs7
         })
         let decryptedDataInString = decryptedData.toString(CryptoJs.enc.Utf8)
-        console.log(decryptedDataInString, data)
+        
         return decryptedDataInString
     }
     isMobile() {

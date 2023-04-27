@@ -39,7 +39,7 @@ export class ThemeSelectionComponent implements OnInit, OnDestroy {
     let body: any;
     body = { "userid": this.userObj?._personal_data?.USERID };
     this.themes_reponse=await HttpProtocols.to(UserModel.getThemes(body));
-    console.log(this.themes_reponse);
+    
     
     [err, res] = await HttpProtocols.to(UserModel.getThemes(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
@@ -53,7 +53,7 @@ export class ThemeSelectionComponent implements OnInit, OnDestroy {
       }
   
       this.http.engagamentlog(body).subscribe(res=>{
-        console.log(res);
+        
         
       })
 
@@ -90,7 +90,7 @@ export class ThemeSelectionComponent implements OnInit, OnDestroy {
     }
 
     this.http.engagamentlog(body).subscribe(res=>{
-      console.log(res);
+      
       
     })
 
@@ -102,7 +102,7 @@ export class ThemeSelectionComponent implements OnInit, OnDestroy {
     this.destroy$.unsubscribe();
   }
   handleCarouselEvents(event: any) {
-    console.log(event);
+    
   }
 
 }

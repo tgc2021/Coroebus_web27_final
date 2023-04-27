@@ -127,12 +127,12 @@ export class CreateNewPasswordComponent implements OnInit, OnDestroy {
     this.submitted = true;
     // stop here if form is invalid
     if (this.newPwdForm.invalid) {
-      console.log(this.newPwdForm)
+      
       return;
     } else {
-      console.log(this.Util.encryptData(this.newPwdForm.value.currentPassword), this.userObj?._personal_data?.password)
-      console.log(this.Util.encryptData(this.newPwdForm.value.currentPassword),this.Util.encryptData(this.newPwdForm.value.password));
-      console.log(this.Util.decryptData(this.newPwdForm.value.currentPassword),this.Util.decryptData(this.newPwdForm.value.password));
+      
+      
+      
       
     
       if (this.Util.encryptData(this.newPwdForm.value.currentPassword) === this.userObj?._personal_data?.password) {
@@ -146,7 +146,7 @@ export class CreateNewPasswordComponent implements OnInit, OnDestroy {
         const [err, res] = await HttpProtocols.to(UserModel.updatePassword(body))
         if (!err && res?.status === 'success' && res?.statuscode === 200) {
           // if(currentPasswordData===password){
-          //     console.log('Hello');
+          //     
           //     Swal.fire({
           //       title: '',
           //       text:'Current Password and new Password should be same' ,
@@ -179,7 +179,7 @@ export class CreateNewPasswordComponent implements OnInit, OnDestroy {
         this.currentPwdErr = true
         this.comparePassErr=true
       }
-      // console.log(this.newPwdForm.value.currentPassword, this.Util.encryptData(this.newPwdForm.value.currentPassword), this.userObj?._personal_data?.password)
+      // 
     }
   }
   ngOnDestroy(): void {

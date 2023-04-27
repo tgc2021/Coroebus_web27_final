@@ -50,7 +50,7 @@ export class PasswordresetComponent implements OnInit {
     }
 
     this.http.engagamentlog(body).subscribe(res=>{
-      console.log(res);
+      
       
     })
 
@@ -178,7 +178,7 @@ export class PasswordresetComponent implements OnInit {
       }
   
       this.http.engagamentlog(body).subscribe(res=>{
-        console.log(res);
+        
         
       })
 
@@ -198,7 +198,7 @@ export class PasswordresetComponent implements OnInit {
       }
   
       this.http.engagamentlog(body).subscribe(res=>{
-        console.log(res);
+        
         
       })
 
@@ -229,7 +229,7 @@ export class PasswordresetComponent implements OnInit {
       }
   
       this.http.engagamentlog(body).subscribe(res=>{
-        console.log(res);
+        
         
       })
 

@@ -58,7 +58,7 @@ export class TermsAndConditionsComponent implements OnInit, OnDestroy {
       return;
     } else {
       const body = { _userid: this.userObj?._personal_data?.USERID, "_termsid": this.userObj?.terms?.id_coroebus_terms_conditions, _datetime: formatDate(Date.now(), 'd-M-y H:mm:ss', 'en-US') }
-      console.log(body)
+      
       const [err, res] = await HttpProtocols.to(UserModel.acceptTerms(body))
       if (!err && res?.status === 'success' && res?.statuscode === 200) {
         let body={
@@ -70,7 +70,7 @@ export class TermsAndConditionsComponent implements OnInit, OnDestroy {
         }
     
         this.http.engagamentlog(body).subscribe(res=>{
-          console.log(res);
+          
           
         })
   
@@ -85,7 +85,7 @@ export class TermsAndConditionsComponent implements OnInit, OnDestroy {
         }
     
         this.http.engagamentlog(body).subscribe(res=>{
-          console.log(res);
+          
           
         })
   
@@ -114,6 +114,6 @@ export class TermsAndConditionsComponent implements OnInit, OnDestroy {
     this.destroy$.unsubscribe();
   }
   checkValue(event: any) {
-    //console.log(event)
+    //
   }
 }

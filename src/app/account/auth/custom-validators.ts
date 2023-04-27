@@ -49,8 +49,8 @@ export class CustomValidators {
         const currentPassword: string = control.get('currentPassword').value; // get password from our currentPassword form control
         const password1: string = control.get('password').value; // get password from our password form control
         // compare is the password math
-        console.log(currentPassword);
-         console.log(password1);
+        
+         
          
         if (currentPassword === password1) {
             // if they  match, set an error in our Password form control

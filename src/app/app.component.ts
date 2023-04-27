@@ -22,8 +22,8 @@ onResize(){
 
   hideAddressBar(){
     if(window.innerHeight < window.outerHeight){
-      console.log(window.innerHeight);
-      console.log(window.outerHeight);
+      
+      
       
       
       window.scrollTo(0,1);

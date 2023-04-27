@@ -40,11 +40,11 @@ export class ImagecropperComponent implements OnInit {
   @ViewChild(ImageCropperComponent, { static: true }) imageCropper: ImageCropperComponent;
 
   ngOnInit(): void {
-    console.log(this.fileData)
+    
 
     this.dark_color=localStorage.getItem('topbar_color')
     this.element.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
-console.log(this.dark_color);
+
 
     this.medium_color=localStorage.getItem('medium_color')
     this.element.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
@@ -52,7 +52,7 @@ console.log(this.dark_color);
     this.light_color=localStorage.getItem('light_color')
     this.element.nativeElement.style.setProperty('--lightColor', `${this.light_color}`)
 
-    console.log(this.medium_color);
+    
   }
 
   /**
@@ -64,7 +64,7 @@ console.log(this.dark_color);
   }
   // refresh(){
   //   this.userObj
-  //   console.log(this.userObj);
+  //   
     
   //   this.store.select(fromRoot.userLogin).pipe(
   //   ).subscribe(data => {
@@ -88,7 +88,7 @@ console.log(this.dark_color);
       },
     };
     [err, res] = await HttpProtocols.to(ProfileModel.updateProfilePic(body))
-    console.log(body)
+    
     if (!err && res?.statuscode === 200) {
       let body={
         _userid:this.userObj?._personal_data?.USERID,
@@ -99,12 +99,12 @@ console.log(this.dark_color);
       }
   
       this.http.engagamentlog(body).subscribe(res=>{
-        console.log(res);
+        
         
       })
 
       this.ProfileImageNew1=res?.data?._personal_data?.profile_logo
-      console.log(this.ProfileImageNew1);
+      
       localStorage.setItem('Profile',JSON.stringify(this.ProfileImageNew1))
       this.eventService.broadcast('callSectionView_1API')
 
