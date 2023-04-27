@@ -1605,7 +1605,6 @@ else if(this.activeTabForSectionView_2 == 4){
     location.reload()
   }
   navigateToM2ost(categoryID:any){
-    console.log(categoryID);
     
     this.empid= this.sectionView_1._personal_data.EMPLOYEEID
     this.empemail=this.sectionView_1._personal_data.email_id

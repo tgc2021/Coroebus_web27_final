@@ -165,7 +165,7 @@ export class PlayZoneComponent implements OnInit {
     if(data.id_engagement_game==='1'){
       console.log(data)
       // this.dartGameUrl=`http://127.0.0.1:5501/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
-      console.log(this.dartGameUrl);
+      // console.log(this.dartGameUrl);
        this.dartGameUrl=`https://coroebus.in/dart_game/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`;
       // this.dartGameUrl=`http://127.0.0.1:5501/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`;
       this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.dartGameUrl);

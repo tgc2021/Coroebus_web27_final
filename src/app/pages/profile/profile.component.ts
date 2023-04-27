@@ -49,17 +49,17 @@ export class ProfileComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy$)
     ).subscribe(data => {
       this.userObj = data?.user
-console.log(this.userObj);
+// console.log(this.userObj);
 
       this.initForm()
       this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
-      console.log(this.mergeObj);
+      // console.log(this.mergeObj);
 
     })
 
     this.dark_color=localStorage.getItem('topbar_color')
     this.element.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
-console.log(this.dark_color);
+// console.log(this.dark_color);
 
     this.medium_color=localStorage.getItem('medium_color')
     this.element.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
@@ -67,10 +67,10 @@ console.log(this.dark_color);
     this.light_color=localStorage.getItem('light_color')
     this.element.nativeElement.style.setProperty('--lightColor', `${this.light_color}`)
 
-    console.log(this.medium_color);
+    // console.log(this.medium_color);
 
     this.ProfileImageNewOne=JSON.parse(localStorage.getItem('Profile'))
-    console.log( this.ProfileImageNewOne);
+    // console.log( this.ProfileImageNewOne);
 
     let body={
       _userid:this.userObj?._personal_data?.USERID,
@@ -81,7 +81,7 @@ console.log(this.dark_color);
     }
 
     this.http.engagamentlog(body).subscribe(res=>{
-      console.log(res);
+      // console.log(res);
       
     })
 
@@ -145,17 +145,17 @@ console.log(this.dark_color);
     }
 
     this.http.engagamentlog(body).subscribe(res=>{
-      console.log(res);
+      // console.log(res);
       
     })
 
-    console.log(fileList)
+    // console.log(fileList)
     if (fileList) {
       const modalRef = this.modalService.open(ImagecropperComponent, { centered: true, windowClass: 'modal-cls' })
       modalRef.componentInstance.fileData = event;
       modalRef.componentInstance.buttonColor = this.userObj?.otherInfo?.color;
       modalRef.componentInstance.userObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo };
-      console.log("FileUpload -> files", fileList);
+      // console.log("FileUpload -> files", fileList);
     }
    
 
@@ -204,13 +204,13 @@ console.log(this.dark_color);
       }
   
       this.http.engagamentlog(body).subscribe(res=>{
-        console.log(res);
+        // console.log(res);
         
       })
 
       this.eventService.broadcast('callSectionView_1API')
       this.ProfileImageNew=res?.data?._personal_data?.profile_logo
-      console.log(this.ProfileImageNew);
+      // console.log(this.ProfileImageNew);
       
       Swal.fire({
         title: '',
@@ -229,7 +229,7 @@ console.log(this.dark_color);
           this.Util.goto('/account/interactive-dashboard')
 
         }
-        console.log(result);
+        // console.log(result);
         
       })
     } else {

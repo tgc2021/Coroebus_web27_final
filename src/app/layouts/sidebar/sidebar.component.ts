@@ -349,7 +349,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
         
      
         this.menuItems=result;
-        console.log(this.menuItems);
+        // console.log(this.menuItems);
 
      
 
@@ -358,22 +358,22 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
           const result = this.menuItems.filter(data => data.icon != 'rewards');
           
           this.menuItems=result;
-          console.log(this.menuItems);
+          // console.log(this.menuItems);
 
           const result1 = this.menuItems.filter(data => data.label != 'Achievement Shelf');
           this.menuItems=result1;
-          console.log(this.menuItems);
+          // console.log(this.menuItems);
 
 
           const result2 = this.menuItems.filter(data => data.icon != 'learning');
           this.menuItems=result2;
-          console.log(this.menuItems);
+          // console.log(this.menuItems);
 
         }
       else if(this.id_role==8){
         const result2 = this.menuItems.filter(data => data.icon != 'learning');
         this.menuItems=result2;
-        console.log(this.menuItems);
+        // console.log(this.menuItems);
 
 
       }
