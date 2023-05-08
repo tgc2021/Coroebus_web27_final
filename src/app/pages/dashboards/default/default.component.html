@@ -1,4 +1,5 @@
     <div class="web-view container-fluid">
+        <!-- [ngClass]="this.pokeAnimationData=='' ? 'pokebackground':'pokebackgroundblur'" -->
     <div class="row"
         *ngIf="!(sectionView_1 && rankingDataFirstRowForSectionView_2 && sectionView_3); else dashboardTpl">
         <div class="col-lg-12">
@@ -658,10 +659,10 @@
                         <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                             *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) "
-                            (click)="navigateToOtherRole(item)"
+                           
                             [style.background-image]="'url('+item?.ranking_image_web +')'">
-                            <div class="col">
-                                <div class="media d-flex align-items-center gap-3  " style="height: 7vh;">
+                            <div class="col" >
+                                <div class="media d-flex align-items-center gap-3" style="height: 7vh;">
                                     <span class="col-1 ms-2 text-white position-absolute-s">
                                         {{item?.rankingtable_number}}
                                     </span>
@@ -671,7 +672,7 @@
                                             width="41" >
                                     </div>
 
-                                    <div class="media-body user-logo-row ellipsis"
+                                    <div class="media-body user-logo-row ellipsis"  (click)="navigateToOtherRole(item)"
                                         style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
                                         <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
                                             ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}</h5>
@@ -700,12 +701,15 @@
                                                 <img class="mt-1 f-right up-arrow" alt=""
                                                     src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
                                                     data-holder-rendered="true" height="100%"
-                                                    *ngIf="item?.rankingtable_arrow === 'red'">
+                                                    *ngIf="item?.rankingtable_arrow === 'red'"
+                                                    (click)="upDownArrow(item?.rankingtable_arrow,item)">
+
 
                                                 <img class="mt-1 f-right up-arrow" alt=""
                                                     src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
                                                     data-holder-rendered="true" height="100%"
-                                                    *ngIf="item?.rankingtable_arrow !== 'red'">
+                                                    *ngIf="item?.rankingtable_arrow !== 'red'"
+                                                    (click)="upDownArrow(item?.rankingtable_arrow,item)">
                                             </div>
 
 
@@ -729,7 +733,7 @@
                         <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                             *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) "
-                            (click)="navigateToOtherRole(item)" [style.background-image]="!spectSearchStrTrigger? 'url(' + item.ranking_image_level_img + ')':'url('+web_tile_img+')'
+                           [style.background-image]="!spectSearchStrTrigger? 'url(' + item.ranking_image_level_img + ')':'url('+web_tile_img+')'
                             ">
                             <div class="col">
                                 <div class="media d-flex align-items-center gap-3  " style="height: 7vh;">
@@ -742,7 +746,7 @@
                                             width="41">
                                     </div>
 
-                                    <div class="media-body user-logo-row ellipsis"
+                                    <div class="media-body user-logo-row ellipsis"   (click)="navigateToOtherRole(item)"
                                         style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
                                         <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
                                             ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}</h5>
@@ -771,12 +775,16 @@
                                                 <img class="mt-1 f-right up-arrow" alt=""
                                                     src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
                                                     data-holder-rendered="true" height="100%"
-                                                    *ngIf="item?.rankingtable_arrow === 'red'">
+                                                    *ngIf="item?.rankingtable_arrow === 'red'"
+                                                    (click)="upDownArrow(item?.rankingtable_arrow,item)">
+                                            
 
                                                 <img class="mt-1 f-right up-arrow" alt=""
                                                     src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
                                                     data-holder-rendered="true" height="100%"
-                                                    *ngIf="item?.rankingtable_arrow !== 'red'">
+                                                    *ngIf="item?.rankingtable_arrow !== 'red'"
+                                                    (click)="upDownArrow(item?.rankingtable_arrow,item)">
+
                                             </div>
 
 
@@ -1311,11 +1319,173 @@
 
         </div>
 
+
+   
+    
     </ng-template>
 
+   <div *ngIf="this.pokeAnimationData !='';then animation"></div>
+  <ng-template #animation>
+    <div id="animationPoke" *ngIf="!this.queryParams">
+        <section class="d-flex justify-content-center" *ngFor="let item of pokeslidedata, index as i">
+            <div class="crawl">
+                <div style="color: #FFFFFF;">Poked by {{item.Pokedby}}</div>
+                <img alt="" src="{{item.poke_logo}}" style="width: 100px; height: 100px;" />
+                <div style="color: #FFFFFF;">{{item.poke_description}}</div>
+            </div>
+        </section>
+    </div>
+  </ng-template>
+    <ng-template #pokeList let-modal>
+        <div class="level-buckets poke-buckets p-1">
+            <div class="modal-header border-bottom-0 p-0">
+                <div class="row w-100">
+                    <div class="col"></div>
+                    <div class="col poketitle text-center ms-3">
+                        Poke    
+                     </div>
+                    <div class="col pt-2">
+                        <i class="fa fa-times float-end" (click)="modal.dismiss('Cross click')"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body dashboard-popup-level">
+                <!-- <ng-container *ngFor="let item of pokeData">
+                    <ng-container *ngIf="item?.label === arrowStatus">
+                        <div class="row row-cols-3 text-center mt-0">
+                            <ng-container *ngFor="let pokeLogo of item?._data,index as i">
+                                <div class="col">
+                                    <div class="card poke-card" [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
+                                        <span [class.active]="i===clicked" (click)="emojiSelected(i,arrowStatus)" >
+                                            <img src="{{pokeLogo?.poke_logo}}" class="card-img-top poke-image" alt="...">
+                                        </span>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="card emojitext"[style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
+                                    <span *ngIf="this.emoji" class="" style="text-align: center; padding:3%;">{{this.emoji}}</span>
+                                    <span *ngIf="!this.emoji" class="" style="text-align: center; padding:3%;">{{item?._data[0].poke_description}}</span>
+                                </div>
+                            </div>
+                        </div>
+                          <div class="card-fotter" >
+                                        <button class="submit btn text-white"    
+                                        [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
+                                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color" (click)="pokeSelection(modal)" >
+                                        Submit
+                                    </button>
+                                    </div>
+                                    <div>
+    
+                                    </div>
+                    </ng-container>
+                </ng-container> -->
+              
+                 <div *ngIf="arrowStatus=='Positive';then positive else motivation"></div>
+                 <ng-template #positive>  
+                    <div class="row row-cols-3 text-center mt-0">
+                        <ng-container *ngFor="let item of pokeData[0]._data,index as i">
+                            <div class="col">
+                                <div class="card poke-card" [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color" style="border:2px solid">
+                                    <span [class.active]="i===clicked" (click)="emojiSelected(i,arrowStatus)" [style.border-color]="sectionView_1?.theme_details?.[0]?.dark_color">
+                                        <img src="{{item?.poke_logo}}" class="card-img-top poke-image" alt="..." >
+                                    </span>
+                                </div>
+                            </div>
+                            
+                        </ng-container>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="card emojitext"[style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
+                                <span *ngIf="this.emoji" class="" style="text-align: center; padding:3%;">{{pokeidselected}}</span>
+                            </div>
+                        </div>
+                    </div>
+                      <div class="card-fotter" >
+                                    <button class="submit btn text-white"    
+                                    [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
+                                    [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color" (click)="pokeSelection(modal)" >
+                                    Submit
+                                </button>
+                                </div>
+                                <div>
+
+                                </div>
+
+                  <!-- <div class="row text-center mt-0">
+                    <div>
+                      <div class="col-4"  *ngFor="let item of pokeData[0]._data,index as i">
+                                <div class="card poke-card" [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
+                                    <span [class.active]="i===clicked" (click)="emojiSelected(i,arrowStatus)" >
+                                        <img src="{{item?.poke_logo}}" class="card-img-top poke-image" alt="...">
+                                    </span>
+                                </div>
+                        </div>
+                    </div>
+                  </div> -->
+                 </ng-template>
+
+                 <ng-template #motivation>
+                        <div class="row row-cols-3 text-center mt-0">
+                            <ng-container *ngFor="let item of pokeData[1]._data,index as i">
+                                <div class="col">
+                                    <div class="card poke-card" [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
+                                        <span [class.active]="i===clicked" (click)="emojiSelected(i,arrowStatus)">
+                                            <img src="{{item?.poke_logo}}" class="card-img-top poke-image"   alt="...">
+                                        </span>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="card emojitext"[style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
+                                    <span *ngIf="this.emoji" class="" style="text-align: center; padding:3%;">{{emoji}}</span>
+                                </div>
+                            </div>
+                        </div>
+                          <div class="card-fotter" >
+                                        <button class="submit btn text-white" 
+                                        [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
+                                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color" (click)="pokeSelection(modal)" >
+                                        Submit
+                                    </button>
+                                    </div>
+                                    <div>
+    
+                                    </div>
+    
+                      <!-- <div class="row text-center mt-0">
+                        <div>
+                          <div class="col-4"  *ngFor="let item of pokeData[0]._data,index as i">
+                                    <div class="card poke-card" [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
+                                        <span [class.active]="i===clicked" (click)="emojiSelected(i,arrowStatus)" >
+                                            <img src="{{item?.poke_logo}}" class="card-img-top poke-image" alt="...">
+                                        </span>
+                                    </div>
+                            </div>
+                        </div>
+                      </div> -->
+                     </ng-template>
+            </div>
 
 
+        </div>
+    </ng-template>
 
+    <!-- <div *ngIf="his.pokeAnimationData!=''"  id="animationPoke">
+        <section class="d-flex justify-content-center" *ngFor="let item of pokeslidedata, index as i">
+            <div class="crawl">
+                <div style="color: #FFFFFF;">Poked by {{item.Pokedby}}</div>
+                <img alt="" src="{{item.poke_logo}}" style="width: 100px; height: 100px;" />
+                <div style="color: #FFFFFF;">{{item.poke_description}}</div>
+            </div>
+        </section>
+    </div> -->
     <ng-template #content let-modal>
         <div class="level-buckets content-buckets">
             <div class="modal-header border-bottom-0 p-0">
@@ -1841,7 +2011,7 @@
                                                         src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
                                                         data-holder-rendered="true" height="100%"
                                                         *ngIf="item?.rankingtable_arrow === 'red'">
-                                                    <!-- (click)="upDownArrow(item?.rankingtable_arrow,item)" -->
+                                                    (click)="upDownArrow(item?.rankingtable_arrow,item)"
                                                     <img class=" f-right up-arrow" alt=""
                                                         src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
                                                         data-holder-rendered="true" height="100%"
@@ -2393,4 +2563,7 @@
 <!-- Rotated View -->
 <div class="mobile-view-rotated d-flex flex-column justify-content-center align-items-center">
     <div class="phone">
+        
     </div>
+
+ 

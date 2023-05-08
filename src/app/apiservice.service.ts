@@ -171,4 +171,9 @@ export class ApiserviceService {
     return this.Http.post(tempurl,data)
 
   }
+   updatePoke(data:any){
+    var tempurl = `${this.URLstring}`+`/${this.Path}/Poke/update_poke`
+    return this.Http.post(tempurl,data)
+
+   }
 }

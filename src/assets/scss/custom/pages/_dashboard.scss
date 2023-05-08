@@ -853,8 +853,13 @@
     width: 100px;
     // margin-left: 25%;
     margin-top: 5%;
-}
 
+}
+.poke-image1{
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5); 
+}
 .preview-img {
     display: inline-block;
     padding: 10px;
@@ -920,11 +925,11 @@
 }
 
 .poke-card {
-    border: none;
+    // border: none;
     box-shadow: unset !important;
     background: #FFFFFF;
-border: 2px solid;
-border-radius: 15px;
+    border: 2px solid;
+    border-radius: 15px;
 
 }
 
