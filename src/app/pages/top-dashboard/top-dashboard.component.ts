@@ -51,6 +51,7 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
   bi:any
   mapUrl:any
   map_bh:any
+  about_game_pdf:any
   constructor(private readonly store: Store,public route:ActivatedRoute, config: NgbModalConfig, public sanitizer: DomSanitizer, public router: Router, public http: ApiserviceService, public Util: Util, public element: ElementRef, public modalService: NgbModal, public location: Location, @Inject(DOCUMENT) private _document: Document) {
     config.backdrop = 'static';
     config.keyboard = false;
@@ -66,7 +67,7 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
 
     const isVideoHidden = localStorage.getItem('VideoHide');
     this.isVideoHide = JSON.parse(isVideoHidden);
-    console.log(isVideoHidden);
+    
     window.scrollTo(0, 1)
     
     this.isVideoModalopen = true;
@@ -77,9 +78,9 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
       this.store.select(fromRoot.usergame),
     ]
     ).subscribe(([login, theme, game]) => {
-      console.log(login, theme, game)
+      
       this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
-      console.log(this.userSelectionData);
+      
 
 
 
@@ -97,10 +98,17 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
     }
 
     this.http.buisnessHead(body).subscribe(res => {
-      console.log(res);
+      
       this.buisness_head_response = res
       this.buisness_head_response_ = this.buisness_head_response.data
-      console.log(this.buisness_head_response_);
+
+      if(this.buisness_head_response_?.is_about_game==1){
+        this.about_game_pdf= this.buisness_head_response_?.about_game[0].file_name
+        
+        localStorage.setItem('about_game_pdf',this.about_game_pdf)
+      }
+
+      
       this.map_bh=this.buisness_head_response_._personal_data.map_url
       localStorage.setItem('res',this.map_bh)
       this.GrowthIndexData = this.buisness_head_response.data._points
@@ -115,15 +123,15 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
     })
 
     var href = window.location.href;
-    console.log(href)
+    
     var url = new URL(href)
-    console.log(url);
+    
   
     var checkUserID= this.route.queryParams
     .subscribe(params => {
-      console.log(params); // { orderby: "price" }
+      
       this.map = params.map;
-      console.log(this.map); // price
+      
       localStorage.setItem('map',this.map)
     }
   );
@@ -131,14 +139,14 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
   if( this.bi!='undefined'){
      this.dataMap=this.bi
 
-     console.log(this.dataMap);
+     
      
   }
   else{
-    console.log('growth');
+    
   
       this.dataMap= localStorage.getItem('res')
-      console.log(this.dataMap);
+      
      
 
     
@@ -162,16 +170,19 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
     }
   }
 
- 
+  OverallGrowth(){
+    this.location.replaceState("");
+    location.reload()
+  }
   navigateToBIMap(data: any) {
 
-    console.log(data);
+    
     this.mapUrl=data.map_url
    
     this.location.replaceState("?map="+ this.mapUrl);
     location.reload();
    
-    console.log(this.dataMap);
+    
   
      
   }
@@ -181,7 +192,7 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
 
   navigateToHOSDashboard(index: any) {
     this.spectator = "spectator"
-    console.log(index);
+    
     this.hos_user_id = this.Util.encryptData(this.buisness_head_response_._ranking_data[0]._data[index].userid)
     this.hos_game_id = this.Util.encryptData(this.buisness_head_response_._ranking_data[0]._data[index].id_coroebus_game)
     localStorage.setItem('gameId', this.buisness_head_response_._ranking_data[0]._data[index].id_coroebus_game)

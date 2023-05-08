@@ -117,12 +117,12 @@
                                                 src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}" alt=""
                                                 height="25">
                                         </div>
-                                        <div class="col-2 d-flex align-items-center " >
+                                        <div class="col-2 d-flex justify-content-center align-items-center gap-3 " >
                                             <div class=" text-end font-size-10 font-weight-semibold"
                                                 style="min-width: 2vw;text-align: center;">
-                                                {{item?.weightage}}
+                                                &nbsp;&nbsp;{{item?.weightage}}
                                             </div>
-                                            <div class="d-flex align-items-center ms-2">
+                                            <div class="d-flex  justify-content-center align-items-center pb-1  ">
                                                 <div  style="height:2.5vh;" *ngIf="item.ranking_arrow=='green'">
     
                                                     <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
@@ -137,7 +137,8 @@
                                                 </div>
                                                 <div *ngIf="item.ranking_arrow=='yellow'"  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
                         
-                                                    <div style="height: 1.2vh;width:1.2vh;border-radius:100%;background-color:orange ;"></div>
+                                                    <!-- <div style="height: 1.2vh;width:1.2vh;border-radius:100%;background-color:orange ;"></div> -->
+                                                    <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
                  
                                                  </div>
                                                 <div >
@@ -519,7 +520,7 @@
                                             {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_number}}
                                         </span>
                                         <div style="height:5vh;display:flex;align-items: center;">
-                                            <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                            <img class="rounded-circle z-depth-2 user-logo-row" alt="" 
                                             src="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_logo}}"
                                             data-holder-rendered="true" height="100%"
                                                 width="41" >
@@ -556,13 +557,18 @@
                                                     <img class="mt-1 f-right up-arrow" alt=""
                                                         src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
                                                         data-holder-rendered="true" height="100%"
-                                                        *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow === 'red'"
+                                                        *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow === 'green'"
                                                         (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
     
                                                     <img class="mt-1 f-right up-arrow" alt=""
                                                         src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
                                                         data-holder-rendered="true" height="100%"
-                                                        *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow !== 'red'"
+                                                        *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow == 'red'"
+                                                        (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
+                                                        <img class="mt-1 f-right up-arrow" alt=""
+                                                        src="../../../../assets/images/BoosterAssests/EQ-16687580462022.png"
+                                                        data-holder-rendered="true" height="60%" width="60%"
+                                                        *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow == 'yellow'"
                                                         (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
                                                 </div>
     
@@ -635,7 +641,13 @@
                                                     <img class="mt-1 f-right up-arrow" alt=""
                                                         src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
                                                         data-holder-rendered="true" height="100%"
-                                                        *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._Overall?.[0]?.rankingtable_arrow !== 'red'"
+                                                        *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._Overall?.[0]?.rankingtable_arrow === 'green'"
+                                                        (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
+
+                                                        <img class="mt-1 f-right up-arrow" alt=""
+                                                        src="assets/images/BoosterAssests/EQ-16687580462022.png"
+                                                        data-holder-rendered="true" height="60%" width="60%"
+                                                        *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._Overall?.[0]?.rankingtable_arrow === 'yellow'"
                                                         (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
                                                 </div>
     
@@ -659,24 +671,26 @@
                         <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                             *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) "
-                           
+                            style="cursor: pointer;"
                             [style.background-image]="'url('+item?.ranking_image_web +')'">
                             <div class="col" >
                                 <div class="media d-flex align-items-center gap-3" style="height: 7vh;">
                                     <span class="col-1 ms-2 text-white position-absolute-s">
                                         {{item?.rankingtable_number}}
                                     </span>
+                                    <!-- (click)="openHierarchyPopup(item)" -->
                                     <div style="height:5vh;display:flex;align-items: center;">
-                                        <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                        <img class="rounded-circle z-depth-2 user-logo-row" alt="" style="cursor: pointer;"
+                                        (click)="openHierarchyPopup(item)"
                                             src="{{item?.rankingtable_logo}}" data-holder-rendered="true" height="100%"
                                             width="41" >
                                     </div>
 
                                     <div class="media-body user-logo-row ellipsis"  (click)="navigateToOtherRole(item)"
                                         style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
-                                        <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
+                                        <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom" style="cursor: pointer;" (click)="navigateToOtherRole(item)"
                                             ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}</h5>
-                                        <p class="mt-n4 team-name sub-team name-f-size">{{item?.rankingtable_team}}</p>
+                                        <p class="mt-n4 team-name sub-team name-f-size" style="cursor: pointer;" (click)="navigateToOtherRole(item)">{{item?.rankingtable_team}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -740,8 +754,9 @@
                                     <span class="col-1 ms-2 text-white position-absolute-s">
                                         {{item?.rankingtable_number}}
                                     </span>
+                                    <!-- (click)="openHierarchyPopup(item)" -->
                                     <div style="height:5vh;display:flex;align-items: center;">
-                                        <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                        <img class="rounded-circle z-depth-2 user-logo-row" alt="" 
                                             src="{{item?.rankingtable_logo}}" data-holder-rendered="true" height="100%"
                                             width="41">
                                     </div>
@@ -861,7 +876,7 @@
                         </ng-template>
                         <ng-template #two>
                             <div class="card-div">
-                                <div style="height: 44vh;display: flex;justify-content:center;align-items:center;">
+                                <div style="height: 44vh; padding:2%; display: flex;justify-content:center;align-items:center;">
                                     <div class="card-body px-4 "
                                         style="height: 42vh; overflow-y:auto;display: flex; flex-direction: column;justify-content:start;gap:0.5em">
                                         <mat-accordion>
@@ -879,28 +894,62 @@
                                                 <div *ngIf="!hideBattleGround then redirectm2ost else dontredirect">
                                                 </div>
                                                 <ng-template #redirectm2ost>
-                                                    <div class="d-flex flex-column align-items-start gap-2  mt-2">
-                                                        <div class="inner_content" (click)="navigateToM2ost()">Excel
-                                                            Basic</div>
-                                                        <div class="inner_content" (click)="navigateToM2ost()">Strategic
-                                                            Problem Solving</div>
-                                                        <div class="inner_content" (click)="navigateToM2ost()">Conflict
-                                                            Resolution</div>
-                                                        <div class="inner_content" (click)="navigateToM2ost()">Home Loan
-                                                            Process</div>
-                                                        <div class="inner_content" (click)="navigateToM2ost()">Assesment
-                                                            Home Loan Process</div>
+
+                                                    <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==6">
+                                                        <div class="inner_content" (click)="navigateToM2ost('2289')">Call Centre Basics</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2293')">
+                                                            Objection Handling</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2301')">Conflict Management</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2302')">Power of Speech</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2291')">Telephone Etiquette</div>
+                                                    </div>
+
+
+                                                    <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==3 ">
+                                                        <div class="inner_content" (click)="navigateToM2ost('2273')">Mental Wellbeing</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2297')">Influencing Skills</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2284')">Interpersonal Skills</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2301')">Conflict Management</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2292')">Communication Styles</div>
+                                                    </div>
+
+                                                    <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==4 || sectionView_1._personal_data.id_role== 10">
+                                                        <div class="inner_content" (click)="navigateToM2ost('2300')">Client Centricity</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2295')">Coaching Skills</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2299')">Problem Solving</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2301')">Conflict Management</div>
+                                                        <div class="inner_content" (click)="navigateToM2ost('2296')">Decision Making</div>
                                                     </div>
                                                 </ng-template>
 
                                                 <ng-template #dontredirect>
-                                                    <div class="d-flex flex-column align-items-start gap-2  mt-3">
-                                                        <div class="inner_content">Excel Basic</div>
-                                                        <div class="inner_content">Strategic Problem solving</div>
-                                                        <div class="inner_content">Conflict Resolution</div>
-                                                        <div class="inner_content">Home Loan Process</div>
-                                                        <div class="inner_content">Assesment Home Loan Process</div>
+                                                  
+                                                    <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==6">
+                                                        <div class="inner_content" >Call Centre Basics</div>
+                                                        <div class="inner_content" >
+                                                            Objection Handling</div>
+                                                        <div class="inner_content" >Conflict Management</div>
+                                                        <div class="inner_content" >Power of Speech</div>
+                                                        <div class="inner_content">Telephone Etiquette</div>
                                                     </div>
+
+
+                                                    <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==3">
+                                                        <div class="inner_content" >Mental Wellbeing</div>
+                                                        <div class="inner_content" >Influencing Skills</div>
+                                                        <div class="inner_content" >Interpersonal Skills</div>
+                                                        <div class="inner_content" >Conflict Management</div>
+                                                        <div class="inner_content" >Communication Styles</div>
+                                                    </div>
+
+                                                    <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==4  || sectionView_1._personal_data.id_role==10">
+                                                        <div class="inner_content" >Client Centricity</div>
+                                                        <div class="inner_content" >Coaching Skills</div>
+                                                        <div class="inner_content" >Interpersonal Skills</div>
+                                                        <div class="inner_content" >Conflict Management</div>
+                                                        <div class="inner_content" >Communication Styles</div>
+                                                    </div>
+
                                                 </ng-template>
 
 
@@ -1089,10 +1138,10 @@
                                                         <div class="card bulletins-sub-card me-1"
                                                             *ngFor="let item of addInsList">
                                                             <div class="card-body bulletins-sub-card-body">
-                                                                <p class="spot-engagement ps-1 pt-0 text-dark ">{{item?.header}}</p>
-                                                                <br>
+                                                                <!-- <p class="spot-engagement ps-1 pt-0 text-dark ">{{item?.header}}</p> -->
+                                                                
                                                                 <div class="media bulletins-media">
-                                                                    <img *ngIf="item?.type_ === '1'"
+                                                                    <!-- <img *ngIf="item?.type_ === '1'"
                                                                         src="assets/images/svg/dashboard/add-ins/se.svg"
                                                                         alt="" height="52">
                                                                     <img *ngIf="item?.type_ === '2'"
@@ -1100,18 +1149,19 @@
                                                                         alt="" height="52">
                                                                     <img *ngIf="item?.type_ === '3'"
                                                                         src="assets/images/svg/dashboard/add-ins/le.svg"
-                                                                        alt="" height="52">
-                                                                    <div class="media-body ms-2">
+                                                                        alt="" height="52"> -->
+                                                                    <div class="media-body  d-flex gap-2">
+                                                                        <img class="bulletins-image-card"
+                                                                            src="{{item?.logo}}" alt="" height="55">
 
                                                                         <h5 class="bulletins-title">{{item?.title}}
                                                                             <p class="bulletins-text-muted"
-                                                                                style="margin-bottom:0px;">
+                                                                                style="margin-bottom:0px;color: #232323;">
                                                                                 {{item?.description_}}
                                                                             </p>
                                                                         </h5>
 
-                                                                        <img class="bulletins-image-card"
-                                                                            src="{{item?.logo}}" alt="" height="95">
+                                                                        
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -1122,7 +1172,7 @@
                                                                 </div>
                                                                 <div class="row border-top">
                                                                     <div class="col text-start">
-                                                                        <span class="bulletins-open">Open</span>
+                                                                        <span class="bulletins-open" style="font-weight:600" (click)="navigateToPlayzone()">Open</span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1496,14 +1546,12 @@
                     </div>
                     <div class="col pt-2">
                         <i class="fa fa-times float-end" (click)="modal.dismiss('Cross click')"></i>
-                        <!-- <button type="button" class="float-end" aria-label="Close" >
-                            X
-                        </button> -->
+                       
                     </div>
                 </div>
             </div>
             <div class="modal-body dashboard-popup-level">
-                <!-- {{levelsBucketsList | json}} -->
+                
                 <div class="row table-header mb-2" [ngClass]="{'row-cols-3': false,'row-cols-4': true}">
                     <div class="col-2">
                         <span class="font-size-14 ms-4">League</span>
@@ -1541,7 +1589,7 @@
         </div>
 
     </ng-template>
-    <ng-template #hierarchyPopup let-modal>
+   <ng-template #hierarchyPopup let-modal>
         <div class="level-buckets hierarchyPopup-buckets">
             <div class="modal-header border-bottom-0 p-0">
                 <div class="row w-100">
@@ -1551,7 +1599,6 @@
                 </div>
             </div>
             <div class="modal-body dashboard-popup-level">
-                <!-- {{hierarchyPopupList | json}} -->
 
                 <div class="row  hierarchy-popup-list hierarchy-popup-list-border mb-3 p-2 ms-5 w-75"
                     *ngFor="let item of hierarchyPopupList"
@@ -1584,7 +1631,7 @@
 
             </div>
         </div>
-    </ng-template>
+    </ng-template>  
 </div>
 <!-- Mobile view started -->
 
@@ -2447,7 +2494,7 @@
                                 [style.margin-left.%]="((seasonalThemeMonthlyBadges3[2].seasonal_score_percentage))">
                                 <div class="d-flex flex-column">
                                     <div class="border-left"></div>
-                                    <div class="Progressscore">
+                                    <div class="Progressscore" >
                                         {{seasonalThemeMonthlyBadges3[0].seasonal_score_achived}}
                                     </div>
                                 </div>
@@ -2458,7 +2505,7 @@
                                     [style.margin-left.%]="98">
                                     <div class="d-flex flex-column">
                                         <div class="border-left"></div>
-                                        <div class="Progressscore"  [style.margin-left.%]="90">
+                                        <div class="Progressscore">
                                             {{seasonalThemeMonthlyBadges3[0].seasonal_score_achived}}
                                         </div>
                                     </div>
@@ -2558,6 +2605,21 @@
     </div>
 </ng-template>
 
+
+<!-- Bulletins_game_open -->
+<!-- <ng-template #content let-c="close" let-d="dismiss">
+                                       
+                                    
+    <button type="button" class="btn-close" aria-label="Close"
+    (click)="dismiss()">x</button>
+   
+
+
+        <iframe [src]='safeUrl' title="spin_the_wheel" height="680px" width="100%">
+        </iframe>
+        
+
+</ng-template> -->
 
 
 <!-- Rotated View -->

@@ -13,21 +13,21 @@ export class BusinessReportComponent implements OnInit {
 
   ngOnInit(): void {
     var href = window.location.href;
-    console.log(href)
+    
     var url = new URL(href)
-    console.log(url);
+    
 
   
     var checkUserID= this.route.queryParams
     .subscribe(params => {
-      console.log(params); // { orderby: "price" }
+      
       this.map = params.map_report;
-      console.log(this.map); // price
+      
       
     }
   );
 
-  console.log(this.map);
+  
   
     
   }

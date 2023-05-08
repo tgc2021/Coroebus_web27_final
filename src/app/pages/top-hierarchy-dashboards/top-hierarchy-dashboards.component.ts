@@ -74,6 +74,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   isVideoHide: any;
   emptyInput: boolean=true;
   lengthLeaderBoardData: any;
+  about_game_pdf:any
   lengthSearchList: number;
   pokeId: any;
   pokeslidedata :any= [];
@@ -92,6 +93,10 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   pockdata: any;
   emoji: any;
   pokeidselected: any;
+  hierarchyPopupList: any
+  firstUserData: any;
+  nodatasearch:any
+
   constructor(private readonly store: Store, public _route: ActivatedRoute,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -108,7 +113,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
 
     this.dark_color=localStorage.getItem('topbar_color')
     this.element.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
-console.log(this.dark_color);
+
 
     this.medium_color=localStorage.getItem('medium_color')
     this.element.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
@@ -116,7 +121,7 @@ console.log(this.dark_color);
     this.light_color=localStorage.getItem('light_color')
     this.element.nativeElement.style.setProperty('--lightColor', `${this.light_color}`)
 
-    console.log(this.medium_color);
+    
 
     this.activeClass=0
 
@@ -128,27 +133,27 @@ console.log(this.dark_color);
       this.store.select(fromRoot.usergame),
     ]
     ).subscribe(([login, theme, game]) => {
-      console.log(login, theme, game)
+      
       this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
-      console.log(this.userSelectionData);
+      
 
       this._routeSub?.unsubscribe()
       this._routeSub = this._route.queryParams.subscribe(queryParams => {
         // do something with the query params
-        console.log(queryParams?.userID);
+        
         if (queryParams?.userID) {
-          console.log(window.location.href);
+          
           this.location = window.location.href
           if (this.location.includes("?")) {
             this.cameraimage=false
             var replacedUserId = queryParams?.userID.replace(/ /g, '+');
-            console.log(replacedUserId);
+            
 
             var replacedGameId = queryParams?.gameID.replace(/ /g, '+');
-            console.log(replacedGameId);
+            
 
             var replacedRoleId = queryParams?.roleID.replace(/ /g, '+');
-            console.log(replacedRoleId);
+            
             queryParams = { userID: this.Util.decryptData(replacedUserId), gameID: this.Util.decryptData(replacedGameId), roleID: this.Util.decryptData(replacedRoleId) }
 
           }
@@ -157,7 +162,7 @@ console.log(this.dark_color);
 
           }
           this.queryParams = queryParams
-          console.log(this.queryParams);
+          
 
 
 
@@ -200,7 +205,7 @@ console.log(this.dark_color);
     };
     [err, res] = await HttpProtocols.to(DashboardModel.getUserBannerDataSectionView_1(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
-      console.log(res);
+      
       
       let body={
         _userid:this.userSelectionData?._personal_data?.USERID,
@@ -211,29 +216,36 @@ console.log(this.dark_color);
       }
   
       this.http.engagamentlog(body).subscribe(res=>{
-        console.log(res);
+        
         
       })
 
       this.sectionView_1 = res?.data
-      console.log(this.sectionView_1._points[0].score);
+      
       localStorage.setItem('bg_image',this.sectionView_1?.theme_details?.[0]?.point_dist_background)
 
-      console.log(this.sectionView_1?.theme_details?.[0]?.dark_color);
       
+      
+
+      if(this.sectionView_1?.is_about_game==1){
+        this.about_game_pdf= this.sectionView_1?.about_game[0].file_name
+        
+        localStorage.setItem('about_game_pdf',this.about_game_pdf)
+      }
+
       this.pokeAnimationData = this.sectionView_1._poked_data
       // this.pokeAnimationData1=this.sectionView_1._poked_data[0].poke_description
       this.updatedPoke()
 
-      console.log(this.pokeAnimationData);
+      
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       this.getBackImagesFromSectionView1 = this.sectionView_1._back_images[1]._data;
 
       this.getBackImages.push(...this.getBackImagesFromSectionView1);
 
 
-      console.log(this.getBackImages);
-      console.log("Section_view1_Data.....", this.getBackImagesFromSectionView1);
+      
+      
       ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       // alert(this.pokeAnimationData)
@@ -246,7 +258,7 @@ console.log(this.dark_color);
       document.body.style.backgroundImage = 'url(' + bgImg + ')'
 
       this.web_profile_back_image= this.sectionView_1._back_images[1]._data[0].ranking_image_profile;
-      console.log(this.web_profile_back_image);
+      
       
      
       this.eventService.broadcast('passDataToHeader', {
@@ -317,9 +329,9 @@ console.log(this.dark_color);
     console.log(this.pokeslidedata);
   }
   async getUserBannerDataSectionView_3(viewMore?: any, queryParams?: any) {
-    console.log(viewMore);
     
-    console.log(queryParams);
+    
+    
     let err: any, res: any;
     let body: any;
     body = {
@@ -342,34 +354,34 @@ console.log(this.dark_color);
           }
 
         });
-        console.log(this.spectSearchStr);
+        
         
         this.leaderboard_data=this.sectionView_3?._ranking_data[0]._data;
         this.lengthLeaderBoardData=this.leaderboard_data.length;
-        console.log(this.leaderboard_data);
+        
         this.leaderboard_data_buttons=this.sectionView_3?._ranking_data
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0].order
 
 
       } else {
-        console.log(this.spectSearchStr);
+        
 
         this.sectionView_3 = res?.data
         this.leaderboard_data=this.sectionView_3?._ranking_data[0]._data
         this.leaderboard_data_buttons=this.sectionView_3?._ranking_data
-        console.log(this.leaderboard_data);
+        
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0].order
 
       }
       // this.filterRankingData()
 
       this.sectionView_3_list = this.sectionView_3?._ranking_data?.filter(data => {
-        //console.log(data)
+        //
         if (data.order === this.activeTabForSectionView_2) {
           return data
         }
       })
-      //console.log(this.sectionView_3_list)
+      //
     } else {
       this.sectionView_3_err = 'Please try after some time'
     }
@@ -487,7 +499,7 @@ console.log(this.dark_color);
 
   navigateToSMDashboard(index:any){
 
-    console.log(index);
+    
     
     this.spectator="spectator"
     
@@ -498,7 +510,7 @@ console.log(this.dark_color);
 
     // this.sm_role_id=this.Util.encryptData(this.sectionView_3._ranking_data[3]._data[index].id_role)
     this.overall_role_id=this.Util.decryptData(this.sm_role_id)
-    console.log(this.overall_role_id);
+    
 
     if(this.overall_role_id==8 || this.overall_role_id==12){
       this.router.navigateByUrl('/top_dashboard?userID='+this.sm_user_id +"&gameID="+  this.sm_game_id +"&roleID="+  this.sm_role_id)
@@ -512,7 +524,7 @@ else{
  
 
   navigateToRMDashboard(index:any){
-    console.log(index);
+    
 
     this.sm_user_id=this.Util.encryptData(index.userid)
     // this.game_ID_sm=localStorage.getItem('gameId')
@@ -521,13 +533,13 @@ else{
   
     // this.sm_role_id=this.Util.encryptData(this.sectionView_3._ranking_data[2]._data[index].id_role)
     this.overall_role_id=this.Util.decryptData(this.sm_role_id)
-console.log(this.overall_role_id);
+
 this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  this.sm_game_id +"&roleID="+  this.sm_role_id)
   }
 
   navigateToSearchSMDashboard(index:any){
     this.spectSearFinalList=Array.of(this.spectSearList)
-    console.log(this.spectSearFinalList);
+    
     this.spectSearFinalList1=this.spectSearFinalList[0]
     this.sm_user_id=this.Util.encryptData(this.spectSearFinalList1[index].userid)
     this.game_ID_sm=localStorage.getItem('gameId')
@@ -549,7 +561,7 @@ else{
 
   navigateToSearchRMDashboard(index:any){
     this.spectSearFinalList=Array.of(this.spectSearList)
-    console.log(this.spectSearFinalList);
+    
     this.spectSearFinalList1=this.spectSearFinalList[0]
 
     this.sm_user_id=this.Util.encryptData(this.spectSearFinalList1[index].userid)
@@ -560,18 +572,18 @@ else{
 
     // this.sm_role_id=this.Util.encryptData(this.sectionView_3._ranking_data[2]._data[index].id_role)
     this.overall_role_id=this.Util.decryptData(this.sm_role_id)
-console.log(this.overall_role_id);
+
 this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  this.sm_game_id +"&roleID="+  this.sm_role_id)
 
   }
   getGraphDataById() {
-    // console.log('Graph data',data);
+    // 
     let obj = {
       _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
 
       game_id: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
     }
-    console.log(obj)
+    
 
     let body={
       "_userid": this.userSelectionData?._personal_data?.USERID,
@@ -583,7 +595,7 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
   
   
     this.http.engagamentlog(body).subscribe(res=>{
-      console.log(res);
+      
       
     })
 
@@ -608,16 +620,16 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
   }
 
   getRewards(data:any){
-    console.log(data);
     
-    console.log('rewards page');
+    
+    
     
     let obj = {
       _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
 
       game_id: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
     }
-    console.log(obj)
+    
 
     localStorage.setItem('rewardid',obj._userid)
   
@@ -655,16 +667,16 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
   }
 
   leaderboard(event:any=0){
-   console.log(event);
+   
    this.spectSearchStr=null
-  //   console.log(this.sectionView_3._ranking_data[event]);
+  //   
   // this.leaderboard_data_buttons=this.sectionView_3._ranking_data[event]
   this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[event].order
 
    this.leaderboard_data=this.sectionView_3._ranking_data[event]._data
-   console.log(this.leaderboard_data);
+   
    this.activeClass=event
-   console.log(this.activeClass);
+   
  
    
   }
@@ -687,10 +699,10 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
     
     
       this.http.engagamentlog(body).subscribe(res=>{
-        console.log(res);
+        
         
       })
-      // console.log("FileUpload -> files", fileList);
+      // 
     }
     // this.getUserBannerDataSectionView_2()
     this.userSelectionData
@@ -698,7 +710,7 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
  
   viewMore(){
     this.pageNumberForSectionView_3 = this.pageNumberForSectionView_3 + 1
-    console.log(this.queryParams);
+    
     
     this.getUserBannerDataSectionView_3(1,this.queryParams)
   }
@@ -746,7 +758,9 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
     };
     [err, res] = await HttpProtocols.to(DashboardModel.spectSearch(body))
     if (!err && res?.statuscode === 200) {
-
+      console.log(res);
+     
+      
       let body={
         _userid:this.userSelectionData?._personal_data?.USERID,
         _game:this.userSelectionData?.id_coroebus_game,
@@ -756,40 +770,42 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
       }
   
       this.http.engagamentlog(body).subscribe(res=>{
-        console.log(res);
+        
         
       })
 
       this.spectSearList = res?.data[0]._data;
+    
+      
       this.lengthSearchList=this.spectSearList.length;
-      console.log(this.spectSearList);
+      
     // this.spectSearFinalList=this.spectSearList._data
       this.searchbgimage= this.spectSearList[0]
       this.search_bg_tile_image=this.searchbgimage._data
-      console.log(this.search_bg_tile_image);
+      
 
       this.search_bg_tile_image.map(res=>{
        
         this.final_web_tile_image=res
-        console.log(this.final_web_tile_image);
         
-        console.log(this.getBackImagesFromSectionView1);
+        
+        
 
         this.getBackImagesFromSectionView1.map(res=>{
           
           this.section1_tile_images=res
-          console.log(this.section1_tile_images);
-          console.log(this.final_web_tile_image.ranking_image_level);
-          console.log(this.section1_tile_images.ranking_image_level);
+          
+          
+          
           if(this.final_web_tile_image.ranking_image_level == this.section1_tile_images.ranking_image_level){
-            console.log('true');
+            
             
            this.web_tile_img= this.section1_tile_images.ranking_image
-            console.log(this.web_tile_img);
+            
             
            }
 
-           console.log(this.web_tile_img);
+           
 
 
         })
@@ -806,31 +822,55 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
   }
 
   getDataBasedOnUserID(data: any) {
-    // console.log(data?.role_id)
+    // 
 
-    this.router.navigate([], {
-      relativeTo: this._route,
-      queryParams: {
-        userID: this.Util.encryptData(data?._userid),
-        gameID: this.Util.encryptData(data?.game_id),
-        roleID: this.Util.encryptData(data?.role_id?.toString())
+    
+    if(data.role_id==8||data.role_id==9){
+      this.router.navigate([], {
+        relativeTo: this._route,
+        queryParams: {
+          userID: this.Util.encryptData(data?._userid),
+          gameID: this.Util.encryptData(data?.game_id),
+          roleID: this.Util.encryptData(data?.role_id?.toString())
+  
+        },
+  
+        queryParamsHandling: 'merge',
+        // preserve the existing query params in the route
+        skipLocationChange: false
+        // do not trigger navigation
+  
+  
+      });
+    }
 
-      },
-
-      queryParamsHandling: 'merge',
-      // preserve the existing query params in the route
-      skipLocationChange: false
-      // do not trigger navigation
-
-
-    });
+    else{
+      
+      this.router.navigate(['/dashboard'], {
+        relativeTo: this._route,
+        queryParams: {
+          userID: this.Util.encryptData(data?._userid),
+          gameID: this.Util.encryptData(data?.game_id),
+          roleID: this.Util.encryptData(data?.role_id?.toString())
+  
+        },
+  
+        // queryParamsHandling: 'merge',
+        // preserve the existing query params in the route
+        // skipLocationChange: false
+        // do not trigger navigation
+  
+  
+      });
+    }
+   
 
 
 
   }
 
   getDataBasedOnUserIDHos(data: any) {
-    console.log(data)
+    
     localStorage.setItem('userid',data.USERID)
 
     this.router.navigate(['/topdashboard'], {
@@ -853,8 +893,46 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
 
   }
   governance_index(){
-    console.log('gov index');
+    
     
     this.router.navigateByUrl('governance_index');
+  }
+
+  async openHierarchyPopup(data?: any) {
+    
+    let err: any, res: any;
+    let body: any;
+    // body = {
+    //   "_userid": this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
+    //   "_game": this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
+    // };
+    body = {
+      "_userid": data?.userid,
+      "_game": data?.id_coroebus_game
+    };
+    [err, res] = await HttpProtocols.to(DashboardModel.hierarchyPopup(body))
+    if (!err && res?.statuscode === 200) {
+      this.hierarchyPopupList = res?.data
+      this.firstUserData = this.hierarchyPopupList[0]
+      
+
+      
+
+      this.modalService.open(this.hierarchyPopup, { centered: true, windowClass: 'modal-cls' });
+    } else {
+      // this.levelsBucketsList_err = 'Error'
+    }
+    
+  }
+
+  getDataBasedOnUserIDVIAhierarchyPopupList(data: any, modal: any) {
+    modal.dismiss('Cross click')
+    let obj = {
+      _userid: data?.USERID,
+      game_id: data?.id_coroebus_game,
+      role_id: data?.id_role
+    }
+    
+    this.getDataBasedOnUserID(obj)
   }
 }

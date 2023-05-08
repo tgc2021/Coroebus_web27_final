@@ -105,10 +105,10 @@ export class InteractiveDashboardComponent implements OnInit {
       takeUntil(this.destroy$)
     ).subscribe(data => {
       this.userObj = data?.user
-      console.log(this.userObj);
+      
 
       this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
-      console.log(this.mergeObj);
+      
 
       this.combineLatest = combineLatest([
         this.store.select(fromRoot.userLogin),
@@ -116,9 +116,9 @@ export class InteractiveDashboardComponent implements OnInit {
         this.store.select(fromRoot.usergame),
       ]
       ).subscribe(([login, theme, game]) => {
-        console.log(login, theme, game)
+        
         this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
-       console.log(this.userSelectionData);
+       
        
   
       })
@@ -130,17 +130,17 @@ if(this.mergeObj.id_coroebus_game != null){
    
   }
 
-  console.log(body);
+  
   this.http.interactiveDashboard(body).subscribe((res) => {
-    console.log(res)
+    
     this.interactive_dashoard_response = res;
     this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
     this.dailyToppers=this.interactive_dashoard_response[0].data.seasonal_theme_daily_badge_details;
     this.weeklyTopers=this.interactive_dashoard_response[0].data.seasonal_theme_weekly_badge_toppers;
     this.monthlyTopers=this.interactive_dashoard_response[0].data.seasonal_theme_monthly_badge_toppers;
     
-    console.log(this.weeklyTitle);
-    console.log("=------->>",this.dailyToppers);
+    
+    
 
     this.eventService.broadcast('passDataToHeader', {
       color: this.interactive_dashoard_response[0].data.theme_details[0].dark_color,
@@ -165,12 +165,12 @@ else{
    
   }
 
-  console.log(body);
+  
   this.http.interactiveDashboard(body).subscribe((res) => {
-    console.log(res)
+    
     this.interactive_dashoard_response = res;
     this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
-    console.log(this.interactive_dashoard_response);
+    
     this.eventService.broadcast('passDataToHeader', {
       color: this.interactive_dashoard_response[0].data.theme_details[0].dark_color,
       game_logo: this.interactive_dashoard_response[0].data._personal_data.game_logo,
@@ -196,11 +196,11 @@ else{
 
   partClicked(arg,k:any) {
 
-    console.log(k);
-    console.log("---->", arg);
-    // console.log(arg);
+    
+    
+    // 
     if (arg.type == 'Lerning Academy') {
-      console.log("Learning Academy");
+      
       this._router.navigateByUrl("/learning/learningAcademy")
 
       

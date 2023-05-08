@@ -54,7 +54,7 @@ export class NotificationListComponent implements OnInit {
       }
   
       this.http.engagamentlog(body).subscribe(res=>{
-        console.log(res);
+        
         
       })
       this.notificationLists = res?.data?.[0]?.list
@@ -64,7 +64,7 @@ export class NotificationListComponent implements OnInit {
     }
   }
   openNotification(data: any) {
-    console.log(data);
+    
     
     if(data.video== "" && data.video_path=="" &&data.image==""){
       let body={
@@ -76,7 +76,7 @@ export class NotificationListComponent implements OnInit {
       }
   
       this.http.engagamentlog(body).subscribe(res=>{
-        console.log(res);
+        
         
       })
     }
@@ -91,7 +91,7 @@ export class NotificationListComponent implements OnInit {
       }
   
       this.http.engagamentlog(body).subscribe(res=>{
-        console.log(res);
+        
         
       })
     }
@@ -106,7 +106,7 @@ export class NotificationListComponent implements OnInit {
       }
   
       this.http.engagamentlog(body).subscribe(res=>{
-        console.log(res);
+        
         
       })
     }

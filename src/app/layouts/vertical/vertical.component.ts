@@ -80,34 +80,34 @@ this.dynamicColor()
     ]
     ).subscribe(([login, theme, game]) => {
       this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
-console.log(this.userSelectionData);
+
 
     })
     this.passDataToHeaderSub?.unsubscribe()
     this.passDataToHeaderSub = this.eventService.subscribe('passDataToHeader', (data) => {
       this.headerInfo = data
-      console.log(this.headerInfo);
+      
 
     })
     if (this.userSelectionData?.otherInfo) {
       this.headerInfo = this.userSelectionData?.otherInfo
-      console.log(this.headerInfo);
+      
       this.color = this.headerInfo.color; //yellowcolor
-      console.log(this.color);
+      
       this.bgImage= this.userSelectionData?.themes[0].theme_background_web
-      console.log(this.bgImage);
+      
       
       this.element.nativeElement.style.setProperty('--myvar', `${this.color}`)
       this.element.nativeElement.style.setProperty('--bgImage', `${this.bgImage}`)
 
       // this.element.nativeElement.style.setProperty('--mycolor',`${this.color}`)
-      // console.log( this.element.nativeElement.style.setProperty('--myvar',`${this.color}`));
+      // 
 
 
     }
     this._routeSub = this._route.queryParams.subscribe(queryParams => {
       this.queryParams = queryParams
-      console.log(queryParams)
+      
     })
   }
 
@@ -186,7 +186,7 @@ console.log(this.userSelectionData);
 
     
     this.isCondensed = !this.isCondensed;
-    console.log(this.isCondensed);
+    
 
     document.body.classList.toggle('sidebar-enable');
     document.body.classList.toggle('vertical-collpsed');
@@ -197,7 +197,7 @@ console.log(this.userSelectionData);
   }
   closeMenu(){
     this.isCondensed =true;
-   console.log(this.isCondensed);
+   
   
   // document.body.classList.toggle('sidebar-enable');
   // document.body.classList.remove('sidebar-enable');
@@ -205,7 +205,7 @@ console.log(this.userSelectionData);
   }
   close(){
     this.isCondensed =true;
-    console.log(this.isCondensed);
+    
    
   }
 }

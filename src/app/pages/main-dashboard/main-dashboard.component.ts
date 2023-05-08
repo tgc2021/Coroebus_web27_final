@@ -117,7 +117,7 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
       this.store.select(fromRoot.usergame),
     ]
     ).subscribe(([login, theme, game]) => {
-      console.log(login, theme, game)
+      
       this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
       this._routeSub?.unsubscribe()
       this._routeSub = this._route.queryParams.subscribe(queryParams => {
@@ -125,7 +125,7 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
         if (queryParams?.userID) {
           queryParams = { userID: this.Util.decryptData(queryParams?.userID), gameID: this.Util.decryptData(queryParams?.gameID), roleID: this.Util.decryptData(queryParams?.roleID) }
           this.queryParams = queryParams
-          console.log(this.queryParams);
+          
 
           this.getUserBannerDataSectionView_1(queryParams)
           this.getUserBannerDataSectionView_2(queryParams)
@@ -165,16 +165,16 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
   Edit_image() {
     setTimeout(() => { this.Edit_image() }, 1000 * 1)
     var url_string = window.location.href
-    // console.log(url_string);
+    // 
     var userID = url_string.includes("?"); // true
-    // console.log(userID)
+    // 
     if (userID === true) {
       this.edit_image = false
     }
     else {
       this.edit_image = true
     }
-    // console.log(this.userID);
+    // 
   }
 
   ngAfterViewInit() {
@@ -196,7 +196,7 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
       this.pokeAnimationData = this.sectionView_1._poked_data
       // this.pokeAnimationData1=this.sectionView_1._poked_data[0].poke_description
 
-      console.log(this.pokeAnimationData);
+      
 
       // alert(this.pokeAnimationData)
 
@@ -241,15 +241,15 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
 
       // for(let i=0;i<this.sectionView_2?._ranking_data?.length;i++){
       if (this.queryParams?.roleID =='6' || this.userSelectionData?._personal_data?.id_role =='6') {
-        console.log("tab", this.activeTabForSectionView_2);
-        console.log("tab bool", this.queryParams?.roleID);
+        
+        
 
         this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         if (this.queryParams?.roleID =='4') {
           this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[1].order
           this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[1].order
           this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
-        console.log('Active tab 2');
+        
   
 
         }
@@ -257,7 +257,7 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
           this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
           this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
           this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
-          console.log('Active tab 3');
+          
 
 
         }
@@ -266,7 +266,7 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
           this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
           this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
 
-          console.log('Active tab 4');
+          
 
         }
         else if (this.queryParams?.roleID =='' || this.queryParams?.roleID == null || this.queryParams?.roleID === 'undefined'||( this.queryParams?.roleID ==this.userSelectionData?._personal_data?.id_role)) {
@@ -274,13 +274,13 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
           this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
           this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
 
-          console.log('Active tab 1');
+          
 
 
         } 
         else {
           this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
-          console.log('Active tab 1');
+          
 
         }
 
@@ -304,11 +304,11 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
         }
         // else if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
         //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
-        //   console.log("id 4");            
+        //   
 
         // }
-        console.log("tab", this.activeTabForSectionView_2);
-        console.log("tab bool", this.queryParams?.roleID === '4' || this.userSelectionData?._personal_data?.id_role === '4');
+        
+        
 
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
@@ -326,10 +326,10 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
         }
         // else if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
         //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
-        //   console.log("id 4");            
+        //   
 
         // }
-        console.log(this.activeTabForSectionView_2);
+        
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
         // }
@@ -341,10 +341,10 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
 
         // if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
         //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
-        //   console.log("id 4");            
+        //   
 
         // }
-        console.log(this.activeTabForSectionView_2);
+        
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
         // }
@@ -358,10 +358,10 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
 
         // if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
         //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
-        //   console.log("id 4");            
+        //   
 
         // }
-        console.log(this.activeTabForSectionView_2);
+        
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
         // }
@@ -400,12 +400,12 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
       this.filterRankingData()
 
       this.sectionView_3_list = this.sectionView_3?._ranking_data?.filter(data => {
-        //console.log(data)
+        //
         if (data.order === this.activeTabForSectionView_2) {
           return data
         }
       })
-      //console.log(this.sectionView_3_list)
+      //
     } else {
       this.sectionView_3_err = 'Please try after some time'
     }
@@ -422,7 +422,7 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
             })
           } else {
             compareData?._data?.filter((backImages) => {
-              // console.log(secondLevel?.ranking_image_level, backImages?.ranking_image_level, secondLevel?.ranking_image_level === backImages?.ranking_image_level)
+              // 
               if (secondLevel?.ranking_image_level === backImages?.ranking_image_level) {
                 secondLevel.ranking_image_level_img = backImages?.ranking_image
               }
@@ -462,7 +462,7 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
     this.labelNameMy = name
     this.pageNumberForSectionView_3 = 1
     this.activeTabForSectionView_2 = order
-    console.log(this.activeTabForSectionView_2);
+    
 
     this.activeTabOrderNumberForSectionView_2 = order
     this.activeSubTabForSectionView_2 = 'My Store'
@@ -474,21 +474,21 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
   }
   upDownArrow(arrowStatus: string, rowData: any) {
     // alert('TODO: Add Poke popup-> ' + arrowStatus)
-    //console.log(rowData)
+    //
     if (rowData?.userid !== this.userSelectionData?._personal_data?.USERID) {
       let roleCheckArray = this.Util.pokeMapping()
       if (this.queryParams?.roleID) {
-        console.log(this.queryParams?.roleID)
+        
         //roleCheckArray = roleCheckArray?.filter(data => data?.roleID === this.sectionView_1?._personal_data?.id_role)
         roleCheckArray = roleCheckArray?.filter(data => data?.roleID === this.queryParams?.roleID)
       } else {
         roleCheckArray = roleCheckArray?.filter(data => data?.roleID === this.userSelectionData?._personal_data?.id_role)
       }
-      //console.log(this.queryParams)
+      //
       if (roleCheckArray?.[0]?.canPokeTo?.indexOf(rowData?.id_role) > -1) {
         this.pokeRowData = rowData
         this.arrowStatus = arrowStatus === 'red' ? 'Motivation' : 'Positive'
-        console.log(this.arrowStatus);
+        
 
         this.modalService.open(this.pokeList, { centered: true, windowClass: 'modal-cls' })
 
@@ -515,7 +515,7 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
     [err, res] = await HttpProtocols.to(DashboardModel.notificationList(body))
     if (!err && res?.statuscode === 200) {
       this.notificationLists = res?.data?.[0]?.list
-      // console.log(res?.data?.[0]?.list);
+      // 
 
       if (this.notificationLists === "") {
         this.NotificationHide = true
@@ -547,7 +547,7 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
     [err, res] = await HttpProtocols.to(DashboardModel.addIns(body))
     if (!err && res?.statuscode === 200) {
       this.addInsList = res?.data
-      // console.log(this.addInsList);
+      // 
 
       if (this.addInsList.length === 0) {
         this.buletinsHide = true
@@ -578,7 +578,7 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
     [err, res] = await HttpProtocols.to(DashboardModel.spectSearch(body))
     if (!err && res?.statuscode === 200) {
       this.spectSearList = res?.data
-      console.log(this.spectSearList);
+      
 
     } else {
       this.notificationList_err = 'Error'
@@ -591,7 +591,7 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
     this.idSelected = event === 'Positive' ? 0 : 1
     this.pokeidselected = this.emojiText[this.idSelected]._data[id].poke_description
     this.emoji = this.emojiText[this.idSelected]._data[id].poke_description
-    //  console.log(this.idSelected);
+    //  
 
 
   }
@@ -632,7 +632,7 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
       modalRef.componentInstance.fileData = event;
       modalRef.componentInstance.buttonColor = this.sectionView_1?.theme_details?.[0]?.dark_color;
       modalRef.componentInstance.userObj = this.sectionView_1?._personal_data;
-      // console.log("FileUpload -> files", fileList);
+      // 
     }
     this.getUserBannerDataSectionView_2()
     this.userSelectionData
@@ -642,7 +642,7 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
     modalRef.componentInstance.notoficationData = data;
   }
   getDataBasedOnUserID(data: any) {
-    // console.log(data?.role_id)
+    // 
 
     this.Edit_image()
     this._router.navigate([], {
@@ -675,7 +675,7 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
     this.filterRankingData()
   }
   async openHierarchyPopup(data?: any) {
-    console.log(data)
+    
     let err: any, res: any;
     let body: any;
     // body = {
@@ -690,9 +690,9 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
     if (!err && res?.statuscode === 200) {
       this.hierarchyPopupList = res?.data
       this.firstUserData = this.hierarchyPopupList[0]
-      console.log(this.firstUserData);
+      
 
-      console.log(this.hierarchyPopupList);
+      
 
       this.modalService.open(this.hierarchyPopup, { centered: true, windowClass: 'modal-cls' });
     } else {
@@ -706,7 +706,7 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
       game_id: data?.id_coroebus_game,
       role_id: data?.id_role
     }
-    console.log(obj)
+    
     this.getDataBasedOnUserID(obj)
   }
 
@@ -721,18 +721,18 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
   // }
 
   activeTab() {
-    console.log(this.queryParams);
+    
 
 
   }
 
   navigateToRewards(){
     var url_string = window.location.href
-    // console.log(url_string);
+    // 
     var userID = url_string.includes("?"); // true
 
     if( url_string.includes("?")){
-      console.log("spectator view");
+      
       
     }
     else if(url_string.includes("")){
@@ -744,13 +744,13 @@ export class MainDashboardComponent  implements OnInit, AfterViewInit, OnDestroy
 
 
   getGraphDataById() {
-    // console.log('Graph data',data);
+    // 
     let obj = {
       _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
 
       game_id: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
     }
-    console.log(obj)
+    
     // this._router.navigate('/performance/page')
     // this._router.navigate(['/performance/page'], { queryParams: { key: value } })
     this._router.navigate(['/performance/page'], {

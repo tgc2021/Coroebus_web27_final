@@ -1180,25 +1180,27 @@ color: #000000;
 // CSS For Weekly Modal
 
 
-// ::-webkit-scrollbar {
-//     width: 0.4rem;
-//     height: 0.3em;
-//     scroll-behavior: smooth;
-// }
+::-webkit-scrollbar {
+    width: 0.4rem;
+    height: 0.3em;
 
-// /* Track */
-// ::-webkit-scrollbar-track {
-//     display: none;
-//     box-shadow: inset 0 0 5px grey;
-//     border-radius: 10px;
-// }
+    scroll-behavior: smooth;
+}
 
-// /* Handle */
-// ::-webkit-scrollbar-thumb {
-//     background: scroll;
-//     border-radius: 10px;
-//     background: #bbb;
-// }
+/* Track */
+::-webkit-scrollbar-track {
+    // display: none;
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: scroll;
+    border-radius: 10px;
+    background: #bbb;
+}
 
 .WeeklyModal {
 
@@ -1850,7 +1852,6 @@ border-radius: 8px;
     display: flex;
     // justify-content: start;
     // gap:23%;
-    
 
 }
 .Progressscore{
@@ -1933,6 +1934,7 @@ border-radius: 8px;
     width: 65%;
 
   }
+  
     
 }
 .bulletins-sub-card-body{

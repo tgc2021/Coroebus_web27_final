@@ -67,19 +67,19 @@ export class AchievementShelfComponent implements OnInit {
 
  
      this.currentDate = new Date();
-    console.log(this.currentDate);
+    
 
     this.currentdatetransform = this.datePipe.transform(this.currentDate, 'dd MMM YYYY');
-    console.log(  this.currentdatetransform );
+    
 
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
     ).subscribe(data => {
       this.userObj = data?.user
-      console.log(this.userObj);
+      
 
       this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
-      console.log(this.mergeObj);
+      
 
       this.combineLatest = combineLatest([
         this.store.select(fromRoot.userLogin),
@@ -87,9 +87,9 @@ export class AchievementShelfComponent implements OnInit {
         this.store.select(fromRoot.usergame),
       ]
       ).subscribe(([login, theme, game]) => {
-        console.log(login, theme, game)
+        
         this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
-       console.log(this.userSelectionData);
+       
        
   
       })
@@ -101,14 +101,14 @@ export class AchievementShelfComponent implements OnInit {
           _game: this.userObj.games[0].id_coroebus_game,
         }
   
-        console.log(body);
+        
         this.http.seasonal_theme(body).subscribe((res) => {
-          console.log(res)
+          
   
           this.seasonal_theme_response = res;
           this.seasonal_theme_response = Array.of(this.seasonal_theme_response);
-          console.log(this.seasonal_theme_response);
-          console.log(this.seasonal_theme_response[0].data.length);
+          
+          
   
   
   
@@ -124,7 +124,7 @@ export class AchievementShelfComponent implements OnInit {
           });
              
           
-         console.log(this.showCombo)
+         
          
             
   
@@ -133,9 +133,9 @@ export class AchievementShelfComponent implements OnInit {
           // this.calculate(this.seasonal_theme_response)
           // for(let k=0;k<=this.seasonal_theme_response[0].data.length;k++){
           //   this.lo = this.seasonal_theme_response[0].data[k].end_date
-          //   console.log(this.lo);
+          //   
           //    this.date = new Date(this.lo);
-          //   console.log(this.date);
+          //   
           // }
             
   
@@ -143,10 +143,10 @@ export class AchievementShelfComponent implements OnInit {
   
   
         this.http.seasonal_rewards_points(body).subscribe((res) => {
-          console.log(res)
+          
           this.seasonal_total_points=res
           this.seasonal_total_points_response= this.seasonal_total_points.data[0]
-          console.log(this.seasonal_total_points.data[0]);
+          
           
           
         })
@@ -160,7 +160,7 @@ export class AchievementShelfComponent implements OnInit {
         }
     
         this.http.engagamentlog(body_engagement).subscribe(res=>{
-          console.log(res);
+          
           
         })
       }
@@ -172,14 +172,14 @@ export class AchievementShelfComponent implements OnInit {
 
         }
   
-        console.log(body);
+        
         this.http.seasonal_theme(body).subscribe((res) => {
-          console.log(res)
+          
   
           this.seasonal_theme_response = res;
           this.seasonal_theme_response = Array.of(this.seasonal_theme_response);
-          console.log(this.seasonal_theme_response);
-          console.log(this.seasonal_theme_response[0].data.length);
+          
+          
   
   
   
@@ -195,7 +195,7 @@ export class AchievementShelfComponent implements OnInit {
           });
              
           
-         console.log(this.showCombo)
+         
          
             
   
@@ -204,9 +204,9 @@ export class AchievementShelfComponent implements OnInit {
           // this.calculate(this.seasonal_theme_response)
           // for(let k=0;k<=this.seasonal_theme_response[0].data.length;k++){
           //   this.lo = this.seasonal_theme_response[0].data[k].end_date
-          //   console.log(this.lo);
+          //   
           //    this.date = new Date(this.lo);
-          //   console.log(this.date);
+          //   
           // }
             
   
@@ -214,10 +214,10 @@ export class AchievementShelfComponent implements OnInit {
   
   
         this.http.seasonal_rewards_points(body).subscribe((res) => {
-          console.log(res)
+          
           this.seasonal_total_points=res
           this.seasonal_total_points_response= this.seasonal_total_points.data[0]
-          console.log(this.seasonal_total_points.data[0]);
+          
           
           
         })
@@ -232,7 +232,7 @@ export class AchievementShelfComponent implements OnInit {
         }
     
         this.http.engagamentlog(body_engagement).subscribe(res=>{
-          console.log(res);
+          
           
         })
       }
@@ -243,10 +243,10 @@ export class AchievementShelfComponent implements OnInit {
 
   scorll(details: any,index:any) {
 
-    console.log(details,index+1);
+    
     const elem=(<HTMLInputElement>document.getElementById('imgList'+index))
 
-      console.log(elem)
+      
       elem.scrollBy(750, 0);
     
   }
@@ -255,7 +255,7 @@ export class AchievementShelfComponent implements OnInit {
     const elem=(<HTMLInputElement>document.getElementById('imgList'+index))
    
 
-    console.log(elem)
+    
     elem.scrollBy(-750, 0);
 
 
@@ -272,7 +272,7 @@ export class AchievementShelfComponent implements OnInit {
   }
 
   calculate(seasonal_theme_response){
-    console.log(this.seasonal_theme_response[0].data);
+    
     
     let end =new Date().getTime
   }
@@ -294,7 +294,7 @@ export class AchievementShelfComponent implements OnInit {
       }
   
       this.http.engagamentlog(body_engagement).subscribe(res=>{
-        console.log(res);
+        
         
       })
      }
@@ -308,16 +308,16 @@ export class AchievementShelfComponent implements OnInit {
       }
   
       this.http.engagamentlog(body_engagement).subscribe(res=>{
-        console.log(res);
+        
         
       })
      }
       
-    console.log(details);
-    console.log(details,index+1);
+    
+    
     
     // const elem=(<HTMLInputElement>document.getElementById('popover_content'+index));
-    // console.log(elem);
+    // 
     (<HTMLInputElement>document.getElementById('popover_content'+index)).style.visibility = "visible";
     // let e = document.getElementById('popover_content'+index);
     // if(e){
@@ -331,7 +331,7 @@ export class AchievementShelfComponent implements OnInit {
         this.popover=false
       }
     // }
-    console.log(this.userObj.games.length);
+    
     
   
   }
@@ -347,7 +347,7 @@ export class AchievementShelfComponent implements OnInit {
       }
   
       this.http.engagamentlog(body_engagement).subscribe(res=>{
-        console.log(res);
+        
         
       })
      }
@@ -361,12 +361,12 @@ export class AchievementShelfComponent implements OnInit {
       }
   
       this.http.engagamentlog(body_engagement).subscribe(res=>{
-        console.log(res);
+        
         
       })
      }
 
-    console.log(carauseldata,index+1);
+    
     let body = {
       _userid: this.mergeObj.USERID,
       _game: this.mergeObj.id_coroebus_game,
@@ -374,19 +374,19 @@ export class AchievementShelfComponent implements OnInit {
       _badge_id:carauseldata.id_seasonal_badge
     }
 
-    console.log(body);
+    
     this.http.popup_bagde_details(body).subscribe((res) => {
-      console.log(res)
+      
       this.bagde_details=res
       this.bagde_details = Array.of(this.bagde_details);
       this.bagde_details_response=this.bagde_details[0].data[0]
-      console.log(this.bagde_details);
-      console.log(this.bagde_details_response);
+      
+      
     
       this.badge_details_date=this.bagde_details[0].data[1]
-      console.log(this.badge_details_date.badge_win_date);
+      
       this.badge_details_date.badge_win_date=Array.of(this.badge_details_date.badge_win_date)
-      console.log(this.badge_details_date.badge_win_date);
+      
       
       
     })

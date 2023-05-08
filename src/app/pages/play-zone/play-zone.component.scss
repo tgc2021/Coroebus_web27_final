@@ -20,6 +20,7 @@
         line-height: 18px;
         /* Grey / Light */
         color: #F5F5F5;   
+
     }
     // .page-content {
     //   padding: 71px 30px 60px 0px;
@@ -56,7 +57,7 @@
     
 }
 .playZone-container {
-    margin: 1%;
+    // margin: 1%;
     margin-top: 1%;
     padding: 1%;
     background: #FFFFFF;
@@ -294,7 +295,9 @@ input[type="checkbox"]::placeholder {
         font-style: normal;
         font-weight: 500;
         font-size: 14px;
-        line-height: 14px;
+        // line-height: 14px;
+        height: 5vh;
+        
         /* or 101% */
         display: flex;
      
@@ -309,15 +312,16 @@ input[type="checkbox"]::placeholder {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content:space-between;
+        justify-content:stretch;
         height: 65vh;
-        width: 65vw;
+         width: 99%;
         overflow-y: auto;
-        // row-gap: 2rem;
+        gap: 3rem;
         .card{
             width: 28vw;
+            height: auto;
             border: 1px solid lightgray;
-            min-height: 33vh;;
+            min-height: 33vh;
 
         }
     }

@@ -56,6 +56,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
   is_interactive_dashboard:any
   windowlocation:any
   spectator_value:any
+  about_game:any
   constructor(private eventService: EventService, private router: Router,public dashboard:DefaultComponent,
     public translate: TranslateService, private http: ApiserviceService,
     private readonly store: Store, private cd: ChangeDetectorRef,public route:ActivatedRoute) {
@@ -67,29 +68,29 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
     });
     this.eventService.subscribe('requestSendForProduce1Data', (data) => {
       
-      console.log(data)
+      
       this.produce1Data = data
       this.profileLogo=this.produce1Data._personal_data?.profile_logo
       this.filepath=this.produce1Data.about_game[0].file_name;
      
         this.menuItems = MENU;
-        // console.log(this.filepath);
-        console.log(this.userObj)
-        console.log(this.menuItems);
-        console.log(this.userObj?.games.length);
+        
+        
+        
+        
   
         var menuArr: any
         menuArr = MENU.filter((value, index) => {
           if (value?.label === 'MENUITEMS.PLAY_ZONE') {
             if (this.produce1Data?.is_play_zone === 0) {
               this.menuItems.splice(0, 1);
-              console.log(this.menuItems, index)
+              
             }
           }
           if (value?.label === 'MENUITEMS.GAME_SELECTION') {
             if ( this.userObj?.games.length==1) {
               this.menuItems.splice(8, 1);
-              console.log(this.menuItems, index)
+              
             }
             else{
               
@@ -105,7 +106,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
               this.userObj?._personal_data?.id_role ==='12') 
               {
                 this.menuItems?.[index]?.subItems?.splice(subIndex, 1);
-                console.log(this.menuItems?.[index]?.subItems, subIndex)
+                
               }
            
             });
@@ -134,33 +135,33 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
       })
 
     })
-    // console.log(this.menuItems);
+    // 
 
   
   }
 
   ngOnInit() {
    
-    // console.log(this.menuItems);
+    // 
     this.is_about_game= localStorage.getItem('is_about_game')
     this.rewardpoints=localStorage.getItem('reward_points');
-    console.log(this.rewardpoints);
+    
     this.is_interactive_dashboard=localStorage.getItem("is_interactive_dashboard")
 
     this.windowlocation=window.location.href
-    console.log(this.windowlocation);
+    
 
     var url = new URL(this.windowlocation)
-    console.log(url);
+    
 
     var checkUserID = this.route.queryParams
       .subscribe(params => {
-        console.log(params); // { orderby: "price" }
+        
         // this.userid = params.userid;
-        // console.log(this.userid); // price
+        // 
         this.spectator_value = params['view'];
        
-        console.log(this.spectator_value);
+        
        
       }
       );
@@ -169,15 +170,15 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
       takeUntil(this.destroy$)
     ).subscribe(data => {
       this.userObj = data?.user
-      console.log(this.userObj)
+      
       this.id_role =this.userObj?._personal_data?.id_role
-      console.log(this.id_role);
+      
       
       this.id_coroebus_theme=this.userObj.themes[0].id_coroebus_theme
-      console.log(this.id_coroebus_theme);
+      
    
    this.id_coroebus_organization=this.userObj._personal_data.id_coroebus_organization
-console.log(this.id_coroebus_organization);
+
 
 
     })
@@ -188,7 +189,7 @@ console.log(this.id_coroebus_organization);
 
     this._scrollElement();
     this.ProfileImageNewOne=JSON.parse(localStorage.getItem('Profile'))
-    console.log("Updated User Pic" ,this.ProfileImageNewOne);
+    
   }
 
   ngAfterViewInit() {
@@ -291,7 +292,7 @@ console.log(this.id_coroebus_organization);
    */
   initialize(): void {
     if(this.id_role == 7 || this.spectator_value=='spectator'){
-      console.log(this.spectator_value);
+      
      
       
       this.menuItems = MENU;
@@ -299,68 +300,99 @@ console.log(this.id_coroebus_organization);
      
     }
     else  if(this.id_role == 13 ){
-      
       this.menuItems = MENU_HOS;
       this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
-      if(this.is_about_game==0||this.is_about_game==null){
+      // if(this.is_about_game==0||this.is_about_game==null){
        
        
-        const result = this.menuItems.filter(data => data.icon != 'Aboutgameicon');
+      //   const result = this.menuItems.filter(data => data.icon != 'Aboutgameicon');
 
-        this.menuItems=result;
+      //   this.menuItems=result;
 
        
-        console.log(this.menuItems);
+      //   
         
-      }
+      // }
     }
   
     else {
-      console.log(this.spectator_value);
+      
     
       this.menuItems = MENU;
-      console.log(this.menuItems);
       
-     console.log(this.userObj?.games.length==1);
-     console.log(this.userObj?.games.length);
-     console.log(this.userObj?.games);
+      
      
-      console.log(this.menuItems);
-      console.log(this.is_about_game);
+     console.log(this.menuItems);
+     
+     
+     
+      
+      
       this.eventService.subscribe('requestSendForProduce1Data', (data) => {
-        console.log(data);
+        
         
       })
 
-      if(this.is_about_game==0||this.is_about_game==null){
+      // if(this.is_about_game==0||this.is_about_game==null){
        
        
-        const result = this.menuItems.filter(data => data.icon != 'Aboutgameicon');
+      //   const result = this.menuItems.filter(data => data.icon != 'Aboutgameicon');
 
-        this.menuItems=result;
+      //   this.menuItems=result;
 
        
-        console.log(this.menuItems);
+      //   
         
-      }
+      // }
       if(this.id_role == 9 || this.id_role == 8 ||this.id_role == 12){
+        
         const result = this.menuItems.filter(data => data.icon != 'ChallengeZoneicon');
-     console.log('rol i 9,8,12');
+        
      
         this.menuItems=result;
+        // console.log(this.menuItems);
+
+     
+
+        
+        if(this.id_role==9){
+          const result = this.menuItems.filter(data => data.icon != 'rewards');
+          
+          this.menuItems=result;
+          // console.log(this.menuItems);
+
+          const result1 = this.menuItems.filter(data => data.label != 'Achievement Shelf');
+          this.menuItems=result1;
+          // console.log(this.menuItems);
+
+
+          const result2 = this.menuItems.filter(data => data.icon != 'learning');
+          this.menuItems=result2;
+          // console.log(this.menuItems);
+
+        }
+      else if(this.id_role==8){
+        const result2 = this.menuItems.filter(data => data.icon != 'learning');
+        this.menuItems=result2;
+        // console.log(this.menuItems);
+
+
+      }
 
        
-        console.log(this.menuItems);
         
+      
       }
+
+   
      if(this.userObj?.games.length==1){
         const result = this.menuItems.filter(data => data.icon != 'game');
-        console.log('Game selsection Page');
+        
         
            this.menuItems=result;
    
           
-           console.log(this.menuItems);
+           
       }
       this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
     }
@@ -388,7 +420,7 @@ console.log(this.id_coroebus_organization);
   
   
     this.http.engagamentlog(body).subscribe(res=>{
-      console.log(res);
+      
       
     })
 
@@ -401,7 +433,7 @@ console.log(this.id_coroebus_organization);
     // this.router.navigate(['/account/login'], { queryParams: { returnUrl: location.hash } })
   }
   activeLink(item) {
-    console.log(item);
+    
     
     this.activeRouterLink = item?.link1;
     document?.getElementById('vertical-menu-btn')?.click()
@@ -419,21 +451,26 @@ console.log(this.id_coroebus_organization);
     
     
       this.http.engagamentlog(body).subscribe(res=>{
-        console.log(res);
+        
         
       })
       this.url = 'https://www.thegamificationcompany.com/';
       window.open(this.url, '_blank');
       
     }
-    else if(item?.icon === 'Aboutgameicon'){
+    // else if(item?.icon === 'Aboutgameicon'){
    
-      this.url = this.filepath;
-      window.open(this.url, '_blank');
-    }
+    //   this.url = this.filepath;
+    //   window.open(this.url, '_blank');
+    // }
     else if(item?.icon === 'Aboutgameicon'){
-      this.url = this.filepath;
+      this.about_game= localStorage.getItem('about_game_pdf')
+      
+      
+      this.url = this.filepath != null? this.filepath:this.about_game;
       window.open(this.url, '_blank');
+      location.reload()
+
     }
     else if(item?.icon === 'myper'){
       let body={
@@ -446,7 +483,7 @@ console.log(this.id_coroebus_organization);
     
     
       this.http.engagamentlog(body).subscribe(res=>{
-        console.log(res);
+        
         
       })
     }
@@ -461,7 +498,7 @@ console.log(this.id_coroebus_organization);
     
     
       this.http.engagamentlog(body).subscribe(res=>{
-        console.log(res);
+        
         
       })
     }
@@ -476,7 +513,7 @@ console.log(this.id_coroebus_organization);
     
     
       this.http.engagamentlog(body).subscribe(res=>{
-        console.log(res);
+        
         
       })
     }
@@ -504,7 +541,7 @@ else{
    
     // this.menuItems=MENU_SPECTATOR
    
-    console.log(this.menuItems);
+    
 
     // else if(item?.icon === 'home'){
     //    this.dashboard.activeTabForSectionView_2='0'

@@ -76,7 +76,31 @@
                                                         <div   style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
                         
                                                             <div style="height: 1.2vh;width:1.3vw;border-radius:100%;background-color:transparent ;"></div>
-                         
+                                                            <div class="col d-flex align-items-center">
+                                                                <div  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;" *ngIf="sectionView_1._points[0].ranking_arrow=='green'">
+    
+                                                                    <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                                                        height="100%" >
+                                                                </div>
+                                                                <div  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;" *ngIf="sectionView_1._points[0].ranking_arrow=='red' || sectionView_1._points[0].ranking_arrow=='RED'" >
+    
+                                                                    <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                                        height="100%" >
+                                                                </div>
+                                                                <!-- <div style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;" *ngIf="sectionView_1._points[0].ranking_arrow=='red'"  >
+                                
+                                                                    <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                                        height="100%">
+                                
+                                                                </div> -->
+                                                                <div *ngIf="sectionView_1._points[0].ranking_arrow=='yellow'"  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
+                            
+                                                                   
+                                                                        <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
+                                                                    
+                                 
+                                                                 </div>
+                                                            </div>
                                                          </div>
                                                         <div class="col  d-flex justify-content-end align-items-center me-2">
                                                             <img src="assets/images/TopHierarchyDashboard/Arrow.png" />
@@ -118,7 +142,9 @@
                                                             </div>
                                                             <div *ngIf="item.ranking_arrow=='yellow'"  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
                         
-                                                                <div style="height: 1.2vh;width:1.2vh;border-radius:100%;background-color:orange ;"></div>
+                                                               
+                                                                    <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
+                                                                
                              
                                                              </div>
                                                         </div>
@@ -151,7 +177,7 @@
                         <div>
                             <img (click)="getDataBasedOnUserIDHos(sectionView_1?._business_user[0])" src="{{sectionView_1._personal_data.profile_badge_image}}" alt="badge_img" height="60%" width="60%">
                         </div>
-                        <div class="badge-level_name d-flex justify-content-center">
+                        <div (click)="getDataBasedOnUserIDHos(sectionView_1?._business_user[0])"  class="badge-level_name d-flex justify-content-center">
                             <span>Level</span> 
                         </div> 
                     </div>
@@ -262,17 +288,17 @@
                                     <div class="leaderboard_rank_score">
                                         {{res.rankingtable_number}}
                                     </div>
-    
+                                    <!-- (click)="openHierarchyPopup(res)" -->
                                     <div class="leaderboard_rank_profile_image_div">
-                                        <img class="leaderboard_rank_profile_image" src="{{res.rankingtable_logo}}" />
+                                        <img class="leaderboard_rank_profile_image" (click)="openHierarchyPopup(res)" src="{{res.rankingtable_logo}}" />
                                     </div>
     
                                     <div class="leaderboard_name_and_team"  (click)="navigateToSMDashboard(res)">
                                         <div class="leaderboard_name_label" ngbTooltip="{{res.rankingtable_name}}" placement="bottom" >
                                             {{res.rankingtable_name}}
                                         </div>
-                                        <div class="leaderboard_team_label">
-                                            {{res.rankingtable_team}}
+                                        <div class="leaderboard_team_label"  (click)="navigateToSMDashboard(res)">
+                                            {{res.rankingtable_team}} 
                                         </div>
                                     </div>
     
@@ -297,8 +323,11 @@
     
                                     <div class="leaderboard_rank_up_down_arrow_div " style="margin-left: 3vw;display:flex; justify-content: center;"
                                         *ngIf="res.rankingtable_arrow=='yellow'">
-                                        <img class="leaderboard_rank_up_down_arrow_image"
-                                            src="{{sectionView_1.theme_details[0].equal_arrow}}" />
+                                        <div style="height:2.5vh;width:2.5vh;border-radius:100%;margin-left: 0.8vw;">
+                                                    <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="100%" width="100%">
+                                        </div>
+                                       
+                                            
                                     </div>
                                 </mat-card>
                                   </div>
@@ -310,8 +339,8 @@
                                         {{res.rankingtable_number}}
                                     </div>
     
-                                    <div class="leaderboard_rank_profile_image_div">
-                                        <img class="leaderboard_rank_profile_image" src="{{res.rankingtable_logo}}" />
+                                    <div class="leaderboard_rank_profile_image_div" (click)="openHierarchyPopup(res)">
+                                        <img class="leaderboard_rank_profile_image"  src="{{res.rankingtable_logo}}"/>
                                     </div>
     
                                     <div class="leaderboard_name_and_team"  (click)="navigateToRMDashboard(res)">
@@ -319,7 +348,7 @@
                         
                                             {{res.rankingtable_name}}
                                         </div>
-                                        <div class="leaderboard_team_label">
+                                        <div class="leaderboard_team_label"  (click)="navigateToRMDashboard(res)">
                                             {{res.rankingtable_team}}
                                         </div>
                                     </div>
@@ -370,7 +399,7 @@
                                         <div class="leaderboard_rank_score">
                                             {{res.rankingtable_number}}
                                         </div>
-        
+                                        <!-- (click)="openHierarchyPopup(res)" -->
                                         <div class="leaderboard_rank_profile_image_div">
                                             <img class="leaderboard_rank_profile_image" src="{{res.rankingtable_logo}}" />
                                         </div>
@@ -405,8 +434,11 @@
         
                                         <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 3vw;display:flex; justify-content: center;"
                                             *ngIf="res.rankingtable_arrow=='yellow'">
-                                            <img class="leaderboard_rank_up_down_arrow_image"
-                                                src="{{sectionView_1.theme_details[0].equal_arrow}}" />
+                                            <!-- <img class="leaderboard_rank_up_down_arrow_image"
+                                                src="{{sectionView_1.theme_details[0].equal_arrow}}" /> -->
+                                                <div style="height:2.5vh;width:2.5vh;border-radius:100%;margin-left: 0.8vw;">
+                                                    <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
+                                                </div>
                                         </div>
                                     </mat-card>
         
@@ -500,10 +532,16 @@
                                         height="100%" >
                                 </div>
 
-                                <div *ngIf="res.rankingtable_arrow!='green' && j !=0"  style="height:2.5vh;">
+                                <div *ngIf="res.rankingtable_arrow=='red' && j !=0"  style="height:2.5vh;">
 
                                     <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
                                         height="100%">
+
+                                </div>
+                                <div *ngIf="res.rankingtable_arrow=='yellow' && j !=0"  style="height:2.5vh;">
+
+                                    <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt=""
+                                        height="100%" width="100%">
 
                                 </div>
                             </div>
@@ -550,10 +588,36 @@
                                     </div>
                                     
                                 </div>
-                                <div class="lower_side">{{business_response.weightage}}</div>
+                                <div class="lower_side d-flex justify-content-center gap-2">
+                                    <div></div>
+                                    <div>&nbsp;&nbsp;&nbsp;{{business_response.weightage}}</div>
+                                    <div class="d-flex">
+                              
+                              
+                                        <div *ngIf="business_response.ranking_arrow=='green'" style="height:2.5vh; display: flex;">
         
+                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                                height="100%" >
+                                        </div>
+        
+                                        <div *ngIf="business_response.ranking_arrow=='red'"  style="height:2.5vh; display: flex;">
+        
+                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                height="100%">
+        
+                                        </div>
+                                        <div *ngIf="business_response.ranking_arrow=='yellow' "  style="height:1.5vh;width:1.5vh; display: flex;">
+        
+                                            <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt=""
+                                                height="100%" width="100%">
+        
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                      
                             </div>
-                           
+                       
         
         
                         </div>
@@ -580,19 +644,41 @@
                 
                                         </div>
                                         <div class="d-flex">
-                                            <div class="global_index_details  " style="font-weight: 500;font-family: 'Inter';">
+                                            <div class="global_index_details  " style="font-weight: 500;font-family: 'Inter';margin-right: 1vw;">
                                                 <!-- {{GrowthIndexData[0].score}} -->
                     
                                                 {{bus_response.weightage}}
     
                     
                                             </div>
-                                            <div class="d-flex align-items-center">
-                                                <div  style="height:2.5vh;">
-    
+                                            <div class="d-flex ">
+                              
+                              
+                                                <div *ngIf="bus_response.ranking_arrow=='green'" style="height:2.5vh; display: flex;">
+                
                                                     <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
                                                         height="100%" >
                                                 </div>
+                
+                                                <div *ngIf="bus_response.ranking_arrow=='red'"  style="height:2.5vh; display: flex;">
+                
+                                                    <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                        height="100%">
+                
+                                                </div>
+                                                <div *ngIf="bus_response.ranking_arrow=='yellow' "  style="height:2.5vh;width:2.5vh; display: flex;justify-content:center;align-items:center">
+                
+                                                    <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt=""
+                                                        height="60%" width="60%">
+                
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <!-- <div  style="height:2.5vh;">
+    
+                                                    <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                                        height="100%" >
+                                                </div> -->
                 
                                                 <!-- <div *ngIf="res.rankingtable_arrow!='green' && j !=0"  style="height:2.5vh;">
                 
@@ -1213,8 +1299,9 @@
                             </div>
     
                             <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='yellow'">
-                                <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                    src="{{sectionView_1.theme_details[0].equal_arrow}}" height="90%" width="90%" />
+                                <!-- <img class="leaderboard_rank_up_down_arrow_image_mobile"
+                                    src="{{sectionView_1.theme_details[0].equal_arrow}}" height="90%" width="90%" /> -->
+                                    <div style="height:2.5vh;width:2.5vh;border-radius:100%;background:#FAA019;margin-left: 0.8vw;"></div>
                             </div>
                         </mat-card>
     
@@ -1270,8 +1357,9 @@
                             </div>
     
                             <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='yellow'">
-                                <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                    src="{{sectionView_1.theme_details[0].equal_arrow}}" height="90%" width="90%" />
+                                <!-- <img class="leaderboard_rank_up_down_arrow_image_mobile"
+                                    src="{{sectionView_1.theme_details[0].equal_arrow}}" height="90%" width="90%" /> -->
+                                    <div style="height:6vh;width:6vh;border-radius:100%;background:#FAA019;margin-left: 0.8vw;"></div>
                             </div>
                         </mat-card>
     
@@ -1402,6 +1490,48 @@
         </div>
     </ng-template>
     
+    <!-- <ng-template #hierarchyPopup let-modal>
+        <div class="level-buckets hierarchyPopup-buckets">
+            <div class="modal-header border-bottom-0 p-0">
+                <div class="row w-100">
+                    <div class="col-12 pt-2">
+                        <i class="fa fa-times float-end" (click)="modal.dismiss('Cross click')"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body dashboard-popup-level">
 
+                <div class="row  hierarchy-popup-list hierarchy-popup-list-border mb-3 p-2 ms-5 w-75"
+                    *ngFor="let item of hierarchyPopupList"
+                    (click)="getDataBasedOnUserIDVIAhierarchyPopupList(item,modal)">
+                    <div class=" col-6 pt-2">
+                        <div class="media">
+                            <img loading="lazy" class="mr-3 rounded-circle" height="45" width="45"
+                                src="{{item?.userlogo}}" alt="Generic placeholder image">
+                            <div class="media-body">
+                                <h5 class="mt-0 hierarchy-popup-list-team_name ms-2">{{item?.team_name}}
+                                    <p class="hierarchy-popup-list-first_name mb-0">
+                                        {{item?.first_name}}
+                                    </p>
+                                    <p class="hierarchy-popup-list-role_name">
+                                        {{item?.role_name}}
+                                    </p>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 pt-2">
+                        <img loading="lazy" class="mr-3 rounded-circle float-end hierarchy-popup-list-right-arrow"
+                            height="12" width="8" src="assets/images/svg/dashboard/right-arrow.svg"
+                            alt="Generic placeholder image">
+                        <img loading="lazy" class="mr-3 rounded-circle float-end" height="45" width="45"
+                            src="{{item?.teamlogo}}" alt="Generic placeholder image">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </ng-template> -->
 
 </div>
