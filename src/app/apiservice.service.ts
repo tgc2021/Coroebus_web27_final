@@ -11,7 +11,7 @@ export class ApiserviceService {
   URLstring = environment.apiURL
     //  Path='coroebus-beta-api-levels';
   open: any;
-    
+    // Path='coroebus-beta-api-levels-new'
     Path='coroebus-tgc-api-levels'
   constructor(public Http:HttpClient) { }
 

@@ -670,7 +670,7 @@
                         <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                             *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) "
-                            (click)="navigateToOtherRole(item)"
+                            style="cursor: pointer;"
                             [style.background-image]="'url('+item?.ranking_image_web +')'">
                             <div class="col">
                                 <div class="media d-flex align-items-center gap-3  " style="height: 7vh;">
@@ -679,16 +679,17 @@
                                     </span>
                                     <!-- (click)="openHierarchyPopup(item)" -->
                                     <div style="height:5vh;display:flex;align-items: center;">
-                                        <img class="rounded-circle z-depth-2 user-logo-row" alt="" 
+                                        <img class="rounded-circle z-depth-2 user-logo-row" alt="" style="cursor: pointer;"
+                                        (click)="openHierarchyPopup(item)"
                                             src="{{item?.rankingtable_logo}}" data-holder-rendered="true" height="100%"
                                             width="41" >
                                     </div>
 
                                     <div class="media-body user-logo-row ellipsis"
                                         style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
-                                        <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
+                                        <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom" style="cursor: pointer;" (click)="navigateToOtherRole(item)"
                                             ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}</h5>
-                                        <p class="mt-n4 team-name sub-team name-f-size">{{item?.rankingtable_team}}</p>
+                                        <p class="mt-n4 team-name sub-team name-f-size" style="cursor: pointer;" (click)="navigateToOtherRole(item)">{{item?.rankingtable_team}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -1364,7 +1365,7 @@
 
 
 
-<!-- 
+
     <ng-template #content let-modal>
         <div class="level-buckets content-buckets">
             <div class="modal-header border-bottom-0 p-0">
@@ -1460,7 +1461,7 @@
 
             </div>
         </div>
-    </ng-template>  -->
+    </ng-template>  
 </div>
 <!-- Mobile view started -->
 

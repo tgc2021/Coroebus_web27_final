@@ -509,13 +509,13 @@ viewmoreorder:any
         // this.spectator_user_list = this.spectator_data[0].user_list
         // 
 
-          this.eventService.broadcast('passDataToHeader', {
-          color: this.spectator_dashoard_response[0].data.theme_details[0].dark_color,
-          game_logo: this.spectator_dashoard_response[0].data._personal_data.game_logo,
-          bg_image: this.spectator_dashoard_response[0].data.theme_details,
+        //   this.eventService.broadcast('passDataToHeader', {
+        //   color: this.spectator_dashoard_response[0].data.theme_details[0].dark_color,
+        //   game_logo: this.spectator_dashoard_response[0].data._personal_data.game_logo,
+        //   bg_image: this.spectator_dashoard_response[0].data.theme_details,
 
 
-        })
+        // })
 
         this.store.dispatch(userActions.updateUserObj({
           data: {
@@ -1508,13 +1508,13 @@ viewmoreorder:any
 
 
     
-        this.eventService.broadcast('passDataToHeader', {
-          color: this.spectator_dashoard_response[0].data.theme_details[0].dark_color,
-          game_logo: this.spectator_dashoard_response[0].data._personal_data.game_logo,
-          bg_image: this.spectator_dashoard_response[0].data.theme_details,
+        // this.eventService.broadcast('passDataToHeader', {
+        //   color: this.spectator_dashoard_response[0].data.theme_details[0].dark_color,
+        //   game_logo: this.spectator_dashoard_response[0].data._personal_data.game_logo,
+        //   bg_image: this.spectator_dashoard_response[0].data.theme_details,
 
 
-        })
+        // })
 
         this.store.dispatch(userActions.updateUserObj({
           data: {
@@ -5447,11 +5447,11 @@ viewmoreorder:any
      this.spectator_game_id=this.Util.encryptData(this.spectator_user_list[index].id_coroebus_game)
      this.spectator_role_id=this.Util.encryptData(this.spectator_user_list[index].id_role)
      if(this.spectator_user_list[index].id_role == '9' || this.spectator_user_list[index].id_role == '8'){
-      this._router.navigateByUrl('top_dashboard?userID='+this.spectator_user_id +"&gameID="+  this.spectator_game_id +"&roleID="+  this.spectator_role_id +"&view="+  this.spectator)
+      this._router.navigateByUrl('/top_dashboard?userID='+this.spectator_user_id +"&gameID="+  this.spectator_game_id +"&roleID="+  this.spectator_role_id +"&view="+  this.spectator)
 
      }
      else{
-      this._router.navigateByUrl('dashboard?userID='+this.spectator_user_id +"&gameID="+  this.spectator_game_id +"&roleID="+  this.spectator_role_id +"&view="+  this.spectator)
+      this._router.navigateByUrl('/dashboard?userID='+this.spectator_user_id +"&gameID="+  this.spectator_game_id +"&roleID="+  this.spectator_role_id +"&view="+  this.spectator)
 
      }
 
@@ -5489,18 +5489,18 @@ viewmoreorder:any
 
 
     })
-    this.passDataToHeaderSub?.unsubscribe()
-    this.passDataToHeaderSub = this.eventService.subscribe('passDataToHeader', (data) => {
-      this.headerInfo = data
+    // this.passDataToHeaderSub?.unsubscribe()
+    // this.passDataToHeaderSub = this.eventService.subscribe('passDataToHeader', (data) => {
+    //   this.headerInfo = data
       
-      this.color = this.headerInfo.color; //yellowcolor
+    //   this.color = this.headerInfo.color; //yellowcolor
       
-      this.bgImage= this.userSelectionData?.themes[0].theme_background_web
+    //   this.bgImage= this.userSelectionData?.themes[0].theme_background_web
       
       
-      this.element.nativeElement.style.setProperty('--myvar', `${this.color}`)
-      this.element.nativeElement.style.setProperty('--bgImage', `${this.bgImage}`)
-    })
+    //   this.element.nativeElement.style.setProperty('--myvar', `${this.color}`)
+    //   this.element.nativeElement.style.setProperty('--bgImage', `${this.bgImage}`)
+    // })
     if (this.userSelectionData?.otherInfo) {
       this.headerInfo = this.userSelectionData?.otherInfo
       

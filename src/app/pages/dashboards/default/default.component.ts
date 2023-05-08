@@ -1152,7 +1152,8 @@ else if(this.activeTabForSectionView_2 == 4){
         text: res?.message,
         // imageUrl: 'assets/images/svg/logo/logo.svg',
         imageHeight: 40,
-        confirmButtonColor: '#556ee6'
+        confirmButtonColor:   this.sectionView_1.theme_details[0].dark_color
+        
       });
     } else {
       this.notificationList_err = 'Error'

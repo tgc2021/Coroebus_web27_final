@@ -322,6 +322,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
       
       
      
+     console.log(this.menuItems);
      
      
      

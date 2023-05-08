@@ -77,6 +77,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   lengthSearchList: number;
   hierarchyPopupList: any
   firstUserData: any;
+  nodatasearch:any
   @ViewChild('hierarchyPopup') hierarchyPopup;
 
   constructor(private readonly store: Store, public _route: ActivatedRoute,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
@@ -591,7 +592,9 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
     };
     [err, res] = await HttpProtocols.to(DashboardModel.spectSearch(body))
     if (!err && res?.statuscode === 200) {
-
+      console.log(res);
+     
+      
       let body={
         _userid:this.userSelectionData?._personal_data?.USERID,
         _game:this.userSelectionData?.id_coroebus_game,
@@ -606,6 +609,8 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
       })
 
       this.spectSearList = res?.data[0]._data;
+    
+      
       this.lengthSearchList=this.spectSearList.length;
       
     // this.spectSearFinalList=this.spectSearList._data
@@ -653,22 +658,46 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
   getDataBasedOnUserID(data: any) {
     // 
 
-    this.router.navigate([], {
-      relativeTo: this._route,
-      queryParams: {
-        userID: this.Util.encryptData(data?._userid),
-        gameID: this.Util.encryptData(data?.game_id),
-        roleID: this.Util.encryptData(data?.role_id?.toString())
+    
+    if(data.role_id==8||data.role_id==9){
+      this.router.navigate([], {
+        relativeTo: this._route,
+        queryParams: {
+          userID: this.Util.encryptData(data?._userid),
+          gameID: this.Util.encryptData(data?.game_id),
+          roleID: this.Util.encryptData(data?.role_id?.toString())
+  
+        },
+  
+        queryParamsHandling: 'merge',
+        // preserve the existing query params in the route
+        skipLocationChange: false
+        // do not trigger navigation
+  
+  
+      });
+    }
 
-      },
-
-      queryParamsHandling: 'merge',
-      // preserve the existing query params in the route
-      skipLocationChange: false
-      // do not trigger navigation
-
-
-    });
+    else{
+      
+      this.router.navigate(['/dashboard'], {
+        relativeTo: this._route,
+        queryParams: {
+          userID: this.Util.encryptData(data?._userid),
+          gameID: this.Util.encryptData(data?.game_id),
+          roleID: this.Util.encryptData(data?.role_id?.toString())
+  
+        },
+  
+        // queryParamsHandling: 'merge',
+        // preserve the existing query params in the route
+        // skipLocationChange: false
+        // do not trigger navigation
+  
+  
+      });
+    }
+   
 
 
 

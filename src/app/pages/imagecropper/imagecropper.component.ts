@@ -114,9 +114,9 @@ export class ImagecropperComponent implements OnInit {
       Swal.fire({
         title: '',
         text: res?.message,
-        imageUrl: 'assets/images/svg/logo/logo.svg',
+      
         imageHeight: 40,
-        confirmButtonColor: '#556ee6'
+        confirmButtonColor: this.userObj?.otherInfo?.color != null? this.userObj?.otherInfo?.color :  this.dark_color
       }).then((result) => {
           window.location.reload()
          
