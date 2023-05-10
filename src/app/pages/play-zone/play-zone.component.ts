@@ -129,17 +129,8 @@ export class PlayZoneComponent implements OnInit {
       _userid: this.mergeObj.USERID,
       _game: this.mergeObj.id_coroebus_game,
     }
-
-
-    
-   
     this.http.playZone(body).subscribe((res:any) => {
-    
-
-
     this.spotEngagementData=res.data._spot_engagement_data;
-    
-    
     this.filterByCategory=res.data._spot_engagement_data;
     });
   }
@@ -213,11 +204,14 @@ export class PlayZoneComponent implements OnInit {
 
 
   }
-  openCubicall(content){
+  openCubicall(){
     this.cubicallUrl=`https://www.playtolearn.in/CubiCall/`
+
+
+    window.open('https://www.playtolearn.in/CubiCall/','_blank')
     
-    this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.cubicallUrl);
-    this.modalService.open(content,{size: 'lg'});
+    // this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.cubicallUrl);
+    // this.modalService.open(content,{size: 'xl'});
 
   }
   openDartGame(content){
@@ -309,9 +303,14 @@ reverse = false;
   }
 openEvent(){
   this.openEvents=true;
-  this.openPassBook=false;
+ 
+    this.openPassBook=false;
+  
+  
 }
 rewardPassBook(){
+  console.log(this.id_role)
+ 
   this.openEvents=false;
   this.openPassBook=true;
 }
@@ -378,14 +377,6 @@ navigateToCubicalls(){
     
 
   )
-}
-navigateToToolBox(){
-
-  window.open()
-
-
-
-
 }
 
 

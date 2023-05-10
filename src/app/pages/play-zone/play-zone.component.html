@@ -90,8 +90,8 @@
                                 <div class="d-flex align-items-center justify-content-center">
                                     <hr width="98%">
                                 </div>
-                                <div class="d-flex align-items-center p-1" style="height:5vh">
-                                    <div (click)="openCubicall(content)" class="status-openButton" type="button">Open
+                                <div class="d-flex align-items-center p-1" style="height:4vh">
+                                    <div (click)="openCubicall()" class="status-openButton" type="button">Open
                                     </div>
                                     
 
@@ -139,7 +139,7 @@
                                 <div class="d-flex align-items-center justify-content-center">
                                     <hr width="98%">
                                 </div>
-                                <div class="d-flex align-items-center p-1" style="height:5vh">
+                                <div class="d-flex align-items-center p-1" style="height:4vh">
                                     <div class="status-openButton" type="button"  (click)="openTGCToolBox(content)">Open
                                     </div>
                                     
@@ -151,48 +151,8 @@
                           <!--Default Cards  -->
                         <div *ngIf="id_role==13||id_role==9;then cardForBHHOS else cardForOtherRole"></div>
                         <ng-template #cardForBHHOS>
-                        <!-- Spin the wheel  -->
-                            <!-- <div class="card col-5" style="align-self: start;">
-                                <div >
-                                    <div class="ps-3 subHeading">
-                                        <div>
-                                            <span class="text">&nbsp;Type &nbsp;:</span>&nbsp;
-                                            <span class="heading">Engagement</span>
-                                        </div>
-                                        <div>
-                                           
-                                         
-                                        </div>
-                                    </div>
-                                    <div class="card-body d-flex gap-2 mt-2">
-                                            <div class="col-5">
-                                                    <div  style="width:16vh; height:16vh">
-                                                        <img src="assets/images/playZone/images/spin_the_wheel.jpg" alt="Logo" height="80%" width="80%">
-                                                    </div>
-                                                <div>
-                                            </div>
-                                        </div>
-                                        <div class="col-7 ps-2">
-                                            <div>
-                                                <h6 class="mb-3 card-title">Spin the Wheel</h6>
-                                                <p class="card-description">
-                                                   Ready,set,spin & win big
-                                                </p>
-                                                <div class="d-flex justify-content-end align-items-end">
-                                                   
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <hr width="98%">
-                                    </div>
-                                    <div class="d-flex  align-items-center p-1">
-                                        <div (click)="openSpinTheWheels(content)" class="status-openButton" type="button">Open
-                                        </div>  
-                                    </div>
-                                </div>
-                            </div> -->
+                        
+                           
     
                             <!-- Cube Blasters -->
                             <div class="card col-5" style="align-self: start;">
@@ -204,7 +164,7 @@
                                         </div>
                                         <div>
                                            
-                                         
+    
                                         </div>
                                     </div>
                                     <div class="card-body d-flex gap-2 mt-2">
@@ -396,7 +356,7 @@
                                     </ng-template>
                                     <ng-template #openedBlock>
 
-                                        <button style="cursor:pointer;border: none;background: #ffff;"
+                                        <button style="cursor:pointer;border: none;"
                                             [disabled]="true" class="status-openedButton">
                                             {{data.spot_status}}
                                         </button>
@@ -609,12 +569,11 @@
 
 
 
-<!-- 
-<div class="playzone-mobile-view">
-    <div class="row">
+
+<div class="playzone-mobile-view p-1">
+    <div class="row" style="background-color:white;padding:2%">
         <div class="col">
             <div class="mobile-playzone-container">
-
                 <div class="col-10">
                     <h5>Play Zone</h5>
                     <div class="mb-1">
@@ -622,30 +581,30 @@
                     </div>
                 </div>
 
-                <div class="col-2">
+                <div class="col-2" [style.display]="id_role==13||id_role==9?'none':''">
                     <img src="assets/images/playZone/images/Reward point0 1.png" alt="">&nbsp;
                     <span class="heading">{{rewardPoints}}</span>
                 </div>
             </div>
             <div>
 
-                <div class="d-flex justify-content-around m-2 mb-3 gap-2 tab">
-                    <button (click)="openEvent()" [ngClass]="openEvents?'active_tab-btn':'tab-btn'">Events</button>
-                    <button (click)="rewardPassBook()" [ngClass]="openPassBook?'active_tab-btn':'tab-btn'" >Reward passbook</button>
+                <div class="d-flex justify-content-around m-2 mb-3 gap-2 tab" >
+                    <button (click)="openEvent()" [ngClass]="openEvents?'active_tab-btn':'tab-btn'" [style.display]="id_role==13||id_role==9?'none':''">Events</button>
+                    <button (click)="rewardPassBook()" [ngClass]="openPassBook?'active_tab-btn':'tab-btn'" [style.display]="id_role==13||id_role==9?'none':''">Reward passbook</button>
                 </div>
                 <div>
                     <ng-container *ngIf="openEvents">
                         <div class="d-flex gap-1 mb-2">
                             <div class="col-2.5">
-                                <div style="height:5vh">
+                                <div style="height:5vh"  [style.display]="id_role==13||id_role==9?'none':''">
                                     <div class="row">
                                         <div class="col">
-                                            <div ngbDropdown class="d-inline-block">
-                                                <img src="assets/images/playZone/images/Group 6078.png" type="button"
+                                            <div ngbDropdown class="d-inline-block" >
+                                                <img src="assets/images/playZone/images/Group 6078.png" type="button" [style.display]="id_role==13||id_role==9?'none':''"
                                                     alt="filter" id="dropdownBasic2" ngbDropdownToggle>
 
-                                                <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="m-2"
-                                                    style="width:60vw;">
+                                                <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="m-2" style="width:60vw;" [style.display]="id_role==13||id_role==9?'none':''"
+                                                    >
                                                     <label class="container" ngbDropdownItem
                                                         (click)="filter('Performance')">
                                                         &nbsp;Performance&nbsp;
@@ -668,94 +627,315 @@
                                 </div>
                             </div>
 
-                            <div class="RewardsearchBar col-8">
-                                <input type="text" class="form-control" placeholder="Search"
+                            <div class="RewardsearchBar col-8" [style.display]="id_role==13||id_role==9?'none':''">
+                                <input type="text" class="form-control" placeholder="Search" 
                                     aria-label="Search People here.." aria-describedby="basic-addon2"
                                     [(ngModel)]="term">
-                                <button type="button" (click)="clearText()" class="rewardClearBtn">
+                                <button type="button" (click)="clearText()" class="rewardClearBtn" >
                                     X
                                 </button>
                             </div>
-                            <button class="btn-sm-2" [style.background-color]="dark_color">
+                            <button class="btn-sm-2" [style.background-color]="dark_color"  [style.display]="id_role==13||id_role==9?'none':''">
                                 <img src="assets/images/playZone/images/Vector.png" alt="">
 
                             </button>
                         </div>
-                        <div class="card col-12" *ngFor="let data of filterByCategory|filter:term"
-                            [ngStyle]="{'opacity':data._status==='active' ? 1 : 0.7}">
-                            <div class="p-2 subHeading">
-                                <div>
-                                    <span class="text">Type &nbsp;:</span>&nbsp;
-                                    <span class="heading">{{data.spot_type}}</span>
-                                </div>
-                                <div>
-                                    <div *ngIf="data.spot_status === 'Open' &&  data._status==='Retracted'; then ifBlock">
+                        <div style="overflow-y: auto;height:70vh">
+                            <div>
+                                <div class="card col-12">
+                                    <div class="p-2 subHeading">
+                                        <div>
+                                            <span class="text">Type &nbsp;:</span>&nbsp;
+                                            <span class="heading">Default</span>
+                                        </div>
+                            
                                     </div>
-
-                                    <ng-template #ifBlock>
-                                        <button class="btn btn-secondary" [disabled]="true">Retracted</button>
-                                    </ng-template>
-                                    <div *ngIf="data.spot_status==='Open' &&  data._status==='expired'; then ifBlock1">
+                                    <div class="card-body d-flex gap-2">
+                                        <div class="col-5">
+                                            <div class="p-1" style="height:14vh;width:14vh;">
+                                                <img src="assets/images/playZone/images/cubicall logo updated.png" alt="Logo" height="100%"
+                                                    width="100%">
+                                            </div>
+                                        </div>
+                                        <div class="col-7">
+                                            <div>
+                                                <h6 class="mb-3">Cubicall</h6>
+                                                <p class="mobile-card-description">
+                                                    6 Games packed in 1 cube.
+                            
+                                                </p>
+                            
+                                            </div>
+                                        </div>
                                     </div>
-                                    <ng-template #ifBlock1>
-                                        <button class="btn btn-danger" [disabled]="true">{{data._status}}</button>
-                                    </ng-template>
-                                   
-                                </div>
-                            </div>
-                            <div class="card-body d-flex gap-2">
-                                <div class="col-5">
-                                    <div class="p-1" style="height:19vh;width:19vh;">
-                                        <img src="{{data.logo}}" alt="Logo" height="100%" width="100%">
+                                    <div class="d-flex justify-content-center">
+                                        <hr width="98%">
+                                    </div>
+                            
+                                    <div class="d-flex  mb-2 ms-4" style="cursor:pointer;">
+                            
+                            
+                                        <button style="cursor:pointer;border: none;background: #ffff;" class="mobile-status-openButton"
+                                            (click)="openCubicall()">
+                                            open
+                                        </button>
+                            
+                            
+                            
                                     </div>
                                 </div>
-                                <div class="col-7">
+                                <div class="card col-12">
+                                    <div class="p-2 subHeading">
+                                        <div>
+                                            <span class="text">Type &nbsp;:</span>&nbsp;
+                                            <span class="heading">Default</span>
+                                        </div>
+                            
+                                    </div>
+                                    <div class="card-body d-flex gap-2">
+                                        <div class="col-5">
+                                            <div class="p-1" style="height:14vh;width:14vh;">
+                                                <img src="../../../assets/images/playZone/images/toolbox.png" alt="Logo" height="100%"
+                                                    width="100%">
+                                            </div>
+                                        </div>
+                                        <div class="col-7">
+                                            <div>
+                                                <h6 class="mb-3">Tgc ToolBox</h6>
+                                                <p class="mobile-card-description">
+                                                    Gamifying Behavior. Amplifying Outcomes
+                            
+                                                </p>
+                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <hr width="98%">
+                                    </div>
+                            
+                                    <div class="d-flex  mb-2 ms-4" style="cursor:pointer;">
+                            
+                            
+                                        <button style="cursor:pointer;border: none;background: #ffff;" class="mobile-status-openButton"
+                                            (click)="openTGCToolBox(content)">
+                                            open
+                                        </button>
+                            
+                            
+                            
+                                    </div>
+                                </div>
+                                <div *ngIf="id_role==9 || id_role==13;then GamesForBHRoleMobile "></div>
+                                <ng-template #GamesForBHRoleMobile>
+                                    <div class="card col-12">
+                                        <div class="p-2 subHeading">
+                                            <div>
+                                                <span class="text">Type &nbsp;:</span>&nbsp;
+                                                <span class="heading">Default</span>
+                                            </div>
+                                
+                                        </div>
+                                        <div class="card-body d-flex gap-2">
+                                            <div class="col-5">
+                                                <div class="p-1" style="height:14vh;width:14vh;">
+                                                    <img src="../../../assets/images/playZone/images/cubeBlasters.jpg" alt="Logo" height="100%"
+                                                        width="100%">
+                                                </div>
+                                            </div>
+                                            <div class="col-7">
+                                                <div>
+                                                    <h6 class="mb-3">Cube Blasters</h6>
+                                                    <p class="mobile-card-description">
+                                                        Slash it all !!!
+                                
+                                                    </p>
+                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <hr width="98%">
+                                        </div>
+                                
+                                        <div class="d-flex  mb-2 ms-4" style="cursor:pointer;">
+                                
+                                
+                                            <button style="cursor:pointer;border: none;background: #ffff;" class="mobile-status-openButton"
+                                                (click)="openCubeBlasters(content)">
+                                                open
+                                            </button>
+                                
+                                
+                                
+                                        </div>
+                                    </div>
+                                    <div class="card col-12">
+                                        <div class="p-2 subHeading">
+                                            <div>
+                                                <span class="text">Type &nbsp;:</span>&nbsp;
+                                                <span class="heading">Default</span>
+                                            </div>
+                                
+                                        </div>
+                                        <div class="card-body d-flex gap-2">
+                                            <div class="col-5">
+                                                <div class="p-1" style="height:14vh;width:14vh;">
+                                                    <img src="../../../assets/images/playZone/images/Dart_game_logo.jpg" alt="Logo" height="100%"
+                                                        width="100%">
+                                                </div>
+                                            </div>
+                                            <div class="col-7">
+                                                <div>
+                                                    <h6 class="mb-3">Dart Game</h6>
+                                                    <p class="mobile-card-description">
+                                                        Unleash your inner bullseye.
+                                
+                                                    </p>
+                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <hr width="98%">
+                                        </div>
+                                
+                                        <div class="d-flex  mb-2 ms-4" style="cursor:pointer;">
+                                
+                                
+                                            <button style="cursor:pointer;border: none;background: #ffff;" class="mobile-status-openButton"
+                                                (click)="openDartGame(content)">
+                                                open
+                                            </button>
+                                
+                                
+                                
+                                        </div>
+                                    </div>
+                                    <div class="card col-12">
+                                        <div class="p-2 subHeading">
+                                            <div>
+                                                <span class="text">Type &nbsp;:</span>&nbsp;
+                                                <span class="heading">Default</span>
+                                            </div>
+                                
+                                        </div>
+                                        <div class="card-body d-flex gap-2">
+                                            <div class="col-5">
+                                                <div class="p-1" style="height:14vh;width:14vh;">
+                                                    <img src="../../../assets/images/playZone/images/skyline logo.png" alt="Logo" height="100%"
+                                                        width="100%">
+                                                </div>
+                                            </div>
+                                            <div class="col-7">
+                                                <div>
+                                                    <h6 class="mb-3">Skyline</h6>
+                                                    <p class="mobile-card-description">
+                                                        Unleash your inner bullseye.
+                                
+                                                    </p>
+                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <hr width="98%">
+                                        </div>
+                                
+                                        <div class="d-flex  mb-2 ms-4" style="cursor:pointer;">
+                                
+                                
+                                            <button style="cursor:pointer;border: none;background: #ffff;" class="mobile-status-openButton"
+                                                (click)="openSkyline(content)">
+                                                open
+                                            </button>
+                                
+                                
+                                
+                                        </div>
+                                    </div>
+                                </ng-template>
+                               
+                                <div class="card col-12" *ngFor="let data of filterByCategory|filter:term"
+                                [ngStyle]="{'opacity':data._status==='active' ? 1 : 0.7}">
+                                <div class="p-2 subHeading">
                                     <div>
-                                        <h6 class="mb-3">{{data.spot_engagement_title}}</h6>
-                                        <p class="mobile-card-description">
-                                            {{data.spot_engagement_description}}
-                                        </p>
-                                        <div class="d-flex justify-content-end align-items-end mt-2">
-                                            <span class="date"
-                                                style="position: absolute; bottom:60px; right:10px">{{data.end_date |
-                                                date:"d/M/yyyy 'at' hh:mm a"}}</span>
+                                        <span class="text">Type &nbsp;:</span>&nbsp;
+                                        <span class="heading">{{data.spot_type}}</span>
+                                    </div>
+                                    <div>
+                                        <div *ngIf="data.spot_status === 'Open' &&  data._status==='Retracted'; then ifBlock">
+                                        </div>
+    
+                                        <ng-template #ifBlock>
+                                            <button class="btn btn-secondary" [disabled]="true">Retracted</button>
+                                        </ng-template>
+                                        <div *ngIf="data.spot_status==='Open' &&  data._status==='expired'; then ifBlock1">
+                                        </div>
+                                        <ng-template #ifBlock1>
+                                            <button class="btn btn-danger" [disabled]="true">{{data._status}}</button>
+                                        </ng-template>
+                                       
+                                    </div>
+                                </div>
+                                <div class="card-body d-flex gap-2">
+                                    <div class="col-5">
+                                        <div class="p-1" style="height:14vh;width:14vh;">
+                                            <img src="{{data.logo}}" alt="Logo" height="100%" width="100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-7">
+                                        <div>
+                                            <h6 class="mb-3">{{data.spot_engagement_title}}</h6>
+                                            <p class="mobile-card-description">
+                                                {{data.spot_engagement_description}}
+                                            </p>
+                                            <div class="d-flex justify-content-end align-items-end mt-2">
+                                                <span class="date"
+                                                    style="position: absolute; bottom:60px; right:10px">{{data.end_date |
+                                                    date:"d/M/yyyy 'at' hh:mm a"}}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="d-flex justify-content-center">
+                                    <hr  width="98%">
+                                </div>
+                                
+                                <div class="d-flex  mb-2 ms-4" style="cursor:pointer;">
+                                    <div
+                                        *ngIf="data.spot_status==='Open' && data._status==='active'; then openedBlock;else openBlock">
+                                    </div>
+                                    <ng-template #openedBlock>
+                                        <button style="cursor:pointer;border: none;background: #ffff;"
+                                            class="mobile-status-openButton" (click)="open(content1,data)">
+                                            {{data.spot_status}}
+                                        </button>
+                                    </ng-template>
+                                    <ng-template #openBlock>
+    
+                                        <button style="cursor:pointer;border: none;background: #ffff;" [disabled]="true"
+                                            class="status-openButton">
+                                            {{data.spot_status}}
+                                        </button>
+                                    </ng-template>
+                                    <ng-template #content1 let-c="close" let-d="dismiss">
+                                        <button type="button" class="btn-close" aria-label="Close"
+                                                    (click)="d('Cross click')">X</button>
+                                       
+                                        <iframe [src]='safeUrl' title="spin_the_wheel" height="560px" width="100%">
+                                        </iframe>
+    
+                                    
+                                    </ng-template>
+                                </div>
                             </div>
-                            <div class="d-flex justify-content-center">
-                                <hr  width="98%">
+    
                             </div>
                             
-                            <div class="d-flex  mb-2 ms-4" style="cursor:pointer;">
-                                <div
-                                    *ngIf="data.spot_status==='Open' && data._status==='active'; then openedBlock;else openBlock">
-                                </div>
-                                <ng-template #openedBlock>
-                                    <button style="cursor:pointer;border: none;background: #ffff;"
-                                        class="mobile-status-openButton" (click)="open(content1,data)">
-                                        {{data.spot_status}}
-                                    </button>
-                                </ng-template>
-                                <ng-template #openBlock>
-
-                                    <button style="cursor:pointer;border: none;background: #ffff;" [disabled]="true"
-                                        class="status-openButton">
-                                        {{data.spot_status}}
-                                    </button>
-                                </ng-template>
-                                <ng-template #content1 let-c="close" let-d="dismiss">
-                                    <button type="button" class="btn-close" aria-label="Close"
-                                                (click)="d('Cross click')">X</button>
-                                   
-                                    <iframe [src]='safeUrl' title="spin_the_wheel" height="560px" width="100%">
-                                    </iframe>
-
-                                
-                                </ng-template>
-                            </div>
                         </div>
-                        <div class="col-12 d-flex justify-content-center align-items-center h-100"
+                        
+                        <!-- <div class="col-12 d-flex justify-content-center align-items-center h-100"
                             *ngIf="Passbook.length<=0">
                             <div class="mobile-noContentContainer">
                                 <img src="assets/images/playZone/images/spot.svg" alt="" width="90%" height="90%">
@@ -765,7 +945,7 @@
                             </div>
 
 
-                        </div>
+                        </div> -->
                     </ng-container>
 
                     <ng-container *ngIf="openPassBook">
@@ -893,7 +1073,7 @@
         </div>
     </div>
 
-</div> -->
+</div>
 
 <!-- Rotated View -->
 <div class="mobile-view-rotated d-flex flex-column justify-content-center align-items-center">

@@ -296,8 +296,6 @@ export class TopHierarchyDashboardsComponent implements OnInit {
           }
 
         });
-        
-        
         this.leaderboard_data=this.sectionView_3?._ranking_data[0]._data;
         this.lengthLeaderBoardData=this.leaderboard_data.length;
         
@@ -309,6 +307,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
         
 
         this.sectionView_3 = res?.data
+        console.log(this.sectionView_3)
         this.leaderboard_data=this.sectionView_3?._ranking_data[0]._data
         this.leaderboard_data_buttons=this.sectionView_3?._ranking_data
         

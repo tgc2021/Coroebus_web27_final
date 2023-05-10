@@ -68,24 +68,35 @@
 
                                             </mat-expansion-panel-header>
                                             <div class="global_index d-flex mt-1" style="cursor: pointer;" (click)="OverallGrowth()">Overall
-                                                <div class="global_index_details d-flex">
+                                                <div class="global_index_details d-flex gap-2">
                                                     <div>
                                                         {{buisness_head_response_._points[0].score}}
                                                     </div>
                                                     
                                                     <div>
-                                                        <div  style="height:2.5vh;">
+                                                        
+                                                        <div class="d-flex justify-content-end ">
+                                                        
+                                                            <div  style="height:2.5vh;">
+        
+                                                                <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                                                    height="100%" >
+                                                            </div>
+                            
+                                                            <!-- <div *ngIf="buisness_head_response_._points[0].ranking_arrow=='red'"  style="height:2.5vh;">
+                            
+                                                                <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                                    height="100%">
+                            
+                                                            </div>
+                                                            <div *ngIf="buisness_head_response_._points[0].ranking_arrow=='yellow'"  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
+                            
+                                                              
+                                                               <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
+                            
+                                                            </div> -->
     
-                                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
-                                                                height="100%" >
                                                         </div>
-                        
-                                                        <!-- <div *ngIf="res.rankingtable_arrow!='green' && j !=0"  style="height:2.5vh;">
-                        
-                                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
-                                                                height="100%">
-                        
-                                                        </div> -->
                                                     </div>
 
                                                 </div>
@@ -100,13 +111,13 @@
                                                     {{response.weightage}}
                                                     <div class="d-flex justify-content-end ">
                                                         
-                                                        <div *ngIf="response.ranking_arrow=='green'" style="height:2.5vh;">
+                                                        <div  style="height:2.5vh;">
     
                                                             <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
                                                                 height="100%" >
                                                         </div>
                         
-                                                        <div *ngIf="response.ranking_arrow=='red'"  style="height:2.5vh;">
+                                                        <!-- <div *ngIf="response.ranking_arrow=='red'"  style="height:2.5vh;">
                         
                                                             <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
                                                                 height="100%">
@@ -114,10 +125,10 @@
                                                         </div>
                                                         <div *ngIf="response.ranking_arrow=='yellow'"  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
                         
-                                                           <!-- <div style="height: 1.2vh;width:1.2vh;border-radius:100%;background-color:orange ;"></div> -->
+                                                           
                                                            <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
                         
-                                                        </div>
+                                                        </div> -->
 
                                                     </div>
                                                 </div>
@@ -137,12 +148,12 @@
                                         <div class="pech d-flex" style="cursor: pointer;" *ngFor="let response of buisness_head_response_._governance_score" (click)="navigateToBIMap(response)">
                                             {{response.point_label}}
                                             <div class="pech_details d-flex">
-                                                <div >
+                                                <div>
                                                     {{response.weightage}}
                                                 </div>
-                                                
-                                                <div class="d-flex justify-content-end ">
-                                                        
+
+                                                <div class="d-flex justify-content-end">
+
                                                     <div *ngIf="response.rankingtable_arrow=='green'" style="height:2.5vh;">
 
                                                         <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
@@ -302,7 +313,7 @@
     <div>
         <mat-card class="mobile_details_card d-flex justify-content-center"
             [style.background-color]="buisness_head_response_.theme_details[0].light_color">
-            <div class="mobile_name"> {{buisness_head_response_._personal_data.first_name}} </div>
+            <div class="mobile_name">Name: {{buisness_head_response_._personal_data.first_name}} </div>
             <mat-accordion  style="margin-top: 2%;">
 
                 <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
@@ -313,25 +324,69 @@
 
                     </mat-expansion-panel-header>
                     <hr class="horizontal_row" style="font-weight: 550;font-family: 'Inter';">
-                    <div >
+                    <div class="pt-2">
                         <div class="d-flex justify-content-between align-items-center mt-1" style="font-weight: 550;font-family: 'Inter';">
-                            <div class="global_index_mobile d-flex"  style="font-weight: 600;font-family: 'Inter';">Index
+                            <div class="global_index_mobile d-flex"  style="font-weight: 600;font-family: 'Inter';">Overall
                            
                             </div>
-                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Inter';">
-                                {{GrowthIndexData[0].score}}
+                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Inter';display: flex;">
+                                <div>{{GrowthIndexData[0].score}}</div>
+                                <div class="d-flex justify-content-end">
+                                                        
+                                    <div  style="height:2.5vh;">
+
+                                        <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                            height="100%" >
+                                    </div>
+    
+                                    <!-- <div *ngIf="GrowthIndexData[0].ranking_arrow=='red'"  style="height:2.5vh;">
+    
+                                        <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                            height="100%">
+    
+                                    </div>
+                                    <div *ngIf="GrowthIndexData[0].ranking_arrow=='yellow'"  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
+    
+                                        <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
+    
+                                    </div> -->
+
+                                </div>
+                                
     
                             </div>
                         </div>
                        
                        
                         <div  *ngFor="let kpi_data of buisness_head_response_._kpi_score">
-                            <div class="d-flex justify-content-between align-items-center" style="font-weight: 550;font-family: 'Inter';">
+                            <div class="d-flex justify-content-between align-items-center" style="font-weight: 550;font-family: 'Inter';margin-top:2%">
                                 <div class="pech " style="font-weight: 600;font-family: 'Inter';">
                                     {{ kpi_data.point_label}}   
                                 </div>
-                                <div class="pech_details" style="font-weight: 600;font-family: 'Inter';">
-                                    {{ kpi_data.weightage}}
+                                <div class="pech_details" style="font-weight: 600;font-family: 'Inter';display:flex;">
+                                    <div>{{ kpi_data.weightage}}</div>
+                                    <div class="d-flex justify-content-end">
+                                                        
+                                        <div *ngIf="kpi_data.ranking_arrow=='green'" style="height:2.5vh;">
+
+                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                                height="100%" >
+                                        </div>
+        
+                                        <div *ngIf="kpi_data.ranking_arrow=='red'"  style="height:2.5vh;">
+        
+                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                height="100%">
+        
+                                        </div>
+                                        <div *ngIf="kpi_data.ranking_arrow=='yellow'"  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
+        
+                                            <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
+        
+                                        </div>
+
+                                    </div>
+
                                 </div>
                             </div>
                             
@@ -347,10 +402,23 @@
 
 
 
-    <div>
+    <div class="map-container-mobile" >
         <!-- <app-business-head-map></app-business-head-map> -->
+        <!-- <ngx-tableau 
+                    [tableauVizUrl]="dataMapMobile"
+                    >
+                </ngx-tableau> -->
 
-        <img class="mobile_map" src="assets/images/TopHierarchyDashboard/mobile_map.png" />
+        <div style="font-weight: 550;font-family: 'Inter';text-align:start">
+            <div>
+               &nbsp; Net Promoter Score
+            </div>
+           
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+            <img class="mobile_map"  src="assets/images/TopHierarchyDashboard/mobile_map.png" />
+        </div>
+        
     </div>
 
 
@@ -358,72 +426,53 @@
         <!-- Accordian for Business Index -->
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
+
                 <mat-panel-title class="growth_index_accordion_mobile mt-2">
                     Business Index
                 </mat-panel-title>
 
             </mat-expansion-panel-header>
             <hr class="horizontal_row" style="font-weight: 550;font-family: 'Inter';">
-            <div >
+            <div  *ngFor="let businessresponse of buisness_head_response_._business_score" style="cursor: pointer;" (click)="navigateToBIMap(businessresponse)">
                 <div class="d-flex justify-content-between align-items-center mt-4" style="font-weight: 550;font-family: 'Inter';">
-                    <div class="global_index_mobile d-flex"  style="font-weight: 600;font-family: 'Inter';">Net Promoter Score
+                    <div class="global_index_mobile d-flex"  style="font-weight: 600;font-family: 'Inter';"> <div>{{businessresponse.point_label}}</div>
                    
                     </div>
-                    <div class="global_index_details  "  style="font-weight: 600;font-family: 'Inter';">
-                        <!-- {{GrowthIndexData[0].score}} -->
-
-                        0000
-
-                    </div>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-4" style="font-weight: 550;font-family: 'Inter';">
-                    <div class="global_index_mobile d-flex"  style="font-weight: 600;font-family: 'Inter';">Customer Effort Score
-                   
-                    </div>
-                    <div class="global_index_details  "  style="font-weight: 600;font-family: 'Inter';">
-                        <!-- {{GrowthIndexData[0].score}} -->
-
-                        0000
-
-                    </div>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-4" style="font-weight: 550;font-family: 'Inter';">
-                    <div class="global_index_mobile d-flex"  style="font-weight: 600;font-family: 'Inter';">Sales Index
-                   
-                    </div>
-                    <div class="global_index_details  "  style="font-weight: 600;font-family: 'Inter';">
-                        <!-- {{GrowthIndexData[0].score}} -->
-
-                        0000
-
-                    </div>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-4" style="font-weight: 550;font-family: 'Inter';">
-                    <div class="global_index_mobile d-flex"  style="font-weight: 600;font-family: 'Inter';">Cost Index
-                   
-                    </div>
-                    <div class="global_index_details  "  style="font-weight: 600;font-family: 'Inter';">
-                        <!-- {{GrowthIndexData[0].score}} -->
-
-                        0000
-
-                    </div>
-                </div>
-
-               
-               
-                <!-- <div  *ngFor="let kpi_data of buisness_head_response_._kpi_score">
-                    <div class="d-flex justify-content-between align-items-center" style="font-weight: 550;font-family: 'Inter';">
-                        <div class="pech ">
-                            {{ kpi_data.point_label}}
-                            
+                    <div class="d-flex gap-1">
+                        <div class="global_index_details  "  style="font-weight: 600;font-family: 'Inter';">
+                            <!-- {{GrowthIndexData[0].score}} -->
+    
+                            {{businessresponse.weightage}}
+    
                         </div>
-                        <div class="pech_details">
-                            {{ kpi_data.weightage}}
+                        <div class="d-flex justify-content-end">
+                                                            
+                            <div *ngIf="businessresponse.ranking_arrow=='green'" style="height:2.5vh;">
+    
+                                <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                    height="100%" >
+                            </div>
+                            <div >
+                                <div *ngIf="businessresponse.ranking_arrow=='red'"  style="height:2.5vh;">
+    
+                                    <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                        height="100%">
+        
+                                </div>
+                                <div *ngIf="businessresponse.ranking_arrow=='yellow'"  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
+        
+                                    <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
+        
+                                </div>
+                            </div>
+                            
+    
                         </div>
                     </div>
                     
-                </div> -->
+                </div>
+                
+                
                
             </div>
            
@@ -441,77 +490,47 @@
 
             </mat-expansion-panel-header>
             <hr class="horizontal_row" style="font-weight: 550;font-family: 'Inter';">
-                    <div >
-                        <!-- <div class="d-flex justify-content-between align-items-center mt-1" style="font-weight: 550;font-family: 'Inter';">
-                            <div class="global_index_mobile d-flex"  style="font-weight: 600;font-family: 'Inter';">Index
-                           
-                            </div>
-                            <div class="global_index_details  " style="font-weight: 600;font-family: 'Inter';">
-                                {{GrowthIndexData[0].score}}
+            <div  *ngFor="let businessresponse of buisness_head_response_._governance_score"style="cursor: pointer;" (click)="navigateToBIMap(businessresponse)">
+                <div class="d-flex justify-content-between align-items-center mt-4" style="font-weight: 550;font-family: 'Inter';margin-top:2%">
+                    <div class="global_index_mobile d-flex"  style="font-weight: 600;font-family: 'Inter';"> <div>{{businessresponse.point_label}}</div>
+                   
+                    </div>
+                    <div class="d-flex gap-1">
+                        <div class="global_index_details  "  style="font-weight: 600;font-family: 'Inter';">
+                            <!-- {{GrowthIndexData[0].score}} -->
     
-                            </div>
-                        </div> -->
-                        <div class="d-flex justify-content-between align-items-center mt-4" style="font-weight: 550;font-family: 'Inter';">
-                            <div class="global_index_mobile d-flex"  style="font-weight: 600;font-family: 'Inter';">Overall
-                           
-                            </div>
-                            <div class="global_index_details  "  style="font-weight: 600;font-family: 'Inter';">
-                                <!-- {{GrowthIndexData[0].score}} -->
-        
-                                0000
-        
-                            </div>
+                            {{businessresponse.weightage}}
+    
                         </div>
-                        <div class="d-flex justify-content-between align-items-center mt-4" style="font-weight: 550;font-family: 'Inter';">
-                            <div class="global_index_mobile d-flex"  style="font-weight: 600;font-family: 'Inter';">NHT
-                           
+                        <div class="d-flex justify-content-end">
+                                                            
+                            <div *ngIf="businessresponse.rankingtable_arrow=='green'" style="height:2.5vh;">
+
+                                <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                    height="100%" >
                             </div>
-                            <div class="global_index_details  "  style="font-weight: 600;font-family: 'Inter';">
-                                <!-- {{GrowthIndexData[0].score}} -->
-        
-                                0000
-        
+
+                            <div *ngIf="businessresponse.rankingtable_arrow=='red'"  style="height:2.5vh;">
+
+                                <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                    height="100%">
+
                             </div>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mt-4" style="font-weight: 550;font-family: 'Inter';">
-                            <div class="global_index_mobile d-flex"  style="font-weight: 600;font-family: 'Inter';">OJT
-                           
-                            </div>
-                            <div class="global_index_details  "  style="font-weight: 600;font-family: 'Inter';">
-                                <!-- {{GrowthIndexData[0].score}} -->
-        
-                                0000
-        
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mt-4" style="font-weight: 550;font-family: 'Inter';">
-                            <div class="global_index_mobile d-flex"  style="font-weight: 600;font-family: 'Inter';">FO
-                           
-                            </div>
-                            <div class="global_index_details  "  style="font-weight: 600;font-family: 'Inter';">
-                                <!-- {{GrowthIndexData[0].score}} -->
-        
-                                0000
-        
-                            </div>
-                        </div>
-        
-                       
-                       
-                        <!-- <div  *ngFor="let kpi_data of buisness_head_response_._kpi_score">
-                            <div class="d-flex justify-content-between align-items-center mt-4" style="font-weight: 550;font-family: 'Inter';">
-                                <div class="pech " style="font-weight: 600;font-family: 'Inter';">
-                                    {{ kpi_data.point_label}}
-                                    
-                                </div>
-                                <div class="pech_details" style="font-weight: 600;font-family: 'Inter';">
-                                    {{ kpi_data.weightage}}
-                                </div>
+                            <div *ngIf="businessresponse.rankingtable_arrow=='yellow'"  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
+
+                                <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
+
                             </div>
                             
-                        </div> -->
-                       
+    
+                        </div>
                     </div>
+                    
+                </div>
+                
+                
+               
+            </div>
             
         </mat-expansion-panel>
     </div>
@@ -566,18 +585,20 @@
 
         </div>
     </div> -->
-
-    <div class="mobile_call_center_details d-flex flex-column justify-content-start align-items-center">
-    
-        <div class="row" style="width: 100%;
+    <div class="row" style="width: 100%;
         font-size: 4vw;
         font-weight: 600;
-        padding-left: 4%;">
+        padding-left: 4%;
+        margin-top:2vh;
+        color:#ffff">
             <div class="col-1 ">Rank</div>
-            <div class="col-2"></div>
-            <div class="col-6" >Name </div>
+            <div class="col-3"></div>
+            <div class="col-5" >Name </div>
             <div class="col-2">Score</div>
         </div>
+    <div class="mobile_call_center_details d-flex flex-column justify-content-start align-items-center">
+    
+        
         <div class="row align-self-center mobile_call_center_row   mt-1"
             *ngFor="let res of buisness_head_response_._ranking_data[0]._data;let i=index"
             style="background-image: url({{buisness_head_response_._ranking_data[0]._data[i].ranking_image}});background-size: 100% 100%;"

@@ -70,7 +70,6 @@
             .profile_picture_image {
                 width: 10vh;
                 height: 10vh;
-               
                 border-radius: 100%;
 
             }
@@ -599,17 +598,14 @@
     width: 44vw;
     height: 7vh;
     background: #FFFFFF;
-    // border: none;
     border: 1px solid black;
-    /* Card / Big */
-
     box-shadow: 0px 0px 0px 1px #E8E8E8, 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 20px 20px rgba(0, 0, 0, 0.08);
     border-radius: 15px;
 }
 
 
 input::placeholder {
-    font-size: 0.8vw;
+    font-size:16px;
 }
 
 .search_bar_img {
@@ -618,6 +614,19 @@ input::placeholder {
     background: var(--myvar);
     color: #FFFFFF;
     margin-top: 2vh;
+    border-radius: 100%;
+    font-size: 2.2vh;
+    margin-left: 1vw;
+    padding: 1vw;
+    border-radius: 1vw;
+}
+.search_bar_img_mobile {
+    width: 13vw;
+    height: 7vh;
+    background: var(--myvar);
+    color: #FFFFFF;
+    margin-top: 2vh;
+    border-radius: 100%;
     font-size: 2.2vh;
     margin-left: 1vw;
     padding: 1vw;
@@ -1575,14 +1584,14 @@ input::placeholder {
     }
 
     .point_distribution_mobile {
-        height: 22vh;
+        height: 35vh;
         width: 95vw;
         margin-top: 2vh;
         overflow-y: auto;
 
         .point_background_mobile {
             // background: var(--mediumColor);
-            height: 4vh;
+            height: 5vh;
             display: flex;
             align-items: center;
             border-radius: 6px;
@@ -1594,7 +1603,7 @@ input::placeholder {
 
 
             .point_one_mobile {
-                height: 4vh;
+                height: 6vh;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -1603,7 +1612,7 @@ input::placeholder {
                 cursor: pointer;
 
                 .point_one_label_mobile {
-                    font-size: 2.1vh;
+                    font-size: 1.8vh;
                     font-weight: 550;
                     margin-right: 2vw;
                     font-family: 'Inter';
@@ -1613,15 +1622,6 @@ input::placeholder {
 
 
         }
-
-
-
-
-
-
-
-
-
     }
 
     .button_series_mobile {
@@ -1633,7 +1633,7 @@ input::placeholder {
         border-radius: 7px;
         padding: 10px;
         border: none;
-        width: 20vw;
+        width: 24vw;
         color: #000000;
         font-weight: 600;
         font-family: 'Inter'
@@ -1650,7 +1650,7 @@ input::placeholder {
         border-radius: 7px;
         // margin-left: 2vw;
         border: none;
-        width: 20vw;
+        width: 24vw;
         color: #ffff;
         font-weight: 500;
         font-family: 'Inter'
@@ -1662,6 +1662,7 @@ input::placeholder {
         margin-left: 1vw;
         width: 100%;
         height: 7vh;
+        font-size:2.1vh;
         background: #FFFFFF;
         border: none;
         /* Card / Big */
@@ -1698,7 +1699,10 @@ input::placeholder {
     }
 
     .leaderBoard-container-mobile {
-        width: 100vw;
+        width: 95%;
+        border-radius: 5px;
+        
+        background-size: cover;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -1806,8 +1810,8 @@ input::placeholder {
     }
 
     .leaderboard_rank_badge_image_mobile {
-        width: 6vh;
-        height: 6vh;
+        width: 5vh;
+        height: 5vh;
 
     }
 
@@ -1819,13 +1823,14 @@ input::placeholder {
         color: #ffffff;
         width: 14vw;
         text-align: center;
-
-
     }
 
     .leaderboard_rank_up_down_arrow_div_mobile {
         width: 10vw;
         height: 6vh;
+        display:flex;
+        justify-content: center;
+        align-items:center;
         margin-left: 5vw;
 
     }
@@ -1870,6 +1875,7 @@ input::placeholder {
 
     .search_bar_img_mobile_div{
         padding-left: 0;
+        
     }
 
     ::ng-deep {
@@ -1880,6 +1886,19 @@ input::placeholder {
         }
     }
 
+
+}
+.search_box_mobile {
+    margin-top: 2vh;
+    margin-left: 1vw;
+    width: 100%;
+    height: 7vh;
+    font-size:2.1vh;
+    background: #FFFFFF;
+    border: none;
+    /* Card / Big */
+    box-shadow: 0px 0px 0px 1px #E8E8E8, 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 20px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 15px;
 
 }
 
@@ -1910,3 +1929,23 @@ input::placeholder {
     border-radius: 10px;
     margin-top: 1vh;
 }
+.points-dis-card{
+    background-repeat: no-repeat;
+    background-position: inherit;
+    background-size: cover;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    width: auto;
+    height:25vh;
+    margin-top: 2%;
+    border-radius: 11px;
+ }
+ .red_auto_fail{
+    border:2px solid red;
+
+ }
+ .Green_auto_fail{
+    border:2px solid #79BF06;
+
+ }
