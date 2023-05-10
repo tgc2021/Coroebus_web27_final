@@ -1201,42 +1201,67 @@ else if(this.activeTabForSectionView_2 == 4){
         
       })
 
-      this.spectSearList = res?.data
+      if(res.data==''){
+        console.log(res.data);
+        // this.openSnackBar('No data Available','Ok')
+  
+        // Swal.fire({
+        //   title: '',
+        //   text:'No data Available',
+        //   imageUrl: 'assets/images/svg/logo/logo.svg',
+        //   imageHeight: 40,
+        //   confirmButtonColor: '#556ee6'
+        // });
+  
+        Swal.fire({
+          title: '',
+          text:'No data Available',
+          // imageUrl: 'assets/images/svg/logo/logo.svg',
+          imageHeight: 40,
+          confirmButtonColor:  this.sectionView_1.theme_details[0].dark_color
+        });
+  
+      }
+      else{
+        this.spectSearList = res?.data
       
     
-      this.searchbgimage= this.spectSearList[0]
-      this.search_bg_tile_image=this.searchbgimage._data
-      
-
-      this.search_bg_tile_image.map(res=>{
-       
-        this.final_web_tile_image=res
+        this.searchbgimage= this.spectSearList[0]
+        this.search_bg_tile_image=this.searchbgimage._data
         
-        
-        
-
-        this.getBackImagesFromSectionView1.map(res=>{
-          
-          this.section1_tile_images=res
+  
+        this.search_bg_tile_image.map(res=>{
+         
+          this.final_web_tile_image=res
           
           
           
-          if(this.final_web_tile_image.ranking_image_level == this.section1_tile_images.ranking_image_level){
+  
+          this.getBackImagesFromSectionView1.map(res=>{
+            
+            this.section1_tile_images=res
             
             
-           this.web_tile_img= this.section1_tile_images.ranking_image
             
-            
-           }
-
-           
-
-
+            if(this.final_web_tile_image.ranking_image_level == this.section1_tile_images.ranking_image_level){
+              
+              
+             this.web_tile_img= this.section1_tile_images.ranking_image
+              
+              
+             }
+  
+             
+  
+  
+          })
+  
+  
+  
         })
+      }
 
-
-
-      })
+   
 
 
     } else {
@@ -1274,7 +1299,7 @@ else if(this.activeTabForSectionView_2 == 4){
       "_userid": this.userSelectionData?._personal_data?.USERID,
       "_team": this.userSelectionData?._personal_data?.id_coroebus_team,
       "_game": this.userSelectionData?._personal_data?.id_coroebus_game,
-      "_id_user_poked": this.pokeRowData?.id_coroebus_user,
+      "_id_user_poked": this.pokeRowData?.id_coroebus_user != null?  this.pokeRowData?.id_coroebus_user : this.pokeRowData?.id_supervisor,
       "_pokeid": this.pokeId
     };
     [err, res] = await HttpProtocols.to(DashboardModel.pokeSelection(body))
@@ -1346,7 +1371,7 @@ else if(this.activeTabForSectionView_2 == 4){
     modalRef.componentInstance.notoficationData = data;
   }
   getDataBasedOnUserID(data: any) {
-    
+    this.spectSearchStr = ''    
     this.role_id= data?.role_id.toString();
     
     this.Edit_image();
@@ -1559,6 +1584,7 @@ else if(this.activeTabForSectionView_2 == 4){
 
 
   navigateToOtherRole(item){
+    this.spectSearchStr=''
     this.activeSubTabForSectionView_2 = 'My Store'    
     
     this.userID= this.Util.encryptData(item?.userid);

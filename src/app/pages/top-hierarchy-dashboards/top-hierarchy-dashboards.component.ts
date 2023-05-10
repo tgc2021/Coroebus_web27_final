@@ -11,6 +11,7 @@ import { EventService } from '@app/services/event.service';
 import * as userActions from '../../core/app-state/actions';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
+import { MatSnackBar } from "@angular/material/snack-bar";  
 
 import { ImagecropperComponent } from '@pages/imagecropper/imagecropper.component';
 
@@ -61,7 +62,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   spectSearchStr:any=''
   spectSearchStrTrigger: boolean = false
   activeTabOrderNumberForSectionView_2: any
-  spectSearList: string
+  spectSearList: any
   searchbgimage:any
   search_bg_tile_image: any;
   final_web_tile_image: any;
@@ -97,7 +98,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   firstUserData: any;
   nodatasearch:any
 
-  constructor(private readonly store: Store, public _route: ActivatedRoute,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
+  constructor(private readonly store: Store, public _route: ActivatedRoute,public snackBar: MatSnackBar,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
   ngOnInit(): void {
   
@@ -386,6 +387,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
       this.sectionView_3_err = 'Please try after some time'
     }
   }
+  
 
   upDownArrow(arrowStatus: string, rowData: any) {
     // alert('TODO: Add Poke popup-> ' + arrowStatus)
@@ -499,7 +501,8 @@ export class TopHierarchyDashboardsComponent implements OnInit {
 
   navigateToSMDashboard(index:any){
 
-    
+    this.spectSearchStr=''
+
     
     this.spectator="spectator"
     
@@ -725,7 +728,7 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
       this.spectSearchStr=''
       this.emptyInput==true;
       this.spectSearchStrTrigger = false
-      this.spectSearch()
+      // this.spectSearch()
    
       // this.spectSearchStr.setValue('');
       // this.ngOnInit()
@@ -759,24 +762,36 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
     [err, res] = await HttpProtocols.to(DashboardModel.spectSearch(body))
     if (!err && res?.statuscode === 200) {
       console.log(res);
-     
-      
-      let body={
-        _userid:this.userSelectionData?._personal_data?.USERID,
-        _game:this.userSelectionData?.id_coroebus_game,
-        _device:"W",
-        _section:"Dashboard",
-        _description:"Search"
-      }
-  
-      this.http.engagamentlog(body).subscribe(res=>{
-        
-        
-      })
-
-      this.spectSearList = res?.data[0]._data;
+      console.log(res.data);
     
+
+    if(res.data==''){
+      console.log(res.data);
+      // this.openSnackBar('No data Available','Ok')
+
+      // Swal.fire({
+      //   title: '',
+      //   text:'No data Available',
+      //   imageUrl: 'assets/images/svg/logo/logo.svg',
+      //   imageHeight: 40,
+      //   confirmButtonColor: '#556ee6'
+      // });
+
+      Swal.fire({
+        title: '',
+        text:'No data Available',
+        // imageUrl: 'assets/images/svg/logo/logo.svg',
+        imageHeight: 40,
+        confirmButtonColor:  this.sectionView_1.theme_details[0].dark_color
+      });
+
+    }
+    else{
+      this.spectSearList = res?.data[0]._data;
+      console.log(this.spectSearList);
       
+  
+
       this.lengthSearchList=this.spectSearList.length;
       
     // this.spectSearFinalList=this.spectSearList._data
@@ -813,6 +828,22 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
          
     
       })
+    }
+      
+      let body={
+        _userid:this.userSelectionData?._personal_data?.USERID,
+        _game:this.userSelectionData?.id_coroebus_game,
+        _device:"W",
+        _section:"Dashboard",
+        _description:"Search"
+      }
+  
+      this.http.engagamentlog(body).subscribe(res=>{
+        
+        
+      })
+
+     
 
     } else {
       this.notificationList_err = 'Error'
@@ -823,7 +854,7 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
 
   getDataBasedOnUserID(data: any) {
     // 
-
+this.spectSearchStr=''
     
     if(data.role_id==8||data.role_id==9){
       this.router.navigate([], {
