@@ -221,7 +221,7 @@
             <div class="col-lg-2 col-md-2 col-6" style="display: flex; justify-content: end; width: 100%; align-items: center;">
                 <div class="col-lg-10 col-md-10 col-6 d-flex justify-content-end">
                     <div class="historical-live-btn mt-2" role="group" aria-label="Basic radio toggle button group"
-                    *ngIf="(userObj?._personal_data?.id_role === '3' || userObj?._personal_data?.id_role === '4')">
+                    *ngIf="( this.id_role === '3' || this.id_role === '4')">
                     <input type="radio" class="btn-check" name="Historical" id="Historical" autocomplete="off"
                         [attr.checked]="buttonFilterActive === 'Historical' ? true: null">
                     <label class="btn btn-outline-primary performance-filter-primary" for="Historical"

@@ -29,6 +29,7 @@ import { GovernanceIndexComponent } from './governance-index/governance-index.co
 import { TableauModule } from 'ngx-tableau';
 import { BusinessHeadMapComponent } from './business-head-map/business-head-map.component';
 import { BusinessReportComponent } from './business-report/business-report.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { BusinessReportComponent } from './business-report/business-report.compo
     CommonModule,
     FormsModule,
     NgbDropdownModule,
+    MatSnackBarModule,
     MatExpansionModule,
     NgbModalModule,
     PagesRoutingModule,

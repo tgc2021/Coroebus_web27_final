@@ -70,7 +70,7 @@ export class Util {
             roleID: '4',
             canPokeTo: ['6', '4', '10']
         }, {
-            roleID: '10',
+            roleID: '10',  
             canPokeTo: ['6', '4', '10']
         }, {
             roleID: '3',
@@ -78,7 +78,21 @@ export class Util {
         }, {
             roleID: '11',
             canPokeTo: ['6', '4', '10', '3', '11']
-        }]
+        },{
+            roleID: '8',
+            canPokeTo: ['6', '4', '10', '3', '11','8','12']
+        },{
+            roleID: '12',
+            canPokeTo: ['6', '4', '10', '3', '11','8','12']
+        }, {
+            roleID: '9',
+            canPokeTo: ['6', '4', '10', '3', '11','8','12','9']
+        },{
+            roleID: '13',
+            canPokeTo: ['6', '4', '10', '3', '11','8','12','9']
+        },
+        
+    ]
     }
 
 

@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit ,ViewChild} from '@angular/core';
 import { combineLatest, Observable, Subject, Subscription } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import * as fromRoot from '../../core/app-state';
@@ -10,6 +10,8 @@ import { ApiserviceService } from 'app/apiservice.service';
 import { EventService } from '@app/services/event.service';
 import * as userActions from '../../core/app-state/actions';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2';
+import { MatSnackBar } from "@angular/material/snack-bar";  
 
 import { ImagecropperComponent } from '@pages/imagecropper/imagecropper.component';
 
@@ -60,7 +62,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   spectSearchStr:any=''
   spectSearchStrTrigger: boolean = false
   activeTabOrderNumberForSectionView_2: any
-  spectSearList: string
+  spectSearList: any
   searchbgimage:any
   search_bg_tile_image: any;
   final_web_tile_image: any;
@@ -75,11 +77,28 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   lengthLeaderBoardData: any;
   about_game_pdf:any
   lengthSearchList: number;
+  pokeId: any;
+  pokeslidedata :any= [];
+  pokeInterval: any;
+  updatedata: any;
+  arrowStatus: any
+  pokeRowData: any
+  pokeErr: any
+  clicked = 0;
+  @ViewChild('content') content;
+  @ViewChild('pokeList') pokeList;
+  @ViewChild('hierarchyPopup') hierarchyPopup;
+  @ViewChild('pokeDangerTpl') pokeDangerTpl;
+  emojiText: any;
+  idSelected: any;
+  pockdata: any;
+  emoji: any;
+  pokeidselected: any;
   hierarchyPopupList: any
   firstUserData: any;
-  @ViewChild('hierarchyPopup') hierarchyPopup;
+  nodatasearch:any
 
-  constructor(private readonly store: Store, public _route: ActivatedRoute,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
+  constructor(private readonly store: Store, public _route: ActivatedRoute,public snackBar: MatSnackBar,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
   ngOnInit(): void {
   
@@ -217,6 +236,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
 
       this.pokeAnimationData = this.sectionView_1._poked_data
       // this.pokeAnimationData1=this.sectionView_1._poked_data[0].poke_description
+      this.updatedPoke()
 
       
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -269,7 +289,46 @@ export class TopHierarchyDashboardsComponent implements OnInit {
       this.sectionView_1_err = 'Please try after some time'
     }
   }
-
+  updatedPoke() {
+    console.log(this.pokeAnimationData);
+    console.log(this.pokeslidedata);
+  
+    if (this.pokeAnimationData.length > 0) {
+      let i = 0;
+  
+      const intervalId = setInterval(() => {
+        this.pokeslidedata.push(this.pokeAnimationData[i]);
+        console.log(this.pokeslidedata);
+  
+        setTimeout(() => {
+          this.pokeslidedata.pop();
+          console.log(this.pokeslidedata);
+        }, 5000); // Remove the last element after 5 seconds'
+        this.updatePokeData(this.pokeAnimationData[i].poke_id_log);
+  
+        i++;
+  
+        if (i === this.pokeAnimationData.length) {
+          clearInterval(intervalId);
+          console.log(this.pokeslidedata);
+          // this.pokeAnimationData=[]
+            setTimeout(()=>{
+          // (<HTMLInputElement>document.getElementById('animationPoke')).style.background = "none";
+            this.getUserBannerDataSectionView_1()
+            },5000)
+        }
+  
+      }, 6000);
+      console.log(this.pokeslidedata);
+  
+    } else {
+      clearInterval(this.pokeInterval);
+      this.pokeAnimationData=[]
+  
+    }
+  
+    console.log(this.pokeslidedata);
+  }
   async getUserBannerDataSectionView_3(viewMore?: any, queryParams?: any) {
     
     
@@ -327,11 +386,122 @@ export class TopHierarchyDashboardsComponent implements OnInit {
       this.sectionView_3_err = 'Please try after some time'
     }
   }
+  
 
+  upDownArrow(arrowStatus: string, rowData: any) {
+    // alert('TODO: Add Poke popup-> ' + arrowStatus)
+    //console.log(rowData)
+    if (rowData?.userid !== this.userSelectionData?._personal_data?.USERID) {
+      let roleCheckArray = this.Util.pokeMapping()
+      if (this.queryParams?.roleID) {
+        console.log(this.queryParams?.roleID)
+        // roleCheckArray = roleCheckArray?.filter(data => data?.roleID === this.sectionView_1?._personal_data?.id_role)
+        roleCheckArray = roleCheckArray?.filter(data => data?.roleID === this.queryParams?.roleID)
+        console.log(roleCheckArray);
+        
+      } else {
+        roleCheckArray = roleCheckArray?.filter(data => data?.roleID === this.userSelectionData?._personal_data?.id_role)
+        console.log(roleCheckArray);
+        
+      }
+      //console.log(this.queryParams)
+      console.log(roleCheckArray?.[0]?.canPokeTo?.indexOf(rowData?.id_role));
+      console.log(roleCheckArray?.[0]?.canPokeTo?.indexOf(rowData?.id_role) > -1);
+      
+      if (roleCheckArray?.[0]?.canPokeTo?.indexOf(rowData?.id_role) > -1) {
+        this.pokeRowData = rowData
+        console.log(this.pokeRowData);
+
+        this.arrowStatus = arrowStatus === 'red' ? 'Motivation' : 'Positive'
+        console.log(this.arrowStatus);
+        this.emojiSelected(0, this.arrowStatus)
+
+        this.modalService.open(this.pokeList, { centered: true, windowClass: 'modal-cls' })
+
+      } else {
+        // this.toastService.show(this.pokeDangerTpl, { classname: '', delay: 1500, });
+        this.pokeErr = `Role id ${this.queryParams?.roleID ? this.queryParams?.roleID : this.userSelectionData?._personal_data?.id_role} can't pokes to role id ${rowData?.id_role}`
+        console.warn(`Role id ${this.queryParams?.roleID ? this.queryParams?.roleID : this.userSelectionData?._personal_data?.id_role} can't pokes to role id ${rowData?.id_role}`)
+      }
+
+    }
+  }
+  emojiSelected(id, event) {
+    // $('.emojiBackgroundButton').removeClass('acrtive')
+
+    this.clicked = id
+    console.log(this.clicked);
+
+    this.emojiText = this.pokeData
+    console.log(event);
+
+    this.idSelected = event === 'Positive' ? 0 : 1
+    console.log(this.idSelected);
+
+    this.pokeidselected = this.emojiText[this.idSelected]._data[id].poke_description
+    this.emoji = this.emojiText[this.idSelected]._data[id].poke_description
+    //  console.log(this.idSelected);
+    this.pokeId = this.emojiText[this.idSelected]._data[id].id_coroebus_poke
+    console.log(this.pokeId);
+
+  }
+  async pokeSelection(modal: any) {
+    let err: any, res: any;
+    let body: any;
+    if (this.spectSearchStr) {
+      this.spectSearchStrTrigger = true
+    } else {
+      this.spectSearchStrTrigger = false
+    }
+    body = {
+      "_userid": this.userSelectionData?._personal_data?.USERID,
+      "_team": this.userSelectionData?._personal_data?.id_coroebus_team,
+      "_game": this.userSelectionData?._personal_data?.id_coroebus_game,
+      "_id_user_poked": this.pokeRowData?.id_coroebus_user,
+      "_pokeid": this.pokeId
+    };
+    [err, res] = await HttpProtocols.to(DashboardModel.pokeSelection(body))
+    if (!err && res?.statuscode === 200) {
+      modal?.dismiss('Cross click')
+      Swal.fire({
+        title: '',
+        text: res?.message,
+        // imageUrl: 'assets/images/svg/logo/logo.svg',
+        imageHeight: 40,
+        confirmButtonColor: this.sectionView_1?.theme_details?.[0]?.dark_color
+      });
+    } else {
+      this.notificationList_err = 'Error'
+    }
+  }
+  updatePokeData(data: any) {
+    console.log(data);
+
+    let body = {
+      '_pokeid': data
+    }
+    this.http.updatePoke(body).subscribe((res) => {
+      console.log(res);
+      
+      this.updatedata=res
+      if (this.updatedata.statuscode === 200) {
+     console.log(123);  
+      } else {
+  
+      }
+      
+      // this.getUserBannerDataSectionView_1()
+    })
+    // clearInterval(this.pokeInterval);
+    // this.pokeslidedata=[]
+
+    
+  }
 
   navigateToSMDashboard(index:any){
 
-    
+    this.spectSearchStr=''
+
     
     this.spectator="spectator"
     
@@ -557,7 +727,7 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
       this.spectSearchStr=''
       this.emptyInput==true;
       this.spectSearchStrTrigger = false
-      this.spectSearch()
+      // this.spectSearch()
    
       // this.spectSearchStr.setValue('');
       // this.ngOnInit()
@@ -590,21 +760,37 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
     };
     [err, res] = await HttpProtocols.to(DashboardModel.spectSearch(body))
     if (!err && res?.statuscode === 200) {
+      console.log(res);
+      console.log(res.data);
+    
 
-      let body={
-        _userid:this.userSelectionData?._personal_data?.USERID,
-        _game:this.userSelectionData?.id_coroebus_game,
-        _device:"W",
-        _section:"Dashboard",
-        _description:"Search"
-      }
-  
-      this.http.engagamentlog(body).subscribe(res=>{
-        
-        
-      })
+    if(res.data==''){
+      console.log(res.data);
+      // this.openSnackBar('No data Available','Ok')
 
+      // Swal.fire({
+      //   title: '',
+      //   text:'No data Available',
+      //   imageUrl: 'assets/images/svg/logo/logo.svg',
+      //   imageHeight: 40,
+      //   confirmButtonColor: '#556ee6'
+      // });
+
+      Swal.fire({
+        title: '',
+        text:'No data Available',
+        // imageUrl: 'assets/images/svg/logo/logo.svg',
+        imageHeight: 40,
+        confirmButtonColor:  this.sectionView_1.theme_details[0].dark_color
+      });
+
+    }
+    else{
       this.spectSearList = res?.data[0]._data;
+      console.log(this.spectSearList);
+      
+  
+
       this.lengthSearchList=this.spectSearList.length;
       
     // this.spectSearFinalList=this.spectSearList._data
@@ -641,6 +827,22 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
          
     
       })
+    }
+      
+      let body={
+        _userid:this.userSelectionData?._personal_data?.USERID,
+        _game:this.userSelectionData?.id_coroebus_game,
+        _device:"W",
+        _section:"Dashboard",
+        _description:"Search"
+      }
+  
+      this.http.engagamentlog(body).subscribe(res=>{
+        
+        
+      })
+
+     
 
     } else {
       this.notificationList_err = 'Error'
@@ -651,23 +853,47 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
 
   getDataBasedOnUserID(data: any) {
     // 
+this.spectSearchStr=''
+    
+    if(data.role_id==8||data.role_id==9){
+      this.router.navigate([], {
+        relativeTo: this._route,
+        queryParams: {
+          userID: this.Util.encryptData(data?._userid),
+          gameID: this.Util.encryptData(data?.game_id),
+          roleID: this.Util.encryptData(data?.role_id?.toString())
+  
+        },
+  
+        queryParamsHandling: 'merge',
+        // preserve the existing query params in the route
+        skipLocationChange: false
+        // do not trigger navigation
+  
+  
+      });
+    }
 
-    this.router.navigate([], {
-      relativeTo: this._route,
-      queryParams: {
-        userID: this.Util.encryptData(data?._userid),
-        gameID: this.Util.encryptData(data?.game_id),
-        roleID: this.Util.encryptData(data?.role_id?.toString())
-
-      },
-
-      queryParamsHandling: 'merge',
-      // preserve the existing query params in the route
-      skipLocationChange: false
-      // do not trigger navigation
-
-
-    });
+    else{
+      
+      this.router.navigate(['/dashboard'], {
+        relativeTo: this._route,
+        queryParams: {
+          userID: this.Util.encryptData(data?._userid),
+          gameID: this.Util.encryptData(data?.game_id),
+          roleID: this.Util.encryptData(data?.role_id?.toString())
+  
+        },
+  
+        // queryParamsHandling: 'merge',
+        // preserve the existing query params in the route
+        // skipLocationChange: false
+        // do not trigger navigation
+  
+  
+      });
+    }
+   
 
 
 

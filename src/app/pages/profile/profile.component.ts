@@ -215,9 +215,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
       Swal.fire({
         title: '',
         text: res?.message,
-        imageUrl: 'assets/images/svg/logo/logo.svg',
+        // imageUrl: 'assets/images/svg/logo/logo.svg',
         imageHeight: 40,
-        confirmButtonColor: '#556ee6'
+        confirmButtonColor: this.userObj?.otherInfo?.color != null? this.userObj?.otherInfo?.color :  this.dark_color
       }).then((result) => {
         if(res?.data?._personal_data?.id_role==13){
           this.Util.goto('/topdashboard')

@@ -90,6 +90,12 @@ export class PlayZoneComponent implements OnInit {
 
   ngOnInit(): void {
 
+    if (!localStorage.getItem('foo')) { 
+      localStorage.setItem('foo', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('foo') 
+    }
 
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
@@ -334,12 +340,12 @@ dynamicColor() {
 
 
   })
-  this.passDataToHeaderSub?.unsubscribe()
-  this.passDataToHeaderSub = this.eventService.subscribe('passDataToHeader', (data) => {
-    this.headerInfo = data
+  // this.passDataToHeaderSub?.unsubscribe()
+  // this.passDataToHeaderSub = this.eventService.subscribe('passDataToHeader', (data) => {
+  //   this.headerInfo = data
     
 
-  })
+  // })
   if (this.userSelectionData?.otherInfo) {
     this.headerInfo = this.userSelectionData?.otherInfo
     
