@@ -1455,7 +1455,7 @@
                             </div>
                         </div>
                     </div>
-                      <div class="card-fotter" >
+                      <div class="card-fotter" style="display: flex !important; justify-content: center !important;">
                                     <button class="submit btn text-white"    
                                     [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color" (click)="pokeSelection(modal)" >
@@ -1498,7 +1498,7 @@
                                 </div>
                             </div>
                         </div>
-                          <div class="card-fotter" >
+                          <div class="card-fotter" style="display: flex !important; justify-content: center !important;">
                                         <button class="submit btn text-white" 
                                         [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                         [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color" (click)="pokeSelection(modal)" >
@@ -2526,7 +2526,7 @@
                             <div class="dashboard-center-table">
                                 <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2 "
                                     [style.background-image]="'url(' + item?.ranking_image + ')'"
-                                    (click)="navigateToOtherRole(item)"
+                                   
                                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                     *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) ">
                                     <div class="col-6 " style="padding-top: 1vh;">
@@ -2537,14 +2537,14 @@
                                             <div>
                                                 <div
                                                     style="height:6vh;width:6vh;display:flex;align-items: center;padding-top: 5%;">
-                                                    <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                                    <img class="rounded-circle z-depth-2 user-logo-row" alt=""  (click)="openHierarchyPopup(item)"
                                                         src="{{item?.rankingtable_logo}}" data-holder-rendered="true"
                                                         height="100%" width="100%" >
                                                 </div>
                                             </div>
     
     
-                                            <div class="media-body user-logo-row ellipsis"
+                                            <div class="media-body user-logo-row ellipsis"  (click)="navigateToOtherRole(item)"
                                                 style="display: flex; flex-direction: column;row-gap:5px;">
                                                 <h5 class="mt-0 text-white name-f-size mobile-ellipsis" placement="bottom"
                                                     ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}
@@ -2573,12 +2573,14 @@
                                                         <img class=" f-right up-arrow" alt=""
                                                             src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
                                                             data-holder-rendered="true" height="100%"
-                                                            *ngIf="item?.rankingtable_arrow === 'red'">
-                                                        <!-- (click)="upDownArrow(item?.rankingtable_arrow,item)" -->
+                                                            *ngIf="item?.rankingtable_arrow === 'red'"
+                                                            (click)="upDownArrow(item?.rankingtable_arrow,item)">
+                                                     
                                                         <img class=" f-right up-arrow" alt=""
                                                             src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
                                                             data-holder-rendered="true" height="100%"
-                                                            *ngIf="item?.rankingtable_arrow !== 'red'">
+                                                            *ngIf="item?.rankingtable_arrow !== 'red'"
+                                                            (click)="upDownArrow(item?.rankingtable_arrow,item)">
                                                     </div>
     
     
