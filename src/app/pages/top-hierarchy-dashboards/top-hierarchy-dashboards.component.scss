@@ -70,7 +70,6 @@
             .profile_picture_image {
                 width: 10vh;
                 height: 10vh;
-
                 border-radius: 100%;
 
             }
@@ -612,17 +611,14 @@
     width: 44vw;
     height: 7vh;
     background: #FFFFFF;
-    // border: none;
     border: 1px solid black;
-    /* Card / Big */
-
     box-shadow: 0px 0px 0px 1px #E8E8E8, 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 20px 20px rgba(0, 0, 0, 0.08);
     border-radius: 15px;
 }
 
 
 input::placeholder {
-    font-size: 0.8vw;
+    font-size:16px;
 }
 
 .search_bar_img {
@@ -631,6 +627,19 @@ input::placeholder {
     background: var(--myvar);
     color: #FFFFFF;
     margin-top: 2vh;
+    border-radius: 100%;
+    font-size: 2.2vh;
+    margin-left: 1vw;
+    padding: 1vw;
+    border-radius: 1vw;
+}
+.search_bar_img_mobile {
+    width: 13vw;
+    height: 7vh;
+    background: var(--myvar);
+    color: #FFFFFF;
+    margin-top: 2vh;
+    border-radius: 100%;
     font-size: 2.2vh;
     margin-left: 1vw;
     padding: 1vw;
@@ -1591,14 +1600,14 @@ input::placeholder {
     }
 
     .point_distribution_mobile {
-        height: 22vh;
+        height: 35vh;
         width: 95vw;
         margin-top: 2vh;
         overflow-y: auto;
 
         .point_background_mobile {
             // background: var(--mediumColor);
-            height: 4vh;
+            height: 5vh;
             display: flex;
             align-items: center;
             border-radius: 6px;
@@ -1610,7 +1619,7 @@ input::placeholder {
 
 
             .point_one_mobile {
-                height: 4vh;
+                height: 6vh;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -1619,7 +1628,7 @@ input::placeholder {
                 cursor: pointer;
 
                 .point_one_label_mobile {
-                    font-size: 2.1vh;
+                    font-size: 1.8vh;
                     font-weight: 550;
                     margin-right: 2vw;
                     font-family: 'Inter';
@@ -1629,15 +1638,6 @@ input::placeholder {
 
 
         }
-
-
-
-
-
-
-
-
-
     }
 
     .button_series_mobile {
@@ -1649,7 +1649,7 @@ input::placeholder {
         border-radius: 7px;
         padding: 10px;
         border: none;
-        width: 20vw;
+        width: 24vw;
         color: #000000;
         font-weight: 600;
         font-family: 'Inter'
@@ -1666,7 +1666,7 @@ input::placeholder {
         border-radius: 7px;
         // margin-left: 2vw;
         border: none;
-        width: 20vw;
+        width: 24vw;
         color: #ffff;
         font-weight: 500;
         font-family: 'Inter'
@@ -1678,6 +1678,7 @@ input::placeholder {
         margin-left: 1vw;
         width: 100%;
         height: 7vh;
+        font-size:2.1vh;
         background: #FFFFFF;
         border: none;
         /* Card / Big */
@@ -1714,7 +1715,10 @@ input::placeholder {
     }
 
     .leaderBoard-container-mobile {
-        width: 100vw;
+        width: 95%;
+        border-radius: 5px;
+        
+        background-size: cover;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -1822,8 +1826,8 @@ input::placeholder {
     }
 
     .leaderboard_rank_badge_image_mobile {
-        width: 6vh;
-        height: 6vh;
+        width: 5vh;
+        height: 5vh;
 
     }
 
@@ -1835,13 +1839,14 @@ input::placeholder {
         color: #ffffff;
         width: 14vw;
         text-align: center;
-
-
     }
 
     .leaderboard_rank_up_down_arrow_div_mobile {
         width: 10vw;
         height: 6vh;
+        display:flex;
+        justify-content: center;
+        align-items:center;
         margin-left: 5vw;
 
     }
@@ -1887,6 +1892,7 @@ input::placeholder {
 
     .search_bar_img_mobile_div {
         padding-left: 0;
+        
     }
 
     ::ng-deep {
@@ -1897,6 +1903,19 @@ input::placeholder {
         }
     }
 
+
+}
+.search_box_mobile {
+    margin-top: 2vh;
+    margin-left: 1vw;
+    width: 100%;
+    height: 7vh;
+    font-size:2.1vh;
+    background: #FFFFFF;
+    border: none;
+    /* Card / Big */
+    box-shadow: 0px 0px 0px 1px #E8E8E8, 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 20px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 15px;
 
 }
 
@@ -1930,204 +1949,23 @@ input::placeholder {
     border-radius: 10px;
     margin-top: 1vh;
 }
-
-.poke-card {
-    border: none;
-    box-shadow: unset !important;
-    background: #FFFFFF;
-    // border: 2px solid;
-    border-radius: 15px;
-
-}
-
-.poke-image {
-    height: 100px;
-    width: 100px;
-    // margin-left: 25%;
-    margin-top: 5%;
-
-}
-
-.poke-image1 {
-    -ms-transform: scale(1.5);
-    /* IE 9 */
-    -webkit-transform: scale(1.5);
-    /* Safari 3-8 */
-    transform: scale(1.5);
-}
-
-::ng-deep {
-    .card {
-        border: none;
-
-    }
-
-}
-
-.bulletins-sub-card-body {
-    background: #FFFFFF;
-    box-shadow: 0px 0px 0px 0.765385px #E8E8E8, 0px 0px 1.53077px rgba(0, 0, 0, 0.12), 0px 15.3077px 15.3077px rgba(0, 0, 0, 0.02);
-    border-radius: 11.4808px;
-    border: 1px solid #cfc6c6;
-    padding: 5px 10px;
-}
-
-.badge-level_name {
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 2.2vh;
-    line-height: 2.4vh;
-    text-align: center;
-    letter-spacing: 0.2px;
-    color: #000000;
-    padding: 1vh;
-    border-radius: 10px;
-    margin-top: 1vh;
-}
-
-.poketitle {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 22px;
-    letter-spacing: -0.02em;
-    font-feature-settings: 'pnum' on, 'lnum' on;
-    color: #342319;
-
-}
-
-.active1 {
-    text-shadow: #342319;
-    background: #FFFFFF;
-    border: 2px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+.points-dis-card{
+    background-repeat: no-repeat;
+    background-position: inherit;
+    background-size: cover;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    width: auto;
+    height:25vh;
+    margin-top: 2%;
     border-radius: 11px;
-    -ms-transform: scale(1.1);
-    /* IE 9 */
-    -webkit-transform: scale(1.1);
-    /* Safari 3-8 */
-    transform: scale(1.1);
-    transition: transform .2s;
-}
+ }
+ .red_auto_fail{
+    border:2px solid red;
 
-.emojitext {
-    border-radius: 10px;
-    background: #ffffff;
-    box-shadow: unset !important;
-    background: #FFFFFF;
-    border: 2px solid rgba(83, 184, 187, 0.5);
-    border-radius: 15px;
-}
+ }
+ .Green_auto_fail{
+    border:2px solid #79BF06;
 
-.card-fotter {
-    text-align: center;
-}
-
-.submit {
-    height: auto !important;
-    width: 145px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 25px;
-    padding: 10px 0px;
-    font-size: 1.1rem !important;
-
-}
-
-
-
-
-
-#animationPoke {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 1050;
-    display: block;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    outline: 0;
-    background: rgba(0, 0, 0, 0.4);
-}
-
-.crawl {
-    position: relative;
-    transform-origin: 50% 100%;
-    animation: crawl 6s linear;
-    text-align: center;
-}
-
-.crawl>.title {
-    font-size: 90%;
-    text-align: center;
-}
-
-.crawl>.title h1 {
-    margin: 0 0 100px;
-    text-transform: uppercase;
-}
-
-.pokebackgroundblur {
-    background-color: rgba(0, 0, 0, 0.4);
-    //    filter: grayscale(50%);
-}
-
-.pokebackground {
-    background-color: none;
-}
-
-@keyframes crawl {
-    0% {
-        margin-top: 800px;
-        transform: rotateX(1deg) translateZ(0);
-    }
-
-    100% {
-        margin-top: -300px;
-        transform: rotateX(1deg) translateZ(-2500px);
-    }
-}
-
-// Poke CSS End
-
-
-.modal-content {
-    >.level-buckets {
-        // width: 532px;
-        height: auto;
-        // left: 497px;
-        // top: 214px;
-        background: #FFFFFF;
-        border-radius: 34px;
-        width: 100%;
-
-        >.dashboard-popup-level {
-            height: auto;
-            overflow: auto;
-        }
-    }
-
-    border-radius: 34px;
-    border-collapse: separate;
-    // margin-left: -2%;
-
-    .rank_index {
-        margin-left: 40px !important;
-    }
-
-    .percentile {
-        margin-left: 35px !important;
-    }
-
-    .percentile_people {
-        // margin-left: 2rem;
-    }
-
-    >.hierarchyPopup-buckets {
-        width: auto !important;
-    }
-}
+ }

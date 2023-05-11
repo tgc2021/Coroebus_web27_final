@@ -988,7 +988,7 @@
                                                                     <div *ngIf="triviaData.brief_graphics.split('.').pop() == 'png'||triviaData.brief_graphics.split('.').pop()=='gif'||triviaData.brief_graphics.split('.').pop()== 'jpg'||triviaData.brief_graphics.split('.').pop()=='jpeg';then imgplay"> </div>
                                                             
                                                                     <ng-template #imgplay>
-                                                                        <div style="height:8vh;width:5vw;border-radius:5vh">
+                                                                        <div style="height:8vh;width:100%;border-radius:5vh">
                                                                             <img src="assets/images/svg/notification/img.png" alt="trivia_banner" height="100%" width="100%">
                                                                         </div>
                                                                     </ng-template>
@@ -996,7 +996,7 @@
                                                          
                                                                    
                                                                 <ng-template #mp4player>
-                                                                        <div style="height:8vh;width:5vw;border-radius:5vh">
+                                                                        <div style="height:8vh;width:100%;border-radius:5vh">
                                                                             <img src="assets/images/svg/notification/v.png" alt="trivia_banner" height="100%" width="100%">
                                                                         </div>
                                                                 </ng-template>
@@ -1455,7 +1455,7 @@
                             </div>
                         </div>
                     </div>
-                      <div class="card-fotter" >
+                      <div class="card-fotter" style="display: flex !important; justify-content: center !important;">
                                     <button class="submit btn text-white"    
                                     [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color" (click)="pokeSelection(modal)" >
@@ -1498,7 +1498,7 @@
                                 </div>
                             </div>
                         </div>
-                          <div class="card-fotter" >
+                          <div class="card-fotter" style="display: flex !important; justify-content: center !important;">
                                         <button class="submit btn text-white" 
                                         [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                         [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color" (click)="pokeSelection(modal)" >
@@ -1686,7 +1686,7 @@
                                 <!-- <div class="col-12 text-center level-label-name-mobile" (click)="openPopupForTeam()"> -->
 
                                 <div class="col-12 text-center level-label-name-mobile">
-                                    <p class="text-white">{{sectionView_1?._personal_data?.level_label}}</p>
+                                    <p class="text-white" style="font-size:2.7vw">{{sectionView_1?._personal_data?.level_label}}</p>
                                 </div>
                             </div>
 
@@ -1783,14 +1783,13 @@
 
             <div class="col-12 RankSection mb-2">
 
-                <div class="" *ngIf="sectionView_1?.is_land_logos?.length > 0">
+                <div class="" style="border-radius:10px" *ngIf="sectionView_1?.is_land_logos?.length > 0" [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
                     <div class="card-body border-bottom- p-0">
-                        <div class="row" [ngClass]="{'one-data-mobile': sectionView_1?.is_land_logos?.length == 1,
+                        <div class="row d-flex justify-content-center" [ngClass]="{'one-data-mobile': sectionView_1?.is_land_logos?.length == 1,
                         'two-data-mobile': sectionView_1?.is_land_logos?.length === 2,
                         'three-data-mobile': sectionView_1?.is_land_logos?.length === 3,
-                        'four-data-mobile':sectionView_1?.is_land_logos?.length === 3}
-                        ">
-                            <div class="col-12 card-container" style="overflow-y:auto;">
+                        'four-data-mobile':sectionView_1?.is_land_logos?.length === 3}">
+                            <div class="col-12 card-container" style="overflow-y:auto;width:90%;margin:2%">
 
                                 <div class="col-4  text-center" *ngFor="let item of sectionView_1?.is_land_logos">
                                     <img src="{{item?.logo}}" class="island_login" alt="" height="100">
@@ -1799,10 +1798,11 @@
                                     <button class="btn btn-primary- text-white level-badge-btn-mobile mt-2"
                                         [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                         [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                        style="font-size:2.7vw"
                                         (click)="getDataBasedOnUserID(item)">
                                         {{item?._data}}
                                     </button>
-                                    <br><span class="level-rank-name">{{item?.tag}}</span>
+                                    <br><span class="level-rank-name" style="color:#ffff">{{item?.tag}}</span>
 
                                 </div>
 
@@ -1815,38 +1815,545 @@
             </div>
 
             <div class="col-12 pointsDistributionSection ">
+                <div  class="toggle_btn_mobile d-flex justify-content-between">
+                    <div (click)="openMyPerformance()" [ngClass]="openperformance?'active_btn':'normal_btn'">My Performance</div>
+                    <div (click)="openMyActivivities()" [ngClass]="openActivivities?'active_btn':'normal_btn'">My Activities</div>
+                </div>
                 <div class="mobile-points-dis-card col-11"
-                    [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null"
+                [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null"
                     [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}">
                     <div class="card-div">
-                        <div class="card-body">
-                            <div class="float-start dropdown ms-2 font-size-16 font-weight-semibold"
-                                style="padding-bottom: 1vh;">
-                                Points Distribution
+                        
+                        <div class="card-body" style="width:96vw;overflow-y: auto;overflow-x:hiddden;height:35vh;display:flex;flex-direction:column;justify-content:start;align-items:center;">
+                            <div style="width:90vw;overflow-y: auto;overflow-x:hiddden;height:33vh;display:flex;flex-direction:column;justify-content:start;align-items:center;">
+                                <div *ngIf="openperformance;then pointsDistribution else myActivities"></div>
                             </div>
-                            <div>
-                                <div class="mb-4 me-3"></div>
-                                <div class="mobile-inner-points-height">
-                                    <div class="row mt-2 points-row ms-1 d-flex align-items-center"
-                                        (click)="getGraphDataById()" *ngFor="let item of sectionView_1?._kpi_score">
-                                        <div class="col-6 p-0">
-                                            <!-- ngbTooltip="{{item?.point_label}}"   this is inside ellipsis1-->
-                                            <div class="pt-1 mobile-points-dis-name1 ellipsis1">
-                                                {{item?.point_label}}
+                            
+                            <ng-template #pointsDistribution>
+                                <div  style="overflow-x:hidden;">
+                                    <div class="me-3"></div>
+                                    <div class="mobile-inner-points-height d-flex flex-column align-items-center">
+                                        <div class="row  points-row  d-flex  align-items-center" style="width:90vw;margin:1%"
+                                            (click)="getGraphDataById()" *ngFor="let item of sectionView_1?._kpi_score">
+                                            <div class="col-6 p-0">
+                                                <!-- ngbTooltip="{{item?.point_label}}"   this is inside ellipsis1-->
+                                                <div class="pt-1 mobile-points-dis-name1 ellipsis1">
+                                                    {{item?.point_label}}
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <img loading="lazy" class="align-self-start float-end"
-                                                src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}" alt=""
-                                                height="25">
-                                        </div>
-                                        <div
-                                            class="col-3 text-center font-size-10 font-weight-semibold d-flex align-items-center">
-                                            {{item?.weightage}}
+                                            <div class="col-3">
+                                                <img loading="lazy" class="align-self-start float-end"
+                                                    src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}" alt=""
+                                                    height="25">
+                                            </div>
+                                            <div class="col-2 text-center font-size-10 font-weight-semibold d-flex align-items-center justify-content-end gap-">
+                                                <div  >{{item?.weightage}}</div>
+                                                &nbsp;&nbsp;
+                                                <div class="d-flex  justify-content-end align-items-center pb-1  ">
+                                                    <div  style="height:2.5vh;" *ngIf="item.ranking_arrow=='green'">
+        
+                                                        <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                                            height="100%" >
+                                                    </div>
+                    
+                                                    <div *ngIf="item.ranking_arrow=='red'"  style="height:2.5vh;">
+                    
+                                                        <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                            height="100%">
+                    
+                                                    </div>
+                                                    <div *ngIf="item.ranking_arrow=='yellow'"  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
+                            
+                                                        <!-- <div style="height: 1.2vh;width:1.2vh;border-radius:100%;background-color:orange ;"></div> -->
+                                                        <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
+                     
+                                                    </div>
+                                                    <div >
+        
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="col-1  d-flex justify-content-center align-items-center">
+                                                <img src="assets/images/TopHierarchyDashboard/Arrow.png" />
+                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </ng-template>
+                            <ng-template #myActivities>
+                                <mat-accordion style="width:100%">
+
+                                    <!-- <div class="red_indicator"></div> -->
+                                    <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true"
+                                        (closed)="panelOpenState = false">
+                                        <mat-expansion-panel-header 
+                                            [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
+                                            <mat-panel-title style="color: #ffff;font-weight:500;display:flex;justify-content: start;font-family: 'Inter';font-size:2vh">
+                                                My Learning
+                                            </mat-panel-title>
+
+                                        </mat-expansion-panel-header>
+                                        <div *ngIf="!hideBattleGround then redirectm2ost else dontredirect">
+                                        </div>
+                                        <ng-template #redirectm2ost>
+
+                                            <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==6">
+                                                <div class="inner_content" (click)="navigateToM2ost('2289')">Call Centre Basics</div>
+                                                <div class="inner_content" (click)="navigateToM2ost('2293')">
+                                                    Objection Handling</div>
+                                                <div class="inner_content" (click)="navigateToM2ost('2301')">Conflict Management</div>
+                                                <div class="inner_content" (click)="navigateToM2ost('2302')">Power of Speech</div>
+                                                <div class="inner_content" (click)="navigateToM2ost('2291')">Telephone Etiquette</div>
+                                            </div>
+
+
+                                            <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==3 ">
+                                                <div class="inner_content" (click)="navigateToM2ost('2273')">Mental Wellbeing</div>
+                                                <div class="inner_content" (click)="navigateToM2ost('2297')">Influencing Skills</div>
+                                                <div class="inner_content" (click)="navigateToM2ost('2284')">Interpersonal Skills</div>
+                                                <div class="inner_content" (click)="navigateToM2ost('2301')">Conflict Management</div>
+                                                <div class="inner_content" (click)="navigateToM2ost('2292')">Communication Styles</div>
+                                            </div>
+
+                                            <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==4 || sectionView_1._personal_data.id_role== 10">
+                                                <div class="inner_content" (click)="navigateToM2ost('2300')">Client Centricity</div>
+                                                <div class="inner_content" (click)="navigateToM2ost('2295')">Coaching Skills</div>
+                                                <div class="inner_content" (click)="navigateToM2ost('2299')">Problem Solving</div>
+                                                <div class="inner_content" (click)="navigateToM2ost('2301')">Conflict Management</div>
+                                                <div class="inner_content" (click)="navigateToM2ost('2296')">Decision Making</div>
+                                            </div>
+                                        </ng-template>
+
+                                        <ng-template #dontredirect>
+                                          
+                                            <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==6">
+                                                <div class="inner_content" >Call Centre Basics</div>
+                                                <div class="inner_content" >
+                                                    Objection Handling</div>
+                                                <div class="inner_content" >Conflict Management</div>
+                                                <div class="inner_content" >Power of Speech</div>
+                                                <div class="inner_content">Telephone Etiquette</div>
+                                            </div>
+
+
+                                            <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==3">
+                                                <div class="inner_content" >Mental Wellbeing</div>
+                                                <div class="inner_content" >Influencing Skills</div>
+                                                <div class="inner_content" >Interpersonal Skills</div>
+                                                <div class="inner_content" >Conflict Management</div>
+                                                <div class="inner_content" >Communication Styles</div>
+                                            </div>
+
+                                            <div class="d-flex flex-column align-items-start gap-2  mt-2" *ngIf="sectionView_1._personal_data.id_role==4  || sectionView_1._personal_data.id_role==10">
+                                                <div class="inner_content" >Client Centricity</div>
+                                                <div class="inner_content" >Coaching Skills</div>
+                                                <div class="inner_content" >Interpersonal Skills</div>
+                                                <div class="inner_content" >Conflict Management</div>
+                                                <div class="inner_content" >Communication Styles</div>
+                                            </div>
+
+                                        </ng-template>
+
+
+                                    </mat-expansion-panel>
+                                </mat-accordion>
+
+                                <mat-accordion style="width:100%">
+                                    <div class="red_indicator" *ngIf="hideTriviaIndicator"></div>
+                                    <mat-expansion-panel class="battleground_accordion mt-2"
+                                        (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                        <mat-expansion-panel-header
+                                            [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
+                                            <mat-panel-title class="growth_index_accordion_mobile " style="color: #ffff;font-weight:500;display:flex;justify-content: start;font-family: 'Inter';font-size:2vh">
+                                                <span style="color: #FFFFFF;">Trivia Corner</span>
+                                            </mat-panel-title>
+
+                                        </mat-expansion-panel-header>
+                                        <div *ngFor="let triviaData of triviaCornerData">
+                                            <div *ngIf="!hideBattleGround then redirect_la else dontredirect_la">
+                                            </div>
+                                            <ng-template #redirect_la>
+                                                
+                                                    <div class="d-flex p-2 mt-1"
+                                                        style="border-radius:5px;font-family:'Inter';position:relative"
+                                                        [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'"
+                                                        (click)="navigateToBriefQuetion(triviaData)">
+                                                        <div
+                                                            class="triviaBanner d-flex align-items-start mt-2 p-2">
+<!--                                                                     
+                                                            <div style="height:8vh;width:5vw;border-radius:5vh">
+                                                                <img src="{{triviaData.brief_graphics}}"
+                                                                    alt="trivia_banner" height="100%"
+                                                                    width="100%">
+                                                            </div> -->
+                                                            <div *ngIf="triviaData.brief_graphics.split('.').pop()=='mp4';then mp4player"></div>
+                                                            <div *ngIf="triviaData.brief_graphics.split('.').pop() == 'png'||triviaData.brief_graphics.split('.').pop()=='gif'||triviaData.brief_graphics.split('.').pop()== 'jpg'||triviaData.brief_graphics.split('.').pop()=='jpeg';then imgplay"> </div>
+                                                    
+                                                            <ng-template #imgplay>
+                                                                <div style="height:8vh;width:5vw;border-radius:5vh">
+                                                                    <img src="assets/images/svg/notification/img.png" alt="trivia_banner" height="100%" width="100%">
+                                                                </div>
+                                                            </ng-template>
+                                                           
+                                                 
+                                                           
+                                                        <ng-template #mp4player>
+                                                                <div style="height:8vh;width:5vw;border-radius:5vh">
+                                                                    <img src="assets/images/svg/notification/v.png" alt="trivia_banner" height="100%" width="100%">
+                                                                </div>
+                                                        </ng-template>
+
+
+                                                        </div>
+                                                        <div class="triviaDescription d-flex flex-column gap-3 p-1 mt-2"
+                                                            style="width:100%;min-height:15vh;">
+                                                            <div class="triviaTitle">
+                                                                <strong>
+                                                                    {{triviaData.brief_title}}
+                                                                </strong>
+
+
+                                                            </div>
+                                                            <p style="font-size:1.2vh;
+                                                            overflow: hidden;
+                                                            text-overflow: ellipsis;
+                                                            ">
+                                                                {{triviaData.brief_summary}}
+
+                                                            </p>
+                                                            <div
+                                                                style="position:absolute;top:80%;right:5%;font-size:1vh;font-family: 'Inter';color:#A5ACB8;text-align:end">
+                                                                {{triviaData.created_at|date:'dd/MM/YYYY'}}
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                
+                                            </ng-template>
+                                            <ng-template #dontredirect_la>
+                                              
+                                                    <div class="d-flex p-2 mt-1"
+                                                        style="border-radius:5px;font-family:'Inter';position:relative"
+                                                        [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'"
+                                                       >
+                                                        <div
+                                                            class="triviaBanner d-flex align-items-start mt-2 p-2">
+                                                            <!-- <div style="height:8vh;width:5vw;border-radius:5vh">
+                                                                <img src="{{triviaData.brief_graphics}}"
+                                                                    alt="trivia_banner" height="100%"
+                                                                    width="100%">
+                                                            </div> -->
+                                                            <div *ngIf="triviaData.brief_graphics.split('.').pop()=='mp4';then mp4player"></div>
+                                                            <div *ngIf="triviaData.brief_graphics.split('.').pop() == 'png'||triviaData.brief_graphics.split('.').pop()=='gif'||triviaData.brief_graphics.split('.').pop()== 'jpg'||triviaData.brief_graphics.split('.').pop()=='jpeg';then imgplay"> </div>
+                                                    
+                                                            <ng-template #imgplay>
+                                                                <div style="height:8vh;width:5vw;border-radius:5vh">
+                                                                    <img src="assets/images/svg/notification/img.png" alt="trivia_banner" height="100%" width="100%">
+                                                                </div>
+                                                            </ng-template>
+                                                           
+                                                 
+                                                           
+                                                        <ng-template #mp4player>
+                                                                <div style="height:8vh;width:5vw;border-radius:5vh">
+                                                                    <img src="assets/images/svg/notification/v.png" alt="trivia_banner" height="100%" width="100%">
+                                                                </div>
+                                                        </ng-template>
+
+
+
+                                                        </div>
+                                                        <div class="triviaDescription d-flex flex-column gap-3 p-1 mt-2"
+                                                            style="width:100%;min-height:15vh;">
+                                                            <div class="triviaTitle">
+                                                                <strong>
+                                                                    {{triviaData.brief_title}}
+                                                                </strong>
+
+
+                                                            </div>
+                                                            <p style="font-size:1.2vh;
+                                                            overflow: hidden;
+                                                            text-overflow: ellipsis;
+                                                            ">
+                                                                {{triviaData.brief_summary}}
+
+                                                            </p>
+                                                            <div
+                                                                style="position:absolute;top:80%;right:5%;font-size:1vh;font-family: 'Inter';color:#A5ACB8;text-align:end">
+                                                                {{triviaData.created_at|date:'dd/MM/YYYY'}}
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                            </ng-template>
+
+
+                                        </div>
+
+
+
+                                    </mat-expansion-panel>
+
+                                </mat-accordion>
+
+
+                                <mat-accordion style="width:100%">
+                                    <!-- <div class="red_indicator"></div> -->
+                                    <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true"
+                                        (closed)="panelOpenState = false">
+                                        <mat-expansion-panel-header
+                                            [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
+                                            <mat-panel-title style="color: #ffff;font-weight:500;display:flex;justify-content: start;font-family: 'Inter';font-size:2vh">
+                                                Bulletins
+                                            </mat-panel-title>
+
+                                        </mat-expansion-panel-header>
+                                        <div class="d-flex align-items-center" style="height: 20vh;">
+
+
+                                            <div *ngIf="buletinsHide"
+                                                style="display:flex;flex-direction:column;justify-content:center;align-items: center;">
+
+                                                <div class="" style="font-family: 'Inter';
+                                                                    font-style: normal;
+                                                                    font-weight: 600;
+                                                                    font-size: 16px;
+                                                                    line-height: 25px;
+                                                                    text-align: center;
+                                                                    margin-left: 1vw;
+                                                                    letter-spacing: 0.003em;
+                                                                    color: #000000;
+                                                                    width: 15vw;">
+                                                    There's no bulletin’s you have subscribed to, stay tuned to
+                                                    this
+                                                    section for
+                                                    more.
+                                                </div>
+                                            </div>
+                                            <div class="mb-2 me-3"></div>
+                                            <div
+                                                [ngClass]="{'inner-bulletins-no-height': sectionView_1?.is_land_logos?.length == 0,'inner-bulletins-height':sectionView_1?.is_land_logos?.length != 0}">
+
+                                                <div class="card bulletins-sub-card me-1"
+                                                    *ngFor="let item of addInsList">
+                                                    <div class="card-body bulletins-sub-card-body">
+                                                        <!-- <p class="spot-engagement ps-1 pt-0 text-dark ">{{item?.header}}</p> -->
+                                                        
+                                                        <div class="media bulletins-media">
+                                                            <!-- <img *ngIf="item?.type_ === '1'"
+                                                                src="assets/images/svg/dashboard/add-ins/se.svg"
+                                                                alt="" height="52">
+                                                            <img *ngIf="item?.type_ === '2'"
+                                                                src="assets/images/svg/dashboard/add-ins/spot.svg"
+                                                                alt="" height="52">
+                                                            <img *ngIf="item?.type_ === '3'"
+                                                                src="assets/images/svg/dashboard/add-ins/le.svg"
+                                                                alt="" height="52"> -->
+                                                            <div class="media-body  d-flex gap-2">
+                                                                <img class="bulletins-image-card"
+                                                                    src="{{item?.logo}}" alt="" height="55">
+
+                                                                <h5 class="bulletins-title">{{item?.title}}
+                                                                    <p class="bulletins-text-muted"
+                                                                        style="margin-bottom:0px;color: #232323;">
+                                                                        {{item?.description_}}
+                                                                    </p>
+                                                                </h5>
+
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col text-end">
+                                                                <span class="bulletins-date">{{item?.date_time |
+                                                                    date:'fullDate'}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row border-top">
+                                                            <div class="col text-start">
+                                                                <span class="bulletins-open" style="font-weight:600" (click)="navigateToPlayzone()">Open</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </mat-expansion-panel>
+                                </mat-accordion>
+
+
+                                <mat-accordion style="width:100%">
+                                    <div class="red_indicator" *ngIf="dailyBadgesActive || weeklyBadgesActive || monthlyBadgesActive"></div>
+                                    <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true"
+                                        (closed)="panelOpenState = false">
+                                        <mat-expansion-panel-header [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}" >
+                                            <mat-panel-title class="growth_index_accordion_mobile " style="color: #ffff;font-weight:500;display:flex;justify-content: start;font-family: 'Inter';font-size:2vh">
+                                                <span>My Campaigns</span>
+
+                                            </mat-panel-title>
+
+                                        </mat-expansion-panel-header>
+                                        <div>
+                                            <div class="inner_content_daily1 d-flex justify-content-between mt-3" (mouseover)="openDailyModal()" data-bs-toggle="modal"
+                                            data-bs-target="#dailyModal">
+                                               <div class="col-6">Daily</div> 
+                                               <div class="badge-container col" *ngFor="let dailyBadges of seasonalThemeDailyBadges1;let i=index;" >
+                                                <!-- <div>{{dailyBadges.seasonal_score_achived}}</div>
+                                                <div>{{dailyBadges.seasonal_score_target}}</div> -->
+                                                
+                                                    <div *ngIf="dailyBadges.active_class == '1';then activeBadge else DeactiveBadge "></div>
+
+                                                    <ng-template #activeBadge>
+                                                       
+                                                        <div  class="activeBadge"   *ngIf="i<3">
+                                                            <img src="{{dailyBadges.seasonal_badge_logo}}" alt="badge" width="100%" height="100%">
+                                                        </div>
+                                                    </ng-template>
+                                                    <ng-template #DeactiveBadge>
+                                                        <div  class="deActiveBadge" *ngIf="i<3">
+                                                            <img src="{{dailyBadges.seasonal_badge_logo}}" alt="badge" width="100%" height="100%">
+                                                        </div>
+                                                    </ng-template>
+                                                    
+                                                   
+                                               </div>
+                                            </div>
+                                            <div class="inner_content_daily1 d-flex justify-content-between" (mouseover)="openWeeklyModal()" data-bs-toggle="modal"
+                                            data-bs-target="#weeklyModal">
+                                                <div class="col-6" >Weekly</div> 
+                                                <div class="badge-container col"*ngFor="let WeeklyBadge of seasonalThemeWeeklyBadges2;let i=index" >
+                                                     <div  [ngClass]="WeeklyBadge.active_class == '1'?'activeBadge':'deActiveBadge' " *ngIf="i<3">
+                                                        <img src="{{WeeklyBadge.seasonal_badge_logo}}" alt="" height="100%" width="100%">
+                                                     </div>
+                                                     
+                                                </div>
+                                             </div>
+                                             <div class="inner_content_daily1 d-flex justify-content-between" style="border:none" (mouseover)="openMonthlyModal()" data-bs-toggle="modal"
+                                             data-bs-target="#monthlyModal">
+                                                <div class="col-6">Monthly</div> 
+                                                <div class="badge-container col" *ngFor="let monthlyBadge of seasonalThemeMonthlyBadges3;let i=index">
+                                                    <div  [ngClass]="monthlyBadge.active_class == '1'?'activeBadge':'deActiveBadge' " *ngIf="i<3" >
+                                                       <img src="{{monthlyBadge.seasonal_badge_logo}}" alt="" height="100%" width="100%">
+                                                    </div>
+                                                   
+                                               </div>
+                                             </div>
+                                        </div>
+                                        
+                                    </mat-expansion-panel>
+
+                                </mat-accordion>
+
+                                <mat-accordion style="width:100%">
+                                    <div class="red_indicator" *ngIf="challengeReacieved>0"></div>
+                                    <mat-expansion-panel class="battleground_accordion mt-2"
+                                        (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                        <mat-expansion-panel-header
+                                            [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
+                                            <mat-panel-title class="growth_index_accordion_mobile " style="color: #ffff;font-weight:500;display:flex;justify-content: start;font-family: 'Inter';font-size:2vh">
+                                                <span>Battleground</span>
+                                            </mat-panel-title>
+
+                                        </mat-expansion-panel-header>
+
+                                        <div class="d-flex flex-column justify-content-between align-items-start mt-3 "
+                                            style="font-weight: 550;font-family: 'Inter';"
+                                            style="width: 100%;">
+
+                                            <div class="d-flex flex-column justify-content-between"
+                                                style="width: 100%;">
+                                                <div *ngIf="!hideBattleGround;then hideForOtherRole else donthide"></div>
+                                                <ng-template #hideForOtherRole>
+                                                    <div class="inner_content ps-3"  style="width:100%;cursor: pointer;"
+                                                        (click)="navigateToNewChallenge()">New Challenge</div>
+                                                    <div class="inner_content"
+                                                        style=" border-bottom: 0.5px solid #A5ACB8; cursor: pointer;"
+                                                        (click)="navigateToOnGoingChallenge()"
+                                                        class="d-flex justify-content-between">
+                                                        <div class="ps-3" style="  font-weight: 600;
+                                                        font-family: 'Inter';
+                                                        font-size:1.6vh;
+                                                       width: 100%;
+                                                        display:flex;
+                                                        height:5vh;
+                                                        align-items:center;cursor: pointer; ">Ongoing Challenge</div>
+                                                        <div style="display:flex;
+                                                        height:5vh;
+                                                        align-items:center">{{onGoingChallenges}}</div>
+                                                    </div>
+                                                    <div class="inner_content"
+                                                        style=" border-bottom: 0.5px solid #A5ACB8; cursor: pointer;"
+                                                        (click)="navigateToChallengeRecieved()"
+                                                        class="d-flex justify-content-between">
+                                                        <div class="ps-3" style="  font-weight: 600;
+                                                        font-family: 'Inter';
+                                                        font-size:1.6vh;
+                                                         display: flex;
+                                                         height:5vh;
+                                                         cursor: pointer;
+                                                        align-items: center;
+                                                       ">Challenge Received</div>
+                                                        <div style="display:flex;
+                                                        height:5vh;
+                                                        align-items:center">{{challengeReacieved}}</div>
+                                                    </div>
+                                                    <div class="inner_content ps-3" style="border-bottom:none;width:100%"
+                                                    (click)="navigateToStatistics()">Statistics</div>
+                                                </ng-template>
+
+                                                <ng-template #donthide>
+                                                    <div class="inner_content_new_challange ps-3">New Challenge</div>
+                                                    <div class="inner_content"
+                                                        style=" border-bottom: 0.5px solid #A5ACB8;"
+                                                        class="d-flex justify-content-between">
+                                                        <div class="ps-3" style="  font-weight: 600;
+                                                        font-family: 'Inter';
+                                                        font-size:1.6vh;
+                                                       
+                                                        display:flex;
+                                                        height:5vh;
+                                                        align-items:center">Ongoing Challenge</div>
+                                                        <div style="display:flex;
+                                                        height:5vh;
+                                                        align-items:center">{{onGoingChallenges}}</div>
+                                                    </div>
+                                                    <div class="inner_content"
+                                                        style=" border-bottom: 0.5px solid #A5ACB8;"
+                                                        class="d-flex justify-content-between">
+                                                        <div class="ps-3" style="  font-weight: 600;
+                                                        font-family: 'Inter';
+                                                        font-size:1.6vh;
+                                                         display: flex;
+                                                         height:5vh;
+                                                        width:500;
+                                                        align-items: center;
+                                                       ">Challenge Received</div>
+                                                        <div style="display:flex;
+                                                        height:5vh;
+                                                        align-items:center">{{challengeReacieved}}</div>
+
+                                                    </div>
+
+                                                    <div class="inner_content ps-3" style="border-bottom:none;width:100%"
+                                                    (click)="navigateToStatisticsSpect()">Statistics</div>
+                                                </ng-template>
+
+                                             
+                                            </div>
+
+                                        </div>
+                                    </mat-expansion-panel>
+                                </mat-accordion>
+                            </ng-template>
+                            
+                            
                         </div>
                     </div>
 
@@ -1854,18 +2361,23 @@
 
 
             </div>
-            <div class="col">
-
-                <div class="row no-gutter" [ngClass]="{'row-cols-2': sectionView_2?._ranking_data?.length === 2,
+            <div class="col" >
+                <div class="btn-container" [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null" >
+                    <div class="row no- " [ngClass]="{'row-cols-2': sectionView_2?._ranking_data?.length === 2,
                                 'row-cols-3': sectionView_2?._ranking_data?.length === 3,
                                 'row-cols-4': sectionView_2?._ranking_data?.length === 4,
-                                'row-cols-1': sectionView_2?._ranking_data?.length === 4}" style="margin-top: 17px;
+                               
+                                'row-cols-1': sectionView_2?._ranking_data?.length === 4}" style="
                                 display: flex;
                                 flex-direction: row;
+                                justify-content: space-between;
+                                gap:0.1vw;
+                                align-items: space-between;
                                 flex-wrap: nowrap;
+                                width:100%;
                                 overflow-x: overlay;">
-                    <div class="col" *ngFor="let item of sectionView_2?._ranking_data">
-                        <a class="btn btn-xs filter-btn-dashboard  fs-sm me-2 mb-2" style="padding-top: 8px;"
+                    <div class="col " *ngFor="let item of sectionView_2?._ranking_data">
+                        <a class="filter-btn-dashboard   mb-2" style=" width: 22vw;"
                             [ngClass]="{'filter-btn-dashboard-active': activeTabForSectionView_2 === item?.order}"
                             [ngStyle]="{'background': (activeTabForSectionView_2 ===item?.order) ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -1879,9 +2391,9 @@
                 </div>
 
 
-                <div class="row d-flex justify-content-center" *ngIf="sectionView_3_list?.[0]?._Overall">
-                    <div class="col text-center">
-                        <a class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
+                <div class="row d-flex justify-content-center " *ngIf="sectionView_3_list?.[0]?._Overall">
+                    <div class="col-6  d-flex justify-content-center align-items-center">
+                        <a class="btn btn-xs filter-btn-dashboard  fs-sm  mb-2" style="width:43vw"
                             [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 ==='My Store'}"
                             [ngStyle]="{'background': (activeSubTabForSectionView_2 === 'My Store') ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -1894,9 +2406,9 @@
 
                         </a>
                     </div>
-                    <br>
-                    <div class="col">
-                        <a class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
+                    
+                    <div class="col-6 d-flex justify-content-center align-items-center">
+                        <a class="btn btn-xs filter-btn-dashboard  fs-sm  mb-2"  style="width:43vw"
                             [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 === 'Overall'}"
                             [ngStyle]="{'background': (activeSubTabForSectionView_2 === 'Overall') ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -1909,6 +2421,8 @@
                     </div>
 
                 </div>
+                </div>
+                
                 <div class="d-flex gap-1 justify-content-between" style="margin-top: 17px;">
                     <div class="col-10" style="padding-right:0px;">
                         <input type="text" class="form-control dashboard-search" placeholder="Search People here.."
@@ -1923,173 +2437,179 @@
                     </div>
                 </div>
 
-                <div class="row mt-2">
-                    <div class="col">
-                        <div class="col-12 d-flex gap-2">
-                            <div class="col-2 d-flex justify-content-center">
-                                <b>Rank</b>
-                            </div>
-                            <div class="col-4 d-flex justify-content-center">
-                                <b>Name</b>
-                            </div>
-                            <div class="col d-flex ms-5 justify-content-center">
-                                <b>Points</b>
-                            </div>
-                        </div>
-                        <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
-                            *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.length > 0"
-                            [style.background-image]="'url(' + rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.ranking_image + ')'"
-                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                            style="border:2px solid">
-                            <div class="col-6" style="padding-top: 1.1vh;">
-
-                                <div class="media d-flex gap-3">
-                                    <span class="col-1 ms-2 text-white position-absolute-" style="padding-top: 1.1vh;">
-                                        {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_number}}
-                                    </span>
-                                    <div style="height:5vh;display:flex;justify-content:center;align-items:center">
-                                        <img loading="lazy" class="rounded-circle z-depth-2 user-logo-row" alt=""
-                                            src="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_logo}}"
-                                            data-holder-rendered="trplacementue" height="100%" width="100%">
-                                    </div>
-
-                                    <div class="media-body user-logo-row ellipsis"
-                                        style="display: flex; flex-direction: column;row-gap:5px;">
-                                        <h5 class="mt-0  text-white name-f-size mobile-ellipsis" placement="bottom"
-                                            ngbTooltip=" {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}">
-                                            {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}
-                                        </h5>
-                                        <p class="mt-n4 team-name sub-team name-f-size mobile-ellipsis">
-                                            {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_team}}
-                                        </p>
-                                    </div>
+                <div class="row mt-2 d-flex justify-content-center"  >
+                    <div style="width:95%;border-radius: 10px;" [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                        <div class="col"  style="background-size:cover" >
+                            <div class="col-12 d-flex gap-2" style="font-weight:600">
+                                <div class="col-2 d-flex justify-content-center"  >
+                                    <span>Rank</span>
                                 </div>
-
-
-                            </div>
-                            <div class="col-6" style="padding-top: 1.1vh;">
-                                <div class="media d-flex gap-5 ">
-                                    <div style="height:6vh ;" class="d-flex">
-                                        <img loading="lazy" class="rounded-circle z-depth-2 team-logo-row" alt=""
-                                            src="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.ranking_badge}}"
-                                            data-holder-rendered="true" height="90%" style="align-self: center;">
-                                    </div>
-
-                                    <div class="media-body text-center">
-                                        <h5 class="mt-0 text-white  d-flex justify-content-center gap-3">
-
-                                            <span class="name-f-size point-number"
-                                                style="width:7vw;padding-top: 1.5vh;">{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_weightage}}</span>
-
-
-                                            <div style="height:6vh;margin-top: 5%;">
-                                                <img loading="lazy" class=" f-right up-arrow" alt=""
-                                                    src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
-                                                    data-holder-rendered="true" height="80%"
-                                                    *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow === 'red'"
-                                                    (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]) "
-                                                    style="align-self:center;">
-                                                <img loading="lazy" class=" f-right up-arrow" alt=""
-                                                    src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
-                                                    data-holder-rendered="true" height="80%"
-                                                    *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow !== 'red'"
-                                                    (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])"
-                                                    style="align-self:center;">
-                                            </div>
-
-
-
-                                        </h5>
-                                        <!-- <p class="mt-n4 team-name sub-team">India Maste</p> -->
-                                    </div>
+                                <div class="col-4 d-flex justify-content-center" >
+                                    <span>Name</span>
+                                </div>
+                                <div class="col d-flex ms-5 justify-content-center">
+                                    <span>Points</span>
                                 </div>
                             </div>
-
-
-                        </div>
-                        <!-- Dashboard center tables started -->
-                        <div class="dashboard-center-table">
-                            <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2 "
-                                [style.background-image]="'url(' + item?.ranking_image + ')'"
+                            <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
+                                *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.length > 0"
+                                [style.background-image]="'url(' + rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.ranking_image + ')'"
                                 [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) ">
-                                <div class="col-6 " style="padding-top: 1vh;">
-                                    <div class="media" style="display:flex; column-gap:1rem;align-self: center;">
-                                        <span class="col-1 ms-2 text-white" style="padding-top: 1vh;">
-                                            {{item?.rankingtable_number}}
+                                style="border:2px solid">
+                                <div class="col-6" style="padding-top: 1.1vh;">
+    
+                                    <div class="media d-flex gap-3">
+                                        <span class="col-1 ms-2 text-white position-absolute-" style="padding-top: 1.1vh;font-size:2.7vw">
+                                            {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_number}}
                                         </span>
-                                        <div>
-                                            <div
-                                                style="height:6vh;width:6vh;display:flex;align-items: center;padding-top: 5%;">
-                                                <img class="rounded-circle z-depth-2 user-logo-row" alt=""
-                                                    src="{{item?.rankingtable_logo}}" data-holder-rendered="true"
-                                                    height="100%" width="100%" >
-                                            </div>
+                                        <div style="height:5vh;display:flex;justify-content:center;align-items:center">
+                                            <img loading="lazy" class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                                src="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_logo}}"
+                                                data-holder-rendered="trplacementue" height="100%" width="100%">
                                         </div>
-
-
+    
                                         <div class="media-body user-logo-row ellipsis"
                                             style="display: flex; flex-direction: column;row-gap:5px;">
-                                            <h5 class="mt-0 text-white name-f-size mobile-ellipsis" placement="bottom"
-                                                ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}
+                                            <h5 class="mt-0  text-white name-f-size mobile-ellipsis" placement="bottom"
+                                                ngbTooltip=" {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}">
+                                                {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_name}}
                                             </h5>
-                                            <p class="mt-n4 team-name sub-team name-f-size  mobile-ellipsis">
-                                                {{item?.rankingtable_team}}</p>
+                                            <p class="mt-n4 team-name sub-team name-f-size mobile-ellipsis">
+                                                {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_team}}
+                                            </p>
                                         </div>
                                     </div>
+    
+    
                                 </div>
-                                <div class="col-6">
-                                    <div class="media d-flex align-items-center pt-2  gap-5 me-1">
-                                        <div style="height:6vh;" class="d-flex   align-items-center">
-                                            <img class="rounded-circle z-depth-2 team-logo-row" alt=""
-                                                src="{{item?.ranking_badge}}" data-holder-rendered="true" height="90%">
+                                <div class="col-6" style="padding-top: 0.6vh;font-size:2.7vw">
+                                    <div class="media d-flex gap-5">
+                                        <div style="height:6vh ;" class="d-flex">
+                                            <img loading="lazy" class="rounded-circle z-depth-2 team-logo-row" alt=""
+                                                src="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.ranking_badge}}"
+                                                data-holder-rendered="true" height="90%" style="align-self: center;">
                                         </div>
-
-                                        <div class=" media-body text-center">
-                                            <h5
-                                                class="mt-0 text-white d-flex aliign-items-center justify-content- gap-3">
-
-                                                <span class="name-f-size point-number align-self-center"
-                                                    style="width: 7vw;">{{item?.rankingtable_weightage}}</span>
-
-
-                                                <div style="height:5vh" class="pt-1">
-                                                    <img class=" f-right up-arrow" alt=""
+    
+                                        <div class="media-body text-center">
+                                            <h5 class="mt-0 text-white  d-flex justify-content-center gap-3">
+    
+                                                <span class="name-f-size point-number"
+                                                    style="width:4vw;padding-top: 1.5vh;font-size:2.7vw">{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_weightage}}</span>
+    
+    
+                                                <div style="height:6vh;margin-top: 5%;">
+                                                    <img loading="lazy" class=" f-right up-arrow" alt=""
                                                         src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
-                                                        data-holder-rendered="true" height="100%"
-                                                        *ngIf="item?.rankingtable_arrow === 'red'">
-                                                    (click)="upDownArrow(item?.rankingtable_arrow,item)"
-                                                    <img class=" f-right up-arrow" alt=""
+                                                        data-holder-rendered="true" height="80%"
+                                                        *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow === 'red'"
+                                                        (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]) "
+                                                        style="align-self:center;">
+                                                    <img loading="lazy" class=" f-right up-arrow" alt=""
                                                         src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
-                                                        data-holder-rendered="true" height="100%"
-                                                        *ngIf="item?.rankingtable_arrow !== 'red'">
+                                                        data-holder-rendered="true" height="80%"
+                                                        *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow !== 'red'"
+                                                        (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])"
+                                                        style="align-self:center;">
                                                 </div>
-
-
-
-                                                <!-- (click)="upDownArrow(item?.rankingtable_arrow,item)" -->
+    
+    
+    
                                             </h5>
                                             <!-- <p class="mt-n4 team-name sub-team">India Maste</p> -->
                                         </div>
                                     </div>
                                 </div>
+    
+    
                             </div>
-                            <div #scrollTarget></div>
-                        </div>
-                        <div class="row view-more-row">
-                            <div class="col">
-                                <button class="w-100 btn btn-lg btn-primary load-more" type="button"
-                                    (click)="viewMore()"
-                                    [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}">
-                                    <img src="assets/images/svg/dashboard/load-more.svg" data-holder-rendered="true"
-                                        height="13">
-                                    View More
-                                </button>
+                            <!-- Dashboard center tables started -->
+                            <div class="dashboard-center-table">
+                                <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2 "
+                                    [style.background-image]="'url(' + item?.ranking_image + ')'"
+                                   
+                                    [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                    *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) ">
+                                    <div class="col-6 " style="padding-top: 1vh;">
+                                        <div class="media" style="display:flex; column-gap:1rem;align-self: center;">
+                                            <span class="col-1 ms-2 text-white" style="padding-top: 1vh;font-size:2.7vw">
+                                                {{item?.rankingtable_number}}
+                                            </span>
+                                            <div>
+                                                <div
+                                                    style="height:6vh;width:6vh;display:flex;align-items: center;padding-top: 5%;">
+                                                    <img class="rounded-circle z-depth-2 user-logo-row" alt=""  (click)="openHierarchyPopup(item)"
+                                                        src="{{item?.rankingtable_logo}}" data-holder-rendered="true"
+                                                        height="100%" width="100%" >
+                                                </div>
+                                            </div>
+    
+    
+                                            <div class="media-body user-logo-row ellipsis"  (click)="navigateToOtherRole(item)"
+                                                style="display: flex; flex-direction: column;row-gap:5px;">
+                                                <h5 class="mt-0 text-white name-f-size mobile-ellipsis" placement="bottom"
+                                                    ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}
+                                                </h5>
+                                                <p class="mt-n4 team-name sub-team name-f-size  mobile-ellipsis">
+                                                    {{item?.rankingtable_team}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="media d-flex align-items-center pt-2  gap-5 me-1">
+                                            <div style="height:6vh;" class="d-flex   align-items-center">
+                                                <img class="rounded-circle z-depth-2 team-logo-row" alt=""
+                                                    src="{{item?.ranking_badge}}" data-holder-rendered="true" height="90%">
+                                            </div>
+    
+                                            <div class=" media-body text-center">
+                                                <h5
+                                                    class="mt-0 text-white d-flex aliign-items-center justify-content- gap-3">
+    
+                                                    <span class="name-f-size point-number align-self-center"
+                                                        style="width: 4vw;font-size:2.7vw">{{item?.rankingtable_weightage}}</span>
+    
+    
+                                                    <div style="height:5vh" class="pt-1">
+                                                        <img class=" f-right up-arrow" alt=""
+                                                            src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
+                                                            data-holder-rendered="true" height="100%"
+                                                            *ngIf="item?.rankingtable_arrow === 'red'"
+                                                            (click)="upDownArrow(item?.rankingtable_arrow,item)">
+                                                     
+                                                        <img class=" f-right up-arrow" alt=""
+                                                            src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
+                                                            data-holder-rendered="true" height="100%"
+                                                            *ngIf="item?.rankingtable_arrow !== 'red'"
+                                                            (click)="upDownArrow(item?.rankingtable_arrow,item)">
+                                                    </div>
+    
+    
+    
+                                                    <!-- (click)="upDownArrow(item?.rankingtable_arrow,item)" -->
+                                                </h5>
+                                                <!-- <p class="mt-n4 team-name sub-team">India Maste</p> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div #scrollTarget></div>
                             </div>
+                            <div class="row view-more-row">
+                                <div class="col">
+                                    <button class="w-100 btn btn-lg btn-primary load-more" type="button"
+                                        (click)="viewMore()"
+                                        [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}">
+                                        <img src="assets/images/svg/dashboard/load-more.svg" data-holder-rendered="true"
+                                            height="13">
+                                        View More
+                                    </button>
+                                </div>
+                            </div>
+    
+    
                         </div>
-
-
                     </div>
+                    
 
                 </div>
 

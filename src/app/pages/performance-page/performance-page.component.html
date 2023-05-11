@@ -37,7 +37,7 @@
                                    
                                     <div class="container-fluid-overall">
                                         <div class="row">
-                                            <div class="col-lg-10 col-md-9 col-7">
+                                            <div class="col-lg-9 col-md-9 col-6">
                                                 <div class="p-0">
                                                     <span
                                                         class="performance-overall-txt">{{overallData?.[0]?.label}}</span>
@@ -46,7 +46,7 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-1 col-md-1 col-2 d-flex justify-content-start">
+                                            <div class="col-lg-1 col-md-1 col-2 d-flex justify-content-end">
                                                 <span class="text-start performance-game-points-coin ps-1" >
                                                     <img src="assets/images/svg/dashboard/game-points-coin.png" alt=""
                                                         height="20">
@@ -117,11 +117,12 @@
                                                 </div>
                                             </div>
                                           
-                                            <div class="col-lg-2 col-md-2 col-4 g-0">
+                                            <div class="col-lg-2 col-md-2 col-2 g-0 d-flex">
                                                 <span class="text-start">
                                                     <img src="assets/images/svg/dashboard/game-points-coin.png" alt="" height="15">
                                                 </span>
-                                                <span class="float-end d-flex gap-2">
+                                                <span class="float-start d-flex gap-1">
+                                                    &nbsp;
                                                     <span class="performance-points">{{item?._data?.points}}</span>
                                                    
                                                     <span >
@@ -144,8 +145,11 @@
                          
                                                          </div>
                                                     
-                                                </span>
-                                                    <i class="fa fa-sort-down ms-4 performance-arrow-down"></i>
+                                                </span >
+                                                <div class=" col d-flex justify-content-end">
+                                                    <i class="fa fa-sort-down  performance-arrow-down"></i>
+                                                </div>
+                                                  
                                                 </span>
                                             </div>
                                         </div>
@@ -165,13 +169,14 @@
                                                 </div>
                                             </div>
                                             
-                                            <div class="col-lg-2 col-md-2 col-4 p-0">
+                                            <div class="col-lg-2 col-md-2 col-4 p-0 d-flex">
                                                 <span class="text-start performance-game-points-coin">
                                                     <img src="assets/images/svg/dashboard/game-points-coin.png" alt=""
                                                         height="15">
                                                 </span>
-                                                <span class="float-end d-flex gap-2">
+                                                <span class="float-end d-flex gap-1">
                                                     <div></div>
+                                                    &nbsp;
                                                     <span class="performance-points">{{child?.points}}</span>
                                                     
                                                     <span >
@@ -232,7 +237,7 @@
                         (click)="buttonFilter('Live')">Live</label>
                 </div>
                 </div>
-                <select class="form-select performance-filter-select" aria-label="Default select example" style="width: 12vw;margin: 2vh; "
+                <select class="form-select performance-filter-select" aria-label="Default select example" style="width: 100%;margin: 2vh; "
                 [(ngModel)]="dropDownValue" (change)="onChange($event.target.value)">
                 <option [attr.selected]="item?.mapTo?.indexOf(buttonFilterActive) > -2 ? true : null"
                     *ngFor="let item of dropDownFilterData" value="{{item?.value}}">

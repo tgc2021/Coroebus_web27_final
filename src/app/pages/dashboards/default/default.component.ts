@@ -22,6 +22,8 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./default.component.scss']
 })
 export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
+  openperformance: boolean=true;
+  openActivivities: boolean=false;
 dismiss() {
 throw new Error('Method not implemented.');
 }
@@ -1969,8 +1971,16 @@ else if(this.activeTabForSectionView_2 == 4){
         confirmButtonColor: this.sectionView_1?.theme_details?.[0]?.dark_color
       });
     }
-  }
+    }
 
-
+    openMyPerformance(){
+      this.openperformance=true;
+      this.openActivivities=false;
+    }
+    openMyActivivities(){
+      this.openActivivities=true;
+      this.openperformance=false;
+    }
+  
 
 }
