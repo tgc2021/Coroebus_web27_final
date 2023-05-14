@@ -1,6 +1,6 @@
 <div class="web_view">
     <div class="box_container d-flex justify-content-center align-items-center">
-        <mat-card class="box_container_card" >
+<mat-card class="box_container_card" >
 <div  *ngFor="let res of governance_index_response; let i=index">
             <div class="header_card_div" *ngIf="res._data.point_label !='Calibration'">
                 <div class="d-flex align-end">
@@ -35,14 +35,104 @@
                             </mat-panel-title>
 
                         </mat-expansion-panel-header>
-                        <div class="row" style="width: 100%;" class="row sub_title_div" *ngFor="let responsesub of response.kpi_data">
+                        <!-- <div class="row" style="width: 100%;" class="row sub_title_div" *ngFor="let responsesub of response.kpi_data">
                             <div class="col-11">
                                 <div class="accordion_sub_title">{{responsesub.kpi_name}}</div>
                             </div>
                             <div class="col-1" style="padding-left: 1.3vw;">
                                 <div class="accordion_sub_score">{{responsesub.weightage}}</div>
                             </div>
-                        </div>
+                        </div> -->
+                        <table>
+                            <thead>
+                                <tr >
+                                    <th colspan="3"></th>
+                                    <th  colspan="4" >CCEs Rostered in D1R</th>
+                                    <th  colspan="3" >
+                                        D1R Curriculum Delivery Adherence <br>
+                                        (Randomize sampling of 4 sit in sessions) (Manager Training)
+                                    </th>
+                                    <tr>
+                                        <th>Serial no</th>
+                                        <th>Batch</th>
+                                        <th>Trainer name</th>
+                                        <th>Opening Count </th>
+                                        <th>closing count</th>
+                                        <th>Average CCECount</th>
+                                        <th>Weeks in D1R</th>
+                                        <th>Storyboard Adherence </th>
+                                        <th>Lesson Plan Adherence</th>
+                                        <th>Facillator Guide Adherence</th>
+                                        
+                                    </tr>
+                                
+                              
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>0000</td>
+                                    <td>0000</td>
+                                    <td>Shrivasana</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>0000</td>
+                                    <td>0000</td>
+                                    <td>Shrivasana</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>0000</td>
+                                    <td>0000</td>
+                                    <td>Shrivasana</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>0000</td>
+                                    <td>0000</td>
+                                    <td>Shrivasana</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>0000</td>
+                                    <td>0000</td>
+                                    <td>Shrivasana</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                </tr>
+                                
+                                <!--  -->
+                            </tbody>
+                        </table>
 
                      
 
@@ -86,7 +176,96 @@
 
                         </mat-expansion-panel-header>
 
-                       
+                        <table>
+                            <thead>
+                                <tr >
+                                    <th colspan="3"></th>
+                                    <th  colspan="4" >CCEs Rostered in D1R</th>
+                                    <th  colspan="3" >
+                                        D1R Curriculum Delivery Adherence <br>
+                                        (Randomize sampling of 4 sit in sessions) (Manager Training)
+                                    </th>
+                                    <tr>
+                                        <th>Serial no</th>
+                                        <th>Batch</th>
+                                        <th>Trainer name</th>
+                                        <th>Opening Count </th>
+                                        <th>closing count</th>
+                                        <th>Average CCECount</th>
+                                        <th>Weeks in D1R</th>
+                                        <th>Storyboard Adherence </th>
+                                        <th>Lesson Plan Adherence</th>
+                                        <th>Facillator Guide Adherence</th>
+                                        
+                                    </tr>
+                                
+                              
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>0000</td>
+                                    <td>0000</td>
+                                    <td>Shrivasana</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>0000</td>
+                                    <td>0000</td>
+                                    <td>Shrivasana</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>0000</td>
+                                    <td>0000</td>
+                                    <td>Shrivasana</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>0000</td>
+                                    <td>0000</td>
+                                    <td>Shrivasana</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>0000</td>
+                                    <td>0000</td>
+                                    <td>Shrivasana</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                </tr>
+                                
+                                <!--  -->
+                            </tbody>
+                        </table>
 
                     </mat-expansion-panel>
                 </div>
@@ -98,7 +277,9 @@
 
             </div>
         </div>
+        
         </mat-card>
+      
 
         
     </div>

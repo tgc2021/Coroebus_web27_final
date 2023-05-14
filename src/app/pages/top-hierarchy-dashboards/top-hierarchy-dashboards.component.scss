@@ -1350,8 +1350,8 @@ input::placeholder {
 
     .leaderboard_rank_up_down_arrow_image_first,
     .leaderboard_rank_up_down_arrow_image {
-        width: 3vw;
-        height: 5vh;
+        width: 3vh;
+        height: 3vh;
         border-radius: 50%;
     }
 
@@ -1462,8 +1462,8 @@ input::placeholder {
             width: 4vh;
             height: 4vh;
             position: absolute;
-            right: -6vw;
-            top: -15vh;
+            right: 2vw;
+            top: -11vh;
             margin-bottom: 0;
             border-radius: 50%;
             background: #FFFFFF;
@@ -1962,9 +1962,32 @@ input::placeholder {
  }
  .red_auto_fail{
     border:2px solid red;
+    animation: autoFailred 1s infinite;
 
  }
  .Green_auto_fail{
     border:2px solid #79BF06;
+    animation: autoFail 1s infinite;
 
+ }
+
+ @keyframes autoFail {
+    from{
+        border:3px solid #79BF06;
+    }
+    to{
+        border:3px solid #ffff;
+    }
+    
+ }
+
+ @keyframes autoFailred {
+
+    from{
+        border:3px solid red;
+    }
+    to{
+        border:3px solid #ffff;
+    }
+    
  }

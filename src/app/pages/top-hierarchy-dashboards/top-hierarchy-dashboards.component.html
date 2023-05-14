@@ -373,7 +373,8 @@
                                     <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 3vw;display:flex; justify-content: center;"
                                         *ngIf="res.rankingtable_arrow=='yellow'">
                                         <img  class="leaderboard_rank_up_down_arrow_image"
-                                            src="{{sectionView_1.theme_details[0].equal_arrow}}" />
+                                            src="../../../assets/images/BoosterAssests/EQ-16687580462022.png" />
+                                            
                                     </div>
                                 </mat-card>
                                   </div>
@@ -828,16 +829,15 @@
                                   </div>
                               </div>
                           </div>
-                            <div class="card-fotter" >
-                                          <button class="submit btn text-white" 
-                                          [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
-                                          (click)="pokeSelection(modal)" >
-                                          Submit
-                                      </button>
-                                      </div>
-                                      <div>
-      
-                                      </div>
+                            <div class="card-fotter">
+                                <button class="submit btn text-white" [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
+                                    (click)="pokeSelection(modal)">
+                                    Submit
+                                </button>
+                            </div>
+                            <div>
+                            
+                            </div>
       
                         <!-- <div class="row text-center mt-0">
                           <div>
@@ -1281,12 +1281,12 @@
             </div>
         </div>
         <!-- Home Btn -->
-        <div *ngIf="cameraimage;then mobileHomeBtn"></div>
+        <!-- <div *ngIf="cameraimage;then mobileHomeBtn"></div>
         <ng-template #mobileHomeBtn>
             <div class="homeBtn" (click)="BackToHome()">    
                 <img src="assets/images/TopHierarchyDashboard/home button  1.png" alt="" srcset="">
             </div>
-        </ng-template>
+        </ng-template> -->
     
         <!-- LeaderBoard -->
         <div style="width:100vw;margin:2%;border-radius:10px">
@@ -1466,8 +1466,8 @@
                                 </div>
         
                                 <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='yellow'" (click)="upDownArrow(res.rankingtable_arrow,res)">
-                                    <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                        src="{{sectionView_1.theme_details[0].equal_arrow}}" height="90%" width="90%" />
+                                    <div style="height:2.5vh;width:2.5vh;border-radius:100%;background:#FAA019;margin-left: 0.8vw;"></div>
+                                        
                                 </div>
                             </mat-card>
         
@@ -1517,7 +1517,8 @@
         
                                 <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='yellow'">
                                     <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                        src="{{sectionView_1.theme_details[0].equal_arrow}}" height="90%" width="90%" />
+                                        src="assets/images/BoosterAssests/EQ-16687580462022.png" height="90%" width="90%" />
+                                       
                                 </div>
                             </mat-card>
         

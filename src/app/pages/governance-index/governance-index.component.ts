@@ -40,9 +40,6 @@ export class GovernanceIndexComponent implements OnInit {
         
         if(res._data.point_label ==='Calibration'){
           this.calibrationData=res._data_kpi.process_data;
-          
-
-
         }
         
 

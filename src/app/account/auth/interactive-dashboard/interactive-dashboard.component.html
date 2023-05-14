@@ -352,9 +352,9 @@
                 </div>
             </div>
             <!-- mobile btn section -->
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center align-items-center">
                 <div class="mobile-btn-section d-flex justify-content-between align-items-center gap-1">
-                    <div style="height:6vh;">
+                    <div style="height:6vh;width: 25%;">
                         <img *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
                             src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt}}"
                             alt="Learning_Academy" width="100%" height="100%">
@@ -363,7 +363,7 @@
                             src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt}}"
                             alt="Learning_Academy" width="100%" height="100%" (click)="navigateToLearningAcademy()">
                     </div>
-                    <div style="height:6vh;">
+                    <div style="height:6vh;width: 25%;">
                         <img  *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
                             src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt}}"
                             alt="Personal_Milestone" width="100%" height="100%">
@@ -372,7 +372,7 @@
                             src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt}}"
                             alt="Personal_Milestone" width="100%" height="100%" (click)="navigateTopersonalMilestone()">
                     </div>
-                    <div style="height:6vh;">
+                    <div style="height:6vh;width: 25%;">
                         <img  *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
                             src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt}}" alt="PlayZone"
                             width="100%" height="100%">
@@ -448,11 +448,11 @@
                             </div>
                             <div style="height:6vh;">
                                 <img *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'" src="{{interactive_dashoard_response[0].data.theme_details[0].Daily}}" alt="Daily"
-                                    height="100%" width="100%" data-bs-toggle="modal" data-bs-target="#DailyModal" 
+                                    height="100%" width="100%" data-bs-toggle="modal" data-bs-target="#dailyModal" 
                                     >
 
                                     <img *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'" src="{{interactive_dashoard_response[0].data.theme_details[0].Daily}}" alt="Daily"
-                                    height="100%" width="100%" (mouseover)="openDailyModal()" data-bs-toggle="modal" data-bs-target="#DailyModal" 
+                                    height="100%" width="100%" (mouseover)="openDailyModal()" data-bs-toggle="modal" data-bs-target="#dailyModal" 
                                     >
 
                             </div>
