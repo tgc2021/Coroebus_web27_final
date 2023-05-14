@@ -46,7 +46,7 @@ throw new Error('Method not implemented.');
   userSelectionData: any
   rewardPoints: any
   gamePoints: any
-  activeTabForSectionView_2: any
+  activeTabForSectionView_2: any=1
   activeSubTabForSectionView_2: any
   activeTabOrderNumberForSectionView_2: any
   rankingDataFirstRowForSectionView_2: any
@@ -78,6 +78,7 @@ throw new Error('Method not implemented.');
   clicked = 0;
   // declare by shubham
   labelNameMy: any
+
   pokeAnimationData: any;
   profile_flag: number;
   url: any;
@@ -205,6 +206,8 @@ throw new Error('Method not implemented.');
 
     this.activeTab()
     this.Edit_image()
+  //  this.changeTabFilter('citizen',2)
+ 
     this.combineLatest = combineLatest([
       this.store.select(fromRoot.userLogin),
       this.store.select(fromRoot.usertheme),
@@ -261,7 +264,7 @@ throw new Error('Method not implemented.');
           this.getUserBannerDataSectionView_1()
           this.getUserBannerDataSectionView_2()
           this.getUserBannerDataSectionView_3()
-          this.GetDataFromProduceInfo(queryParams)
+         
           // this.navigateToStatistics()
 
           this.notificationList()
@@ -291,10 +294,10 @@ throw new Error('Method not implemented.');
     //   this.eventService.broadcast('requestSendForProduce1Data', this.sectionView_1)
     // })
     
-  
     
-
-
+    
+   
+   
 
 
   }
@@ -319,10 +322,15 @@ throw new Error('Method not implemented.');
 
   ngAfterViewInit() {
     this.edit_image;
-
+   
     setTimeout(() => {
-      // this.changeTabFilter('',this.b)
+    
+     
       this.changeSubTabFilter('My Store')
+      
+      // this.changeTabFilter('', this.activeTabForSectionView_2=[0] )
+
+      
     }, 3000)
 
   }
@@ -422,68 +430,7 @@ localStorage.setItem('bg_image',this.sectionView_1?.theme_details?.[0]?.point_di
     }
   }
 
-  // updatedPoke() {
-  //   console.log(this.pokeAnimationData);
-  //   console.log(this.pokeslidedata);
-    
-  //    if(this.pokeAnimationData!= ''){
 
-  //     for (let i = 0; i < this.pokeAnimationData.length; i++) {
-
-              
-  //             console.log(this.pokeslidedata.push(this.pokeAnimationData[i]));
-
-
-  //       this.pokeInterval = setInterval(() => { 
-  //         console.log(i);
-  //         this.pokeslidedata=this.pokeslidedata.push(this.pokeAnimationData[i])
-  //         console.log(this.pokeslidedata.length);
-  //         console.log(this.pokeslidedata);
-  //         // this.updatePokeData(this.pokeAnimationData[i].poke_id_log)
-  //        }, 6000);
-          
-      
-  //     }
-  //     console.log('hello');
-
-  //    }
-  //    else{
-  //     clearInterval(this.pokeInterval);
-
-  //    }
- 
-  //   // this.pokeslidedata = []
-  //   console.log(this.pokeslidedata);
-
-  // }
-
-
-
-
-// updatedPoke() {
-//   console.log(this.pokeAnimationData);
-//   console.log(this.pokeslidedata);
-
-//   if (this.pokeAnimationData.length > 0) {
-//     let i = 0;
-
-//     const intervalId = setInterval(() => {
-//       this.pokeslidedata.push(this.pokeAnimationData[i]);
-//       this.updatePokeData(this.pokeAnimationData[i].poke_id_log)
-
-//       i++;
-
-//       if (i === this.pokeAnimationData.length) {
-
-//         clearInterval(intervalId);
-//       }
-//     }, 6000);
-//   } else {
-//     clearInterval(this.pokeInterval);
-//   }
-
-//   console.log(this.pokeslidedata);
-// }
 
 updatedPoke() {
   console.log(this.pokeAnimationData);
@@ -536,8 +483,15 @@ updatedPoke() {
     [err, res] = await HttpProtocols.to(DashboardModel.getCenterDataSectionView_2(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
       this.sectionView_2 = res?.data
+      
 
-      this.labelNameMy = this.sectionView_2?._ranking_data[0].label
+      this.labelNameMy = this.sectionView_2?._ranking_data[0].label;
+      
+      this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order;
+
+      
+
+
       // for(let i=0;i<this.sectionView_2?._ranking_data?.length;i++){
       if (this.queryParams?.roleID == '6' || this.userSelectionData?._personal_data?.id_role == '6') {
         
@@ -963,8 +917,13 @@ updatedPoke() {
       this.levelsBucketsList_err = 'Error'
     }
   }
-  changeTabFilter(name: string, order: any) {
 
+
+  changeTabFilter(name: string, order: any) {
+    console.log(order);
+
+    
+   
     // this.spectSearchStr=null
     // this.labelNameMy = name
     this.pageNumberForSectionView_3 = 1
@@ -1032,6 +991,8 @@ else if(this.activeTabForSectionView_2 == 4){
 
     
     this.activeTabOrderNumberForSectionView_2 = order
+
+
     this.activeSubTabForSectionView_2 = 'My Store'
     this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
     this.sectionView_3_list = this.sectionView_3?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)

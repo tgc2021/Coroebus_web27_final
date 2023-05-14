@@ -1221,12 +1221,22 @@ color: #ffff;
 
 }
 .btn-container{
+   
+    border-radius: 10px;
+    display: flex;
+    width: 95vw;
+    justify-content: center;
+    align-items: center;
+
+}
+.Inner_btn_container{
     margin-top: 2%;
     padding: 2%;
     border-radius: 10px;
+    width: 93vw;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+     justify-content: center;
     align-items: center;
 
 }

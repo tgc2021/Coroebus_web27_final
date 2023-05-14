@@ -2361,89 +2361,88 @@
 
 
             </div>
-            <div class="col" >
-                <div class="btn-container" [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null" >
-                    <div class="row no- " [ngClass]="{'row-cols-2': sectionView_2?._ranking_data?.length === 2,
-                                'row-cols-3': sectionView_2?._ranking_data?.length === 3,
-                                'row-cols-4': sectionView_2?._ranking_data?.length === 4,
-                               
-                                'row-cols-1': sectionView_2?._ranking_data?.length === 4}" style="
-                                display: flex;
-                                flex-direction: row;
-                                justify-content: space-between;
-                                gap:0.1vw;
-                                align-items: space-between;
-                                flex-wrap: nowrap;
-                                width:100%;
-                                overflow-x: overlay;">
-                    <div class="col " *ngFor="let item of sectionView_2?._ranking_data">
-                        <a class="filter-btn-dashboard   mb-2" style=" width: 22vw;"
-                            [ngClass]="{'filter-btn-dashboard-active': activeTabForSectionView_2 === item?.order}"
-                            [ngStyle]="{'background': (activeTabForSectionView_2 ===item?.order) ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
-                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                            (click)="changeTabFilter(item?.label,item?.order)">
-                            <span class="filter-txt-name-mobile text-center"
-                                [ngStyle]="{'color': (activeTabForSectionView_2 === item?.order) ? '#ffffff' : '#000000'}">
-                                {{item?.label}}
-                            </span>
-                        </a>
+            <div class="col">
+                <div class="btn-container mt-2"
+                    [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                    <div class="Inner_btn_container">
+                        <div class="row no-gutter "  style="
+                                                            display: flex;
+                                                            flex-direction: row;
+                                                            justify-content: space-between;
+                                                            flex-wrap: nowrap;
+                                                            width:100%;
+                                                            overflow-x: overlay;">
+                            <div class="col " *ngFor="let item of sectionView_2?._ranking_data" style="padding-left:0%">
+                                <a class="filter-btn-dashboard   mb-2" style=" width: 24vw;"
+                                    [ngClass]="{'filter-btn-dashboard-active': activeTabForSectionView_2 === item?.order}"
+                                    [ngStyle]="{'background': (activeTabForSectionView_2 ===item?.order) ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
+                                    [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                    (click)="changeTabFilter(item?.label,item?.order)">
+                                    <span class="filter-txt-name-mobile text-center"
+                                        [ngStyle]="{'color': (activeTabForSectionView_2 === item?.order) ? '#ffffff' : '#000000'}">
+                                        {{item?.label}}
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+            
+                        <div class="row d-flex justify-content-center " *ngIf="sectionView_3_list?.[0]?._Overall">
+                            <div class="col-6  d-flex justify-content-center align-items-center">
+                                <a class="btn btn-xs filter-btn-dashboard  fs-sm  mb-2" style="width:43vw"
+                                    [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 ==='My Store'}"
+                                    [ngStyle]="{'background': (activeSubTabForSectionView_2 === 'My Store') ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
+                                    [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                    (click)="changeSubTabFilter('My Store')">
+                                    <span class="v-align filter-txt-name-mobile filter-my-store"
+                                        [ngStyle]="{'color': (activeSubTabForSectionView_2 === 'My Store') ? '#ffffff' : '#000000'}">
+                                        My {{labelNameMy}}
+                                    </span>
+            
+            
+                                </a>
+                            </div>
+            
+                            <div class="col-6 d-flex justify-content-center align-items-center">
+                                <a class="btn btn-xs filter-btn-dashboard  fs-sm  mb-2" style="width:43vw"
+                                    [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 === 'Overall'}"
+                                    [ngStyle]="{'background': (activeSubTabForSectionView_2 === 'Overall') ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
+                                    [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                    (click)="changeSubTabFilter('Overall')">
+                                    <span class=" v-align filter-txt-name-mobile filter-my-store"
+                                        [ngStyle]="{'color': (activeSubTabForSectionView_2 === 'Overall') ? '#ffffff' : '#000000'}">
+                                        Overall
+                                    </span>
+                                </a>
+                            </div>
+            
+                        </div>
                     </div>
+            
                 </div>
-
-                <div class="row d-flex justify-content-center " *ngIf="sectionView_3_list?.[0]?._Overall">
-                    <div class="col-6  d-flex justify-content-center align-items-center">
-                        <a class="btn btn-xs filter-btn-dashboard  fs-sm  mb-2" style="width:43vw"
-                            [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 ==='My Store'}"
-                            [ngStyle]="{'background': (activeSubTabForSectionView_2 === 'My Store') ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
-                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                            (click)="changeSubTabFilter('My Store')">
-                            <span class="v-align filter-txt-name-mobile filter-my-store"
-                                [ngStyle]="{'color': (activeSubTabForSectionView_2 === 'My Store') ? '#ffffff' : '#000000'}">
-                                My {{labelNameMy}}
-                            </span>
-
-
-                        </a>
-                    </div>
-                    
-                    <div class="col-6 d-flex justify-content-center align-items-center">
-                        <a class="btn btn-xs filter-btn-dashboard  fs-sm  mb-2"  style="width:43vw"
-                            [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 === 'Overall'}"
-                            [ngStyle]="{'background': (activeSubTabForSectionView_2 === 'Overall') ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
-                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                            (click)="changeSubTabFilter('Overall')">
-                            <span class=" v-align filter-txt-name-mobile filter-my-store"
-                                [ngStyle]="{'color': (activeSubTabForSectionView_2 === 'Overall') ? '#ffffff' : '#000000'}">
-                                Overall
-                            </span>
-                        </a>
-                    </div>
-
-                </div>
-                </div>
-                
+            
                 <div class="d-flex gap-1 justify-content-between" style="margin-top: 17px;">
                     <div class="col-10" style="padding-right:0px;">
                         <input type="text" class="form-control dashboard-search" placeholder="Search People here.."
                             [(ngModel)]="spectSearchStr" aria-label="Search People here.." (keyup)="checkEmpty()"
-                            aria-describedby="basic-addon2" >
-
+                            aria-describedby="basic-addon2">
+            
                     </div>
                     <div class="col-2 d-flex justify-content-end">
                         <button type="button ms-4" class="btn btn-primary dashboard-search-btn" (click)="spectSearch()"
-                            [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"><i
-                                class="fa fa-search" aria-hidden="true"></i></button>
+                            [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"><i class="fa fa-search"
+                                aria-hidden="true"></i></button>
                     </div>
                 </div>
-
-                <div class="row mt-2 d-flex justify-content-center"  >
-                    <div style="width:95%;border-radius: 10px;" [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-                        <div class="col"  style="background-size:cover" >
+            
+                <div class="row mt-2 d-flex justify-content-center">
+                    <div style="width:95%;border-radius: 10px;"
+                        [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                        <div class="col" style="background-size:cover">
                             <div class="col-12 d-flex gap-2" style="font-weight:600">
-                                <div class="col-2 d-flex justify-content-center"  >
+                                <div class="col-2 d-flex justify-content-center">
                                     <span>Rank</span>
                                 </div>
-                                <div class="col-4 d-flex justify-content-center" >
+                                <div class="col-4 d-flex justify-content-center">
                                     <span>Name</span>
                                 </div>
                                 <div class="col d-flex ms-5 justify-content-center">
@@ -2453,12 +2452,12 @@
                             <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
                                 *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.length > 0"
                                 [style.background-image]="'url(' + rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.ranking_image + ')'"
-                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                style="border:2px solid">
+                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color" style="border:2px solid">
                                 <div class="col-6" style="padding-top: 1.1vh;">
-    
+            
                                     <div class="media d-flex gap-3">
-                                        <span class="col-1 ms-2 text-white position-absolute-" style="padding-top: 1.1vh;font-size:2.7vw">
+                                        <span class="col-1 ms-2 text-white position-absolute-"
+                                            style="padding-top: 1.1vh;font-size:2.7vw">
                                             {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_number}}
                                         </span>
                                         <div style="height:5vh;display:flex;justify-content:center;align-items:center">
@@ -2466,7 +2465,7 @@
                                                 src="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_logo}}"
                                                 data-holder-rendered="trplacementue" height="100%" width="100%">
                                         </div>
-    
+            
                                         <div class="media-body user-logo-row ellipsis"
                                             style="display: flex; flex-direction: column;row-gap:5px;">
                                             <h5 class="mt-0  text-white name-f-size mobile-ellipsis" placement="bottom"
@@ -2478,8 +2477,8 @@
                                             </p>
                                         </div>
                                     </div>
-    
-    
+            
+            
                                 </div>
                                 <div class="col-6" style="padding-top: 0.6vh;font-size:2.7vw">
                                     <div class="media d-flex gap-5">
@@ -2488,14 +2487,14 @@
                                                 src="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.ranking_badge}}"
                                                 data-holder-rendered="true" height="90%" style="align-self: center;">
                                         </div>
-    
+            
                                         <div class="media-body text-center">
                                             <h5 class="mt-0 text-white  d-flex justify-content-center gap-3">
-    
+            
                                                 <span class="name-f-size point-number"
                                                     style="width:4vw;padding-top: 1.5vh;font-size:2.7vw">{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_weightage}}</span>
-    
-    
+            
+            
                                                 <div style="height:6vh;margin-top: 5%;">
                                                     <img loading="lazy" class=" f-right up-arrow" alt=""
                                                         src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
@@ -2510,22 +2509,21 @@
                                                         (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])"
                                                         style="align-self:center;">
                                                 </div>
-    
-    
-    
+            
+            
+            
                                             </h5>
                                             <!-- <p class="mt-n4 team-name sub-team">India Maste</p> -->
                                         </div>
                                     </div>
                                 </div>
-    
-    
+            
+            
                             </div>
                             <!-- Dashboard center tables started -->
                             <div class="dashboard-center-table">
                                 <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2 "
                                     [style.background-image]="'url(' + item?.ranking_image + ')'"
-                                   
                                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                     *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) ">
                                     <div class="col-6 " style="padding-top: 1vh;">
@@ -2534,16 +2532,15 @@
                                                 {{item?.rankingtable_number}}
                                             </span>
                                             <div>
-                                                <div
-                                                    style="height:6vh;width:6vh;display:flex;align-items: center;padding-top: 5%;">
-                                                    <img class="rounded-circle z-depth-2 user-logo-row" alt=""  (click)="openHierarchyPopup(item)"
-                                                        src="{{item?.rankingtable_logo}}" data-holder-rendered="true"
-                                                        height="100%" width="100%" >
+                                                <div style="height:6vh;width:6vh;display:flex;align-items: center;padding-top: 5%;">
+                                                    <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                                        (click)="openHierarchyPopup(item)" src="{{item?.rankingtable_logo}}"
+                                                        data-holder-rendered="true" height="100%" width="100%">
                                                 </div>
                                             </div>
-    
-    
-                                            <div class="media-body user-logo-row ellipsis"  (click)="navigateToOtherRole(item)"
+            
+            
+                                            <div class="media-body user-logo-row ellipsis" (click)="navigateToOtherRole(item)"
                                                 style="display: flex; flex-direction: column;row-gap:5px;">
                                                 <h5 class="mt-0 text-white name-f-size mobile-ellipsis" placement="bottom"
                                                     ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}
@@ -2559,31 +2556,30 @@
                                                 <img class="rounded-circle z-depth-2 team-logo-row" alt=""
                                                     src="{{item?.ranking_badge}}" data-holder-rendered="true" height="90%">
                                             </div>
-    
+            
                                             <div class=" media-body text-center">
-                                                <h5
-                                                    class="mt-0 text-white d-flex aliign-items-center justify-content- gap-3">
-    
+                                                <h5 class="mt-0 text-white d-flex aliign-items-center justify-content- gap-3">
+            
                                                     <span class="name-f-size point-number align-self-center"
                                                         style="width: 4vw;font-size:2.7vw">{{item?.rankingtable_weightage}}</span>
-    
-    
+            
+            
                                                     <div style="height:5vh" class="pt-1">
                                                         <img class=" f-right up-arrow" alt=""
                                                             src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
                                                             data-holder-rendered="true" height="100%"
                                                             *ngIf="item?.rankingtable_arrow === 'red'"
                                                             (click)="upDownArrow(item?.rankingtable_arrow,item)">
-                                                     
+            
                                                         <img class=" f-right up-arrow" alt=""
                                                             src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
                                                             data-holder-rendered="true" height="100%"
                                                             *ngIf="item?.rankingtable_arrow !== 'red'"
                                                             (click)="upDownArrow(item?.rankingtable_arrow,item)">
                                                     </div>
-    
-    
-    
+            
+            
+            
                                                     <!-- (click)="upDownArrow(item?.rankingtable_arrow,item)" -->
                                                 </h5>
                                                 <!-- <p class="mt-n4 team-name sub-team">India Maste</p> -->
@@ -2595,8 +2591,7 @@
                             </div>
                             <div class="row view-more-row">
                                 <div class="col">
-                                    <button class="w-100 btn btn-lg btn-primary load-more" type="button"
-                                        (click)="viewMore()"
+                                    <button class="w-100 btn btn-lg btn-primary load-more" type="button" (click)="viewMore()"
                                         [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}">
                                         <img src="assets/images/svg/dashboard/load-more.svg" data-holder-rendered="true"
                                             height="13">
@@ -2604,15 +2599,15 @@
                                     </button>
                                 </div>
                             </div>
-    
-    
+            
+            
                         </div>
                     </div>
-                    
-
+            
+            
                 </div>
-
-
+            
+            
             </div>
         </div>
 
