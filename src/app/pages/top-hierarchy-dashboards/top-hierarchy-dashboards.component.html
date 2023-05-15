@@ -1297,8 +1297,8 @@
                     <div class="leaderboard_points_mobile col-2 ms-3"><b> Points</b> </div>
                 </div>
         
-                <div *ngIf="sectionView_1._personal_data.id_role==9 ;then smMobile else rmMobile"></div>
-                <ng-template #smMobile>
+                <!-- <div *ngIf="sectionView_1._personal_data.id_role==9 ;then smMobile else rmMobile"></div> -->
+               
                     <div
                         *ngIf="spectSearchStr ===''|| spectSearchStr == undefined || spectSearList.length>10;then withoutsearchMobile else withsearchMobile">
                     </div>
@@ -1319,7 +1319,7 @@
                                         width="100%" height="100%" />
                                 </div>
         
-                                <div class="leaderboard_name_and_team_mobile" (click)="navigateToSMDashboard(i)">
+                                <div class="leaderboard_name_and_team_mobile" (click)="navigateToSMDashboard(res)">
                                     <div class="leaderboard_name_label_mobile" ngbTooltip="{{res.rankingtable_name}}" placement="bottom">
                                         {{res.rankingtable_name}}
                                     </div>
@@ -1366,7 +1366,7 @@
                         {{leaderboard_data[0]._data | json}}
                     </div> -->
                             <mat-card class="leaderboard_tile_mobile" *ngFor="let res of spectSearList; let i=index"
-                                [style.background-image]="'url(' + res?.ranking_image + ')'" (click)="navigateToSMDashboard(i)">
+                                [style.background-image]="'url(' + res?.ranking_image + ')'" (click)="navigateToSMDashboard(res)">
         
                                 <div class="leaderboard_rank_score_mobile">
                                     {{res.rankingtable_number}}
@@ -1419,114 +1419,8 @@
                         </div>
                     </ng-template>
         
-                </ng-template>
-                <ng-template #rmMobile>
-                    <div
-                        *ngIf="spectSearchStr ===''|| spectSearchStr === undefined|| spectSearList.length>10 ;then withoutsearchMobile else withsearchMobile">
-                    </div>
-                    <ng-template #withoutsearchMobile>
-                        <div class="leaderboard_label_tile_mobile">
-                            <mat-card class="leaderboard_tile_mobile" *ngFor="let res of leaderboard_data; let i=index"
-                                [style.background-image]="'url(' + res?.ranking_image + ')'">
-                                <div class="leaderboard_rank_score_mobile">
-                                    {{res.rankingtable_number}}
-                                </div>
-        
-                                <div class="leaderboard_rank_profile_image_div_mobile" (click)="openHierarchyPopup(res)">
-                                    <img class="leaderboard_rank_profile_image_mobile" src="{{res.rankingtable_logo}}"
-                                        height="100%" width="100%" />
-                                </div>
-        
-                                <div class="leaderboard_name_and_team_mobile"  (click)="navigateToRMDashboard(i)">
-                                    <div class="leaderboard_name_label_mobile" ngbTooltip="{{res.rankingtable_name}}" placement="bottom">
-                                        {{res.rankingtable_name}}
-                                    </div>
-                                    <div class="leaderboard_team_label_mobile">
-                                        {{res.rankingtable_team}}
-                                    </div>
-                                </div>
-        
-                                <div class="leaderboard_rank_badge_image_div_mobile">
-                                    <img class="leaderboard_rank_badge_image_mobile" src="{{res.ranking_badge}}" />
-                                </div>
-        
-        
-                                <div class="leaderboard_rank_points_div_mobile">
-                                    <div class="leaderboard_rank_points_label_mobile">{{res.rankingtable_weightage}}</div>
-                                </div>
-        
-                                <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='green'">
-                                    <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                        src="{{sectionView_1.theme_details[0].up_arrow}}" height="90%" width="90%" />
-                                </div>
-        
-                                <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='red'" (click)="upDownArrow(res.rankingtable_arrow,res)">
-                                    <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                        src="{{sectionView_1.theme_details[0].down_arrow}}" height="90%" width="90%" />
-                                </div>
-        
-                                <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='yellow'" (click)="upDownArrow(res.rankingtable_arrow,res)">
-                                    <div style="height:2.5vh;width:2.5vh;border-radius:100%;background:#FAA019;margin-left: 0.8vw;"></div>
-                                        
-                                </div>
-                            </mat-card>
-        
-                        </div>
-        
-                    </ng-template>
-                    <ng-template #withsearchMobile>
-                        <div class="leaderboard_label_tile_mobile">
-                            <mat-card class="leaderboard_tile_mobile" *ngFor="let res of spectSearList; let i=index"
-                                [style.background-image]="'url(' + res?.ranking_image + ')'" (click)="navigateToRMDashboard(i)">
-                                <div class="leaderboard_rank_score_mobile">
-                                    {{res.rankingtable_number}}
-                                </div>
-        
-                                <div class="leaderboard_rank_profile_image_div_mobile">
-                                    <img class="leaderboard_rank_profile_image_mobile" src="{{res.rankingtable_logo}}"
-                                        height="100%" width="100%" />
-                                </div>
-        
-                                <div class="leaderboard_name_and_team_mobile">
-                                    <div class="leaderboard_name_label_mobile" ngbTooltip="{{res.rankingtable_name}}" placement="bottom">
-                                        {{res.rankingtable_name}}
-                                    </div>
-                                    <div class="leaderboard_team_label_mobile">
-                                        {{res.rankingtable_team}}
-                                    </div>
-                                </div>
-        
-                                <div class="leaderboard_rank_badge_image_div_mobile">
-                                    <img class="leaderboard_rank_badge_image_mobile" src="{{res.ranking_badge}}" />
-                                </div>
-        
-        
-                                <div class="leaderboard_rank_points_div_mobile">
-                                    <div class="leaderboard_rank_points_label_mobile">{{res.rankingtable_weightage}}</div>
-                                </div>
-        
-                                <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='green'">
-                                    <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                        src="{{sectionView_1.theme_details[0].up_arrow}}" height="90%" width="90%" />
-                                </div>
-        
-                                <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='red'">
-                                    <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                        src="{{sectionView_1.theme_details[0].down_arrow}}" height="90%" width="90%" />
-                                </div>
-        
-                                <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='yellow'">
-                                    <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                        src="assets/images/BoosterAssests/EQ-16687580462022.png" height="90%" width="90%" />
-                                       
-                                </div>
-                            </mat-card>
-        
-                        </div>
-        
-                    </ng-template>
-                </ng-template>
-        
+                
+                
                 <div class="row" *ngIf="lengthLeaderBoardData>19 || lengthSearchList>19">
                     <div class="d-flex justify-content-center col">
                         <button class="view_more_button_mobile col-12" (click)="viewMore()">
