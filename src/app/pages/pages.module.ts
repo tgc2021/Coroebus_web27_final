@@ -30,6 +30,7 @@ import { TableauModule } from 'ngx-tableau';
 import { BusinessHeadMapComponent } from './business-head-map/business-head-map.component';
 import { BusinessReportComponent } from './business-report/business-report.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MobileMapsComponent } from './mobile-maps/mobile-maps.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     IntroductionVideoComponent,
     GovernanceIndexComponent,
     BusinessHeadMapComponent,
-    BusinessReportComponent
+    BusinessReportComponent,
+    MobileMapsComponent
   
   
   ],

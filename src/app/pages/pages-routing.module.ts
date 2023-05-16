@@ -10,6 +10,7 @@ import { PersonalMilestoneComponent } from './personal-milestone/personal-milest
 import { TopDashboardComponent } from './top-dashboard/top-dashboard.component';
 import { TopHierarchyDashboardsComponent } from './top-hierarchy-dashboards/top-hierarchy-dashboards.component';
 import { BusinessReportComponent } from './business-report/business-report.component';
+import { MobileMapsComponent } from './mobile-maps/mobile-maps.component';
 
 
 const routes: Routes = [
@@ -33,7 +34,8 @@ const routes: Routes = [
   { path: 'governance_index', component:GovernanceIndexComponent },
 
   { path: 'business_report', component:BusinessReportComponent },
- 
+  { path: 'mobile_maps', component:MobileMapsComponent },
+
 
 
 ];

@@ -177,6 +177,10 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
     this.location.replaceState("");
     location.reload()
   }
+
+  OverallGrowthMobile(){
+    this.router.navigateByUrl('/mobile_maps')
+  }
   navigateToBIMap(data: any) {
 
     
@@ -188,6 +192,11 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
     
   
      
+  }
+  navigateToBIMapMobile(data: any){
+    this.mapUrl=data.map_url
+
+    this.router.navigateByUrl('/mobile_maps?map='+this.mapUrl)
   }
   navigateToIndexwiseDashboard() {
     this.router.navigateByUrl('/buisness_index')
