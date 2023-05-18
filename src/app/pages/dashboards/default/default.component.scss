@@ -506,6 +506,14 @@ mat-accordion{
    
 }
 
+@media screen and (min-width:270px) and (max-width:1023.9px) {
+
+    ::-webkit-scrollbar{
+        display: none;
+    }
+   
+}
+
 .btn-container::-webkit-scrollbar
 {
     display: none !important;
