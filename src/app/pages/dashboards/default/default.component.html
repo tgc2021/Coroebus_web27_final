@@ -1058,9 +1058,6 @@
                                                                             <img src="assets/images/svg/notification/v.png" alt="trivia_banner" height="100%" width="100%">
                                                                         </div>
                                                                 </ng-template>
-
-
-
                                                                 </div>
                                                                 <div class="triviaDescription d-flex flex-column gap-3 p-1 mt-2"
                                                                     style="width:100%;min-height:15vh;">
@@ -1068,21 +1065,17 @@
                                                                         <strong>
                                                                             {{triviaData.brief_title}}
                                                                         </strong>
-
-
                                                                     </div>
                                                                     <p style="font-size:1.2vh;
                                                                     overflow: hidden;
                                                                     text-overflow: ellipsis;
                                                                     ">
                                                                         {{triviaData.brief_summary}}
-
                                                                     </p>
                                                                     <div
                                                                         style="position:absolute;top:80%;right:5%;font-size:1vh;font-family: 'Inter';color:#A5ACB8;text-align:end">
                                                                         {{triviaData.created_at|date:'dd/MM/YYYY'}}
                                                                     </div>
-
                                                                 </div>
 
                                                             </div>
@@ -1183,8 +1176,6 @@
                                                 </div>
                                             </mat-expansion-panel>
                                         </mat-accordion>
-
-
                                         <mat-accordion>
                                             <div class="red_indicator" *ngIf="dailyBadgesActive || weeklyBadgesActive || monthlyBadgesActive"></div>
                                             <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true"
