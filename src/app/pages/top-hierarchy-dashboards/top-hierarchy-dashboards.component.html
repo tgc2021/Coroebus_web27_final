@@ -321,7 +321,7 @@
     
                                     <div class="leaderboard_rank_up_down_arrow_div " style="margin-left: 3vw;display:flex; justify-content: center;"
                                         *ngIf="res.rankingtable_arrow=='yellow'">
-                                        <div style="height:2.5vh;width:2.5vh;border-radius:100%;">
+                                        <div style="height:3vh;width:3vh;border-radius:100%;">
                                                     <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="100%" width="100%">
                                         </div>
                                        
@@ -373,7 +373,7 @@
                                     <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 3vw;display:flex; justify-content: center;"
                                         *ngIf="res.rankingtable_arrow=='yellow'">
                                         <img  class="leaderboard_rank_up_down_arrow_image"
-                                            src="../../../assets/images/BoosterAssests/EQ-16687580462022.png" />
+                                            src="assets/images/BoosterAssests/EQ-16687580462022.png" />
                                             
                                     </div>
                                 </mat-card>
@@ -829,7 +829,7 @@
                                   </div>
                               </div>
                           </div>
-                            <div class="card-fotter">
+                            <div class="card-fotter" style="display: flex; justify-content: center;">
                                 <button class="submit btn text-white" [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                     (click)="pokeSelection(modal)">
                                     Submit
