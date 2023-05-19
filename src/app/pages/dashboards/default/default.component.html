@@ -992,9 +992,7 @@
                                                                             <img src="assets/images/svg/notification/img.png" alt="trivia_banner" height="100%" width="100%">
                                                                         </div>
                                                                     </ng-template>
-                                                                   
-                                                         
-                                                                   
+
                                                                 <ng-template #mp4player>
                                                                         <div style="height:8vh;width:100%;border-radius:5vh">
                                                                             <img src="assets/images/svg/notification/v.png" alt="trivia_banner" height="100%" width="100%">
@@ -1009,7 +1007,6 @@
                                                                         <strong>
                                                                             {{triviaData.brief_title}}
                                                                         </strong>
-
 
                                                                     </div>
                                                                     <p style="font-size:1.2vh;
@@ -1808,7 +1805,7 @@
             <div class="col-12 pointsDistributionSection ">
                 <div  class="toggle_btn_mobile d-flex justify-content-between">
                     <div (click)="openMyPerformance()" [ngClass]="openperformance?'active_btn':'normal_btn'">My Performance</div>
-                    <div (click)="openMyActivivities()" [ngClass]="openActivivities?'active_btn':'normal_btn'">My Activities</div>
+                    <div (click)="openMyActivivities()" [ngClass]="openActivivities?'active_btn':'normal_btn'"  >My Activities</div>
                 </div>
                 <div class="mobile-points-dis-card col-11"
                 [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null"
