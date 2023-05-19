@@ -263,10 +263,10 @@
                                     <img class="web_spectator_up_down_arrow"
                                         src="{{response.data.theme_details[0].down_arrow}}" />
                                 </div>
-                                <div class="col-1 p-0"
+                                <div class="col-1 p-0" style="height:4vh;width:4vh;"
                                     *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'yellow'">
-                                    <img class="web_spectator_up_down_arrow"
-                                        src="{{response.data.theme_details[0].equal_arrow}}" />
+                                    <img class="web_spectator_up_down_arrow" height="100%;" width="100%"
+                                        src="assets/images/BoosterAssests/EQ-16687580462022.png" />
                                 </div>
                             </div>
                         </mat-card>
@@ -275,9 +275,6 @@
 
                 </div>
             </div>
-
-
-
             <div class="row web_spectator_leaderboard_section" *ngIf="spectSearList != null">
                 <div class="col-12 mt-1">
                     <div *ngFor="let spectatorleaderboardreponse of spectSearList[0]._data;  let i =index">
@@ -323,10 +320,10 @@
                                     <img class="web_spectator_up_down_arrow"
                                         src="{{response.data.theme_details[0].down_arrow}}" />
                                 </div>
-                                <div class="col-1 p-0"
+                                <div class="col-1 p-0" style="height:4vh;width:4vh;"
                                     *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'yellow'">
-                                    <img class="web_spectator_up_down_arrow"
-                                        src="{{response.data.theme_details[0].equal_arrow}}" />
+                                    <img class="web_spectator_up_down_arrow" height="100%" width="100%"
+                                        src="assets/images/BoosterAssests/EQ-16687580462022.png" />
                                 </div>
                             </div>
                         </mat-card>
@@ -346,7 +343,7 @@
                         <mat-card class="web_spectator_leaderboard" style="background: url({{spectatorleaderboardreponse.ranking_image}}); background-size: 100% 100%;">
                             <div class="row d-flex align-items-center" >
                                 <div class="col-1">
-                                    <p class="web_spectator_rank">{{spectatorleaderboardreponse.rankingtable_number}}</p>
+                                    <p class="web_spectator_rank">{{spectatorleaderbordreponse.rankingtable_number}}</p>
                                 </div>
                                 <div class="col-1">
                                     <img class="web_spectator_profile_image"
@@ -638,9 +635,9 @@
                                 <img class="web_spectator_up_down_arrow"
                                     src="{{response.data.theme_details[0].down_arrow}}" />
                             </div>
-                            <div class="col-1 p-0" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'yellow'">
-                                <img class="web_spectator_up_down_arrow"
-                                    src="{{response.data.theme_details[0].equal_arrow}}" />
+                            <div class="col-1 p-0" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'yellow'" height="4vh">
+                                <img class="web_spectator_up_down_arrow" height="60%" width="60%"
+                                    src="assets/images/BoosterAssests/EQ-16687580462022.png" />
                             </div>
                         </div>
                     </mat-card>
@@ -699,8 +696,8 @@
                                     src="{{response.data.theme_details[0].down_arrow}}" />
                             </div>
                             <div class="col-1 p-0" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'yellow'">
-                                <img class="web_spectator_up_down_arrow"
-                                    src="{{response.data.theme_details[0].equal_arrow}}" />
+                                <img class="web_spectator_up_down_arrow" height="60%" width="60%"
+                                    src="assets/images/BoosterAssests/EQ-16687580462022.png" />
                             </div>
                         </div>
                     </mat-card>
@@ -714,8 +711,8 @@
         </div>
 
 
-        <div class="row d-flex justify-content-start">
-            <div class="col-12 mobile_spectator_view_more_btn_div">
+        <div class="row">
+            <div class="col-12 web_spectator_view_more_btn_div">
                 <button class="w-100 btn btn-lg load-more" type="button" (click)="viewMore()">
                     <img src="assets/images/svg/dashboard/load-more.svg" data-holder-rendered="true" height="13">
                     View More
