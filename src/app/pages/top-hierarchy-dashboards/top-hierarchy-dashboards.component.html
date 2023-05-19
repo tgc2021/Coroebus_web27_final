@@ -238,8 +238,8 @@
                 <div class="leaderBoard mt-2">
                     <div class="button_div"  [style.background-image]="
                     sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-                        <button style="margin-left: 1vw;" class="button_series"
-                            *ngFor="let item of leaderboard_data_buttons ;let i=index" [class.active]="i==this.activeClass"
+                        <button style="margin-left: 1vw;" class="button_series" 
+                            *ngFor="let item of leaderboard_data_buttons ;let i=index" [class.activeTab]="i==this.activeClass"
                             (click)="leaderboard(i)">
                             {{item.label}}
                         </button>
@@ -1259,7 +1259,7 @@
                 <div style="width:90vw;display:flex;flex-direction:row;justify-content:start;align-items: center;overflow-x:overlay;flex-wrap:nowrap;column-gap:0.5em;">
                     <div *ngFor="let item of leaderboard_data_buttons ;let i=index">
                    
-                        <button class="button_series_mobile"[class.active]="i==this.activeClass" (click)="leaderboard(i)">
+                        <button class="button_series_mobile"[class.activeTab]="i==this.activeClass" (click)="leaderboard(i)">
                             {{item.label}}
                         </button>
                     </div>
