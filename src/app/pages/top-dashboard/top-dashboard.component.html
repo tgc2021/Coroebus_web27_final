@@ -348,7 +348,7 @@
                                 Overall
 
                             </div>
-                            <div class="global_index_details  "
+                            <div class="global_index_details"
                                 style="font-weight: 600;font-family: 'Inter';display: flex;">
                                 <div>{{GrowthIndexData[0].score}}</div>
                                 <div class="d-flex justify-content-end">
@@ -378,7 +378,7 @@
                         </div>
 
                         <div *ngFor="let kpi_data of buisness_head_response_._kpi_score">
-                            <div class="d-flex justify-content-between align-items-center"
+                            <div class="d-flex justify-content-between align-items-center mt-3"
                                 style="font-weight: 550;font-family: 'Inter'" (click)="navigateToBIMapMobile(kpi_data)">
                                 <div class="pech " style="font-weight: 600;font-family: 'Inter';">
                                     {{ kpi_data.point_label}}
