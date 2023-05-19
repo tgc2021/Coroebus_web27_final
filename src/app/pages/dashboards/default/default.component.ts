@@ -194,6 +194,7 @@ throw new Error('Method not implemented.');
 
 
     this.medium_color=localStorage.getItem('medium_color')
+   
     this.elementref.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
      console.log(this.medium_color);
      
@@ -365,8 +366,11 @@ throw new Error('Method not implemented.');
 localStorage.setItem('bg_image',this.sectionView_1?.theme_details?.[0]?.point_dist_background)
 
       
-      
+
       this.pokeAnimationData = this.sectionView_1._poked_data
+
+      this.dark_color=this.sectionView_1?.theme_details?.[0]?.dark_color
+this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
       console.log(this.pokeAnimationData[0]);
       this.updatedPoke()
 

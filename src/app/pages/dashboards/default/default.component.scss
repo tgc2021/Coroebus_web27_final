@@ -2006,7 +2006,7 @@ height: 5vh;
 display:flex;
 justify-content: center;
 align-items:center;
-background: rgb(52, 35, 25);
+background: var(--myvar);
 color: #ffff;
 // background-color: var(--myvar) !important;
 border-radius: 23.5px;
