@@ -107,8 +107,11 @@
         width: 100%;
     margin-right: auto;
     margin-left: auto;
-    width: 78vw;
+    // width: 78vw;
     padding: 0;
+    }
+    .web-card{
+        display: none;
     }
 }
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -130,8 +133,10 @@
     
     }
 }
-@media (min-width: 1400px) and (max-width: 1440px) {
-    // .historical-live-btn {
-    //     margin-left: -20%;
-    // }
+@media (min-width: 1024px)  {
+    .mobile-card{
+        display: none;
+    }
+
+    
 }
