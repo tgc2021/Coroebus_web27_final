@@ -107,7 +107,7 @@ export class LearningAcademyComponent implements OnInit {
     // 'https://coroebus.in/Learning_academy/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
     // "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'
 
-    'http://localhost:4200/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
+    'http://coroebus.in/Learning_academy/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
     "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'
 
   

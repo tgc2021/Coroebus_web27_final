@@ -291,15 +291,15 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
    * Initialize
    */
   initialize(): void {
-    if(this.id_role == 7 || this.spectator_value=='spectator'){
+    // if(this.id_role == 7 || this.spectator_value=='spectator'){
       
      
       
-      this.menuItems = MENU;
-      this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
+    //   this.menuItems = MENU;
+    //   this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
      
-    }
-    else  if(this.id_role == 13 ){
+    // }
+    if(this.id_role == 13 ){
       this.menuItems = MENU_HOS;
       this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
       // if(this.is_about_game==0||this.is_about_game==null){
@@ -523,11 +523,11 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
   
     
     
-if(this.id_role=='7'){
-  this.menuItems=MENU
+// if(this.id_role=='7'){
+//   this.menuItems=MENU
 
-}
-else if(this.id_role=='13'){
+// }
+if(this.id_role=='13'){
   this.menuItems=MENU_HOS
 
 }
