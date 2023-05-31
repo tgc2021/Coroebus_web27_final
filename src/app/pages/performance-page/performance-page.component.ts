@@ -233,6 +233,7 @@ export class PerformancePageComponent implements OnInit {
         this.graphMasterData = res?.data;
         
         this.id_role=this.graphMasterData._personal_data[0].id_role;
+        console.log(this.id_role);
         
         //this.graphData = this.graphMasterData
         this.filterGraphData()
@@ -263,6 +264,10 @@ export class PerformancePageComponent implements OnInit {
       
       if (!err && res?.statuscode === 200) {
         this.graphMasterData = res?.data
+
+        this.id_role=this.graphMasterData._personal_data[0].id_role;
+        console.log(this.id_role);
+        
         //this.graphData = this.graphMasterData
         this.filterGraphData()
       } else {
