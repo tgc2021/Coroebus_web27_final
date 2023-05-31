@@ -439,7 +439,7 @@
                                 [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                 (click)="changeTabFilter(item?.label,item?.order)">
                                 <span class=" v-align filter-txt-name"
-                                    [ngStyle]="{'color': (activeTabForSectionView_2 === item?.order) ? '#ffffff' : '#000000'}">
+                                    [ngStyle]="{'color':(activeTabForSectionView_2 === item?.order) ? '#ffffff':'#000000'}">
                                     {{item?.label}}
                                 </span>
                             </a>
@@ -679,12 +679,24 @@
                                         {{item?.rankingtable_number}}
                                     </span>
                                     <!-- (click)="openHierarchyPopup(item)" -->
-                                    <div style="height:5vh;display:flex;align-items: center;">
-                                        <img class="rounded-circle z-depth-2 user-logo-row" alt="" style="cursor: pointer;"
-                                        (click)="openHierarchyPopup(item)"
-                                            src="{{item?.rankingtable_logo}}" data-holder-rendered="true" height="100%"
-                                            width="41" >
-                                    </div>
+                                    <div *ngIf="this.userSelectionData._personal_data.id_role!=13 ; then openHierarchy else dontOpenHierarchy "></div>
+                                    <ng-template #openHierarchy>
+                                        <div style="height:5vh;display:flex;align-items: center;">
+                                            <img class="rounded-circle z-depth-2 user-logo-row" alt="" style="cursor: pointer;"
+                                            (click)="openHierarchyPopup(item)"
+                                                src="{{item?.rankingtable_logo}}" data-holder-rendered="true" height="100%"
+                                                width="41" >
+                                        </div>
+                                    </ng-template>
+                                    <ng-template #dontOpenHierarchy>
+                                        <div style="height:5vh;display:flex;align-items: center;">
+                                            <img class="rounded-circle z-depth-2 user-logo-row" alt="" style="cursor: pointer;"
+                                           
+                                                src="{{item?.rankingtable_logo}}" data-holder-rendered="true" height="100%"
+                                                width="41" >
+                                        </div>
+                                    </ng-template>
+                                  
 
                                     <div class="media-body user-logo-row ellipsis"  (click)="navigateToOtherRole(item)"
                                         style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
@@ -710,21 +722,41 @@
                                                 <span
                                                     class="name-f-size point-number mt-1">{{item?.rankingtable_weightage}}</span>
                                             </div>
-
-                                            <div style="height:5vh;">
-                                                <img class="mt-1 f-right up-arrow" alt=""
-                                                    src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
-                                                    data-holder-rendered="true" height="100%"
-                                                    *ngIf="item?.rankingtable_arrow === 'red'"
-                                                    (click)="upDownArrow(item?.rankingtable_arrow,item)">
-
-
-                                                <img class="mt-1 f-right up-arrow" alt=""
-                                                    src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
-                                                    data-holder-rendered="true" height="100%"
-                                                    *ngIf="item?.rankingtable_arrow !== 'red'"
-                                                    (click)="upDownArrow(item?.rankingtable_arrow,item)">
-                                            </div>
+                                            <div *ngIf="this.userSelectionData._personal_data.id_role!=13 ;then openPoke else dontPoke" ></div>
+                                            <ng-template #openPoke>
+                                                <div style="height:5vh;">
+                                                    <img class="mt-1 f-right up-arrow" alt=""
+                                                        src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
+                                                        data-holder-rendered="true" height="100%"
+                                                        *ngIf="item?.rankingtable_arrow === 'red'"
+                                                        (click)="upDownArrow(item?.rankingtable_arrow,item)">
+    
+    
+                                                    <img class="mt-1 f-right up-arrow" alt=""
+                                                        src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
+                                                        data-holder-rendered="true" height="100%"
+                                                        *ngIf="item?.rankingtable_arrow !== 'red'"
+                                                        (click)="upDownArrow(item?.rankingtable_arrow,item)"
+                                                        >
+                                                </div>
+                                            </ng-template>
+                                            
+                                            <ng-template #dontPoke>
+                                                <div style="height:5vh;">
+                                                    <img class="mt-1 f-right up-arrow" alt=""
+                                                        src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
+                                                        data-holder-rendered="true" height="100%"
+                                                        *ngIf="item?.rankingtable_arrow === 'red'"
+                                                        >
+    
+    
+                                                    <img class="mt-1 f-right up-arrow" alt=""
+                                                        src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
+                                                        data-holder-rendered="true" height="100%"
+                                                        *ngIf="item?.rankingtable_arrow !== 'red'"
+                                                    >
+                                                </div>
+                                            </ng-template>
 
 
 
@@ -2520,11 +2552,22 @@
                                                 {{item?.rankingtable_number}}
                                             </span>
                                             <div>
-                                                <div style="height:6vh;width:6vh;display:flex;align-items: center;padding-top: 5%;">
-                                                    <img class="rounded-circle z-depth-2 user-logo-row" alt=""
-                                                        (click)="openHierarchyPopup(item)" src="{{item?.rankingtable_logo}}"
-                                                        data-holder-rendered="true" height="100%" width="100%">
-                                                </div>
+                                                <div *ngIf="this.userSelectionData._personal_data.id_role!=13 ; then openMobileHierachyMobile else DontopenMobileHierachyMobile "></div>
+                                                <ng-template #openMobileHierachyMobile>
+                                                    <div style="height:6vh;width:6vh;display:flex;align-items: center;padding-top: 5%;">
+                                                        <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                                            (click)="openHierarchyPopup(item)" src="{{item?.rankingtable_logo}}"
+                                                            data-holder-rendered="true" height="100%" width="100%">
+                                                    </div>
+                                                </ng-template>
+                                                <ng-template #DontopenMobileHierachyMobile>
+                                                    <div style="height:6vh;width:6vh;display:flex;align-items: center;padding-top: 5%;">
+                                                        <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                                             src="{{item?.rankingtable_logo}}"
+                                                            data-holder-rendered="true" height="100%" width="100%">
+                                                    </div>
+                                                </ng-template>
+                                                
                                             </div>
             
             
@@ -2550,21 +2593,39 @@
             
                                                     <span class="name-f-size point-number align-self-center"
                                                         style="width: 4vw;font-size:2.7vw">{{item?.rankingtable_weightage}}</span>
-            
-            
-                                                    <div style="height:5vh" class="pt-1">
-                                                        <img class=" f-right up-arrow" alt=""
-                                                            src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
-                                                            data-holder-rendered="true" height="100%"
-                                                            *ngIf="item?.rankingtable_arrow === 'red'"
-                                                            (click)="upDownArrow(item?.rankingtable_arrow,item)">
-            
-                                                        <img class=" f-right up-arrow" alt=""
-                                                            src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
-                                                            data-holder-rendered="true" height="100%"
-                                                            *ngIf="item?.rankingtable_arrow !== 'red'"
-                                                            (click)="upDownArrow(item?.rankingtable_arrow,item)">
-                                                    </div>
+                                                    
+                                                        <div *ngIf="this.userSelectionData._personal_data.id_role!=13 ; then openMobilePokeMobile else closeMobilePokeMobile "></div>
+                                                    <ng-template #openMobilePokeMobile>
+                                                        <div style="height:5vh" class="pt-1">
+                                                            <img class=" f-right up-arrow" alt=""
+                                                                src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
+                                                                data-holder-rendered="true" height="100%"
+                                                                *ngIf="item?.rankingtable_arrow === 'red'"
+                                                                (click)="upDownArrow(item?.rankingtable_arrow,item)">
+                
+                                                            <img class=" f-right up-arrow" alt=""
+                                                                src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
+                                                                data-holder-rendered="true" height="100%"
+                                                                *ngIf="item?.rankingtable_arrow !== 'red'"
+                                                                (click)="upDownArrow(item?.rankingtable_arrow,item)">
+                                                        </div>
+                                                    </ng-template>
+                                                    <ng-template #closeMobilePokeMobile>
+                                                        <div style="height:5vh" class="pt-1">
+                                                            <img class=" f-right up-arrow" alt=""
+                                                                src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
+                                                                data-holder-rendered="true" height="100%"
+                                                                *ngIf="item?.rankingtable_arrow === 'red'"
+                                                                >
+                
+                                                            <img class=" f-right up-arrow" alt=""
+                                                                src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
+                                                                data-holder-rendered="true" height="100%"
+                                                                *ngIf="item?.rankingtable_arrow !== 'red'"
+                                                                >
+                                                        </div>
+                                                    </ng-template>
+                                                    
             
             
             

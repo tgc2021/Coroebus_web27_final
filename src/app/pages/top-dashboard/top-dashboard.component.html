@@ -3,9 +3,7 @@
     <div class="d-flex">
         <div class="map-view">
             <div style="max-height: 30vh;">
-                <!-- <div>{{dataMap | json}}</div> -->
-                <!-- <app-business-head-map [dataMapIndex]="dataMap"></app-business-head-map>  -->
-                <!-- <div *ngIf="bi==null; then map else bi" ></div> -->
+              
 
                 <ngx-tableau [tableauVizUrl]="dataMap"></ngx-tableau>
                 <!-- <ng-template #bi>
@@ -67,7 +65,7 @@
                                             </mat-expansion-panel-header>
                                             <div class="global_index d-flex mt-1" style="cursor: pointer;"
                                                 (click)="OverallGrowth()">Overall
-                                                <div class="global_index_details d-flex gap-2">
+                                                <div class="global_index_details d-flex">
                                                     <div>
                                                         {{buisness_head_response_._points[0].score}}
                                                     </div>
@@ -150,8 +148,8 @@
                                                 *ngFor="let response of buisness_head_response_._governance_score"
                                                 (click)="navigateToBIMap(response)">
                                                 {{response.point_label}}
-                                                <div class="pech_details d-flex">
-                                                    <div>
+                                                <div class="pech_details d-flex  ">
+                                                    <div class="text-end">
                                                         {{response.weightage}}
                                                     </div>
 

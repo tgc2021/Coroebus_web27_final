@@ -1879,12 +1879,7 @@ else if(this.activeTabForSectionView_2 == 4){
     let id_coroebus_team='0';
     const gameName=this.sectionView_1?._personal_data?.game_name;
     const teamName=this.sectionView_1?._personal_data?.team_name;
-    
-    
-    
-    
-     
-  
+
      if(data.view_status!='Read'){
   
     if(this.sectionView_1?._personal_data.external_kpi_data.length){
@@ -1892,15 +1887,8 @@ else if(this.activeTabForSectionView_2 == 4){
     
     const isAttemted=this.sectionView_1?._personal_data.external_kpi_data[0].is_attempted;
     const isCorrect=this.sectionView_1?._personal_data.external_kpi_data[0].is_correct;
+  
 
-    // 
-    // 
-    
-//  
-//  "&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+
-//  "&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type+"&_game_name="+gameName+
-//  "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'
-// );
    
     window.open(
           'https://coroebus.in/Learning_academy/#/LearningAcademy/library?_game='+data._game+"&_userid="+data._userid+
