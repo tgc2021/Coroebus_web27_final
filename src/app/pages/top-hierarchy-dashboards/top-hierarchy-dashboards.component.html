@@ -166,7 +166,7 @@
                 </div>
             </div>
             <!-- Dashboard Section -->
-            <div class="col-6 mt-2 " >
+            <div class="col-6 mt-2" >
                 <div class="dashboard_section">
                     <div class="badge_container" 
                 [style.background-image]="
@@ -235,23 +235,28 @@
                 </div>
                 </div>
                 
-                <div class="leaderBoard mt-2">
-                    <div class="button_div"  [style.background-image]="
-                    sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                <div class="leaderBoard mt-2" style="background-size: cover;border-radius: 10px;" [style.background-image]="
+                sectionView_1?.theme_details?.[0]?.island_background ? 'url('+sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                    <div>
+                        <div class="button_div">
                         <button style="margin-left: 1vw;" class="button_series" 
-                            *ngFor="let item of leaderboard_data_buttons ;let i=index" [class.activeTab]="i==this.activeClass"
+                            *ngFor="let item of leaderboard_data_buttons;let i=index" [class.activeTab]="i==this.activeClass"
                             (click)="leaderboard(i)">
                             {{item.label}}
                         </button>
-                      
-    
                     </div>
-    
+                    <div class="button_div" *ngIf="sectionView_1._personal_data.id_role==8">
+                        <button style="margin-left: 1vw;" class="button_series col" (click)="myLeaderboard()" [class.activeTab]="this.subActiveClass" >
+                            My {{leaderboard_data_buttons[0].label}}
+                        </button>
+                        <button class="button_series col" (click)="overallLeaderboard()" [class.activeTab]="this.subActiveClassOverall">Overall</button>
+                    </div>
+                    
+                    </div>
                 </div>
                 <div class="row">
-                    <input type="text" class="search_box" placeholder="Search people here.."  [(ngModel)]="spectSearchStr" (keyup)="checkEmpty()">
+                    <input type="text" class="search_box" placeholder="Search people here.." [(ngModel)]="spectSearchStr" (keyup)="checkEmpty()">
                     <i class="search_bar_img fa fa-search d-flex justify-content-center align-items-center"aria-hidden="true" (click)="spectSearch()"></i>
-
                 </div>
     
                 <!-- LeaderBoard -->
@@ -287,9 +292,19 @@
                                         {{res.rankingtable_number}}
                                     </div>
                                     <!-- (click)="openHierarchyPopup(res)" -->
-                                    <div class="leaderboard_rank_profile_image_div">
-                                        <img class="leaderboard_rank_profile_image" (click)="openHierarchyPopup(res)" src="{{res.rankingtable_logo}}" />
-                                    </div>
+                                    <div *ngIf="this.userSelectionData._personal_data.id_role!=13 ; then openHierarchy else dontOpenHierarchy "></div>
+                                    <ng-template #openHierarchy>
+                                        <div class="leaderboard_rank_profile_image_div" *ngIf="this.userSelectionData._personal_data.id_role!=13">
+                                            <img class="leaderboard_rank_profile_image" (click)="openHierarchyPopup(res)" src="{{res.rankingtable_logo}}" />
+                                        </div>
+                                    </ng-template>
+                                    
+                                    <ng-template #dontOpenHierarchy>
+                                        <div class="leaderboard_rank_profile_image_div" *ngIf="this.userSelectionData._personal_data.id_role==13">
+                                            <img class="leaderboard_rank_profile_image"  src="{{res.rankingtable_logo}}" />
+                                        </div>
+                                    </ng-template>
+                                   
     
                                     <div class="leaderboard_name_and_team"  (click)="navigateToSMDashboard(res)">
                                         <div class="leaderboard_name_label" ngbTooltip="{{res.rankingtable_name}}" placement="bottom" >
@@ -308,25 +323,49 @@
                                     <div class="leaderboard_rank_points_div">
                                         <div class="leaderboard_rank_points_label">{{res.rankingtable_weightage}}</div>
                                     </div>
-    
-                                    <div class="leaderboard_rank_up_down_arrow_div " style="margin-left: 3vw;display:flex; justify-content: center;" *ngIf="res.rankingtable_arrow=='green'">
-                                        <img (click)="upDownArrow(res.rankingtable_arrow,res)" class="leaderboard_rank_up_down_arrow_image"
-                                            src="{{sectionView_1.theme_details[0].up_arrow}}" />
-                                    </div>
-    
-                                    <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 3vw;display:flex; justify-content: center;" *ngIf="res.rankingtable_arrow=='red'">
-                                        <img (click)="upDownArrow(res.rankingtable_arrow,res)" class="leaderboard_rank_up_down_arrow_image"
-                                            src="{{sectionView_1.theme_details[0].down_arrow}}" />
-                                    </div>
-    
-                                    <div class="leaderboard_rank_up_down_arrow_div " style="margin-left: 3vw;display:flex; justify-content: center;"
-                                        *ngIf="res.rankingtable_arrow=='yellow'">
-                                        <div style="height:3vh;width:3vh;border-radius:100%;">
-                                                    <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="100%" width="100%">
+
+                                    <div *ngIf="this.userSelectionData._personal_data.id_role!=13;then openPoke else closePoke"></div>
+                                    <ng-template #openPoke>
+                                        <div class="leaderboard_rank_up_down_arrow_div " style="margin-left: 3vw;display:flex; justify-content: center;" *ngIf="res.rankingtable_arrow=='green'">
+                                            <img (click)="upDownArrow(res.rankingtable_arrow,res)" class="leaderboard_rank_up_down_arrow_image"
+                                                src="{{sectionView_1.theme_details[0].up_arrow}}" />
                                         </div>
-                                       
-                                            
-                                    </div>
+        
+                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 3vw;display:flex; justify-content: center;" *ngIf="res.rankingtable_arrow=='red'">
+                                            <img (click)="upDownArrow(res.rankingtable_arrow,res)" class="leaderboard_rank_up_down_arrow_image"
+                                                src="{{sectionView_1.theme_details[0].down_arrow}}" />
+                                        </div>
+        
+                                        <div class="leaderboard_rank_up_down_arrow_div " style="margin-left: 3vw;display:flex; justify-content: center;"
+                                            *ngIf="res.rankingtable_arrow=='yellow'">
+                                            <div style="height:3vh;width:3vh;border-radius:100%;">
+                                                        <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="100%" width="100%">
+                                            </div>
+                                           
+                                                
+                                        </div>
+                                    </ng-template>
+                                    <ng-template #closePoke>
+                                        <div class="leaderboard_rank_up_down_arrow_div " style="margin-left: 3vw;display:flex; justify-content: center;" *ngIf="res.rankingtable_arrow=='green'">
+                                            <img  class="leaderboard_rank_up_down_arrow_image"
+                                                src="{{sectionView_1.theme_details[0].up_arrow}}" />
+                                        </div>
+        
+                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 3vw;display:flex; justify-content: center;" *ngIf="res.rankingtable_arrow=='red'">
+                                            <img  class="leaderboard_rank_up_down_arrow_image"
+                                                src="{{sectionView_1.theme_details[0].down_arrow}}" />
+                                        </div>
+        
+                                        <div class="leaderboard_rank_up_down_arrow_div " style="margin-left: 3vw;display:flex; justify-content: center;"
+                                            *ngIf="res.rankingtable_arrow=='yellow'">
+                                            <div style="height:3vh;width:3vh;border-radius:100%;">
+                                                        <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="100%" width="100%">
+                                            </div>
+                                           
+                                                
+                                        </div>
+                                    </ng-template>
+                                    
                                 </mat-card>
                                   </div>
                                   <div  *ngIf="sectionView_1._personal_data.id_role=='8'">
@@ -336,10 +375,19 @@
                                     <div class="leaderboard_rank_score">
                                         {{res.rankingtable_number}}
                                     </div>
-    
-                                    <div class="leaderboard_rank_profile_image_div" (click)="openHierarchyPopup(res)">
-                                        <img class="leaderboard_rank_profile_image"  src="{{res.rankingtable_logo}}"/>
-                                    </div>
+                                    <div *ngIf="this.userSelectionData._personal_data.id_role!=13 ; then openHierarchy else dontOpenHierarchy "></div>
+
+                                    <ng-template #openHierarchy>
+                                        <div class="leaderboard_rank_profile_image_div" (click)="openHierarchyPopup(res)">
+                                            <img class="leaderboard_rank_profile_image"  src="{{res.rankingtable_logo}}"/>
+                                        </div>
+                                    </ng-template>
+                                    <ng-template #dontOpenHierarchy>
+                                        <div class="leaderboard_rank_profile_image_div">
+                                            <img class="leaderboard_rank_profile_image"  src="{{res.rankingtable_logo}}"/>
+                                        </div>
+                                    </ng-template>
+                                   
     
                                     <div class="leaderboard_name_and_team"  (click)="navigateToRMDashboard(res)">
                                         <div class="leaderboard_name_label" ngbTooltip="{{res.rankingtable_name}}" placement="bottom">
@@ -357,25 +405,49 @@
                                     <div class="leaderboard_rank_points_div">
                                         <div class="leaderboard_rank_points_label">{{res.rankingtable_weightage}}</div>
                                     </div>
-    
-                                    <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 3vw;display:flex; justify-content: center;" *ngIf="res.rankingtable_arrow=='green'">
-                                        <img (click)="upDownArrow(res.rankingtable_arrow,res)" class="leaderboard_rank_up_down_arrow_image"
-                                            src="{{sectionView_1.theme_details[0].up_arrow}}" 
-                                            />
-                                            
-                                    </div>
-    
-                                    <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 3vw;display:flex; justify-content: center;" *ngIf="res.rankingtable_arrow=='red'">
-                                        <img (click)="upDownArrow(res.rankingtable_arrow,res)" class="leaderboard_rank_up_down_arrow_image"
-                                            src="{{sectionView_1.theme_details[0].down_arrow}}" />
-                                    </div>
-    
-                                    <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 3vw;display:flex; justify-content: center;"
-                                        *ngIf="res.rankingtable_arrow=='yellow'">
-                                        <img  class="leaderboard_rank_up_down_arrow_image"
-                                            src="assets/images/BoosterAssests/EQ-16687580462022.png" />
-                                            
-                                    </div>
+                                   
+                                    <div *ngIf="this.userSelectionData._personal_data.id_role!=13;then poke else Dontpoke"></div>
+                                    <ng-template #poke>
+                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 3vw;display:flex; justify-content: center;" *ngIf="res.rankingtable_arrow=='green'">
+                                            <img (click)="upDownArrow(res.rankingtable_arrow,res)" class="leaderboard_rank_up_down_arrow_image"
+                                                src="{{sectionView_1.theme_details[0].up_arrow}}" 
+                                                />
+                                                
+                                        </div>
+        
+                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 3vw;display:flex; justify-content: center;" *ngIf="res.rankingtable_arrow=='red'">
+                                            <img (click)="upDownArrow(res.rankingtable_arrow,res)" class="leaderboard_rank_up_down_arrow_image"
+                                                src="{{sectionView_1.theme_details[0].down_arrow}}" />
+                                        </div>
+        
+                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 3vw;display:flex; justify-content: center;"
+                                            *ngIf="res.rankingtable_arrow=='yellow'">
+                                            <img  class="leaderboard_rank_up_down_arrow_image"
+                                                src="assets/images/BoosterAssests/EQ-16687580462022.png" />
+                                                
+                                        </div>
+                                    </ng-template>
+                                    <ng-template #Dontpoke>
+                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 3vw;display:flex; justify-content: center;" *ngIf="res.rankingtable_arrow=='green'">
+                                            <img  class="leaderboard_rank_up_down_arrow_image"
+                                                src="{{sectionView_1.theme_details[0].up_arrow}}" 
+                                                />
+                                                
+                                        </div>
+        
+                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 3vw;display:flex; justify-content: center;" *ngIf="res.rankingtable_arrow=='red'">
+                                            <img  class="leaderboard_rank_up_down_arrow_image"
+                                                src="{{sectionView_1.theme_details[0].down_arrow}}" />
+                                        </div>
+        
+                                        <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 3vw;display:flex; justify-content: center;"
+                                            *ngIf="res.rankingtable_arrow=='yellow'">
+                                            <img  class="leaderboard_rank_up_down_arrow_image"
+                                                src="assets/images/BoosterAssests/EQ-16687580462022.png" />
+                                                
+                                        </div>
+                                    </ng-template>
+                                    
                                 </mat-card>
                                   </div>
         
@@ -1253,16 +1325,23 @@
             
             <mat-card class="button_div_mobile"
                 
-                style="width:93vw;display:flex;flex-direction:row;justify-content:center
+                style="width:93vw;display:flex;flex-direction:column;justify-content:center
                 ;align-items: center;"
                 [style.background-image]="sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
                 <div style="width:90vw;display:flex;flex-direction:row;justify-content:start;align-items: center;overflow-x:overlay;flex-wrap:nowrap;column-gap:0.5em;">
-                    <div *ngFor="let item of leaderboard_data_buttons ;let i=index">
-                   
-                        <button class="button_series_mobile"[class.activeTab]="i==this.activeClass" (click)="leaderboard(i)">
-                            {{item.label}}
-                        </button>
+                    <div  *ngFor="let item of leaderboard_data_buttons ;let i=index">
+                            <button class="button_series_mobile"[class.activeTab]="i==this.activeClass" (click)="leaderboard(i)">
+                                {{item.label}}
+                            </button>
                     </div>
+                    
+                </div>
+                <div style="width:90vw;" class=" d-flex gap-2 mt-2" *ngIf="sectionView_1._personal_data.id_role==8">
+                    <button  class="button_series_mobile col" (click)="myLeaderboard()" [class.activeTab]="this.subActiveClass" >
+                        My {{leaderboard_data_buttons[0].label}}
+                    </button>
+
+                    <button class="button_series_mobile col" (click)="overallLeaderboard()" [class.activeTab]="this.subActiveClassOverall">Overall</button>
                 </div>
                 
             </mat-card>
@@ -1313,11 +1392,20 @@
                                 <div class="leaderboard_rank_score_mobile">
                                     {{res.rankingtable_number}}
                                 </div>
-        
-                                <div class="leaderboard_rank_profile_image_div_mobile" (click)="openHierarchyPopup(res)">
-                                    <img class="leaderboard_rank_profile_image_mobile" src="{{res.rankingtable_logo}}"
-                                        width="100%" height="100%" />
-                                </div>
+                                <div *ngIf="this.userSelectionData._personal_data.id_role!=13 ; then openMobileHierachy else dontOpenMobileHierachy "></div>
+                                 <ng-template #openMobileHierachy>
+                                    <div class="leaderboard_rank_profile_image_div_mobile" (click)="openHierarchyPopup(res)">
+                                        <img class="leaderboard_rank_profile_image_mobile" src="{{res.rankingtable_logo}}"
+                                            width="100%" height="100%" />
+                                    </div>
+                                 </ng-template>
+                                 <ng-template #dontOpenMobileHierachy>
+                                    <div class="leaderboard_rank_profile_image_div_mobile" >
+                                        <img class="leaderboard_rank_profile_image_mobile" src="{{res.rankingtable_logo}}"
+                                            width="100%" height="100%" />
+                                    </div>
+                                 </ng-template>   
+                               
         
                                 <div class="leaderboard_name_and_team_mobile" (click)="navigateToSMDashboard(res)">
                                     <div class="leaderboard_name_label_mobile" ngbTooltip="{{res.rankingtable_name}}" placement="bottom">
@@ -1330,29 +1418,49 @@
         
                                 <div class="leaderboard_rank_badge_image_div_mobile">
                                     <img class="leaderboard_rank_badge_image_mobile" src="{{res.ranking_badge}}" height="100%"
-                                        width="100%" />
+                                        width="100%"/>
                                 </div>
         
         
                                 <div class="leaderboard_rank_points_div_mobile">
                                     <div class="leaderboard_rank_points_label_mobile">{{res.rankingtable_weightage}}</div>
                                 </div>
-        
-                                <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='green'" (click)="upDownArrow(res.rankingtable_arrow,res)">
-                                    <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                        src="{{sectionView_1.theme_details[0].up_arrow}}" height="90%" width="90%" />
-                                </div>
-        
-                                <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='red'" (click)="upDownArrow(res.rankingtable_arrow,res)">
-                                    <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                        src="{{sectionView_1.theme_details[0].down_arrow}}" height="90%" width="90%" />
-                                </div>
-        
-                                <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='yellow'">
-                                    <!-- <img class="leaderboard_rank_up_down_arrow_image_mobile"
-                                        src="{{sectionView_1.theme_details[0].equal_arrow}}" height="90%" width="90%" /> -->
-                                        <div style="height:2.5vh;width:2.5vh;border-radius:100%;background:#FAA019;"></div>
-                                </div>
+                                <div *ngIf="this.userSelectionData._personal_data.id_role!=13;then MobilePoke else DontMobilePoke "></div>
+                                <ng-template #MobilePoke>
+                                    <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='green'" (click)="upDownArrow(res.rankingtable_arrow,res)">
+                                        <img class="leaderboard_rank_up_down_arrow_image_mobile"
+                                            src="{{sectionView_1.theme_details[0].up_arrow}}" height="90%" width="90%" />
+                                    </div>
+            
+                                    <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='red'" (click)="upDownArrow(res.rankingtable_arrow,res)">
+                                        <img class="leaderboard_rank_up_down_arrow_image_mobile"
+                                            src="{{sectionView_1.theme_details[0].down_arrow}}" height="90%" width="90%" />
+                                    </div>
+            
+                                    <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='yellow'">
+                                        <!-- <img class="leaderboard_rank_up_down_arrow_image_mobile"
+                                            src="{{sectionView_1.theme_details[0].equal_arrow}}" height="90%" width="90%" /> -->
+                                            <div style="height:2.5vh;width:2.5vh;border-radius:100%;background:#FAA019;"></div>
+                                    </div>
+                                </ng-template>
+                                <ng-template #DontMobilePoke>
+                                    <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='green'" >
+                                        <img class="leaderboard_rank_up_down_arrow_image_mobile"
+                                            src="{{sectionView_1.theme_details[0].up_arrow}}" height="90%" width="90%" />
+                                    </div>
+            
+                                    <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='red'">
+                                        <img class="leaderboard_rank_up_down_arrow_image_mobile"
+                                            src="{{sectionView_1.theme_details[0].down_arrow}}" height="90%" width="90%" />
+                                    </div>
+            
+                                    <div class="leaderboard_rank_up_down_arrow_div_mobile" *ngIf="res.rankingtable_arrow=='yellow'">
+                                        <!-- <img class="leaderboard_rank_up_down_arrow_image_mobile"
+                                            src="{{sectionView_1.theme_details[0].equal_arrow}}" height="90%" width="90%" /> -->
+                                            <div style="height:2.5vh;width:2.5vh;border-radius:100%;background:#FAA019;"></div>
+                                    </div>
+                                </ng-template>
+                               
                             </mat-card>
                             
         

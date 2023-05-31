@@ -97,7 +97,12 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   hierarchyPopupList: any
   firstUserData: any;
   nodatasearch:any
-
+  subActiveClass=true;
+  mylabel:any;
+  subActiveClassOverall: boolean;
+  id_role: any;
+  sec_que: any=[];
+  
   constructor(private readonly store: Store, public _route: ActivatedRoute,public snackBar: MatSnackBar,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -122,10 +127,10 @@ export class TopHierarchyDashboardsComponent implements OnInit {
     this.light_color=localStorage.getItem('light_color')
     this.element.nativeElement.style.setProperty('--lightColor', `${this.light_color}`)
 
-    
-
+   
     this.activeClass=0
-
+    this.subActiveClass=true;
+    
     // this.isactive = true
 
     this.combineLatest = combineLatest([
@@ -136,12 +141,12 @@ export class TopHierarchyDashboardsComponent implements OnInit {
     ).subscribe(([login, theme, game]) => {
       
       this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
+      console.log(this.userSelectionData);
       
 
       this._routeSub?.unsubscribe()
       this._routeSub = this._route.queryParams.subscribe(queryParams => {
         // do something with the query params
-        
         if (queryParams?.userID) {
           
           this.location = window.location.href
@@ -305,9 +310,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
           console.log(this.pokeslidedata);
         }, 5000); // Remove the last element after 5 seconds'
         this.updatePokeData(this.pokeAnimationData[i].poke_id_log);
-  
         i++;
-  
         if (i === this.pokeAnimationData.length) {
           clearInterval(intervalId);
           console.log(this.pokeslidedata);
@@ -358,8 +361,8 @@ export class TopHierarchyDashboardsComponent implements OnInit {
         this.leaderboard_data=this.sectionView_3?._ranking_data[0]._data;
         this.lengthLeaderBoardData=this.leaderboard_data.length;
         
-        this.leaderboard_data_buttons=this.sectionView_3?._ranking_data
-        this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0].order
+        this.leaderboard_data_buttons=this.sectionView_3?._ranking_data;
+        this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0].order;
 
 
       } else {
@@ -367,7 +370,8 @@ export class TopHierarchyDashboardsComponent implements OnInit {
 
         this.sectionView_3 = res?.data
         console.log(this.sectionView_3)
-        this.leaderboard_data=this.sectionView_3?._ranking_data[0]._data
+        this.leaderboard_data=this.sectionView_3?._ranking_data[0]._data;
+        console.log(this.leaderboard_data);
         this.leaderboard_data_buttons=this.sectionView_3?._ranking_data
         
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0].order
@@ -669,19 +673,40 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
   }
 
   leaderboard(event:any=0){
-   
+   console.log(event)
    this.spectSearchStr=null
-  //   
-  // this.leaderboard_data_buttons=this.sectionView_3._ranking_data[event]
+ 
   this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[event].order
 
-   this.leaderboard_data=this.sectionView_3._ranking_data[event]._data
+  
+   console.log(this.activeTabOrderNumberForSectionView_2);
    
-   this.activeClass=event
+   this.activeClass=event;
+   console.log("event",event)
+   this.activeClass=event;
+    // this.subActiveClass=0
+    
+
+   this.myLeaderboard()
    
  
    
   }
+
+  myLeaderboard(event:any=0){
+    console.log( this.activeTabOrderNumberForSectionView_2-1);
+    this.leaderboard_data=this.sectionView_3._ranking_data[ this.activeTabOrderNumberForSectionView_2-1]._data;
+    console.log(this.leaderboard_data);
+    this.subActiveClass=true;
+    this.subActiveClassOverall=false;
+  }
+  overallLeaderboard(event:any=0){
+    this.leaderboard_data=this.sectionView_3._ranking_data[ this.activeTabOrderNumberForSectionView_2-1]._Overall;
+    this.subActiveClass=false;
+    this.subActiveClassOverall=true;
+
+  }
+
   previewFile(event: Event) {
     const element = event?.currentTarget as HTMLInputElement;
     let fileList: FileList | null = element.files;
@@ -704,9 +729,9 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
         
         
       })
-      // 
+      
     }
-    // this.getUserBannerDataSectionView_2()
+   
     this.userSelectionData
   }
  

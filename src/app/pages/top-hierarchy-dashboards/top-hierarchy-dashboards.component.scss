@@ -571,7 +571,19 @@
     height: 9vh;
     background-size: cover;
     // background: var(--mediumColor);
-    padding: 12px;
+    padding: 6px;
+}
+.button_div_mobile{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 93vw;
+    border-radius: 1vw;
+    height: auto;
+    background-size: cover;
+    // background: var(--mediumColor);
+    padding: 6px;
+
 }
 
 .button_series {
@@ -944,7 +956,7 @@ input::placeholder {
     }
 
     .leaderboard_label_tile {
-        height: 43vh;
+        height: 33vh;
         margin-left: 0.5vw;
         width: 100%;
 
@@ -1670,7 +1682,6 @@ input::placeholder {
         color: #ffff;
         font-weight: 500;
         font-family: 'Inter'
-
     }
 
     .search_box_mobile {
