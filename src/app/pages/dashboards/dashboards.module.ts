@@ -12,12 +12,11 @@ import { SkeletonScreenLoaderModule } from '@coroebus/skeleton-screen-loader';
 import { ImagecropperComponent } from '@pages/imagecropper/imagecropper.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { ToastsContainerComponent } from '@pages/toasts-container/toasts-container.component';
-import { InteractiveDashboardComponent } from './interactive-dashboard/interactive-dashboard/interactive-dashboard.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
-  declarations: [DefaultComponent, ImagecropperComponent, ToastsContainerComponent, InteractiveDashboardComponent],
+  declarations: [DefaultComponent, ImagecropperComponent, ToastsContainerComponent],
   imports: [
     CommonModule,
     FormsModule,
