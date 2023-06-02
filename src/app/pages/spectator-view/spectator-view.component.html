@@ -232,12 +232,12 @@
                                     <div placement="bottom"
                                         ngbTooltip="{{spectatorleaderboardreponse.rankingtable_name}}">
                                         <p class="web_spectator_name" placement="bottom"
-                                            *ngIf="spectatorleaderboardreponse.rankingtable_name.length<20">
+                                            >
                                             {{spectatorleaderboardreponse.rankingtable_name}}</p>
-                                        <p class="web_spectator_name" placement="bottom"
+                                        <!-- <p class="web_spectator_name" placement="bottom"
                                             *ngIf="spectatorleaderboardreponse.rankingtable_name.length>20">
                                             {{spectatorleaderboardreponse.rankingtable_name.slice(0,30).concat('...')}}
-                                        </p>
+                                        </p> -->
                                     </div>
                                     <div>
                                         <p class="web_spectator_team">{{spectatorleaderboardreponse.rankingtable_team}}
@@ -606,11 +606,11 @@
                             <div class="col-6 p-0">
                                 <div placement="bottom" ngbTooltip="{{spectatorleaderboardreponse.rankingtable_name}}">
                                     <p class="mobile_spectator_name" placement="bottom"
-                                        *ngIf="spectatorleaderboardreponse.rankingtable_name.length<20">
+                                       >
                                         {{spectatorleaderboardreponse.rankingtable_name}}</p>
-                                    <p class="mobile_spectator_name" placement="bottom"
+                                    <!-- <p class="mobile_spectator_name" placement="bottom"
                                         *ngIf="spectatorleaderboardreponse.rankingtable_name.length>20">
-                                        {{spectatorleaderboardreponse.rankingtable_name.slice(0,30).concat('...')}}</p>
+                                        {{spectatorleaderboardreponse.rankingtable_name.slice(0,30).concat('...')}}</p> -->
                                 </div>
                                 <div>
                                     <p class="mobile_spectator_team">{{spectatorleaderboardreponse.rankingtable_team}}

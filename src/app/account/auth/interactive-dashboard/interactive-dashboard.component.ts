@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnChanges, OnDestroy, OnInit } from '@angular/core';
 
 import { Location } from '@angular/common';
+
 import * as fromRoot from '../../../core/app-state';
 import { Store } from '@ngrx/store';
 import { filter, take, takeUntil } from 'rxjs/operators';
@@ -362,7 +363,6 @@ else{
           localStorage.setItem('reward_points', this.interactive_dashoard_points);
 
           this.interactive_dashoard_response_idOrganisation=this.interactive_dashoard_response[0].data._personal_data.id_coroebus_organization
-          
           if (this.interactive_dashoard_response) {
             setTimeout(() => {
               this.isLoading = false;
