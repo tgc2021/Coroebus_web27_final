@@ -12,7 +12,7 @@ export class ApiserviceService {
      Path='coroebus-beta-api-levels';
   open: any;
     // Path='coroebus-beta-api-levels-new';
-  // Path='coroebus-tgc-api-levels'
+  //Path='coroebus-tgc-api-levels'
   constructor(public Http:HttpClient) { }
 
 
