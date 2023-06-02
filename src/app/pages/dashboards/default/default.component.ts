@@ -265,8 +265,7 @@ throw new Error('Method not implemented.');
           this.getUserBannerDataSectionView_1()
           this.getUserBannerDataSectionView_2()
           this.getUserBannerDataSectionView_3()
-          this.GetDataFromProduceInfo(queryParams)
-
+         
           // this.navigateToStatistics()
 
           this.notificationList()
