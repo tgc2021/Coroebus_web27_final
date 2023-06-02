@@ -58,13 +58,7 @@ export class AchievementShelfComponent implements OnInit {
   showCombo: any= []
   ngOnInit(): void {
 
-    // if (!localStorage.getItem('foo')) { 
-    //   localStorage.setItem('foo', 'no reload') 
-    //   location.reload() 
-    // } else {
-    //   localStorage.removeItem('foo') 
-    // }
-
+    
  
      this.currentDate = new Date();
     
@@ -79,6 +73,8 @@ export class AchievementShelfComponent implements OnInit {
       
 
       this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
+
+     
       
 
       this.combineLatest = combineLatest([
@@ -130,13 +126,6 @@ export class AchievementShelfComponent implements OnInit {
   
   
   
-          // this.calculate(this.seasonal_theme_response)
-          // for(let k=0;k<=this.seasonal_theme_response[0].data.length;k++){
-          //   this.lo = this.seasonal_theme_response[0].data[k].end_date
-          //   
-          //    this.date = new Date(this.lo);
-          //   
-          // }
             
   
         })
@@ -201,13 +190,7 @@ export class AchievementShelfComponent implements OnInit {
   
   
   
-          // this.calculate(this.seasonal_theme_response)
-          // for(let k=0;k<=this.seasonal_theme_response[0].data.length;k++){
-          //   this.lo = this.seasonal_theme_response[0].data[k].end_date
-          //   
-          //    this.date = new Date(this.lo);
-          //   
-          // }
+         
             
   
         })
@@ -277,11 +260,7 @@ export class AchievementShelfComponent implements OnInit {
     let end =new Date().getTime
   }
 
-  // clickinfo(index:any)
-  // {
-    
-  // }
-
+ 
   popoverDetails(details:any,index:any){
 
     if(this.userObj.games.length >0){
@@ -316,12 +295,9 @@ export class AchievementShelfComponent implements OnInit {
     
     
     
-    // const elem=(<HTMLInputElement>document.getElementById('popover_content'+index));
-    // 
+   
     (<HTMLInputElement>document.getElementById('popover_content'+index)).style.visibility = "visible";
-    // let e = document.getElementById('popover_content'+index);
-    // if(e){
-    //   e.click();
+   
       if(this.popover==false){
         (<HTMLInputElement>document.getElementById('popover_content'+index)).style.visibility = "visible";
         this.popover=true
@@ -330,7 +306,6 @@ export class AchievementShelfComponent implements OnInit {
         (<HTMLInputElement>document.getElementById('popover_content'+index)).style.visibility = "hidden";
         this.popover=false
       }
-    // }
     
     
   

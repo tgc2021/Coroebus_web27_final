@@ -11,12 +11,7 @@
                                     <img src="{{ProfileImageNewOne ? ProfileImageNewOne : userObj?._personal_data?.profile_logo}}"
                                         class="figure-img img-fluid user-profile-img" height="149" width="149" style="border-radius: 100%;">
                                     <figcaption class="figure-caption">
-                                        <!-- <button type="submit" class="btn "
-                                            [ngStyle]="{'background': userObj?.otherInfo?.color}">
-                                            <input type="file" class="d-none" (change)="openFile($event)" />
-                                            <span class="text-white"> Change
-                                                Photo</span>
-                                        </button> -->
+                                       
                                         <label *ngIf="userObj?.otherInfo?.color ==null" [ngStyle]="{'background': dark_color}"
                                             class="profile-upload-img"> Change Photo
                                             <input class="d-none" type="file" size="60" (change)="openFile($event)">
