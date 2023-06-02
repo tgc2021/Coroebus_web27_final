@@ -48,12 +48,10 @@ export class ChampionsLeagueComponent implements OnInit {
         const userId = this.Util.encryptData(this.mergeObj.USERID)
         const game = this.Util.encryptData(this.userSelectionData.id_coroebus_game)
         const roleid = this.Util.encryptData(this.mergeObj.id_role)
-        // const id_coroebus_user = this.Util.encryptData(this.mergeObj.id_coroebus_user)
         
   
   
         window.open(
-          // 'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
         
           'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
 
@@ -69,13 +67,11 @@ export class ChampionsLeagueComponent implements OnInit {
         const userId = this.Util.encryptData(this.mergeObj.USERID)
         const game = this.Util.encryptData(this.mergeObj.id_coroebus_game)
         const roleid = this.Util.encryptData(this.mergeObj.id_role)
-        // const id_coroebus_user = this.Util.encryptData(this.mergeObj.id_coroebus_user)
         
   
         window.open(
            'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
 
-          // 'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
           '_self' // <- This is what makes it open in a new window.
     
         )

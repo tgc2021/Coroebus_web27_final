@@ -5,7 +5,6 @@ import { ChampionsLeagueComponent } from './champions-league/champions-league.co
 
 import { DefaultComponent } from './dashboards/default/default.component';
 import { GovernanceIndexComponent } from './governance-index/governance-index.component';
-import { MainDashboardComponent } from './main-dashboard/main-dashboard.component';
 import { PersonalMilestoneComponent } from './personal-milestone/personal-milestone.component';
 import { TopDashboardComponent } from './top-dashboard/top-dashboard.component';
 import { TopHierarchyDashboardsComponent } from './top-hierarchy-dashboards/top-hierarchy-dashboards.component';
@@ -27,7 +26,6 @@ const routes: Routes = [
   { path: 'Achievement', loadChildren: () => import('./achievement-shelf/achievement-shelf.module').then(m => m.AchievementShelfModule) },
   { path: 'champions_league', component:ChampionsLeagueComponent },
   { path: 'personal_milestone', component:PersonalMilestoneComponent },
-  { path: 'main_dashboard', component:MainDashboardComponent },
   { path: 'top_dashboard', component:TopHierarchyDashboardsComponent },
   { path: 'topdashboard', component:TopDashboardComponent },
   { path: 'buisness_index', component:BusinessIndexMapComponent },

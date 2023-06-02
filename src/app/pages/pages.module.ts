@@ -17,7 +17,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { NotificationPopupComponent } from './notification-popup/notification-popup.component';
 import { ChampionsLeagueComponent } from './champions-league/champions-league.component';
 import { PersonalMilestoneComponent } from './personal-milestone/personal-milestone.component';
-import { MainDashboardComponent } from './main-dashboard/main-dashboard.component';
 import { SkeletonScreenLoaderModule } from '../../../projects/coroebus/skeleton-screen-loader/src/lib/skeleton-screen-loader.module';
 import { MatCardModule } from '@angular/material/card';
 import { TopHierarchyDashboardsComponent } from './top-hierarchy-dashboards/top-hierarchy-dashboards.component';
@@ -38,7 +37,6 @@ import { MobileMapsComponent } from './mobile-maps/mobile-maps.component';
     NotificationPopupComponent,
     ChampionsLeagueComponent,
     PersonalMilestoneComponent,
-    MainDashboardComponent,
     TopHierarchyDashboardsComponent,
     TopDashboardComponent,
     BusinessIndexMapComponent,
