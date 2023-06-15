@@ -1,20 +1,20 @@
 <div id="cont" class="web-view">
   <div class="main">
     <div class="mytabs">
-      <input type="radio" id="tab-1" name="mytabs" checked="checked">
+      <input type="radio"  id="tab-1" name="mytabs" checked="checked">
       <!-- ******************************************** Rewards Tab ********************************************************************     -->
-      <label class="reward_tab" for="tab-1">Rewards</label>
+      <label class="reward_tab" for="tab-1" >Rewards</label>
 
-      <div class="tab" style="position:relative;"  *ngFor="let reward of rewardresponse">
+      <div class="tab" style="position:relative;" [ngClass]="{'card-shadow':theme_id_fashion==9}"  *ngFor="let reward of rewardresponse" >
         <img class="rewardpoints" src="assets/images/rewards/Reward point.png">
         <p class="totalpoints" *ngFor="let points of rewardresponse">{{points.data.points_list[0]._data.rewardPoints}}
         </p>
-        <mat-tab-group *ngFor="let reward of rewardresponse" (click)="enagagmentlogAPI($event)">
+        <mat-tab-group *ngFor="let reward of rewardresponse" (click)="enagagmentlogAPI($event)" >
 
           <!-- ******************************************* Platform Reward Tab ********************************************************************     -->
-          <mat-tab  [ngStyle]="{'background': headerInfo?.color}" label="{{reward.data.rewardTypes[0].rewardName}}" >
+          <mat-tab  [ngStyle]="{'background': headerInfo?.color}" label="{{reward.data.rewardTypes[0].rewardName}}" [ngClass]="{'card-shadow':theme_id_fashion==9}">
             <hr>
-            <div class="button_platform">
+            <div class="button_platform" >
               <div class="row">
                 <div class="col-md-3 col-12 col-sm-6 ">
                   <mat-card class="platform_mat_card">
@@ -40,8 +40,8 @@
 
             </div>
             <div class="row">
-              <div class="col-md-3 col-sm-6 " *ngFor="let rewardlist of reward.data.rewardTypes[1].rewardList;">
-                <mat-card *ngIf="reward.data.rewardTypes[1].rewardList.length > 0">
+              <div class="col-md-3 col-sm-6 " *ngFor="let rewardlist of reward.data.rewardTypes[1].rewardList;" [ngClass]="{'card-shadow':theme_id_fashion==9}">
+                <div *ngIf="reward.data.rewardTypes[1].rewardList.length > 0" [ngClass]="{'card-shadow':theme_id_fashion==9}">
                   <div>
                     <div class="product_image_div">
                       <img src="{{rewardlist.reward_logo}}" class="productimage" alt="Productimage">
@@ -69,7 +69,7 @@
                     </div>
                   </div>
                 
-                </mat-card>
+                </div>
 
               </div>
 
@@ -97,12 +97,13 @@
         <img class="rewardpoints" src="assets/images/rewards/Reward point.png">
         <p class="totalpoints">{{points.data.points_list[0]._data.rewardPoints}}</p>
         <mat-tab-group (click)="enagagmentlogPassbookAPI($event)">
+       
           <!-- ***************************************  Points Table Tab ********************************************************************     -->
 
           <mat-tab label="{{points.data.points_list[0].label}}">
             <hr>
-
-            <div class="table_div">
+ 
+            <div class="table_div" [ngClass]="{'card-shadow':theme_id_fashion==9}">
               <!-- <span>
                  <p class="from_datepicker">From</p>
                  
@@ -120,16 +121,14 @@
               <div class="table-container">
                 <table id="example1" class="table table-striped">
                   <thead>
-                    <tr>
+                    <tr [ngClass]="{'card-shadow':theme_id_fashion==9}">
                       <th scope="col">Source</th>
                       <th scope="col">Points</th>
-  
-  
                     </tr>
                   </thead>
-                  <tbody *ngFor="let response of rewardresponse">
+                  <tbody *ngFor="let response of rewardresponse" >
                     <tr
-                      *ngFor="let pointTable of response.data.points_list[0]._data.reward_point_dist | filter:searchText">
+                      *ngFor="let pointTable of response.data.points_list[0]._data.reward_point_dist | filter:searchText"  >
                       <td style="font-family:sans-serif;" class="col-md-10 col-sm-10">{{pointTable.tag_Label}}</td>
                       <td style="font-family:sans-serif;" class="col-md-2 col-sm-2"> {{pointTable.reward_points}}</td>
   
@@ -147,11 +146,11 @@
 
           <!-- ***************************************  Passbook DataTable Tab ********************************************************************     -->
 
-          <mat-tab label="{{points.data.points_list[1].label}}">
+          <mat-tab label="{{points.data.points_list[1].label}}" >
             <hr>
 
 
-            <div class="table_div">
+            <div class="table_div" [ngClass]="{'card-shadow':theme_id_fashion==9}">
               <div>
                 <input class="search" type="search" name="search" [(ngModel)]="searchText" autocomplete="off"
                   placeholder=" Search">
@@ -218,7 +217,7 @@
 
           <mat-tab label="{{points.data.points_list[2].label}}">
             <hr>
-            <div class="select_container d-flex justify-content-end mr-3">
+            <div class="select_container d-flex justify-content-end mr-3" [ngClass]="{'card-shadow':theme_id_fashion==9}">
               <select (change)="onChange($event)" class="form-control form-select form-select-sm" aria-label=".form-select-lg example">
                 <option class="option_select m-3" *ngFor="let pointselect of points.data.points_list[2]._data" [value]="pointselect.order"
                   selected="pointselect.order">{{pointselect.label}}</option>

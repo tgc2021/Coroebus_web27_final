@@ -102,6 +102,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   subActiveClassOverall: boolean;
   id_role: any;
   sec_que: any=[];
+  theme_id_fashion: any;
   
   constructor(private readonly store: Store, public _route: ActivatedRoute,public snackBar: MatSnackBar,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
@@ -142,6 +143,10 @@ export class TopHierarchyDashboardsComponent implements OnInit {
       
       this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
       console.log(this.userSelectionData);
+      //Get Theme id for fashion
+      this.theme_id_fashion=this.userSelectionData._personal_data.id_coroebus_theme!=null?this.userSelectionData._personal_data.id_coroebus_theme:this.userSelectionData.themes[0].id_coroebus_theme;//this theme id is belongs to cricket need to change for Fashion
+      // this.theme_id_fashion=this.userSelectionData.themes[0].id_coroebus_theme;
+      console.log(this.theme_id_fashion);
       
 
       this._routeSub?.unsubscribe()

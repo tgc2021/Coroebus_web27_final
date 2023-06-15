@@ -77,6 +77,7 @@ export class PlayZoneComponent implements OnInit {
   cubeBlastersUrl: string;
   id_role: any;
   tgcToolBoxUrl: string;
+  theme_id_fashion: any;
 
   constructor(private http: ApiserviceService, private readonly store: Store, public modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -104,8 +105,15 @@ export class PlayZoneComponent implements OnInit {
       
 
       this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
+
       
 
+      console.log(this.mergeObj);
+      //Get Theme id for fashion
+      this.theme_id_fashion=localStorage.getItem('theme');
+      const parsedData = JSON.parse(this.theme_id_fashion);
+      this.theme_id_fashion = parsedData.theme.id_coroebus_theme;
+      console.log(this.theme_id_fashion);
       this.id_role=this.mergeObj.id_role;
       
 

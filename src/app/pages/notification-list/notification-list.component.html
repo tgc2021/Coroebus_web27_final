@@ -1,7 +1,7 @@
 <div class="web-view">
     <div class="container-fluid-notification">
         <div class="row notification-title-row">
-            <div class="col d-flex align-items-center" >
+            <div class="col d-flex align-items-center" [ngClass]="{'card-shadow':theme_id_fashion==9}" >
                 <span class="notification-list-header">
                     Notification
                 </span>
@@ -9,7 +9,7 @@
         </div>
         <div class="row row-cols-1 mt-2 notification-row notification-row-margin  me-4"
             [ngClass]="{'yellow-notification-row': item?.readStatus === '0'}"
-            *ngFor="let item of notificationLists; let i =index" (click)="openNotification(item)">
+            *ngFor="let item of notificationLists; let i =index" (click)="openNotification(item)"  [ngClass]="{'card-shadow':theme_id_fashion==9}">
             <div class="col">
                 <div class="media">
                     <img *ngIf="item?.image" class="mt-2" src="assets/images/svg/notification/img.png" alt="" height="47">

@@ -56,13 +56,29 @@ export class PerformancePageComponent implements OnInit {
   dropDownFilterData: any
   dropDownValue: any
   id_role: any;
+  theme_id_fashion: any;
   constructor(private readonly store: Store ,private graph:DefaultComponent,public Util: Util, private _route: ActivatedRoute,public http:ApiserviceService) {
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
     ).subscribe(data => {
-      this.userObj = data?.user
+      this.userObj = data?.user;
+      console.log(this.userObj);
+
       this.dropDownValueFilter()
+
+
       this.dropDownValue = this.dropDownFilterData?.[0]?.value
+
+       //Get Theme id for fashion
+       this.theme_id_fashion=this.userObj._personal_data.id_coroebus_theme!=null?this.userObj._personal_data.id_coroebus_theme:this.userObj.themes[0].id_coroebus_theme;
+      //  this.theme_id_fashion=this.userObj._personal_data.id_coroebus_theme;//this theme id is belongs to cricket need to change for Fashion
+       console.log(this.theme_id_fashion);
+
+
+
+
+
+
     })
 
 
@@ -90,12 +106,12 @@ export class PerformancePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!localStorage.getItem('foo')) { 
-      localStorage.setItem('foo', 'no reload') 
-      location.reload() 
-    } else {
-      localStorage.removeItem('foo') 
-    }
+    // if (!localStorage.getItem('foo')) { 
+    //   localStorage.setItem('foo', 'no reload') 
+    //   location.reload() 
+    // } else {
+    //   localStorage.removeItem('foo') 
+    // }
 
     this._routeSub = this._route.queryParams.subscribe(queryParams => {
       // do something with the query params

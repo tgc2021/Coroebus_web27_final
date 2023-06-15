@@ -34,6 +34,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   dark_color: string;
   medium_color: string;
   light_color: string;
+  theme_id_fashion: any;
   constructor(public formBuilder: FormBuilder, private readonly store: Store,
     private Util: Util, private modalService: NgbModal, private eventService: EventService, public http:ApiserviceService,public element: ElementRef) { }
 
@@ -49,11 +50,16 @@ export class ProfileComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy$)
     ).subscribe(data => {
       this.userObj = data?.user
-// console.log(this.userObj);
+      this.theme_id_fashion=this.userObj._personal_data.id_coroebus_theme;//this theme id is belongs to cricket need to change for Fashion
+      console.log(this.theme_id_fashion);
+
+    
 
       this.initForm()
       this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
       // console.log(this.mergeObj);
+      this.theme_id_fashion=this.mergeObj._personal_data.id_coroebus_theme;//this theme id is belongs to cricket need to change for Fashion
+      console.log(this.theme_id_fashion);
 
     })
 

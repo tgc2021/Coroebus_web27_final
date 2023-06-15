@@ -54,6 +54,7 @@ export class RewardsComponent implements OnInit, AfterViewInit,OnDestroy {
   status: any;
   bgImage: any;
   passbook_response:any
+  theme_id_fashion: any;
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
     private _route: ActivatedRoute, public toastService: ToastService, public http: ApiserviceService, public element: ElementRef, public dialog: MatDialog) { }
@@ -89,6 +90,11 @@ export class RewardsComponent implements OnInit, AfterViewInit,OnDestroy {
 
       this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
       
+      //Get Theme id for fashion
+      this.theme_id_fashion=this.userObj._personal_data.id_coroebus_theme!=null?this.userObj._personal_data.id_coroebus_theme:this.userObj.themes[0].id_coroebus_theme;
+      // this.theme_id_fashion=this.mergeObj._personal_data.id_coroebus_theme;//this theme id is belongs to cricket need to change for Fashion
+      console.log(this.theme_id_fashion);
+      
 
       
       this.combineLatest = combineLatest([
@@ -97,11 +103,7 @@ export class RewardsComponent implements OnInit, AfterViewInit,OnDestroy {
         this.store.select(fromRoot.usergame),
       ]
       ).subscribe(([login, theme, game]) => {
-        
         this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
-       
-       
-  
       })
 
       this.location=window.location.href

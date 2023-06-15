@@ -27,6 +27,7 @@ import { NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
 
 export class AchievementShelfComponent implements OnInit {
   myDate = new Date();
+  theme_id_fashion: any;
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -85,6 +86,14 @@ export class AchievementShelfComponent implements OnInit {
       ).subscribe(([login, theme, game]) => {
         
         this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
+
+        //Get Theme id for fashion
+        this.theme_id_fashion=this.userObj._personal_data.id_coroebus_theme!=null?this.userObj._personal_data.id_coroebus_theme:this.userObj.themes[0].id_coroebus_theme;
+      // this.theme_id_fashion=this.userSelectionData._personal_data.id_coroebus_theme;//this theme id is belongs to cricket need to change for Fashion
+      console.log(this.theme_id_fashion);
+      
+
+
        
        
   

@@ -21,6 +21,7 @@ export class NotificationListComponent implements OnInit {
   userSelectionData: any
   combineLatest: Subscription
   callNotificationAPIAfterReadSub: Subscription
+  theme_id_fashion: any;
   constructor(private readonly store: Store, private modalService: NgbModal,
     private eventService: EventService,public http:ApiserviceService) { }
 
@@ -32,6 +33,9 @@ export class NotificationListComponent implements OnInit {
     ]
     ).subscribe(([login, theme, game]) => {
       this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
+      //Get Theme id for fashion
+      this.theme_id_fashion=this.userSelectionData._personal_data.id_coroebus_theme;//this theme id is belongs to cricket need to change for Fashion
+      console.log(this.theme_id_fashion);
       this.notificationList()
     })
     this.callNotificationAPIAfterReadSub?.unsubscribe()

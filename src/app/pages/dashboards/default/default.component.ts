@@ -24,6 +24,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   openperformance: boolean=true;
   openActivivities: boolean=false;
+  theme_id_fashion: any;
 dismiss() {
 throw new Error('Method not implemented.');
 }
@@ -158,7 +159,7 @@ throw new Error('Method not implemented.');
   arrtrue: any = []
   trues: any = []
   badgePercentage: number;
-  // seasonal_theme_monthly_badge_details: any;
+ 
   empid: any
   empemail: any
   empname: any
@@ -185,9 +186,6 @@ throw new Error('Method not implemented.');
     this.Edit_image()
   }
 
-  // ngOnChanges(){
-  //   this.Edit_image()
-  // }
 
 
   ngOnInit() {
@@ -198,16 +196,16 @@ throw new Error('Method not implemented.');
     this.elementref.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
      console.log(this.medium_color);
      
-    if (!localStorage.getItem('foo')) {
-      localStorage.setItem('foo', 'no reload')
-      location.reload()
-    } else {
-      localStorage.removeItem('foo')
-    }
+    // if (!localStorage.getItem('foo')) {
+    //   localStorage.setItem('foo', 'no reload')
+    //   location.reload()
+    // } else {
+    //   localStorage.removeItem('foo')
+    // }
 
     this.activeTab()
     this.Edit_image()
-  //  this.changeTabFilter('citizen',2)
+
  
     this.combineLatest = combineLatest([
       this.store.select(fromRoot.userLogin),
@@ -218,14 +216,16 @@ throw new Error('Method not implemented.');
       
       this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
       
+      //Get Theme id for fashion
+      // this.theme_id_fashion=this.userSelectionData._personal_data.id_coroebus_theme;//this theme id is belongs to cricket need to change for Fashion
+      this.theme_id_fashion=this.userSelectionData._personal_data.id_coroebus_theme!=null?this.userSelectionData._personal_data.id_coroebus_theme:this.userSelectionData.themes[0].id_coroebus_theme;//this theme id is belongs to cricket need to change for Fashion
+      console.log(this.theme_id_fashion);
       
       
-      // this.GetDataFromProduceInfo();
+
       this._routeSub?.unsubscribe()
       this._routeSub = this._route.queryParams.subscribe(queryParams => {
         // do something with the query params
-        
-       
 
         if (queryParams?.userID) {
           
@@ -256,18 +256,14 @@ throw new Error('Method not implemented.');
           this.getUserBannerDataSectionView_2(queryParams)
           this.getUserBannerDataSectionView_3(null, queryParams)
           this.GetDataFromProduceInfo(queryParams)
-          // this.navigateToStatistics(queryParams)
-          // this.notificationList(queryParams)
-          // this.addIns(queryParams)
+         
           this.notificationList()
           this.addIns(queryParams)
         } else {
           this.getUserBannerDataSectionView_1()
           this.getUserBannerDataSectionView_2()
           this.getUserBannerDataSectionView_3()
-         
-          // this.navigateToStatistics()
-
+          this.GetDataFromProduceInfo(queryParams)
           this.notificationList()
           this.addIns()
 
@@ -289,11 +285,7 @@ throw new Error('Method not implemented.');
       this.updateNotificationList(data?.id)
     })
     this.requestForProduce1Data?.unsubscribe()
-    // this.requestForProduce1Data = this.eventService.subscribe('requestForProduce1Data', (data) => {
-      
-      
-    //   this.eventService.broadcast('requestSendForProduce1Data', this.sectionView_1)
-    // })
+  
     
     
     
@@ -329,7 +321,7 @@ throw new Error('Method not implemented.');
      
       this.changeSubTabFilter('My Store')
       
-      // this.changeTabFilter('', this.activeTabForSectionView_2=[0] )
+     
 
       
     }, 3000)
@@ -458,9 +450,9 @@ updatedPoke() {
       if (i === this.pokeAnimationData.length) {
         clearInterval(intervalId);
         console.log(this.pokeslidedata);
-        // this.pokeAnimationData=[]
+      
           setTimeout(()=>{
-        // (<HTMLInputElement>document.getElementById('animationPoke')).style.background = "none";
+     
           this.getUserBannerDataSectionView_1()
           },5000)
       }
@@ -845,12 +837,10 @@ updatedPoke() {
             
             if (element?._Overall?.length > 0 || element?._data?.length > 0) {
               
-              // 
-              // 
+              
 
               this.sectionView_3?._ranking_data[index]?._Overall?.push(...element?._Overall)
-              // this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data)
-
+             
               this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'center' });
             }
           }
@@ -859,8 +849,7 @@ updatedPoke() {
       } else {
         this.sectionView_3 = res?.data
       }
-      // this.filterRankingData()
-
+      
       this.sectionView_3_list = this.sectionView_3?._ranking_data?.filter(data => {
         //
         if (data.order === this.activeTabForSectionView_2) {
@@ -928,12 +917,11 @@ updatedPoke() {
 
     
    
-    // this.spectSearchStr=null
-    // this.labelNameMy = name
+ 
     this.pageNumberForSectionView_3 = 1
     this.activeTabForSectionView_2 = order
     
-    // this.spectSearchStr=null
+   
 
     if (this.activeTabForSectionView_2 == 1) {
       let body = {
@@ -1006,14 +994,12 @@ else if(this.activeTabForSectionView_2 == 4){
   }
 
   upDownArrow(arrowStatus: string, rowData: any) {
-    // alert('TODO: Add Poke popup-> ' + arrowStatus)
-    //
+    
     if (rowData?.userid !== this.userSelectionData?._personal_data?.USERID) {
       let roleCheckArray = this.Util.pokeMapping()
       if (this.queryParams?.roleID) {
         console.log(this.queryParams?.roleID)
-        // roleCheckArray = roleCheckArray?.filter(data => data?.roleID === this.sectionView_1?._personal_data?.id_role)
-        // roleCheckArray = roleCheckArray?.filter(data => data?.roleID === this.queryParams?.roleID)
+       
         roleCheckArray = roleCheckArray?.filter(data => data?.roleID === this.userSelectionData?._personal_data?.id_role)
 
         console.log(roleCheckArray);
@@ -1023,7 +1009,7 @@ else if(this.activeTabForSectionView_2 == 4){
         console.log(roleCheckArray);
         
       }
-      //console.log(this.queryParams)
+      
       console.log(roleCheckArray?.[0]?.canPokeTo?.indexOf(rowData?.id_role));
       console.log(roleCheckArray?.[0]?.canPokeTo?.indexOf(rowData?.id_role) > -1);
       
@@ -1039,7 +1025,7 @@ else if(this.activeTabForSectionView_2 == 4){
 
       } else {
         this.toastService.show(this.pokeDangerTpl, { classname: '', delay: 1500, });
-        // this.pokeErr = `Role id ${this.queryParams?.roleID ? this.queryParams?.roleID : this.userSelectionData?._personal_data?.id_role} can't pokes to role id ${rowData?.id_role}`
+        
         console.warn(`Role id ${ this.userSelectionData?._personal_data?.id_role} can't pokes to role id ${rowData?.id_role}`)
       }
 
@@ -1122,19 +1108,16 @@ else if(this.activeTabForSectionView_2 == 4){
     if (this.spectSearchStr == '') {
 
       this.spectSearchStr = ''
-      // this.emptyInput==true;
+     
       this.spectSearchStrTrigger = false
-      // this.spectSearch()
-
-      // this.spectSearchStr.setValue('');
-      // this.ngOnInit()
+      
     }
   }
 
   async spectSearch() {
     let err: any, res: any;
     let body: any;
-    // this.spectSearchStrTrigger = true
+    
 
     if (this.spectSearchStr) {
       this.spectSearchStrTrigger = true
@@ -1170,15 +1153,7 @@ else if(this.activeTabForSectionView_2 == 4){
 
       if(res.data==''){
         console.log(res.data);
-        // this.openSnackBar('No data Available','Ok')
-  
-        // Swal.fire({
-        //   title: '',
-        //   text:'No data Available',
-        //   imageUrl: 'assets/images/svg/logo/logo.svg',
-        //   imageHeight: 40,
-        //   confirmButtonColor: '#556ee6'
-        // });
+    
   
         Swal.fire({
           title: '',
@@ -1440,15 +1415,7 @@ else if(this.activeTabForSectionView_2 == 4){
 
 
 
-  // ShowTime(i)
-  // {
-  //   if(this.pokeAnimationData){
-  //    if(i<this.pokeAnimationData.length){
-  // $('#animationPoke').attr('style','display:block !important')
-  // $('.poke-slide'+i).removeClass('star-wars')
-  //    }
-  //   }
-  // }
+  
 
   activeTab() {
     
@@ -1484,8 +1451,6 @@ else if(this.activeTabForSectionView_2 == 4){
 
     localStorage.setItem('rewardid', obj._userid)
 
-    // this._router.navigate('/performance/page')
-    // this._router.navigate(['/performance/page'], { queryParams: { key: value } })
 
     this._router.navigate(['/reward/rewardPoints'], {
       relativeTo: this._route,
@@ -1738,28 +1703,6 @@ else if(this.activeTabForSectionView_2 == 4){
     )
   }
 
-  // challengeRecievedCount(){
-  //     
-    
-  //     let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
-  //     let id_role=this.userSelectionData?.games[0]?.id_role;
-  //     let id_coroebus_user=this.userSelectionData?._personal_data.id_coroebus_user;
-
-  //   let bodyforChallengeRecieved={
-  //     "_game": id_coroebus_game,
-  //     "_id_role": id_role,
-  //     "id_coroebus_user": id_coroebus_user
-
-  //   }
-  //   this.http.challangeRecived(bodyforChallengeRecieved).subscribe((res)=>{
-  //     
-  //     this.data=res;
-  //     this.count=this.data.length;
-  //     
-  //   })
-
-
-  // }
 
   GetDataFromProduceInfo(queryParams?: any) {
 
@@ -1835,8 +1778,7 @@ else if(this.activeTabForSectionView_2 == 4){
 
         
       })
-      // console.log(this.data.data.seasonal_theme_daily.length==undefined);
-      // console.log(this.data.data.seasonal_theme_daily==undefined);
+     
 
      
 

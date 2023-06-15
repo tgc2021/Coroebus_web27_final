@@ -1,9 +1,9 @@
-<div class="top_container web-view">
+<div class="top_container  web-view" [ngClass]="{'card-shadow':theme_id_fashion==9}" >
     <div>
         <p class="title"> Achievement Shelf</p>
 
         <div *ngFor="let seasonaldata of seasonal_theme_response;">
-            <mat-card class="mat_container">
+            <mat-card class="mat_container" [ngClass]="{'card-shadow':theme_id_fashion==9}" >
                 <div class="total_reward_points" *ngFor="let totalrewardrespone of seasonal_total_points_response">
                     <img class="reward_coin" src="assets/images/rewards/Reward point.png">
                     <p class="total_reward_points_value">{{totalrewardrespone.reward_point}}</p>
@@ -15,7 +15,7 @@
                         <div class="row">
                             <div class="col-sm-4 col-md-4 col-lg-4 content_seasonal_card_div"
                                 *ngFor="let details of seasonal_theme_response[0].data ;let k=index;let w of showCombo;let j =index">
-                                <mat-card class="content_seasonal_card">
+                                <mat-card class="content_seasonal_card" [ngClass]="{'card-shadow':theme_id_fashion==9}">
                                     <div>
                                         <p class="title_seasonal_card">{{details.name}}</p>
                                     </div>

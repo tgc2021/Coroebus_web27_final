@@ -98,10 +98,11 @@ viewmoreorder:any
   tile_web_image_final: any;
   tile_bg_img: any=[];
   bgImageWeb:any
+  theme_id_fashion: any;
   constructor(private readonly store: Store, public http: ApiserviceService, private eventService: EventService, private _router: Router,
     private _route: ActivatedRoute,public Util: Util,public snackBar: MatSnackBar, public element: ElementRef, private modalService: NgbModal) { }
 
- 
+    
   ngOnInit(): void {
     if (!localStorage.getItem('foo')) { 
       localStorage.setItem('foo', 'no reload') 
@@ -116,9 +117,11 @@ viewmoreorder:any
       
 
       this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
-      
-     
-      this.combineLatest = combineLatest([
+
+         // console.log(this.mergeObj);
+        this.theme_id_fashion=this.mergeObj.id_coroebus_theme;//this theme id is belongs to cricket need to change for Fashion
+        console.log(this.theme_id_fashion)
+        this.combineLatest = combineLatest([
         this.store.select(fromRoot.userLogin),
         this.store.select(fromRoot.usertheme),
         this.store.select(fromRoot.usergame),
