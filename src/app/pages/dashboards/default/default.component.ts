@@ -198,12 +198,12 @@ throw new Error('Method not implemented.');
     this.elementref.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
      console.log(this.medium_color);
      
-    if (!localStorage.getItem('foo')) {
-      localStorage.setItem('foo', 'no reload')
-      location.reload()
-    } else {
-      localStorage.removeItem('foo')
-    }
+    // if (!localStorage.getItem('foo')) {
+    //   localStorage.setItem('foo', 'no reload')
+    //   location.reload()
+    // } else {
+    //   localStorage.removeItem('foo')
+    // }
 
     this.activeTab()
     this.Edit_image()
@@ -265,7 +265,8 @@ throw new Error('Method not implemented.');
           this.getUserBannerDataSectionView_1()
           this.getUserBannerDataSectionView_2()
           this.getUserBannerDataSectionView_3()
-         
+          this.GetDataFromProduceInfo()
+
           // this.navigateToStatistics()
 
           this.notificationList()

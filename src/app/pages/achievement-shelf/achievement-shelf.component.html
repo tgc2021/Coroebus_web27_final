@@ -3,19 +3,19 @@
         <p class="title"> Achievement Shelf</p>
 
         <div *ngFor="let seasonaldata of seasonal_theme_response;">
-            <mat-card class="mat_container">
+            <div class="mat_container">
                 <div class="total_reward_points" *ngFor="let totalrewardrespone of seasonal_total_points_response">
                     <img class="reward_coin" src="assets/images/rewards/Reward point.png">
                     <p class="total_reward_points_value">{{totalrewardrespone.reward_point}}</p>
                 </div>
-                <mat-tab-group>
+                <mat-tab-group style="padding: 2%;">
                     <mat-tab label="Campaign Theme">
                         <hr>
 
                         <div class="row">
                             <div class="col-sm-4 col-md-4 col-lg-4 content_seasonal_card_div"
                                 *ngFor="let details of seasonal_theme_response[0].data ;let k=index;let w of showCombo;let j =index">
-                                <mat-card class="content_seasonal_card">
+                                <div class="content_seasonal_card">
                                     <div>
                                         <p class="title_seasonal_card">{{details.name}}</p>
                                     </div>
@@ -125,7 +125,7 @@
 
 
 
-                                </mat-card>
+                                </div>
                             </div>
                         </div>
 
@@ -135,7 +135,7 @@
                     <mat-tab label="Third"> Content 3 </mat-tab> -->
                 </mat-tab-group>
 
-            </mat-card>
+            </div>
 
         </div>
     </div>
@@ -184,7 +184,7 @@
                                         <p  *ngIf="badgepopupresponse.points_ == null" class="total_point"> 0 </p>
 
                                     </div>
-                                    <hr>
+                                    <!-- <hr> -->
 
                                     <div>
                                         <p class="badge_description_popup">

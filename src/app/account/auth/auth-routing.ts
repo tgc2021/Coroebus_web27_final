@@ -9,7 +9,6 @@ import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-co
 import { CreateNewPasswordComponent } from './create-new-password/create-new-password.component';
 import { SecurityQuestionComponent } from './security-question/security-question.component';
 import { AuthGuard } from '@app/guards/auth.guard';
-import { TvsDashboardComponent } from './tvs-dashboard/tvs-dashboard.component';
 import { InteractiveDashboardComponent } from './interactive-dashboard/interactive-dashboard.component';
 import { BusinessReportComponent } from './business-report/business-report.component';
 import { GrowthReportComponent } from './growth-report/growth-report.component';
@@ -24,10 +23,7 @@ const routes: Routes = [
         path: 'signup',
         component: SignupComponent
     },
-    {
-        path: 'tvs',
-        component: TvsDashboardComponent,
-    },
+   
     
     {
         path: 'reset-password',

@@ -147,6 +147,7 @@
     cursor: pointer;
     border: 1px solid #FEEE1E;
     border-radius: 10px;
+    
 }
 
 .web_my_rewards {
@@ -164,7 +165,7 @@
 
 .web_third_umpire {
     height: 12vh;
-    position: absolute;
+  
     bottom: 0.5em;
     left: 0.5em;
     cursor: pointer;
@@ -186,20 +187,19 @@
 
 .web_booster {
     height: 12vh;
-    position: absolute;
     cursor: pointer;
     bottom: 0.5em;
     right: 0.5em;
     border-radius: 10px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
- 
+    width: 10vh;
    
 }
 
 .web_booster_tvs{
     height: 12vh;
-    position: absolute;
+  
     cursor: pointer;
     bottom: -1em;
     right: 0.5em;
@@ -232,7 +232,7 @@
     height: 14vh;
     cursor: pointer;
     padding-top: 1em;
-    // width: 74px;
+    width: 10vh;
 }
 
 .web_col_right {
