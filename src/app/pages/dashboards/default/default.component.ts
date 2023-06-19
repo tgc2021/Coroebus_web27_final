@@ -11,19 +11,22 @@ import { ImagecropperComponent } from '@pages/imagecropper/imagecropper.componen
 import { EventService } from '@app/services/event.service';
 import { NotificationPopupComponent } from '@pages/notification-popup/notification-popup.component';
 import * as userActions from '../../../core/app-state/actions';
-import { type } from 'jquery';
+
 import { ActivatedRoute, Event as Events, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { ToastService } from '@app/services/toast-service';
 import { ApiserviceService } from 'app/apiservice.service';
-import { DomSanitizer } from '@angular/platform-browser';
+
+
 @Component({
   selector: 'app-default',
   templateUrl: './default.component.html',
-  styleUrls: ['./default.component.scss']
+  styleUrls: ['./default.component.scss'],
+  
 })
 export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   openperformance: boolean=true;
   openActivivities: boolean=false;
+  primary_rank: any;
 dismiss() {
 throw new Error('Method not implemented.');
 }
@@ -361,7 +364,12 @@ throw new Error('Method not implemented.');
         
       })
 
-      this.sectionView_1 = res?.data
+      this.sectionView_1 = res?.data;
+      this.primary_rank =this.sectionView_1._primary.primary_rank;
+
+      console.log("For Primary Data",this.sectionView_1._primary.primary_rank);
+
+      
 
 localStorage.setItem('bg_image',this.sectionView_1?.theme_details?.[0]?.point_dist_background)
 

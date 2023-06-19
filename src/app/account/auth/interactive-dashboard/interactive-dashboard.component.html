@@ -69,28 +69,43 @@
                 margin-top: 0.5em;">
                 <div class="row">
                     <div class="col-2 web_col_left">
-                        <img class="web_my_trophy" (click)="navigateAchievementshelf()"
-                            src="{{interactive_dashoard_response[0].data.theme_details[0].my_trophy}}" />
+                        <div style="height: 6vh;width: 7vh;">
+                            <img class="web_my_trophy" (click)="navigateAchievementshelf()"
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].my_trophy}}" height="100%" width="100%" />
+                        </div>
+                        <br><br>
+                       <div style="height: 6vh;width: 7vh;">
                         <img class="web_my_rewards" *ngIf="interactive_dashoard_response[0].data._points[2].score>75 && interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"  (click)="navigateReward()"
-                            src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}" />
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}"  height="100%" width="100%" />
                             <img class="web_my_rewards" *ngIf="interactive_dashoard_response[0].data._points[2].score<75 && interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'" 
-                            src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}" data-bs-toggle="modal" data-bs-target="#RewardsModal"/>
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}" data-bs-toggle="modal" data-bs-target="#RewardsModal"  height="100%" width="100%"/>
                             <img class="web_my_rewards" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"  (click)="navigateReward()"
-                            src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}" />
-                        <img class="web_third_umpire" (click)="navigateToNotification()"
-                            src="{{interactive_dashoard_response[0].data.theme_details[0].third_umpire_bt}}" />
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].my_rewards}}" height="100%" width="100%" />
+                       </div>
+                        <div  style="height: 6vh;width: 6vh;">
+                            <img class="web_third_umpire" (click)="navigateToNotification()"
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].third_umpire_bt}}" height="60%" width="60%"/>
+                        </div>
+                        
                     </div>
 
                     <div class="col-8 d-flex justify-content-center align-items-end">
+                     
                         <img (click)="navigateDashboard()" class="web_character"
                             src="{{interactive_dashoard_response[0].data._personal_data.skillmuni}}" />
                     </div>
 
-                    <div class="col-2 d-flex justify-content-end web_col_right">
-                        <img class="web_spectator_view" (click)="navigateToSpectatorView()"
-                            src="{{interactive_dashoard_response[0].data.theme_details[0].spectator_bt}}" />
-                        <img class="web_booster" data-bs-toggle="modal" data-bs-target="#BoosterModal" (mouseover)="booster_data()"
-                            src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}" />
+                    <div class="col-2   web_col_right">
+                        
+                        <div style="height: 6vh;width: 100%;">
+                            <img class="web_spectator_view" data-bs-toggle="modal" data-bs-target="#BoosterModal" (click)="navigateToSpectatorView()"
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].spectator_bt}}" height="100%" width="100%" />
+                        </div>
+                        <div style="height:6vh;width:6vh;">
+                            <img class="web_booster" data-bs-toggle="modal" data-bs-target="#BoosterModal" (mouseover)="booster_data()"
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].booster_bt}}" height="60%" width="60%" />
+                        </div>
+                        
 
                     </div>
                 </div>

@@ -14,6 +14,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { ToastsContainerComponent } from '@pages/toasts-container/toasts-container.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [DefaultComponent, ImagecropperComponent, ToastsContainerComponent],
@@ -32,6 +33,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     SkeletonScreenLoaderModule,
     NgbCollapseModule,
     ImageCropperModule,
+    MatTabsModule,
     NgbModule
   ]
 })

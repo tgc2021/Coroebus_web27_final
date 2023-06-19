@@ -30,6 +30,7 @@ import { BusinessHeadMapComponent } from './business-head-map/business-head-map.
 import { BusinessReportComponent } from './business-report/business-report.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MobileMapsComponent } from './mobile-maps/mobile-maps.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { MobileMapsComponent } from './mobile-maps/mobile-maps.component';
     NgbCollapseModule,
     SimplebarAngularModule,
     LightboxModule,
+    MatTabsModule
     
   ],
 })

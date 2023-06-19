@@ -51,6 +51,17 @@
                             <div class="name_hos">
                                 {{sectionView_1._personal_data.user_department}}
                             </div>
+                            <div
+                                                class="d-flex flex-column align-items-center justify-content-center mt-2">
+                                                <button class="btn btn-primary- text-white mt-1" style="height:5vh;width:6vw;display: flex;justify-content: center;align-items: center;border-radius:20px"
+                                                [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
+                                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                                data-bs-toggle="modal" data-bs-target="#myTeamLeaderBoard"
+                                               >
+                                                {{primary_rank}}
+                                                </button>
+                                                <span class="level-rank-name">Rank</span>
+                                            </div>
     
                         </div>
     
@@ -311,7 +322,7 @@
                                             {{res.rankingtable_name}}
                                         </div>
                                         <div class="leaderboard_team_label"  (click)="navigateToSMDashboard(res)">
-                                            {{res.rankingtable_team}} 
+                                            {{res.display_name}} 
                                         </div>
                                     </div>
     
@@ -395,7 +406,7 @@
                                             {{res.rankingtable_name}}
                                         </div>
                                         <div class="leaderboard_team_label"  (click)="navigateToRMDashboard(res)">
-                                            {{res.rankingtable_team}}
+                                            {{res.display_name}}
                                         </div>
                                     </div>
                                     <div class="leaderboard_rank_badge_image_div">
@@ -430,8 +441,7 @@
                                     <ng-template #Dontpoke>
                                         <div class="leaderboard_rank_up_down_arrow_div" style="margin-left: 3vw;display:flex; justify-content: center;" *ngIf="res.rankingtable_arrow=='green'">
                                             <img  class="leaderboard_rank_up_down_arrow_image"
-                                                src="{{sectionView_1.theme_details[0].up_arrow}}" 
-                                                />
+                                                src="{{sectionView_1.theme_details[0].up_arrow}}"  />
                                                 
                                         </div>
         
@@ -478,7 +488,7 @@
                                                 {{res.rankingtable_name}}
                                             </div>
                                             <div class="leaderboard_team_label">
-                                                {{res.rankingtable_team}}
+                                                {{res.display_name}}
                                             </div>
                                         </div>
         
@@ -510,10 +520,6 @@
                                                 </div>
                                         </div>
                                     </mat-card>
-        
-        
-        
-        
                                 </div>
                             </ng-template>
         
@@ -539,6 +545,7 @@
                
             </div>
             <!-- Right Section -->
+
             <div class="col-3 d-flex justify-content-center align-items-center mt-2 ">
                 <div class="isLand_panel_container"
                     [style.background-image]="
@@ -555,7 +562,6 @@
                         <!-- <img class="profile_picture_image" src="{{sectionView_1._personal_data.profile_logo}}" height="100%" width="" /> -->
                         <div class="Overall_score_Inner_circle">
                             <img src="{{item.logo}}" alt="is_LandLogo" width="100%" height="100%" style="border-radius: 100%;"> 
-                           
                         </div>
                     </div>
                     <div class="lower_section d-flex flex-column justify-content-center align-items-center">
@@ -563,7 +569,8 @@
                         [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                         [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                         (click)="getDataBasedOnUserID(item)">
-                        {{item._data}}
+                        <!-- {{item._data}} -->
+                        Level {{item?.level}}
                         </button>
                         <div class="text-center mt-1">
                             <span style="font-weight:400;font-family:'Inter';font-size: 2vh;line-height: 2.4vh;">Rank</span>
@@ -1037,7 +1044,8 @@
                                     [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                     (click)="getDataBasedOnUserID(item)">
-                                    {{item?._data}}
+                                    <!-- {{item?._data}} -->
+                                    Level {{item?.level}}
                                 </button>
                                 <br><span class="level-rank-name">{{item?.tag}}</span>
     
@@ -1585,3 +1593,201 @@
     </ng-template>
 
 </div>
+
+<!-- Modal For My Team LeaderBoard -->
+<!-- <div class="modal fade" id="myTeamLeaderBoard" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="d-flex justify-content-end p-2">
+          <button type="button" class="btn-close" style="border:none;width:10vw" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <mat-tab-group >
+
+               
+                <mat-tab   label="My Rank" >
+                    <div class="row rank_label">
+                            <div class="col-2">Rank</div>
+                            <div class="col-1"></div>
+                            <div class="col-4">Name</div>
+                            <div class="col-2"></div>
+                            <div class="col-2">Points</div>
+                            <div class="col-1"></div>
+                    </div>
+                    <div class="row leaderBoard_tile mt-2">
+                        <div class="col-1">&nbsp;1</div>
+                        <div class="col-2" >
+                            <div class="col-2" style="height:5vh;width:5vh">
+                                <img src="assets/images/USR-93584-7XSJUE.png" height="100%" width="100%" alt="" style="border-radius:50%">
+                            </div>
+                            
+                        </div>
+                        <div class="col-4">Shyam Sundar</div>
+                        <div class="col-2" >
+                            <div style="height:5vh;width:5vh">
+                                <img src="assets/images/BL-16811066219361.png" alt=""  data-holder-rendered="true" height="100%" width="100%">
+                            </div>
+                        </div>
+                        <div class="col-1">40</div>
+                        <div class="col d-flex justify-content-end">
+                           
+                            <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt="" height="60%" width="60%">
+                        </div>
+                    </div>
+                    <div class="leaderboard_container mt-2">
+                        <div class="row leaderBoard_tile mt-2"  >
+                            <div class="col-1">&nbsp;1</div>
+                            <div class="col-2" >
+                                <div class="col-2" style="height:5vh;width:5vh">
+                                    <img src="assets/images/USR-93584-7XSJUE.png" height="100%" width="100%" alt="" style="border-radius:50%">
+                                </div>
+                                
+                            </div>
+                            <div class="col-4">Shyam Sundar</div>
+                            <div class="col-2">
+                                <div style="height:5vh;width:5vh">
+                                    <img src="assets/images/BL-16811066219361.png" alt=""  data-holder-rendered="true" height="100%" width="100%">
+                                </div>
+                            </div>
+                            <div class="col-1">40</div>
+                            <div class="col d-flex justify-content-end">
+                               
+                                <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt="" height="60%" width="60%">
+                            </div>
+                        </div>
+                        <div class="row leaderBoard_tile mt-2"  >
+                            <div class="col-1">&nbsp;1</div>
+                            <div class="col-2" >
+                                <div class="col-2" style="height:5vh;width:5vh">
+                                    <img src="assets/images/USR-93584-7XSJUE.png" height="100%" width="100%" alt="" style="border-radius:50%">
+                                </div>
+                                
+                            </div>
+                            <div class="col-4">Shyam Sundar</div>
+                            <div class="col-2">
+                                <div style="height:5vh;width:5vh">
+                                    <img src="assets/images/BL-16811066219361.png" alt=""  data-holder-rendered="true" height="100%" width="100%">
+                                </div>
+                            </div>
+                            <div class="col-1">40</div>
+                            <div class="col d-flex justify-content-end">
+
+                                <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt="" height="60%" width="60%">
+                            </div>
+                        </div>
+                        <div class="row leaderBoard_tile mt-2"  >
+                            <div class="col-1">&nbsp;1</div>
+                            <div class="col-2" >
+                                <div class="col-2" style="height:5vh;width:5vh">
+                                    <img src="assets/images/USR-93584-7XSJUE.png" height="100%" width="100%" alt="" style="border-radius:50%">
+                                </div>
+                                
+                            </div>
+                            <div class="col-4">Shyam Sundar</div>
+                            <div class="col-2">
+                                <div style="height:5vh;width:5vh">
+                                    <img src="assets/images/BL-16811066219361.png" alt=""  data-holder-rendered="true" height="100%" width="100%">
+                                </div>
+                            </div>
+                            <div class="col-1">40</div>
+                            <div class="col d-flex justify-content-end">
+                               
+                                <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt="" height="60%" width="60%">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                  
+                
+                </mat-tab>
+              
+      
+                <mat-tab label="Overall my rank">
+                    <div class="row rank_label">
+                        <div class="col-2">Rank</div>
+                        <div class="col-1"></div>
+                        <div class="col-4">Name</div>
+                        <div class="col-2"></div>
+                        <div class="col-2">Points</div>
+                        <div class="col-1"></div>
+                </div>
+                <div class="row leaderBoard_tile mt-2"  >
+                    <div class="col-1">&nbsp;1</div>
+                    <div class="col-2" >
+                        <div class="col-2" style="height:5vh;width:5vh">
+                            <img src="assets/images/USR-93584-7XSJUE.png" height="100%" width="100%" alt="" style="border-radius:50%">
+                        </div>
+                        
+                    </div>
+                    <div class="col-4">Shyam Sundar</div>
+                    <div class="col-2">
+                        <div style="height:5vh;width:5vh">
+                            <img src="assets/images/BL-16811066219361.png" alt=""  data-holder-rendered="true" height="100%" width="100%">
+                        </div>
+                    </div>
+                    <div class="col-1">40</div>
+                    <div class="col d-flex justify-content-end">
+                       
+                        <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt="" height="60%" width="60%">
+                    </div>
+                </div>
+                <div class="leaderboard_container">
+                    <div class="row leaderBoard_tile mt-2"  >
+                        <div class="col-1">&nbsp;1</div>
+                        <div class="col-2" >
+                            <div class="col-2" style="height:5vh;width:5vh">
+                                <img src="assets/images/USR-93584-7XSJUE.png" height="100%" width="100%" alt="" style="border-radius:50%">
+                            </div>
+                            
+                        </div>
+                        <div class="col-4">Shyam Sundar</div>
+                        <div class="col-2">
+                            <div style="height:5vh;width:5vh">
+                                <img src="assets/images/BL-16811066219361.png" alt=""  data-holder-rendered="true" height="100%" width="100%">
+                            </div>
+                        </div>
+                        <div class="col-1">40</div>
+                        <div class="col d-flex justify-content-end">
+                           
+                            <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt="" height="60%" width="60%">
+                        </div>
+                    </div>
+                    <div class="row leaderBoard_tile mt-2"  >
+                        <div class="col-1">&nbsp;1</div>
+                        <div class="col-2" >
+                            <div class="col-2" style="height:5vh;width:5vh">
+                                <img src="assets/images/USR-93584-7XSJUE.png" height="100%" width="100%" alt="" style="border-radius:50%">
+                            </div>
+                            
+                        </div>
+                        <div class="col-4">Shyam Sundar</div>
+                        <div class="col-2">
+                            <div style="height:5vh;width:5vh">
+                                <img src="assets/images/BL-16811066219361.png" alt=""  data-holder-rendered="true" height="100%" width="100%">
+                            </div>
+                        </div>
+                        <div class="col-1">40</div>
+                        <div class="col d-flex justify-content-end">
+                           
+                            <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt="" height="60%" width="60%">
+                        </div>
+                    </div>
+                </div>
+               
+                
+                
+                  
+      
+      
+      
+                </mat-tab>
+      
+              </mat-tab-group>
+           
+        </div>
+       
+      </div>
+    </div>
+</div>  -->

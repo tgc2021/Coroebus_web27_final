@@ -102,6 +102,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   subActiveClassOverall: boolean;
   id_role: any;
   sec_que: any=[];
+  primary_rank: any;
   
   constructor(private readonly store: Store, public _route: ActivatedRoute,public snackBar: MatSnackBar,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
@@ -226,7 +227,8 @@ export class TopHierarchyDashboardsComponent implements OnInit {
         
       })
 
-      this.sectionView_1 = res?.data
+      this.sectionView_1 = res?.data;
+      this.primary_rank =this.sectionView_1._primary.primary_rank;
       
       localStorage.setItem('bg_image',this.sectionView_1?.theme_details?.[0]?.point_dist_background)
 
