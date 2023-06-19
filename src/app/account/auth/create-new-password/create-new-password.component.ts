@@ -145,20 +145,7 @@ export class CreateNewPasswordComponent implements OnInit, OnDestroy {
         const body = { "userid": userId, "password": password }
         const [err, res] = await HttpProtocols.to(UserModel.updatePassword(body))
         if (!err && res?.status === 'success' && res?.statuscode === 200) {
-          // if(currentPasswordData===password){
-          //     
-          //     Swal.fire({
-          //       title: '',
-          //       text:'Current Password and new Password should be same' ,
-          //       imageUrl: 'assets/images/svg/logo/logo.svg',
-          //       imageHeight: 40,
-          //       confirmButtonColor: '#556ee6'
-          //     }).then(res=>{
-          //       this.router.navigate(['/account/create-new-password']);
-          //       this.newPwdForm.reset()
-          //     })
-
-          //  }
+        
          if (res?.data?.security_questions?.questionSet1?.length > 0) {
             this.store.dispatch(userActions.securityQuestion({ securityQuestion: { ...res?.data?.security_questions } }));
             setTimeout(() => {
