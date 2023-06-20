@@ -221,7 +221,9 @@ throw new Error('Method not implemented.');
       
       this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
       
-      
+    
+
+       
       
       // this.GetDataFromProduceInfo();
       this._routeSub?.unsubscribe()
@@ -367,6 +369,9 @@ throw new Error('Method not implemented.');
 
       this.sectionView_1 = res?.data;
       this.primary_rank =this.sectionView_1._primary.primary_rank;
+      this.role_id=this.sectionView_1._personal_data.id_role;
+
+      console.log(this.role_id)
 
       console.log("For Primary Data",this.sectionView_1._primary.primary_rank);
 
@@ -881,6 +886,11 @@ updatedPoke() {
       this.sectionView_3_err = 'Please try after some time'
     }
   }
+
+
+  GetRankingPopupData(){
+    
+  }
   filterRankingData() {
 
     this.sectionView_3._ranking_data = this.sectionView_3?._ranking_data?.filter((firstLevel) => {
@@ -1349,7 +1359,7 @@ else if(this.activeTabForSectionView_2 == 4){
   getDataBasedOnUserID(data: any) {
     this.spectSearchStr = ''    
     this.role_id= data?.role_id.toString();
-    
+    console.log(this.role_id)
     this.Edit_image();
     if (this.role_id === '8' || this.role_id == '9' || this.role_id == '12') {
 

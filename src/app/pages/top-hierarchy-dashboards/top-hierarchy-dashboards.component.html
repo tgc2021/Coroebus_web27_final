@@ -260,7 +260,7 @@
                         <button style="margin-left: 1vw;" class="button_series col" (click)="myLeaderboard()" [class.activeTab]="this.subActiveClass" >
                             My {{leaderboard_data_buttons[0].label}}
                         </button>
-                        <button class="button_series col" (click)="overallLeaderboard()" [class.activeTab]="this.subActiveClassOverall">Overall</button>
+                        <button class="button_series col" (click)="overallLeaderboard()" [class.activeTab]="this.subActiveClassOverall">Overall  {{leaderboard_data_buttons[0].label}}</button>
                     </div>
                     
                     </div>
@@ -469,8 +469,8 @@
                             <ng-template #withsearch>
                                 <div  [ngClass]="lengthLeaderBoardData>19  ?'leaderboard_label_tile_length':'leaderboard_label_tile'">
                                     <!-- <div>
-                        {{leaderboard_data[0]._data | json}}
-                    </div> -->
+                                        {{leaderboard_data[0]._data | json}}
+                                    </div> -->
                                     <mat-card class="leaderboard_tile" *ngFor="let res of spectSearList; let i=index"
                                         [style.background-image]="'url(' + res?.ranking_image_web + ')'"
                                         (click)="navigateToSearchSMDashboard(i)">
@@ -1595,11 +1595,11 @@
 </div>
 
 <!-- Modal For My Team LeaderBoard -->
-<!-- <div class="modal fade" id="myTeamLeaderBoard" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="myTeamLeaderBoard" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="d-flex justify-content-end p-2">
-          <button type="button" class="btn-close" style="border:none;width:10vw" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" style="border:none;width:3vw" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <mat-tab-group >
@@ -1790,4 +1790,4 @@
        
       </div>
     </div>
-</div>  -->
+</div> 
