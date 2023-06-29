@@ -74,12 +74,12 @@ export class RewardsComponent implements OnInit, AfterViewInit,OnDestroy {
   rewardSpect:boolean
   ngOnInit(): void {
 
-    // if (!localStorage.getItem('foo')) { 
-    //   localStorage.setItem('foo', 'no reload') 
-    //   location.reload() 
-    // } else {
-    //   localStorage.removeItem('foo') 
-    // }
+    if (!localStorage.getItem('foo')) { 
+      localStorage.setItem('foo', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('foo') 
+    }
     this.rewardSpect=false
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)

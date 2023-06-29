@@ -38,6 +38,7 @@ throw new Error('Method not implemented.');
   sectionView_2_err: any
   sectionView_3: any = []
   sectionView_3_list: any = []
+  sectionView_3_list_popup:any=[]
   sectionView_3_err: any
   notificationLists: any
   notificationList_err: any
@@ -180,11 +181,11 @@ throw new Error('Method not implemented.');
   pokeInterval: any;
   updatedata: any;
   about_game_pdf:any
-
+  sectionView_3_popup:any
   constructor(private readonly store: Store, private modalService: NgbModal, private renderer: Renderer2,
     public Util: Util, private eventService: EventService, private _router: Router,
     private _route: ActivatedRoute, public toastService: ToastService, public http: ApiserviceService, public elementref: ElementRef) {
-    this.activeSubTabForSectionView_2 = 'My Store'
+    this.activeSubTabForSectionView_2 = 'Overall'
     this.Edit_image()
   }
 
@@ -333,7 +334,7 @@ throw new Error('Method not implemented.');
     setTimeout(() => {
     
      
-      this.changeSubTabFilter('My Store')
+      this.changeSubTabFilter('Overall')
       
       // this.changeTabFilter('', this.activeTabForSectionView_2=[0] )
 
@@ -449,6 +450,68 @@ this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
   }
 
 
+ async GetRankingPopupData(){
+   console.log(this.sectionView_1._personal_data.id_role);
+   
+  if(this.sectionView_1._personal_data.id_role==4){
+
+    this.queryParams = { userID:  this.sectionView_1.is_land_logos[2]._userid, gameID: this.sectionView_1.is_land_logos[2].game_id, roleID:  this.sectionView_1.is_land_logos[2].role_id}
+     console.log(this.queryParams);
+
+
+  }
+  else if(this.sectionView_1._personal_data.id_role==3){
+    this.queryParams = { userID:  this.sectionView_1.is_land_logos[0]._userid, gameID: this.sectionView_1.is_land_logos[0].game_id, roleID:  this.sectionView_1.is_land_logos[0].role_id}
+    console.log(this.queryParams);
+  }
+  else if(this.sectionView_1._personal_data.id_role==6){
+    this.queryParams = { userID:  this.sectionView_1._personal_data.USERID, gameID: this.sectionView_1._personal_data.id_coroebus_game, roleID: this.sectionView_1._personal_data.id_role}
+
+  }
+        // this.queryParams = { userID:  this.sectionView_1.is_land_logos[0]._userid, gameID: this.sectionView_1.is_land_logos[0].game_id, roleID:  this.sectionView_1.is_land_logos[0].role_id}
+
+        let err: any, res: any;
+        let body: any;
+        
+        
+        body = {
+          "_userid": this.queryParams.userID,
+    
+          "_game": this.queryParams.gameID, "_section_view": "3", "page_number": this.pageNumberForSectionView_3
+        };
+        localStorage.setItem('body_userid', body._userid);
+        localStorage.setItem('body_game', body._game);
+    
+        [err, res] = await HttpProtocols.to(DashboardModel.getRankingAndOtherDataSectionView_3(body))
+        if (!err && res?.status === 'success' && res?.statuscode === 200) {
+          this.pokeData = res?.data?._poke_list
+          console.log(this.pokeData);
+          console.log(this.pokeData[0]._data[0].poke_description);
+    
+         
+            this.sectionView_3_popup = res?.data
+          
+          // this.filterRankingData()
+    
+          this.sectionView_3_list_popup = this.sectionView_3_popup?._ranking_data?.filter(data => {
+            //
+            if (data.order === this.activeTabForSectionView_2) {
+              return data
+            }
+          })
+          //
+        } else {
+          this.sectionView_3_err = 'Please try after some time'
+        }
+
+
+  
+        // this.getUserBannerDataSectionView_3(null, this.queryParams)
+      
+      
+    
+  
+  }
 
 updatedPoke() {
   console.log(this.pokeAnimationData);
@@ -825,6 +888,7 @@ updatedPoke() {
 
   async getUserBannerDataSectionView_3(viewMore?: any, queryParams?: any) {
     // debugger
+    console.log(queryParams);
     
     
     
@@ -888,9 +952,7 @@ updatedPoke() {
   }
 
 
-  GetRankingPopupData(){
-    
-  }
+  
   filterRankingData() {
 
     this.sectionView_3._ranking_data = this.sectionView_3?._ranking_data?.filter((firstLevel) => {
@@ -1017,6 +1079,7 @@ else if(this.activeTabForSectionView_2 == 4){
 
 
     this.activeSubTabForSectionView_2 = 'My Store'
+ 
     this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
     this.sectionView_3_list = this.sectionView_3?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
     if (this.spectSearchStr) {
@@ -1357,13 +1420,16 @@ else if(this.activeTabForSectionView_2 == 4){
     modalRef.componentInstance.notoficationData = data;
   }
   getDataBasedOnUserID(data: any) {
+
     this.spectSearchStr = ''    
     this.role_id= data?.role_id.toString();
     console.log(this.role_id)
     this.Edit_image();
     if (this.role_id === '8' || this.role_id == '9' || this.role_id == '12') {
 
-
+     if(this.role_id == '9'){
+      localStorage.setItem('id_role_hos','9')
+     }
       this._router.navigate(['/top_dashboard'], {
         relativeTo: this._route,
         queryParams: {
@@ -1383,7 +1449,8 @@ else if(this.activeTabForSectionView_2 == 4){
     }
     else {
       this.pageNumberForSectionView_3 = 1
-      this.activeSubTabForSectionView_2 = 'My Store'
+      this.activeSubTabForSectionView_2 = 'Overall'
+      this.changeSubTabFilter('Overall')
       this._router.navigate([], {
         relativeTo: this._route,
         queryParams: {
@@ -1405,7 +1472,8 @@ else if(this.activeTabForSectionView_2 == 4){
 
     this.Edit_image()
 
-    this.activeSubTabForSectionView_2 = 'My Store'
+    this.activeSubTabForSectionView_2 = 'Overall'
+    this.changeSubTabFilter('Overall')
 
 
   }
@@ -1546,6 +1614,7 @@ else if(this.activeTabForSectionView_2 == 4){
       
       
     })
+   
 
     // this._router.navigate('/performance/page')
     // this._router.navigate(['/performance/page'], { queryParams: { key: value } })
@@ -1571,13 +1640,13 @@ else if(this.activeTabForSectionView_2 == 4){
 
   navigateToOtherRole(item){
     this.spectSearchStr=''
-    this.activeSubTabForSectionView_2 = 'My Store'    
+    this.activeSubTabForSectionView_2 = 'Overall'    
     
     this.userID= this.Util.encryptData(item?.userid);
     this.gameID= this.Util.encryptData(item?.id_coroebus_game);
     this.roleID= this.Util.encryptData(item?.id_role);
     this._router.navigateByUrl('/dashboard?userID='+this.userID +"&gameID="+ this.gameID +"&roleID="+this.roleID)
-    this.activeSubTabForSectionView_2='My Store'
+    this.activeSubTabForSectionView_2='Overall'
   }
 
   navigateToNewChallenge(){

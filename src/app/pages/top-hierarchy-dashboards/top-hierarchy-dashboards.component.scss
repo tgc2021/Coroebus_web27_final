@@ -20,7 +20,7 @@
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    padding: 10%;
+    padding: 5%;
 
     // justify-content: center;
     align-items: center;
@@ -29,7 +29,7 @@
         cursor: pointer;
         position: relative;
         width: 19vw;
-        height: 39vh;
+        height: 44vh;
         background: var(--lightColor);
         border: 3px solid var(--myvar);
         border-radius: 8px;
@@ -195,7 +195,7 @@
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    padding: 10% 10% 5% 10%;
+    padding: 5% 5% 5% 5%;
 
     // justify-content: center;
     align-items: center;
@@ -619,7 +619,7 @@
 .search_box {
     margin-top: 2vh;
     margin-left: 1vw;
-    width: 44vw;
+ width: 43.8vw;
     height: 7vh;
     background: #FFFFFF;
     border: 1px solid black;
@@ -633,7 +633,7 @@ input::placeholder {
 }
 
 .search_bar_img {
-    width: 4vw;
+     width: 4vw;
     height: 7vh;
     background: var(--myvar);
     color: #FFFFFF;
@@ -2329,14 +2329,15 @@ text-align: center;
   }
   
   // Poke CSS End
-
-  //   POP_up css
-.leaderBoard_tile{background: url('../../../assets/images/tileImage.png');
+//   POP_up css
+.leaderBoard_tile{
+    // background: url('../../../../assets/images/tileImage.png');
     background-size: 100% 100%;
     height:6vh;
     display: flex;
     align-items:center;
     justify-content: start;
+    
     font-weight: 500;
     color:#fff;
     font-family: 'Inter';
@@ -2358,7 +2359,7 @@ text-align: center;
     .mat-tab-label .mat-tab-label-content {
         font-size: 1.2em;
         font-weight: 600;
-        color:#898787;
+        color:black;
     }
     
       
@@ -2366,8 +2367,30 @@ text-align: center;
 }
 .leaderboard_container{
     height: 25vh;
-    overflow-x:hidden;
+    font-size: 0.7em;
     overflow-y: auto;
-  
+    overflow-x: hidden;
     
+ 
+
+   
+    
+}
+.userName_mobile{
+    white-space: nowrap; 
+    width: 18ch; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+@media screen and (min-width:270px) and (max-width:1024px){
+    
+    .userName_mobile{
+        white-space: nowrap; 
+        width: 12ch; 
+        overflow: hidden;
+        align-items: start;
+        font-size: 1.2em;
+        text-overflow: ellipsis; 
+    }
 }

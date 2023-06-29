@@ -9,9 +9,9 @@
         </div>
     </div>
     <ng-template #dashboardTpl>
-        <div class="row">
+        <div class="row d-flex align-items-start">
             <!-- Left Section -->
-            <div class="col-3 d-flex justify-content-center align-items-center mt-2">
+            <div class="col-3  mt-2">
                 <div class="profile_panel_container"
                     [style.background-image]="
                     sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
@@ -51,16 +51,23 @@
                             <div class="name_hos">
                                 {{sectionView_1._personal_data.user_department}}
                             </div>
-                            <div
+                            <div 
                                                 class="d-flex flex-column align-items-center justify-content-center mt-2">
-                                                <button class="btn btn-primary- text-white mt-1" style="height:5vh;width:6vw;display: flex;justify-content: center;align-items: center;border-radius:20px"
+                                                <button class="btn btn-primary- text-white mt-1" *ngIf="sectionView_1?._personal_data?.id_role!='9'" style="height:5vh;width:6vw;display: flex;justify-content: center;align-items: center;border-radius:20px"
                                                 [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                                 [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                                data-bs-toggle="modal" data-bs-target="#myTeamLeaderBoard"
+                                                data-bs-toggle="modal" data-bs-target="#myTeamLeaderBoard" (click)="GetRankingPopupData()"
                                                >
                                                 {{primary_rank}}
                                                 </button>
-                                                <span class="level-rank-name">Rank</span>
+                                                <button  *ngIf="sectionView_1?._personal_data?.id_role=='9'" class="btn btn-primary- text-white mt-1"  style="height:5vh;width:6vw;display: flex;justify-content: center;align-items: center;border-radius:20px"
+                                                [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
+                                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                                
+                                               >
+                                                {{primary_rank}}
+                                                </button>
+                                                <span class="level-rank-name mt-2 mb-2" >Rank</span>
                                             </div>
     
                         </div>
@@ -71,8 +78,8 @@
                         <mat-card class="point_one" (click)="getGraphDataById()"
                                         >
                                         <div class="row" style="width: 22vw;">
-                                            <div class="col-7 point_background">
-                                                <div class="point_one_label"> Overall Growth Index</div>
+                                            <div class="col-7 point_background" [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}">
+                                                <div class="point_one_label" style="color:#fff"> Overall Growth Index</div>
                                             </div>
     
                                             <div class="col-5 point_score_div">
@@ -177,7 +184,7 @@
                 </div>
             </div>
             <!-- Dashboard Section -->
-            <div class="col-6 mt-2" >
+            <div class="col-6 mt-2 justify-content-between align-items-start" >
                 <div class="dashboard_section">
                     <div class="badge_container" 
                 [style.background-image]="
@@ -212,7 +219,7 @@
                 
                 <div class="banner_container"  [style.background-image]="
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-                <div style="background-image:url({{sectionView_1?._personal_data?.background_image_profile_web}});width: 33vw;height: 20vh;background-size: 100% 100%;border-radius:10px;display:flex;    justify-content: center;
+                <div style="background-image:url('{{sectionView_1?._personal_data?.background_image_profile_web}}');width: 33vw;height: 20vh;background-size: 100% 100%;border-radius:10px;display:flex;    justify-content: center;
                 align-items: center;gap:12vw">
                     <div *ngIf="sectionView_1._personal_data.id_role!=9;then rewardPoints"></div>
                     <ng-template #rewardPoints>
@@ -265,8 +272,8 @@
                     
                     </div>
                 </div>
-                <div class="row">
-                    <input type="text" class="search_box" placeholder="Search people here.." [(ngModel)]="spectSearchStr" (keyup)="checkEmpty()">
+                <div class="row " style="display:flex;flex-wrap: nowrap;">
+                    <input  type="text" class="search_box" placeholder="Search people here.." [(ngModel)]="spectSearchStr" (keyup)="checkEmpty()">
                     <i class="search_bar_img fa fa-search d-flex justify-content-center align-items-center"aria-hidden="true" (click)="spectSearch()"></i>
                 </div>
     
@@ -565,16 +572,16 @@
                         </div>
                     </div>
                     <div class="lower_section d-flex flex-column justify-content-center align-items-center">
-                        <button class="btn btn-primary- text-white mt-1" style="height:5vh;width:6vw;display: flex;justify-content: center;align-items: center;border-radius:20px"
+                        <button class="btn btn-primary- text-white mt-1" style="height:5vh;width:auto;display: flex;justify-content: center;align-items: center;border-radius:20px"
                         [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                         [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                         (click)="getDataBasedOnUserID(item)">
                         <!-- {{item._data}} -->
                         Level {{item?.level}}
                         </button>
-                        <div class="text-center mt-1">
+                        <!-- <div class="text-center mt-1">
                             <span style="font-weight:400;font-family:'Inter';font-size: 2vh;line-height: 2.4vh;">Rank</span>
-                        </div>
+                        </div> -->
                     </div>
     
                 </div>
@@ -982,6 +989,26 @@
                     <div class="profile_team_name_mobile d-flex justify-content-center" style="color:#ffff">
                         {{sectionView_1._personal_data.organization_name.slice(0,10)}}..
                     </div>
+                    <div 
+                                                class="d-flex flex-column align-items-center justify-content-center mt-2">
+                                                <button *ngIf="sectionView_1?._personal_data?.id_role!='9'" class="btn btn-primary- text-white mt-1"  style="height:5vh;width:20vw;display: flex;justify-content: center;align-items: center;border-radius:20px"
+                                                [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
+                                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                                data-bs-toggle="modal" data-bs-target="#myTeamLeaderBoard" (click)="GetRankingPopupData()"
+                                               >
+                                                {{primary_rank}}
+                                                </button>
+                                                <button *ngIf="sectionView_1?._personal_data?.id_role=='9'" class="btn btn-primary- text-white mt-1"  style="height:5vh;width:20vw;display: flex;justify-content: center;align-items: center;border-radius:20px"
+                                                [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
+                                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                                
+                                               >
+                                                {{primary_rank}}
+                                                </button>
+                                                <span class="level-rank-name">Rank</span>
+                                            </div>
+    
+                    
                 </div>
             </div>
             <div class="col-9">
@@ -1068,8 +1095,8 @@
                             <div class="row"
                                 style="width: 95vw;display: flex; justify-content: center; align-items: center;">
                                 <div class="col-7 point_background_mobile"
-                                    [style.background]="sectionView_1.theme_details[0].light_color">
-                                    <div class="point_one_label_mobile">Overall Growth Index</div>
+                                    [style.background]="sectionView_1.theme_details[0].dark_color">
+                                    <div class="point_one_label_mobile" style="color:#fff">Overall Growth Index</div>
                                 </div>
     
                                 <div class="col-5 point_score_div">
@@ -1349,7 +1376,7 @@
                         My {{leaderboard_data_buttons[0].label}}
                     </button>
 
-                    <button class="button_series_mobile col" (click)="overallLeaderboard()" [class.activeTab]="this.subActiveClassOverall">Overall</button>
+                    <button class="button_series_mobile col" (click)="overallLeaderboard()" [class.activeTab]="this.subActiveClassOverall">Overall {{leaderboard_data_buttons[0].label}}</button>
                 </div>
                 
             </mat-card>
@@ -1599,112 +1626,116 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="d-flex justify-content-end p-2">
-          <button type="button" class="btn-close" style="border:none;width:3vw" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="width:10%;border:none"></button>
         </div>
         <div class="modal-body">
             <mat-tab-group >
 
                
                 <mat-tab   label="My Rank" >
-                    <div class="row rank_label">
-                            <div class="col-2">Rank</div>
-                            <div class="col-1"></div>
-                            <div class="col-4">Name</div>
-                            <div class="col-2"></div>
-                            <div class="col-2">Points</div>
-                            <div class="col-1"></div>
+                    <div class="row rank_label mt-2">
+                        <div class="col-3">Rank</div>
+                        
+                        <div class="col-4">Name</div>
+                        
+                        <div class="col ms-4">Points</div>
                     </div>
-                    <div class="row leaderBoard_tile mt-2">
-                        <div class="col-1">&nbsp;1</div>
-                        <div class="col-2" >
-                            <div class="col-2" style="height:5vh;width:5vh">
-                                <img src="assets/images/USR-93584-7XSJUE.png" height="100%" width="100%" alt="" style="border-radius:50%">
-                            </div>
-                            
-                        </div>
-                        <div class="col-4">Shyam Sundar</div>
-                        <div class="col-2" >
-                            <div style="height:5vh;width:5vh">
-                                <img src="assets/images/BL-16811066219361.png" alt=""  data-holder-rendered="true" height="100%" width="100%">
-                            </div>
-                        </div>
-                        <div class="col-1">40</div>
-                        <div class="col d-flex justify-content-end">
+                    <div *ngFor="let item of sectionView_3_list_popup?.[0]?._data">
+                        <div class="row leaderBoard_tile"  style="font-size:0.7em"   *ngIf="item.userid==this.sectionView_1._personal_data.USERID" style="background:url('{{item.ranking_image_web}}')"   >
                            
-                            <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt="" height="60%" width="60%">
-                        </div>
-                    </div>
-                    <div class="leaderboard_container mt-2">
-                        <div class="row leaderBoard_tile mt-2"  >
-                            <div class="col-1">&nbsp;1</div>
+                            <div class="col-1">&nbsp;&nbsp;&nbsp;{{item.rankingtable_number}}</div>
+    
                             <div class="col-2" >
                                 <div class="col-2" style="height:5vh;width:5vh">
-                                    <img src="assets/images/USR-93584-7XSJUE.png" height="100%" width="100%" alt="" style="border-radius:50%">
+                                    <img src="{{item.rankingtable_logo}}" height="100%" width="100%" alt="" style="border-radius:50%">
                                 </div>
                                 
                             </div>
-                            <div class="col-4">Shyam Sundar</div>
+                            <div class="col-4 userName_mobile" title="{{item.rankingtable_name}}" >{{item.rankingtable_name}}</div>
                             <div class="col-2">
                                 <div style="height:5vh;width:5vh">
-                                    <img src="assets/images/BL-16811066219361.png" alt=""  data-holder-rendered="true" height="100%" width="100%">
+                                    <img src="{{item.ranking_badge}}" alt=""  data-holder-rendered="true" height="100%" width="100%">
                                 </div>
                             </div>
-                            <div class="col-1">40</div>
-                            <div class="col d-flex justify-content-end">
+                            <div class="col-1">{{item?.rankingtable_weightage}}</div>
+                            <div class="col d-flex justify-content-end pe-3">
                                
-                                <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt="" height="60%" width="60%">
+                                <div style="height:5.5vh;" *ngIf="item.rankingtable_arrow=='green'">
+    
+                                    <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                        height="100%">
+                                </div>
+    
+                                <div *ngIf="item.rankingtable_arrow=='red'" style="height:5.5vh;">
+    
+                                    <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                        height="100%">
+    
+                                </div>
+                                <div *ngIf="item.rankingtable_arrow=='yellow'"
+                                    style="height:5.5vh;width: 5.5vh;display:flex;justify-content:center;align-items: center;">
+    
+                                    <div
+                                        style="height: 2.8vh;width:2.8vh;border-radius:100%;background-color:orange ;">
+                                    </div>
+                                    <!-- <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%"> -->
+    
+                                </div>
                             </div>
                         </div>
-                        <div class="row leaderBoard_tile mt-2"  >
-                            <div class="col-1">&nbsp;1</div>
-                            <div class="col-2" >
-                                <div class="col-2" style="height:5vh;width:5vh">
-                                    <img src="assets/images/USR-93584-7XSJUE.png" height="100%" width="100%" alt="" style="border-radius:50%">
-                                </div>
-                                
-                            </div>
-                            <div class="col-4">Shyam Sundar</div>
-                            <div class="col-2">
-                                <div style="height:5vh;width:5vh">
-                                    <img src="assets/images/BL-16811066219361.png" alt=""  data-holder-rendered="true" height="100%" width="100%">
-                                </div>
-                            </div>
-                            <div class="col-1">40</div>
-                            <div class="col d-flex justify-content-end">
+                       
+                </div>
 
-                                <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt="" height="60%" width="60%">
-                            </div>
-                        </div>
-                        <div class="row leaderBoard_tile mt-2"  >
-                            <div class="col-1">&nbsp;1</div>
+
+                    <div class="leaderboard_container" >
+                        <div   *ngFor="let item of sectionView_3_list_popup?.[0]?._data" >
+                        <div class="row leaderBoard_tile mt-2 "  *ngIf="item.userid!=this.sectionView_1._personal_data.USERID" style="background:url('{{item.ranking_image_web}}')"  >
+                           
+                            <div class="col-1">&nbsp;&nbsp;&nbsp;{{item.rankingtable_number}}</div>
+    
                             <div class="col-2" >
                                 <div class="col-2" style="height:5vh;width:5vh">
-                                    <img src="assets/images/USR-93584-7XSJUE.png" height="100%" width="100%" alt="" style="border-radius:50%">
+                                    <img src="{{item.rankingtable_logo}}" height="100%" width="100%" alt="" style="border-radius:50%">
                                 </div>
                                 
                             </div>
-                            <div class="col-4">Shyam Sundar</div>
+                            <div class="col-4 userName_mobile" title="{{item.rankingtable_name}}" >{{item.rankingtable_name}}</div>
                             <div class="col-2">
                                 <div style="height:5vh;width:5vh">
-                                    <img src="assets/images/BL-16811066219361.png" alt=""  data-holder-rendered="true" height="100%" width="100%">
+                                    <img src="{{item.ranking_badge}}" alt=""  data-holder-rendered="true" height="100%" width="100%">
                                 </div>
                             </div>
-                            <div class="col-1">40</div>
+                            <div class="col-1">{{item?.rankingtable_weightage}}</div>
                             <div class="col d-flex justify-content-end">
                                
-                                <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt="" height="60%" width="60%">
+                                <div style="height:5.5vh;" *ngIf="item.rankingtable_arrow=='green'">
+    
+                                    <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                        height="100%">
+                                </div>
+    
+                                <div *ngIf="item.rankingtable_arrow=='red'" style="height:5.5vh;">
+    
+                                    <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                        height="100%">
+    
+                                </div>
+                                <div *ngIf="item.rankingtable_arrow=='yellow'"
+                                    style="height:5.5vh;width: 5.5vh;display:flex;justify-content:center;align-items: center;">
+    
+                                    <div
+                                        style="height: 2.8vh;width:2.8vh;border-radius:100%;background-color:orange ;">
+                                    </div>
+                                    <!-- <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%"> -->
+    
+                                </div>
                             </div>
                         </div>
                     </div>
+                    </div>
                     
-                    
-                    
-                  
-                
                 </mat-tab>
-              
-      
-                <mat-tab label="Overall my rank">
+                <!-- <mat-tab label="Overall my rank">
                     <div class="row rank_label">
                         <div class="col-2">Rank</div>
                         <div class="col-1"></div>
@@ -1713,76 +1744,99 @@
                         <div class="col-2">Points</div>
                         <div class="col-1"></div>
                 </div>
-                <div class="row leaderBoard_tile mt-2"  >
-                    <div class="col-1">&nbsp;1</div>
-                    <div class="col-2" >
-                        <div class="col-2" style="height:5vh;width:5vh">
-                            <img src="assets/images/USR-93584-7XSJUE.png" height="100%" width="100%" alt="" style="border-radius:50%">
-                        </div>
-                        
-                    </div>
-                    <div class="col-4">Shyam Sundar</div>
-                    <div class="col-2">
-                        <div style="height:5vh;width:5vh">
-                            <img src="assets/images/BL-16811066219361.png" alt=""  data-holder-rendered="true" height="100%" width="100%">
-                        </div>
-                    </div>
-                    <div class="col-1">40</div>
-                    <div class="col d-flex justify-content-end">
+                <div *ngFor="let item of sectionView_3_list?.[0]?._Overall">
+                    <div class="row leaderBoard_tile mt-2 "  *ngIf="item.userid==this.sectionView_1._personal_data.USERID" style="background:url({{item.ranking_image_web}})"  >
                        
-                        <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt="" height="60%" width="60%">
-                    </div>
-                </div>
-                <div class="leaderboard_container">
-                    <div class="row leaderBoard_tile mt-2"  >
-                        <div class="col-1">&nbsp;1</div>
+                        <div class="col-1">&nbsp;{{item.rankingtable_number}}</div>
+
                         <div class="col-2" >
                             <div class="col-2" style="height:5vh;width:5vh">
-                                <img src="assets/images/USR-93584-7XSJUE.png" height="100%" width="100%" alt="" style="border-radius:50%">
+                                <img src="{{item.rankingtable_logo}}" height="100%" width="100%" alt="" style="border-radius:50%">
                             </div>
                             
                         </div>
-                        <div class="col-4">Shyam Sundar</div>
+                        <div class="col-4">{{item.rankingtable_name}}</div>
                         <div class="col-2">
                             <div style="height:5vh;width:5vh">
-                                <img src="assets/images/BL-16811066219361.png" alt=""  data-holder-rendered="true" height="100%" width="100%">
+                                <img src="{{item.ranking_badge}}" alt=""  data-holder-rendered="true" height="100%" width="100%">
                             </div>
                         </div>
-                        <div class="col-1">40</div>
+                        <div class="col-1">{{item?.rankingtable_weightage}}</div>
                         <div class="col d-flex justify-content-end">
                            
-                            <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt="" height="60%" width="60%">
+                            <div style="height:5.5vh;" *ngIf="item.rankingtable_arrow=='green'">
+
+                                <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                    height="100%">
+                            </div>
+
+                            <div *ngIf="item.rankingtable_arrow=='red'" style="height:5.5vh;">
+
+                                <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                    height="100%">
+
+                            </div>
+                            <div *ngIf="item.rankingtable_arrow=='yellow'"
+                                style="height:5.5vh;width: 5.5vh;display:flex;justify-content:center;align-items: center;">
+
+                                <div
+                                    style="height: 2.8vh;width:2.8vh;border-radius:100%;background-color:orange ;">
+                                </div>
+                                <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
+
+                            </div>
                         </div>
                     </div>
-                    <div class="row leaderBoard_tile mt-2"  >
-                        <div class="col-1">&nbsp;1</div>
+                   
+            </div>
+                <div class="leaderboard_container" >
+                    <div *ngFor="let item of sectionView_3_list?.[0]?._Overall">
+                    <div class="row leaderBoard_tile mt-2 " *ngIf="item.userid!=this.sectionView_1._personal_data.USERID"  style="background:url({{item.ranking_image_web}})"  >
+                       
+                        <div class="col-1">&nbsp;{{item.rankingtable_number}}</div>
+
                         <div class="col-2" >
                             <div class="col-2" style="height:5vh;width:5vh">
-                                <img src="assets/images/USR-93584-7XSJUE.png" height="100%" width="100%" alt="" style="border-radius:50%">
+                                <img src="{{item.rankingtable_logo}}" height="100%" width="100%" alt="" style="border-radius:50%">
                             </div>
                             
                         </div>
-                        <div class="col-4">Shyam Sundar</div>
+                        <div class="col-4">{{item.rankingtable_name}}</div>
                         <div class="col-2">
                             <div style="height:5vh;width:5vh">
-                                <img src="assets/images/BL-16811066219361.png" alt=""  data-holder-rendered="true" height="100%" width="100%">
+                                <img src="{{item.ranking_badge}}" alt=""  data-holder-rendered="true" height="100%" width="100%">
                             </div>
                         </div>
-                        <div class="col-1">40</div>
+                        <div class="col-1">{{item?.rankingtable_weightage}}</div>
                         <div class="col d-flex justify-content-end">
                            
-                            <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt="" height="60%" width="60%">
+                            <div style="height:5.5vh;" *ngIf="item.rankingtable_arrow=='green'">
+
+                                <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                    height="100%">
+                            </div>
+
+                            <div *ngIf="item.rankingtable_arrow=='red' " style="height:5.5vh;">
+
+                                <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                    height="100%">
+
+                            </div>
+
+                            <div *ngIf="item.rankingtable_arrow=='yellow'"
+                                style="height:5.5vh;width: 5.5vh;display:flex;justify-content:center;align-items: center;">
+
+                                <div
+                                    style="height: 2.8vh;width:2.8vh;border-radius:100%;background-color:orange ;">
+                                </div>
+                               
+
+                            </div>
                         </div>
                     </div>
                 </div>
-               
-                
-                
-                  
-      
-      
-      
-                </mat-tab>
+                </div>
+                </mat-tab> -->
       
               </mat-tab-group>
            

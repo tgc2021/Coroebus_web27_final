@@ -565,7 +565,7 @@
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogDaily modal-dialog-centered">
                 <div class="modal-content ">
-                    <div class="modal-body">
+                    <div class="modal-body" *ngIf="seasonalThemeDaily1.length!=0">
                         <div class="d-flex justify-content-end">
                             <button type="button" class="button-close" data-bs-dismiss="modal"
                                 aria-label="Close">X</button>
@@ -651,6 +651,7 @@
                                 <div *ngIf="seasonalThemeDailyBadges1[2].seasonal_score_percentage<98 then valuepercentage else maxpercentage"></div>
                               <ng-template #valuepercentage>
                                 <div class="animation-bar"
+                                style="max-width:100%" 
                                 [style.margin-left.%]="((seasonalThemeDailyBadges1[2].seasonal_score_percentage))">
                                 <div class="d-flex flex-column">
                                     <div class="border-left"></div>
@@ -685,10 +686,14 @@
                         </ng-template>
 
                     </div>
+                    <div *ngIf="seasonalThemeDaily1.length==0">
+                        <div data-bs-dismiss="modal" style="background:url(../../../../assets/images/interactive-dashboard/daily.png);background-size:100% 100%;height:70vh"></div>
+                    </div>
 
                 </div>
             </div>
         </div>
+        
     </div>
 </ng-template>
 
@@ -700,7 +705,7 @@
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogWeekly modal-dialog-centered">
                 <div class="modal-content modalContentWeekly">
-                    <div class="modal-body" style="min-height: 51vh;">
+                    <div class="modal-body" style="min-height: 51vh;" *ngIf="seasonalThemeWeekly2.length!=0">
                         <div class="d-flex justify-content-end">
                             <button type="button" class="button-close" data-bs-dismiss="modal"
                                 aria-label="Close">X</button>
@@ -788,6 +793,7 @@
                                 <div class="animation-bar-1" style="width: 100%;">
                                     <span class="d-flex justify-content-center"
                                         [style.background-size.%]="100"
+                                        style="max-width:100%" 
                                         [style.width.%]="((seasonalThemeWeeklyBadges2[2].seasonal_score_percentage))">
 
                                     </span>
@@ -831,6 +837,11 @@
                         </ng-template>
 
                     </div>
+                    <div *ngIf="seasonalThemeWeekly2.length==0">
+                        <div data-bs-dismiss="modal" style="background:url(../../../../assets/images/interactive-dashboard/weekly.png);background-size:100% 100%;height:70vh"></div>
+                    </div>
+                    
+
                 </div>
             </div>
         </div>
@@ -846,7 +857,7 @@
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogMonthly modal-dialog-centered ">
                 <div class="modal-content modalContentMonthly">
-                    <div class="modal-body" style="min-height: 30vh;">
+                    <div class="modal-body" style="min-height: 30vh;" *ngIf="seasonalThemeMonthl3[0].length!=0">
                         <div class="d-flex justify-content-end" style="color:#0000">
                             <button type="button" class="button-close" data-bs-dismiss="modal"
                                 aria-label="Close">X</button>
@@ -933,6 +944,7 @@
                                 <div class="animation-bar-1" style="width: 100%;">
                                     <span class="d-flex justify-content-center"
                                         [style.background-size.%]="100"
+                                        style="max-width:100%" 
                                         [style.width.%]="((seasonalThemeMonthlyBadges3[2].seasonal_score_percentage))">
 
                                     </span>
@@ -1034,18 +1046,13 @@
                             </div> -->
                         </ng-template>
 
-                        <ng-template #month>
-                            <div class="row d-flex justify-content-center align-items-start"
-                                *ngIf="seasonalThemeMonthl3.length==0">
-                                <div class="col text-center">
-                                    <span style="color:#FFFFFF">Hey Welcome! The Themes will be configured soon. Stay
-                                        tuned
-                                    </span>
-                                </div>
-                            </div>
-                        </ng-template>
+                       
 
 
+                    </div>
+
+                    <div *ngIf="seasonalThemeMonthl3[0].length==0">
+                        <div data-bs-dismiss="modal" style="background:url(assets/images/interactive-dashboard/monthly.png);background-size:100% 100%;height:70vh"></div>
                     </div>
 
                 </div>

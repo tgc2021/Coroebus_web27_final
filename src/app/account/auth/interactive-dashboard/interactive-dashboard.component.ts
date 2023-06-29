@@ -657,7 +657,7 @@ ngAfterViewInit():void{
         window.open(
  
           
-            'http://coroebusbeta.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
+            'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
           '_self'
     
         )
@@ -675,7 +675,7 @@ ngAfterViewInit():void{
   
         window.open(
      
-        'http://coroebusbeta.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
+        'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
 
         )
       }
@@ -703,7 +703,7 @@ ngAfterViewInit():void{
 
    
     window.open(
-          'https://coroebusbeta.in/Learning_academy/#/LearningAcademy/library?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
+          'https://coroebus.in/Learning_academy/#/LearningAcademy/library?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
     "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'
 
       
@@ -717,7 +717,7 @@ ngAfterViewInit():void{
     const isAttemted='8'
     const isCorrect='8'
     window.open(
-      'https://coroebusbeta.in/Learning_academy/#/LearningAcademy/library?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
+      'https://coroebus.in/Learning_academy/#/LearningAcademy/library?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
 "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'
 
   

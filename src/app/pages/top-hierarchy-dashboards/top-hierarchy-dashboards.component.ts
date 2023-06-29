@@ -25,6 +25,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   counter: any = 0
   panelOpenState = false;
   isactive: boolean 
+  id_role_check:any
   combineLatest: Subscription
   userSelectionData: any
   _routeSub: Subscription
@@ -57,8 +58,9 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   game_ID_sm:any
   game_ID_rm:any
   leaderboard_data:any
+  leaderboard_data_popup:any
   leaderboard_data_buttons:any
-  i:any=0
+  i:any=1
   spectSearchStr:any=''
   spectSearchStrTrigger: boolean = false
   activeTabOrderNumberForSectionView_2: any
@@ -97,12 +99,14 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   hierarchyPopupList: any
   firstUserData: any;
   nodatasearch:any
-  subActiveClass=true;
+  subActiveClass:boolean;
   mylabel:any;
-  subActiveClassOverall: boolean;
+  subActiveClassOverall: boolean=true;
   id_role: any;
   sec_que: any=[];
   primary_rank: any;
+  sectionView_3_popup: any;
+  sectionView_3_list_popup: any;
   
   constructor(private readonly store: Store, public _route: ActivatedRoute,public snackBar: MatSnackBar,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
@@ -130,7 +134,9 @@ export class TopHierarchyDashboardsComponent implements OnInit {
 
    
     this.activeClass=0
-    this.subActiveClass=true;
+    // this.subActiveClass=true;
+    this.subActiveClassOverall=true;
+    
     
     // this.isactive = true
 
@@ -184,6 +190,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
           this.getUserBannerDataSectionView_3()
           // this.getUserBannerDataSectionView_2()
           this.getUserBannerDataSectionView_3()
+          
           // this.notificationList()
           // this.addIns()
 
@@ -198,6 +205,8 @@ export class TopHierarchyDashboardsComponent implements OnInit {
 
     this.medium_color=localStorage.getItem('medium_color')
     this.element.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
+    
+
 
   }
 
@@ -228,6 +237,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
       })
 
       this.sectionView_1 = res?.data;
+      localStorage.setItem('id_role_hos',this.sectionView_1._personal_data.id_role)
       this.primary_rank =this.sectionView_1._primary.primary_rank;
       
       localStorage.setItem('bg_image',this.sectionView_1?.theme_details?.[0]?.point_dist_background)
@@ -335,8 +345,9 @@ export class TopHierarchyDashboardsComponent implements OnInit {
     console.log(this.pokeslidedata);
   }
   async getUserBannerDataSectionView_3(viewMore?: any, queryParams?: any) {
-    
-    
+    this.id_role_check=localStorage.getItem('id_role_hos')
+    console.log( this.id_role_check)
+
     
     let err: any, res: any;
     let body: any;
@@ -360,23 +371,59 @@ export class TopHierarchyDashboardsComponent implements OnInit {
           }
 
         });
-        this.leaderboard_data=this.sectionView_3?._ranking_data[0]._data;
-        this.lengthLeaderBoardData=this.leaderboard_data.length;
-        
-        this.leaderboard_data_buttons=this.sectionView_3?._ranking_data;
-        this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0].order;
+        console.log('this.id_role_check');
+
+        if(this.id_role_check!=9){
+          console.log('this.id_role_check');
+          
+          this.leaderboard_data=this.sectionView_3?._ranking_data[0]._Overall;
+          this.leaderboard_data_popup=this.sectionView_3?._ranking_data[0]._Overall
+          this.lengthLeaderBoardData=this.leaderboard_data.length;
+          
+          this.leaderboard_data_buttons=this.sectionView_3?._ranking_data;
+          
+          this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0].order;
+        }
+        else{
+          console.log('this.id_role_check');
+
+          this.leaderboard_data=this.sectionView_3?._ranking_data[0]._data;
+          this.leaderboard_data_popup=this.sectionView_3?._ranking_data[0]._data
+          this.lengthLeaderBoardData=this.leaderboard_data.length;
+          
+          this.leaderboard_data_buttons=this.sectionView_3?._ranking_data;
+          
+          this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0].order;
+        }
+      
 
 
       } else {
-        
 
-        this.sectionView_3 = res?.data
-        console.log(this.sectionView_3)
-        this.leaderboard_data=this.sectionView_3?._ranking_data[0]._data;
-        console.log(this.leaderboard_data);
-        this.leaderboard_data_buttons=this.sectionView_3?._ranking_data
-        
-        this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0].order
+        if(this.id_role_check!=9){
+
+          this.sectionView_3 = res?.data
+          console.log(this.sectionView_3)
+          this.leaderboard_data=this.sectionView_3?._ranking_data[0]._Overall;
+          this.leaderboard_data_popup=this.sectionView_3?._ranking_data[0]._Overall
+  
+          console.log(this.leaderboard_data);
+          this.leaderboard_data_buttons=this.sectionView_3?._ranking_data
+          
+          this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0].order
+        }
+     else{
+
+      this.sectionView_3 = res?.data
+      console.log(this.sectionView_3)
+      this.leaderboard_data=this.sectionView_3?._ranking_data[0]._data;
+      this.leaderboard_data_popup=this.sectionView_3?._ranking_data[0]._data
+
+      console.log(this.leaderboard_data);
+      this.leaderboard_data_buttons=this.sectionView_3?._ranking_data
+      
+      this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0].order
+     }
 
       }
       // this.filterRankingData()
@@ -698,6 +745,8 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
   myLeaderboard(event:any=0){
     console.log( this.activeTabOrderNumberForSectionView_2-1);
     this.leaderboard_data=this.sectionView_3._ranking_data[ this.activeTabOrderNumberForSectionView_2-1]._data;
+    this.leaderboard_data_popup=this.sectionView_3._ranking_data[ this.activeTabOrderNumberForSectionView_2-1]._data;
+
     console.log(this.leaderboard_data);
     this.subActiveClass=true;
     this.subActiveClassOverall=false;
@@ -880,6 +929,7 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
 
   getDataBasedOnUserID(data: any) {
     // 
+    localStorage.setItem('id_role_hos','9')
 this.spectSearchStr=''
     
     if(data.role_id==8||data.role_id==9){
@@ -981,7 +1031,46 @@ this.spectSearchStr=''
     }
     
   }
+  async GetRankingPopupData(){
+   
+    this.queryParams = { userID:  this.sectionView_1.is_land_logos[0]._userid, gameID: this.sectionView_1.is_land_logos[0].game_id, roleID:  this.sectionView_1.is_land_logos[0].role_id}
 
+    let err: any, res: any;
+    let body: any;
+    
+    
+    body = {
+      "_userid": this.sectionView_1.is_land_logos[0]._userid,
+
+      "_game": this.sectionView_1.is_land_logos[0].game_id, "_section_view": "3", "page_number": this.pageNumberForSectionView_3
+    };
+    localStorage.setItem('body_userid', body._userid);
+    localStorage.setItem('body_game', body._game);
+
+    [err, res] = await HttpProtocols.to(DashboardModel.getRankingAndOtherDataSectionView_3(body))
+    if (!err && res?.status === 'success' && res?.statuscode === 200) {
+    
+
+     
+        this.sectionView_3_popup = res?.data;
+        console.log(this.sectionView_3_popup)
+      
+      // this.filterRankingData()
+
+      this.sectionView_3_list_popup = this.sectionView_3_popup?._ranking_data
+      //
+    } else {
+      this.sectionView_3_err = 'Please try after some time'
+    }
+
+
+
+    // this.getUserBannerDataSectionView_3(null, this.queryParams)
+  
+  
+
+
+}
   getDataBasedOnUserIDVIAhierarchyPopupList(data: any, modal: any) {
     modal.dismiss('Cross click')
     let obj = {

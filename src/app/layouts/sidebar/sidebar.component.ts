@@ -527,17 +527,17 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
 //   this.menuItems=MENU
 
 // }
-if(this.id_role=='13'){
-  this.menuItems=MENU_HOS
+// if(this.id_role=='13'){
+//   this.menuItems=MENU_HOS
 
-}
-else if(this.id_role=='9'){
-  this.menuItems=MENU
+// }
+// else if(this.id_role=='9'){
+//   this.menuItems=MENU
 
-}
-else{
-  this.menuItems = MENU;
-}
+// }
+// else{
+//   this.menuItems = MENU;
+// }
    
     // this.menuItems=MENU_SPECTATOR
    

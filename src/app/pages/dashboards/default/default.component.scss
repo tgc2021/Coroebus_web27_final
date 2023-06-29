@@ -511,6 +511,12 @@ mat-accordion{
     ::-webkit-scrollbar{
         display: none;
     }
+    .Points{
+        padding-left: 0.50rem !important;
+    }
+    .popup{
+        margin: 0px;
+    }
    
 }
 
@@ -567,7 +573,7 @@ mat-accordion{
 }
 .mobile-avatar-upload .mobile-avatar-edit
 {position: absolute;
-    left:80px;
+    left:60px;
     z-index: 1;
     top: 1%;
 }
@@ -589,10 +595,12 @@ mat-accordion{
     background-repeat: no-repeat;
     background-position: center;
 }
-
+.Points{
+    padding: 0px;
+}
 .mobile-avatar-upload .mobile-avatar-preview {
-    width: 87px;
-    height: 87px;
+    width: 65px;
+    height: 65px;
     position: relative;
     border-radius: 100%;
     margin-bottom: 5%;
@@ -1814,7 +1822,7 @@ color: #ffff;
 }
 
 .profile-section{
-    height: 37.5vh;
+    height: 39.5vh;
     width: 19vw !important;
     border-radius: 8px;    
 }
@@ -1823,7 +1831,7 @@ height: 13vh;
 
 }
 .box2{
-height: 24vh;
+height: 26vh;
 border-radius: 8px;
 
 // border-top: 4px solid #ffffff;
@@ -2352,12 +2360,14 @@ text-align: center;
   // Poke CSS End
 
 //   POP_up css
-.leaderBoard_tile{background: url('../../../../assets/images/tileImage.png');
+.leaderBoard_tile{
+    // background: url('../../../../assets/images/tileImage.png');
     background-size: 100% 100%;
     height:6vh;
     display: flex;
     align-items:center;
     justify-content: start;
+    
     font-weight: 500;
     color:#fff;
     font-family: 'Inter';
@@ -2379,7 +2389,7 @@ text-align: center;
     .mat-tab-label .mat-tab-label-content {
         font-size: 1.2em;
         font-weight: 600;
-        color:#898787;
+        color:black !important;
     }
     
       
@@ -2387,8 +2397,43 @@ text-align: center;
 }
 .leaderboard_container{
     height: 25vh;
-    overflow-x:hidden;
+
+    font-size: 0.7em;
     overflow-y: auto;
-  
+    overflow-x: hidden;
+    
+ 
+
+   
     
 }
+.userName_mobile{
+    white-space: nowrap; 
+    width: 15ch; 
+    text-align: start;
+    overflow: hidden;
+    align-items: center;
+    font-size: 1.2em;
+    text-overflow: ellipsis; 
+}
+.points_header{
+    margin-left: 3vw;
+}
+
+@media screen and (min-width:270px) and (max-width:1024px){
+    
+    .userName_mobile{
+        // white-space: nowrap; 
+        width: 8ch; 
+        overflow: hidden;
+
+        text-align: start;
+        align-items: center;
+        font-size: 1.2em;
+        text-overflow: ellipsis; 
+    }
+    .points_header{
+        margin-left: 3vw;
+    }
+}
+
