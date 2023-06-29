@@ -90,18 +90,24 @@ export class PlayZoneComponent implements OnInit {
 
   ngOnInit(): void {
 
+    // if (!localStorage.getItem('foo')) { 
+    //   localStorage.setItem('foo', 'no reload') 
+    //   location.reload() 
+    // } else {
+    //   localStorage.removeItem('foo') 
+    // }
 
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
     ).subscribe(data => {
       this.userObj = data?.user
-      console.log(this.userObj);
+      
 
       this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
-      console.log(this.mergeObj);
+      
 
       this.id_role=this.mergeObj.id_role;
-      console.log(this.id_role);
+      
 
       
       this.playZone();
@@ -112,7 +118,7 @@ export class PlayZoneComponent implements OnInit {
 
     this.dark_color=localStorage.getItem('topbar_color')
     this.element.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
-console.log(this.dark_color);
+
 
     this.medium_color=localStorage.getItem('medium_color')
     this.element.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
@@ -124,22 +130,13 @@ console.log(this.dark_color);
   }
 
   playZone(){
-    console.log(this.mergeObj)
+    
     let body = {
       _userid: this.mergeObj.USERID,
       _game: this.mergeObj.id_coroebus_game,
     }
-
-
-    console.log(body);
-   
     this.http.playZone(body).subscribe((res:any) => {
-    console.log(res);
-
-
     this.spotEngagementData=res.data._spot_engagement_data;
-    
-    console.log(this.spotEngagementData);
     this.filterByCategory=res.data._spot_engagement_data;
     });
   }
@@ -150,22 +147,22 @@ console.log(this.dark_color);
     }
 
     this.http.playZonePassbook(body).subscribe((res:any)=>{
-      console.log(res);
+      
       this.rewardPoints=res.data._reward_points;
-      console.log(this.rewardPoints);
+      
       this.spotEngagementPassbook=res.data._spot_passbook_data;
       this.Passbook=res.data._spot_passbook_data;
-      console.log(this.spotEngagementPassbook);
+      
   
     })
 
   }
   open(content,data) {
-    console.log(data);
+    // 
     if(data.id_engagement_game==='1'){
       console.log(data)
       // this.dartGameUrl=`http://127.0.0.1:5501/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
-      console.log(this.dartGameUrl);
+      // console.log(this.dartGameUrl);
        this.dartGameUrl=`https://coroebus.in/dart_game/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`;
       // this.dartGameUrl=`http://127.0.0.1:5501/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`;
       this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.dartGameUrl);
@@ -184,12 +181,11 @@ console.log(this.dark_color);
       // this.skylineGameUrl=`https://coroebusbeta.in/CoroebusSkyline/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
       // this.skylineGameUrl=`http://127.0.0.1:5500/MiniGame_cube_Busters/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
       this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.skylineGameUrl)
-      console.log(this.skylineGameUrl);
+      
       this.modalService.open(content,{size: 'lg'});
     }
     else if(data.id_engagement_game==='6'){
       this.cubeBlasters=`https://coroebus.in/cube_blasters/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
-      console.log(this.cubeBlastersUrl);
       // this.cubeBlasters=`http://127.0.0.1:5500/MiniGame_cube_Busters/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
       this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.cubeBlasters);
       
@@ -214,11 +210,14 @@ console.log(this.dark_color);
 
 
   }
-  openCubicall(content){
+  openCubicall(){
     this.cubicallUrl=`https://www.playtolearn.in/CubiCall/`
-    console.log(this.cubicallUrl)
-    this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.cubicallUrl);
-    this.modalService.open(content,{size: 'lg'});
+
+
+    window.open('https://www.playtolearn.in/CubiCall/','_blank')
+    
+    // this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.cubicallUrl);
+    // this.modalService.open(content,{size: 'xl'});
 
   }
   openDartGame(content){
@@ -272,7 +271,7 @@ checked:boolean=false;
 
           return a;
         }
-        console.log(this.checked);
+        
     })
     }
     else{
@@ -284,7 +283,7 @@ checked:boolean=false;
 
   filterByPointsAsc(){
     this.Passbook = this.spotEngagementPassbook.sort((a, b) => b.reward_point - a.reward_point);  
-   console.log("Asc order",this.Passbook)
+   
    this.Ascending=true;
    this.Descending=false;
   }
@@ -293,7 +292,7 @@ checked:boolean=false;
     this.Descending=true;
     this.Ascending=false;
    
-    console.log("DSC order",this.Passbook)
+    
   }
   value = '2';
   clearText(){
@@ -310,9 +309,14 @@ reverse = false;
   }
 openEvent(){
   this.openEvents=true;
-  this.openPassBook=false;
+ 
+    this.openPassBook=false;
+  
+  
 }
 rewardPassBook(){
+  console.log(this.id_role)
+ 
   this.openEvents=false;
   this.openPassBook=true;
 }
@@ -333,34 +337,34 @@ dynamicColor() {
   ]
   ).subscribe(([login, theme, game]) => {
     this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
-console.log(this.userSelectionData);
+
 
   })
-  this.passDataToHeaderSub?.unsubscribe()
-  this.passDataToHeaderSub = this.eventService.subscribe('passDataToHeader', (data) => {
-    this.headerInfo = data
-    console.log(this.headerInfo);
+  // this.passDataToHeaderSub?.unsubscribe()
+  // this.passDataToHeaderSub = this.eventService.subscribe('passDataToHeader', (data) => {
+  //   this.headerInfo = data
+    
 
-  })
+  // })
   if (this.userSelectionData?.otherInfo) {
     this.headerInfo = this.userSelectionData?.otherInfo
-    console.log(this.headerInfo);
+    
     this.color = this.headerInfo.color; //yellowcolor
-    console.log(this.color);
+    
     this.bgImage= this.userSelectionData?.themes[0].theme_background_web
-    console.log(this.bgImage);
+    
     
     this.element.nativeElement.style.setProperty('--myvar', `${this.color}`)
     this.element.nativeElement.style.setProperty('--bgImage', `${this.bgImage}`)
 
     // this.element.nativeElement.style.setProperty('--mycolor',`${this.color}`)
-    // console.log( this.element.nativeElement.style.setProperty('--myvar',`${this.color}`));
+    // 
 
 
   }
   this._routeSub = this._route.queryParams.subscribe(queryParams => {
     this.queryParams = queryParams
-    console.log(queryParams)
+    
   })
 }
 
@@ -379,14 +383,6 @@ navigateToCubicalls(){
     
 
   )
-}
-navigateToToolBox(){
-
-  window.open()
-
-
-
-
 }
 
 

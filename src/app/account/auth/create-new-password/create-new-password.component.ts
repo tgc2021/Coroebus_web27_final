@@ -127,12 +127,12 @@ export class CreateNewPasswordComponent implements OnInit, OnDestroy {
     this.submitted = true;
     // stop here if form is invalid
     if (this.newPwdForm.invalid) {
-      console.log(this.newPwdForm)
+      
       return;
     } else {
-      console.log(this.Util.encryptData(this.newPwdForm.value.currentPassword), this.userObj?._personal_data?.password)
-      console.log(this.Util.encryptData(this.newPwdForm.value.currentPassword),this.Util.encryptData(this.newPwdForm.value.password));
-      console.log(this.Util.decryptData(this.newPwdForm.value.currentPassword),this.Util.decryptData(this.newPwdForm.value.password));
+      
+      
+      
       
     
       if (this.Util.encryptData(this.newPwdForm.value.currentPassword) === this.userObj?._personal_data?.password) {
@@ -145,20 +145,7 @@ export class CreateNewPasswordComponent implements OnInit, OnDestroy {
         const body = { "userid": userId, "password": password }
         const [err, res] = await HttpProtocols.to(UserModel.updatePassword(body))
         if (!err && res?.status === 'success' && res?.statuscode === 200) {
-          // if(currentPasswordData===password){
-          //     console.log('Hello');
-          //     Swal.fire({
-          //       title: '',
-          //       text:'Current Password and new Password should be same' ,
-          //       imageUrl: 'assets/images/svg/logo/logo.svg',
-          //       imageHeight: 40,
-          //       confirmButtonColor: '#556ee6'
-          //     }).then(res=>{
-          //       this.router.navigate(['/account/create-new-password']);
-          //       this.newPwdForm.reset()
-          //     })
-
-          //  }
+        
          if (res?.data?.security_questions?.questionSet1?.length > 0) {
             this.store.dispatch(userActions.securityQuestion({ securityQuestion: { ...res?.data?.security_questions } }));
             setTimeout(() => {
@@ -179,7 +166,7 @@ export class CreateNewPasswordComponent implements OnInit, OnDestroy {
         this.currentPwdErr = true
         this.comparePassErr=true
       }
-      // console.log(this.newPwdForm.value.currentPassword, this.Util.encryptData(this.newPwdForm.value.currentPassword), this.userObj?._personal_data?.password)
+      // 
     }
   }
   ngOnDestroy(): void {

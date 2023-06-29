@@ -30,19 +30,19 @@ export class LearningAcademyComponent implements OnInit {
       takeUntil(this.destroy$)
     ).subscribe(data => {
       this.userObj = data?.user
-      console.log(this.userObj);
+      
 
       this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
-      console.log(this.mergeObj);
+      
       this.combineLatest = combineLatest([
         this.store.select(fromRoot.userLogin),
         this.store.select(fromRoot.usertheme),
         this.store.select(fromRoot.usergame),
       ]
       ).subscribe(([login, theme, game]) => {
-        console.log(login, theme, game)
+        
         this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
-        console.log(this.userSelectionData);
+        
         let body1 = {
           _userid: this.mergeObj.USERID,
           _game: this.userSelectionData.id_coroebus_game,
@@ -53,11 +53,11 @@ export class LearningAcademyComponent implements OnInit {
 
       
         this.http.produce1(body1).subscribe((res) => {
-          console.log(res)
+          
           this.produce1data = res;
-          console.log(this.produce1data.data._personal_data.external_kpi_data);
+          
           this.kpidata=this.produce1data.data._personal_data.external_kpi_data
-          console.log(this.kpidata.length);
+          
           this.learningAcademy()
         })
 
@@ -77,7 +77,7 @@ export class LearningAcademyComponent implements OnInit {
 
 
     learningAcademy(){
-      console.log(this.kpidata.length);
+      
 
       if (this.mergeObj.id_coroebus_game != null){
         const userId = this.mergeObj.USERID
@@ -85,42 +85,47 @@ export class LearningAcademyComponent implements OnInit {
         const teamid=this.mergeObj.id_coroebus_team;
         const gameName=this.mergeObj.game_name;
         const teamName=this.mergeObj.team_name;
-        console.log(this.kpidata);
         
-    console.log(this.kpidata.length);
+        
+    
     if(this.kpidata.length!=0){
     this.kpiName=this.kpidata[0].kpi_name;
-    console.log(this.kpiName);
+    
     const isAttemted=this.kpidata[0].is_attempted;
     const isCorrect=this.kpidata[0].is_correct;
 
-    console.log(userId,game,teamid);
-    // console.log('http://localhost:4200/#/LearningAcademy/library?_game='+game+"&_userid¸="+userId+"&_team="+teamid,'_self' );
     
-//  console.log(   'http://localhost:4200/#/LearningAcademy/library?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
+    // 
+    
+//  
 //  "&_team_name="+teamName+"&_game_name="+gameName+
 //   "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self','_self'
 // );
    
     window.open(
       
-    'https://coroebus.in/Learning_academy/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
+    // 'https://coroebus.in/Learning_academy/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
+    // "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'
+
+    'http://coroebus.in/Learning_academy/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
     "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'
 
-      
+  
     )
     
    }
    else{
-    console.log("sdfksdfs nkdnkskj");
-    this.modalService.dismissAll('Cross click')
-    Swal.fire({
-      title: '',
-      text: 'Introducing Trivia Corner exclusively for Players and Captains',
-      // imageUrl: 'assets/images/svg/logo/logo.svg',
-      imageHeight: 40,
-      confirmButtonColor:this.userSelectionData.themes[0].dark_color
-    });
+    this.kpiName='Game OF Phone';
+    const isAttemted='8'
+    const isCorrect='8'
+
+    window.open(
+      
+      'https://coroebus.in/Learning_academy/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
+      "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'
+  
+        
+      )
    }
    
   }

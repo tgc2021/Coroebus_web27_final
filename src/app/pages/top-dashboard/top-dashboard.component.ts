@@ -47,6 +47,7 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
   userSelectionData: any
   isVideoHide: any;
   dataMap: any=''
+  dataMapMobile: any=''
   map:any
   bi:any
   mapUrl:any
@@ -138,6 +139,7 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
   this.bi=  localStorage.getItem('map')
   if( this.bi!='undefined'){
      this.dataMap=this.bi
+     this.dataMapMobile=this.bi;
 
      
      
@@ -145,7 +147,8 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
   else{
     
   
-      this.dataMap= localStorage.getItem('res')
+      this.dataMap= localStorage.getItem('res');
+      this.dataMapMobile=localStorage.getItem('res');
       
      
 
@@ -174,6 +177,10 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
     this.location.replaceState("");
     location.reload()
   }
+
+  OverallGrowthMobile(){
+    this.router.navigateByUrl('/mobile_maps')
+  }
   navigateToBIMap(data: any) {
 
     
@@ -181,7 +188,15 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
    
     this.location.replaceState("?map="+ this.mapUrl);
     location.reload();
+   
+    
+  
      
+  }
+  navigateToBIMapMobile(data: any){
+    this.mapUrl=data.map_url
+
+    this.router.navigateByUrl('/mobile_maps?map='+this.mapUrl)
   }
   navigateToIndexwiseDashboard() {
     this.router.navigateByUrl('/buisness_index')

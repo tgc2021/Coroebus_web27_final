@@ -68,16 +68,15 @@
 
 .name_my_performance{
     font-family: 'Inter';
-    font-size: 0.9vw;
-    font-weight: 600;
-    padding-top: 8px;
+    font-size: 0.8em;
     padding-left: 12px;
+    font-weight: 600;
 
 }
 
 .level_my_performance{
     font-family: 'Inter';
-    font-size: 0.9vw;
+    font-size: 0.8em;
     font-weight: 600;
     padding-left: 12px;
     padding-top: 2px;
@@ -108,8 +107,11 @@
         width: 100%;
     margin-right: auto;
     margin-left: auto;
-    width: 78vw;
+    // width: 78vw;
     padding: 0;
+    }
+    .web-card{
+        display: none;
     }
 }
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -131,8 +133,10 @@
     
     }
 }
-@media (min-width: 1400px) and (max-width: 1440px) {
-    // .historical-live-btn {
-    //     margin-left: -20%;
-    // }
+@media (min-width: 1024px)  {
+    .mobile-card{
+        display: none;
+    }
+
+    
 }

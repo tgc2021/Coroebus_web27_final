@@ -51,7 +51,7 @@ export class GameSelectionComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.id_role = this.userObj?._personal_data?.id_role
-console.log(this.id_role);
+
 let body={
   _userid:this.userObj?._personal_data?.USERID,
   _game:"na",
@@ -61,7 +61,7 @@ let body={
 }
 
 this.http.engagamentlog(body).subscribe(res=>{
-  console.log(res);
+  
   
 })
 
@@ -71,7 +71,7 @@ this.http.engagamentlog(body).subscribe(res=>{
     let err: any, res: any;
     let body: any;
     
-    console.log(this.userObj);
+    
     
     body = {
       "userid": this.userObj?._personal_data?.USERID,
@@ -79,16 +79,16 @@ this.http.engagamentlog(body).subscribe(res=>{
     };
     
 if(this.userObj._personal_data.id_role!="13"){
-console.log(this.userObj._personal_data.id_role);
+
 [err, res] = await HttpProtocols.to(UserModel.getGame(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
 
       const newArr = [];
       while (res?.data?.games.length) newArr.push(res?.data?.games.splice(0, 3));
       this.gameList = newArr
-      console.log(this.gameList);
       
-      console.log(this.gameList[0]?.[0].game_audio);
+      
+      
       this.game_audio=this.gameList[0]?.[0].game_audio
       localStorage.setItem('audio_game',this.gameList[0]?.[0].game_audio)
       this.selectedGame = this.gameList?.[0]?.[0]?.id_coroebus_game
@@ -111,7 +111,7 @@ console.log(this.userObj._personal_data.id_role);
     }
 }
 else{
-  console.log(this.userObj);
+  
 
    localStorage.setItem('theme_logo',this.userObj.themes[0].logo)
    localStorage.setItem('topbar_color',this.userObj.themes[0].dark_color)
@@ -128,16 +128,16 @@ else{
   handleChange(event, data) {
     this.selectedGame = data?.id_coroebus_game
     this.isInteractiveDashboard =data?.is_interactive_dashboard
-    console.log(this.isInteractiveDashboard);
     
-    console.log(this.selectedGame);
+    
+    
     this.selectGame()
   }
   selectGame() {
     this.id_coroebus_theme =this.themeObj?.id_coroebus_theme
-    console.log(this.id_coroebus_theme);
-    console.log(this.id_role);
-    // console.log( this.userObj.games[0].is_interactive_dashboard);
+    
+    
+    // 
 
 let body={
   _userid:this.userObj?._personal_data?.USERID,
@@ -149,7 +149,7 @@ let body={
 
 
 this.http.engagamentlog(body).subscribe(res=>{
-  console.log(res);
+  
   
 })
 
@@ -165,7 +165,7 @@ if (this.gameList?.[0]?.length === 1){
     this.router.navigate(['/spectator/spectatorView']);
   }
   else if(this.id_role==8){
-    console.log('idrole 8');
+    
    
  
     
@@ -174,33 +174,34 @@ if (this.gameList?.[0]?.length === 1){
   }
 
   else if(this.id_role==9){
-    console.log('idrole 9');
+    
     
     localStorage.setItem('theme_logo',this.userObj.themes[0].logo)
     localStorage.setItem('topbar_color',this.userObj.themes[0].dark_color)
     localStorage.setItem('medium_color',this.userObj.themes[0].medium_color)
- 
+    localStorage.setItem('id_role_hos','9')
+
    
     this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
     this.router.navigate(['/top_dashboard']);
   }
 
   // else if(this.id_role==8){
-  //   console.log('idrole 8');
+  //   
     
   //   this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
   //   this.router.navigate(['/top_dashboard']);
   // }
 
   // else if(this.id_role==12){
-  //   console.log('idrole 12');
+  //   
     
   //   this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
   //   this.router.navigate(['/top_dashboard']);
   // }
   else if(this.id_coroebus_theme>4  && this.gameList[0]?.[0]?.is_interactive_dashboard== '1'){
     
-    console.log('rajat');
+    
     
     this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
     this.router.navigate(['/account/interactive-dashboard']);
@@ -232,7 +233,7 @@ else{
   }
 
   else if(this.id_role==8){
-    console.log('idrole 8');
+    
     localStorage.setItem('theme_logo',this.userObj.themes[0].logo)
     localStorage.setItem('topbar_color',this.userObj.themes[0].dark_color)
     localStorage.setItem('medium_color',this.userObj.themes[0].medium_color)
@@ -243,7 +244,7 @@ else{
   }
   
   else if(this.id_role==9){
-    console.log('idrole 9');
+    
     
     localStorage.setItem('theme_logo',this.userObj.themes[0].logo)
     localStorage.setItem('topbar_color',this.userObj.themes[0].dark_color)
@@ -254,14 +255,14 @@ else{
     this.router.navigate(['/top_dashboard']);
   }
   // else if(this.id_role==8){
-  //   console.log('idrole 8');
+  //   
     
   //   this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
   //   this.router.navigate(['/top_dashboard']);
   // }
 
   // else if(this.id_role==12){
-  //   console.log('idrole 12');
+  //   
     
   //   this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
   //   this.router.navigate(['/topdashboard']);

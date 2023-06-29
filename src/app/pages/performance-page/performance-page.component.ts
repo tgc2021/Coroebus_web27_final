@@ -75,7 +75,7 @@ export class PerformancePageComponent implements OnInit {
     }
 
     this.http.engagamentlog(body).subscribe(res=>{
-      console.log(res);
+      
       
     })
 
@@ -90,19 +90,19 @@ export class PerformancePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!localStorage.getItem('foo')) { 
-      localStorage.setItem('foo', 'no reload') 
-      location.reload() 
-    } else {
-      localStorage.removeItem('foo') 
-    }
+    // if (!localStorage.getItem('foo')) { 
+    //   localStorage.setItem('foo', 'no reload') 
+    //   location.reload() 
+    // } else {
+    //   localStorage.removeItem('foo') 
+    // }
 
     this._routeSub = this._route.queryParams.subscribe(queryParams => {
       // do something with the query params
       if (queryParams?.userID) {
         queryParams = {userID: this.Util.decryptData(queryParams?.userID),gameID: this.Util.decryptData(queryParams?.gameID),roleID: this.Util.decryptData(queryParams?.roleID) }
         this.queryParams= queryParams
-        console.log("graph data", this.queryParams);
+        
         this.pointsList()
         this.myperformanceProduce()
     
@@ -163,7 +163,7 @@ export class PerformancePageComponent implements OnInit {
 
     // this.queryParams = { userID: this.Util.decryptData(this.queryParams?.userID), gameID: this.Util.decryptData(this.queryParams?.gameID), roleID: this.Util.decryptData(queryParams?.roleID) }
 
-    // console.log(this.queryParams);
+    // 
   }
   buttonFilter(filterName: string) {
     this.buttonFilterActive = filterName
@@ -187,14 +187,14 @@ export class PerformancePageComponent implements OnInit {
   
            };
     [err, res] = await HttpProtocols.to(PerformanceModel.pointsList(body))
-    //console.log(body)
+    //
     if (!err && res?.statuscode === 200) {
       this.pointsListData = res?.data;
 
       
       this.overallData = res?.data?.filter(data => data?.label === 'Overall Score')
       this.childData = res?.data?.filter(data => {
-        console.log(data?.label, data?.label === 'Index')
+        
         if (data?.label === 'Index') {
           return data
         }
@@ -228,11 +228,10 @@ export class PerformancePageComponent implements OnInit {
       };
     
       [err, res] = await HttpProtocols.to(PerformanceModel.myperformanceProduce(body))
-      console.log("Graph",body)
+      
       if (!err && res?.statuscode === 200) {
         this.graphMasterData = res?.data;
         
-        console.log(this.graphMasterData);
         this.id_role=this.graphMasterData._personal_data[0].id_role;
         console.log(this.id_role);
         
@@ -262,9 +261,13 @@ export class PerformancePageComponent implements OnInit {
       };
     
       [err, res] = await HttpProtocols.to(PerformanceModel.myperformanceProduce(body))
-      console.log("Graph",body)
+      
       if (!err && res?.statuscode === 200) {
         this.graphMasterData = res?.data
+
+        this.id_role=this.graphMasterData._personal_data[0].id_role;
+        console.log(this.id_role);
+        
         //this.graphData = this.graphMasterData
         this.filterGraphData()
       } else {
@@ -318,7 +321,7 @@ export class PerformancePageComponent implements OnInit {
       arrayData?.push(merge)
     }
     this.graphData = [...arrayData]
-    console.log(this.graphData, arrayData, this.dropDownValue)
+    
 
   }
 

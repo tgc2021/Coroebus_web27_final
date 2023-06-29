@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnChanges, OnDestroy, OnInit } from '@angular/core';
 
 import { Location } from '@angular/common';
+
 import * as fromRoot from '../../../core/app-state';
 import { Store } from '@ngrx/store';
 import { filter, take, takeUntil } from 'rxjs/operators';
@@ -334,19 +335,7 @@ else{
           this.is_about_game= localStorage.setItem('is_about_game',this.interactive_dashoard_response[0].data.is_about_game)
           
          
-          // this.http.BoosterData(body).subscribe((res: any) => {
-          //   this.boosterData_response = res.data;
-
-          //   
-
-          //   this.StringArray = res.data.booster_rank_details[0].rank_position_stmt.split(" ");
-          //   this.firstString = this.StringArray[0] + " " + this.StringArray[1] + " " + this.StringArray[2];
-          //   this.Digit = this.StringArray[3]
-          //   this.LastString = this.StringArray[4];
-          //   
-          //   
-
-          // })
+          
 
           this.seasonalThemeDaily = this.interactive_dashoard_response[0].data.seasonal_theme_daily;
 
@@ -362,11 +351,10 @@ else{
           localStorage.setItem('reward_points', this.interactive_dashoard_points);
 
           this.interactive_dashoard_response_idOrganisation=this.interactive_dashoard_response[0].data._personal_data.id_coroebus_organization
-          
           if (this.interactive_dashoard_response) {
             setTimeout(() => {
               this.isLoading = false;
-            }, 5000)
+            }, 2000)
             this.isLoading = true;
           }
           this.point_distribution = this.interactive_dashoard_response[0].data.theme_details[0].gradient_color_bg
@@ -408,21 +396,7 @@ else{
           }));
 
 
-          //   let body2={
-          //     _userid: this.mergeObj.USERID,
-          //     _game: this.mergeObj.id_coroebus_game,
-          //     _section:"testing",
-          //    _description:"dashboard/produce",
-
-          //  }
-
-          //  this.http.engagamentlog(body2).subscribe((res) => {
-          //    
-
-
-
-
-          //  })
+       
 
         })
        
@@ -670,11 +644,6 @@ ngAfterViewInit():void{
   navigateToChampionsLeague() {
 
 
-    // window.open(
-    //   'http://localhost:4200/#/home/newChallenge?_userid='+ this.mergeObj.USERID +"&_game="+  this.userSelectionData.id_coroebus_game +"&id_role="+ this.mergeObj.id_role + "&id_coroebus_user=" + this.mergeObj.id_coroebus_user,
-    //   '_self' // <- This is what makes it open in a new window.
-
-    // )
    
     
     if (this.mergeObj.id_coroebus_game != null){
@@ -682,13 +651,11 @@ ngAfterViewInit():void{
         const userId = this.Util.encryptData(this.mergeObj.USERID)
         const game = this.Util.encryptData(this.userSelectionData.id_coroebus_game)
         const roleid = this.Util.encryptData(this.mergeObj.id_role)
-        // const id_coroebus_user = this.Util.encryptData(this.mergeObj.id_coroebus_user)
         
   
   
         window.open(
-          // 'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
-          // '_self'
+ 
           
             'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
           '_self'
@@ -707,8 +674,7 @@ ngAfterViewInit():void{
         
   
         window.open(
-          // 'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
-          // '_self' // <- This is what makes it open in a new window.
+     
         'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
 
         )
@@ -721,8 +687,6 @@ ngAfterViewInit():void{
 
   navigateToLearningAcademy() {
     // this.audio.stop();
-    
-    
     const userId = this.mergeObj.USERID;
     const game = this.mergeObj.id_coroebus_game;
     const teamid=this.mergeObj.id_coroebus_team;
@@ -736,19 +700,14 @@ ngAfterViewInit():void{
     const isCorrect=this.kpidata[0].is_correct;
 
     
-    // 
-    
-//  
-//  "&_team_name="+teamName+"&_game_name="+gameName+
-//   "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self','_self'
-// );
    
     window.open(
-          'https://coroebus.in/Learning_academy/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
+          'https://coroebus.in/Learning_academy/#/LearningAcademy/library?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
     "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'
 
       
     )
+
     
    }
    else{
@@ -757,7 +716,7 @@ ngAfterViewInit():void{
     const isAttemted='8'
     const isCorrect='8'
     window.open(
-      'https://coroebus.in/Learning_academy/#/LearningAcademy/badges?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
+      'https://coroebus.in/Learning_academy/#/LearningAcademy/library?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
 "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'
 
   
@@ -988,18 +947,7 @@ ngAfterViewInit():void{
 
     
     }
-    // else if(value=="Learning"){
-    //   this.navCtrl.navigateForward(['/learning-academy-tabs']);
-    //   this.modalController.dismiss();
-    // }
-    // else if(value=="Champions"){
-    //   this.navCtrl.navigateForward(['/spectator-view']);
-    //   this.modalController.dismiss();
-    // }
-    // else if(value=="Milestone"){
-    //   this.navCtrl.navigateForward(['/spectator-view']);
-    //   this.modalController.dismiss();
-    // }
+   
     else{
      
 
@@ -1009,7 +957,6 @@ ngAfterViewInit():void{
 
   ngOnDestroy(): void {
    this.audio.pause()
-  //  localStorage.removeItem('audio_game');
   
 
   }

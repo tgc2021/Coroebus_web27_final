@@ -291,15 +291,15 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
    * Initialize
    */
   initialize(): void {
-    if(this.id_role == 7 || this.spectator_value=='spectator'){
+    // if(this.id_role == 7 || this.spectator_value=='spectator'){
       
      
       
-      this.menuItems = MENU;
-      this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
+    //   this.menuItems = MENU;
+    //   this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
      
-    }
-    else  if(this.id_role == 13 ){
+    // }
+    if(this.id_role == 13 ){
       this.menuItems = MENU_HOS;
       this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
       // if(this.is_about_game==0||this.is_about_game==null){
@@ -322,6 +322,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
       
       
      
+     console.log(this.menuItems);
      
      
      
@@ -349,7 +350,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
         
      
         this.menuItems=result;
-        console.log(this.menuItems);
+        // console.log(this.menuItems);
 
      
 
@@ -358,22 +359,22 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
           const result = this.menuItems.filter(data => data.icon != 'rewards');
           
           this.menuItems=result;
-          console.log(this.menuItems);
+          // console.log(this.menuItems);
 
           const result1 = this.menuItems.filter(data => data.label != 'Achievement Shelf');
           this.menuItems=result1;
-          console.log(this.menuItems);
+          // console.log(this.menuItems);
 
 
           const result2 = this.menuItems.filter(data => data.icon != 'learning');
           this.menuItems=result2;
-          console.log(this.menuItems);
+          // console.log(this.menuItems);
 
         }
       else if(this.id_role==8){
         const result2 = this.menuItems.filter(data => data.icon != 'learning');
         this.menuItems=result2;
-        console.log(this.menuItems);
+        // console.log(this.menuItems);
 
 
       }
@@ -522,21 +523,21 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
   
     
     
-if(this.id_role=='7'){
-  this.menuItems=MENU
+// if(this.id_role=='7'){
+//   this.menuItems=MENU
 
-}
-else if(this.id_role=='13'){
-  this.menuItems=MENU_HOS
+// }
+// if(this.id_role=='13'){
+//   this.menuItems=MENU_HOS
 
-}
-else if(this.id_role=='9'){
-  this.menuItems=MENU
+// }
+// else if(this.id_role=='9'){
+//   this.menuItems=MENU
 
-}
-else{
-  this.menuItems = MENU;
-}
+// }
+// else{
+//   this.menuItems = MENU;
+// }
    
     // this.menuItems=MENU_SPECTATOR
    
