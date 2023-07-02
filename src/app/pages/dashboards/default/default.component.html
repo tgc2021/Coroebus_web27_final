@@ -102,7 +102,6 @@
                                             </div>
                                             <div
                                                 class="d-flex flex-column align-items-center justify-content-center mt-2">
-                                                {{sectionView_1?._personal_data.id_role|json}}
                                                 <div *ngIf="sectionView_1?._personal_data.id_role==6;then rankButtonPlayer else rankButtonOtherRole"></div>
                                                 <ng-template #rankButtonPlayer>
                                                     <button class="btn btn-primary- text-white level-badge-btn"
@@ -1133,15 +1132,15 @@
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                             (click)="GetRankingPopupData('My Team')" data-bs-toggle="modal"
                                             data-bs-target="#myTeamLeaderBoard">
-                                            {{my_rank}}
+                                            {{sectionView_2._ranking_data[0]._data[0].rankingtable_number}}
                                         </button>
 
-
+                                        
                                         <button *ngIf="l=='0' && sectionView_3._personal_data.id_role=='4'"
                                             class="btn btn-primary- text-white level-badge-btn"
                                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                            (click)="overallPopup(1)" data-bs-toggle="modal"
+                                            (click)="GetRankingPopupData('My Team')" data-bs-toggle="modal"
                                             data-bs-target="#myTeamLeaderBoard">
                                             {{MyOverallRank}}
                                         </button>
@@ -1149,9 +1148,9 @@
                                             class="btn btn-primary- text-white level-badge-btn"
                                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                            (click)="GetRankingPopupData('My Overall')" data-bs-toggle="modal"
+                                            (click)="GetRankingPopupData('My Team')" data-bs-toggle="modal"
                                             data-bs-target="#myTeamLeaderBoard">
-                                            {{primary_rank}}
+                                            {{MyOverallRank}}
                                         </button>
 
 
@@ -2338,7 +2337,7 @@
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                             (click)="GetRankingPopupData('My Team')" data-bs-toggle="modal"
                                             data-bs-target="#myTeamLeaderBoard" style="font-size:2.7vw">
-                                            {{primary_rank}}
+                                            {{sectionView_2._ranking_data[0]._data[0].rankingtable_number}}
                                         </button>
 
 

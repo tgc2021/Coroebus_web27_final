@@ -117,6 +117,7 @@ sectionView_3_popup_1:any
   section1_tile_images: any
   web_tile_img: any
   location: any
+  usertl:any
   panelOpenState = false;
   dataForMonthlyPopup: any;
   monthlyPopup: any;
@@ -366,6 +367,9 @@ sectionView_3_popup_1:any
 
   overallPopup(number:any){
     this.selectedIndex=number;
+    if(this.selectedIndex==0){
+      this.titleTab='My Team'
+    }
     let body = {
       "_userid": this.userSelectionData?._personal_data?.USERID,
       "_game": this.userSelectionData?.id_coroebus_game,
@@ -378,8 +382,11 @@ this.http.produce12(body).subscribe(res=>{
   console.log(res);
   this.sectionView_3_popup_1 = res
   this.sectionView_3_popup = this.sectionView_3_popup_1?.data
-  console.log(this.sectionView_3_popup);
-  
+  console.log(this.sectionView_3_popup._ranking_data[0]._data);
+  // if(this.sectionView_3_popup)
+
+
+
   this.sectionView_3_list_popup = this.sectionView_3_popup?._ranking_data?.filter(data => {
     //
     if (data.order === this.activeTabForSectionView_2) {
@@ -771,10 +778,18 @@ this.http.produce12(bodyForFixedTile).subscribe(res=>{
         
       })
 
+    
+     
+
       this.sectionView_1 = res?.data;
       this.primary_rank =this.sectionView_1._primary.primary_rank;
       this.role_id=this.sectionView_1._personal_data.id_role;
 
+localStorage.setItem('user_tl',this.sectionView_1.is_land_logos[2]._userid)
+this.usertl=localStorage.getItem('user_tl')
+console.log(this.usertl);
+
+      
       console.log(this.role_id)
 
       console.log("For Primary Data",this.sectionView_1._primary.primary_rank);
@@ -855,6 +870,7 @@ this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
 
  async GetRankingPopupData(title:any){
 
+
   if(title=='My Team')
   { 
     this.hideTab=false;
@@ -862,13 +878,12 @@ this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
     
   
   }
-  else{
+  else if(title=='My Zone'){
     this.hideTab=true;
-    this.titleTab="My Overall"
+    this.titleTab= title
   }
   console.log(title);
-  this.selectedIndex=1;
-   console.log(this.sectionView_1._personal_data.id_role);
+  this.selectedIndex=0;
    
   if(this.sectionView_1._personal_data.id_role==4){
 
@@ -890,7 +905,6 @@ this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
         let err: any, res: any;
         let body: any;
         
-
         
         body = {
           "_userid": this.queryParams.userID,
@@ -908,7 +922,7 @@ this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
     
          
             this.sectionView_3_popup = res?.data
-          
+            
           // this.filterRankingData()
     
           this.sectionView_3_list_popup = this.sectionView_3_popup?._ranking_data?.filter(data => {
@@ -937,7 +951,7 @@ this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
      
       if(this.userSelectionData?._personal_data?.id_role == '4'){
         this.MyZoneRank=this.sectionView_2_popup._ranking_data[0]._data[0].rankingtable_number;
-        this.MyOverallRank=this.sectionView_2_popup._ranking_data[0]._Overall[0].rankingtable_number;
+        this.MyOverallRank=this.sectionView_2_popup._ranking_data[0]._data[0].rankingtable_number;
       }
     
       
@@ -1696,6 +1710,8 @@ updatedPoke() {
         this.sectionView_3 = res?.data
       }
       // this.filterRankingData()
+
+    
 
       this.sectionView_3_list = this.sectionView_3?._ranking_data?.filter(data => {
         //

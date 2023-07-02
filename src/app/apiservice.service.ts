@@ -46,6 +46,13 @@ export class ApiserviceService {
 
   }
 
+  produce_tl(data:any){
+    // var tempurl = ${this.URLstring}+/coroebus-beta-api-levels/Passbook/getReward
+    var tempurl = `${this.URLstring}`+`/${this.Path}/dashboard/produce_1`
+    return this.Http.post(tempurl,data)
+
+  }
+
   buisnessHead(data:any){
     // var tempurl = ${this.URLstring}+/coroebus-beta-api-levels/Passbook/getReward
     var tempurl = `${this.URLstring}`+`/${this.Path}/Dashboard/produce_bh`
