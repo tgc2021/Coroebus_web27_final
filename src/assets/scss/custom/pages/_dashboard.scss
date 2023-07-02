@@ -61,7 +61,12 @@
         
     }
 }
-
+.three-data-static{
+    >div:nth-child(1) {
+        margin-left: 25%;
+        
+    }
+}
 .one-data {
     >div>img.island_login {
         // height: 234px;
@@ -78,6 +83,12 @@
     }
 }
 .three-data {
+    >div>img.island_login {
+        
+        height: 9vh;
+    }
+}
+.three-data-static{
     >div>img.island_login {
         
         height: 9vh;

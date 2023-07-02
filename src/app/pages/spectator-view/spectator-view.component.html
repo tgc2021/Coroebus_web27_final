@@ -144,31 +144,51 @@
 
 
             <div class="row web_button_row" style="background-image: url({{spectator_dashoard_response[0].data.theme_details[0].add_ins_background}});" >
-                <div class="col-3 first_tab">
+                
+                <div *ngIf="spectator_dashoard_response[0].data._personal_data.id_coroebus_organization!=61;then forOtherOrgnization else forTataAIA" ></div>
+                <ng-template #forOtherOrgnization>
+                    <div class="col-3 first_tab">
+                        <input type="radio" id="tab-1" name="mytabs" [checked]="checked1"
+                            value="response.data.ranking[0].label"
+                            (click)="filterRankwiseLeaderboard(response.data.ranking[0].label)">
+                        <label class="cm_tab" for="tab-1">{{response.data.ranking[0].label}}</label>
+    
+                    </div>
+                    <div class="col-3 second_tab">
+                        <input type="radio" id="tab-2" name="mytabs" [checked]="checked2"
+                            value="response.data.ranking[1].label"
+                            (click)="filterRankwiseLeaderboard(response.data.ranking[1].label)">
+                        <label class="am_tab" for="tab-2">{{response.data.ranking[1].label}}</label>
+                    </div>
+                    <div class="col-3 third_tab">
+                        <input type="radio" id="tab-3" name="mytabs" [checked]="checked3"
+                            value="response.data.ranking[2].label"
+                            (click)="filterRankwiseLeaderboard(response.data.ranking[2].label)">
+                        <label class="rm_tab" for="tab-3">{{response.data.ranking[2].label}}</label>
+                    </div>
+                    <div class="col-3 fourth_tab">
+                        <input type="radio" id="tab-4" name="mytabs" [checked]="checked4"
+                            value="response.data.ranking[3].label"
+                            (click)="filterRankwiseLeaderboard(response.data.ranking[3].label)">
+                        <label class="nsm_tab" for="tab-4">{{response.data.ranking[3].label}}</label>
+                    </div>
+                </ng-template>
+               <ng-template #forTataAIA>
+                <div class="col-6 first_tab">
                     <input type="radio" id="tab-1" name="mytabs" [checked]="checked1"
                         value="response.data.ranking[0].label"
                         (click)="filterRankwiseLeaderboard(response.data.ranking[0].label)">
                     <label class="cm_tab" for="tab-1">{{response.data.ranking[0].label}}</label>
 
                 </div>
-                <div class="col-3 second_tab">
+                <div class="col-6 second_tab">
                     <input type="radio" id="tab-2" name="mytabs" [checked]="checked2"
                         value="response.data.ranking[1].label"
                         (click)="filterRankwiseLeaderboard(response.data.ranking[1].label)">
                     <label class="am_tab" for="tab-2">{{response.data.ranking[1].label}}</label>
                 </div>
-                <div class="col-3 third_tab">
-                    <input type="radio" id="tab-3" name="mytabs" [checked]="checked3"
-                        value="response.data.ranking[2].label"
-                        (click)="filterRankwiseLeaderboard(response.data.ranking[2].label)">
-                    <label class="rm_tab" for="tab-3">{{response.data.ranking[2].label}}</label>
-                </div>
-                <div class="col-3 fourth_tab">
-                    <input type="radio" id="tab-4" name="mytabs" [checked]="checked4"
-                        value="response.data.ranking[3].label"
-                        (click)="filterRankwiseLeaderboard(response.data.ranking[3].label)">
-                    <label class="nsm_tab" for="tab-4">{{response.data.ranking[3].label}}</label>
-                </div>
+                
+               </ng-template>
                 
 
             </div>
@@ -530,24 +550,48 @@
 
 
 
-        <div class="row mobile_button_row">
-        <div class="col-3 mobile_first_tab">
-            <input type="radio" id="tab-1-mob" [checked]="checked1" value="response.data.ranking[0].label" (click)="filterRankwiseLeaderboard(response.data.ranking[0].label)" >
-            <label class="mobile_cm_tab" for="tab-1-mob">{{response.data.ranking[0].label}}</label>
+        <div class="row mobile_button_row" >
+            <div *ngIf="spectator_dashoard_response[0].data._personal_data.id_coroebus_organization!=61;then forOtherOrgnizationMobile else forTataAIAmobile" ></div>
+        <ng-template #forOtherOrgnizationMobile>
+            <div class="col-3 mobile_first_tab">
+                <input type="radio" id="tab-1-mob" [checked]="checked1" value="response.data.ranking[0].label" (click)="filterRankwiseLeaderboard(response.data.ranking[0].label)" >
+                <label class="mobile_cm_tab" for="tab-1-mob">{{response.data.ranking[0].label}}</label>
+    
+            </div>
+            <div class="col-3 mobile_second_tab">
+                <input type="radio" id="tab-2-mob"  [checked]="checked2" value="response.data.ranking[1].label" (click)="filterRankwiseLeaderboard(response.data.ranking[1].label)">
+                <label class="mobile_am_tab" for="tab-2-mob">{{response.data.ranking[1].label}}</label>
+            </div>
+            <div class="col-3 mobile_third_tab">
+                <input type="radio" id="tab-3-mob"  [checked]="checked3" value="response.data.ranking[2].label" (click)="filterRankwiseLeaderboard(response.data.ranking[2].label)">
+                <label class="mobile_rm_tab" for="tab-3-mob">{{response.data.ranking[2].label}}</label>
+            </div>
+            <div class="col-3 mobile_fourth_tab">
+                <input type="radio" id="tab-4-mob" [checked]="checked4"  value="response.data.ranking[3].label" (click)="filterRankwiseLeaderboard(response.data.ranking[3].label)">
+                <label class="mobile_nsm_tab" for="tab-4-mob">{{response.data.ranking[3].label}}</label>
+            </div>
+        </ng-template>
+        <ng-template #forTataAIAmobile>
+            <div class="col-6 mobile_first_tab">
+                <input type="radio" id="tab-1-mob" [checked]="checked1" value="response.data.ranking[0].label" (click)="filterRankwiseLeaderboard(response.data.ranking[0].label)" >
+                <label class="mobile_cm_tab" for="tab-1-mob">{{response.data.ranking[0].label}}</label>
+    
+            </div>
+            <div class="col-6 mobile_second_tab">
+                <input type="radio" id="tab-2-mob"  [checked]="checked2" value="response.data.ranking[1].label" (click)="filterRankwiseLeaderboard(response.data.ranking[1].label)">
+                <label class="mobile_am_tab" for="tab-2-mob">{{response.data.ranking[1].label}}</label>
+            </div>
+            <!-- <div class="col-3 mobile_third_tab">
+                <input type="radio" id="tab-3-mob"  [checked]="checked3" value="response.data.ranking[2].label" (click)="filterRankwiseLeaderboard(response.data.ranking[2].label)">
+                <label class="mobile_rm_tab" for="tab-3-mob">{{response.data.ranking[2].label}}</label>
+            </div>
+            <div class="col-3 mobile_fourth_tab">
+                <input type="radio" id="tab-4-mob" [checked]="checked4"  value="response.data.ranking[3].label" (click)="filterRankwiseLeaderboard(response.data.ranking[3].label)">
+                <label class="mobile_nsm_tab" for="tab-4-mob">{{response.data.ranking[3].label}}</label>
+            </div> -->
+        </ng-template>
 
-        </div>
-        <div class="col-3 mobile_second_tab">
-            <input type="radio" id="tab-2-mob"  [checked]="checked2" value="response.data.ranking[1].label" (click)="filterRankwiseLeaderboard(response.data.ranking[1].label)">
-            <label class="mobile_am_tab" for="tab-2-mob">{{response.data.ranking[1].label}}</label>
-        </div>
-        <div class="col-3 mobile_third_tab">
-            <input type="radio" id="tab-3-mob"  [checked]="checked3" value="response.data.ranking[2].label" (click)="filterRankwiseLeaderboard(response.data.ranking[2].label)">
-            <label class="mobile_rm_tab" for="tab-3-mob">{{response.data.ranking[2].label}}</label>
-        </div>
-        <div class="col-3 mobile_fourth_tab">
-            <input type="radio" id="tab-4-mob" [checked]="checked4"  value="response.data.ranking[3].label" (click)="filterRankwiseLeaderboard(response.data.ranking[3].label)">
-            <label class="mobile_nsm_tab" for="tab-4-mob">{{response.data.ranking[3].label}}</label>
-        </div>
+        
     </div>  
 
 

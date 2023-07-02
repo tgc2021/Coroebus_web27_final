@@ -55,6 +55,7 @@ export class AchievementShelfComponent implements OnInit {
   seasonal_total_points_response:any
   combineLatest: Subscription
   userSelectionData:any
+  game_ID:any
   showCombo: any= []
   ngOnInit(): void {
 
@@ -67,7 +68,8 @@ export class AchievementShelfComponent implements OnInit {
 
  
      this.currentDate = new Date();
-    
+     this.game_ID= localStorage.getItem('body_game')
+
 
     this.currentdatetransform = this.datePipe.transform(this.currentDate, 'dd MMM YYYY');
     

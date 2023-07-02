@@ -115,17 +115,18 @@ border-radius: 11px;
    }
 }
 
-.inner-points-height {
+.inner-points-height{
     // padding-top: 2%;
    height: auto;
      width: 20vw;
      display: flex;
      justify-content: center;
      align-items: center;
-  
-//    overflow-x: hidden;
-//    overflow-y: auto;
+    
+    
 }
+
+
 .points-rank-card{
    background-repeat: no-repeat;
    background-position: inherit;
@@ -410,12 +411,25 @@ mat-accordion{
        font-weight: 600;
        font-size: 0.72vw;
        line-height: 31px;
-       width: auto;
+      
        height: 5.5vh;
        width: 80%;
        font-size: 1.5vh;
        font-weight: 600;
        font-family: "Inter";
+}
+.point_dis_static{
+    border-radius: 6.46995px;
+    font-weight: 600;
+    font-size: 0.72vw;
+   
+   
+    height: 5.5vh;
+   
+    font-size: 1.5vh;
+    font-weight: 600;
+    font-family: "Inter";
+
 }
 .inner-notification-height {
    height: 33vh;
@@ -531,11 +545,11 @@ mat-accordion{
 }
 .mobile-points-dis-name1{
     background: #F3F2C1;
-    margin-top: 2px;
+    
     margin-left: 5px;
     border-radius: 6.46995px;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 0.8em;
     line-height: 31px;
     padding-left: 10px;
     width: 33vw;
@@ -548,8 +562,8 @@ mat-accordion{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size:2.7vw;
-    width: 9ch;
+    font-size:0.7em;
+    width: 10ch;
     cursor: pointer;
 }
 .dashboard-banner-mobile{
@@ -558,7 +572,7 @@ mat-accordion{
     filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.12)) drop-shadow(0px 20px 20px rgba(0, 0, 0, 0.08));
     border-radius: 15px;
     width: 100%;
-    height: 20vh;
+    height: 22vh;
     padding: 0% 1% 1% 1%;
     background-repeat: no-repeat;
     background-position: center;
@@ -616,19 +630,29 @@ mat-accordion{
     background-position: center;
 }
 .mobile-dashboard-user-name{
-    font-size: 2.2vh;
+    font-size: 0.8em;
     font-family: 'Inter';
-    line-height: 100%;
+   
     color: #ffff;
     font-style: normal;
     text-align: center;
+    white-space: nowrap; 
+    width:15ch; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    
     
 }
 .mobile-dashboard-user-team-name{
 font-weight: 400;
-font-size: 10px;
+font-family:'Inter';
+font-size: 0.7em;
 text-align: center;
 color: #ffff;
+white-space: nowrap; 
+width:15ch; 
+overflow: hidden;
+text-overflow: ellipsis; 
 
 }
 .mobile-points-dis-card{
@@ -2001,10 +2025,12 @@ border-radius: 8px;
     width: 100%;
     height: 6vh;
     padding: 1%;
+    font-family: 'Inter';
     display:flex;
     align-items: center;
     background: #FFFFFF;
     margin-bottom: 2%;
+    font-size: 1em;
     border-radius: 23.5px;
 }
 .active_btn{
@@ -2012,6 +2038,8 @@ border-radius: 8px;
 width: 45%;
 height: 5vh;
 display:flex;
+font-family: 'Inter';
+font-size: 1em;
 justify-content: center;
 align-items:center;
 background: var(--myvar);
@@ -2026,6 +2054,8 @@ border-radius: 23.5px;
     display:flex;
     justify-content: center;
     align-items:center;
+    font-family: 'Inter';
+font-size: 1em;
 
 border-radius: 23.5px;
 
@@ -2421,19 +2451,46 @@ text-align: center;
 }
 
 @media screen and (min-width:270px) and (max-width:1024px){
-    
     .userName_mobile{
         // white-space: nowrap; 
-        width: 8ch; 
+        width: 11ch; 
         overflow: hidden;
-
         text-align: start;
         align-items: center;
-        font-size: 1.2em;
+        font-size: 1.0em;
         text-overflow: ellipsis; 
     }
     .points_header{
         margin-left: 3vw;
     }
 }
+
+table{
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    color: black;
+    font-family: 'Inter';
+    text-align: center;
+    padding: 10px;
+   
+
+    
+  }
+  thead{
+    background-color: 
+    #F7E2AC;
+  }
+
+  th ,td{
+    width: 33%;
+    font-size: 0.9em;
+  }
+
+  tbody>td{
+    font-family: 'Inter';
+
+  }
 

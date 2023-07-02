@@ -321,7 +321,8 @@ else{
           
           this.interactive_dashoard_response = res;
           
-          
+          localStorage.setItem('body_game',this.interactive_dashoard_response.data._personal_data.id_coroebus_game)
+
           if(this.interactive_dashoard_response?.data.is_about_game==1){
             this.about_game_pdf= this.interactive_dashoard_response?.data.about_game[0].file_name
             
@@ -436,6 +437,10 @@ else{
 
 
           this.interactive_dashoard_response = res;
+          console.log(this.interactive_dashoard_response);
+          
+           localStorage.setItem('body_game',this.interactive_dashoard_response.data._personal_data.id_coroebus_game)
+
 
           if(this.interactive_dashoard_response.data.is_about_game==1){
             this.about_game_pdf= this.interactive_dashoard_response.data.about_game[0].file_name

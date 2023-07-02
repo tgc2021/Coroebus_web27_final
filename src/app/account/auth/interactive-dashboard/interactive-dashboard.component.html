@@ -62,7 +62,6 @@
 
 
         </div>
-
         <div class="row web_second_row">
             <div class="col-8 web_background_image" style="background: url({{interactive_dashoard_response[0].data.theme_details[0].interactive_dashboard_bg_web}}); height: 65vh;
                 background-size: 100% 100%;
@@ -223,8 +222,6 @@
 
             </div>
         </div>
-
-
         <div class="row web_third_row">
             <div class="col-8">
                 <div class="row">
@@ -564,7 +561,7 @@
         <div class="modal fade bd-example-modal-sm" id="dailyModal" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogDaily modal-dialog-centered">
-                <div class="modal-content ">
+                <div class="modal-content " *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!=61">
                     <div class="modal-body" *ngIf="seasonalThemeDaily1.length!=0">
                         <div class="d-flex justify-content-end">
                             <button type="button" class="button-close" data-bs-dismiss="modal"
@@ -687,7 +684,18 @@
 
                     </div>
                     <div *ngIf="seasonalThemeDaily1.length==0">
-                        <div data-bs-dismiss="modal" style="background:url(../../../../assets/images/interactive-dashboard/daily.png);background-size:100% 100%;height:70vh"></div>
+                        <div data-bs-dismiss="modal" style="background:url(assets/images/interactive-dashboard/daily.png);background-size:100% 100%;height:70vh"></div>
+                    </div>
+
+                </div>
+                <div class="modal-content " *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization==61">
+                    
+                    <div class="modal-body">
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="button-close" data-bs-dismiss="modal"
+                                aria-label="Close">X</button>
+                        </div>
+                        <div data-bs-dismiss="modal" style="background:url(assets/images/interactive-dashboard/campaignsimages/daily.png);background-size:100% 100%;height:70vh"></div>
                     </div>
 
                 </div>
@@ -704,7 +712,7 @@
         <div class="modal fade bd-example-modal-sm" id="weeklyModal" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogWeekly modal-dialog-centered">
-                <div class="modal-content modalContentWeekly">
+                <div class="modal-content modalContentWeekly" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!=61">
                     <div class="modal-body" style="min-height: 51vh;" *ngIf="seasonalThemeWeekly2.length!=0">
                         <div class="d-flex justify-content-end">
                             <button type="button" class="button-close" data-bs-dismiss="modal"
@@ -838,9 +846,20 @@
 
                     </div>
                     <div *ngIf="seasonalThemeWeekly2.length==0">
-                        <div data-bs-dismiss="modal" style="background:url(../../../../assets/images/interactive-dashboard/weekly.png);background-size:100% 100%;height:70vh"></div>
+                        <div data-bs-dismiss="modal" style="background:url(assets/images/interactive-dashboard/weekly.png);background-size:100% 100%;height:70vh"></div>
                     </div>
                     
+
+                </div>
+                <div class="modal-content " *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization==61">
+                    
+                    <div class="modal-body">
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="button-close" data-bs-dismiss="modal"
+                                aria-label="Close">X</button>
+                        </div>
+                        <div data-bs-dismiss="modal" style="background:url(assets/images/interactive-dashboard/campaignsimages/weekly.png);background-size:100% 100%;height:70vh;width:100%"></div>
+                    </div>
 
                 </div>
             </div>
@@ -856,7 +875,7 @@
         <div class="modal fade bd-example-modal-sm" id="monthlyModal" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogMonthly modal-dialog-centered ">
-                <div class="modal-content modalContentMonthly">
+                <div class="modal-content modalContentMonthly" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!=61">
                     <div class="modal-body" style="min-height: 30vh;" *ngIf="seasonalThemeMonthl3[0].length!=0">
                         <div class="d-flex justify-content-end" style="color:#0000">
                             <button type="button" class="button-close" data-bs-dismiss="modal"
@@ -1056,8 +1075,20 @@
                     </div>
 
                 </div>
+                <div class="modal-content modalContentMonthly " *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization==61">
+                    
+                    <div class="modal-body">
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="button-close" data-bs-dismiss="modal"
+                                aria-label="Close">X</button>
+                        </div>
+                        <div data-bs-dismiss="modal" style="background:url(assets/images/interactive-dashboard/campaignsimages/monthly.png);background-size:100% 100%;height:70vh"></div>
+                    </div>
+
+                </div>
             </div>
         </div>
+
     </div>
 </ng-template>
 
