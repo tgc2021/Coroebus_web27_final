@@ -27,10 +27,17 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   openperformance: boolean=true;
   openActivivities: boolean=false;
   primary_rank: any;
+  overallPopupData: Object;
+  section_view_res: any;
+  MyOverallRank: any;
+  selectedIndex: any=0;
+  hideTab: boolean=true;
+  titleTab: any;
+  my_rank: void;
 dismiss() {
 throw new Error('Method not implemented.');
 }
-
+sectionView_3_popup_1:any
   hideSkeleton: boolean = false;
   sectionView_1: any
   sectionView_1_err: any
@@ -161,6 +168,7 @@ throw new Error('Method not implemented.');
   seasonalScoreTarget: any = []
   arrtrue: any = []
   trues: any = []
+  MyZoneRank:any;
   badgePercentage: number;
   // seasonal_theme_monthly_badge_details: any;
   empid: any
@@ -181,7 +189,32 @@ throw new Error('Method not implemented.');
   pokeInterval: any;
   updatedata: any;
   about_game_pdf:any
-  sectionView_3_popup:any
+  sectionView_3_popup:any;
+  sectionView_2_popup:any;
+  coroebus_game:any
+  openKpi:boolean=false;
+ staticKpiData=[{
+  kpiDescription:'Premium Collected',
+  kpiName:"Wealth"
+ },
+ {
+  kpiDescription:'Submission and Inssuance Rate*',
+  kpiName:"Transaction"
+ },
+ {
+  kpiDescription:'Learning & Certification',
+  kpiName:"Capability"
+ },
+ {
+  kpiDescription:'Customer Referral',
+  kpiName:"Advocancy"
+ }
+]
+
+
+
+
+
   constructor(private readonly store: Store, private modalService: NgbModal, private renderer: Renderer2,
     public Util: Util, private eventService: EventService, private _router: Router,
     private _route: ActivatedRoute, public toastService: ToastService, public http: ApiserviceService, public elementref: ElementRef) {
@@ -261,6 +294,9 @@ throw new Error('Method not implemented.');
           this.getUserBannerDataSectionView_1(queryParams)
           this.getUserBannerDataSectionView_2(queryParams)
           this.getUserBannerDataSectionView_3(null, queryParams)
+          this.overallPopup('');
+          this.GetRankingPopupData('')
+
           this.GetDataFromProduceInfo(queryParams)
           // this.navigateToStatistics(queryParams)
           // this.notificationList(queryParams)
@@ -271,7 +307,9 @@ throw new Error('Method not implemented.');
           this.getUserBannerDataSectionView_1()
           this.getUserBannerDataSectionView_2()
           this.getUserBannerDataSectionView_3()
+          this.overallPopup('');
           this.GetDataFromProduceInfo()
+          this.GetRankingPopupData('')
 
           // this.navigateToStatistics()
 
@@ -326,8 +364,373 @@ throw new Error('Method not implemented.');
     // 
   }
 
+  overallPopup(number:any){
+    this.selectedIndex=number;
+    let body = {
+      "_userid": this.userSelectionData?._personal_data?.USERID,
+      "_game": this.userSelectionData?.id_coroebus_game,
+      "_section_view":"3",
+      "page_number":1
+    }
 
 
+this.http.produce12(body).subscribe(res=>{
+  console.log(res);
+  this.sectionView_3_popup_1 = res
+  this.sectionView_3_popup = this.sectionView_3_popup_1?.data
+  console.log(this.sectionView_3_popup);
+  
+  this.sectionView_3_list_popup = this.sectionView_3_popup?._ranking_data?.filter(data => {
+    //
+    if (data.order === this.activeTabForSectionView_2) {
+      return data
+    }
+  })
+  
+})
+
+
+let bodyForFixedTile = {
+  "_userid": this.userSelectionData?._personal_data?.USERID,
+  "_game": this.userSelectionData?.id_coroebus_game,
+  "_section_view":"2",
+  "page_number":1
+}
+
+this.http.produce12(bodyForFixedTile).subscribe(res=>{
+  console.log(res);
+  this.section_view_res=res;
+  console.log(this.section_view_res);
+  this.MyZoneRank=this.section_view_res.data._ranking_data[0]._data[0].rankingtable_number;
+  this.MyOverallRank=this.section_view_res.data._ranking_data[0]._Overall[0].rankingtable_number;
+
+
+  console.log(this.MyZoneRank)
+
+
+   this.sectionView_2_popup = this.section_view_res?.data;
+      
+
+      this.labelNameMy = this.sectionView_2?._ranking_data[0].label;
+      
+      this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order;
+
+      
+
+
+      // for(let i=0;i<this.sectionView_2?._ranking_data?.length;i++){
+      if (this.queryParams?.roleID == '6' || this.userSelectionData?._personal_data?.id_role == '6') {
+        
+        
+
+        // this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+        
+
+        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+
+        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+
+        
+
+        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+
+        for (let item of this.getBackImages) {
+
+
+          if (item.ranking_image_level === this.firstrowbackimage) {
+
+            this.web_first_tile_image = item.ranking_image
+            
+          }
+
+        }
+
+
+
+
+
+        if (this.queryParams?.roleID == '4') {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[1].order
+          this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[1].order
+          this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+
+          this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+          
+  
+          for (let item of this.getBackImages) {
+            
+            
+  
+            if (item.ranking_image_level === this.firstrowbackimage) {
+
+              this.web_first_tile_image = item.ranking_image
+              
+  
+  
+  
+            }
+
+          }
+          
+
+
+        }
+        else if (this.queryParams?.roleID == '3') {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
+          this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
+          this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+          
+          this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+          
+  
+          for (let item of this.getBackImages) {
+            
+            
+  
+            if (item.ranking_image_level === this.firstrowbackimage) {
+
+              this.web_first_tile_image = item.ranking_image
+              
+  
+  
+  
+            }
+
+          }
+
+        }
+        else if (this.queryParams?.roleID == '8') {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
+          this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
+          this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+          this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+          
+  
+          for (let item of this.getBackImages) {
+            
+            
+  
+            if (item.ranking_image_level === this.firstrowbackimage) {
+
+              this.web_first_tile_image = item.ranking_image
+              
+  
+  
+  
+            }
+
+          }
+          
+
+        }
+        else if (this.queryParams?.roleID == '' || this.queryParams?.roleID == null || this.queryParams?.roleID === 'undefined' || (this.queryParams?.roleID == this.userSelectionData?._personal_data?.id_role)) {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+          this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+          this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+          this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+          
+  
+          for (let item of this.getBackImages) {
+            
+            
+  
+            if (item.ranking_image_level === this.firstrowbackimage) {
+
+              this.web_first_tile_image = item.ranking_image
+              
+  
+  
+  
+            }
+
+          }
+          
+
+
+        }
+        else {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+          
+          
+  
+          for (let item of this.getBackImages) {
+            
+            
+  
+            if (item.ranking_image_level === this.firstrowbackimage) {
+
+              this.web_first_tile_image = item.ranking_image
+              
+  
+  
+  
+            }
+
+          }
+
+        }
+
+        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+        // }
+
+      }
+
+
+      else if (this.queryParams?.roleID === '4' || this.userSelectionData?._personal_data?.id_role === '4') {
+        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+
+
+        if (this.queryParams?.roleID === '3') {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+
+        }
+        else if (this.queryParams?.roleID === '8') {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+
+        }
+        // else if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
+        //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
+        //   
+
+        // }
+        
+        
+
+        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+        // }
+
+        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+        
+
+        for (let item of this.getBackImages) {
+          
+          
+
+          if (item.ranking_image_level === this.firstrowbackimage) {
+
+            this.web_first_tile_image = item.ranking_image
+            
+
+
+
+          }
+
+        }
+
+      }
+
+
+      else if (this.queryParams?.roleID === '3' || this.userSelectionData?._personal_data?.id_role === '3') {
+        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+
+        if (this.queryParams?.roleID === '8') {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
+
+        }
+        // else if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
+        //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
+        //   
+
+        // }
+        
+        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+        // }
+
+        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+        
+
+        for (let item of this.getBackImages) {
+          
+          
+
+          if (item.ranking_image_level === this.firstrowbackimage) {
+
+            this.web_first_tile_image = item.ranking_image
+            
+
+
+
+          }
+
+        }
+      }
+
+      else if (this.queryParams?.roleID === '8' || this.userSelectionData?._personal_data?.id_role === '8') {
+        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
+
+        // if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
+        //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
+        //   
+
+        // }
+        
+        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+        // }
+
+        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+        
+
+        for (let item of this.getBackImages) {
+          
+          
+
+          if (item.ranking_image_level === this.firstrowbackimage) {
+
+            this.web_first_tile_image = item.ranking_image
+            
+
+
+
+          }
+
+        }
+      }
+      else if ((this.queryParams?.roleID === '9' || this.userSelectionData?._personal_data?.id_role === '9')
+        || (this.queryParams?.roleID === '10' || this.userSelectionData?._personal_data?.id_role === '10')
+        || (this.queryParams?.roleID === '11' || this.userSelectionData?._personal_data?.id_role === '11')
+        || (this.queryParams?.roleID === '12' || this.userSelectionData?._personal_data?.id_role === '12')
+      ) {
+        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+
+        // if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
+        //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
+        //   
+
+        // }
+        
+        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+        // }
+        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+        
+
+        for (let item of this.getBackImages) {
+          
+          
+
+          if (item.ranking_image_level === this.firstrowbackimage) {
+
+            this.web_first_tile_image = item.ranking_image
+            
+
+
+
+          }
+
+        }
+      }
+
+  
+})
+
+  }
+
+  
   ngAfterViewInit() {
     this.edit_image;
    
@@ -450,7 +853,21 @@ this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
   }
 
 
- async GetRankingPopupData(){
+ async GetRankingPopupData(title:any){
+
+  if(title=='My Team')
+  { 
+    this.hideTab=false;
+    this.titleTab=title
+    
+  
+  }
+  else{
+    this.hideTab=true;
+    this.titleTab="My Overall"
+  }
+  console.log(title);
+  this.selectedIndex=1;
    console.log(this.sectionView_1._personal_data.id_role);
    
   if(this.sectionView_1._personal_data.id_role==4){
@@ -473,6 +890,7 @@ this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
         let err: any, res: any;
         let body: any;
         
+
         
         body = {
           "_userid": this.queryParams.userID,
@@ -503,6 +921,344 @@ this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
         } else {
           this.sectionView_3_err = 'Please try after some time'
         }
+
+    let bodyForFixedTile = {
+      "_userid": this.userSelectionData?._personal_data?.USERID,
+      "_game": this.userSelectionData?.id_coroebus_game,
+      "_section_view":"2",
+      "page_number":1
+    }
+    let err1: any
+    [err1, res] = await HttpProtocols.to(DashboardModel.getCenterDataSectionView_2(bodyForFixedTile))
+    if (!err && res?.status === 'success' && res?.statuscode === 200) {
+      this.sectionView_2_popup = res?.data;
+      console.log( this.sectionView_2_popup);
+      this.my_rank=this.sectionView_2_popup._ranking_data[0]._data[0].rankingtable_number;
+     
+      if(this.userSelectionData?._personal_data?.id_role == '4'){
+        this.MyZoneRank=this.sectionView_2_popup._ranking_data[0]._data[0].rankingtable_number;
+        this.MyOverallRank=this.sectionView_2_popup._ranking_data[0]._Overall[0].rankingtable_number;
+      }
+    
+      
+
+      this.labelNameMy = this.sectionView_2?._ranking_data[0].label;
+      
+      this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order;
+
+      
+
+
+      // for(let i=0;i<this.sectionView_2?._ranking_data?.length;i++){
+      if (this.queryParams?.roleID == '6' || this.userSelectionData?._personal_data?.id_role == '6') {
+        
+        
+
+        // this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+        
+
+        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+
+        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+
+        
+
+        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+
+        for (let item of this.getBackImages) {
+
+
+          if (item.ranking_image_level === this.firstrowbackimage) {
+
+            this.web_first_tile_image = item.ranking_image
+            
+          }
+
+        }
+
+
+
+
+
+        if (this.queryParams?.roleID == '4') {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[1].order
+          this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[1].order
+          this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+
+          this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+          
+  
+          for (let item of this.getBackImages) {
+            
+            
+  
+            if (item.ranking_image_level === this.firstrowbackimage) {
+
+              this.web_first_tile_image = item.ranking_image
+              
+  
+  
+  
+            }
+
+          }
+          
+
+
+        }
+        else if (this.queryParams?.roleID == '3') {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
+          this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
+          this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+          
+          this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+          
+  
+          for (let item of this.getBackImages) {
+            
+            
+  
+            if (item.ranking_image_level === this.firstrowbackimage) {
+
+              this.web_first_tile_image = item.ranking_image
+              
+  
+  
+  
+            }
+
+          }
+
+        }
+        else if (this.queryParams?.roleID == '8') {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
+          this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
+          this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+          this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+          
+  
+          for (let item of this.getBackImages) {
+            
+            
+  
+            if (item.ranking_image_level === this.firstrowbackimage) {
+
+              this.web_first_tile_image = item.ranking_image
+              
+  
+  
+  
+            }
+
+          }
+          
+
+        }
+        else if (this.queryParams?.roleID == '' || this.queryParams?.roleID == null || this.queryParams?.roleID === 'undefined' || (this.queryParams?.roleID == this.userSelectionData?._personal_data?.id_role)) {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+          this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+          this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+          this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+          
+  
+          for (let item of this.getBackImages) {
+            
+            
+  
+            if (item.ranking_image_level === this.firstrowbackimage) {
+
+              this.web_first_tile_image = item.ranking_image
+              
+  
+  
+  
+            }
+
+          }
+          
+
+
+        }
+        else {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+          
+          
+  
+          for (let item of this.getBackImages) {
+            
+            
+  
+            if (item.ranking_image_level === this.firstrowbackimage) {
+
+              this.web_first_tile_image = item.ranking_image
+              
+  
+  
+  
+            }
+
+          }
+
+        }
+
+        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+        // }
+
+      }
+
+
+      else if (this.queryParams?.roleID === '4' || this.userSelectionData?._personal_data?.id_role === '4') {
+        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+
+
+        if (this.queryParams?.roleID === '3') {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+
+        }
+        else if (this.queryParams?.roleID === '8') {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+
+        }
+        // else if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
+        //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
+        //   
+
+        // }
+        
+        
+
+        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+        // }
+
+        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+        
+
+        for (let item of this.getBackImages) {
+          
+          
+
+          if (item.ranking_image_level === this.firstrowbackimage) {
+
+            this.web_first_tile_image = item.ranking_image
+            
+
+
+
+          }
+
+        }
+
+      }
+
+
+      else if (this.queryParams?.roleID === '3' || this.userSelectionData?._personal_data?.id_role === '3') {
+        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+
+        if (this.queryParams?.roleID === '8') {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
+
+        }
+        // else if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
+        //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
+        //   
+
+        // }
+        
+        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+        // }
+
+        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+        
+
+        for (let item of this.getBackImages) {
+          
+          
+
+          if (item.ranking_image_level === this.firstrowbackimage) {
+
+            this.web_first_tile_image = item.ranking_image
+            
+
+
+
+          }
+
+        }
+      }
+
+      else if (this.queryParams?.roleID === '8' || this.userSelectionData?._personal_data?.id_role === '8') {
+        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
+
+        // if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
+        //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
+        //   
+
+        // }
+        
+        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+        // }
+
+        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+        
+
+        for (let item of this.getBackImages) {
+          
+          
+
+          if (item.ranking_image_level === this.firstrowbackimage) {
+
+            this.web_first_tile_image = item.ranking_image
+            
+
+
+
+          }
+
+        }
+      }
+      else if ((this.queryParams?.roleID === '9' || this.userSelectionData?._personal_data?.id_role === '9')
+        || (this.queryParams?.roleID === '10' || this.userSelectionData?._personal_data?.id_role === '10')
+        || (this.queryParams?.roleID === '11' || this.userSelectionData?._personal_data?.id_role === '11')
+        || (this.queryParams?.roleID === '12' || this.userSelectionData?._personal_data?.id_role === '12')
+      ) {
+        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+
+        // if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
+        //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
+        //   
+
+        // }
+        
+        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+        // }
+        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+        
+
+        for (let item of this.getBackImages) {
+          
+          
+
+          if (item.ranking_image_level === this.firstrowbackimage) {
+
+            this.web_first_tile_image = item.ranking_image
+            
+
+
+
+          }
+
+        }
+      }
+
+    } else {
+      this.sectionView_2_err = 'Please try after some time'
+    }
 
 
   
@@ -904,6 +1660,8 @@ updatedPoke() {
     };
     localStorage.setItem('body_userid', body._userid);
     localStorage.setItem('body_game', body._game);
+    this.coroebus_game =localStorage.getItem('body_game');
+
 
     [err, res] = await HttpProtocols.to(DashboardModel.getRankingAndOtherDataSectionView_3(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
@@ -1950,6 +2708,10 @@ else if(this.activeTabForSectionView_2 == 4){
     this.isWeeklyModalOpen = false;
     this.isMonthlyModalOpen = true;
 
+  }
+
+  openKpiInfo(){
+    this.openKpi=!this.openKpi;
   }
 
   
