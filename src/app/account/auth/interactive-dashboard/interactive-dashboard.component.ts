@@ -320,7 +320,8 @@ else{
         this.http.interactiveDashboard(body).subscribe((res) => {
           
           this.interactive_dashoard_response = res;
-          
+          localStorage.setItem('tl_rank',this.interactive_dashoard_response.data._primary.primary_rank)
+
           localStorage.setItem('body_game',this.interactive_dashoard_response.data._personal_data.id_coroebus_game)
 
           if(this.interactive_dashoard_response?.data.is_about_game==1){

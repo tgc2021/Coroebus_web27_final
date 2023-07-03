@@ -87,7 +87,7 @@
                                                     </button>
                                                     
                                                 </ng-template>
-                                                <span class="level-rank-name mt-2">Rank</span>
+                                                <span class="level-rank-name mt-2">Overall Player Rank</span>
                                             </div>
 
                                         </div>
@@ -124,7 +124,7 @@
                                                     
                                                 </ng-template>
                                                 
-                                                <span class="level-rank-name mt-2">Rank</span>
+                                                <span class="level-rank-name mt-2">Overall Player Rank</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1142,7 +1142,7 @@
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                             (click)="GetRankingPopupData('My Team')" data-bs-toggle="modal"
                                             data-bs-target="#myTeamLeaderBoard">
-                                            {{MyOverallRank}}
+                                            {{primary_rank}}
                                         </button>
                                         <button *ngIf="l=='2' && sectionView_3._personal_data.id_role=='4'"
                                             class="btn btn-primary- text-white level-badge-btn"
@@ -1150,7 +1150,8 @@
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                             (click)="GetRankingPopupData('My Team')" data-bs-toggle="modal"
                                             data-bs-target="#myTeamLeaderBoard">
-                                            {{MyOverallRank}}
+                                            {{primary_rank}}
+
                                         </button>
 
 
@@ -1164,8 +1165,8 @@
                                         </button>
 
                                         <br>
-                                        <span *ngIf="l=='0'" class="level-rank-name">My Overall</span>
-                                        <span *ngIf="l=='2'" class="level-rank-name">My Zone</span>
+                                        <span *ngIf="l=='0'" class="level-rank-name">Advisor National Rank</span>
+                                        <span *ngIf="l=='2'" class="level-rank-name">Advisor Zonal Rank</span>
                                         <span *ngIf="l=='1' " class="level-rank-name">My Team</span>
 
 
@@ -2301,8 +2302,8 @@
                         </div>
                         </ng-template>
                         <ng-template #staticMobile>
-                            <div class="row d-flex align-items-center p-1">
-                                    <div class="col text-center d-flex flex-column align-items-center "
+                            <div class="row d-flex align-items-center justify-content-center">
+                                    <div class="col-4 text-center d-flex flex-column  align-items-center "
                                         *ngFor="let item of sectionView_1?.is_land_logos; let l=index">
                                         <img *ngIf="l=='0'" src="{{item?.logo}}" class="island_login" alt="" height="100">
                                         <img *ngIf="l=='2'" src="{{item?.logo}}" class="island_login" alt="" height="100">
@@ -2347,7 +2348,7 @@
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                             (click)="GetRankingPopupData('My Overall')" data-bs-toggle="modal"
                                             data-bs-target="#myTeamLeaderBoard" style="font-size:2.7vw">
-                                            {{MyOverallRank}}
+                                            {{primary_rank}}
                                         </button>
                                         <button *ngIf="l=='2' && sectionView_3._personal_data.id_role=='4'"
                                             class="btn btn-primary- text-white level-badge-btn-mobile"
@@ -2355,7 +2356,7 @@
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                             (click)="GetRankingPopupData('My Zone')" data-bs-toggle="modal"
                                             data-bs-target="#myTeamLeaderBoard" style="font-size:2.7vw">
-                                            {{MyZoneRank}}
+                                            {{tl_team_rank}}
                                         </button>
 
 
@@ -2365,13 +2366,13 @@
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                             (click)="GetRankingPopupData('My Team')" data-bs-toggle="modal"
                                             data-bs-target="#myTeamLeaderBoard" style="font-size:2.7vw">
-                                            {{primary_rank}}
+                                            {{tl_team_rank}}
                                         </button>
 
                                         
-                                        <span *ngIf="l=='0'" class="level-rank-name" style="color:#ffff">My Overall</span>
-                                        <span *ngIf="l=='2'" class="level-rank-name" style="color:#ffff">My Zone</span>
-                                        <span *ngIf="l=='1' " class="level-rank-name" style="color:#ffff">My Team</span>
+                                        <span *ngIf="l=='0'" class="level-rank-name" >Advisor National Rank</span>
+                                        <span *ngIf="l=='2'" class="level-rank-name" >Advisors Zonal Rank</span>
+                                        <span *ngIf="l=='1' " class="level-rank-name" >My Team</span>
 
 
                                     </div>

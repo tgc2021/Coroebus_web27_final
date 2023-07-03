@@ -192,6 +192,7 @@ sectionView_3_popup_1:any
   about_game_pdf:any
   sectionView_3_popup:any;
   sectionView_2_popup:any;
+  tl_team_rank:any
   coroebus_game:any
   openKpi:boolean=false;
  staticKpiData=[{
@@ -236,6 +237,7 @@ sectionView_3_popup_1:any
     this.elementref.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
      console.log(this.medium_color);
      
+     this.tl_team_rank=localStorage.getItem('tl_rank')
     // if (!localStorage.getItem('foo')) {
     //   localStorage.setItem('foo', 'no reload')
     //   location.reload()
@@ -796,14 +798,14 @@ console.log(this.usertl);
 
       
 
-localStorage.setItem('bg_image',this.sectionView_1?.theme_details?.[0]?.point_dist_background)
+      localStorage.setItem('bg_image',this.sectionView_1?.theme_details?.[0]?.point_dist_background)
 
       
 
       this.pokeAnimationData = this.sectionView_1._poked_data
 
       this.dark_color=this.sectionView_1?.theme_details?.[0]?.dark_color
-this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
+      this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
       console.log(this.pokeAnimationData[0]);
       this.updatedPoke()
 
