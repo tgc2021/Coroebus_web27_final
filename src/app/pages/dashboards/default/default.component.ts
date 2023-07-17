@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild, HostListener  } from '@angular/core';
 import { HttpProtocols } from '@app/http/http.protocols';
 import { DashboardModel } from '@models/dashboard.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -15,15 +15,18 @@ import * as userActions from '../../../core/app-state/actions';
 import { ActivatedRoute, Event as Events, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { ToastService } from '@app/services/toast-service';
 import { ApiserviceService } from 'app/apiservice.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
   selector: 'app-default',
   templateUrl: './default.component.html',
   styleUrls: ['./default.component.scss'],
-  
+ 
 })
 export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
+
+  
   openperformance: boolean=true;
   openActivivities: boolean=false;
   primary_rank: any;
@@ -34,6 +37,21 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   hideTab: boolean=true;
   titleTab: any;
   my_rank: void;
+  sectionView_2_Indexwise: any;
+  labelNameMyIndex: any;
+  activeTabForSectionView_2_index: any;
+  sectionView_3_index: any;
+  sectionView_3_list_index: any;
+  activeSubTabForSectionView_2_index: string;
+  activeTabOrderNumberForSectionView_2_index: any;
+  rankingDataFirstRowForSectionView_2_index: any;
+  spectSearListIndex: any;
+  gameid: any;
+  Campaign_res:any;
+  daily_text: any;
+  weekly_text: any;
+  monthly_text: any;
+  userGrade: any;
 dismiss() {
 throw new Error('Method not implemented.');
 }
@@ -49,7 +67,9 @@ sectionView_3_popup_1:any
   sectionView_3_err: any
   notificationLists: any
   notificationList_err: any
+
   // bread crumb items
+
   breadCrumbItems: Array<{}>;
   public isCollapsed = false;
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -63,10 +83,13 @@ sectionView_3_popup_1:any
   rankingDataFirstRowForSectionView_2: any
   filterRankingDataForSectionView_3: any = []
   pageNumberForSectionView_3: number = 1
+  pageNumberForSectionView_3_index :number=1
+
   backUpData: any
   addInsList: any
   @ViewChild("scrollTarget") scrollTarget: ElementRef;
   spectSearchStr: string = '';
+  spectSearchStrIndex:string='';
   spectSearchStrTrigger: boolean = false
   spectSearList: string
   @ViewChild('content') content;
@@ -192,6 +215,7 @@ sectionView_3_popup_1:any
   about_game_pdf:any
   sectionView_3_popup:any;
   sectionView_2_popup:any;
+  tl_team_rank:any
   coroebus_game:any
   openKpi:boolean=false;
  staticKpiData=[{
@@ -215,27 +239,52 @@ sectionView_3_popup_1:any
 
 
 
+activeButton: string = 'achievement';
+isAchievementActive: boolean = true;
+isQualifierActive: boolean = false;
+
+toggleButton(button: string): void {
+  this.activeButton = button;
+}
+
+toggleAchievement(): void {
+  this.isAchievementActive = true;
+  this.isQualifierActive = false;
+}
+
+toggleQualifier(): void {
+  this.isQualifierActive = true;
+  this.isAchievementActive = false;
+}
+
+showButton = false;
+activeclass = false;
 
   constructor(private readonly store: Store, private modalService: NgbModal, private renderer: Renderer2,
     public Util: Util, private eventService: EventService, private _router: Router,
-    private _route: ActivatedRoute, public toastService: ToastService, public http: ApiserviceService, public elementref: ElementRef) {
+    private _route: ActivatedRoute, public toastService: ToastService, public http: ApiserviceService, public elementref: ElementRef,private sanitizer: DomSanitizer) {
     this.activeSubTabForSectionView_2 = 'Overall'
     this.Edit_image()
+  
   }
 
   // ngOnChanges(){
   //   this.Edit_image()
   // }
-
+  
 
   ngOnInit() {
 
+    this.daily_text=localStorage.getItem('daily_text');
+    this.weekly_text=localStorage.getItem('weekly_text');
+    this.monthly_text=localStorage.getItem('monthly_text');
 
+    console.log(this.Campaign_res);
     this.medium_color=localStorage.getItem('medium_color')
-   
     this.elementref.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
      console.log(this.medium_color);
      
+     this.tl_team_rank=localStorage.getItem('tl_rank')
     // if (!localStorage.getItem('foo')) {
     //   localStorage.setItem('foo', 'no reload')
     //   location.reload()
@@ -253,28 +302,28 @@ sectionView_3_popup_1:any
       this.store.select(fromRoot.usergame),
     ]
     ).subscribe(([login, theme, game]) => {
-      
+     
       this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
-      
-    
+     
+   
 
        
-      
+     
       // this.GetDataFromProduceInfo();
       this._routeSub?.unsubscribe()
       this._routeSub = this._route.queryParams.subscribe(queryParams => {
         // do something with the query params
-        
+       
        
 
         if (queryParams?.userID) {
-          
+         
           this.location=window.location.href
           if(this.location.includes("?")){
             this.hideBattleGround=true;
              var replacedUserId = queryParams?.userID.replace(/ /g, '+');
          
-        
+       
          var replacedGameId = queryParams?.gameID.replace(/ /g, '+');
          
 
@@ -288,7 +337,7 @@ sectionView_3_popup_1:any
 
           }
           this.queryParams = queryParams
-          
+         
 
 
 
@@ -296,8 +345,7 @@ sectionView_3_popup_1:any
           this.getUserBannerDataSectionView_2(queryParams)
           this.getUserBannerDataSectionView_3(null, queryParams)
           this.overallPopup('');
-          this.GetRankingPopupData('')
-
+          this.GetRankingPopupData('','')
           this.GetDataFromProduceInfo(queryParams)
           // this.navigateToStatistics(queryParams)
           // this.notificationList(queryParams)
@@ -306,11 +354,12 @@ sectionView_3_popup_1:any
           this.addIns(queryParams)
         } else {
           this.getUserBannerDataSectionView_1()
+
           this.getUserBannerDataSectionView_2()
           this.getUserBannerDataSectionView_3()
           this.overallPopup('');
           this.GetDataFromProduceInfo()
-          this.GetRankingPopupData('')
+          this.GetRankingPopupData('','')
 
           // this.navigateToStatistics()
 
@@ -336,13 +385,13 @@ sectionView_3_popup_1:any
     })
     this.requestForProduce1Data?.unsubscribe()
     // this.requestForProduce1Data = this.eventService.subscribe('requestForProduce1Data', (data) => {
-      
-      
+     
+     
     //   this.eventService.broadcast('requestSendForProduce1Data', this.sectionView_1)
     // })
-    
-    
-    
+   
+   
+   
    
    
 
@@ -352,23 +401,27 @@ sectionView_3_popup_1:any
   Edit_image() {
     setTimeout(() => { this.Edit_image() }, 1000 * 1)
     var url_string = window.location.href
-    // 
+    //
     var userID = url_string.includes("?"); // true
-    // 
+    //
     if (userID === true) {
       this.edit_image = false
     }
     else {
       this.edit_image = true
     }
-    
-    // 
+   
+    //
   }
 
   overallPopup(number:any){
     this.selectedIndex=number;
     if(this.selectedIndex==0){
+      this.titleTab='My Zone'
+    }
+    else{
       this.titleTab='My Team'
+
     }
     let body = {
       "_userid": this.userSelectionData?._personal_data?.USERID,
@@ -378,377 +431,377 @@ sectionView_3_popup_1:any
     }
 
 
-this.http.produce12(body).subscribe(res=>{
-  console.log(res);
-  this.sectionView_3_popup_1 = res
-  this.sectionView_3_popup = this.sectionView_3_popup_1?.data
-  console.log(this.sectionView_3_popup._ranking_data[0]._data);
-  // if(this.sectionView_3_popup)
-
-
-
-  this.sectionView_3_list_popup = this.sectionView_3_popup?._ranking_data?.filter(data => {
-    //
-    if (data.order === this.activeTabForSectionView_2) {
-      return data
-    }
+  this.http.produce12(body).subscribe(res=>{
+    console.log(res);
+    this.sectionView_3_popup_1 = res
+    this.sectionView_3_popup = this.sectionView_3_popup_1?.data
+    console.log(this.sectionView_3_popup._ranking_data[0]._data);
+    // if(this.sectionView_3_popup)
+  
+  
+  
+    this.sectionView_3_list_popup = this.sectionView_3_popup?._ranking_data?.filter(data => {
+      //
+      if (data.order === this.activeTabForSectionView_2) {
+        return data
+      }
+    })
+   
   })
   
-})
-
-
-let bodyForFixedTile = {
-  "_userid": this.userSelectionData?._personal_data?.USERID,
-  "_game": this.userSelectionData?.id_coroebus_game,
-  "_section_view":"2",
-  "page_number":1
-}
-
-this.http.produce12(bodyForFixedTile).subscribe(res=>{
-  console.log(res);
-  this.section_view_res=res;
-  console.log(this.section_view_res);
-  this.MyZoneRank=this.section_view_res.data._ranking_data[0]._data[0].rankingtable_number;
-  this.MyOverallRank=this.section_view_res.data._ranking_data[0]._Overall[0].rankingtable_number;
-
-
-  console.log(this.MyZoneRank)
-
-
-   this.sectionView_2_popup = this.section_view_res?.data;
-      
-
-      this.labelNameMy = this.sectionView_2?._ranking_data[0].label;
-      
-      this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order;
-
-      
-
-
-      // for(let i=0;i<this.sectionView_2?._ranking_data?.length;i++){
-      if (this.queryParams?.roleID == '6' || this.userSelectionData?._personal_data?.id_role == '6') {
-        
-        
-
-        // this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
-        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
-        
-
-        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
-
-        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
-
-        
-
-        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-
-        for (let item of this.getBackImages) {
-
-
-          if (item.ranking_image_level === this.firstrowbackimage) {
-
-            this.web_first_tile_image = item.ranking_image
-            
-          }
-
-        }
-
-
-
-
-
-        if (this.queryParams?.roleID == '4') {
-          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[1].order
-          this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[1].order
-          this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
-
-          this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-          
   
-          for (let item of this.getBackImages) {
-            
-            
+  let bodyForFixedTile = {
+    "_userid": this.userSelectionData?._personal_data?.USERID,
+    "_game": this.userSelectionData?.id_coroebus_game,
+    "_section_view":"2",
+    "page_number":1
+  }
   
-            if (item.ranking_image_level === this.firstrowbackimage) {
-
-              this.web_first_tile_image = item.ranking_image
-              
+  this.http.produce12(bodyForFixedTile).subscribe(res=>{
+    console.log(res);
+    this.section_view_res=res;
+    console.log(this.section_view_res);
+    this.MyZoneRank=this.section_view_res.data?._ranking_data[0]?._data[0]?.rankingtable_number;
+    this.MyOverallRank=this.section_view_res?.data?._ranking_data[0]?._Overall[0]?.rankingtable_number;
   
   
-  
-            }
-
-          }
-          
-
-
-        }
-        else if (this.queryParams?.roleID == '3') {
-          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
-          this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
-          this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
-          
-          this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-          
-  
-          for (let item of this.getBackImages) {
-            
-            
-  
-            if (item.ranking_image_level === this.firstrowbackimage) {
-
-              this.web_first_tile_image = item.ranking_image
-              
+    console.log(this.MyZoneRank)
   
   
+     this.sectionView_2_popup = this.section_view_res?.data;
+       
   
-            }
-
-          }
-
-        }
-        else if (this.queryParams?.roleID == '8') {
-          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
-          this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
-          this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
-          this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-          
+        this.labelNameMy = this.sectionView_2?._ranking_data[0].label;
+       
+        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order;
   
-          for (let item of this.getBackImages) {
-            
-            
-  
-            if (item.ranking_image_level === this.firstrowbackimage) {
-
-              this.web_first_tile_image = item.ranking_image
-              
+       
   
   
+        // for(let i=0;i<this.sectionView_2?._ranking_data?.length;i++){
+        if (this.queryParams?.roleID == '6' || this.userSelectionData?._personal_data?.id_role == '6') {
+         
+         
   
-            }
-
-          }
-          
-
-        }
-        else if (this.queryParams?.roleID == '' || this.queryParams?.roleID == null || this.queryParams?.roleID === 'undefined' || (this.queryParams?.roleID == this.userSelectionData?._personal_data?.id_role)) {
+          // this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
           this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+         
+  
+          this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0]?.order
+  
+          this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data?.order === this.activeTabForSectionView_2)
+  
+         
+  
+          this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]?._data[0]?.ranking_image_level
+  
+          for (let item of this.getBackImages) {
+  
+  
+            if (item?.ranking_image_level === this.firstrowbackimage) {
+  
+              this.web_first_tile_image = item?.ranking_image
+             
+            }
+  
+          }
+  
+  
+  
+  
+  
+          if (this.queryParams?.roleID == '4') {
+            this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[1].order
+            this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[1].order
+            this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+  
+            this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+           
+   
+            for (let item of this.getBackImages) {
+             
+             
+   
+              if (item.ranking_image_level === this.firstrowbackimage) {
+  
+                this.web_first_tile_image = item.ranking_image
+               
+   
+   
+   
+              }
+  
+            }
+           
+  
+  
+          }
+          else if (this.queryParams?.roleID == '3') {
+            this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
+            this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
+            this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+           
+            this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+           
+   
+            for (let item of this.getBackImages) {
+             
+             
+   
+              if (item.ranking_image_level === this.firstrowbackimage) {
+  
+                this.web_first_tile_image = item.ranking_image
+               
+   
+   
+   
+              }
+  
+            }
+  
+          }
+          else if (this.queryParams?.roleID == '8') {
+            this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
+            this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
+            this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+            this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+           
+   
+            for (let item of this.getBackImages) {
+             
+             
+   
+              if (item.ranking_image_level === this.firstrowbackimage) {
+  
+                this.web_first_tile_image = item.ranking_image
+               
+   
+   
+   
+              }
+  
+            }
+           
+  
+          }
+          else if (this.queryParams?.roleID == '' || this.queryParams?.roleID == null || this.queryParams?.roleID === 'undefined' || (this.queryParams?.roleID == this.userSelectionData?._personal_data?.id_role)) {
+            this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+            this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+            this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+            this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+           
+   
+            for (let item of this.getBackImages) {
+             
+             
+   
+              if (item.ranking_image_level === this.firstrowbackimage) {
+  
+                this.web_first_tile_image = item.ranking_image
+               
+   
+   
+   
+              }
+  
+            }
+           
+  
+  
+          }
+          else {
+            this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+           
+           
+   
+            for (let item of this.getBackImages) {
+             
+             
+   
+              if (item.ranking_image_level === this.firstrowbackimage) {
+  
+                this.web_first_tile_image = item.ranking_image
+               
+   
+   
+   
+              }
+  
+            }
+  
+          }
+  
           this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
           this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+          // }
+  
+        }
+  
+  
+        else if (this.queryParams?.roleID === '4' || this.userSelectionData?._personal_data?.id_role === '4') {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+  
+  
+          if (this.queryParams?.roleID === '3') {
+            this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+  
+          }
+          else if (this.queryParams?.roleID === '8') {
+            this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+  
+          }
+          // else if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
+          //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
+          //  
+  
+          // }
+         
+         
+  
+          this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+          this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+          // }
+  
           this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-          
+         
   
           for (let item of this.getBackImages) {
-            
-            
+           
+           
   
             if (item.ranking_image_level === this.firstrowbackimage) {
-
+  
               this.web_first_tile_image = item.ranking_image
-              
+             
   
   
   
             }
-
+  
           }
-          
-
-
+  
         }
-        else {
+  
+  
+        else if (this.queryParams?.roleID === '3' || this.userSelectionData?._personal_data?.id_role === '3') {
           this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
-          
-          
+  
+          if (this.queryParams?.roleID === '8') {
+            this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
+  
+          }
+          // else if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
+          //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
+          //  
+  
+          // }
+         
+          this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+          this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+          // }
+  
+          this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+         
   
           for (let item of this.getBackImages) {
-            
-            
-  
             if (item.ranking_image_level === this.firstrowbackimage) {
-
+  
               this.web_first_tile_image = item.ranking_image
-              
+             
   
   
   
             }
-
+  
           }
-
         }
-
-        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
-        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
-        // }
-
-      }
-
-
-      else if (this.queryParams?.roleID === '4' || this.userSelectionData?._personal_data?.id_role === '4') {
-        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
-
-
-        if (this.queryParams?.roleID === '3') {
-          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
-
-        }
-        else if (this.queryParams?.roleID === '8') {
-          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
-
-        }
-        // else if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
-        //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
-        //   
-
-        // }
-        
-        
-
-        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
-        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
-        // }
-
-        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-        
-
-        for (let item of this.getBackImages) {
-          
-          
-
-          if (item.ranking_image_level === this.firstrowbackimage) {
-
-            this.web_first_tile_image = item.ranking_image
-            
-
-
-
-          }
-
-        }
-
-      }
-
-
-      else if (this.queryParams?.roleID === '3' || this.userSelectionData?._personal_data?.id_role === '3') {
-        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
-
-        if (this.queryParams?.roleID === '8') {
+  
+        else if (this.queryParams?.roleID === '8' || this.userSelectionData?._personal_data?.id_role === '8') {
           this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
-
-        }
-        // else if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
-        //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
-        //   
-
-        // }
-        
-        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
-        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
-        // }
-
-        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-        
-
-        for (let item of this.getBackImages) {
-          
-          
-
-          if (item.ranking_image_level === this.firstrowbackimage) {
-
-            this.web_first_tile_image = item.ranking_image
-            
-
-
-
-          }
-
-        }
-      }
-
-      else if (this.queryParams?.roleID === '8' || this.userSelectionData?._personal_data?.id_role === '8') {
-        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
-
-        // if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
-        //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
-        //   
-
-        // }
-        
-        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
-        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
-        // }
-
-        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-        
-
-        for (let item of this.getBackImages) {
-          
-          
-
-          if (item.ranking_image_level === this.firstrowbackimage) {
-
-            this.web_first_tile_image = item.ranking_image
-            
-
-
-
-          }
-
-        }
-      }
-      else if ((this.queryParams?.roleID === '9' || this.userSelectionData?._personal_data?.id_role === '9')
-        || (this.queryParams?.roleID === '10' || this.userSelectionData?._personal_data?.id_role === '10')
-        || (this.queryParams?.roleID === '11' || this.userSelectionData?._personal_data?.id_role === '11')
-        || (this.queryParams?.roleID === '12' || this.userSelectionData?._personal_data?.id_role === '12')
-      ) {
-        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
-
-        // if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
-        //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
-        //   
-
-        // }
-        
-        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
-        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
-        // }
-        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-        
-
-        for (let item of this.getBackImages) {
-          
-          
-
-          if (item.ranking_image_level === this.firstrowbackimage) {
-
-            this.web_first_tile_image = item.ranking_image
-            
-
-
-
-          }
-
-        }
-      }
-
   
-})
+          // if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
+          //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
+          //  
+  
+          // }
+         
+          this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order;
+          this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+          // }
+  
+          this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+         
+  
+          for (let item of this.getBackImages) {
+           
+           
+  
+            if (item.ranking_image_level === this.firstrowbackimage) {
+  
+              this.web_first_tile_image = item.ranking_image
+             
+  
+  
+  
+            }
+  
+          }
+        }
+        else if ((this.queryParams?.roleID === '9' || this.userSelectionData?._personal_data?.id_role === '9')
+          || (this.queryParams?.roleID === '10' || this.userSelectionData?._personal_data?.id_role === '10')
+          || (this.queryParams?.roleID === '11' || this.userSelectionData?._personal_data?.id_role === '11')
+          || (this.queryParams?.roleID === '12' || this.userSelectionData?._personal_data?.id_role === '12')
+        ) {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+  
+          // if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
+          //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
+          //  
+  
+          // }
+         
+          this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+          this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+          // }
+          this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+         
+  
+          for (let item of this.getBackImages) {
+           
+           
+  
+            if (item.ranking_image_level === this.firstrowbackimage) {
+  
+              this.web_first_tile_image = item.ranking_image
+             
+  
+  
+  
+            }
+  
+          }
+        }
+  
+   
+  })
+  
+
 
   }
 
-  
+ 
   ngAfterViewInit() {
     this.edit_image;
    
     setTimeout(() => {
-    
+   
      
       this.changeSubTabFilter('Overall')
-      
+      this.changeSubTabFilterIndex('Overall')
+
       // this.changeTabFilter('', this.activeTabForSectionView_2=[0] )
 
-      
+     
     }, 3000)
 
   }
@@ -772,52 +825,51 @@ this.http.produce12(bodyForFixedTile).subscribe(res=>{
         _section: "Dashboard",
         _description: "Dashboard"
       }
-  
+ 
       this.http.engagamentlog(body).subscribe(res=>{
-        
-        
+       
+       
       })
 
-    
+   
      
 
       this.sectionView_1 = res?.data;
       this.primary_rank =this.sectionView_1._primary.primary_rank;
       this.role_id=this.sectionView_1._personal_data.id_role;
+      this.userGrade=this.sectionView_1._personal_data.user_grade
+      localStorage.setItem('user_tl',this.sectionView_1?.is_land_logos[2]?._userid)
+      this.usertl=localStorage.getItem('user_tl')
+      console.log(this.usertl);
 
-localStorage.setItem('user_tl',this.sectionView_1.is_land_logos[2]._userid)
-this.usertl=localStorage.getItem('user_tl')
-console.log(this.usertl);
-
-      
+     
       console.log(this.role_id)
 
       console.log("For Primary Data",this.sectionView_1._primary.primary_rank);
 
-      
+     
 
-localStorage.setItem('bg_image',this.sectionView_1?.theme_details?.[0]?.point_dist_background)
+      localStorage.setItem('bg_image',this.sectionView_1?.theme_details?.[0]?.point_dist_background)
 
-      
+     
 
       this.pokeAnimationData = this.sectionView_1._poked_data
 
       this.dark_color=this.sectionView_1?.theme_details?.[0]?.dark_color
-this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
+      this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
       console.log(this.pokeAnimationData[0]);
       this.updatedPoke()
-
       // this.pokeAnimationData1=this.sectionView_1._poked_data[0].poke_description
 
-      
+     
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       this.getBackImagesFromSectionView1 = this.sectionView_1._back_images[1]._data;
 
       this.getBackImages.push(...this.getBackImagesFromSectionView1);
 
 
-      
-      
+     
+     
       ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       // alert(this.pokeAnimationData)
@@ -829,15 +881,17 @@ this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
       const bgImg = this.Util?.isMobile() ? this.sectionView_1?.theme_details?.[0]?.theme_background : this.sectionView_1?.theme_details?.[0]?.theme_background_web
       document.body.style.backgroundImage = 'url(' + bgImg + ')'
 
-      this.web_profile_back_image= this.sectionView_1._back_images[1]._data[0].ranking_image_profile;
-      
+      this.web_profile_back_image= this.sectionView_1?._back_images[1]?._data[0]?.ranking_image_profile;
+      this.userGrade=this.sectionView_1?._personal_data.user_grade;
+      console.log(this.userGrade);
+     
 
       if(this.sectionView_1?.is_about_game==1){
         this.about_game_pdf= this.sectionView_1?.about_game[0].file_name
-        
+       
         localStorage.setItem('about_game_pdf',this.about_game_pdf)
       }
-      
+     
      
       this.eventService.broadcast('passDataToHeader', {
         color: this.sectionView_1?.theme_details?.[0]?.dark_color,
@@ -868,35 +922,48 @@ this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
   }
 
 
- async GetRankingPopupData(title:any){
+ async GetRankingPopupData(title:any,num:any){
+console.log(num);
 
+console.log(title);
 
   if(title=='My Team')
-  { 
+  {
     this.hideTab=false;
-    this.titleTab=title
-    
-  
+    this.titleTab='My Team'
+   
+ 
   }
-  else if(title=='My Zone'){
+  if(title=='My Zone'){
     this.hideTab=true;
-    this.titleTab= title
+    this.titleTab= 'My Zone'
+  }
+  if(title=='My National'){
+    this.hideTab=true;
+    this.titleTab= 'My National'
+  }
+  if(num==1){
+    this.selectedIndex=1
+  }
+  else{
+    this.selectedIndex=0
+
   }
   console.log(title);
-  this.selectedIndex=0;
+  // this.selectedIndex=0;
    
-  if(this.sectionView_1._personal_data.id_role==4){
+  if(this.sectionView_1?._personal_data?.id_role==4){
 
-    this.queryParams = { userID:  this.sectionView_1.is_land_logos[2]._userid, gameID: this.sectionView_1.is_land_logos[2].game_id, roleID:  this.sectionView_1.is_land_logos[2].role_id}
+    this.queryParams = { userID:  this.sectionView_1?.is_land_logos[2]?._userid, gameID: this.sectionView_1?.is_land_logos[2]?.game_id, roleID:  this.sectionView_1.is_land_logos[2]?.role_id}
      console.log(this.queryParams);
 
 
   }
-  else if(this.sectionView_1._personal_data.id_role==3){
+  else if(this.sectionView_1?._personal_data?.id_role==3){
     this.queryParams = { userID:  this.sectionView_1.is_land_logos[0]._userid, gameID: this.sectionView_1.is_land_logos[0].game_id, roleID:  this.sectionView_1.is_land_logos[0].role_id}
     console.log(this.queryParams);
   }
-  else if(this.sectionView_1._personal_data.id_role==6){
+  else if(this.sectionView_1?._personal_data?.id_role==6){
     this.queryParams = { userID:  this.sectionView_1._personal_data.USERID, gameID: this.sectionView_1._personal_data.id_coroebus_game, roleID: this.sectionView_1._personal_data.id_role}
 
   }
@@ -904,27 +971,27 @@ this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
 
         let err: any, res: any;
         let body: any;
-        
-        
+       
+       
         body = {
-          "_userid": this.queryParams.userID,
-    
-          "_game": this.queryParams.gameID, "_section_view": "3", "page_number": this.pageNumberForSectionView_3
+          "_userid": this.queryParams?.userID,
+   
+          "_game": this.queryParams?.gameID, "_section_view": "3", "page_number": this.pageNumberForSectionView_3
         };
         localStorage.setItem('body_userid', body._userid);
         localStorage.setItem('body_game', body._game);
-    
+   
         [err, res] = await HttpProtocols.to(DashboardModel.getRankingAndOtherDataSectionView_3(body))
         if (!err && res?.status === 'success' && res?.statuscode === 200) {
           this.pokeData = res?.data?._poke_list
           console.log(this.pokeData);
           console.log(this.pokeData[0]._data[0].poke_description);
-    
+   
          
             this.sectionView_3_popup = res?.data
-            
+           
           // this.filterRankingData()
-    
+   
           this.sectionView_3_list_popup = this.sectionView_3_popup?._ranking_data?.filter(data => {
             //
             if (data.order === this.activeTabForSectionView_2) {
@@ -950,33 +1017,33 @@ this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
       this.my_rank=this.sectionView_2_popup._ranking_data[0]._data[0].rankingtable_number;
      
       if(this.userSelectionData?._personal_data?.id_role == '4'){
-        this.MyZoneRank=this.sectionView_2_popup._ranking_data[0]._data[0].rankingtable_number;
-        this.MyOverallRank=this.sectionView_2_popup._ranking_data[0]._data[0].rankingtable_number;
+        this.MyZoneRank=this.sectionView_2_popup._ranking_data[0]?._data[0]?.rankingtable_number;
+        this.MyOverallRank=this.sectionView_2_popup._ranking_data[0]?._data[0]?.rankingtable_number;
       }
-    
-      
+   
+     
 
       this.labelNameMy = this.sectionView_2?._ranking_data[0].label;
-      
+     
       this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order;
 
-      
+     
 
 
       // for(let i=0;i<this.sectionView_2?._ranking_data?.length;i++){
       if (this.queryParams?.roleID == '6' || this.userSelectionData?._personal_data?.id_role == '6') {
-        
-        
+       
+       
 
         // this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
-        
+       
 
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
 
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
 
-        
+       
 
         this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
 
@@ -986,7 +1053,7 @@ this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
           if (item.ranking_image_level === this.firstrowbackimage) {
 
             this.web_first_tile_image = item.ranking_image
-            
+           
           }
 
         }
@@ -1001,23 +1068,23 @@ this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
           this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
 
           this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-          
-  
+         
+ 
           for (let item of this.getBackImages) {
-            
-            
-  
+           
+           
+ 
             if (item.ranking_image_level === this.firstrowbackimage) {
 
               this.web_first_tile_image = item.ranking_image
-              
-  
-  
-  
+             
+ 
+ 
+ 
             }
 
           }
-          
+         
 
 
         }
@@ -1025,21 +1092,21 @@ this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
           this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
           this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
           this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
-          
+         
           this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-          
-  
+         
+ 
           for (let item of this.getBackImages) {
-            
-            
-  
+           
+           
+ 
             if (item.ranking_image_level === this.firstrowbackimage) {
 
               this.web_first_tile_image = item.ranking_image
-              
-  
-  
-  
+             
+ 
+ 
+ 
             }
 
           }
@@ -1050,23 +1117,23 @@ this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
           this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
           this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
           this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-          
-  
+         
+ 
           for (let item of this.getBackImages) {
-            
-            
-  
+           
+           
+ 
             if (item.ranking_image_level === this.firstrowbackimage) {
 
               this.web_first_tile_image = item.ranking_image
-              
-  
-  
-  
+             
+ 
+ 
+ 
             }
 
           }
-          
+         
 
         }
         else if (this.queryParams?.roleID == '' || this.queryParams?.roleID == null || this.queryParams?.roleID === 'undefined' || (this.queryParams?.roleID == this.userSelectionData?._personal_data?.id_role)) {
@@ -1074,42 +1141,42 @@ this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
           this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
           this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
           this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-          
-  
+         
+ 
           for (let item of this.getBackImages) {
-            
-            
-  
+           
+           
+ 
             if (item.ranking_image_level === this.firstrowbackimage) {
 
               this.web_first_tile_image = item.ranking_image
-              
-  
-  
-  
+             
+ 
+ 
+ 
             }
 
           }
-          
+         
 
 
         }
         else {
           this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
-          
-          
-  
+         
+         
+ 
           for (let item of this.getBackImages) {
-            
-            
-  
+           
+           
+ 
             if (item.ranking_image_level === this.firstrowbackimage) {
 
               this.web_first_tile_image = item.ranking_image
-              
-  
-  
-  
+             
+ 
+ 
+ 
             }
 
           }
@@ -1137,27 +1204,27 @@ this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
         }
         // else if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
         //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
-        //   
+        //  
 
         // }
-        
-        
+       
+       
 
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
         // }
 
         this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-        
+       
 
         for (let item of this.getBackImages) {
-          
-          
+         
+         
 
           if (item.ranking_image_level === this.firstrowbackimage) {
 
             this.web_first_tile_image = item.ranking_image
-            
+           
 
 
 
@@ -1177,25 +1244,25 @@ this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
         }
         // else if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
         //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
-        //   
+        //  
 
         // }
-        
+       
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
         // }
 
         this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-        
+       
 
         for (let item of this.getBackImages) {
-          
-          
+         
+         
 
           if (item.ranking_image_level === this.firstrowbackimage) {
 
             this.web_first_tile_image = item.ranking_image
-            
+           
 
 
 
@@ -1209,25 +1276,25 @@ this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
 
         // if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
         //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
-        //   
+        //  
 
         // }
-        
+       
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
         // }
 
         this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-        
+       
 
         for (let item of this.getBackImages) {
-          
-          
+         
+         
 
           if (item.ranking_image_level === this.firstrowbackimage) {
 
             this.web_first_tile_image = item.ranking_image
-            
+           
 
 
 
@@ -1244,24 +1311,24 @@ this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
 
         // if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
         //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
-        //   
+        //  
 
         // }
-        
+       
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
         // }
         this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-        
+       
 
         for (let item of this.getBackImages) {
-          
-          
+         
+         
 
           if (item.ranking_image_level === this.firstrowbackimage) {
 
             this.web_first_tile_image = item.ranking_image
-            
+           
 
 
 
@@ -1275,12 +1342,12 @@ this.elementref.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
     }
 
 
-  
+ 
         // this.getUserBannerDataSectionView_3(null, this.queryParams)
-      
-      
-    
-  
+     
+     
+   
+ 
   }
 
 updatedPoke() {
@@ -1324,39 +1391,58 @@ updatedPoke() {
   console.log(this.pokeslidedata);
 }
 
+
+checkUserGrade(){
+  console.log('hndjbzkdfsjkkjsdkjkdkjvkjDSJKsDJhj');
+  
+  //  if (this.userGrade=='') {
+  //    console.log(this.userGrade,'uses grade null');
+     
+  //  } else {
+  //   console.log(this.userGrade,'uses grade false');
+
+  //  }
+    
+}
   async getUserBannerDataSectionView_2(queryParams?: any) {
+    // this.getUserBannerDataSectionView_1()
     let err: any, res: any;
     let body: any;
     body = {
       "_userid": queryParams?.userID ? queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
-      "_game": queryParams?.gameID ? queryParams?.gameID : this.userSelectionData?.id_coroebus_game, "_section_view": "2", "page_number": "1"
+      "_game": queryParams?.gameID ? queryParams?.gameID : this.userSelectionData?.id_coroebus_game,
+       "_section_view": "2", "page_number": "1"
     };
+    console.log(this.userGrade);
+    
     [err, res] = await HttpProtocols.to(DashboardModel.getCenterDataSectionView_2(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
       this.sectionView_2 = res?.data
-      
+      console.log(this.userGrade);
 
       this.labelNameMy = this.sectionView_2?._ranking_data[0].label;
-      
+     
       this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order;
 
-      
+     
 
 
       // for(let i=0;i<this.sectionView_2?._ranking_data?.length;i++){
       if (this.queryParams?.roleID == '6' || this.userSelectionData?._personal_data?.id_role == '6') {
-        
-        
+
+        // this.checkUserGrade()
+       
+       
 
         // this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
-        
+       
 
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
 
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
 
-        
+       
 
         this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
 
@@ -1366,7 +1452,7 @@ updatedPoke() {
           if (item.ranking_image_level === this.firstrowbackimage) {
 
             this.web_first_tile_image = item.ranking_image
-            
+           
           }
 
         }
@@ -1381,23 +1467,23 @@ updatedPoke() {
           this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
 
           this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-          
-  
+         
+ 
           for (let item of this.getBackImages) {
-            
-            
-  
+           
+           
+ 
             if (item.ranking_image_level === this.firstrowbackimage) {
 
               this.web_first_tile_image = item.ranking_image
-              
-  
-  
-  
+             
+ 
+ 
+ 
             }
 
           }
-          
+         
 
 
         }
@@ -1405,21 +1491,21 @@ updatedPoke() {
           this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
           this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
           this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
-          
+         
           this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-          
-  
+         
+ 
           for (let item of this.getBackImages) {
-            
-            
-  
+           
+           
+ 
             if (item.ranking_image_level === this.firstrowbackimage) {
 
               this.web_first_tile_image = item.ranking_image
-              
-  
-  
-  
+             
+ 
+ 
+ 
             }
 
           }
@@ -1430,23 +1516,23 @@ updatedPoke() {
           this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
           this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
           this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-          
-  
+         
+ 
           for (let item of this.getBackImages) {
-            
-            
-  
+           
+           
+ 
             if (item.ranking_image_level === this.firstrowbackimage) {
 
               this.web_first_tile_image = item.ranking_image
-              
-  
-  
-  
+             
+ 
+ 
+ 
             }
 
           }
-          
+         
 
         }
         else if (this.queryParams?.roleID == '' || this.queryParams?.roleID == null || this.queryParams?.roleID === 'undefined' || (this.queryParams?.roleID == this.userSelectionData?._personal_data?.id_role)) {
@@ -1454,42 +1540,42 @@ updatedPoke() {
           this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
           this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
           this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-          
-  
+         
+ 
           for (let item of this.getBackImages) {
-            
-            
-  
+           
+           
+ 
             if (item.ranking_image_level === this.firstrowbackimage) {
 
               this.web_first_tile_image = item.ranking_image
-              
-  
-  
-  
+             
+ 
+ 
+ 
             }
 
           }
-          
+         
 
 
         }
         else {
           this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
-          
-          
-  
+         
+         
+ 
           for (let item of this.getBackImages) {
-            
-            
-  
+           
+           
+ 
             if (item.ranking_image_level === this.firstrowbackimage) {
 
               this.web_first_tile_image = item.ranking_image
-              
-  
-  
-  
+             
+ 
+ 
+ 
             }
 
           }
@@ -1517,27 +1603,27 @@ updatedPoke() {
         }
         // else if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
         //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
-        //   
+        //  
 
         // }
-        
-        
+       
+       
 
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
         // }
 
         this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-        
+       
 
         for (let item of this.getBackImages) {
-          
-          
+         
+         
 
           if (item.ranking_image_level === this.firstrowbackimage) {
 
             this.web_first_tile_image = item.ranking_image
-            
+           
 
 
 
@@ -1557,25 +1643,25 @@ updatedPoke() {
         }
         // else if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
         //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
-        //   
+        //  
 
         // }
-        
+       
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
         // }
 
         this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-        
+       
 
         for (let item of this.getBackImages) {
-          
-          
+         
+         
 
           if (item.ranking_image_level === this.firstrowbackimage) {
 
             this.web_first_tile_image = item.ranking_image
-            
+           
 
 
 
@@ -1589,25 +1675,25 @@ updatedPoke() {
 
         // if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
         //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
-        //   
+        //  
 
         // }
-        
+       
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
         // }
 
         this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-        
+       
 
         for (let item of this.getBackImages) {
-          
-          
+         
+         
 
           if (item.ranking_image_level === this.firstrowbackimage) {
 
             this.web_first_tile_image = item.ranking_image
-            
+           
 
 
 
@@ -1624,24 +1710,24 @@ updatedPoke() {
 
         // if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
         //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
-        //   
+        //  
 
         // }
-        
+       
         this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
         this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
         // }
         this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
-        
+       
 
         for (let item of this.getBackImages) {
-          
-          
+         
+         
 
           if (item.ranking_image_level === this.firstrowbackimage) {
 
             this.web_first_tile_image = item.ranking_image
-            
+           
 
 
 
@@ -1659,14 +1745,14 @@ updatedPoke() {
   async getUserBannerDataSectionView_3(viewMore?: any, queryParams?: any) {
     // debugger
     console.log(queryParams);
-    
-    
-    
-    
+   
+   
+   
+   
     let err: any, res: any;
     let body: any;
-    
-    
+   
+   
     body = {
       "_userid": queryParams?.userID ? queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
 
@@ -1684,19 +1770,19 @@ updatedPoke() {
       console.log(this.pokeData[0]._data[0].poke_description);
 
       if (viewMore) {
-        
-        
+       
+       
         res?.data?._ranking_data?.forEach((element, index) => {
-          
-          
-          
+         
+         
+         
           if (element?.label === this.sectionView_3?._ranking_data[index]?.label) {
-            
-            
+           
+           
             if (element?._Overall?.length > 0 || element?._data?.length > 0) {
-              
-              // 
-              // 
+             
+              //
+              //
 
               this.sectionView_3?._ranking_data[index]?._Overall?.push(...element?._Overall)
               // this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data)
@@ -1711,7 +1797,7 @@ updatedPoke() {
       }
       // this.filterRankingData()
 
-    
+   
 
       this.sectionView_3_list = this.sectionView_3?._ranking_data?.filter(data => {
         //
@@ -1726,7 +1812,7 @@ updatedPoke() {
   }
 
 
-  
+ 
   filterRankingData() {
 
     this.sectionView_3._ranking_data = this.sectionView_3?._ranking_data?.filter((firstLevel) => {
@@ -1740,7 +1826,7 @@ updatedPoke() {
             })
           } else {
             compareData?._data?.filter((backImages) => {
-              // 
+              //
               if (secondLevel?.ranking_image_level === backImages?.ranking_image_level) {
                 secondLevel.ranking_image_level_img = backImages?.ranking_image
               }
@@ -1781,13 +1867,13 @@ updatedPoke() {
   changeTabFilter(name: string, order: any) {
     console.log(order);
 
-    
+   
    
     // this.spectSearchStr=null
     // this.labelNameMy = name
     this.pageNumberForSectionView_3 = 1
     this.activeTabForSectionView_2 = order
-    
+   
     // this.spectSearchStr=null
 
     if (this.activeTabForSectionView_2 == 1) {
@@ -1801,8 +1887,8 @@ updatedPoke() {
 
 
   this.http.engagamentlog(body).subscribe(res=>{
-    
-    
+   
+   
   })
 }
 else if(this.activeTabForSectionView_2 == 2){
@@ -1814,7 +1900,7 @@ else if(this.activeTabForSectionView_2 == 2){
     _description: this.sectionView_2._ranking_data[1].label+' Tab'
   }
   this.http.engagamentlog(body).subscribe(res=>{
-    
+   
   })
 }
 else if(this.activeTabForSectionView_2 == 3){
@@ -1828,8 +1914,8 @@ else if(this.activeTabForSectionView_2 == 3){
 
 
   this.http.engagamentlog(body).subscribe(res=>{
-    
-    
+   
+   
   })
 }
 else if(this.activeTabForSectionView_2 == 4){
@@ -1843,12 +1929,12 @@ else if(this.activeTabForSectionView_2 == 4){
 
 
   this.http.engagamentlog(body).subscribe(res=>{
-    
-    
+   
+   
   })
 }
 
-    
+   
     this.activeTabOrderNumberForSectionView_2 = order
 
 
@@ -1858,6 +1944,34 @@ else if(this.activeTabForSectionView_2 == 4){
     this.sectionView_3_list = this.sectionView_3?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
     if (this.spectSearchStr) {
       this.spectSearch()
+    }
+  }
+
+
+  changeTabFilterIndex(name: string, order: any) {
+    console.log(order);
+
+   
+   
+    // this.spectSearchStr=null
+    // this.labelNameMy = name
+    this.pageNumberForSectionView_3_index = 1
+    this.activeTabForSectionView_2_index = order
+   
+    // this.spectSearchStr=null
+
+  
+
+   
+    this.activeTabOrderNumberForSectionView_2_index = order
+
+
+    this.activeSubTabForSectionView_2_index = 'My Store'
+ 
+    this.rankingDataFirstRowForSectionView_2_index = this.sectionView_2_Indexwise?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2_index)
+    this.sectionView_3_list_index = this.sectionView_3_index?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2_index)
+    if (this.spectSearchStrIndex) {
+      this.spectSearchIndex()
     }
   }
 
@@ -1873,16 +1987,16 @@ else if(this.activeTabForSectionView_2 == 4){
         roleCheckArray = roleCheckArray?.filter(data => data?.roleID === this.userSelectionData?._personal_data?.id_role)
 
         console.log(roleCheckArray);
-        
+       
       } else {
         roleCheckArray = roleCheckArray?.filter(data => data?.roleID === this.userSelectionData?._personal_data?.id_role)
         console.log(roleCheckArray);
-        
+       
       }
       //console.log(this.queryParams)
       console.log(roleCheckArray?.[0]?.canPokeTo?.indexOf(rowData?.id_role));
       console.log(roleCheckArray?.[0]?.canPokeTo?.indexOf(rowData?.id_role) > -1);
-      
+     
       if (roleCheckArray?.[0]?.canPokeTo?.indexOf(rowData?.id_role) > -1) {
         this.pokeRowData = rowData
         console.log(this.pokeRowData);
@@ -1906,8 +2020,8 @@ else if(this.activeTabForSectionView_2 == 4){
   viewMore() {
 
     this.pageNumberForSectionView_3 = this.pageNumberForSectionView_3 + 1
-    
-    
+   
+   
     this.getUserBannerDataSectionView_3(1,this.queryParams)
   }
 
@@ -1921,7 +2035,7 @@ else if(this.activeTabForSectionView_2 == 4){
     [err, res] = await HttpProtocols.to(DashboardModel.notificationList(body))
     if (!err && res?.statuscode === 200) {
       this.notificationLists = res?.data?.[0]?.list
-      // 
+      //
 
       if (this.notificationLists === "") {
         this.NotificationHide = true
@@ -1946,8 +2060,8 @@ else if(this.activeTabForSectionView_2 == 4){
   async addIns(queryParams?: any) {
     let err: any, res: any;
     let body: any;
-    
-    
+   
+   
 
     body = {
       "_userid": queryParams?.userID ? queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
@@ -1956,7 +2070,7 @@ else if(this.activeTabForSectionView_2 == 4){
     [err, res] = await HttpProtocols.to(DashboardModel.addIns(body))
     if (!err && res?.statuscode === 200) {
       this.addInsList = res?.data
-      // 
+      //
 
       if (this.addInsList.length === 0) {
         this.buletinsHide = true
@@ -1986,6 +2100,22 @@ else if(this.activeTabForSectionView_2 == 4){
       // this.ngOnInit()
     }
   }
+
+  checkEmptyIndex() {
+    this.spectSearListIndex = null
+
+    if (this.spectSearchStrIndex == '') {
+
+      this.spectSearchStrIndex = ''
+      // this.emptyInput==true;
+      this.spectSearchStrTrigger = false
+      // this.spectSearch()
+
+      // this.spectSearchStr.setValue('');
+      // this.ngOnInit()
+    }
+  }
+
 
   async spectSearch() {
     let err: any, res: any;
@@ -2018,16 +2148,16 @@ else if(this.activeTabForSectionView_2 == 4){
         _section: "Dashboard",
         _description: "Search"
       }
-  
+ 
       this.http.engagamentlog(body).subscribe(res=>{
-        
-        
+       
+       
       })
 
       if(res.data==''){
         console.log(res.data);
         // this.openSnackBar('No data Available','Ok')
-  
+ 
         // Swal.fire({
         //   title: '',
         //   text:'No data Available',
@@ -2035,7 +2165,7 @@ else if(this.activeTabForSectionView_2 == 4){
         //   imageHeight: 40,
         //   confirmButtonColor: '#556ee6'
         // });
-  
+ 
         Swal.fire({
           title: '',
           text:'No data Available',
@@ -2043,44 +2173,44 @@ else if(this.activeTabForSectionView_2 == 4){
           imageHeight: 40,
           confirmButtonColor:  this.sectionView_1.theme_details[0].dark_color
         });
-  
+ 
       }
       else{
         this.spectSearList = res?.data
-      
-    
+     
+   
         this.searchbgimage= this.spectSearList[0]
         this.search_bg_tile_image=this.searchbgimage._data
-        
-  
+       
+ 
         this.search_bg_tile_image.map(res=>{
          
           this.final_web_tile_image=res
-          
-          
-          
-  
+         
+         
+         
+ 
           this.getBackImagesFromSectionView1.map(res=>{
-            
+           
             this.section1_tile_images=res
-            
-            
-            
+           
+           
+           
             if(this.final_web_tile_image.ranking_image_level == this.section1_tile_images.ranking_image_level){
-              
-              
-             this.web_tile_img= this.section1_tile_images.ranking_image
-              
-              
-             }
-  
              
-  
-  
+             
+             this.web_tile_img= this.section1_tile_images.ranking_image
+             
+             
+             }
+ 
+             
+ 
+ 
           })
-  
-  
-  
+ 
+ 
+ 
         })
       }
 
@@ -2091,6 +2221,101 @@ else if(this.activeTabForSectionView_2 == 4){
       this.notificationList_err = 'Error'
     }
   }
+
+  async spectSearchIndex() {
+    let err: any, res: any;
+    let body: any;
+    // this.spectSearchStrTrigger = true
+
+    if (this.spectSearchStrIndex) {
+      this.spectSearchStrTrigger = true
+    }
+
+    else {
+      this.spectSearchStrTrigger = false;
+
+    }
+
+    body = {
+      "_userid": this.sectionView_1?.is_land_logos[2]?._userid,
+      "_game": this.sectionView_1?.is_land_logos[2]?.game_id,
+      "page_number": this.pageNumberForSectionView_3_index,
+      "_uname": this.spectSearchStrIndex,
+      "_order": this.activeTabOrderNumberForSectionView_2_index
+    };
+    [err, res] = await HttpProtocols.to(DashboardModel.spectSearch(body))
+    if (!err && res?.statuscode === 200) {
+
+    
+
+      if(res.data==''){
+        console.log(res.data);
+        // this.openSnackBar('No data Available','Ok')
+ 
+        // Swal.fire({
+        //   title: '',
+        //   text:'No data Available',
+        //   imageUrl: 'assets/images/svg/logo/logo.svg',
+        //   imageHeight: 40,
+        //   confirmButtonColor: '#556ee6'
+        // });
+ 
+        Swal.fire({
+          title: '',
+          text:'No data Available',
+          // imageUrl: 'assets/images/svg/logo/logo.svg',
+          imageHeight: 40,
+          confirmButtonColor:  this.sectionView_1.theme_details[0].dark_color
+        });
+ 
+      }
+      else{
+        this.spectSearListIndex = res?.data
+     
+   
+        this.searchbgimage= this.spectSearListIndex[0]
+        this.search_bg_tile_image=this.searchbgimage._data
+       
+ 
+        this.search_bg_tile_image.map(res=>{
+         
+          this.final_web_tile_image=res
+         
+         
+         
+ 
+          this.getBackImagesFromSectionView1.map(res=>{
+           
+            this.section1_tile_images=res
+           
+           
+           
+            if(this.final_web_tile_image.ranking_image_level == this.section1_tile_images.ranking_image_level){
+             
+             
+             this.web_tile_img= this.section1_tile_images.ranking_image
+             
+             
+             }
+ 
+             
+ 
+ 
+          })
+ 
+ 
+ 
+        })
+      }
+
+   
+
+
+    } else {
+      this.notificationList_err = 'Error'
+    }
+  }
+
   emojiSelected(id, event) {
     // $('.emojiBackgroundButton').removeClass('acrtive')
 
@@ -2147,20 +2372,20 @@ else if(this.activeTabForSectionView_2 == 4){
     }
     this.http.updatePoke(body).subscribe((res) => {
       console.log(res);
-      
+     
       this.updatedata=res
       if (this.updatedata.statuscode === 200) {
      console.log(123);  
       } else {
-  
+ 
       }
-      
+     
       // this.getUserBannerDataSectionView_1()
     })
     // clearInterval(this.pokeInterval);
     // this.pokeslidedata=[]
 
-    
+   
   }
   previewFile(event: Event) {
     const element = event?.currentTarget as HTMLInputElement;
@@ -2178,13 +2403,13 @@ else if(this.activeTabForSectionView_2 == 4){
         _section: "Profile",
         _description: "Profile Edit from Dashboard"
       }
-    
-    
+   
+   
       this.http.engagamentlog(body).subscribe(res=>{
-        
-        
+       
+       
       })
-      // 
+      //
     }
     this.getUserBannerDataSectionView_2()
     this.userSelectionData
@@ -2225,6 +2450,8 @@ else if(this.activeTabForSectionView_2 == 4){
       this.pageNumberForSectionView_3 = 1
       this.activeSubTabForSectionView_2 = 'Overall'
       this.changeSubTabFilter('Overall')
+      this.changeSubTabFilterIndex('Overall')
+
       this._router.navigate([], {
         relativeTo: this._route,
         queryParams: {
@@ -2256,14 +2483,23 @@ else if(this.activeTabForSectionView_2 == 4){
 
 
   changeSubTabFilter(tabName: string) {
-    
-    
+   
+   
     this.activeSubTabForSectionView_2 = tabName
 
     // this.filterRankingData()
   }
+
+  changeSubTabFilterIndex(tabName: string) {
+   
+   
+    this.activeSubTabForSectionView_2_index = tabName
+
+    // this.filterRankingData()
+  }
+
   async openHierarchyPopup(data?: any) {
-    
+   
     let err: any, res: any;
     let body: any;
     // body = {
@@ -2278,9 +2514,9 @@ else if(this.activeTabForSectionView_2 == 4){
     if (!err && res?.statuscode === 200) {
       this.hierarchyPopupList = res?.data
       this.firstUserData = this.hierarchyPopupList[0]
-      
+     
 
-      
+     
 
       this.modalService.open(this.hierarchyPopup, { centered: true, windowClass: 'modal-cls' });
     } else {
@@ -2295,7 +2531,7 @@ else if(this.activeTabForSectionView_2 == 4){
       game_id: data?.id_coroebus_game,
       role_id: data?.id_role
     }
-    
+   
     this.getDataBasedOnUserID(obj)
   }
 
@@ -2312,17 +2548,17 @@ else if(this.activeTabForSectionView_2 == 4){
   // }
 
   activeTab() {
-    
+   
   }
 
   navigateToRewards(data) {
-    
+   
     var url_string = window.location.href
-    
+   
     var userID = url_string.includes("?"); // true
 
     if (url_string.includes("?")) {
-      
+     
       this._router.navigate(['reward/rewardPoints'])
     }
     else if (url_string.includes("")) {
@@ -2333,15 +2569,15 @@ else if(this.activeTabForSectionView_2 == 4){
 
 
   getRewards(){
-    
-    
-    
+   
+   
+   
     let obj = {
       _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
 
       game_id: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
     }
-    
+   
 
     localStorage.setItem('rewardid', obj._userid)
 
@@ -2367,13 +2603,13 @@ else if(this.activeTabForSectionView_2 == 4){
   }
 
   getGraphDataById() {
-    // 
+    //
     let obj = {
       _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
 
       game_id: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
     }
-    
+   
 
     let body = {
       "_userid": this.userSelectionData?._personal_data?.USERID,
@@ -2382,11 +2618,11 @@ else if(this.activeTabForSectionView_2 == 4){
       _section: "Performance",
       _description: "From Points Distribution"
     }
-  
-  
+ 
+ 
     this.http.engagamentlog(body).subscribe(res=>{
-      
-      
+     
+     
     })
    
 
@@ -2414,22 +2650,23 @@ else if(this.activeTabForSectionView_2 == 4){
 
   navigateToOtherRole(item){
     this.spectSearchStr=''
-    this.activeSubTabForSectionView_2 = 'Overall'    
-    
+    this.activeSubTabForSectionView_2 = 'Overall'   
+    this.activeSubTabForSectionView_2_index = 'Overall'    
+   
     this.userID= this.Util.encryptData(item?.userid);
     this.gameID= this.Util.encryptData(item?.id_coroebus_game);
     this.roleID= this.Util.encryptData(item?.id_role);
     this._router.navigateByUrl('/dashboard?userID='+this.userID +"&gameID="+ this.gameID +"&roleID="+this.roleID)
-    this.activeSubTabForSectionView_2='Overall'
+    this.activeSubTabForSectionView_2_index='Overall'
   }
 
   navigateToNewChallenge(){
-  
+ 
     let  _userid=this.userSelectionData?._personal_data?.USERID;
     let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
     let id_role=this.sectionView_1._personal_data.id_role;
     let id_coroebus_user=this.sectionView_1._personal_data.id_coroebus_user;
-    
+   
     const userId = this.Util.encryptData(_userid)
     const game = this.Util.encryptData(id_coroebus_game)
     const roleid = this.Util.encryptData(id_role)
@@ -2453,23 +2690,23 @@ else if(this.activeTabForSectionView_2 == 4){
 
   }
   navigateToOnGoingChallenge(){
-  
+ 
       let  _userid=this.userSelectionData?._personal_data?.USERID;
       let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
       let id_role=this.sectionView_1._personal_data.id_role;
       let id_coroebus_user=this.sectionView_1._personal_data.id_coroebus_user;
-  
-      
-  
-  
-  
+ 
+     
+ 
+ 
+ 
       const userId = this.Util.encryptData(_userid)
       const game = this.Util.encryptData(id_coroebus_game)
       const roleid = this.Util.encryptData(id_role)
-  
-      
+ 
+     
       if(this.userSelectionData.is_champions_league=='A'){
-        
+       
         window.open(
         'http://coroebus.in/champions_league/#/home/onGoing?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
         '_self' // <- This is what makes it open in a new window.
@@ -2487,18 +2724,18 @@ else if(this.activeTabForSectionView_2 == 4){
       let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
       let id_role=this.sectionView_1._personal_data.id_role;
       let id_coroebus_user=this.sectionView_1._personal_data.id_coroebus_user;
-  
-      
-  
-  
-  
+ 
+     
+ 
+ 
+ 
       const userId = this.Util.encryptData(_userid)
       const game = this.Util.encryptData(id_coroebus_game)
       const roleid = this.Util.encryptData(id_role)
-  
-      
+ 
+     
       if(this.userSelectionData.is_champions_league=='A'){
-        
+       
         window.open(
         'http://coroebus.in/champions_league/#/home/challengeRecieved?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
         '_self' // <- This is what makes it open in a new window.
@@ -2522,11 +2759,11 @@ else if(this.activeTabForSectionView_2 == 4){
       let id_coroebus_game = localStorage.getItem('body_game');
       let id_role=this.sectionView_1._personal_data.id_role;
       let id_coroebus_user=this.sectionView_1._personal_data.id_coroebus_user;
-  
-      
-  
-  
-  
+ 
+     
+ 
+ 
+ 
       const userId = this.Util.encryptData(_userid)
       const game = this.Util.encryptData(id_coroebus_game)
       const roleid = this.Util.encryptData(id_role)
@@ -2534,7 +2771,7 @@ else if(this.activeTabForSectionView_2 == 4){
 
 
     //  else{
-    //   
+    //  
 
     //   window.open(
 
@@ -2562,7 +2799,7 @@ else if(this.activeTabForSectionView_2 == 4){
     let id_role = this.sectionView_1._personal_data.id_role;
     let id_coroebus_user = this.sectionView_1._personal_data.id_coroebus_user;
 
-    
+   
 
 
 
@@ -2570,9 +2807,9 @@ else if(this.activeTabForSectionView_2 == 4){
     const game = this.Util.encryptData(id_coroebus_game)
     const roleid = this.Util.encryptData(id_role)
     const spectStaus='yes'
-    
-    // 
-    
+   
+    //
+   
     window.open(
       'http://coroebus.in/champions_league/#/home/statistics?_userid=' + userId + "&_game=" + game + "&id_role=" + roleid + "&id_coroebus_user=" + id_coroebus_user + "&status=" + "total" + "&spect=" + spectStaus,
       '_self' // <- This is what makes it open in a new window.
@@ -2585,14 +2822,14 @@ else if(this.activeTabForSectionView_2 == 4){
     location.reload()
   }
   navigateToM2ost(categoryID:any){
-    
-    this.empid= this.sectionView_1._personal_data.EMPLOYEEID
+   
+    this.empid= btoa(this.sectionView_1._personal_data.EMPLOYEEID),
     this.empemail=this.sectionView_1._personal_data.email_id
     this.empname=this.sectionView_1._personal_data.first_name
     this.emporg=this.sectionView_1._personal_data.organization_name
     window.open(
       // https://www.m2ost.in/m2ostproductionapiSSO/api/m2ostSSO?param=empid$103$empemail$empname$TGC
-    
+   
       'https://www.m2ost.in/m2ostSSOWithCategory/api/m2ostSSOWithCat?param='+this.empid +'$113$'+this.empemail+'$'+this.empname+'$'+'GOP'+'$'+categoryID,
       'blank'
 
@@ -2601,8 +2838,8 @@ else if(this.activeTabForSectionView_2 == 4){
   }
 
   // challengeRecievedCount(){
-  //     
-    
+  //    
+   
   //     let id_coroebus_game=this.userSelectionData?.id_coroebus_game;
   //     let id_role=this.userSelectionData?.games[0]?.id_role;
   //     let id_coroebus_user=this.userSelectionData?._personal_data.id_coroebus_user;
@@ -2614,10 +2851,10 @@ else if(this.activeTabForSectionView_2 == 4){
 
   //   }
   //   this.http.challangeRecived(bodyforChallengeRecieved).subscribe((res)=>{
-  //     
+  //    
   //     this.data=res;
   //     this.count=this.data.length;
-  //     
+  //    
   //   })
 
 
@@ -2625,42 +2862,44 @@ else if(this.activeTabForSectionView_2 == 4){
 
   GetDataFromProduceInfo(queryParams?: any) {
 
-    // 
+    //
     //   )
-      
-    
+     
+   
       let obj = {
         _userid:queryParams?.userID ? queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
         _game:queryParams?.gameID ?queryParams?.gameID : this.userSelectionData?.id_coroebus_game
       }
-      
+     
       this.http.produceInfo(obj).subscribe((res)=>{
-        
+       
 
         this.data=res;
         // Trivia Corner Data
 
         this.triviaCornerData=this.data.data.trivia_corner;
-        
+       
 
         this.triviaCornerData.forEach((res)=>{
-          
-          
-          
+         
+         
+         
           if(res.view_status!='Read')
           {
             this.hideTriviaIndicator=true;
-            // 
+            //
           }
         })
-        // 
-        // 
-      
+        //
+        //
+     
         this.seasonalThemeDaily1=this.data.data.seasonal_theme_daily
         this.seasonalThemeWeekly2=this.data.data.seasonal_theme_weekly;
         this.seasonalThemeMonthl3=this.data.data.seasonal_theme_monthly
-        
-          
+       
+
+        console.log(this.seasonalThemeDaily1);
+         
         this.seasonalThemeDailyBadges1=this.data.data.seasonal_theme_daily_badge_details;
         this.totalTargetScore=Number(this.seasonalThemeDailyBadges1[0].seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[1].seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[2].seasonal_score_target);
 
@@ -2669,7 +2908,7 @@ else if(this.activeTabForSectionView_2 == 4){
         this.totalTargetScoreForWeekly=Number(this.seasonalThemeWeeklyBadges2[0].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[1].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[2].seasonal_score_target);
 
         this.seasonalThemeMonthlyBadges3=this.data.data.seasonal_theme_monthly_badge_details;
-        this.totalTargetScoreForMontly=Number(this.seasonalThemeMonthlyBadges3[0].seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[1].seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[2].seasonal_score_target);
+        this.totalTargetScoreForMontly=Number(this.seasonalThemeMonthlyBadges3[0]?.seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[1]?.seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[2]?.seasonal_score_target);
 
         this.seasonalThemeDailyBadges1.forEach((res)=>{
           if(res.active_class == '1'){
@@ -2688,21 +2927,21 @@ else if(this.activeTabForSectionView_2 == 4){
             this.monthlyBadgesActive=true;
           }
         })
-        
+       
         // Champions League Data
         this.onGoingChallenges=this.data.data.challenge_list;
         this.challengeReacieved=this.data.data.new_challenge_list;
 
-        
+       
 
-        
+       
       })
       // console.log(this.data.data.seasonal_theme_daily.length==undefined);
       // console.log(this.data.data.seasonal_theme_daily==undefined);
 
      
 
-    
+   
 
 
   }
@@ -2730,7 +2969,7 @@ else if(this.activeTabForSectionView_2 == 4){
     this.openKpi=!this.openKpi;
   }
 
-  
+ 
 
   navigateToPlayzone(){
     if(this.edit_image){
@@ -2741,19 +2980,19 @@ else if(this.activeTabForSectionView_2 == 4){
   }
 
   navigateToBriefQuetion(data:any){
-    
+   
     let id_coroebus_team='0';
     const gameName=this.sectionView_1?._personal_data?.game_name;
     const teamName=this.sectionView_1?._personal_data?.team_name;
 
      if(data.view_status!='Read'){
-  
+ 
     if(this.sectionView_1?._personal_data.external_kpi_data.length){
     this.kpiName=this.sectionView_1?._personal_data.external_kpi_data[0].kpi_name;
-    
+   
     const isAttemted=this.sectionView_1?._personal_data.external_kpi_data[0].is_attempted;
     const isCorrect=this.sectionView_1?._personal_data.external_kpi_data[0].is_correct;
-  
+ 
 
    
     window.open(
@@ -2762,10 +3001,10 @@ else if(this.activeTabForSectionView_2 == 4){
     "&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type+"&_game_name="+gameName+
     "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'  
     )
-    
+   
    }
 
-  
+ 
    else{
     this.kpiName='Game OF Phone';
     const isAttemted='8'
@@ -2800,6 +3039,401 @@ else if(this.activeTabForSectionView_2 == 4){
       this.openActivivities=true;
       this.openperformance=false;
     }
-  
 
+
+   async GetIndexWisePopup(){
+  
+    let err1: any, res1: any;
+    let body1: any;
+    if(this.sectionView_1?._personal_data.id_role==4){
+this.gameid=this.sectionView_1?.is_land_logos[2]?.game_id
+    }
+    else if(this.sectionView_1?._personal_data.id_role==3){
+      this.gameid=this.sectionView_1?.is_land_logos[1]?.game_id
+
+    }
+    body1 = {
+      "_userid": this.sectionView_1?.is_land_logos[2]?._userid,
+      "_game":this.gameid,
+      "_section_view": "2", "page_number": "1"
+    };
+    [err1, res1] = await HttpProtocols.to(DashboardModel.getCenterDataSectionView_2(body1))
+    if (!err1 && res1?.status === 'success' && res1?.statuscode === 200) {
+      this.sectionView_2_Indexwise = res1?.data
+     
+
+      this.labelNameMyIndex = this.sectionView_2_Indexwise?._ranking_data[0].label;
+     
+      this.activeTabForSectionView_2_index = this.sectionView_2_Indexwise?._ranking_data?.[0].order;
+      // for(let i=0;i<this.sectionView_2?._ranking_data?.length;i++){
+      if (this.queryParams?.roleID == '6' || this.userSelectionData?._personal_data?.id_role == '6') {
+       
+       
+
+        // this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+       
+
+        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+
+        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+
+       
+
+        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+
+        for (let item of this.getBackImages) {
+
+
+          if (item.ranking_image_level === this.firstrowbackimage) {
+
+            this.web_first_tile_image = item.ranking_image
+           
+          }
+
+        }
+        if (this.queryParams?.roleID == '4') {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[1].order
+          this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[1].order
+          this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+
+          this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+         
+ 
+          for (let item of this.getBackImages) {
+           
+           
+ 
+            if (item.ranking_image_level === this.firstrowbackimage) {
+
+              this.web_first_tile_image = item.ranking_image
+             
+ 
+ 
+ 
+            }
+
+          }
+         
+
+
+        }
+        else if (this.queryParams?.roleID == '3') {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
+          this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[2].order
+          this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+         
+          this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+         
+ 
+          for (let item of this.getBackImages) {
+           
+           
+ 
+            if (item.ranking_image_level === this.firstrowbackimage) {
+
+              this.web_first_tile_image = item.ranking_image
+             
+ 
+ 
+ 
+            }
+
+          }
+
+        }
+        else if (this.queryParams?.roleID == '8') {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
+          this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
+          this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+          this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+         
+ 
+          for (let item of this.getBackImages) {
+           
+           
+ 
+            if (item.ranking_image_level === this.firstrowbackimage) {
+
+              this.web_first_tile_image = item.ranking_image
+             
+ 
+ 
+ 
+            }
+
+          }
+         
+
+        }
+        else if (this.queryParams?.roleID == '' || this.queryParams?.roleID == null || this.queryParams?.roleID === 'undefined' || (this.queryParams?.roleID == this.userSelectionData?._personal_data?.id_role)) {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+          this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+          this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+          this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+         
+ 
+          for (let item of this.getBackImages) {
+           
+           
+ 
+            if (item.ranking_image_level === this.firstrowbackimage) {
+
+              this.web_first_tile_image = item.ranking_image
+             
+ 
+ 
+ 
+            }
+
+          }
+         
+
+
+        }
+        else {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+
+          for (let item of this.getBackImages) {
+           
+  
+            if (item.ranking_image_level === this.firstrowbackimage) {
+
+              this.web_first_tile_image = item.ranking_image
+             
+ 
+ 
+ 
+            }
+
+          }
+
+        }
+
+        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+        // }
+
+      }
+
+
+      else if (this.queryParams?.roleID === '4' || this.userSelectionData?._personal_data?.id_role === '4') {
+        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+
+
+        if (this.queryParams?.roleID === '3') {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+
+        }
+        else if (this.queryParams?.roleID === '8') {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+
+        }
+        // else if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
+        //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
+        //  
+
+        // }
+       
+       
+
+        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+        // }
+
+        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+       
+
+        for (let item of this.getBackImages) {
+         
+         
+
+          if (item.ranking_image_level === this.firstrowbackimage) {
+
+            this.web_first_tile_image = item.ranking_image
+           
+
+
+
+          }
+
+        }
+
+      }
+
+
+      else if (this.queryParams?.roleID === '3' || this.userSelectionData?._personal_data?.id_role === '3') {
+        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+
+        if (this.queryParams?.roleID === '8') {
+          this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
+
+        }
+        // else if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
+        //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
+        //  
+
+        // }
+       
+        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+        // }
+
+        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+       
+
+        for (let item of this.getBackImages) {
+         
+         
+
+          if (item.ranking_image_level === this.firstrowbackimage) {
+
+            this.web_first_tile_image = item.ranking_image
+           
+
+
+
+          }
+
+        }
+      }
+
+      else if (this.queryParams?.roleID === '8' || this.userSelectionData?._personal_data?.id_role === '8') {
+        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[3].order
+
+        // if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
+        //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
+        //  
+
+        // }
+       
+        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+        // }
+
+        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+       
+
+        for (let item of this.getBackImages) {
+         
+         
+
+          if (item.ranking_image_level === this.firstrowbackimage) {
+
+            this.web_first_tile_image = item.ranking_image
+           
+
+
+
+          }
+
+        }
+      }
+      else if ((this.queryParams?.roleID === '9' || this.userSelectionData?._personal_data?.id_role === '9')
+        || (this.queryParams?.roleID === '10' || this.userSelectionData?._personal_data?.id_role === '10')
+        || (this.queryParams?.roleID === '11' || this.userSelectionData?._personal_data?.id_role === '11')
+        || (this.queryParams?.roleID === '12' || this.userSelectionData?._personal_data?.id_role === '12')
+      ) {
+        this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+
+        // if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
+        //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
+        //  
+
+        // }
+       
+        this.activeTabOrderNumberForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
+        this.rankingDataFirstRowForSectionView_2 = this.sectionView_2?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2)
+        // }
+        this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level
+       
+
+        for (let item of this.getBackImages) {
+         
+         
+
+          if (item.ranking_image_level === this.firstrowbackimage) {
+
+            this.web_first_tile_image = item.ranking_image
+           
+
+
+
+          }
+
+        }
+      }
+
+    } else {
+      this.sectionView_2_err = 'Please try after some time'
+    }
+   }
+
+  async getIndexproduce3(viewMore:any){
+    let err: any, res: any;
+    let body: any;
+   
+    console.log("Shubham")
+   
+    body = {
+      "_userid": this.sectionView_1?.is_land_logos[2]?._userid,
+      "_game": this.sectionView_1?.is_land_logos[2]?.game_id,
+       "_section_view": "3", 
+       "page_number": this.pageNumberForSectionView_3_index
+    };
+    
+
+   
+
+
+    [err, res] = await HttpProtocols.to(DashboardModel.getRankingAndOtherDataSectionView_3(body))
+    if (!err && res?.status === 'success' && res?.statuscode === 200) {
+      console.log(res);
+      
+      this.pokeData = res?.data?._poke_list
+      console.log(this.pokeData);
+      console.log(this.pokeData[0]._data[0].poke_description);
+
+      if (viewMore) {
+       
+       
+        res?.data?._ranking_data?.forEach((element, index) => {
+         
+         
+         
+          if (element?.label === this.sectionView_3_index?._ranking_data[index]?.label) {
+           
+           
+            if (element?._Overall?.length > 0 || element?._data?.length > 0) {
+             
+              //
+              //
+
+              this.sectionView_3_index?._ranking_data[index]?._Overall?.push(...element?._Overall)
+              // this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data)
+
+              this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'center' });
+            }
+          }
+
+        });
+      } else {
+        this.sectionView_3_index = res?.data
+      }
+      // this.filterRankingData()
+
+   
+
+      this.sectionView_3_list_index = this.sectionView_3_index?._ranking_data?.filter(data => {
+        //
+        if (data.order === this.activeTabForSectionView_2) {
+          return data
+        }
+      })
+      //
+    } else {
+      this.sectionView_3_err = 'Please try after some time'
+    }
+    this.GetIndexWisePopup();
+   }
 }

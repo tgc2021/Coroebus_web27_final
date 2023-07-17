@@ -196,7 +196,7 @@
 
             <div class="row search_div_with_icon">
 
-                <div class="col-10 mt-4 search_div">
+                <div class="col-10 mt-2 search_div">
                     <div>
                         <input type="text" class="form-control web_dashboard-search" placeholder="Search People here.."
                             [(ngModel)]="spectSearchStr" aria-label="Search People here.."
@@ -205,156 +205,159 @@
 
                     </div>
                 </div>
-                <div class="col-2  mt-4">
+                <div class="col-2  mt-2">
                     <button type="button" class="btn btn-primary web_spectator_search_button" (click)="spectSearch()"><i
                             class="fa fa-search" aria-hidden="true"></i></button>
                 </div>
             </div>
-
-            <div class="row mt-1 leaderboard_header_label" >
-                <div class="col-2">
-                    <p class="web_spectator_label" style="color: #ffff !important;">Rank</p>
-                </div>
-
-                <div class="col-6">
-                    <p class="web_spectator_label_name" style="color: #ffff !important;">Name</p>
-                </div>
-
-                <div class="col-4">
-                    <p class="web_spectator_label_points" style="color: #ffff !important;padding-left: 3%;">Points</p>
-                </div>
-
-            </div>
-
-
-
-
-
-
-
-
-            <div class="row web_spectator_leaderboard_section" *ngIf="spectSearList == null">
-                <div class="col-12 mt-1 web_leaderboard" >
-                    <div *ngFor="let spectatorleaderboardreponse of spectator_user_list;  let i =index" >
-                        <mat-card class="web_spectator_leaderboard" 
-                            style="background: url({{spectatorleaderboardreponse.ranking_image}}); background-size: 100% 100%;"
-                            (click)="navigatetoDashboard(i)">
-                            <div class="row d-flex align-items-center spectator_div">
-                                <div class="col-1 p-0 d-flex justify-content-center">
-                                    <p class="web_spectator_rank">{{spectatorleaderboardreponse.rankingtable_number}}
-                                    </p>
-                                </div>
-                                <div class="col-1 p-0 web_spectator_profile_image_div">
-                                    <img class="web_spectator_profile_image"
-                                        src="{{spectatorleaderboardreponse.rankingtable_logo}}" />
-                                </div>
-                                <div class="col-6 p-0">
-                                    <div placement="bottom"
-                                        ngbTooltip="{{spectatorleaderboardreponse.rankingtable_name}}">
-                                        <p class="web_spectator_name" placement="bottom"
-                                            >
-                                            {{spectatorleaderboardreponse.rankingtable_name}}</p>
-                                        <!-- <p class="web_spectator_name" placement="bottom"
-                                            *ngIf="spectatorleaderboardreponse.rankingtable_name.length>20">
-                                            {{spectatorleaderboardreponse.rankingtable_name.slice(0,30).concat('...')}}
-                                        </p> -->
-                                    </div>
-                                    <div>
-                                        <p class="web_spectator_team">{{spectatorleaderboardreponse.rankingtable_team}}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="col-1 p-0">
-                                    <img class="web_spectator_badge" src="{{spectatorleaderboardreponse.teamlogo}}" />
-                                </div>
-
-                                <div class="col-2 p-0">
-                                    <p class="web_spectator_points">
-                                        {{spectatorleaderboardreponse.rankingtable_weightage}}</p>
-                                </div>
-
-                                <div class="col-1 p-0"
-                                    *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'green'">
-                                    <img class="web_spectator_up_down_arrow"
-                                        src="{{response.data.theme_details[0].up_arrow}}" />
-                                </div>
-                                <div class="col-1 p-0" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'red'">
-                                    <img class="web_spectator_up_down_arrow"
-                                        src="{{response.data.theme_details[0].down_arrow}}" />
-                                </div>
-                                <div class="col-1 p-0" style="height:4vh;width:4vh;"
-                                    *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'yellow'">
-                                    <img class="web_spectator_up_down_arrow" height="100%;" width="100%"
-                                        src="assets/images/BoosterAssests/EQ-16687580462022.png" />
-                                </div>
-                            </div>
-                        </mat-card>
+            <div class="d-flex flex-column mt-2" style="background-image: url({{spectator_dashoard_response[0].data.theme_details[0].add_ins_background}});border-radius:10px;width: 95%;
+            margin-left: 2%;">
+                <div class="row mt-1 leaderboard_header_label" >
+                    <div class="col-2">
+                        <p class="web_spectator_label" style="color: #ffff !important;">Rank</p>
                     </div>
-
-
-                </div>
-            </div>
-            <div class="row web_spectator_leaderboard_section" *ngIf="spectSearList != null">
-                <div class="col-12 mt-1">
-                    <div *ngFor="let spectatorleaderboardreponse of spectSearList[0]._data;  let i =index">
-                        <mat-card class="web_spectator_leaderboard"
-                            style="background: url({{spectatorleaderboardreponse.ranking_image}}); background-size: 100% 100%;"
-                            (click)="navigatetoSearchDashboard(i)">
-                            <div class="row d-flex align-items-center">
-                                <div class="col-1 p-0">
-                                    <p class="web_spectator_rank">{{spectatorleaderboardreponse.rankingtable_number}}
-                                    </p>
-                                </div>
-                                <div class="col-1 p-0">
-                                    <img class="web_spectator_profile_image"
-                                        src="{{spectatorleaderboardreponse.rankingtable_logo}}" />
-                                </div>
-                                <div class="col-6 p-0">
-                                    <div>
-                                        <p class="web_spectator_name">{{spectatorleaderboardreponse.rankingtable_name}}
-                                        </p>
-
-                                    </div>
-                                    <div>
-                                        <p class="web_spectator_team">{{spectatorleaderboardreponse.rankingtable_team}}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="col-1 p-0">
-                                    <img class="web_spectator_badge" src="{{spectatorleaderboardreponse.teamlogo}}" />
-                                </div>
-
-                                <div class="col-2 p-0">
-                                    <p class="web_spectator_points">
-                                        {{spectatorleaderboardreponse.rankingtable_weightage}}</p>
-                                </div>
-
-                                <div class="col-1 p-0"
-                                    *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'green'">
-                                    <img class="web_spectator_up_down_arrow"
-                                        src="{{response.data.theme_details[0].up_arrow}}" />
-                                </div>
-                                <div class="col-1 p-0" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'red'">
-                                    <img class="web_spectator_up_down_arrow"
-                                        src="{{response.data.theme_details[0].down_arrow}}" />
-                                </div>
-                                <div class="col-1 p-0" style="height:4vh;width:4vh;"
-                                    *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'yellow'">
-                                    <img class="web_spectator_up_down_arrow" height="100%" width="100%"
-                                        src="assets/images/BoosterAssests/EQ-16687580462022.png" />
-                                </div>
-                            </div>
-                        </mat-card>
+    
+                    <div class="col-6">
+                        <p class="web_spectator_label_name" style="color: #ffff !important;">Name</p>
                     </div>
-
-
+    
+                    <div class="col-4">
+                        <p class="web_spectator_label_points" style="color: #ffff !important;padding-left: 8%;">Points</p>
+                    </div>
+    
                 </div>
-
-
-
+                <div class="row web_spectator_leaderboard_section" *ngIf="spectSearList == null">
+                    <div class="col-12 mt-1 web_leaderboard" >
+                        <div *ngFor="let spectatorleaderboardreponse of spectator_user_list;  let i =index" >
+                            <mat-card class="web_spectator_leaderboard" 
+                                style="background: url({{spectatorleaderboardreponse.ranking_image}}); background-size: 100% 100%;"
+                                (click)="navigatetoDashboard(i)">
+                                <div class="row d-flex align-items-center spectator_div">
+                                    <div class="col-1 p-0 d-flex justify-content-center">
+                                        <p class="web_spectator_rank">{{spectatorleaderboardreponse.rankingtable_number}}
+                                        </p>
+                                    </div>
+                                    <div class="col-1 p-0 web_spectator_profile_image_div">
+                                        <img class="web_spectator_profile_image"
+                                            src="{{spectatorleaderboardreponse.rankingtable_logo}}" />
+                                    </div>
+                                    <div class="col-6 p-0">
+                                        <div placement="bottom"
+                                            ngbTooltip="{{spectatorleaderboardreponse.rankingtable_name}}">
+                                            <p class="web_spectator_name" placement="bottom"
+                                                >
+                                                {{spectatorleaderboardreponse.rankingtable_name}}</p>
+                                            <!-- <p class="web_spectator_name" placement="bottom"
+                                                *ngIf="spectatorleaderboardreponse.rankingtable_name.length>20">
+                                                {{spectatorleaderboardreponse.rankingtable_name.slice(0,30).concat('...')}}
+                                            </p> -->
+                                        </div>
+                                        <div>
+                                            <p class="web_spectator_team">{{spectatorleaderboardreponse.rankingtable_team}}
+                                            </p>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-1 p-0">
+                                        <img class="web_spectator_badge" src="{{spectatorleaderboardreponse.teamlogo}}" />
+                                    </div>
+    
+                                    <div class="col-2 p-0">
+                                        <p class="web_spectator_points">
+                                            {{spectatorleaderboardreponse.rankingtable_weightage}}</p>
+                                    </div>
+    
+                                    <div class="col-1 p-0"
+                                        *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'green'">
+                                        <img class="web_spectator_up_down_arrow"
+                                            src="{{response.data.theme_details[0].up_arrow}}" />
+                                    </div>
+                                    <div class="col-1 p-0" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'red'">
+                                        <img class="web_spectator_up_down_arrow"
+                                            src="{{response.data.theme_details[0].down_arrow}}" />
+                                    </div>
+                                    <div class="col-1 p-0" style="height:3vh;width:3vh;"
+                                        *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'yellow'">
+                                        <img class="web_spectator_up_down_arrow" height="70%;" width="70%"
+                                            src="assets/images/BoosterAssests/EQ-16687580462022.png" />
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+    
+    
+                    </div>
+                </div>
+                <div class="row web_spectator_leaderboard_section" *ngIf="spectSearList != null">
+                    <div class="col-12 mt-1">
+                        <div *ngFor="let spectatorleaderboardreponse of spectSearList[0]._data;  let i =index">
+                            <mat-card class="web_spectator_leaderboard"
+                                style="background: url({{spectatorleaderboardreponse.ranking_image}}); background-size: 100% 100%;"
+                                (click)="navigatetoSearchDashboard(i)">
+                                <div class="row d-flex align-items-center">
+                                    <div class="col-1 p-0">
+                                        <p class="web_spectator_rank">{{spectatorleaderboardreponse.rankingtable_number}}
+                                        </p>
+                                    </div>
+                                    <div class="col-1 p-0">
+                                        <img class="web_spectator_profile_image"
+                                            src="{{spectatorleaderboardreponse.rankingtable_logo}}" />
+                                    </div>
+                                    <div class="col-6 p-0">
+                                        <div>
+                                            <p class="web_spectator_name">{{spectatorleaderboardreponse.rankingtable_name}}
+                                            </p>
+    
+                                        </div>
+                                        <div>
+                                            <p class="web_spectator_team">{{spectatorleaderboardreponse.rankingtable_team}}
+                                            </p>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-1 p-0">
+                                        <img class="web_spectator_badge" src="{{spectatorleaderboardreponse.teamlogo}}" />
+                                    </div>
+    
+                                    <div class="col-2 p-0">
+                                        <p class="web_spectator_points">
+                                            {{spectatorleaderboardreponse.rankingtable_weightage}}</p>
+                                    </div>
+    
+                                    <div class="col-1 p-0"
+                                        *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'green'">
+                                        <img class="web_spectator_up_down_arrow"
+                                            src="{{response.data.theme_details[0].up_arrow}}" />
+                                    </div>
+                                    <div class="col-1 p-0" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'red'">
+                                        <img class="web_spectator_up_down_arrow"
+                                            src="{{response.data.theme_details[0].down_arrow}}" />
+                                    </div>
+                                    <div class="col-1 p-0" style="height:3vh;width:3vh;"
+                                        *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'yellow'">
+                                        <img class="web_spectator_up_down_arrow" height="60%" width="60%"
+                                            src="assets/images/BoosterAssests/EQ-16687580462022.png" />
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+    
+    
+                    </div>
+    
+    
+    
+                </div>
+                <div class="row mb-2">
+                    <div class="col-12 web_spectator_view_more_btn_div">
+                        <button class="w-100 btn btn-lg load-more" type="button" (click)="viewMore()">
+                            <img src="assets/images/svg/dashboard/load-more.svg" data-holder-rendered="true" height="13">
+                            View More
+                        </button>
+                    </div>
+                </div>
             </div>
+            
 
 
             <!-- <div class="row mobile_spectator_leaderboard_section" *ngIf="spectSearList != null">
@@ -410,14 +413,7 @@
          
 
             </div> -->
-            <div class="row">
-                <div class="col-12 web_spectator_view_more_btn_div">
-                    <button class="w-100 btn btn-lg load-more" type="button" (click)="viewMore()">
-                        <img src="assets/images/svg/dashboard/load-more.svg" data-holder-rendered="true" height="13">
-                        View More
-                    </button>
-                </div>
-            </div>
+            
 
 
         </div>
@@ -550,7 +546,7 @@
 
 
 
-        <div class="row mobile_button_row" >
+        <div class="row mobile_button_row" style="background-image: url({{spectator_dashoard_response[0].data.theme_details[0].add_ins_background}});padding:2%;width:96%;border-radius:5px;display:flex;justify-content:center" >
             <div *ngIf="spectator_dashoard_response[0].data._personal_data.id_coroebus_organization!=61;then forOtherOrgnizationMobile else forTataAIAmobile" ></div>
         <ng-template #forOtherOrgnizationMobile>
             <div class="col-3 mobile_first_tab">
@@ -610,159 +606,162 @@
                         class="fa fa-search" aria-hidden="true"></i></button>
             </div>
         </div>
-
-        <div class="row mt-1 leaderboard_header_label">
-            <div class="col-2 d-flex justify-content-start">
-                <p class="mobile_spectator_label">Rank</p>
-            </div>
-
-            <div class="col-7 d-flex justify-content-start">
-                <p class="mobile_spectator_label_name">Name</p>
-            </div>
-
-            <div class="col-3">
-                <p class="mobile_spectator_label_points">Points</p>
-            </div>
-
-        </div>
-
-
-
-
-
-
-
-
-        <div class="row mobile_spectator_leaderboard_section" *ngIf="spectSearList == null">
-            <div class="col-12 mt-1 mobile_leaderboard">
-                <div *ngFor="let spectatorleaderboardreponse of spectator_user_list;  let i =index">
-                    <mat-card class="mobile_spectator_leaderboard"
-                        style="background: url({{spectatorleaderboardreponse.ranking_image}}); background-size: 100% 100%;"
-                        (click)="navigatetoDashboard(i)">
-                        <div class="row d-flex align-items-center spectator_div">
-                            <div class="col-1 d-flex justify-content-center">
-                                <p class="mobile_spectator_rank">{{spectatorleaderboardreponse.rankingtable_number}}</p>
-                            </div>
-                            <div class="col-1 p-0 web_spectator_profile_image_div">
-                                <img class="mobile_spectator_profile_image"
-                                    src="{{spectatorleaderboardreponse.rankingtable_logo}}" />
-                            </div>
-                            <div class="col-6 p-0">
-                                <div placement="bottom" ngbTooltip="{{spectatorleaderboardreponse.rankingtable_name}}">
-                                    <p class="mobile_spectator_name" placement="bottom"
-                                       >
-                                        {{spectatorleaderboardreponse.rankingtable_name}}</p>
-                                    <!-- <p class="mobile_spectator_name" placement="bottom"
-                                        *ngIf="spectatorleaderboardreponse.rankingtable_name.length>20">
-                                        {{spectatorleaderboardreponse.rankingtable_name.slice(0,30).concat('...')}}</p> -->
-                                </div>
-                                <div>
-                                    <p class="mobile_spectator_team">{{spectatorleaderboardreponse.rankingtable_team}}
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="col-1 p-0">
-                                <img class="web_spectator_badge" src="{{spectatorleaderboardreponse.teamlogo}}" />
-                            </div>
-
-                            <div class="col-2 p-0">
-                                <p class="mobile_spectator_points">
-                                    {{spectatorleaderboardreponse.rankingtable_weightage}}</p>
-                            </div>
-
-                            <div class="col-1 p-0" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'green'">
-                                <img class="web_spectator_up_down_arrow"
-                                    src="{{response.data.theme_details[0].up_arrow}}" />
-                            </div>
-                            <div class="col-1 p-0" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'red'">
-                                <img class="web_spectator_up_down_arrow"
-                                    src="{{response.data.theme_details[0].down_arrow}}" />
-                            </div>
-                            <div class="col-1 p-0" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'yellow'" height="4vh">
-                                <img class="web_spectator_up_down_arrow" height="60%" width="60%"
-                                    src="assets/images/BoosterAssests/EQ-16687580462022.png" />
-                            </div>
-                        </div>
-                    </mat-card>
+        <div class="d-flex flex-column mt-2" style="background-image: url({{spectator_dashoard_response[0].data.theme_details[0].add_ins_background}});padding:2%;width:96%;border-radius:5px;display:flex;justify-content:center;width:95%;margin-left:2%">
+            <div class="row mt-1 leaderboard_header_label">
+                <div class="col-2 d-flex justify-content-start">
+                    <p class="mobile_spectator_label">Rank</p>
                 </div>
-
-
-            </div>
-        </div>
-
-
-
-        <div class="row web_spectator_leaderboard_section" *ngIf="spectSearList != null">
-            <div class="col-12 mt-1">
-                <div *ngFor="let spectatorleaderboardreponse of spectSearList[0]._data;  let i =index">
-                    <mat-card class="mobile_spectator_leaderboard"
-                        style="background: url({{spectatorleaderboardreponse.ranking_image}}); background-size: 100% 100%;"
-                        (click)="navigatetoSearchDashboard(i)">
-                        <div class="row d-flex align-items-center spectator_div">
-                            <div class="col-1 d-flex justify-content-center">
-                                <p class="mobile_spectator_rank">{{spectatorleaderboardreponse.rankingtable_number}}</p>
-                            </div>
-                            <div class="col-1 p-0 web_spectator_profile_image_div">
-                                <img class="mobile_spectator_profile_image"
-                                    src="{{spectatorleaderboardreponse.rankingtable_logo}}" />
-                            </div>
-                            <div class="col-6 p-0">
-                                <div placement="bottom" ngbTooltip="{{spectatorleaderboardreponse.rankingtable_name}}">
-                                    <p class="mobile_spectator_name" placement="bottom"
-                                        *ngIf="spectatorleaderboardreponse.rankingtable_name.length<20">
-                                        {{spectatorleaderboardreponse.rankingtable_name}}</p>
-                                    <p class="mobile_spectator_name" placement="bottom"
-                                        *ngIf="spectatorleaderboardreponse.rankingtable_name.length>20">
-                                        {{spectatorleaderboardreponse.rankingtable_name.slice(0,30).concat('...')}}</p>
-                                </div>
-                                <div>
-                                    <p class="mobile_spectator_team">{{spectatorleaderboardreponse.rankingtable_team}}
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="col-1 p-0">
-                                <img class="web_spectator_badge" src="{{spectatorleaderboardreponse.teamlogo}}" />
-                            </div>
-
-                            <div class="col-2 p-0">
-                                <p class="mobile_spectator_points">
-                                    {{spectatorleaderboardreponse.rankingtable_weightage}}</p>
-                            </div>
-
-                            <div class="col-1 p-0" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'green'">
-                                <img class="web_spectator_up_down_arrow"
-                                    src="{{response.data.theme_details[0].up_arrow}}" />
-                            </div>
-                            <div class="col-1 p-0" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'red'">
-                                <img class="web_spectator_up_down_arrow"
-                                    src="{{response.data.theme_details[0].down_arrow}}" />
-                            </div>
-                            <div class="col-1 p-0" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'yellow'">
-                                <img class="web_spectator_up_down_arrow" height="60%" width="60%"
-                                    src="assets/images/BoosterAssests/EQ-16687580462022.png" />
-                            </div>
-                        </div>
-                    </mat-card>
+    
+                <div class="col-7 d-flex justify-content-start">
+                    <p class="mobile_spectator_label_name">Name</p>
                 </div>
-
-
+    
+                <div class="col-3">
+                    <p class="mobile_spectator_label_points">Points</p>
+                </div>
+    
             </div>
-
-
-
-        </div>
-
-
-        <div class="row">
-            <div class="col-12 web_spectator_view_more_btn_div">
-                <button class="w-100 btn btn-lg load-more" type="button" (click)="viewMore()">
-                    <img src="assets/images/svg/dashboard/load-more.svg" data-holder-rendered="true" height="13">
-                    View More
-                </button>
+    
+    
+    
+    
+    
+    
+    
+    
+            <div class="row mobile_spectator_leaderboard_section" *ngIf="spectSearList == null">
+                <div class="col-12 mt-1 mobile_leaderboard">
+                    <div *ngFor="let spectatorleaderboardreponse of spectator_user_list;  let i =index">
+                        <mat-card class="mobile_spectator_leaderboard"
+                            style="background: url({{spectatorleaderboardreponse.ranking_image}}); background-size: 100% 100%;"
+                            (click)="navigatetoDashboard(i)">
+                            <div class="row d-flex align-items-center spectator_div">
+                                <div class="col-1 d-flex justify-content-center">
+                                    <p class="mobile_spectator_rank">{{spectatorleaderboardreponse.rankingtable_number}}</p>
+                                </div>
+                                <div class="col-1 p-0 web_spectator_profile_image_div">
+                                    <img class="mobile_spectator_profile_image"
+                                        src="{{spectatorleaderboardreponse.rankingtable_logo}}" />
+                                </div>
+                                <div class="col-6 p-0">
+                                    <div placement="bottom" ngbTooltip="{{spectatorleaderboardreponse.rankingtable_name}}">
+                                        <p class="mobile_spectator_name" placement="bottom"
+                                           >
+                                            {{spectatorleaderboardreponse.rankingtable_name}}</p>
+                                        <!-- <p class="mobile_spectator_name" placement="bottom"
+                                            *ngIf="spectatorleaderboardreponse.rankingtable_name.length>20">
+                                            {{spectatorleaderboardreponse.rankingtable_name.slice(0,30).concat('...')}}</p> -->
+                                    </div>
+                                    <div>
+                                        <p class="mobile_spectator_team">{{spectatorleaderboardreponse.rankingtable_team}}
+                                        </p>
+                                    </div>
+                                </div>
+    
+                                <div class="col-1 p-0">
+                                    <img class="web_spectator_badge" src="{{spectatorleaderboardreponse.teamlogo}}" />
+                                </div>
+    
+                                <div class="col-2 p-0">
+                                    <p class="mobile_spectator_points">
+                                        {{spectatorleaderboardreponse.rankingtable_weightage}}</p>
+                                </div>
+    
+                                <div class="col-1 p-0" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'green'">
+                                    <img class="web_spectator_up_down_arrow"
+                                        src="{{response.data.theme_details[0].up_arrow}}" />
+                                </div>
+                                <div class="col-1 p-0" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'red'">
+                                    <img class="web_spectator_up_down_arrow"
+                                        src="{{response.data.theme_details[0].down_arrow}}" />
+                                </div>
+                                <div class="col-1 p-0" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'yellow'" height="3vh">
+                                    <img class="web_spectator_up_down_arrow" height="60%" width="60%"
+                                        src="assets/images/BoosterAssests/EQ-16687580462022.png" />
+                                </div>
+                            </div>
+                        </mat-card>
+                    </div>
+    
+    
+                </div>
             </div>
+    
+    
+    
+            <div class="row web_spectator_leaderboard_section" *ngIf="spectSearList != null">
+                <div class="col-12 mt-1">
+                    <div *ngFor="let spectatorleaderboardreponse of spectSearList[0]._data;  let i =index">
+                        <mat-card class="mobile_spectator_leaderboard"
+                            style="background: url({{spectatorleaderboardreponse.ranking_image}}); background-size: 100% 100%;"
+                            (click)="navigatetoSearchDashboard(i)">
+                            <div class="row d-flex align-items-center spectator_div">
+                                <div class="col-1 d-flex justify-content-center">
+                                    <p class="mobile_spectator_rank">{{spectatorleaderboardreponse.rankingtable_number}}</p>
+                                </div>
+                                <div class="col-1 p-0 web_spectator_profile_image_div">
+                                    <img class="mobile_spectator_profile_image"
+                                        src="{{spectatorleaderboardreponse.rankingtable_logo}}" />
+                                </div>
+                                <div class="col-6 p-0">
+                                    <div placement="bottom" ngbTooltip="{{spectatorleaderboardreponse.rankingtable_name}}">
+                                        <p class="mobile_spectator_name" placement="bottom"
+                                            *ngIf="spectatorleaderboardreponse.rankingtable_name.length<20">
+                                            {{spectatorleaderboardreponse.rankingtable_name}}</p>
+                                        <p class="mobile_spectator_name" placement="bottom"
+                                            *ngIf="spectatorleaderboardreponse.rankingtable_name.length>20">
+                                            {{spectatorleaderboardreponse.rankingtable_name.slice(0,30).concat('...')}}</p>
+                                    </div>
+                                    <div>
+                                        <p class="mobile_spectator_team">{{spectatorleaderboardreponse.rankingtable_team}}
+                                        </p>
+                                    </div>
+                                </div>
+    
+                                <div class="col-1 p-0">
+                                    <img class="web_spectator_badge" src="{{spectatorleaderboardreponse.teamlogo}}" />
+                                </div>
+    
+                                <div class="col-2 p-0">
+                                    <p class="mobile_spectator_points">
+                                        {{spectatorleaderboardreponse.rankingtable_weightage}}</p>
+                                </div>
+    
+                                <div class="col-1 p-0" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'green'">
+                                    <img class="web_spectator_up_down_arrow"
+                                        src="{{response.data.theme_details[0].up_arrow}}" />
+                                </div>
+                                <div class="col-1 p-0" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'red'">
+                                    <img class="web_spectator_up_down_arrow"
+                                        src="{{response.data.theme_details[0].down_arrow}}" />
+                                </div>
+                                <div class="col-1 p-0" *ngIf="spectatorleaderboardreponse.rankingtable_arrow == 'yellow'">
+                                    <img class="web_spectator_up_down_arrow" height="60%" width="60%"
+                                        src="assets/images/BoosterAssests/EQ-16687580462022.png" />
+                                </div>
+                            </div>
+                        </mat-card>
+                    </div>
+    
+    
+                </div>
+    
+    
+    
+            </div>
+    
+    
+            <div class="row">
+                <div class="col-12 web_spectator_view_more_btn_div">
+                    <button class="w-100 btn btn-lg load-more" type="button" (click)="viewMore()">
+                        <img src="assets/images/svg/dashboard/load-more.svg" data-holder-rendered="true" height="13">
+                        View More
+                    </button>
+                </div>
+            </div>
+        
         </div>
+        
     </div>
 
 

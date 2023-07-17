@@ -23,10 +23,11 @@ import { BusinessReportComponent } from './business-report/business-report.compo
 import { TableauModule } from 'ngx-tableau';
 import { GrowthReportComponent } from './growth-report/growth-report.component';
 import { GovernanceReportComponent } from './governance-report/governance-report.component';
+import { ShortNumberPipe } from './short-number.pipe';
 
 
 @NgModule({
-  declarations: [LoginComponent, SignupComponent, PasswordresetComponent, TermsAndConditionsComponent, CreateNewPasswordComponent, SecurityQuestionComponent, InteractiveDashboardComponent, LoaderComponent, BusinessReportComponent, GrowthReportComponent, GovernanceReportComponent],
+  declarations: [LoginComponent, SignupComponent, PasswordresetComponent, TermsAndConditionsComponent, CreateNewPasswordComponent, SecurityQuestionComponent, InteractiveDashboardComponent, LoaderComponent, BusinessReportComponent, GrowthReportComponent, GovernanceReportComponent, ShortNumberPipe],
   providers:[],
   imports: [
     CommonModule,

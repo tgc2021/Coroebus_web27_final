@@ -294,12 +294,22 @@
 
 .dashboard-center-table {
     height:20vh;
+    // max-height:63vh;
+    // height: auto;
     // -ms-overflow-style: none;
     // /* for Internet Explorer, Edge */
     // scrollbar-width: none;
     // /* for Firefox */
     overflow-y: auto;
     overflow-x: hidden;
+}
+.dashboard-center-table-Mobile{
+
+    max-height:54vh;
+    height:auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+
 }
 .dashboard-center-table1{
     height:29vh;
@@ -374,6 +384,7 @@
 
 .dashboard-center-table-forNSM,
 .dashboard-center-table,
+.dashboard-center-table-Mobile,
 .inner-points-height,
 .inner-notification-height,
 .inner-bulletins-height,
@@ -860,8 +871,8 @@
 }
 
 .poke-image {
-    height: 100px;
-    width: 100px;
+    height: 70px;
+    width: 70px;
     // margin-left: 25%;
     margin-top: 5%;
 

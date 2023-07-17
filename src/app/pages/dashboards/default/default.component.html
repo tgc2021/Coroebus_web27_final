@@ -66,7 +66,7 @@
                                             </div>
                                             <div
                                                 class="d-flex flex-column align-items-center justify-content-center mt-2">
-                                                <div *ngIf="sectionView_1?._personal_data.id_role==6;then rankButtonPlayer else rankButtonOtherRole"></div>
+                                                <div *ngIf="sectionView_1?._personal_data.id_role==6 ;then rankButtonPlayer else rankButtonOtherRole"></div>
                                                 <ng-template #rankButtonPlayer>
                                                     <button class="btn btn-primary- text-white level-badge-btn"
                                                   
@@ -77,17 +77,29 @@
 
                                                 </ng-template>
                                                 <ng-template #rankButtonOtherRole>
-                                                    
-                                                    <button class="btn btn-primary- text-white level-badge-btn"
-                                                    data-bs-toggle="modal" data-bs-target="#myTeamLeaderBoard"
-                                                    (click)="GetRankingPopupData('My Overall')"
-                                                    [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
-                                                   >
-                                                    {{primary_rank}}
-                                                    </button>
+                                                    <div *ngIf="sectionView_1?._personal_data?.id_coroebus_organization ==56 then popupGop else popupTataAia"></div>
+                                                    <ng-template #popupGop>
+                                                        <button class="btn btn-primary- text-white level-badge-btn"
+                                                        data-bs-toggle="modal" data-bs-target="#myTeamLeaderBoard"
+                                                        (click)="GetRankingPopupData('My Team',1)"
+                                                        [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
+                                                       >
+                                                        {{primary_rank}}
+                                                        </button>
+                                                    </ng-template>
+                                                    <ng-template #popupTataAia>
+                                                        <button class="btn btn-primary- text-white level-badge-btn"
+                                                        data-bs-toggle="modal" data-bs-target="#IndexWiseLeaderBoard"
+                                                        (click)="getIndexproduce3('')"
+                                                        [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
+                                                       >
+                                                        {{primary_rank}}
+                                                        </button>
+                                                    </ng-template>
+                                                   
                                                     
                                                 </ng-template>
-                                                <span class="level-rank-name mt-2">Rank</span>
+                                                <span class="level-rank-name mt-2">Overall Rank</span>
                                             </div>
 
                                         </div>
@@ -102,7 +114,7 @@
                                             </div>
                                             <div
                                                 class="d-flex flex-column align-items-center justify-content-center mt-2">
-                                                <div *ngIf="sectionView_1?._personal_data.id_role==6;then rankButtonPlayer else rankButtonOtherRole"></div>
+                                                <div *ngIf="sectionView_1?._personal_data.id_role==6 || sectionView_1?._personal_data.id_coroebus_organization !=61;then rankButtonPlayer else rankButtonOtherRole"></div>
                                                 <ng-template #rankButtonPlayer>
                                                     <button class="btn btn-primary- text-white level-badge-btn"
                                                   
@@ -114,17 +126,29 @@
                                                 </ng-template>
                                                 <ng-template #rankButtonOtherRole>
                                                     
-                                                    <button class="btn btn-primary- text-white level-badge-btn"
-                                                    data-bs-toggle="modal" data-bs-target="#myTeamLeaderBoard"
-                                                    (click)="GetRankingPopupData('My Overall')"
-                                                    [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
-                                                   >
-                                                    {{primary_rank}}
-                                                    </button>
+                                                    <div *ngIf="sectionView_1?._personal_data.id_coroebus_organization == 56 then popupGop else popupTataAia"></div>
+                                                    <ng-template #popupGop>
+                                                        <button class="btn btn-primary- text-white level-badge-btn"
+                                                        data-bs-toggle="modal" data-bs-target="#myTeamLeaderBoard"
+                                                        (click)="GetRankingPopupData('My Team',1)"
+                                                        [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
+                                                       >
+                                                        {{primary_rank}}
+                                                        </button>
+                                                    </ng-template>
+                                                    <ng-template #popupTataAia>
+                                                        <button class="btn btn-primary- text-white level-badge-btn"
+                                                        data-bs-toggle="modal" data-bs-target="#IndexWiseLeaderBoard"
+                                                        (click)="getIndexproduce3('')"
+                                                        [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
+                                                       >
+                                                        {{primary_rank}}
+                                                        </button>
+                                                    </ng-template>
                                                     
                                                 </ng-template>
                                                 
-                                                <span class="level-rank-name mt-2">Rank</span>
+                                                <span class="level-rank-name mt-2">Overall Rank</span>
                                             </div>
                                         </div>
                                     </div>
@@ -178,7 +202,7 @@
                                         <div class="col-2 d-flex justify-content-center align-items-center gap-3 ">
                                             <div class=" text-end font-size-10 font-weight-semibold"
                                                 style="min-width: 2vw;text-align: center;">
-                                                {{sectionView_1._points[0].score}}
+                                                {{sectionView_1?._points[0]?.score}}
                                             </div>
                                             <div class="d-flex  justify-content-center align-items-center pb-1  ">
                                                 <div style="height:2.5vh;">
@@ -217,19 +241,19 @@
                                                 &nbsp;&nbsp;{{item?.weightage}}
                                             </div>
                                             <div class="d-flex  justify-content-center align-items-center pb-1  ">
-                                                <div style="height:2.5vh;" *ngIf="item.ranking_arrow=='green'">
+                                                <div style="height:2.5vh;" *ngIf="item?.ranking_arrow=='green'">
 
                                                     <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
                                                         height="100%">
                                                 </div>
 
-                                                <div *ngIf="item.ranking_arrow=='red'" style="height:2.5vh;">
+                                                <div *ngIf="item?.ranking_arrow=='red'" style="height:2.5vh;">
 
                                                     <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
                                                         height="100%">
 
                                                 </div>
-                                                <div *ngIf="item.ranking_arrow=='yellow'"
+                                                <div *ngIf="item?.ranking_arrow=='yellow'"
                                                     style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
 
                                                     <div
@@ -680,7 +704,7 @@
                                 [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                 [style.background-image]="'url('+web_first_tile_image +')'">
                                 <div class="col">
-                                    <div class="media d-flex align-items-center gap-  " style="height: 7vh;">
+                                    <div class="media d-flex align-items-center gap-3  " style="height: 7vh;">
                                         <span class="col-1 ms-2 text-white position-absolute-s">
                                             {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_number}}
                                         </span>
@@ -850,7 +874,7 @@
                                     </span>
                                     <!-- (click)="openHierarchyPopup(item)" -->
                                     <div
-                                        *ngIf="this.userSelectionData._personal_data.id_role!=13 ; then openHierarchy else dontOpenHierarchy ">
+                                        *ngIf="this.userSelectionData?._personal_data?.id_role!=13 ; then openHierarchy else dontOpenHierarchy ">
                                     </div>
                                     <ng-template #openHierarchy>
                                         <div style="height:5vh;display:flex;align-items: center;">
@@ -873,7 +897,7 @@
                                     </ng-template>
 
 
-                                    <div class="media-body user-logo-row ellipsis" (click)="navigateToOtherRole(item)"
+                                    <div class="media-body user-logo-row ellipsis" (click)="navigateToOtherRole(item)" *ngIf="sectionView_1?._personal_data?.id_coroebus_game!='197'"
                                         style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
                                         <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
                                             style="cursor: pointer;" (click)="navigateToOtherRole(item)"
@@ -881,6 +905,14 @@
                                         <p class="mt-n4 team-name sub-team name-f-size" style="cursor: pointer;"
                                             (click)="navigateToOtherRole(item)">{{item?.rankingtable_team}}</p>
                                     </div>
+                                    <div class="media-body user-logo-row ellipsis" *ngIf="sectionView_1?._personal_data?.id_coroebus_game=='197'"
+                                    style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
+                                    <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
+                                        style="cursor: pointer;" 
+                                        ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}</h5>
+                                    <p class="mt-n4 team-name sub-team name-f-size" style="cursor: pointer;"
+                                        >{{item?.rankingtable_team}}</p>
+                                </div>
                                 </div>
                             </div>
                             <div class="col">
@@ -900,7 +932,7 @@
                                                     class="name-f-size point-number mt-1">{{item?.rankingtable_weightage}}</span>
                                             </div>
                                             <div
-                                                *ngIf="this.userSelectionData._personal_data.id_role!=13 ;then openPoke else dontPoke">
+                                                *ngIf="this.userSelectionData?._personal_data?.id_role!=13 ;then openPoke else dontPoke">
                                             </div>
                                             <ng-template #openPoke>
                                                 <div style="height:5vh;">
@@ -969,12 +1001,19 @@
                                             width="41">
                                     </div>
 
-                                    <div class="media-body user-logo-row ellipsis" (click)="navigateToOtherRole(item)"
+                                    <div class="media-body user-logo-row ellipsis" (click)="navigateToOtherRole(item)"  *ngIf="sectionView_1?._personal_data?.id_coroebus_game!='197'"
                                         style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
                                         <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
                                             ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}</h5>
                                         <p class="mt-n4 team-name sub-team name-f-size">{{item?.rankingtable_team}}</p>
                                     </div>
+
+                                    <div class="media-body user-logo-row ellipsis"   *ngIf="sectionView_1?._personal_data?.id_coroebus_game=='197'"
+                                    style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
+                                    <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
+                                        ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}</h5>
+                                    <p class="mt-n4 team-name sub-team name-f-size">{{item?.rankingtable_team}}</p>
+                                </div>
                                 </div>
                             </div>
                             <div class="col">
@@ -1092,7 +1131,11 @@
                     </ng-template>
                     <ng-template #static>
                         <div class="card card-div">
-                            <div class="card-body  d-flex justify-content-center  gap-2 mt-2" style="height:43vh;">
+                            <div class="d-flex justify-content-center align-items-center mt-2 dashboard-user-name">
+                                <span>Category - {{sectionView_3?._personal_data?.user_grade}}</span>
+                            </div>
+                            <div class="card-body  d-flex justify-content-center" style="height:43vh;">
+                               
                                 <div class="row" [ngClass]="{'row-cols-2': sectionView_1?.is_land_logos?.length !== 1,
                                 'two-data': sectionView_1?.is_land_logos?.length === 2,
                                 'three-data-static': sectionView_1?.is_land_logos?.length ===4 ||  sectionView_1?.is_land_logos?.length ===3,
@@ -1108,7 +1151,7 @@
                                         <!-- [ngClass]="{'one-data': sectionView_1?.is_land_logos?.length ===1}" -->
 
 
-                                        <button *ngIf="l=='0' && sectionView_3._personal_data.id_role!='4'"
+                                        <button *ngIf="l=='0' && sectionView_3?._personal_data?.id_role!='4'"
                                             class="btn btn-primary- text-white level-badge-btn"
                                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -1117,7 +1160,7 @@
                                             {{MyOverallRank}}
                                         </button>
 
-                                        <button *ngIf="l=='2' && sectionView_3._personal_data.id_role!='4'"
+                                        <button *ngIf="l=='2' && sectionView_3?._personal_data?.id_role!='4'"
                                             class="btn btn-primary- text-white level-badge-btn"
                                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -1126,46 +1169,47 @@
                                             {{MyZoneRank}}
                                         </button>
 
-                                        <button *ngIf="l=='1' && sectionView_3._personal_data.id_role!='4'"
+                                        <button *ngIf="l=='1' && sectionView_3?._personal_data?.id_role!='4'"
                                             class="btn btn-primary- text-white level-badge-btn"
                                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                            (click)="GetRankingPopupData('My Team')" data-bs-toggle="modal"
+                                            (click)="GetRankingPopupData('My Team','')" data-bs-toggle="modal"
                                             data-bs-target="#myTeamLeaderBoard">
-                                            {{sectionView_2._ranking_data[0]._data[0].rankingtable_number}}
+                                            {{sectionView_2?._ranking_data[0]?._data[0]?.rankingtable_number}}
                                         </button>
 
                                         
-                                        <button *ngIf="l=='0' && sectionView_3._personal_data.id_role=='4'"
+                                        <button *ngIf="l=='0' && sectionView_3?._personal_data?.id_role=='4'"
                                             class="btn btn-primary- text-white level-badge-btn"
                                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                            (click)="GetRankingPopupData('My Team')" data-bs-toggle="modal"
-                                            data-bs-target="#myTeamLeaderBoard">
-                                            {{MyOverallRank}}
-                                        </button>
-                                        <button *ngIf="l=='2' && sectionView_3._personal_data.id_role=='4'"
-                                            class="btn btn-primary- text-white level-badge-btn"
-                                            [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
-                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                            (click)="GetRankingPopupData('My Team')" data-bs-toggle="modal"
-                                            data-bs-target="#myTeamLeaderBoard">
-                                            {{MyOverallRank}}
-                                        </button>
-
-
-                                        <button *ngIf="l=='1' && sectionView_3._personal_data.id_role=='4'"
-                                            class="btn btn-primary- text-white level-badge-btn"
-                                            [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
-                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                            (click)="GetRankingPopupData('My Team')" data-bs-toggle="modal"
+                                            (click)="GetRankingPopupData('My Team',1)" data-bs-toggle="modal"
                                             data-bs-target="#myTeamLeaderBoard">
                                             {{primary_rank}}
                                         </button>
+                                        <button *ngIf="l=='2' && sectionView_3?._personal_data?.id_role=='4'"
+                                            class="btn btn-primary- text-white level-badge-btn"
+                                            [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
+                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                            (click)="GetRankingPopupData('My Zone','')" data-bs-toggle="modal"
+                                            data-bs-target="#myTeamLeaderBoard">
+                                            {{tl_team_rank}}
+
+                                        </button>
+
+
+                                        <button *ngIf="l=='1' && sectionView_3?._personal_data?.id_role=='4'"
+                                            class="btn btn-primary- text-white level-badge-btn"
+                                            [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
+                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                            (click)="GetRankingPopupData('My National','')" data-bs-toggle="modal"
+                                            data-bs-target="#myTeamLeaderBoard">
+                                            {{tl_team_rank}}
+                                        </button>
 
                                         <br>
-                                        <span *ngIf="l=='0'" class="level-rank-name">My Overall</span>
-                                        <span *ngIf="l=='2'" class="level-rank-name">My Zone</span>
+                                        <span *ngIf="l=='0'" class="level-rank-name"> National Rank</span>
+                                        <span *ngIf="l=='2'" class="level-rank-name"> Zonal Rank</span>
                                         <span *ngIf="l=='1' " class="level-rank-name">My Team</span>
 
 
@@ -1326,10 +1370,10 @@
                                                                         width="100%">
                                                                 </div> -->
                                                                 <div
-                                                                    *ngIf="triviaData.brief_graphics.split('.').pop()=='mp4';then mp4player">
+                                                                    *ngIf="triviaData?.brief_graphics?.split('.').pop()=='mp4';then mp4player">
                                                                 </div>
                                                                 <div
-                                                                    *ngIf="triviaData.brief_graphics.split('.').pop() == 'png'||triviaData.brief_graphics.split('.').pop()=='gif'||triviaData.brief_graphics.split('.').pop()== 'jpg'||triviaData.brief_graphics.split('.').pop()=='jpeg';then imgplay">
+                                                                    *ngIf="triviaData?.brief_graphics?.split('.').pop() == 'png'||triviaData?.brief_graphics?.split('.').pop()=='gif'||triviaData?.brief_graphics?.split('.').pop()== 'jpg'||triviaData?.brief_graphics?.split('.').pop()=='jpeg';then imgplay">
                                                                 </div>
 
                                                                 <ng-template #imgplay>
@@ -1554,15 +1598,11 @@
                                                         (mouseover)="openDailyModal()" data-bs-toggle="modal"
                                                         data-bs-target="#dailyModal">
                                                         <div class="col-6"
-                                                            *ngIf="sectionView_1?._personal_data?.id_coroebus_organization!=61">
-                                                            Daily</div>
-                                                        <div class="col-6"
-                                                            *ngIf="sectionView_1?._personal_data?.id_coroebus_organization==61">
-                                                            June'23 Early Activation</div>
-                                                        <div
-                                                            *ngIf="sectionView_1?._personal_data?.id_coroebus_organization==61;then forTataOrgnizationDaily else forOtherOrgnizationDaily">
-                                                        </div>
-                                                        <ng-template #forOtherOrgnizationDaily>
+                                                            >
+                                                            {{daily_text}}</div>
+                                                       
+                                                        
+
                                                             <div class="badge-container col"
                                                                 *ngFor="let dailyBadges of seasonalThemeDailyBadges1;let i=index;">
 
@@ -1588,30 +1628,20 @@
 
 
                                                             </div>
-                                                        </ng-template>
-                                                        <ng-template #forTataOrgnizationDaily>
-                                                            <div class="badge-container col">
-                                                                <div>
-                                                                    <img src="assets/images/interactive-dashboard/june 23_acc.png"
-                                                                        alt="" height="100%" width="100%">
-                                                                </div>
-
-                                                            </div>
-                                                        </ng-template>
+                                                    
+                                                        
+                                                            
+                                                        
                                                     </div>
                                                     <div class="inner_content_daily1 d-flex justify-content-between"
                                                         (mouseover)="openWeeklyModal()" data-bs-toggle="modal"
                                                         data-bs-target="#weeklyModal">
                                                         <div class="col-6"
-                                                            *ngIf="sectionView_1?._personal_data?.id_coroebus_organization!=61">
-                                                            Weekly</div>
-                                                        <div class="col-6"
-                                                            *ngIf="sectionView_1?._personal_data?.id_coroebus_organization==61">
-                                                            Monthly Edge Contest</div>
-                                                        <div
-                                                            *ngIf="sectionView_1?._personal_data?.id_coroebus_organization==61;then forTataOrgnizationWeekly else forOtherOrgnizationWeekly">
-                                                        </div>
-                                                        <ng-template #forOtherOrgnizationWeekly>
+                                                            >
+                                                            {{weekly_text}}</div>
+                                                       
+                                                        
+                                                       
                                                             <div class="badge-container col"
                                                                 *ngFor="let WeeklyBadge of seasonalThemeWeeklyBadges2;let i=index">
                                                                 <div [ngClass]="WeeklyBadge.active_class == '1'?'activeBadge':'deActiveBadge' "
@@ -1621,16 +1651,8 @@
                                                                 </div>
 
                                                             </div>
-                                                        </ng-template>
-                                                        <ng-template #forTataOrgnizationWeekly>
-                                                            <div class="badge-container col">
-                                                                <div>
-                                                                    <img src="assets/images/interactive-dashboard/monthly_edge_acc.png"
-                                                                        alt="" height="100%" width="100%">
-                                                                </div>
-
-                                                            </div>
-                                                        </ng-template>
+                                                        
+                                                        
 
 
                                                     </div>
@@ -1638,15 +1660,11 @@
                                                         style="border:none" (mouseover)="openMonthlyModal()"
                                                         data-bs-toggle="modal" data-bs-target="#monthlyModal">
                                                         <div class="col-6"
-                                                            *ngIf="sectionView_1?._personal_data?.id_coroebus_organization!=61">
-                                                            Monthly</div>
-                                                        <div class="col-6"
-                                                            *ngIf="sectionView_1?._personal_data?.id_coroebus_organization==61"
-                                                            title="MDRT Consistency Reward">MDRT Consistency...</div>
-                                                        <div
-                                                            *ngIf="sectionView_1?._personal_data?.id_coroebus_organization==61;then forTataOrgnizationMonthly else forOtherOrgnizationMonthly">
-                                                        </div>
-                                                        <ng-template #forOtherOrgnizationMonthly>
+                                                            >
+                                                            {{monthly_text}}</div>
+                                                       
+                                                           
+                                                       
                                                             <div class="badge-container col"
                                                                 *ngFor="let monthlyBadge of seasonalThemeMonthlyBadges3;let i=index">
                                                                 <div [ngClass]="monthlyBadge.active_class == '1'?'activeBadge':'deActiveBadge' "
@@ -1656,17 +1674,8 @@
                                                                 </div>
 
                                                             </div>
-                                                        </ng-template>
-                                                        <ng-template #forTataOrgnizationMonthly>
-                                                            <div class="badge-container col">
-                                                                <div>
-                                                                    <img src="assets/images/interactive-dashboard/mdrt_acc.png"
-                                                                        alt="" height="100%" width="100%">
-                                                                </div>
-
-                                                            </div>
-
-                                                        </ng-template>
+                                                        
+                                                        
 
 
                                                     </div>
@@ -1881,7 +1890,7 @@
                                     style="border:2px solid">
                                     <span [class.active]="i===clicked" (click)="emojiSelected(i,arrowStatus)"
                                         [style.border-color]="sectionView_1?.theme_details?.[0]?.dark_color">
-                                        <img src="{{item?.poke_logo}}" class="card-img-top poke-image" alt="...">
+                                        <img src="{{item?.poke_logo}}" class="card-img-top poke-image" alt="..." height="90%" width="90%">
                                     </span>
                                 </div>
                             </div>
@@ -1927,9 +1936,9 @@
                         <ng-container *ngFor="let item of pokeData[1]._data,index as i">
                             <div class="col">
                                 <div class="card poke-card"
-                                    [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
+                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
                                     <span [class.active]="i===clicked" (click)="emojiSelected(i,arrowStatus)">
-                                        <img src="{{item?.poke_logo}}" class="card-img-top poke-image" alt="...">
+                                        <img src="{{item?.poke_logo}}" class="card-img-top poke-image" alt="..." height="90%" width="90%">
                                     </span>
                                 </div>
                             </div>
@@ -2093,7 +2102,7 @@
         </div>
     </div>
     <ng-template #mobileTemplate>
-        <div class="row  DashboardSection">
+        <div class="row  DashboardSection" id="scrollToTop">
             <div class="d-flex justify-content-around gap-3">
                 <div class="col-3">
                     <div class="row d-flex justify-content-center">
@@ -2111,8 +2120,8 @@
 
                             </div>
                         </div>
-                        <div class="row d-flex justify-content-center" placement="bottom"
-                            ngbTooltip="{{sectionView_1?._personal_data?.first_name}}">
+                        <div class="row d-flex justify-content-center"
+                            >
                             <div class=" col-12 d-flex flex-column align-items-center ">
 
                                 <span
@@ -2128,7 +2137,7 @@
                                     (click)="GetRankingPopupData()">
                                     {{primary_rank}}
                                 </button> -->
-                                <div *ngIf="sectionView_1?._personal_data.id_role==6;then rankButtonPlayer else rankButtonOtherRole"></div>
+                                <div *ngIf="sectionView_1?._personal_data?.id_role==6 ||sectionView_1?._personal_data?.id_coroebus_organization!='61' ;then rankButtonPlayer else rankButtonOtherRole"></div>
                                                 <ng-template #rankButtonPlayer>
                                                     <button class="btn btn-primary- text-white level-badge-btn-mobile"
                                                     style="width:20vw;font-size:0.7em"
@@ -2141,9 +2150,10 @@
                                                 <ng-template #rankButtonOtherRole>
                                                     
                                                     <button class="btn btn-primary- text-white level-badge-btn-mobile"
-                                                    data-bs-toggle="modal" data-bs-target="#myTeamLeaderBoard"
+                                                    data-bs-toggle="modal" data-bs-target="#IndexWiseLeaderBoard"
+                                                    (click)="getIndexproduce3('')"
                                                     style="width:20vw;font-size:0.7em"
-                                                    (click)="GetRankingPopupData('My Overall')"
+                                                    (click)="GetRankingPopupData('My Overall','')"
                                                     [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                                    >
                                                     {{primary_rank}}
@@ -2268,7 +2278,7 @@
 
             <div class="col-12 RankSection mb-2">
 
-                <div class="" style="border-radius:10px" *ngIf="sectionView_1?.is_land_logos?.length > 0"
+                <div class="" style="border-radius:10px;padding:2%" *ngIf="sectionView_1?.is_land_logos?.length > 0"
                     [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
                     <div class="card-body border-bottom- p-0">
                         <div *ngIf="coroebus_game!='197' then dynamicMobile else staticMobile"></div>
@@ -2301,8 +2311,11 @@
                         </div>
                         </ng-template>
                         <ng-template #staticMobile>
-                            <div class="row d-flex align-items-center justify-content-center ">
-                                    <div class="col-4 p-1 text-center d-flex flex-column align-items-center "
+                            <div class="d-flex justify-content-center align-items-center mt-2 dashboard-user-name">
+                                <span>Category-{{sectionView_3?._personal_data?.user_grade}}</span>
+                            </div>
+                            <div class="row d-flex align-items-center justify-content-center">
+                                    <div class="col-4 text-center d-flex flex-column  align-items-center "
                                         *ngFor="let item of sectionView_1?.is_land_logos; let l=index">
                                         <img *ngIf="l=='0'" src="{{item?.logo}}" class="island_login" alt="" height="100">
                                         <img *ngIf="l=='2'" src="{{item?.logo}}" class="island_login" alt="" height="100">
@@ -2313,7 +2326,7 @@
                                         <!-- [ngClass]="{'one-data': sectionView_1?.is_land_logos?.length ===1}" -->
 
 
-                                        <button *ngIf="l=='0' && sectionView_3._personal_data.id_role!='4'"
+                                        <button *ngIf="l=='0' && sectionView_3?._personal_data?.id_role!='4'"
                                             class="btn btn-primary- text-white level-badge-btn-mobile"
                                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -2322,7 +2335,7 @@
                                             {{MyOverallRank}}
                                         </button>
 
-                                        <button *ngIf="l=='2' && sectionView_3._personal_data.id_role!='4'"
+                                        <button *ngIf="l=='2' && sectionView_3?._personal_data?.id_role!='4'"
                                             class="btn btn-primary- text-white level-badge-btn-mobile"
                                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -2331,47 +2344,47 @@
                                             {{MyZoneRank}}
                                         </button>
 
-                                        <button *ngIf="l=='1' && sectionView_3._personal_data.id_role!='4'"
+                                        <button *ngIf="l=='1' && sectionView_3?._personal_data?.id_role!='4'"
                                             class="btn btn-primary- text-white level-badge-btn-mobile"
                                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                            (click)="GetRankingPopupData('My Team')" data-bs-toggle="modal"
+                                            (click)="GetRankingPopupData('My Team','')" data-bs-toggle="modal"
                                             data-bs-target="#myTeamLeaderBoard" style="font-size:2.7vw">
-                                            {{sectionView_2._ranking_data[0]._data[0].rankingtable_number}}
+                                            {{sectionView_2?._ranking_data[0]?._data[0]?.rankingtable_number}}
                                         </button>
 
 
-                                        <button *ngIf="l=='0' && sectionView_3._personal_data.id_role=='4'"
+                                        <button *ngIf="l=='0' && sectionView_3?._personal_data?.id_role=='4'"
                                             class="btn btn-primary- text-white level-badge-btn-mobile"
                                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                            (click)="GetRankingPopupData('My Overall')" data-bs-toggle="modal"
-                                            data-bs-target="#myTeamLeaderBoard" style="font-size:2.7vw">
-                                            {{MyOverallRank}}
-                                        </button>
-                                        <button *ngIf="l=='2' && sectionView_3._personal_data.id_role=='4'"
-                                            class="btn btn-primary- text-white level-badge-btn-mobile"
-                                            [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
-                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                            (click)="GetRankingPopupData('My Zone')" data-bs-toggle="modal"
-                                            data-bs-target="#myTeamLeaderBoard" style="font-size:2.7vw">
-                                            {{MyZoneRank}}
-                                        </button>
-
-
-                                        <button *ngIf="l=='1' && sectionView_3._personal_data.id_role=='4'"
-                                            class="btn btn-primary- text-white level-badge-btn-mobile"
-                                            [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
-                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                            (click)="GetRankingPopupData('My Team')" data-bs-toggle="modal"
+                                            (click)="GetRankingPopupData('My National',1)" data-bs-toggle="modal"
                                             data-bs-target="#myTeamLeaderBoard" style="font-size:2.7vw">
                                             {{primary_rank}}
                                         </button>
+                                        <button *ngIf="l=='2' && sectionView_3?._personal_data?.id_role=='4'"
+                                            class="btn btn-primary- text-white level-badge-btn-mobile"
+                                            [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
+                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                            (click)="GetRankingPopupData('My Zone','')" data-bs-toggle="modal"
+                                            data-bs-target="#myTeamLeaderBoard" style="font-size:2.7vw">
+                                            {{tl_team_rank}}
+                                        </button>
+
+
+                                        <button *ngIf="l=='1' && sectionView_3?._personal_data?.id_role=='4'"
+                                            class="btn btn-primary- text-white level-badge-btn-mobile"
+                                            [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
+                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                            (click)="GetRankingPopupData('My Team','')" data-bs-toggle="modal"
+                                            data-bs-target="#myTeamLeaderBoard" style="font-size:2.7vw">
+                                            {{tl_team_rank}}
+                                        </button>
 
                                         
-                                        <span *ngIf="l=='0'" class="level-rank-name" style="color:#ffff">My Overall</span>
-                                        <span *ngIf="l=='2'" class="level-rank-name" style="color:#ffff">My Zone</span>
-                                        <span *ngIf="l=='1' " class="level-rank-name" style="color:#ffff">My Team</span>
+                                        <span *ngIf="l=='0'" class="level-rank-name" > National Rank</span>
+                                        <span *ngIf="l=='2'" class="level-rank-name" > Zonal Rank</span>
+                                        <span *ngIf="l=='1' " class="level-rank-name" >My Team</span>
 
 
                                     </div>
@@ -2407,7 +2420,7 @@
 
                             <ng-template #pointsDistribution>
                               
-                                <div  class="row"
+                                <div  class="row" style="margin-top:-1%;margin-bottom:2%"
                                     *ngIf="sectionView_1?._personal_data?.id_coroebus_organization==61"
                                    >
                                    <div class="col" style="width: 83vw;font-weight:500;font-family:'Inter'">
@@ -2651,10 +2664,10 @@
                                                                 width="100%">
                                                         </div> -->
                                                         <div
-                                                            *ngIf="triviaData.brief_graphics.split('.').pop()=='mp4';then mp4player">
+                                                            *ngIf="triviaData.brief_graphics?.split('.').pop()=='mp4';then mp4player">
                                                         </div>
                                                         <div
-                                                            *ngIf="triviaData.brief_graphics.split('.').pop() == 'png'||triviaData.brief_graphics.split('.').pop()=='gif'||triviaData.brief_graphics.split('.').pop()== 'jpg'||triviaData.brief_graphics.split('.').pop()=='jpeg';then imgplay">
+                                                            *ngIf="triviaData.brief_graphics?.split('.').pop() == 'png'||triviaData.brief_graphics?.split('.').pop()=='gif'||triviaData?.brief_graphics?.split('.').pop()== 'jpg'||triviaData?.brief_graphics?.split('.').pop()=='jpeg';then imgplay">
                                                         </div>
 
                                                         <ng-template #imgplay>
@@ -2801,7 +2814,7 @@
                                                                 margin-left: 1vw;
                                                                 letter-spacing: 0.003em;
                                                                 color: #000000;
-                                                                width: 15vw;">
+                                                                width: 100%;">
                                                     There's no bulletin’s you have subscribed to, stay tuned to
                                                     this
                                                     section for
@@ -2882,15 +2895,11 @@
                                                 (mouseover)="openDailyModal()" data-bs-toggle="modal"
                                                 data-bs-target="#dailyModal">
                                                 <div class="col-6"
-                                                    *ngIf="sectionView_1?._personal_data?.id_coroebus_organization!=61">
-                                                    Daily</div>
-                                                <div class="col-6"
-                                                    *ngIf="sectionView_1?._personal_data?.id_coroebus_organization==61">
-                                                    June'23 Early Activation</div>
-                                                <div
-                                                    *ngIf="sectionView_1?._personal_data?.id_coroebus_organization==61;then forTataOrgnizationDaily else forOtherOrgnizationDaily">
-                                                </div>
-                                                <ng-template #forOtherOrgnizationDaily>
+                                                    >
+                                                    {{daily_text}}</div>
+                                                
+                                                
+                                                
                                                     <div class="badge-container col"
                                                         *ngFor="let dailyBadges of seasonalThemeDailyBadges1;let i=index;">
 
@@ -2916,30 +2925,17 @@
 
 
                                                     </div>
-                                                </ng-template>
-                                                <ng-template #forTataOrgnizationDaily>
-                                                    <div class="badge-container col">
-                                                        <div style="height:4vh">
-                                                            <img src="assets/images/interactive-dashboard/june 23_acc.png"
-                                                                alt="" height="100%" width="100%">
-                                                        </div>
-
-                                                    </div>
-                                                </ng-template>
+                                                
+                                                
                                             </div>
                                             <div class="inner_content_daily1 d-flex justify-content-between"
                                                 (mouseover)="openWeeklyModal()" data-bs-toggle="modal"
                                                 data-bs-target="#weeklyModal">
-                                                <div class="col-6"
-                                                    *ngIf="sectionView_1?._personal_data?.id_coroebus_organization!=61">
-                                                    Weekly</div>
-                                                <div class="col-6"
-                                                    *ngIf="sectionView_1?._personal_data?.id_coroebus_organization==61">
-                                                    Monthly Edge Contest</div>
-                                                <div
-                                                    *ngIf="sectionView_1?._personal_data?.id_coroebus_organization==61;then forTataOrgnizationWeekly else forOtherOrgnizationWeekly">
-                                                </div>
-                                                <ng-template #forOtherOrgnizationWeekly>
+                                                <div class="col-6">
+                                                    {{weekly_text}}</div>
+                                                
+                                                
+                                                
                                                     <div class="badge-container col"
                                                         *ngFor="let WeeklyBadge of seasonalThemeWeeklyBadges2;let i=index">
                                                         <div [ngClass]="WeeklyBadge.active_class == '1'?'activeBadge':'deActiveBadge' "
@@ -2949,16 +2945,8 @@
                                                         </div>
 
                                                     </div>
-                                                </ng-template>
-                                                <ng-template #forTataOrgnizationWeekly>
-                                                    <div class="badge-container col">
-                                                        <div>
-                                                            <img src="assets/images/interactive-dashboard/monthly_edge_acc.png"
-                                                                alt="" height="100%" width="100%">
-                                                        </div>
-
-                                                    </div>
-                                                </ng-template>
+                                                
+                                                
 
 
                                             </div>
@@ -2966,15 +2954,10 @@
                                                 style="border:none" (mouseover)="openMonthlyModal()"
                                                 data-bs-toggle="modal" data-bs-target="#monthlyModal">
                                                 <div class="col-6"
-                                                    *ngIf="sectionView_1?._personal_data?.id_coroebus_organization!=61">
-                                                    Monthly</div>
-                                                <div class="col-6"
-                                                    *ngIf="sectionView_1?._personal_data?.id_coroebus_organization==61"
-                                                    title="MDRT Consistency Reward">MDRT Consistency...</div>
-                                                <div
-                                                    *ngIf="sectionView_1?._personal_data?.id_coroebus_organization==61;then forTataOrgnizationMonthly else forOtherOrgnizationMonthly">
-                                                </div>
-                                                <ng-template #forOtherOrgnizationMonthly>
+                                                    >
+                                                    {{monthly_text}}</div>
+                                                
+                                                
                                                     <div class="badge-container col"
                                                         *ngFor="let monthlyBadge of seasonalThemeMonthlyBadges3;let i=index">
                                                         <div [ngClass]="monthlyBadge.active_class == '1'?'activeBadge':'deActiveBadge' "
@@ -2984,17 +2967,8 @@
                                                         </div>
 
                                                     </div>
-                                                </ng-template>
-                                                <ng-template #forTataOrgnizationMonthly>
-                                                    <div class="badge-container col">
-                                                        <div>
-                                                            <img src="assets/images/interactive-dashboard/mdrt_acc.png"
-                                                                alt="" height="100%" width="100%">
-                                                        </div>
-
-                                                    </div>
-
-                                                </ng-template>
+                                                
+                                               
 
 
                                             </div>
@@ -3166,7 +3140,7 @@
                                     </a>
                                 </ng-template>
                                 <ng-template #filterBtnForOtherRole>
-                                    <a class="btn btn-xs filter-btn-dashboard  fs-sm mb-2" style="padding-top: 8px;"
+                                    <a class="btn btn-xs filter-btn-dashboard  fs-sm mb-2" style="padding-top: 8px;width:24vw"
                                         [ngClass]="{'filter-btn-dashboard-active': activeTabForSectionView_2 === item?.order}"
                                         [ngStyle]="{'background': (activeTabForSectionView_2 ===item?.order) ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
                                         [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -3290,7 +3264,7 @@
                 </div>
 
                 <div class="row mt-2 d-flex justify-content-center">
-                    <div style="width:94%;border-radius: 10px;padding-bottom:1vh"
+                    <div style="width:94%;border-radius: 10px;padding-bottom:1vh;background-size:cover"
                         [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
                         <div class="col" style="background-size:cover">
                             <div class="col-12 d-flex gap-1" style="font-weight:600">
@@ -3476,7 +3450,7 @@
 
                             </ng-template>
                             <!-- Dashboard center tables started -->
-                            <div class="dashboard-center-table">
+                            <div class="dashboard-center-table-Mobile">
                                 <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2 "
                                     [style.background-image]="'url(' + item?.ranking_image + ')'"
                                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -3517,8 +3491,18 @@
                                             </div>
 
 
-                                            <div class="media-body user-logo-row ellipsis"
+                                            <div class="media-body user-logo-row ellipsis" *ngIf="sectionView_1?._personal_data?.id_coroebus_game!='197'"
                                                 (click)="navigateToOtherRole(item)"
+                                                style="display: flex; flex-direction: column;row-gap:5px;">
+                                                <h5 class="mt-0 text-white name-f-size mobile-ellipsis"
+                                                    placement="bottom" ngbTooltip="{{item?.rankingtable_name}}">
+                                                    {{item?.rankingtable_name}}
+                                                </h5>
+                                                <p class="mt-n4 team-name sub-team name-f-size  mobile-ellipsis">
+                                                    {{item?.rankingtable_team}}</p>
+                                            </div>
+                                            <div class="media-body user-logo-row ellipsis" *ngIf="sectionView_1?._personal_data?.id_coroebus_game=='197'"
+                                                
                                                 style="display: flex; flex-direction: column;row-gap:5px;">
                                                 <h5 class="mt-0 text-white name-f-size mobile-ellipsis"
                                                     placement="bottom" ngbTooltip="{{item?.rankingtable_name}}">
@@ -3606,11 +3590,17 @@
 
 
                 </div>
-
+                <!-- <button (click)="scrollToTop()"  class="scroll-to-top-button" >
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1.5em"  viewBox="0 0 384 512"><path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"/></svg>
+                </button> -->
 
             </div>
+           
+           
+           
         </div>
-
+        
+       
 
 
     </ng-template>
@@ -3627,13 +3617,16 @@
         <div class="modal fade bd-example-modal-sm" id="dailyModal" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogDaily modal-dialog-centered">
-                <div class="modal-content " *ngIf="sectionView_1?._personal_data?.id_coroebus_organization!=61">
+                <div class="modal-content " >
                     <div class="modal-body" *ngIf="seasonalThemeDaily1.length!=0">
                         <div class="d-flex justify-content-end">
                             <button type="button" class="button-close" data-bs-dismiss="modal"
                                 aria-label="Close">X</button>
                         </div>
-                        <div *ngIf="seasonalThemeDaily1!=undefined;then daily"></div>
+                        <div class="container">
+                            <div *ngIf="seasonalThemeDaily1!=undefined;then daily"></div>
+                        </div>
+                        
                         <ng-template #daily>
                             <div class="popupheight popupDaily row d-flex" *ngIf="seasonalThemeDaily1.length!=0">
                                 <div class="d-flex justify-content-between mb-2">
@@ -3660,10 +3653,13 @@
                                 </div>
                             </div>
                         </ng-template>
-                        <div *ngIf="seasonalThemeDailyBadges1!=undefined;then dailybadge"></div>
+                        <div class="container">
+                            <div *ngIf="seasonalThemeDailyBadges1!=undefined;then dailybadge"></div>
+                        </div>
+                        
                         <ng-template #dailybadge>
                             <div class="animation-bar" *ngIf="seasonalThemeDailyBadges1.length!=0">
-                                <div class="badges_row" [style.width.%]="93" style="position: relative;">
+                                <div class="badges_row" [style.width.%]="90" style="position: relative;">
 
                                     <div class="d-flex flex-column justify-content-center align-items-center"
                                         [style.margin-left.%]="((seasonalThemeDailyBadges1[0].seasonal_score_target)/(seasonalThemeDailyBadges1[2].seasonal_score_target))*100">
@@ -3721,21 +3717,21 @@
                                 </div>
                                 <ng-template #valuepercentage>
                                     <div class="animation-bar"
-                                        [style.margin-left.%]="((seasonalThemeDailyBadges1[2].seasonal_score_percentage))">
+                                        [style.margin-left.%]="((seasonalThemeDailyBadges1[2]?.seasonal_score_percentage))">
                                         <div class="d-flex flex-column">
                                             <div class="border-left"></div>
                                             <div class="Progressscore">
-                                                {{seasonalThemeDailyBadges1[0].seasonal_score_achived}}
+                                                {{seasonalThemeDailyBadges1[0]?.seasonal_score_achived |shortNumber}}
                                             </div>
                                         </div>
                                     </div>
                                 </ng-template>
                                 <ng-template #maxpercentage>
-                                    <div class="animation-bar" [style.margin-left.%]="98">
+                                    <div class="animation-bar" [style.margin-left.%]="96">
                                         <div class="d-flex flex-column">
                                             <div class="border-left"></div>
                                             <div class="Progressscore">
-                                                {{seasonalThemeDailyBadges1[0].seasonal_score_achived}}
+                                                {{seasonalThemeDailyBadges1[0]?.seasonal_score_achived |shortNumber}}
                                             </div>
                                         </div>
                                     </div>
@@ -3763,20 +3759,7 @@
                     </div>
 
                 </div>
-                <div class="modal-content " *ngIf="sectionView_1?._personal_data?.id_coroebus_organization==61">
-                    <div class="modal-body">
-                        <div class="modal-body">
-                            <div class="d-flex justify-content-end">
-                                <button type="button" class="button-close" data-bs-dismiss="modal"
-                                    aria-label="Close">X</button>
-                            </div>
-                            <div data-bs-dismiss="modal"
-                                style="background:url(assets/images/interactive-dashboard/campaignsimages/daily.png);background-size:100% 100%;height:70vh">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+               
 
             </div>
         </div>
@@ -3791,13 +3774,16 @@
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogWeekly modal-dialog-centered">
                 <div class="modal-content modalContentWeekly"
-                    *ngIf="sectionView_1?._personal_data?.id_coroebus_organization!=61">
+                    >
                     <div class="modal-body" style="min-height: 51vh;" *ngIf="seasonalThemeWeekly2.length!=0">
                         <div class="d-flex justify-content-end">
                             <button type="button" class="button-close" data-bs-dismiss="modal"
                                 aria-label="Close">X</button>
                         </div>
-                        <div *ngIf="seasonalThemeWeekly2!=undefined ;then week"></div>
+                        <div class="container">
+                            <div *ngIf="seasonalThemeWeekly2!=undefined ;then week"></div>
+                        </div>
+                        
                         <ng-template #week>
                             <div class="row d-flex" *ngIf="seasonalThemeWeekly2.length!=0">
                                 <div class="d-flex justify-content-between mb-1 p-1">
@@ -3832,11 +3818,14 @@
                             </div>
 
                         </ng-template>
-                        <div *ngIf="seasonalThemeWeeklyBadges2!=undefined;then weekbadge"></div>
+                        <div  class="container">
+                            <div  *ngIf="seasonalThemeWeeklyBadges2!=undefined;then weekbadge"></div>
+                        </div>
+                        
                         <ng-template #weekbadge>
 
                             <div class="animation-bar" *ngIf="seasonalThemeWeeklyBadges2.length!=0">
-                                <div class="badges_row" [style.width.%]="93" style="position: relative;">
+                                <div class="badges_row" [style.width.%]="90" style="position: relative;">
 
                                     <div class="d-flex flex-column justify-content-center align-items-center"
                                         [style.margin-left.%]="((seasonalThemeWeeklyBadges2[0].seasonal_score_target)/(seasonalThemeWeeklyBadges2[2].seasonal_score_target))*100">
@@ -3851,7 +3840,8 @@
                                         </div>
                                     </div>
                                     <div class="d-flex flex-column justify-content-center " style="position: absolute;"
-                                        [style.margin-left.%]="(((seasonalThemeWeeklyBadges2[1].seasonal_score_target)/(seasonalThemeDailyBadges1[2].seasonal_score_target))*100)">
+                                        [style.margin-left.%]="(((seasonalThemeWeeklyBadges2[1].seasonal_score_target)/(seasonalThemeWeeklyBadges2[2].seasonal_score_target))*100)">
+                                    
                                         <div style="height:6vh;width:6vh;border-radius:50%"
                                             [ngClass]="seasonalThemeWeeklyBadges2[1].active_class == '0'?'inActiveBadge':'ActiveBadge'">
                                             <img src="{{seasonalThemeWeeklyBadges2[1].seasonal_badge_logo}}" alt=""
@@ -3898,17 +3888,17 @@
                                         <div class="d-flex flex-column">
                                             <div class="border-left"></div>
                                             <div class="Progressscore">
-                                                {{seasonalThemeWeeklyBadges2[0].seasonal_score_achived}}
+                                                {{seasonalThemeWeeklyBadges2[0]?.seasonal_score_achived|shortNumber}}
                                             </div>
                                         </div>
                                     </div>
                                 </ng-template>
                                 <ng-template #maxpercentage>
-                                    <div class="animation-bar" [style.margin-left.%]="98">
+                                    <div class="animation-bar" [style.margin-left.%]="96">
                                         <div class="d-flex flex-column">
                                             <div class="border-left"></div>
                                             <div class="Progressscore">
-                                                {{seasonalThemeWeeklyBadges2[0].seasonal_score_achived}}
+                                                {{seasonalThemeWeeklyBadges2[0]?.seasonal_score_achived|shortNumber}}
                                             </div>
                                         </div>
                                     </div>
@@ -3935,20 +3925,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-content modalContentWeekly"
-                    *ngIf="sectionView_1?._personal_data?.id_coroebus_organization==61">
-                    <div class="modal-body">
-                        <div class="modal-body">
-                            <div class="d-flex justify-content-end">
-                                <button type="button" class="button-close" data-bs-dismiss="modal"
-                                    aria-label="Close">X</button>
-                            </div>
-                            <div data-bs-dismiss="modal"
-                                style="background:url(assets/images/interactive-dashboard/campaignsimages/weekly.png);background-size:100% 100%;height:70vh">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -3963,14 +3940,18 @@
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogMonthly modal-dialog-centered ">
                 <div class="modal-content modalContentMonthly"
-                    *ngIf="sectionView_1?._personal_data?.id_coroebus_organization!=61">
+                    >
                     <div class="modal-body" style="min-height: 30vh;" *ngIf="seasonalThemeMonthl3.length!=0">
                         <div class="d-flex justify-content-end" style="color:#0000">
                             <button type="button" class="button-close" data-bs-dismiss="modal"
                                 aria-label="Close">X</button>
                         </div>
-                        <div *ngIf="seasonalThemeMonthl3!=undefined;then month"></div>
-                        <div *ngIf="seasonalThemeMonthlyBadges3!=undefined;then monthbadge"></div>
+                       
+                        <div class="container">
+                            <div *ngIf="seasonalThemeMonthl3!=undefined;then month"></div>
+                            <div *ngIf="seasonalThemeMonthlyBadges3!=undefined;then monthbadge"></div>
+                        </div>
+                        
 
                         <ng-template #month>
                             <div class="row d-flex" *ngIf="seasonalThemeMonthl3!=0">
@@ -4007,7 +3988,7 @@
 
                         <ng-template #monthbadge>
                             <div class="animation-bar" *ngIf="seasonalThemeMonthlyBadges3.length!=0">
-                                <div class="badges_row" [style.width.%]="93" style="position: relative;">
+                                <div class="badges_row" [style.width.%]="90" style="position: relative;">
 
                                     <div class="d-flex flex-column justify-content-center align-items-center"
                                         [style.margin-left.%]="((seasonalThemeMonthlyBadges3[0].seasonal_score_target)/(seasonalThemeMonthlyBadges3[2].seasonal_score_target))*100">
@@ -4069,93 +4050,23 @@
                                         <div class="d-flex flex-column">
                                             <div class="border-left"></div>
                                             <div class="Progressscore">
-                                                {{seasonalThemeMonthlyBadges3[0].seasonal_score_achived}}
+                                                {{seasonalThemeMonthlyBadges3[0].seasonal_score_achived |shortNumber}}
                                             </div>
                                         </div>
                                     </div>
                                 </ng-template>
                                 <ng-template #maxpercentage>
-                                    <div class="animation-bar" [style.margin-left.%]="98">
+                                    <div class="animation-bar" [style.margin-left.%]="96">
                                         <div class="d-flex flex-column">
                                             <div class="border-left"></div>
                                             <div class="Progressscore">
-                                                {{seasonalThemeMonthlyBadges3[0].seasonal_score_achived}}
+                                                {{seasonalThemeMonthlyBadges3[0].seasonal_score_achived |shortNumber}}
                                             </div>
                                         </div>
                                     </div>
                                 </ng-template>
                             </div>
-                            <!-- <div class="animation-bar" *ngIf="seasonalThemeMonthlyBadges3.length!=0">
-                            <div class="badges_row" style="width:100%">
-
-
-                                <div class="d-flex flex-column justify-content-center align-items-center col ">
-                                    <div style="height:6vh;width:6vh;border-radius:50%"
-                                        [ngClass]="seasonalThemeMonthlyBadges3[0].active_class=='0'?'inActiveBadge':'ActiveBadge'">
-                                        <img src="{{seasonalThemeMonthlyBadges3[0].seasonal_badge_logo}}" alt=""
-                                            height="100%" width="100%">
-
-                                    </div>
-                                    <div class="d-flex justify-content-center">
-                                        <div style="height:3vh;border-left: 1px solid black;"></div>
-                                    </div>
-
-
-                                </div>
-                                <div class="d-flex flex-column justify-content-center align-items-center col">
-                                    <div style="height:6vh;width:6vh;border-radius:50%">
-                                        <img [ngClass]="seasonalThemeMonthlyBadges3[1].active_class=='0'?'inActiveBadge':'ActiveBadge'"
-                                            src="{{seasonalThemeMonthlyBadges3[1].seasonal_badge_logo}}" alt=""
-                                            height="100%" width="100%">
-
-                                    </div>
-                                    <div class="d-flex justify-content-center">
-                                        <div style="height:3vh;border-left: 1px solid black;"></div>
-                                    </div>
-
-
-                                </div>
-                                <div class="d-flex flex-column justify-content-center align-items-center col ">
-                                    <div style="height:6vh;width:6vh;border-radius:50%"
-                                        [ngClass]="seasonalThemeMonthlyBadges3[2].active_class=='0'?'inActiveBadge':'ActiveBadge'">
-                                        <img src="{{seasonalThemeMonthlyBadges3[2].seasonal_badge_logo}}" alt=""
-                                            height="100%" width="100%">
-
-                                    </div>
-                                    <div class="d-flex justify-content-center">
-                                        <div style="height:3vh;border-left: 1px solid black;"></div>
-                                    </div>
-
-
-                                </div>
-                               
-
-
-                            </div>
-
-                            <div class="animation-bar-1">
-                                <span class="d-flex justify-content-center"
-                                    [style.background-size.%]="totalTargetScore"
-                                    [style.width.%]="((seasonalThemeMonthlyBadges3[0].seasonal_score_achived/totalTargetScore)*(100))">
-                                </span>
-
-
-                            </div>
-                            <div class="animation-bar"
-                                [style.margin-left.%]="((seasonalThemeMonthlyBadges3[0].seasonal_score_achived/totalTargetScore)*(100))">
-
-                                <div class="d-flex flex-column">
-                                    <div class="border-left"></div>
-                                    <div class="Progressscore">
-                                        {{seasonalThemeMonthlyBadges3[0].seasonal_score_achived}}
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-
-                        </div> -->
+                            
                         </ng-template>
 
                         <ng-template #month>
@@ -4177,20 +4088,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-content modalContentMonthly"
-                    *ngIf="sectionView_1?._personal_data?.id_coroebus_organization==61">
-                    <div class="modal-body">
-                        <div class="modal-body">
-                            <div class="d-flex justify-content-end">
-                                <button type="button" class="button-close" data-bs-dismiss="modal"
-                                    aria-label="Close">X</button>
-                            </div>
-                            <div data-bs-dismiss="modal"
-                                style="background:url(assets/images/interactive-dashboard/campaignsimages/monthly.png);background-size:100% 100%;height:70vh">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -4224,6 +4122,7 @@
             </div>
             <div class="modal-body">
                 <mat-tab-group [selectedIndex]="selectedIndex">
+                    {{titleTab |json}}
                     <mat-tab [label]="titleTab">
                         <div class="row rank_label popup mt-2">
                             <div class="col-3">Rank</div>
@@ -4582,6 +4481,7 @@
 
 
 <!-- Modal For Overall points Popup -->
+
 <div class="modal fade" id="operallPointsAbove" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -4592,11 +4492,19 @@
             <div class="modal-body">
                 <mat-tab-group>
                     <mat-tab label="Wealth">
-
-                        <h5 style="font-family:'Inter';font-weight:600;margin-top:3%">Premium Collection-Wealth Index
-                        </h5>
-                        <table class="mt-4">
-                            <thead>
+                        <div class="d-flex justify-content-between">
+                            
+                            <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">Premium Collection-Wealth Index
+                            </h5>
+                            <h5 class="col-4 d-flex justify-content-end " style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em ;width:40%">
+                                <div>Frequency:Monthly</div>
+                               
+                            </h5>
+                                
+                        </div>
+                       
+                        <table class="mt-4" >
+                            <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
                                 <th>Start Range </th>
                                 <th>End Range</th>
                                 <th>Point</th>
@@ -4635,11 +4543,20 @@
 
                     </mat-tab>
                     <mat-tab label="Transaction">
+                       <div class="d-flex justify-content-between">
+                        <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">Issuance Rate - Transaction
+                            Index
+                        </h5>
+                        <h5 class="col-4 d-flex justify-content-end " style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em ;width:40%">
+                            <div>Frequency:Monthly</div>
+                           
+                        </h5>
+                       </div>
+                       
 
-                        <h5 style="font-family:'Inter';font-weight:600;;margin-top:3%">Issuance Rate* - Transaction
-                            Index</h5>
+                          
                         <table class="mt-4">
-                            <thead>
+                            <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
                                 <th>Start Range </th>
                                 <th>End Range</th>
                                 <th>Point</th>
@@ -4677,10 +4594,18 @@
 
                     </mat-tab>
                     <mat-tab label="Capability">
-                        <h5 style="font-family:'Inter';font-weight:600;margin-top:3%">Learning & Certification -
-                            Capability Index</h5>
+                        <div class="d-flex justify-content-between">
+                            <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">Learning and Certification - Module Completion - Capability Index
+                                
+                            </h5>
+                            <h5 class="col-4 d-flex justify-content-end " style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em ;width:40%">
+                                <div>Frequency:Monthly</div>
+                               
+                            </h5>
+                        </div>
+                        
                         <table class="mt-4">
-                            <thead>
+                            <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
                                 <th>Start Range </th>
                                 <th>End Range</th>
                                 <th>Point</th>
@@ -4716,22 +4641,50 @@
 
                         </table>
 
-
-
-
                     </mat-tab>
                     <mat-tab label="Advocacy">
-                        <h5 style="font-family:'Inter';font-weight:600;margin-top:3%">Customer Referral - Advocacy</h5>
+                        <div class="d-flex justify-content-between">
+                            <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">Customer Referral - Advocacy Index
+                            
+                        </h5>
+                        <h5 class="col-4 d-flex justify-content-end " style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em ;width:40%">
+                            <div>Frequency:Weekly</div>
+                           
+                        </h5>
+                        </div>
+                        
+                        
+                        
                         <table class="mt-4">
-                            <thead>
-                                <th>Range </th>
+                            <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
+                                <th>Refferal Count </th>
                                
-                                <th>Point</th>
+                                <th>Points per Refferal</th>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>1 Customer Referral</td>
                                     <td>1</td>
+
+                                </tr>
+                                <tr>
+                                    <td>2 Customer Referral</td>
+                                    <td>2</td>
+
+                                </tr>
+                                <tr>
+                                    <td>3 Customer Referral</td>
+                                    <td>3</td>
+
+                                </tr>
+                                <tr>
+                                    <td>4 Customer Referral</td>
+                                    <td>4</td>
+
+                                </tr>
+                                <tr>
+                                    <td>5 Customer Referral</td>
+                                    <td>5</td>
 
                                 </tr>
 
@@ -4754,8 +4707,1263 @@
 
 
 
+<!-- Modal For IndexWiseLeaderBoard -->
+<div class="modal fade" id="IndexWiseLeaderBoard" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="d-flex justify-content-end p-2">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body web-view">
+                <div style="padding:2%;border-radius:10px;background-size: cover;"
+                    [style.background-image]="
+                    sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                    <div class="row" [ngClass]="{'row-cols-2': sectionView_2_Indexwise?._ranking_data?.length === 2,
+                                'row-cols-3': sectionView_2_Indexwise?._ranking_data?.length === 3,
+                                'row-cols-4': sectionView_2_Indexwise?._ranking_data?.length === 4,
+                                'row-cols-1': sectionView_2_Indexwise?._ranking_data?.length === 4}" style="padding:1% 0%;
+                                display: flex;
+                                flex-direction: row;
+                                flex-wrap: nowrap;
+                                width:103%;
+                             ">
+
+                        <div class="col" style="overflow-x: auto;
+                    width: 45.5vw;
+                    flex-direction: row;
+                    flex-wrap: nowrap;" *ngFor="let item of sectionView_2_Indexwise?._ranking_data;let i=index">
+
+                            <div *ngIf="role_id==6;then filterBtnForPlayer else filterBtnForOtherRole "></div>
+                            <ng-template #filterBtnForPlayer>
+                              
+                            </ng-template>
+                            <ng-template #filterBtnForOtherRole>
+                                <a class="btn btn-xs filter-btn-dashboard  fs-sm mb-2" style="padding-top: 8px;width:100%"
+                                    [ngClass]="{'filter-btn-dashboard-active': activeTabForSectionView_2_index === item?.order}"
+                                    [ngStyle]="{'background': (activeTabForSectionView_2_index ===item?.order) ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
+                                    [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                    (click)="changeTabFilterIndex(item?.label,item?.order)">
+                                    <span class=" v-align filter-txt-name"
+                                        [ngStyle]="{'color':(activeTabForSectionView_2_index === item?.order) ? '#ffffff':'#000000'}">
+                                        {{item?.label}}
+                                    </span>
+                                </a>
+
+                            </ng-template>
+
+                        </div>
+                    </div>
+                    <div class="row row-cols-2" *ngIf="sectionView_3_list_index?.[0]?._Overall">
+                        <div *ngIf="role_id==6;then subTabForPlayer else subTabForOtherRole "></div>
+                        <ng-template #subTabForPlayer>
+                           
+                        </ng-template>
+                        <ng-template #subTabForOtherRole>
+                            <div class="col">
+                                <a id="myButton" class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
+                                    [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2_index ==='My Store'}"
+                                    [ngStyle]="{'background': (activeSubTabForSectionView_2_index==='My Store') ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
+                                    [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                    (click)="changeSubTabFilterIndex('My Store')">
+                                    <span class=" v-align filter-txt-name filter-my-store"
+                                        (click)="changeSubTabFilterIndex('My Store')"
+                                        [ngStyle]="{'color': (activeSubTabForSectionView_2_index ==='My Store')?'#ffffff':'#000000'}">
+                                        My {{labelNameMyIndex}}
+
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
+                                    [ngClass]="{'': activeSubTabForSectionView_2_index === 'Overall'}"
+                                    [ngStyle]="{'background': (activeSubTabForSectionView_2_index === 'Overall')? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
+                                    [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                    (click)="changeSubTabFilterIndex('Overall')">
+                                    <span class=" v-align filter-txt-name filter-my-store"
+                                        [ngStyle]="{'color': (activeSubTabForSectionView_2_index === 'Overall') ? '#ffffff' : '#000000'}">
+                                        Overall {{labelNameMyIndex}}
+
+                                    </span>
+                                </a>
+                            </div>
+                        </ng-template>
+
+
+                    </div>
+                </div>
+                <!-- <div class="d-flex flex-row" style="margin-top: 10px;">
+                    <div class="col-11" style="padding-right:0px;">
+                        <input type="text" class="form-control dashboard-searchbar" placeholder="Search People here.."
+                            [(ngModel)]="spectSearchStrIndex" aria-label="Search People here.." (keyup)="checkEmptyIndex()"
+                            aria-describedby="basic-addon2">
+                    </div>
+                    <div class="col-1 d-flex justify-content-end">
+
+                        <button type="button" class="btn btn-primary dashboard-search-btn ms-1" (click)="spectSearchIndex()"
+                            [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"><i
+                                class="fa fa-search" aria-hidden="true"></i></button>
+                    </div>
+                </div> -->
+                <div class="mt-2"
+                [style.background-image]="
+        sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null"
+                style="background-size:cover;border-radius:10px;padding:1%">
+                <div class="row" style="color:#000;font-size: 1vw !important;">
+                    <div class="col-2">
+                        <span class="rank_h">Rank</span>
+                    </div>
+                    <div class="col-3 pe-5">
+                        <span class="name_h">Name</span>
+                    </div>
+                    <div class="offset-4 col-2 ps-4 mt-1">
+                        <span class="points_h" style="margin-left: -0px;">Points</span>
+                    </div>
+                </div>
+                <div *ngIf="activeSubTabForSectionView_2_index === 'My Store' ; then mystore else overall"></div>
+                <ng-template #mystore>
+                    <div class="me-1 mt-1" >
+                        <!-- {{rankingDataFirstRowForSectionView_2 | json}} -->
+
+
+                        <div 
+                        *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2_index === 'My Store' ? sectionView_3_list_index?.[0]?._data : sectionView_3_list_index?.[0]?._Overall)) "
+                     >
+                 
+                        <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
+                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color" *ngIf="item?.userid == sectionView_1?._personal_data?.USERID"    style="cursor: pointer;"  [style.background-image]="'url('+item?.ranking_image_web +')'">
+                        <div class="col" >
+                            <div class="media d-flex align-items-center gap-3" style="height: 7vh;">
+                                <span class="col-1 ms-2 text-white position-absolute-s">
+                                    {{item?.rankingtable_number}}
+                                </span>
+                                <!-- (click)="openHierarchyPopup(item)" -->
+                                <div
+                                    *ngIf="this.userSelectionData._personal_data.id_role!=13 ; then openHierarchy else dontOpenHierarchy ">
+                                </div>
+                                <ng-template #openHierarchy>
+                                    <div style="height:5vh;display:flex;align-items: center;">
+                                        <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                            *ngIf="coroebus_game!='197'" style="cursor: pointer;"
+                                            (click)="openHierarchyPopup(item)" src="{{item?.rankingtable_logo}}"
+                                            data-holder-rendered="true" height="100%" width="41">
+                                        <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                            *ngIf="coroebus_game=='197'" style="cursor: pointer;"
+                                            src="{{item?.rankingtable_logo}}" data-holder-rendered="true"
+                                            height="100%" width="41">
+                                    </div>
+                                </ng-template>
+                                <ng-template #dontOpenHierarchy>
+                                    <div style="height:5vh;display:flex;align-items: center;">
+                                        <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                            style="cursor: pointer;" src="{{item?.rankingtable_logo}}"
+                                            data-holder-rendered="true" height="100%" width="41">
+                                    </div>
+                                </ng-template>
+
+
+                                <div class="media-body user-logo-row ellipsis" (click)="navigateToOtherRole(item)" *ngIf="sectionView_1?._personal_data?.id_coroebus_game!='197'"
+                                    style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
+                                    <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
+                                        style="cursor: pointer;" (click)="navigateToOtherRole(item)"
+                                        ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}</h5>
+                                    <p class="mt-n4 team-name sub-team name-f-size" style="cursor: pointer;"
+                                        (click)="navigateToOtherRole(item)">{{item?.rankingtable_team}}</p>
+                                </div>
+                                <div class="media-body user-logo-row ellipsis" *ngIf="sectionView_1?._personal_data?.id_coroebus_game=='197'"
+                                style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
+                                <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
+                                    style="cursor: pointer;" 
+                                    ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}</h5>
+                                <p class="mt-n4 team-name sub-team name-f-size" style="cursor: pointer;"
+                                    >{{item?.rankingtable_team}}</p>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="media me-1" style="height: 7vh; display: flex;align-items:center">
+                                <div class="rounded-circle z-depth-2 team-logo-row " style="height:5vh;width:5vh">
+                                    <img alt="" src="{{item?.ranking_badge}}" data-holder-rendered="true"
+                                        height="100%" width="100%">
+                                </div>
+
+                                <div class="media-body text-center">
+                                    <h5 class="mt-0 text-white" style="display: flex;
+                                justify-content: end;
+                                align-items: center;
+                                gap: 3vw;">
+                                        <div style="height: 6vh; display:flex;align-items: center;">
+                                            <span
+                                                class="name-f-size point-number mt-1">{{item?.rankingtable_weightage}}</span>
+                                        </div>
+                                        <div
+                                            *ngIf="this.userSelectionData._personal_data.id_role!=13 ;then openPoke else dontPoke">
+                                        </div>
+                                        <ng-template #openPoke>
+                                            <div style="height:5vh;">
+                                                <img class="mt-1 f-right up-arrow" alt=""
+                                                    src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
+                                                    data-holder-rendered="true" height="100%"
+                                                    *ngIf="item?.rankingtable_arrow === 'red'"
+                                                    (click)="upDownArrow(item?.rankingtable_arrow,item)">
+
+
+                                                <img class="mt-1 f-right up-arrow" alt=""
+                                                    src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
+                                                    data-holder-rendered="true" height="100%"
+                                                    *ngIf="item?.rankingtable_arrow !== 'red'"
+                                                    (click)="upDownArrow(item?.rankingtable_arrow,item)">
+                                            </div>
+                                        </ng-template>
+
+                                        <ng-template #dontPoke>
+                                            <div style="height:5vh;">
+                                                <img class="mt-1 f-right up-arrow" alt=""
+                                                    src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
+                                                    data-holder-rendered="true" height="100%"
+                                                    *ngIf="item?.rankingtable_arrow === 'red'">
+
+
+                                                <img class="mt-1 f-right up-arrow" alt=""
+                                                    src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
+                                                    data-holder-rendered="true" height="100%"
+                                                    *ngIf="item?.rankingtable_arrow !== 'red'">
+                                            </div>
+                                        </ng-template>
+
+
+
+                                    </h5>
+                                    <!-- <p class="mt-n4 team-name sub-team">India Maste</p> -->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    </div>
+
+
+                    </div>
+                </ng-template>
+                <ng-template #overall>
+                    <div class="me-1 mt-1" >
+                        <!-- {{rankingDataFirstRowForSectionView_2 | json}} -->
+
+
+                        <div 
+                        *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2_index === 'My Store' ? sectionView_3_list_index?.[0]?._data : sectionView_3_list_index?.[0]?._Overall)) "
+                     >
+                 
+                        <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
+                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color" *ngIf="item?.userid == sectionView_1?._personal_data?.USERID"    style="cursor: pointer;"  [style.background-image]="'url('+item?.ranking_image_web +')'">
+                        <div class="col" >
+                            <div class="media d-flex align-items-center gap-3" style="height: 7vh;">
+                                <span class="col-1 ms-2 text-white position-absolute-s">
+                                    {{item?.rankingtable_number}}
+                                </span>
+                                <!-- (click)="openHierarchyPopup(item)" -->
+                                <div
+                                    *ngIf="this.userSelectionData._personal_data.id_role!=13 ; then openHierarchy else dontOpenHierarchy ">
+                                </div>
+                                <ng-template #openHierarchy>
+                                    <div style="height:5vh;display:flex;align-items: center;">
+                                        <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                            *ngIf="coroebus_game!='197'" style="cursor: pointer;"
+                                            (click)="openHierarchyPopup(item)" src="{{item?.rankingtable_logo}}"
+                                            data-holder-rendered="true" height="100%" width="41">
+                                        <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                            *ngIf="coroebus_game=='197'" style="cursor: pointer;"
+                                            src="{{item?.rankingtable_logo}}" data-holder-rendered="true"
+                                            height="100%" width="41">
+                                    </div>
+                                </ng-template>
+                                <ng-template #dontOpenHierarchy>
+                                    <div style="height:5vh;display:flex;align-items: center;">
+                                        <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                            style="cursor: pointer;" src="{{item?.rankingtable_logo}}"
+                                            data-holder-rendered="true" height="100%" width="41">
+                                    </div>
+                                </ng-template>
+
+
+                                <div class="media-body user-logo-row ellipsis" (click)="navigateToOtherRole(item)" *ngIf="sectionView_1?._personal_data?.id_coroebus_game!='197'"
+                                    style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
+                                    <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
+                                        style="cursor: pointer;" (click)="navigateToOtherRole(item)"
+                                        ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}</h5>
+                                    <p class="mt-n4 team-name sub-team name-f-size" style="cursor: pointer;"
+                                        (click)="navigateToOtherRole(item)">{{item?.rankingtable_team}}</p>
+                                </div>
+                                <div class="media-body user-logo-row ellipsis" *ngIf="sectionView_1?._personal_data?.id_coroebus_game=='197'"
+                                style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
+                                <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
+                                    style="cursor: pointer;" 
+                                    ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}</h5>
+                                <p class="mt-n4 team-name sub-team name-f-size" style="cursor: pointer;"
+                                    >{{item?.rankingtable_team}}</p>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="media me-1" style="height: 7vh; display: flex;align-items:center">
+                                <div class="rounded-circle z-depth-2 team-logo-row " style="height:5vh;width:5vh">
+                                    <img alt="" src="{{item?.ranking_badge}}" data-holder-rendered="true"
+                                        height="100%" width="100%">
+                                </div>
+
+                                <div class="media-body text-center">
+                                    <h5 class="mt-0 text-white" style="display: flex;
+                                justify-content: end;
+                                align-items: center;
+                                gap: 3vw;">
+                                        <div style="height: 6vh; display:flex;align-items: center;">
+                                            <span
+                                                class="name-f-size point-number mt-1">{{item?.rankingtable_weightage}}</span>
+                                        </div>
+                                        <div
+                                            *ngIf="this.userSelectionData._personal_data.id_role!=13 ;then openPoke else dontPoke">
+                                        </div>
+                                        <ng-template #openPoke>
+                                            <div style="height:5vh;">
+                                                <img class="mt-1 f-right up-arrow" alt=""
+                                                    src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
+                                                    data-holder-rendered="true" height="100%"
+                                                    *ngIf="item?.rankingtable_arrow === 'red'"
+                                                    (click)="upDownArrow(item?.rankingtable_arrow,item)">
+
+
+                                                <img class="mt-1 f-right up-arrow" alt=""
+                                                    src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
+                                                    data-holder-rendered="true" height="100%"
+                                                    *ngIf="item?.rankingtable_arrow !== 'red'"
+                                                    (click)="upDownArrow(item?.rankingtable_arrow,item)">
+                                            </div>
+                                        </ng-template>
+
+                                        <ng-template #dontPoke>
+                                            <div style="height:5vh;">
+                                                <img class="mt-1 f-right up-arrow" alt=""
+                                                    src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
+                                                    data-holder-rendered="true" height="100%"
+                                                    *ngIf="item?.rankingtable_arrow === 'red'">
+
+
+                                                <img class="mt-1 f-right up-arrow" alt=""
+                                                    src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
+                                                    data-holder-rendered="true" height="100%"
+                                                    *ngIf="item?.rankingtable_arrow !== 'red'">
+                                            </div>
+                                        </ng-template>
+
+
+
+                                    </h5>
+                                    <!-- <p class="mt-n4 team-name sub-team">India Maste</p> -->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    </div>
+
+
+                    </div>
+                </ng-template>
+
+
+                <div *ngIf="spectSearchStr ==''|| spectSearchStr == undefined || spectSearList.length>10||spectSearchStr==null;"
+                    [ngClass]="sectionView_1?._personal_data.id_role=='6'? 'dashboard-center-table':'dashboard-center-table1'"
+                    class="">
+                    <!-- {{spectSearList | json}} -->
+                    <!-- {{spectSearchStr ? 'true': 'false'}} -->
+                    <div 
+                        *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2_index === 'My Store' ? sectionView_3_list_index?.[0]?._data : sectionView_3_list_index?.[0]?._Overall)) "
+                     >
+                 
+                        <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
+                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color" *ngIf="item?.userid != sectionView_1?._personal_data?.USERID"    style="cursor: pointer;"  [style.background-image]="'url('+item?.ranking_image_web +')'">
+                        <div class="col" >
+                            <div class="media d-flex align-items-center gap-3" style="height: 7vh;">
+                                <span class="col-1 ms-2 text-white position-absolute-s">
+                                    {{item?.rankingtable_number}}
+                                </span>
+                                <!-- (click)="openHierarchyPopup(item)" -->
+                                <div
+                                    *ngIf="this.userSelectionData._personal_data.id_role!=13 ; then openHierarchy else dontOpenHierarchy ">
+                                </div>
+                                <ng-template #openHierarchy>
+                                    <div style="height:5vh;display:flex;align-items: center;">
+                                        <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                            *ngIf="coroebus_game!='197'" style="cursor: pointer;"
+                                            (click)="openHierarchyPopup(item)" src="{{item?.rankingtable_logo}}"
+                                            data-holder-rendered="true" height="100%" width="41">
+                                        <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                            *ngIf="coroebus_game=='197'" style="cursor: pointer;"
+                                            src="{{item?.rankingtable_logo}}" data-holder-rendered="true"
+                                            height="100%" width="41">
+                                    </div>
+                                </ng-template>
+                                <ng-template #dontOpenHierarchy>
+                                    <div style="height:5vh;display:flex;align-items: center;">
+                                        <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                            style="cursor: pointer;" src="{{item?.rankingtable_logo}}"
+                                            data-holder-rendered="true" height="100%" width="41">
+                                    </div>
+                                </ng-template>
+
+
+                                <div class="media-body user-logo-row ellipsis" (click)="navigateToOtherRole(item)" *ngIf="sectionView_1?._personal_data?.id_coroebus_game!='197'"
+                                    style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
+                                    <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
+                                        style="cursor: pointer;" (click)="navigateToOtherRole(item)"
+                                        ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}</h5>
+                                    <p class="mt-n4 team-name sub-team name-f-size" style="cursor: pointer;"
+                                        (click)="navigateToOtherRole(item)">{{item?.rankingtable_team}}</p>
+                                </div>
+                                <div class="media-body user-logo-row ellipsis" *ngIf="sectionView_1?._personal_data?.id_coroebus_game=='197'"
+                                style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
+                                <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
+                                    style="cursor: pointer;" 
+                                    ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}</h5>
+                                <p class="mt-n4 team-name sub-team name-f-size" style="cursor: pointer;"
+                                    >{{item?.rankingtable_team}}</p>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="media me-1" style="height: 7vh; display: flex;align-items:center">
+                                <div class="rounded-circle z-depth-2 team-logo-row " style="height:5vh;width:5vh">
+                                    <img alt="" src="{{item?.ranking_badge}}" data-holder-rendered="true"
+                                        height="100%" width="100%">
+                                </div>
+
+                                <div class="media-body text-center">
+                                    <h5 class="mt-0 text-white" style="display: flex;
+                                justify-content: end;
+                                align-items: center;
+                                gap: 3vw;">
+                                        <div style="height: 6vh; display:flex;align-items: center;">
+                                            <span
+                                                class="name-f-size point-number mt-1">{{item?.rankingtable_weightage}}</span>
+                                        </div>
+                                        <div
+                                            *ngIf="this.userSelectionData._personal_data.id_role!=13 ;then openPoke else dontPoke">
+                                        </div>
+                                        <ng-template #openPoke>
+                                            <div style="height:5vh;">
+                                                <img class="mt-1 f-right up-arrow" alt=""
+                                                    src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
+                                                    data-holder-rendered="true" height="100%"
+                                                    *ngIf="item?.rankingtable_arrow === 'red'"
+                                                    (click)="upDownArrow(item?.rankingtable_arrow,item)">
+
+
+                                                <img class="mt-1 f-right up-arrow" alt=""
+                                                    src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
+                                                    data-holder-rendered="true" height="100%"
+                                                    *ngIf="item?.rankingtable_arrow !== 'red'"
+                                                    (click)="upDownArrow(item?.rankingtable_arrow,item)">
+                                            </div>
+                                        </ng-template>
+
+                                        <ng-template #dontPoke>
+                                            <div style="height:5vh;">
+                                                <img class="mt-1 f-right up-arrow" alt=""
+                                                    src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
+                                                    data-holder-rendered="true" height="100%"
+                                                    *ngIf="item?.rankingtable_arrow === 'red'">
+
+
+                                                <img class="mt-1 f-right up-arrow" alt=""
+                                                    src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
+                                                    data-holder-rendered="true" height="100%"
+                                                    *ngIf="item?.rankingtable_arrow !== 'red'">
+                                            </div>
+                                        </ng-template>
+
+
+
+                                    </h5>
+                                    <!-- <p class="mt-n4 team-name sub-team">India Maste</p> -->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    </div>
+                    <div #scrollTarget>
+
+                    </div>
+                </div>
+
+
+                <div *ngIf="spectSearchStr !== ''"
+                    [ngClass]="{'dashboard-center-table-forNSM': sectionView_1?.is_land_logos?.length == 0, 'dashboard-center-table': sectionView_1?.is_land_logos?.length != 0}">
+                    <!-- {{spectSearList | json}} -->
+                    <!-- {{spectSearchStr ? 'true': 'false'}} -->
+                    <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
+                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                        *ngFor="let item of ((spectSearchStrIndex && spectSearchStrTrigger) ? spectSearListIndex?.[0]?._data :  (activeSubTabForSectionView_2_index === 'My Store' ? sectionView_3_list_index?.[0]?._data : sectionView_3_list_index?.[0]?._Overall)) "
+                        [style.background-image]="!spectSearchStrTrigger? 'url(' + item.ranking_image_level_img + ')':'url('+web_tile_img+')'
+                    ">
+                        <div class="col">
+                            <div class="media d-flex align-items-center gap-3  " style="height: 7vh;">
+                                <span class="col-1 ms-2 text-white position-absolute-s">
+                                    {{item?.rankingtable_number}}
+                                </span>
+                                <!-- (click)="openHierarchyPopup(item)" -->
+                                <div style="height:5vh;display:flex;align-items: center;">
+                                    <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                        src="{{item?.rankingtable_logo}}" data-holder-rendered="true" height="100%"
+                                        width="41">
+                                </div>
+
+                                <div class="media-body user-logo-row ellipsis"  *ngIf="sectionView_1?._personal_data?.id_coroebus_game!='197'"
+                                    style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
+                                    <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
+                                        ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}</h5>
+                                    <p class="mt-n4 team-name sub-team name-f-size">{{item?.rankingtable_team}}</p>
+                                </div>
+
+                                <div class="media-body user-logo-row ellipsis"   *ngIf="sectionView_1?._personal_data?.id_coroebus_game=='197'"
+                                style="height: 6vh; display: flex; flex-direction: column; justify-content: center;">
+                                <h5 class="mt-1 text-white name-f-size ellipsis" placement="bottom"
+                                    ngbTooltip="{{item?.rankingtable_name}}">{{item?.rankingtable_name}}</h5>
+                                <p class="mt-n4 team-name sub-team name-f-size">{{item?.rankingtable_team}}</p>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="media me-1" style="height: 7vh; display: flex;align-items:center">
+                                <div class="rounded-circle z-depth-2 team-logo-row " style="height:5vh;width:5vh">
+                                    <img alt="" src="{{item?.ranking_badge}}" data-holder-rendered="true"
+                                        height="100%" width="100%">
+                                </div>
+
+                                <div class="media-body text-center">
+                                    <h5 class="mt-0 text-white" style="display: flex;
+                                justify-content: end;
+                                align-items: center;
+                                gap: 3vw;">
+                                        <div style="height: 6vh; display:flex;align-items: center;">
+                                            <span
+                                                class="name-f-size point-number mt-1">{{item?.rankingtable_weightage}}</span>
+                                        </div>
+
+                                        <div style="height:5vh;">
+                                            <img class="mt-1 f-right up-arrow" alt=""
+                                                src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
+                                                data-holder-rendered="true" height="100%"
+                                                *ngIf="item?.rankingtable_arrow === 'red'"
+                                                (click)="upDownArrow(item?.rankingtable_arrow,item)">
+
+
+                                            <img class="mt-1 f-right up-arrow" alt=""
+                                                src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
+                                                data-holder-rendered="true" height="100%"
+                                                *ngIf="item?.rankingtable_arrow !== 'red'"
+                                                (click)="upDownArrow(item?.rankingtable_arrow,item)">
+
+                                        </div>
+
+
+
+                                    </h5>
+                                    <!-- <p class="mt-n4 team-name sub-team">India Maste</p> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div #scrollTarget></div>
+                </div>
+
+                <div class="row view-more-row">
+                    <div class="col">
+                        <button class="w-100 btn btn-lg btn-primary load-more" type="button" (click)="viewMore()"
+                            [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}">
+                            <img src="assets/images/svg/dashboard/load-more.svg" data-holder-rendered="true"
+                                height="13">
+                            View More
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            </div>
+            <div class="modal-body mobile-view">
+                <div class="col">
+                    <div class="btn-container mt-2"
+                        [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null" style="width:88vw">
+                        <div class="Inner_btn_container">
+                            <div class="row no-gutter " style="
+                                                            display: flex;
+                                                            flex-direction: row;
+                                                            justify-content: space-between;
+                                                            flex-wrap: nowrap;
+                                                            width:95%;
+                                                            overflow-x: overlay;">
+                                <div class="col " *ngFor="let item of sectionView_2_Indexwise?._ranking_data;let i=index"
+                                    style="padding-left:0%">
+                                    <!-- <a class="filter-btn-dashboard   mb-2" style=" width: 24vw;"
+                                        [ngClass]="{'filter-btn-dashboard-active': activeTabForSectionView_2 === item?.order}"
+                                        [ngStyle]="{'background': (activeTabForSectionView_2 ===item?.order) ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
+                                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                        (click)="changeTabFilter(item?.label,item?.order)">
+                                        <span class="filter-txt-name-mobile text-center"
+                                            [ngStyle]="{'color': (activeTabForSectionView_2 === item?.order) ? '#ffffff' : '#000000'}">
+                                            {{item?.label}}
+                                        </span>
+                                    </a> -->
+                                    <div *ngIf="role_id==6;then filterBtnForPlayer else filterBtnForOtherRole "></div>
+                                    <ng-template #filterBtnForPlayer>
+                                        <a class="btn btn-xs filter-btn-dashboard  fs-sm mb-2"
+                                            style="padding-top: 8px;width:24vw" *ngIf="i>=1"
+                                            [ngClass]="{'filter-btn-dashboard-active': activeTabForSectionView_2 === item?.order}"
+                                            [ngStyle]="{'background': (activeTabForSectionView_2 ===item?.order) ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
+                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                            (click)="changeTabFilter(item?.label,item?.order)">
+                                            <span class=" v-align filter-txt-name"
+                                                [ngStyle]="{'color':(activeTabForSectionView_2 === item?.order) ? '#ffffff':'#000000'}">
+                                                {{item?.label}}
+                                            </span>
+                                        </a>
+                                        <a class="btn btn-xs filter-btn-dashboard  fs-sm mb-2"
+                                            style="padding-top: 8px;width:24vw" *ngIf="i==0"
+                                            [ngClass]="{'filter-btn-dashboard-active': activeTabForSectionView_2 === item?.order}"
+                                            [ngStyle]="{'background': (activeTabForSectionView_2 ===item?.order) ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
+                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                            (click)="changeTabFilter(item?.label,item?.order)">
+                                            <span class=" v-align filter-txt-name"
+                                                [ngStyle]="{'color':(activeTabForSectionView_2 === item?.order) ? '#ffffff':'#000000'}">
+                                                Overall
+                                            </span>
+                                        </a>
+                                    </ng-template>
+                                    <ng-template #filterBtnForOtherRole>
+                                        <a class="btn btn-xs filter-btn-dashboard  fs-sm mb-2"  style="padding-top: 8px;width:24vw"
+                                            [ngClass]="{'filter-btn-dashboard-active': activeTabForSectionView_2_index === item?.order}"
+                                            [ngStyle]="{'background': (activeTabForSectionView_2_index ===item?.order) ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
+                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                            (click)="changeTabFilterIndex(item?.label,item?.order)">
+                                            <span class=" v-align filter-txt-name"
+                                                [ngStyle]="{'color':(activeTabForSectionView_2_index === item?.order) ? '#ffffff':'#000000'}">
+                                                {{item?.label}}
+                                            </span>
+                                        </a>
+    
+                                    </ng-template>
+                                </div>
+                            </div>
+    
+                            <div class="row d-flex justify-content-center " *ngIf="sectionView_3_list_index?.[0]?._Overall">
+                                <!-- <div class="col-6  d-flex justify-content-center align-items-center">
+                                    <a class="btn btn-xs filter-btn-dashboard  fs-sm  mb-2" style="width:43vw"
+                                        [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 ==='My Store'}"
+                                        [ngStyle]="{'background': (activeSubTabForSectionView_2 === 'My Store') ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
+                                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                        (click)="changeSubTabFilter('My Store')">
+                                        <span class="v-align filter-txt-name-mobile filter-my-store"
+                                            [ngStyle]="{'color': (activeSubTabForSectionView_2 === 'My Store') ? '#ffffff' : '#000000'}">
+                                            My Team 
+                                        </span>
+    
+    
+                                    </a>
+                                </div>
+    
+                                <div class="col-6 d-flex justify-content-center align-items-center">
+                                    <a class="btn btn-xs filter-btn-dashboard  fs-sm  mb-2" style="width:43vw"
+                                        [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 === 'Overall'}"
+                                        [ngStyle]="{'background': (activeSubTabForSectionView_2 === 'Overall') ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
+                                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                        (click)="changeSubTabFilter('Overall')">
+                                        <span class=" v-align filter-txt-name-mobile filter-my-store"
+                                            [ngStyle]="{'color': (activeSubTabForSectionView_2 === 'Overall') ? '#ffffff' : '#000000'}">
+                                            Overall {{labelNameMy}}
+                                        </span>
+                                    </a>
+                                </div> -->
+                                <div *ngIf="role_id==6;then subTabForPlayer else subTabForOtherRole "></div>
+                                <ng-template #subTabForPlayer>
+                                    <div class="col-6">
+                                        <a id="myButton" class="btn btn-xs filter-btn-dashboard  fs-sm  mb-2"
+                                            style="width:42vw"
+                                            [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 ==='My Store'}"
+                                            [ngStyle]="{'background': (activeSubTabForSectionView_2 ==='My Store') ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
+                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                            (click)="changeSubTabFilter('My Store')">
+                                            <span class=" v-align filter-txt-name filter-my-store"
+                                                (click)="changeSubTabFilter('My Store')"
+                                                [ngStyle]="{'color': (activeSubTabForSectionView_2 ==='My Store')?'#ffffff':'#000000'}">
+                                                <!-- My {{labelNameMy}} -->
+                                                My Team
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="col-6">
+                                        <a class="btn btn-xs filter-btn-dashboard  fs-sm  mb-2" style="width:42vw"
+                                            [ngClass]="{'': activeSubTabForSectionView_2 === 'Overall'}"
+                                            [ngStyle]="{'background': (activeSubTabForSectionView_2 === 'Overall')? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
+                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                            (click)="changeSubTabFilter('Overall')">
+                                            <span class=" v-align filter-txt-name filter-my-store"
+                                                [ngStyle]="{'color': (activeSubTabForSectionView_2 === 'Overall') ? '#ffffff' : '#000000'}">
+                                                <!-- Overall  -->
+                                                Organization
+                                            </span>
+                                        </a>
+                                    </div>
+                                </ng-template>
+                                <ng-template #subTabForOtherRole>
+                                    <div class="col-6">
+                                        <a id="myButton" class="btn btn-xs filter-btn-dashboard  fs-sm  mb-2"
+                                            style="width:39vw"
+                                            [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2_index ==='My Store'}"
+                                            [ngStyle]="{'background': (activeSubTabForSectionView_2_index ==='My Store') ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
+                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                            (click)="changeSubTabFilterIndex('My Store')">
+                                            <span class=" v-align filter-txt-name filter-my-store"
+                                                (click)="changeSubTabFilter('My Store')"
+                                                [ngStyle]="{'color': (activeSubTabForSectionView_2_index ==='My Store')?'#ffffff':'#000000'}">
+                                                My {{labelNameMy}}
+    
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="col-6">
+                                        <a class="btn btn-xs filter-btn-dashboard  fs-sm  mb-2" style="width:39vw"
+                                            [ngClass]="{'': activeSubTabForSectionView_2_index === 'Overall'}"
+                                            [ngStyle]="{'background': (activeSubTabForSectionView_2_index === 'Overall')? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
+                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                            (click)="changeSubTabFilterIndex('Overall')">
+                                            <span class=" v-align filter-txt-name filter-my-store"
+                                                [ngStyle]="{'color': (activeSubTabForSectionView_2_index === 'Overall') ? '#ffffff' : '#000000'}">
+                                                Overall {{labelNameMy}}
+    
+                                            </span>
+                                        </a>
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </div>
+    
+                    </div>
+    
+                   
+    
+                    <div class="row mt-2 d-flex justify-content-center">
+                        <div style="width:94%;border-radius: 10px;padding-bottom:1vh;background-size:cover"
+                            [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                            <div class="col" style="background-size:cover">
+                                <div class="col-12 d-flex gap-1" style="font-weight:600">
+                                    <div class="col-2 d-flex justify-content-start ms-2">
+                                        <span>Rank</span>
+                                    </div>
+                                    <div class="col-5 d-flex justify-content-start ms-2">
+                                        &nbsp; &nbsp;<span>Name</span>
+                                    </div>
+                                    <div class="col d-flex ms-3 justify-content-start">
+                                        &nbsp; &nbsp;  <span>Points</span>
+                                    </div>
+                                </div>
+                                <!-- Stickey User For Mobile -->
+                            <div *ngIf="activeSubTabForSectionView_2_index === 'My Store' ; then mystoreMobile else overallMobile"></div>
+                            <ng-template #mystoreMobile>
+                               <!-- *ngIf="item?.userid == sectionView_1?._personal_data?.USERID" -->
+                               <div 
+                               *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2_index === 'My Store' ? sectionView_3_list_index?.[0]?._data : sectionView_3_list_index?.[0]?._Overall)) ">
+                               <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2 "
+                               [style.background-image]="'url(' + item?.ranking_image + ')'"
+                               [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"  *ngIf="item?.userid == sectionView_1?._personal_data?.USERID">
+                                   <div class="col-6 " style="padding-top: 1vh;">
+                                       <div class="media" style="display:flex; column-gap:0.5rem;align-self: center;">
+                                           <span class="col-1 ms-2 text-white"
+                                               style="padding-top: 1vh;font-size:2.7vw">
+                                               {{item?.rankingtable_number}}
+                                           </span>
+                                           <div>
+                                               <div
+                                                   *ngIf="this.userSelectionData._personal_data.id_role!=13 ; then openMobileHierachyMobile else DontopenMobileHierachyMobile ">
+                                               </div>
+                                               <ng-template #openMobileHierachyMobile>
+                                                   <div
+                                                       style="height:5vh;width:5vh;display:flex;align-items: center;padding-top: 5%;">
+                                                       <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                                           *ngIf="coroebus_game!='197'"
+                                                           (click)="openHierarchyPopup(item)"
+                                                           src="{{item?.rankingtable_logo}}"
+                                                           data-holder-rendered="true" height="100%" width="100%">
+                                                       <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                                           *ngIf="coroebus_game=='197'"
+                                                           src="{{item?.rankingtable_logo}}"
+                                                           data-holder-rendered="true" height="100%" width="100%">
+                                                   </div>
+                                               </ng-template>
+                                               <ng-template #DontopenMobileHierachyMobile>
+                                                   <div
+                                                       style="height:5vh;width:5vh;display:flex;align-items: center;padding-top: 5%;">
+                                                       <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                                           src="{{item?.rankingtable_logo}}"
+                                                           data-holder-rendered="true" height="100%" width="100%">
+                                                   </div>
+                                               </ng-template>
+
+                                           </div>
+
+
+                                           <div class="media-body user-logo-row ellipsis" *ngIf="sectionView_1?._personal_data?.id_coroebus_game!='197'"
+                                               (click)="navigateToOtherRole(item)"
+                                               style="display: flex; flex-direction: column;row-gap:5px;">
+                                               <h5 class="mt-0 text-white name-f-size mobile-ellipsis"
+                                                   placement="bottom" ngbTooltip="{{item?.rankingtable_name}}">
+                                                   {{item?.rankingtable_name}}
+                                               </h5>
+                                               <p class="mt-n4 team-name sub-team name-f-size  mobile-ellipsis">
+                                                   {{item?.rankingtable_team}}</p>
+                                           </div>
+                                           <div class="media-body user-logo-row ellipsis" *ngIf="sectionView_1?._personal_data?.id_coroebus_game=='197'"
+                                               
+                                               style="display: flex; flex-direction: column;row-gap:5px;">
+                                               <h5 class="mt-0 text-white name-f-size mobile-ellipsis"
+                                                   placement="bottom" ngbTooltip="{{item?.rankingtable_name}}">
+                                                   {{item?.rankingtable_name}}
+                                               </h5>
+                                               <p class="mt-n4 team-name sub-team name-f-size  mobile-ellipsis">
+                                                   {{item?.rankingtable_team}}</p>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div class="col-6">
+                                       <div class="media d-flex align-items-center pt-2  gap-5 me-1">
+                                           <div style="height:5vh;" class="d-flex   align-items-center">
+                                               <img class="rounded-circle z-depth-2 team-logo-row" alt=""
+                                                   src="{{item?.ranking_badge}}" data-holder-rendered="true"
+                                                   height="90%">
+                                           </div>
+
+                                           <div class=" media-body text-center">
+                                               <h5
+                                                   class="mt-0 text-white d-flex aliign-items-center justify-content- gap-2">
+
+                                                   <span class="name-f-size point-number align-self-center"
+                                                       style="width: 5vw;font-size:2.7vw">{{item?.rankingtable_weightage}}</span>
+
+                                                   <div
+                                                       *ngIf="this.userSelectionData._personal_data.id_role!=13 ; then openMobilePokeMobile else closeMobilePokeMobile ">
+                                                   </div>
+                                                   <ng-template #openMobilePokeMobile>
+                                                       <div style="height:5vh" class="pt-1">
+                                                           <img class=" f-right up-arrow" alt=""
+                                                               src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
+                                                               data-holder-rendered="true" height="100%"
+                                                               *ngIf="item?.rankingtable_arrow === 'red'"
+                                                               (click)="upDownArrow(item?.rankingtable_arrow,item)">
+
+                                                           <img class=" f-right up-arrow" alt=""
+                                                               src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
+                                                               data-holder-rendered="true" height="100%"
+                                                               *ngIf="item?.rankingtable_arrow !== 'red'"
+                                                               (click)="upDownArrow(item?.rankingtable_arrow,item)">
+                                                       </div>
+                                                   </ng-template>
+                                                   <ng-template #closeMobilePokeMobile>
+                                                       <div style="height:5vh" class="pt-1">
+                                                           <img class=" f-right up-arrow" alt=""
+                                                               src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
+                                                               data-holder-rendered="true" height="100%"
+                                                               *ngIf="item?.rankingtable_arrow === 'red'">
+
+                                                           <img class=" f-right up-arrow" alt=""
+                                                               src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
+                                                               data-holder-rendered="true" height="100%"
+                                                               *ngIf="item?.rankingtable_arrow !== 'red'">
+                                                       </div>
+                                                   </ng-template>
+
+
+
+
+                                                   <!-- (click)="upDownArrow(item?.rankingtable_arrow,item)" -->
+                                               </h5>
+                                               <!-- <p class="mt-n4 team-name sub-team">India Maste</p> -->
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                              
+                           </div>
+                              
+                            </ng-template>
+                            <ng-template #overallMobile>
+                                
+                                <div 
+                                *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2_index === 'My Store' ? sectionView_3_list_index?.[0]?._data : sectionView_3_list_index?.[0]?._Overall)) ">
+                                <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2 "
+                                [style.background-image]="'url(' + item?.ranking_image + ')'"
+                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"  *ngIf="item?.userid == sectionView_1?._personal_data?.USERID">
+                                    <div class="col-6 " style="padding-top: 1vh;">
+                                        <div class="media" style="display:flex; column-gap:0.5rem;align-self: center;">
+                                            <span class="col-1 ms-2 text-white"
+                                                style="padding-top: 1vh;font-size:2.7vw">
+                                                {{item?.rankingtable_number}}
+                                            </span>
+                                            <div>
+                                                <div
+                                                    *ngIf="this.userSelectionData._personal_data.id_role!=13 ; then openMobileHierachyMobile else DontopenMobileHierachyMobile ">
+                                                </div>
+                                                <ng-template #openMobileHierachyMobile>
+                                                    <div
+                                                        style="height:5vh;width:5vh;display:flex;align-items: center;padding-top: 5%;">
+                                                        <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                                            *ngIf="coroebus_game!='197'"
+                                                            (click)="openHierarchyPopup(item)"
+                                                            src="{{item?.rankingtable_logo}}"
+                                                            data-holder-rendered="true" height="100%" width="100%">
+                                                        <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                                            *ngIf="coroebus_game=='197'"
+                                                            src="{{item?.rankingtable_logo}}"
+                                                            data-holder-rendered="true" height="100%" width="100%">
+                                                    </div>
+                                                </ng-template>
+                                                <ng-template #DontopenMobileHierachyMobile>
+                                                    <div
+                                                        style="height:5vh;width:5vh;display:flex;align-items: center;padding-top: 5%;">
+                                                        <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                                            src="{{item?.rankingtable_logo}}"
+                                                            data-holder-rendered="true" height="100%" width="100%">
+                                                    </div>
+                                                </ng-template>
+ 
+                                            </div>
+ 
+ 
+                                            <div class="media-body user-logo-row ellipsis" *ngIf="sectionView_1?._personal_data?.id_coroebus_game!='197'"
+                                                (click)="navigateToOtherRole(item)"
+                                                style="display: flex; flex-direction: column;row-gap:5px;">
+                                                <h5 class="mt-0 text-white name-f-size mobile-ellipsis"
+                                                    placement="bottom" ngbTooltip="{{item?.rankingtable_name}}">
+                                                    {{item?.rankingtable_name}}
+                                                </h5>
+                                                <p class="mt-n4 team-name sub-team name-f-size  mobile-ellipsis">
+                                                    {{item?.rankingtable_team}}</p>
+                                            </div>
+                                            <div class="media-body user-logo-row ellipsis" *ngIf="sectionView_1?._personal_data?.id_coroebus_game=='197'"
+                                                
+                                                style="display: flex; flex-direction: column;row-gap:5px;">
+                                                <h5 class="mt-0 text-white name-f-size mobile-ellipsis"
+                                                    placement="bottom" ngbTooltip="{{item?.rankingtable_name}}">
+                                                    {{item?.rankingtable_name}}
+                                                </h5>
+                                                <p class="mt-n4 team-name sub-team name-f-size  mobile-ellipsis">
+                                                    {{item?.rankingtable_team}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="media d-flex align-items-center pt-2  gap-5 me-1">
+                                            <div style="height:5vh;" class="d-flex   align-items-center">
+                                                <img class="rounded-circle z-depth-2 team-logo-row" alt=""
+                                                    src="{{item?.ranking_badge}}" data-holder-rendered="true"
+                                                    height="90%">
+                                            </div>
+ 
+                                            <div class=" media-body text-center">
+                                                <h5
+                                                    class="mt-0 text-white d-flex aliign-items-center justify-content- gap-2">
+ 
+                                                    <span class="name-f-size point-number align-self-center"
+                                                        style="width: 5vw;font-size:2.7vw">{{item?.rankingtable_weightage}}</span>
+ 
+                                                    <div
+                                                        *ngIf="this.userSelectionData._personal_data.id_role!=13 ; then openMobilePokeMobile else closeMobilePokeMobile ">
+                                                    </div>
+                                                    <ng-template #openMobilePokeMobile>
+                                                        <div style="height:5vh" class="pt-1">
+                                                            <img class=" f-right up-arrow" alt=""
+                                                                src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
+                                                                data-holder-rendered="true" height="100%"
+                                                                *ngIf="item?.rankingtable_arrow === 'red'"
+                                                                (click)="upDownArrow(item?.rankingtable_arrow,item)">
+ 
+                                                            <img class=" f-right up-arrow" alt=""
+                                                                src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
+                                                                data-holder-rendered="true" height="100%"
+                                                                *ngIf="item?.rankingtable_arrow !== 'red'"
+                                                                (click)="upDownArrow(item?.rankingtable_arrow,item)">
+                                                        </div>
+                                                    </ng-template>
+                                                    <ng-template #closeMobilePokeMobile>
+                                                        <div style="height:5vh" class="pt-1">
+                                                            <img class=" f-right up-arrow" alt=""
+                                                                src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
+                                                                data-holder-rendered="true" height="100%"
+                                                                *ngIf="item?.rankingtable_arrow === 'red'">
+ 
+                                                            <img class=" f-right up-arrow" alt=""
+                                                                src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
+                                                                data-holder-rendered="true" height="100%"
+                                                                *ngIf="item?.rankingtable_arrow !== 'red'">
+                                                        </div>
+                                                    </ng-template>
+ 
+ 
+ 
+ 
+                                                    <!-- (click)="upDownArrow(item?.rankingtable_arrow,item)" -->
+                                                </h5>
+                                                <!-- <p class="mt-n4 team-name sub-team">India Maste</p> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                            </div>
+
+                            </ng-template>
+    
+                                <!-- Dashboard center tables started -->
+                                <div class="dashboard-center-table">
+                                    <div 
+                                        *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2_index === 'My Store' ? sectionView_3_list_index?.[0]?._data : sectionView_3_list_index?.[0]?._Overall)) ">
+                                        <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2 "
+                                        [style.background-image]="'url(' + item?.ranking_image + ')'"
+                                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"  *ngIf="item?.userid != sectionView_1?._personal_data?.USERID">
+                                            <div class="col-6 " style="padding-top: 1vh;">
+                                                <div class="media" style="display:flex; column-gap:0.5rem;align-self: center;">
+                                                    <span class="col-1 ms-2 text-white"
+                                                        style="padding-top: 1vh;font-size:2.7vw">
+                                                        {{item?.rankingtable_number}}
+                                                    </span>
+                                                    <div>
+                                                        <div
+                                                            *ngIf="this.userSelectionData?._personal_data?.id_role!=13 ; then openMobileHierachyMobile else DontopenMobileHierachyMobile ">
+                                                        </div>
+                                                        <ng-template #openMobileHierachyMobile>
+                                                            <div
+                                                                style="height:5vh;width:5vh;display:flex;align-items: center;padding-top: 5%;">
+                                                                <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                                                    *ngIf="coroebus_game!='197'"
+                                                                    (click)="openHierarchyPopup(item)"
+                                                                    src="{{item?.rankingtable_logo}}"
+                                                                    data-holder-rendered="true" height="100%" width="100%">
+                                                                <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                                                    *ngIf="coroebus_game=='197'"
+                                                                    src="{{item?.rankingtable_logo}}"
+                                                                    data-holder-rendered="true" height="100%" width="100%">
+                                                            </div>
+                                                        </ng-template>
+                                                        <ng-template #DontopenMobileHierachyMobile>
+                                                            <div
+                                                                style="height:5vh;width:5vh;display:flex;align-items: center;padding-top: 5%;">
+                                                                <img class="rounded-circle z-depth-2 user-logo-row" alt=""
+                                                                    src="{{item?.rankingtable_logo}}"
+                                                                    data-holder-rendered="true" height="100%" width="100%">
+                                                            </div>
+                                                        </ng-template>
+        
+                                                    </div>
+        
+        
+                                                    <div class="media-body user-logo-row ellipsis" *ngIf="sectionView_1?._personal_data?.id_coroebus_game!='197'"
+                                                        (click)="navigateToOtherRole(item)"
+                                                        style="display: flex; flex-direction: column;row-gap:5px;">
+                                                        <h5 class="mt-0 text-white name-f-size mobile-ellipsis"
+                                                            placement="bottom" ngbTooltip="{{item?.rankingtable_name}}">
+                                                            {{item?.rankingtable_name}}
+                                                        </h5>
+                                                        <p class="mt-n4 team-name sub-team name-f-size  mobile-ellipsis">
+                                                            {{item?.rankingtable_team}}</p>
+                                                    </div>
+                                                    <div class="media-body user-logo-row ellipsis" *ngIf="sectionView_1?._personal_data?.id_coroebus_game=='197'"
+                                                        
+                                                        style="display: flex; flex-direction: column;row-gap:5px;">
+                                                        <h5 class="mt-0 text-white name-f-size mobile-ellipsis"
+                                                            placement="bottom" ngbTooltip="{{item?.rankingtable_name}}">
+                                                            {{item?.rankingtable_name}}
+                                                        </h5>
+                                                        <p class="mt-n4 team-name sub-team name-f-size  mobile-ellipsis">
+                                                            {{item?.rankingtable_team}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="media d-flex align-items-center pt-2  gap-5 me-1">
+                                                    <div style="height:5vh;" class="d-flex   align-items-center">
+                                                        <img class="rounded-circle z-depth-2 team-logo-row" alt=""
+                                                            src="{{item?.ranking_badge}}" data-holder-rendered="true"
+                                                            height="90%">
+                                                    </div>
+        
+                                                    <div class=" media-body text-center">
+                                                        <h5
+                                                            class="mt-0 text-white d-flex aliign-items-center justify-content- gap-2">
+        
+                                                            <span class="name-f-size point-number align-self-center"
+                                                                style="width: 5vw;font-size:2.7vw">{{item?.rankingtable_weightage}}</span>
+        
+                                                            <div
+                                                                *ngIf="this.userSelectionData?._personal_data?.id_role!=13 ; then openMobilePokeMobile else closeMobilePokeMobile ">
+                                                            </div>
+                                                            <ng-template #openMobilePokeMobile>
+                                                                <div style="height:5vh" class="pt-1">
+                                                                    <img class=" f-right up-arrow" alt=""
+                                                                        src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
+                                                                        data-holder-rendered="true" height="100%"
+                                                                        *ngIf="item?.rankingtable_arrow === 'red'"
+                                                                        (click)="upDownArrow(item?.rankingtable_arrow,item)">
+        
+                                                                    <img class=" f-right up-arrow" alt=""
+                                                                        src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
+                                                                        data-holder-rendered="true" height="100%"
+                                                                        *ngIf="item?.rankingtable_arrow !== 'red'"
+                                                                        (click)="upDownArrow(item?.rankingtable_arrow,item)">
+                                                                </div>
+                                                            </ng-template>
+                                                            <ng-template #closeMobilePokeMobile>
+                                                                <div style="height:5vh" class="pt-1">
+                                                                    <img class=" f-right up-arrow" alt=""
+                                                                        src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
+                                                                        data-holder-rendered="true" height="100%"
+                                                                        *ngIf="item?.rankingtable_arrow === 'red'">
+        
+                                                                    <img class=" f-right up-arrow" alt=""
+                                                                        src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
+                                                                        data-holder-rendered="true" height="100%"
+                                                                        *ngIf="item?.rankingtable_arrow !== 'red'">
+                                                                </div>
+                                                            </ng-template>
+        
+        
+        
+        
+                                                            <!-- (click)="upDownArrow(item?.rankingtable_arrow,item)" -->
+                                                        </h5>
+                                                        <!-- <p class="mt-n4 team-name sub-team">India Maste</p> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <div #scrollTarget></div>
+                                </div>
+                                <div class="row view-more-row">
+                                    <div class="col">
+                                        <button class="w-100 btn btn-lg btn-primary load-more" type="button"
+                                            (click)="viewMore()"
+                                            [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}">
+                                            <img src="assets/images/svg/dashboard/load-more.svg" data-holder-rendered="true"
+                                                height="13">
+                                            View More
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <button (click)="scrollToTop()"  class="scroll-to-top-button" >
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1.5em"  viewBox="0 0 384 512"><path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"/></svg>
+                    </button> -->
+    
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Daily_popUP">
+    Open Popup
+  </button> -->
+  
+  <!-- Modal -->
+  <!-- <div class="modal fade" id="Daily_popUP" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" >
+       
+        <div class="modal-body" style="border: 3px solid #0586D1;border-radius:10px;padding:0px;position:relative">
+                
+                    <div class="modal-header-container d-flex justify-content-center align-items-center gap-3">
+                        <div class="modal_header_popup text-center">Monthly Edge Contest</div>
+                        <button type="button" class="btn-close-new" data-bs-dismiss="modal" aria-label="Close">
+                            <div class="btn-inner-layer">X</div> 
+                        </button>
+                    </div>
+                    <div style="background:url(../../../../assets/images/background_new_pop_up.png);min-height:60vh;width:100%;background-size:100% 100%;border-radius:10px;border:4px solid #fff;">
+                        <div class="d-flex justify-content-between align-items-center">
+                                <div style="height:48vh;width:20vw;margin-top:2vh">
+                                    <img src="assets/images/shub_332.png" alt="" height="100%" width="100%">
+                                </div>
+                                <div class="new_popup_heading">
+                                    EP Targets
+                                </div>
+                                
+                        </div>
+                        <div class="new_popup_logo">
+                            <img src="assets/images/newModal_popupLogo.png" alt="logo" height="100%"
+                            width="100%">
+                        </div>
+                        <div class="d-flex flex-row justify-content-center gap-1">
+                            <div class="achievement_button"  [ngClass]="isAchievementActive?'achievement_button':'new_popup_active'" (click)="toggleAchievement()" >Achievement</div>
+                            <div class="Qualifiers_button" [ngClass]="isQualifierActive?'achievement_button':'new_popup_active'" (click)="toggleQualifier()">Qualifiers</div>
+                        </div>
+                        <div class="d-flex justify-content-center" width="100%" >
+                            <div class="new-cotainer-popup">
+                                <div *ngIf="isAchievementActive;then achievement else Qualifiers"></div>
+                            </div>
+                        </div>
+                        
+                       
+                        <ng-template #achievement>
+                            <div class="card p-5" >
+                                <div class="headline2">
+                                  <b>5 Lakhs Target</b>
+                                
+                                  <div class="progress" style="position:relative">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%">80%</div>
+                                  </div>
+                                  <div style="position:absolute;left:87%;top:10%">
+                                    <img src="assets/images/3.png" alt="">
+                                  </div>
+                                  
+                                </div>
+                              </div>
+                        </ng-template>
+                        <ng-template #Qualifiers>
+                            <p style="color: #000;
+                            font-family:'Inter';
+                            font-size: 1em;
+                            font-style: normal;
+                            font-weight: 500;">
+                                Minimum 81% Persistency or 90% Retention.Retention will be considered only for those, who don’t have 13th Month Persistency Bucket
+                            </p>
+                            
+
+                        </ng-template>
+                        
+                    </div>
+
+        
+        </div>
+        
+      </div>
+    </div>
+  </div> -->
+
+
+
+
+
 <!-- Rotated View -->
 <div class="mobile-view-rotated d-flex flex-column justify-content-center align-items-center">
     <div class="phone">
 
     </div>
+    

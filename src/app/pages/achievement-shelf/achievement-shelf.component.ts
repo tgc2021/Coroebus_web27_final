@@ -120,7 +120,7 @@ export class AchievementShelfComponent implements OnInit {
           this.showCombo.map((x:any) => {
         
               
-             x['islessThanToday']= new Date(x.end_date) < this.currentDate
+             x['islessThanToday']= new Date(x.end_date) < this.currentDate;
                   
                   
           });

@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit ,ViewChild} from '@angular/core';
+import { Component, ElementRef, OnInit ,ViewChild, ViewEncapsulation} from '@angular/core';
 import { combineLatest, Observable, Subject, Subscription } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import * as fromRoot from '../../core/app-state';
@@ -16,6 +16,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { ImagecropperComponent } from '@pages/imagecropper/imagecropper.component';
 
 @Component({
+  // encapsulation: ViewEncapsulation.None,
   selector: 'app-top-hierarchy-dashboards',
   templateUrl: './top-hierarchy-dashboards.component.html',
   styleUrls: ['./top-hierarchy-dashboards.component.scss']
@@ -107,11 +108,12 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   primary_rank: any;
   sectionView_3_popup: any;
   sectionView_3_list_popup: any;
+  tl_team_rank: string;
   
   constructor(private readonly store: Store, public _route: ActivatedRoute,public snackBar: MatSnackBar,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
   ngOnInit(): void {
-  
+    this.tl_team_rank=localStorage.getItem('tl_rank')
     
     // if (!localStorage.getItem('foo')) { 
     //   localStorage.setItem('foo', 'no reload') 

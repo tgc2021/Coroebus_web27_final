@@ -15,9 +15,10 @@ import { ToastsContainerComponent } from '@pages/toasts-container/toasts-contain
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
+import { ShortNumberPipe } from './short-number.pipe';
 
 @NgModule({
-  declarations: [DefaultComponent, ImagecropperComponent, ToastsContainerComponent],
+  declarations: [DefaultComponent, ImagecropperComponent, ToastsContainerComponent,ShortNumberPipe],
   imports: [
     CommonModule,
     FormsModule,

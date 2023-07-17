@@ -1,413 +1,353 @@
 <div class="top_container web-view">
     <div>
         <p class="title"> Achievement Shelf</p>
-        <div *ngIf="this.seasonal_theme_response[0].data.length==0;then nodata else data "></div>
-        <ng-template #nodata>
-            
-        <div >
-            <div class="mat_container">
-               
-                <div *ngIf="game_ID!='197' then dynamic else static"></div>
-<ng-template #dynamic>
+        <!-- <div *ngIf="this.seasonal_theme_response[0].data.length==0;then nodata else data "></div> -->
+        <!-- <ng-template #nodata>
 
-</ng-template>
-<ng-template #static>
-    <div>
-        <div class="mat_container1">
-            <div class="total_reward_points" >
-                <img class="reward_coin" src="assets/images/rewards/Reward point.png">
-                <p class="total_reward_points_value">166000</p>
-            </div>
-            <mat-tab-group style="padding: 2%;">
-                <mat-tab label="Campaign Theme">
-                    <hr>
+            <div>
+                <div class="mat_container">
 
-                    <div class="row" style="height:68vh;overflow-y: scroll;">
-                        <div class="col-sm-4 col-md-4 col-lg-4 content_seasonal_card_div" 
-                            >
-                            <div class="content_seasonal_card">
-                                <div>
-                                    <p class="title_seasonal_card">June'23 Early Activation</p>
-                                </div>
-                                <div class="rewards_div">
-                                    <img class="rewards_img" src="assets/images/rewards/Reward point.png">
-                                    <p class="total_point">6000</p>
-                                </div>
-                                
-                                <div class="calender_div">
-                                    <img class="calender_logo" src="assets/images/seasonaltheme/calendericon.png">
-                                    <p class="date">Jan 1 2023 - Dec 1 2023 </p>
-                                    
+                    <div *ngIf="game_ID!='197' then dynamic else static"></div>
+                    <ng-template #dynamic>
 
-                                    <div >
-                                        <p  class="status"> Running</p>
-
-                                    </div>
-                                   
-
-
-                                    <div>
-                                        <!-- <div class="text">
-                                            <img class="info_logo" (click)="popoverDetails(details,k)"
-                                                [ngbPopover]="popContent"   
-                                                src="assets/images/seasonaltheme/infoicon.png" popoverClass="my-custom-class">      
-
-                                        </div>
-                                        <ng-template #popContent>   
-                                        <div class="content" >
-
-                                            <div class="row">
-                                                <div class="col-4">
-                                                    <img class="image_popover" src="{{details.description.logo}}">
-                                                </div>
-                                                <div class="col-8">
-                                                    <div>
-                                                        <p class="summit_details"></p>
-                                                    </div>
-                                                    <div>
-                                                        <h5 class="name_div">
-                                                            {{details.description.seasonal_theme_title}}</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <p class="first_description pt-2">
-                                                    {{details.description.theme_description}}
-                                                    
-                                                </p>
-                                            </div>
-
-
-
-
-
-                                        </div>
-                                        </ng-template> -->
-                                    </div>
-
-                                </div>
-
-
-
-                                <div class="slider_final1"  >
-                                    <section class="section_slider" >
-                                        
-                                    </section>
-                                </div>
-
-
-                               
-
-
-
-
-
-
-                            </div>
-
-                            
-                        </div>
-
-                        <div class="col-sm-4 col-md-4 col-lg-4 content_seasonal_card_div" 
-                        >
-                        <div class="content_seasonal_card">
-                            <div>
-                                <p class="title_seasonal_card">Monthly Edge Contest</p>
-                            </div>
-                            <div class="rewards_div">
-                                <img class="rewards_img" src="assets/images/rewards/Reward point.png">
-                                <p class="total_point">30000</p>
-                            </div>
-                            
-                            <div class="calender_div">
-                                <img class="calender_logo" src="assets/images/seasonaltheme/calendericon.png">
-                                <p class="date">Jan 1 2023 - Dec 1 2023 </p>
-                                
-
-                                <div >
-                                    <p  class="status"> Running</p>
-
-                                </div>
-                               
-
-
-                                <div>
-                                 <!-- <div class="text">
-                                        <img class="info_logo" 
-                                            [ngbPopover]="popContent"   
-                                            src="assets/images/seasonaltheme/infoicon.png" popoverClass="my-custom-class">      
-
-                                    </div>
-                                    <ng-template #popContent>   
-                                    <div class="content" >
-
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <img class="image_popover" src="../../../assets/images/achievementshelf/">
-                                            </div>
-                                            <div class="col-8">
-                                                <div>
-                                                    <p class="summit_details">
-                                                        EP Targets
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <h5 class="name_div">
-                                                        Monthly Edge
-                                                        </h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p class="first_description pt-2">
-                                                
-                                                
-                                            </p>
-                                        </div>
-
-
-
-
-
-                                    </div>
-                                    </ng-template> -->
-                                </div>
-
-                            </div>
-
-
-
-                            <div class="slider_final2"  >
-                                <section class="section_slider" >
-                                    
-                                </section>
-                            </div>
-
-
-                           
-
-
-
-
-
-
-                        </div>
-
-                        
-                    </div>
-
-
-                    <div class="col-sm-4 col-md-4 col-lg-4 content_seasonal_card_div" 
-                    >
-                    <div class="content_seasonal_card">
+                    </ng-template>
+                    <ng-template #static>
                         <div>
-                            <p class="title_seasonal_card">MDRT</p>
-                        </div>
-                        <div class="rewards_div">
-                            <img class="rewards_img" src="assets/images/rewards/Reward point.png">
-                            <p class="total_point">130000</p>
-                        </div>
-                        
-                        <div class="calender_div">
-                            <img class="calender_logo" src="assets/images/seasonaltheme/calendericon.png">
-                            <p class="date">Jan 1 2023 - Dec 1 2023 </p>
-                            
+                            <div class="mat_container1">
+                                <div class="total_reward_points">
+                                    <img class="reward_coin" src="assets/images/rewards/Reward point.png">
+                                    <p class="total_reward_points_value">166000</p>
+                                </div>
+                                <mat-tab-group style="padding: 2%;">
+                                    <mat-tab label="Campaign Theme">
+                                        <hr>
 
-                            <div >
-                                <p  class="status"> Running</p>
+                                        <div class="row" style="height:68vh;overflow-y: scroll;">
+                                            <div class="col-sm-4 col-md-4 col-lg-4 content_seasonal_card_div">
+                                                <div class="content_seasonal_card">
+                                                    <div>
+                                                        <p class="title_seasonal_card">June'23 Early Activation</p>
+                                                    </div>
+                                                    <div class="rewards_div">
+                                                        <img class="rewards_img"
+                                                            src="assets/images/rewards/Reward point.png">
+                                                        <p class="total_point">6000</p>
+                                                    </div>
+
+                                                    <div class="calender_div">
+                                                        <img class="calender_logo"
+                                                            src="assets/images/seasonaltheme/calendericon.png">
+                                                        <p class="date">Jan 1 2023 - Dec 1 2023 </p>
+
+
+                                                        <div>
+                                                            <p class="status"> Running</p>
+
+                                                        </div>
+
+
+
+                                                        
+
+                                                    </div>
+
+
+
+                                                    <div class="slider_final1">
+                                                        <section class="section_slider">
+
+                                                        </section>
+                                                    </div>
+
+
+
+
+
+
+
+
+
+                                                </div>
+
+
+                                            </div>
+
+                                            <div class="col-sm-4 col-md-4 col-lg-4 content_seasonal_card_div">
+                                                <div class="content_seasonal_card">
+                                                    <div>
+                                                        <p class="title_seasonal_card">Monthly Edge Contest</p>
+                                                    </div>
+                                                    <div class="rewards_div">
+                                                        <img class="rewards_img"
+                                                            src="assets/images/rewards/Reward point.png">
+                                                        <p class="total_point">30000</p>
+                                                    </div>
+
+                                                    <div class="calender_div">
+                                                        <img class="calender_logo"
+                                                            src="assets/images/seasonaltheme/calendericon.png">
+                                                        <p class="date">Jan 1 2023 - Dec 1 2023 </p>
+
+
+                                                        <div>
+                                                            <p class="status"> Running</p>
+
+                                                        </div>
+
+
+
+                                                        <div>
+                                                            
+                                                        </div>
+
+                                                    </div>
+
+
+
+                                                    <div class="slider_final2">
+                                                        <section class="section_slider">
+
+                                                        </section>
+                                                    </div>
+
+
+
+
+
+
+
+
+
+                                                </div>
+
+
+                                            </div>
+
+
+                                            <div class="col-sm-4 col-md-4 col-lg-4 content_seasonal_card_div">
+                                                <div class="content_seasonal_card">
+                                                    <div>
+                                                        <p class="title_seasonal_card">MDRT</p>
+                                                    </div>
+                                                    <div class="rewards_div">
+                                                        <img class="rewards_img"
+                                                            src="assets/images/rewards/Reward point.png">
+                                                        <p class="total_point">130000</p>
+                                                    </div>
+
+                                                    <div class="calender_div">
+                                                        <img class="calender_logo"
+                                                            src="assets/images/seasonaltheme/calendericon.png">
+                                                        <p class="date">Jan 1 2023 - Dec 1 2023 </p>
+
+
+                                                        <div>
+                                                            <p class="status"> Running</p>
+
+                                                        </div>
+
+
+
+                                                        <div>
+
+                                                        </div>
+
+                                                    </div>
+
+
+
+                                                    <div class="slider_final3">
+                                                        <section class="section_slider">
+
+                                                        </section>
+                                                    </div>
+
+
+
+
+
+
+
+
+
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+
+
+
+                                    </mat-tab>
+                                  
+                                </mat-tab-group>
 
                             </div>
-                           
-
-
-                            <div>
-                            
-                            </div>
 
                         </div>
-
-
-
-                        <div class="slider_final3"  >
-                            <section class="section_slider" >
-                                
-                            </section>
-                        </div>
-
-
-                       
-
-
-
-
-
-
-                    </div>
-
-                    
+                    </ng-template>
                 </div>
-                    
-                    </div>
 
-
-                    
-                </mat-tab>
-                <!-- <mat-tab label="Second"> Content 2 </mat-tab>
-                <mat-tab label="Third"> Content 3 </mat-tab> -->
-            </mat-tab-group>
-
-        </div>
-
-    </div>
-</ng-template>
             </div>
+        </ng-template> -->
+        
 
-        </div>
-        </ng-template>
-        <ng-template #data>
-           
-            
-            
-        <div *ngFor="let seasonaldata of seasonal_theme_response;">
-            <div class="mat_container">
-                <div class="total_reward_points" *ngFor="let totalrewardrespone of seasonal_total_points_response">
-                    <img class="reward_coin" src="assets/images/rewards/Reward point.png">
-                    <p class="total_reward_points_value">{{totalrewardrespone.reward_point}}</p>
-                </div>
-                <mat-tab-group style="padding: 2%;">
-                    <mat-tab label="Campaign Theme">
-                        <hr>
 
-                        <div class="row" style="height:68vh;overflow-y: scroll;">
-                            <div class="col-sm-4 col-md-4 col-lg-4 content_seasonal_card_div" 
-                                *ngFor="let details of seasonal_theme_response[0].data.reverse ;let k=index;let w of showCombo.reverse();let j =index">
-                                <div class="content_seasonal_card">
-                                    <div>
-                                        <p class="title_seasonal_card">{{details.name}}</p>
-                                    </div>
-                                    <div class="rewards_div" *ngIf="details.reward_point != null">
-                                        <img class="rewards_img" src="assets/images/rewards/Reward point.png">
-                                        <p class="total_point">{{details.reward_point}}</p>
-                                    </div>
-                                    <div class="rewards_div" *ngIf="details.reward_point == null">
-                                        <img class="rewards_img" src="assets/images/rewards/Reward point.png">
-                                        <p class="total_point">0</p>
-                                    </div>
-                                    <div class="calender_div">
-                                        <img class="calender_logo" src="assets/images/seasonaltheme/calendericon.png">
-                                        <p class="date">{{details.start_date | date: 'MMM d, y' }} - {{details.end_date |
-                                            date: 'MMM d, y'}}</p>
-                                        <!-- *ngIf="(details.end_date |  date: 'MMM d, y') > (currentDate |  date: 'MMM d, y')" -->
-                                        <!-- <div>
+
+            <div *ngFor="let seasonaldata of seasonal_theme_response;">
+                <div class="mat_container">
+                    <div class="total_reward_points" *ngFor="let totalrewardrespone of seasonal_total_points_response">
+                        <img class="reward_coin" src="assets/images/rewards/Reward point.png">
+                        <p class="total_reward_points_value">{{totalrewardrespone.reward_point}}</p>
+                    </div>
+                    <mat-tab-group style="padding: 2%;">
+                        <mat-tab label="Campaign Theme">
+                            <hr>
+
+                            <div class="row" style="height:68vh;overflow-y: scroll;">
+                                <div class="col-sm-4 col-md-4 col-lg-4 content_seasonal_card_div"
+                               
+                                    *ngFor="let details of seasonal_theme_response[0].data;let k=index;let w of showCombo;let j =index">
+                                    <div class="content_seasonal_card">
+                                      
+                                        <div>
+                                            <p class="title_seasonal_card">{{details.name}}</p>
+                                        </div>
+                                        <div class="rewards_div" *ngIf="details.reward_point != null">
+                                            <img class="rewards_img" src="assets/images/rewards/Reward point.png">
+                                            <p class="total_point">{{details.reward_point}}</p>
+                                        </div>
+                                        <div class="rewards_div" *ngIf="details.reward_point == null">
+                                            <img class="rewards_img" src="assets/images/rewards/Reward point.png">
+                                            <p class="total_point">0</p>
+                                        </div>
+                                        <div class="calender_div">
+                                            <img class="calender_logo"
+                                                src="assets/images/seasonaltheme/calendericon.png">
+                                            <p class="date">{{details.start_date | date: 'MMM d, y' }} -
+                                                {{details.end_date |
+                                                date: 'MMM d, y'}}</p>
+                                            <!-- *ngIf="(details.end_date |  date: 'MMM d, y') > (currentDate |  date: 'MMM d, y')" -->
+                                            <!-- <div>
                                             <p *ngIf="k.islessThanToday" class="status"> {{w.end_date}} {{w.islessThanToday}}Running</p>
                                             <p *ngIf="!k.islessThanToday" class="status"> {{w.end_date}} {{w.islessThanToday}} Expiry</p>
 
                                         </div> -->
 
-                                        <div *ngIf="w.islessThanToday != true">
-                                            <p *ngIf="k.islessThanToday" class="status"> Running</p>
-                                            <p *ngIf="!k.islessThanToday" class="status"> Running</p>
-
-                                        </div>
-                                        <div *ngIf="w.islessThanToday == true">
-                                            <p *ngIf="k.islessThanToday" class="status1"> Expired</p>
-                                            <p *ngIf="!k.islessThanToday" class="status1"> Expired</p>
-
-                                        </div>
-
-
-                                        <div>
-                                            <div class="text">
-                                                <img class="info_logo" (click)="popoverDetails(details,k)"
-                                                    [ngbPopover]="popContent"   
-                                                    src="assets/images/seasonaltheme/infoicon.png" popoverClass="my-custom-class">      
+                                            <div *ngIf="w.islessThanToday != true">
+                                                <p *ngIf="k.islessThanToday" class="status"> Running</p>
+                                                <p *ngIf="!k.islessThanToday" class="status"> Running</p>
 
                                             </div>
-                                            <ng-template #popContent>   
-                                            <div class="content" >
+                                            <div *ngIf="w.islessThanToday == true">
+                                                <p *ngIf="k.islessThanToday" class="status1"> Expired</p>
+                                                <p *ngIf="!k.islessThanToday" class="status1"> Expired</p>
 
-                                                <div class="row">
-                                                    <div class="col-4">
-                                                        <img class="image_popover" src="{{details.description.logo}}">
-                                                    </div>
-                                                    <div class="col-8">
-                                                        <div>
-                                                            <p class="summit_details"></p>
+                                            </div>
+
+
+                                            <div>
+                                                <div class="text">
+                                                    <img class="info_logo" (click)="popoverDetails(details,k)"
+                                                        [ngbPopover]="popContent"
+                                                        src="assets/images/seasonaltheme/infoicon.png"
+                                                        popoverClass="my-custom-class">
+
+                                                </div>
+                                                <ng-template #popContent>
+                                                    <div class="content">
+
+                                                        <div class="row">
+                                                            <div class="col-4">
+                                                                <img class="image_popover"
+                                                                    src="{{details.description.logo}}">
+                                                            </div>
+                                                            <div class="col-8">
+                                                                <div>
+                                                                    <p class="summit_details"></p>
+                                                                </div>
+                                                                <div>
+                                                                    <h5 class="name_div">
+                                                                        {{details.description.seasonal_theme_title}}
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div>
-                                                            <h5 class="name_div">
-                                                                {{details.description.seasonal_theme_title}}</h5>
+                                                            <p class="first_description pt-2">
+                                                                {{details.description.theme_description}}
+
+                                                            </p>
                                                         </div>
+
+
+
+
+
                                                     </div>
-                                                </div>
-                                                <div>
-                                                    <p class="first_description pt-2">
-                                                        {{details.description.theme_description}}
-                                                        
-                                                    </p>
-                                                </div>
-
-
-
-
-
+                                                </ng-template>
                                             </div>
-                                            </ng-template>
+
                                         </div>
 
+
+
+                                        <div class="slider_final" *ngIf="details._badges._data.length>0">
+                                            <section class="section_slider">
+                                                <div class="scroll-arrow" *ngIf="details._badges._data.length>4"
+                                                    id="scroll-left" (click)="leftscroll(details,k)">
+                                                    <img class="left_arrow"
+                                                        src="assets/images/seasonaltheme/left-arrow.png">
+                                                </div>
+                                                <ul class="image_ul" [id]="'imgList'+k">
+                                                    <li class="image_li"
+                                                        *ngFor="let carauseldata of details._badges._data; let l=index">
+                                                        <img *ngIf="carauseldata != null" class="all_images"
+                                                            (click)="getBadgesDetail(carauseldata,l)"
+                                                            data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                                                            [id]="'dialog_popup'+k"
+                                                            src="{{carauseldata.seasonal_badge_logo}}" />
+                                                        <p *ngIf="carauseldata != null" class="badge_count">
+                                                            {{carauseldata.badge_count_}}</p>
+                                                    </li>
+
+                                                </ul>
+                                                <div class="scroll-arrow" *ngIf="details._badges._data.length>4"
+                                                    id="scroll-right" (click)="scorll(details,k)">
+                                                    <img class="right_arrow"
+                                                        src="assets/images/seasonaltheme/right-arrow.png">
+                                                </div>
+                                            </section>
+                                        </div>
+
+
+                                        <div class="slider_final" *ngIf="details._badges._data.length==0">
+                                            <h5 class="coming_soon">Coming Soon</h5>
+                                        </div>
+
+
+
+
+
+
                                     </div>
-
-
-
-                                    <div class="slider_final"  *ngIf="details._badges._data.length>0">
-                                        <section class="section_slider" >
-                                            <div class="scroll-arrow" *ngIf="details._badges._data.length>4" id="scroll-left" (click)="leftscroll(details,k)">
-                                                <img class="left_arrow" src="assets/images/seasonaltheme/left-arrow.png">
-                                            </div>
-                                            <ul class="image_ul" [id]="'imgList'+k">
-                                                <li class="image_li"
-                                                    *ngFor="let carauseldata of details._badges._data; let l=index"><img
-                                                       *ngIf="carauseldata != null" class="all_images"  (click)="getBadgesDetail(carauseldata,l)"
-                                                        data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                                                        [id]="'dialog_popup'+k"
-                                                        src="{{carauseldata.seasonal_badge_logo}}" />
-                                                    <p  *ngIf="carauseldata != null" class="badge_count">{{carauseldata.badge_count_}}</p>
-                                                </li>
-
-                                            </ul>
-                                            <div class="scroll-arrow" *ngIf="details._badges._data.length>4" id="scroll-right" (click)="scorll(details,k)">
-                                                <img class="right_arrow" src="assets/images/seasonaltheme/right-arrow.png">
-                                            </div>
-                                        </section>
-                                    </div>
-
-
-                                    <div class="slider_final"  *ngIf="details._badges._data.length==0">
-                                      <h5 class="coming_soon">Coming Soon</h5>
-                                    </div>
-
-
-
-
-
-
                                 </div>
                             </div>
-                        </div>
 
 
-                        
-                    </mat-tab>
-                    <!-- <mat-tab label="Second"> Content 2 </mat-tab>
+
+                        </mat-tab>
+                        <!-- <mat-tab label="Second"> Content 2 </mat-tab>
                     <mat-tab label="Third"> Content 3 </mat-tab> -->
-                </mat-tab-group>
+                    </mat-tab-group>
+
+                </div>
 
             </div>
+        
 
-        </div>
-        </ng-template>
 
-       
     </div>
 
 
@@ -431,7 +371,7 @@
                                     <div>
                                         <p class="badge_total_count">{{badgepopupresponse.count_}}</p>
                                     </div>
-                                    
+
                                     <div class="date_details">
                                         <img class="dot_image" src="assets/images/seasonaltheme/badgecount.png">
                                     </div>
@@ -450,8 +390,9 @@
                                     </div>
                                     <div class="rewards_div">
                                         <img class="rewards_img" src="assets/images/rewards/Reward point.png">
-                                        <p  *ngIf="badgepopupresponse.points_ != null" class="total_point">{{badgepopupresponse.points_}} </p>
-                                        <p  *ngIf="badgepopupresponse.points_ == null" class="total_point"> 0 </p>
+                                        <p *ngIf="badgepopupresponse.points_ != null" class="total_point">
+                                            {{badgepopupresponse.points_}} </p>
+                                        <p *ngIf="badgepopupresponse.points_ == null" class="total_point"> 0 </p>
 
                                     </div>
                                     <!-- <hr> -->
@@ -483,7 +424,7 @@
     <div class="phone">
     </div>
     <div class="message">
-      Please rotate your device!
+        Please rotate your device!
     </div>
-    
+
 </div>

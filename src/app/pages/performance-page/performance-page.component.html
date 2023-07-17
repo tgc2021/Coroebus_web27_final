@@ -1,28 +1,28 @@
 <div class="container-fluid web-view performance-container mt-1">
     <div class="row performance-filter-row">
-        
+
         <div class="col-lg-12 col-md-12 col-12 d-flex ">
-           
+
             <!-- <span class="performance-filter-txt">
                 Filter
                 <i class="fa fa-filter"></i>
             </span> -->
-           <span>
-            <img class="prof_pic_my_performance" src="{{graphMasterData._personal_data[0].profile_logo}}"/>
-           </span>
-<div>
-        <div class="name_my_performance">Name  : {{graphMasterData._personal_data[0].first_name}}</div>
-        <div class="level_my_performance">Role  : {{graphMasterData._personal_data[0].role_name}}</div>
+            <span>
+                <img class="prof_pic_my_performance" src="{{graphMasterData?._personal_data[0]?.profile_logo}}" />
+            </span>
+            <div>
+                <div class="name_my_performance">Name : {{graphMasterData?._personal_data[0]?.first_name}}</div>
+                <div class="level_my_performance">Role : {{graphMasterData?._personal_data[0]?.role_name}}</div>
 
-</div>
+            </div>
         </div>
 
-      
 
-     
-        
+
+
+
     </div>
-<!-- Web overallScore Card -->
+    <!-- Web overallScore Card -->
     <div class="card mt-3 web-card">
         <div class="card-title d-flex justify-content-center">
             <div class="row w-100 mt-3">
@@ -34,55 +34,59 @@
                             <h2 class="accordion-header" [id]="'heading'+i">
                                 <button class="accordion-button performance-overalldata-btn" type="button"
                                     [ngStyle]="{'display': 'block'}" style="width: 99.5%;">
-                                   
+
                                     <div class="container-fluid-overall">
                                         <div class="row">
                                             <div class="col-lg-10 col-md-9 col-6">
                                                 <div class="p-0">
                                                     <span
                                                         class="performance-overall-txt">{{overallData?.[0]?.label}}</span>
-                                                        <span>
-                                                        
+                                                    <span>
+
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-1 col-md-1 col-2 d-flex justify-content-end">
-                                                <span class="text-start performance-game-points-coin ps-1" >
+                                            <div class="col-lg-1 col-md-1 col-2 d-flex justify-content-start">
+                                                <span class="text-start performance-game-points-coin ps-4">
                                                     <img src="assets/images/svg/dashboard/game-points-coin.png" alt=""
                                                         height="20">
                                                 </span>
                                             </div>
                                             <div class="col-lg-1 col-md-1 col-4 d-flex justify-content-end">
-                                              
+
                                                 <span class="float-end d-flex gap-2">
-                                                    <span
-                                                        class="performance-overall-points" style="width: 100%;text-align: end;">&nbsp;&nbsp;{{overallData?.[0]?._data?.[0]?.points}}</span>
-                                                        <span >
-                                                            <div  style="height:2.5vh;" *ngIf="overallData?.[0]?._data?.[0]?.ranking_arrow=='green'">
-    
-                                                                <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
-                                                                    height="100%" >
-                                                            </div>
-                                                     <!-- <div> {{overallData?.[0]?._data?.[0]?.ranking_arrow|json}}</div>       -->
-                                                            <div *ngIf="overallData?.[0]?._data?.[0]?.ranking_arrow=='red'"  style="height:2.5vh;">
-                            
-                                                                <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
-                                                                    height="100%">
-                            
-                                                            </div>
-                                                            <div *ngIf="overallData?.[0]?._data?.[0]?.ranking_arrow=='yellow'"  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
-                        
-                                                                <!-- <div style="height: 1.2vh;width:1.2vh;border-radius:100%;background-color:orange ;"></div> -->
-                                                                <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
-                             
-                                                             </div>
-                                                        
+                                                    <span class="performance-overall-points"
+                                                        style="width: 100%;text-align: end;">&nbsp;&nbsp;{{overallData?.[0]?._data?.[0]?.points}}</span>
+                                                    <span>
+                                                        <div style="height:2.5vh;"
+                                                            *ngIf="overallData?.[0]?._data?.[0]?.ranking_arrow=='green'">
+
+                                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png"
+                                                                alt="" height="100%">
+                                                        </div>
+                                                        <!-- <div> {{overallData?.[0]?._data?.[0]?.ranking_arrow|json}}</div>       -->
+                                                        <div *ngIf="overallData?.[0]?._data?.[0]?.ranking_arrow=='red'"
+                                                            style="height:2.5vh;">
+
+                                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png"
+                                                                alt="" height="100%">
+
+                                                        </div>
+                                                        <div *ngIf="overallData?.[0]?._data?.[0]?.ranking_arrow=='yellow'"
+                                                            style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
+
+                                                            <!-- <div style="height: 1.2vh;width:1.2vh;border-radius:100%;background-color:orange ;"></div> -->
+                                                            <img src="assets/images/BoosterAssests/EQ-16687580462022.png"
+                                                                alt="" srcset="" height="60%" width="60%">
+
+                                                        </div>
+
                                                     </span>
                                                     <!-- <i class="fa fa-sort-down ms-4 performance-arrow-down invisible"></i> -->
                                                 </span>
                                             </div>
 
-                                           
+
                                         </div>
                                     </div>
                                 </button>
@@ -114,41 +118,47 @@
                                                         class="performance-accordion-point-data-label">{{item?._data?.measurement_name}}</span>
                                                 </div>
                                             </div>
-                                          
-                                            <div class="col-lg-2 col-md-2 col-2 ps-1 g-0 d-flex justify-content-between">
-                                                
+
+                                            <div
+                                                class="col-lg-2 col-md-2 col-2 ps-1 g-0 d-flex justify-content-between">
+
                                                 <span class="text-start ps-1">
-                                                    <img src="assets/images/svg/dashboard/game-points-coin.png" alt="" height="15" style="padding-left: 4.5vw;">
+                                                    <img src="assets/images/svg/dashboard/game-points-coin.png" alt=""
+                                                        height="15" style="padding-left: 1.5vw;">
                                                 </span>
                                                 <span class="float-end d-flex justify-content-evenly  gap-1">
                                                     &nbsp;
                                                     <span class="performance-points">{{item?._data?.points}}</span>
-                                                   
-                                                    <span >
-                                                        <div  style="height:2.5vh;" *ngIf="item?._data?.ranking_arrow=='green'">
 
-                                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
-                                                                height="100%" >
+                                                    <span>
+                                                        <div style="height:2.5vh;"
+                                                            *ngIf="item?._data?.ranking_arrow=='green'">
+
+                                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png"
+                                                                alt="" height="100%">
                                                         </div>
-                                               
-                                                        <div *ngIf="item?._data?.ranking_arrow=='red'"  style="height:2.5vh;">
-                        
-                                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
-                                                                height="100%">
-                        
+
+                                                        <div *ngIf="item?._data?.ranking_arrow=='red'"
+                                                            style="height:2.5vh;">
+
+                                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png"
+                                                                alt="" height="100%">
+
                                                         </div>
-                                                        <div *ngIf="item?._data?.ranking_arrow=='yellow'" style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
-                    
-                                                           
-                                                            <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
-                         
-                                                         </div>
-                                                    
-                                                </span >
-                                                <div class=" col d-flex pe-1 justify-content-end">
-                                                    <i class="fa fa-sort-down  performance-arrow-down"></i>
-                                                </div>
-                                                  
+                                                        <div *ngIf="item?._data?.ranking_arrow=='yellow'"
+                                                            style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
+
+
+                                                            <img src="assets/images/BoosterAssests/EQ-16687580462022.png"
+                                                                alt="" srcset="" height="60%" width="60%">
+
+                                                        </div>
+
+                                                    </span>
+                                                    <div class=" col d-flex pe-1 justify-content-end">
+                                                        <i class="fa fa-sort-down  performance-arrow-down"></i>
+                                                    </div>
+
                                                 </span>
                                             </div>
                                         </div>
@@ -159,58 +169,62 @@
                                 [attr.aria-labelledby]="'heading'+i" data-bs-parent="#accordionExample">
                                 <div class="accordion-body performance-accordion-point-data-body">
                                     <div class="container-fluid-full">
-                                        <div class="row"
-                                            *ngFor="let child of item?.kpi_data">
+                                        <div class="row" *ngFor="let child of item?.kpi_data">
                                             <div class="col-lg-10 col-md-10 col-8 ">
                                                 <div class="p-0">
                                                     <span
                                                         class="performance-accordion-point-data-label">{{child?.kpi_name}}</span>
                                                 </div>
                                             </div>
-                                            
-                                            <div class="col-lg-2 col-md-2 col-4   g-0 pe-2 d-flex justify-content-between">
-                                              
+
+                                            <div
+                                                class="col-lg-2 col-md-2 col-4   g-0 pe-2 d-flex justify-content-between">
+
                                                 <span class="text-start performance-game-points-coin">
-                                                    
-                                                    <img src="assets/images/svg/dashboard/game-points-coin.png" alt="" style="padding-left: 5vw;"
-                                                        height="15">
+
+                                                    <img src="assets/images/svg/dashboard/game-points-coin.png" alt=""
+                                                        style="padding-left: 2.1vw;" height="15">
                                                 </span>
                                                 <span class="float-end  d-flex  gap-1">
                                                     <div></div>
                                                     &nbsp;
                                                     <span class="performance-points">{{child?.points}}</span>
-                                                    
-                                                    <span >
-                                                       
-                                                        <div  style="height:2.5vh;" *ngIf="item?._data?.ranking_arrow=='green'">
 
-                                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
-                                                                height="100%" >
+                                                    <span>
+
+                                                        <div style="height:2.5vh;"
+                                                            *ngIf="item?._data?.ranking_arrow=='green'">
+
+                                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png"
+                                                                alt="" height="100%">
                                                         </div>
-                                                 
-                                                        <div *ngIf="item?._data?.ranking_arrow=='red'"  style="height:2.5vh;">
-                        
-                                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
-                                                                height="100%">
-                        
+
+                                                        <div *ngIf="item?._data?.ranking_arrow=='red'"
+                                                            style="height:2.5vh;">
+
+                                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png"
+                                                                alt="" height="100%">
+
                                                         </div>
-                                                        <div *ngIf="item?._data?.ranking_arrow=='yellow'" style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
-                    
-                                                           
-                                                            <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
-                         
-                                                         </div>
-                                                    
-                                                </span>
-                                                <div class=" col d-flex justify-content-center pe-2">
-                                                    <div></div>
-                                                  
-                                                </div>
+                                                        <div *ngIf="item?._data?.ranking_arrow=='yellow'"
+                                                            style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
+
+
+                                                            <img src="assets/images/BoosterAssests/EQ-16687580462022.png"
+                                                                alt="" srcset="" height="60%" width="60%">
+
+                                                        </div>
+
+                                                    </span>
+                                                    <div class=" col d-flex justify-content-center pe-2">
+                                                        <div></div>
+
+                                                    </div>
                                                 </span>
                                             </div>
                                         </div>
                                     </div>
-                                   
+
                                 </div>
                             </div>
                         </div>
@@ -221,7 +235,7 @@
     </div>
 
 
-<!-- mobile overallScore Card -->
+    <!-- mobile overallScore Card -->
     <div class="card mt-3  mobile-card">
         <div class="card-title d-flex justify-content-center">
             <div class="row w-100 mt-3">
@@ -233,55 +247,59 @@
                             <h2 class="accordion-header" [id]="'heading'+i">
                                 <button class="accordion-button performance-overalldata-btn" type="button"
                                     [ngStyle]="{'display': 'block'}" style="width: 99.5%;">
-                                   
+
                                     <div class="container-fluid-overall">
                                         <div class="row">
                                             <div class="col-lg-10 col-md-9 col-6">
                                                 <div class="p-0">
                                                     <span
                                                         class="performance-overall-txt">{{overallData?.[0]?.label}}</span>
-                                                        <span>
-                                                        
+                                                    <span>
+
                                                     </span>
                                                 </div>
                                             </div>
                                             <div class="col-lg-1 col-md-1 col-2 d-flex justify-content-end">
-                                                <span class="text-start performance-game-points-coin ps-1" >
+                                                <span class="text-start performance-game-points-coin ps-1">
                                                     <img src="assets/images/svg/dashboard/game-points-coin.png" alt=""
                                                         height="20">
                                                 </span>
                                             </div>
                                             <div class="col-lg-1 col-md-1 col-4 d-flex justify-content-end">
-                                              
+
                                                 <span class="float-end d-flex gap-2">
-                                                    <span
-                                                        class="performance-overall-points" style="width: 100%;text-align: end;">&nbsp;&nbsp;{{overallData?.[0]?._data?.[0]?.points}}</span>
-                                                        <span >
-                                                            <div  style="height:2.5vh;" *ngIf="overallData?.[0]?._data?.[0]?.ranking_arrow=='green'">
-    
-                                                                <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
-                                                                    height="100%" >
-                                                            </div>
-                                                     <!-- <div> {{overallData?.[0]?._data?.[0]?.ranking_arrow|json}}</div>       -->
-                                                            <div *ngIf="overallData?.[0]?._data?.[0]?.ranking_arrow=='red'"  style="height:2.5vh;">
-                            
-                                                                <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
-                                                                    height="100%">
-                            
-                                                            </div>
-                                                            <div *ngIf="overallData?.[0]?._data?.[0]?.ranking_arrow=='yellow'"  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
-                        
-                                                                <!-- <div style="height: 1.2vh;width:1.2vh;border-radius:100%;background-color:orange ;"></div> -->
-                                                                <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
-                             
-                                                             </div>
-                                                        
+                                                    <span class="performance-overall-points"
+                                                        style="width: 100%;text-align: end;">&nbsp;&nbsp;{{overallData?.[0]?._data?.[0]?.points}}</span>
+                                                    <span>
+                                                        <div style="height:2.5vh;"
+                                                            *ngIf="overallData?.[0]?._data?.[0]?.ranking_arrow=='green'">
+
+                                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png"
+                                                                alt="" height="100%">
+                                                        </div>
+                                                        <!-- <div> {{overallData?.[0]?._data?.[0]?.ranking_arrow|json}}</div>       -->
+                                                        <div *ngIf="overallData?.[0]?._data?.[0]?.ranking_arrow=='red'"
+                                                            style="height:2.5vh;">
+
+                                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png"
+                                                                alt="" height="100%">
+
+                                                        </div>
+                                                        <div *ngIf="overallData?.[0]?._data?.[0]?.ranking_arrow=='yellow'"
+                                                            style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
+
+                                                            <!-- <div style="height: 1.2vh;width:1.2vh;border-radius:100%;background-color:orange ;"></div> -->
+                                                            <img src="assets/images/BoosterAssests/EQ-16687580462022.png"
+                                                                alt="" srcset="" height="60%" width="60%">
+
+                                                        </div>
+
                                                     </span>
                                                     <!-- <i class="fa fa-sort-down ms-4 performance-arrow-down invisible"></i> -->
                                                 </span>
                                             </div>
 
-                                           
+
                                         </div>
                                     </div>
                                 </button>
@@ -313,41 +331,46 @@
                                                         class="performance-accordion-point-data-label">{{item?._data?.measurement_name}}</span>
                                                 </div>
                                             </div>
-                                          
+
                                             <div class="col-5  d-flex justify-content-between">
-                                                
+
                                                 <span class="text-start ps-1">
-                                                    <img src="assets/images/svg/dashboard/game-points-coin.png" alt="" height="15" style="padding-left: 4.5vw;">
+                                                    <img src="assets/images/svg/dashboard/game-points-coin.png" alt=""
+                                                        height="15" style="padding-left: 1.5vw;">
                                                 </span>
                                                 <span class="float-end d-flex justify-content-evenly  gap-1">
                                                     &nbsp;
                                                     <span class="performance-points">{{item?._data?.points}}</span>
-                                                   
-                                                    <span >
-                                                        <div  style="height:2.5vh;" *ngIf="item?._data?.ranking_arrow=='green'">
 
-                                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
-                                                                height="100%" >
+                                                    <span>
+                                                        <div style="height:2.5vh;"
+                                                            *ngIf="item?._data?.ranking_arrow=='green'">
+
+                                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png"
+                                                                alt="" height="100%">
                                                         </div>
-                                               
-                                                        <div *ngIf="item?._data?.ranking_arrow=='red'"  style="height:2.5vh;">
-                        
-                                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
-                                                                height="100%">
-                        
+
+                                                        <div *ngIf="item?._data?.ranking_arrow=='red'"
+                                                            style="height:2.5vh;">
+
+                                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png"
+                                                                alt="" height="100%">
+
                                                         </div>
-                                                        <div *ngIf="item?._data?.ranking_arrow=='yellow'" style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
-                    
-                                                           
-                                                            <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
-                         
-                                                         </div>
-                                                    
-                                                </span >
-                                                <div class=" col d-flex pe-1 justify-content-end">
-                                                    <i class="fa fa-sort-down  performance-arrow-down"></i>
-                                                </div>
-                                                  
+                                                        <div *ngIf="item?._data?.ranking_arrow=='yellow'"
+                                                            style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
+
+
+                                                            <img src="assets/images/BoosterAssests/EQ-16687580462022.png"
+                                                                alt="" srcset="" height="60%" width="60%">
+
+                                                        </div>
+
+                                                    </span>
+                                                    <div class=" col d-flex pe-1 justify-content-end">
+                                                        <i class="fa fa-sort-down  performance-arrow-down"></i>
+                                                    </div>
+
                                                 </span>
                                             </div>
                                         </div>
@@ -358,58 +381,61 @@
                                 [attr.aria-labelledby]="'heading'+i" data-bs-parent="#accordionExample">
                                 <div class="accordion-body performance-accordion-point-data-body">
                                     <div class="container-fluid-full">
-                                        <div class="row"
-                                            *ngFor="let child of item?.kpi_data">
+                                        <div class="row" *ngFor="let child of item?.kpi_data">
                                             <div class="col-6 ">
                                                 <div class="p-0">
                                                     <span
                                                         class="performance-accordion-point-data-label">{{child?.kpi_name}}</span>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="col-5 d-flex justify-content-between">
-                                              
+
                                                 <span class="text-start performance-game-points-coin">
-                                                    
-                                                    <img src="assets/images/svg/dashboard/game-points-coin.png" alt="" style="padding-left: 5vw;"
-                                                        height="15">
+
+                                                    <img src="assets/images/svg/dashboard/game-points-coin.png" alt=""
+                                                        style="padding-left: 1.5vw;" height="15">
                                                 </span>
                                                 <span class="float-end  d-flex  gap-1">
                                                     <div></div>
                                                     &nbsp;
                                                     <span class="performance-points">{{child?.points}}</span>
-                                                    
-                                                    <span >
-                                                       
-                                                        <div  style="height:2.5vh;" *ngIf="item?._data?.ranking_arrow=='green'">
 
-                                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
-                                                                height="100%" >
+                                                    <span>
+
+                                                        <div style="height:2.5vh;"
+                                                            *ngIf="item?._data?.ranking_arrow=='green'">
+
+                                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png"
+                                                                alt="" height="100%">
                                                         </div>
-                                                 
-                                                        <div *ngIf="item?._data?.ranking_arrow=='red'"  style="height:2.5vh;">
-                        
-                                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
-                                                                height="100%">
-                        
+
+                                                        <div *ngIf="item?._data?.ranking_arrow=='red'"
+                                                            style="height:2.5vh;">
+
+                                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png"
+                                                                alt="" height="100%">
+
                                                         </div>
-                                                        <div *ngIf="item?._data?.ranking_arrow=='yellow'" style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
-                    
-                                                           
-                                                            <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
-                         
-                                                         </div>
-                                                    
-                                                </span>
-                                                <div class=" col d-flex justify-content-center pe-2">
-                                                    <div></div>
-                                                  
-                                                </div>
+                                                        <div *ngIf="item?._data?.ranking_arrow=='yellow'"
+                                                            style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
+
+
+                                                            <img src="assets/images/BoosterAssests/EQ-16687580462022.png"
+                                                                alt="" srcset="" height="60%" width="60%">
+
+                                                        </div>
+
+                                                    </span>
+                                                    <div class=" col d-flex justify-content-center pe-2">
+                                                        <div></div>
+
+                                                    </div>
                                                 </span>
                                             </div>
                                         </div>
                                     </div>
-                                   
+
                                 </div>
                             </div>
                         </div>
@@ -417,49 +443,52 @@
                 </div>
             </div>
         </div>
-        
+
 
     </div>
 
     <div class="graph_container">
-        <div class="row" style="background-color: #ffffff; width: 100%; margin-left: 0.1vw;margin-bottom: 2vh;border-radius: 0.25rem;">
-            
-            <div class="col-lg-2 col-md-2 col-6" style="display: flex; justify-content: end; width: 100%; align-items: center;">
+        <div class="row"
+            style="background-color: #ffffff; width: 100%; margin-left: 0.1vw;margin-bottom: 2vh;border-radius: 0.25rem;">
+
+            <div class="col-lg-2 col-md-2 col-6"
+                style="display: flex; justify-content: end; width: 100%; align-items: center;">
                 <div class="col-lg-10 col-md-10 col-6 d-flex justify-content-end">
                     <div class="historical-live-btn mt-2" role="group" aria-label="Basic radio toggle button group"
-                    *ngIf="( this.id_role === '3' || this.id_role === '4')">
-                    <input type="radio" class="btn-check" name="Historical" id="Historical" autocomplete="off"
-                        [attr.checked]="buttonFilterActive === 'Historical' ? true: null">
-                    <label class="btn btn-outline-primary performance-filter-primary" for="Historical"
-                        [ngStyle]="{'background': buttonFilterActive === 'Historical' ? userObj?.otherInfo?.color : 'inherit'}"
-                        [ngClass]="{'text-black': buttonFilterActive !== 'Historical'}"
-                        (click)="buttonFilter('Historical')">Historical</label>
-        
-                    <input type="radio" class="btn-check" name="Live" id="Live" autocomplete="off"
-                        [attr.checked]="buttonFilterActive === 'Live' ? true : null">
-                    <label class="btn btn-outline-primary performance-filter-primary" for="Live"
-                        [ngStyle]="{'background': buttonFilterActive === 'Live' ? userObj?.otherInfo?.color : 'inherit'}"
-                        [ngClass]="{'text-black': buttonFilterActive !== 'Live'}"
-                        (click)="buttonFilter('Live')">Live</label>
+                        *ngIf="( this.id_role === '3' || this.id_role === '4')">
+                        <input type="radio" class="btn-check" name="Historical" id="Historical" autocomplete="off"
+                            [attr.checked]="buttonFilterActive === 'Historical' ? true: null">
+                        <label class="btn btn-outline-primary performance-filter-primary" for="Historical"
+                            [ngStyle]="{'background': buttonFilterActive === 'Historical' ? userObj?.otherInfo?.color : 'inherit'}"
+                            [ngClass]="{'text-black': buttonFilterActive !== 'Historical'}"
+                            (click)="buttonFilter('Historical')">Historical</label>
+
+                        <input type="radio" class="btn-check" name="Live" id="Live" autocomplete="off"
+                            [attr.checked]="buttonFilterActive === 'Live' ? true : null">
+                        <label class="btn btn-outline-primary performance-filter-primary" for="Live"
+                            [ngStyle]="{'background': buttonFilterActive === 'Live' ? userObj?.otherInfo?.color : 'inherit'}"
+                            [ngClass]="{'text-black': buttonFilterActive !== 'Live'}"
+                            (click)="buttonFilter('Live')">Live</label>
+                    </div>
                 </div>
-                </div>
-                <select class="form-select performance-filter-select" aria-label="Default select example" style="width: 100%;margin: 2vh; "
-                [(ngModel)]="dropDownValue" (change)="onChange($event.target.value)">
-                <option [attr.selected]="item?.mapTo?.indexOf(buttonFilterActive) > -2 ? true : null"
-                    *ngFor="let item of dropDownFilterData" value="{{item?.value}}">
-                    {{item?.value}}</option>
-            </select>
+                <select class="form-select performance-filter-select" aria-label="Default select example"
+                    style="width: 100%;margin: 2vh; " [(ngModel)]="dropDownValue"
+                    (change)="onChange($event.target.value)">
+                    <option [attr.selected]="item?.mapTo?.indexOf(buttonFilterActive) > -2 ? true : null"
+                        *ngFor="let item of dropDownFilterData" value="{{item?.value}}">
+                        {{item?.value}}</option>
+                </select>
             </div>
         </div>
-       
+
 
         <ng-container *ngIf="graphData?.length > 0">
             <div class="card" *ngFor="let item of graphData;let i=index">
                 <div class="card-body">
                     <div class="d-flex justify-content-center">
-                       
+
                         <p class="graph_label">{{item?.graph_label}}</p>
-    
+
                     </div>
                     <apx-chart class="apex-charts" dir="ltr" [series]="[splineAreaChart?.series[i]]"
                         [chart]="splineAreaChart?.chart" [dataLabels]="splineAreaChart?.dataLabels"
@@ -470,7 +499,7 @@
             </div>
         </ng-container>
     </div>
-  
+
 </div>
 
 <!-- Rotated View -->
@@ -478,9 +507,9 @@
     <div class="phone">
     </div>
     <div class="message">
-      Please rotate your device!
+        Please rotate your device!
     </div>
-    
+
 </div>
 
 <!-- <div class="container-fluid performance-container">

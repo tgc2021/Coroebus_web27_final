@@ -74,6 +74,35 @@ export class DashboardModel extends Model {
             )
         return res
     }
+
+    static async getCenterDataSectionView_2New(data: any) {
+        // tslint:disable-next-line:one-variable-per-declaration
+        let err: any,
+            res: any // get from API
+            ;[err, res] = await HttpProtocols.to(
+                environment.isMockDataEnable ? HttpProtocols.get(
+                    environment.isMockDataEnable
+                        ? mockeApiMethodsList.DASHBOARD[1]
+                        : APIUrl.createAPIURL(
+                            apiStatus.DASHBOARD.isAPIReadyForGetDashboardProduce_2
+                                ? APIUrl.createDynamicURL(apiMethodsList.DASHBOARD[8], [])
+                                : mockeApiMethodsList.DASHBOARD[1],
+                            apiStatus.DASHBOARD.isAPIReadyForGetDashboardProduce_2
+                        )
+                ) : HttpProtocols.post(
+                    environment.isMockDataEnable
+                        ? mockeApiMethodsList.DASHBOARD[1]
+                        : APIUrl.createAPIURL(
+                            apiStatus.DASHBOARD.isAPIReadyForGetDashboardProduce_2
+                                ? APIUrl.createDynamicURL(apiMethodsList.DASHBOARD[1], [])
+                                : mockeApiMethodsList.DASHBOARD[1],
+                            apiStatus.DASHBOARD.isAPIReadyForGetDashboardProduce_2
+                        ),
+                    data
+                )
+            )
+        return res
+    }
     /**
      * {"_userid":"GOLD015","_game":"197","_section_view":"3","page_number":"1"}
      */

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router, RoutesRecognized } from '@angular/router';
 import { ApiserviceService } from 'app/apiservice.service';
 import { DOCUMENT, Location } from '@angular/common';
@@ -12,6 +12,7 @@ import * as fromRoot from '../../core/app-state';
 
 @Component({
   selector: 'app-top-dashboard',
+  // encapsulation: ViewEncapsulation.None,
   templateUrl: './top-dashboard.component.html',
   styleUrls: ['./top-dashboard.component.scss'],
   providers: [NgbModalConfig, NgbModal]

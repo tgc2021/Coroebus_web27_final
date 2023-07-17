@@ -94,6 +94,9 @@ export const apiMethodsList = {
         '/coroebus-tgc-api-levels/Dashboard/levels_buckets', // 5 POST {"_game":"98","_role":"6"}
         '/coroebus-tgc-api-levels/Poke/add_poke', // 6 POST {"_userid":"GOLD015","_team":"359","_game":"98","_id_user_poked":"53312","_pokeid":"4"}
         '/coroebus-tgc-api-levels/dashboard/levels', // 7 POST {"_userid":"GOLD015","_game":"197"}
+        '/coroebus-tgc-api-levels/dashboard/produce_12', // 8 POST {"_userid":"GOLD015","_game":"197","_section_view":"1","page_number":"1"}
+        '/coroebus-tgc-api-levels/dashboard/produce_12', // 9 POST {"_userid":"GOLD015","_game":"197","_section_view":"1","page_number":"1"}
+
     ],
     Notification: [
         '/coroebus-tgc-api-levels/Notification/notification_status', // 0 POST {"_userid":"GOLD015","_game":"197"}

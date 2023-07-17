@@ -53,7 +53,7 @@
                 <div class="web_points_bg">
                     <div class="web_center_div"  (click)="navigateReward()">
                         <img class="web_points"
-                            src="{{interactive_dashoard_response[0].data.theme_details[0].reward_points_image}}" />
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].reward_points_image}}"/>
                         <p class="total_web_points">{{interactive_dashoard_response[0].data._points[2].score}}</p>
                     </div>
 
@@ -115,8 +115,10 @@
 
                         <div class="col-4 web_team_rank d-block">
 
-                            <p class="web_tem_rank_number">{{interactive_dashoard_response[0].data._primary.team_rank}}
+                            <p class="web_tem_rank_number"  >{{interactive_dashoard_response[0].data._primary.team_rank}}
                             </p>
+                            
+                            
                             <p class="web_tem_rank_label">Team Rank</p>
                         </div>
                         <!-- <div class="col-1 sideline">
@@ -165,51 +167,124 @@
                     </div>
                 </div>
 
-                <div class="campaign_div">
+                <div class="campaign_div" >
 
                     <div class="row campaign_details">
                         <div class="col-12 campaign_full_image  d-flex justify-content-end align-items-end">
                             <div>
-                                <div class="d-flex justify-content-end ">
-                                    <img class="web_campaign_image"
-                                        src="{{interactive_dashoard_response[0].data.theme_details[0].campaigns_bt_web}}" (load)="open(content)" />
+                                <div class="d-flex justify-content-end "  >
+                                    <div class="web_campaign_image" [style.background]="interactive_dashoard_response[0]?.data?.theme_details[0]?.campaign_color"
+                                        >
+                                         <div  style="border-bottom:2px solid black;height:3vh;width:20vw;margin-top:-1%">
+                                            <img  src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.campaign_icon}}" alt="" height="100%" width="100%" (load)="open(content)">
+                                         </div>
+                                         <div style="height:7vh;width:20vw;margin-top:-1%;color:#fff;font-size:1.6em;display:flex;justify-content:center;align-items:center;font-family:Inter">
+                                            {{interactive_dashoard_response[0]?.data?.theme_details[0]?.campaign_text|uppercase}}
+                                         </div>
+                                        
+                                        </div>
+                                        <div class="mt-2 d-flex flex-column align-items-end justify-content-center">
+                                            <div class="d-flex flex-column align-items-center justify-content-center">
+                                                <hr style="color:#fff;width:1vw;height:0.2vh;font-weight:600;opacity:1">
+                                            </div>
+                                            <div class="d-flex flex-column align-items-end justify-content-center">
+                                                <hr style="color:#fff;width:1vw;height:0.2vh;font-weight:600;opacity:1">
+                                            </div>
+                                        </div>
 
                                 </div>
                                 
                                 <div class="d-flex justify-content-end">
-                                    <img class="web_daily_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
-                                        src="{{interactive_dashoard_response[0].data.theme_details[0].daily_bt_web}}" 
-                                         data-bs-toggle="modal"
-                                        data-bs-target="#DailyModal" />
-
-                                        <img class="web_daily_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"
-                                        src="{{interactive_dashoard_response[0].data.theme_details[0].daily_bt_web}}" (mouseover)="openDailyModal()"
-                                         data-bs-toggle="modal"
-                                        data-bs-target="#dailyModal" />
+                                    
+                                        <div class="web_daily_div d-flex justify-content-end align-items-center">
+                                            <button class="web-daily-btn" [style.background]="interactive_dashoard_response[0]?.data?.theme_details[0]?.daily_color"  (mouseover)="openDailyModal()"
+                                            data-bs-toggle="modal"
+                                           data-bs-target="#dailyModal" 
+                                           >
+                                            <div class="web_daily_gradient" style="background: linear-gradient(180deg, #FFF 0%, #FFF 7.01%, rgba(255, 255, 255, 0.00) 30.36%, rgba(59, 59, 59, 0.00) 73.08%, rgba(0, 0, 0, 0.30) 100%);">
+                                                <div class="btn-text-daily" [ngClass]="interactive_dashoard_response[0]?.data?.theme_details[0]?.daily_text.length>=17?'lengthy_text':'Small_text'">
+                                                    <!-- June'23 Early Activation -->
+                                                    <!-- Daily -->
+                                                    {{interactive_dashoard_response[0]?.data?.theme_details[0]?.daily_text}}
+                                                    <!-- {{Dynamic_Text_Daily}} -->
+                                                </div>
+                                                <div style="height:3vh;width: 3vh;border-radius: 100%;text-align:end">
+                                                    <img src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.daily_icon}}" alt="" height="100%" width="100%">
+                                                </div>
+                                            </div>
+                                            </button>
+                                            <div class="d-flex flex-column align-items-end justify-content-center">
+                                                <div class="d-flex flex-column align-items-center justify-content-center">
+                                                    <hr style="color:#fff;width:1vw;height:0.2vh;font-weight:600;opacity:1">
+                                                </div>
+                                                <div class="d-flex flex-column align-items-center justify-content-center">
+                                                    <hr style="color:#fff;width:1vw;height:0.2vh;font-weight:600;opacity:1">
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        
 
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <img class="web_weekly_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
-                                        src="{{interactive_dashoard_response[0].data.theme_details[0].weekly_bt_web}}"
-                                         data-bs-toggle="modal"
-                                        data-bs-target="#weeklyModal" />
-
-                                        <img class="web_weekly_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"
-                                        src="{{interactive_dashoard_response[0].data.theme_details[0].weekly_bt_web}}" (mouseover)="openWeeklyModal()"
-                                         data-bs-toggle="modal"
-                                        data-bs-target="#weeklyModal" />
+                                   
+                                        <div class="web_daily_div d-flex justify-content-end align-items-center">
+                                            <button class="web-daily-btn" [style.background]="interactive_dashoard_response[0]?.data?.theme_details[0]?.weekly_color"  (mouseover)="openWeeklyModal()"
+                                            data-bs-toggle="modal"
+                                           data-bs-target="#weeklyModal"
+                                            >
+                                            <div class="web_daily_gradient" style="background: linear-gradient(180deg, #FFF 0%, #FFF 7.01%, rgba(255, 255, 255, 0.00) 30.36%, rgba(59, 59, 59, 0.00) 73.08%, rgba(0, 0, 0, 0.30) 100%);">
+                                                <div class="btn-text-daily" [ngClass]="interactive_dashoard_response[0]?.data?.theme_details[0]?.weekly_text.length>=17?'lengthy_text':'Small_text'">
+                                                   
+                                                    {{interactive_dashoard_response[0]?.data?.theme_details[0]?.weekly_text}}
+                                                </div>
+                                                <div style="height:3vh;width: 3vh;border-radius: 100%;text-align:end">
+                                                    <img src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.weekly_icon}}" alt="" height="100%" width="100%">
+                                                </div>
+                                            </div>
+                                            </button>
+                                            <div class="mt-2 d-flex flex-column align-items-end justify-content-center">
+                                                <div class=" d-flex flex-column align-items-center justify-content-center">
+                                                    <hr style="color:#fff;width:1vw;height:0.2vh;font-weight:600;opacity:1">
+                                                </div>
+                                                <div class=" d-flex flex-column align-items-center justify-content-center">
+                                                    <hr style="color:#fff;width:1vw;height:0.2vh;font-weight:600;opacity:1">
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
 
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <img class="web_monthly_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
-                                        src="{{interactive_dashoard_response[0].data.theme_details[0].monthly_bt_web}}"
-                                         data-bs-toggle="modal"
-                                        data-bs-target="#monthlyModal" />
+                                   
+                                        <div class="web_daily_div d-flex justify-content-end align-items-center">
+                                            <button class="web-daily-btn" [style.background]="interactive_dashoard_response[0]?.data?.theme_details[0]?.monthly_color"  (mouseover)="openMonthlyModal()"
+                                            data-bs-toggle="modal"
+                                           data-bs-target="#monthlyModal"
+                                           >
+                                            <div class="web_daily_gradient" style="background: linear-gradient(180deg, #FFF 0%, #FFF 7.01%, rgba(255, 255, 255, 0.00) 30.36%, rgba(59, 59, 59, 0.00) 73.08%, rgba(0, 0, 0, 0.30) 100%);">
+                                                <div class="btn-text-daily" [ngClass]="interactive_dashoard_response[0]?.data?.theme_details[0]?.monthly_text.length>=17?'lengthy_text':'Small_text'">
+                                                    <!-- June'23 Early Activation -->
+                                                    <!-- Daily -->
+                                                    {{interactive_dashoard_response[0]?.data?.theme_details[0]?.monthly_text}}
+                                                    <!-- {{Dynamic_Text_Monthly}} -->
+                                                </div>
+                                                <div style="height:3vh;width: 3vh;border-radius: 100%;display:flex;">
+                                                    <img src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.monthly_icon}}" alt="" height="100%" width="100%">
+                                                </div>
+                                            </div>
+                                            </button>
+                                            <div class="mt-2 d-flex flex-column align-items-end justify-content-center">
+                                                <div class=" d-flex flex-column align-items-center justify-content-center">
+                                                    <hr style="color:#fff;width:1vw;height:0.2vh;font-weight:600;opacity:1">
+                                                </div>
+                                                <div class="d-flex flex-column align-items-center justify-content-center">
+                                                    <hr style="color:#fff;width:1vw;height:0.2vh;font-weight:600;opacity:1">
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
 
-                                        <img class="web_monthly_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"
-                                        src="{{interactive_dashoard_response[0].data.theme_details[0].monthly_bt_web}}" (mouseover)="openMonthlyModal()"
-                                         data-bs-toggle="modal"
-                                        data-bs-target="#monthlyModal" />
 
                                 </div>
                             </div>
@@ -329,7 +404,11 @@
             <div class="d-flex justify-content-center" (click)="navigateDashboard()">
                 <div class="mobile-first-section d-flex justify-content-evenly align-items-center">
                     <div class="mobile-team-rank text-center col-4 border2px">
-                        <div>{{interactive_dashoard_response[0].data._primary.team_rank}}</div>
+                        <!-- <div>{{sectionView_2?._ranking_data[0]?._data[0]?.rankingtable_number}}</div> -->
+                        <!-- <div  *ngIf="interactive_dashoard_response[0]?.data?._personal_data?.id_role=='6'" >{{sectionView_2?._ranking_data[0]?._data[0]?.rankingtable_number}}
+                        </div> -->
+                        <div class="mobile_tem_rank_number"  >{{interactive_dashoard_response[0].data._primary.team_rank}}
+                        </div>
                         <div class="mobile-sub-name-upper">Team Rank</div>
                     </div>
                     <div class="text-center col-4 border2px">
@@ -365,6 +444,13 @@
             <!-- mobile btn section -->
             <div class="d-flex justify-content-center align-items-center">
                 <div class="mobile-btn-section d-flex justify-content-between align-items-center gap-1">
+                    <div style="height:6vh;width: 25%;" (click)="navigateToChampionsLeague()">
+                        <img
+                            src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_bt}}"
+                            alt="Learning_Academy" width="100%" height="100%">
+
+                          
+                    </div>
                     <div style="height:6vh;width: 25%;">
                         <img *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
                             src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt}}"
@@ -423,16 +509,7 @@
 
                         </div>
                         <div class="d-flex flex-column gap-5 align-items-start">
-                            <div class="mobile-tug-war d-flex justify-content-start" style="height:6vh">
-                                <img *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
-                                    src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_bt}}"
-                                    alt="tug-of-war" height="100%">
-
-                                    <img *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"
-                                    src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_bt}}"
-                                    alt="tug-of-war" height="100%" (click)="navigateToChampionsLeague()">
-
-                            </div>
+                            
                             <div class="mobile-3rd-umpire" style="height:8vh;width: 15vw;">
                                 <img (click)="navigateToNotification()"
                                     src="{{interactive_dashoard_response[0].data.theme_details[0].third_umpire_bt}}"
@@ -452,38 +529,125 @@
                                 src="{{interactive_dashoard_response[0].data.theme_details[0].spectator_bt}}"
                                 alt="spectator-view" height="100%" width="100%">
                         </div>
-                        <div class="campaign-buttons d-flex flex-column gap-1 mt-1">
+                        <div class="campaign-buttons d-flex flex-column gap-1">
                             <div style="height:4vh;">
-                                <img src="{{interactive_dashoard_response[0].data.theme_details[0].campaigns_bt}}"
-                                    alt="CAMPAIGNS" height="100%" width="100%" data-bs-toggle="modal" >
+                                <!-- <img src="{{interactive_dashoard_response[0].data.theme_details[0].campaigns_bt}}"
+                                    alt="CAMPAIGNS" height="100%" width="100%" data-bs-toggle="modal" > -->
+                                    <div class="campaign-btn-mobile" [style.background]="interactive_dashoard_response[0]?.data?.theme_details[0]?.campaign_color">
+                                        <div class="campaign_image_arrow_mobile" [style.background]="interactive_dashoard_response[0]?.data?.theme_details[0]?.campaign_icon" (load)="open(content)">
+                                          
+                                        </div>
+                                        <div style="height:3vh;width:100%;display:flex;align-items:center;">{{interactive_dashoard_response[0]?.data?.theme_details[0]?.campaign_text}}</div>
+                                    </div>
                             </div>
                             <div style="height:6vh;">
-                                <img *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'" src="{{interactive_dashoard_response[0].data.theme_details[0].Daily}}" alt="Daily"
+                                <!-- <img *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'" src="{{interactive_dashoard_response[0].data.theme_details[0].Daily}}" alt="Daily"
                                     height="100%" width="100%" data-bs-toggle="modal" data-bs-target="#dailyModal" 
                                     >
 
                                     <img *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'" src="{{interactive_dashoard_response[0].data.theme_details[0].Daily}}" alt="Daily"
                                     height="100%" width="100%" (mouseover)="openDailyModal()" data-bs-toggle="modal" data-bs-target="#dailyModal" 
-                                    >
+                                    > -->
+                                    <div class="mobile_daily_div d-flex justify-content-end align-items-center">
+                                        <button class="mobile-daily-btn" [style.background]="interactive_dashoard_response[0]?.data?.theme_details[0]?.daily_color"  (mouseover)="openDailyModal()"
+                                        data-bs-toggle="modal"
+                                       data-bs-target="#dailyModal" 
+                                       >
+                                        <div class="mobile_daily_gradient" style="background: linear-gradient(180deg, #FFF 0%, #FFF 7.01%, rgba(255, 255, 255, 0.00) 30.36%, rgba(59, 59, 59, 0.00) 73.08%, rgba(0, 0, 0, 0.30) 100%);">
+                                            <span class="btn-text-daily align-self-center" [ngClass]="interactive_dashoard_response[0]?.data?.theme_details[0]?.daily_text.length>7?'lengthy_text':'Small_text'">
+                                                <!-- June'23 Early Activation -->
+                                                <!-- Daily -->
+                                                {{interactive_dashoard_response[0]?.data?.theme_details[0]?.daily_text}}
+                                                <!-- {{Dynamic_Text_Daily}} -->
+                                            </span>
+                                            <span class="mt-1" style="height:1.3vh; width: 1.3vh;border-radius: 100%;" >
+                                                <img src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.daily_icon}}" alt="" width="100%">
+                                            </span>
+                                        </div>
+                                        </button>
+                                        <div >
+                                            <div class="">
+                                                <hr style="color:#fff;width:1vw;height:0.2vh;font-weight:600;opacity:1">
+                                            </div>
+                                            <div class="">
+                                                <hr style="color:#fff;width:1vw;height:0.2vh;font-weight:600;opacity:1">
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
 
                             </div>
                             <div style="height:6vh;">
-                                <img  *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'" src="{{interactive_dashoard_response[0].data.theme_details[0].Weekly}}"
+                                <!-- <img  *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'" src="{{interactive_dashoard_response[0].data.theme_details[0].Weekly}}"
                                     alt="WEEKLY" height="100%" width="100%" data-bs-toggle="modal"
                                     data-bs-target="#weeklyModal" >
 
                                     <img  *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'" src="{{interactive_dashoard_response[0].data.theme_details[0].Weekly}}"
                                     alt="WEEKLY" height="100%" width="100%" (mouseover)="openWeeklyModal()" data-bs-toggle="modal"
-                                    data-bs-target="#weeklyModal" >
+                                    data-bs-target="#weeklyModal" > -->
+                                    <div class="mobile_daily_div d-flex justify-content-end align-items-center">
+                                        <button class="mobile-daily-btn" [style.background]="interactive_dashoard_response[0]?.data?.theme_details[0]?.weekly_color"  (mouseover)="openWeeklyModal()"
+                                        data-bs-toggle="modal"
+                                       data-bs-target="#weeklyModal" 
+                                       >
+                                        <div class="mobile_daily_gradient" style="background: linear-gradient(180deg, #FFF 0%, #FFF 7.01%, rgba(255, 255, 255, 0.00) 30.36%, rgba(59, 59, 59, 0.00) 73.08%, rgba(0, 0, 0, 0.30) 100%);">
+                                            <span class="btn-text-daily align-self-center" [ngClass]="interactive_dashoard_response[0]?.data?.theme_details[0]?.weekly_text.length>7?'lengthy_text':'Small_text'">
+                                                <!-- June'23 Early Activation -->
+                                                <!-- Daily -->
+                                                {{interactive_dashoard_response[0]?.data?.theme_details[0]?.weekly_text}}
+                                                <!-- {{Dynamic_Text_Daily}} -->
+                                            </span>
+                                            <span class="mt-1" style="height:1.3vh; width: 1.3vh;border-radius: 100%;" >
+                                                <img src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.weekly_icon}}" alt="" width="100%">
+                                            </span>
+                                        </div>
+                                        </button>
+                                        <div >
+                                            <div class="">
+                                                <hr style="color:#fff;width:1vw;height:0.2vh;font-weight:600;opacity:1">
+                                            </div>
+                                            <div class="">
+                                                <hr style="color:#fff;width:1vw;height:0.2vh;font-weight:600;opacity:1">
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
                             </div>
                             <div style="height:6vh;">
-                                <img  *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'" src="{{interactive_dashoard_response[0].data.theme_details[0].Monthly}}"
+                                <!-- <img  *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'" src="{{interactive_dashoard_response[0].data.theme_details[0].Monthly}}"
                                     alt="Monthly" height="100%" width="100%"  data-bs-toggle="modal"
                                     data-bs-target="#monthlyModal" >
 
                                     <img  *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'" src="{{interactive_dashoard_response[0].data.theme_details[0].Monthly}}"
                                     alt="Monthly" height="100%" width="100%"  (mouseover)="openMonthlyModal()" data-bs-toggle="modal"
-                                    data-bs-target="#monthlyModal" >
+                                    data-bs-target="#monthlyModal" > -->
+                                    <div class="mobile_daily_div d-flex justify-content-end align-items-center">
+                                        <button class="mobile-daily-btn" [style.background]="interactive_dashoard_response[0]?.data?.theme_details[0]?.monthly_color"  (mouseover)="openMonthlyModal()"
+                                        data-bs-toggle="modal"
+                                       data-bs-target="#monthlyModal" 
+                                       >
+                                        <div class="mobile_daily_gradient" style="background: linear-gradient(180deg, #FFF 0%, #FFF 7.01%, rgba(255, 255, 255, 0.00) 30.36%, rgba(59, 59, 59, 0.00) 73.08%, rgba(0, 0, 0, 0.30) 100%);">
+                                            <span class="btn-text-daily align-self-center" [ngClass]="interactive_dashoard_response[0]?.data?.theme_details[0]?.monthly_text.length>7?'lengthy_text':'Small_text'">
+                                                <!-- June'23 Early Activation -->
+                                                <!-- Daily -->
+                                                {{interactive_dashoard_response[0]?.data?.theme_details[0]?.monthly_text}}
+                                                <!-- {{Dynamic_Text_Daily}} -->
+                                            </span>
+                                            <span class="mt-1" style="height:1.3vh; width: 1.3vh;border-radius: 100%;" >
+                                                <img src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.monthly_icon}}" alt="" width="100%">
+                                            </span>
+                                        </div>
+                                        </button>
+                                        <div >
+                                            <div class="">
+                                                <hr style="color:#fff;width:1vw;height:0.2vh;font-weight:600;opacity:1">
+                                            </div>
+                                            <div class="">
+                                                <hr style="color:#fff;width:1vw;height:0.2vh;font-weight:600;opacity:1">
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
                             </div>
 
                         </div>
@@ -534,8 +698,8 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content passbookModal">
                 <div class="modal-body">
-                    <div *ngFor="let part_img of auto_parts">
-                        <div *ngIf="part_img.type == 'PersonalMileStone'" style="position:relative;">
+                    <div >
+                        <div  style="position:relative;">
 
                             <img src="https://coroebus.in/coroebus-beta/assets/Media/personal_milestone.png" />
                             <div>
@@ -561,13 +725,16 @@
         <div class="modal fade bd-example-modal-sm" id="dailyModal" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogDaily modal-dialog-centered">
-                <div class="modal-content " *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!=61">
+                <div class="modal-content " >
                     <div class="modal-body" *ngIf="seasonalThemeDaily1.length!=0">
                         <div class="d-flex justify-content-end">
                             <button type="button" class="button-close" data-bs-dismiss="modal"
                                 aria-label="Close">X</button>
                         </div>
-                        <div *ngIf="seasonalThemeDaily1!=undefined;then daily"></div>
+                        <div class="container">
+                            <div *ngIf="seasonalThemeDaily1!=undefined;then daily"></div>
+                        </div>
+                        
                         <ng-template #daily>
                             <div class="popupheight popupDaily row d-flex" *ngIf="seasonalThemeDaily1.length!=0">
                                 <div class="d-flex justify-content-between mb-2">
@@ -594,10 +761,13 @@
                                 </div>
                             </div>
                         </ng-template>
-                        <div *ngIf="seasonalThemeDailyBadges1!=undefined;then dailybadge"></div>
+                        <div class="container">
+                            <div *ngIf="seasonalThemeDailyBadges1!=undefined;then dailybadge"></div>
+                        </div>
+                        
                         <ng-template #dailybadge>
                             <div class="animation-bar" *ngIf="seasonalThemeDailyBadges1.length!=0">
-                                <div class="badges_row" [style.width.%]="93" style="position: relative;">
+                                <div class="badges_row" [style.width.%]="90" style="position: relative;">
                                     
                                     <div class="d-flex flex-column justify-content-center align-items-center" [style.margin-left.%]="((seasonalThemeDailyBadges1[0].seasonal_score_target)/(seasonalThemeDailyBadges1[2].seasonal_score_target))*100">
                                         
@@ -652,19 +822,27 @@
                                 [style.margin-left.%]="((seasonalThemeDailyBadges1[2].seasonal_score_percentage))">
                                 <div class="d-flex flex-column">
                                     <div class="border-left"></div>
-                                    <div class="Progressscore">
-                                        {{seasonalThemeDailyBadges1[0].seasonal_score_achived}}
+                                    <div class="Progressscore" >
+
+
+                                        <div class="text-center">
+                                            {{seasonalThemeDailyBadges1[0]?.seasonal_score_achived | shortNumber}}
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
                               </ng-template>
                                 <ng-template #maxpercentage>
                                     <div class="animation-bar"
-                                    [style.margin-left.%]="98">
+                                    [style.margin-left.%]="96">
                                     <div class="d-flex flex-column">
                                         <div class="border-left"></div>
-                                        <div class="Progressscore">
-                                            {{seasonalThemeDailyBadges1[0].seasonal_score_achived}}
+                                        <div class="Progressscore text-center">
+                                            <div class="text-center">
+                                                {{seasonalThemeDailyBadges1[0]?.seasonal_score_achived | shortNumber}}
+                                            </div>
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -688,17 +866,7 @@
                     </div>
 
                 </div>
-                <div class="modal-content " *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization==61">
-                    
-                    <div class="modal-body">
-                        <div class="d-flex justify-content-end">
-                            <button type="button" class="button-close" data-bs-dismiss="modal"
-                                aria-label="Close">X</button>
-                        </div>
-                        <div data-bs-dismiss="modal" style="background:url(assets/images/interactive-dashboard/campaignsimages/daily.png);background-size:100% 100%;height:70vh"></div>
-                    </div>
-
-                </div>
+                
             </div>
         </div>
         
@@ -712,13 +880,16 @@
         <div class="modal fade bd-example-modal-sm" id="weeklyModal" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogWeekly modal-dialog-centered">
-                <div class="modal-content modalContentWeekly" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!=61">
+                <div class="modal-content modalContentWeekly" >
                     <div class="modal-body" style="min-height: 51vh;" *ngIf="seasonalThemeWeekly2.length!=0">
                         <div class="d-flex justify-content-end">
                             <button type="button" class="button-close" data-bs-dismiss="modal"
                                 aria-label="Close">X</button>
                         </div>
-                        <div *ngIf="seasonalThemeWeekly2!=undefined ;then week"></div>
+                        <div class="container">
+                            <div *ngIf="seasonalThemeWeekly2!=undefined ;then week"></div>
+                        </div>
+                       
                         <ng-template #week>
                             <div class="row d-flex" *ngIf="seasonalThemeWeekly2.length!=0">
                                 <div class="d-flex justify-content-between mb-1 p-1">
@@ -753,11 +924,14 @@
                             </div>
 
                         </ng-template>
-                        <div *ngIf="seasonalThemeWeeklyBadges2!=undefined;then weekbadge"></div>
+                        <div class="container">
+                            <div *ngIf="seasonalThemeWeeklyBadges2!=undefined;then weekbadge"></div>
+                        </div>
+                        
                         <ng-template #weekbadge>
                            
                             <div class="animation-bar" *ngIf="seasonalThemeWeeklyBadges2.length!=0">
-                                <div class="badges_row" [style.width.%]="93" style="position: relative;">
+                                <div class="badges_row" [style.width.%]="90" style="position: relative;">
                                     
                                     <div class="d-flex flex-column justify-content-center align-items-center" [style.margin-left.%]="((seasonalThemeWeeklyBadges2[0].seasonal_score_target)/(seasonalThemeWeeklyBadges2[2].seasonal_score_target))*100">
                                         
@@ -769,7 +943,7 @@
                                             <div style="height:3vh;border-left: 2px solid #8EC912;"></div>
                                         </div>
                                     </div>
-                                     <div class="d-flex flex-column justify-content-center " style="position: absolute;" [style.margin-left.%]="(((seasonalThemeWeeklyBadges2[1].seasonal_score_target)/(seasonalThemeDailyBadges1[2].seasonal_score_target))*100)">
+                                     <div class="d-flex flex-column justify-content-center " style="position: absolute;" [style.margin-left.%]="(((seasonalThemeWeeklyBadges2[1].seasonal_score_target)/(seasonalThemeWeeklyBadges2[2].seasonal_score_target))*100)">
                                         <div style="height:6vh;width:6vh;border-radius:50%"
                                             [ngClass]="seasonalThemeWeeklyBadges2[1].active_class == '0'?'inActiveBadge':'ActiveBadge'">
                                             <img src="{{seasonalThemeWeeklyBadges2[1].seasonal_badge_logo}}" alt=""
@@ -813,18 +987,24 @@
                                 <div class="d-flex flex-column">
                                     <div class="border-left"></div>
                                     <div class="Progressscore">
-                                        {{seasonalThemeWeeklyBadges2[0].seasonal_score_achived}}
+                                        <div class="text-center">
+                                            {{seasonalThemeWeeklyBadges2[0]?.seasonal_score_achived|shortNumber}}
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
                               </ng-template>
                                 <ng-template #maxpercentage>
                                     <div class="animation-bar"
-                                    [style.margin-left.%]="98">
+                                    [style.margin-left.%]="96">
                                     <div class="d-flex flex-column">
                                         <div class="border-left"></div>
                                         <div class="Progressscore">
-                                            {{seasonalThemeWeeklyBadges2[0].seasonal_score_achived}}
+                                            <div class="text-center">
+                                                {{seasonalThemeWeeklyBadges2[0]?.seasonal_score_achived|shortNumber}}
+                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -851,17 +1031,7 @@
                     
 
                 </div>
-                <div class="modal-content " *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization==61">
-                    
-                    <div class="modal-body">
-                        <div class="d-flex justify-content-end">
-                            <button type="button" class="button-close" data-bs-dismiss="modal"
-                                aria-label="Close">X</button>
-                        </div>
-                        <div data-bs-dismiss="modal" style="background:url(assets/images/interactive-dashboard/campaignsimages/weekly.png);background-size:100% 100%;height:70vh;width:100%"></div>
-                    </div>
-
-                </div>
+               
             </div>
         </div>
     </div>
@@ -875,15 +1045,19 @@
         <div class="modal fade bd-example-modal-sm" id="monthlyModal" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogMonthly modal-dialog-centered ">
-                <div class="modal-content modalContentMonthly" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!=61">
+                <div class="modal-content modalContentMonthly" >
                     <div class="modal-body" style="min-height: 30vh;" *ngIf="seasonalThemeMonthl3[0].length!=0">
                         <div class="d-flex justify-content-end" style="color:#0000">
                             <button type="button" class="button-close" data-bs-dismiss="modal"
                                 aria-label="Close">X</button>
                         </div>
-                        <div *ngIf="seasonalThemeMonthl3!=undefined;then month"></div>
-                        <div *ngIf="seasonalThemeMonthlyBadges3!=undefined;then monthbadge"></div>
+                        
+                        <div class="container">
+                            <div *ngIf="seasonalThemeMonthl3!=undefined;then month"></div>
+                            <div *ngIf="seasonalThemeMonthlyBadges3!=undefined;then monthbadge"></div>
 
+                        </div>
+                        
                         <ng-template #month>
                             <div class="row d-flex" *ngIf="seasonalThemeMonthl3!=0">
                                 <div class="d-flex justify-content-between mb-1 p-1">
@@ -919,7 +1093,7 @@
 
                         <ng-template #monthbadge>
                             <div class="animation-bar" *ngIf="seasonalThemeMonthlyBadges3.length!=0">
-                                <div class="badges_row" [style.width.%]="93" style="position: relative;">
+                                <div class="badges_row" [style.width.%]="90" style="position: relative;">
                                     
                                     <div class="d-flex flex-column justify-content-center align-items-center" [style.margin-left.%]="((seasonalThemeMonthlyBadges3[0].seasonal_score_target)/(seasonalThemeMonthlyBadges3[2].seasonal_score_target))*100">
                                         
@@ -974,19 +1148,24 @@
                                 [style.margin-left.%]="((seasonalThemeMonthlyBadges3[2].seasonal_score_percentage))">
                                 <div class="d-flex flex-column">
                                     <div class="border-left"></div>
-                                    <div class="Progressscore" >
-                                        {{seasonalThemeMonthlyBadges3[0].seasonal_score_achived}}
+                                    <div class="Progressscore text-center" >
+                                        <div class="text-center">
+                                            {{seasonalThemeMonthlyBadges3[0]?.seasonal_score_achived |shortNumber}}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                               </ng-template>
                                 <ng-template #maxpercentage>
                                     <div class="animation-bar"
-                                    [style.margin-left.%]="98">
+                                    [style.margin-left.%]="96">
                                     <div class="d-flex flex-column">
                                         <div class="border-left"></div>
                                         <div class="Progressscore">
-                                            {{seasonalThemeMonthlyBadges3[0].seasonal_score_achived}}
+                                            <div class="text-center">
+                                                {{seasonalThemeMonthlyBadges3[0]?.seasonal_score_achived |shortNumber}}
+                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -1075,17 +1254,7 @@
                     </div>
 
                 </div>
-                <div class="modal-content modalContentMonthly " *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization==61">
-                    
-                    <div class="modal-body">
-                        <div class="d-flex justify-content-end">
-                            <button type="button" class="button-close" data-bs-dismiss="modal"
-                                aria-label="Close">X</button>
-                        </div>
-                        <div data-bs-dismiss="modal" style="background:url(assets/images/interactive-dashboard/campaignsimages/monthly.png);background-size:100% 100%;height:70vh"></div>
-                    </div>
-
-                </div>
+                
             </div>
         </div>
 
@@ -1432,11 +1601,10 @@
 		<button type="button" class="promotional_btn_close" aria-label="Close" (click)="d('Cross click')">X</button>
 	</div>
 
-    <div class="modal-content"  >
+    <div class="modal-content">
            
         <div class="col-12" style="background: transparent;">
-            <img src="{{promotionalPopUpData.data[0].list[0].image}}" style="width: 100%; height: 60vh; border-radius: 10px;" (click)="promotionalredirection(this.promotionalPopUpData.data[0].list[0].title)" />
-
+            <img src="{{promotionalPopUpData?.data[0]?.list[0]?.image}}" style="width: 100%; height: 60vh; border-radius: 10px;" (click)="promotionalredirection(this.promotionalPopUpData.data[0].list[0].title)" />
         </div>
       
        

@@ -15,6 +15,8 @@ import { Util } from '@app/utils/util';
 import { Subscription, combineLatest, Subject, Observable, interval } from 'rxjs';
 import * as userActions from '../../../core/app-state/actions';
 import Swal from 'sweetalert2';
+import { HttpProtocols } from '@app/http/http.protocols';
+import { DashboardModel } from '@models/dashboard.model';
 
 @Component({
   selector: 'app-interactive-dashboard',
@@ -23,144 +25,7 @@ import Swal from 'sweetalert2';
   providers: [NgbModalConfig, NgbModal],
 })
 export class InteractiveDashboardComponent implements OnInit,OnDestroy {
-  auto_parts = [
-    //Production Cordinates
-
-    // {
-    //   "shape": "rect",
-    //   "type": "Lerning Academy",
-    //   "coords": "6,355,138,406"
-    // }, {
-
-    //   "shape": "rect",
-    //   "type": "Play Zone",
-    //   "coords": "222,354,355,398",
-    // }, {
-    //   "shape": "rect",
-    //   "type": "Jackets",
-    //   "coords": "270,448,356,475"
-    // }, {
-    //   "shape": "rect",
-    //   "type": "Gloves",
-    //   "coords": "269,485,359,575"
-    // }, {
-    //   "shape": "rect",
-    //   "type": "Winter wear",
-    //   "coords": "269,521,357,555"
-    // }, {
-    //   "shape": "rect",
-    //   "type": "3rd umpire",
-    //   "coords": "11,672,96,782"
-    // }, {
-    //   "shape": "rect",
-    //   "type": "Booster",
-    //   "coords": "278,686,341,784"
-    // },
-    // {
-    //   "shape": "rect",
-    //   "type": "PersonalMileStone",
-    //   "coords": "151,368,208,414"
-    // },
-    // {
-    //   "shape": "rect",
-    //   "type": "angryB",
-    //   "coords": "149,376,222,407"
-    // },
-    // {
-    //   "shape": "rect",
-    //   "type": "spectr",
-    //   "coords": "1,423,271,506"
-    // },
-    // {
-    //   "shape": "rect",
-    //   "type": "ChampionsLeague",
-    //   "coords": "23,517,105,562"
-    // },{
-    //   "shape": "rect",
-    //   "type": "Daily",
-    //   "coords": "275,491,347,518"
-
-    // },
-    // {
-    //   "shape": "rect",
-    //   "type": "Weekly",
-    //   "coords": "276,523,348,550"
-    // },
-    // {
-    //   "shape": "rect",
-    //   "type": "Monthly",
-    //   "coords": "275,557,347,584"
-    // }
-
-    // Beta Cordinates
-
-    {
-      "shape": "rect",
-      "type": "Lerning Academy",
-      "coords": "19,344,115,386"
-    }, {
-
-      "shape": "rect",
-      "type": "Play Zone",
-      "coords": "247,346,339,386",
-    }, {
-      "shape": "rect",
-      "type": "Jackets",
-      "coords": "270,448,356,475"
-    }, {
-      "shape": "rect",
-      "type": "Gloves",
-      "coords": "269,485,359,575"
-    }, {
-      "shape": "rect",
-      "type": "Winter wear",
-      "coords": "269,521,357,555"
-    }, {
-      "shape": "rect",
-      "type": "3rd umpire",
-      "coords": "21,690,106,782"
-    }, {
-      "shape": "rect",
-      "type": "Booster",
-      "coords": "265,690,345,784"
-    },
-    {
-      "shape": "rect",
-      "type": "PersonalMileStone",
-      "coords": "136,356,225,390"
-    },
-    {
-      "shape": "rect",
-      "type": "angryB",
-      "coords": "149,376,222,407"
-    },
-    {
-      "shape": "rect",
-      "type": "spectr",
-      "coords": "1,415,257,502"
-    },
-    {
-      "shape": "rect",
-      "type": "ChampionsLeague",
-      "coords": "25,516,105,563"
-    }, {
-      "shape": "rect",
-      "type": "Daily",
-      "coords": "257,502,338,545"
-
-    },
-    {
-      "shape": "rect",
-      "type": "Weekly",
-      "coords": "258,552,334,594"
-    },
-    {
-      "shape": "rect",
-      "type": "Monthly",
-      "coords": "259,601,335,643"
-    }
-
-  ];
+  
   isLoading: boolean = false;
   destroy$: Subject<boolean> = new Subject<boolean>();
   userObj: any
@@ -219,6 +84,13 @@ export class InteractiveDashboardComponent implements OnInit,OnDestroy {
   dailyBadgesActive: boolean;
   weeklyBadgesActive: boolean;
   monthlyBadgesActive: boolean;
+  sectionView_2: any;
+  // Dynamic_Text_Daily:any="June'23 Early Activation"
+  // Dynamic_Text_Weekly:any="Monthly Edge Contest"
+  // Dynamic_Text_Monthly:any="MDRT Consistency Reward"
+  Dynamic_Text_Daily:any="Daily"
+  Dynamic_Text_Weekly:any="Weekly"
+  Dynamic_Text_Monthly:any="Monthly"
   constructor(config: NgbModalConfig,private readonly store: Store, public element: ElementRef, public Util: Util, private _router: Router, public http: ApiserviceService, private eventService: EventService,public location:Location ,public modalService:NgbModal) {
     config.backdrop = 'static';
 		config.keyboard = false;
@@ -226,7 +98,8 @@ export class InteractiveDashboardComponent implements OnInit,OnDestroy {
    }
 
   ngOnInit(): void {
-    this.game_audio=localStorage.getItem('audio_game')
+    this.game_audio=localStorage.getItem('audio_game');
+  
     
      
  this.previousUrl1= this._router.events.pipe(
@@ -318,9 +191,10 @@ else{
       
         
         this.http.interactiveDashboard(body).subscribe((res) => {
-          
           this.interactive_dashoard_response = res;
-          
+          localStorage.setItem('Interactive_response',this.interactive_dashoard_response);
+          localStorage.setItem('tl_rank',this.interactive_dashoard_response.data._primary.primary_rank)
+
           localStorage.setItem('body_game',this.interactive_dashoard_response.data._personal_data.id_coroebus_game)
 
           if(this.interactive_dashoard_response?.data.is_about_game==1){
@@ -331,7 +205,9 @@ else{
           
           this.isLoading = true;
           this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
-          
+          localStorage.setItem('daily_text',this.interactive_dashoard_response[0]?.data?.theme_details[0]?.daily_text);
+          localStorage.setItem('weekly_text',this.interactive_dashoard_response[0]?.data?.theme_details[0]?.weekly_text);
+          localStorage.setItem('monthly_text',this.interactive_dashoard_response[0]?.data?.theme_details[0]?.monthly_text);
           
           this.is_about_game= localStorage.setItem('is_about_game',this.interactive_dashoard_response[0].data.is_about_game)
           
@@ -413,10 +289,7 @@ else{
         this.http.produce1(body1).subscribe((res) => {
           
           this.produce1data = res;
-          
           this.kpidata=this.produce1data.data._personal_data.external_kpi_data
-          
-          
         })
 
       }
@@ -433,10 +306,8 @@ else{
 
         
         this.http.interactiveDashboard(body).subscribe((res) => {
-          
-
-
           this.interactive_dashoard_response = res;
+          
           console.log(this.interactive_dashoard_response);
           
            localStorage.setItem('body_game',this.interactive_dashoard_response.data._personal_data.id_coroebus_game)
@@ -450,7 +321,9 @@ else{
 
           this.isLoading = true;
           this.interactive_dashoard_response = Array.of(this.interactive_dashoard_response);
-          
+          localStorage.setItem('daily_text',this.interactive_dashoard_response[0]?.data?.theme_details[0]?.daily_text);
+          localStorage.setItem('weekly_text',this.interactive_dashoard_response[0]?.data?.theme_details[0]?.weekly_text);
+          localStorage.setItem('monthly_text',this.interactive_dashoard_response[0]?.data?.theme_details[0]?.monthly_text);
           
         this.is_about_game= localStorage.setItem('is_about_game',this.interactive_dashoard_response[0].data.is_about_game)
         
@@ -520,22 +393,25 @@ else{
           
           
         })
-
+     
 
         
       }
 
     })
+    this.getUserBannerDataSectionView_2()
+    
 
    
 
-
+   
 
   }
 
 ngAfterViewInit():void{
 
-  this.GetDataFromProduceInfo()
+  this.GetDataFromProduceInfo();
+  
 }
 
 
@@ -548,7 +424,7 @@ ngAfterViewInit():void{
 
       }
       this.http.BoosterData(body).subscribe((res: any) => {
-        this.boosterData_response = res.data;
+        this.boosterData_response = res?.data;
 
         
 
@@ -783,20 +659,21 @@ ngAfterViewInit():void{
       this.data=res;
    
     
-      this.seasonalThemeDaily1=this.data.data.seasonal_theme_daily
-      this.seasonalThemeWeekly2=this.data.data.seasonal_theme_weekly;
-      this.seasonalThemeMonthl3=this.data.data.seasonal_theme_monthly
+      this.seasonalThemeDaily1=this.data?.data?.seasonal_theme_daily
+      this.seasonalThemeWeekly2=this.data?.data?.seasonal_theme_weekly;
+      this.seasonalThemeMonthl3=this.data?.data?.seasonal_theme_monthly
       
         
-      this.seasonalThemeDailyBadges1=this.data.data.seasonal_theme_daily_badge_details;
-      this.totalTargetScore=Number(this.seasonalThemeDailyBadges1[0].seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[1].seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[2].seasonal_score_target);
+      this.seasonalThemeDailyBadges1=this.data?.data?.seasonal_theme_daily_badge_details;
+      this.totalTargetScore=Number(this.seasonalThemeDailyBadges1[0]?.seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[1]?.seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[2]?.seasonal_score_target);
 
 
-      this.seasonalThemeWeeklyBadges2=this.data.data.seasonal_theme_weekly_badge_details;
-      this.totalTargetScoreForWeekly=Number(this.seasonalThemeWeeklyBadges2[0].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[1].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[2].seasonal_score_target);
+      this.seasonalThemeWeeklyBadges2=this.data?.data?.seasonal_theme_weekly_badge_details;
+      this.totalTargetScoreForWeekly=Number(this.seasonalThemeWeeklyBadges2[0]?.seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[1]?.seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[2]?.seasonal_score_target);
 
-      this.seasonalThemeMonthlyBadges3=this.data.data.seasonal_theme_monthly_badge_details;
-      this.totalTargetScoreForMontly=Number(this.seasonalThemeMonthlyBadges3[0].seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[1].seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[2].seasonal_score_target);
+      this.seasonalThemeMonthlyBadges3=this.data?.data?.seasonal_theme_monthly_badge_details;
+      this.totalTargetScoreForMontly=Number(this.seasonalThemeMonthlyBadges3[0]?.seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[1]?.seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[2]?.seasonal_score_target);
+
 
       this.seasonalThemeDailyBadges1.forEach((res)=>{
         if(res.active_class == '1'){
@@ -845,6 +722,7 @@ ngAfterViewInit():void{
     this.isMonthlyModalOpen = true;
 
   }
+
   open(content:any) {
     if(this.mergeObj.id_coroebus_game != null){
       var body = {
@@ -871,13 +749,13 @@ ngAfterViewInit():void{
         _popupid:this.promotionalPopUpData.data[0].list[0].id
       }
       this.http.updatePopUp(body).subscribe((res)=>{
-        
+        console.log(res);
         
       })
     })
+     
     setTimeout(()=>{
       if(this.promotionalPopUpData.data[0].list!=''){
-        
         this.modalService.open(content);
 
       }
@@ -959,6 +837,21 @@ ngAfterViewInit():void{
 
 
     }
+  }
+  async getUserBannerDataSectionView_2() {
+    let err: any, res: any;
+    let body: any;
+    body = {
+      "_userid": this.mergeObj.USERID,
+      "_game":this.userSelectionData.id_coroebus_game, "_section_view": "2", "page_number": "1"
+    };
+    [err, res] = await HttpProtocols.to(DashboardModel.getCenterDataSectionView_2(body))
+    if (!err && res?.status === 'success' && res?.statuscode === 200) {
+      this.sectionView_2 = res?.data
+    console.log(this.sectionView_2);
+     
+
+        }
   }
 
   ngOnDestroy(): void {

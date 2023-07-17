@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild,ViewEncapsulation  } from '@angular/core';
 import { Subscription, combineLatest, Subject, Observable } from 'rxjs';
 import * as fromRoot from '../../core/app-state';
 import { Store } from '@ngrx/store';
@@ -19,9 +19,11 @@ import { NotificationPopupComponent } from '@pages/notification-popup/notificati
 
 
 @Component({
+  // encapsulation: ViewEncapsulation.None,
   selector: 'app-spectator-view',
   templateUrl: './spectator-view.component.html',
-  styleUrls: ['./spectator-view.component.scss']
+  styleUrls: ['./spectator-view.component.scss'],
+  
 })
 export class SpectatorViewComponent implements OnInit {
 
