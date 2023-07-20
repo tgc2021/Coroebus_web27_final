@@ -981,7 +981,7 @@ input::placeholder {
     }
 
     .leaderboard_name {
-        margin-left: 7.8vw;
+        margin-left: 8.5vw;
         font-family: 'Inter';
         font-style: normal;
 
@@ -1001,11 +1001,18 @@ input::placeholder {
 
         font-size: 1vw;
     }
+    .leaderBoard_points_modal{
+        margin-left: 22vw;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1vw;
+    }
 
     .leaderboard_tile {
-        width: 48.5vw;
+        width: 100%;
         height: 6vh;
-        margin-left: -1vw;
+        // margin-left: -1vw;
         margin-bottom: 1vh;
         border-radius: 8px;
         display: flex;

@@ -1,0 +1,267 @@
+.container-fluid {
+    background: #ffff;
+    height: 87vh;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.reward_btn {
+    border-radius: 10px;
+    border: 2px solid #000;
+   
+    box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25);
+    height: 10vh;
+
+    color: #555;
+    font-family: 'Inter';
+    font-size: 1.7em;
+    font-style: normal;
+    font-weight: 600;
+    position: relative;
+
+}
+
+.passbook_btn {
+    border-radius: 10px;
+    border: 2px solid #000;
+   
+    box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25);
+    height: 10vh;
+
+    color: #555;
+    font-family: 'Inter';
+    font-size: 1.7em;
+    font-style: normal;
+    font-weight: 600;
+    // position: relative;
+
+}
+
+.activeBtn {
+    border-radius: 10px;
+    border: 2px solid #000;
+    background: linear-gradient(137deg, #F3D638 0%, #FFB21F 100%);
+    box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25);
+    font-family: 'Inter';
+    font-size: 1.7em;
+    font-style: normal;
+    font-weight: 600;
+    color: #000;
+    height: 10vh;
+
+}
+.gift_image{
+    position: absolute;
+    left: 85%;
+    top: -9%;
+    height: 11vh;
+    width: 11vh;
+}
+
+::ng-deep{
+    .mat-tab-labels , .mat-tab-label-content{
+        color: #000 !important;
+        font-size:1.2em;
+        font-weight: 600 !important;
+    }
+} 
+
+// Css For Tear Card
+
+.cardWrapper {
+  // width: 25vw;
+  border-radius: 10px;
+  margin: 20px;
+ 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow:hidden;
+  // margin-bottom: 7%;
+}
+.card-header {
+  height: 8vh;
+  // width: 20vw;
+  border-bottom:2px dashed #fff;
+  background: linear-gradient(133deg, #E5207A 0%, #536293 100%);
+  box-shadow: 0px 14.139918327331543px 14.139918327331543px 0px rgba(0, 0, 0, 0.02), 0px 0px 1.4139918088912964px 0px rgba(0, 0, 0, 0.12), 0px 0px 0px 0.7069959044456482px #E8E8E8;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:0.5em;
+  border-radius: 10.605px;
+}
+.card-header:before, .card-header:after{
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: #fff;
+  border-radius: 100%;
+  bottom: -12px;
+  // border: 2px solid #836602;
+  box-sizing: border-box;
+}
+.card-header:before { 
+  left: -13px;
+}
+.card-header:after {
+  right: -13px;
+}
+.card-body {
+  height: 30vh;
+  // width: 20vw;
+  border-top: 2px dashed #fff;
+  border-radius: 10.605px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap:1em;
+  background: linear-gradient(133deg, #E5207A 0%, #536293 100%);
+  box-shadow: 0px 14.139918327331543px 14.139918327331543px 0px rgba(0, 0, 0, 0.02), 0px 0px 1.4139918088912964px 0px rgba(0, 0, 0, 0.12), 0px 0px 0px 0.7069959044456482px #E8E8E8;
+}
+
+.cardWrapper:hover {
+  // .card-header {
+  //   transform: translateX(10px) rotateZ(-10deg);
+  // }
+  .card-body {
+    transform: translateX(10px) rotateZ(10deg);
+    margin-top: 7%;
+    z-index: 2;
+  
+  }
+}
+.card_container{
+  height: 65vh;
+  width: 100%;
+  display:flex;
+  flex-direction: row;
+  overflow-y: auto;
+  flex-wrap:wrap;
+  justify-content: flex-start;
+}
+
+// button Shine Image
+
+ .activeBtn:before {
+  content: '';
+    position: absolute;
+    width: 70px;
+    height: 100%;
+    background-image: linear-gradient(
+        120deg,
+        rgba(255,255,255, 0) 30%,
+        rgba(255,255,255, .8),
+        rgba(255,255,255, 0) 70%
+    );
+    top: 0;
+    left: -100px;
+    animation: shine 5s infinite linear; /* Animation */
+}
+@keyframes shine {
+  0% {left: -100px}
+  20% {left: 100%}
+  
+  100% {left: 100%}
+}
+.rewardPoint{
+    color: #FFEB34;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1.5em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.product_image_div{
+  height:12vh;width: 12vh;
+  border: 1px solid #fff;
+  border-radius:5px ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img{
+    border-radius: 5px;
+  }
+}
+.product_title{
+  color: #fff;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14.779px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.redeem_btn{
+  height: 5vh;
+  width: 12vw;
+  border-radius: 10px;
+  color:#000;
+  font-weight: 600;
+  border: 1px solid #FFF;
+  background: #FFCA05;
+  position: relative;
+// background: linear-gradient(166deg, #FFCA05 64.79%, #FFF 79.12%, #FFCA05 88.15%);
+// box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.redeem_btn:before{
+  content:'';  
+  position: absolute;
+  width: 50px;
+  height: 100%;
+  background-image: linear-gradient(
+      120deg,
+      rgba(255,255,255, 0) 30%,
+      rgba(255,255,255, .8),
+      rgba(255,255,255, 0) 70%
+  );
+  top: 0;
+  // left: -100px;
+  animation: shinebtn 3s infinite linear; /* Animation */
+}
+@keyframes shinebtn {
+  0% {left: 0%}
+  // 20% {left: 100%}
+  75%{
+    left: 70%
+  }
+  100% {left: 72%
+    
+  }
+}
+
+
+$duration: 5s;
+$text-color: #FFEB34;
+
+.rewardPoint {
+
+	background-image: -webkit-linear-gradient(-40deg, transparent 0%, transparent 30%, #fff 90%, transparent 80%, transparent 100%);
+	-webkit-background-size: 200px;
+	color: $text-color;
+	-webkit-background-clip: text;
+	-webkit-animation-name: shineText;
+	-webkit-animation-duration: $duration;
+	-webkit-animation-iteration-count: infinite;
+	text-shadow: 0 0px 0px rgba(255, 255, 55, 0.5);
+}
+
+@-webkit-keyframes shineText {
+	0%, 10% {
+		background-position: -1000px;
+	}
+	20% {
+		background-position: top left;
+	}
+	90% {
+		background-position: top right;
+	}
+	100% {
+		background-position: 1000px;
+	}
+}

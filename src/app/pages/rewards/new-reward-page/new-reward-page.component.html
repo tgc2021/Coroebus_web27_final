@@ -1,0 +1,135 @@
+<div class="container-fluid">
+    <div class="col p-3 d-flex justify-content-between">
+        <button class="col-5" style="position:relative" [ngClass]="isRewardOpen?'activeBtn':'reward_btn'" (click)="openReward()">
+            <div>Rewards</div>
+            <div class="gift_image">
+                <img src="assets/images/NewRewardAssets/gift (1) 1.png" alt="" height="100%" width="100%">
+            </div>
+        </button>
+        <button class="col-5 " style="position:relative" [ngClass]="isPassbookOpen?'activeBtn':'passbook_btn'" (click)="openPassbook()">
+            <div>Passbook</div>
+            <div class="gift_image">
+                <img src="assets/images/NewRewardAssets/passbook 3 (1) 1.png" alt="" height="100%" width="100%">
+            </div>
+        </button>
+
+    </div>
+
+    <div *ngIf="isRewardOpen;then rewards else passbook"></div>
+    <ng-template #rewards>
+        <mat-tab-group  mat-align-tabs="start" *ngFor="let reward of rewardresponse">
+            <mat-tab label="Platform Rewards">
+                
+                <div   class="col-12 card_container">
+                    <div class="col-3" >
+                        <div class=" cardWrapper" >
+                            <div class="card-header">
+                                <div style="height:5vh;width:5vh">
+                                    <img src="assets/images/NewRewardAssets/COINS SIDDHI.png" alt="" height="100%" width="100%">
+                                </div>
+                                <div>
+                                    {{reward.redeem_point}}
+                                </div>
+                            </div>
+                            <div class="card-body"></div>
+                          </div>
+                    </div>
+                    
+                </div>
+                
+               
+                
+            </mat-tab>
+            <mat-tab label="Organization Reward">
+                <div class="col-12 card_container" >
+                    <div class="col-3" *ngFor="let rewardlist of reward?.data?.rewardTypes[1]?.rewardList;">
+                        <div class="cardWrapper" >
+                            <div class="card-header">
+                                <div style="height:5vh;width:5vh">
+                                    <img src="assets/images/NewRewardAssets/COINS SIDDHI.png" alt="" height="100%" width="100%">
+                                </div>
+                                <div class="rewardPoint">
+                                    {{rewardlist.redeem_point}}
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="product_image_div">
+                                    <img src="{{rewardlist.reward_logo}}" class="productimage" alt="Productimage" height="80%" width="80%">
+                
+                                </div>
+                                <div class="product_title">
+                                    {{rewardlist.name}}
+                                </div>
+                                <div class="btn_div_redeem" *ngIf="reward.data.reward_redemption_day==0">
+                                    <!-- <img data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="redeemed_popup_logo"  src="assets/images/rewards/redeemed.png"> -->
+                                    <button *ngIf="hidedata" (click)="redemeedOrg(rewardlist)" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"
+                                      type="button" class="redeem_btn" data-bs-toggle="modal" data-bs-target="#CantReedeemedReward">Redeem</button>
+                                  </div>
+                                  <div class="btn_div_redeem" *ngIf="reward.data.reward_redemption_day!=0">
+                                    <!-- <img data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="redeemed_popup_logo"  src="assets/images/rewards/redeemed.png"> -->
+                                    <button *ngIf="hidedata" data-bs-toggle="modal" data-bs-target="#daysremaining"
+                                      type="button" class="redeem_btn" data-bs-toggle="modal" data-bs-target="#CantReedeemedReward">Redeem</button>
+                                  </div>
+
+                            </div>
+                          </div>
+                    </div>
+                    
+                </div>
+            </mat-tab>
+          
+          </mat-tab-group>
+          
+    </ng-template>
+    <ng-template #passbook>
+        <mat-tab-group  mat-align-tabs="start">
+            <mat-tab label="First">Content 1</mat-tab>
+            <mat-tab label="Second">Content 2</mat-tab>
+            <mat-tab label="Third">Content 3</mat-tab>
+          </mat-tab-group>
+          
+    </ng-template>
+
+</div>
+
+
+
+
+
+
+<!-- Modals --> 
+
+  
+  <!-- Modal for Can't Reedeemed -->
+  <div class="modal fade" id="CantReedeemedReward" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style=" padding:3%;min-height:30vh">
+        <div class="modal-header" style="position:relative;border-radius: 25px 25px 0px 0px;
+        background: linear-gradient(137deg, #F3D638 0%, #FFB21F 100%);
+        height: 12vh;
+       
+       
+        ">
+        <div style="position:absolute;top: -70%;
+        left: 95%;color:#fff;display: flex;align-items: center;justify-content: center;">
+            <button type="button"  data-bs-dismiss="modal" style="width:4vh;height:4vh;border-radius:100%;" >X</button>
+        </div>
+         
+
+          <div style="position:absolute;height:20vh;width:25vh;top: -80%;
+          left: 35%;">
+            <img src="../../../../assets/images/NewRewardAssets/3d-man-with-cry-pose-white-background 2.png" alt="" height="100%" width="100%">
+          </div>
+        </div>
+        <div class="modal-body d-flex flex-column align-items-center justify-content-center" style="border:1px solid #FFB21F;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
+            <div>
+                <h5>OH NO!</h5>
+            </div>
+            <span>
+                You don’t have enough points to redeem this reward 
+            </span>
+        </div>
+       
+      </div>
+    </div>
+  </div>

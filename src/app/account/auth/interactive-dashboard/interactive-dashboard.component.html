@@ -176,7 +176,7 @@
                                     <div class="web_campaign_image" [style.background]="interactive_dashoard_response[0]?.data?.theme_details[0]?.campaign_color"
                                         >
                                          <div  style="border-bottom:2px solid black;height:3vh;width:20vw;margin-top:-1%">
-                                            <img  src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.campaign_icon}}" alt="" height="100%" width="100%" (load)="open(content)">
+                                            <img  src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.campaign_Web_icon}}" alt="" height="100%" width="100%" (load)="open(content)">
                                          </div>
                                          <div style="height:7vh;width:20vw;margin-top:-1%;color:#fff;font-size:1.6em;display:flex;justify-content:center;align-items:center;font-family:Inter">
                                             {{interactive_dashoard_response[0]?.data?.theme_details[0]?.campaign_text|uppercase}}
@@ -302,34 +302,82 @@
                 <div class="row">
                     <div class="col-12 d-flex gap-1 web_buttons_col">
                         <div class="col-3 web_bottom_buttons">
-                            <img class="web_button_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
+                            <!-- <img class="web_button_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
                                 src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_web}}" />
 
                                 <img class="web_button_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"
-                                src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_web}}" (click)="navigateToChampionsLeague()" />
+                                src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_web}}" (click)="navigateToChampionsLeague()" /> -->
+                                
+                                    <button class="web_button_image" (click)="navigateToChampionsLeague()" [style.background]="interactive_dashoard_response[0]?.data?.theme_details[0]?.buttons_color">
+                                        <div class="btn_gradient_layer d-flex align-items-center">
+                                            <div class="col-3">
+                                                <img src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.champions_league_web}}" alt="" height="100%" width="100%">
+                                            </div>
+                                            <div class="col-6">
+                                               <span class="btn_text">{{interactive_dashoard_response[0]?.data?.theme_details[0]?.champion_league_text}}</span>
+                                            </div>
+                                            <div class="col-3"><img src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.champion_right_image}}" alt="" height="110%" width="110%"></div>
+                                        </div>
+                                    </button>
+                               
+                               
                         </div>
 
                         <div class="col-3 web_bottom_buttons">
-                            <img class="web_button_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
-                                src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt_web}}" />
+                            <!-- <img class="web_button_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
+                                src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt_web}}"/>
 
                                 <img class="web_button_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"
-                                src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt_web}}" (click)="navigateTopersonalMilestone()" />
+                                src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt_web}}" (click)="navigateTopersonalMilestone()" /> -->
+                                <button class="web_button_image" (click)="navigateTopersonalMilestone()" [style.background]="interactive_dashoard_response[0]?.data?.theme_details[0]?.buttons_color">
+                                    <div class="btn_gradient_layer d-flex align-items-center">
+                                        <div class="col-3">
+                                            <img src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.personal_milestone_bt_web}}" alt="" height="100%" width="100%">
+                                        </div>
+                                        <div class="col-9">
+                                           <span class="btn_text">{{interactive_dashoard_response[0]?.data?.theme_details[0]?.personal_milestone_text}}</span>
+                                        </div>
+                                        
+                                    </div>
+                                </button>
                         </div>
 
                         <div class="col-3 web_bottom_buttons">
-                            <img class="web_button_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
+                            <!-- <img class="web_button_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
                                 src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt_web}}" />
 
                                 <img class="web_button_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"
-                                src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt_web}}" (click)="navigateToLearningAcademy()" />
+                                src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt_web}}" (click)="navigateToLearningAcademy()" /> -->
+                                <button class="web_button_image" (click)="navigateToLearningAcademy()" [style.background]="interactive_dashoard_response[0]?.data?.theme_details[0]?.buttons_color">
+                                    <div class="btn_gradient_layer d-flex align-items-center">
+                                        <div class="col-3">
+                                            <img src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.la_bt_web}}" alt="" height="100%" width="100%">
+                                        </div>
+                                        <div class="col-9">
+                                           <span class="btn_text">{{interactive_dashoard_response[0]?.data?.theme_details[0]?.learning_academy_text}}</span>
+                                        </div>
+                                        
+                                    </div>
+                                </button>
+
                         </div>
 
                         <div class="col-3 web_bottom_buttons">
-                            <img  class="web_button_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
+                            <!-- <img  class="web_button_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
                                 src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt_web}}" />
                                 <img  class="web_button_image" *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"
-                                src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt_web}}" (click)="navigateToPlayZone()" />
+                                src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt_web}}" (click)="navigateToPlayZone()" /> -->
+                                <button class="web_button_image" (click)="navigateToPlayZone()" [style.background]="interactive_dashoard_response[0]?.data?.theme_details[0]?.buttons_color">
+                                    <div class="btn_gradient_layer d-flex align-items-center">
+                                        <div class="col-3">
+                                            <img src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.spot_bt_web}}" alt="" height="100%" width="100%">
+                                        </div>
+                                        <div class="col-9">
+                                           <span class="btn_text">{{interactive_dashoard_response[0]?.data?.theme_details[0]?.spot_button_text}}</span>
+                                        </div>
+                                        
+                                    </div>
+                                </button>
                         </div>
 
                     </div>
@@ -390,7 +438,7 @@
                         <div class="mobile-reward-section">
                             <div class="text-center">
                                 <img src="{{interactive_dashoard_response[0].data.theme_details[0].reward_points_image}}"
-                                    alt="" style="height: 4vh;">
+                                    alt="" style="height:4vh;">
                                 <div style="font-size: 12px;">{{interactive_dashoard_response[0].data._points[2].score}}</div>
                             </div>
 
@@ -444,41 +492,48 @@
             <!-- mobile btn section -->
             <div class="d-flex justify-content-center align-items-center">
                 <div class="mobile-btn-section d-flex justify-content-between align-items-center gap-1">
-                    <div style="height:6vh;width: 25%;" (click)="navigateToChampionsLeague()">
-                        <img
-                            src="{{interactive_dashoard_response[0].data.theme_details[0].champions_league_bt}}"
-                            alt="Learning_Academy" width="100%" height="100%">
+                    
+                        
+                            <button class="mobile_button_image"  (click)="navigateToChampionsLeague()" [style.background]="interactive_dashoard_response[0]?.data?.theme_details[0]?.buttons_color">
+                                <div class="btn_gradient_layer_mobile d-flex align-items-center">
+                                    
+                                    <div class="col-9 d-flex align-items-center">
+                                       <p class="btn_text_mobile">{{interactive_dashoard_response[0]?.data?.theme_details[0]?.champion_league_text}}</p>
+                                    </div>
+                                    <div class="col-3"><img src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.mobile_icon}}" alt="" height="100%" width="100%"></div>
+                                </div>
+                            </button>
+                            <button class="mobile_button_image"  (click)="navigateTopersonalMilestone()" [style.background]="interactive_dashoard_response[0]?.data?.theme_details[0]?.buttons_color">
+                                <div class="btn_gradient_layer_mobile d-flex align-items-center">
+                                    
+                                    <div class="col-9 d-flex align-items-center">
+                                       <p class="btn_text_mobile">{{interactive_dashoard_response[0]?.data?.theme_details[0]?.personal_milestone_text}}</p>
+                                    </div>
+                                    <div class="col-3"><img src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.mobile_icon}}" alt="" height="100%" width="100%"></div>
+                                </div>
+                            </button>
+                            <button class="mobile_button_image"  (click)="navigateToLearningAcademy()" [style.background]="interactive_dashoard_response[0]?.data?.theme_details[0]?.buttons_color">
+                                <div class="btn_gradient_layer_mobile d-flex align-items-center">
+                                    
+                                    <div class="col-9 d-flex align-items-center">
+                                       <p class="btn_text_mobile">{{interactive_dashoard_response[0]?.data?.theme_details[0]?.learning_academy_text}}</p>
+                                    </div>
+                                    <div class="col-3"><img src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.mobile_icon}}" alt="" height="100%" width="100%"></div>
+                                </div>
+                            </button>
+                            <button class="mobile_button_image"  (click)="navigateToPlayZone()" [style.background]="interactive_dashoard_response[0]?.data?.theme_details[0]?.buttons_color">
+                                <div class="btn_gradient_layer_mobile d-flex align-items-center">
+                                    
+                                    <div class="col-9 d-flex align-items-center">
+                                       <p class="btn_text_mobile">{{interactive_dashoard_response[0]?.data?.theme_details[0]?.spot_button_text}}</p>
+                                    </div>
+                                    <div class="col-3"><img src="{{interactive_dashoard_response[0]?.data?.theme_details[0]?.mobile_icon}}" alt="" height="100%" width="100%"></div>
+                                </div>
+                            </button>
 
-                          
-                    </div>
-                    <div style="height:6vh;width: 25%;">
-                        <img *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
-                            src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt}}"
-                            alt="Learning_Academy" width="100%" height="100%">
+                           
 
-                            <img *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"
-                            src="{{interactive_dashoard_response[0].data.theme_details[0].la_bt}}"
-                            alt="Learning_Academy" width="100%" height="100%" (click)="navigateToLearningAcademy()">
-                    </div>
-                    <div style="height:6vh;width: 25%;">
-                        <img  *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
-                            src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt}}"
-                            alt="Personal_Milestone" width="100%" height="100%">
-
-                            <img  *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"
-                            src="{{interactive_dashoard_response[0].data.theme_details[0].personal_milestone_bt}}"
-                            alt="Personal_Milestone" width="100%" height="100%" (click)="navigateTopersonalMilestone()">
-                    </div>
-                    <div style="height:6vh;width: 25%;">
-                        <img  *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization=='213'"
-                            src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt}}" alt="PlayZone"
-                            width="100%" height="100%">
-
-                            
-                        <img  *ngIf="interactive_dashoard_response[0].data._personal_data.id_coroebus_organization!='213'"
-                        src="{{interactive_dashoard_response[0].data.theme_details[0].spot_bt}}" alt="PlayZone"
-                        width="100%" height="100%" (click)="navigateToPlayZone()">
-                    </div>
+                   
                 </div>
             </div>
 

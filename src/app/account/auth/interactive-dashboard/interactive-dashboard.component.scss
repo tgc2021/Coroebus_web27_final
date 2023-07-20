@@ -568,7 +568,7 @@ flex-direction: column;
 
 .mobile-daily-btn{
     width: 100%;
-    height: 6vh;
+    height: 5vh;
     margin-top: 0.5vh;
     cursor: pointer;
     display: flex;
@@ -579,7 +579,7 @@ flex-direction: column;
 
     .mobile_daily_gradient{
         width: 100%;
-        height: 5vh;
+        height: 4vh;
         border-radius: 10px;
         display:flex;
         justify-content: space-between;
@@ -624,9 +624,59 @@ flex-direction: column;
 
 .web_button_image {
     height: 15vh;
+    // background: #FEEE1E;
+    border-radius: 10px;
     width: 95%;
     cursor: pointer;
+    padding: 2%;
 }
+.btn_gradient_layer{
+    background: linear-gradient(180deg, #FFF 0%, #FFF 7.01%, rgba(255, 255, 255, 0.00) 30.36%, rgba(59, 59, 59, 0.00) 73.08%, rgba(0, 0, 0, 0.30) 100%);
+    height:100%;width:100%;
+    border-radius:5px;
+
+    .btn_text{
+        font-weight: 700;
+        font-size: 1.5em;
+        font-family: 'Inter';
+        text-align: center;
+    }
+   
+
+}
+.mobile_button_image{
+    height:6vh;width: 25%;
+    // background: #FEEE1E;
+    border-radius: 10px;
+    // width: 95%;
+    cursor: pointer;
+    padding: 2px;
+    border: 2px solid #000;
+
+    
+
+
+}
+.btn_gradient_layer_mobile{
+    background: linear-gradient(180deg, #FFF 0%, #FFF 7.01%, rgba(255, 255, 255, 0.00) 30.36%, rgba(59, 59, 59, 0.00) 73.08%, rgba(0, 0, 0, 0.30) 100%);
+    height:100%;width:100% ;
+    border-radius:5px;
+    display:flex;align-items:center;
+
+    .btn_text_mobile{
+        font-weight: 700;
+        height: 2vh;
+        font-size: 0.9em;
+        font-family: 'Inter';
+       
+        line-height: 1.3em;
+       
+    
+    }
+   
+
+}
+
 
 .web_buttons_col {
     // width: 66vw;

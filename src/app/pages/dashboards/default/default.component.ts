@@ -52,6 +52,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   weekly_text: any;
   monthly_text: any;
   userGrade: any;
+  indexForIslandLogos: number;
 dismiss() {
 throw new Error('Method not implemented.');
 }
@@ -3046,14 +3047,20 @@ else if(this.activeTabForSectionView_2 == 4){
     let err1: any, res1: any;
     let body1: any;
     if(this.sectionView_1?._personal_data.id_role==4){
-this.gameid=this.sectionView_1?.is_land_logos[2]?.game_id
+      this.gameid=this.sectionView_1?.is_land_logos[2]?.game_id
     }
     else if(this.sectionView_1?._personal_data.id_role==3){
       this.gameid=this.sectionView_1?.is_land_logos[1]?.game_id
 
     }
+   
+    if(this.sectionView_1?._personal_data.id_role==4){
+      this.indexForIslandLogos=2;
+
+    }
+    
     body1 = {
-      "_userid": this.sectionView_1?.is_land_logos[2]?._userid,
+      "_userid": this.sectionView_1?.is_land_logos[this.indexForIslandLogos]?._userid,
       "_game":this.gameid,
       "_section_view": "2", "page_number": "1"
     };
@@ -3374,16 +3381,28 @@ this.gameid=this.sectionView_1?.is_land_logos[2]?.game_id
     let body: any;
    
     console.log("Shubham")
+    console.log( this.sectionView_1?.is_land_logos)
+
+    
+   
+    if(this.sectionView_1?._personal_data.id_role==4){
+      this.indexForIslandLogos=2;
+
+    }
+    else if(this.sectionView_1?._personal_data.id_role==3){
+      this.indexForIslandLogos=0;
+    }
+   
    
     body = {
-      "_userid": this.sectionView_1?.is_land_logos[2]?._userid,
-      "_game": this.sectionView_1?.is_land_logos[2]?.game_id,
+      "_userid": this.sectionView_1?.is_land_logos[this.indexForIslandLogos]?._userid,
+      "_game": this.sectionView_1?.is_land_logos[this.indexForIslandLogos]?.game_id,
        "_section_view": "3", 
        "page_number": this.pageNumberForSectionView_3_index
     };
     
 
-   
+   console.log(body);
 
 
     [err, res] = await HttpProtocols.to(DashboardModel.getRankingAndOtherDataSectionView_3(body))
@@ -3406,8 +3425,7 @@ this.gameid=this.sectionView_1?.is_land_logos[2]?.game_id
            
             if (element?._Overall?.length > 0 || element?._data?.length > 0) {
              
-              //
-              //
+             
 
               this.sectionView_3_index?._ranking_data[index]?._Overall?.push(...element?._Overall)
               // this.sectionView_3?._ranking_data[index]?._data?.push(...element?._data)

@@ -108,7 +108,12 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   primary_rank: any;
   sectionView_3_popup: any;
   sectionView_3_list_popup: any;
+  sectionView_3_list_popup_index: any;
+
   tl_team_rank: string;
+  sectionView_2_err: string;
+  sectionView2ResponsePopup: void;
+  activeClassPopup: any;
   
   constructor(private readonly store: Store, public _route: ActivatedRoute,public snackBar: MatSnackBar,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
@@ -1033,44 +1038,90 @@ this.spectSearchStr=''
     }
     
   }
-  async GetRankingPopupData(){
-   
-    this.queryParams = { userID:  this.sectionView_1.is_land_logos[0]._userid, gameID: this.sectionView_1.is_land_logos[0].game_id, roleID:  this.sectionView_1.is_land_logos[0].role_id}
 
-    let err: any, res: any;
-    let body: any;
-    
-    
-    body = {
-      "_userid": this.sectionView_1.is_land_logos[0]._userid,
-
-      "_game": this.sectionView_1.is_land_logos[0].game_id, "_section_view": "3", "page_number": this.pageNumberForSectionView_3
-    };
-    localStorage.setItem('body_userid', body._userid);
-    localStorage.setItem('body_game', body._game);
-
-    [err, res] = await HttpProtocols.to(DashboardModel.getRankingAndOtherDataSectionView_3(body))
-    if (!err && res?.status === 'success' && res?.statuscode === 200) {
-    
-
+  async GetIndexWisePopup(event:any){
+    console.log(event)
      
-        this.sectionView_3_popup = res?.data;
-        console.log(this.sectionView_3_popup)
+    this.activeClassPopup=event;
+  
+   
+  
+    let err1: any, res1: any;
+    let body1: any;
+    
+    body1 = {
+      "_userid": this.sectionView_1?.is_land_logos[0]?._userid,
+      "_game":this.sectionView_1?.is_land_logos[0]?.game_id,
+      "_section_view": "2", "page_number": "1"
+    };
+    [err1, res1] = await HttpProtocols.to(DashboardModel.getCenterDataSectionView_2(body1))
+    if (!err1 && res1?.status === 'success' && res1?.statuscode === 200) {
+      this.sectionView2ResponsePopup=res1?.data?._ranking_data;
+      this.activeTabOrderNumberForSectionView_2 = res1?.data?._ranking_data?.[event].order
       
-      // this.filterRankingData()
+      console.log(this.activeTabOrderNumberForSectionView_2)
+      this.queryParams = { userID:  this.sectionView_1?.is_land_logos[0]?._userid, gameID: this.sectionView_1?.is_land_logos[0].game_id, roleID:  this.sectionView_1?.is_land_logos[0]?.role_id}
 
-      this.sectionView_3_list_popup = this.sectionView_3_popup?._ranking_data
-      //
-    } else {
-      this.sectionView_3_err = 'Please try after some time'
+      let err: any, res: any;
+      let body: any;
+      
+      
+      body = {
+        "_userid": this.sectionView_1?.is_land_logos[0]?._userid,
+        "_game": this.sectionView_1?.is_land_logos[0]?.game_id, "_section_view": "3", "page_number": this.pageNumberForSectionView_3
+      };
+      // localStorage.setItem('body_userid', body._userid);
+      // localStorage.setItem('body_game', body._game);
+  
+      [err, res] = await HttpProtocols.to(DashboardModel.getRankingAndOtherDataSectionView_3(body))
+      if (!err && res?.status === 'success' && res?.statuscode === 200) {
+      
+        console.log(this.activeTabOrderNumberForSectionView_2-1)
+  
+       
+          this.sectionView_3_popup = res?.data;
+           
+          this.sectionView_3_list_popup_index = this.sectionView_3_popup?._ranking_data?.filter(data => {
+            console.log(data);
+            console.log(data.order);
+            console.log(this.activeTabOrderNumberForSectionView_2);
+            
+            if (data.order === this.activeTabOrderNumberForSectionView_2) {
+              console.log(data);
+              
+              return data
+            }
+          })
+         
+           
+        
+        // this.filterRankingData()
+  
+        // this.sectionView_3_list_popup = this.sectionView_3_popup?._ranking_data
+        //
+      } else {
+        this.sectionView_3_err = 'Please try after some time'
+      }
+  
+
+
     }
+      
 
+    else {
+      this.sectionView_2_err = 'Please try after some time'
+    }
+     
+   }
+  async GetRankingPopupData(){
+    console.log(this.activeClassPopup);
+    
+    console.log(this.activeTabOrderNumberForSectionView_2)
+   
+    
+    this.GetIndexWisePopup(this.activeTabOrderNumberForSectionView_2-1)
 
-
-    // this.getUserBannerDataSectionView_3(null, this.queryParams)
-  
-  
-
+    
 
 }
   getDataBasedOnUserIDVIAhierarchyPopupList(data: any, modal: any) {
