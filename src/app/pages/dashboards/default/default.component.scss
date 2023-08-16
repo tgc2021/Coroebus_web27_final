@@ -290,20 +290,21 @@ mat-accordion{
         display: flex;
         justify-content: start;
         align-items: center;
+        gap:0.2em;
         .activeBadge{
-            width: 4vh;
-            height: 4vh;
+            width: 3vh;
+            height: 3vh;
             border: 1px solid #0000;
-            margin-left: 0.5vw;
+            // margin-left: 0.5vw;
             background: #D9D9D9;
             color: #000000;
             border-radius: 4px;
         }
         .deActiveBadge{
-            width: 4vh;
-            height: 4vh;
+            width: 3vh;
+            height: 3vh;
             border: 1px solid #0000;
-            margin-left: 0.5vw;
+            // margin-left: 0.5vw;
             background: #D9D9D9;
             color: #000000;
             filter: grayscale(100%);
@@ -1859,7 +1860,6 @@ text-overflow: ellipsis;
 }
 .box1{
 height: 13vh;
-
 }
 .box2{
 height: 26vh;
@@ -1900,7 +1900,7 @@ border-radius: 8px;
 .animation-bar-1 {
   
     display: block;
-  
+    margin-top: 9vh;
  
     font-size: 16px;
    

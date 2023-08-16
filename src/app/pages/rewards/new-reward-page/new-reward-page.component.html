@@ -1,135 +1,875 @@
-<div class="container-fluid">
-    <div class="col p-3 d-flex justify-content-between">
-        <button class="col-5" style="position:relative" [ngClass]="isRewardOpen?'activeBtn':'reward_btn'" (click)="openReward()">
+<div class="container-fluid web-view">
+    <div class="col p-3 d-flex justify-content-center gap-4">
+        <button class="col-6" style="position:relative" [ngClass]="isRewardOpen?'activeBtn':'reward_btn'"
+            (click)="openReward()">
             <div>Rewards</div>
             <div class="gift_image">
-                <img src="assets/images/NewRewardAssets/gift (1) 1.png" alt="" height="100%" width="100%">
+                <img [src]="rewardImage" alt="" height="100%" width="100%">
             </div>
         </button>
-        <button class="col-5 " style="position:relative" [ngClass]="isPassbookOpen?'activeBtn':'passbook_btn'" (click)="openPassbook()">
+        <button class="col-6" style="position:relative" [ngClass]="isPassbookOpen?'activeBtn':'passbook_btn'"
+            (click)="openPassbook()">
             <div>Passbook</div>
             <div class="gift_image">
-                <img src="assets/images/NewRewardAssets/passbook 3 (1) 1.png" alt="" height="100%" width="100%">
+                <img [src]="passbookImage" alt="" height="100%" width="100%">
             </div>
         </button>
-
     </div>
 
-    <div *ngIf="isRewardOpen;then rewards else passbook"></div>
+    <div class="total_reward_points">
+                
+      <b *ngFor="let points of rewardresponse">{{points?.data?.points_list[0]?._data?.rewardPoints}}</b>
+      &nbsp;
+      <b style="height:3vh;width:3vh">
+          <img src="{{coinImage}}" height="100%" width="100%">
+      </b>
+</div>
+  
+     
+    <div  *ngIf="isRewardOpen;then rewards else passbook"></div>
     <ng-template #rewards>
-        <mat-tab-group  mat-align-tabs="start" *ngFor="let reward of rewardresponse">
+  
+        <mat-tab-group  mat-align-tabs="start" style="position: relative;" *ngFor="let reward of rewardresponse">
+          
             <mat-tab label="Platform Rewards">
-                
-                <div   class="col-12 card_container">
-                    <div class="col-3" >
+                <div class="col-12 card_container" id="card-container">
+                    <div class="col-3">
                         <div class=" cardWrapper" >
-                            <div class="card-header">
-                                <div style="height:5vh;width:5vh">
-                                    <img src="assets/images/NewRewardAssets/COINS SIDDHI.png" alt="" height="100%" width="100%">
-                                </div>
-                                <div>
-                                    {{reward.redeem_point}}
-                                </div>
+                            <div class="card-header" [style.background]="arrForCardColor[0]?.color">
+                              <div class="rewardPoint" style="color:#fff;font-size:1.3em;font-weight:500">
+                                Platform Reward
                             </div>
-                            <div class="card-body"></div>
-                          </div>
+                            </div>
+                            <div class="card-body" [style.background]="arrForCardColor[0]?.color">
+                             
+                                <div class="product_image_div">
+                                    <img class="platform_image" src="assets/images/rewards/Platform_reward.jpg"
+                                        width="100%" height="100%" />
+
+                                </div>
+                                <div class="btn_div_redeem" *ngIf="hidedata">
+
+                                    <button *ngIf="reward?.data?.reward_redemption_day==0" class="redeem_btn" type="button" (click)="navigateToLogicalBaniya()">Redeem</button>
+                                    <button *ngIf="reward?.data?.reward_redemption_day!=0" class="redeem_btn" type="button" >Redeem</button>
+                                </div>
+                               
+
+
+                            </div>
+                        </div>
                     </div>
-                    
+
                 </div>
-                
-               
-                
             </mat-tab>
             <mat-tab label="Organization Reward">
-                <div class="col-12 card_container" >
-                    <div class="col-3" *ngFor="let rewardlist of reward?.data?.rewardTypes[1]?.rewardList;">
-                        <div class="cardWrapper" >
-                            <div class="card-header">
+              
+                <div class="col-12 card_container">
+                    <div class="col-3" *ngFor="let rewardlist of  reward?.data?.rewardTypes[1]?.rewardList | slice: (page-1) * pageSizeReward : (page-1) * pageSizeReward + pageSizeReward;let index=index;">
+                     
+                        <div class="cardWrapper"  [ngClass]="{'tear_card':tearCardIndex==index}"
+                         >
+                          
+                            <div class="card-header" [style.background]="arrForCardColor[index]?.color" >
                                 <div style="height:5vh;width:5vh">
-                                    <img src="assets/images/NewRewardAssets/COINS SIDDHI.png" alt="" height="100%" width="100%">
+                                    <img src="assets/images/NewRewardAssets/COINS SIDDHI.png" alt="" height="100%"
+                                        width="100%">
+
                                 </div>
                                 <div class="rewardPoint">
                                     {{rewardlist.redeem_point}}
                                 </div>
                             </div>
-                            <div class="card-body">
+                            <div></div> 
+                            <div class="card-body" [style.background]="arrForCardColor[index]?.color"  >
                                 <div class="product_image_div">
-                                    <img src="{{rewardlist.reward_logo}}" class="productimage" alt="Productimage" height="80%" width="80%">
-                
+                                    <img src="{{rewardlist.reward_logo}}" class="productimage" alt="Productimage"
+                                        height="80%" width="80%">
+
                                 </div>
                                 <div class="product_title">
                                     {{rewardlist.name}}
                                 </div>
-                                <div class="btn_div_redeem" *ngIf="reward.data.reward_redemption_day==0">
-                                    <!-- <img data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="redeemed_popup_logo"  src="assets/images/rewards/redeemed.png"> -->
-                                    <button *ngIf="hidedata" (click)="redemeedOrg(rewardlist)" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"
-                                      type="button" class="redeem_btn" data-bs-toggle="modal" data-bs-target="#CantReedeemedReward">Redeem</button>
-                                  </div>
-                                  <div class="btn_div_redeem" *ngIf="reward.data.reward_redemption_day!=0">
-                                    <!-- <img data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="redeemed_popup_logo"  src="assets/images/rewards/redeemed.png"> -->
-                                    <button *ngIf="hidedata" data-bs-toggle="modal" data-bs-target="#daysremaining"
-                                      type="button" class="redeem_btn" data-bs-toggle="modal" data-bs-target="#CantReedeemedReward">Redeem</button>
-                                  </div>
+                                <div class="btn_div_redeem" *ngIf="hidedata">
+                                  <!-- {{rewardlist?.redeem_point|json}} -->
+                                  
+                                  <div *ngIf="rewardlist?.redeem_point<rewardresponse[0]?.data?.points_list[0]?._data?.rewardPoints;then reedeemReward else cantReedeem"></div>
+                                    <ng-template #reedeemReward>
+                                      
+                                      <button  (click)="redemeedOrg(rewardlist,index)" data-bs-toggle="modal"
+                                         type="button" class="redeem_btn"  data-bs-toggle="modal" data-bs-target="#ReedeemedPopup">Redeem</button>
+                                    </ng-template>
+                                    <ng-template #cantReedeem>
+                                      <button  data-bs-toggle="modal" 
+                                      type="button" class="redeem_btn" data-bs-toggle="modal"
+                                      data-bs-target="#CantReedeemedReward">Redeem</button>
+                                    </ng-template>
+                                    
+                                </div>
+                                
 
                             </div>
-                          </div>
+                            
+                        </div>
                     </div>
-                    
+
                 </div>
+                <div class="d-flex justify-content-end" style="margin-top:-4%">
+                  <ngb-pagination class="pagination" [pageSize] = "4" [collectionSize]="reward?.data?.rewardTypes[1]?.rewardList.length" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
+                </div>
+                
             </mat-tab>
-          
-          </mat-tab-group>
-          
+            
+        </mat-tab-group>
     </ng-template>
     <ng-template #passbook>
-        <mat-tab-group  mat-align-tabs="start">
-            <mat-tab label="First">Content 1</mat-tab>
-            <mat-tab label="Second">Content 2</mat-tab>
-            <mat-tab label="Third">Content 3</mat-tab>
-          </mat-tab-group>
+       <div class="tab" style="position:relative" *ngFor="let points of rewardresponse">
+        
+        <mat-tab-group (click)="enagagmentlogPassbookAPI($event)">
+            <!-- Points Table -->
+            <mat-tab label="{{points.data.points_list[0].label}}">
+                <div class="table_div">
+                    <!-- <span>
+                       <p class="from_datepicker">From</p>
+                       
+                       
+                       <input class="datepicker_from" type="date" name="dateofbirth" id="dateofbirth" data-date-format="DD MMMM YYYY" >
+                       <p class="to_datepicker">To</p>
+      
+                       <input class="datepicker_to" type="date" name="dateofbirth" id="dateofbirth">
+                      </span> -->
+                    <div>
+                      <input class="search" type="search" name="search" [(ngModel)]="searchText" autocomplete="off"
+                        placeholder=" Search">
+      
+                    </div>
+                    <div class="table-container">
+                      <table id="example1" class="table table-striped">
+                        <thead>
+                          <tr>
+                          
+                            <th scope="col">Source</th>
+                            <th scope="col">Points</th>
+        
+        
+                          </tr>
+                        </thead>
+                        <tbody *ngFor="let response of rewardresponse">
+                          <tr
+                            *ngFor="let pointTable of response.data.points_list[0]._data.reward_point_dist | filter:searchText">
+                           
+                            <td style="font-family:sans-serif;" class="col-md-10 col-sm-10">{{pointTable.tag_Label}}</td>
+                            <td style="font-family:sans-serif;" class="col-md-2 col-sm-2"> {{pointTable.reward_points}}</td>
+        
+        
+                          </tr>
+        
+                        </tbody>
+                      </table>
+        
+                    </div>
+                    
+      
+                  </div>
+            </mat-tab>
+
+            <!-- Passbook -->
+            <mat-tab label="{{points.data.points_list[1].label}}">
+                <div class="table_div">
+                    <div>
+                      <input class="search" type="search" name="search" [(ngModel)]="searchText" autocomplete="off"
+                        placeholder=" Search">
+                    </div>
+                    <div class="table-container">
+                      <table id="example" class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col" (click)="sortList('date_time')">Date
+                              <!-- <img class="up_down_arrow" src="assets/images/rewards/up_down_arrow.png"> -->
+                              &nbsp;<div *ngIf="reverse; then downFilter1 else upFilter1" ></div>
+                              <ng-template #downFilter1>
+                                <img src="assets/images/playZone/images/filterDown.png" alt="up_arrow" width="8px" >
+                              </ng-template>
+                              <ng-template #upFilter1>
+                                <img src="assets/images/playZone/images/filterUp.png" alt="down_arrow" width="8px">
+                              </ng-template>
+                            </th>
+                            <th scope="col">Source</th>
+                            <th scope="col">Earned
+                              <!-- <img class="up_down_arrow" src="assets/images/rewards/up_down_arrow.png"> -->
+                            </th>
+                            <th scope="col">Redeemed
+                              <!-- <img class="up_down_arrow" src="assets/images/rewards/up_down_arrow.png"> -->
+                            </th>
+                            <th scope="col">Balance</th>
+                          </tr>
+                        </thead>
+                        <tbody *ngFor="let response of rewardresponse">
+                          <tr *ngFor="let passbookresponse of response.data.points_list[1]._data|slice: (page1-1) * pageSize : (page1-1) * pageSize + pageSize |orderBy: key : reverse |filter:searchText ">
+                            <td style="font-family:sans-serif;" class="col-md-2 col-sm-1">{{passbookresponse.date_time.slice(0,11) | date: 'dd/MM/yyyy' }}</td>
+                            <td style="font-family:sans-serif;" class="col-md-4 col-sm-3">{{passbookresponse.description_}}</td>
+                            <td style="font-family:sans-serif;" *ngIf="passbookresponse.points_credited!=='' " class="col-md-2 col-sm-3">{{passbookresponse.points_credited|number : '1.2-2'}}</td>
+                            <td style="font-family:sans-serif;" *ngIf="passbookresponse.points_credited==='' " class="col-md-2 col-sm-3">-</td>
+      
+                            <td style="font-family:sans-serif;" *ngIf="passbookresponse.points_debited!==''" class="col-md-2 col-sm-3">
+                              <button class="btn btn-reedeemed-passbook" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="popupRedemed(passbookresponse)">
+                                {{passbookresponse.points_debited  | number : '1.2-2'}}
+                                <img  class="redeemed_popup_logo" src="assets/images/rewards/redeemed.png" >
+                              </button>
+
+                            <td style="font-family:sans-serif;" *ngIf="passbookresponse.points_debited==='' " class="col-md-2">
+                              -
+                            </td>
+                            <td style="font-family:sans-serif;" class="col-md-2">{{passbookresponse.balance  | number : '1.2-2'}}</td>
+        
+                          </tr>
+                         
+                        </tbody>
+
+                        
+                      </table>
+                    
+        
+                    </div>
+                    
+                  </div>
+               
+
+                  <div class="d-flex justify-content-end">
+                 
+                    <ngb-pagination class="pagination"  [pageSize]="10" [collectionSize]="collectionSize" [(page)]="page1" aria-label="Default pagination"></ngb-pagination>
+                  
+                  </div>
+               
+            </mat-tab>
+
+            <!-- Redemption History -->
+            <mat-tab label="{{points.data.points_list[2].label}}">
+                <div class="select_container d-flex justify-content-end mt-2">
+                   
+                   <select (change)="onChange($event)" class="form-control form-select form-select-sm mb-1"
+                   aria-label=".form-select-lg example" style="width:20%">
+                   <option class="option_select m-3" *ngFor="let pointselect of points.data.points_list[2]._data;"
+                     [value]="pointselect.order" selected="pointselect.order">{{pointselect.label}}</option>
+             
+                 </select>
+                   
+                </div>
+                <div class="col-12 card_container_orgnization mt-1" *ngIf="points.data.points_list[2]?._data[value]?._data.length!=0" >
+
+                    <div class="col-3" *ngFor="let historyData of points.data.points_list[2]?._data[value]?._data|slice: (page-1) * pageSizeReward : (page-1) * pageSizeReward + pageSizeReward;let i=index" >
+                       
+                        <div class="cardWrapper">
+                            <div class="card-header" [style.background]="arrForCardColor[i]?.color">
+                                <div style="height:5vh;width:5vh">
+                                    <img src="assets/images/NewRewardAssets/COINS SIDDHI.png" alt="" height="100%"
+                                        width="100%">
+                                </div>
+                                <div class="rewardPoint">
+                                    {{historyData.rewardcount}}{{historyData.points}}
+                                </div>
+                            </div>
+                            <div class="card-body mt-4" [style.background]="arrForCardColor[i]?.color">
+                                <div class="product_image_div">
+                                    <img src="{{historyData.image || historyData.reward_logo}}" class="productimage" alt="Productimage"
+                                        height="80%" width="80%">
+                                </div>
+                                <div class="product_title">
+                                    {{historyData.rewards}}
+                                </div>
+                                <div class="btn_div_redeem" >
+
+                                    <button   data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop1" type="button" class="redeem_btn"
+                                        data-bs-toggle="modal">Redeemed</button>
+                                </div>
+                                <!-- <div class="btn_div_redeem" >
+
+                                    <button *ngIf="hidedata" data-bs-toggle="modal" data-bs-target="#daysremaining"
+                                        type="button" class="redeem_btn" data-bs-toggle="modal"
+                                        data-bs-target="#CantReedeemedReward">Redeem</button>
+                                </div> -->
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex col-12 justify-content-end" style="margin-top:-4%">
+                      <ngb-pagination class="pagination" [pageSize] = "4" [collectionSize]="points?.data?.points_list[2]?._data[value]?._data?.length" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
+                    </div>
+                </div>
+                <div class="col-12 nodataCardContainer" *ngIf="points.data.points_list[2]?._data[value]?._data.length==0">
+                    <div class=" col-8 text-center"
+                    *ngIf="points.data.points_list[2]._data[value]._data.length == 0">
+                    <img class="no_data_reward_image" src="assets/images/rewards/no_redeem_rewad.png"  height="60%" width="50%"/>
+                    <p class="no_data_reward_message">You have not redeemed any rewards yet!
           
+                    </p>
+                    <!-- <p class="error_mssg_organisation_redemption">No Data Available</p> -->
+          
+                  </div>
+
+                </div>
+                
+                
+            </mat-tab>
+        </mat-tab-group>
+       </div>
+
+
     </ng-template>
 
 </div>
 
 
+<!-- Mobile View started -->
 
-
-
-
-<!-- Modals --> 
-
+<div class="container-fluid  mobile-view">
+  <div class="col p-2  d-flex justify-content-between gap-2">
+    <button class="col-6" style="position:relative" [ngClass]="isRewardOpen?'activeBtn_mobile':'reward_btn_mobile'"
+        (click)="openReward()">
+        <div>Rewards</div>
+        <div class="gift_image_mobile">
+            <img [src]="rewardImage" alt="" height="100%" width="100%">
+        </div>
+    </button>
+    <button class="col-6" style="position:relative" [ngClass]="isPassbookOpen?'activeBtn_mobile':'passbook_btn_mobile'"
+        (click)="openPassbook()">
+        <div>Passbook</div>
+        <div class="gift_image_mobile">
+            <img [src]="passbookImage" alt="" height="100%" width="100%">
+        </div>
+    </button>
+  </div>
+  <div class="total_reward_points mb-1">
+                
+    <b *ngFor="let points of rewardresponse">{{points?.data?.points_list[0]?._data?.rewardPoints}}</b>
+    &nbsp;
+    <b style="height:3vh;width:3vh">
+        <img src="{{coinImage}}" height="100%" width="100%">
+    </b>
+</div>
+  <div *ngIf="isRewardOpen;then rewardsMobile else passbookMobile"></div>
+    <ng-template #rewardsMobile>
   
-  <!-- Modal for Can't Reedeemed -->
-  <div class="modal fade" id="CantReedeemedReward" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content" style=" padding:3%;min-height:30vh">
-        <div class="modal-header" style="position:relative;border-radius: 25px 25px 0px 0px;
+        <mat-tab-group  mat-align-tabs="start" style="position:relative;" *ngFor="let reward of rewardresponse">
+            
+            <mat-tab label="Platform Rewards">
+              <div class="cardWrap" >
+                <div class="card cardLeft" [style.background]="arrForCardColor[0]?.color">
+                  <div class="product_image_div_mobile">
+                    <img class="platform_image" src="assets/images/rewards/Platform_reward.jpg"
+                        width="100%" height="100%" />
+
+                </div>
+                  
+                  
+                </div>
+
+                <div class="card cardRight d-flex justify-content-center align-items-center" [style.background]="arrForCardColor[0]?.color">
+                  <div class="product_title_mobile">
+                    Platform Reward
+                  </div>
+                  <div class="btn_div_redeem" *ngIf="hidedata">
+
+                    <button *ngIf="reward?.data?.reward_redemption_day==0" class="redeem_btn" type="button" (click)="navigateToLogicalBaniya()">Redeem</button>
+                    <button *ngIf="reward?.data?.reward_redemption_day!=0" class="redeem_btn" type="button" >Redeem</button>
+                </div>
+                  
+                </div>
+              
+              </div>
+               
+            </mat-tab>
+            <mat-tab label="Organization Reward" >
+              <div class="col-12" style="overflow-y: auto;height:75vh;display:flex;flex-direction:column;overflow-x:hidden">
+                <div class="col-12"   *ngFor="let rewardlist of reward?.data?.rewardTypes[1]?.rewardList | slice: (page-1) * pageSizeReward : (page-1) * pageSizeReward + pageSizeReward;;let index=index">
+                  <div class="cardWrap"  [ngClass]="{'tear_card_mobile':tearCardIndex==index}"> 
+                    <div class="card cardLeft" [style.background]="arrForCardColor[index]?.color">
+                      <div class="product_image_div_mobile">
+                        <img src="{{rewardlist.reward_logo}}" class="productimage" alt="Productimage"
+                            height="80%" width="80%">
+
+                    </div>
+                    </div>
+                    <div class="card cardRight" [style.background]="arrForCardColor[index]?.color">
+                      <div class="product_title_mobile">
+                        {{rewardlist?.name}}
+                      </div>
+                      
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <div style="height:3vh;width:3vh">
+                          <img src="assets/images/NewRewardAssets/COINS SIDDHI.png" alt="" height="100%"
+                              width="100%">
+  
+                      </div>
+                      <div class="rewardPoint">
+                          {{rewardlist?.redeem_point}}
+                      </div>
+  
+                      </div>
+                      <div class="btn_div_redeem" *ngIf="hidedata">
+
+                       
+                             <div *ngIf="rewardlist?.redeem_point<rewardresponse[0]?.data?.points_list[0]?._data?.rewardPoints;then reedeemReward else cantReedeem"></div>
+                                    <ng-template #reedeemReward>
+                                      
+                                      <button  (click)="redemeedOrg(rewardlist,index)" data-bs-toggle="modal"
+                                         type="button" class="redeem_btn"  data-bs-toggle="modal" data-bs-target="#ReedeemedPopup">Redeem</button>
+                                    </ng-template>
+                                    <ng-template #cantReedeem>
+                                      <button  data-bs-toggle="modal" 
+                                      type="button" class="redeem_btn" data-bs-toggle="modal"
+                                      data-bs-target="#CantReedeemedReward">Redeem</button>
+                                    </ng-template>
+                                  
+                    </div>
+                    <!-- <div class="btn_div_redeem" *ngIf="reward?.data?.reward_redemption_day!=0">
+
+                        <button *ngIf="hidedata" data-bs-toggle="modal" 
+                            type="button" class="redeem_btn" data-bs-toggle="modal"
+                            data-bs-target="#CantReedeemedReward">Redeem</button>
+                    </div> -->
+
+                      
+                    </div>
+                  
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-end" style="margin-top:-4%">
+                <ngb-pagination class="pagination" [pageSize] = "4" [collectionSize]="reward?.data?.rewardTypes[1]?.rewardList.length" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
+              </div>
+            </mat-tab>
+
+        </mat-tab-group>
+    </ng-template>
+    <ng-template #passbookMobile>
+       <div class="tab" style="position:relative" *ngFor="let points of rewardresponse">
+        
+        <mat-tab-group (click)="enagagmentlogPassbookAPI($event)">
+            <!-- Points Table -->
+            <mat-tab label="{{points.data.points_list[0].label}}">
+                <div class="table_div">
+                    <!-- <span>
+                       <p class="from_datepicker">From</p>
+                       
+                       
+                       <input class="datepicker_from" type="date" name="dateofbirth" id="dateofbirth" data-date-format="DD MMMM YYYY" >
+                       <p class="to_datepicker">To</p>
+      
+                       <input class="datepicker_to" type="date" name="dateofbirth" id="dateofbirth">
+                      </span> -->
+                    <div>
+                      <input class="search" type="search" name="search" [(ngModel)]="searchText" autocomplete="off"
+                        placeholder=" Search">
+      
+                    </div>
+                    <div class="table-container">
+                      <table id="example1" class="table table-striped">
+                        <thead>
+                          <tr>
+                          
+                            <th scope="col">Source</th>
+                            <th scope="col">Points</th>
+        
+        
+                          </tr>
+                        </thead>
+                        <tbody *ngFor="let response of rewardresponse">
+                          <tr
+                            *ngFor="let pointTable of response.data.points_list[0]._data.reward_point_dist | filter:searchText">
+                           
+                            <td style="font-family:sans-serif;" class="col-md-10 col-sm-10">{{pointTable.tag_Label}}</td>
+                            <td style="font-family:sans-serif;" class="col-md-2 col-sm-2"> {{pointTable.reward_points}}</td>
+        
+        
+                          </tr>
+        
+                        </tbody>
+                      </table>
+        
+                    </div>
+                    
+      
+                  </div>
+            </mat-tab>
+
+            <!-- Passbook -->
+            <mat-tab label="{{points.data.points_list[1].label}}" style="overflow-y: auto;">
+                <div class="table_div">
+                    <div>
+                      <input class="search" type="search" name="search" [(ngModel)]="searchText" autocomplete="off"
+                        placeholder=" Search">
+                    </div>
+                    <div class="table-container">
+                      <table id="example" class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col" (click)="sortList('date_time')">Date
+                              <!-- <img class="up_down_arrow" src="assets/images/rewards/up_down_arrow.png"> -->
+                              &nbsp;<div *ngIf="reverse; then downFilter1 else upFilter1" ></div>
+                              <ng-template #downFilter1>
+                                <img src="assets/images/playZone/images/filterDown.png" alt="up_arrow" width="8px" >
+                              </ng-template>
+                              <ng-template #upFilter1>
+                                <img src="assets/images/playZone/images/filterUp.png" alt="down_arrow" width="8px">
+                              </ng-template>
+                            </th>
+                            <th scope="col">Source</th>
+                            <th scope="col">Earned
+                              <!-- <img class="up_down_arrow" src="assets/images/rewards/up_down_arrow.png"> -->
+                            </th>
+                            <th scope="col">Redeemed
+                              <!-- <img class="up_down_arrow" src="assets/images/rewards/up_down_arrow.png"> -->
+                            </th>
+                            <th scope="col">Balance</th>
+                          </tr>
+                        </thead>
+                        <tbody *ngFor="let response of rewardresponse">
+                          <tr *ngFor="let passbookresponse of response.data.points_list[1]._data |orderBy: key : reverse |filter:searchText | slice: (page1-1) * pageSize : (page1-1) * pageSize + pageSize">
+                            <td style="font-family:sans-serif;" class="col-md-2 col-sm-1">{{passbookresponse.date_time.slice(0,11) | date: 'dd/MM/yyyy' }}</td>
+                            <td style="font-family:sans-serif;" class="col-md-4 col-sm-3">{{passbookresponse.description_}}</td>
+                            <td style="font-family:sans-serif;" *ngIf="passbookresponse.points_credited!=='' " class="col-md-2 col-sm-3">{{passbookresponse.points_credited  | number : '1.2-2'}}</td>
+                            <td style="font-family:sans-serif;" *ngIf="passbookresponse.points_credited==='' " class="col-md-2 col-sm-3">-</td>
+      
+                            <td style="font-family:sans-serif;" *ngIf="passbookresponse.points_debited!==''" class="col-md-2 col-sm-3">
+                              <button class="btn btn-reedeemed-passbook_mobile d-flex gap-1">
+                                {{passbookresponse.points_debited  | number : '1.2-2'}}
+                                <img style="height: 2vh;width: 2vh;" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="redeemed_popup_logo" src="assets/images/rewards/redeemed.png" (click)="popupRedemed(passbookresponse)" height="60%" width="60%">
+                              </button>
+
+                            <td style="font-family:sans-serif;" *ngIf="passbookresponse.points_debited==='' " class="col-md-2">
+                              -
+                            </td>
+                            <td style="font-family:sans-serif;" class="col-md-2">{{passbookresponse.balance  | number : '1.2-2'}}</td>
+        
+                          </tr>
+        
+                        </tbody>
+                      </table>
+        
+                    </div>
+                    
+                  </div>
+                  <div class="d-flex justify-content-end">
+                    <ngb-pagination class="pagination" [pageSize]="10" [collectionSize]="collectionSize" [(page)]="page1" aria-label="Default pagination"></ngb-pagination>
+                  
+                  </div>
+            </mat-tab>
+
+            <!-- Redemption History -->
+
+            <mat-tab label="{{points.data.points_list[2].label}}">
+                <div class="select_container d-flex justify-content-end mt-2">
+                   
+                   <select (change)="onChange($event)" class="form-control form-select form-select-sm mb-1"
+                   aria-label=".form-select-lg example" style="width:52%">
+                   <option class="option_select m-3" *ngFor="let pointselect of points?.data?.points_list[2]?._data;"
+                     [value]="pointselect?.order" selected="pointselect.order">{{pointselect?.label}}</option>
+             
+                 </select>
+                 
+                 
+                   
+                </div>
+                <div style="height:70vh;overflow-y:auto;">
+                  <div style="display:flex;flex-direction:column;" *ngFor="let historyData of points?.data?.points_list[2]?._data[value]?._data |slice: (page-1) * pageSizeReward : (page-1) * pageSizeReward + pageSizeReward;let index=index">
+                    <div class="cardWrap gap-2"  > 
+                      <div class="card cardLeft me-1" [style.background]="arrForCardColor[index]?.color">  
+                        <div class="product_image_div_mobile">
+                          <!-- <img src="{{rewardlist.reward_logo}}" class="productimage" alt="Productimage"
+                              height="80%" width="80%"> -->
+                              <img src="{{historyData.image || historyData.reward_logo}}" class="productimage" alt="Productimage"
+                              height="80%" width="80%">
+    
+                      </div>
+                      
+                      </div>
+                      <div class="card cardRight" style="width:57vw" [style.background]="arrForCardColor[index]?.color">
+                        <div class="product_title_mobile">
+                          {{historyData.rewards}}
+                        </div>
+                        <div class="d-flex align-items-center gap-2 mt-2">
+                          <div style="height:3vh;width:3vh">
+                            <img src="assets/images/NewRewardAssets/COINS SIDDHI.png" alt="" height="100%"
+                                width="100%">
+    
+                        </div>
+                        <div class="rewardPoint">
+                          {{historyData?.rewardcount}}{{historyData?.points}}
+                            <!-- {{rewardlist.redeem_point}} -->
+                        </div>
+    
+                        </div>
+                              <div class="btn_div_redeem" >
+    
+                                <button   data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop1" type="button" class="redeem_btn"
+                                data-bs-toggle="modal">Redeemed</button>
+                            </div>
+                            
+    
+                        
+                      </div>
+                    
+                    </div>
+                    
+                  </div>
+
+                  <div class="d-flex col-12 justify-content-end">
+                    <ngb-pagination class="pagination" [pageSize] = "4" [collectionSize]="points?.data?.points_list[2]?._data[value]?._data?.length" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
+                  </div>
+                </div>
+                 
+                  
+                
+                
+                
+                <!-- <div class="col-12 nodataCardContainer">
+                    <div class=" col-8 text-center"
+                    *ngIf="points.data.points_list[2]._data[value]._data.length == 0">
+                    <img class="no_data_reward_image" src="assets/images/rewards/no_redeem_rewad.png"  height="60%" width="50%"/>
+                    <p class="no_data_reward_message">
+                      You have not redeemed any rewards yet!
+                    </p>
+                  </div>
+
+                </div>
+                 -->
+            </mat-tab>
+        </mat-tab-group>
+       </div>
+
+
+    </ng-template>
+</div>
+
+<!-- Modals -->
+
+<!-- Modal for Can't Reedeemed -->
+<div class="modal fade" id="CantReedeemedReward" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered p-2">
+        <div class="modal-content" style=" padding:3%;min-height:30vh">
+            <div class="modal-header" style="position:relative;border-radius: 25px 25px 0px 0px;
         background: linear-gradient(137deg, #F3D638 0%, #FFB21F 100%);
         height: 12vh;
        
        
         ">
-        <div style="position:absolute;top: -70%;
+                <div style="position:absolute;top: -70%;
         left: 95%;color:#fff;display: flex;align-items: center;justify-content: center;">
-            <button type="button"  data-bs-dismiss="modal" style="width:4vh;height:4vh;border-radius:100%;" >X</button>
-        </div>
-         
+                    <button type="button" data-bs-dismiss="modal"
+                        style="width:4vh;height:4vh;border-radius:100%;">X</button>
+                </div>
 
-          <div style="position:absolute;height:20vh;width:25vh;top: -80%;
+
+                <div style="position:absolute;height:20vh;width:25vh;top: -80%;
           left: 35%;">
-            <img src="../../../../assets/images/NewRewardAssets/3d-man-with-cry-pose-white-background 2.png" alt="" height="100%" width="100%">
+                    <img src="assets/images/NewRewardAssets/3d-man-with-cry-pose-white-background 2.png"
+                        alt="" height="100%" width="100%">
+                </div>
+            </div>
+            <div class="modal-body d-flex flex-column align-items-center justify-content-center"
+                style="border:1px solid #FFB21F;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
+                <div>
+                    <h5>OH NO!</h5>
+                </div>
+                <span>
+                    You don’t have enough points to redeem this reward
+                </span>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ReedeemedPopup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" >
+      <div class="modal-content passbookModal" *ngFor="let model of modeldata;">
+        <div class="modal-header popup_Header  mt-5">
+          <h5 class="modal-title1" id="staticBackdropLabel">Redeem Rewards</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <div class="redemption_card">
+              <div class="row">
+                <div class=" col-md-8 col-lg-8 col-7">
+
+                  <div class="right_side_div">
+                    <div *ngFor="let reward of rewardresponse">
+                      <p *ngFor="let points of rewardresponse">Available Points:
+                        {{points.data.points_list[0]._data.rewardPoints}}</p>
+                    </div>
+                    <div>
+                      <p>{{model.name}}</p>
+                    </div>
+
+                    <div>
+                      <p>Pick for {{model.redeem_point}} points</p>
+                    </div>
+                  </div>
+
+
+
+                </div>
+                <div class=" col-md-4  col-lg-4 col-5">
+
+
+                  <div>
+                    <img class="popup_logo_org" style="max-width: 111px;" src="{{model.reward_logo}}">
+                  </div>
+
+
+
+
+                </div>
+              </div>
+
+
+
+
+
+            </div>
+
           </div>
         </div>
-        <div class="modal-body d-flex flex-column align-items-center justify-content-center" style="border:1px solid #FFB21F;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
-            <div>
-                <h5>OH NO!</h5>
-            </div>
-            <span>
-                You don’t have enough points to redeem this reward 
-            </span>
+        <div class="modal-footer" *ngFor="let reward of rewardresponse;">
+          <div class="balance_div">
+            <p *ngFor="let points of rewardresponse">Balance Point:
+              {{points.data.points_list[0]._data.rewardPoints-model.redeem_point}} </p>
+          </div>
+          <div class="expiry_date_popup">
+            <button class="redeem_organisation"  data-bs-dismiss="modal" (click)="organisationrewardredeem(modeldata)">Redeem</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+</div>
+<!-- Orgnization Reedeemed  Passbook History  -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content passbookModal p-4"  style="position: relative;">
+      <div style="position:absolute;top: -10%;
+      left: 95%;color:#fff;display: flex;align-items: center;justify-content: center;">
+                  <button type="button" data-bs-dismiss="modal"
+                      style="width:4vh;height:4vh;border-radius:100%;">X</button>
+              </div>
+    
+      <div class="modal-header popup_Header"  *ngFor="let popup of popupresponse; let k=index" >
+        <div class="col-12 d-flex align-items-center pt-4">
+
+          <div class="col coupon_div_popup text-start" *ngIf="popup?.data?.couponcode!=null">
+            <b>
+              <p class="coupon_id_popup">Coupon ID:{{popup?.data?.couponid}} </p>
+            </b>
+           
+          </div>
+          <div class="col coupon_div_1_popup text-end" *ngIf="popup?.data?.couponcode!=null">
+            <b>
+              <p class="coupon_code_number_popup" >Coupon Code: {{popup?.data?.couponcode}}</p>
+            </b>
+            
+
+          </div>
         </div>
        
       </div>
+      <div class="modal-body" style="border:1px solid #FFB21F;border-bottom-left-radius: 7px; border-bottom-right-radius: 7px;">
+        <div>
+          <div class="redemption_card">
+           
+            <div class="row" *ngFor="let popup of popupresponse; let k=index">
+              <div class="col-md-6  col-lg-6 text-center" *ngIf="popup?.data?.couponcode!=null">
+                <div class="redemption_image_div_popup d-flex flex-column align-items-center justify-content-center" >
+                  <img class="product_image_redemption_popup_org mb-2" src="{{popup.data.reward_logo}}" height="100%" width="100%">
+                  <div class="d-flex gap-2  mt-2 justify-content-center align-items-center">
+                    <div style="height: 4vh;width:4vh">
+                      <img src="assets/images/NewRewardAssets/COINS SIDDHI.png" alt="" height="100%" width="100%">
+                    </div>
+                    
+                    <h1 class="num">{{popup.data.points}}</h1>
+                  </div>
+                </div>
+              </div>
+              
+              <div class=" col-md-6  col-lg-6  " *ngIf="popup?.data?.couponcode!=null">
+               
+                
+
+                <div class="details_popup">
+                  <div *ngIf="popup?.data?.couponcode != null">
+                    <p class="product_name_redemption_popup">{{popup?.data?.rewards}}</p>
+
+                  </div>
+                 
+                  <!-- <p class="product_full_description_popup">{{popup.data.coupondescription | slice:0:290}}
+                  </p> -->
+                  <p class="product_full_description_popup" style="font-size:0.7em">{{popup?.data?.coupondescription | slice:0:345}}<span
+                    [id]="'dots'+k"></span> <span style="display:none;" [id]="'more'+k">{{popup?.data?.coupondescription |
+                    slice:346}}</span><br>
+                    <b>
+                      <p ><span  *ngIf="popup?.data?.couponid != null" class="moreText" [id]="'more_text'+k"  (click)="showhidetext(k)" >More</span> </p>
+                    </b>
+                    
+                </div>
+
+
+
+
+
+              </div>
+              <!-- for Organization Reward -->
+              <div class="d-flex flex-column align-items-center" *ngIf="popup?.data?.couponcode==null" >
+                
+                  <div *ngIf="popup.data.couponcode == null">
+                    <b>
+                      <p class="product_name_redemption_popup_org text-center">{{popup?.data?.rewards}}</p>
+                    </b>
+                    
+
+                  </div>
+                  <div class="redemption_image_div_popup d-flex flex-column align-items-center justify-content-center" >
+                    <div style="height:50%;width:40%">
+                      <img class="product_image_redemption_popup_org mb-2" src="{{popup.data.reward_logo}}" height="100%" width="100%">
+                    </div>
+                    
+                    <div class="d-flex gap-2  mt-2 justify-content-center align-items-center">
+                      <div style="height: 4vh;width:4vh">
+                        <img src="assets/images/NewRewardAssets/COINS SIDDHI.png" alt="" height="100%" width="100%">
+                      </div>
+                      
+                      <h1 class="num">{{popup.data.points}}</h1>
+                    </div>
+                  </div>
+
+              </div>
+            </div>
+
+
+
+
+
+          </div>
+
+        </div>
+        <div  *ngFor="let popup of popupresponse">
+          <div class="modal-footer" *ngIf="popup.data.expirydate != null">
+            <div class="expiry_date_popup"  >
+              <p> Expiry Date:{{popup.data.expirydate | date: 'dd/MM/yyyy'}} </p>
+            </div>         
+          </div>
+        </div>
+      </div>
+      
+      
+
+
     </div>
   </div>
+</div>
+

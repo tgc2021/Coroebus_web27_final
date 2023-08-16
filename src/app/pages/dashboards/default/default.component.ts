@@ -34,6 +34,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   section_view_res: any;
   MyOverallRank: any;
   selectedIndex: any=0;
+  additionOfBadgesScore:number
   hideTab: boolean=true;
   titleTab: any;
   my_rank: void;
@@ -53,6 +54,18 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   monthly_text: any;
   userGrade: any;
   indexForIslandLogos: number;
+  additionOfBadgesScoreWeekly: number;
+  totalTargetScoreForMonthly: number;
+  additionOfBadgesScoreMonthly: number;
+  lastArrayseasonalThemeWeeklyBadges2: any;
+  lastArrayseasonalThemeDailyBadges2: any;
+  lastArrayseasonalThemeMonthlyBadges2: any;
+  kpiData: any;
+  pointDistKpiData: any;
+  currentLabel: any;
+  labelArray:any=[];
+  label:any;
+  otherKpiData: any;
 dismiss() {
 throw new Error('Method not implemented.');
 }
@@ -184,7 +197,7 @@ sectionView_3_popup_1:any
   weeklyBadgesActive: boolean;
   monthlyBadgesActive: boolean;
   seasonal_theme_daily_badge_details: any;
-  totalTargetScore: any;
+  totalTargetScore: number=0;
   totalTargetScoreForWeekly: number;
   seasonal_theme_monthly_badge_details: any;
 
@@ -219,6 +232,7 @@ sectionView_3_popup_1:any
   tl_team_rank:any
   coroebus_game:any
   openKpi:boolean=false;
+  KPImergeArray:any=[];
  staticKpiData=[{
   kpiDescription:'Premium Collected',
   kpiName:"Wealth"
@@ -340,13 +354,11 @@ activeclass = false;
           this.queryParams = queryParams
          
 
-
-
           this.getUserBannerDataSectionView_1(queryParams)
           this.getUserBannerDataSectionView_2(queryParams)
           this.getUserBannerDataSectionView_3(null, queryParams)
           this.overallPopup('');
-          this.GetRankingPopupData('','')
+          this.GetRankingPopupData('','');
           this.GetDataFromProduceInfo(queryParams)
           // this.navigateToStatistics(queryParams)
           // this.notificationList(queryParams)
@@ -1759,7 +1771,7 @@ checkUserGrade(){
 
       "_game": queryParams?.gameID ? queryParams?.gameID : this.userSelectionData?.id_coroebus_game, "_section_view": "3", "page_number": this.pageNumberForSectionView_3
     };
-    localStorage.setItem('body_userid', body._userid);
+    // localStorage.setItem('body_userid', body._userid);
     localStorage.setItem('body_game', body._game);
     this.coroebus_game =localStorage.getItem('body_game');
 
@@ -2421,6 +2433,7 @@ else if(this.activeTabForSectionView_2 == 4){
   }
   getDataBasedOnUserID(data: any) {
 
+    
     this.spectSearchStr = ''    
     this.role_id= data?.role_id.toString();
     console.log(this.role_id)
@@ -2902,14 +2915,26 @@ else if(this.activeTabForSectionView_2 == 4){
         console.log(this.seasonalThemeDaily1);
          
         this.seasonalThemeDailyBadges1=this.data.data.seasonal_theme_daily_badge_details;
-        this.totalTargetScore=Number(this.seasonalThemeDailyBadges1[0].seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[1].seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[2].seasonal_score_target);
+        this.lastArrayseasonalThemeDailyBadges2=this.data.data.seasonal_theme_daily_badge_details[this.data.data.seasonal_theme_daily_badge_details.length-1];
 
-
+        console.log(this.seasonalThemeDailyBadges1.length)
         this.seasonalThemeWeeklyBadges2=this.data.data.seasonal_theme_weekly_badge_details;
-        this.totalTargetScoreForWeekly=Number(this.seasonalThemeWeeklyBadges2[0].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[1].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[2].seasonal_score_target);
+        this.lastArrayseasonalThemeWeeklyBadges2=this.data.data.seasonal_theme_weekly_badge_details[this.data.data.seasonal_theme_weekly_badge_details.length-1];
+        console.log(this.seasonalThemeWeeklyBadges2)
+       
+   
+        // this.totalTargetScoreForWeekly=Number(this.seasonalThemeWeeklyBadges2[0].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[1].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[2].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[2].seasonal_score_target)+ Number(this.seasonalThemeWeeklyBadges2[3].seasonal_score_target);
 
-        this.seasonalThemeMonthlyBadges3=this.data.data.seasonal_theme_monthly_badge_details;
-        this.totalTargetScoreForMontly=Number(this.seasonalThemeMonthlyBadges3[0]?.seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[1]?.seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[2]?.seasonal_score_target);
+        this.seasonalThemeMonthlyBadges3=this.data?.data?.seasonal_theme_monthly_badge_details;
+        this.lastArrayseasonalThemeMonthlyBadges2=this.data?.data?.seasonal_theme_monthly_badge_details[this.data?.data?.seasonal_theme_monthly_badge_details.length-1];
+       
+
+ 
+        
+        // this.totalTargetScoreForMontly=Number(this.seasonalThemeMonthlyBadges3[0]?.seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[1]?.seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[2]?.seasonal_score_target)+ Number(this.seasonalThemeMonthlyBadges3[2]?.seasonal_score_target) + Number(this.seasonalThemeMonthlyBadges3[3]?.seasonal_score_target);
+
+        // this.seasonalThemeMonthlyBadges3=this.data.data.seasonal_theme_monthly_badge_details;
+        // this.totalTargetScoreForMontly=Number(this.seasonalThemeMonthlyBadges3[0]?.seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[1]?.seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[2]?.seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[3]?.seasonal_score_target);
 
         this.seasonalThemeDailyBadges1.forEach((res)=>{
           if(res.active_class == '1'){
@@ -2966,9 +2991,47 @@ else if(this.activeTabForSectionView_2 == 4){
 
   }
 
-  openKpiInfo(){
+ 
+  async openKpiInfo() {
     this.openKpi=!this.openKpi;
+    try {
+      let body = {
+        _game: this.userSelectionData?.id_coroebus_game
+      };
+  
+      const res = await this.http.pointDistributionPopup(body).toPromise();
+  
+     
+  
+      this.kpiData = res;
+      
+     
+
+      for (const label in this.kpiData?.data?._point_details) {
+        if (this.kpiData?.data?._point_details.hasOwnProperty(label)) {
+          this.currentLabel = this.kpiData?.data?._point_details[label]?.label;
+          this.otherKpiData=this.kpiData?.data?._point_details[label];
+         
+          this.labelArray.push({'label':this.currentLabel,'Kpidata':this.otherKpiData},);
+          
+       
+        
+          
+        }
+       
+
+        console.log(this.labelArray);
+
+      
+      }
+   
+      
+    } catch (err) {
+      console.error(err);
+    }
   }
+
+
 
  
 
@@ -2998,9 +3061,9 @@ else if(this.activeTabForSectionView_2 == 4){
    
     window.open(
           'https://coroebus.in/Learning_academy/#/LearningAcademy/library?_game='+data._game+"&_userid="+data._userid+
-    "&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+
-    "&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type+"&_game_name="+gameName+
-    "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'  
+        "&_team="+id_coroebus_team+"&_categoryid="+data._categoryid+"&_briefid="+data.id_learning_academy_brief+
+        "&_subcategoryid="+data._subcategoryid+"&brief_type="+data.brief_type+"&_game_name="+gameName+
+        "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'  
     )
    
    }

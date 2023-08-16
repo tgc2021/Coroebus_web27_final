@@ -340,7 +340,7 @@ export class RewardsComponent implements OnInit, AfterViewInit,OnDestroy {
           
           this.passbook_response=this.rewardresponse[0].data.points_list[1]._data
           
-          this.collectionSize=this.passbook_response.length
+          this.collectionSize=this.passbook_response.length;
           
         })
       }
@@ -427,8 +427,6 @@ export class RewardsComponent implements OnInit, AfterViewInit,OnDestroy {
   
       }
     }
-   
-    
   }
 
   enagagmentlogPassbookAPI(tab){

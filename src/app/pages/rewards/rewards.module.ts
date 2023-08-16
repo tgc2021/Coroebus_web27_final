@@ -17,10 +17,13 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {MatDialogModule} from '@angular/material/dialog';
 import { NewRewardPageComponent } from './new-reward-page/new-reward-page.component';
 
+
+
 @NgModule({
   declarations: [
     RewardsComponent,
     NewRewardPageComponent,
+
    
   ],
   imports: [

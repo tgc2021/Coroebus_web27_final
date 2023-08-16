@@ -91,14 +91,19 @@ export class InteractiveDashboardComponent implements OnInit,OnDestroy {
   Dynamic_Text_Daily:any="Daily"
   Dynamic_Text_Weekly:any="Weekly"
   Dynamic_Text_Monthly:any="Monthly"
+  lastArrayseasonalThemeMonthlyBadges2: any;
+  lastArrayseasonalThemeDailyBadges2: any;
+  lastArrayseasonalThemeWeeklyBadges2: any;
+  id_coroebus_org: any;
   constructor(config: NgbModalConfig,private readonly store: Store, public element: ElementRef, public Util: Util, private _router: Router, public http: ApiserviceService, private eventService: EventService,public location:Location ,public modalService:NgbModal) {
     config.backdrop = 'static';
 		config.keyboard = false;
     config.centered=true;
    }
 
-  ngOnInit(): void {
+ngOnInit(): void {
     this.game_audio=localStorage.getItem('audio_game');
+   
   
     
      
@@ -172,9 +177,7 @@ else{
       ).subscribe(([login, theme, game]) => {
         
         this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
-        
-
-
+        // console.log(this.userSelectionData);
       })
 
     
@@ -192,9 +195,10 @@ else{
         
         this.http.interactiveDashboard(body).subscribe((res) => {
           this.interactive_dashoard_response = res;
+          console.log(this.interactive_dashoard_response?.data?._personal_data?.id_coroebus_organization);
           localStorage.setItem('Interactive_response',this.interactive_dashoard_response);
-          localStorage.setItem('tl_rank',this.interactive_dashoard_response.data._primary.primary_rank)
-
+          localStorage.setItem('tl_rank',this.interactive_dashoard_response?.data._primary?.primary_rank)
+          localStorage.setItem('id_coroebus_org',this.interactive_dashoard_response);
           localStorage.setItem('body_game',this.interactive_dashoard_response.data._personal_data.id_coroebus_game)
 
           if(this.interactive_dashoard_response?.data.is_about_game==1){
@@ -218,6 +222,19 @@ else{
 
           this.seasonalThemeWeekly = this.interactive_dashoard_response[0].data.seasonal_theme_weekly;
           this.seasonalThemeMonthly = this.interactive_dashoard_response[0].data.seasonal_theme_monthly;
+          this.seasonalThemeDailyBadges1=this.data.data.seasonal_theme_daily_badge_details;
+          this.lastArrayseasonalThemeDailyBadges2=this.data.data.seasonal_theme_daily_badge_details[this.data.data.seasonal_theme_daily_badge_details.length-1];
+  
+          console.log(this.seasonalThemeDailyBadges1.length)
+          this.seasonalThemeWeeklyBadges2=this.data.data.seasonal_theme_weekly_badge_details;
+          this.lastArrayseasonalThemeWeeklyBadges2=this.data.data.seasonal_theme_weekly_badge_details[this.data.data.seasonal_theme_weekly_badge_details.length-1];
+          console.log(this.seasonalThemeWeeklyBadges2)
+         
+     
+          // this.totalTargetScoreForWeekly=Number(this.seasonalThemeWeeklyBadges2[0].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[1].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[2].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[2].seasonal_score_target)+ Number(this.seasonalThemeWeeklyBadges2[3].seasonal_score_target);
+  
+          this.seasonalThemeMonthlyBadges3=this.data?.data?.seasonal_theme_monthly_badge_details;
+          this.lastArrayseasonalThemeMonthlyBadges2=this.data?.data?.seasonal_theme_monthly_badge_details[this.data?.data?.seasonal_theme_monthly_badge_details.length-1];
 
           
           
@@ -411,6 +428,7 @@ else{
 ngAfterViewInit():void{
 
   this.GetDataFromProduceInfo();
+
   
 }
 
@@ -536,8 +554,7 @@ ngAfterViewInit():void{
   
   
         window.open(
- 
-          
+
             'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
           '_self'
     
@@ -628,10 +645,10 @@ ngAfterViewInit():void{
   }
 
   navigateReward() {
+  
     localStorage.setItem('rewardid',this.mergeObj.USERID)
-
-    this._router.navigateByUrl("/reward/rewardPoints")
-
+    this._router.navigateByUrl('/reward/rewardPoints');
+    
   }
   navigateToProfile() {
     this._router.navigateByUrl("/profile")

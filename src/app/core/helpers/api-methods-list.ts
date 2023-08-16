@@ -68,12 +68,6 @@ export const apiMethodsList = {
     //     '/coroebus-beta-api-levels-new/myperformance/produce', // 1 POST {"_userid":"GOLD007","_team":"617","_game":"197"}
     // ]
 
-
-
-
-
-
-
     // Production Url
     AUTHENTICATE: [
         '/coroebus-tgc-api-levels/authenticate/access_token', // 0 POST { "USERID": "l4WbceDSYnGzmGmtTpbDOQ==", "PASSWORD": "9QVjcHyu0OY8aIHAOXiiBg=="}

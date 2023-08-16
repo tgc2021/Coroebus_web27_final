@@ -9,9 +9,9 @@ import { BehaviorSubject,Observable } from 'rxjs';
 export class ApiserviceService {
 
   URLstring = environment.apiURL
-    //  Path='coroebus-beta-api-levels';
+  // Path='coroebus-beta-api-levels';
   open: any;
-    // Path='coroebus-beta-api-levels-new';
+  // Path='coroebus-beta-api-levels-new';
   Path='coroebus-tgc-api-levels'
   constructor(public Http:HttpClient) { }
 
@@ -189,6 +189,12 @@ export class ApiserviceService {
   }
    updatePoke(data:any){
     var tempurl = `${this.URLstring}`+`/${this.Path}/Poke/update_poke`
+    return this.Http.post(tempurl,data)
+
+   }
+
+   pointDistributionPopup(data:any){
+    var tempurl = `${this.URLstring}`+`/${this.Path}/Dashboard/point_dist`
     return this.Http.post(tempurl,data)
 
    }

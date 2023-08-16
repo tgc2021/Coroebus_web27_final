@@ -1,17 +1,17 @@
 .container-fluid {
     background: #ffff;
-    height: 87vh;
+    min-height: 96vh;
+    height: auto;
     width: 100%;
+   
     border-radius: 10px;
 }
 
 .reward_btn {
     border-radius: 10px;
-    border: 2px solid #000;
-   
+    border: 2px solid #555;
     box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25);
     height: 10vh;
-
     color: #555;
     font-family: 'Inter';
     font-size: 1.7em;
@@ -23,7 +23,7 @@
 
 .passbook_btn {
     border-radius: 10px;
-    border: 2px solid #000;
+    border: 2px solid #555;
    
     box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25);
     height: 10vh;
@@ -61,7 +61,7 @@
 ::ng-deep{
     .mat-tab-labels , .mat-tab-label-content{
         color: #000 !important;
-        font-size:1.2em;
+        font-size:1em;
         font-weight: 600 !important;
     }
 } 
@@ -79,11 +79,13 @@
   overflow:hidden;
   // margin-bottom: 7%;
 }
-.card-header {
+
+.card-header{
   height: 8vh;
   // width: 20vw;
   border-bottom:2px dashed #fff;
-  background: linear-gradient(133deg, #E5207A 0%, #536293 100%);
+
+  // background: linear-gradient(133deg, #E5207A 0%, #536293 100%);
   box-shadow: 0px 14.139918327331543px 14.139918327331543px 0px rgba(0, 0, 0, 0.02), 0px 0px 1.4139918088912964px 0px rgba(0, 0, 0, 0.12), 0px 0px 0px 0.7069959044456482px #E8E8E8;
   position: relative;
   display: flex;
@@ -92,7 +94,10 @@
   gap:0.5em;
   border-radius: 10.605px;
 }
-.card-header:before, .card-header:after{
+
+.card-header:before,
+ .card-header:after
+  {
   content: '';
   position: absolute;
   width: 24px;
@@ -103,27 +108,43 @@
   // border: 2px solid #836602;
   box-sizing: border-box;
 }
-.card-header:before { 
+.card-header:before
+ { 
   left: -13px;
 }
-.card-header:after {
-  right: -13px;
+.card-header:after
+ {
+  right: -13px !important;
 }
-.card-body {
+
+
+
+.card-body{
   height: 30vh;
-  // width: 20vw;
+  /* width: 20vw; */
   border-top: 2px dashed #fff;
+   
+  
   border-radius: 10.605px;
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap:1em;
-  background: linear-gradient(133deg, #E5207A 0%, #536293 100%);
-  box-shadow: 0px 14.139918327331543px 14.139918327331543px 0px rgba(0, 0, 0, 0.02), 0px 0px 1.4139918088912964px 0px rgba(0, 0, 0, 0.12), 0px 0px 0px 0.7069959044456482px #E8E8E8;
+  gap: 1em;
+  box-shadow: 0px 14.139918327331543px 14.139918327331543px 0px rgba(0, 0, 0, 0.02),
+    0px 0px 1.4139918088912964px 0px rgba(0, 0, 0, 0.12),
+    0px 0px 0px 0.7069959044456482px #E8E8E8;
+    
+
 }
 
-.cardWrapper:hover {
+
+
+
+
+
+
+.tear_card{
   // .card-header {
   //   transform: translateX(10px) rotateZ(-10deg);
   // }
@@ -131,19 +152,45 @@
     transform: translateX(10px) rotateZ(10deg);
     margin-top: 7%;
     z-index: 2;
+    transition-property: transform, margin-top;
+    transition-duration: 0.7s; /* Adjust the duration as needed */
+    transition-delay: 0.5s; /* Set the delay as needed */
   
   }
 }
+.tear_card_mobile{
+  .cardLeft {
+    transform: translateX(5px) rotateZ(-10deg);
+    // margin-right: 2%;
+    z-index: 2;
+    transition-property: transform, margin-top;
+    transition-duration: 0.7s; /* Adjust the duration as needed */
+    transition-delay: 0.5s; /* Set the delay as needed */
+  
+  }
+  
+}
 .card_container{
-  height: 65vh;
+  height: 63vh !important;
+  width: 100%;  
+  display:flex;
+  flex-direction: row;
+  overflow-y: auto;
+  flex-wrap:wrap;
+  justify-content: flex-start;
+  padding-top: 4%;
+}
+
+.card_container_orgnization{
+  height: 60vh;
   width: 100%;
   display:flex;
   flex-direction: row;
   overflow-y: auto;
   flex-wrap:wrap;
   justify-content: flex-start;
-}
 
+}
 // button Shine Image
 
  .activeBtn:before {
@@ -159,19 +206,41 @@
     );
     top: 0;
     left: -100px;
-    animation: shine 5s infinite linear; /* Animation */
+    animation: shine 5s infinite linear; 
 }
 @keyframes shine {
   0% {left: -100px}
-  20% {left: 100%}
-  
+  50% {left: 100%}
   100% {left: 100%}
+}
+.total_reward_points{
+  // position: absolute;
+  
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-right: 1.2vw;
+}
+.redeem_organisation{
+  position: relative;
+    width: 87px;
+    height: 35px;
+    font-size: 13px;
+    padding: 3px;
+    border-radius: 6px;
+    border: none;
+    right: 0px;
+    top: -8px;
+    background: linear-gradient(137deg, #F3D638 0%, #FFB21F 100%);
+    color: black !important;
+    font-weight:700;
+
 }
 .rewardPoint{
     color: #FFEB34;
     text-align: center;
     font-family: Inter;
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -209,7 +278,7 @@
 // box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.redeem_btn:before{
+.redeem_btn:before,.btn-reedeemed-passbook:before{
   content:'';  
   position: absolute;
   width: 50px;
@@ -265,3 +334,366 @@ $text-color: #FFEB34;
 		background-position: 1000px;
 	}
 }
+
+.org_redem_div{
+  margin-top: 40px;
+}
+
+.no_data_div{
+  display:flex;
+  justify-content: center;
+}
+
+.no_data_reward_image_org {
+  width: 25vw;
+  height: 56vh;
+}
+.search{
+  margin: 8px 0px 8px 8px;
+  float: right;
+  padding: 2px;
+}
+.mytabs {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  
+  padding: 0;
+  margin: 0;
+
+}
+
+table{
+  border:1px solid #0000 !important;
+  border-radius: 10px;
+  font-size: 1em;
+}
+tr:nth-child(n){
+  border : 1px solid #000;
+}
+
+.nodataCardContainer{
+  height: 65vh;
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+  overflow-y: auto;
+  flex-wrap:wrap;
+  justify-content: center;
+  align-items:center;
+
+}
+.no_data_reward_message {
+  font-size: 1.2em;
+  font-family: 'Inter';
+}
+.btn-reedeemed-passbook{
+  width: 60%;
+  position: relative;
+  background: linear-gradient(137deg, #F3D638 0%, #FFB21F 100%);
+  box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25);
+  font-weight:600;
+  // animation: shinebtn 3s infinite linear; /* Animation */
+
+}
+
+// Mobile View //
+
+@media screen and (min-width:270px) and (max-width:1024px) {
+  .web-view{
+    display:none;
+  }
+  .redeem_btn{
+    width: 45vw;
+    margin-top: 1vh;
+    height:4vh;
+  }
+  table{
+    font-size: 0.6em;
+  }
+}
+@media screen and (min-width:1024.1px) {
+  .mobile-view {
+      display: none;
+  }
+
+}
+.reward_btn_mobile{
+  border-radius: 10px;
+    border: 2px solid #000;
+    box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25);
+    height: 6vh;
+    color: #555;
+    font-family: 'Inter';
+    font-size: 1.0em;
+    font-style: normal;
+    text-align: start;
+    font-weight: 600;
+    position: relative;
+
+}
+.activeBtn_mobile{
+  border-radius: 10px;
+  border: 2px solid #000;
+  background: linear-gradient(137deg, #F3D638 0%, #FFB21F 100%);
+  box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25);
+  font-family: 'Inter';
+  font-size: 1.0em;
+  font-style: normal;
+  text-align:start;
+  font-weight: 600;
+  color: #000;
+  height: 6vh;
+
+}
+.passbook_btn_mobile{
+  border-radius: 10px;
+    border: 2px solid #000;
+    box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25);
+    height: 6vh;
+    color: #555;
+    font-family: 'Inter';
+    text-align: start;
+    font-size: 1.0em;
+    font-style: normal;
+    font-weight: 600;
+
+}
+.gift_image_mobile{
+  position: absolute;
+  left: 72%;
+  top: -4%;
+  height: 6vh;
+  width: 6vh;
+}
+
+// Mobile Card 
+
+.cardWrap {
+  width: 27em;
+  // margin: 3em auto;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+.card {
+  background: linear-gradient(133deg, #E5207A 0%, #536293 100%);
+  height: 9em;
+  float: left;
+  position: relative;
+  padding: 1em;
+  margin-top: 1vh;
+}
+
+.cardLeft {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  width: 28vw;
+  border-right: 2px dashed #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardRight {
+  width: 58vw;
+  border-left: .18em dashed #fff;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  display:flex;
+  justify-content: start;
+  align-items: start;
+  gap:0.1rem;
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 0.9em;
+    height: 0.9em;
+    background: #fff;
+    border-radius: 50%;
+    left: -.5em;
+  }
+  &:before {
+    top: -.4em;
+  }
+  &:after {
+  bottom: -.4em;
+  }
+}
+
+h1 {
+  font-size: 1.1em;
+  margin-top: 0;
+  span {
+    font-weight: normal;
+  }
+}
+
+.title, .name, .seat, .time {
+  text-transform: uppercase;
+  font-weight: normal;
+  h2 {
+    font-size: .9em;
+    color: #525252;
+    margin: 0;
+   }
+  span {
+    font-size: .7em;
+    color: #a2aeae;
+  }
+}
+
+.title {
+  margin: 2em 0 0 0;
+}
+
+.name, .seat {
+  margin: .7em 0 0 0;
+}
+
+.time {
+  margin: .7em 0 0 1em;
+}
+
+.seat, .time {
+  float: left;
+}
+
+.product_image_div_mobile{
+  height:16vh;width: 10vh;
+  border: 1px solid #fff;
+  border-radius:5px ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img{
+    border-radius: 5px;
+  }
+}
+
+.product_title_mobile{
+  color: #fff;
+  text-align: start;
+  font-family: Inter;
+  font-size:0.9em;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  white-space: nowrap; 
+  width:15ch; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+ 
+}
+
+// Modal CSS 
+.popup_Header{
+  background: linear-gradient(137deg, #F3D638 0%, #FFB21F 100%);
+  height: 8vh;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 1em;
+
+
+}
+.redemption_image_div_popup{
+  width: 90%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-reedeemed-passbook_mobile{
+  width: 100%;
+  position: relative;
+  background: linear-gradient(137deg, #F3D638 0%, #FFB21F 100%);
+  box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25);
+  font-weight:600;
+  font-size:0.8em;
+  align-items: center;
+  // animation: shinebtn 3s infinite linear; /* Animation */
+
+}
+
+// Css Siddhi`s POP up
+
+// popup
+.modal-header {
+   background: linear-gradient(137deg, #F3D638 0%, #FFB21F 100%);
+   
+   width:95%;
+   display:flex;
+   align-items: center;
+   
+  }
+  .modal-content {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 25px;
+   width:150%
+  }
+  h2.h22{
+   margin-left:15%;
+  }
+  .bottle{
+   width:143%;
+  }
+  .piccoin {
+   flex: 1;
+   display: flex;
+   flex-direction: column;
+  }
+  
+  .description {
+   flex: 1;
+   padding-left: 20px; 
+  }
+  .desc img, .desc h1 {
+   display: inline-block;
+  }
+ 
+
+  .num {
+   color: #000;
+   display: inline-block;
+   font-size:1.2em;
+   font-weight: 600;
+  }
+  
+  .grid-container {
+   display: grid;
+   grid-template-columns: 1fr 4fr; 
+   gap: 5%; 
+  }
+  .date {
+   color: #000;
+   margin-left:10%;
+  }
+  .modal-body{
+   border:1px solid orange;
+   width:95%;
+   border-bottom-right-radius: 5%;
+   border-bottom-left-radius: 5%;
+  }
+  ngb-pagination ::ng-deep ul > li:not(.active) > a {
+    background-color: white !important;
+    color: #000;
+}
+
+ngb-pagination ::ng-deep ul > li.active > a {
+    background-color: gray !important;
+    color: #000;
+}
+
+
+
+
+
