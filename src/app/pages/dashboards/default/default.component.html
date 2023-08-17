@@ -9,17 +9,18 @@
     <ng-template #dashboardTpl>
 
         <div class="row">
-            <div class="col-3 pointsDistributionSection">
+            <div class="col-3 pointsDistributionSection"  >
                 <div>
                     <div class="points-dis-card d-flex flex-column align-items-center justify-content-start"
                         [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.point_dist_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.point_dist_background == null}"
                         [style.background-image]="sectionView_1?.theme_details?.[0]?.island_background ? 'url('+ sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-                        <div class="card-div p-3 d-flex justify-content-center">
+                        <div class="card-div p-3 d-flex justify-content-center" >
 
-                            <div class="profile-section"
+                            <div class="profile-section" 
                                 [style.border-color]="sectionView_1?.theme_details?.[0]?.dark_color"
                                 style="border:2px solid">
-                                <div class="box1 p-3"
+                                <div   class="box1 p-3"
+                               
                                     [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
                                     <div class="d-flex justify-content-center pb-2" style="color: #FFFFFF;font-family: 'Inter';
                                                 font-style: normal;
@@ -79,7 +80,7 @@
                                                 <ng-template #rankButtonOtherRole>
                                                     <!-- <div *ngIf="sectionView_1?._personal_data?.id_coroebus_organization ==56 then popupGop else popupTataAia"></div> -->
                                                     <!-- <ng-template #popupGop> -->
-                                                        <button class="btn btn-primary- text-white level-badge-btn"
+                                                        <button class="btn btn-primary- text-white level-badge-btn" 
                                                         data-bs-toggle="modal" data-bs-target="#IndexWiseLeaderBoard"
                                                         (click)="getIndexproduce3('')"
                                                         [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
@@ -116,7 +117,7 @@
                                                 class="d-flex flex-column align-items-center justify-content-center mt-2">
                                                 <div *ngIf="sectionView_1?._personal_data?.id_role==6;then rankButtonPlayer else rankButtonOtherRole"></div>
                                                 <ng-template #rankButtonPlayer>
-                                                    <button class="btn btn-primary- text-white level-badge-btn"
+                                                    <button class="btn btn-primary- text-white level-badge-btn" 
                                                   
                                                     [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                                   >
@@ -127,7 +128,7 @@
                                                 <ng-template #rankButtonOtherRole>
                                                     <!-- <div *ngIf="sectionView_1?._personal_data?.id_coroebus_organization ==56 then popupGop else popupTataAia"></div> -->
                                                     <!-- <ng-template #popupGop> -->
-                                                        <button class="btn btn-primary- text-white level-badge-btn"
+                                                        <button class="btn btn-primary- text-white level-badge-btn" 
                                                         data-bs-toggle="modal" data-bs-target="#IndexWiseLeaderBoard"
                                                         (click)="getIndexproduce3('')"
                                                         [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
@@ -154,6 +155,7 @@
                                     </div>
                                 </div>
                                 <div class="box2"
+                              
                                     [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}">
                                 </div>
                             </div>
@@ -186,10 +188,11 @@
                             </div>
                             <div>
                                 <div class="inner-points-height d-flex flex-column justify-content-center gap-2 p-2">
-                                    <div class="row  points-row  d-flex flex-row align-items-center"
+                                    <div class="row  points-row  d-flex flex-row align-items-center" 
                                         (click)="getGraphDataById()">
-                                        <div class="col-6 p-0">
+                                        <div class="col-6 p-0" >
                                             <div [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}"
+                                                
                                                 class="ms-2 points-dis-name1 ellipsis d-flex align-items-center justify-content-start"
                                                 style="color:#fff">
                                                 &nbsp;&nbsp; Overall
@@ -223,7 +226,7 @@
                                             <img src="assets/images/TopHierarchyDashboard/Arrow.png" />
                                         </div>
                                     </div>
-                                    <div class="row  points-row  d-flex flex-row align-items-center"
+                                    <div class="row  points-row  d-flex flex-row align-items-center" 
                                         (click)="getGraphDataById()" *ngFor="let item of sectionView_1?._kpi_score">
                                         <div class="col-6 p-0">
                                             <div [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.light_color}"
@@ -296,6 +299,7 @@
                                         alt="Generic placeholder image">
                                 </div>
                                 <div class="badge-level_name d-flex justify-content-center"
+                               
                                     [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}">
                                     Level
                                 </div>
@@ -555,10 +559,12 @@
                     flex-direction: row;
                     flex-wrap: nowrap;" *ngFor="let item of sectionView_2?._ranking_data;let i=index">
 
-                            <div *ngIf="role_id==6;then filterBtnForPlayer else filterBtnForOtherRole "></div>
+                            <div   *ngIf="role_id==6;then filterBtnForPlayer else filterBtnForOtherRole "></div>
                             <ng-template #filterBtnForPlayer>
                                 <a class="btn btn-xs filter-btn-dashboard  fs-sm mb-2" style="padding-top: 8px;"
+                               
                                     *ngIf="i>=1"
+                                    
                                     [ngClass]="{'filter-btn-dashboard-active': activeTabForSectionView_2 === item?.order}"
                                     [ngStyle]="{'background': (activeTabForSectionView_2 ===item?.order) ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
                                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -569,22 +575,26 @@
                                     </span>
                                 </a>
                                 <a class="btn btn-xs filter-btn-dashboard  fs-sm mb-2" style="padding-top: 8px;"
+                                   
                                     *ngIf="i==0"
                                     [ngClass]="{'filter-btn-dashboard-active': activeTabForSectionView_2 === item?.order}"
                                     [ngStyle]="{'background': (activeTabForSectionView_2 ===item?.order) ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
                                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                     (click)="changeTabFilter(item?.label,item?.order)">
                                     <span class=" v-align filter-txt-name"
+                                      
                                         [ngStyle]="{'color':(activeTabForSectionView_2 === item?.order) ? '#ffffff':'#000000'}">
                                         Overall
                                     </span>
                                 </a>
                             </ng-template>
                             <ng-template #filterBtnForOtherRole>
-                                <a class="btn btn-xs filter-btn-dashboard  fs-sm mb-2" style="padding-top: 8px;"
+
+                                <a class="btn btn-xs filter-btn-dashboard  fs-sm mb-2"  style="padding-top: 8px;"
                                     [ngClass]="{'filter-btn-dashboard-active': activeTabForSectionView_2 === item?.order}"
                                     [ngStyle]="{'background': (activeTabForSectionView_2 ===item?.order) ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
                                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                    
                                     (click)="changeTabFilter(item?.label,item?.order)">
                                     <span class=" v-align filter-txt-name"
                                         [ngStyle]="{'color':(activeTabForSectionView_2 === item?.order) ? '#ffffff':'#000000'}">
@@ -601,6 +611,7 @@
                         <ng-template #subTabForPlayer>
                             <div class="col">
                                 <a id="myButton" class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
+                                
                                     [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 ==='My Store'}"
                                     [ngStyle]="{'background': (activeSubTabForSectionView_2 ==='My Store') ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
                                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -615,6 +626,7 @@
                             </div>
                             <div class="col">
                                 <a class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
+                                
                                     [ngClass]="{'': activeSubTabForSectionView_2 === 'Overall'}"
                                     [ngStyle]="{'background': (activeSubTabForSectionView_2 === 'Overall')? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
                                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -630,6 +642,7 @@
                         <ng-template #subTabForOtherRole>
                             <div class="col">
                                 <a id="myButton" class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
+                                
                                     [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 ==='My Store'}"
                                     [ngStyle]="{'background': (activeSubTabForSectionView_2 ==='My Store') ? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
                                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -644,6 +657,7 @@
                             </div>
                             <div class="col">
                                 <a class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
+                                
                                     [ngClass]="{'': activeSubTabForSectionView_2 === 'Overall'}"
                                     [ngStyle]="{'background': (activeSubTabForSectionView_2 === 'Overall')? sectionView_1?.theme_details?.[0]?.dark_color : '#ffffff'}"
                                     [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -663,13 +677,13 @@
 
                 <div class="d-flex flex-row" style="margin-top: 10px;">
                     <div class="col-11" style="padding-right:0px;">
-                        <input type="text" class="form-control dashboard-searchbar" placeholder="Search People here.."
+                        <input type="text" class="form-control dashboard-searchbar"  placeholder="Search People here.."
                             [(ngModel)]="spectSearchStr" aria-label="Search People here.." (keyup)="checkEmpty()"
                             aria-describedby="basic-addon2">
                     </div>
                     <div class="col-1 d-flex justify-content-end">
 
-                        <button type="button" class="btn btn-primary dashboard-search-btn ms-1" (click)="spectSearch()"
+                        <button type="button" class="btn btn-primary dashboard-search-btn ms-1" (click)="spectSearch()" 
                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"><i
                                 class="fa fa-search" aria-hidden="true"></i></button>
                     </div>
@@ -698,6 +712,7 @@
 
                             <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
                                 *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.length > 0"
+                                
                                 [style.background-image]="'url(' + web_first_tile_image + ')'"
                                 [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                 [style.background-image]="'url('+web_first_tile_image +')'">
@@ -778,7 +793,9 @@
 
 
                             <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
+
                                 *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.length > 0"
+                                
                                 [style.background-image]="'url(' + web_first_tile_image + ')'"
                                 [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                 [style.background-image]="'url('+web_first_tile_image +')'">
@@ -862,6 +879,7 @@
                         <!-- {{spectSearList | json}} -->
                         <!-- {{spectSearchStr ? 'true': 'false'}} -->
                         <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
+                       
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                             *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) "
                             style="cursor: pointer;" [style.background-image]="'url('+item?.ranking_image_web +')'">
@@ -1071,9 +1089,10 @@
 
                 </div>
             </div>
-            <div class="col-3 RankSection">
+            <div class="col-3 RankSection" >
 
-                <div class="points-rank-card"
+                <div class="points-rank-card" 
+               
                     [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}"
                     *ngIf="sectionView_1?.is_land_logos?.length > 0"
                     [style.background-image]="
@@ -1098,6 +1117,7 @@
                                         <br>
                                         <!-- [ngClass]="{'one-data': sectionView_1?.is_land_logos?.length ===1}" -->
                                         <button class="btn btn-primary- text-white level-badge-btn"
+                                        
                                             *ngIf="sectionView_1?._personal_data?.id_coroebus_organization!=61"
                                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -1107,6 +1127,7 @@
 
                                         </button>
                                         <button class="btn btn-primary- text-white level-badge-btn"
+                                       
                                             *ngIf="sectionView_1?._personal_data?.id_coroebus_organization==61"
                                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -1150,6 +1171,7 @@
 
 
                                         <button *ngIf="l=='0' && sectionView_3?._personal_data?.id_role!='4'"
+                                        
                                             class="btn btn-primary- text-white level-badge-btn"
                                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -1159,6 +1181,7 @@
                                         </button>
 
                                         <button *ngIf="l=='2' && sectionView_3?._personal_data?.id_role!='4'"
+                                        
                                             class="btn btn-primary- text-white level-badge-btn"
                                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -1168,6 +1191,7 @@
                                         </button>
 
                                         <button *ngIf="l=='1' && sectionView_3?._personal_data?.id_role!='4'"
+                                        
                                             class="btn btn-primary- text-white level-badge-btn"
                                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -1178,6 +1202,7 @@
 
                                         
                                         <button *ngIf="l=='0' && sectionView_3?._personal_data?.id_role=='4'"
+                                        
                                             class="btn btn-primary- text-white level-badge-btn"
                                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -1186,6 +1211,7 @@
                                             {{primary_rank}}
                                         </button>
                                         <button *ngIf="l=='2' && sectionView_3?._personal_data?.id_role=='4'"
+                                        
                                             class="btn btn-primary- text-white level-badge-btn"
                                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -1197,6 +1223,7 @@
 
 
                                         <button *ngIf="l=='1' && sectionView_3?._personal_data?.id_role=='4'"
+                                        
                                             class="btn btn-primary- text-white level-badge-btn"
                                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -1225,6 +1252,7 @@
                 <div>
 
                     <div class="bulletins-card"
+                    
                         [ngClass]="{'points-bullentins-card-no-height': sectionView_1?.is_land_logos?.length == 0, 'points-bullentins-card': sectionView_1?.is_land_logos?.length != 0}"
                         [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.add_ins_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.add_ins_background == null}"
                         [style.background-image]="
@@ -1240,12 +1268,13 @@
                                     style="height: 44vh; padding:2%; display: flex;justify-content:center;align-items:center;">
                                     <div class="card-body px-4 "
                                         style="height: 42vh; overflow-y:auto;display: flex; flex-direction: column;justify-content:start;gap:0.5em">
-                                        <mat-accordion>
+                                        <mat-accordion  >
 
                                             <!-- <div class="red_indicator"></div> -->
                                             <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true"
-                                                (closed)="panelOpenState = false">
-                                                <mat-expansion-panel-header
+                                            
+                                                (closed)="panelOpenState = false" >
+                                                <mat-expansion-panel-header 
                                                     [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
                                                     <mat-panel-title
                                                         style="color: #ffff;font-weight:500;display:flex;justify-content: start;font-family: 'Inter';font-size:2vh">
@@ -1341,6 +1370,7 @@
                                         <mat-accordion>
                                             <div class="red_indicator" *ngIf="hideTriviaIndicator"></div>
                                             <mat-expansion-panel class="battleground_accordion mt-2"
+                                            
                                                 (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                                 <mat-expansion-panel-header
                                                     [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
@@ -1490,6 +1520,7 @@
                                         <mat-accordion>
                                             <!-- <div class="red_indicator"></div> -->
                                             <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true"
+                                           
                                                 (closed)="panelOpenState = false">
                                                 <mat-expansion-panel-header
                                                     [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
@@ -1581,6 +1612,7 @@
                                                 *ngIf="dailyBadgesActive || weeklyBadgesActive || monthlyBadgesActive">
                                             </div>
                                             <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true"
+                                            
                                                 (closed)="panelOpenState = false">
                                                 <mat-expansion-panel-header
                                                     [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
@@ -1686,6 +1718,7 @@
                                         <mat-accordion>
                                             <div class="red_indicator" *ngIf="challengeReacieved>0"></div>
                                             <mat-expansion-panel class="battleground_accordion mt-2"
+                                           
                                                 (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                                 <mat-expansion-panel-header
                                                     [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">

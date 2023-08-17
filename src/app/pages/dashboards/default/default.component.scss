@@ -2618,4 +2618,11 @@ font-weight: 700;
     border-radius: 20px;
     border: 1px solid #FFF;
     background-color: #75CF0E;
-    }
+}
+
+.card_outer_shadow{
+    box-shadow: 10px 10px 10px 0px rgba(166, 180, 200, 0.70), -12px -12px 20px 0px rgba(255, 255, 255, 0.80);
+}
+.card_inner_shadow{
+    box-shadow: 5px 5px 10px 0px rgba(166, 180, 200, 0.75) inset, -5px -5px 15px 0px rgba(255, 255, 255, 0.75) inset;
+}

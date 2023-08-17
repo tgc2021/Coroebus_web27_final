@@ -66,6 +66,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   labelArray:any=[];
   label:any;
   otherKpiData: any;
+  themeId: any;
 dismiss() {
 throw new Error('Method not implemented.');
 }
@@ -319,8 +320,10 @@ activeclass = false;
     ).subscribe(([login, theme, game]) => {
      
       this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
+      console.log(this.userSelectionData);
      
-   
+     this.themeId=this.userSelectionData?.id_coroebus_theme;
+        
 
        
      
@@ -2988,44 +2991,19 @@ else if(this.activeTabForSectionView_2 == 4){
     this.isDailyModalopen = false;
     this.isWeeklyModalOpen = false;
     this.isMonthlyModalOpen = true;
-
   }
-
- 
   async openKpiInfo() {
-    this.openKpi=!this.openKpi;
+    this.openKpi = !this.openKpi;
     try {
-      let body = {
+      const body = {
         _game: this.userSelectionData?.id_coroebus_game
       };
-  
       const res = await this.http.pointDistributionPopup(body).toPromise();
-  
-     
-  
       this.kpiData = res;
-      
-     
-
-      for (const label in this.kpiData?.data?._point_details) {
-        if (this.kpiData?.data?._point_details.hasOwnProperty(label)) {
-          this.currentLabel = this.kpiData?.data?._point_details[label]?.label;
-          this.otherKpiData=this.kpiData?.data?._point_details[label];
-         
-          this.labelArray.push({'label':this.currentLabel,'Kpidata':this.otherKpiData},);
-          
-       
-        
-          
-        }
-       
-
-        console.log(this.labelArray);
-
-      
-      }
-   
-      
+      this.labelArray = Object.entries(this.kpiData?.data?._point_details).map(([label, otherKpiData]) => {
+        return { label, Kpidata: otherKpiData };
+      });
+      console.log(this.labelArray);
     } catch (err) {
       console.error(err);
     }
