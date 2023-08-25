@@ -7,9 +7,8 @@
         </div>
     </div>
     <ng-template #dashboardTpl>
-
         <div class="row">
-            <div class="col-3 pointsDistributionSection"  >
+            <div class="col-3 pointsDistributionSection">
                 <div>
                     <div class="points-dis-card d-flex flex-column align-items-center justify-content-start"
                         [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.point_dist_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.point_dist_background == null}"
@@ -66,8 +65,8 @@
                                                     class="dashboard-user-name ellipsis pb-1">{{sectionView_1?._personal_data?.team_name}}</span>
                                             </div>
                                             <div
-                                                class="d-flex flex-column align-items-center justify-content-center mt-2">
-                                                <div *ngIf="sectionView_1?._personal_data?.id_role==6 ;then rankButtonPlayer else rankButtonOtherRole"></div>
+                                                class="d-flex flex-column align-items-center justify-content-center mt-2" *ngIf="!isLevel3Active">
+                                                <div *ngIf="sectionView_1?._personal_data?.id_role==6;then rankButtonPlayer else rankButtonOtherRole"></div>
                                                 <ng-template #rankButtonPlayer>
                                                     <button class="btn btn-primary- text-white level-badge-btn"
                                                   
@@ -107,8 +106,8 @@
                                     </div>
 
                                     <div class="row" *ngIf="sectionView_1?._personal_data?.brand_name"
-                                        placement="bottom" ngbTooltip="{{sectionView_1?._personal_data?.brand_name}}">
-                                        <div class="col-lg-12 ellipsis">
+                                        placement="bottom" ngbTooltip="{{sectionView_1?._personal_data?.brand_name}}" >
+                                        <div class="col-lg-12 ellipsis" *ngIf="!isLevel3Active">
                                             <div class="d-flex justify-content-center">
                                                 <span
                                                     class="dashboard-user-name ellipsis pb-1">{{sectionView_1?._personal_data?.brand_name}}</span>
@@ -543,7 +542,7 @@
 
                 <div style="padding:2%;border-radius:10px;background-size: cover;"
                     [style.background-image]="
-            sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                    sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
                     <div class="row" [ngClass]="{'row-cols-2': sectionView_2?._ranking_data?.length === 2,
                                 'row-cols-3': sectionView_2?._ranking_data?.length === 3,
                                 'row-cols-4': sectionView_2?._ranking_data?.length === 4,
@@ -1103,8 +1102,8 @@
 
                         <div class="card card-div">
                             <div class="card-body  d-flex justify-content-center align-items-center gap-2"
-                                style="height:43vh">
-                                <div class="row" [ngClass]="{'row-cols-2': sectionView_1?.is_land_logos?.length !== 1,
+                                style="height:43vh"  >
+                                <div class="row" *ngIf="!isLevel3Active" [ngClass]="{'row-cols-2': sectionView_1?.is_land_logos?.length !== 1,
                         'two-data': sectionView_1?.is_land_logos?.length === 2,
                         'three-data': sectionView_1?.is_land_logos?.length ===3,
                         'four-data': sectionView_1?.is_land_logos?.length ===4,
@@ -1143,6 +1142,51 @@
 
 
                                 </div>
+                                <!-- levelwise section -->
+                                <div *ngIf="isLevel3Active" class="row d-flex flex-column align-items-center">
+                                    <img loading="lazy" class="dashboard-banner-main-rank-img" style="height: 20vh;
+                                     width: 20vh;
+                                     border-radius: 100%;" src="{{sectionView_1?._personal_data?.profile_badge_image}}"
+                                        alt="Generic placeholder image">
+                                        <div
+                                        class="d-flex flex-column align-items-center justify-content-center mt-2">
+                                        <div *ngIf="sectionView_1?._personal_data?.id_role==6;then rankButtonPlayer else rankButtonOtherRole"></div>
+                                        <ng-template #rankButtonPlayer>
+                                            <button class="btn btn-primary- text-white level-badge-btn"
+                                          
+                                            [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
+                                          >
+                                            {{primary_rank}}
+                                            </button>
+
+                                        </ng-template>
+                                        <ng-template #rankButtonOtherRole>
+                                            <!-- <div *ngIf="sectionView_1?._personal_data?.id_coroebus_organization ==56 then popupGop else popupTataAia"></div> -->
+                                            <!-- <ng-template #popupGop> -->
+                                                <button class="btn btn-primary- text-white level-badge-btn" 
+                                                data-bs-toggle="modal" data-bs-target="#IndexWiseLeaderBoard"
+                                                (click)="getIndexproduce3('')"
+                                                [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
+                                               >
+                                                {{primary_rank}}
+                                                </button>
+                                            <!-- </ng-template> -->
+                                            <!-- <ng-template #popupTataAia>
+                                                <button class="btn btn-primary- text-white level-badge-btn"
+                                                data-bs-toggle="modal" data-bs-target="#IndexWiseLeaderBoard"
+                                                (click)="getIndexproduce3('')"
+                                                [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
+                                               >
+                                                {{primary_rank}}
+                                                </button>
+                                            </ng-template> -->
+                                           
+                                            
+                                        </ng-template>
+                                        <span class="level-rank-name mt-2">Overall Rank</span>
+                                    </div>
+                                </div>
+                               
                             </div>
                         </div>
 
@@ -1256,7 +1300,7 @@
                         [ngClass]="{'points-bullentins-card-no-height': sectionView_1?.is_land_logos?.length == 0, 'points-bullentins-card': sectionView_1?.is_land_logos?.length != 0}"
                         [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.add_ins_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.add_ins_background == null}"
                         [style.background-image]="
-                sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.add_ins_background + ')' : null"
+                        sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.add_ins_background + ')' : null"
                         style="background-size: cover;">
                         <div *ngIf="sectionView_1?.is_land_logos?.length == 0;then one; else two"></div>
                         <ng-template #one>
@@ -1287,7 +1331,7 @@
                                                 <ng-template #redirectm2ost>
 
                                                     <div class="d-flex flex-column align-items-start gap-2  mt-2"
-                                                        *ngIf="sectionView_1._personal_data.id_role==6">
+                                                        *ngIf="sectionView_1?._personal_data?.id_role==6">
                                                         <div class="inner_content" (click)="navigateToM2ost('2289')">
                                                             Call Centre Basics</div>
                                                         <div class="inner_content" (click)="navigateToM2ost('2293')">
@@ -1302,7 +1346,7 @@
 
 
                                                     <div class="d-flex flex-column align-items-start gap-2  mt-2"
-                                                        *ngIf="sectionView_1._personal_data.id_role==3 ">
+                                                        *ngIf="sectionView_1?._personal_data?.id_role==3 ">
                                                         <div class="inner_content" (click)="navigateToM2ost('2273')">
                                                             Mental Wellbeing</div>
                                                         <div class="inner_content" (click)="navigateToM2ost('2297')">
@@ -1316,7 +1360,7 @@
                                                     </div>
 
                                                     <div class="d-flex flex-column align-items-start gap-2  mt-2"
-                                                        *ngIf="sectionView_1._personal_data.id_role==4 || sectionView_1._personal_data.id_role== 10">
+                                                        *ngIf="sectionView_1?._personal_data.id_role==4 || sectionView_1._personal_data?.id_role== 10">
                                                         <div class="inner_content" (click)="navigateToM2ost('2300')">
                                                             Client Centricity</div>
                                                         <div class="inner_content" (click)="navigateToM2ost('2295')">
@@ -1333,7 +1377,7 @@
                                                 <ng-template #dontredirect>
 
                                                     <div class="d-flex flex-column align-items-start gap-2  mt-2"
-                                                        *ngIf="sectionView_1._personal_data.id_role==6">
+                                                        *ngIf="sectionView_1?._personal_data?.id_role==6">
                                                         <div class="inner_content">Call Centre Basics</div>
                                                         <div class="inner_content">
                                                             Objection Handling</div>
@@ -1344,7 +1388,7 @@
 
 
                                                     <div class="d-flex flex-column align-items-start gap-2  mt-2"
-                                                        *ngIf="sectionView_1._personal_data.id_role==3">
+                                                        *ngIf="sectionView_1?._personal_data?.id_role==3">
                                                         <div class="inner_content">Mental Wellbeing</div>
                                                         <div class="inner_content">Influencing Skills</div>
                                                         <div class="inner_content">Interpersonal Skills</div>
@@ -1353,7 +1397,7 @@
                                                     </div>
 
                                                     <div class="d-flex flex-column align-items-start gap-2  mt-2"
-                                                        *ngIf="sectionView_1._personal_data.id_role==4  || sectionView_1._personal_data.id_role==10">
+                                                        *ngIf="sectionView_1?._personal_data?.id_role==4  || sectionView_1?._personal_data?.id_role==10">
                                                         <div class="inner_content">Client Centricity</div>
                                                         <div class="inner_content">Coaching Skills</div>
                                                         <div class="inner_content">Interpersonal Skills</div>
@@ -1401,7 +1445,10 @@
                                                                     *ngIf="triviaData?.brief_graphics?.split('.').pop()=='mp4';then mp4player">
                                                                 </div>
                                                                 <div
-                                                                    *ngIf="triviaData?.brief_graphics?.split('.').pop() == 'png'||triviaData?.brief_graphics?.split('.').pop()=='gif'||triviaData?.brief_graphics?.split('.').pop()== 'jpg'||triviaData?.brief_graphics?.split('.').pop()=='jpeg';then imgplay">
+                                                                    *ngIf="triviaData?.brief_graphics?.split('.').pop() == 'png'||triviaData?.brief_graphics?.split('.').pop()=='gif'||triviaData?.brief_graphics?.split('.').pop()== 'jpg'||triviaData?.brief_graphics?.split('.').pop()=='jpeg';then imgplay else textImage ">
+                                                                </div>
+                                                                <div *ngIf="triviaData?.brief_graphics?.split('.').pop() == 'txt';then textImage">
+
                                                                 </div>
 
                                                                 <ng-template #imgplay>
@@ -1421,14 +1468,17 @@
                                                                             width="100%">
                                                                     </div>
                                                                 </ng-template>
-
+                                                                <ng-template #textImage>
+                                                                    <img  class="mt-2" src="assets/images/svg/notification/txt.png" alt="" height="47">
+                                                                </ng-template>
+                                                                
 
                                                             </div>
                                                             <div class="triviaDescription d-flex flex-column gap-3 p-1 mt-2"
                                                                 style="width:100%;min-height:15vh;">
                                                                 <div class="triviaTitle">
                                                                     <strong>
-                                                                        {{triviaData.brief_title}}
+                                                                        {{triviaData?.brief_title}}
                                                                     </strong>
 
                                                                 </div>
@@ -1436,12 +1486,12 @@
                                                                 overflow: hidden;
                                                                 text-overflow: ellipsis;
                                                                 ">
-                                                                    {{triviaData.brief_summary}}
+                                                                    {{triviaData?.brief_summary}}
 
                                                                 </p>
                                                                 <div
                                                                     style="position:absolute;top:80%;right:5%;font-size:1vh;font-family: 'Inter';color:#A5ACB8;text-align:end">
-                                                                    {{triviaData.created_at|date:'dd/MM/YYYY'}}
+                                                                    {{triviaData?.created_at|date:'dd/MM/YYYY'}}
                                                                 </div>
 
                                                             </div>
@@ -1453,7 +1503,7 @@
 
                                                         <div class="d-flex p-2 mt-1"
                                                             style="border-radius:5px;font-family:'Inter';position:relative"
-                                                            [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'">
+                                                            [style.background]="triviaData?.view_status=='Read'?'#ffff':'#F7E2AC'">
                                                             <div class="triviaBanner d-flex align-items-start mt-2 p-2">
                                                                 <!-- <div style="height:8vh;width:5vw;border-radius:5vh">
                                                                     <img src="{{triviaData.brief_graphics}}"
@@ -1461,10 +1511,10 @@
                                                                         width="100%">
                                                                 </div> -->
                                                                 <div
-                                                                    *ngIf="triviaData.brief_graphics.split('.').pop()=='mp4';then mp4player">
+                                                                    *ngIf="triviaData?.brief_graphics?.split('.')?.pop()=='mp4';then mp4player">
                                                                 </div>
                                                                 <div
-                                                                    *ngIf="triviaData.brief_graphics.split('.').pop() == 'png'||triviaData.brief_graphics.split('.').pop()=='gif'||triviaData.brief_graphics.split('.').pop()== 'jpg'||triviaData.brief_graphics.split('.').pop()=='jpeg';then imgplay">
+                                                                    *ngIf="triviaData?.brief_graphics?.split('.')?.pop() == 'png'||triviaData?.brief_graphics?.split('.')?.pop()=='gif'||triviaData?.brief_graphics?.split('.')?.pop()== 'jpg'||triviaData?.brief_graphics?.split('.').pop()=='jpeg';then imgplay">
                                                                 </div>
 
                                                                 <ng-template #imgplay>
@@ -1489,18 +1539,18 @@
                                                                 style="width:100%;min-height:15vh;">
                                                                 <div class="triviaTitle">
                                                                     <strong>
-                                                                        {{triviaData.brief_title}}
+                                                                        {{triviaData?.brief_title}}
                                                                     </strong>
                                                                 </div>
                                                                 <p style="font-size:1.2vh;
                                                                 overflow: hidden;
                                                                 text-overflow: ellipsis;
                                                                 ">
-                                                                    {{triviaData.brief_summary}}
+                                                                    {{triviaData?.brief_summary}}
                                                                 </p>
                                                                 <div
                                                                     style="position:absolute;top:80%;right:5%;font-size:1vh;font-family: 'Inter';color:#A5ACB8;text-align:end">
-                                                                    {{triviaData.created_at|date:'dd/MM/YYYY'}}
+                                                                    {{triviaData?.created_at|date:'dd/MM/YYYY'}}
                                                                 </div>
                                                             </div>
 
@@ -1518,7 +1568,7 @@
 
 
                                         <mat-accordion>
-                                            <!-- <div class="red_indicator"></div> -->
+                                         
                                             <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true"
                                            
                                                 (closed)="panelOpenState = false">
@@ -1645,13 +1695,13 @@
                                                                 <ng-template #activeBadge>
 
                                                                     <div class="activeBadge" *ngIf="i<4">
-                                                                        <img src="{{dailyBadges.seasonal_badge_logo}}"
+                                                                        <img src="{{dailyBadges?.seasonal_badge_logo}}"
                                                                             alt="badge" width="100%" height="100%">
                                                                     </div>
                                                                 </ng-template>
                                                                 <ng-template #DeactiveBadge>
                                                                     <div class="deActiveBadge" *ngIf="i<4">
-                                                                        <img src="{{dailyBadges.seasonal_badge_logo}}"
+                                                                        <img src="{{dailyBadges?.seasonal_badge_logo}}"
                                                                             alt="badge" width="100%" height="100%">
                                                                     </div>
                                                                 </ng-template>
@@ -1674,7 +1724,7 @@
                                                        
                                                             <div class="badge-container col"
                                                                 *ngFor="let WeeklyBadge of seasonalThemeWeeklyBadges2;let i=index">
-                                                                <div [ngClass]="WeeklyBadge.active_class == '1'?'activeBadge':'deActiveBadge' "
+                                                                <div [ngClass]="WeeklyBadge?.active_class == '1'?'activeBadge':'deActiveBadge' "
                                                                     *ngIf="i<4">
                                                                     <img src="{{WeeklyBadge.seasonal_badge_logo}}"
                                                                         alt="" height="100%" width="100%">
@@ -1697,7 +1747,7 @@
                                                        
                                                             <div class="badge-container col"
                                                                 *ngFor="let monthlyBadge of seasonalThemeMonthlyBadges3;let i=index">
-                                                                <div [ngClass]="monthlyBadge.active_class == '1'?'activeBadge':'deActiveBadge' "
+                                                                <div [ngClass]="monthlyBadge?.active_class == '1'?'activeBadge':'deActiveBadge' "
                                                                     *ngIf="i<4">
                                                                     <img src="{{monthlyBadge.seasonal_badge_logo}}"
                                                                         alt="" height="100%" width="100%">
@@ -1845,19 +1895,14 @@
 
 
         </div>
-
-
-
-
     </ng-template>
-
     <div *ngIf="this.pokeAnimationData !='';then animation"></div>
     <ng-template #animation>
         <div id="animationPoke" *ngIf="!this.queryParams">
             <section class="d-flex justify-content-center" *ngFor="let item of pokeslidedata, index as i">
                 <div class="crawl">
-                    <div style="color: #FFFFFF;">Poked by {{item.Pokedby}}</div>
-                    <img alt="" src="{{item.poke_logo}}" style="width: 100px; height: 100px;" />
+                    <div style="color: #FFFFFF;">Poked by {{item?.Pokedby}}</div>
+                    <img alt="" src="{{item?.poke_logo}}" style="width: 100px; height: 100px;" />
                     <div style="color: #FFFFFF;">{{item.poke_description}}</div>
                 </div>
             </section>
@@ -2014,6 +2059,7 @@
         </div>
     </ng-template>
 
+    
     <!-- <div *ngIf="his.pokeAnimationData!=''"  id="animationPoke">
     <section class="d-flex justify-content-center" *ngFor="let item of pokeslidedata, index as i">
         <div class="crawl">
@@ -2694,7 +2740,7 @@
                                                                 width="100%">
                                                         </div> -->
                                                         <div
-                                                            *ngIf="triviaData.brief_graphics?.split('.').pop()=='mp4';then mp4player">
+                                                            *ngIf="triviaData.brief_graphics?.split('.').pop()=='mp4';then mp4player;else ">
                                                         </div>
                                                         <div
                                                             *ngIf="triviaData.brief_graphics?.split('.').pop() == 'png'||triviaData.brief_graphics?.split('.').pop()=='gif'||triviaData?.brief_graphics?.split('.').pop()== 'jpg'||triviaData?.brief_graphics?.split('.').pop()=='jpeg';then imgplay">
@@ -2715,6 +2761,7 @@
                                                                     alt="trivia_banner" height="100%" width="100%">
                                                             </div>
                                                         </ng-template>
+                                                      
 
 
                                                     </div>
@@ -3694,11 +3741,11 @@
 
 
 
-                                <div class="badges_row" [style.width.%]="90" class="badges_row"
+                                <div class="badges_row" [style.width.%]="90" 
                                     style="position: relative;"
                                     *ngFor="let seasonalThemeDailyBadges1 of seasonalThemeDailyBadges1 ">
 
-                                    <div class="d-flex flex-column justify-content-center" style="position:absolute"
+                                    <div class="d-flex flex-column justify-content-" style="position:absolute"
                                         [style.margin-left.%]="((seasonalThemeDailyBadges1?.seasonal_score_target)/(lastArrayseasonalThemeDailyBadges2?.seasonal_score_target))*100">
 
                                         <div style="height:6vh;width:6vh;border-radius:50%"
@@ -3738,8 +3785,8 @@
                                     </div>
                                 </ng-template>
                                 <ng-template #maxpercentage>
-                                    <div class="animation-bar" [style.margin-left.%]="96">
-                                        <div class="d-flex flex-column" >
+                                    <div class="animation-bar" [style.margin-left.%]="95" >
+                                        <div class="d-flex flex-column" style="" >
                                             <div class="border-left"></div>
                                             <div class="Progressscore" >
                                                 {{seasonalThemeDailyBadges1[0]?.seasonal_score_achived|shortNumber}}
@@ -4289,119 +4336,126 @@
                             <div class="col points_header">Points</div>
 
                         </div>
-                        <div *ngIf="sectionView_1?._personal_data?.id_role!='6'">
+                        <div *ngIf="sectionView_1?._personal_data?.id_role!=='6';then notForPlayer else forPlayer"></div>
+                        <ng-template #notForPlayer>
+                            <div>
 
-                            <div *ngFor="let item of sectionView_3_list_popup?.[0]?._Overall">
-                                <div class="row leaderBoard_tile mt-2 "
-                                    *ngIf="item.userid==this.sectionView_1._personal_data.USERID"
-                                    style="background:url('{{item.ranking_image_web}}');font-size:0.7em">
-
-                                    <div class="col-1">&nbsp;&nbsp;&nbsp;{{item.rankingtable_number}}</div>
-
-                                    <div class="col-2">
-                                        <div class="col-2" style="height:5vh;width:5vh">
-                                            <img src="{{item.rankingtable_logo}}" height="100%" width="100%" alt=""
-                                                style="border-radius:50%">
-                                        </div>
-
-                                    </div>
-                                    <div class="col-4 text-center" class="userName_mobile">{{item.rankingtable_name}}
-                                    </div>
-                                    <div class="col-2">
-                                        <div style="height:5vh;width:5vh">
-                                            <img src="{{item.ranking_badge}}" alt="" data-holder-rendered="true"
-                                                height="100%" width="100%">
-                                        </div>
-                                    </div>
-                                    <div class="col-2 text-center">{{item?.rankingtable_weightage}}</div>
-                                    <div class="col d-flex justify-content-end pe-3">
-
-                                        <div style="height:5.5vh;width:3.2vh" *ngIf="item.rankingtable_arrow=='green'">
-
-                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
-                                                height="100%">
-                                        </div>
-
-                                        <div *ngIf="item.rankingtable_arrow=='red'" style="height:5.5vh;">
-
-                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
-                                                height="100%">
-
-                                        </div>
-                                        <div *ngIf="item.rankingtable_arrow=='yellow'"
-                                            style="height:5.5vh;width: 5.5vh;display:flex;justify-content:center;align-items: center;">
-
-                                            <div
-                                                style="height: 2.8vh;width:2.8vh;border-radius:100%;background-color:orange ;">
+                                <!-- <div *ngFor="let item of sectionView_3_list_popup?.[0]?._Overall && sectionView_3_list_popup?.[0]?._Overall.length>0">
+                                    <div class="row leaderBoard_tile mt-2 "
+                                        *ngIf="item.userid==this.sectionView_1._personal_data.USERID"
+                                        style="background:url('{{item.ranking_image_web}}');font-size:0.7em">
+    
+                                        <div class="col-1">&nbsp;&nbsp;&nbsp;{{item.rankingtable_number}}</div>
+    
+                                        <div class="col-2">
+                                            <div class="col-2" style="height:5vh;width:5vh">
+                                                <img src="{{item.rankingtable_logo}}" height="100%" width="100%" alt=""
+                                                    style="border-radius:50%">
                                             </div>
-
-
+    
                                         </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div *ngIf="sectionView_1?._personal_data?.id_role=='6'">
-                            <div *ngFor="let item of sectionView_2_popup?._ranking_data[0]._Overall">
-                                <div class="row leaderBoard_tile mt-2 "
-                                    *ngIf="item.userid==this.sectionView_1._personal_data.USERID"
-                                    style="background:url('{{item.ranking_image_web}}');font-size:0.7em">
-
-                                    <div class="col-1">&nbsp;&nbsp;&nbsp;{{item.rankingtable_number}}</div>
-
-                                    <div class="col-2">
-                                        <div class="col-2" style="height:5vh;width:5vh">
-                                            <img src="{{item.rankingtable_logo}}" height="100%" width="100%" alt=""
-                                                style="border-radius:50%">
+                                        <div class="col-4 text-center" class="userName_mobile">{{item.rankingtable_name}}
                                         </div>
-
-                                    </div>
-                                    <div class="col-4" class="userName_mobile">{{item.rankingtable_name}}</div>
-                                    <div class="col-2">
-                                        <div style="height:5vh;width:5vh">
-                                            <img src="{{item.ranking_badge}}" alt="" data-holder-rendered="true"
-                                                height="100%" width="100%">
-                                        </div>
-                                    </div>
-                                    <div class="col-2 text-center">{{item?.rankingtable_weightage}}</div>
-                                    <div class="col d-flex justify-content-end pe-3">
-
-                                        <div style="height:5.5vh;" *ngIf="item.rankingtable_arrow=='green'">
-
-                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
-                                                height="100%">
-                                        </div>
-
-                                        <div *ngIf="item.rankingtable_arrow=='red'" style="height:5.5vh;">
-
-                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
-                                                height="100%">
-
-                                        </div>
-                                        <div *ngIf="item.rankingtable_arrow=='yellow'"
-                                            style="height:5.5vh;width: 5.5vh;display:flex;justify-content:center;align-items: center;">
-
-                                            <div
-                                                style="height: 2.8vh;width:2.8vh;border-radius:100%;background-color:orange ;">
+                                        <div class="col-2">
+                                            <div style="height:5vh;width:5vh">
+                                                <img src="{{item.ranking_badge}}" alt="" data-holder-rendered="true"
+                                                    height="100%" width="100%">
                                             </div>
-
-
+                                        </div>
+                                        <div class="col-2 text-center">{{item?.rankingtable_weightage}}</div>
+                                        <div class="col d-flex justify-content-end pe-3">
+    
+                                            <div style="height:5.5vh;width:3.2vh" *ngIf="item.rankingtable_arrow=='green'">
+    
+                                                <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                                    height="100%">
+                                            </div>
+    
+                                            <div *ngIf="item.rankingtable_arrow=='red'" style="height:5.5vh;">
+    
+                                                <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                    height="100%">
+    
+                                            </div>
+                                            <div *ngIf="item.rankingtable_arrow=='yellow'"
+                                                style="height:5.5vh;width: 5.5vh;display:flex;justify-content:center;align-items: center;">
+    
+                                                <div
+                                                    style="height: 2.8vh;width:2.8vh;border-radius:100%;background-color:orange ;">
+                                                </div>
+    
+    
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
+    
+                                </div> -->
                             </div>
-
-                        </div>
+                        </ng-template>
+                        <ng-template #forPlayer>
+                            <div >
+                                <!-- <div *ngFor="let item of sectionView_2_popup?._ranking_data[0]._Overall">
+                                    <div class="row leaderBoard_tile mt-2 "
+                                        *ngIf="item?.userid==this.sectionView_1?._personal_data.USERID"
+                                        style="background:url('{{item.ranking_image_web}}');font-size:0.7em">
+    
+                                        <div class="col-1">&nbsp;&nbsp;&nbsp;{{item?.rankingtable_number}}</div>
+    
+                                        <div class="col-2">
+                                            <div class="col-2" style="height:5vh;width:5vh">
+                                                <img src="{{item.rankingtable_logo}}" height="100%" width="100%" alt=""
+                                                    style="border-radius:50%">
+                                            </div>
+    
+                                        </div>
+                                        <div class="col-4" class="userName_mobile">{{item?.rankingtable_name}}</div>
+                                        <div class="col-2">
+                                            <div style="height:5vh;width:5vh">
+                                                <img src="{{item.ranking_badge}}" alt="" data-holder-rendered="true"
+                                                    height="100%" width="100%">
+                                            </div>
+                                        </div>
+                                        <div class="col-2 text-center">{{item?.rankingtable_weightage}}</div>
+                                        <div class="col d-flex justify-content-end pe-3">
+    
+                                            <div style="height:5.5vh;" *ngIf="item?.rankingtable_arrow=='green'">
+    
+                                                <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                                    height="100%">
+                                            </div>
+    
+                                            <div *ngIf="item?.rankingtable_arrow=='red'" style="height:5.5vh;">
+    
+                                                <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                    height="100%">
+    
+                                            </div>
+                                            <div *ngIf="item?.rankingtable_arrow=='yellow'"
+                                                style="height:5.5vh;width: 5.5vh;display:flex;justify-content:center;align-items: center;">
+    
+                                                <div
+                                                    style="height: 2.8vh;width:2.8vh;border-radius:100%;background-color:orange ;">
+                                                </div>
+    
+    
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                </div>
+     -->
+                            </div>
+                        </ng-template>
+                        
+                        
 
                         <div class="leaderboard_container">
                             <div *ngFor="let item of sectionView_3_list_popup?.[0]?._Overall">
                                 <div class="row leaderBoard_tile mt-2 "
-                                    *ngIf="item.userid!=this.sectionView_1._personal_data.USERID"
+                                    *ngIf="item.userid!=this.sectionView_1?._personal_data?.USERID"
                                     style="background:url('{{item.ranking_image_web}}')">
 
-                                    <div class="col-1">&nbsp;&nbsp;&nbsp;{{item.rankingtable_number}}</div>
+                                    <div class="col-1">&nbsp;&nbsp;&nbsp;{{item?.rankingtable_number}}</div>
 
                                     <div class="col-2">
                                         <div class="col-2" style="height:5vh;width:5vh">
@@ -4410,7 +4464,7 @@
                                         </div>
 
                                     </div>
-                                    <div class="col-4" class="userName_mobile">{{item.rankingtable_name}}</div>
+                                    <div class="col-4" class="userName_mobile">{{item?.rankingtable_name}}</div>
                                     <div class="col-2">
                                         <div style="height:5vh;width:5vh">
                                             <img src="{{item.ranking_badge}}" alt="" data-holder-rendered="true"
@@ -4420,20 +4474,20 @@
                                     <div class="col-2 text-center">{{item?.rankingtable_weightage}}</div>
                                     <div class="col d-flex justify-content-end">
 
-                                        <div style="height:5.5vh;" *ngIf="item.rankingtable_arrow=='green'">
+                                        <div style="height:5.5vh;" *ngIf="item?.rankingtable_arrow=='green'">
 
                                             <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
                                                 height="100%">
                                         </div>
 
-                                        <div *ngIf="item.rankingtable_arrow=='red' " style="height:5.5vh;">
+                                        <div *ngIf="item?.rankingtable_arrow=='red' " style="height:5.5vh;">
 
                                             <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
                                                 height="100%">
 
                                         </div>
 
-                                        <div *ngIf="item.rankingtable_arrow=='yellow'"
+                                        <div *ngIf="item?.rankingtable_arrow=='yellow'"
                                             style="height:5.5vh;width: 5.5vh;display:flex;justify-content:center;align-items: center;">
 
                                             <div
@@ -4468,18 +4522,40 @@
             </div>
             <div class="modal-body">
                 <mat-tab-group>
-                    <mat-tab label="{{labelArray[0]?.label}}">
+                    <mat-tab label="{{labelArray[0]?.label}}" *ngIf="labelArray.length>0">
                         <div class="d-flex justify-content-between">
                             
-                            <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">{{labelArray[0]?.Kpidata?.data[0].indexname}}
+                            <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">{{fullFormKpiNamefirst}}
                             </h5>
                             <h5 class="col-4 d-flex justify-content-end " style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em ;width:40%">
-                                <div>{{labelArray[0]?.Kpidata?.data[0].frequency_name}}</div>
+                                <div>Frequency : {{labelArray[0]?.Kpidata?.data[0]?.frequency_name}}</div>
                                
                             </h5>
                                 
                         </div>
                        
+                        
+                        <div *ngIf="labelArray[0]?.Kpidata?.data[0]?.end_range==='';then forAdvocacyForOne else forOtherKpiOne"></div>
+                       <ng-template #forAdvocacyForOne>
+                        <table class="mt-4">
+                            <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
+                                <th>Refferal Count </th>
+                                <th>Points per Refferal</th>
+                            </thead>
+                            <tbody *ngFor="let kpiData of labelArray[0]?.Kpidata?.data">
+                                <tr>
+                                    <td>{{kpiData.start_range}}</td>
+                                    <td>{{kpiData.points}}</td>
+
+                                </tr>
+                               
+
+                            </tbody>
+
+
+                        </table>
+                       </ng-template>
+                       <ng-template #forOtherKpiOne>
                         <table class="mt-4" >
                             <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
                                 <th>Start Range </th>
@@ -4497,21 +4573,44 @@
 
 
                         </table>
+                       </ng-template>
 
 
                     </mat-tab>
-                     <mat-tab label="{{labelArray[1]?.label}}">
+                     <mat-tab label="{{labelArray[1]?.label}}" *ngIf="labelArray.length>0">
                         <div class="d-flex justify-content-between">
                             
-                            <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">{{labelArray[1]?.Kpidata?.data[0].indexname}}
+                            <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">{{fullFormKpiNamesecond}}
                             </h5>
                             <h5 class="col-4 d-flex justify-content-end " style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em ;width:40%">
-                                <div>{{labelArray[1]?.Kpidata?.data[0].frequency_name}}</div>
+                                <div>Frequency : {{labelArray[1]?.Kpidata?.data[0].frequency_name}}</div>
                                
                             </h5>
                                 
                         </div>
                        
+                        
+                        <div *ngIf="labelArray[1]?.Kpidata?.data[1]?.end_range==='';then forAdvocacyFortwo else forOtherKpiTwo"></div>
+                       <ng-template #forAdvocacyFortwo>
+                        <table class="mt-4">
+                            <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
+                                <th>Refferal Count </th>
+                                <th>Points per Refferal</th>
+                            </thead>
+                            <tbody *ngFor="let kpiData of labelArray[1]?.Kpidata?.data">
+                                <tr>
+                                    <td>{{kpiData.start_range}}</td>
+                                    <td>{{kpiData.points}}</td>
+
+                                </tr>
+                               
+
+                            </tbody>
+
+
+                        </table>
+                       </ng-template>
+                       <ng-template #forOtherKpiTwo>
                         <table class="mt-4" >
                             <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
                                 <th>Start Range </th>
@@ -4529,21 +4628,44 @@
 
 
                         </table>
+                       </ng-template>
+                        
 
 
                     </mat-tab>
-                    <mat-tab label="{{labelArray[2]?.label}}">
+                    <mat-tab label="{{labelArray[2]?.label}}" *ngIf="labelArray.length>0">
                         <div class="d-flex justify-content-between">
                             
-                            <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">{{labelArray[2]?.Kpidata?.data[0].indexname}}
+                            <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">{{fullFormKpiNameThird}}
                             </h5>
                             <h5 class="col-4 d-flex justify-content-end " style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em ;width:40%">
-                                <div>{{labelArray[2]?.Kpidata?.data[0].frequency_name}}</div>
+                                <div>Frequency : {{labelArray[2]?.Kpidata?.data[0].frequency_name}}</div>
                                
                             </h5>
                                 
                         </div>
                        
+                        <div *ngIf="labelArray[2]?.Kpidata?.data[2]?.end_range==='';then forAdvocacyForthree else forOtherKpiThree"></div>
+                       <ng-template #forAdvocacyForthree>
+                        <table class="mt-4">
+                            <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
+                                <th>Refferal Count </th>
+                                <th>Points per Refferal</th>
+                            </thead>
+                            <tbody *ngFor="let kpiData of labelArray[2]?.Kpidata?.data">
+                                <tr>
+                                    <td>{{kpiData.start_range}}</td>
+                                    <td>{{kpiData.points}}</td>
+
+                                </tr>
+                               
+
+                            </tbody>
+
+
+                        </table>
+                       </ng-template>
+                       <ng-template #forOtherKpiThree>
                         <table class="mt-4" >
                             <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
                                 <th>Start Range </th>
@@ -4561,28 +4683,31 @@
 
 
                         </table>
+                       </ng-template>
 
 
                     </mat-tab>
-                    <mat-tab label="{{labelArray[3]?.label}}">
+                    <mat-tab label="{{labelArray[3]?.label}}" *ngIf="labelArray.length>0">
                         <div class="d-flex justify-content-between">
                             
-                            <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">{{labelArray[3]?.Kpidata?.data[0].indexname}}
+                            <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">
+                                {{fullFormKpiNameFourth}}
                             </h5>
                             <h5 class="col-4 d-flex justify-content-end " style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em ;width:40%">
-                                <div>{{labelArray[3]?.Kpidata?.data[0].frequency_name}}</div>
+                                <div>Frequency : {{labelArray[3]?.Kpidata?.data[0].frequency_name}}</div>
                                
                             </h5>
                                 
                         </div>
-                       
+                        <div *ngIf="labelArray[3]?.Kpidata?.data[3]?.end_range==='';then forAdvocacy else forOtherKpi"></div>
+                       <ng-template #forAdvocacy>
                         <table class="mt-4">
                             <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
                                 <th>Refferal Count </th>
                                
                                 <th>Points per Refferal</th>
                             </thead>
-                            <tbody *ngFor="let kpiData of labelArray[2]?.Kpidata?.data">
+                            <tbody *ngFor="let kpiData of labelArray[3]?.Kpidata?.data">
                                 <tr>
                                     <td>{{kpiData.start_range}}</td>
                                     <td>{{kpiData.points}}</td>
@@ -4594,6 +4719,27 @@
 
 
                         </table>
+                       </ng-template>
+                       <ng-template #forOtherKpi>
+                        <table class="mt-4" >
+                            <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
+                                <th>Start Range </th>
+                                <th>End Range</th>
+                                <th>Point</th>
+                            </thead>
+                            <tbody *ngFor="let kpiData of labelArray[3]?.Kpidata?.data">
+                                <tr>
+                                    <td>{{kpiData?.start_range}}</td>
+                                    <td>{{kpiData?.end_range}}</td>
+                                    <td>{{kpiData?.points}}</td>
+                                </tr>
+                                
+                            </tbody>
+
+
+                        </table>
+                       </ng-template>
+                        
 
 
 
@@ -4709,7 +4855,7 @@
                 </div> -->
                 <div class="mt-2"
                 [style.background-image]="
-        sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null"
+                sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null"
                 style="background-size:cover;border-radius:10px;padding:1%">
                 <div class="row" style="color:#000;font-size: 1vw !important;">
                     <div class="col-2">

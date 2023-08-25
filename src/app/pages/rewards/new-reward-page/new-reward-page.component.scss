@@ -40,7 +40,7 @@
 .activeBtn {
     border-radius: 10px;
     border: 2px solid #000;
-    background: linear-gradient(137deg, #F3D638 0%, #FFB21F 100%);
+    background: linear-gradient(var(--selectionColor));
     box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25);
     font-family: 'Inter';
     font-size: 1.7em;

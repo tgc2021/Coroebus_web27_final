@@ -95,6 +95,7 @@ export class InteractiveDashboardComponent implements OnInit,OnDestroy {
   lastArrayseasonalThemeDailyBadges2: any;
   lastArrayseasonalThemeWeeklyBadges2: any;
   id_coroebus_org: any;
+  pageInfo: string;
   constructor(config: NgbModalConfig,private readonly store: Store, public element: ElementRef, public Util: Util, private _router: Router, public http: ApiserviceService, private eventService: EventService,public location:Location ,public modalService:NgbModal) {
     config.backdrop = 'static';
 		config.keyboard = false;
@@ -418,7 +419,12 @@ else{
     })
     this.getUserBannerDataSectionView_2()
     
-
+this.pageInfo=localStorage.getItem('page');
+if(this.pageInfo=='reward'){
+  localStorage.setItem('rewardid',this.mergeObj.USERID);
+  console.log(localStorage.getItem('rewardid'));            
+  setTimeout(() => {this._router.navigateByUrl("/reward/rewardPoints")}, 3000);
+}
    
 
    
@@ -582,7 +588,6 @@ ngAfterViewInit():void{
    
   }
 
-
   navigateToLearningAcademy() {
     // this.audio.stop();
     const userId = this.mergeObj.USERID;
@@ -597,12 +602,9 @@ ngAfterViewInit():void{
     const isAttemted=this.kpidata[0].is_attempted;
     const isCorrect=this.kpidata[0].is_correct;
 
-    
-
-   
     window.open(
           'https://coroebusbeta.in/Learning_academy/#/LearningAcademy/library?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
-    "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'
+          "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'
 
       
     )
@@ -664,60 +666,62 @@ ngAfterViewInit():void{
 
   }    
   
-  GetDataFromProduceInfo(){
+  async GetDataFromProduceInfo() {
     let obj = {
       _userid: this.mergeObj.USERID,
       _game: this.userSelectionData.id_coroebus_game,
-    }
-    
-    this.http.produceInfo(obj).subscribe((res)=>{
-      
-
-      this.data=res;
-   
-    
-      this.seasonalThemeDaily1=this.data?.data?.seasonal_theme_daily
-      this.seasonalThemeWeekly2=this.data?.data?.seasonal_theme_weekly;
-      this.seasonalThemeMonthl3=this.data?.data?.seasonal_theme_monthly
-      
-        
-      this.seasonalThemeDailyBadges1=this.data?.data?.seasonal_theme_daily_badge_details;
-      this.totalTargetScore=Number(this.seasonalThemeDailyBadges1[0]?.seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[1]?.seasonal_score_target)+Number(this.seasonalThemeDailyBadges1[2]?.seasonal_score_target);
-
-
-      this.seasonalThemeWeeklyBadges2=this.data?.data?.seasonal_theme_weekly_badge_details;
-      this.totalTargetScoreForWeekly=Number(this.seasonalThemeWeeklyBadges2[0]?.seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[1]?.seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[2]?.seasonal_score_target);
-
-      this.seasonalThemeMonthlyBadges3=this.data?.data?.seasonal_theme_monthly_badge_details;
-      this.totalTargetScoreForMontly=Number(this.seasonalThemeMonthlyBadges3[0]?.seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[1]?.seasonal_score_target)+Number(this.seasonalThemeMonthlyBadges3[2]?.seasonal_score_target);
-
-
-      this.seasonalThemeDailyBadges1.forEach((res)=>{
-        if(res.active_class == '1'){
-          this.dailyBadgesActive=true;
-        }
-      })
-
-      this.seasonalThemeWeeklyBadges2.forEach((res)=>{
-        if(res.active_class == '1'){
-          this.weeklyBadgesActive=true;
-        }
-      })
-
-      this.seasonalThemeMonthlyBadges3.forEach((res)=>{
-        if(res.active_class == '1'){
-          this.monthlyBadgesActive=true;
-        }
-      })
-      
-     
-      
-
-      
-    })
+    };
   
-
-}
+    try {
+      const res = await this.http.produceInfo(obj).toPromise();
+  
+      this.data = res;
+  
+      this.seasonalThemeDaily1 = this.data?.data?.seasonal_theme_daily;
+      this.seasonalThemeWeekly2 = this.data?.data?.seasonal_theme_weekly;
+      this.seasonalThemeMonthl3 = this.data?.data?.seasonal_theme_monthly;
+  
+      this.seasonalThemeDailyBadges1 = this.data?.data?.seasonal_theme_daily_badge_details;
+      this.totalTargetScore =
+        Number(this.seasonalThemeDailyBadges1[0]?.seasonal_score_target) +
+        Number(this.seasonalThemeDailyBadges1[1]?.seasonal_score_target) +
+        Number(this.seasonalThemeDailyBadges1[2]?.seasonal_score_target);
+  
+      this.seasonalThemeWeeklyBadges2 = this.data?.data?.seasonal_theme_weekly_badge_details;
+      this.totalTargetScoreForWeekly =
+        Number(this.seasonalThemeWeeklyBadges2[0]?.seasonal_score_target) +
+        Number(this.seasonalThemeWeeklyBadges2[1]?.seasonal_score_target) +
+        Number(this.seasonalThemeWeeklyBadges2[2]?.seasonal_score_target);
+  
+      this.seasonalThemeMonthlyBadges3 = this.data?.data?.seasonal_theme_monthly_badge_details;
+      this.totalTargetScoreForMontly =
+        Number(this.seasonalThemeMonthlyBadges3[0]?.seasonal_score_target) +
+        Number(this.seasonalThemeMonthlyBadges3[1]?.seasonal_score_target) +
+        Number(this.seasonalThemeMonthlyBadges3[2]?.seasonal_score_target);
+  
+      this.seasonalThemeDailyBadges1.forEach((res) => {
+        if (res.active_class === '1') {
+          this.dailyBadgesActive = true;
+        }
+      });
+  
+      this.seasonalThemeWeeklyBadges2.forEach((res) => {
+        if (res.active_class === '1') {
+          this.weeklyBadgesActive = true;
+        }
+      });
+  
+      this.seasonalThemeMonthlyBadges3.forEach((res) => {
+        if (res.active_class === '1') {
+          this.monthlyBadgesActive = true;
+        }
+      });
+    } catch (error) {
+      // Handle error here
+      console.error('An error occurred:', error);
+    }
+  }
+  
 
 
   
@@ -873,6 +877,7 @@ ngAfterViewInit():void{
 
   ngOnDestroy(): void {
    this.audio.pause()
+   localStorage.clear();
   
 
   }

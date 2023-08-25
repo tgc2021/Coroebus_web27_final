@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RewardsRoutingModule } from './rewards-routing.module';
-import { RewardsComponent } from './rewards.component';
+
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
@@ -21,7 +21,7 @@ import { NewRewardPageComponent } from './new-reward-page/new-reward-page.compon
 
 @NgModule({
   declarations: [
-    RewardsComponent,
+    
     NewRewardPageComponent,
 
    

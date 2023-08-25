@@ -7,12 +7,15 @@ import { BehaviorSubject,Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiserviceService {
+  get(arg0: string) {
+    throw new Error("Method not implemented.");
+  }
 
   URLstring = environment.apiURL
-  Path='coroebus-beta-api-levels';
+  // Path='coroebus-beta-api-levels';
   open: any;
   // Path='coroebus-beta-api-levels-new';
-  // Path='coroebus-tgc-api-levels'
+  Path='coroebus-tgc-api-levels'
   constructor(public Http:HttpClient) { }
 
 

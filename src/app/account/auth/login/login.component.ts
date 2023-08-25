@@ -21,6 +21,7 @@ import { ApiserviceService } from 'app/apiservice.service';
 export class LoginComponent implements OnInit {
   userid: any;
   showMainContent: Boolean = true;
+  page: any;
 
 
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router,
@@ -53,7 +54,8 @@ export class LoginComponent implements OnInit {
     .subscribe(params => {
       
       this.userid = params.userid;
-      
+      this.page=params.page;
+      localStorage.setItem('page',this.page)
       
     }
   );

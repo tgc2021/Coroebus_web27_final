@@ -114,6 +114,17 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   sectionView_2_err: string;
   sectionView2ResponsePopup: void;
   activeClassPopup: any;
+  openKpi: boolean;
+  kpiData: any;
+  labelArray: any=[];
+  newKpiNamefirst: any;
+  fullFormKpiNamefirst: any;
+  newKpiNameSecond: any;
+  fullFormKpiNamesecond: any;
+  newKpiNameThird: any;
+  fullFormKpiNameThird: any;
+  newKpiNameFourth: any;
+  fullFormKpiNameFourth: any;
   
   constructor(private readonly store: Store, public _route: ActivatedRoute,public snackBar: MatSnackBar,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
@@ -1113,6 +1124,53 @@ this.spectSearchStr=''
     }
      
    }
+   async openKpiInfo() {
+    // queryParams?.roleID ? queryParams?.roleID :this.userSelectionData?._personal_data?.id_role,
+   
+    this.openKpi = !this.openKpi;
+    try {
+      const body = {
+    
+        _game:this.userSelectionData?.id_coroebus_game,
+        id_role:this.queryParams?.roleID ? this.queryParams?.roleID :this.userSelectionData?._personal_data?.id_role,
+
+      };
+      const res = await this.http.pointDistributionPopup(body).toPromise();
+      this.kpiData = res;
+      this.labelArray = Object.entries(this.kpiData?.data?._point_details).map(
+        ([label, otherKpiData]) => {
+          return { label, Kpidata: otherKpiData };
+        }
+      );
+      console.log(this.labelArray);
+      // First Index
+     this.newKpiNamefirst=this.labelArray[0]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
+     this.newKpiNamefirst=this.labelArray[0]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNamefirst,"");
+     this.fullFormKpiNamefirst=`${this.newKpiNamefirst}${this.labelArray[0]?.label} Index`
+     
+
+      // Second Index
+      this.newKpiNameSecond=this.labelArray[1]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
+      this.newKpiNameSecond=this.labelArray[1]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNameSecond,"");
+      this.fullFormKpiNamesecond=`${this.newKpiNameSecond}${this.labelArray[0]?.label} Index`
+
+      // Third Index
+      this.newKpiNameThird=this.labelArray[2]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
+      this.newKpiNameThird=this.labelArray[2]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNameThird,"");
+      this.fullFormKpiNameThird=`${this.newKpiNameThird}${this.labelArray[0]?.label} Index`
+
+      // Fourth Index
+      this.newKpiNameFourth=this.labelArray[3]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
+      this.newKpiNameFourth=this.labelArray[3]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNameFourth,"");
+      this.fullFormKpiNameFourth=`${this.newKpiNameFourth}${this.labelArray[0]?.label} Index`
+
+      
+    
+    } catch (err) {
+      console.error(err);
+    }
+    
+  }
   async GetRankingPopupData(){
     console.log(this.activeClassPopup);
     
@@ -1134,4 +1192,7 @@ this.spectSearchStr=''
     
     this.getDataBasedOnUserID(obj)
   }
+
+ 
 }
+

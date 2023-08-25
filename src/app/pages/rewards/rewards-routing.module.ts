@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RewardsComponent } from './rewards.component';
+
 import { NewRewardPageComponent } from './new-reward-page/new-reward-page.component';
 
 

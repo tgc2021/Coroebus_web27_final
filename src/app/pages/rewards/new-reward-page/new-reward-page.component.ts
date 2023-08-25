@@ -86,17 +86,16 @@ export class NewRewardPageComponent implements OnInit {
   passbookImage: any;
   rewardImage: any;
   coinImage: any;
+  selectionColor: any;
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
 
     private _route: ActivatedRoute, public toastService: ToastService, public http: ApiserviceService, public element: ElementRef, public dialog: MatDialog) {
-      this.hidedata=true;
+       this.hidedata=true;
 
   }
 
   ngOnInit(): void {
-
-
     if (!localStorage.getItem('foo')) {
       localStorage.setItem('foo', 'no reload')
       location.reload()
@@ -108,12 +107,7 @@ export class NewRewardPageComponent implements OnInit {
       takeUntil(this.destroy$)
     ).subscribe(data => {
       this.userObj = data?.user
-
-
       this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
-
-
-
       this.combineLatest = combineLatest([
         this.store.select(fromRoot.userLogin),
         this.store.select(fromRoot.usertheme),
@@ -160,7 +154,7 @@ export class NewRewardPageComponent implements OnInit {
         if (this.location.includes('?')) {
           this.userid = localStorage.getItem('reward_userid');
           this.gameID = localStorage.getItem('reward_gameid');
-          this.hidedata=false;
+          
 
 
 
@@ -193,15 +187,16 @@ export class NewRewardPageComponent implements OnInit {
               // const response = res.data.points_list[0].label
 
               // this.requestdata=responce
-
+              this.hidedata=false;
               this.rewardresponse = res;
               this.filterCoreGame = res;
               // this.filterCoreGame=res;
              
               this.rewardresponse = Array.of(this.rewardresponse);
+              console.log(this.rewardresponse[0]?.data?.game_data[0]);
 
                
-              
+            
               this.passbook_response = this.rewardresponse[0].data.points_list[1]._data;
 
               this.collectionSize = this.passbook_response?.length;
@@ -212,17 +207,20 @@ export class NewRewardPageComponent implements OnInit {
             this.rewardImage=this.rewardresponse[0]?.data?.game_data[0]?.reward_image;
             this.passbookImage=this.rewardresponse[0]?.data?.game_data[0]?.passbook_image;
             this.coinImage=this.rewardresponse[0]?.data?.game_data[0]?.coin_image;
+            this.selectionColor=this.rewardresponse[0]?.data?.game_data[0]?.selection_color;  
+            this.element.nativeElement.style.setProperty('--selectionColor', `${this.selectionColor}`)
             
               this.arrForCardColor.push(
                 
                 {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color1+')'},
                 {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color2+')'},
                 {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color3+')'},
-                {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color4+')'}
+                {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color4+')'},
+                
   
                 );
            
-
+                
           }
 
           else {
@@ -276,11 +274,13 @@ export class NewRewardPageComponent implements OnInit {
                   {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color1+')'},
                   {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color2+')'},
                   {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color3+')'},
-                  {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color4+')'}
+                  {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color4+')'},
+                  {'selectionColor':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.selection_color+')'}
     
                   );
 
             })
+            this.hidedata =true
 
            
 
@@ -314,13 +314,16 @@ export class NewRewardPageComponent implements OnInit {
             this.rewardImage=this.rewardresponse[0]?.data?.game_data[0]?.reward_image;
             this.passbookImage=this.rewardresponse[0]?.data?.game_data[0]?.passbook_image;
             this.coinImage=this.rewardresponse[0]?.data?.game_data[0]?.coin_image;
+            this.selectionColor=this.rewardresponse[0]?.data?.game_data[0]?.selection_color;  
+            this.element.nativeElement.style.setProperty('--selectionColor', `${this.selectionColor}`)
             
               this.arrForCardColor.push(
                 
                 {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color1+')'},
                 {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color2+')'},
                 {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color3+')'},
-                {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color4+')'}
+                {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color4+')'},
+                
 
                 );
           })
@@ -392,13 +395,16 @@ export class NewRewardPageComponent implements OnInit {
           this.rewardImage=this.rewardresponse[0]?.data?.game_data[0]?.reward_image;
           this.passbookImage=this.rewardresponse[0]?.data?.game_data[0]?.passbook_image;
           this.coinImage=this.rewardresponse[0]?.data?.game_data[0]?.coin_image;
+          this.selectionColor=this.rewardresponse[0]?.data?.game_data[0]?.selection_color;  
+          this.element.nativeElement.style.setProperty('--selectionColor', `${this.selectionColor}`);
           
             this.arrForCardColor.push(
               
               {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color1+')'},
               {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color2+')'},
               {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color3+')'},
-              {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color4+')'}
+              {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color4+')'},
+              
 
               );
 
@@ -850,6 +856,8 @@ export class NewRewardPageComponent implements OnInit {
       this.rewardImage=this.rewardresponse[0]?.data?.game_data[0]?.reward_image;
       this.passbookImage=this.rewardresponse[0]?.data?.game_data[0]?.passbook_image;
       this.coinImage=this.rewardresponse[0]?.data?.game_data[0]?.coin_image;
+      this.selectionColor=this.rewardresponse[0]?.data?.game_data[0]?.selection_color;  
+      this.element.nativeElement.style.setProperty('--selectionColor', `${this.selectionColor}`)
     
         this.arrForCardColor.push(
     
@@ -857,6 +865,7 @@ export class NewRewardPageComponent implements OnInit {
           {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color2+')'},
           {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color3+')'},
           {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color4+')'}
+        
 
           );
 

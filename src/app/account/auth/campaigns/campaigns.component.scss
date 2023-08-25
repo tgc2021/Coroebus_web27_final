@@ -1,0 +1,128 @@
+.web-container{
+   
+    border-radius: 10px;
+    margin: auto;
+    min-height: 100vh;
+    width: 45vw;
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    // background:linear-gradient(135deg, #17ead9 0%,#6078ea 100%);
+
+}
+.ModalHeading {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 150%;
+    /* identical to box height */
+  
+    // display: flex;
+    // align-items: flex-end;
+    // text-align: center;
+    // letter-spacing: -0.02em;
+    // font-feature-settings: 'pnum' on, 'lnum' on;
+  
+    color: #252525;
+  }
+//   progress bar
+  
+.animation-bar-1 {
+    display: block;
+    margin-top: 9vh;
+  
+    font-size: 16px;
+  
+    border-radius: 30px;
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25),
+      0 1px rgba(255, 255, 255, 0.08);
+  }
+  .animation-bar {
+    display: block;
+  
+    font-size: 16px;
+    border-radius: 30px;
+    
+    .border-left {
+      border-left: 2px solid #8ec912;
+      height: 3vh;
+    }
+  }
+  .badges_row {
+    display: flex;
+    margin-left: 1%;
+   
+    // justify-content: start;
+    // gap:23%;
+  }
+  .Progressscore {
+    font-size: 1.1vw;
+    font-weight: 600;
+    font-family: "Inter";
+    height: 35px;
+    width: 10vw;
+   
+    border-radius: 50%;
+    margin-left: -5vw;
+    color: #8ec912;
+    font-size: 3vh;
+    text-align: center;
+    display: grid;
+    place-content: center;
+  }
+  .animation-bar-1 span {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    height: 24px;
+  
+    overflow: hidden;
+    // background-size: 150%;
+    background: linear-gradient(
+      90deg,
+      #77b711 -4.86%,
+      #d9ff15 11.93%,
+      #77b711 27.8%,
+      #d8fe15 42.73%,
+      #8ec912 58.91%,
+      #d8fe15 71.54%,
+      #8ec912 84.16%,
+      #d8fe15 103.82%
+    );
+    border-radius: 20px;
+    animation: progress-anim-1 10s infinite linear;
+  }
+  
+  .animation-bar-1 span:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    background-image: linear-gradient(
+      45deg,
+      #ffffff 25%,
+      rgba(0, 0, 0, 0) 25%,
+      rgba(0, 0, 0, 0) 50%,
+      #ffffff 50%,
+      #ffffff 75%,
+      rgba(0, 0, 0, 0) 75%,
+      rgba(0, 0, 0, 0)
+    );
+    background-size: 30px 30px;
+    opacity: 0.3;
+    animation: progress-anim-1-after 0.5s infinite linear;
+  }
+
+  @media screen and(min-width:270px) and (max-width:1024px){
+    .web-container{
+        width: 100%;
+    }
+    
+  }

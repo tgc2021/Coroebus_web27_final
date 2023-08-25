@@ -13,7 +13,9 @@ import { InteractiveDashboardComponent } from './interactive-dashboard/interacti
 import { BusinessReportComponent } from './business-report/business-report.component';
 import { GrowthReportComponent } from './growth-report/growth-report.component';
 import { GovernanceReportComponent } from './governance-report/governance-report.component';
+import { CampaignsComponent } from './campaigns/campaigns.component';
 const routes: Routes = [
+    { path: '', redirectTo: 'campaigns', pathMatch: 'full' },
     {
         path: 'login',
         component: LoginComponent,
@@ -70,6 +72,16 @@ const routes: Routes = [
         canActivate: [AuthGuard]
 
     },
+    {
+        path: 'campaigns',
+        component: CampaignsComponent,
+        data: { animation: 'Campaigns' },
+        // canActivate: [AuthGuard],
+        
+       
+
+    }
+
    
 ];
 

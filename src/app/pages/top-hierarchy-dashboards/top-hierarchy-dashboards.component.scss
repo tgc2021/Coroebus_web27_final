@@ -2390,6 +2390,39 @@ text-align: center;
     text-overflow: ellipsis; 
 }
 
+table {
+    width: 100%;
+  }
+  
+  table,
+  th,
+  td {
+    border: 1px solid black;
+    color: black;
+    font-family: "Inter";
+    text-align: center;
+    padding: 10px;
+  }
+  //   thead{
+  //     background-color:
+  //     #F7E2AC;
+  //   }
+  
+  th {
+    width: 33%;
+    font-size: 0.9em;
+    color: #fff;
+  }
+  td {
+    width: 33%;
+    font-size: 0.9em;
+    color: #000;
+  }
+  
+  tbody > td {
+    font-family: "Inter";
+  }
+
 @media screen and (min-width:270px) and (max-width:1024px){
     
     .userName_mobile{

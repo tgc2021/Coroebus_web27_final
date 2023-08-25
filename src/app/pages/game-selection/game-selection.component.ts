@@ -32,6 +32,7 @@ export class GameSelectionComponent implements OnInit, OnDestroy {
   bodyforbh:any
   buisness_head_response_:any=[]
   dark_color:any
+  paramID:any
   constructor(private readonly store: Store, private router: Router, public Util: Util,public http:ApiserviceService) {
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
@@ -50,6 +51,9 @@ export class GameSelectionComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.paramID =localStorage.getItem('param')
+    console.log(this.paramID);
+    
     this.id_role = this.userObj?._personal_data?.id_role
 
 let body={
@@ -204,7 +208,12 @@ if (this.gameList?.[0]?.length === 1){
     
     
     this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
-    this.router.navigate(['/account/interactive-dashboard']);
+    if(this.paramID != '0'){
+      this.router.navigate(['/account/interactive-dashboard']);
+     }else{
+      this.router.navigate(['/account/campaigns']);
+     }
+   
     localStorage.setItem("is_interactive_dashboard","1")
   }
   else if(this.id_coroebus_theme>4 && this.gameList[0]?.[0]?.is_interactive_dashboard== '0'){
@@ -270,7 +279,12 @@ else{
   else if(this.id_coroebus_theme>4 && this.isInteractiveDashboard == '1'){
     
     this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
-    this.router.navigate(['/account/interactive-dashboard']);
+    
+    if(this.paramID != '0'){
+      this.router.navigate(['/account/interactive-dashboard']);
+     }else{
+      this.router.navigate(['/account/campaigns']);
+     }
   }
   else if(this.id_coroebus_theme>4 && this.isInteractiveDashboard == '0'){
     this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
