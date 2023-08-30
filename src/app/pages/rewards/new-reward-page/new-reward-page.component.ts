@@ -56,7 +56,7 @@ export class NewRewardPageComponent implements OnInit {
   popupresponse: any
   data: any
   collectionSize: any;
- 
+  selectedIndex=0;
   pageSizePassbook = 6;
   pageSizeReward=4;
   page = 1;
@@ -86,7 +86,9 @@ export class NewRewardPageComponent implements OnInit {
   passbookImage: any;
   rewardImage: any;
   coinImage: any;
+  
   selectionColor: any;
+  urlPage: string;
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
 
@@ -102,7 +104,14 @@ export class NewRewardPageComponent implements OnInit {
     } else {
       localStorage.removeItem('foo')
     }
+    this.urlPage=localStorage.getItem('page');
+    console.log(this.urlPage);
+    if(this.urlPage=='reward'){
+      this.selectedIndex=1;
+    }
+
     this.rewardSpect = false
+    
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
     ).subscribe(data => {
@@ -396,7 +405,7 @@ export class NewRewardPageComponent implements OnInit {
           this.passbookImage=this.rewardresponse[0]?.data?.game_data[0]?.passbook_image;
           this.coinImage=this.rewardresponse[0]?.data?.game_data[0]?.coin_image;
           this.selectionColor=this.rewardresponse[0]?.data?.game_data[0]?.selection_color;  
-          this.element.nativeElement.style.setProperty('--selectionColor', `${this.selectionColor}`);
+          this.element.nativeElement.style.setProperty('--selectionColor', `${this.selectionColor}`)
           
             this.arrForCardColor.push(
               

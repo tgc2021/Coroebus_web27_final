@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   userid: any;
   showMainContent: Boolean = true;
   page: any;
+  tab: any;
 
 
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router,
@@ -55,7 +56,9 @@ export class LoginComponent implements OnInit {
       
       this.userid = params.userid;
       this.page=params.page;
+      this.tab=params.tab;
       localStorage.setItem('page',this.page)
+      localStorage.setItem('tab',this.tab)
       
     }
   );

@@ -188,12 +188,10 @@
                             <div>
                                 <div class="inner-points-height d-flex flex-column justify-content-center gap-2 p-2">
                                     <div class="row  points-row  d-flex flex-row align-items-center" 
-                                        (click)="getGraphDataById()">
-                                        <div class="col-6 p-0" >
-                                            <div [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}"
-                                                
-                                                class="ms-2 points-dis-name1 ellipsis d-flex align-items-center justify-content-start"
-                                                style="color:#fff">
+                                        (click)="getGraphDataById()" >
+                                        <div class="col-6 p-0">
+                                            <div [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}" style="color:#fff"
+                                                class="ms-2 points-dis-name1 ellipsis d-flex align-items-center justify-content-start">
                                                 &nbsp;&nbsp; Overall
                                             </div>
                                         </div>
@@ -205,16 +203,17 @@
                                         <div class="col-2 d-flex justify-content-center align-items-center gap-3 ">
                                             <div class=" text-end font-size-10 font-weight-semibold"
                                                 style="min-width: 2vw;text-align: center;">
-                                                {{sectionView_1?._points[0]?.score}}
+                                                &nbsp;&nbsp;{{sectionView_1?._points[0]?.score}}
                                             </div>
                                             <div class="d-flex  justify-content-center align-items-center pb-1  ">
-                                                <div style="height:2.5vh;">
+                                                <div style="height:2.5vh;" >
 
                                                     <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
                                                         height="100%">
                                                 </div>
 
-
+                                               
+                                               
                                                 <div>
 
                                                 </div>
@@ -541,6 +540,7 @@
 
 
                 <div style="padding:2%;border-radius:10px;background-size: cover;"
+                  
                     [style.background-image]="
                     sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
                     <div class="row" [ngClass]="{'row-cols-2': sectionView_2?._ranking_data?.length === 2,
@@ -608,7 +608,7 @@
                     <div class="row row-cols-2" *ngIf="sectionView_3_list?.[0]?._Overall">
                         <div *ngIf="role_id==6;then subTabForPlayer else subTabForOtherRole "></div>
                         <ng-template #subTabForPlayer>
-                            <div class="col">
+                            <div class="col" *ngIf="hideBtnLevelWise">
                                 <a id="myButton" class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
                                 
                                     [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 ==='My Store'}"
@@ -623,7 +623,7 @@
                                     </span>
                                 </a>
                             </div>
-                            <div class="col">
+                            <div class="col" *ngIf="hideBtnLevelWise">
                                 <a class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
                                 
                                     [ngClass]="{'': activeSubTabForSectionView_2 === 'Overall'}"
@@ -1445,11 +1445,11 @@
                                                                     *ngIf="triviaData?.brief_graphics?.split('.').pop()=='mp4';then mp4player">
                                                                 </div>
                                                                 <div
-                                                                    *ngIf="triviaData?.brief_graphics?.split('.').pop() == 'png'||triviaData?.brief_graphics?.split('.').pop()=='gif'||triviaData?.brief_graphics?.split('.').pop()== 'jpg'||triviaData?.brief_graphics?.split('.').pop()=='jpeg';then imgplay else textImage ">
+                                                                    *ngIf="triviaData?.brief_graphics?.split('.').pop() == 'png'||triviaData?.brief_graphics?.split('.').pop()=='gif'||triviaData?.brief_graphics?.split('.').pop()== 'jpg'||triviaData?.brief_graphics?.split('.').pop()=='jpeg';then imgplay ">
                                                                 </div>
-                                                                <div *ngIf="triviaData?.brief_graphics?.split('.').pop() == 'txt';then textImage">
+                                                                <div *ngIf="triviaData?.brief_graphics?.split('.').pop() == 'txt';then textImage"> 
 
-                                                                </div>
+                                                            </div>
 
                                                                 <ng-template #imgplay>
                                                                     <div
@@ -2012,6 +2012,7 @@
                         <ng-container *ngFor="let item of pokeData[1]._data,index as i">
                             <div class="col">
                                 <div class="card poke-card"
+                                style="border:2px solid"
                                 [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
                                     <span [class.active]="i===clicked" (click)="emojiSelected(i,arrowStatus)">
                                         <img src="{{item?.poke_logo}}" class="card-img-top poke-image" alt="..." height="90%" width="90%">
@@ -2023,6 +2024,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="card emojitext"
+                            
                                 [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
                                 <span *ngIf="this.emoji" class=""
                                     style="text-align: center; padding:3%;">{{emoji}}</span>
@@ -2498,8 +2500,7 @@
                             <ng-template #pointsDistribution>
                               
                                 <div  class="row" style="margin-top:-1%;margin-bottom:2%"
-                                
-                                   >
+                         >
                                    <div class="col" style="width: 83vw;font-weight:500;font-family:'Inter'">
                                     Points Distribution
                                     </div>
@@ -4521,8 +4522,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <mat-tab-group>
-                    <mat-tab label="{{labelArray[0]?.label}}" *ngIf="labelArray.length>0">
+              
+                <mat-tab-group [selectedIndex]="selectedIndex" *ngIf="labelArray?.length!=0" >
+                    
+                    <mat-tab label="{{labelArray[0]?.label}}" *ngIf="labelArray[0]?.Kpidata?.data?.length>0">
+                        
+
                         <div class="d-flex justify-content-between">
                             
                             <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">{{fullFormKpiNamefirst}}
@@ -4535,7 +4540,7 @@
                         </div>
                        
                         
-                        <div *ngIf="labelArray[0]?.Kpidata?.data[0]?.end_range==='';then forAdvocacyForOne else forOtherKpiOne"></div>
+                        <div *ngIf="endRange;then forAdvocacyForOne else forOtherKpiOne"></div>
                        <ng-template #forAdvocacyForOne>
                         <table class="mt-4">
                             <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
@@ -4577,7 +4582,7 @@
 
 
                     </mat-tab>
-                     <mat-tab label="{{labelArray[1]?.label}}" *ngIf="labelArray.length>0">
+                     <mat-tab label="{{labelArray[1]?.label}}" *ngIf="labelArray[1]?.Kpidata?.data?.length>0">
                         <div class="d-flex justify-content-between">
                             
                             <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">{{fullFormKpiNamesecond}}
@@ -4590,7 +4595,7 @@
                         </div>
                        
                         
-                        <div *ngIf="labelArray[1]?.Kpidata?.data[1]?.end_range==='';then forAdvocacyFortwo else forOtherKpiTwo"></div>
+                        <div *ngIf="endRangeSecond;then forAdvocacyFortwo else forOtherKpiTwo"></div>
                        <ng-template #forAdvocacyFortwo>
                         <table class="mt-4">
                             <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
@@ -4633,7 +4638,7 @@
 
 
                     </mat-tab>
-                    <mat-tab label="{{labelArray[2]?.label}}" *ngIf="labelArray.length>0">
+                    <mat-tab label="{{labelArray[2]?.label}}" *ngIf="labelArray[2]?.Kpidata?.data?.length>0">
                         <div class="d-flex justify-content-between">
                             
                             <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">{{fullFormKpiNameThird}}
@@ -4645,7 +4650,7 @@
                                 
                         </div>
                        
-                        <div *ngIf="labelArray[2]?.Kpidata?.data[2]?.end_range==='';then forAdvocacyForthree else forOtherKpiThree"></div>
+                        <div *ngIf="endRangeThird;then forAdvocacyForthree else forOtherKpiThree"></div>
                        <ng-template #forAdvocacyForthree>
                         <table class="mt-4">
                             <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
@@ -4687,7 +4692,7 @@
 
 
                     </mat-tab>
-                    <mat-tab label="{{labelArray[3]?.label}}" *ngIf="labelArray.length>0">
+                    <mat-tab label="{{labelArray[3]?.label}}" *ngIf="labelArray[3]?.Kpidata?.data?.length>0">
                         <div class="d-flex justify-content-between">
                             
                             <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">
@@ -4699,7 +4704,7 @@
                             </h5>
                                 
                         </div>
-                        <div *ngIf="labelArray[3]?.Kpidata?.data[3]?.end_range==='';then forAdvocacy else forOtherKpi"></div>
+                        <div *ngIf="endRangeFourth;then forAdvocacy else forOtherKpi"></div>
                        <ng-template #forAdvocacy>
                         <table class="mt-4">
                             <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
@@ -4746,6 +4751,12 @@
                     </mat-tab>
                     
                 </mat-tab-group>
+                <div *ngIf="labelArray?.length==0" class="d-flex flex-column justify-content-center align-items-center">
+
+                    <img src="assets/images/empty-box.png" alt="" srcset="" heigth="30%" width="30%">
+                    <h2>No data available !!!</h2>
+                    
+                </div>
 
             </div>
 

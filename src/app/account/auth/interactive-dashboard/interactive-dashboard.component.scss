@@ -662,13 +662,18 @@ flex-direction: column;
     height:100%;width:100% ;
     border-radius:5px;
     display:flex;align-items:center;
+    justify-content: center;
 
     .btn_text_mobile{
         font-weight: 700;
         height: 2vh;
-        font-size: 0.87em;
-        font-family: 'Inter';
+        font-size: 3.5vw;
        
+        font-family: 'Inter';
+        width: min-intrinsic;       /* old Chrome, Safari */
+        width: -webkit-min-content; /* less old Chrome, Safari */
+        width: -moz-min-content;    /* current Firefox */
+        width: max-content; 
         line-height: 1.3em;
        
     
@@ -696,8 +701,8 @@ flex-direction: column;
     align-items: center;
     border: 2px solid yellow;
     border-radius: 10px;
-    height: 7vh;
-    width: 15vw;
+    height: 6vh;
+    width: 13vw;
     cursor: pointer;
     }
 
@@ -738,7 +743,7 @@ flex-direction: column;
 .mobile-profile-section {
     margin-top: 2vh;
     width: 95vw;
-    height: 8vh;
+    height: 7vh;
 }
 
 .mobile-profile-picture {
@@ -782,8 +787,8 @@ flex-direction: column;
 }
 
 .mobile-reward-section {
-    width: 15vw;
-    height: 7vh;
+    width: 13vw;
+    height: 6vh;
     font-weight: 700;
     background: #FEEE1E;
     border: 2px solid #FEEE1E;

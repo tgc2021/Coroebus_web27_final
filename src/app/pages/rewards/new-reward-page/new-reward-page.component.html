@@ -29,7 +29,7 @@
     <div  *ngIf="isRewardOpen;then rewards else passbook"></div>
     <ng-template #rewards>
   
-        <mat-tab-group  mat-align-tabs="start" style="position: relative;" *ngFor="let reward of rewardresponse">
+        <mat-tab-group  mat-align-tabs="start" style="position: relative;" *ngFor="let reward of rewardresponse" [selectedIndex]="selectedIndex">
           
             <mat-tab label="Platform Rewards">
                 <div class="col-12 card_container" id="card-container">
@@ -350,7 +350,7 @@
   <div *ngIf="isRewardOpen;then rewardsMobile else passbookMobile"></div>
     <ng-template #rewardsMobile>
   
-        <mat-tab-group  mat-align-tabs="start" style="position:relative;" *ngFor="let reward of rewardresponse">
+        <mat-tab-group  mat-align-tabs="start" style="position:relative;" *ngFor="let reward of rewardresponse" [selectedIndex]="selectedIndex">
             
             <mat-tab label="Platform Rewards">
               <div class="cardWrap" >

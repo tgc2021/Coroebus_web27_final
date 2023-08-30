@@ -125,7 +125,15 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   fullFormKpiNameThird: any;
   newKpiNameFourth: any;
   fullFormKpiNameFourth: any;
-  
+  endRangeForFirst: any;
+  endRange: boolean=false;
+  endRangeForSecond: any;
+  endRangeSecond: boolean=false;
+  endRangeForThird: any;
+  endRangeThird: boolean=false;
+  endRangeForFourth: any;
+  endRangeFourth: boolean=false;
+  selectedIndex:any=0;
   constructor(private readonly store: Store, public _route: ActivatedRoute,public snackBar: MatSnackBar,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -147,7 +155,8 @@ export class TopHierarchyDashboardsComponent implements OnInit {
     this.medium_color=localStorage.getItem('medium_color')
     this.element.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
 
-    this.light_color=localStorage.getItem('light_color')
+    this.light_color=localStorage.getItem('light_color');
+    
     this.element.nativeElement.style.setProperty('--lightColor', `${this.light_color}`)
 
    
@@ -1125,44 +1134,106 @@ this.spectSearchStr=''
      
    }
    async openKpiInfo() {
-    // queryParams?.roleID ? queryParams?.roleID :this.userSelectionData?._personal_data?.id_role,
-   
+    
     this.openKpi = !this.openKpi;
     try {
-      const body = {
+      var location = window.location.href;
+      console.log(this.sectionView_3?._personal_data?.id_role);
+      if (location.includes("?")){
+        let body = {
     
-        _game:this.userSelectionData?.id_coroebus_game,
-        id_role:this.queryParams?.roleID ? this.queryParams?.roleID :this.userSelectionData?._personal_data?.id_role,
+          _game:this.userSelectionData?.id_coroebus_game,
+          id_role:this.sectionView_3?._personal_data?.id_role
+  
+  
+        };
+        let res = await this.http.pointDistributionPopup(body).toPromise();
+        this.kpiData = res;
+      }
+      else{
+        let body = {
+    
+          _game:this.userSelectionData?.id_coroebus_game,
+          id_role:this.sectionView_1?._personal_data?.id_role 
+  
+        };
+        let res = await this.http.pointDistributionPopup(body).toPromise();
+        this.kpiData = res;
+       
+      }
+      
 
-      };
-      const res = await this.http.pointDistributionPopup(body).toPromise();
-      this.kpiData = res;
+    
+
+      
+      
+     
+      
       this.labelArray = Object.entries(this.kpiData?.data?._point_details).map(
         ([label, otherKpiData]) => {
           return { label, Kpidata: otherKpiData };
         }
       );
       console.log(this.labelArray);
+      this.endRangeForFirst=this.labelArray[0]?.Kpidata?.data.forEach(element => {
+        if(element.end_range==''){
+          this.endRange=true;
+        }
+        else{
+          this.endRange=false;
+
+        }
+        
+      });
       // First Index
      this.newKpiNamefirst=this.labelArray[0]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
      this.newKpiNamefirst=this.labelArray[0]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNamefirst,"");
-     this.fullFormKpiNamefirst=`${this.newKpiNamefirst}${this.labelArray[0]?.label} Index`
-     
+     this.fullFormKpiNamefirst=`${this.newKpiNamefirst}${this.labelArray[0]?.label} Index`;
+     console.log(this.fullFormKpiNamefirst);
 
       // Second Index
+      this.endRangeForSecond=this.labelArray[1]?.Kpidata?.data.forEach(element => {
+        if(element.end_range==''){
+          this.endRangeSecond=true;
+        }
+        else{
+          this.endRangeSecond=false;
+
+        }
+      });
       this.newKpiNameSecond=this.labelArray[1]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
       this.newKpiNameSecond=this.labelArray[1]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNameSecond,"");
-      this.fullFormKpiNamesecond=`${this.newKpiNameSecond}${this.labelArray[0]?.label} Index`
-
+      this.fullFormKpiNamesecond=`${this.newKpiNameSecond}${this.labelArray[1]?.label} Index`
+      console.log(this.fullFormKpiNamesecond);
       // Third Index
+      this.endRangeForThird=this.labelArray[2]?.Kpidata?.data.forEach(element => {
+        if(element.end_range==''){
+          this.endRangeThird=true;
+        }
+        else{
+          this.endRangeThird=false;
+
+        }
+      });
       this.newKpiNameThird=this.labelArray[2]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
       this.newKpiNameThird=this.labelArray[2]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNameThird,"");
-      this.fullFormKpiNameThird=`${this.newKpiNameThird}${this.labelArray[0]?.label} Index`
+      this.fullFormKpiNameThird=`${this.newKpiNameThird}${this.labelArray[2]?.label} Index`
+      console.log(this.fullFormKpiNameThird);
 
       // Fourth Index
+      this.endRangeForFourth=this.labelArray[3]?.Kpidata?.data.forEach(element => {
+        if(element.end_range==''){
+          this.endRangeFourth=true;
+        }
+        else{
+          this.endRangeFourth=false;
+
+        }
+      });
       this.newKpiNameFourth=this.labelArray[3]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
       this.newKpiNameFourth=this.labelArray[3]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNameFourth,"");
-      this.fullFormKpiNameFourth=`${this.newKpiNameFourth}${this.labelArray[0]?.label} Index`
+      this.fullFormKpiNameFourth=`${this.newKpiNameFourth}${this.labelArray[3]?.label} Index`
+      console.log(this.fullFormKpiNameFourth);
 
       
     
@@ -1171,6 +1242,7 @@ this.spectSearchStr=''
     }
     
   }
+
   async GetRankingPopupData(){
     console.log(this.activeClassPopup);
     

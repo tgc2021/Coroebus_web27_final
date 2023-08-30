@@ -44,25 +44,28 @@
                              
                                 <ng-template #dailybadge>
         
-                                    <div class="animation-bar" *ngIf="seasonalThemeDailyBadges1?.length!=0">
+                                    <div class="animation-bar" *ngIf="seasonalThemeDailyBadges1?.length!=0" style="width:95%">
         
         
         
-                                        <div class="badges_row" [style.width.%]="90" class="badges_row"
+                                        <div class="badges_row" [style.width.%]="85"
                                             style="position: relative"
                                             *ngFor="let seasonalThemeDailyBadges1 of seasonalThemeDailyBadges1 ">
         
                                             <div class="d-flex flex-column justify-content-center" style="position:absolute"
                                                 [style.margin-left.%]="((seasonalThemeDailyBadges1?.seasonal_score_target)/(lastArrayseasonalThemeDailyBadges2?.seasonal_score_target))*100">
-        
-                                                <div style="height:6vh;width:6vh;border-radius:50%"
+                                                <div class="d-flex flex-column justify-content-center badgesContent" >
+                                                    <div style="height:6vh;width:6vh;border-radius:50%"
                                                     [ngClass]="seasonalThemeDailyBadges1?.active_class == '0'?'inActiveBadge':'ActiveBadge'">
                                                     <img src="{{seasonalThemeDailyBadges1?.seasonal_badge_logo}}" alt=""
                                                         height="100%" width="100%">
+                                                        <div class="d-flex justify-content-center">
+                                                            <div style="height:3vh;border-right: 2px solid #8EC912;"></div>
+                                                        </div>
                                                 </div>
-                                                <div class="d-flex justify-content-center">
-                                                    <div style="height:3vh;border-right: 2px solid #8EC912;"></div>
+                                                
                                                 </div>
+                                                
                                             </div>
         
         
@@ -116,9 +119,6 @@
                                         </div>
                                     </div>
                                 </ng-template>
-        
-        
-        
                             </div>
                             <div *ngIf="seasonalThemeDaily1.length==0">
                                 <div data-bs-dismiss="modal"
@@ -184,25 +184,26 @@
                                 
                                 <ng-template #weekbadge>
         
-                                    <div class="animation-bar" *ngIf="seasonalThemeWeeklyBadges2?.length!=0">
+                                    <div class="animation-bar" *ngIf="seasonalThemeWeeklyBadges2?.length!=0"  style="width:96%">
         
         
         
-                                        <div class="badges_row" [style.width.%]="90" class="badges_row"
+                                        <div class="badges_row" [style.width.%]="85" class="badges_row"
                                             style="position: relative;"
                                             *ngFor="let seasonalThemeWeeklyBadges2 of seasonalThemeWeeklyBadges2 ">
-        
+                                            
                                             <div class="d-flex flex-column justify-content-center" style="position:absolute"
                                                 [style.margin-left.%]="((seasonalThemeWeeklyBadges2?.seasonal_score_target)/(lastArrayseasonalThemeWeeklyBadges2?.seasonal_score_target))*100">
-        
-                                                <div style="height:6vh;width:6vh;border-radius:50%"
-                                                    [ngClass]="seasonalThemeWeeklyBadges2?.active_class == '0'?'inActiveBadge':'ActiveBadge'">
-                                                    <img src="{{seasonalThemeWeeklyBadges2?.seasonal_badge_logo}}" alt=""
-                                                        height="100%" width="100%">
+                                                <div class="d-flex flex-column justify-content-center badgesContent">
+                                                    <div style="height:6vh;width:6vh;border-radius:50%"
+                                                        [ngClass]="seasonalThemeWeeklyBadges2?.active_class == '0'?'inActiveBadge':'ActiveBadge'">
+                                                        <img src="{{seasonalThemeWeeklyBadges2?.seasonal_badge_logo}}" alt="" height="100%" width="100%">
+                                                    </div>
+                                                    <div class="d-flex justify-content-center">
+                                                        <div style="height:3vh;border-left: 2px solid #8EC912;"></div>
+                                                    </div>
                                                 </div>
-                                                <div class="d-flex justify-content-center">
-                                                    <div style="height:3vh;border-left: 2px solid #8EC912;"></div>
-                                                </div>
+                                                
                                             </div>
         
         
@@ -273,10 +274,7 @@
             <div class="monthlyModal">
                 
                             <div class="modal-body" style="min-height: 30vh;" *ngIf="seasonalThemeMonthl3.length!=0">
-                                <div class="d-flex justify-content-end" style="color:#0000">
-                                    <button type="button" class="button-close" data-bs-dismiss="modal"
-                                        aria-label="Close">X</button>
-                                </div>
+                               
                                
                                 <div class="container">
                                     <div *ngIf="seasonalThemeMonthl3!=undefined;then month"></div>
@@ -320,7 +318,7 @@
                                 
                                 <ng-template #monthbadge>
         
-                                    <div class="animation-bar" *ngIf="seasonalThemeMonthlyBadges3?.length!=0">
+                                    <div class="animation-bar" *ngIf="seasonalThemeMonthlyBadges3?.length!=0"  style="width:96%">
         
         
         
@@ -330,8 +328,8 @@
         
                                             <div class="d-flex flex-column justify-content-center" style="position:absolute"
                                                 [style.margin-left.%]="((seasonalThemeMonthlyBadges3?.seasonal_score_target)/(lastArrayseasonalThemeMonthlyBadges2?.seasonal_score_target))*100">
-        
-                                                <div style="height:6vh;width:6vh;border-radius:50%"
+                                                <div  class="d-flex flex-column justify-content-center badgesContent">
+                                                    <div style="height:6vh;width:6vh;border-radius:50%"
                                                     [ngClass]="seasonalThemeMonthlyBadges3?.active_class == '0'?'inActiveBadge':'ActiveBadge'">
                                                     <img src="{{seasonalThemeMonthlyBadges3?.seasonal_badge_logo}}" alt=""
                                                         height="100%" width="100%">
@@ -339,6 +337,8 @@
                                                 <div class="d-flex justify-content-center">
                                                     <div style="height:3vh;border-left: 2px solid #8EC912;"></div>
                                                 </div>
+                                                </div>
+                                               
                                             </div>
         
         

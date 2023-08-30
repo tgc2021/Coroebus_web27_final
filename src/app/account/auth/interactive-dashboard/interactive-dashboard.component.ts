@@ -96,6 +96,9 @@ export class InteractiveDashboardComponent implements OnInit,OnDestroy {
   lastArrayseasonalThemeWeeklyBadges2: any;
   id_coroebus_org: any;
   pageInfo: string;
+  LastindexDaily: any;
+  LastindexWeekly: any;
+  lastIndexMonthly: any;
   constructor(config: NgbModalConfig,private readonly store: Store, public element: ElementRef, public Util: Util, private _router: Router, public http: ApiserviceService, private eventService: EventService,public location:Location ,public modalService:NgbModal) {
     config.backdrop = 'static';
 		config.keyboard = false;
@@ -104,6 +107,10 @@ export class InteractiveDashboardComponent implements OnInit,OnDestroy {
 
 ngOnInit(): void {
     this.game_audio=localStorage.getItem('audio_game');
+    console.log(this.http.mainUrl);
+    
+
+  
    
   
     
@@ -186,8 +193,8 @@ else{
 
       if (this.mergeObj.id_coroebus_game != null) {
         let body = {
-          _userid: this.mergeObj.USERID,
-          _game: this.mergeObj.id_coroebus_game,
+          _userid: this.mergeObj?.USERID,
+          _game: this.mergeObj?.id_coroebus_game,
 
         }
 
@@ -200,10 +207,10 @@ else{
           localStorage.setItem('Interactive_response',this.interactive_dashoard_response);
           localStorage.setItem('tl_rank',this.interactive_dashoard_response?.data._primary?.primary_rank)
           localStorage.setItem('id_coroebus_org',this.interactive_dashoard_response);
-          localStorage.setItem('body_game',this.interactive_dashoard_response.data._personal_data.id_coroebus_game)
+          localStorage.setItem('body_game',this.interactive_dashoard_response?.data?._personal_data?.id_coroebus_game)
 
           if(this.interactive_dashoard_response?.data.is_about_game==1){
-            this.about_game_pdf= this.interactive_dashoard_response?.data.about_game[0].file_name
+            this.about_game_pdf= this.interactive_dashoard_response?.data?.about_game[0]?.file_name
             
             localStorage.setItem('about_game_pdf',this.about_game_pdf)
           }
@@ -214,78 +221,81 @@ else{
           localStorage.setItem('weekly_text',this.interactive_dashoard_response[0]?.data?.theme_details[0]?.weekly_text);
           localStorage.setItem('monthly_text',this.interactive_dashoard_response[0]?.data?.theme_details[0]?.monthly_text);
           
-          this.is_about_game= localStorage.setItem('is_about_game',this.interactive_dashoard_response[0].data.is_about_game)
+          this.is_about_game= localStorage.setItem('is_about_game',this.interactive_dashoard_response[0]?.data.is_about_game)
           
          
           
 
-          this.seasonalThemeDaily = this.interactive_dashoard_response[0].data.seasonal_theme_daily;
+          this.seasonalThemeDaily = this.interactive_dashoard_response[0]?.data.seasonal_theme_daily;
 
-          this.seasonalThemeWeekly = this.interactive_dashoard_response[0].data.seasonal_theme_weekly;
-          this.seasonalThemeMonthly = this.interactive_dashoard_response[0].data.seasonal_theme_monthly;
-          this.seasonalThemeDailyBadges1=this.data.data.seasonal_theme_daily_badge_details;
-          this.lastArrayseasonalThemeDailyBadges2=this.data.data.seasonal_theme_daily_badge_details[this.data.data.seasonal_theme_daily_badge_details.length-1];
+          this.seasonalThemeWeekly = this.interactive_dashoard_response[0]?.data?.seasonal_theme_weekly;
+          this.seasonalThemeMonthly = this.interactive_dashoard_response[0]?.data?.seasonal_theme_monthly;
+          this.seasonalThemeDailyBadges1=this.data?.data?.seasonal_theme_daily_badge_details;
+          this.LastindexDaily=this.data?.data?.seasonal_theme_daily_badge_details;
+          this.lastArrayseasonalThemeDailyBadges2=this.data?.data?.seasonal_theme_daily_badge_details[this.LastindexDaily.length-1];
   
-          console.log(this.seasonalThemeDailyBadges1.length)
-          this.seasonalThemeWeeklyBadges2=this.data.data.seasonal_theme_weekly_badge_details;
-          this.lastArrayseasonalThemeWeeklyBadges2=this.data.data.seasonal_theme_weekly_badge_details[this.data.data.seasonal_theme_weekly_badge_details.length-1];
+          console.log(this.seasonalThemeDailyBadges1?.length)
+          this.seasonalThemeWeeklyBadges2=this.data?.data?.seasonal_theme_weekly_badge_details;
+          this.LastindexWeekly=this.data?.data?.seasonal_theme_weekly_badge_details;
+          this.lastArrayseasonalThemeWeeklyBadges2=this.data?.data?.seasonal_theme_weekly_badge_details[this.LastindexWeekly.length-1];
           console.log(this.seasonalThemeWeeklyBadges2)
          
      
           // this.totalTargetScoreForWeekly=Number(this.seasonalThemeWeeklyBadges2[0].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[1].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[2].seasonal_score_target)+Number(this.seasonalThemeWeeklyBadges2[2].seasonal_score_target)+ Number(this.seasonalThemeWeeklyBadges2[3].seasonal_score_target);
   
           this.seasonalThemeMonthlyBadges3=this.data?.data?.seasonal_theme_monthly_badge_details;
+          this.lastIndexMonthly=this.data?.data?.seasonal_theme_monthly_badge_details;
           this.lastArrayseasonalThemeMonthlyBadges2=this.data?.data?.seasonal_theme_monthly_badge_details[this.data?.data?.seasonal_theme_monthly_badge_details.length-1];
 
           
           
 
-          this.interactive_dashoard_points=this.interactive_dashoard_response[0].data._points[2].score
+          this.interactive_dashoard_points=this.interactive_dashoard_response[0]?.data._points[2].score
           
           
           localStorage.setItem('reward_points', this.interactive_dashoard_points);
 
-          this.interactive_dashoard_response_idOrganisation=this.interactive_dashoard_response[0].data._personal_data.id_coroebus_organization
+          this.interactive_dashoard_response_idOrganisation=this.interactive_dashoard_response[0]?.data?._personal_data?.id_coroebus_organization
           if (this.interactive_dashoard_response) {
             setTimeout(() => {
               this.isLoading = false;
             }, 2000)
             this.isLoading = true;
           }
-          this.point_distribution = this.interactive_dashoard_response[0].data.theme_details[0].gradient_color_bg
+          this.point_distribution = this.interactive_dashoard_response[0]?.data?.theme_details[0]?.gradient_color_bg
           
           this.element.nativeElement.style.setProperty('--myvar', `${this.point_distribution}`)
 
 
-          this.scorecardcolor = this.interactive_dashoard_response[0].data.theme_details[0].scoreboard_color_bg
+          this.scorecardcolor = this.interactive_dashoard_response[0]?.data?.theme_details[0]?.scoreboard_color_bg
           
 
           this.element.nativeElement.style.setProperty('--colorback', `${this.scorecardcolor}`)
 
-          this.accordioncolor = this.interactive_dashoard_response[0].data.theme_details[0].light_color
+          this.accordioncolor = this.interactive_dashoard_response[0]?.data?.theme_details[0]?.light_color
           
 
           this.element.nativeElement.style.setProperty('--accordioncolor', `${this.accordioncolor}`)
 
-          this.dailyToppers = this.interactive_dashoard_response[0].data.seasonal_theme_daily_badge_details;
-          this.weeklyTopers = this.interactive_dashoard_response[0].data.seasonal_theme_weekly_badge_toppers;
-          this.monthlyTopers = this.interactive_dashoard_response[0].data.seasonal_theme_monthly_badge_toppers;
-          this.logo = this.interactive_dashoard_response[0].data.seasonal_theme_monthly[0];
+          this.dailyToppers = this.interactive_dashoard_response[0]?.data?.seasonal_theme_daily_badge_details;
+          this.weeklyTopers = this.interactive_dashoard_response[0]?.data?.seasonal_theme_weekly_badge_toppers;
+          this.monthlyTopers = this.interactive_dashoard_response[0]?.data?.seasonal_theme_monthly_badge_toppers;
+          this.logo = this.interactive_dashoard_response[0]?.data?.seasonal_theme_monthly[0];
 
           
 
 
           this.eventService.broadcast('passDataToHeader', {
-            color: this.interactive_dashoard_response[0].data.theme_details[0].dark_color,
-            game_logo: this.interactive_dashoard_response[0].data._personal_data.game_logo,
-            bg_image: this.interactive_dashoard_response[0].data.theme_details
+            color: this.interactive_dashoard_response[0]?.data.theme_details[0]?.dark_color,
+            game_logo: this.interactive_dashoard_response[0]?.data?._personal_data?.game_logo,
+            bg_image: this.interactive_dashoard_response[0]?.data?.theme_details
 
           })
           this.store.dispatch(userActions.updateUserObj({
             data: {
-              color: this.interactive_dashoard_response[0].data.theme_details[0].dark_color,
-              game_logo: this.interactive_dashoard_response[0].data._personal_data.game_logo,
-              bg_image: this.interactive_dashoard_response[0].data.theme_details[0].theme_background_web
+              color: this.interactive_dashoard_response[0]?.data?.theme_details[0]?.dark_color,
+              game_logo: this.interactive_dashoard_response[0]?.data?._personal_data?.game_logo,
+              bg_image: this.interactive_dashoard_response[0]?.data?.theme_details[0]?.theme_background_web
 
             }
           }));
@@ -296,8 +306,8 @@ else{
         })
        
         let body1 = {
-          _userid: this.mergeObj.USERID,
-          _game: this.mergeObj.id_coroebus_game,
+          _userid: this.mergeObj?.USERID,
+          _game: this.mergeObj?.id_coroebus_game,
           _section_view: "1", 
           page_number: "1", 
           device_type: "W"
@@ -307,14 +317,15 @@ else{
         this.http.produce1(body1).subscribe((res) => {
           
           this.produce1data = res;
-          this.kpidata=this.produce1data.data._personal_data.external_kpi_data
+          this.kpidata=this.produce1data.data?._personal_data?.external_kpi_data
+          console.log("kpiData",this.kpidata);
         })
 
       }
       else {
         let body = {
-          _userid: this.mergeObj.USERID,
-          _game: this.userSelectionData.id_coroebus_game,
+          _userid: this.mergeObj?.USERID,
+          _game: this.userSelectionData?.id_coroebus_game,
 
         }
 
@@ -328,11 +339,9 @@ else{
           
           console.log(this.interactive_dashoard_response);
           
-           localStorage.setItem('body_game',this.interactive_dashoard_response.data._personal_data.id_coroebus_game)
-
-
-          if(this.interactive_dashoard_response.data.is_about_game==1){
-            this.about_game_pdf= this.interactive_dashoard_response.data.about_game[0].file_name
+           localStorage.setItem('body_game',this.interactive_dashoard_response?.data?._personal_data?.id_coroebus_game)
+          if(this.interactive_dashoard_response?.data?.is_about_game==1){
+            this.about_game_pdf= this.interactive_dashoard_response?.data?.about_game[0]?.file_name
             
             localStorage.setItem('about_game_pdf',this.about_game_pdf)
           }
@@ -343,9 +352,9 @@ else{
           localStorage.setItem('weekly_text',this.interactive_dashoard_response[0]?.data?.theme_details[0]?.weekly_text);
           localStorage.setItem('monthly_text',this.interactive_dashoard_response[0]?.data?.theme_details[0]?.monthly_text);
           
-        this.is_about_game= localStorage.setItem('is_about_game',this.interactive_dashoard_response[0].data.is_about_game)
+        this.is_about_game= localStorage.setItem('is_about_game',this.interactive_dashoard_response[0]?.data?.is_about_game)
         
-          this.accordioncolor = this.interactive_dashoard_response[0].data.theme_details[0].light_color
+          this.accordioncolor = this.interactive_dashoard_response[0]?.data.theme_details[0]?.light_color
           
 
           this.element.nativeElement.style.setProperty('--accordioncolor', `${this.accordioncolor}`)
@@ -354,38 +363,38 @@ else{
           if (this.interactive_dashoard_response) {
             setTimeout(() => {
               this.isLoading = false;
-            }, 5000)
+            }, 2000)
             this.isLoading = true;
           }
 
     
-          this.seasonalThemeDaily = this.interactive_dashoard_response[0].data.seasonal_theme_daily;
+          this.seasonalThemeDaily = this.interactive_dashoard_response[0]?.data?.seasonal_theme_daily;
 
-          this.seasonalThemeWeekly = this.interactive_dashoard_response[0].data.seasonal_theme_weekly;
-          this.seasonalThemeMonthly = this.interactive_dashoard_response[0].data.seasonal_theme_monthly;
+          this.seasonalThemeWeekly = this.interactive_dashoard_response[0]?.data?.seasonal_theme_weekly;
+          this.seasonalThemeMonthly = this.interactive_dashoard_response[0]?.data?.seasonal_theme_monthly;
 
-          this.point_distribution = this.interactive_dashoard_response[0].data.theme_details[0].gradient_color_bg
+          this.point_distribution = this.interactive_dashoard_response[0]?.data?.theme_details[0]?.gradient_color_bg
           
 
           this.element.nativeElement.style.setProperty('--myvar', `${this.point_distribution}`)
 
 
-          this.scorecardcolor = this.interactive_dashoard_response[0].data.theme_details[0].scoreboard_color_bg
+          this.scorecardcolor = this.interactive_dashoard_response[0]?.data?.theme_details[0]?.scoreboard_color_bg
           
 
           this.element.nativeElement.style.setProperty('--colorback', `${this.scorecardcolor}`)
 
           this.eventService.broadcast('passDataToHeader', {
-            color: this.interactive_dashoard_response[0].data.theme_details[0].dark_color,
-            game_logo: this.interactive_dashoard_response[0].data._personal_data.game_logo,
-            bg_image: this.interactive_dashoard_response[0].data.theme_details[0].theme_background_web
+            color: this.interactive_dashoard_response[0]?.data?.theme_details[0]?.dark_color,
+            game_logo: this.interactive_dashoard_response[0]?.data?._personal_data?.game_logo,
+            bg_image: this.interactive_dashoard_response[0]?.data?.theme_details[0]?.theme_background_web
 
           })
           this.store.dispatch(userActions.updateUserObj({
             data: {
-              color: this.interactive_dashoard_response[0].data.theme_details[0].dark_color,
-              game_logo: this.interactive_dashoard_response[0].data._personal_data.game_logo,
-              bg_image: this.interactive_dashoard_response[0].data.theme_details[0].theme_background_web
+              color: this.interactive_dashoard_response[0]?.data?.theme_details[0]?.dark_color,
+              game_logo: this.interactive_dashoard_response[0]?.data?._personal_data?.game_logo,
+              bg_image: this.interactive_dashoard_response[0]?.data?.theme_details[0]?.theme_background_web
 
             }
           }));
@@ -395,8 +404,8 @@ else{
         
 
         let body1 = {
-          _userid: this.mergeObj.USERID,
-          _game: this.userSelectionData.id_coroebus_game,
+          _userid: this.mergeObj?.USERID,
+          _game: this.userSelectionData?.id_coroebus_game,
           _section_view: "1", 
           page_number: "1", 
           device_type: "W"
@@ -407,7 +416,7 @@ else{
           
           this.produce1data = res;
           
-          this.kpidata=this.produce1data.data._personal_data.external_kpi_data
+          this.kpidata=this.produce1data?.data?._personal_data?.external_kpi_data
           
           
         })
@@ -421,9 +430,9 @@ else{
     
 this.pageInfo=localStorage.getItem('page');
 if(this.pageInfo=='reward'){
-  localStorage.setItem('rewardid',this.mergeObj.USERID);
+  localStorage.setItem('rewardid',this.mergeObj?.USERID);
   console.log(localStorage.getItem('rewardid'));            
-  setTimeout(() => {this._router.navigateByUrl("/reward/rewardPoints")}, 3000);
+  setTimeout(() => {this._router.navigateByUrl("/reward/rewardPoints")}, 1000);
 }
    
 
@@ -441,10 +450,10 @@ ngAfterViewInit():void{
 
 
   booster_data(){
-    if (this.mergeObj.id_coroebus_game != null) {
+    if (this.mergeObj?.id_coroebus_game != null) {
       let body = {
-        _userid: this.mergeObj.USERID,
-        _game: this.mergeObj.id_coroebus_game,
+        _userid: this.mergeObj?.USERID,
+        _game: this.mergeObj?.id_coroebus_game,
 
       }
       this.http.BoosterData(body).subscribe((res: any) => {
@@ -452,7 +461,7 @@ ngAfterViewInit():void{
 
         
 
-        this.StringArray = res.data.booster_rank_details[0].rank_position_stmt.split(" ");
+        this.StringArray = res?.data?.booster_rank_details[0]?.rank_position_stmt?.split(" ");
         this.firstString = this.StringArray[0] + " " + this.StringArray[1] + " " + this.StringArray[2];
         this.Digit = this.StringArray[3]
         this.LastString = this.StringArray[4];
@@ -464,7 +473,7 @@ ngAfterViewInit():void{
     else {
       let body = {
         _userid: this.mergeObj.USERID,
-        _game: this.userSelectionData.id_coroebus_game,
+        _game: this.userSelectionData?.id_coroebus_game,
 
       }
       this.http.BoosterData(body).subscribe((res: any) => {
@@ -473,7 +482,7 @@ ngAfterViewInit():void{
 
         
 
-        this.StringArray = res.data.booster_rank_details[0].rank_position_stmt.split(" ");
+        this.StringArray = res?.data?.booster_rank_details[0]?.rank_position_stmt.split(" ");
         this.firstString = this.StringArray[0] + " " + this.StringArray[1] + " " + this.StringArray[2];
         this.Digit = this.StringArray[3]
         this.LastString = this.StringArray[4];
@@ -551,17 +560,17 @@ ngAfterViewInit():void{
 
    
     
-    if (this.mergeObj.id_coroebus_game != null){
-      if(this.mergeObj.id_role!=8 && this.mergeObj.id_role!=9){
-        const userId = this.Util.encryptData(this.mergeObj.USERID)
-        const game = this.Util.encryptData(this.userSelectionData.id_coroebus_game)
-        const roleid = this.Util.encryptData(this.mergeObj.id_role)
+    if (this.mergeObj?.id_coroebus_game != null){
+      if(this.mergeObj?.id_role!=8 && this.mergeObj?.id_role!=9){
+        const userId = this.Util.encryptData(this.mergeObj?.USERID)
+        const game = this.Util.encryptData(this.userSelectionData?.id_coroebus_game)
+        const roleid = this.Util.encryptData(this.mergeObj?.id_role)
         
   
   
         window.open(
 
-            'http://coroebusbeta.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
+          this.http.mainUrl+'/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj?.id_coroebus_user,
           '_self'
     
         )
@@ -571,15 +580,15 @@ ngAfterViewInit():void{
 
     else{
       if( this.mergeObj.id_role!=8 && this.mergeObj.id_role!=9){
-        const userId = this.Util.encryptData(this.mergeObj.USERID)
-        const game = this.Util.encryptData(this.mergeObj.id_coroebus_game)
-        const roleid = this.Util.encryptData(this.mergeObj.id_role)
+        const userId = this.Util.encryptData(this.mergeObj?.USERID)
+        const game = this.Util.encryptData(this.mergeObj?.id_coroebus_game)
+        const roleid = this.Util.encryptData(this.mergeObj?.id_role)
         // const id_coroebus_user = this.Util.encryptData(this.mergeObj.id_coroebus_user)
         
   
         window.open(
      
-        'http://coroebusbeta.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
+          this.http.mainUrl+'/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
 
         )
       }
@@ -590,34 +599,33 @@ ngAfterViewInit():void{
 
   navigateToLearningAcademy() {
     // this.audio.stop();
-    const userId = this.mergeObj.USERID;
-    const game = this.mergeObj.id_coroebus_game;
-    const teamid=this.mergeObj.id_coroebus_team;
-    const gameName=this.mergeObj.game_name;
-    const teamName=this.mergeObj.team_name;
-    
+    const userId = this.mergeObj?.USERID;
+    const game = this.mergeObj?.id_coroebus_game;
+    const teamid=this.mergeObj?.id_coroebus_team;
+    const gameName=this.mergeObj?.game_name;
+    const teamName=this.mergeObj?.team_name;
+    console.log()
     if(this.kpidata.length!=0){
-    this.kpiName=this.kpidata[0].kpi_name;
+    this.kpiName=this.kpidata[0]?.kpi_name;
     
-    const isAttemted=this.kpidata[0].is_attempted;
-    const isCorrect=this.kpidata[0].is_correct;
+    const isAttemted=this.kpidata[0]?.is_attempted;
+    const isCorrect=this.kpidata[0]?.is_correct;
 
     window.open(
-          'https://coroebusbeta.in/Learning_academy/#/LearningAcademy/library?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
+      this.http.mainUrl+'/Learning_academy/#/LearningAcademy/library?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
           "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'
-
-      
     )
+  
+
 
     
    }
    else{
-
     this.kpiName='Game OF Phone';
     const isAttemted='8'
     const isCorrect='8'
     window.open(
-      'https://coroebusbeta.in/Learning_academy/#/LearningAcademy/library?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
+     this.http.mainUrl+'/Learning_academy/#/LearningAcademy/library?_game='+game+"&_userid="+userId+"&_team="+teamid+"&_game_name="+gameName+
 "&_team_name="+teamName+"&_kpi_name="+this.kpiName+"&_isAttemted="+isAttemted+"&_isCorrect="+isCorrect,'_self'
 
   
@@ -625,7 +633,7 @@ ngAfterViewInit():void{
 
    
    }
-   
+ 
   }
 
   navigateToNotification() {
@@ -648,7 +656,7 @@ ngAfterViewInit():void{
 
   navigateReward() {
   
-    localStorage.setItem('rewardid',this.mergeObj.USERID)
+    localStorage.setItem('rewardid',this.mergeObj?.USERID)
     this._router.navigateByUrl('/reward/rewardPoints');
     
   }
@@ -669,7 +677,7 @@ ngAfterViewInit():void{
   async GetDataFromProduceInfo() {
     let obj = {
       _userid: this.mergeObj.USERID,
-      _game: this.userSelectionData.id_coroebus_game,
+      _game: this.userSelectionData?.id_coroebus_game,
     };
   
     try {
@@ -699,26 +707,26 @@ ngAfterViewInit():void{
         Number(this.seasonalThemeMonthlyBadges3[1]?.seasonal_score_target) +
         Number(this.seasonalThemeMonthlyBadges3[2]?.seasonal_score_target);
   
-      this.seasonalThemeDailyBadges1.forEach((res) => {
+      this.seasonalThemeDailyBadges1?.forEach((res) => {
         if (res.active_class === '1') {
           this.dailyBadgesActive = true;
         }
       });
   
-      this.seasonalThemeWeeklyBadges2.forEach((res) => {
+      this.seasonalThemeWeeklyBadges2?.forEach((res) => {
         if (res.active_class === '1') {
           this.weeklyBadgesActive = true;
         }
       });
   
-      this.seasonalThemeMonthlyBadges3.forEach((res) => {
+      this.seasonalThemeMonthlyBadges3?.forEach((res) => {
         if (res.active_class === '1') {
           this.monthlyBadgesActive = true;
         }
       });
     } catch (error) {
       // Handle error here
-      console.error('An error occurred:', error);
+      // console.error('An error occurred:', error);
     }
   }
   
@@ -747,15 +755,15 @@ ngAfterViewInit():void{
   open(content:any) {
     if(this.mergeObj.id_coroebus_game != null){
       var body = {
-        _userid: this.mergeObj.USERID,
-        _game: this.mergeObj.id_coroebus_game,
+        _userid: this.mergeObj?.USERID,
+        _game: this.mergeObj?.id_coroebus_game,
         _record_count:0
     }
     }
     else{
       var body = {
-        _userid: this.mergeObj.USERID,
-        _game: this.userSelectionData.id_coroebus_game,
+        _userid: this.mergeObj?.USERID,
+        _game: this.userSelectionData?.id_coroebus_game,
         _record_count:0
     }
     }
@@ -764,10 +772,10 @@ ngAfterViewInit():void{
     this.http.PromotionalPopUp(body).subscribe((res)=>{
       this.promotionalPopUpData=res;
       
-      this.promotionalPopupImage=this.promotionalPopUpData.data[0].list[0].image;
+      this.promotionalPopupImage=this.promotionalPopUpData?.data[0]?.list[0]?.image;
       
       let body={
-        _popupid:this.promotionalPopUpData.data[0].list[0].id
+        _popupid:this.promotionalPopUpData?.data[0]?.list[0]?.id
       }
       this.http.updatePopUp(body).subscribe((res)=>{
         console.log(res);
@@ -776,7 +784,7 @@ ngAfterViewInit():void{
     })
      
     setTimeout(()=>{
-      if(this.promotionalPopUpData.data[0].list!=''){
+      if(this.promotionalPopUpData?.data[0]?.list!=''){
         this.modalService.open(content);
 
       }
@@ -863,8 +871,8 @@ ngAfterViewInit():void{
     let err: any, res: any;
     let body: any;
     body = {
-      "_userid": this.mergeObj.USERID,
-      "_game":this.userSelectionData.id_coroebus_game, "_section_view": "2", "page_number": "1"
+      "_userid": this.mergeObj?.USERID,
+      "_game":this.userSelectionData?.id_coroebus_game, "_section_view": "2", "page_number": "1"
     };
     [err, res] = await HttpProtocols.to(DashboardModel.getCenterDataSectionView_2(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
@@ -877,9 +885,10 @@ ngAfterViewInit():void{
 
   ngOnDestroy(): void {
    this.audio.pause()
-   localStorage.clear();
+  
   
 
   }
+  
 
 }

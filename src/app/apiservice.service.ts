@@ -16,6 +16,11 @@ export class ApiserviceService {
   open: any;
   // Path='coroebus-beta-api-levels-new';
   Path='coroebus-tgc-api-levels'
+
+
+  // URL For Navigation
+  // mainUrl='http://coroebusbeta.in';
+  mainUrl='https://coroebus.in';
   constructor(public Http:HttpClient) { }
 
 

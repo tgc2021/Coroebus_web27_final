@@ -136,8 +136,8 @@ export class PlayZoneComponent implements OnInit {
       _game: this.mergeObj.id_coroebus_game,
     }
     this.http.playZone(body).subscribe((res:any) => {
-    this.spotEngagementData=res.data._spot_engagement_data;
-    this.filterByCategory=res.data._spot_engagement_data;
+    this.spotEngagementData=res?.data?._spot_engagement_data;
+    this.filterByCategory=res?.data?._spot_engagement_data;
     });
   }
   rewardPassbook(){
@@ -148,10 +148,10 @@ export class PlayZoneComponent implements OnInit {
 
     this.http.playZonePassbook(body).subscribe((res:any)=>{
       
-      this.rewardPoints=res.data._reward_points;
+      this.rewardPoints=res?.data?._reward_points;
       
-      this.spotEngagementPassbook=res.data._spot_passbook_data;
-      this.Passbook=res.data._spot_passbook_data;
+      this.spotEngagementPassbook=res?.data?._spot_passbook_data;
+      this.Passbook=res?.data?._spot_passbook_data;
       
   
     })
@@ -159,8 +159,8 @@ export class PlayZoneComponent implements OnInit {
   }
   open(content,data) {
     // 
-    if(data.id_engagement_game==='1'){
-      console.log(data)
+    if(data?.id_engagement_game==='1'){
+      
       // this.dartGameUrl=`http://127.0.0.1:5501/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
       // console.log(this.dartGameUrl);
        this.dartGameUrl=`https://coroebus.in/dart_game/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`;
@@ -168,14 +168,14 @@ export class PlayZoneComponent implements OnInit {
       this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.dartGameUrl);
       this.modalService.open(content);
     }
-    else if(data.id_engagement_game==='2'){
+    else if(data?.id_engagement_game==='2'){
      
       this.spinTheWheelURL=`https://coroebus.in/spin_the_wheel/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
       // this.spinTheWheelURL=`http://127.0.0.1:5502/spin_the_wheel_latest/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
       this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.spinTheWheelURL)
       this.modalService.open(content,{size: 'lg'});
     }
-    else if(data.id_engagement_game==='5'){
+    else if(data?.id_engagement_game==='5'){
       this.skylineGameUrl=`https://coroebus.in/CoroebusSkyline/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
 
       // this.skylineGameUrl=`https://coroebusbeta.in/CoroebusSkyline/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
@@ -184,7 +184,7 @@ export class PlayZoneComponent implements OnInit {
       
       this.modalService.open(content,{size: 'lg'});
     }
-    else if(data.id_engagement_game==='6'){
+    else if(data?.id_engagement_game==='6'){
       this.cubeBlasters=`https://coroebus.in/cube_blasters/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
       // this.cubeBlasters=`http://127.0.0.1:5500/MiniGame_cube_Busters/index.html?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`
       this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.cubeBlasters);
@@ -221,12 +221,12 @@ export class PlayZoneComponent implements OnInit {
 
   }
   openDartGame(content){
-    this.dartGameUrl=`https://coroebusbeta.in/dart_game/`
+    this.dartGameUrl=`https://coroebus.in/dart_game/`
     this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.dartGameUrl)
     this.modalService.open(content);
   }
   openSkyline(content){
-    this.skylineGameUrl=`https://coroebusbeta.in/CoroebusSkyline/`
+    this.skylineGameUrl=`https://coroebus.in/CoroebusSkyline/`
     this.safeUrl=this.sanitizer.bypassSecurityTrustResourceUrl(this.skylineGameUrl)
 
     this.modalService.open(content,{size: 'lg'});
@@ -255,7 +255,7 @@ export class PlayZoneComponent implements OnInit {
 
     this.filterByCategory=this.spotEngagementData
     .filter((a:any)=>{
-      if(a.spot_type==category || category=='')
+      if(a?.spot_type==category || category=='')
       return a;
     })
   }

@@ -16,11 +16,6 @@
 
             </div>
         </div>
-
-
-
-
-
     </div>
     <!-- Web overallScore Card -->
     <div class="card mt-3 web-card">
@@ -472,7 +467,7 @@
                     </div>
                 </div>
                 <select class="form-select performance-filter-select" aria-label="Default select example"
-                    style="width: 100%;margin: 2vh; " [(ngModel)]="dropDownValue"
+                    style="width: 100%;margin: 2vh; " [(ngModel)]="dropDownValue" 
                     (change)="onChange($event.target.value)">
                     <option [attr.selected]="item?.mapTo?.indexOf(buttonFilterActive) > -2 ? true : null"
                         *ngFor="let item of dropDownFilterData" value="{{item?.value}}">

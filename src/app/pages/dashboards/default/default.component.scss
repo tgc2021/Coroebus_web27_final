@@ -2479,4 +2479,11 @@ ModalHeading.ok_button {
     box-shadow: 5px 5px 10px 0px rgba(166, 180, 200, 0.75) inset,
       -5px -5px 15px 0px rgba(255, 255, 255, 0.75) inset;
   }
-  
+  ::ng-deep {
+    .modal-content {
+        border-radius: 0 !important;
+        background: #fff !important;
+        ;
+    }
+
+}

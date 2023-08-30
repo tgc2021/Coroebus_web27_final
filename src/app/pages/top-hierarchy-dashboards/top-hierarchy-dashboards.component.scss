@@ -2365,23 +2365,16 @@ text-align: center;
 ::ng-deep{
     .mat-tab-label .mat-tab-label-content {
         font-size: 1.2em;
-        font-weight: 600;
+        font-weight: 700;
+
         color:black;
     }
-    
-      
-
 }
 .leaderboard_container{
     height: 25vh;
     font-size: 0.7em;
     overflow-y: auto;
     overflow-x: hidden;
-    
- 
-
-   
-    
 }
 .userName_mobile{
     white-space: nowrap; 
@@ -2401,6 +2394,7 @@ table {
     color: black;
     font-family: "Inter";
     text-align: center;
+    font-weight:600;
     padding: 10px;
   }
   //   thead{
@@ -2432,5 +2426,12 @@ table {
         align-items: start;
         font-size: 1.2em;
         text-overflow: ellipsis; 
+    }
+}
+::ng-deep {
+    .modal-content {
+        border-radius: 0 !important;
+        background: #fff !important;
+        ;
     }
 }

@@ -65,6 +65,16 @@ const routes: Routes = [
         data: { animation: 'security-question' },
         canActivate: [AuthGuard]
     },
+    
+    {
+        path: 'campaigns',
+        component: CampaignsComponent,
+        data: { animation: 'Campaigns' },
+        canActivate: [AuthGuard],
+        
+       
+
+    },
     {
         path: 'interactive-dashboard',
         component: InteractiveDashboardComponent,
@@ -72,15 +82,6 @@ const routes: Routes = [
         canActivate: [AuthGuard]
 
     },
-    {
-        path: 'campaigns',
-        component: CampaignsComponent,
-        data: { animation: 'Campaigns' },
-        // canActivate: [AuthGuard],
-        
-       
-
-    }
 
    
 ];

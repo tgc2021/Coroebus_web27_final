@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiserviceService } from 'app/apiservice.service';
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../../core/app-state';
+import { filter, take, takeUntil } from 'rxjs/operators';
+import { Subscription, combineLatest, Subject, Observable, interval } from 'rxjs';
 
 
 @Component({
@@ -9,6 +13,8 @@ import { ApiserviceService } from 'app/apiservice.service';
   styleUrls: ['./campaigns.component.scss']
 })
 export class CampaignsComponent implements OnInit {
+  destroy$: Subject<boolean> = new Subject<boolean>();
+
   data: any;
   seasonalThemeDaily1: any;
   seasonalThemeWeekly2: any;
@@ -30,8 +36,13 @@ export class CampaignsComponent implements OnInit {
   campaign_type: any;
   isMarginTop: boolean;
   url: string;
+  seasonalCampaign: string;
+  userObj: any
+  mergeObj: any
+  combineLatest: Subscription
+  userSelectionData: any
 
-  constructor(public http:ApiserviceService , public router:ActivatedRoute) { }
+  constructor(public http:ApiserviceService , public router:ActivatedRoute,private readonly store: Store) { }
 
   ngOnInit(): void {
     var href = window.location.href;
@@ -39,21 +50,49 @@ export class CampaignsComponent implements OnInit {
     this.url = window.location.href;
     var checkUserID = this.router.queryParams
       .subscribe(params => {
-        this.campaign_type = params['campaign_type'];
+       
+        this.seasonalCampaign= localStorage.getItem('tab')?.toLowerCase( );
+      
         
       });
+
+      this.store.select(fromRoot.userLogin).pipe(
+        takeUntil(this.destroy$)
+      ).subscribe(data => {
+        this.userObj = data?.user
+        
+        this.mergeObj = { ...this.userObj?._personal_data, ...this.userObj?.otherInfo }
+        
+        this.combineLatest = combineLatest([
+          this.store.select(fromRoot.userLogin),
+          this.store.select(fromRoot.usertheme),
+          this.store.select(fromRoot.usergame),
+        ]
+        ).subscribe(([login, theme, game]) => {
+          
+          this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
+          // console.log(this.userSelectionData);
+        })
+      })
+
+      console.log(this.userSelectionData);
+      console.log(this.mergeObj);
+
+      
+
     this.GetDataFromProduceInfo();
-    if(this.url.includes('campaign_type=daily')){
+    if(this.seasonalCampaign=='daily'){
       this.isDailyModalopen=true;
       this.isWeeklyModalOpen=false;
       this.isMonthlyModalOpen=false;
     }
-    else if(this.url.includes('campaign_type=weekly')){
+    else if(this.seasonalCampaign=='weekly'){
       this.isDailyModalopen=false;
       this.isWeeklyModalOpen=true;
       this.isMonthlyModalOpen=false;
     }
-    else  if(this.url.includes('campaign_type=monthly')){
+    else  if(this.seasonalCampaign=='monthly'){
+      
       this.isDailyModalopen=false;
       this.isWeeklyModalOpen=false;
       this.isMonthlyModalOpen=true;
@@ -67,11 +106,31 @@ export class CampaignsComponent implements OnInit {
     }
   }
   async GetDataFromProduceInfo() {
+   
     try {
-      // const obj = {_userid: "GOP_IN505", _game: "183"}
-      const obj={_userid: "TGC127", _game: "162"}
-      const res = await this.http.produceInfo(obj).toPromise();
+
+      if (this.mergeObj.id_coroebus_game != null) {
+        let body = {
+          _userid: this.mergeObj.USERID,
+          _game: this.mergeObj.id_coroebus_game,
+  
+        }
+        
+      const res = await this.http.produceInfo(body).toPromise();
       this.data = res;
+      }
+      else{
+        let body = {
+          _userid: this.mergeObj.USERID,
+          _game: this.userSelectionData.id_coroebus_game,
+
+        }
+        const res = await this.http.produceInfo(body).toPromise();
+        this.data = res;
+      }
+      // const obj = {_userid: "GOP_IN505", _game: "183"}
+      
+      
   
       
       this.seasonalThemeDaily1 = this.data.data.seasonal_theme_daily;

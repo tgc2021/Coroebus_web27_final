@@ -51,7 +51,7 @@ export class GameSelectionComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.paramID =localStorage.getItem('param')
+    this.paramID =localStorage.getItem('page')
     console.log(this.paramID);
     
     this.id_role = this.userObj?._personal_data?.id_role
@@ -208,10 +208,21 @@ if (this.gameList?.[0]?.length === 1){
     
     
     this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
-    if(this.paramID != '0'){
+     
+    localStorage.setItem('theme_logo',this.userObj.themes[0].logo)
+    localStorage.setItem('topbar_color',this.userObj.themes[0].dark_color)
+    localStorage.setItem('medium_color',this.userObj.themes[0].medium_color)
+ 
+    if(this.paramID == 'undefined'){
       this.router.navigate(['/account/interactive-dashboard']);
-     }else{
+     }else if(this.paramID== 'campaign'){
       this.router.navigate(['/account/campaigns']);
+     }
+     else if(this.paramID== 'reward'){
+      this.router.navigate(['/account/interactive-dashboard']);
+     }
+     else{
+      this.router.navigate(['/account/interactive-dashboard']);
      }
    
     localStorage.setItem("is_interactive_dashboard","1")
@@ -277,13 +288,24 @@ else{
   //   this.router.navigate(['/topdashboard']);
   // }
   else if(this.id_coroebus_theme>4 && this.isInteractiveDashboard == '1'){
+     
+    localStorage.setItem('theme_logo',this.userObj.themes[0].logo)
+    localStorage.setItem('topbar_color',this.userObj.themes[0].dark_color)
+    localStorage.setItem('medium_color',this.userObj.themes[0].medium_color)
+ 
     
     this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
     
-    if(this.paramID != '0'){
+    if(this.paramID == 'undefined'){
       this.router.navigate(['/account/interactive-dashboard']);
-     }else{
+     }else if(this.paramID== 'campaign'){
       this.router.navigate(['/account/campaigns']);
+     }
+     else if(this.paramID== 'reward'){
+      this.router.navigate(['/account/interactive-dashboard']);
+     }
+     else{
+      this.router.navigate(['/account/interactive-dashboard']);
      }
   }
   else if(this.id_coroebus_theme>4 && this.isInteractiveDashboard == '0'){

@@ -280,6 +280,8 @@ export class PerformancePageComponent implements OnInit {
     switch (this.dropDownValue) {
       case 'Daily':
         this.graphData = [...this.graphMasterData?.dailygraph]
+        console.log("daily",this.graphData);
+        
         this.dataTransformation()
         break;
       case 'Monthly':
@@ -319,6 +321,8 @@ export class PerformancePageComponent implements OnInit {
         });
       })
       arrayData?.push(merge)
+      console.log(arrayData);
+      
     }
     this.graphData = [...arrayData]
     

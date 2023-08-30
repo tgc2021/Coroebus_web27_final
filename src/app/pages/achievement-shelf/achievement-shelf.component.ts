@@ -59,12 +59,12 @@ export class AchievementShelfComponent implements OnInit {
   showCombo: any= []
   ngOnInit(): void {
 
-    // if (!localStorage.getItem('foo')) { 
-    //   localStorage.setItem('foo', 'no reload') 
-    //   location.reload() 
-    // } else {
-    //   localStorage.removeItem('foo') 
-    // }
+    if (!localStorage.getItem('foo')) { 
+      localStorage.setItem('foo', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('foo') 
+    }
 
  
      this.currentDate = new Date();

@@ -92,6 +92,16 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   fullFormKpiNameThird: string;
   newKpiNameFourth: any;
   fullFormKpiNameFourth: string;
+  endRangeForFirst: any;
+  endRange: boolean=false;
+  endRangeForSecond: any;
+  endRangeSecond: boolean=false;
+  endRangeForThird: any;
+  endRangeThird: boolean=false;
+  endRangeForFourth: any;
+  endRangeFourth: boolean=false;
+  hideBtn: boolean;
+  hideBtnLevelWise: boolean=true;
   dismiss() {
     throw new Error("Method not implemented.");
   }
@@ -335,12 +345,12 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     );
     console.log(this.medium_color);
     this.tl_team_rank = localStorage.getItem("tl_rank");
-    // if (!localStorage.getItem('foo')) {
-    //   localStorage.setItem('foo', 'no reload')
-    //   location.reload()
-    // } else {
-    //   localStorage.removeItem('foo')
-    // }
+    if (!localStorage.getItem('foo')) {
+      localStorage.setItem('foo', 'no reload')
+      location.reload()
+    } else {
+      localStorage.removeItem('foo')
+    }
 
     this.activeTab();
     this.Edit_image();
@@ -421,7 +431,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       });
     });
-
+    
     this.callSectionView_1APISub?.unsubscribe();
     this.callSectionView_1APISub = this.eventService.subscribe(
       "callSectionView_1API",
@@ -886,11 +896,13 @@ if (this.levelwise===3) {
 } else if (this.levelwise === 1) {
   if (this.queryParams?.roleID === "6" && this.userSelectionData?._personal_data?.id_role === "6" || this.sectionView_1?._personal_data?.id_role === '6') {
     this.isLevel3Active = true;
+    this.hideBtnLevelWise=false;
     console.log("Role 6, Level 1 condition true");
   }
   else{
     if(this.queryParams?.roleID === "4" && this.userSelectionData?._personal_data?.id_role === "4" || this.sectionView_1?._personal_data?.id_role === '4'  ) {
       this.isLevel3Active = true;
+      this.hideBtnLevelWise=false;
       console.log("Role 4, Level 4 condition true");
 
   }}
@@ -2224,43 +2236,46 @@ if (this.levelwise===3) {
       // do not trigger navigation
     });
   }
-
   getGraphDataById() {
-    //
+    // console.log('Graph data',data);
     let obj = {
-      _userid: this.queryParams?.userID
-        ? this.queryParams?.userID
-        : this.userSelectionData?._personal_data?.USERID,
+      _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
 
-      game_id: this.queryParams?.gameID
-        ? this.queryParams?.gameID
-        : this.userSelectionData?.id_coroebus_game,
-    };
+      game_id: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
+    }
+    console.log(obj)
 
-    let body = {
-      _userid: this.userSelectionData?._personal_data?.USERID,
-      _game: this.userSelectionData?.id_coroebus_game,
-      _device: "W",
-      _section: "Performance",
-      _description: "From Points Distribution",
-    };
-
-    this.http.engagamentlog(body).subscribe((res) => {});
+    let body={
+      "_userid": this.userSelectionData?._personal_data?.USERID,
+      "_game":this.userSelectionData?.id_coroebus_game,
+      _device:"W",
+      _section:"Performance",
+      _description: "From Points Distribution"
+    }
+  
+  
+    this.http.engagamentlog(body).subscribe(res=>{
+      console.log(res);
+      
+    })
 
     // this._router.navigate('/performance/page')
     // this._router.navigate(['/performance/page'], { queryParams: { key: value } })
-    this._router.navigate(["/performance/page"], {
+    this._router.navigate(['/performance/page'], {
       relativeTo: this._route,
       queryParams: {
         userID: this.Util.encryptData(this.queryParams?.userID),
         gameID: this.Util.encryptData(this.queryParams?.gameID),
         // roleID: this.Util.encryptData(this.queryParams?.roleID)
+
       },
 
-      queryParamsHandling: "merge",
+      queryParamsHandling: 'merge',
       // preserve the existing query params in the route
-      skipLocationChange: false,
+      skipLocationChange: false
       // do not trigger navigation
+
+
     });
   }
 
@@ -2303,7 +2318,7 @@ if (this.levelwise===3) {
         // 'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
         // '_self' // <- This is what makes it open in a new window.
 
-        "http://coroebus.in/champions_league/#/home/newChallenge?_userid=" +
+        this.http.mainUrl+"/champions_league/#/home/newChallenge?_userid=" +
           userId +
           "&_game=" +
           game +
@@ -2327,7 +2342,7 @@ if (this.levelwise===3) {
 
     if (this.userSelectionData.is_champions_league == "A") {
       window.open(
-        "http://coroebus.in/champions_league/#/home/onGoing?_userid=" +
+        this.http.mainUrl+"/champions_league/#/home/onGoing?_userid=" +
           userId +
           "&_game=" +
           game +
@@ -2354,7 +2369,7 @@ if (this.levelwise===3) {
 
     if (this.userSelectionData.is_champions_league == "A") {
       window.open(
-        "http://coroebus.in/champions_league/#/home/challengeRecieved?_userid=" +
+        this.http.mainUrl+"/champions_league/#/home/challengeRecieved?_userid=" +
           userId +
           "&_game=" +
           game +
@@ -2413,7 +2428,7 @@ if (this.levelwise===3) {
     //
 
     window.open(
-      "http://coroebus.in/champions_league/#/home/statistics?_userid=" +
+      this.http.mainUrl+"/champions_league/#/home/statistics?_userid=" +
         userId +
         "&_game=" +
         game +
@@ -2554,41 +2569,101 @@ if (this.levelwise===3) {
   }
  
   async openKpiInfo() {
-    
+
     this.openKpi = !this.openKpi;
     try {
-      const body = {
+      console.log(this.role_id)
+      console.log(this.queryParams?.roleID);
+      console.log(this.userSelectionData?._personal_data?.id_role);
+      var location = window.location.href;
+      if (location.includes("?")){
+        let body = {
+          _game:this.userSelectionData?.id_coroebus_game,
+          id_role:this.role_id
+        };
+        let res = await this.http.pointDistributionPopup(body).toPromise();
+        this.kpiData = res;
+      }
+      else{
+        let body = {
     
-        _game:this.userSelectionData?.id_coroebus_game,
-        id_role:this.queryParams?.roleID || this.sectionView_1?._personal_data?.id_role
+          _game:this.userSelectionData?.id_coroebus_game,
+          id_role:this.userSelectionData?._personal_data?.id_role 
+  
+        };
+        let res = await this.http.pointDistributionPopup(body).toPromise();
+        this.kpiData = res;
+       
+      }
+      
 
-      };
-      const res = await this.http.pointDistributionPopup(body).toPromise();
-      this.kpiData = res;
+    
+
+      
+      
+     
+      
       this.labelArray = Object.entries(this.kpiData?.data?._point_details).map(
         ([label, otherKpiData]) => {
           return { label, Kpidata: otherKpiData };
         }
       );
       console.log(this.labelArray);
+      this.endRangeForFirst=this.labelArray[0]?.Kpidata?.data.forEach(element => {
+        if(element.end_range==''){
+          this.endRange=true;
+        }
+        else{
+          this.endRange=false;
+
+        }
+        
+      });
       // First Index
      this.newKpiNamefirst=this.labelArray[0]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
      this.newKpiNamefirst=this.labelArray[0]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNamefirst,"");
-     this.fullFormKpiNamefirst=`${this.newKpiNamefirst}${this.labelArray[0]?.label} Index`
+     this.fullFormKpiNamefirst=`${this.newKpiNamefirst}${this.labelArray[0]?.label} Index`;
      console.log(this.fullFormKpiNamefirst);
 
       // Second Index
+      this.endRangeForSecond=this.labelArray[1]?.Kpidata?.data.forEach(element => {
+        if(element.end_range==''){
+          this.endRangeSecond=true;
+        }
+        else{
+          this.endRangeSecond=false;
+
+        }
+      });
       this.newKpiNameSecond=this.labelArray[1]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
       this.newKpiNameSecond=this.labelArray[1]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNameSecond,"");
       this.fullFormKpiNamesecond=`${this.newKpiNameSecond}${this.labelArray[1]?.label} Index`
       console.log(this.fullFormKpiNamesecond);
       // Third Index
+      this.endRangeForThird=this.labelArray[2]?.Kpidata?.data.forEach(element => {
+        if(element.end_range==''){
+          this.endRangeThird=true;
+        }
+        else{
+          this.endRangeThird=false;
+
+        }
+      });
       this.newKpiNameThird=this.labelArray[2]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
       this.newKpiNameThird=this.labelArray[2]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNameThird,"");
       this.fullFormKpiNameThird=`${this.newKpiNameThird}${this.labelArray[2]?.label} Index`
       console.log(this.fullFormKpiNameThird);
 
       // Fourth Index
+      this.endRangeForFourth=this.labelArray[3]?.Kpidata?.data.forEach(element => {
+        if(element.end_range==''){
+          this.endRangeFourth=true;
+        }
+        else{
+          this.endRangeFourth=false;
+
+        }
+      });
       this.newKpiNameFourth=this.labelArray[3]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
       this.newKpiNameFourth=this.labelArray[3]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNameFourth,"");
       this.fullFormKpiNameFourth=`${this.newKpiNameFourth}${this.labelArray[3]?.label} Index`
@@ -2655,7 +2730,7 @@ if (this.levelwise===3) {
           this.sectionView_1?._personal_data.external_kpi_data[0].is_correct;
 
         window.open(
-          "https://coroebus.in/Learning_academy/#/LearningAcademy/library?_game=" +
+          this.http.mainUrl+"/Learning_academy/#/LearningAcademy/library?_game=" +
             data._game +
             "&_userid=" +
             data._userid +
@@ -2687,7 +2762,7 @@ if (this.levelwise===3) {
         const isCorrect = "8";
 
         window.open(
-          "https://coroebus.in/Learning_academy/#/LearningAcademy/library?_game=" +
+          this.http.mainUrl+"/Learning_academy/#/LearningAcademy/library?_game=" +
             data._game +
             "&_userid=" +
             data._userid +
