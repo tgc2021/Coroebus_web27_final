@@ -48,7 +48,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   additionOfBadgesScore: number;
   hideTab: boolean = true;
   titleTab: any;
-  my_rank: void;
+  my_rank: any;
   levelwise:any=6;
   sectionView_2_Indexwise: any;
   labelNameMyIndex: any;
@@ -2610,7 +2610,8 @@ if (this.levelwise===3) {
       );
       console.log(this.labelArray);
       this.endRangeForFirst=this.labelArray[0]?.Kpidata?.data.forEach(element => {
-        if(element.end_range==''){
+        console.log(element);
+        if(element.kpi_type=='Actual'){
           this.endRange=true;
         }
         else{
@@ -2627,7 +2628,7 @@ if (this.levelwise===3) {
 
       // Second Index
       this.endRangeForSecond=this.labelArray[1]?.Kpidata?.data.forEach(element => {
-        if(element.end_range==''){
+        if(element.kpi_type=='Actual'){
           this.endRangeSecond=true;
         }
         else{
@@ -2641,7 +2642,7 @@ if (this.levelwise===3) {
       console.log(this.fullFormKpiNamesecond);
       // Third Index
       this.endRangeForThird=this.labelArray[2]?.Kpidata?.data.forEach(element => {
-        if(element.end_range==''){
+        if(element.kpi_type=='Actual'){
           this.endRangeThird=true;
         }
         else{
@@ -2656,7 +2657,7 @@ if (this.levelwise===3) {
 
       // Fourth Index
       this.endRangeForFourth=this.labelArray[3]?.Kpidata?.data.forEach(element => {
-        if(element.end_range==''){
+        if(element.kpi_type=='Actual'){
           this.endRangeFourth=true;
         }
         else{

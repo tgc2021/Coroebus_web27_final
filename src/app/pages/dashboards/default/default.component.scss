@@ -1768,8 +1768,8 @@ ModalHeading.ok_button {
   
   .animation-bar-1 {
     display: block;
-    margin-top: 9vh;
-  
+    // margin-top: 9vh;
+    position: relative;
     font-size: 16px;
   
     border-radius: 30px;

@@ -1176,7 +1176,7 @@ this.spectSearchStr=''
       );
       console.log(this.labelArray);
       this.endRangeForFirst=this.labelArray[0]?.Kpidata?.data.forEach(element => {
-        if(element.end_range==''){
+        if(element.kpi_type=='Actual'){
           this.endRange=true;
         }
         else{
@@ -1193,7 +1193,7 @@ this.spectSearchStr=''
 
       // Second Index
       this.endRangeForSecond=this.labelArray[1]?.Kpidata?.data.forEach(element => {
-        if(element.end_range==''){
+        if(element.kpi_type=='Actual'){
           this.endRangeSecond=true;
         }
         else{
@@ -1207,7 +1207,7 @@ this.spectSearchStr=''
       console.log(this.fullFormKpiNamesecond);
       // Third Index
       this.endRangeForThird=this.labelArray[2]?.Kpidata?.data.forEach(element => {
-        if(element.end_range==''){
+        if(element.kpi_type=='Actual'){
           this.endRangeThird=true;
         }
         else{
@@ -1222,7 +1222,7 @@ this.spectSearchStr=''
 
       // Fourth Index
       this.endRangeForFourth=this.labelArray[3]?.Kpidata?.data.forEach(element => {
-        if(element.end_range==''){
+        if(element.kpi_type=='Actual'){
           this.endRangeFourth=true;
         }
         else{
@@ -1233,7 +1233,7 @@ this.spectSearchStr=''
       this.newKpiNameFourth=this.labelArray[3]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
       this.newKpiNameFourth=this.labelArray[3]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNameFourth,"");
       this.fullFormKpiNameFourth=`${this.newKpiNameFourth}${this.labelArray[3]?.label} Index`
-      console.log(this.fullFormKpiNameFourth);
+      
 
       
     
