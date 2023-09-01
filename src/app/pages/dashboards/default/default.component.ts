@@ -490,7 +490,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       _section_view: "3",
       page_number: 1,
     };
-    if(this.sectionView_1?._personal_data?.id_coroebus_organization=="61"){
+    if(this.userSelectionData?._personal_data?.id_coroebus_organization=="61"){
       this.http.produce12(body).subscribe({
         next: (res) => {
           console.log(res);
@@ -526,7 +526,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       _section_view: "2",
       page_number: 1,
     };
-    if(this.sectionView_1?._personal_data?.id_coroebus_organization=="61"){
+    if(this.userSelectionData?._personal_data?.id_coroebus_organization=="61"){
       this.http.produce12(bodyForFixedTile).subscribe((res) => {
         console.log(res);
         this.section_view_res = res;
