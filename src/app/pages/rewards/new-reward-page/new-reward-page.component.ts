@@ -55,12 +55,12 @@ export class NewRewardPageComponent implements OnInit {
   headerInfo: any
   popupresponse: any
   data: any
-  collectionSize: any;
+  collectionSize=1;
   selectedIndex=0;
   pageSizePassbook = 6;
   pageSizeReward=4;
-  page = 1;
-  page1 = 1;
+  page=1;
+  pagePassbook=1;
   pageSize=10;
   location: any
   userid: any
@@ -105,7 +105,7 @@ export class NewRewardPageComponent implements OnInit {
       localStorage.removeItem('foo')
     }
     this.urlPage=localStorage.getItem('page');
-    console.log(this.urlPage);
+  
     if(this.urlPage=='reward'){
       this.selectedIndex=1;
     }
@@ -132,8 +132,8 @@ export class NewRewardPageComponent implements OnInit {
       })
 
       this.location = window.location.href
-
-      var checkUserID = this._route.queryParams
+      if(this.location.includes('?')){
+        var checkUserID = this._route.queryParams
         .subscribe(params => {
           this.rewardSpect = true
 
@@ -151,6 +151,8 @@ export class NewRewardPageComponent implements OnInit {
 
 
         })
+      }
+      
 
 
 
@@ -206,7 +208,7 @@ export class NewRewardPageComponent implements OnInit {
 
                
             
-              this.passbook_response = this.rewardresponse[0].data.points_list[1]._data;
+              this.passbook_response = this.rewardresponse[0]?.data?.points_list[1]?._data;
 
               this.collectionSize = this.passbook_response?.length;
             
@@ -271,25 +273,26 @@ export class NewRewardPageComponent implements OnInit {
               this.rewardresponse = Array.of(this.rewardresponse);
             
 
-              this.passbook_response = this.rewardresponse[0].data.points_list[1]._data
+              this.passbook_response = this.rewardresponse[0]?.data?.points_list[1]?._data
 
-              this.collectionSize = this.passbook_response.length
+              this.collectionSize = this.passbook_response?.length;
               this.rewardImage=this.rewardresponse[0]?.data?.game_data[0]?.reward_image;
               this.passbookImage=this.rewardresponse[0]?.data?.game_data[0]?.passbook_image;
               this.coinImage=this.rewardresponse[0]?.data?.game_data[0]?.coin_image;
+              this.selectionColor=this.rewardresponse[0]?.data?.game_data[0]?.selection_color;  
+              this.element.nativeElement.style.setProperty('--selectionColor', `${this.selectionColor}`)
               
                 this.arrForCardColor.push(
-                  
                   {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color1+')'},
                   {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color2+')'},
                   {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color3+')'},
                   {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color4+')'},
                   {'selectionColor':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.selection_color+')'}
-    
+
                   );
 
             })
-            this.hidedata =true
+            this.hidedata =true;
 
            
 
@@ -397,9 +400,9 @@ export class NewRewardPageComponent implements OnInit {
           this.rewardresponse = Array.of(this.rewardresponse);
         
 
-          this.passbook_response = this.rewardresponse[0].data.points_list[1]._data
+          this.passbook_response = this.rewardresponse[0]?.data?.points_list[1]?._data
 
-          this.collectionSize = this.passbook_response.length
+          this.collectionSize = this.passbook_response?.length;
 
           this.rewardImage=this.rewardresponse[0]?.data?.game_data[0]?.reward_image;
           this.passbookImage=this.rewardresponse[0]?.data?.game_data[0]?.passbook_image;
@@ -437,6 +440,7 @@ export class NewRewardPageComponent implements OnInit {
     this.reverse = !this.reverse;
 
   }
+ 
 
   // filteredCoreGames(category:unknown){
   //   this.filterCoreGame=this.rewardresponse[0].data.points_list[1]._data.filter(element => {
@@ -859,6 +863,9 @@ export class NewRewardPageComponent implements OnInit {
 
 
       this.rewardresponse = Array.of(this.rewardresponse);
+      this.passbook_response = this.rewardresponse[0]?.data?.points_list[1]?._data;
+
+      this.collectionSize = this.passbook_response?.length;
     
 
 
@@ -901,6 +908,7 @@ export class NewRewardPageComponent implements OnInit {
   ngOnDestroy(): void {
     localStorage.removeItem('reward_userid')
     localStorage.removeItem('rewardid')
+    localStorage.removeItem('page');
 
 
   }

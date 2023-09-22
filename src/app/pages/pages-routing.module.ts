@@ -10,9 +10,9 @@ import { TopHierarchyDashboardsComponent } from './top-hierarchy-dashboards/top-
 import { BusinessReportComponent } from './business-report/business-report.component';
 import { MobileMapsComponent } from './mobile-maps/mobile-maps.component';
 
-
 const routes: Routes = [
-  { path: '', redirectTo: 'topdashboard' },
+
+  { path: '', redirectTo: 'dashboard' },
   { path: 'dashboard', component: DefaultComponent, pathMatch: 'full' },
   { path: 'dashboards', loadChildren: () => import('./dashboards/dashboards.module').then(m => m.DashboardsModule) },
   { path: 'notification', loadChildren: () => import('./notification-list/notification-list.module').then(m => m.NotificationListModule) },
@@ -35,6 +35,46 @@ const routes: Routes = [
 
 
 ];
+
+// const iduser=localStorage.getItem('id_role_hos');
+// console.log(iduser);
+
+// if (iduser === '8' || iduser === '9') {
+//   routes.push({ path: '', redirectTo: 'top_dashboard', pathMatch: 'full' });
+// } else if (iduser === '') {
+//   routes.push({ path: '', redirectTo: 'dashboard', pathMatch: 'full' });
+  
+// } else if (iduser === '13' ) {
+//   routes.push({ path: '', redirectTo: 'topdashboard', pathMatch: 'full' });
+  
+// } 
+
+
+// routes.push(
+//   { path: 'dashboard', component: DefaultComponent, pathMatch: 'full' },
+//   { path: 'dashboards', loadChildren: () => import('./dashboards/dashboards.module').then(m => m.DashboardsModule) },
+//   { path: 'notification', loadChildren: () => import('./notification-list/notification-list.module').then(m => m.NotificationListModule) },
+//   { path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule) },
+//   { path: 'performance', loadChildren: () => import('./performance-page/performance-page.module').then(m => m.PerformancePageModule) },
+//   { path: 'playzone', loadChildren: () => import('./play-zone/play-zone.module').then(m => m.PlayZoneModule) },
+//   { path: 'reward', loadChildren: () => import('./rewards/rewards.module').then(m => m.RewardsModule) },
+//   { path: 'spectator', loadChildren: () => import('./spectator-view/spectator-view.module').then(m => m.SpectatorViewModule) },
+//   { path: 'learning', loadChildren: () => import('./learning-academy/learning-academy.module').then(m => m.LearningAcademyModule) },
+//   { path: 'Achievement', loadChildren: () => import('./achievement-shelf/achievement-shelf.module').then(m => m.AchievementShelfModule) },
+//   { path: 'champions_league', component:ChampionsLeagueComponent },
+//   { path: 'personal_milestone', component:PersonalMilestoneComponent },
+//   { path: 'top_dashboard', component:TopHierarchyDashboardsComponent },
+//   { path: 'topdashboard', component:TopDashboardComponent },
+//   { path: 'governance_index', component:GovernanceIndexComponent },
+
+//   { path: 'business_report', component:BusinessReportComponent },
+//   { path: 'mobile_maps', component:MobileMapsComponent },
+
+
+  // Other routes...
+// );
+
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

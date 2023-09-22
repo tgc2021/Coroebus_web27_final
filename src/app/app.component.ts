@@ -19,6 +19,7 @@ onResize(){
     this.hideAddressBar();
 
   }
+  
 
   hideAddressBar(){
     if(window.innerHeight < window.outerHeight){

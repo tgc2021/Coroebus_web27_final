@@ -80,7 +80,7 @@
                         <div class="dashboard-user-name mb-2 " style="display:flex;justify-content:center;gap:9vw">
                             <div class="col-8"></div>
                           
-                            <div class="col-4 d-flex justify-content-end" (click)="openKpiInfo()"
+                            <div class="col-4 d-flex justify-content-end" (click)="openKpiInfo('')"
                                 data-bs-toggle="modal" data-bs-target="#operallPointsAbove">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16"
@@ -582,7 +582,7 @@
                 <div class="Ranking_section_card" *ngFor="let item of sectionView_1?.is_land_logos">
                     <div class="upper_section">
                         <!-- <div class="level_name">{{sectionView_1._personal_data.level_label}}</div> -->
-                        <div class="level_name">{{item.label}}</div>
+                        <div class="level_name">{{item.tag}}</div>
                     </div>
                     <div class="Island_score">
                         <!-- <img class="profile_picture_image" src="{{sectionView_1._personal_data.profile_logo}}" height="100%" width="" /> -->
@@ -875,8 +875,12 @@
                       <div class="row row-cols-3 text-center mt-0">
                           <ng-container *ngFor="let item of pokeData[0]._data,index as i">
                               <div class="col">
-                                  <div class="card poke-card">
-                                      <span [class.active1]="i===clicked" (click)="emojiSelected(i,arrowStatus)">
+                                  <div class="card poke-card "
+                                  [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                  style="border:2px solid"
+                                  >
+                                      <span [class.active]="i===clicked" (click)="emojiSelected(i,arrowStatus)"
+                                      [style.border-color]="sectionView_1?.theme_details?.[0]?.dark_color">
                                           <img src="{{item?.poke_logo}}" class="card-img-top poke-image" alt="...">
                                       </span>
                                   </div>
@@ -886,8 +890,10 @@
                       </div>
                       <div class="row">
                           <div class="col">
-                              <div class="card emojitext" [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
-                                  <span *ngIf="this.emoji" class="" style="text-align: center; padding:3%;">{{pokeidselected}}</span>
+                              <div class="card emojitext" 
+                              [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
+                                  <span *ngIf="this.emoji" class="" 
+                                  style="text-align: center; padding:3%;">{{pokeidselected}}</span>
                               </div>
                           </div>
                       </div>
@@ -919,8 +925,11 @@
                           <div class="row row-cols-3 text-center mt-0">
                               <ng-container *ngFor="let item of pokeData[1]._data,index as i">
                                   <div class="col">
-                                      <div class="card poke-card">
-                                          <span [class.active1]="i===clicked" (click)="emojiSelected(i,arrowStatus)">
+                                      <div class="card poke-card"
+                                      [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                      style="border:2px solid">
+                                          <span [class.active]="i===clicked" (click)="emojiSelected(i,arrowStatus)"
+                                          [style.border-color]="sectionView_1?.theme_details?.[0]?.dark_color">
                                               <img src="{{item?.poke_logo}}" class="card-img-top poke-image"   alt="...">
                                           </span>
                                       </div>
@@ -1112,7 +1121,7 @@
                     <div class="dashboard-user-name mb-2 " style="display:flex;justify-content:center;">
                         <div class="col-8"></div>
                       
-                        <div class="col-4 d-flex justify-content-end pe-1" (click)="openKpiInfo()"
+                        <div class="col-4 d-flex justify-content-end pe-1" (click)="openKpiInfo('')"
                             data-bs-toggle="modal" data-bs-target="#operallPointsAbove">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                 fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16"
@@ -2370,9 +2379,9 @@
             </div>
             <div class="modal-body">
               
-                <mat-tab-group [selectedIndex]="selectedIndex" *ngIf="labelArray?.length!=0" >
+                <mat-tab-group [selectedIndex]="0" *ngIf="labelArray?.length!=0" >
                     
-                    <mat-tab label="{{labelArray[0]?.label}}" *ngIf="labelArray[0]?.Kpidata?.data?.length>0">
+                    <mat-tab label="{{labelFirst}}" *ngIf="labelArray[0]?.Kpidata?.data?.length>0">
                         
 
                         <div class="d-flex justify-content-between">
@@ -2391,8 +2400,8 @@
                        <ng-template #forAdvocacyForOne>
                         <table class="mt-4">
                             <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
-                                <th>No. of instance </th>
-                                <th>Points per instance</th>
+                                <th>No. of instances </th>
+                                <th>Points per instance </th>
                             </thead>
                             <tbody *ngFor="let kpiData of labelArray[0]?.Kpidata?.data">
                                 <tr>
@@ -2429,7 +2438,7 @@
 
 
                     </mat-tab>
-                     <mat-tab label="{{labelArray[1]?.label}}" *ngIf="labelArray[1]?.Kpidata?.data?.length>0">
+                     <mat-tab label="{{labelSecond}}" *ngIf="labelArray[1]?.Kpidata?.data?.length>0">
                         <div class="d-flex justify-content-between">
                             
                             <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">{{fullFormKpiNamesecond}}
@@ -2485,7 +2494,7 @@
 
 
                     </mat-tab>
-                    <mat-tab label="{{labelArray[2]?.label}}" *ngIf="labelArray[2]?.Kpidata?.data?.length>0">
+                    <mat-tab label="{{labelThird}}" *ngIf="labelArray[2]?.Kpidata?.data?.length>0">
                         <div class="d-flex justify-content-between">
                             
                             <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">{{fullFormKpiNameThird}}
@@ -2539,7 +2548,7 @@
 
 
                     </mat-tab>
-                    <mat-tab label="{{labelArray[3]?.label}}" *ngIf="labelArray[3]?.Kpidata?.data?.length>0">
+                    <mat-tab label="{{labelFourth}}" *ngIf="labelArray[3]?.Kpidata?.data?.length>0">
                         <div class="d-flex justify-content-between">
                             
                             <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">

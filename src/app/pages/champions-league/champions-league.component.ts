@@ -4,6 +4,7 @@ import * as fromRoot from '../../core/app-state';
 import { take, takeUntil } from 'rxjs/operators';
 import { Subscription, combineLatest, Subject, Observable, interval } from 'rxjs';
 import { Util } from '@app/utils/util';
+import { ApiserviceService } from 'app/apiservice.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { Util } from '@app/utils/util';
 })
 export class ChampionsLeagueComponent implements OnInit {
 
-  constructor(private readonly store: Store,public Util: Util) { }
+  constructor(private readonly store: Store,public Util: Util, public http:ApiserviceService) { }
   userObj: any
   mergeObj: any
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -53,7 +54,7 @@ export class ChampionsLeagueComponent implements OnInit {
   
         window.open(
         
-          'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
+          this.http.mainUrl+'/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
 
           '_self' // <- This is what makes it open in a new window.
     
@@ -70,7 +71,7 @@ export class ChampionsLeagueComponent implements OnInit {
         
   
         window.open(
-           'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
+           this.http.mainUrl+'/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+this.mergeObj.id_coroebus_user,
 
           '_self' // <- This is what makes it open in a new window.
     

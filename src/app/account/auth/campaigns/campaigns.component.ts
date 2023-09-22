@@ -139,18 +139,14 @@ export class CampaignsComponent implements OnInit {
   
       this.seasonalThemeDailyBadges1 = this.data.data.seasonal_theme_daily_badge_details;
       this.lastArrayseasonalThemeDailyBadges2 = this.seasonalThemeDailyBadges1[
-        this.seasonalThemeDailyBadges1.length - 1
+        this.seasonalThemeDailyBadges1?.length - 1
       ];
   
       this.seasonalThemeWeeklyBadges2 = this.data.data.seasonal_theme_weekly_badge_details;
-      this.lastArrayseasonalThemeWeeklyBadges2 = this.seasonalThemeWeeklyBadges2[
-        this.seasonalThemeWeeklyBadges2.length - 1
-      ];
+      this.lastArrayseasonalThemeWeeklyBadges2 = this.seasonalThemeWeeklyBadges2[this.seasonalThemeWeeklyBadges2?.length - 1];
   
       this.seasonalThemeMonthlyBadges3 = this.data?.data?.seasonal_theme_monthly_badge_details;
-      this.lastArrayseasonalThemeMonthlyBadges2 = this.seasonalThemeMonthlyBadges3[
-        this.seasonalThemeMonthlyBadges3.length - 1
-      ];
+      this.lastArrayseasonalThemeMonthlyBadges2 = this.seasonalThemeMonthlyBadges3[this.seasonalThemeMonthlyBadges3?.length - 1];
   
       this.seasonalThemeDailyBadges1.forEach((res) => {
         if (res.active_class === "1") {

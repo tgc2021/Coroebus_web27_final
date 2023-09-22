@@ -134,7 +134,7 @@ export const MENU: MenuItem[] = [
                 label: 'MENUITEMS.CHAMPIONS_LEAGUE',
                 link: '/champions_league',
                 link1: '/champions_league',
-                link2: '/champions_league',
+                // link2: '/champions_league',
                 parentId: 12
             },
         ]

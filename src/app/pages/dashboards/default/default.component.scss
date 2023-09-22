@@ -1790,6 +1790,7 @@ ModalHeading.ok_button {
   }
   .badges_row {
     display: flex;
+    // margin-left: -1%;
    
     // justify-content: start;
     // gap:23%;
@@ -2325,6 +2326,9 @@ ModalHeading.ok_button {
     .points_header {
       margin-left: 3vw;
     }
+    // .badges_row{
+    //   margin-left: -4%;
+    // }
   }
   
   table {

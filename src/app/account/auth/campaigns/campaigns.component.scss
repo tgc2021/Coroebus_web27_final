@@ -33,7 +33,7 @@
   
 .animation-bar-1 {
     display: block;
-    margin-top: 9vh;
+  // margin-top: 9vh;
     font-size: 16px;
     border-radius: 30px;
     background: rgba(0, 0, 0, 0.1);
@@ -53,7 +53,7 @@
   }
   .badges_row {
     display: flex;
-    margin-left: 1%;
+    margin-left: -1%;
    
     // justify-content: start;
     // gap:23%;
@@ -125,8 +125,14 @@
     .web-container{
         width: 100%;
     }
-    .badgesContent{
-      margin-left: -22%;
-    }
+   
+   .badges_row {
+    display: flex;
+    margin-left: -4%;
+   
+    // justify-content: start;
+    // gap:23%;
+  }
+    
     
   }

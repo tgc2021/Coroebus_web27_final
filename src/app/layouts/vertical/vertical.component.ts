@@ -92,21 +92,24 @@ this.dynamicColor()
     if (this.userSelectionData?.otherInfo) {
       this.headerInfo = this.userSelectionData?.otherInfo
       
-      this.color = this.headerInfo.color; //yellowcolor
+      this.color = this.headerInfo?.color; //yellowcolor
       
-      this.bgImage= this.userSelectionData?.themes[0].theme_background_web
+      this.bgImage= this.userSelectionData?.themes[0]?.theme_background_web
       
       
-      this.element.nativeElement.style.setProperty('--myvar', `${this.color}`)
-      this.element.nativeElement.style.setProperty('--bgImage', `${this.bgImage}`)
+      this.element?.nativeElement?.style.setProperty('--myvar', `${this.color}`)
+      this.element?.nativeElement?.style.setProperty('--bgImage', `${this.bgImage}`)
 
       // this.element.nativeElement.style.setProperty('--mycolor',`${this.color}`)
       // 
 
 
     }
-    this._routeSub = this._route.queryParams.subscribe(queryParams => {
+
+    this._routeSub = this._route?.queryParams?.subscribe(queryParams => {
       this.queryParams = queryParams
+
+
       
     })
   }

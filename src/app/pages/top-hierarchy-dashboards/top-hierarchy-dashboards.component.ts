@@ -134,17 +134,22 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   endRangeForFourth: any;
   endRangeFourth: boolean=false;
   selectedIndex:any=0;
+  labelFirst: any;
+  labelSecond: any;
+  labelThird: any;
+  labelFourth: any;
+  groupID: any;
   constructor(private readonly store: Store, public _route: ActivatedRoute,public snackBar: MatSnackBar,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.tl_team_rank=localStorage.getItem('tl_rank')
     
-    // if (!localStorage.getItem('foo')) { 
-    //   localStorage.setItem('foo', 'no reload') 
-    //   location.reload() 
-    // } else {
-    //   localStorage.removeItem('foo') 
-    // }
+    if (!localStorage.getItem('foo')) { 
+      localStorage.setItem('foo', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('foo') 
+    }
 
 
 
@@ -207,16 +212,21 @@ export class TopHierarchyDashboardsComponent implements OnInit {
 
 
           this.getUserBannerDataSectionView_1(queryParams)
+        
           // this.getUserBannerDataSectionView_2(queryParams)
           this.getUserBannerDataSectionView_3(null, queryParams)
+           this.GetIndexWisePopup(queryParams);
+          // this.GetRankingPopupData()
          
           // this.notificationList()
           // this.addIns()
         } else {
           this.getUserBannerDataSectionView_1()
           this.getUserBannerDataSectionView_3()
+        
           // this.getUserBannerDataSectionView_2()
           this.getUserBannerDataSectionView_3()
+          this.GetRankingPopupData()
           
           // this.notificationList()
           // this.addIns()
@@ -1100,17 +1110,32 @@ this.spectSearchStr=''
   
        
           this.sectionView_3_popup = res?.data;
+
+          
+      
+          
            
           this.sectionView_3_list_popup_index = this.sectionView_3_popup?._ranking_data?.filter(data => {
             console.log(data);
-            console.log(data.order);
+            
+            
             console.log(this.activeTabOrderNumberForSectionView_2);
             
             if (data.order === this.activeTabOrderNumberForSectionView_2) {
-              console.log(data);
-              
+             
               return data
+             
+             
             }
+            console.log(data._data);
+            data?._data.find((res)=>{
+              console.log(res);
+              if(res?.userid===this.sectionView_1._personal_data.USERID){
+                localStorage.setItem("group_id",res?.id_coroebus_group);
+                console.log(this.groupID)
+              }
+            })
+
           })
          
            
@@ -1133,17 +1158,55 @@ this.spectSearchStr=''
     }
      
    }
-   async openKpiInfo() {
+   async openKpiInfo(event) {
+    this.selectedIndex=0;
+// API CALL FOR GET GROUP ID
+     let body = {
+      "_userid": this.sectionView_1?.is_land_logos[0]?._userid,
+      "_game": this.sectionView_1?.is_land_logos[0]?.game_id, "_section_view": "3", "page_number": this.pageNumberForSectionView_3
+    };
+  
+    let err: any, res: any; 
+     
+
+    [err, res] = await HttpProtocols.to(DashboardModel.getRankingAndOtherDataSectionView_3(body))
+     if (!err && res?.status === 'success' && res?.statuscode === 200) {
+       this.sectionView_3_popup = res?.data;
+       this.sectionView_3_list_popup_index = this.sectionView_3_popup?._ranking_data?.filter(data => {
+         console.log(data);
+         console.log(this.activeTabOrderNumberForSectionView_2);
+         if (data.order === this.activeTabOrderNumberForSectionView_2) {
+           return data
+         }
+         console.log(data._data);
+         data?._data.find((res) => {
+           console.log(res);
+           if (res?.userid === this.sectionView_1._personal_data.USERID) {
+             localStorage.setItem("group_id", res?.id_coroebus_group);
+             console.log(this.groupID)
+           }
+         })
+
+       })
+     } else {
+       this.sectionView_3_err = 'Please try after some time'
+     }
     
+    
+    this.groupID=localStorage.getItem('group_id')
     this.openKpi = !this.openKpi;
+    console.log(this.groupID);
+    console.log(this.userSelectionData?.games)
     try {
       var location = window.location.href;
-      console.log(this.sectionView_3?._personal_data?.id_role);
+      // console.log(this.sectionView_3?._personal_data?.id_role);
       if (location.includes("?")){
         let body = {
     
           _game:this.userSelectionData?.id_coroebus_game,
-          id_role:this.sectionView_3?._personal_data?.id_role
+          id_role:this.sectionView_3?._personal_data?.id_role,
+          id_coroebus_group:this.groupID 
+
   
   
         };
@@ -1154,7 +1217,8 @@ this.spectSearchStr=''
         let body = {
     
           _game:this.userSelectionData?.id_coroebus_game,
-          id_role:this.sectionView_1?._personal_data?.id_role 
+          id_role:this.sectionView_1?._personal_data?.id_role,
+          id_coroebus_group:this.groupID 
   
         };
         let res = await this.http.pointDistributionPopup(body).toPromise();
@@ -1174,7 +1238,9 @@ this.spectSearchStr=''
           return { label, Kpidata: otherKpiData };
         }
       );
-      console.log(this.labelArray);
+     
+
+    
       this.endRangeForFirst=this.labelArray[0]?.Kpidata?.data.forEach(element => {
         if(element.kpi_type=='Actual'){
           this.endRange=true;
@@ -1188,7 +1254,8 @@ this.spectSearchStr=''
       // First Index
      this.newKpiNamefirst=this.labelArray[0]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
      this.newKpiNamefirst=this.labelArray[0]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNamefirst,"");
-     this.fullFormKpiNamefirst=`${this.newKpiNamefirst}${this.labelArray[0]?.label} Index`;
+     this.labelFirst=this.labelArray[0]?.label?.replace('- rollup','');
+     this.fullFormKpiNamefirst=`${this.newKpiNamefirst}${this.labelFirst} Index`;
      console.log(this.fullFormKpiNamefirst);
 
       // Second Index
@@ -1203,7 +1270,8 @@ this.spectSearchStr=''
       });
       this.newKpiNameSecond=this.labelArray[1]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
       this.newKpiNameSecond=this.labelArray[1]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNameSecond,"");
-      this.fullFormKpiNamesecond=`${this.newKpiNameSecond}${this.labelArray[1]?.label} Index`
+      this.labelSecond=this.labelArray[1]?.label?.replace('- rollup','');
+      this.fullFormKpiNamesecond=`${this.newKpiNameSecond}${this.labelSecond} Index`
       console.log(this.fullFormKpiNamesecond);
       // Third Index
       this.endRangeForThird=this.labelArray[2]?.Kpidata?.data.forEach(element => {
@@ -1217,7 +1285,8 @@ this.spectSearchStr=''
       });
       this.newKpiNameThird=this.labelArray[2]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
       this.newKpiNameThird=this.labelArray[2]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNameThird,"");
-      this.fullFormKpiNameThird=`${this.newKpiNameThird}${this.labelArray[2]?.label} Index`
+      this.labelThird=this.labelArray[2]?.label?.replace('- rollup','');
+      this.fullFormKpiNameThird=`${this.newKpiNameThird}${this.labelThird} Index`
       console.log(this.fullFormKpiNameThird);
 
       // Fourth Index
@@ -1232,8 +1301,14 @@ this.spectSearchStr=''
       });
       this.newKpiNameFourth=this.labelArray[3]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
       this.newKpiNameFourth=this.labelArray[3]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNameFourth,"");
-      this.fullFormKpiNameFourth=`${this.newKpiNameFourth}${this.labelArray[3]?.label} Index`
+      this.labelFourth=this.labelArray[3]?.label?.replace('- rollup','');
+      this.fullFormKpiNameFourth=`${this.newKpiNameFourth}${this.labelFourth} Index`
       
+
+      
+     
+    
+     
 
       
     
@@ -1265,6 +1340,15 @@ this.spectSearchStr=''
     this.getDataBasedOnUserID(obj)
   }
 
+  ngAfterViewInit():void{
+
+   
+
+    
+   
+    
+  }
+  
  
 }
 

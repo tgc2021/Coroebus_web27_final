@@ -1,7 +1,21 @@
 // Web-view started
 
-.web-view {
+.web-view-game {
+    // background: linear-gradient(var(--myvar));
+    background: linear-gradient(var(--myvarnew));
+    height: 100vh;
+    // width: 100vw;
+    // background-size: 100% 100%;
+    display: block;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    overflow: hidden;
+}
+.web-view-theme {
     background: linear-gradient(var(--myvar));
+    // background: linear-gradient(var(--myvarnew));
     height: 100vh;
     // width: 100vw;
     // background-size: 100% 100%;
@@ -15,20 +29,26 @@
 
 
 
-.web_view_main{
+.web_view_main-game{
+    // background: linear-gradient(var(--myvar));
+    background: linear-gradient(var(--myvarnew));
+    overflow: hidden;
+}
+.web_view_main-theme{
     background: linear-gradient(var(--myvar));
+    
     overflow: hidden;
 }
 .web_first_row {
     height: 10vh;
-    // width: 98vw;
+    
 }
 
 
 .web_profile_pic {
     height: 7vh;
     width: 7vh;
-    // border: 1px solid #FEEE1E;
+   
     cursor: pointer;
     border-radius: 100%;
 }
@@ -41,7 +61,11 @@
     border-radius: 10px;
 }
 
-
+.web_background_image{
+    height: 65vh;
+    background-size:100% 100% !important;
+    margin-top: 0.5em;
+}
 .web_profile_name {
     font-family: "Inter";
     font-style: normal;
@@ -169,7 +193,7 @@
     bottom: 0.5em;
     left: 0.5em;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 20px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
 }
@@ -250,7 +274,8 @@ flex-direction: column;
 
 .upper_blue_scoreboard {
     height: 15vh;
-    background: var(--colorback);
+    // background: var(--colorback);
+    background: var(--colorbacknew);
     border-radius: 4px;
     margin-top: 0.5em;
     cursor: pointer;
@@ -259,7 +284,8 @@ flex-direction: column;
 
 .upper_blue_scoreboard_tvs{
     height: 30vh;
-    background: var(--colorback);
+    // background: var(--colorback);
+    background: var(--colorbacknew);
     border-radius: 8px;
     margin-top: 0.5em;
     cursor: pointer;
@@ -303,7 +329,8 @@ flex-direction: column;
 
 .lower_blue_scorecard {
     height: 15vh;
-    background: var(--colorback);
+    // background: var(--colorback);
+    background: var(--colorbacknew);
     border-radius: 4px;
     margin-top: 0.5em;
     cursor: pointer;
@@ -311,7 +338,8 @@ flex-direction: column;
 
 .lower_blue_scorecard_tvs{
     height: 30vh;
-    background: var(--colorback);
+    // background: var(--colorback);
+    background: var(--colorbacknew);
     border-radius: 8px;
     margin-top: 0.5em;
     cursor: pointer;
@@ -420,13 +448,17 @@ flex-direction: column;
     text-align: center;
     color: #FFFFFF;
     margin-bottom: 0;
+    display: flex;
+    justify-content: center;
 }
 
 .web_my_score_number {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
-    font-size: 1.5vw;
+    font-size: 1.6vw;
+    
+    // font-size: 2em;
     text-align: center;
     color: #FEED12;
     margin-bottom: 0;
@@ -438,7 +470,8 @@ flex-direction: column;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
-    font-size: 1.3vh;
+    font-size: 0.7em;
+    // font-size: 20px;
     text-align: center;
     color: #FFFFFF;
     margin-bottom: 0;
@@ -448,7 +481,7 @@ flex-direction: column;
     font-family: "Inter";
     font-style: normal;
     font-weight: 700;
-    font-size: 1.3vh;
+    font-size: 0.7em;
     text-align: center;
     color: #FFFFFF;
     word-spacing: 100vw;
@@ -637,7 +670,7 @@ flex-direction: column;
 
     .btn_text{
         font-weight: 700;
-        font-size: 1.3em;
+        font-size: 1.1em;
         font-family: 'Inter';
         text-align: center;
     }
@@ -691,10 +724,12 @@ flex-direction: column;
 
 @media screen and (min-width:270px) and (max-width:959.9px) {
 
-    .web-view {
+    .web-view-game {
         display: none;
     }
-
+    .web-view-theme{
+        display: none;
+    }
     .mobile_sound{
         display: flex;
     justify-content: center;
@@ -726,13 +761,26 @@ flex-direction: column;
 
 // Mobile View Started
 
-.mobile-view {
+.mobile-view-game {
+    background: linear-gradient(var(--myvarnew));
+    // background: linear-gradient(var(--myvar));
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-position: center center;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.mobile-view-theme {
+    
     background: linear-gradient(var(--myvar));
     height: 100vh;
     width: 100vw;
     padding: 0;
     margin: 0;
-
     background-size: 100% 100%;
     background-attachment: fixed;
     background-position: center center;
@@ -799,7 +847,8 @@ flex-direction: column;
 }
 
 .mobile-first-section {
-    background: var(--colorback);
+    // background: var(--colorback);
+    background: var(--colorbacknew);
     color: white;
     font-family: 'Inter';
     font-style: normal;
@@ -817,7 +866,8 @@ flex-direction: column;
 }
 
 .mobile-second-section {
-    background: var(--colorback);
+    // background: var(--colorback);
+    background: var(--colorbacknew);
     opacity: 0.8;
     font-family: 'Inter';
     font-style: normal;
@@ -931,7 +981,10 @@ flex-direction: column;
 //   }
 
 @media screen and (min-width:960px) {
-    .mobile-view {
+    .mobile-view-game {
+        display: none;
+    }
+    .mobile-view-theme{
         display: none;
     }
 
@@ -1727,7 +1780,8 @@ flex-direction: column;
     /* identical to box height */
         opacity:0.9;
         color:#FEEE1E;
-        background-color:var(--colorback);    
+        // background-color:var(--colorback);  
+        background: var(--colorbacknew);  
     }
     .accordian-label{
         font-family: 'Swis721 Cn BT' 'sans-serif';
@@ -1745,8 +1799,10 @@ flex-direction: column;
         gap:1rem;
     }
     .btn-booster{
-        background: var(--colorback);
-        border: 1px solid var(--colorback);
+        // background: var(--colorback);
+        background: var(--colorbacknew);
+        // border: 1px solid var(--colorback);
+        border:1px solid var(--colorbacknew);
         border-radius: 3px;
         font-weight: 700;
         height: 5vh;
@@ -1798,7 +1854,7 @@ flex-direction: column;
   
     display: block;
     // margin-top: 17%;
-    margin-top:9vh;
+    // margin-top:9vh;
     font-size: 16px;
    
     border-radius: 30px;
@@ -1909,7 +1965,14 @@ flex-direction: column;
 //     }
 // }
 
+.mobile-cricket-pitch{
+    height: 52vh;
+    width: 95vw;
+    background-size:100% 100% !important;
+    background-repeat: no-repeat;
+     padding: 1%;
 
+}
 
 @media (min-width: 1000px) and (max-width: 1280px) {
     .web_first_measurement_label {

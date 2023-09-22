@@ -132,6 +132,7 @@ export class TopbarComponent implements OnInit, OnDestroy {
       // console.log('back');
       
       this.router.navigateByUrl('top_dashboard')
+      
 
     }
     else if(this.id_role == 6 || this.id_role == 4 || this.id_role == 3 || this.id_role == 10){

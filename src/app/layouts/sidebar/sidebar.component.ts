@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, Input, OnChanges, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, Input, OnChanges, ChangeDetectorRef, HostListener } from '@angular/core';
 import MetisMenu from 'metismenujs/dist/metismenujs';
 import { EventService } from '../../core/services/event.service';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
@@ -7,7 +7,7 @@ import { NgbNavModule, NgbAccordionModule, NgbTooltipModule, NgbModule } from '@
 import { HttpClient } from '@angular/common/http';
 
 import { MENU } from './menu';
-
+import { InactivityService } from '@app/services/inactivity.service';
 import { MENU_SPECTATOR } from './menu_spectator';
 import { MenuItem } from './menu.model';
 import { TranslateService } from '@ngx-translate/core';
@@ -57,9 +57,10 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
   windowlocation:any
   spectator_value:any
   about_game:any
+ 
   constructor(private eventService: EventService, private router: Router,public dashboard:DefaultComponent,
     public translate: TranslateService, private http: ApiserviceService,
-    private readonly store: Store, private cd: ChangeDetectorRef,public route:ActivatedRoute) {
+    private readonly store: Store, private cd: ChangeDetectorRef,public route:ActivatedRoute, public inactivity:InactivityService) {
     router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
         this._activateMenuDropdown();
@@ -143,6 +144,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
   ngOnInit() {
    
     // 
+    this.inactivity.startInactivityTimer();
     this.is_about_game= localStorage.getItem('is_about_game')
     this.rewardpoints=localStorage.getItem('reward_points');
     
@@ -408,6 +410,12 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
     
     
     return item.subItems !== undefined ? item.subItems.length > 0 : false;
+  }
+  @HostListener('document:mousemove', ['$event'])
+  @HostListener('document:keydown', ['$event'])
+  onUserActivity(event: MouseEvent | KeyboardEvent) {
+    this.inactivity.resetInactivityTimer();
+    // this.logout();
   }
   logout() {
     let body={

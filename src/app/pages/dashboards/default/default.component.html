@@ -1095,7 +1095,7 @@
                     [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}"
                     *ngIf="sectionView_1?.is_land_logos?.length > 0"
                     [style.background-image]="
-            sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
+                    sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
                     <div *ngIf="coroebus_game!='197' then dynamic else static"></div>
                     <ng-template #dynamic>
 
@@ -2012,9 +2012,10 @@
                         <ng-container *ngFor="let item of pokeData[1]._data,index as i">
                             <div class="col">
                                 <div class="card poke-card"
-                                style="border:2px solid"
-                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
-                                    <span [class.active]="i===clicked" (click)="emojiSelected(i,arrowStatus)">
+                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                style="border:2px solid">
+                                    <span [class.active]="i===clicked" (click)="emojiSelected(i,arrowStatus)"
+                                    [style.border-color]="sectionView_1?.theme_details?.[0]?.dark_color">
                                         <img src="{{item?.poke_logo}}" class="card-img-top poke-image" alt="..." height="90%" width="90%">
                                     </span>
                                 </div>
@@ -2134,7 +2135,7 @@
                 </div>
             </div>
             <div class="modal-body dashboard-popup-level">
-
+                
                 <div class="row  hierarchy-popup-list hierarchy-popup-list-border mb-3 p-2 ms-5 w-75"
                     *ngFor="let item of hierarchyPopupList"
                     (click)="getDataBasedOnUserIDVIAhierarchyPopupList(item,modal)">
@@ -3695,130 +3696,145 @@
         <div class="modal fade bd-example-modal-sm" id="dailyModal" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogDaily modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-body" *ngIf="seasonalThemeDaily1.length!=0">
-                        <div class="d-flex justify-content-end">
-                            <button type="button" class="button-close" data-bs-dismiss="modal"
-                                aria-label="Close">X</button>
-                        </div>
-                        <div class="container">
-                            <div *ngIf="seasonalThemeDaily1!=undefined;then daily"></div>
-                        </div>
-                        
-                        <ng-template #daily>
-                            <div class="popupheight popupDaily row d-flex" *ngIf="seasonalThemeDaily1.length!=0">
-                                <div class="d-flex justify-content-between mb-2">
-                                    <div class="ModalHeading">
-                                        {{seasonalThemeDaily1[0].seasonal_theme_title}}
-                                    </div>
+                <div class="modal-content " >
+                    <div *ngIf="this.seasonalThemeDaily1==undefined ||this.seasonalThemeDaily1.length==0;then NoDataDaily else dataForDaily"></div>
+                    <!-- <div *ngIf="this.seasonalThemeDaily.length==0;then NoDataDaily else dataForDaily"></div> -->
 
-                                </div>
-                                <div>
-                                    <div class="modalDescription col-11">
-                                        {{seasonalThemeDaily1[0].theme_description}}
-                                    </div>
-                                    <div class="modalDescription d-flex justify-content-start pt-2">
-                                        <div> Valid Till:{{seasonalThemeDaily1[0].valid_till_date |
-                                            date:"dd/M/yyyy"}}</div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-center" style="height:35vh;width:100%">
-                                    <div style="height:25vh;width:25vh">
-                                        <img src="{{seasonalThemeDaily1[0].logo}}" alt="logo" height="100%"
-                                            width="100%">
-                                    </div>
-
-                                </div>
+                    <ng-template #dataForDaily>
+                        <div class="modal-body">
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="button-close" data-bs-dismiss="modal"
+                                    aria-label="Close">X</button>
                             </div>
-                        </ng-template>
-                        <div class="container">
-                            <div *ngIf="seasonalThemeDailyBadges1!=undefined;then dailybadge"></div>
-                        </div>
-                        
-                     
-                        <ng-template #dailybadge>
-
-                            <div class="animation-bar" *ngIf="seasonalThemeDailyBadges1?.length!=0">
-
-
-
-                                <div class="badges_row" [style.width.%]="90" 
-                                    style="position: relative;"
-                                    *ngFor="let seasonalThemeDailyBadges1 of seasonalThemeDailyBadges1 ">
-
-                                    <div class="d-flex flex-column justify-content-" style="position:absolute"
-                                        [style.margin-left.%]="((seasonalThemeDailyBadges1?.seasonal_score_target)/(lastArrayseasonalThemeDailyBadges2?.seasonal_score_target))*100">
-
-                                        <div style="height:6vh;width:6vh;border-radius:50%"
-                                            [ngClass]="seasonalThemeDailyBadges1?.active_class == '0'?'inActiveBadge':'ActiveBadge'">
-                                            <img src="{{seasonalThemeDailyBadges1?.seasonal_badge_logo}}" alt=""
-                                                height="100%" width="100%">
-                                        </div>
-                                        <div class="d-flex justify-content-center">
-                                            <div style="height:3vh;border-left: 2px solid #8EC912;"></div>
-                                        </div>
-                                    </div>
-
-
+                          
+                            
+                                <div class="container">
+                                    <div *ngIf="this.seasonalThemeDaily1?.length==0;then NoDataDaily  else daily"></div>
                                 </div>
                                 
-                                <div class="animation-bar-1" style="width: 100%;">
-                                    <span class="d-flex justify-content-center" style="max-width:100%"
-                                        [style.background-size.%]="100"
-                                        [style.width.%]="((seasonalThemeDailyBadges1[2].seasonal_score_achived)/(lastArrayseasonalThemeDailyBadges2.seasonal_score_target))*100">
-                                    
-                                    </span>
+                                <ng-template #daily>
+                                    <div class="popupheight popupDaily row d-flex" *ngIf="seasonalThemeDaily1?.length!=0">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <div class="ModalHeading">
+                                                {{seasonalThemeDaily1[0]?.seasonal_theme_title}}
+                                            </div>
+        
+                                        </div>
+                                        <div>
+                                            <div class="modalDescription col-11">
+                                                {{seasonalThemeDaily1[0]?.theme_description}}
+                                            </div>
+                                            <div class="modalDescription d-flex justify-content-start pt-2">
+                                                <div> Valid Till:{{seasonalThemeDaily1[0]?.valid_till_date |
+                                                    date:"dd/M/yyyy"}}</div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-center" style="height:35vh;width:100%">
+                                            <div style="height:25vh;width:25vh">
+                                                <img src="{{seasonalThemeDaily1[0]?.logo}}" alt="logo" height="100%"
+                                                    width="100%">
+                                            </div>
+        
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <div class="container">
+                                    <div *ngIf="this.seasonalThemeDaily1?.length==0;then NoDataDailyBadges else  dailybadge"></div>
                                 </div>
-                                <div
-                                    *ngIf="(((seasonalThemeDailyBadges1[2].seasonal_score_achived)/(lastArrayseasonalThemeDailyBadges2.seasonal_score_target))*100)<98 then valuepercentage else maxpercentage">
+                                
+                             
+                                <ng-template #dailybadge>
+        
+                                    <div class="animation-bar" *ngIf="seasonalThemeDailyBadges1?.length!=0">
+        
+        
+                                        <div class="d-flex" style="position:relative;width:90%;min-height:9vh;height:auto">
+                                            <div class="badges_row"  
+                                            
+                                            *ngFor="let seasonalThemeDailyBadges1 of seasonalThemeDailyBadges1 " >
+        
+                                            <div class="d-flex flex-column" style="position:absolute"
+                                                [style.margin-left.%]="((seasonalThemeDailyBadges1?.seasonal_score_target)/(lastArrayseasonalThemeDailyBadges2?.seasonal_score_target))*100">
+        
+                                                <div style="height:6vh;width:6vh;border-radius:50%"
+                                                    [ngClass]="seasonalThemeDailyBadges1?.active_class == '0'?'inActiveBadge':'ActiveBadge'">
+                                                    <img src="{{seasonalThemeDailyBadges1?.seasonal_badge_logo}}" alt=""
+                                                        height="100%" width="100%">
+                                                </div>
+                                                <div class="d-flex justify-content-center">
+                                                    <div style="height:3vh;border-left: 2px solid #8EC912;"></div>
+                                                </div>
+                                            </div>
+        
+        
+                                        </div>
+                                        </div>
+                                       
                                         
-                                </div>
-                                <ng-template #valuepercentage>
-                                    <div class="animation-bar"
-                                        [style.margin-left.%]="((seasonalThemeDailyBadges1[2].seasonal_score_achived)/(lastArrayseasonalThemeDailyBadges2.seasonal_score_target))*100">
-                                        <div class="d-flex flex-column "  >
-                                            <div class="border-left"></div>
-                                            <div class="Progressscore">
-                                                {{seasonalThemeDailyBadges1[0]?.seasonal_score_achived|shortNumber}}
-
-                                            </div>
+                                        <div class="animation-bar-1" style="width: 100%;">
+                                            <span class="d-flex justify-content-center" style="max-width:100%"
+                                                [style.background-size.%]="100"
+                                                [style.width.%]="((seasonalThemeDailyBadges1[0].seasonal_score_achived)/(lastArrayseasonalThemeDailyBadges2.seasonal_score_target))*100">
+                                            
+                                            </span>
                                         </div>
-                                    </div>
-                                </ng-template>
-                                <ng-template #maxpercentage>
-                                    <div class="animation-bar" [style.margin-left.%]="95" >
-                                        <div class="d-flex flex-column" style="" >
-                                            <div class="border-left"></div>
-                                            <div class="Progressscore" >
-                                                {{seasonalThemeDailyBadges1[0]?.seasonal_score_achived|shortNumber}}
-                                            </div>
+                                        <div
+                                            *ngIf="(((seasonalThemeDailyBadges1[0].seasonal_score_achived)/(lastArrayseasonalThemeDailyBadges2.seasonal_score_target))*100)<98 then valuepercentage else maxpercentage">
+                                                
                                         </div>
+                                        <ng-template #valuepercentage>
+                                            <div class="animation-bar"
+                                                [style.margin-left.%]="((seasonalThemeDailyBadges1[0].seasonal_score_achived)/(lastArrayseasonalThemeDailyBadges2.seasonal_score_target))*100">
+                                                <div class="d-flex flex-column "  >
+                                                    <div class="border-left"></div>
+                                                    <div class="Progressscore">
+                                                        {{seasonalThemeDailyBadges1[0]?.seasonal_score_achived|shortNumber}}
+        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                        <ng-template #maxpercentage>
+                                            <div class="animation-bar" [style.margin-left.%]="95" >
+                                                <div class="d-flex flex-column">
+                                                    <div class="border-left"></div>
+                                                    <div class="Progressscore" >
+                                                        {{seasonalThemeDailyBadges1[0]?.seasonal_score_achived|shortNumber}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-template>
                                     </div>
+        
+        
+        
                                 </ng-template>
-                            </div>
-
-
-
-                        </ng-template>
-
-
-                        <ng-template #daily>
-                            <div class="row d-flex justify-content-center align-items-start" style="height:35vh;"
-                                *ngIf="seasonalThemeDaily1.length==0">
-                                <div class="col text-center">
-                                    <span>Hey Welcome! The Themes will be configured soon. Stay tuned </span>
+                    
+                            
+    
+    
+                            <ng-template #NoDataDailyBadges>
+                                <div class="row d-flex justify-content-center align-items-start" style="height:10vh;"
+                                  >
+                                    <div class="col text-center">
+                                        <span>Hey Welcome! The Badges  will be configured soon. Stay tuned </span>
+                                    </div>
                                 </div>
-                            </div>
-                        </ng-template>
-
-
-
-                    </div>
-                    <div *ngIf="seasonalThemeDaily1.length==0">
-                        <div data-bs-dismiss="modal"
-                            style="background:url(assets/images/interactive-dashboard/daily.png);background-size:100% 100%;height:70vh">
+                            </ng-template>
+    
+    
+    
                         </div>
-                    </div>
+                    </ng-template>
+                   
+                    <ng-template #NoDataDaily>
+                        <div>
+                            <div data-bs-dismiss="modal"
+                                style="background:url(assets/images/interactive-dashboard/daily.png);background-size:100% 100%;height:70vh">
+                            </div>
+                        </div>
+                    </ng-template>
+                   
 
                 </div>
                
@@ -3836,8 +3852,10 @@
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogWeekly modal-dialog-centered">
                 <div class="modal-content modalContentWeekly"
-                    >
-                    <div class="modal-body" style="min-height: 51vh;" *ngIf="seasonalThemeWeekly2.length!=0">
+                >
+                <div *ngIf="seasonalThemeWeekly2==undefined||seasonalThemeWeekly2?.length==0;then NoDataWeekly else DataForWeekly"></div>
+                <ng-template #DataForWeekly>
+                    <div class="modal-body" style="min-height: 51vh;" >
                         <div class="d-flex justify-content-end">
                             <button type="button" class="button-close" data-bs-dismiss="modal"
                                 aria-label="Close">X</button>
@@ -3884,7 +3902,7 @@
                            
                         </div>
                         <div  class="container">
-                            <div  *ngIf="seasonalThemeWeeklyBadges2!=undefined;then weekbadge"></div>
+                            <div  *ngIf="seasonalThemeWeeklyBadges2!=undefined || seasonalThemeWeeklyBadges2.length!=0;then weekbadge else noBadgesData" ></div>
                         </div>
                         
                         <ng-template #weekbadge>
@@ -3892,9 +3910,9 @@
                             <div class="animation-bar" *ngIf="seasonalThemeWeeklyBadges2?.length!=0">
 
 
-
-                                <div class="badges_row" [style.width.%]="90" class="badges_row"
-                                    style="position: relative;"
+                                <div class="d-flex" style="position:relative;width:90%;min-height:9vh;height:auto">
+                                    <div class="badges_row"  
+                                    
                                     *ngFor="let seasonalThemeWeeklyBadges2 of seasonalThemeWeeklyBadges2 ">
 
                                     <div class="d-flex flex-column justify-content-center" style="position:absolute"
@@ -3912,6 +3930,8 @@
 
 
                                 </div>
+                                </div>
+                                
                                 
                                 <div class="animation-bar-1" style="width: 100%;">
                                     <span class="d-flex justify-content-center" style="max-width:100%"
@@ -3951,10 +3971,9 @@
 
 
                         </ng-template>
-
-                        <ng-template>
+                        <ng-template #noBadgesData>
                             <div class="row d-flex justify-content-center align-items-start"
-                                *ngIf="this.seasonalThemeWeekly2?.length==0">
+                             >
                                 <div class="col text-center">
                                     <span>Hey Welcome! The Themes will be configured soon. Stay tuned </span>
                                 </div>
@@ -3962,13 +3981,17 @@
                         </ng-template>
 
                     </div>
-                    <div *ngIf="seasonalThemeWeekly2?.length==0">
+                </ng-template>
+               
+                <ng-template #NoDataWeekly>
+                    <div *ngIf="seasonalThemeWeekly2===undefined">
                         <div data-bs-dismiss="modal"
                             style="background:url(assets/images/interactive-dashboard/weekly.png);background-size:100% 100%;height:70vh">
                         </div>
                     </div>
-                </div>
+                </ng-template>
                 
+            </div>
             </div>
         </div>
     </div>
@@ -3982,9 +4005,10 @@
         <div class="modal fade bd-example-modal-sm" id="monthlyModal" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modalDialogMonthly modal-dialog-centered ">
-                <div class="modal-content modalContentMonthly"
-                    >
-                    <div class="modal-body" style="min-height: 30vh;" *ngIf="seasonalThemeMonthl3.length!=0">
+                <div class="modal-content modalContentMonthly">
+                    <div *ngIf="monthlyCampaign;then NoDataMonthly else dataForMonthly"></div>
+                <ng-template #dataForMonthly>
+                    <div class="modal-body" style="min-height: 30vh;">
                         <div class="d-flex justify-content-end" style="color:#0000">
                             <button type="button" class="button-close" data-bs-dismiss="modal"
                                 aria-label="Close">X</button>
@@ -3992,7 +4016,7 @@
                        
                         <div class="container">
                             <div *ngIf="seasonalThemeMonthl3!=undefined;then month"></div>
-                            <div *ngIf="seasonalThemeMonthlyBadges3!=undefined;then monthbadge"></div>
+                            <div *ngIf="seasonalThemeMonthlyBadges3!=undefined|| seasonalThemeMonthlyBadges3?.length!=0 ;then monthbadge else NoDatamonthBadge"></div>
                         </div>
                         
 
@@ -4000,17 +4024,17 @@
                             <div class="row d-flex" *ngIf="seasonalThemeMonthl3!=0">
                                 <div class="d-flex justify-content-between mb-1 p-1">
                                     <div class="ModalHeading ms-2 mb-2">
-                                        {{seasonalThemeMonthl3[0].seasonal_theme_title}}
+                                        {{seasonalThemeMonthl3[0]?.seasonal_theme_title}}
                                     </div>
 
                                 </div>
                                 <div class="">
                                     <div class="modalDescription col-11">
-                                        {{seasonalThemeMonthl3[0].theme_description}}
+                                        {{seasonalThemeMonthl3[0]?.theme_description}}
                                     </div>
                                     <div class="modalDescription d-flex justify-content-start pt-2 mt-1">
                                         <div> Valid Till
-                                            :{{seasonalThemeMonthl3[0].valid_till_date
+                                            :{{seasonalThemeMonthl3[0]?.valid_till_date
                                             | date:"dd/M/yyyy"}}</div>
                                     </div>
                                 </div>
@@ -4018,7 +4042,7 @@
                                 <div class="">
                                     <div class="d-flex justify-content-center" style="height:35vh;width:100%">
                                         <div style="height:25vh;width:25vh">
-                                            <img src="{{seasonalThemeMonthl3[0].logo}}" alt="logo" height="100%"
+                                            <img src="{{seasonalThemeMonthl3[0]?.logo}}" alt="logo" height="100%"
                                                 width="100%">
                                         </div>
 
@@ -4035,9 +4059,9 @@
                             <div class="animation-bar" *ngIf="seasonalThemeMonthlyBadges3?.length!=0">
 
 
-
-                                <div class="badges_row" [style.width.%]="90" class="badges_row"
-                                    style="position: relative;"
+                                <div class="animation-bar" style="position:relative;width:90%;min-height:9vh;height:auto">
+                                    <div class="badges_row" class="badges_row"
+                                    
                                     *ngFor="let seasonalThemeMonthlyBadges3 of seasonalThemeMonthlyBadges3 ">
 
                                     <div class="d-flex flex-column justify-content-center" style="position:absolute"
@@ -4055,21 +4079,23 @@
 
 
                                 </div>
+                                </div>
+                                
                                 
                                 <div class="animation-bar-1" style="width: 100%;">
                                     <span class="d-flex justify-content-center" style="max-width:100%"
                                         [style.background-size.%]="100"
-                                        [style.width.%]="((seasonalThemeMonthlyBadges3[2].seasonal_score_achived)/(lastArrayseasonalThemeMonthlyBadges2.seasonal_score_target))*100">
+                                        [style.width.%]="((seasonalThemeMonthlyBadges3[0]?.seasonal_score_achived)/(lastArrayseasonalThemeMonthlyBadges2.seasonal_score_target))*100">
                                     
                                     </span>
                                 </div>
                                 <div
-                                    *ngIf="(((seasonalThemeMonthlyBadges3[2].seasonal_score_achived)/(lastArrayseasonalThemeMonthlyBadges2.seasonal_score_target))*100)<98 then valuepercentage else maxpercentage">
+                                    *ngIf="(((seasonalThemeMonthlyBadges3[0]?.seasonal_score_achived)/(lastArrayseasonalThemeMonthlyBadges2?.seasonal_score_target))*100)<98 then valuepercentage else maxpercentage">
                                         
                                 </div>
                                 <ng-template #valuepercentage>
                                     <div class="animation-bar"
-                                        [style.margin-left.%]="((seasonalThemeMonthlyBadges3[2].seasonal_score_achived)/(lastArrayseasonalThemeMonthlyBadges2.seasonal_score_target))*100">
+                                        [style.margin-left.%]="((seasonalThemeMonthlyBadges3[0]?.seasonal_score_achived)/(lastArrayseasonalThemeMonthlyBadges2?.seasonal_score_target))*100">
                                         <div class="d-flex flex-column "  >
                                             <div class="border-left"></div>
                                             <div class="Progressscore">
@@ -4094,9 +4120,9 @@
 
                         </ng-template>
 
-                        <ng-template #month>
+                        <ng-template #NoDatamonthBadge>
                             <div class="row d-flex justify-content-center align-items-start"
-                                *ngIf="seasonalThemeMonthl3.length==0">
+                               >
                                 <div class="col text-center">
                                     <span style="color:#FFFFFF">Hey Welcome! The Themes will be configured soon. Stay
                                         tuned
@@ -4107,13 +4133,16 @@
 
 
                     </div>
-                    <div *ngIf="seasonalThemeMonthl3.length==0">
+                </ng-template>
+                  <ng-template #NoDataMonthly>
+                    <div>
                         <div data-bs-dismiss="modal"
                             style="background:url(assets/images/interactive-dashboard/monthly.png);background-size:100% 100%;height:70vh">
                         </div>
                     </div>
+                  </ng-template>
+                    
                 </div>
-                
             </div>
         </div>
     </div>

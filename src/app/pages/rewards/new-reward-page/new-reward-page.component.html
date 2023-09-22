@@ -23,7 +23,7 @@
       <b style="height:3vh;width:3vh">
           <img src="{{coinImage}}" height="100%" width="100%">
       </b>
-</div>
+    </div>
   
      
     <div  *ngIf="isRewardOpen;then rewards else passbook"></div>
@@ -61,7 +61,7 @@
 
                 </div>
             </mat-tab>
-            <mat-tab label="Organization Reward">
+            <mat-tab label="Organization Rewards">
               
                 <div class="col-12 card_container">
                     <div class="col-3" *ngFor="let rewardlist of  reward?.data?.rewardTypes[1]?.rewardList | slice: (page-1) * pageSizeReward : (page-1) * pageSizeReward + pageSizeReward;let index=index;">
@@ -87,7 +87,7 @@
 
                                 </div>
                                 <div class="product_title">
-                                    {{rewardlist.name}}
+                                    {{rewardlist?.name}}
                                 </div>
                                 <div class="btn_div_redeem" *ngIf="hidedata">
                                   <!-- {{rewardlist?.redeem_point|json}} -->
@@ -126,7 +126,7 @@
         
         <mat-tab-group (click)="enagagmentlogPassbookAPI($event)">
             <!-- Points Table -->
-            <mat-tab label="{{points.data.points_list[0].label}}">
+            <mat-tab label="{{points?.data?.points_list[0]?.label}}">
                 <div class="table_div">
                     <!-- <span>
                        <p class="from_datepicker">From</p>
@@ -155,10 +155,10 @@
                         </thead>
                         <tbody *ngFor="let response of rewardresponse">
                           <tr
-                            *ngFor="let pointTable of response.data.points_list[0]._data.reward_point_dist | filter:searchText">
+                            *ngFor="let pointTable of response?.data?.points_list[0]?._data?.reward_point_dist | filter:searchText">
                            
-                            <td style="font-family:sans-serif;" class="col-md-10 col-sm-10">{{pointTable.tag_Label}}</td>
-                            <td style="font-family:sans-serif;" class="col-md-2 col-sm-2"> {{pointTable.reward_points}}</td>
+                            <td style="font-family:sans-serif;" class="col-md-10 col-sm-10">{{pointTable?.tag_Label}}</td>
+                            <td style="font-family:sans-serif;" class="col-md-2 col-sm-2"> {{pointTable?.reward_points}}</td>
         
         
                           </tr>
@@ -173,7 +173,7 @@
             </mat-tab>
 
             <!-- Passbook -->
-            <mat-tab label="{{points.data.points_list[1].label}}">
+            <mat-tab label="{{points?.data?.points_list[1]?.label}}">
                 <div class="table_div">
                     <div>
                       <input class="search" type="search" name="search" [(ngModel)]="searchText" autocomplete="off"
@@ -204,22 +204,22 @@
                           </tr>
                         </thead>
                         <tbody *ngFor="let response of rewardresponse">
-                          <tr *ngFor="let passbookresponse of response.data.points_list[1]._data|slice: (page1-1) * pageSize : (page1-1) * pageSize + pageSize |orderBy: key : reverse |filter:searchText ">
-                            <td style="font-family:sans-serif;" class="col-md-2 col-sm-1">{{passbookresponse.date_time.slice(0,11) | date: 'dd/MM/yyyy' }}</td>
-                            <td style="font-family:sans-serif;" class="col-md-4 col-sm-3">{{passbookresponse.description_}}</td>
-                            <td style="font-family:sans-serif;" *ngIf="passbookresponse.points_credited!=='' " class="col-md-2 col-sm-3">{{passbookresponse.points_credited|number : '1.2-2'}}</td>
-                            <td style="font-family:sans-serif;" *ngIf="passbookresponse.points_credited==='' " class="col-md-2 col-sm-3">-</td>
+                          <tr *ngFor="let passbookresponse of response?.data?.points_list[1]?._data|slice: (pagePassbook-1) * pageSize : (pagePassbook-1) * pageSize + pageSize |orderBy: key : reverse |filter:searchText ">
+                            <td style="font-family:sans-serif;" class="col-md-2 col-sm-1">{{passbookresponse?.date_time | date: 'dd/MM/yyyy' }}</td>
+                            <td style="font-family:sans-serif;" class="col-md-4 col-sm-3">{{passbookresponse?.description_}}</td>
+                            <td style="font-family:sans-serif;" *ngIf="passbookresponse?.points_credited!=='' " class="col-md-2 col-sm-3">{{passbookresponse?.points_credited|number : '1.2-2'}}</td>
+                            <td style="font-family:sans-serif;" *ngIf="passbookresponse?.points_credited==='' " class="col-md-2 col-sm-3">-</td>
       
-                            <td style="font-family:sans-serif;" *ngIf="passbookresponse.points_debited!==''" class="col-md-2 col-sm-3">
+                            <td style="font-family:sans-serif;" *ngIf="passbookresponse?.points_debited!==''" class="col-md-2 col-sm-3">
                               <button class="btn btn-reedeemed-passbook" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="popupRedemed(passbookresponse)">
-                                {{passbookresponse.points_debited  | number : '1.2-2'}}
+                                {{passbookresponse?.points_debited  | number : '1.2-2'}}
                                 <img  class="redeemed_popup_logo" src="assets/images/rewards/redeemed.png" >
                               </button>
 
-                            <td style="font-family:sans-serif;" *ngIf="passbookresponse.points_debited==='' " class="col-md-2">
+                            <td style="font-family:sans-serif;" *ngIf="passbookresponse?.points_debited==='' " class="col-md-2">
                               -
                             </td>
-                            <td style="font-family:sans-serif;" class="col-md-2">{{passbookresponse.balance  | number : '1.2-2'}}</td>
+                            <td style="font-family:sans-serif;" class="col-md-2">{{passbookresponse?.balance  | number : '1.2-2'}}</td>
         
                           </tr>
                          
@@ -236,27 +236,27 @@
 
                   <div class="d-flex justify-content-end">
                  
-                    <ngb-pagination class="pagination"  [pageSize]="10" [collectionSize]="collectionSize" [(page)]="page1" aria-label="Default pagination"></ngb-pagination>
+                    <ngb-pagination class="pagination"  [pageSize]="10" [collectionSize]="collectionSize" [(page)]="pagePassbook" aria-label="Default pagination"></ngb-pagination>
                   
                   </div>
                
             </mat-tab>
 
             <!-- Redemption History -->
-            <mat-tab label="{{points.data.points_list[2].label}}">
+            <mat-tab label="{{points?.data?.points_list[2]?.label}}">
                 <div class="select_container d-flex justify-content-end mt-2">
                    
                    <select (change)="onChange($event)" class="form-control form-select form-select-sm mb-1"
                    aria-label=".form-select-lg example" style="width:20%">
-                   <option class="option_select m-3" *ngFor="let pointselect of points.data.points_list[2]._data;"
-                     [value]="pointselect.order" selected="pointselect.order">{{pointselect.label}}</option>
+                   <option class="option_select m-3" *ngFor="let pointselect of points?.data?.points_list[2]?._data;"
+                     [value]="pointselect?.order" selected="pointselect.order">{{pointselect?.label}}</option>
              
                  </select>
                    
                 </div>
-                <div class="col-12 card_container_orgnization mt-1" *ngIf="points.data.points_list[2]?._data[value]?._data.length!=0" >
+                <div class="col-12 card_container_orgnization mt-1" *ngIf="points?.data?.points_list[2]?._data[value]?._data?.length!=0" >
 
-                    <div class="col-3" *ngFor="let historyData of points.data.points_list[2]?._data[value]?._data|slice: (page-1) * pageSizeReward : (page-1) * pageSizeReward + pageSizeReward;let i=index" >
+                    <div class="col-3" *ngFor="let historyData of points?.data?.points_list[2]?._data[value]?._data|slice: (page-1) * pageSizeReward : (page-1) * pageSizeReward + pageSizeReward;let i=index" >
                        
                         <div class="cardWrapper">
                             <div class="card-header" [style.background]="arrForCardColor[i]?.color">
@@ -265,16 +265,16 @@
                                         width="100%">
                                 </div>
                                 <div class="rewardPoint">
-                                    {{historyData.rewardcount}}{{historyData.points}}
+                                    {{historyData?.rewardcount}}{{historyData?.points}}
                                 </div>
                             </div>
                             <div class="card-body mt-4" [style.background]="arrForCardColor[i]?.color">
                                 <div class="product_image_div">
-                                    <img src="{{historyData.image || historyData.reward_logo}}" class="productimage" alt="Productimage"
+                                    <img src="{{historyData?.image || historyData?.reward_logo}}" class="productimage" alt="Productimage"
                                         height="80%" width="80%">
                                 </div>
                                 <div class="product_title">
-                                    {{historyData.rewards}}
+                                    {{historyData?.rewards}}
                                 </div>
                                 <div class="btn_div_redeem" >
 
@@ -293,12 +293,12 @@
                         </div>
                     </div>
                     <div class="d-flex col-12 justify-content-end" style="margin-top:-4%">
-                      <ngb-pagination class="pagination" [pageSize] = "4" [collectionSize]="points?.data?.points_list[2]?._data[value]?._data?.length" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
+                      <ngb-pagination class="pagination" [pageSize]="4" [collectionSize]="points?.data?.points_list[2]?._data[value]?._data?.length" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
                     </div>
                 </div>
-                <div class="col-12 nodataCardContainer" *ngIf="points.data.points_list[2]?._data[value]?._data.length==0">
+                <div class="col-12 nodataCardContainer" *ngIf="points?.data?.points_list[2]?._data[value]?._data?.length==0">
                     <div class=" col-8 text-center"
-                    *ngIf="points.data.points_list[2]._data[value]._data.length == 0">
+                    *ngIf="points?.data?.points_list[2]?._data[value]?._data?.length == 0">
                     <img class="no_data_reward_image" src="assets/images/rewards/no_redeem_rewad.png"  height="60%" width="50%"/>
                     <p class="no_data_reward_message">You have not redeemed any rewards yet!
           
@@ -379,7 +379,7 @@
               </div>
                
             </mat-tab>
-            <mat-tab label="Organization Reward" >
+            <mat-tab label="Organization Rewards">
               <div class="col-12" style="overflow-y: auto;height:75vh;display:flex;flex-direction:column;overflow-x:hidden">
                 <div class="col-12"   *ngFor="let rewardlist of reward?.data?.rewardTypes[1]?.rewardList | slice: (page-1) * pageSizeReward : (page-1) * pageSizeReward + pageSizeReward;;let index=index">
                   <div class="cardWrap"  [ngClass]="{'tear_card_mobile':tearCardIndex==index}"> 
@@ -437,7 +437,7 @@
               </div>
 
               <div class="d-flex justify-content-end" style="margin-top:-4%">
-                <ngb-pagination class="pagination" [pageSize] = "4" [collectionSize]="reward?.data?.rewardTypes[1]?.rewardList.length" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
+                <ngb-pagination class="pagination" [pageSize]="4" [collectionSize]="reward?.data?.rewardTypes[1]?.rewardList.length" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
               </div>
             </mat-tab>
 
@@ -448,7 +448,7 @@
         
         <mat-tab-group (click)="enagagmentlogPassbookAPI($event)">
             <!-- Points Table -->
-            <mat-tab label="{{points.data.points_list[0].label}}">
+            <mat-tab label="{{points?.data?.points_list[0]?.label}}">
                 <div class="table_div">
                     <!-- <span>
                        <p class="from_datepicker">From</p>
@@ -477,10 +477,10 @@
                         </thead>
                         <tbody *ngFor="let response of rewardresponse">
                           <tr
-                            *ngFor="let pointTable of response.data.points_list[0]._data.reward_point_dist | filter:searchText">
+                            *ngFor="let pointTable of response?.data?.points_list[0]?._data.reward_point_dist | filter:searchText">
                            
-                            <td style="font-family:sans-serif;" class="col-md-10 col-sm-10">{{pointTable.tag_Label}}</td>
-                            <td style="font-family:sans-serif;" class="col-md-2 col-sm-2"> {{pointTable.reward_points}}</td>
+                            <td style="font-family:sans-serif;" class="col-md-10 col-sm-10">{{pointTable?.tag_Label}}</td>
+                            <td style="font-family:sans-serif;" class="col-md-2 col-sm-2"> {{pointTable?.reward_points}}</td>
         
         
                           </tr>
@@ -495,7 +495,7 @@
             </mat-tab>
 
             <!-- Passbook -->
-            <mat-tab label="{{points.data.points_list[1].label}}" style="overflow-y: auto;">
+            <mat-tab label="{{points?.data?.points_list[1]?.label}}" style="overflow-y: auto;">
                 <div class="table_div">
                     <div>
                       <input class="search" type="search" name="search" [(ngModel)]="searchText" autocomplete="off"
@@ -526,22 +526,22 @@
                           </tr>
                         </thead>
                         <tbody *ngFor="let response of rewardresponse">
-                          <tr *ngFor="let passbookresponse of response.data.points_list[1]._data |orderBy: key : reverse |filter:searchText | slice: (page1-1) * pageSize : (page1-1) * pageSize + pageSize">
-                            <td style="font-family:sans-serif;" class="col-md-2 col-sm-1">{{passbookresponse.date_time.slice(0,11) | date: 'dd/MM/yyyy' }}</td>
-                            <td style="font-family:sans-serif;" class="col-md-4 col-sm-3">{{passbookresponse.description_}}</td>
-                            <td style="font-family:sans-serif;" *ngIf="passbookresponse.points_credited!=='' " class="col-md-2 col-sm-3">{{passbookresponse.points_credited  | number : '1.2-2'}}</td>
-                            <td style="font-family:sans-serif;" *ngIf="passbookresponse.points_credited==='' " class="col-md-2 col-sm-3">-</td>
+                          <tr *ngFor="let passbookresponse of response?.data?.points_list[1]?._data |orderBy: key : reverse |filter:searchText | slice: (pagePassbook-1) * pageSize : (pagePassbook-1) * pageSize + pageSize">
+                            <td style="font-family:sans-serif;" class="col-md-2 col-sm-1">{{passbookresponse?.date_time.slice(0,11) | date: 'dd/MM/yyyy' }}</td>
+                            <td style="font-family:sans-serif;" class="col-md-4 col-sm-3">{{passbookresponse?.description_}}</td>
+                            <td style="font-family:sans-serif;" *ngIf="passbookresponse?.points_credited!=='' " class="col-md-2 col-sm-3">{{passbookresponse.points_credited  | number : '1.2-2'}}</td>
+                            <td style="font-family:sans-serif;" *ngIf="passbookresponse?.points_credited==='' " class="col-md-2 col-sm-3">-</td>
       
-                            <td style="font-family:sans-serif;" *ngIf="passbookresponse.points_debited!==''" class="col-md-2 col-sm-3">
+                            <td style="font-family:sans-serif;" *ngIf="passbookresponse?.points_debited!==''" class="col-md-2 col-sm-3">
                               <button class="btn btn-reedeemed-passbook_mobile d-flex gap-1">
-                                {{passbookresponse.points_debited  | number : '1.2-2'}}
+                                {{passbookresponse?.points_debited  | number : '1.2-2'}}
                                 <img style="height: 2vh;width: 2vh;" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="redeemed_popup_logo" src="assets/images/rewards/redeemed.png" (click)="popupRedemed(passbookresponse)" height="60%" width="60%">
                               </button>
 
-                            <td style="font-family:sans-serif;" *ngIf="passbookresponse.points_debited==='' " class="col-md-2">
+                            <td style="font-family:sans-serif;" *ngIf="passbookresponse?.points_debited==='' " class="col-md-2">
                               -
                             </td>
-                            <td style="font-family:sans-serif;" class="col-md-2">{{passbookresponse.balance  | number : '1.2-2'}}</td>
+                            <td style="font-family:sans-serif;" class="col-md-2">{{passbookresponse?.balance  | number : '1.2-2'}}</td>
         
                           </tr>
         
@@ -552,14 +552,14 @@
                     
                   </div>
                   <div class="d-flex justify-content-end">
-                    <ngb-pagination class="pagination" [pageSize]="10" [collectionSize]="collectionSize" [(page)]="page1" aria-label="Default pagination"></ngb-pagination>
+                    <ngb-pagination class="pagination" [pageSize]="10" [collectionSize]="collectionSize" [(page)]="pagePassbook" aria-label="Default pagination"></ngb-pagination>
                   
                   </div>
             </mat-tab>
 
             <!-- Redemption History -->
 
-            <mat-tab label="{{points.data.points_list[2].label}}">
+            <mat-tab label="{{points?.data.points_list[2].label}}">
                 <div class="select_container d-flex justify-content-end mt-2">
                    
                    <select (change)="onChange($event)" class="form-control form-select form-select-sm mb-1"
@@ -572,14 +572,14 @@
                  
                    
                 </div>
-                <div style="height:70vh;overflow-y:auto;">
+                <div style="height:70vh;overflow-y:auto;"  *ngIf="points?.data?.points_list[2]?._data[value]?._data?.length != 0" >
                   <div style="display:flex;flex-direction:column;" *ngFor="let historyData of points?.data?.points_list[2]?._data[value]?._data |slice: (page-1) * pageSizeReward : (page-1) * pageSizeReward + pageSizeReward;let index=index">
                     <div class="cardWrap gap-2"  > 
                       <div class="card cardLeft me-1" [style.background]="arrForCardColor[index]?.color">  
                         <div class="product_image_div_mobile">
                           <!-- <img src="{{rewardlist.reward_logo}}" class="productimage" alt="Productimage"
                               height="80%" width="80%"> -->
-                              <img src="{{historyData.image || historyData.reward_logo}}" class="productimage" alt="Productimage"
+                              <img src="{{historyData?.image || historyData?.reward_logo}}" class="productimage" alt="Productimage"
                               height="80%" width="80%">
     
                       </div>
@@ -587,7 +587,7 @@
                       </div>
                       <div class="card cardRight" style="width:57vw" [style.background]="arrForCardColor[index]?.color">
                         <div class="product_title_mobile">
-                          {{historyData.rewards}}
+                          {{historyData?.rewards}}
                         </div>
                         <div class="d-flex align-items-center gap-2 mt-2">
                           <div style="height:3vh;width:3vh">
@@ -617,7 +617,7 @@
                   </div>
 
                   <div class="d-flex col-12 justify-content-end">
-                    <ngb-pagination class="pagination" [pageSize] = "4" [collectionSize]="points?.data?.points_list[2]?._data[value]?._data?.length" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
+                    <ngb-pagination class="pagination" [pageSize]="4" [collectionSize]="points?.data?.points_list[2]?._data[value]?._data?.length" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
                   </div>
                 </div>
                  
@@ -625,9 +625,9 @@
                 
                 
                 
-                <!-- <div class="col-12 nodataCardContainer">
+                <div class="col-12 nodataCardContainer"  *ngIf="points?.data?.points_list[2]?._data[value]?._data?.length == 0">
                     <div class=" col-8 text-center"
-                    *ngIf="points.data.points_list[2]._data[value]._data.length == 0">
+                   >
                     <img class="no_data_reward_image" src="assets/images/rewards/no_redeem_rewad.png"  height="60%" width="50%"/>
                     <p class="no_data_reward_message">
                       You have not redeemed any rewards yet!
@@ -635,7 +635,7 @@
                   </div>
 
                 </div>
-                 -->
+                
             </mat-tab>
         </mat-tab-group>
        </div>
@@ -701,14 +701,14 @@
                   <div class="right_side_div">
                     <div *ngFor="let reward of rewardresponse">
                       <p *ngFor="let points of rewardresponse">Available Points:
-                        {{points.data.points_list[0]._data.rewardPoints}}</p>
+                        {{points?.data?.points_list[0]?._data?.rewardPoints}}</p>
                     </div>
                     <div>
-                      <p>{{model.name}}</p>
+                      <p>{{model?.name}}</p>
                     </div>
 
                     <div>
-                      <p>Pick for {{model.redeem_point}} points</p>
+                      <p>Pick for {{model?.redeem_point}} points</p>
                     </div>
                   </div>
 
@@ -719,7 +719,7 @@
 
 
                   <div>
-                    <img class="popup_logo_org" style="max-width: 111px;" src="{{model.reward_logo}}">
+                    <img class="popup_logo_org" style="max-width: 111px;" src="{{model?.reward_logo}}">
                   </div>
 
 
@@ -739,7 +739,7 @@
         <div class="modal-footer" *ngFor="let reward of rewardresponse;">
           <div class="balance_div">
             <p *ngFor="let points of rewardresponse">Balance Point:
-              {{points.data.points_list[0]._data.rewardPoints-model.redeem_point}} </p>
+              {{points?.data?.points_list[0]?._data?.rewardPoints-model?.redeem_point}} </p>
           </div>
           <div class="expiry_date_popup">
             <button class="redeem_organisation"  data-bs-dismiss="modal" (click)="organisationrewardredeem(modeldata)">Redeem</button>
@@ -786,13 +786,13 @@
             <div class="row" *ngFor="let popup of popupresponse; let k=index">
               <div class="col-md-6  col-lg-6 text-center" *ngIf="popup?.data?.couponcode!=null">
                 <div class="redemption_image_div_popup d-flex flex-column align-items-center justify-content-center" >
-                  <img class="product_image_redemption_popup_org mb-2" src="{{popup.data.reward_logo}}" height="100%" width="100%">
+                  <img class="product_image_redemption_popup_org mb-2" src="{{popup?.data?.reward_logo}}" height="100%" width="100%">
                   <div class="d-flex gap-2  mt-2 justify-content-center align-items-center">
                     <div style="height: 4vh;width:4vh">
                       <img src="assets/images/NewRewardAssets/COINS SIDDHI.png" alt="" height="100%" width="100%">
                     </div>
                     
-                    <h1 class="num">{{popup.data.points}}</h1>
+                    <h1 class="num">{{popup?.data?.points}}</h1>
                   </div>
                 </div>
               </div>
@@ -826,7 +826,7 @@
               <!-- for Organization Reward -->
               <div class="d-flex flex-column align-items-center" *ngIf="popup?.data?.couponcode==null" >
                 
-                  <div *ngIf="popup.data.couponcode == null">
+                  <div *ngIf="popup?.data?.couponcode == null">
                     <b>
                       <p class="product_name_redemption_popup_org text-center">{{popup?.data?.rewards}}</p>
                     </b>
@@ -835,7 +835,7 @@
                   </div>
                   <div class="redemption_image_div_popup d-flex flex-column align-items-center justify-content-center" >
                     <div style="height:50%;width:40%">
-                      <img class="product_image_redemption_popup_org mb-2" src="{{popup.data.reward_logo}}" height="100%" width="100%">
+                      <img class="product_image_redemption_popup_org mb-2" src="{{popup?.data?.reward_logo}}" height="100%" width="100%">
                     </div>
                     
                     <div class="d-flex gap-2  mt-2 justify-content-center align-items-center">
@@ -843,7 +843,7 @@
                         <img src="assets/images/NewRewardAssets/COINS SIDDHI.png" alt="" height="100%" width="100%">
                       </div>
                       
-                      <h1 class="num">{{popup.data.points}}</h1>
+                      <h1 class="num">{{popup?.data?.points}}</h1>
                     </div>
                   </div>
 
@@ -858,9 +858,9 @@
 
         </div>
         <div  *ngFor="let popup of popupresponse">
-          <div class="modal-footer" *ngIf="popup.data.expirydate != null">
+          <div class="modal-footer" *ngIf="popup?.data?.expirydate != null">
             <div class="expiry_date_popup"  >
-              <p> Expiry Date:{{popup.data.expirydate | date: 'dd/MM/yyyy'}} </p>
+              <p> Expiry Date:{{popup?.data?.expirydate | date: 'dd/MM/yyyy'}} </p>
             </div>         
           </div>
         </div>
