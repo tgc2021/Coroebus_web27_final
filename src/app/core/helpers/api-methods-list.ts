@@ -1,5 +1,5 @@
-const api_path='/coroebus-beta-api-levels'
-// const api_path='/coroebus-tgc-api-levels'
+// const api_path='/coroebus-beta-api-levels'
+const api_path='/coroebus-tgc-api-levels'
 export const apiMethodsList = {
     AUTHENTICATE: [
         api_path+'/authenticate/access_token', // 0 POST { "USERID": "l4WbceDSYnGzmGmtTpbDOQ==", "PASSWORD": "9QVjcHyu0OY8aIHAOXiiBg=="}

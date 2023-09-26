@@ -41,7 +41,7 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
   videourl: string
   safeUrl: SafeResourceUrl
   isVideoModalopen: boolean = false
-  GrowthIndexData: any;
+  GrowthIndexData: any=[];
   openIntroVideo: boolean = false;
   previousUrl: void;
   combineLatest: Subscription
@@ -95,8 +95,8 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
     let body = {
 
 
-      '_userid': this.userid_bh != null ? this.userid_bh : this.userSelectionData._personal_data?.USERID,
-      '_org': this.id_coroebus_org != null ? this.id_coroebus_org : this.userSelectionData._personal_data?.id_coroebus_organization
+      '_userid': this.userid_bh != null ? this.userid_bh : this.userSelectionData?._personal_data?.USERID,
+      '_org': this.id_coroebus_org != null ? this.id_coroebus_org : this.userSelectionData?._personal_data?.id_coroebus_organization
     }
 
     this.http.buisnessHead(body).subscribe(res => {
@@ -105,15 +105,15 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
       this.buisness_head_response_ = this.buisness_head_response.data
 
       if(this.buisness_head_response_?.is_about_game==1){
-        this.about_game_pdf= this.buisness_head_response_?.about_game[0].file_name
+        this.about_game_pdf= this.buisness_head_response_?.about_game[0]?.file_name
         
         localStorage.setItem('about_game_pdf',this.about_game_pdf)
       }
 
       
-      this.map_bh=this.buisness_head_response_._personal_data.map_url
+      this.map_bh=this.buisness_head_response_?._personal_data?.map_url
       localStorage.setItem('res',this.map_bh)
-      this.GrowthIndexData = this.buisness_head_response.data._points
+      this.GrowthIndexData = this.buisness_head_response?.data?._points
       this.dark_color = localStorage.getItem('topbar_color')
       this.element.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
       this.fontcolor = '#FFFFFF'
@@ -185,7 +185,8 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
   navigateToBIMap(data: any) {
 
     
-    this.mapUrl=data.map_url
+    this.mapUrl=data.map_url;
+    console.log(this.mapUrl);
    
     this.location.replaceState("?map="+ this.mapUrl);
     location.reload();
@@ -195,7 +196,7 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
      
   }
   navigateToBIMapMobile(data: any){
-    this.mapUrl=data.map_url
+    this.mapUrl=data?.map_url
 
     this.router.navigateByUrl('/mobile_maps?map='+this.mapUrl)
   }
@@ -206,10 +207,10 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
   navigateToHOSDashboard(index: any) {
     this.spectator = "spectator"
     
-    this.hos_user_id = this.Util.encryptData(this.buisness_head_response_._ranking_data[0]._data[index].userid)
-    this.hos_game_id = this.Util.encryptData(this.buisness_head_response_._ranking_data[0]._data[index].id_coroebus_game)
-    localStorage.setItem('gameId', this.buisness_head_response_._ranking_data[0]._data[index].id_coroebus_game)
-    this.hos_role_id = this.Util.encryptData(this.buisness_head_response_._ranking_data[0]._data[index].id_role)
+    this.hos_user_id = this.Util.encryptData(this.buisness_head_response_?._ranking_data[0]?._data[index]?.userid)
+    this.hos_game_id = this.Util.encryptData(this.buisness_head_response_?._ranking_data[0]?._data[index]?.id_coroebus_game)
+    localStorage.setItem('gameId', this.buisness_head_response_?._ranking_data[0]?._data[index]?.id_coroebus_game)
+    this.hos_role_id = this.Util.encryptData(this.buisness_head_response_?._ranking_data[0]?._data[index]?.id_role)
 
 
     this.router.navigateByUrl('/top_dashboard?userID=' + this.hos_user_id + "&gameID=" + this.hos_game_id + "&roleID=" + this.hos_role_id)

@@ -10,9 +10,12 @@ import { TopHierarchyDashboardsComponent } from './top-hierarchy-dashboards/top-
 import { BusinessReportComponent } from './business-report/business-report.component';
 import { MobileMapsComponent } from './mobile-maps/mobile-maps.component';
 
+
+
 const routes: Routes = [
 
-  { path: '', redirectTo: 'dashboard' },
+
+  { path: '', redirectTo: 'topdashboard'},
   { path: 'dashboard', component: DefaultComponent, pathMatch: 'full' },
   { path: 'dashboards', loadChildren: () => import('./dashboards/dashboards.module').then(m => m.DashboardsModule) },
   { path: 'notification', loadChildren: () => import('./notification-list/notification-list.module').then(m => m.NotificationListModule) },
@@ -36,18 +39,7 @@ const routes: Routes = [
 
 ];
 
-// const iduser=localStorage.getItem('id_role_hos');
-// console.log(iduser);
 
-// if (iduser === '8' || iduser === '9') {
-//   routes.push({ path: '', redirectTo: 'top_dashboard', pathMatch: 'full' });
-// } else if (iduser === '') {
-//   routes.push({ path: '', redirectTo: 'dashboard', pathMatch: 'full' });
-  
-// } else if (iduser === '13' ) {
-//   routes.push({ path: '', redirectTo: 'topdashboard', pathMatch: 'full' });
-  
-// } 
 
 
 // routes.push(

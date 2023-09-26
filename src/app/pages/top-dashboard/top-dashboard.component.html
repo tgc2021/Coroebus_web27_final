@@ -41,11 +41,11 @@
             <div class="bottom_right_section">
                 <div class="bottom_right_section_height">
                     <mat-card class="details_card"
-                        [style.background-color]="buisness_head_response_.theme_details[0].light_color">
+                        [style.background-color]="buisness_head_response_?.theme_details[0]?.light_color">
                         <div class="row">
                             <div class="col-12">
                                 <div class="name d-flex">
-                                    Name : {{buisness_head_response_._personal_data.first_name}}
+                                    Name : {{buisness_head_response_?._personal_data?.first_name}}
                                     <div class="name_details">
 
 
@@ -67,7 +67,7 @@
                                                 (click)="OverallGrowth()">Overall
                                                 <div class="global_index_details d-flex">
                                                     <div>
-                                                        {{buisness_head_response_._points[0].score}}
+                                                        {{buisness_head_response_?._points[0]?.score}}
                                                     </div>
 
                                                     <div>
@@ -103,11 +103,11 @@
 
                                             <hr class="horizontal_row">
                                             <div class="pech d-flex"
-                                                *ngFor="let response of buisness_head_response_._kpi_score"
+                                                *ngFor="let response of buisness_head_response_?._kpi_score"
                                                 style="cursor: pointer;" (click)="navigateToBIMap(response)">
-                                                {{response.point_label}}
+                                                {{response?.point_label}}
                                                 <div class="pech_details d-flex">
-                                                    {{response.weightage}}
+                                                    {{response?.weightage}}
                                                     <div class="d-flex justify-content-end ">
 
                                                         <div style="height:2.5vh;">
@@ -145,31 +145,31 @@
 
                                             </mat-expansion-panel-header>
                                             <div class="pech d-flex" style="cursor: pointer;"
-                                                *ngFor="let response of buisness_head_response_._governance_score"
+                                                *ngFor="let response of buisness_head_response_?._governance_score"
                                                 (click)="navigateToBIMap(response)">
-                                                {{response.point_label}}
+                                                {{response?.point_label}}
                                                 <div class="pech_details d-flex  ">
                                                     <div class="text-end">
-                                                        {{response.weightage}}
+                                                        {{response?.weightage}}
                                                     </div>
 
                                                     <div class="d-flex justify-content-end">
 
-                                                        <div *ngIf="response.rankingtable_arrow=='green'"
+                                                        <div *ngIf="response?.rankingtable_arrow=='green'"
                                                             style="height:2.5vh;">
 
                                                             <img src="assets/images/BoosterAssests/UP-16687580465394.png"
                                                                 alt="" height="100%">
                                                         </div>
 
-                                                        <div *ngIf="response.rankingtable_arrow=='red'"
+                                                        <div *ngIf="response?.rankingtable_arrow=='red'"
                                                             style="height:2.5vh;">
 
                                                             <img src="assets/images/BoosterAssests/DN-16687580461987.png"
                                                                 alt="" height="100%">
 
                                                         </div>
-                                                        <div *ngIf="response.rankingtable_arrow=='yellow'"
+                                                        <div *ngIf="response?.rankingtable_arrow=='yellow'"
                                                             style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
 
                                                             <img src="assets/images/BoosterAssests/EQ-16687580462022.png"
@@ -192,31 +192,31 @@
 
                                             </mat-expansion-panel-header>
                                             <div class="pech d-flex"
-                                                *ngFor="let businessresponse of buisness_head_response_._business_score"
+                                                *ngFor="let businessresponse of buisness_head_response_?._business_score"
                                                 style="cursor: pointer;" (click)="navigateToBIMap(businessresponse)">
-                                                <div>{{businessresponse.point_label}}</div>
+                                                <div>{{businessresponse?.point_label}}</div>
                                                 <div class="pech_details d-flex">
                                                     <div>
-                                                        {{businessresponse.weightage}}
+                                                        {{businessresponse?.weightage}}
                                                     </div>
 
                                                     <div class="d-flex justify-content-end">
 
-                                                        <div *ngIf="businessresponse.ranking_arrow=='green'"
+                                                        <div *ngIf="businessresponse?.ranking_arrow=='green'"
                                                             style="height:2.5vh;">
 
                                                             <img src="assets/images/BoosterAssests/UP-16687580465394.png"
                                                                 alt="" height="100%">
                                                         </div>
 
-                                                        <div *ngIf="businessresponse.ranking_arrow=='red'"
+                                                        <div *ngIf="businessresponse?.ranking_arrow=='red'"
                                                             style="height:2.5vh;">
 
                                                             <img src="assets/images/BoosterAssests/DN-16687580461987.png"
                                                                 alt="" height="100%">
 
                                                         </div>
-                                                        <div *ngIf="businessresponse.ranking_arrow=='yellow'"
+                                                        <div *ngIf="businessresponse?.ranking_arrow=='yellow'"
                                                             style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
 
                                                             <img src="assets/images/BoosterAssests/EQ-16687580462022.png"
@@ -251,7 +251,7 @@
                     </mat-card>
                     <mat-card class="label_container"
                         style="border-bottom-left-radius: 0;border-bottom-right-radius: 0; padding: 0 !important; width: 90%;margin-bottom: 0;"
-                        [style.background-color]="buisness_head_response_.theme_details[0].light_color">
+                        [style.background-color]="buisness_head_response_?.theme_details[0]?.light_color">
                         <div class="d-flex" style="margin-bottom: 1vh; margin-top: 2vh;margin-left: 0.5vw;">
                             <div class="web_rank_label">
                                 Rank
@@ -265,30 +265,30 @@
                         </div>
                     </mat-card>
                     <mat-card class="hos_leaderboard"
-                        [style.background-color]="buisness_head_response_.theme_details[0].light_color">
+                        [style.background-color]="buisness_head_response_?.theme_details[0]?.light_color">
 
 
                         <div class="d-flex justify-content-center align-items-center leaderboard_div_web">
                             <div class="row first_row_details d-flex call_center_div mt-2"
-                                *ngFor="let res of buisness_head_response_._ranking_data[0]._data;let i=index"
+                                *ngFor="let res of buisness_head_response_?._ranking_data[0]?._data;let i=index"
                                 style="background-image: url({{buisness_head_response_._ranking_data[0]._data[i].ranking_image}});"
                                 (click)="navigateToHOSDashboard(i)">
                                 <div class="d-flex">
-                                    <div class="rank">{{res.rankingtable_number}}</div>
+                                    <div class="rank">{{res?.rankingtable_number}}</div>
                                     <div class="d-flex align-items-center justify-content-center" style="width: 25%;">
                                         <img class="image_logo" src="{{res.rankingtable_logo}}" />
                                     </div>
                                     <div class="name_section">
                                         <div class="call_center_name" ngbTooltip="{{res.rankingtable_name}}"
                                             placement="bottom">
-                                            {{res.rankingtable_name}}
+                                            {{res?.rankingtable_name}}
                                         </div>
                                         <div class="location">
-                                            {{res.user_location}}
+                                            {{res?.user_location}}
                                         </div>
                                         <div class="hos_Level">
 
-                                            {{res.level_label}}
+                                            {{res?.level_label}}
                                         </div>
 
 
@@ -298,7 +298,7 @@
 
                                     <div class="d-flex justify-content-center align-items-center" style="width: 18%;">
                                         <div class="hos_Score">
-                                            {{res.rankingtable_weightage}}
+                                            {{res?.rankingtable_weightage}}
                                         </div>
                                     </div>
                                 </div>
@@ -327,8 +327,8 @@
 
     <div>
         <mat-card class="mobile_details_card d-flex justify-content-center"
-            [style.background-color]="buisness_head_response_.theme_details[0].light_color">
-            <div class="mobile_name">Name: {{buisness_head_response_._personal_data.first_name}} </div>
+            [style.background-color]="buisness_head_response_?.theme_details[0]?.light_color">
+            <div class="mobile_name">Name: {{buisness_head_response_?._personal_data?.first_name}} </div>
             <mat-accordion style="margin-top: 2%;">
 
                 <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
@@ -348,7 +348,7 @@
                             </div>
                             <div class="global_index_details"
                                 style="font-weight: 600;font-family: 'Inter';display: flex;">
-                                <div>{{GrowthIndexData[0].score}}</div>
+                                <div>{{GrowthIndexData[0]?.score}}</div>
                                 <div class="d-flex justify-content-end">
 
                                     <div style="height:2.5vh;">
@@ -375,29 +375,29 @@
                             </div>
                         </div>
 
-                        <div *ngFor="let kpi_data of buisness_head_response_._kpi_score">
+                        <div *ngFor="let kpi_data of buisness_head_response_?._kpi_score">
                             <div class="d-flex justify-content-between align-items-center mt-3"
                                 style="font-weight: 550;font-family: 'Inter'" (click)="navigateToBIMapMobile(kpi_data)">
                                 <div class="pech " style="font-weight: 600;font-family: 'Inter';">
-                                    {{ kpi_data.point_label}}
+                                    {{ kpi_data?.point_label}}
                                 </div>
                                 <div class="pech_details" style="font-weight: 600;font-family: 'Inter';display:flex;">
                                     <div>{{ kpi_data.weightage}}</div>
                                     <div class="d-flex justify-content-end ">
 
-                                        <div *ngIf="kpi_data.ranking_arrow=='green'" style="height:2.5vh;">
+                                        <div *ngIf="kpi_data?.ranking_arrow=='green'" style="height:2.5vh;">
 
                                             <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
                                                 height="100%">
                                         </div>
 
-                                        <div *ngIf="kpi_data.ranking_arrow=='red'" style="height:2.5vh;">
+                                        <div *ngIf="kpi_data?.ranking_arrow=='red'" style="height:2.5vh;">
 
                                             <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
                                                 height="100%">
 
                                         </div>
-                                        <div *ngIf="kpi_data.ranking_arrow=='yellow'"
+                                        <div *ngIf="kpi_data?.ranking_arrow=='yellow'"
                                             style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
 
                                             <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt=""
@@ -426,7 +426,7 @@
         
                     </mat-expansion-panel-header>
                     <hr class="horizontal_row" style="font-weight: 550;font-family: 'Inter';">
-                    <div *ngFor="let businessresponse of buisness_head_response_._business_score" style="cursor: pointer;"
+                    <div *ngFor="let businessresponse of buisness_head_response_?._business_score" style="cursor: pointer;"
                         (click)="navigateToBIMap(businessresponse)">
                         <div class="d-flex justify-content-between align-items-center mt-4"
                             style="font-weight: 550;font-family: 'Inter';" (click)="navigateToBIMapMobile(businessresponse)">
@@ -438,22 +438,22 @@
                                 <div class="global_index_details  " style="font-weight: 600;font-family: 'Inter';">
                                     <!-- {{GrowthIndexData[0].score}} -->
         
-                                    {{businessresponse.weightage}}
+                                    {{businessresponse?.weightage}}
         
                                 </div>
                                 <div class="d-flex justify-content-end">
         
-                                    <div *ngIf="businessresponse.ranking_arrow=='green'" style="height:2.5vh;">
+                                    <div *ngIf="businessresponse?.ranking_arrow=='green'" style="height:2.5vh;">
         
                                         <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt="" height="100%">
                                     </div>
                                     <div>
-                                        <div *ngIf="businessresponse.ranking_arrow=='red'" style="height:2.5vh;">
+                                        <div *ngIf="businessresponse?.ranking_arrow=='red'" style="height:2.5vh;">
         
                                             <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt="" height="100%">
         
                                         </div>
-                                        <div *ngIf="businessresponse.ranking_arrow=='yellow'"
+                                        <div *ngIf="businessresponse?.ranking_arrow=='yellow'"
                                             style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
         
                                             <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset=""
@@ -486,34 +486,34 @@
         
                     </mat-expansion-panel-header>
                     <hr class="horizontal_row" style="font-weight: 550;font-family: 'Inter';">
-                    <div *ngFor="let businessresponse of buisness_head_response_._governance_score" style="cursor: pointer;"
+                    <div *ngFor="let businessresponse of buisness_head_response_?._governance_score" style="cursor: pointer;"
                         (click)="navigateToBIMapMobile(businessresponse)">
                         <div class="d-flex justify-content-between align-items-center mt-4"
                             style="font-weight: 550;font-family: 'Inter';margin-top:2%">
                             <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Inter';">
-                                <div>{{businessresponse.point_label}}</div>
+                                <div>{{businessresponse?.point_label}}</div>
         
                             </div>
                             <div class="d-flex gap-1">
                                 <div class="global_index_details  " style="font-weight: 600;font-family: 'Inter';">
                                     <!-- {{GrowthIndexData[0].score}} -->
         
-                                    {{businessresponse.weightage}}
+                                    {{businessresponse?.weightage}}
         
                                 </div>
                                 <div class="d-flex justify-content-end">
         
-                                    <div *ngIf="businessresponse.rankingtable_arrow=='green'" style="height:2.5vh;">
+                                    <div *ngIf="businessresponse?.rankingtable_arrow=='green'" style="height:2.5vh;">
         
                                         <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt="" height="100%">
                                     </div>
         
-                                    <div *ngIf="businessresponse.rankingtable_arrow=='red'" style="height:2.5vh;">
+                                    <div *ngIf="businessresponse?.rankingtable_arrow=='red'" style="height:2.5vh;">
         
                                         <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt="" height="100%">
         
                                     </div>
-                                    <div *ngIf="businessresponse.rankingtable_arrow=='yellow'"
+                                    <div *ngIf="businessresponse?.rankingtable_arrow=='yellow'"
                                         style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
         
                                         <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset=""
@@ -611,24 +611,24 @@
 
 
         <div class="row align-self-center mobile_call_center_row   mt-1"
-            *ngFor="let res of buisness_head_response_._ranking_data[0]._data;let i=index"
-            style="background-image: url({{buisness_head_response_._ranking_data[0]._data[i].ranking_image}});background-size: 100% 100%;"
+            *ngFor="let res of buisness_head_response_?._ranking_data[0]?._data;let i=index"
+            style="background-image: url({{buisness_head_response_._ranking_data[0]?._data[i]?.ranking_image}});background-size: 100% 100%;"
             (click)="navigateToHOSDashboard(i)">
             <div class="col-1 mobile-rank d-flex justify-content-center align-items-center">{{res.rankingtable_number}}
             </div>
             <div class="col-2 g-0 d-flex align-items-center">
-                <img class="mobile_image_logo" src="{{res.rankingtable_logo}}" />
+                <img class="mobile_image_logo" src="{{res?.rankingtable_logo}}" />
             </div>
             <div class="col-6">
                 <div class="mobile_name_div ">
-                    {{res.rankingtable_name}}
+                    {{res?.rankingtable_name}}
                 </div>
                 <div class="mobile_location">
-                    {{res.user_location}}
+                    {{res?.user_location}}
                 </div>
                 <div class="mobile_hos_Level">
 
-                    {{res.level_label}}
+                    {{res?.level_label}}
                 </div>
 
 
@@ -636,7 +636,7 @@
             </div>
             <div class="col-2">
                 <div class="mobile_hos_Score">
-                    {{res.rankingtable_weightage}}
+                    {{res?.rankingtable_weightage}}
                 </div>
             </div>
 

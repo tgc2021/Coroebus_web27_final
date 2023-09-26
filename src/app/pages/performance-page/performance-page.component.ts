@@ -233,7 +233,7 @@ export class PerformancePageComponent implements OnInit {
         this.graphMasterData = res?.data;
         
         this.id_role=this.graphMasterData._personal_data[0].id_role;
-        console.log(this.id_role);
+        
         
         //this.graphData = this.graphMasterData
         this.filterGraphData()
@@ -266,7 +266,7 @@ export class PerformancePageComponent implements OnInit {
         this.graphMasterData = res?.data
 
         this.id_role=this.graphMasterData._personal_data[0].id_role;
-        console.log(this.id_role);
+       
         
         //this.graphData = this.graphMasterData
         this.filterGraphData()
@@ -280,7 +280,7 @@ export class PerformancePageComponent implements OnInit {
     switch (this.dropDownValue) {
       case 'Daily':
         this.graphData = [...this.graphMasterData?.dailygraph]
-        console.log("daily",this.graphData);
+        
         
         this.dataTransformation()
         break;
@@ -321,7 +321,7 @@ export class PerformancePageComponent implements OnInit {
         });
       })
       arrayData?.push(merge)
-      console.log(arrayData);
+  
       
     }
     this.graphData = [...arrayData]

@@ -71,7 +71,7 @@ export class AchievementShelfComponent implements OnInit {
      this.game_ID= localStorage.getItem('body_game')
 
 
-    this.currentdatetransform = this.datePipe.transform(this.currentDate, 'dd MMM YYYY');
+    this.currentdatetransform = this.datePipe?.transform(this.currentDate, 'dd MMM YYYY');
     
 
     this.store.select(fromRoot.userLogin).pipe(
@@ -100,7 +100,7 @@ export class AchievementShelfComponent implements OnInit {
 
         let body = {
           _userid: this.mergeObj.USERID,
-          _game: this.userObj.games[0].id_coroebus_game,
+          _game: this.userObj.games[0]?.id_coroebus_game,
         }
   
         
@@ -147,15 +147,15 @@ export class AchievementShelfComponent implements OnInit {
         this.http.seasonal_rewards_points(body).subscribe((res) => {
           
           this.seasonal_total_points=res
-          this.seasonal_total_points_response= this.seasonal_total_points.data[0]
+          this.seasonal_total_points_response= this.seasonal_total_points?.data[0]
           
           
           
         })
 
         let body_engagement={
-          _userid:this.mergeObj.USERID,
-          _game:this.userObj.games[0].id_coroebus_game,
+          _userid:this.mergeObj?.USERID,
+          _game:this.userObj.games[0]?.id_coroebus_game,
           _device:"W",
           _section:"Achievement Shelf",
           _description:"Achievement Shelf"
@@ -169,8 +169,8 @@ export class AchievementShelfComponent implements OnInit {
   
       else if(this.userObj.games.length == 0){
         let body = {
-          _userid: this.mergeObj.USERID,
-          _game: this.userSelectionData.id_coroebus_game,
+          _userid: this.mergeObj?.USERID,
+          _game: this.userSelectionData?.id_coroebus_game,
 
         }
   
@@ -218,7 +218,7 @@ export class AchievementShelfComponent implements OnInit {
         this.http.seasonal_rewards_points(body).subscribe((res) => {
           
           this.seasonal_total_points=res
-          this.seasonal_total_points_response= this.seasonal_total_points.data[0]
+          this.seasonal_total_points_response= this.seasonal_total_points?.data[0]
           
           
           
@@ -226,8 +226,8 @@ export class AchievementShelfComponent implements OnInit {
 
 
         let body_engagement={
-          _userid:this.mergeObj.USERID,
-          _game: this.userSelectionData.id_coroebus_game,
+          _userid:this.mergeObj?.USERID,
+          _game: this.userSelectionData?.id_coroebus_game,
           _device:"W",
           _section:"Achievement Shelf",
           _description:"Achievement Shelf"
@@ -286,10 +286,10 @@ export class AchievementShelfComponent implements OnInit {
 
   popoverDetails(details:any,index:any){
 
-    if(this.userObj.games.length >0){
+    if(this.userObj?.games?.length >0){
       let body_engagement={
-        _userid:this.mergeObj.USERID,
-        _game:this.userObj.games[0].id_coroebus_game,
+        _userid:this.mergeObj?.USERID,
+        _game:this.userObj?.games[0]?.id_coroebus_game,
         _device:"W",
         _section:"Achievement Shelf",
         _description:"Season Details"
@@ -300,10 +300,10 @@ export class AchievementShelfComponent implements OnInit {
         
       })
      }
-     else if(this.userObj.games.length == 0){
+     else if(this.userObj?.games?.length == 0){
       let body_engagement={
-        _userid:this.mergeObj.USERID,
-        _game: this.userSelectionData.id_coroebus_game,
+        _userid:this.mergeObj?.USERID,
+        _game: this.userSelectionData?.id_coroebus_game,
         _device:"W",
         _section:"Achievement Shelf",
         _description:"Season Details"
@@ -341,8 +341,8 @@ export class AchievementShelfComponent implements OnInit {
   getBadgesDetail(carauseldata:any,index:any){
     if(this.userObj.games.length >0){
       let body_engagement={
-        _userid:this.mergeObj.USERID,
-        _game:this.userObj.games[0].id_coroebus_game,
+        _userid:this.mergeObj?.USERID,
+        _game:this.userObj.games[0]?.id_coroebus_game,
         _device:"W",
         _section:"Achievement Shelf",
         _description:"Badge Details"
@@ -353,10 +353,10 @@ export class AchievementShelfComponent implements OnInit {
         
       })
      }
-     else if(this.userObj.games.length == 0){
+     else if(this.userObj?.games?.length == 0){
       let body_engagement={
-        _userid:this.mergeObj.USERID,
-        _game: this.userSelectionData.id_coroebus_game,
+        _userid:this.mergeObj?.USERID,
+        _game: this.userSelectionData?.id_coroebus_game,
         _device:"W",
         _section:"Achievement Shelf",
         _description:"Badge Details"
@@ -371,9 +371,9 @@ export class AchievementShelfComponent implements OnInit {
     
     let body = {
       _userid: this.mergeObj.USERID,
-      _game: this.mergeObj.id_coroebus_game,
-      _seasonal_theme: carauseldata.id_seasonal_theme,
-      _badge_id:carauseldata.id_seasonal_badge
+      _game: this.mergeObj?.id_coroebus_game,
+      _seasonal_theme: carauseldata?.id_seasonal_theme,
+      _badge_id:carauseldata?.id_seasonal_badge
     }
 
     
@@ -381,13 +381,13 @@ export class AchievementShelfComponent implements OnInit {
       
       this.bagde_details=res
       this.bagde_details = Array.of(this.bagde_details);
-      this.bagde_details_response=this.bagde_details[0].data[0]
+      this.bagde_details_response=this.bagde_details[0]?.data[0]
       
       
     
-      this.badge_details_date=this.bagde_details[0].data[1]
+      this.badge_details_date=this.bagde_details[0]?.data[1]
       
-      this.badge_details_date.badge_win_date=Array.of(this.badge_details_date.badge_win_date)
+      this.badge_details_date.badge_win_date=Array.of(this.badge_details_date?.badge_win_date)
       
       
       

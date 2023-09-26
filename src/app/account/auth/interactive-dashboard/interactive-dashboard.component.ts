@@ -114,7 +114,7 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.game_audio = localStorage.getItem('audio_game');
-    console.log(this.http.mainUrl);
+    
 
 
 
@@ -193,7 +193,7 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
       ).subscribe(([login, theme, game]) => {
 
         this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
-        console.log(this.userSelectionData);
+       
       })
 
 
@@ -236,12 +236,12 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
 
 
           this.seasonalThemeDaily = this.interactive_dashoard_response[0]?.data.seasonal_theme_daily;
-          console.log('seasonalThemeDaily', this.seasonalThemeDaily.length);
+          
 
           this.seasonalThemeWeekly = this.interactive_dashoard_response[0]?.data?.seasonal_theme_weekly;
           this.seasonalThemeMonthly = this.interactive_dashoard_response[0]?.data?.seasonal_theme_monthly;
           this.seasonalThemeDailyBadges1 = this.data?.data?.seasonal_theme_daily_badge_details;
-          console.log('badge', this.seasonalThemeDailyBadges1);
+         
 
           if (this.seasonalThemeDaily.length != 0) {
             // this.LastindexDaily=this.data?.data?.seasonal_theme_daily_badge_details;
@@ -332,7 +332,7 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
 
           this.produce1data = res;
           this.kpidata = this.produce1data.data?._personal_data?.external_kpi_data
-          console.log("kpiData", this.kpidata);
+         
         })
 
       }
@@ -352,7 +352,7 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
           this.interactive_dashoard_response = res;
 
           this.isInteractiveOn = this.interactive_dashoard_response?.data?._personal_data?.interactive_flag;
-          console.log(this.interactive_dashoard_response);
+          
 
           localStorage.setItem('body_game', this.interactive_dashoard_response?.data?._personal_data?.id_coroebus_game)
           if (this.interactive_dashoard_response?.data?.is_about_game == 1) {
@@ -446,7 +446,7 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
     this.pageInfo = localStorage.getItem('page');
     if (this.pageInfo == 'reward') {
       localStorage.setItem('rewardid', this.mergeObj?.USERID);
-      console.log(localStorage.getItem('rewardid'));
+      
       setTimeout(() => { this._router.navigateByUrl("/reward/rewardPoints") }, 1000);
 
     }
@@ -617,7 +617,7 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
     const teamid = this.mergeObj?.id_coroebus_team;
     const gameName = this.mergeObj?.game_name;
     const teamName = this.mergeObj?.team_name;
-    console.log()
+    
     if (this.kpidata.length != 0) {
       this.kpiName = this.kpidata[0]?.kpi_name;
 
@@ -698,19 +698,19 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
 
       this.data = res;
 
-      console.log(this.data?.data)
+      
       if (this.data?.data?.seasonal_theme_daily != undefined && this.data?.data?.seasonal_theme_daily?.length > 0) {
         this.dailyCampaign = true;
         this.seasonalThemeDaily1 = this.data?.data?.seasonal_theme_daily;
-        console.log('1234', this.seasonalThemeDaily1);
+        
 
         this.seasonalThemeDailyBadges1 = this.data?.data?.seasonal_theme_daily_badge_details;
         this.LastindexDaily = this.data?.data?.seasonal_theme_daily_badge_details;
-        console.log('daily', this.LastindexDaily);
+       
 
         this.lastArrayseasonalThemeDailyBadges2 = this.data?.data?.seasonal_theme_daily_badge_details[this.LastindexDaily.length - 1];
 
-        console.log(this.seasonalThemeDailyBadges1?.length)
+        
       }
 
       else {
@@ -725,7 +725,7 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
         this.seasonalThemeWeeklyBadges2 = this.data?.data?.seasonal_theme_weekly_badge_details;
         this.LastindexWeekly = this.data?.data?.seasonal_theme_weekly_badge_details;
         this.lastArrayseasonalThemeWeeklyBadges2 = this.data?.data?.seasonal_theme_weekly_badge_details[this.LastindexWeekly.length - 1];
-        console.log(this.seasonalThemeWeeklyBadges2)
+       
       }
 
       else {
@@ -785,7 +785,7 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
       // "_game":356
     }
     this.http.newInteractiveDashboard(body).subscribe((res: any) => {
-      console.log(res);
+     
       this.themeDetails = res?.data?._interactive_details[0];
       this.background_color = this.themeDetails?.gradient_color_bg;
 
@@ -844,7 +844,7 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
         _popupid: this.promotionalPopUpData?.data[0]?.list[0]?.id
       }
       this.http.updatePopUp(body).subscribe((res) => {
-        console.log(res);
+        
 
       })
     })
@@ -943,7 +943,7 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
     [err, res] = await HttpProtocols.to(DashboardModel.getCenterDataSectionView_2(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
       this.sectionView_2 = res?.data
-      console.log(this.sectionView_2);
+     
 
 
     }

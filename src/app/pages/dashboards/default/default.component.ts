@@ -353,13 +353,13 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     this.weekly_text = localStorage.getItem("weekly_text");
     this.monthly_text = localStorage.getItem("monthly_text");
 
-    console.log(this.Campaign_res);
+  
     this.medium_color = localStorage.getItem("medium_color");
     this.elementref.nativeElement.style.setProperty(
       "--mediumColor",
       `${this.medium_color}`
     );
-    console.log(this.medium_color);
+  
     this.tl_team_rank = localStorage.getItem("tl_rank");
     if (!localStorage.getItem('foo')) {
       localStorage.setItem('foo', 'no reload')
@@ -382,12 +382,11 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
         ...theme?.theme,
         ...game?.game,
       };
-      console.log(this.userSelectionData?._personal_data?.id_role);
+   
 
       this.themeId = this.userSelectionData?.id_coroebus_theme;
       this.levelIdRole=this.userSelectionData?._personal_data?.id_role;
-      console.log(this.levelIdRole);
-      console.log()
+     
      
       
 
@@ -515,14 +514,14 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     if(this.userSelectionData?._personal_data?.id_coroebus_organization=="61"){
       this.http.produce12(body).subscribe({
         next: (res) => {
-          console.log(res);
+          
       
           if (res) {
             this.sectionView_3_popup_1 = res;
             this.sectionView_3_popup = this.sectionView_3_popup_1?.data;
       
             if (this.sectionView_3_popup && this.sectionView_3_popup._ranking_data) {
-              console.log(this.sectionView_3_popup._ranking_data[0]?._data);
+              
       
               this.sectionView_3_list_popup = this.sectionView_3_popup._ranking_data.filter(
                 (data: any) => data?.order === this.activeTabForSectionView_2
@@ -530,8 +529,6 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
             }
           }
       
-          console.log(typeof this.sectionView_2_popup);
-          console.log(this.sectionView_2_popup);
         },
         error: (err) => {
           console.error('An error occurred:', err);
@@ -550,15 +547,15 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     };
     if(this.userSelectionData?._personal_data?.id_coroebus_organization=="61"){
       this.http.produce12(bodyForFixedTile).subscribe((res) => {
-        console.log(res);
+       
         this.section_view_res = res;
-        console.log(this.section_view_res);
+       
         this.MyZoneRank =
           this.section_view_res.data?._ranking_data[0]?._data[0]?.rankingtable_number;
         this.MyOverallRank =
           this.section_view_res?.data?._ranking_data[0]?._Overall[0]?.rankingtable_number;
   
-        console.log(this.MyZoneRank);
+       
   
         this.sectionView_2_popup = this.section_view_res?.data;
   
@@ -893,12 +890,12 @@ if (this.levelwise===3) {
 
     if (this.queryParams?.roleID === "3" || this.userSelectionData?._personal_data?.id_role === "3" && this.sectionView_1?._personal_data?.id_role === '3'  ) {
       this.isLevel3Active = true;
-      console.log("Role 3, Level 3 condition true");
+      
     }
     else{
       if(this.queryParams?.roleID === "3" && this.userSelectionData?._personal_data?.id_role === "3" || this.sectionView_1?._personal_data?.id_role === '3'  ) {
         this.isLevel3Active = true;
-        console.log("Role 3, Level 3 condition true");
+        
 
     }
   }
@@ -906,12 +903,12 @@ if (this.levelwise===3) {
   
   if (this.queryParams?.roleID === "4" || this.userSelectionData?._personal_data?.id_role === "4" && this.sectionView_1?._personal_data?.id_role === '4') {
     this.isLevel3Active = true;
-    console.log("Role 4, Level 2 condition true");
+   
   }
   else{
     if(this.queryParams?.roleID === "4" && this.userSelectionData?._personal_data?.id_role === "4" || this.sectionView_1?._personal_data?.id_role === '4'  ) {
       this.isLevel3Active = true;
-      console.log("Role 4, Level 4 condition true");
+     
 
   }
   }
@@ -919,18 +916,18 @@ if (this.levelwise===3) {
   if (this.queryParams?.roleID === "6" && this.userSelectionData?._personal_data?.id_role === "6" || this.sectionView_1?._personal_data?.id_role === '6') {
     this.isLevel3Active = true;
     this.hideBtnLevelWise=false;
-    console.log("Role 6, Level 1 condition true");
+   
   }
   else{
     if(this.queryParams?.roleID === "4" && this.userSelectionData?._personal_data?.id_role === "4" || this.sectionView_1?._personal_data?.id_role === '4'  ) {
       this.isLevel3Active = true;
       this.hideBtnLevelWise=false;
-      console.log("Role 4, Level 4 condition true");
+     
 
   }}
 } else {
   this.isLevel3Active = false;
-  console.log("None of the conditions met");
+  
 }
 
 
@@ -946,11 +943,7 @@ if (this.levelwise===3) {
         this.sectionView_1?.is_land_logos[2]?._userid
       );
       this.usertl = localStorage.getItem("user_tl");
-      console.log(this.usertl);
-
-      console.log(this.role_id);
-
-      console.log("For Primary Data", this.sectionView_1._primary.primary_rank);
+  
 
       localStorage.setItem(
         "bg_image",
@@ -964,7 +957,7 @@ if (this.levelwise===3) {
         "--myvar",
         `${this.dark_color}`
       );
-      console.log(this.pokeAnimationData[0]);
+     
       this.updatedPoke();
       // this.pokeAnimationData1=this.sectionView_1._poked_data[0].poke_description
 
@@ -994,7 +987,7 @@ if (this.levelwise===3) {
       this.web_profile_back_image =
         this.sectionView_1?._back_images[1]?._data[0]?.ranking_image_profile;
       this.userGrade = this.sectionView_1?._personal_data.user_grade;
-      console.log(this.userGrade);
+      
 
       if (this.sectionView_1?.is_about_game == 1) {
         this.about_game_pdf = this.sectionView_1?.about_game[0].file_name;
@@ -1032,9 +1025,9 @@ if (this.levelwise===3) {
   }
 
   async GetRankingPopupData(title: any, num: any) {
-    console.log(num);
+   
 
-    console.log(title);
+ 
 
     if (title == "My Team") {
       this.hideTab = false;
@@ -1053,7 +1046,7 @@ if (this.levelwise===3) {
     } else {
       this.selectedIndex = 0;
     }
-    console.log(title);
+   
     // this.selectedIndex=0;
 
     if (this.sectionView_1?._personal_data?.id_role == 4) {
@@ -1062,14 +1055,14 @@ if (this.levelwise===3) {
         gameID: this.sectionView_1?.is_land_logos[2]?.game_id,
         roleID: this.sectionView_1?.is_land_logos[2]?.role_id,
       };
-      console.log(this.queryParams);
+     
     } else if (this.sectionView_1?._personal_data?.id_role == 3) {
       this.queryParams = {
         userID: this.sectionView_1?.is_land_logos[0]._userid,
         gameID: this.sectionView_1?.is_land_logos[0].game_id,
         roleID: this.sectionView_1?.is_land_logos[0].role_id,
       };
-      console.log(this.queryParams);
+    
     } else if (this.sectionView_1?._personal_data?.id_role == 6) {
       this.queryParams = {
         userID: this.sectionView_1?._personal_data.USERID,
@@ -1112,8 +1105,7 @@ if (this.levelwise===3) {
             return data;
           }
         });
-        console.log(typeof(this.sectionView_2_popup));
-        console.log(this.sectionView_2_popup);
+       
       //
     } else {
       this.sectionView_3_err = "Please try after some time";
@@ -1131,15 +1123,15 @@ if (this.levelwise===3) {
       );
       if (!err && res?.status === "success" && res?.statuscode === 200) {
         this.sectionView_2_popup = res?.data;
-        console.log(this.sectionView_2_popup);
+    
         this.my_rank =
           this.sectionView_2_popup?._ranking_data[0]?._data[0]?.rankingtable_number;
   
         if (this.userSelectionData?._personal_data?.id_role == "4") {
           this.MyZoneRank =
-            this.sectionView_2_popup._ranking_data[0]?._data[0]?.rankingtable_number;
+            this.sectionView_2_popup?._ranking_data[0]?._data[0]?.rankingtable_number;
           this.MyOverallRank =
-            this.sectionView_2_popup._ranking_data[0]?._data[0]?.rankingtable_number;
+            this.sectionView_2_popup?._ranking_data[0]?._data[0]?.rankingtable_number;
         }
   
         this.labelNameMy = this.sectionView_2?._ranking_data[0].label;
@@ -1416,19 +1408,18 @@ if (this.levelwise===3) {
   }
 
   updatedPoke() {
-    console.log(this.pokeAnimationData);
-    console.log(this.pokeslidedata);
+  
 
     if (this.pokeAnimationData.length > 0) {
       let i = 0;
 
       const intervalId = setInterval(() => {
         this.pokeslidedata.push(this.pokeAnimationData[i]);
-        console.log(this.pokeslidedata);
+       
 
         setTimeout(() => {
           this.pokeslidedata.pop();
-          console.log(this.pokeslidedata);
+        
         }, 5000); // Remove the last element after 5 seconds'
         this.updatePokeData(this.pokeAnimationData[i].poke_id_log);
 
@@ -1436,7 +1427,7 @@ if (this.levelwise===3) {
 
         if (i === this.pokeAnimationData.length) {
           clearInterval(intervalId);
-          console.log(this.pokeslidedata);
+         
           // this.pokeAnimationData=[]
           setTimeout(() => {
             // (<HTMLInputElement>document.getElementById('animationPoke')).style.background = "none";
@@ -1444,17 +1435,17 @@ if (this.levelwise===3) {
           }, 5000);
         }
       }, 6000);
-      console.log(this.pokeslidedata);
+     
     } else {
       clearInterval(this.pokeInterval);
       this.pokeAnimationData = [];
     }
 
-    console.log(this.pokeslidedata);
+    
   }
 
   checkUserGrade() {
-    console.log("hndjbzkdfsjkkjsdkjkdkjvkjDSJKsDJhj");
+   
 
     //  if (this.userGrade=='') {
     //    console.log(this.userGrade,'uses grade null');
@@ -1519,7 +1510,7 @@ if (this.levelwise===3) {
 
   async getUserBannerDataSectionView_3(viewMore?: any, queryParams?: any) {
     try {
-      console.log(queryParams);
+      
   
       const userID = queryParams?.userID || this.userSelectionData?._personal_data?.USERID;
       const gameID = queryParams?.gameID || this.userSelectionData?.id_coroebus_game;
@@ -1538,8 +1529,7 @@ if (this.levelwise===3) {
   
       if (!err && res?.status === "success" && res?.statuscode === 200) {
         this.pokeData = res?.data?._poke_list;
-        console.log(this.pokeData);
-        console.log(this.pokeData[0]._data[0].poke_description);
+        
   
         if (viewMore) {
           res?.data?._ranking_data?.forEach((element, index) => {
@@ -1648,7 +1638,7 @@ if (this.levelwise===3) {
   }
 
   changeTabFilter(name: string, order: any) {
-    console.log(order);
+    
     
     this.pageNumberForSectionView_3 = 1;
     this.activeTabForSectionView_2 = order;
@@ -1681,7 +1671,7 @@ if (this.levelwise===3) {
   
 
   async changeTabFilterIndex(name: string, order: any) {
-    console.log(order);
+   
   
     this.pageNumberForSectionView_3_index = 1;
     this.activeTabForSectionView_2_index = order;
@@ -1719,28 +1709,27 @@ if (this.levelwise===3) {
         let roleCheckArray = this.Util.pokeMapping();
         
         if (this.queryParams?.roleID) {
-            console.log(this.queryParams?.roleID);
+           
             roleCheckArray = roleCheckArray?.filter(
                 (data) => data?.roleID === this.userSelectionData?._personal_data?.id_role
             );
 
-            console.log(roleCheckArray);
+            
         } else {
             roleCheckArray = roleCheckArray?.filter(
                 (data) => data?.roleID === this.userSelectionData?._personal_data?.id_role
             );
-            console.log(roleCheckArray);
+           
         }
         
-        console.log(roleCheckArray?.[0]?.canPokeTo?.indexOf(rowData?.id_role));
-        console.log(roleCheckArray?.[0]?.canPokeTo?.indexOf(rowData?.id_role) > -1);
+        
 
         if (roleCheckArray?.[0]?.canPokeTo?.indexOf(rowData?.id_role) > -1) {
             this.pokeRowData = rowData;
-            console.log(this.pokeRowData);
+            
 
             this.arrowStatus = arrowStatus === "red" ? "Motivation" : "Positive";
-            console.log(this.arrowStatus);
+            
             this.emojiSelected(0, this.arrowStatus);
 
             try {
@@ -1896,7 +1885,7 @@ if (this.levelwise===3) {
       this.http.engagamentlog(body).subscribe((res) => {});
 
       if (res.data == "") {
-        console.log(res.data);
+        
         // this.openSnackBar('No data Available','Ok')
 
         // Swal.fire({
@@ -1961,7 +1950,7 @@ if (this.levelwise===3) {
     [err, res] = await HttpProtocols.to(DashboardModel.spectSearch(body));
     if (!err && res?.statuscode === 200) {
       if (res.data == "") {
-        console.log(res.data);
+        
         // this.openSnackBar('No data Available','Ok')
 
         // Swal.fire({
@@ -2009,20 +1998,20 @@ if (this.levelwise===3) {
     // $('.emojiBackgroundButton').removeClass('acrtive')
 
     this.clicked = id;
-    console.log(this.clicked);
+    
 
     this.emojiText = this.pokeData;
-    console.log(event);
+    
 
     this.idSelected = event === "Positive" ? 0 : 1;
-    console.log(this.idSelected);
+  
 
     this.pokeidselected =
       this.emojiText[this.idSelected]._data[id].poke_description;
     this.emoji = this.emojiText[this.idSelected]._data[id].poke_description;
     //  console.log(this.idSelected);
     this.pokeId = this.emojiText[this.idSelected]._data[id].id_coroebus_poke;
-    console.log(this.pokeId);
+  
   }
   async pokeSelection(modal: any) {
     let err: any, res: any;
@@ -2057,17 +2046,17 @@ if (this.levelwise===3) {
     }
   }
   updatePokeData(data: any) {
-    console.log(data);
+    
 
     let body = {
       _pokeid: data,
     };
     this.http.updatePoke(body).subscribe((res) => {
-      console.log(res);
+      
 
       this.updatedata = res;
       if (this.updatedata.statuscode === 200) {
-        console.log(123);
+        
       } else {
       }
 
@@ -2113,7 +2102,7 @@ if (this.levelwise===3) {
   getDataBasedOnUserID(data: any) {
     this.spectSearchStr = "";
     this.role_id = data?.role_id.toString();
-    console.log(this.role_id);
+    
     this.Edit_image();
     if (this.role_id === "8" || this.role_id == "9" || this.role_id == "12") {
       if (this.role_id == "9") {
@@ -2192,7 +2181,7 @@ if (this.levelwise===3) {
         }
       }
       
-      console.log(this.hierarchyPopupList);
+    
       
       this.firstUserData = this.hierarchyPopupList[0];
 
@@ -2241,7 +2230,7 @@ if (this.levelwise===3) {
 
   getRewards() {
 
-    console.log(this.queryParams)
+    
     let obj = {
       _userid: this.queryParams?.userID
         ? this.queryParams?.userID
@@ -2559,15 +2548,15 @@ if (this.levelwise===3) {
       if(this.data?.data?.seasonal_theme_daily!=undefined&&this.data?.data?.seasonal_theme_daily?.length>0){
         this.dailyCampaign=true;
         this.seasonalThemeDaily1 = this.data?.data?.seasonal_theme_daily;
-        console.log('1234',this.seasonalThemeDaily1);
+        
         
         this.seasonalThemeDailyBadges1 = this.data?.data?.seasonal_theme_daily_badge_details;
         this.LastindexDaily=this.data?.data?.seasonal_theme_daily_badge_details;
-              console.log('daily',this.LastindexDaily);
+              
               
               this.lastArrayseasonalThemeDailyBadges2=this.data?.data?.seasonal_theme_daily_badge_details[this.LastindexDaily.length-1];
          
-              console.log(this.seasonalThemeDailyBadges1?.length)
+              
       }
     
       else {
@@ -2582,7 +2571,7 @@ if (this.levelwise===3) {
      this.seasonalThemeWeeklyBadges2=this.data?.data?.seasonal_theme_weekly_badge_details;
               this.LastindexWeekly=this.data?.data?.seasonal_theme_weekly_badge_details;
               this.lastArrayseasonalThemeWeeklyBadges2=this.data?.data?.seasonal_theme_weekly_badge_details[this.LastindexWeekly.length-1];
-              console.log(this.seasonalThemeWeeklyBadges2)
+              
     }
       
     else{
@@ -2660,7 +2649,7 @@ if (this.levelwise===3) {
     const autologin= "1";
     const userid = this.queryParams?.userID;
     
-    // console.log(this.userSelectionData)
+    
       const body = { "USERID":userid, "autologin": autologin}
 
       const [err, res] = await HttpProtocols.to(UserModel.authenticationAndAuthorization(body))
@@ -2678,14 +2667,12 @@ if (this.levelwise===3) {
   async openKpiInfo() {
     this.selectedIndex=0;
     // this.getGroupId()
-    console.log(this.queryParams)
+    
     
     
     this.openKpi = !this.openKpi;
     try {
-      console.log(this.role_id)
-      console.log(this.queryParams?.roleID);
-      console.log(this.userSelectionData?._personal_data?.id_role);
+      
       var location = window.location.href;
       if (location.includes("?")){
         let body = {
@@ -2716,9 +2703,9 @@ if (this.levelwise===3) {
           return { label, Kpidata: otherKpiData };
         }
       );
-      console.log(this.labelArray);
+      
       this.endRangeForFirst=this.labelArray[0]?.Kpidata?.data.forEach(element => {
-        console.log(element);
+      
         if(element.kpi_type=='Actual'){
           this.endRange=true;
         }
@@ -2733,7 +2720,7 @@ if (this.levelwise===3) {
      this.newKpiNamefirst=this.labelArray[0]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNamefirst,"");
      this.labelFirst=this.labelArray[0]?.label?.replace('- rollup','');
      this.fullFormKpiNamefirst=`${this.newKpiNamefirst}${this.labelFirst} Index`;
-     console.log(this.fullFormKpiNamefirst);
+     
 
       // Second Index
       this.endRangeForSecond=this.labelArray[1]?.Kpidata?.data.forEach(element => {
@@ -2749,7 +2736,7 @@ if (this.levelwise===3) {
       this.newKpiNameSecond=this.labelArray[1]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNameSecond,"");
       this.labelSecond=this.labelArray[1]?.label?.replace('- rollup','');
       this.fullFormKpiNamesecond=`${this.newKpiNameSecond}${this.labelSecond} Index`
-      console.log(this.fullFormKpiNamesecond);
+    
       // Third Index
       this.endRangeForThird=this.labelArray[2]?.Kpidata?.data.forEach(element => {
         if(element.kpi_type=='Actual'){
@@ -2764,7 +2751,7 @@ if (this.levelwise===3) {
       this.newKpiNameThird=this.labelArray[2]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNameThird,"");
       this.labelThird=this.labelArray[2]?.label?.replace('- rollup','');
       this.fullFormKpiNameThird=`${this.newKpiNameThird}${this.labelThird} Index`
-      console.log(this.fullFormKpiNameThird);
+      
 
       // Fourth Index
       this.endRangeForFourth=this.labelArray[3]?.Kpidata?.data.forEach(element => {
@@ -2784,7 +2771,7 @@ if (this.levelwise===3) {
       
     
     } catch (err) {
-      console.error(err);
+      
     }
     
   }
@@ -3214,8 +3201,7 @@ if (this.levelwise===3) {
     let err: any, res: any;
     let body: any;
 
-    console.log("Shubham");
-    console.log(this.sectionView_1?.is_land_logos);
+    
 
     if (this.sectionView_1?._personal_data.id_role == 4) {
       this.indexForIslandLogos = 2;
@@ -3232,17 +3218,17 @@ if (this.levelwise===3) {
       page_number: this.pageNumberForSectionView_3_index,
     };
 
-    console.log(body);
+    
 
     [err, res] = await HttpProtocols.to(
       DashboardModel.getRankingAndOtherDataSectionView_3(body)
     );
     if (!err && res?.status === "success" && res?.statuscode === 200) {
-      console.log(res);
+      
 
       this.pokeData = res?.data?._poke_list;
-      console.log(this.pokeData);
-      console.log(this.pokeData[0]._data[0].poke_description);
+      
+      
 
       if (viewMore) {
         res?.data?._ranking_data?.forEach((element, index) => {

@@ -304,17 +304,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
     if(this.id_role == 13 ){
       this.menuItems = MENU_HOS;
       this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
-      // if(this.is_about_game==0||this.is_about_game==null){
-       
-       
-      //   const result = this.menuItems.filter(data => data.icon != 'Aboutgameicon');
-
-      //   this.menuItems=result;
-
-       
-      //   
-        
-      // }
+      
     }
   
     else {
@@ -324,7 +314,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
       
       
      
-     console.log(this.menuItems);
+     
      
      
      
@@ -335,17 +325,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
         
       })
 
-      // if(this.is_about_game==0||this.is_about_game==null){
-       
-       
-      //   const result = this.menuItems.filter(data => data.icon != 'Aboutgameicon');
-
-      //   this.menuItems=result;
-
-       
-      //   
-        
-      // }
+  
       if(this.id_role == 9 || this.id_role == 8 ||this.id_role == 12){
         
         const result = this.menuItems.filter(data => data.icon != 'ChallengeZoneicon');
@@ -463,7 +443,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
         
       })
       this.url = 'https://www.thegamificationcompany.com/';
-      window.open(this.url, '_blank');
+      window.open(this.url, '_self');
       
     }
     // else if(item?.icon === 'Aboutgameicon'){

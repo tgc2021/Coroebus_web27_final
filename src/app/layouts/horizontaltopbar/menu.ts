@@ -68,7 +68,7 @@ export const MENU: MenuItem[] = [
         ]
     },
     {
-        id: 11,
+        id:12,
         label: 'MENUITEMS.CHALLENGE_ZONE',
         icon: 'chalenge',
         subItems: [

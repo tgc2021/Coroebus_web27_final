@@ -117,14 +117,14 @@ export class PlayZoneComponent implements OnInit {
     }) 
 
     this.dark_color=localStorage.getItem('topbar_color')
-    this.element.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
+    this.element?.nativeElement?.style.setProperty('--myvar', `${this.dark_color}`)
 
 
     this.medium_color=localStorage.getItem('medium_color')
-    this.element.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
+    this.element?.nativeElement?.style.setProperty('--mediumColor', `${this.medium_color}`)
 
     this.light_color=localStorage.getItem('light_color')
-    this.element.nativeElement.style.setProperty('--lightColor', `${this.light_color}`)
+    this.element?.nativeElement?.style.setProperty('--lightColor', `${this.light_color}`)
 
     this.dynamicColor()
   }
@@ -349,13 +349,13 @@ dynamicColor() {
   if (this.userSelectionData?.otherInfo) {
     this.headerInfo = this.userSelectionData?.otherInfo
     
-    this.color = this.headerInfo.color; //yellowcolor
+    this.color = this.headerInfo?.color; //yellowcolor
     
-    this.bgImage= this.userSelectionData?.themes[0].theme_background_web
+    this.bgImage= this.userSelectionData?.themes[0]?.theme_background_web
     
     
-    this.element.nativeElement.style.setProperty('--myvar', `${this.color}`)
-    this.element.nativeElement.style.setProperty('--bgImage', `${this.bgImage}`)
+    this.element?.nativeElement?.style?.setProperty('--myvar', `${this.color}`)
+    this.element?.nativeElement?.style?.setProperty('--bgImage', `${this.bgImage}`)
 
     // this.element.nativeElement.style.setProperty('--mycolor',`${this.color}`)
     // 
