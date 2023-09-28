@@ -1250,7 +1250,7 @@
                                             class="btn btn-primary- text-white level-badge-btn"
                                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                            (click)="GetRankingPopupData('My Team',1)" data-bs-toggle="modal"
+                                            (click)="GetRankingPopupData('My National Rank',1)" data-bs-toggle="modal"
                                             data-bs-target="#myTeamLeaderBoard">
                                             {{primary_rank}}
                                         </button>
@@ -1261,7 +1261,8 @@
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                             (click)="GetRankingPopupData('My Zone','')" data-bs-toggle="modal"
                                             data-bs-target="#myTeamLeaderBoard">
-                                            {{tl_team_rank}}
+                                            <!-- {{tl_team_rank}} -->
+                                            {{ZoneRankTL}}
 
                                         </button>
 
@@ -1271,9 +1272,10 @@
                                             class="btn btn-primary- text-white level-badge-btn"
                                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                            (click)="GetRankingPopupData('My National','')" data-bs-toggle="modal"
+                                            (click)="GetRankingPopupData('My Team','')" data-bs-toggle="modal"
                                             data-bs-target="#myTeamLeaderBoard">
-                                            {{tl_team_rank}}
+                                            <!-- {{tl_team_rank}} -->
+                                            {{ZoneRankTL}}
                                         </button>
 
                                         <br>
@@ -1435,19 +1437,15 @@
                                                             [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'"
                                                             (click)="navigateToBriefQuetion(triviaData)">
                                                             <div class="triviaBanner d-flex align-items-start mt-2 p-2">
-                                                                <!--                                                                     
-                                                                <div style="height:8vh;width:5vw;border-radius:5vh">
-                                                                    <img src="{{triviaData.brief_graphics}}"
-                                                                        alt="trivia_banner" height="100%"
-                                                                        width="100%">
-                                                                </div> -->
+                                                                
+                                                               
                                                                 <div
                                                                     *ngIf="triviaData?.brief_graphics?.split('.').pop()=='mp4';then mp4player">
                                                                 </div>
                                                                 <div
                                                                     *ngIf="triviaData?.brief_graphics?.split('.').pop() == 'png'||triviaData?.brief_graphics?.split('.').pop()=='gif'||triviaData?.brief_graphics?.split('.').pop()== 'jpg'||triviaData?.brief_graphics?.split('.').pop()=='jpeg';then imgplay ">
                                                                 </div>
-                                                                <div *ngIf="triviaData?.brief_graphics?.split('.').pop() == 'txt';then textImage"> 
+                                                                <div *ngIf="triviaData?.brief_graphics?.split('.').pop() == undefined;then textImage"> 
 
                                                             </div>
 
@@ -1469,7 +1467,7 @@
                                                                     </div>
                                                                 </ng-template>
                                                                 <ng-template #textImage>
-                                                                    <img  class="mt-2" src="assets/images/svg/notification/txt.png" alt="" height="47">
+                                                                    <img  class="" src="assets/images/svg/notification/txt.png" alt="" height="47">
                                                                 </ng-template>
                                                                 
 
@@ -1505,35 +1503,40 @@
                                                             style="border-radius:5px;font-family:'Inter';position:relative"
                                                             [style.background]="triviaData?.view_status=='Read'?'#ffff':'#F7E2AC'">
                                                             <div class="triviaBanner d-flex align-items-start mt-2 p-2">
-                                                                <!-- <div style="height:8vh;width:5vw;border-radius:5vh">
-                                                                    <img src="{{triviaData.brief_graphics}}"
-                                                                        alt="trivia_banner" height="100%"
-                                                                        width="100%">
-                                                                </div> -->
+                                                                
+                                                               
                                                                 <div
-                                                                    *ngIf="triviaData?.brief_graphics?.split('.')?.pop()=='mp4';then mp4player">
+                                                                    *ngIf="triviaData?.brief_graphics?.split('.').pop()=='mp4';then mp4player">
                                                                 </div>
                                                                 <div
-                                                                    *ngIf="triviaData?.brief_graphics?.split('.')?.pop() == 'png'||triviaData?.brief_graphics?.split('.')?.pop()=='gif'||triviaData?.brief_graphics?.split('.')?.pop()== 'jpg'||triviaData?.brief_graphics?.split('.').pop()=='jpeg';then imgplay">
+                                                                    *ngIf="triviaData?.brief_graphics?.split('.').pop() == 'png'||triviaData?.brief_graphics?.split('.').pop()=='gif'||triviaData?.brief_graphics?.split('.').pop()== 'jpg'||triviaData?.brief_graphics?.split('.').pop()=='jpeg';then imgplay ">
                                                                 </div>
+                                                                <div *ngIf="triviaData?.brief_graphics?.split('.').pop() == undefined;then textImage"> 
+
+                                                            </div>
 
                                                                 <ng-template #imgplay>
-                                                                    <div style="height:8vh;width:5vw;border-radius:5vh">
+                                                                    <div
+                                                                        style="height:8vh;width:100%;border-radius:5vh">
                                                                         <img src="assets/images/svg/notification/img.png"
                                                                             alt="trivia_banner" height="100%"
                                                                             width="100%">
                                                                     </div>
                                                                 </ng-template>
 
-
-
                                                                 <ng-template #mp4player>
-                                                                    <div style="height:8vh;width:5vw;border-radius:5vh">
+                                                                    <div
+                                                                        style="height:8vh;width:100%;border-radius:5vh">
                                                                         <img src="assets/images/svg/notification/v.png"
                                                                             alt="trivia_banner" height="100%"
                                                                             width="100%">
                                                                     </div>
                                                                 </ng-template>
+                                                                <ng-template #textImage>
+                                                                    <img  class="" src="assets/images/svg/notification/txt.png" alt="" height="47">
+                                                                </ng-template>
+                                                                
+
                                                             </div>
                                                             <div class="triviaDescription d-flex flex-column gap-3 p-1 mt-2"
                                                                 style="width:100%;min-height:15vh;">
@@ -2278,6 +2281,7 @@
                                             </div>
 
                                             <button class="btn text-white dashboard-banner-point-btn-mobile"
+                                                style="width: auto;min-width:15vw"
                                                 [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}"
                                                 [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
                                                 <span class="dashboard-banner-point-btn-text">
@@ -2327,6 +2331,7 @@
 
                                             <button
                                                 class="btn btn-primary- text-white text-center dashboard-banner-point-btn-mobile"
+                                                style="width: auto;min-width:15vw"
                                                 *ngIf="userSelectionData._personal_data.id_coroebus_organization!='213'"
                                                 [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}"
                                                 [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
@@ -2438,7 +2443,7 @@
                                             class="btn btn-primary- text-white level-badge-btn-mobile"
                                             [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                            (click)="GetRankingPopupData('My National',1)" data-bs-toggle="modal"
+                                            (click)="GetRankingPopupData('My National Rank',1)" data-bs-toggle="modal"
                                             data-bs-target="#myTeamLeaderBoard" style="font-size:2.7vw">
                                             {{primary_rank}}
                                         </button>
@@ -2448,7 +2453,9 @@
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                             (click)="GetRankingPopupData('My Zone','')" data-bs-toggle="modal"
                                             data-bs-target="#myTeamLeaderBoard" style="font-size:2.7vw">
-                                            {{tl_team_rank}}
+                                            <!-- {{tl_team_rank}} -->
+                                            {{ZoneRankTL}}
+
                                         </button>
 
 
@@ -2458,7 +2465,7 @@
                                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                             (click)="GetRankingPopupData('My Team','')" data-bs-toggle="modal"
                                             data-bs-target="#myTeamLeaderBoard" style="font-size:2.7vw">
-                                            {{tl_team_rank}}
+                                            {{ZoneRankTL}}
                                         </button>
 
                                         
@@ -2735,36 +2742,39 @@
                                                     [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'"
                                                     (click)="navigateToBriefQuetion(triviaData)">
                                                     <div class="triviaBanner d-flex align-items-start mt-2 p-2">
-                                                        <!--                                                                     
-                                                        <div style="height:8vh;width:5vw;border-radius:5vh">
-                                                            <img src="{{triviaData.brief_graphics}}"
-                                                                alt="trivia_banner" height="100%"
-                                                                width="100%">
-                                                        </div> -->
+                                                                
+                                                               
                                                         <div
-                                                            *ngIf="triviaData.brief_graphics?.split('.').pop()=='mp4';then mp4player;else ">
+                                                            *ngIf="triviaData?.brief_graphics?.split('.').pop()=='mp4';then mp4player">
                                                         </div>
                                                         <div
-                                                            *ngIf="triviaData.brief_graphics?.split('.').pop() == 'png'||triviaData.brief_graphics?.split('.').pop()=='gif'||triviaData?.brief_graphics?.split('.').pop()== 'jpg'||triviaData?.brief_graphics?.split('.').pop()=='jpeg';then imgplay">
+                                                            *ngIf="triviaData?.brief_graphics?.split('.').pop() == 'png'||triviaData?.brief_graphics?.split('.').pop()=='gif'||triviaData?.brief_graphics?.split('.').pop()== 'jpg'||triviaData?.brief_graphics?.split('.').pop()=='jpeg';then imgplay ">
                                                         </div>
+                                                        <div *ngIf="triviaData?.brief_graphics?.split('.').pop() == undefined;then textImage"> 
+
+                                                    </div>
 
                                                         <ng-template #imgplay>
-                                                            <div style="height:8vh;width:15vw;border-radius:5vh">
+                                                            <div
+                                                                style="height:8vh;width:100%;border-radius:5vh">
                                                                 <img src="assets/images/svg/notification/img.png"
-                                                                    alt="trivia_banner" height="100%" width="100%">
+                                                                    alt="trivia_banner" height="100%"
+                                                                    width="100%">
                                                             </div>
                                                         </ng-template>
-
-
 
                                                         <ng-template #mp4player>
-                                                            <div style="height:8vh;width:15vw;border-radius:5vh">
+                                                            <div
+                                                                style="height:8vh;width:100%;border-radius:5vh">
                                                                 <img src="assets/images/svg/notification/v.png"
-                                                                    alt="trivia_banner" height="100%" width="100%">
+                                                                    alt="trivia_banner" height="100%"
+                                                                    width="100%">
                                                             </div>
                                                         </ng-template>
-                                                      
-
+                                                        <ng-template #textImage>
+                                                            <img  class="" src="assets/images/svg/notification/txt.png" alt="" height="47">
+                                                        </ng-template>
+                                                        
 
                                                     </div>
                                                     <div class="triviaDescription d-flex flex-column gap-3 p-1 mt-2"
@@ -2799,35 +2809,39 @@
                                                     style="border-radius:5px;font-family:'Inter';position:relative"
                                                     [style.background]="triviaData.view_status=='Read'?'#ffff':'#F7E2AC'">
                                                     <div class="triviaBanner d-flex align-items-start mt-2 p-2">
-                                                        <!-- <div style="height:8vh;width:5vw;border-radius:5vh">
-                                                            <img src="{{triviaData.brief_graphics}}"
-                                                                alt="trivia_banner" height="100%"
-                                                                width="100%">
-                                                        </div> -->
+                                                                
+                                                               
                                                         <div
-                                                            *ngIf="triviaData.brief_graphics.split('.').pop()=='mp4';then mp4player">
+                                                            *ngIf="triviaData?.brief_graphics?.split('.').pop()=='mp4';then mp4player">
                                                         </div>
                                                         <div
-                                                            *ngIf="triviaData.brief_graphics.split('.').pop() == 'png'||triviaData.brief_graphics.split('.').pop()=='gif'||triviaData.brief_graphics.split('.').pop()== 'jpg'||triviaData.brief_graphics.split('.').pop()=='jpeg';then imgplay">
+                                                            *ngIf="triviaData?.brief_graphics?.split('.').pop() == 'png'||triviaData?.brief_graphics?.split('.').pop()=='gif'||triviaData?.brief_graphics?.split('.').pop()== 'jpg'||triviaData?.brief_graphics?.split('.').pop()=='jpeg';then imgplay ">
                                                         </div>
+                                                        <div *ngIf="triviaData?.brief_graphics?.split('.').pop() == undefined;then textImage"> 
+
+                                                    </div>
 
                                                         <ng-template #imgplay>
-                                                            <div style="height:8vh;width:15vw;border-radius:5vh">
+                                                            <div
+                                                                style="height:8vh;width:100%;border-radius:5vh">
                                                                 <img src="assets/images/svg/notification/img.png"
-                                                                    alt="trivia_banner" height="100%" width="100%">
+                                                                    alt="trivia_banner" height="100%"
+                                                                    width="100%">
                                                             </div>
                                                         </ng-template>
-
-
 
                                                         <ng-template #mp4player>
-                                                            <div style="height:8vh;width:15vw;border-radius:5vh">
+                                                            <div
+                                                                style="height:8vh;width:100%;border-radius:5vh">
                                                                 <img src="assets/images/svg/notification/v.png"
-                                                                    alt="trivia_banner" height="100%" width="100%">
+                                                                    alt="trivia_banner" height="100%"
+                                                                    width="100%">
                                                             </div>
                                                         </ng-template>
-
-
+                                                        <ng-template #textImage>
+                                                            <img  class="" src="assets/images/svg/notification/txt.png" alt="" height="47">
+                                                        </ng-template>
+                                                        
 
                                                     </div>
                                                     <div class="triviaDescription d-flex flex-column gap-3 p-1 mt-2"
@@ -4176,7 +4190,7 @@
             </div>
             <div class="modal-body">
                 <mat-tab-group [selectedIndex]="selectedIndex">
-                    {{titleTab |json}}
+                    
                     <mat-tab [label]="titleTab">
                         <div class="row rank_label popup mt-2">
                             <div class="col-3">Rank</div>
@@ -4357,77 +4371,136 @@
                         </div>
 
                     </mat-tab>
-                    <mat-tab label="My Overall Rank">
-                        <div class="row rank_label mt-2">
-                            <div class="col-3">Rank</div>
-
-                            <div class="col-4">Name</div>
-
-                            <div class="col points_header">Points</div>
-
-                        </div>
-                        <div *ngIf="sectionView_1?._personal_data?.id_role!=='6';then notForPlayer else forPlayer"></div>
-                        <ng-template #notForPlayer>
-                            <div>
-
-                                <!-- <div *ngFor="let item of sectionView_3_list_popup?.[0]?._Overall && sectionView_3_list_popup?.[0]?._Overall.length>0">
-                                    <div class="row leaderBoard_tile mt-2 "
-                                        *ngIf="item.userid==this.sectionView_1._personal_data.USERID"
-                                        style="background:url('{{item.ranking_image_web}}');font-size:0.7em">
+                    <div *ngIf="hideTab==true;then secondTab"></div>
+                    <ng-template #secondTab>
+                        <mat-tab [label]="titleTabSecond" >
+                            <div class="row rank_label mt-2">
+                                <div class="col-3">Rank</div>
     
-                                        <div class="col-1">&nbsp;&nbsp;&nbsp;{{item.rankingtable_number}}</div>
+                                <div class="col-4">Name</div>
     
-                                        <div class="col-2">
-                                            <div class="col-2" style="height:5vh;width:5vh">
-                                                <img src="{{item.rankingtable_logo}}" height="100%" width="100%" alt=""
-                                                    style="border-radius:50%">
-                                            </div>
+                                <div class="col points_header">Points</div>
     
-                                        </div>
-                                        <div class="col-4 text-center" class="userName_mobile">{{item.rankingtable_name}}
-                                        </div>
-                                        <div class="col-2">
-                                            <div style="height:5vh;width:5vh">
-                                                <img src="{{item.ranking_badge}}" alt="" data-holder-rendered="true"
-                                                    height="100%" width="100%">
-                                            </div>
-                                        </div>
-                                        <div class="col-2 text-center">{{item?.rankingtable_weightage}}</div>
-                                        <div class="col d-flex justify-content-end pe-3">
-    
-                                            <div style="height:5.5vh;width:3.2vh" *ngIf="item.rankingtable_arrow=='green'">
-    
-                                                <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
-                                                    height="100%">
-                                            </div>
-    
-                                            <div *ngIf="item.rankingtable_arrow=='red'" style="height:5.5vh;">
-    
-                                                <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
-                                                    height="100%">
-    
-                                            </div>
-                                            <div *ngIf="item.rankingtable_arrow=='yellow'"
-                                                style="height:5.5vh;width: 5.5vh;display:flex;justify-content:center;align-items: center;">
-    
-                                                <div
-                                                    style="height: 2.8vh;width:2.8vh;border-radius:100%;background-color:orange ;">
-                                                </div>
-    
-    
-                                            </div>
-                                        </div>
-                                    </div>
-    
-                                </div> -->
                             </div>
-                        </ng-template>
-                        <ng-template #forPlayer>
-                            <div >
-                                <!-- <div *ngFor="let item of sectionView_2_popup?._ranking_data[0]._Overall">
+                            <div *ngIf="sectionView_1?._personal_data?.id_role!=='6';then notForPlayer else forPlayer"></div>
+                            <ng-template #notForPlayer>
+                              
+
+                                <div>
+                                    <div *ngFor="let item of sectionView_3_list_popup?.[0]?._Overall ">
+                                        <div class="row leaderBoard_tile mt-2 "
+                                            *ngIf="item?.userid==this.sectionView_1?._personal_data?.USERID"
+                                            style="background:url('{{item.ranking_image_web}}');font-size:0.7em">
+        
+                                            <div class="col-1">&nbsp;&nbsp;&nbsp;{{item.rankingtable_number}}</div>
+                                            
+                                            <div class="col-2">
+                                                <div class="col-2" style="height:5vh;width:5vh">
+                                                    <img src="{{item.rankingtable_logo}}" height="100%" width="100%" alt=""
+                                                        style="border-radius:50%">
+                                                </div>
+        
+                                            </div>
+                                            <div class="col-4 text-center" class="userName_mobile">{{item.rankingtable_name}}
+                                            </div>
+                                            <div class="col-2">
+                                                <div style="height:5vh;width:5vh">
+                                                    <img src="{{item.ranking_badge}}" alt="" data-holder-rendered="true"
+                                                        height="100%" width="100%">
+                                                </div>
+                                            </div>
+                                            <div class="col-2 text-center">{{item?.rankingtable_weightage}}</div>
+                                            <div class="col d-flex justify-content-end pe-3">
+        
+                                                <div style="height:5.5vh;width:3.2vh" *ngIf="item.rankingtable_arrow=='green'">
+        
+                                                    <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                                        height="100%">
+                                                </div>
+        
+                                                <div *ngIf="item.rankingtable_arrow=='red'" style="height:5.5vh;">
+        
+                                                    <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                        height="100%">
+        
+                                                </div>
+                                                <div *ngIf="item.rankingtable_arrow=='yellow'"
+                                                    style="height:5.5vh;width: 5.5vh;display:flex;justify-content:center;align-items: center;">
+        
+                                                    <div
+                                                        style="height: 2.8vh;width:2.8vh;border-radius:100%;background-color:orange ;">
+                                                    </div>
+        
+        
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <ng-template #forPlayer>
+                                <div >
+                                    <div *ngFor="let item of sectionView_2_popup?._ranking_data[0]._Overall">
+                                        <div class="row leaderBoard_tile mt-2 "
+                                            *ngIf="item?.userid==this.sectionView_1?._personal_data.USERID"
+                                            style="background:url('{{item.ranking_image_web}}');font-size:0.7em">
+        
+                                            <div class="col-1">&nbsp;&nbsp;&nbsp;{{item?.rankingtable_number}}</div>
+        
+                                            <div class="col-2">
+                                                <div class="col-2" style="height:5vh;width:5vh">
+                                                    <img src="{{item.rankingtable_logo}}" height="100%" width="100%" alt=""
+                                                        style="border-radius:50%">
+                                                </div>
+        
+                                            </div>
+                                            <div class="col-4" class="userName_mobile">{{item?.rankingtable_name}}</div>
+                                            <div class="col-2">
+                                                <div style="height:5vh;width:5vh">
+                                                    <img src="{{item.ranking_badge}}" alt="" data-holder-rendered="true"
+                                                        height="100%" width="100%">
+                                                </div>
+                                            </div>
+                                            <div class="col-2 text-center">{{item?.rankingtable_weightage}}</div>
+                                            <div class="col d-flex justify-content-end pe-3">
+        
+                                                <div style="height:5.5vh;" *ngIf="item?.rankingtable_arrow=='green'">
+        
+                                                    <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
+                                                        height="100%">
+                                                </div>
+        
+                                                <div *ngIf="item?.rankingtable_arrow=='red'" style="height:5.5vh;">
+        
+                                                    <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
+                                                        height="100%">
+        
+                                                </div>
+                                                <div *ngIf="item?.rankingtable_arrow=='yellow'"
+                                                    style="height:5.5vh;width: 5.5vh;display:flex;justify-content:center;align-items: center;">
+        
+                                                    <div
+                                                        style="height: 2.8vh;width:2.8vh;border-radius:100%;background-color:orange ;">
+                                                    </div>
+        
+        
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                    </div>
+        
+                                </div>
+                            </ng-template>
+                            
+                            
+    
+                            <div class="leaderboard_container">
+                                <div *ngFor="let item of sectionView_3_list_popup?.[0]?._Overall">
                                     <div class="row leaderBoard_tile mt-2 "
-                                        *ngIf="item?.userid==this.sectionView_1?._personal_data.USERID"
-                                        style="background:url('{{item.ranking_image_web}}');font-size:0.7em">
+                                        *ngIf="item.userid!=this.sectionView_1?._personal_data?.USERID"
+                                        style="background:url('{{item.ranking_image_web}}')">
     
                                         <div class="col-1">&nbsp;&nbsp;&nbsp;{{item?.rankingtable_number}}</div>
     
@@ -4446,7 +4519,7 @@
                                             </div>
                                         </div>
                                         <div class="col-2 text-center">{{item?.rankingtable_weightage}}</div>
-                                        <div class="col d-flex justify-content-end pe-3">
+                                        <div class="col d-flex justify-content-end">
     
                                             <div style="height:5.5vh;" *ngIf="item?.rankingtable_arrow=='green'">
     
@@ -4454,12 +4527,13 @@
                                                     height="100%">
                                             </div>
     
-                                            <div *ngIf="item?.rankingtable_arrow=='red'" style="height:5.5vh;">
+                                            <div *ngIf="item?.rankingtable_arrow=='red' " style="height:5.5vh;">
     
                                                 <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
                                                     height="100%">
     
                                             </div>
+    
                                             <div *ngIf="item?.rankingtable_arrow=='yellow'"
                                                 style="height:5.5vh;width: 5.5vh;display:flex;justify-content:center;align-items: center;">
     
@@ -4471,66 +4545,11 @@
                                             </div>
                                         </div>
                                     </div>
-    
-                                </div>
-     -->
-                            </div>
-                        </ng-template>
-                        
-                        
-
-                        <div class="leaderboard_container">
-                            <div *ngFor="let item of sectionView_3_list_popup?.[0]?._Overall">
-                                <div class="row leaderBoard_tile mt-2 "
-                                    *ngIf="item.userid!=this.sectionView_1?._personal_data?.USERID"
-                                    style="background:url('{{item.ranking_image_web}}')">
-
-                                    <div class="col-1">&nbsp;&nbsp;&nbsp;{{item?.rankingtable_number}}</div>
-
-                                    <div class="col-2">
-                                        <div class="col-2" style="height:5vh;width:5vh">
-                                            <img src="{{item.rankingtable_logo}}" height="100%" width="100%" alt=""
-                                                style="border-radius:50%">
-                                        </div>
-
-                                    </div>
-                                    <div class="col-4" class="userName_mobile">{{item?.rankingtable_name}}</div>
-                                    <div class="col-2">
-                                        <div style="height:5vh;width:5vh">
-                                            <img src="{{item.ranking_badge}}" alt="" data-holder-rendered="true"
-                                                height="100%" width="100%">
-                                        </div>
-                                    </div>
-                                    <div class="col-2 text-center">{{item?.rankingtable_weightage}}</div>
-                                    <div class="col d-flex justify-content-end">
-
-                                        <div style="height:5.5vh;" *ngIf="item?.rankingtable_arrow=='green'">
-
-                                            <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
-                                                height="100%">
-                                        </div>
-
-                                        <div *ngIf="item?.rankingtable_arrow=='red' " style="height:5.5vh;">
-
-                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
-                                                height="100%">
-
-                                        </div>
-
-                                        <div *ngIf="item?.rankingtable_arrow=='yellow'"
-                                            style="height:5.5vh;width: 5.5vh;display:flex;justify-content:center;align-items: center;">
-
-                                            <div
-                                                style="height: 2.8vh;width:2.8vh;border-radius:100%;background-color:orange ;">
-                                            </div>
-
-
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </mat-tab>
+                        </mat-tab>
+                    </ng-template>
+                    
 
                 </mat-tab-group>
 

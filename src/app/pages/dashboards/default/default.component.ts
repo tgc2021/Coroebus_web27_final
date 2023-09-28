@@ -49,6 +49,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   additionOfBadgesScore: number;
   hideTab: boolean = true;
   titleTab: any;
+  titleTabSecond:any;
   my_rank: any;
   levelwise:any=5;
   sectionView_2_Indexwise: any;
@@ -116,6 +117,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   dataForIdGroup: any
   idGroup: any;
   groupID: string;
+  ZoneRankTL: any;
   dismiss() {
     throw new Error("Method not implemented.");
   }
@@ -502,8 +504,15 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     this.selectedIndex = number;
     if (this.selectedIndex == 0) {
       this.titleTab = "My Zone";
+      if(this.titleTab="My Zone"){
+        this.selectedIndex=0;
+        this.hideTab=true;
+        this.titleTabSecond='My National Rank'
+      }
     } else {
-      this.titleTab = "My Team";
+      this.titleTab = "My Zone";
+      this.titleTabSecond='My National Rank'
+      this.hideTab=true;
     }
     let body = {
       _userid: this.userSelectionData?._personal_data?.USERID,
@@ -522,7 +531,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       
             if (this.sectionView_3_popup && this.sectionView_3_popup._ranking_data) {
               
-      
+             
               this.sectionView_3_list_popup = this.sectionView_3_popup._ranking_data.filter(
                 (data: any) => data?.order === this.activeTabForSectionView_2
               );
@@ -552,6 +561,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
        
         this.MyZoneRank =
           this.section_view_res.data?._ranking_data[0]?._data[0]?.rankingtable_number;
+          
         this.MyOverallRank =
           this.section_view_res?.data?._ranking_data[0]?._Overall[0]?.rankingtable_number;
   
@@ -833,6 +843,10 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     // setTimeout(() => {
       this.changeSubTabFilter("Overall");
       this.changeSubTabFilterIndex("Overall");
+      setTimeout(()=>{
+        this.GetRankingPopupData('','')
+      },1000)
+      
 
       // this.changeTabFilter('', this.activeTabForSectionView_2=[0] )
     // }, 3000);
@@ -1032,6 +1046,7 @@ if (this.levelwise===3) {
     if (title == "My Team") {
       this.hideTab = false;
       this.titleTab = "My Team";
+      
     }
     if (title == "My Zone") {
       this.hideTab = true;
@@ -1097,14 +1112,31 @@ if (this.levelwise===3) {
       this.sectionView_3_popup = res?.data;
 
       // this.filterRankingData()
+      this.sectionView_3_popup?._ranking_data[0]?._data.filter((res)=>{
+        console.log(res?.userid);
+        if(res?.userid==this.sectionView_1?._personal_data?.USERID){
+          
+          this.ZoneRankTL=res?.rankingtable_number;
+        }
+      });
+    
 
       this.sectionView_3_list_popup =
         this.sectionView_3_popup?._ranking_data?.filter((data) => {
-          //
+
+
+         
           if (data?.order === this.activeTabForSectionView_2) {
+
+           
+           
             return data;
+            
           }
+         
+        
         });
+      
        
       //
     } else {
@@ -1128,6 +1160,8 @@ if (this.levelwise===3) {
           this.sectionView_2_popup?._ranking_data[0]?._data[0]?.rankingtable_number;
   
         if (this.userSelectionData?._personal_data?.id_role == "4") {
+          
+          
           this.MyZoneRank =
             this.sectionView_2_popup?._ranking_data[0]?._data[0]?.rankingtable_number;
           this.MyOverallRank =

@@ -220,7 +220,6 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
           this.isInteractiveOn = this.interactive_dashoard_response?.data?._personal_data?.interactive_flag;
           if (this.interactive_dashoard_response?.data.is_about_game == 1) {
             this.about_game_pdf = this.interactive_dashoard_response?.data?.about_game[0]?.file_name
-
             localStorage.setItem('about_game_pdf', this.about_game_pdf)
           }
 
@@ -264,7 +263,7 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
 
 
 
-          this.interactive_dashoard_points = this.interactive_dashoard_response[0]?.data._points[2].score
+          this.interactive_dashoard_points = this.interactive_dashoard_response[0]?.data._points[2]?.score
 
 
           localStorage.setItem('reward_points', this.interactive_dashoard_points);

@@ -1086,6 +1086,7 @@ this.spectSearchStr=''
     };
     [err1, res1] = await HttpProtocols.to(DashboardModel.getCenterDataSectionView_2(body1))
     if (!err1 && res1?.status === 'success' && res1?.statuscode === 200) {
+      
       this.sectionView2ResponsePopup=res1?.data?._ranking_data;
       this.activeTabOrderNumberForSectionView_2 = res1?.data?._ranking_data?.[event].order
       
@@ -1147,12 +1148,7 @@ this.spectSearchStr=''
       } else {
         this.sectionView_3_err = 'Please try after some time'
       }
-  
-
-
     }
-      
-
     else {
       this.sectionView_2_err = 'Please try after some time'
     }
@@ -1326,7 +1322,6 @@ this.spectSearchStr=''
     
     this.GetIndexWisePopup(this.activeTabOrderNumberForSectionView_2-1)
 
-    
 
 }
   getDataBasedOnUserIDVIAhierarchyPopupList(data: any, modal: any) {
