@@ -7,16 +7,16 @@ export class InactivityService {
   private inactivityTimer: any;
   constructor() { }
   startInactivityTimer() {
-    this.inactivityTimer = setTimeout(() => {
+    // this.inactivityTimer = setTimeout(() => {
       
-      document.body.classList.remove('dashboard-bg-image');
-      document.body.style.backgroundImage = "url('')"
-      localStorage.clear()
+    //   document.body.classList.remove('dashboard-bg-image');
+    //   document.body.style.backgroundImage = "url('')"
+    //   localStorage.clear()
    
-      location.reload()
-      location.href = '#/account/login';
-      console.log('User has been inactive for 10 minutes. Logging out...');
-    },  10*60 * 1000); // 10 minutes
+    //   location.reload()
+    //   location.href = '#/account/login';
+    //   console.log('User has been inactive for 10 minutes. Logging out...');
+    // },  10*60 * 1000); // 10 minutes
   }
 
   // Reset the inactivity timer on user interaction

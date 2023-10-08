@@ -252,7 +252,7 @@ ModalHeading.ok_button {
   .inner_content_daily1 {
     font-weight: 600;
     font-family: "Inter";
-    font-size: 0.7em;
+    font-size: 1.6vh;
     // height: 5vh;
     display: flex;
     align-items: center;
@@ -2326,6 +2326,10 @@ ModalHeading.ok_button {
     .points_header {
       margin-left: 3vw;
     }
+    .new_popup_heading{
+      left:40%;
+
+    }
     // .badges_row{
     //   margin-left: -4%;
     // }
@@ -2375,8 +2379,9 @@ ModalHeading.ok_button {
     height: 50px;
     background-color: #00c0f3;
   }
+
   
-  //New Modal CSS
+  //New Modal CSS Categorywise Campaign Setup
   .modal-header-container {
     // margin-top: -13%;
     position: absolute;
@@ -2397,6 +2402,7 @@ ModalHeading.ok_button {
     font-family: Inter;
     font-size: 2em;
     font-style: normal;
+    padding: 10px;
     font-weight: 700;
     line-height: 150%;
     text-shadow: 3px 3px #232323;
@@ -2427,9 +2433,14 @@ ModalHeading.ok_button {
     font-size: 1.6em;
     font-family: "Inter";
     font-weight: 600;
+    display: flex;
+    justify-content: center;
     position: absolute;
-    top: 16%;
+    top: 13%;
     left: 60%;
+  }
+  .headline2{
+    margin-top:1vh;
   }
   .achievement_button,
   .Qualifiers_button {
@@ -2462,7 +2473,8 @@ ModalHeading.ok_button {
     font-weight: 700;
   }
   .new-cotainer-popup {
-    min-height: 15vh;
+    height: 20vh;
+    overflow-y: auto;
     width: 97%;
     background: #e1a674;
     border: 2px solid #fabf03;
@@ -2483,6 +2495,7 @@ ModalHeading.ok_button {
     box-shadow: 5px 5px 10px 0px rgba(166, 180, 200, 0.75) inset,
       -5px -5px 15px 0px rgba(255, 255, 255, 0.75) inset;
   }
+ 
   ::ng-deep {
     .modal-content {
         border-radius: 0 !important;

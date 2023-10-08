@@ -33,6 +33,7 @@ export class TopbarComponent implements OnInit, OnDestroy {
   id_coroebus_org: string;
   buisness_head_response: any;
   buisness_head_response_: any;
+  pageInfo: any;
   constructor(public http: ApiserviceService, @Inject(DOCUMENT) private document: any, private router: Router,
     public languageService: LanguageService,
     public translate: TranslateService,
@@ -62,7 +63,17 @@ export class TopbarComponent implements OnInit, OnDestroy {
   top_toolbar_logo:any
   topbar_color:any
   Org_logo:any
+  isinM2ostPlatform:boolean=false;
   ngOnInit() {
+    this.pageInfo = localStorage.getItem('page');
+    console.log(this.pageInfo);
+
+    if (this.pageInfo == "undefined") {
+     this.isinM2ostPlatform=true;
+    } else {
+      console.log('pageInfo is undefined. Not reloading the page.');
+    }
+  
   
     this.topbar_color= localStorage.getItem('topbar_color')
     // console.log(this.topbar_color);
@@ -136,7 +147,15 @@ export class TopbarComponent implements OnInit, OnDestroy {
 
     }
     else if(this.id_role == 6 || this.id_role == 4 || this.id_role == 3 || this.id_role == 10){
-      this.router.navigateByUrl('account/interactive-dashboard')
+      if(this.isinM2ostPlatform){
+        this.router.navigateByUrl('account/interactive-dashboard');
+      }
+      else {
+
+        
+        window.open('https://www.m2ost.in/m2ostconsole/Dashboard/Index')
+      }
+     
 
     }
 

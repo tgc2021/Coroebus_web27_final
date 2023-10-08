@@ -249,14 +249,8 @@
                                             </div>
 
                                         </div>
-
-
-
-
                                     </div>
                                     <div class="d-flex justify-content-end">
-
-
                                         <div class="web_daily_div d-flex justify-content-end align-items-center">
                                             <button class="web-daily-btn"
                                                 [style.background]="themeDetails?.weekly_color"
@@ -266,11 +260,9 @@
                                                     style="background: linear-gradient(180deg, #FFF 0%, #FFF 7.01%, rgba(255, 255, 255, 0.00) 30.36%, rgba(59, 59, 59, 0.00) 73.08%, rgba(0, 0, 0, 0.30) 100%);">
                                                     <div class="btn-text-daily"
                                                         [ngClass]="themeDetails?.weekly_text.length>=17?'lengthy_text':'Small_text'">
-
                                                         {{themeDetails?.weekly_text}}
                                                     </div>
-                                                    <div
-                                                        style="height:3vh;width: 3vh;border-radius: 100%;text-align:end">
+                                                    <div style="height:3vh;width: 3vh;border-radius: 100%;text-align:end">
                                                         <img src="{{themeDetails?.arrow_icon}}" alt="" height="100%"
                                                             width="100%">
                                                     </div>
@@ -1707,7 +1699,7 @@
                     <div
                         *ngIf="this.seasonalThemeDaily1==undefined ||this.seasonalThemeDaily1?.length==0;then NoDataDaily else dataForDaily">
                     </div>
-                    <!-- <div *ngIf="this.seasonalThemeDaily.length==0;then NoDataDaily else dataForDaily"></div> -->
+                    
 
                     <ng-template #dataForDaily>
                         <div class="modal-body">
@@ -1761,9 +1753,9 @@
 
                                     <div class="d-flex" style="position:relative;width:90%;min-height:9vh;height:auto">
                                         <div class="badges_row"
-                                            *ngFor="let seasonalThemeDailyBadges1 of seasonalThemeDailyBadges1 ">
-
-                                            <div class="d-flex flex-column" style="position:absolute"
+                                            *ngFor="let seasonalThemeDailyBadges1 of seasonalThemeDailyBadges1">
+                                           
+                                                <div class="d-flex flex-column" style="position:absolute"
                                                 [style.margin-left.%]="((seasonalThemeDailyBadges1?.seasonal_score_target)/(lastArrayseasonalThemeDailyBadges2?.seasonal_score_target))*100">
 
                                                 <div style="height:6vh;width:6vh;border-radius:50%"
@@ -1774,7 +1766,9 @@
                                                 <div class="d-flex justify-content-center">
                                                     <div style="height:3vh;border-left: 2px solid #8EC912;"></div>
                                                 </div>
+                                            
                                             </div>
+                                            
 
 
                                         </div>
@@ -1851,6 +1845,12 @@
             </div>
         </div>
     </div>
+
+    <!-- CategoryWise Campaign For Daily -->
+    <!-- <div class="DailyCategoryCampaign">
+
+    </div> -->
+    
 </ng-template>
 
 <div *ngIf="isWeeklyModalOpen  ;then weekly"></div>
@@ -2172,7 +2172,7 @@
     <div class="modal fade" id="BoosterModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered ">
-            <div class="modal-content">
+            <div class="modal-content" style="background:transparent !important">
                 <div class="d-flex justify-content-end">
                     <button type="button" class="booster_btn_close" data-bs-dismiss="modal"
                         aria-label="Close">X</button>

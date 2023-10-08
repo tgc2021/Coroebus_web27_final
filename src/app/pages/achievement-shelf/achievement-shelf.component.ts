@@ -27,6 +27,7 @@ import { NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
 
 export class AchievementShelfComponent implements OnInit {
   myDate = new Date();
+  pageInfo: any;
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -59,11 +60,18 @@ export class AchievementShelfComponent implements OnInit {
   showCombo: any= []
   ngOnInit(): void {
 
-    if (!localStorage.getItem('foo')) { 
-      localStorage.setItem('foo', 'no reload') 
-      location.reload() 
-    } else {
-      localStorage.removeItem('foo') 
+    this.pageInfo = localStorage.getItem('page');
+    console.log(this.pageInfo);
+    if(this.pageInfo!="undefined"){
+      setTimeout(()=>{
+        if (!localStorage.getItem('foo')) { 
+          localStorage.setItem('foo', 'no reload') 
+          location.reload() 
+        } else {
+          localStorage.removeItem('foo') 
+        }
+      },2000)
+      
     }
 
  

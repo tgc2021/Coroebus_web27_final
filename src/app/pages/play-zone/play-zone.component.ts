@@ -77,6 +77,7 @@ export class PlayZoneComponent implements OnInit {
   cubeBlastersUrl: string;
   id_role: any;
   tgcToolBoxUrl: string;
+  pageInfo: any;
 
   constructor(private http: ApiserviceService, private readonly store: Store, public modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -90,13 +91,19 @@ export class PlayZoneComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // if (!localStorage.getItem('foo')) { 
-    //   localStorage.setItem('foo', 'no reload') 
-    //   location.reload() 
-    // } else {
-    //   localStorage.removeItem('foo') 
-    // }
-
+    this.pageInfo = localStorage.getItem('page');
+    console.log(this.pageInfo);
+    if(this.pageInfo!="undefined"){
+      setTimeout(()=>{
+        if (!localStorage.getItem('foo')) { 
+          localStorage.setItem('foo', 'no reload') 
+          location.reload() 
+        } else {
+          localStorage.removeItem('foo') 
+        }
+      },2000)
+      
+    }
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
     ).subscribe(data => {

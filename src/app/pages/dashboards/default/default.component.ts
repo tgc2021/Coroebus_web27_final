@@ -118,6 +118,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   idGroup: any;
   groupID: string;
   ZoneRankTL: any;
+  pageInfo: string;
   dismiss() {
     throw new Error("Method not implemented.");
   }
@@ -349,7 +350,19 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   // }
 
   ngOnInit() {
-   
+    // this.pageInfo = localStorage.getItem('page');
+    // console.log(this.pageInfo);
+    // if(this.pageInfo!="undefined"){
+    //   setTimeout(()=>{
+    //     if (!localStorage.getItem('foo')) { 
+    //       localStorage.setItem('foo', 'no reload') 
+    //       location.reload() 
+    //     } else {
+    //       localStorage.removeItem('foo') 
+    //     }
+    //   },2000)
+      
+    // }
 
     this.daily_text = localStorage.getItem("daily_text");
     this.weekly_text = localStorage.getItem("weekly_text");
@@ -372,7 +385,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.activeTab();
     this.Edit_image();
-    //  this.changeTabFilter('citizen',2)
+    // this.changeTabFilter('',2)
 
     this.combineLatest = combineLatest([
       this.store.select(fromRoot.userLogin),
@@ -428,7 +441,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
           this.getUserBannerDataSectionView_1(queryParams);
           this.getUserBannerDataSectionView_2(queryParams);
           this.getUserBannerDataSectionView_3(null, queryParams);
-          this.overallPopup("");
+          this.overallPopup('');
+          
           this.GetRankingPopupData("", "");
           this.GetDataFromProduceInfo(queryParams);
           // this.navigateToStatistics(queryParams)
@@ -441,7 +455,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
           this.getUserBannerDataSectionView_2();
           this.getUserBannerDataSectionView_3();
-          this.overallPopup("");
+          this.overallPopup('');
           this.GetDataFromProduceInfo();
           this.GetRankingPopupData("", "");
 
@@ -500,19 +514,27 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     //
   }
 
-  overallPopup(number: any) {
-    this.selectedIndex = number;
-    if (this.selectedIndex == 0) {
+  overallPopup(title:any) {
+    console.log('Overall popup title',title);
+    
+    if (title == "My Team") {
+      this.hideTab = false;
+      this.titleTab = "My Team";
+      
+      this.selectedIndex = 0;
+      
+    }
+    else if (title == "Zonal Rank") {
+      this.hideTab = true;
       this.titleTab = "My Zone";
-      if(this.titleTab="My Zone"){
-        this.selectedIndex=0;
-        this.hideTab=true;
-        this.titleTabSecond='My National Rank'
-      }
-    } else {
+      this.titleTabSecond="My National Rank"
+      this.selectedIndex = 0;
+    }
+    else if (title == "My National Rank") {
+      this.hideTab = true;
       this.titleTab = "My Zone";
-      this.titleTabSecond='My National Rank'
-      this.hideTab=true;
+      this.titleTabSecond="My National Rank"
+      this.selectedIndex = 1;
     }
     let body = {
       _userid: this.userSelectionData?._personal_data?.USERID,
@@ -843,9 +865,14 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     // setTimeout(() => {
       this.changeSubTabFilter("Overall");
       this.changeSubTabFilterIndex("Overall");
-      setTimeout(()=>{
-        this.GetRankingPopupData('','')
-      },1000)
+      // if(this.se)
+      if(this.userSelectionData?._personal_data?.id_coroebus_organization=="61"){
+        setTimeout(()=>{
+          this.GetRankingPopupData('','')
+          console.log('Rerun this Project')
+        },1000)
+      }
+     
       
 
       // this.changeTabFilter('', this.activeTabForSectionView_2=[0] )
@@ -1040,27 +1067,35 @@ if (this.levelwise===3) {
 
   async GetRankingPopupData(title: any, num: any) {
    
-
+    console.log("title from Get Ranking Popup", title);
  
 
     if (title == "My Team") {
       this.hideTab = false;
       this.titleTab = "My Team";
+      this.titleTabSecond="My National Rank"
+      this.selectedIndex = 0;
       
     }
-    if (title == "My Zone") {
+    else if (title == "My Zone") {
       this.hideTab = true;
       this.titleTab = "My Zone";
-    }
-    if (title == "My National") {
-      this.hideTab = true;
-      this.titleTab = "My National";
-    }
-    if (num == 1) {
-      this.selectedIndex = 1;
-    } else {
+      this.titleTabSecond="My National Rank"
+      
       this.selectedIndex = 0;
     }
+    else if (title == "My National Rank") {
+      this.hideTab = true;
+      this.titleTab = "My Zone";
+      
+      this.titleTabSecond="My National Rank"
+      this.selectedIndex = 1;
+    }
+    // if (num == 1) {
+    //   this.selectedIndex = 1;
+    // } else {
+    //   this.selectedIndex = 0;
+    // }
    
     // this.selectedIndex=0;
 
@@ -1112,6 +1147,7 @@ if (this.levelwise===3) {
       this.sectionView_3_popup = res?.data;
 
       // this.filterRankingData()
+     
       this.sectionView_3_popup?._ranking_data[0]?._data.filter((res)=>{
         console.log(res?.userid);
         if(res?.userid==this.sectionView_1?._personal_data?.USERID){
@@ -1511,13 +1547,13 @@ if (this.levelwise===3) {
   
         let roleIndex = 0;
   
-        switch (roleID) {
-          case "4": roleIndex = 1; break;
-          case "3": roleIndex = 2; break;
-          case "8": roleIndex = 3; break;
-          // Add more cases for other role IDs if needed
-          default: roleIndex = 0; break;
-        }
+        // switch (roleID) {
+        //   case "5": roleIndex = 1; break;
+        //   case "3": roleIndex = 2; break;
+        //   case "8": roleIndex = 3; break;
+        //   // Add more cases for other role IDs if needed
+        //   default: roleIndex = 0; break;
+        // }
   
         this.activeTabForSectionView_2 = this.sectionView_2._ranking_data[roleIndex].order;
         this.activeTabOrderNumberForSectionView_2 = this.activeTabForSectionView_2;
@@ -1688,6 +1724,7 @@ if (this.levelwise===3) {
     }
   
     this.activeTabOrderNumberForSectionView_2 = order;
+    
   
     this.activeSubTabForSectionView_2 = "My Store";
   
@@ -2135,6 +2172,8 @@ if (this.levelwise===3) {
   }
   getDataBasedOnUserID(data: any) {
     this.spectSearchStr = "";
+  
+  
     this.role_id = data?.role_id.toString();
     
     this.Edit_image();
@@ -2296,6 +2335,7 @@ if (this.levelwise===3) {
   }
   navigateToOtherRole(item) {
     console.log(item);
+    
     this.spectSearchStr = "";
     this.activeSubTabForSectionView_2 = "Overall";
     this.activeSubTabForSectionView_2_index = "Overall";

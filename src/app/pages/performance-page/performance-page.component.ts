@@ -56,6 +56,7 @@ export class PerformancePageComponent implements OnInit {
   dropDownFilterData: any
   dropDownValue: any
   id_role: any;
+  pageInfo: string;
   constructor(private readonly store: Store ,private graph:DefaultComponent,public Util: Util, private _route: ActivatedRoute,public http:ApiserviceService) {
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
@@ -90,12 +91,19 @@ export class PerformancePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // if (!localStorage.getItem('foo')) { 
-    //   localStorage.setItem('foo', 'no reload') 
-    //   location.reload() 
-    // } else {
-    //   localStorage.removeItem('foo') 
-    // }
+    this.pageInfo = localStorage.getItem('page');
+    console.log(this.pageInfo);
+    if(this.pageInfo!="undefined"){
+      setTimeout(()=>{
+        if (!localStorage.getItem('foo')) { 
+          localStorage.setItem('foo', 'no reload') 
+          location.reload() 
+        } else {
+          localStorage.removeItem('foo') 
+        }
+      },2000)
+      
+    }
 
     this._routeSub = this._route.queryParams.subscribe(queryParams => {
       // do something with the query params

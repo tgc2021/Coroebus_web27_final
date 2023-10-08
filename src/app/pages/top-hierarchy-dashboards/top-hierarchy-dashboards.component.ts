@@ -1155,12 +1155,16 @@ this.spectSearchStr=''
      
    }
    async openKpiInfo(event) {
+    console.log(this.userSelectionData)
+
     this.selectedIndex=0;
 // API CALL FOR GET GROUP ID
      let body = {
-      "_userid": this.sectionView_1?.is_land_logos[0]?._userid,
-      "_game": this.sectionView_1?.is_land_logos[0]?.game_id, "_section_view": "3", "page_number": this.pageNumberForSectionView_3
+      "_userid": this.userSelectionData?._personal_data?.USERID,
+      "_game": this.userSelectionData?.id_coroebus_game, "_section_view": "3", "page_number": this.pageNumberForSectionView_3
     };
+   
+    
   
     let err: any, res: any; 
      
@@ -1180,6 +1184,10 @@ this.spectSearchStr=''
            if (res?.userid === this.sectionView_1._personal_data.USERID) {
              localStorage.setItem("group_id", res?.id_coroebus_group);
              console.log(this.groupID)
+           }
+           else{
+            localStorage.setItem("group_id", res?.id_coroebus_group);
+
            }
          })
 

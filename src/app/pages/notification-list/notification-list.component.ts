@@ -21,10 +21,24 @@ export class NotificationListComponent implements OnInit {
   userSelectionData: any
   combineLatest: Subscription
   callNotificationAPIAfterReadSub: Subscription
+  pageInfo: any;
   constructor(private readonly store: Store, private modalService: NgbModal,
     private eventService: EventService,public http:ApiserviceService) { }
 
   ngOnInit(): void {
+    this.pageInfo = localStorage.getItem('page');
+    console.log(this.pageInfo);
+    if(this.pageInfo!="undefined"){
+      setTimeout(()=>{
+        if (!localStorage.getItem('foo')) { 
+          localStorage.setItem('foo', 'no reload') 
+          location.reload() 
+        } else {
+          localStorage.removeItem('foo') 
+        }
+      },2000)
+      
+    }
     this.combineLatest = combineLatest([
       this.store.select(fromRoot.userLogin),
       this.store.select(fromRoot.usertheme),

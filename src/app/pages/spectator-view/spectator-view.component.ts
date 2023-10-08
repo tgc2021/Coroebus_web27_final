@@ -100,17 +100,34 @@ viewmoreorder:any
   tile_web_image_final: any;
   tile_bg_img: any=[];
   bgImageWeb:any
+  pageInfo: string;
+  
   constructor(private readonly store: Store, public http: ApiserviceService, private eventService: EventService, private _router: Router,
-    private _route: ActivatedRoute,public Util: Util,public snackBar: MatSnackBar, public element: ElementRef, private modalService: NgbModal) { }
+    private _route: ActivatedRoute,public Util: Util,public snackBar: MatSnackBar, public element: ElementRef, private modalService: NgbModal) { 
+     
+    }
 
  
   ngOnInit(): void {
-    // if (!localStorage.getItem('foo')) { 
-    //   localStorage.setItem('foo', 'no reload') 
-    //   location.reload() 
-    // } else {
-    //   localStorage.removeItem('foo') 
-    // }
+    this.pageInfo = localStorage.getItem('page');
+    console.log(this.pageInfo);
+
+    if (this.pageInfo !== "undefined") {
+      setTimeout(() => {
+        if (!localStorage.getItem('foo')) {
+          localStorage.setItem('foo', 'no reload');
+          location.reload()
+        } else {
+          localStorage.removeItem('foo');
+        }
+      }, 2000);
+    } else {
+      console.log('pageInfo is undefined. Not reloading the page.');
+    }
+  
+
+  
+   
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
     ).subscribe(data => {
@@ -144,11 +161,20 @@ viewmoreorder:any
 // this.filterRankwiseLeaderboard('Citizen')
 
     this.dynamicColor()
+    
+ 
+     
+    
+
 
 
   }
 
-
+  navigateToPlayzone() {
+    
+      this._router.navigateByUrl("/playzone/play");
+    
+  }
  
 
   getButtonValue(event: Event) {

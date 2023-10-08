@@ -89,6 +89,7 @@ export class NewRewardPageComponent implements OnInit {
   
   selectionColor: any;
   urlPage: string;
+  pageInfo:any;
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
 
@@ -98,11 +99,18 @@ export class NewRewardPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!localStorage.getItem('foo')) {
-      localStorage.setItem('foo', 'no reload')
-      location.reload()
-    } else {
-      localStorage.removeItem('foo')
+    this.pageInfo = localStorage.getItem('page');
+    console.log(this.pageInfo);
+    if(this.pageInfo!="undefined"){
+      setTimeout(()=>{
+        if (!localStorage.getItem('foo')) { 
+          localStorage.setItem('foo', 'no reload') 
+          location.reload() 
+        } else {
+          localStorage.removeItem('foo') 
+        }
+      },2000)
+      
     }
     this.urlPage=localStorage.getItem('page');
   
