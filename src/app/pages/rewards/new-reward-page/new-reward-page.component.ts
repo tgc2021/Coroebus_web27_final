@@ -107,7 +107,7 @@ export class NewRewardPageComponent implements OnInit {
           localStorage.setItem('foo', 'no reload') 
           location.reload() 
         } else {
-          localStorage.removeItem('foo') 
+          localStorage.removeItem('foo'); 
         }
       },2000)
       

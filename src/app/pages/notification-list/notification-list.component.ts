@@ -26,19 +26,19 @@ export class NotificationListComponent implements OnInit {
     private eventService: EventService,public http:ApiserviceService) { }
 
   ngOnInit(): void {
-    this.pageInfo = localStorage.getItem('page');
-    console.log(this.pageInfo);
-    if(this.pageInfo!="undefined"){
-      setTimeout(()=>{
-        if (!localStorage.getItem('foo')) { 
-          localStorage.setItem('foo', 'no reload') 
-          location.reload() 
-        } else {
-          localStorage.removeItem('foo') 
-        }
-      },2000)
+    // this.pageInfo = localStorage.getItem('page');
+    // console.log(this.pageInfo);
+    // if(this.pageInfo!="undefined"){
+    //   setTimeout(()=>{
+    //     if (!localStorage.getItem('foo')) { 
+    //       localStorage.setItem('foo', 'no reload') 
+    //       location.reload() 
+    //     } else {
+    //       localStorage.removeItem('foo') 
+    //     }
+    //   },2000)
       
-    }
+    // }
     this.combineLatest = combineLatest([
       this.store.select(fromRoot.userLogin),
       this.store.select(fromRoot.usertheme),

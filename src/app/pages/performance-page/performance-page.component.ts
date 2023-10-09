@@ -91,25 +91,32 @@ export class PerformancePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.pageInfo = localStorage.getItem('page');
-    console.log(this.pageInfo);
-    if(this.pageInfo!="undefined"){
-      setTimeout(()=>{
-        if (!localStorage.getItem('foo')) { 
-          localStorage.setItem('foo', 'no reload') 
-          location.reload() 
-        } else {
-          localStorage.removeItem('foo') 
-        }
-      },2000)
+    // this.pageInfo = localStorage.getItem('page');
+    // console.log(this.pageInfo);
+    // if(this.pageInfo!="undefined"){
+    //   setTimeout(()=>{
+    //     if (!localStorage.getItem('foo')) { 
+    //       localStorage.setItem('foo', 'no reload') 
+    //       location.reload() 
+    //     } else {
+    //       localStorage.removeItem('foo') 
+    //     }
+    //   },2000)
       
-    }
+    // }
+    if (!localStorage.getItem('foo')) { 
+            localStorage.setItem('foo', 'no reload') 
+            location.reload() 
+          } else {
+            localStorage.removeItem('foo') 
+          }
 
     this._routeSub = this._route.queryParams.subscribe(queryParams => {
       // do something with the query params
       if (queryParams?.userID) {
         queryParams = {userID: this.Util.decryptData(queryParams?.userID),gameID: this.Util.decryptData(queryParams?.gameID),roleID: this.Util.decryptData(queryParams?.roleID) }
         this.queryParams= queryParams
+        console.log(this.queryParams);
         
         this.pointsList()
         this.myperformanceProduce()
@@ -179,6 +186,7 @@ export class PerformancePageComponent implements OnInit {
     this.filterGraphData()
   }
   async pointsList() {
+    
     let err: any, res: any;
     let body: any;
     body = { 

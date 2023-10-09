@@ -5,13 +5,13 @@
     <div class="navbar-header" (click)="closeMenuTop()" style="position: relative; pointer-events:initial !important;">
       <div class="d-flex">
         <!-- LOGO -->
-        <div *ngIf="isinM2ostPlatform;then hamburger"></div>
-        <ng-template #hamburger>
+        <!-- <div *ngIf="isinM2ostPlatform;then hamburger"></div> -->
+        <!-- <ng-template #hamburger> -->
           <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn" 
             (click)="toggleMobileMenu($event);$event.stopPropagation();">
             <i class="fa fa-fw fa-bars"></i>
           </button>
-        </ng-template>
+        <!-- </ng-template> -->
         
       </div>
   

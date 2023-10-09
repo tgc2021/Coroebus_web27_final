@@ -60,19 +60,19 @@ export class AchievementShelfComponent implements OnInit {
   showCombo: any= []
   ngOnInit(): void {
 
-    this.pageInfo = localStorage.getItem('page');
-    console.log(this.pageInfo);
-    if(this.pageInfo!="undefined"){
-      setTimeout(()=>{
-        if (!localStorage.getItem('foo')) { 
-          localStorage.setItem('foo', 'no reload') 
-          location.reload() 
-        } else {
-          localStorage.removeItem('foo') 
-        }
-      },2000)
+    // this.pageInfo = localStorage.getItem('page');
+    // console.log(this.pageInfo);
+    // if(this.pageInfo!="undefined"){
+    //   setTimeout(()=>{
+    //     if (!localStorage.getItem('foo')) { 
+    //       localStorage.setItem('foo', 'no reload') 
+    //       location.reload() 
+    //     } else {
+    //       localStorage.removeItem('foo') 
+    //     }
+    //   },2000)
       
-    }
+    // }
 
  
      this.currentDate = new Date();

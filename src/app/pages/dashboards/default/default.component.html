@@ -188,7 +188,7 @@
                             <div>
                                 <div class="inner-points-height d-flex flex-column justify-content-center gap-2 p-2">
                                     <div class="row  points-row  d-flex flex-row align-items-center" 
-                                        (click)="getGraphDataById()" >
+                                        (click)="getGraphDataByIdPerformance()" >
                                         <div class="col-6 p-0">
                                             <div [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}" style="color:#fff"
                                                 class="ms-2 points-dis-name1 ellipsis d-flex align-items-center justify-content-start">
@@ -225,7 +225,7 @@
                                         </div>
                                     </div>
                                     <div class="row  points-row  d-flex flex-row align-items-center" 
-                                        (click)="getGraphDataById()" *ngFor="let item of sectionView_1?._kpi_score">
+                                        (click)="getGraphDataByIdPerformance()" *ngFor="let item of sectionView_1?._kpi_score">
                                         <div class="col-6 p-0">
                                             <div [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.light_color}"
                                                 class="ms-2 points-dis-name1 ellipsis d-flex align-items-center justify-content-start">
@@ -2532,7 +2532,7 @@
                                     </div>
                                     <div class="mobile-inner-points-height d-flex flex-column align-items-center">
                                         <div class="row  points-row  d-flex  align-items-center"
-                                            style="width:90vw;margin:1%" (click)="getGraphDataById()">
+                                            style="width:90vw;margin:1%" (click)="getGraphDataByIdPerformance()">
                                             <div class="col-6 p-0">
                                                 <!-- ngbTooltip="{{item?.point_label}}"   this is inside ellipsis1-->
                                                 <div class=" mobile-points-dis-name1 ellipsis1"
@@ -2570,7 +2570,7 @@
 
                                         </div>
                                         <div class="row  points-row  d-flex  align-items-center"
-                                            style="width:90vw;margin:1%" (click)="getGraphDataById()"
+                                            style="width:90vw;margin:1%" (click)="getGraphDataByIdPerformance()"
                                             *ngFor="let item of sectionView_1?._kpi_score">
                                             <div class="col-6 p-0">
                                                 <!-- ngbTooltip="{{item?.point_label}}"   this is inside ellipsis1-->

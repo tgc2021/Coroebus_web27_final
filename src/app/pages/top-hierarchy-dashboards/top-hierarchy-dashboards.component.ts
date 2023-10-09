@@ -139,6 +139,9 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   labelThird: any;
   labelFourth: any;
   groupID: any;
+  groupID_bh: string;
+  gameIdBh: string;
+  id_role_bh: string;
   constructor(private readonly store: Store, public _route: ActivatedRoute,public snackBar: MatSnackBar,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -1046,10 +1049,7 @@ this.spectSearchStr=''
     
     let err: any, res: any;
     let body: any;
-    // body = {
-    //   "_userid": this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
-    //   "_game": this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
-    // };
+    
     body = {
       "_userid": data?.userid,
       "_game": data?.id_coroebus_game
@@ -1155,20 +1155,18 @@ this.spectSearchStr=''
      
    }
    async openKpiInfo(event) {
-    console.log(this.userSelectionData)
+    console.log(this.userSelectionData?._personal_data);
+    console.log(this.queryParams)
 
     this.selectedIndex=0;
 // API CALL FOR GET GROUP ID
+
      let body = {
       "_userid": this.userSelectionData?._personal_data?.USERID,
       "_game": this.userSelectionData?.id_coroebus_game, "_section_view": "3", "page_number": this.pageNumberForSectionView_3
     };
-   
-    
-  
-    let err: any, res: any; 
-     
-
+    if(this.userSelectionData?._personal_data?.id_role=="8"||this.queryParams?.roleID=="8"){
+      let err: any, res: any; 
     [err, res] = await HttpProtocols.to(DashboardModel.getRankingAndOtherDataSectionView_3(body))
      if (!err && res?.status === 'success' && res?.statuscode === 200) {
        this.sectionView_3_popup = res?.data;
@@ -1185,58 +1183,103 @@ this.spectSearchStr=''
              localStorage.setItem("group_id", res?.id_coroebus_group);
              console.log(this.groupID)
            }
-           else{
-            localStorage.setItem("group_id", res?.id_coroebus_group);
-
-           }
+          
          })
 
        })
      } else {
        this.sectionView_3_err = 'Please try after some time'
      }
-    
-    
+    }
+    else if(this.queryParams?.roleID === "9" || this.userSelectionData?._personal_data?.id_role === "9"){
+      // console.log('In else if');
+      console.log(this.sectionView_1?._business_user[0])
+      let body={
+        _userid:this.sectionView_1?._business_user[0]?.USERID,
+        _org:this.sectionView_1?._business_user[0]?.id_coroebus_organization
+      }
+      this.http.buisnessHead(body).subscribe((res:any)=>{
+        console.log(res?.data?._ranking_data[0]?._data)
+        console.log(this.sectionView_1._personal_data)
+        res?.data?._ranking_data[0]?._data.map((res:any)=>{
+          console.log(res);
+          if (res?.userid == this.sectionView_1?._personal_data?.USERID){
+             console.log(res)
+            localStorage.setItem("group_id_bh",res?.id_coroebus_group);
+            localStorage.setItem("gameId_bh",res?.id_coroebus_game);
+            localStorage.setItem("idRole_bh",res?.id_role);
+            
+          
+          }
+
+        })
+        
+      })
+    }
     this.groupID=localStorage.getItem('group_id')
+    this.groupID_bh=localStorage.getItem('group_id_bh')
+    this.gameIdBh=localStorage.getItem('gameId_bh');
+
+    console.log(this.gameIdBh)
+    this.id_role_bh=localStorage.getItem('idRole_bh')
     this.openKpi = !this.openKpi;
     console.log(this.groupID);
     console.log(this.userSelectionData?.games)
     try {
       var location = window.location.href;
       // console.log(this.sectionView_3?._personal_data?.id_role);
-      if (location.includes("?")){
-        let body = {
+      if(this.userSelectionData?._personal_data?.id_role=="8"||this.queryParams?.roleID=="8"){
+        if (location.includes("?")){
+          let body = {
+            _game:this.queryParams?.gameID?this.queryParams?.gameID:this.gameIdBh,
+            id_role:this.queryParams?.roleID,
+            id_coroebus_group:this.groupID
+          };
+          let res = await this.http.pointDistributionPopup(body).toPromise();
+          this.kpiData = res;
+        }
+        else{
+          console.log('In else part')
+          console.log(this.userSelectionData?._personal_data)
+          let body = {
+      
+            _game:this.userSelectionData?.id_coroebus_game,
+            id_role:this.userSelectionData?._personal_data?.id_role,
+            id_coroebus_group:this.groupID
     
-          _game:this.userSelectionData?.id_coroebus_game,
-          id_role:this.sectionView_3?._personal_data?.id_role,
-          id_coroebus_group:this.groupID 
-
-  
-  
-        };
-        let res = await this.http.pointDistributionPopup(body).toPromise();
-        this.kpiData = res;
+          };
+          let res = await this.http.pointDistributionPopup(body).toPromise();
+          this.kpiData = res;
+         
+        }
       }
-      else{
-        let body = {
+      else if(this.queryParams?.roleID === "9" || this.userSelectionData?._personal_data?.id_role === "9"){
+        if (location.includes("?")){
+          let body = {
+            _game:this.gameIdBh,
+            id_role:this.queryParams?.roleID,
+            id_coroebus_group:this.groupID_bh
+          };
+          let res = await this.http.pointDistributionPopup(body).toPromise();
+          this.kpiData = res;
+        }
+        else{
+          console.log('In else part')
+          let body = {
+      
+            _game:this.gameIdBh,
+            id_role:this.id_role_bh,
+            id_coroebus_group:this.groupID_bh
     
-          _game:this.userSelectionData?.id_coroebus_game,
-          id_role:this.sectionView_1?._personal_data?.id_role,
-          id_coroebus_group:this.groupID 
-  
-        };
-        let res = await this.http.pointDistributionPopup(body).toPromise();
-        this.kpiData = res;
-       
+          };
+          let res = await this.http.pointDistributionPopup(body).toPromise();
+          this.kpiData = res;
+         
+        }
       }
-      
-
-    
 
       
-      
-     
-      
+
       this.labelArray = Object.entries(this.kpiData?.data?._point_details).map(
         ([label, otherKpiData]) => {
           return { label, Kpidata: otherKpiData };
@@ -1344,6 +1387,9 @@ this.spectSearchStr=''
   }
 
   ngAfterViewInit():void{
+    setTimeout(()=>{
+      this.openKpiInfo('')
+    },2000)
 
    
 

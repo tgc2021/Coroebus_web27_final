@@ -109,21 +109,21 @@ viewmoreorder:any
 
  
   ngOnInit(): void {
-    this.pageInfo = localStorage.getItem('page');
-    console.log(this.pageInfo);
+    // this.pageInfo = localStorage.getItem('page');
+    // console.log(this.pageInfo);
 
-    if (this.pageInfo !== "undefined") {
-      setTimeout(() => {
-        if (!localStorage.getItem('foo')) {
-          localStorage.setItem('foo', 'no reload');
-          location.reload()
-        } else {
-          localStorage.removeItem('foo');
-        }
-      }, 2000);
-    } else {
-      console.log('pageInfo is undefined. Not reloading the page.');
-    }
+    // if (this.pageInfo !== "undefined") {
+    //   setTimeout(() => {
+    //     if (!localStorage.getItem('foo')) {
+    //       localStorage.setItem('foo', 'no reload');
+    //       location.reload()
+    //     } else {
+    //       localStorage.removeItem('foo');
+    //     }
+    //   }, 2000);
+    // } else {
+    //   console.log('pageInfo is undefined. Not reloading the page.');
+    // }
   
 
   

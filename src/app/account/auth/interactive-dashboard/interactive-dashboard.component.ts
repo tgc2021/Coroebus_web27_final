@@ -442,38 +442,38 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
     })
     this.getUserBannerDataSectionView_2()
 
-    this.pageInfo = localStorage.getItem('page');
-    if (this.pageInfo == 'reward') {
+    // this.pageInfo = localStorage.getItem('page');
+    // if (this.pageInfo == 'reward') {
      
       
-      setTimeout(() => { this._router.navigateByUrl("/reward/rewardPoints") }, 1000);
+    //   setTimeout(() => { this._router.navigateByUrl("/reward/rewardPoints") }, 1000);
 
-    }
+    // }
 
-    else if(this.pageInfo == 'playZone'){
-      setTimeout(()=>{ this._router.navigateByUrl('/playzone/play')},1000);
+    // else if(this.pageInfo == 'playZone'){
+    //   setTimeout(()=>{ this._router.navigateByUrl('/playzone/play')},1000);
 
-    }
-    else if(this.pageInfo == 'my_trophy'){
-      setTimeout(()=>{ this._router.navigateByUrl('/Achievement/AchievementShelf')},1000);
+    // }
+    // else if(this.pageInfo == 'my_trophy'){
+    //   setTimeout(()=>{ this._router.navigateByUrl('/Achievement/AchievementShelf')},1000);
 
-    }
-    else if(this.pageInfo=='Spectator_view'){
-      setTimeout(()=>{this._router.navigateByUrl('/spectator/spectatorView')},1000)
+    // }
+    // else if(this.pageInfo=='Spectator_view'){
+    //   setTimeout(()=>{this._router.navigateByUrl('/spectator/spectatorView')},1000)
       
       
-    }
-    else if(this.pageInfo=='Third_umpire'){
-     setTimeout(()=>{this._router.navigateByUrl('/notification/list')},1000)
-    }
-    else if(this.pageInfo=='performance_page'){
-      setTimeout(()=>{this._router.navigateByUrl('performance/page')},1000)
+    // }
+    // else if(this.pageInfo=='Third_umpire'){
+    //  setTimeout(()=>{this._router.navigateByUrl('/notification/list')},1000)
+    // }
+    // else if(this.pageInfo=='performance_page'){
+    //   setTimeout(()=>{this._router.navigateByUrl('performance/page')},1000)
 
-    }
-    else if(this.pageInfo=='main_dashboard'){
-      setTimeout(()=>{this._router.navigateByUrl('/dashboard')},1000)
+    // }
+    // else if(this.pageInfo=='main_dashboard'){
+    //   setTimeout(()=>{this._router.navigateByUrl('/dashboard')},1000)
 
-    }
+    // }
 
 
 

@@ -333,8 +333,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     private renderer: Renderer2,
     public Util: Util,
     private eventService: EventService,
-    public _router: Router,
-    public _route: ActivatedRoute,
+    private _router: Router,
+    private _route: ActivatedRoute,
     public toastService: ToastService,
     public http: ApiserviceService,
     public elementref: ElementRef,
@@ -376,12 +376,12 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     );
   
     this.tl_team_rank = localStorage.getItem("tl_rank");
-    if (!localStorage.getItem('foo')) {
-      localStorage.setItem('foo', 'no reload')
-      location.reload()
-    } else {
-      localStorage.removeItem('foo')
-    }
+    // if (!localStorage.getItem('foo')) {
+    //   localStorage.setItem('foo', 'no reload')
+    //   location.reload()
+    // } else {
+    //   localStorage.removeItem('foo')
+    // }
 
     this.activeTab();
     this.Edit_image();
@@ -428,6 +428,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
               roleID: this.Util.decryptData(replacedRoleId),
               // groupID: this.Util.decryptData(replacedGroupId),
             };
+            console.log(queryParams);
+            
           } else {
             queryParams = {
               userID: this.Util.decryptData(queryParams?.userID),
@@ -2359,46 +2361,44 @@ if (this.levelwise===3) {
     this.isLevel3Active = false;
     
   }
-  getGraphDataById() {
-    // 
+  getGraphDataByIdPerformance() {
+    // console.log('Graph data',data);
     let obj = {
-      _userid: this.queryParams?.userID ? this.queryParams?.userID : this.userSelectionData?._personal_data?.USERID,
+      _userid: this.queryParams?.userID
+        ? this.queryParams?.userID
+        : this.userSelectionData?._personal_data?.USERID,
+      game_id: this.queryParams?.gameID
+        ? this.queryParams?.gameID
+        : this.userSelectionData?.id_coroebus_game,
+    };
+    console.log(obj);
 
-      game_id: this.queryParams?.gameID ? this.queryParams?.gameID : this.userSelectionData?.id_coroebus_game
-    }
-    
+    let body = {
+      _userid: this.userSelectionData?._personal_data?.USERID,
+      _game: this.userSelectionData?.id_coroebus_game,
+      _device: "W",
+      _section: "Performance",
+      _description: "From Points Distribution",
+    };
 
-    let body={
-      "_userid": this.userSelectionData?._personal_data?.USERID,
-      "_game":this.userSelectionData?.id_coroebus_game,
-      _device:"W",
-      _section:"Performance",
-      _description: "From Points Distribution"
-    }
-  
-  
-    this.http.engagamentlog(body).subscribe(res=>{
-      
-      
-    })
+    this.http.engagamentlog(body).subscribe((res) => {
+      console.log(res);
+    });
 
     // this._router.navigate('/performance/page')
     // this._router.navigate(['/performance/page'], { queryParams: { key: value } })
-    this._router.navigate(['/performance/page'], {
+    this._router.navigate(["/performance/page"], {
       relativeTo: this._route,
       queryParams: {
         userID: this.Util.encryptData(this.queryParams?.userID),
         gameID: this.Util.encryptData(this.queryParams?.gameID),
         // roleID: this.Util.encryptData(this.queryParams?.roleID)
-
       },
 
-      queryParamsHandling: 'merge',
+      queryParamsHandling: "merge",
       // preserve the existing query params in the route
-      skipLocationChange: false
+      skipLocationChange:true,
       // do not trigger navigation
-
-
     });
   }
 
