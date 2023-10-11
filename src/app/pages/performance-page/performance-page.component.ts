@@ -57,7 +57,9 @@ export class PerformancePageComponent implements OnInit {
   dropDownValue: any
   id_role: any;
   pageInfo: string;
-  constructor(private readonly store: Store ,private graph:DefaultComponent,public Util: Util, private _route: ActivatedRoute,public http:ApiserviceService) {
+  dropDownFilterDataForHOS: any;
+  dropDownValueHOS: any;
+  constructor(private readonly store: Store ,public Util: Util, private _route: ActivatedRoute,public http:ApiserviceService) {
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
     ).subscribe(data => {
@@ -81,15 +83,7 @@ export class PerformancePageComponent implements OnInit {
     })
 
   }
-  dropDownValueFilter() {
-    this.dropDownFilterData = this.dropDownFilterMasterData?.filter(data => data?.mapTo.indexOf(this.buttonFilterActive) > -1)
-    this.dropDownValue = this.buttonFilterActive === 'Live' ? this.dropDownFilterData?.[0]?.value : this.dropDownFilterData?.[0]?.value
-  }
-  onChange(value) {
-    //alert(this.dropDownValue)
-    this.filterGraphData()
-  }
-
+  
   ngOnInit(): void {
     // this.pageInfo = localStorage.getItem('page');
     // console.log(this.pageInfo);
@@ -116,7 +110,7 @@ export class PerformancePageComponent implements OnInit {
       if (queryParams?.userID) {
         queryParams = {userID: this.Util.decryptData(queryParams?.userID),gameID: this.Util.decryptData(queryParams?.gameID),roleID: this.Util.decryptData(queryParams?.roleID) }
         this.queryParams= queryParams
-        console.log(this.queryParams);
+      
         
         this.pointsList()
         this.myperformanceProduce()
@@ -180,6 +174,43 @@ export class PerformancePageComponent implements OnInit {
 
     // 
   }
+  dropDownValueFilter() {
+    this._routeSub = this._route.queryParams.subscribe(queryParams => {
+      // do something with the query params
+      if (queryParams?.userID) {
+        queryParams = {userID: this.Util.decryptData(queryParams?.userID),gameID: this.Util.decryptData(queryParams?.gameID),roleID: this.Util.decryptData(queryParams?.roleID) }
+        this.queryParams= queryParams
+        
+        
+        this.pointsList()
+        this.myperformanceProduce()
+    
+      } else {
+      
+      
+      }
+    });
+    
+    if(this.userObj?._personal_data?.id_role=='9'||this.queryParams?.roleID=='9'){
+      this.dropDownFilterMasterData.shift()
+      this.dropDownFilterData = this.dropDownFilterMasterData?.filter(data => data?.mapTo.indexOf(this.buttonFilterActive) > -1);
+      this.dropDownValue = this.buttonFilterActive === 'Live' ? this.dropDownFilterData?.[0]?.value : this.dropDownFilterData?.[0]?.value;
+    
+    }
+    else{
+      this.dropDownFilterData = this.dropDownFilterMasterData?.filter(data => data?.mapTo.indexOf(this.buttonFilterActive) > -1);
+      this.dropDownValue = this.buttonFilterActive === 'Live' ? this.dropDownFilterData?.[0]?.value : this.dropDownFilterData?.[0]?.value;
+    }
+    
+   
+    
+    
+  }
+  onChange(value) {
+    //alert(this.dropDownValue)
+    this.filterGraphData()
+  }
+
   buttonFilter(filterName: string) {
     this.buttonFilterActive = filterName
     this.dropDownValueFilter()

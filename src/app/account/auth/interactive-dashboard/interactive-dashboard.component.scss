@@ -1819,15 +1819,15 @@ flex-direction: column;
     
     }
     .booster_btn_close{
-        height: 3vh;
-        width: 3vh;
+        height: 2.5vh;
+        width: 2.5vh;
         border-radius: 100%;
         background: black;
         color:#ffffff;
         border: 1px solid #ffffff;
         margin-bottom: 2%;
         display: flex;
-        align-items: center;
+        justify-content: center;
         align-items: center;
 
     }

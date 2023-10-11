@@ -99,18 +99,24 @@ export class NewRewardPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.pageInfo = localStorage.getItem('page');
-    console.log(this.pageInfo);
-    if(this.pageInfo!="undefined"){
-      setTimeout(()=>{
-        if (!localStorage.getItem('foo')) { 
-          localStorage.setItem('foo', 'no reload') 
-          location.reload() 
-        } else {
-          localStorage.removeItem('foo'); 
-        }
-      },2000)
+    // this.pageInfo = localStorage.getItem('page');
+    // console.log(this.pageInfo);
+    // if(this.pageInfo!="undefined"){
+   
+    //     if (!localStorage.getItem('foo')) { 
+    //       localStorage.setItem('foo', 'no reload') 
+    //       location.reload() 
+    //     } else {
+    //       localStorage.removeItem('foo'); 
+    //     }
       
+      
+    // }
+    if (!localStorage.getItem('foo')) { 
+      localStorage.setItem('foo', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('foo'); 
     }
     this.urlPage=localStorage.getItem('page');
   
@@ -830,6 +836,12 @@ export class NewRewardPageComponent implements OnInit {
 
 
   ngAfterViewInit(): void {
+    // if (!localStorage.getItem('foo')) { 
+    //   localStorage.setItem('foo', 'no reload') 
+    //   location.reload() 
+    // } else {
+    //   localStorage.removeItem('foo'); 
+    // }
     let body = {
       _userid: this.rewardSpect == false ? this.mergeObj.USERID : this.userid,
       _game: this.rewardSpect == false ? this.userSelectionData.id_coroebus_game : this.gameID,
@@ -837,66 +849,69 @@ export class NewRewardPageComponent implements OnInit {
 
     console.log(body)
 
-
-    this.http.rewards(body).subscribe((res) => {
-
-
-      let body = {
-        _userid: this.mergeObj.USERID,
-        _game: this.userSelectionData.id_coroebus_game,
-        _device: "W",
-        _section: "Rewards Page",
-        _description: "Rewards Page"
-      }
-
-      this.http.engagamentlog(body).subscribe(res => {
+    setTimeout(()=>{
+      this.http.rewards(body).subscribe((res) => {
 
 
-      })
-      // 
-
-      // const response = res.data.points_list[0].label
-
-      // this.requestdata=responce
-
-      this.rewardresponse = res;
+        let body = {
+          _userid: this.mergeObj.USERID,
+          _game: this.userSelectionData.id_coroebus_game,
+          _device: "W",
+          _section: "Rewards Page",
+          _description: "Rewards Page"
+        }
+  
+        this.http.engagamentlog(body).subscribe(res => {
+  
+  
+        })
+        // 
+  
+        // const response = res.data.points_list[0].label
+  
+        // this.requestdata=responce
+  
+        this.rewardresponse = res;
+       
+        // this.filterCoreGame=res;
+  
+  
+  
      
-      // this.filterCoreGame=res;
-
-
+        // this.filterCoreGame=res;
+       
+  
+  
+        this.rewardresponse = Array.of(this.rewardresponse);
+        this.passbook_response = this.rewardresponse[0]?.data?.points_list[1]?._data;
+  
+        this.collectionSize = this.passbook_response?.length;
+      
+  
+  
+        this.rewardImage=this.rewardresponse[0]?.data?.game_data[0]?.reward_image;
+        this.passbookImage=this.rewardresponse[0]?.data?.game_data[0]?.passbook_image;
+        this.coinImage=this.rewardresponse[0]?.data?.game_data[0]?.coin_image;
+        this.selectionColor=this.rewardresponse[0]?.data?.game_data[0]?.selection_color;  
+        this.element.nativeElement.style.setProperty('--selectionColor', `${this.selectionColor}`)
+      
+          this.arrForCardColor.push(
+      
+            {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color1+')'},
+            {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color2+')'},
+            {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color3+')'},
+            {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color4+')'}
+          
+  
+            );
+  
+            console.log(this.arrForCardColor);
+            
+  
+      })
+    },2000)
 
    
-      // this.filterCoreGame=res;
-     
-
-
-      this.rewardresponse = Array.of(this.rewardresponse);
-      this.passbook_response = this.rewardresponse[0]?.data?.points_list[1]?._data;
-
-      this.collectionSize = this.passbook_response?.length;
-    
-
-
-      this.rewardImage=this.rewardresponse[0]?.data?.game_data[0]?.reward_image;
-      this.passbookImage=this.rewardresponse[0]?.data?.game_data[0]?.passbook_image;
-      this.coinImage=this.rewardresponse[0]?.data?.game_data[0]?.coin_image;
-      this.selectionColor=this.rewardresponse[0]?.data?.game_data[0]?.selection_color;  
-      this.element.nativeElement.style.setProperty('--selectionColor', `${this.selectionColor}`)
-    
-        this.arrForCardColor.push(
-    
-          {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color1+')'},
-          {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color2+')'},
-          {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color3+')'},
-          {'color':'linear-gradient('+this.rewardresponse[0]?.data?.game_data[0]?.reward_color4+')'}
-        
-
-          );
-
-          console.log(this.arrForCardColor);
-          
-
-    })
 
 
   }

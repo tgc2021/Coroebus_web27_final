@@ -466,13 +466,24 @@
                             (click)="buttonFilter('Live')">Live</label>
                     </div>
                 </div>
-                <select class="form-select performance-filter-select" aria-label="Default select example"
+
+                    <select class="form-select " aria-label="Default select example"
                     style="width: 100%;margin: 2vh; " [(ngModel)]="dropDownValue" 
                     (change)="onChange($event.target.value)">
-                    <option [attr.selected]="item?.mapTo?.indexOf(buttonFilterActive) > -2 ? true : null"
-                        *ngFor="let item of dropDownFilterData" value="{{item?.value}}">
-                        {{item?.value}}</option>
+                   
+                        <option [attr.selected]="item?.mapTo?.indexOf(buttonFilterActive) > -2 ? true : null"
+                            *ngFor="let item of dropDownFilterData" value="{{item?.value}}">
+                            {{item?.value}}</option>
+                   
+                    
                 </select>
+            
+               
+                   
+               
+                
+
+                
             </div>
         </div>
 

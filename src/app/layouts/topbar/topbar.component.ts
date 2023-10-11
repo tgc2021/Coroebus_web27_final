@@ -139,10 +139,18 @@ export class TopbarComponent implements OnInit, OnDestroy {
     if(this.id_role==13){
       this.router.navigateByUrl('topdashboard')
     }
-    else if(this.id_role == 8 || this.id_role == 9 ){
+    else if(this.id_role == 8 ){
       // console.log('back');
       
       this.router.navigateByUrl('top_dashboard')
+      
+
+    }
+    else if(this.id_role == 9 ||this.id_role=='9'){
+      this.router.navigateByUrl('/top_dashboard')
+      setTimeout(()=>{
+        window.location.reload();
+      },2000)
       
 
     }

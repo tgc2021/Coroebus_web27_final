@@ -183,7 +183,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
     ).subscribe(([login, theme, game]) => {
       
       this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
-      console.log(this.userSelectionData);
+    
       
 
       this._routeSub?.unsubscribe()
@@ -246,7 +246,8 @@ export class TopHierarchyDashboardsComponent implements OnInit {
     this.medium_color=localStorage.getItem('medium_color')
     this.element.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
     
-
+  
+    this.leaderboard(0);
 
   }
 
@@ -277,7 +278,8 @@ export class TopHierarchyDashboardsComponent implements OnInit {
       })
 
       this.sectionView_1 = res?.data;
-      localStorage.setItem('id_role_hos',this.sectionView_1._personal_data.id_role)
+      this.openKpiInfo('');
+      localStorage.setItem('id_role_hos',this.sectionView_1._personal_data?.id_role)
       this.primary_rank =this.sectionView_1._primary.primary_rank;
       
       localStorage.setItem('bg_image',this.sectionView_1?.theme_details?.[0]?.point_dist_background)
@@ -286,7 +288,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
       
 
       if(this.sectionView_1?.is_about_game==1){
-        this.about_game_pdf= this.sectionView_1?.about_game[0].file_name
+        this.about_game_pdf= this.sectionView_1?.about_game[0]?.file_name
         
         localStorage.setItem('about_game_pdf',this.about_game_pdf)
       }
@@ -294,6 +296,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
       this.pokeAnimationData = this.sectionView_1._poked_data
       // this.pokeAnimationData1=this.sectionView_1._poked_data[0].poke_description
       this.updatedPoke()
+     
 
       
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -347,25 +350,24 @@ export class TopHierarchyDashboardsComponent implements OnInit {
     }
   }
   updatedPoke() {
-    console.log(this.pokeAnimationData);
-    console.log(this.pokeslidedata);
+    
   
     if (this.pokeAnimationData.length > 0) {
       let i = 0;
   
       const intervalId = setInterval(() => {
         this.pokeslidedata.push(this.pokeAnimationData[i]);
-        console.log(this.pokeslidedata);
+        
   
         setTimeout(() => {
           this.pokeslidedata.pop();
-          console.log(this.pokeslidedata);
+        
         }, 5000); // Remove the last element after 5 seconds'
         this.updatePokeData(this.pokeAnimationData[i].poke_id_log);
         i++;
         if (i === this.pokeAnimationData.length) {
           clearInterval(intervalId);
-          console.log(this.pokeslidedata);
+         
           // this.pokeAnimationData=[]
             setTimeout(()=>{
           // (<HTMLInputElement>document.getElementById('animationPoke')).style.background = "none";
@@ -374,7 +376,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
         }
   
       }, 6000);
-      console.log(this.pokeslidedata);
+      
   
     } else {
       clearInterval(this.pokeInterval);
@@ -382,11 +384,11 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   
     }
   
-    console.log(this.pokeslidedata);
+    
   }
   async getUserBannerDataSectionView_3(viewMore?: any, queryParams?: any) {
     this.id_role_check=localStorage.getItem('id_role_hos')
-    console.log( this.id_role_check)
+    
 
     
     let err: any, res: any;
@@ -411,29 +413,30 @@ export class TopHierarchyDashboardsComponent implements OnInit {
           }
 
         });
-        console.log('this.id_role_check');
+       
 
         if(this.id_role_check!=9){
-          console.log('this.id_role_check');
+          
           
           this.leaderboard_data=this.sectionView_3?._ranking_data[0]._Overall;
           this.leaderboard_data_popup=this.sectionView_3?._ranking_data[0]._Overall
-          this.lengthLeaderBoardData=this.leaderboard_data.length;
+          this.lengthLeaderBoardData=this.leaderboard_data?.length;
           
           this.leaderboard_data_buttons=this.sectionView_3?._ranking_data;
           
-          this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0].order;
+          this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0]?.order;
         }
         else{
-          console.log('this.id_role_check');
+         
 
           this.leaderboard_data=this.sectionView_3?._ranking_data[0]._data;
-          this.leaderboard_data_popup=this.sectionView_3?._ranking_data[0]._data
-          this.lengthLeaderBoardData=this.leaderboard_data.length;
+          this.leaderboard_data_popup=this.sectionView_3?._ranking_data[0]?._data
+          this.lengthLeaderBoardData=this.leaderboard_data?.length;
           
           this.leaderboard_data_buttons=this.sectionView_3?._ranking_data;
           
           this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0].order;
+        
         }
       
 
@@ -443,26 +446,27 @@ export class TopHierarchyDashboardsComponent implements OnInit {
         if(this.id_role_check!=9){
 
           this.sectionView_3 = res?.data
-          console.log(this.sectionView_3)
-          this.leaderboard_data=this.sectionView_3?._ranking_data[0]._Overall;
-          this.leaderboard_data_popup=this.sectionView_3?._ranking_data[0]._Overall
+          
+          this.leaderboard_data=this.sectionView_3?._ranking_data[0]?._Overall;
+          this.leaderboard_data_popup=this.sectionView_3?._ranking_data[0]?._Overall
   
-          console.log(this.leaderboard_data);
+    
           this.leaderboard_data_buttons=this.sectionView_3?._ranking_data
           
-          this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0].order
+          this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0]?.order
         }
      else{
 
       this.sectionView_3 = res?.data
-      console.log(this.sectionView_3)
-      this.leaderboard_data=this.sectionView_3?._ranking_data[0]._data;
-      this.leaderboard_data_popup=this.sectionView_3?._ranking_data[0]._data
+      
+      this.leaderboard_data=this.sectionView_3?._ranking_data[0]?._data;
+      this.leaderboard_data_popup=this.sectionView_3?._ranking_data[0]?._data
 
-      console.log(this.leaderboard_data);
+      
       this.leaderboard_data_buttons=this.sectionView_3?._ranking_data
       
-      this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0].order
+      this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0]?.order;
+    
      }
 
       }
@@ -483,30 +487,28 @@ export class TopHierarchyDashboardsComponent implements OnInit {
 
   upDownArrow(arrowStatus: string, rowData: any) {
     // alert('TODO: Add Poke popup-> ' + arrowStatus)
-    //console.log(rowData)
+   
     if (rowData?.userid !== this.userSelectionData?._personal_data?.USERID) {
       let roleCheckArray = this.Util.pokeMapping()
       if (this.queryParams?.roleID) {
-        console.log(this.queryParams?.roleID)
+        
         // roleCheckArray = roleCheckArray?.filter(data => data?.roleID === this.sectionView_1?._personal_data?.id_role)
         roleCheckArray = roleCheckArray?.filter(data => data?.roleID === this.queryParams?.roleID)
-        console.log(roleCheckArray);
+    
         
       } else {
         roleCheckArray = roleCheckArray?.filter(data => data?.roleID === this.userSelectionData?._personal_data?.id_role)
-        console.log(roleCheckArray);
+  
         
       }
-      //console.log(this.queryParams)
-      console.log(roleCheckArray?.[0]?.canPokeTo?.indexOf(rowData?.id_role));
-      console.log(roleCheckArray?.[0]?.canPokeTo?.indexOf(rowData?.id_role) > -1);
+    
       
       if (roleCheckArray?.[0]?.canPokeTo?.indexOf(rowData?.id_role) > -1) {
         this.pokeRowData = rowData
-        console.log(this.pokeRowData);
+       
 
         this.arrowStatus = arrowStatus === 'red' ? 'Motivation' : 'Positive'
-        console.log(this.arrowStatus);
+       
         this.emojiSelected(0, this.arrowStatus)
 
         this.modalService.open(this.pokeList, { centered: true, windowClass: 'modal-cls' })
@@ -523,20 +525,19 @@ export class TopHierarchyDashboardsComponent implements OnInit {
     // $('.emojiBackgroundButton').removeClass('acrtive')
 
     this.clicked = id
-    console.log(this.clicked);
+    
 
     this.emojiText = this.pokeData
-    console.log(event);
+    
 
     this.idSelected = event === 'Positive' ? 0 : 1
-    console.log(this.idSelected);
+   
 
     this.pokeidselected = this.emojiText[this.idSelected]._data[id].poke_description
     this.emoji = this.emojiText[this.idSelected]._data[id].poke_description
-    //  console.log(this.idSelected);
+    
     this.pokeId = this.emojiText[this.idSelected]._data[id].id_coroebus_poke
-    console.log(this.pokeId);
-
+   
   }
   async pokeSelection(modal: any) {
     let err: any, res: any;
@@ -568,17 +569,17 @@ export class TopHierarchyDashboardsComponent implements OnInit {
     }
   }
   updatePokeData(data: any) {
-    console.log(data);
+    
 
     let body = {
       '_pokeid': data
     }
     this.http.updatePoke(body).subscribe((res) => {
-      console.log(res);
+    
       
       this.updatedata=res
       if (this.updatedata.statuscode === 200) {
-     console.log(123);  
+    
       } else {
   
       }
@@ -762,16 +763,16 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
   }
 
   leaderboard(event:any=0){
-   console.log(event)
+  
    this.spectSearchStr=null
  
   this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[event].order
 
   
-   console.log(this.activeTabOrderNumberForSectionView_2);
+ 
    
    this.activeClass=event;
-   console.log("event",event)
+   
    this.activeClass=event;
     // this.subActiveClass=0
     
@@ -783,11 +784,11 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
   }
 
   myLeaderboard(event:any=0){
-    console.log( this.activeTabOrderNumberForSectionView_2-1);
-    this.leaderboard_data=this.sectionView_3._ranking_data[ this.activeTabOrderNumberForSectionView_2-1]._data;
-    this.leaderboard_data_popup=this.sectionView_3._ranking_data[ this.activeTabOrderNumberForSectionView_2-1]._data;
+  
+    this.leaderboard_data=this.sectionView_3?._ranking_data[ this.activeTabOrderNumberForSectionView_2-1]?._data;
+    this.leaderboard_data_popup=this.sectionView_3?._ranking_data[ this.activeTabOrderNumberForSectionView_2-1]?._data;
 
-    console.log(this.leaderboard_data);
+   
     this.subActiveClass=true;
     this.subActiveClassOverall=false;
   }
@@ -876,12 +877,10 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
     };
     [err, res] = await HttpProtocols.to(DashboardModel.spectSearch(body))
     if (!err && res?.statuscode === 200) {
-      console.log(res);
-      console.log(res.data);
-    
+      
 
     if(res.data==''){
-      console.log(res.data);
+      
       // this.openSnackBar('No data Available','Ok')
 
       // Swal.fire({
@@ -903,7 +902,7 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
     }
     else{
       this.spectSearList = res?.data[0]._data;
-      console.log(this.spectSearList);
+      
       
   
 
@@ -1070,7 +1069,7 @@ this.spectSearchStr=''
   }
 
   async GetIndexWisePopup(event:any){
-    console.log(event)
+    
      
     this.activeClassPopup=event;
   
@@ -1088,9 +1087,9 @@ this.spectSearchStr=''
     if (!err1 && res1?.status === 'success' && res1?.statuscode === 200) {
       
       this.sectionView2ResponsePopup=res1?.data?._ranking_data;
-      this.activeTabOrderNumberForSectionView_2 = res1?.data?._ranking_data?.[event].order
+      this.activeTabOrderNumberForSectionView_2 = res1?.data?._ranking_data?.[event]?.order
       
-      console.log(this.activeTabOrderNumberForSectionView_2)
+     
       this.queryParams = { userID:  this.sectionView_1?.is_land_logos[0]?._userid, gameID: this.sectionView_1?.is_land_logos[0].game_id, roleID:  this.sectionView_1?.is_land_logos[0]?.role_id}
 
       let err: any, res: any;
@@ -1107,7 +1106,7 @@ this.spectSearchStr=''
       [err, res] = await HttpProtocols.to(DashboardModel.getRankingAndOtherDataSectionView_3(body))
       if (!err && res?.status === 'success' && res?.statuscode === 200) {
       
-        console.log(this.activeTabOrderNumberForSectionView_2-1)
+     
   
        
           this.sectionView_3_popup = res?.data;
@@ -1117,10 +1116,10 @@ this.spectSearchStr=''
           
            
           this.sectionView_3_list_popup_index = this.sectionView_3_popup?._ranking_data?.filter(data => {
-            console.log(data);
             
             
-            console.log(this.activeTabOrderNumberForSectionView_2);
+            
+            
             
             if (data.order === this.activeTabOrderNumberForSectionView_2) {
              
@@ -1128,12 +1127,12 @@ this.spectSearchStr=''
              
              
             }
-            console.log(data._data);
+           
             data?._data.find((res)=>{
-              console.log(res);
+            
               if(res?.userid===this.sectionView_1._personal_data.USERID){
                 localStorage.setItem("group_id",res?.id_coroebus_group);
-                console.log(this.groupID)
+               
               }
             })
 
@@ -1155,56 +1154,46 @@ this.spectSearchStr=''
      
    }
    async openKpiInfo(event) {
-    console.log(this.userSelectionData?._personal_data);
-    console.log(this.queryParams)
 
     this.selectedIndex=0;
-// API CALL FOR GET GROUP ID
 
-     let body = {
-      "_userid": this.userSelectionData?._personal_data?.USERID,
-      "_game": this.userSelectionData?.id_coroebus_game, "_section_view": "3", "page_number": this.pageNumberForSectionView_3
-    };
-    if(this.userSelectionData?._personal_data?.id_role=="8"||this.queryParams?.roleID=="8"){
+    let body = {
+        "_userid": this.sectionView_1?._personal_data?.USERID,
+        "_game": this.sectionView_1?._personal_data?.id_coroebus_game, "_section_view": "3", "page_number": this.pageNumberForSectionView_3
+      };
+    if(this.sectionView_1?._personal_data?.id_role=='8'){
       let err: any, res: any; 
     [err, res] = await HttpProtocols.to(DashboardModel.getRankingAndOtherDataSectionView_3(body))
      if (!err && res?.status === 'success' && res?.statuscode === 200) {
        this.sectionView_3_popup = res?.data;
        this.sectionView_3_list_popup_index = this.sectionView_3_popup?._ranking_data?.filter(data => {
-         console.log(data);
-         console.log(this.activeTabOrderNumberForSectionView_2);
+        
          if (data.order === this.activeTabOrderNumberForSectionView_2) {
            return data
          }
-         console.log(data._data);
-         data?._data.find((res) => {
-           console.log(res);
-           if (res?.userid === this.sectionView_1._personal_data.USERID) {
-             localStorage.setItem("group_id", res?.id_coroebus_group);
-             console.log(this.groupID)
-           }
-          
-         })
+       
+         localStorage.setItem("group_id", data._data[0]?.id_coroebus_group);
+       
 
        })
      } else {
        this.sectionView_3_err = 'Please try after some time'
      }
     }
-    else if(this.queryParams?.roleID === "9" || this.userSelectionData?._personal_data?.id_role === "9"){
-      // console.log('In else if');
-      console.log(this.sectionView_1?._business_user[0])
+    else if(this.sectionView_1?._personal_data?.id_role=="9"){
+      
+      
       let body={
         _userid:this.sectionView_1?._business_user[0]?.USERID,
         _org:this.sectionView_1?._business_user[0]?.id_coroebus_organization
       }
       this.http.buisnessHead(body).subscribe((res:any)=>{
-        console.log(res?.data?._ranking_data[0]?._data)
-        console.log(this.sectionView_1._personal_data)
+      
         res?.data?._ranking_data[0]?._data.map((res:any)=>{
-          console.log(res);
+        
           if (res?.userid == this.sectionView_1?._personal_data?.USERID){
-             console.log(res)
+            
+             this.primary_rank=res?.rankingtable_number;
             localStorage.setItem("group_id_bh",res?.id_coroebus_group);
             localStorage.setItem("gameId_bh",res?.id_coroebus_game);
             localStorage.setItem("idRole_bh",res?.id_role);
@@ -1220,27 +1209,25 @@ this.spectSearchStr=''
     this.groupID_bh=localStorage.getItem('group_id_bh')
     this.gameIdBh=localStorage.getItem('gameId_bh');
 
-    console.log(this.gameIdBh)
+   
     this.id_role_bh=localStorage.getItem('idRole_bh')
     this.openKpi = !this.openKpi;
-    console.log(this.groupID);
-    console.log(this.userSelectionData?.games)
+   
     try {
       var location = window.location.href;
-      // console.log(this.sectionView_3?._personal_data?.id_role);
-      if(this.userSelectionData?._personal_data?.id_role=="8"||this.queryParams?.roleID=="8"){
+      
+      if(this.sectionView_1?._personal_data?.id_role=='8'){
         if (location.includes("?")){
           let body = {
-            _game:this.queryParams?.gameID?this.queryParams?.gameID:this.gameIdBh,
-            id_role:this.queryParams?.roleID,
+            _game:this.sectionView_1?._personal_data?.id_coroebus_game,
+            id_role:this.sectionView_1?._personal_data?.id_role,
             id_coroebus_group:this.groupID
           };
           let res = await this.http.pointDistributionPopup(body).toPromise();
           this.kpiData = res;
         }
         else{
-          console.log('In else part')
-          console.log(this.userSelectionData?._personal_data)
+          
           let body = {
       
             _game:this.userSelectionData?.id_coroebus_game,
@@ -1253,7 +1240,7 @@ this.spectSearchStr=''
          
         }
       }
-      else if(this.queryParams?.roleID === "9" || this.userSelectionData?._personal_data?.id_role === "9"){
+      else if(this.sectionView_1?._personal_data?.id_role=='9'){
         if (location.includes("?")){
           let body = {
             _game:this.gameIdBh,
@@ -1264,7 +1251,7 @@ this.spectSearchStr=''
           this.kpiData = res;
         }
         else{
-          console.log('In else part')
+         
           let body = {
       
             _game:this.gameIdBh,
@@ -1303,7 +1290,7 @@ this.spectSearchStr=''
      this.newKpiNamefirst=this.labelArray[0]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNamefirst,"");
      this.labelFirst=this.labelArray[0]?.label?.replace('- rollup','');
      this.fullFormKpiNamefirst=`${this.newKpiNamefirst}${this.labelFirst} Index`;
-     console.log(this.fullFormKpiNamefirst);
+    
 
       // Second Index
       this.endRangeForSecond=this.labelArray[1]?.Kpidata?.data.forEach(element => {
@@ -1319,7 +1306,7 @@ this.spectSearchStr=''
       this.newKpiNameSecond=this.labelArray[1]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNameSecond,"");
       this.labelSecond=this.labelArray[1]?.label?.replace('- rollup','');
       this.fullFormKpiNamesecond=`${this.newKpiNameSecond}${this.labelSecond} Index`
-      console.log(this.fullFormKpiNamesecond);
+     
       // Third Index
       this.endRangeForThird=this.labelArray[2]?.Kpidata?.data.forEach(element => {
         if(element.kpi_type=='Actual'){
@@ -1334,7 +1321,7 @@ this.spectSearchStr=''
       this.newKpiNameThird=this.labelArray[2]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNameThird,"");
       this.labelThird=this.labelArray[2]?.label?.replace('- rollup','');
       this.fullFormKpiNameThird=`${this.newKpiNameThird}${this.labelThird} Index`
-      console.log(this.fullFormKpiNameThird);
+      
 
       // Fourth Index
       this.endRangeForFourth=this.labelArray[3]?.Kpidata?.data.forEach(element => {
@@ -1366,9 +1353,7 @@ this.spectSearchStr=''
   }
 
   async GetRankingPopupData(){
-    console.log(this.activeClassPopup);
     
-    console.log(this.activeTabOrderNumberForSectionView_2)
    
     
     this.GetIndexWisePopup(this.activeTabOrderNumberForSectionView_2-1)
@@ -1388,7 +1373,10 @@ this.spectSearchStr=''
 
   ngAfterViewInit():void{
     setTimeout(()=>{
-      this.openKpiInfo('')
+      this.leaderboard(0);
+    
+     
+      
     },2000)
 
    
