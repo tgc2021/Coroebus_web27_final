@@ -119,6 +119,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   groupID: string;
   ZoneRankTL: any;
   pageInfo: string;
+  link: Promise<boolean>;
+  id_coroebus_group: any;
   dismiss() {
     throw new Error("Method not implemented.");
   }
@@ -350,19 +352,21 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   // }
 
   ngOnInit() {
-    // this.pageInfo = localStorage.getItem('page');
-    // console.log(this.pageInfo);
-    // if(this.pageInfo!="undefined"){
-    //   setTimeout(()=>{
-    //     if (!localStorage.getItem('foo')) { 
-    //       localStorage.setItem('foo', 'no reload') 
-    //       location.reload() 
-    //     } else {
-    //       localStorage.removeItem('foo') 
-    //     }
-    //   },2000)
+    this.pageInfo = localStorage.getItem('page');
+ 
+    if(this.pageInfo!="undefined"){
+      setTimeout(()=>{
+        if (!localStorage.getItem('foo')) { 
+          localStorage.setItem('foo', 'no reload') 
+          location.reload() 
+        } else {
+          localStorage.removeItem('foo') 
+        }
+      },2000)
       
-    // }
+    }
+
+  
 
     this.daily_text = localStorage.getItem("daily_text");
     this.weekly_text = localStorage.getItem("weekly_text");
@@ -428,7 +432,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
               roleID: this.Util.decryptData(replacedRoleId),
               // groupID: this.Util.decryptData(replacedGroupId),
             };
-            console.log(queryParams);
+           
             
           } else {
             queryParams = {
@@ -517,7 +521,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   overallPopup(title:any) {
-    console.log('Overall popup title',title);
+    
     
     if (title == "My Team") {
       this.hideTab = false;
@@ -858,6 +862,9 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
 
+
+    
+
    
     this.edit_image;
     
@@ -867,14 +874,34 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     // setTimeout(() => {
       this.changeSubTabFilter("Overall");
       this.changeSubTabFilterIndex("Overall");
+      setTimeout(()=>{
+        this.openKpiInfo()
+      },2000)
+     
       // if(this.se)
       if(this.userSelectionData?._personal_data?.id_coroebus_organization=="61"){
         setTimeout(()=>{
           this.GetRankingPopupData('','')
-          console.log('Rerun this Project')
+         
         },1000)
       }
      
+      
+      let body={
+       
+          _userid: this.queryParams.userID,
+          _game: this.queryParams.gameID,
+
+    
+      }
+      this.http.interactiveDashboard(body).subscribe((res:any)=>{
+        
+        this.daily_text=res?.data?.theme_details[0]?.daily_text;
+        this.weekly_text=res?.data?.theme_details[0]?.weekly_text;
+        this.monthly_text=res?.data?.theme_details[0]?.monthly_text
+
+
+      })
       
 
       // this.changeTabFilter('', this.activeTabForSectionView_2=[0] )
@@ -916,6 +943,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       this.http.engagamentlog(body).subscribe((res) => {});
 
       this.sectionView_1 = res?.data;
+      this.openKpiInfo();
       this.id_role=this.sectionView_1?._personal_data?.id_role;
       this.primary_rank = this.sectionView_1._primary.primary_rank;
       this.role_id = this.sectionView_1._personal_data.id_role;
@@ -1069,7 +1097,7 @@ if (this.levelwise===3) {
 
   async GetRankingPopupData(title: any, num: any) {
    
-    console.log("title from Get Ranking Popup", title);
+    
  
 
     if (title == "My Team") {
@@ -1151,7 +1179,7 @@ if (this.levelwise===3) {
       // this.filterRankingData()
      
       this.sectionView_3_popup?._ranking_data[0]?._data.filter((res)=>{
-        console.log(res?.userid);
+       
         if(res?.userid==this.sectionView_1?._personal_data?.USERID){
           
           this.ZoneRankTL=res?.rankingtable_number;
@@ -1519,13 +1547,7 @@ if (this.levelwise===3) {
   checkUserGrade() {
    
 
-    //  if (this.userGrade=='') {
-    //    console.log(this.userGrade,'uses grade null');
-
-    //  } else {
-    //   console.log(this.userGrade,'uses grade false');
-
-    //  }
+   
   }
   async getUserBannerDataSectionView_2(queryParams?: any) {
     const userID = queryParams?.userID || this.userSelectionData?._personal_data?.USERID;
@@ -2082,7 +2104,7 @@ if (this.levelwise===3) {
     this.pokeidselected =
       this.emojiText[this.idSelected]._data[id].poke_description;
     this.emoji = this.emojiText[this.idSelected]._data[id].poke_description;
-    //  console.log(this.idSelected);
+    
     this.pokeId = this.emojiText[this.idSelected]._data[id].id_coroebus_poke;
   
   }
@@ -2318,25 +2340,22 @@ if (this.levelwise===3) {
 
     localStorage.setItem("rewardid", obj._userid);
 
-    // this._router.navigate('/performance/page')
-    // this._router.navigate(['/performance/page'], { queryParams: { key: value } })
-
+   
     this._router.navigate(["/reward/rewardPoints"], {
       relativeTo: this._route,
       queryParams: {
-        userID: this.Util.encryptData(this.queryParams?.userID),
-        gameID: this.Util.encryptData(this.queryParams?.gameID),
+        userID:this.Util.encryptData(this.sectionView_1?._personal_data?.USERID),
+        gameID: this.Util.encryptData(this.sectionView_1?._personal_data?.id_coroebus_game),
         // roleID: this.Util.encryptData(this.queryParams?.roleID)
       },
-
       queryParamsHandling: "merge",
-      // preserve the existing query params in the route
       skipLocationChange: false,
-      // do not trigger navigation
     });
+  
+    
   }
   navigateToOtherRole(item) {
-    console.log(item);
+   
     
     this.spectSearchStr = "";
     this.activeSubTabForSectionView_2 = "Overall";
@@ -2361,46 +2380,7 @@ if (this.levelwise===3) {
     this.isLevel3Active = false;
     
   }
-  getGraphDataByIdPerformance() {
-    // console.log('Graph data',data);
-    let obj = {
-      _userid: this.queryParams?.userID
-        ? this.queryParams?.userID
-        : this.userSelectionData?._personal_data?.USERID,
-      game_id: this.queryParams?.gameID
-        ? this.queryParams?.gameID
-        : this.userSelectionData?.id_coroebus_game,
-    };
-    console.log(obj);
 
-    let body = {
-      _userid: this.userSelectionData?._personal_data?.USERID,
-      _game: this.userSelectionData?.id_coroebus_game,
-      _device: "W",
-      _section: "Performance",
-      _description: "From Points Distribution",
-    };
-
-    this.http.engagamentlog(body).subscribe((res) => {
-      console.log(res);
-    });
-
-    // this._router.navigate('/performance/page')
-    // this._router.navigate(['/performance/page'], { queryParams: { key: value } })
-    this._router.navigate(["/performance/page"], {
-      relativeTo: this._route,
-      queryParams: {
-        userID: this.Util.encryptData(this.queryParams?.userID),
-        gameID: this.Util.encryptData(this.queryParams?.gameID),
-        // roleID: this.Util.encryptData(this.queryParams?.roleID)
-      },
-
-      queryParamsHandling: "merge",
-      // preserve the existing query params in the route
-      skipLocationChange:true,
-      // do not trigger navigation
-    });
-  }
 
  
 
@@ -2615,7 +2595,7 @@ if (this.levelwise===3) {
       };
       const res = await this.http.produceInfo(obj).toPromise();
       this.data = res;
-  
+   
       this.triviaCornerData = this.data.data.trivia_corner;
       this.hideTriviaIndicator = this.triviaCornerData.some(res => res.view_status !== "Read");
   
@@ -2739,9 +2719,26 @@ if (this.levelwise===3) {
   }
  
   async openKpiInfo() {
-    this.selectedIndex=0;
-    // this.getGroupId()
+
+    this.getIndexproduce3('')
     
+    if(this.sectionView_1?._personal_data?.id_role!='6'){
+      this.sectionView_3_list_index[0]?._Overall?.map((res:any)=>{
+   
+        if(this.sectionView_1?._personal_data?.USERID==res?.userid){
+        
+          this.id_coroebus_group=res?.id_coroebus_group;
+        }
+  
+      })
+    }
+   
+ 
+    this.userSelectionData?.games[0]?.id_coroebus_group
+    this.selectedIndex=0;
+    //  this.getGroupId()
+   
+
     
     
     this.openKpi = !this.openKpi;
@@ -2750,9 +2747,9 @@ if (this.levelwise===3) {
       var location = window.location.href;
       if (location.includes("?")){
         let body = {
-          _game:this.userSelectionData?.id_coroebus_game,
-          id_role:this.role_id,
-          id_coroebus_group:this.queryParams?.groupID?this.queryParams?.groupID:'672'
+          _game:this.sectionView_1?._personal_data?.id_coroebus_game,
+          id_role:this.sectionView_1?._personal_data?.id_role,
+          id_coroebus_group:this.id_coroebus_group
         
         };
         let res = await this.http.pointDistributionPopup(body).toPromise();
@@ -2762,7 +2759,7 @@ if (this.levelwise===3) {
         let body = {
     
           _game:this.userSelectionData?.id_coroebus_game,
-          id_role:this.userSelectionData?._personal_data?.id_role,
+          id_role:this.sectionView_1?._personal_data?.id_role,
           id_coroebus_group:this.userSelectionData?.games[0]?.id_coroebus_group
         
   
@@ -2850,35 +2847,7 @@ if (this.levelwise===3) {
     
   }
 
-// async openKpiInfo() {
-//   this.openKpi = !this.openKpi;
-  
-//   try {
-//     const body = {
-//       _game: "355",
-//       id_role: "6"
-//     };
-    
-//     const res = await this.http.pointDistributionPopup(body).toPromise();
-//     this.kpiData = res;
-    
-//     this.labelArray = Object.entries(this.kpiData?.data?._point_details).map(([label, otherKpiData]) => {
-//       return { label, Kpidata: otherKpiData };
-//     });
-    
-//     this.labelArray.forEach((labelEntry, index) => {
-//       const kpiName = labelEntry.Kpidata?.data[index]?.kpi_name;
-//       const newKpiName = kpiName ? kpiName.split(" ").pop() : "";
-//       const fullFormKpiName = `${newKpiName}${this.labelArray[index]?.label} Index`;
-      
-//       this[`newKpiName${index}`] = newKpiName;
-//       this[`fullFormKpiName${index}`] = fullFormKpiName;
-//     });
-    
-//   } catch (err) {
-//     console.error(err);
-//   }
-// }
+
 
 
   navigateToPlayzone() {
@@ -3195,11 +3164,11 @@ if (this.levelwise===3) {
         // }
 
         this.firstrowbackimage =
-          this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level;
+          this.rankingDataFirstRowForSectionView_2[0]?._data[0]?.ranking_image_level;
 
         for (let item of this.getBackImages) {
           if (item.ranking_image_level === this.firstrowbackimage) {
-            this.web_first_tile_image = item.ranking_image;
+            this.web_first_tile_image = item?.ranking_image;
           }
         }
       } else if (
@@ -3341,6 +3310,46 @@ if (this.levelwise===3) {
       this.sectionView_3_err = "Please try after some time";
     }
     this.GetIndexWisePopup();
+  }
+  getGraphDataByIdPerformance() {
+   
+    let obj = {
+      _userid: this.queryParams?.userID
+        ? this.queryParams?.userID
+        : this.userSelectionData?._personal_data?.USERID,
+      game_id: this.queryParams?.gameID
+        ? this.queryParams?.gameID
+        : this.userSelectionData?.id_coroebus_game,
+    };
+   
+
+    let body = {
+      _userid: this.userSelectionData?._personal_data?.USERID,
+      _game: this.userSelectionData?.id_coroebus_game,
+      _device: "W",
+      _section: "Performance",
+      _description: "From Points Distribution",
+    };
+
+    this.http.engagamentlog(body).subscribe((res) => {
+ 
+    });
+
+    // this._router.navigate('/performance/page')
+    // this._router.navigate(['/performance/page'], { queryParams: { key: value } })
+    this._router.navigate(["/performance/page"], {
+      relativeTo: this._route,
+      queryParams: {
+        userID:this.Util.encryptData(this.sectionView_1?._personal_data?.USERID),
+        gameID: this.Util.encryptData(this.sectionView_1?._personal_data?.id_coroebus_game),
+        // roleID: this.Util.encryptData(this.queryParams?.roleID)
+      },
+
+      queryParamsHandling: "merge",
+      // preserve the existing query params in the route
+      skipLocationChange: false,
+      // do not trigger navigation
+    });
   }
 
 
