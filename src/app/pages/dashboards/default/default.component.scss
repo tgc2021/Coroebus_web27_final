@@ -136,6 +136,64 @@ ModalHeading.ok_button {
       align-items: center;
     }
   }
+  .leaderboard_rank {
+    // margin-left: 1vw;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1vw;
+
+
+}
+.leaderboard_name {
+  margin-left: 11.5%;
+  font-family: 'Inter';
+  font-style: normal;
+
+  // overflow: hidden;
+  // text-overflow: ellipsis;
+  // white-space: nowrap;
+  // width: 90%;
+  font-weight: 600;
+  font-size: 1vw;
+}
+.leaderboard_points {
+  margin-left: 55%;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+
+  font-size: 1vw;
+}
+.leaderboard_rank_popup {
+  // margin-left: 1vw;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1vw;
+
+
+}
+.leaderboard_name_popup {
+margin-left: 10.5%;
+font-family: 'Inter';
+font-style: normal;
+
+// overflow: hidden;
+// text-overflow: ellipsis;
+// white-space: nowrap;
+// width: 90%;
+font-weight: 600;
+font-size: 1vw;
+}
+.leaderboard_points_popup {
+margin-left: 59%;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+
+font-size: 1vw;
+}
   .subsectionofChampionsLeague > div:hover {
     background-color: gray;
   }
@@ -600,6 +658,7 @@ ModalHeading.ok_button {
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  
   .mobile-points-dis-card {
     background-repeat: no-repeat;
     background-position: inherit;
@@ -1876,9 +1935,27 @@ ModalHeading.ok_button {
   // }
   
   @media screen and (min-width: 1023px) and (max-width: 1180px) {
+    .points-dis-card{
+      height: 95vh;
+    }
     .name_h {
       margin-left: 3vw;
     }
+    .leaderboard_name{
+      margin-left: 18%;
+
+    }
+    .leaderboard_points{
+      margin-left: 48%;
+    }
+    .leaderboard_name_popup{
+      margin-left: 12.5%;
+
+    }
+    .leaderboard_points_popup{
+      margin-left: 65%;
+    }
+
     .inner_content {
       width: 100%;
     }

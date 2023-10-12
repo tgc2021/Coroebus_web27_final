@@ -112,12 +112,17 @@ export class NewRewardPageComponent implements OnInit {
       
       
     // }
-    if (!localStorage.getItem('foo')) { 
-      localStorage.setItem('foo', 'no reload') 
-      location.reload() 
-    } else {
-      localStorage.removeItem('foo'); 
-    }
+    // else{
+      if (!localStorage.getItem('foo')) { 
+        localStorage.setItem('foo', 'no reload') 
+        location.reload() 
+      } else {
+        localStorage.removeItem('foo'); 
+      }
+      
+    // }
+   
+    
     this.urlPage=localStorage.getItem('page');
   
     if(this.urlPage=='reward'){

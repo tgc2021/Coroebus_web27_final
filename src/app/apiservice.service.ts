@@ -14,14 +14,13 @@ export class ApiserviceService {
   URLstring = environment.apiURL;
   open: any;
   Path='coroebus-beta-api-levels';
-  // Path='coroebus-beta-api-levels-new';
   // Path='coroebus-tgc-api-levels'
 
 
   // URL For Navigation
   mainUrl='http://coroebusbeta.in';
   // mainUrl='https://coroebus.in';
-  // /ainUrl='http://localhost:4201'
+  // mainUrl='http://localhost:4201'
 
   isinM2OSTPlatform=false;
   constructor(public Http:HttpClient) { }

@@ -98,13 +98,10 @@ export class PerformancePageComponent implements OnInit {
     //   },2000)
       
     // }
-    if (!localStorage.getItem('foo')) { 
-            localStorage.setItem('foo', 'no reload') 
-            location.reload() 
-          } else {
-            localStorage.removeItem('foo') 
-          }
+    // else {
 
+    // }
+   
     this._routeSub = this._route.queryParams.subscribe(queryParams => {
       // do something with the query params
       if (queryParams?.userID) {

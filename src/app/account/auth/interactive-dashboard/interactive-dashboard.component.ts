@@ -459,19 +459,19 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
 
     // }
     // else if(this.pageInfo=='Spectator_view'){
-    //   setTimeout(()=>{this._router.navigateByUrl('/spectator/spectatorView')},1000)
+    //   setTimeout(()=>{this._router.navigateByUrl('/spectator/spectatorView')},1000);
       
       
     // }
     // else if(this.pageInfo=='Third_umpire'){
-    //  setTimeout(()=>{this._router.navigateByUrl('/notification/list')},1000)
+    //  setTimeout(()=>{this._router.navigateByUrl('/notification/list')},1000);
     // }
     // else if(this.pageInfo=='performance_page'){
-    //   setTimeout(()=>{this._router.navigateByUrl('performance/page')},1000)
+    //   setTimeout(()=>{this._router.navigateByUrl('performance/page')},1000);
 
     // }
     // else if(this.pageInfo=='main_dashboard'){
-    //   setTimeout(()=>{this._router.navigateByUrl('/dashboard')},1000)
+    //   setTimeout(()=>{this._router.navigateByUrl('/dashboard')},1000);
 
     // }
 

@@ -186,7 +186,7 @@
 
                             </div>
                             <div>
-                                <div class="inner-points-height d-flex flex-column justify-content-center gap-2 p-2">
+                                <div class="inner-points-height d-flex flex-column justify-content-center  p-2">
                                     <div class="row  points-row  d-flex flex-row align-items-center" 
                                         (click)="getGraphDataByIdPerformance()" >
                                         <div class="col-6 p-0">
@@ -224,7 +224,7 @@
                                             <img src="assets/images/TopHierarchyDashboard/Arrow.png" />
                                         </div>
                                     </div>
-                                    <div class="row  points-row  d-flex flex-row align-items-center" 
+                                    <div class="row  points-row mt-2  d-flex flex-row align-items-center" 
                                         (click)="getGraphDataByIdPerformance()" *ngFor="let item of sectionView_1?._kpi_score">
                                         <div class="col-6 p-0">
                                             <div [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.light_color}"
@@ -692,15 +692,13 @@
                     [style.background-image]="
             sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null"
                     style="background-size:cover;border-radius:10px;padding:1%">
-                    <div class="row" style="color:#ffff;font-size: 1vw !important;">
-                        <div class="col-2">
-                            <span class="rank_h">Rank</span>
-                        </div>
-                        <div class="col-3 pe-5">
-                            <span class="name_h">Name</span>
-                        </div>
-                        <div class="offset-4 col-2 ps-4 mt-1">
-                            <span class="points_h" style="margin-left: -5px;">Points</span>
+                    <div class="row" style="color: #ffff;
+                    margin-top: 1.2vh;">
+                        <div class="leaderboard_label d-flex align-items-center mb-1">
+                            <div class="leaderboard_rank">&nbsp;&nbsp; Rank</div>
+                            <div class="leaderboard_name">Name</div>
+                            <div class="leaderboard_points">Points</div>
+
                         </div>
                     </div>
                     <div *ngIf="activeSubTabForSectionView_2 === 'My Store' ; then mystore else overall"></div>
@@ -4916,16 +4914,11 @@
                 [style.background-image]="
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null"
                 style="background-size:cover;border-radius:10px;padding:1%">
-                <div class="row" style="color:#000;font-size: 1vw !important;">
-                    <div class="col-2">
-                        <span class="rank_h">Rank</span>
-                    </div>
-                    <div class="col-3 pe-5">
-                        <span class="name_h">Name</span>
-                    </div>
-                    <div class="offset-4 col-2 ps-4 mt-1">
-                        <span class="points_h" style="margin-left: -0px;">Points</span>
-                    </div>
+                <div class="leaderboard_label d-flex align-items-center mb-1">
+                    <div class="leaderboard_rank_popup">&nbsp;&nbsp; Rank</div>
+                    <div class="leaderboard_name_popup" >Name</div>
+                    <div class="leaderboard_points_popup" >Points</div>
+
                 </div>
                 <div *ngIf="activeSubTabForSectionView_2_index === 'My Store' ; then mystore else overall"></div>
                 <ng-template #mystore>

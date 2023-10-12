@@ -418,8 +418,8 @@ export class TopHierarchyDashboardsComponent implements OnInit {
         if(this.id_role_check!=9){
           
           
-          this.leaderboard_data=this.sectionView_3?._ranking_data[0]._Overall;
-          this.leaderboard_data_popup=this.sectionView_3?._ranking_data[0]._Overall
+          this.leaderboard_data=this.sectionView_3?._ranking_data[0]?._Overall;
+          this.leaderboard_data_popup=this.sectionView_3?._ranking_data[0]?._Overall
           this.lengthLeaderBoardData=this.leaderboard_data?.length;
           
           this.leaderboard_data_buttons=this.sectionView_3?._ranking_data;

@@ -217,7 +217,7 @@
                 <div class="dashboard_section">
                     <div class="badge_container"
                         [style.background-image]="
-                sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                        sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
                         <div *ngIf="sectionView_1._personal_data.id_role=='9' then redirectToBH else dontredirect">
                         </div>
                         <ng-template #redirectToBH>
@@ -325,11 +325,11 @@
                     [style.background-image]="
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null"
                     style="background-size:cover;border-radius:10px;width: 49vw;
-                margin-left: 0.1vw;">
+                    margin-left: 0.1vw;">
                     <div class="row" style="color: #ffff;
                     margin-top: 1.2vh;">
-                        <div class="leaderboard_label d-flex align-items-center mb-1">
-                            <div class="leaderboard_rank">&nbsp;&nbsp; Rank</div>
+                         <div class="leaderboard_label ps-4  d-flex align-items-center mb-1" style="color:#000">
+                            <div class="leaderboard_rank">Rank</div>
                             <div class="leaderboard_name">Name</div>
                             <div class="leaderboard_points">Points</div>
 
@@ -654,7 +654,7 @@
             <div class="col-3 d-flex justify-content-center align-items-center mt-2 ">
                 <div class="isLand_panel_container"
                     [style.background-image]="
-                sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                    sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
                     <div style="height: 85vh;  overflow-y: auto;
                 overflow-x:hidden;">
                         <!-- Ranking Section -->
@@ -2119,12 +2119,12 @@
                 margin-left: 0.1vw;">
                     <div class="row" style="color: #ffff;
                     margin-top: 1.2vh;">
-                        <div class="leaderboard_label d-flex align-items-center mb-1" style="color:#000">
-                            <div class="leaderboard_rank ps-2">Rank</div>
-                            <div class="leaderboard_name ps-2">Name</div>
-                            <div class="leaderBoard_points_modal">Points</div>
-
+                        <div class="leaderboard_label ps-4  d-flex align-items-center mb-1" style="color:#000">
+                            <div class="leaderboard_rank_modal">Rank</div>
+                            <div class="leaderboard_name_modal">Name</div>
+                            <div class="leaderboard_points_modal">Points</div>
                         </div>
+                        
                     </div>
 
                     <div class="row leaderboard_with_fixed_tile">
