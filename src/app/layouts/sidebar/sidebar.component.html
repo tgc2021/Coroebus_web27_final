@@ -206,6 +206,33 @@
              </a>
  
             </div>
+
+            <div *ngIf="id_coroebus_theme>4 && id_role == 7" >
+              <a [routerLink]="item.link" routerLinkActive="active" download (click)="activeLink(item)"*ngIf="!hasItems(item)" class="side-nav-link-ref"
+              style="color:#686868;">
+               <!-- <i class="bx {{ item.icon }}" *ngIf="item.icon"></i> -->
+               <!-- <img  class="me-1" src="assets/images/svg/menu/{{item.icon}}.svg" alt=""> -->
+               <img  class="me-1" *ngIf="item.icon !== 'spec'" src="assets/images/svg/menu/{{item.icon}}.svg" alt="">
+               <img  class="me-1" *ngIf="item.icon == 'spec'" style="width: 15px; height: 15px;" src="assets/images/svg/menu/{{item.icon}}.png" alt="">
+
+               <ng-container *ngIf="item?.icon === 'logout'; else other">
+               
+                 <span (click)="logout()"> {{ item.label | translate }}</span>
+               </ng-container>
+               <ng-template #other>
+ 
+                 <span > {{ item.label
+                   | translate }}</span>
+               </ng-template>
+ 
+ 
+               <span class="badge rounded-pill bg-{{item.badge.variant}} float-end" *ngIf="item.badge">{{item.badge.text
+                 |
+                 translate}}</span>
+             </a>
+ 
+            </div>
+
             <div *ngIf="id_coroebus_theme<4">
               <a [routerLink]="item.link1" download (click)="activeLink(item)"*ngIf="!hasItems(item)" class="side-nav-link-ref"
               style="color:#686868;">

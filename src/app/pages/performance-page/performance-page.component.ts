@@ -64,7 +64,7 @@ export class PerformancePageComponent implements OnInit {
       takeUntil(this.destroy$)
     ).subscribe(data => {
       this.userObj = data?.user
-      this.dropDownValueFilter()
+    
       this.dropDownValue = this.dropDownFilterData?.[0]?.value
     })
 
@@ -101,6 +101,7 @@ export class PerformancePageComponent implements OnInit {
     // else {
 
     // }
+    // this.dropDownValueFilter()
    
     this._routeSub = this._route.queryParams.subscribe(queryParams => {
       // do something with the query params
@@ -165,6 +166,9 @@ export class PerformancePageComponent implements OnInit {
       }
     };
     this.splineAreaChart = splineAreaChart;
+
+
+   
   
 
     // this.queryParams = { userID: this.Util.decryptData(this.queryParams?.userID), gameID: this.Util.decryptData(this.queryParams?.gameID), roleID: this.Util.decryptData(queryParams?.roleID) }
@@ -180,21 +184,50 @@ export class PerformancePageComponent implements OnInit {
         
         
         this.pointsList()
-        this.myperformanceProduce()
-    
+        // this.myperformanceProduce()
+      
       } else {
       
       
       }
     });
-    
-    if(this.userObj?._personal_data?.id_role=='9'||this.queryParams?.roleID=='9'){
+   
+    console.log(this.graphMasterData)
+  
+    if(this.graphMasterData?._personal_data[0]?.id_role=='9'){
+      this.dropDownFilterMasterData= [{
+        key: '2',
+        value: 'Daily',
+        mapTo: ['Live']
+      }, {
+        key: '3',
+        value: 'Weekly',
+        mapTo: ['Historical', 'Live']
+      }, {
+        key: '1',
+        value: 'Monthly',
+        mapTo: ['Live','Historical']
+      }]
       this.dropDownFilterMasterData.shift()
       this.dropDownFilterData = this.dropDownFilterMasterData?.filter(data => data?.mapTo.indexOf(this.buttonFilterActive) > -1);
       this.dropDownValue = this.buttonFilterActive === 'Live' ? this.dropDownFilterData?.[0]?.value : this.dropDownFilterData?.[0]?.value;
     
     }
+    
     else{
+      this.dropDownFilterMasterData= [{
+        key: '2',
+        value: 'Daily',
+        mapTo: ['Live']
+      }, {
+        key: '3',
+        value: 'Weekly',
+        mapTo: ['Historical', 'Live']
+      }, {
+        key: '1',
+        value: 'Monthly',
+        mapTo: ['Live','Historical']
+      }]
       this.dropDownFilterData = this.dropDownFilterMasterData?.filter(data => data?.mapTo.indexOf(this.buttonFilterActive) > -1);
       this.dropDownValue = this.buttonFilterActive === 'Live' ? this.dropDownFilterData?.[0]?.value : this.dropDownFilterData?.[0]?.value;
     }
@@ -210,7 +243,7 @@ export class PerformancePageComponent implements OnInit {
 
   buttonFilter(filterName: string) {
     this.buttonFilterActive = filterName
-    this.dropDownValueFilter()
+    // this.dropDownValueFilter()
     this.filterGraphData()
   }
   async pointsList() {
@@ -275,7 +308,7 @@ export class PerformancePageComponent implements OnInit {
       
       if (!err && res?.statuscode === 200) {
         this.graphMasterData = res?.data;
-        
+        this.dropDownValueFilter()
         this.id_role=this.graphMasterData._personal_data[0].id_role;
         
         
@@ -307,9 +340,10 @@ export class PerformancePageComponent implements OnInit {
       [err, res] = await HttpProtocols.to(PerformanceModel.myperformanceProduce(body))
       
       if (!err && res?.statuscode === 200) {
-        this.graphMasterData = res?.data
-
+        this.graphMasterData = res?.data;
+        this.dropDownValueFilter()
         this.id_role=this.graphMasterData._personal_data[0].id_role;
+
        
         
         //this.graphData = this.graphMasterData

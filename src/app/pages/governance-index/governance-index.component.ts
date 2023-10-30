@@ -33,13 +33,15 @@ export class GovernanceIndexComponent implements OnInit {
 
     this.http.governance_index(body).subscribe((res) => {
       
-      this.governance_index_=res
-      this.governance_index_response=this.governance_index_.data
+      this.governance_index_=res;
+      console.log(this.governance_index_);
+      this.governance_index_response=this.governance_index_?.data;
+     
       
       this.calibrationResponse=this.governance_index_response.filter((res)=>{
         
         if(res._data.point_label ==='Calibration'){
-          this.calibrationData=res._data_kpi.process_data;
+          this.calibrationData=res?._data_kpi?.process_data;
         }
         
 
@@ -58,6 +60,9 @@ export class GovernanceIndexComponent implements OnInit {
    this.element.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
 
 
+  }
+  governance_index(governance_index: any) {
+    throw new Error('Method not implemented.');
   }
 
 }

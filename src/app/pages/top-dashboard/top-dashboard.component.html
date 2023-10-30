@@ -147,7 +147,14 @@
                                             <div class="pech d-flex" style="cursor: pointer;"
                                                 *ngFor="let response of buisness_head_response_?._governance_score;let i=index"
                                                 (click)="navigateToGovernanceIndexMap(response,i)">
-                                                {{response?.point_label}}
+                                                <div *ngIf="this.userSelectionData?._personal_data?.id_coroebus_organization=='76';then ipruGame else otherGame"></div>
+                                                <ng-template #ipruGame>
+                                                    <div *ngIf="i!=4">{{response.point_label}}</div>
+                                                    <div *ngIf="i==4">Hiring</div>
+                                                </ng-template>
+                                                <ng-template #otherGame>
+                                                    <div >{{response.point_label}}</div>
+                                                </ng-template>
                                                 <div class="pech_details d-flex  ">
                                                     <div class="text-end">
                                                         {{response?.weightage}}
@@ -491,7 +498,15 @@
                         <div class="d-flex justify-content-between align-items-center mt-4"
                             style="font-weight: 550;font-family: 'Inter';margin-top:2%">
                             <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Inter';">
-                                <div>{{businessresponse?.point_label}}</div>
+                               
+                                <div *ngIf="this.userSelectionData?._personal_data?.id_coroebus_organization=='76';then ipruGame else otherGame"></div>
+                                                <ng-template #ipruGame>
+                                                    <div *ngIf="i!=4">{{businessresponse.point_label}}</div>
+                                                    <div *ngIf="i==4">Hiring</div>
+                                                </ng-template>
+                                                <ng-template #otherGame>
+                                                    <div >{{businessresponse.point_label}}</div>
+                                                </ng-template>
         
                             </div>
                             <div class="d-flex gap-1">

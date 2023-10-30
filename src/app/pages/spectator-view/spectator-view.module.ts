@@ -11,6 +11,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {  NgbTooltipModule, NgbNavModule, NgbCollapseModule, NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { SkeletonScreenLoaderModule } from '../../../../projects/coroebus/skeleton-screen-loader/src/lib/skeleton-screen-loader.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {  NgbTooltipModule, NgbNavModule, NgbCollapseModule, NgbModule } from '@
     MatCardModule,
     MatSnackBarModule,
     SpectatorViewRoutingModule,
+    SkeletonScreenLoaderModule
   ]
 })
 export class SpectatorViewModule { }

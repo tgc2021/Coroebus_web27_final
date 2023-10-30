@@ -63,17 +63,19 @@ export class TopbarComponent implements OnInit, OnDestroy {
   top_toolbar_logo:any
   topbar_color:any
   Org_logo:any
-  isinM2ostPlatform:boolean;
+  isinM2ostPlatform:boolean=true;
   ngOnInit() {
     // this.pageInfo = localStorage.getItem('page');
     // console.log(this.pageInfo);
 
-    // if (this.pageInfo != "undefined") {
-    
-    //  this.isinM2ostPlatform=false;
+    // if (this.pageInfo==="undefined") {
+    // console.log(true);
+     
+    //  this.isinM2ostPlatform=true;
     // } else {
+    //   console.log(false);
     //   console.log('pageInfo is undefined. Not reloading the page.');
-    //   this.isinM2ostPlatform=true;
+    //   this.isinM2ostPlatform=false;
     // }
   
   
@@ -148,6 +150,9 @@ export class TopbarComponent implements OnInit, OnDestroy {
       
 
     }
+    else if(this.id_role == 7){
+      this.router.navigateByUrl('/spectator/spectatorView')
+    }
     else if(this.id_role == 9 ||this.id_role=='9'){
       this.router.navigateByUrl('/top_dashboard')
       setTimeout(()=>{
@@ -156,15 +161,15 @@ export class TopbarComponent implements OnInit, OnDestroy {
       
 
     }
-    else if(this.id_role == 6 || this.id_role == 4 || this.id_role == 3 || this.id_role == 10){
-      if(this.isinM2ostPlatform){
+    else if(this.id_role == 6||this.id_role == 4 || this.id_role == 3 || this.id_role == 10){
+      // if(this.isinM2ostPlatform){
         this.router.navigateByUrl('account/interactive-dashboard');
-      }
-      else {
+      // }
+      // else {
 
         
-        window.open('https://www.m2ost.in/m2ostconsole/Dashboard/Index')
-      }
+        // window.open('https://www.m2ost.in/m2ostconsole/Dashboard/Index')
+      // }
      
 
     }

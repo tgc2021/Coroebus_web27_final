@@ -755,8 +755,8 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
   }
 
   navigateToGovernanceIndex(){
-    localStorage.setItem('tid',this.sectionView_1.theme_details[0].id_coroebus_theme)
-    localStorage.setItem('orgid',this.sectionView_1._personal_data.id_coroebus_organization)
+    localStorage.setItem('tid',this.sectionView_1?.theme_details[0]?.id_coroebus_theme)
+    localStorage.setItem('orgid',this.sectionView_1?._personal_data?.id_coroebus_organization)
 
     this.router.navigateByUrl('governance_index')
 

@@ -352,19 +352,19 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   // }
 
   ngOnInit() {
-    // this.pageInfo = localStorage.getItem('page');
+    this.pageInfo = localStorage.getItem('page');
  
-    // if(this.pageInfo!="undefined"){
-    //   setTimeout(()=>{
-    //     if (!localStorage.getItem('foo')) { 
-    //       localStorage.setItem('foo', 'no reload') 
-    //       location.reload() 
-    //     } else {
-    //       localStorage.removeItem('foo') 
-    //     }
-    //   },2000)
+    if(this.pageInfo!="undefined"){
+      setTimeout(()=>{
+        if (!localStorage.getItem('foo')) { 
+          localStorage.setItem('foo', 'no reload') 
+          location.reload() 
+        } else {
+          localStorage.removeItem('foo') 
+        }
+      },2000)
       
-    // }
+    }
 
   
 

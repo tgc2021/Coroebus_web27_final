@@ -293,14 +293,16 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
    * Initialize
    */
   initialize(): void {
-    // if(this.id_role == 7 || this.spectator_value=='spectator'){
+    if(this.id_role == 7 || this.spectator_value=='spectator'){
       
      
       
-    //   this.menuItems = MENU;
-    //   this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
+      this.menuItems = MENU_SPECTATOR;
+      console.log(this.menuItems);
+      
+      this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
      
-    // }
+    }
     if(this.id_role == 13 ){
       this.menuItems = MENU_HOS;
       this.activeRouterLink = location.hash?.split('#')?.[1] //this.menuItems?.[1]?.link
@@ -311,17 +313,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
       
     
       this.menuItems = MENU;
-      
-      
-     
-     
-     
-     
-     
-      
-      
       this.eventService.subscribe('requestSendForProduce1Data', (data) => {
-        
         
       })
 
@@ -360,10 +352,39 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
 
 
       }
+      
 
        
         
       
+      }
+      else if(this.id_role == 7){
+        const result = this.menuItems.filter(data => data.icon != 'ChallengeZoneicon');
+        
+     
+        this.menuItems=result;
+
+        const result1 = this.menuItems.filter(data => data.icon != 'rewards');
+          
+        this.menuItems=result1;
+        // console.log(this.menuItems);
+
+        const result2 = this.menuItems.filter(data => data.label != 'Achievement Shelf');
+        this.menuItems=result2;
+        // console.log(this.menuItems);
+
+
+        const result3 = this.menuItems.filter(data => data.icon != 'learning');
+        this.menuItems=result3;
+
+        const result4 = this.menuItems.filter(data => data.icon != 'spec');
+        this.menuItems=result4;
+
+        const result5 = this.menuItems.filter(data => data.icon != 'myper');
+        this.menuItems=result5;
+        
+        const result6 = this.menuItems.filter(data => data.icon != 'playzone');
+        this.menuItems=result6;
       }
 
    
@@ -511,10 +532,16 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
   
     
     
-// if(this.id_role=='7'){
-//   this.menuItems=MENU
+if(this.id_role=='7'){
+  this.menuItems=MENU_SPECTATOR
+  if(item?.icon === 'home'){
+    this.router.navigateByUrl("/spectator/spectatorView")
 
-// }
+  }
+
+}
+
+
 // if(this.id_role=='13'){
 //   this.menuItems=MENU_HOS
 

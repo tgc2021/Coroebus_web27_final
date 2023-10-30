@@ -94,7 +94,7 @@
             .avatar-upload .avatar-edit input+label {
                 display: inline-block;
                 position: absolute;
-                top: -46px;
+                top: -52px;
                 left: 17px;
                 width: 3vh;
                 height: 3vh;
@@ -111,6 +111,13 @@
 
 
             }
+           
+        }
+        .avatar-upload .avatar-edit {
+            position: absolute;
+            left: 73% !important;
+            z-index: 1;
+            top: 3%;
         }
 
 
@@ -930,7 +937,7 @@ input::placeholder {
 
     }
     .leaderboard_rank {
-        margin-left: 2%;
+        margin-left: 0.8vw;
         font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
@@ -971,7 +978,7 @@ input::placeholder {
     }
 
     .leaderboard_name {
-        margin-left: 18.5%;
+        margin-left: 8.2vw;
         font-family: 'Inter';
         font-style: normal;
 
@@ -984,7 +991,7 @@ input::placeholder {
     }
 
     .leaderboard_points {
-        margin-left: 50%;
+        margin-left:22.5vw;
         font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
@@ -2276,12 +2283,12 @@ table {
         text-overflow: ellipsis; 
     }
 }
-@media screen and (min-width:1025px) and (max-width:1400px) {
-    .avatar-upload .avatar-edit input+label{
-        top:-17px !important;
-    }
+// @media screen and (min-width:1025px) and (max-width:1400px) {
+//     .avatar-upload .avatar-edit input+label{
+//         top:-17px !important;
+//     }
     
-}
+// }
 ::ng-deep {
     .modal-content {
         border-radius: 0 !important;

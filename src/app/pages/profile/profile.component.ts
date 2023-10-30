@@ -38,13 +38,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
     private Util: Util, private modalService: NgbModal, private eventService: EventService, public http:ApiserviceService,public element: ElementRef) { }
 
   ngOnInit(): void {
-        setTimeout(() => { this.ngOnInit() }, 1000 * 1)
-        if (!localStorage.getItem('foo')) { 
-          localStorage.setItem('foo', 'no reload') 
-          location.reload() 
-        } else {
-          localStorage.removeItem('foo') 
-        }
+        // setTimeout(() => { this.ngOnInit() }, 1000 * 1)
+        // if (!localStorage.getItem('foo')) { 
+        //   localStorage.setItem('foo', 'no reload') 
+        //   location.reload() 
+        // } else {
+        //   localStorage.removeItem('foo') 
+        // }
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
     ).subscribe(data => {

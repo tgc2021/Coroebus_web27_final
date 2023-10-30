@@ -16,31 +16,24 @@
                         <div class="upper_section">
                             <div class="level_name">{{sectionView_1?._personal_data?.role_name}}</div>
                         </div>
-                        <div *ngIf="cameraimage" class="cameraimg">
+                        <div style="position: absolute;position: absolute;top: 16%;">
+                            <div class="avatar-upload d-flex justify-content-center"
+                                [style.border-color]="sectionView_1?.theme_details?.[0]?.dark_color">
 
-                            <!-- <img class="camera_image" src="assets/images/TopHierarchyDashboard/Camera.svg" /> -->
-                            <div class="camera_image">
-                                <!-- <img class="camera_image" src="assets/images/TopHierarchyDashboard/Camera.svg" /> -->
-                                <div class="avatar-upload">
-                                    <div class="avatar-edit">
-                                        <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
-                                            (change)="previewFile($event)" />
-                                        <label for="imageUpload"
-                                            [style.background-image]="'url(assets/images/svg/dashboard/camera-icon.svg)'"></label>
-                                    </div>
-
-                                    <!-- <div class="mobile-avatar-preview  justify-content-center">
-                                        <img loading="lazy" id="imagePreview"
-                                            src="{{sectionView_1?._personal_data?.profile_logo}}">
-        
-                                    </div> -->
+                                <div class="avatar-edit" *ngIf="cameraimage">
+                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
+                                        (change)="previewFile($event)" />
+                                    <label for="imageUpload"
+                                        [style.background-image]="'url(assets/images/svg/dashboard/camera-icon.svg)'"></label>
+                                </div>
+                                <div class="avatar-preview" style="border:3px solid"
+                                    [style.border-color]="sectionView_1?.theme_details?.[0]?.dark_color">
+                                    <img loading="lazy" id="imagePreview"
+                                        src="{{sectionView_1?._personal_data?.profile_logo}}">
                                 </div>
                             </div>
                         </div>
-                        <div class="profile_picture">
-                            <img class="profile_picture_image" src="{{sectionView_1?._personal_data?.profile_logo}}"
-                                height="100%" width="" />
-                        </div>
+
                         <div class="lower_section">
                             <div class="name_hos" ngbTooltip="{{sectionView_1?._personal_data?.first_name}}"
                                 placement="bottom">
@@ -73,6 +66,7 @@
                         </div>
 
                     </div>
+
 
 
 
@@ -326,13 +320,12 @@
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null"
                     style="background-size:cover;border-radius:10px;width: 49vw;
                     margin-left: 0.1vw;">
-                    <div class="row" style="color: #ffff;
-                    margin-top: 1.2vh;">
-                         <div class="leaderboard_label ps-4  d-flex align-items-center mb-1" style="color:#000">
+                    <div class="row" style="color: #ffff; margin-top: 1.2vh;">
+                        <div class=" leaderboard_label ps-4 d-flex align-items-center mb-1"
+                            style="color: #fff;">
                             <div class="leaderboard_rank">Rank</div>
                             <div class="leaderboard_name">Name</div>
                             <div class="leaderboard_points">Points</div>
-
                         </div>
                     </div>
 
@@ -347,6 +340,7 @@
                         <ng-template #withoutsearch>
                             <div [ngClass]="lengthLeaderBoardData>19 ?'leaderboard_label_tile_length':'leaderboard_label_tile'"
                                 [style.height.vh]="sectionView_1._personal_data.id_role==8?35:42">
+                                
                                 <div *ngIf="sectionView_1._personal_data.id_role=='9'">
                                     <mat-card style="cursor: pointer;" class="leaderboard_tile"
                                         *ngFor="let res of leaderboard_data; let i=index"
@@ -619,9 +613,9 @@
                                         *ngIf="res.rankingtable_arrow=='yellow'">
                                         <!-- <img class="leaderboard_rank_up_down_arrow_image"
                                                 src="{{sectionView_1.theme_details[0].equal_arrow}}" /> -->
-                                        <div style="height:2.5vh;width:2.5vh;border-radius:100%;">
+                                        <div style="height:3vh;width:3vh;border-radius:100%;">
                                             <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt=""
-                                                srcset="" height="60%" width="60%">
+                                                srcset="" height="100%" width="100%">
                                         </div>
                                     </div>
                                 </mat-card>
@@ -701,33 +695,43 @@
 
                                 </ng-template>
                                 <div class="Overall_score_Inner_circle">
-                                    <div class="overall_score_number">{{sectionView_1._governance_score[0].weightage}}
+                                    <div class="overall_score_number">{{sectionView_1?._governance_score[0]?.weightage}}
                                     </div>
-                                    <div class="overall_score_text">{{sectionView_1._governance_score[0].point_label}}
+                                    <div class="overall_score_text">{{sectionView_1._governance_score[0]?.point_label}}
                                     </div>
                                 </div>
                             </div>
                             <div class="lower_section">
                                 <div class="Governance_index_points"
-                                    *ngFor="let res of sectionView_1._governance_score ; let j=index">
+                                    *ngFor="let res of sectionView_1?._governance_score ; let j=index">
+                                    <!-- As Per Dnyaneshwari and ops team requirement  -->
+                                    <div
+                                        *ngIf="this.sectionView_1?._personal_data?.id_coroebus_organization=='76';then ipruGame else otherGame">
+                                    </div>
+                                    <ng-template #ipruGame>
+                                        <div *ngIf="j !=0 && j!=4">{{res.point_label}}</div>
+                                        <div *ngIf="j==4">Hiring</div>
+                                    </ng-template>
+                                    <ng-template #otherGame>
+                                        <div *ngIf="j !=0">{{res.point_label}}</div>
+                                    </ng-template>
 
-                                    <div *ngIf="j !=0">{{res.point_label}}</div>
                                     <div class="d-flex justify-content-between gap-2">
                                         <div *ngIf="j !=0">{{res.weightage}}</div>
 
-                                        <div *ngIf="res.rankingtable_arrow=='green' &&  j !=0" style="height:2.5vh;">
+                                        <div *ngIf="res?.rankingtable_arrow=='green' &&  j !=0" style="height:2.5vh;">
 
                                             <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
                                                 height="100%">
                                         </div>
 
-                                        <div *ngIf="res.rankingtable_arrow=='red' && j !=0" style="height:2.5vh;">
+                                        <div *ngIf="res?.rankingtable_arrow=='red' && j !=0" style="height:2.5vh;">
 
                                             <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
                                                 height="100%">
 
                                         </div>
-                                        <div *ngIf="res.rankingtable_arrow=='yellow' && j !=0" style="height:2.5vh;">
+                                        <div *ngIf="res?.rankingtable_arrow=='yellow' && j !=0" style="height:2.5vh;">
 
                                             <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt=""
                                                 height="100%" width="100%">
@@ -1508,7 +1512,16 @@
                             style="font-weight: 550;font-family: 'Inter';margin-top: 2vh;"
                             *ngFor="let res of sectionView_1._governance_score ; let j=index">
 
-                            <div>{{res.point_label}}</div>
+                            <div
+                                *ngIf="this.sectionView_1?._personal_data?.id_coroebus_organization=='76';then ipruGame else otherGame">
+                            </div>
+                            <ng-template #ipruGame>
+                                <div *ngIf="j!=4">{{res.point_label}}</div>
+                                <div *ngIf="j==4">Hiring</div>
+                            </ng-template>
+                            <ng-template #otherGame>
+                                <div>{{res.point_label}}</div>
+                            </ng-template>
                             <div class="d-flex justify-content-between gap-2">
                                 <div>{{res.weightage}}</div>
 
@@ -2117,14 +2130,12 @@
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null"
                     style="background-size:cover;border-radius:10px;width: 100%;
                 margin-left: 0.1vw;">
-                    <div class="row" style="color: #ffff;
-                    margin-top: 1.2vh;">
-                        <div class="leaderboard_label ps-4  d-flex align-items-center mb-1" style="color:#000">
-                            <div class="leaderboard_rank_modal">Rank</div>
-                            <div class="leaderboard_name_modal">Name</div>
-                            <div class="leaderboard_points_modal">Points</div>
+                    <div class="row" style="color: #ffff; margin-top: 1.2vh;">
+                        <div class="leaderboard_label ps-4 d-flex align-items-center mb-1" style="color: #000;">
+                            <div class="leaderboard_rank">Rank</div>
+                            <div class="leaderboard_name" style="margin-left: 7vw;">Name</div>
+                            <div class="leaderboard_points" style="margin-left: 22vw;">Points</div>
                         </div>
-                        
                     </div>
 
                     <div class="row leaderboard_with_fixed_tile">
@@ -2191,7 +2202,7 @@
                                     </div>
                                     <ng-template #openPoke>
                                         <div class="leaderboard_rank_up_down_arrow_div "
-                                            style="margin-left: 3vw;display:flex; justify-content: center;"
+                                            style="margin-left: vw;display:flex; justify-content: end;"
                                             *ngIf="res.rankingtable_arrow=='green'">
                                             <img (click)="upDownArrow(res.rankingtable_arrow,res)"
                                                 class="leaderboard_rank_up_down_arrow_image"

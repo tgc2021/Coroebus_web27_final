@@ -111,18 +111,16 @@ viewmoreorder:any
   ngOnInit(): void {
     // this.pageInfo = localStorage.getItem('page');
     // console.log(this.pageInfo);
-
-    // if (this.pageInfo !== "undefined") {
-    //   setTimeout(() => {
-    //     if (!localStorage.getItem('foo')) {
-    //       localStorage.setItem('foo', 'no reload');
-    //       location.reload()
+    // if(this.pageInfo!="undefined"){
+    //   setTimeout(()=>{
+    //     if (!localStorage.getItem('foo')) { 
+    //       localStorage.setItem('foo', 'no reload') 
+    //       location.reload() 
     //     } else {
-    //       localStorage.removeItem('foo');
+    //       localStorage.removeItem('foo') 
     //     }
-    //   }, 2000);
-    // } else {
-    //   console.log('pageInfo is undefined. Not reloading the page.');
+    //  },2000)
+      
     // }
   
 
@@ -146,7 +144,8 @@ viewmoreorder:any
         
         this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
        
-       this.getDashboardGroup()
+       this.getDashboardGroup();
+     
 
        
   
@@ -161,7 +160,12 @@ viewmoreorder:any
 // this.filterRankwiseLeaderboard('Citizen')
 
     this.dynamicColor()
+    if(this.userSelectionData?._personal_data?.id_role=='7'){
     
+        this.checkAndReloadPage()
+      
+     
+    }
  
      
     
@@ -312,13 +316,13 @@ viewmoreorder:any
               
               this.tileimages=res.id_ranking_image
               
-              this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
+              this.back_images=this.spectator_dashoard_response[0]?.data?._back_images[1]?._data
               
               
               this.back_images.map((res)=>{
                 
-                this.back_image_level=res.ranking_image_level
-                this.tile_web_image= res.ranking_image
+                this.back_image_level=res?.ranking_image_level
+                this.tile_web_image= res?.ranking_image
                 
                 if(this.tileimages==this.back_image_level){
                   
@@ -347,7 +351,7 @@ viewmoreorder:any
         }
         else if(this.order==2){
           if(this.spectator_data[1].user_list != ''){
-            this.spectator_user_list = this.spectator_data[1].user_list;
+            this.spectator_user_list = this.spectator_data[1]?.user_list;
             this.checked1=false;
             this.checked2=true;
             this.checked3=false;
@@ -357,7 +361,7 @@ viewmoreorder:any
               
               this.tileimages=res.id_ranking_image
               
-              this.back_images=this.spectator_dashoard_response[0].data._back_images[1]._data
+              this.back_images=this.spectator_dashoard_response[0]?.data._back_images[1]._data
               
               
               this.back_images.map((res)=>{
@@ -5549,5 +5553,25 @@ viewmoreorder:any
       this.queryParams = queryParams
       
     })
+  }
+  ngAfterViewInit(){
+    // console.log(this.userSelectionData?._personal_data?.id_role)
+    
+  
+   
+    
+    
+    
+  }
+  checkAndReloadPage() {
+    
+    setTimeout(() => {
+      if (!localStorage.getItem('foo')) {
+        localStorage.setItem('foo', 'no reload');
+        location.reload();
+      } else {
+        localStorage.removeItem('foo');
+      }
+    }, 2000);
   }
 }
