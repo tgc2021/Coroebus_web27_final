@@ -211,6 +211,7 @@ export class PerformancePageComponent implements OnInit {
       this.dropDownFilterMasterData.shift()
       this.dropDownFilterData = this.dropDownFilterMasterData?.filter(data => data?.mapTo.indexOf(this.buttonFilterActive) > -1);
       this.dropDownValue = this.buttonFilterActive === 'Live' ? this.dropDownFilterData?.[0]?.value : this.dropDownFilterData?.[0]?.value;
+      console.log(this.dropDownValue)
     
     }
     

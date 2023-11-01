@@ -445,7 +445,6 @@
     <div class="graph_container">
         <div class="row"
             style="background-color: #ffffff; width: 100%; margin-left: 0.1vw;margin-bottom: 2vh;border-radius: 0.25rem;">
-
             <div class="col-lg-2 col-md-2 col-6"
                 style="display: flex; justify-content: end; width: 100%; align-items: center;">
                 <div class="col-lg-10 col-md-10 col-6 d-flex justify-content-end">
@@ -471,19 +470,10 @@
                     style="width: 100%;margin: 2vh; " [(ngModel)]="dropDownValue" 
                     (change)="onChange($event.target.value)">
                    
-                        <option [attr.selected]="item?.mapTo?.indexOf(buttonFilterActive) > -2 ? true : null"
+                        <option [attr.selected]="item?.mapTo?.indexOf(buttonFilterActive) > 0 ? true : null"
                             *ngFor="let item of dropDownFilterData" value="{{item?.value}}">
                             {{item?.value}}</option>
-                   
-                    
-                </select>
-            
-               
-                   
-               
-                
-
-                
+                </select>  
             </div>
         </div>
 

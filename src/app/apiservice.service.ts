@@ -14,7 +14,7 @@ export class ApiserviceService {
   URLstring = environment.apiURL;
   open: any;
   // Path='coroebus-beta-api-levels';
-  Path='coroebus-tgc-api-levels'
+   Path='coroebus-tgc-api-levels'
 
 
   // URL For Navigation

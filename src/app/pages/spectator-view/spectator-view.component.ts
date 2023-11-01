@@ -2318,7 +2318,7 @@ viewmoreorder:any
       //   this.openSnackBar('No data Available','Ok')
       //   this.spectSearList == null
       // }
-      if(this.searchresponse.data[0]._data==''){
+      if(this.searchresponse.data[0]?._data==''){
         this.openSnackBar('No data Available','Ok')
       }
       else{

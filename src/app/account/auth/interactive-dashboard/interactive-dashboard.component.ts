@@ -500,16 +500,10 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
       }
       this.http.BoosterData(body).subscribe((res: any) => {
         this.boosterData_response = res?.data;
-
-
-
         this.StringArray = res?.data?.booster_rank_details[0]?.rank_position_stmt?.split(" ");
         this.firstString = this.StringArray[0] + " " + this.StringArray[1] + " " + this.StringArray[2];
         this.Digit = this.StringArray[3]
         this.LastString = this.StringArray[4];
-
-
-
       })
     }
     else {
@@ -715,6 +709,7 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
       _userid: this.mergeObj.USERID,
       _game: this.userSelectionData?.id_coroebus_game,
     };
+    
 
     try {
       const res = await this.http.produceInfo(obj).toPromise();
