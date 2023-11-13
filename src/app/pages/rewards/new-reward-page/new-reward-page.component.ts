@@ -99,14 +99,8 @@ export class NewRewardPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!localStorage.getItem('foo')) { 
-      localStorage.setItem('foo', 'no reload') 
-      location.reload() 
-    } else {
-      localStorage.removeItem('foo'); 
-    }
-    
-    this.urlPage = localStorage.getItem('page');
+
+   
   
     if (this.urlPage == 'reward') {
       this.selectedIndex = 1;
@@ -286,6 +280,18 @@ export class NewRewardPageComponent implements OnInit {
       });
     }
     this.dynamicColor();
+
+    // Changes For M2OST Redirections
+    
+    this.urlPage = localStorage.getItem('page');
+    if(this.pageInfo!="undefined"){
+     
+        this.checkAndReloadPage()
+
+    
+     
+
+    }
   }
   
   key = 'date_time';
@@ -677,7 +683,7 @@ export class NewRewardPageComponent implements OnInit {
 
 
   ngAfterViewInit(): void {
-    console.log(this.rewardresponse[0]?.data?.game_data[0]);
+  
     
 
    
@@ -694,6 +700,18 @@ export class NewRewardPageComponent implements OnInit {
   openReward() {
     this.isRewardOpen = true;
     this.isPassbookOpen = false;
+  }
+
+  checkAndReloadPage() {
+    
+    setTimeout(() => {
+      if (!localStorage.getItem('foo')) {
+        localStorage.setItem('foo', 'no reload');
+        location.reload();
+      } else {
+        localStorage.removeItem('foo');
+      }
+    }, 100);
   }
 
 

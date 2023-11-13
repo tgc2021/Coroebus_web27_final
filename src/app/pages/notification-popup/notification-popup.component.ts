@@ -24,7 +24,9 @@ export class NotificationPopupComponent implements OnInit {
       
       
     }
+    
   }
+  
   close() {
     this.activeModal.close();
     this.eventService.broadcast('callNotificationAPIAfterRead', this.notoficationData)

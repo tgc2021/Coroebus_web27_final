@@ -6,6 +6,7 @@ import { NgbNavModule, NgbDropdownModule, NgbModalModule, NgbTooltipModule, NgbC
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { SimplebarAngularModule } from 'simplebar-angular';
 import { LightboxModule } from 'ngx-lightbox';
+// import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { WidgetModule } from '../shared/widget/widget.module';
 import { UIModule } from '../shared/ui/ui.module';
@@ -28,6 +29,8 @@ import { BusinessReportComponent } from './business-report/business-report.compo
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MobileMapsComponent } from './mobile-maps/mobile-maps.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 
 
 @NgModule({
@@ -39,16 +42,18 @@ import { MatTabsModule } from '@angular/material/tabs';
     TopDashboardComponent,
     GovernanceIndexComponent,
     BusinessReportComponent,
-    MobileMapsComponent
+    MobileMapsComponent,
   
   
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     CommonModule,
     FormsModule,
     NgbDropdownModule,
     MatSnackBarModule,
     MatExpansionModule,
+    // CarouselModule,
     NgbModalModule,
     PagesRoutingModule,
     NgApexchartsModule,
@@ -65,7 +70,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     NgbCollapseModule,
     SimplebarAngularModule,
     LightboxModule,
-    MatTabsModule
+    MatTabsModule,
+    
     
   ],
 })

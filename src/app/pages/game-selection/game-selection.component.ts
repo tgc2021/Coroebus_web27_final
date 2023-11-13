@@ -11,12 +11,17 @@ import { Router } from '@angular/router';
 import { Util } from '@app/utils/util';
 import { ApiserviceService } from 'app/apiservice.service';
 
+
+
 @Component({
   selector: 'app-game-selection',
   templateUrl: './game-selection.component.html',
-  styleUrls: ['./game-selection.component.scss']
+  styleUrls: ['./game-selection.component.scss'],
+ 
 })
 export class GameSelectionComponent implements OnInit, OnDestroy {
+  
+ 
   userObj: any
   id_role:any
   themeObj: any
@@ -33,6 +38,8 @@ export class GameSelectionComponent implements OnInit, OnDestroy {
   buisness_head_response_:any=[]
   dark_color:any
   paramID:any
+  selectedGame1: any;
+  games: any;
   constructor(private readonly store: Store, private router: Router, public Util: Util,public http:ApiserviceService) {
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
@@ -86,11 +93,15 @@ if(this.userObj._personal_data.id_role!="13"){
 
 [err, res] = await HttpProtocols.to(UserModel.getGame(body))
     if (!err && res?.status === 'success' && res?.statuscode === 200) {
-
+      this.games=res?.data?.games;
       const newArr = [];
-      while (res?.data?.games.length) newArr.push(res?.data?.games.splice(0, 3));
-      this.gameList = newArr
+   
+      while (res?.data?.games.length) newArr.push(res?.data?.games.splice(0, 5));
+      this.gameList = newArr;
+
+      // newArr=[...this.gameList[0], ...this.gameList[1]]
       
+      console.log(this.gameList)
       
       
       this.game_audio=this.gameList[0]?.[0].game_audio
@@ -129,9 +140,13 @@ else{
   }
 
   
-  handleChange(event, data) {
-    this.selectedGame = data?.id_coroebus_game
+  handleChange(data) {
+  
+    this.selectedGame = data?.id_coroebus_game;
+    console.log(data)
+    console.log( this.selectedGame);
     this.isInteractiveDashboard =data?.is_interactive_dashboard
+   
     
     
     
@@ -165,6 +180,7 @@ if (this.gameList?.[0]?.length === 1){
 
 
   if(this.id_role==7){
+    
     this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
     this.router.navigate(['/spectator/spectatorView']);
   }
@@ -248,6 +264,7 @@ else{
 
   
   if(this.id_role==7){
+    console.log(this.selectedGame)
     this.store.dispatch(gameActions.game({ game: { 'id_coroebus_game': this.selectedGame } }))
     this.router.navigate(['/spectator/spectatorView']);
   }
@@ -317,11 +334,15 @@ else{
   this.router.navigate(['/dashboard']);
  }
 }
+
     
   }
   ngOnDestroy() {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
+  }
+  ngAfterViewInit() :void{
+  
   }
 
 }

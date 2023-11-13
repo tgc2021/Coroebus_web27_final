@@ -57,6 +57,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
   windowlocation:any
   spectator_value:any
   about_game:any
+  selected_gameID: any;
  
   constructor(private eventService: EventService, private router: Router,public dashboard:DefaultComponent,
     public translate: TranslateService, private http: ApiserviceService,
@@ -118,13 +119,6 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
           }
         
         })
-  
-      
-     
-     
-
-
-
       var menuArr1: any
       menuArr1 = MENU_SPECTATOR.filter((value, index) => {
       
@@ -179,7 +173,8 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
       this.id_coroebus_theme=this.userObj.themes[0].id_coroebus_theme
       
    
-   this.id_coroebus_organization=this.userObj._personal_data.id_coroebus_organization
+   this.id_coroebus_organization=this.userObj._personal_data.id_coroebus_organization;
+
 
 
 
@@ -188,15 +183,49 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
 
 
     this.initialize();
+    // this.activeLink('');
+
 
     this._scrollElement();
-    this.ProfileImageNewOne=JSON.parse(localStorage.getItem('Profile'))
+
+    this.ProfileImageNewOne=JSON.parse(localStorage.getItem('Profile'));
+ 
+  
     
   }
 
   ngAfterViewInit() {
     this.menu = new MetisMenu(this.sideMenu.nativeElement);
     this._activateMenuDropdown();
+    this.selected_gameID = JSON.parse(localStorage.getItem('game'))
+    console.log('spectator view', this.selected_gameID?.game?.id_coroebus_game);
+    let body = {
+      _userid: this.userObj?._personal_data?.USERID,
+      _game: this.selected_gameID,
+
+    }
+
+
+
+
+    this.http.interactiveDashboard(body).subscribe((res) => {
+      console.log(res);
+
+    
+
+      // this.isInteractiveOn = this.interactive_dashoard_response?.data?._personal_data?.interactive_flag;
+      // if (this.interactive_dashoard_response?.data.is_about_game == 1) {
+      //   this.about_game_pdf = this.interactive_dashoard_response?.data?.about_game[0]?.file_name
+      //   localStorage.setItem('about_game_pdf', this.about_game_pdf)
+      // }
+
+     
+
+
+
+    })
+  
+   
   }
 
   toggleMenu(event) {
@@ -446,6 +475,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
     
     this.activeRouterLink = item?.link1;
     document?.getElementById('vertical-menu-btn')?.click()
+    
     if (item?.icon === 'logout') {
       this.logout()
     }
@@ -468,17 +498,20 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
       
     }
     // else if(item?.icon === 'Aboutgameicon'){
+    //   this.about_game= localStorage.getItem('about_game_pdf');
    
     //   this.url = this.filepath;
-    //   window.open(this.url, '_blank');
+    //   window.open(this.url, '_self');
     // }
-    else if(item?.icon === 'Aboutgameicon'){
-      this.about_game= localStorage.getItem('about_game_pdf')
+    else if(item?.icon == 'Aboutgameicon'){
+      this.about_game= localStorage.getItem('about_game_pdf');
+    //   console.log(typeof(this.filepath));
+      console.log(this.about_game);
+
+      this.url = this.filepath !=null? this.filepath:this.about_game;
+      this.url=this.about_game;
+      window.open(this.url, '_self');
       
-      
-      this.url = this.filepath != null? this.filepath:this.about_game;
-      window.open(this.url, '_blank');
-      location.reload()
 
     }
     else if(item?.icon === 'myper'){
@@ -504,8 +537,6 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
         _section:"Rewards Page",
         _description: "From Menu"
       }
-    
-    
       this.http.engagamentlog(body).subscribe(res=>{
         
         
@@ -533,9 +564,10 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
     
     
 if(this.id_role=='7'){
-  this.menuItems=MENU_SPECTATOR
+  this.menuItems=MENU_SPECTATOR;
+  console.log(this.menuItems)
   if(item?.icon === 'home'){
-    this.router.navigateByUrl("/spectator/spectatorView")
+    this.router.navigateByUrl("/spectator/spectatorView");
 
   }
 

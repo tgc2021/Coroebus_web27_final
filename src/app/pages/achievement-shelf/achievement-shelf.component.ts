@@ -28,6 +28,7 @@ import { NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
 export class AchievementShelfComponent implements OnInit {
   myDate = new Date();
   pageInfo: any;
+  urlPage: string;
 
   constructor(private readonly store: Store, private modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -60,19 +61,7 @@ export class AchievementShelfComponent implements OnInit {
   showCombo: any= []
   ngOnInit(): void {
 
-    this.pageInfo = localStorage.getItem('page');
-    console.log(this.pageInfo);
-    if(this.pageInfo!="undefined"){
-      setTimeout(()=>{
-        if (!localStorage.getItem('foo')) { 
-          localStorage.setItem('foo', 'no reload') 
-          location.reload() 
-        } else {
-          localStorage.removeItem('foo') 
-        }
-      },2000)
-      
-    }
+   
 
  
      this.currentDate = new Date();
@@ -249,7 +238,29 @@ export class AchievementShelfComponent implements OnInit {
 
     })
 
-  }
+  // Changes for M2OST
+  // this.urlPage = localStorage.getItem('page');
+  // if(this.pageInfo!="undefined"){
+  //   setTimeout(()=>{
+  //     this.checkAndReloadPage()
+
+  //   },2000)
+   
+
+  // }
+
+}
+// checkAndReloadPage() {
+
+//   setTimeout(() => {
+//     if (!localStorage.getItem('foo')) {
+//       localStorage.setItem('foo', 'no reload');
+//       location.reload();
+//     } else {
+//       localStorage.removeItem('foo');
+//     }
+//   }, 2000);
+// }
 
   scorll(details: any,index:any) {
 

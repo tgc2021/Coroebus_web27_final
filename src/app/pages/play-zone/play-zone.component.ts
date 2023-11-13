@@ -78,6 +78,7 @@ export class PlayZoneComponent implements OnInit {
   id_role: any;
   tgcToolBoxUrl: string;
   pageInfo: any;
+  urlPage: string;
 
   constructor(private http: ApiserviceService, private readonly store: Store, public modalService: NgbModal,
     public Util: Util, private eventService: EventService, private _router: Router,
@@ -91,19 +92,7 @@ export class PlayZoneComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.pageInfo = localStorage.getItem('page');
-    // console.log(this.pageInfo);
-    // if(this.pageInfo!="undefined"){
-    //   setTimeout(()=>{
-    //     if (!localStorage.getItem('foo')) { 
-    //       localStorage.setItem('foo', 'no reload') 
-    //       location.reload() 
-    //     } else {
-    //       localStorage.removeItem('foo') 
-    //     }
-    //   },2000)
-      
-    // }
+ 
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
     ).subscribe(data => {
@@ -114,9 +103,6 @@ export class PlayZoneComponent implements OnInit {
       
 
       this.id_role=this.mergeObj.id_role;
-      
-
-      
       this.playZone();
       this.rewardPassbook();
      
@@ -133,9 +119,30 @@ export class PlayZoneComponent implements OnInit {
     this.light_color=localStorage.getItem('light_color')
     this.element?.nativeElement?.style.setProperty('--lightColor', `${this.light_color}`)
 
-    this.dynamicColor()
+    this.dynamicColor();
+     // Changes For M2OST Redirections
+    
+    //  this.urlPage = localStorage.getItem('page');
+    //  if(this.pageInfo!="undefined"){
+    //    setTimeout(()=>{
+    //      this.checkAndReloadPage()
+ 
+    //    },2000)
+      
+ 
+    //  }
   }
-
+  // checkAndReloadPage() {
+    
+  //   setTimeout(() => {
+  //     if (!localStorage.getItem('foo')) {
+  //       localStorage.setItem('foo', 'no reload');
+  //       location.reload();
+  //     } else {
+  //       localStorage.removeItem('foo');
+  //     }
+  //   }, 2000);
+  // }
   playZone(){
     
     let body = {

@@ -59,6 +59,7 @@ export class PerformancePageComponent implements OnInit {
   pageInfo: string;
   dropDownFilterDataForHOS: any;
   dropDownValueHOS: any;
+  urlPage: string;
   constructor(private readonly store: Store ,public Util: Util, private _route: ActivatedRoute,public http:ApiserviceService) {
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
@@ -85,23 +86,7 @@ export class PerformancePageComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    // this.pageInfo = localStorage.getItem('page');
-    // console.log(this.pageInfo);
-    // if(this.pageInfo!="undefined"){
-    //   setTimeout(()=>{
-    //     if (!localStorage.getItem('foo')) { 
-    //       localStorage.setItem('foo', 'no reload') 
-    //       location.reload() 
-    //     } else {
-    //       localStorage.removeItem('foo') 
-    //     }
-    //   },2000)
-      
-    // }
-    // else {
-
-    // }
-    // this.dropDownValueFilter()
+ 
    
     this._routeSub = this._route.queryParams.subscribe(queryParams => {
       // do something with the query params
@@ -166,7 +151,19 @@ export class PerformancePageComponent implements OnInit {
       }
     };
     this.splineAreaChart = splineAreaChart;
-
+     // Changes For M2OST Redirections
+    
+    //  this.urlPage = localStorage.getItem('page');
+    //  if(this.pageInfo!="undefined"){
+    //    setTimeout(()=>{
+    //      this.checkAndReloadPage()
+ 
+    //    },2000)
+      
+ 
+    //  }
+  
+  
 
    
   
@@ -175,6 +172,17 @@ export class PerformancePageComponent implements OnInit {
 
     // 
   }
+  // checkAndReloadPage() {
+    
+  //   setTimeout(() => {
+  //     if (!localStorage.getItem('foo')) {
+  //       localStorage.setItem('foo', 'no reload');
+  //       location.reload();
+  //     } else {
+  //       localStorage.removeItem('foo');
+  //     }
+  //   }, 2000);
+  // }
   dropDownValueFilter() {
     this._routeSub = this._route.queryParams.subscribe(queryParams => {
       // do something with the query params

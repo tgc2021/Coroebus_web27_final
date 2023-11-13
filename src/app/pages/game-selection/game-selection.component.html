@@ -4,40 +4,50 @@
         <h2 class="text-center game-select-txt">Please select your game</h2>
         <img class="w-100 h-100" src="assets/images/svg/theme-selection/baner-img.png" alt="img" />
     </div>
-    <div class="d-flex justify-content-center align-items-center">
-        <div class="col-12  mt-5">
-            <div class="card-wrapper">
-                <div id="carouselExample" class="carousel slide w-100" data-bs-interval="false" data-ride="carousel" data-pause="hover">
-                    <div class="carousel-inner">
-                      <div class="carousel-item"  *ngFor="let items of gameList; let i = index" [ngClass]="{'active': i === 0}">
-                        <div class="row" [ngClass]="{'text-center': items?.length === 1,'row-cols-1': (Util?.isMobile() &&  items?.length > 2)}">
-                          <div class="col p-bottom-mobile" *ngFor="let item of items; let in = index" [ngClass]="{'theme-card-center': (in === 0 && items?.length === 2)}">
-                            <label [ngClass]="{'wd-50': items?.length === 1,'theme-card-w': items?.length === 2}">
-                              <div class="card-img pt-2  game-card-img">
-                                <img src="{{item?.logo}}" class="theme-img game-img" alt="img" width="100%"/>
-                                <h6 class="m-3">
-                                  {{item?.game_name}}
-                                </h6>
-                                <button  type="button" (click)="handleChange($event, item)" class="btn btn-primary  btn-outline-primary">Select</button>
-                              </div>
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <ng-container *ngIf="gameList?.length >= 2">
-                      <button class="carousel-control-prev" data-bs-target="#carouselExample" type="button" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                      </button>
-                      <button class="carousel-control-next" data-bs-target="#carouselExample" type="button" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                      </button>
-                    </ng-container>
-                  </div>
+    <!-- <div class="d-flex justify-content-center align-items-center"> -->
+    
+      <!-- <div class="row"> -->
+        <!-- <div class="card-wrapper"> -->
+         <!-- <div class="col-12 d-flex">
+          <div class="col-4" *ngFor="let itemsSet of gameList; let i = index">
+            <div class="card">
+              <div class="card-img pt-2 game-card-img" *ngFor="let item of itemsSet">
+                <img [src]="item?.logo" class="theme-img game-img" alt="img" width="100%" />
+                <h6 class="m-3">{{item?.game_name}}</h6>
+                <button type="button" (click)="handleChange(item)" class="btn btn-primary btn-outline-primary">Select</button>
+              </div>
             </div>
+          </div>
+         </div> -->
+         <!-- <div class="col-12">
+          <div class="card" *ngFor="let itemsSet of gameList;">
+            <div class="card-img pt-2 game-card-img" *ngFor="let item of itemsSet">
+              <img [src]="item?.logo" class="theme-img game-img" alt="img" width="100%" />
+              <h6 class="m-3">{{item?.game_name}}</h6>
+              <button type="button" (click)="handleChange(item)" class="btn btn-primary btn-outline-primary">Select</button>
+            </div>
+          </div> -->
+
+         
+           
+          
+        <!-- </div> -->
+      <!-- </div> -->
+      
+    <!-- </div> -->
+    <div class="row mt-5 mb-5 d-flex align-items-center justify-content-center gap-5" style="height:48vh;overflow-y: auto;">
+      
+      <div class="col-lg-3 col-md-6 col-sm-3 card p-2 mt-1 d-flex flex-column align-items-center" *ngFor="let item of gameList[0]" >
+        
+      
+          <img [src]="item?.logo" class="theme-img game-img" alt="img"/>
+          <h6 class="m-3">{{item?.game_name}}</h6>
+          <button type="button" (click)="handleChange(item)" class="btn btn-primary btn-outline-primary">Select</button>
         </div>
+      
+     
+   
+
     </div>
    
   

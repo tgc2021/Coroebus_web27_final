@@ -28,12 +28,20 @@ export const MENU_SPECTATOR: MenuItem[] = [
 
     },
    
-   
-   
-    
-   
-   
-    
+    {   
+        id: 9,
+        label: 'MENUITEMS.GAME_SELECTION',
+        icon: 'game',
+        badge: {
+        },
+        subItems: [],
+        link: 'account/theme/selection' ,
+        link1: 'account/theme/selection',
+        link2: 'account/theme/selection' 
+
+
+        
+    },
    
     {
         id: 14,
@@ -45,7 +53,16 @@ export const MENU_SPECTATOR: MenuItem[] = [
         // link: '/spectator/spectatorView'
 
     }, 
-   
+    {
+        id: 15,
+        label: 'About Game',
+        icon: 'Aboutgameicon',
+        badge: {
+        },
+        subItems: [],
+        // link: '/spectator/spectatorView'
+
+    },
 
     {
         id: 16,

@@ -22,6 +22,7 @@ export class NotificationListComponent implements OnInit {
   combineLatest: Subscription
   callNotificationAPIAfterReadSub: Subscription
   pageInfo: any;
+  urlPage: string;
   constructor(private readonly store: Store, private modalService: NgbModal,
     private eventService: EventService,public http:ApiserviceService) { }
 
@@ -52,7 +53,30 @@ export class NotificationListComponent implements OnInit {
     this.callNotificationAPIAfterReadSub = this.eventService.subscribe('callNotificationAPIAfterRead', (data) => {
       this.updateNotificationList(data?.id)
     })
+    
+// Changes for M2OST
+    // this.urlPage = localStorage.getItem('page');
+    // if(this.pageInfo!="undefined"){
+    //   setTimeout(()=>{
+    //     this.checkAndReloadPage()
+
+    //   },2000)
+     
+
+    // }
+
   }
+  // checkAndReloadPage() {
+
+  //   setTimeout(() => {
+  //     if (!localStorage.getItem('foo')) {
+  //       localStorage.setItem('foo', 'no reload');
+  //       location.reload();
+  //     } else {
+  //       localStorage.removeItem('foo');
+  //     }
+  //   }, 2000);
+  // }
   async notificationList() {
     let err: any, res: any;
     let body: any;

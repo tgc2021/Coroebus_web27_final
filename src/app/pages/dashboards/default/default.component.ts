@@ -51,7 +51,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   titleTab: any;
   titleTabSecond:any;
   my_rank: any;
-  levelwise:any=5;
+  levelwise:any=2;
   sectionView_2_Indexwise: any;
   monthlyCampaign:boolean;
   labelNameMyIndex: any;
@@ -574,7 +574,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       });
     }
    
-    
+   
   
     let bodyForFixedTile = {
       _userid: this.userSelectionData?._personal_data?.USERID,
@@ -889,8 +889,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       
       let body={
        
-          _userid: this.queryParams.userID,
-          _game: this.queryParams.gameID,
+          _userid: this.queryParams?.userID,
+          _game: this.queryParams?.gameID,
 
     
       }
@@ -2721,7 +2721,8 @@ if (this.levelwise===3) {
   async openKpiInfo() {
 
     this.getIndexproduce3('')
-    
+  
+    // console.log(this.sectionView_1)
     if(this.sectionView_1?._personal_data?.id_role!='6'){
       this.sectionView_3_list_index[0]?._Overall?.map((res:any)=>{
    
@@ -2731,7 +2732,13 @@ if (this.levelwise===3) {
         }
   
       })
-    }
+   }
+   else {
+    this.id_coroebus_group=this.rankingDataFirstRowForSectionView_2?.[0]?._data[0].id_coroebus_group;
+    this.id_coroebus_group=this.rankingDataFirstRowForSectionView_2?.[0]?._Overall[0].id_coroebus_group;
+   }
+
+  
    
  
     this.userSelectionData?.games[0]?.id_coroebus_group
@@ -2964,11 +2971,12 @@ if (this.levelwise===3) {
     if (this.sectionView_1?._personal_data.id_role == 4) {
       this.indexForIslandLogos = 2;
     }
+    console.log(this.queryParams)
 
     body1 = {
       _userid:
-        this.sectionView_1?.is_land_logos[this.indexForIslandLogos]?._userid,
-      _game: this.gameid,
+        this.sectionView_1?.is_land_logos[this.indexForIslandLogos]?._userid?this.sectionView_1?.is_land_logos[this.indexForIslandLogos]?._userid:this.queryParams.userID,
+      _game: this.gameid?this.gameid:this.queryParams.gameID,
       _section_view: "2",
       page_number: "1",
     };
