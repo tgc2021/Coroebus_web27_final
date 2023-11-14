@@ -40,6 +40,7 @@ export class GameSelectionComponent implements OnInit, OnDestroy {
   paramID:any
   selectedGame1: any;
   games: any;
+  about_game_pdf: any;
   constructor(private readonly store: Store, private router: Router, public Util: Util,public http:ApiserviceService) {
     this.store.select(fromRoot.userLogin).pipe(
       takeUntil(this.destroy$)
@@ -102,7 +103,10 @@ if(this.userObj._personal_data.id_role!="13"){
       // newArr=[...this.gameList[0], ...this.gameList[1]]
       
       console.log(this.gameList)
-      
+      this.about_game_pdf = res?.data?.about_game[0]?.file_name;
+      console.log(this.about_game_pdf)
+
+      localStorage.setItem('about_game_pdf', this.about_game_pdf)
       
       this.game_audio=this.gameList[0]?.[0].game_audio
       localStorage.setItem('audio_game',this.gameList[0]?.[0].game_audio)

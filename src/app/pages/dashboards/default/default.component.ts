@@ -51,7 +51,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   titleTab: any;
   titleTabSecond:any;
   my_rank: any;
-  levelwise:any=2;
+  levelwise:any=5;
   sectionView_2_Indexwise: any;
   monthlyCampaign:boolean;
   labelNameMyIndex: any;
