@@ -12,7 +12,7 @@ import { BusinessReportComponent } from './business-report/business-report.compo
 import { MobileMapsComponent } from './mobile-maps/mobile-maps.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'dashboard' , pathMatch:'full'},
+  { path: '', redirectTo: 'topdashboard' , pathMatch:'full'},
   { path: 'dashboard', component: DefaultComponent, pathMatch: 'full' },
   { path: 'dashboards', loadChildren: () => import('./dashboards/dashboards.module').then(m => m.DashboardsModule) },
   { path: 'notification', loadChildren: () => import('./notification-list/notification-list.module').then(m => m.NotificationListModule) },

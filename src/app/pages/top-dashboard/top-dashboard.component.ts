@@ -55,10 +55,11 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
   map_bh: any
   about_game_pdf: any;
 
-  // As per Dnyaneshwari and ops Team Requirements
+  //Static maps link added As per Dnyaneshwari and ops Team Requirements for IPRU Game Only
 
   ipru_game_map_Growth_index=[{
     map_url:'https://public.tableau.com/views/76_Productivity_Map_Dashbord/76_Productivity_Map_Dashbord?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link'
+   
   },
   {
     map_url:'https://public.tableau.com/views/76_Efficiency_Map_Dashbord/76_Efficiency_Map_Dashbord?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link'
