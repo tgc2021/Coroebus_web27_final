@@ -4567,242 +4567,248 @@
             <div class="d-flex justify-content-end p-2">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-              
-                <mat-tab-group [selectedIndex]="selectedIndex" *ngIf="labelArray?.length!=0" >
-                    
-                    <mat-tab label="{{labelArray[0]?.label}}" *ngIf="labelArray[0]?.Kpidata?.data?.length>0">
-                        
-
-                        <div class="d-flex justify-content-between">
-                            
-                            <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">{{fullFormKpiNamefirst}}
-                            </h5>
-                            <h5 class="col-4 d-flex justify-content-end " style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em ;width:40%">
-                                <div>Frequency : {{labelArray[0]?.Kpidata?.data[0]?.frequency_name}}</div>
-                               
-                            </h5>
-                                
-                        </div>
-                       
-                        
-                        <div *ngIf="endRange;then forAdvocacyForOne else forOtherKpiOne"></div>
-                       <ng-template #forAdvocacyForOne>
-                        <table class="mt-4">
-                            <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
-                                <th>No. of Instances </th>
-                                <th>Points per Intance</th>
-                            </thead>
-                            <tbody *ngFor="let kpiData of labelArray[0]?.Kpidata?.data">
-                                <tr>
-                                    <td>{{kpiData.start_range}}</td>
-                                    <td>{{kpiData.points}}</td>
-
-                                </tr>
-                               
-
-                            </tbody>
-
-
-                        </table>
-                       </ng-template>
-                       <ng-template #forOtherKpiOne>
-                        <table class="mt-4" >
-                            <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
-                                <th>Start Range </th>
-                                <th>End Range</th>
-                                <th>Point</th>
-                            </thead>
-                            <tbody *ngFor="let kpiData of labelArray[0]?.Kpidata?.data">
-                                <tr>
-                                    <td>{{kpiData?.start_range}}</td>
-                                    <td>{{kpiData?.end_range}}</td>
-                                    <td>{{kpiData?.points}}</td>
-                                </tr>
-                                
-                            </tbody>
-
-
-                        </table>
-                       </ng-template>
-
-
-                    </mat-tab>
-                     <mat-tab label="{{labelArray[1]?.label}}" *ngIf="labelArray[1]?.Kpidata?.data?.length>0">
-                        <div class="d-flex justify-content-between">
-                            
-                            <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">{{fullFormKpiNamesecond}}
-                            </h5>
-                            <h5 class="col-4 d-flex justify-content-end " style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em ;width:40%">
-                                <div>Frequency : {{labelArray[1]?.Kpidata?.data[0].frequency_name}}</div>
-                               
-                            </h5>
-                                
-                        </div>
-                       
-                        
-                        <div *ngIf="endRangeSecond;then forAdvocacyFortwo else forOtherKpiTwo"></div>
-                       <ng-template #forAdvocacyFortwo>
-                        <table class="mt-4">
-                            <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
-                                <th>No. of Instance </th>
-                                <th>Points per Instances</th>
-                            </thead>
-                            <tbody *ngFor="let kpiData of labelArray[1]?.Kpidata?.data">
-                                <tr>
-                                    <td>{{kpiData.start_range}}</td>
-                                    <td>{{kpiData.points}}</td>
-
-                                </tr>
-                               
-
-                            </tbody>
-
-
-                        </table>
-                       </ng-template>
-                       <ng-template #forOtherKpiTwo>
-                        <table class="mt-4" >
-                            <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
-                                <th>Start Range </th>
-                                <th>End Range</th>
-                                <th>Point</th>
-                            </thead>
-                            <tbody *ngFor="let kpiData of labelArray[1]?.Kpidata?.data">
-                                <tr>
-                                    <td>{{kpiData?.start_range}}</td>
-                                    <td>{{kpiData?.end_range}}</td>
-                                    <td>{{kpiData?.points}}</td>
-                                </tr>
-                                
-                            </tbody>
-
-
-                        </table>
-                       </ng-template>
-                        
-
-
-                    </mat-tab>
-                    <mat-tab label="{{labelArray[2]?.label}}" *ngIf="labelArray[2]?.Kpidata?.data?.length>0">
-                        <div class="d-flex justify-content-between">
-                            
-                            <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">{{fullFormKpiNameThird}}
-                            </h5>
-                            <h5 class="col-4 d-flex justify-content-end " style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em ;width:40%">
-                                <div>Frequency : {{labelArray[2]?.Kpidata?.data[0].frequency_name}}</div>
-                               
-                            </h5>
-                                
-                        </div>
-                       
-                        <div *ngIf="endRangeThird;then forAdvocacyForthree else forOtherKpiThree"></div>
-                       <ng-template #forAdvocacyForthree>
-                        <table class="mt-4">
-                            <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
-                                <th>No. of Instances </th>
-                                <th>Points per Instance</th>
-                            </thead>
-                            <tbody *ngFor="let kpiData of labelArray[2]?.Kpidata?.data">
-                                <tr>
-                                    <td>{{kpiData.start_range}}</td>
-                                    <td>{{kpiData.points}}</td>
-
-                                </tr>
-                               
-
-                            </tbody>
-
-
-                        </table>
-                       </ng-template>
-                       <ng-template #forOtherKpiThree>
-                        <table class="mt-4" >
-                            <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
-                                <th>Start Range </th>
-                                <th>End Range</th>
-                                <th>Point</th>
-                            </thead>
-                            <tbody *ngFor="let kpiData of labelArray[2]?.Kpidata?.data">
-                                <tr>
-                                    <td>{{kpiData?.start_range}}</td>
-                                    <td>{{kpiData?.end_range}}</td>
-                                    <td>{{kpiData?.points}}</td>
-                                </tr>
-                                
-                            </tbody>
-
-
-                        </table>
-                       </ng-template>
-
-
-                    </mat-tab>
-                    <mat-tab label="{{labelArray[3]?.label}}" *ngIf="labelArray[3]?.Kpidata?.data?.length>0">
-                        <div class="d-flex justify-content-between">
-                            
-                            <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">
-                                {{fullFormKpiNameFourth}}
-                            </h5>
-                            <h5 class="col-4 d-flex justify-content-end " style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em ;width:40%">
-                                <div>Frequency : {{labelArray[3]?.Kpidata?.data[0].frequency_name}}</div>
-                               
-                            </h5>
-                                
-                        </div>
-                        <div *ngIf="endRangeFourth;then forAdvocacy else forOtherKpi"></div>
-                       <ng-template #forAdvocacy>
-                        <table class="mt-4">
-                            <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
-                                <th>No. of Instances </th>
-                               
-                                <th>Points per Instance</th>
-                            </thead>
-                            <tbody *ngFor="let kpiData of labelArray[3]?.Kpidata?.data">
-                                <tr>
-                                    <td>{{kpiData.start_range}}</td>
-                                    <td>{{kpiData.points}}</td>
-
-                                </tr>
-                               
-
-                            </tbody>
-
-
-                        </table>
-                       </ng-template>
-                       <ng-template #forOtherKpi>
-                        <table class="mt-4" >
-                            <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
-                                <th>Start Range </th>
-                                <th>End Range</th>
-                                <th>Point</th>
-                            </thead>
-                            <tbody *ngFor="let kpiData of labelArray[3]?.Kpidata?.data">
-                                <tr>
-                                    <td>{{kpiData?.start_range}}</td>
-                                    <td>{{kpiData?.end_range}}</td>
-                                    <td>{{kpiData?.points}}</td>
-                                </tr>
-                                
-                            </tbody>
-
-
-                        </table>
-                       </ng-template>
-                        
-
-
-
-                    </mat-tab>
-                    
-                </mat-tab-group>
-                <div *ngIf="labelArray?.length==0" class="d-flex flex-column justify-content-center align-items-center">
-
-                    <img src="assets/images/empty-box.png" alt="" srcset="" heigth="30%" width="30%">
-                    <h2>No data available !!!</h2>
-                    
+            <div class="modal-body" >
+                <div  style="height:80vh;display: flex;justify-content: center;" *ngIf="this.sectionView_1?._personal_data?.id_coroebus_organization=='68'">
+                    <img src="assets/images/PointdistImage.png" height="100%" width="90%">
                 </div>
+                <div *ngIf="this.sectionView_1?._personal_data?.id_coroebus_organization!='68';then forOtherOrg"></div>
+                <ng-template #forOtherOrg>
+                    <mat-tab-group [selectedIndex]="selectedIndex" *ngIf="labelArray?.length!=0" >
+                    
+                        <mat-tab label="{{labelArray[0]?.label}}" *ngIf="labelArray[0]?.Kpidata?.data?.length>0">
+                            
+    
+                            <div class="d-flex justify-content-between">
+                                
+                                <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">{{fullFormKpiNamefirst}}
+                                </h5>
+                                <h5 class="col-4 d-flex justify-content-end " style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em ;width:40%">
+                                    <div>Frequency : {{labelArray[0]?.Kpidata?.data[0]?.frequency_name}}</div>
+                                   
+                                </h5>
+                                    
+                            </div>
+                           
+                            
+                            <div *ngIf="endRange;then forAdvocacyForOne else forOtherKpiOne"></div>
+                           <ng-template #forAdvocacyForOne>
+                            <table class="mt-4">
+                                <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
+                                    <th>No. of Instances </th>
+                                    <th>Points per Intance</th>
+                                </thead>
+                                <tbody *ngFor="let kpiData of labelArray[0]?.Kpidata?.data">
+                                    <tr>
+                                        <td>{{kpiData.start_range}}</td>
+                                        <td>{{kpiData.points}}</td>
+    
+                                    </tr>
+                                   
+    
+                                </tbody>
+    
+    
+                            </table>
+                           </ng-template>
+                           <ng-template #forOtherKpiOne>
+                            <table class="mt-4" >
+                                <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
+                                    <th>Start Range </th>
+                                    <th>End Range</th>
+                                    <th>Point</th>
+                                </thead>
+                                <tbody *ngFor="let kpiData of labelArray[0]?.Kpidata?.data">
+                                    <tr>
+                                        <td>{{kpiData?.start_range}}</td>
+                                        <td>{{kpiData?.end_range}}</td>
+                                        <td>{{kpiData?.points}}</td>
+                                    </tr>
+                                    
+                                </tbody>
+    
+    
+                            </table>
+                           </ng-template>
+    
+    
+                        </mat-tab>
+                         <mat-tab label="{{labelArray[1]?.label}}" *ngIf="labelArray[1]?.Kpidata?.data?.length>0">
+                            <div class="d-flex justify-content-between">
+                                
+                                <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">{{fullFormKpiNamesecond}}
+                                </h5>
+                                <h5 class="col-4 d-flex justify-content-end " style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em ;width:40%">
+                                    <div>Frequency : {{labelArray[1]?.Kpidata?.data[0].frequency_name}}</div>
+                                   
+                                </h5>
+                                    
+                            </div>
+                           
+                            
+                            <div *ngIf="endRangeSecond;then forAdvocacyFortwo else forOtherKpiTwo"></div>
+                           <ng-template #forAdvocacyFortwo>
+                            <table class="mt-4">
+                                <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
+                                    <th>No. of Instance </th>
+                                    <th>Points per Instances</th>
+                                </thead>
+                                <tbody *ngFor="let kpiData of labelArray[1]?.Kpidata?.data">
+                                    <tr>
+                                        <td>{{kpiData.start_range}}</td>
+                                        <td>{{kpiData.points}}</td>
+    
+                                    </tr>
+                                   
+    
+                                </tbody>
+    
+    
+                            </table>
+                           </ng-template>
+                           <ng-template #forOtherKpiTwo>
+                            <table class="mt-4" >
+                                <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
+                                    <th>Start Range </th>
+                                    <th>End Range</th>
+                                    <th>Point</th>
+                                </thead>
+                                <tbody *ngFor="let kpiData of labelArray[1]?.Kpidata?.data">
+                                    <tr>
+                                        <td>{{kpiData?.start_range}}</td>
+                                        <td>{{kpiData?.end_range}}</td>
+                                        <td>{{kpiData?.points}}</td>
+                                    </tr>
+                                    
+                                </tbody>
+    
+    
+                            </table>
+                           </ng-template>
+                            
+    
+    
+                        </mat-tab>
+                        <mat-tab label="{{labelArray[2]?.label}}" *ngIf="labelArray[2]?.Kpidata?.data?.length>0">
+                            <div class="d-flex justify-content-between">
+                                
+                                <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">{{fullFormKpiNameThird}}
+                                </h5>
+                                <h5 class="col-4 d-flex justify-content-end " style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em ;width:40%">
+                                    <div>Frequency : {{labelArray[2]?.Kpidata?.data[0].frequency_name}}</div>
+                                   
+                                </h5>
+                                    
+                            </div>
+                           
+                            <div *ngIf="endRangeThird;then forAdvocacyForthree else forOtherKpiThree"></div>
+                           <ng-template #forAdvocacyForthree>
+                            <table class="mt-4">
+                                <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
+                                    <th>No. of Instances </th>
+                                    <th>Points per Instance</th>
+                                </thead>
+                                <tbody *ngFor="let kpiData of labelArray[2]?.Kpidata?.data">
+                                    <tr>
+                                        <td>{{kpiData.start_range}}</td>
+                                        <td>{{kpiData.points}}</td>
+    
+                                    </tr>
+                                   
+    
+                                </tbody>
+    
+    
+                            </table>
+                           </ng-template>
+                           <ng-template #forOtherKpiThree>
+                            <table class="mt-4" >
+                                <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
+                                    <th>Start Range </th>
+                                    <th>End Range</th>
+                                    <th>Point</th>
+                                </thead>
+                                <tbody *ngFor="let kpiData of labelArray[2]?.Kpidata?.data">
+                                    <tr>
+                                        <td>{{kpiData?.start_range}}</td>
+                                        <td>{{kpiData?.end_range}}</td>
+                                        <td>{{kpiData?.points}}</td>
+                                    </tr>
+                                    
+                                </tbody>
+    
+    
+                            </table>
+                           </ng-template>
+    
+    
+                        </mat-tab>
+                        <mat-tab label="{{labelArray[3]?.label}}" *ngIf="labelArray[3]?.Kpidata?.data?.length>0">
+                            <div class="d-flex justify-content-between">
+                                
+                                <h5 class="col-8" style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em;width:40%">
+                                    {{fullFormKpiNameFourth}}
+                                </h5>
+                                <h5 class="col-4 d-flex justify-content-end " style="font-family:'Inter';font-weight:600;margin-top:3%;font-size:1.0em ;width:40%">
+                                    <div>Frequency : {{labelArray[3]?.Kpidata?.data[0].frequency_name}}</div>
+                                   
+                                </h5>
+                                    
+                            </div>
+                            <div *ngIf="endRangeFourth;then forAdvocacy else forOtherKpi"></div>
+                           <ng-template #forAdvocacy>
+                            <table class="mt-4">
+                                <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
+                                    <th>No. of Instances </th>
+                                   
+                                    <th>Points per Instance</th>
+                                </thead>
+                                <tbody *ngFor="let kpiData of labelArray[3]?.Kpidata?.data">
+                                    <tr>
+                                        <td>{{kpiData.start_range}}</td>
+                                        <td>{{kpiData.points}}</td>
+    
+                                    </tr>
+                                   
+    
+                                </tbody>
+    
+    
+                            </table>
+                           </ng-template>
+                           <ng-template #forOtherKpi>
+                            <table class="mt-4" >
+                                <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
+                                    <th>Start Range </th>
+                                    <th>End Range</th>
+                                    <th>Point</th>
+                                </thead>
+                                <tbody *ngFor="let kpiData of labelArray[3]?.Kpidata?.data">
+                                    <tr>
+                                        <td>{{kpiData?.start_range}}</td>
+                                        <td>{{kpiData?.end_range}}</td>
+                                        <td>{{kpiData?.points}}</td>
+                                    </tr>
+                                    
+                                </tbody>
+    
+    
+                            </table>
+                           </ng-template>
+                            
+    
+    
+    
+                        </mat-tab>
+                        
+                    </mat-tab-group>
+                    <div *ngIf="labelArray?.length==0" class="d-flex flex-column justify-content-center align-items-center">
+    
+                        <img src="assets/images/empty-box.png" alt="" srcset="" heigth="30%" width="30%">
+                        <h2>No data available !!!</h2>
+                        
+                    </div> 
+                </ng-template>
+               
 
             </div>
 

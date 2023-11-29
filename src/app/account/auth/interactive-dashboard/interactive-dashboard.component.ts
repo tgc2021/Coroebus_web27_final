@@ -442,7 +442,7 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
     })
     this.getUserBannerDataSectionView_2()
 
-    // this.pageInfo = localStorage.getItem('page');
+    this.pageInfo = localStorage.getItem('page');
     // if (this.pageInfo == 'reward') {
      
       
@@ -470,10 +470,10 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
     //   setTimeout(()=>{this._router.navigateByUrl('performance/page')},1000);
 
     // }
-    // else if(this.pageInfo=='main_dashboard'){
-    //   setTimeout(()=>{this._router.navigateByUrl('/dashboard')},1000);
+    if(this.pageInfo=='main_dashboard'){
+    setTimeout(()=>{this._router.navigateByUrl('/dashboard')},1000);
 
-    // }
+    }
 
 
 

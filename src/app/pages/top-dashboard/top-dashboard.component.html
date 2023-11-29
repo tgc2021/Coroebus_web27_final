@@ -384,7 +384,7 @@
 
                         <div *ngFor="let kpi_data of buisness_head_response_?._kpi_score;let i=index">
                             <div class="d-flex justify-content-between align-items-center mt-3"
-                                style="font-weight: 550;font-family: 'Inter'" (click)="navigateToGrowthIndexMap(kpi_data,i)">
+                                style="font-weight: 550;font-family: 'Inter'" (click)="navigateToGrowthIndexMapMobile(kpi_data)">
                                 <div class="pech " style="font-weight: 600;font-family: 'Inter';">
                                     {{ kpi_data?.point_label}}
                                 </div>
@@ -494,7 +494,7 @@
                     </mat-expansion-panel-header>
                     <hr class="horizontal_row" style="font-weight: 550;font-family: 'Inter';">
                     <div *ngFor="let businessresponse of buisness_head_response_?._governance_score;let i=index" style="cursor: pointer;"
-                        (click)="navigateToGovernanceIndexMap(businessresponse,i)">
+                        (click)="navigateToGovernanceIndexMobile(businessresponse)">
                         <div class="d-flex justify-content-between align-items-center mt-4"
                             style="font-weight: 550;font-family: 'Inter';margin-top:2%">
                             <div class="global_index_mobile d-flex" style="font-weight: 600;font-family: 'Inter';">

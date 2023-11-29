@@ -50,7 +50,7 @@
                                 <div class="btn_div_redeem" *ngIf="hidedata">
 
                                     <button *ngIf="reward?.data?.reward_redemption_day==0" class="redeem_btn" type="button" (click)="navigateToLogicalBaniya()">Redeem</button>
-                                    <button *ngIf="reward?.data?.reward_redemption_day!=0" class="redeem_btn" type="button" >Redeem</button>
+                                    <button *ngIf="reward?.data?.reward_redemption_day!=0" class="redeem_btn" type="button" (click)="navigateToLogicalBaniya()" >Redeem</button>
                                 </div>
                                
 

@@ -5555,14 +5555,8 @@ export class SpectatorViewComponent implements OnInit {
   ngAfterViewInit() {
     // console.log(this.userSelectionData?._personal_data?.id_role)
 
-
-
-
-
-
   }
   checkAndReloadPage() {
-
     setTimeout(() => {
       if (!localStorage.getItem('foo')) {
         localStorage.setItem('foo', 'no reload');
@@ -5570,6 +5564,6 @@ export class SpectatorViewComponent implements OnInit {
       } else {
         localStorage.removeItem('foo');
       }
-    }, 2000);
+    }, 3000);
   }
 }

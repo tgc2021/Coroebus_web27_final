@@ -58,18 +58,20 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
   //Static maps link added As per Dnyaneshwari and ops Team Requirements for IPRU Game Only
 
   ipru_game_map_Growth_index=[{
-    map_url:'https://public.tableau.com/views/76_Productivity_Map_Dashbord/76_Productivity_Map_Dashbord?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link'
-   
+    
+   map_url:'https://public.tableau.com/views/76_Productivity_Map_Dashbord_17006309154870/76_Productivity_Map_Dashbord?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link'
   },
   {
-    map_url:'https://public.tableau.com/views/76_Efficiency_Map_Dashbord/76_Efficiency_Map_Dashbord?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link'
+    map_url:'https://public.tableau.com/views/76_Efficiency_Map_Dashbord_17006315603530/76_Efficiency_Map_Dashbord?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link'
   },
  
   {
-   map_url:'https://public.tableau.com/views/76_Capability_Map_Dashbord/76_Capability_Map_Dashbord?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link'
+  
+  map_url:'https://public.tableau.com/views/76_Capability_Map_Dashbord_17006317558950/76_Capability_Map_Dashbord?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link'
   },
   {
-    map_url:'https://public.tableau.com/views/76_Happiness_Map_Dashbord/76_Happiness_Map_Dashbord?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link'
+    
+    map_url:'https://public.tableau.com/views/76_Happiness_Map_Dashbord_17006319229430/76_Happiness_Map_Dashbord?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link'
   },
 
 ]
@@ -263,6 +265,7 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
     location.reload();
 
   }
+  
   navigateToGovernanceIndexMap(data: any,event:any){
     if(this.userSelectionData?._personal_data?.id_coroebus_organization=='76'){
       this.mapUrl=this.ipru_game_map_Governance_index[event]?.map_url;
@@ -277,6 +280,18 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
 
     this.location.replaceState("?map=" + this.mapUrl);
     location.reload();
+
+  }
+  navigateToGrowthIndexMapMobile(data){
+    this.mapUrl = data?.map_url;
+
+    this.router.navigateByUrl('/mobile_maps?map=' + this.mapUrl)
+    
+  }
+  navigateToGovernanceIndexMobile(data){
+    this.mapUrl = data?.map_url;
+
+    this.router.navigateByUrl('/mobile_maps?map=' + this.mapUrl)
 
   }
   navigateToBIMapMobile(data: any) {

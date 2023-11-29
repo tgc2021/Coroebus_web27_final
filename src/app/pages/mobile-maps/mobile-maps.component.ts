@@ -43,6 +43,7 @@ export class MobileMapsComponent implements OnInit {
   
       this.dataMap= localStorage.getItem('res');
       this.dataMapMobile=localStorage.getItem('res');
+      console.log(this.dataMapMobile);
       
      
 

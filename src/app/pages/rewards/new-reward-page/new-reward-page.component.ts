@@ -522,12 +522,12 @@ export class NewRewardPageComponent implements OnInit {
   }
 
   navigateToLogicalBaniya() {
-    this.ngOnInit();
+    // this.ngOnInit();
 
 
-    const url = this.rewardresponse[0].data.rewardTypes[0].apiurl
+    const url = this.rewardresponse[0]?.data.rewardTypes[0]?.apiurl;
 
-
+    console.log(url)
 
     window.location.href = url;
 
