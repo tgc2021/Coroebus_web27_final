@@ -273,7 +273,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
       }
   
       this.http.engagamentlog(body).subscribe(res=>{
-        
+        console.log(res);
         
       })
 

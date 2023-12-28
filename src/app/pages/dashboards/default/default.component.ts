@@ -51,7 +51,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   titleTab: any;
   titleTabSecond:any;
   my_rank: any;
-  levelwise:any=5;
+  levelwise:any;
   sectionView_2_Indexwise: any;
   monthlyCampaign:boolean;
   labelNameMyIndex: any;
@@ -120,7 +120,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   ZoneRankTL: any;
   pageInfo: string;
   link: Promise<boolean>;
-  id_coroebus_group: any;
+  id_coroebus_group: any;gm
+  useridSenior: any;
   dismiss() {
     throw new Error("Method not implemented.");
   }
@@ -352,6 +353,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   // }
 
   ngOnInit() {
+   
     this.pageInfo = localStorage.getItem('page');
  
     if(this.pageInfo!="undefined"){
@@ -466,6 +468,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
           this.GetRankingPopupData("", "");
 
           // this.navigateToStatistics()
+   
 
           this.notificationList();
           this.addIns();
@@ -499,7 +502,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
     // })
-
+console.log('isLandLogos',this.sectionView_1?.is_land_logos);
     
   }
 
@@ -784,11 +787,11 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
           // }
   
           this.firstrowbackimage =
-            this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level;
+            this.rankingDataFirstRowForSectionView_2[0]?._data[0]?.ranking_image_level;
   
           for (let item of this.getBackImages) {
             if (item.ranking_image_level === this.firstrowbackimage) {
-              this.web_first_tile_image = item.ranking_image;
+              this.web_first_tile_image = item?.ranking_image;
             }
           }
         } else if (
@@ -840,18 +843,18 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
           // }
   
           this.activeTabOrderNumberForSectionView_2 =
-            this.sectionView_2?._ranking_data?.[0].order;
+            this.sectionView_2?._ranking_data?.[0]?.order;
           this.rankingDataFirstRowForSectionView_2 =
             this.sectionView_2?._ranking_data?.filter(
-              (data) => data.order === this.activeTabForSectionView_2
+              (data) => data?.order === this.activeTabForSectionView_2
             );
           // }
           this.firstrowbackimage =
-            this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level;
+            this.rankingDataFirstRowForSectionView_2[0]?._data[0]?.ranking_image_level;
   
           for (let item of this.getBackImages) {
-            if (item.ranking_image_level === this.firstrowbackimage) {
-              this.web_first_tile_image = item.ranking_image;
+            if (item?.ranking_image_level === this.firstrowbackimage) {
+              this.web_first_tile_image = item?.ranking_image;
             }
           }
         }
@@ -874,6 +877,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     // setTimeout(() => {
       this.changeSubTabFilter("Overall");
       this.changeSubTabFilterIndex("Overall");
+      // this.isLevel3Active=false;
       setTimeout(()=>{
         this.openKpiInfo()
       },2000)
@@ -881,8 +885,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       // if(this.se)
       if(this.userSelectionData?._personal_data?.id_coroebus_organization=="61"){
         setTimeout(()=>{
-          this.GetRankingPopupData('','')
-         
+          this.GetRankingPopupData('','');
         },1000)
       }
      
@@ -945,9 +948,15 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       this.sectionView_1 = res?.data;
       this.openKpiInfo();
       this.id_role=this.sectionView_1?._personal_data?.id_role;
-      this.primary_rank = this.sectionView_1._primary.primary_rank;
-      this.role_id = this.sectionView_1._personal_data.id_role;
-      this.userGrade = this.sectionView_1._personal_data.user_grade;
+      this.primary_rank = this.sectionView_1?._primary?.primary_rank;
+      this.role_id = this.sectionView_1?._personal_data?.id_role;
+      this.userGrade = this.sectionView_1?._personal_data?.user_grade;
+      this.levelwise=this.sectionView_1?._personal_data?.game_level_flag;
+
+      console.log('isLandLogos',this.sectionView_1.is_land_logos.length);
+      if(this.sectionView_1?.is_land_logos?.length!=0){
+        this.isLevel3Active=false;
+      }
 
       
 
@@ -955,9 +964,9 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     
 var url_string = window.location.href;
 
+console.log(this.levelwise);
 
-
-if (this.levelwise===3) {
+if (this.levelwise== 3) {
 
     if (this.queryParams?.roleID === "3" || this.userSelectionData?._personal_data?.id_role === "3" && this.sectionView_1?._personal_data?.id_role === '3'  ) {
       this.isLevel3Active = true;
@@ -970,7 +979,7 @@ if (this.levelwise===3) {
 
     }
   }
-} else if (this.levelwise === 2) {
+} else if (this.levelwise == 2) {
   
   if (this.queryParams?.roleID === "4" || this.userSelectionData?._personal_data?.id_role === "4" && this.sectionView_1?._personal_data?.id_role === '4') {
     this.isLevel3Active = true;
@@ -983,7 +992,7 @@ if (this.levelwise===3) {
 
   }
   }
-} else if (this.levelwise === 1) {
+} else if (this.levelwise == 1) {
   if (this.queryParams?.roleID === "6" && this.userSelectionData?._personal_data?.id_role === "6" || this.sectionView_1?._personal_data?.id_role === '6') {
     this.isLevel3Active = true;
     this.hideBtnLevelWise=false;
@@ -2270,22 +2279,31 @@ if (this.levelwise===3) {
     };
     [err, res] = await HttpProtocols.to(DashboardModel.hierarchyPopup(body));
     if (!err && res?.statuscode === 200) {
+      console.log("level",res);
+
       this.hierarchyPopupList = []; 
-      for (let i = 1; i < this.levelwise; i++) {
-        const hierarchyData = res?.data[i];
-        if (hierarchyData) {
-          this.hierarchyPopupList.push(hierarchyData);
-        }
-      }
+      console.log(this.levelwise);
+      this.levelwise=this.sectionView_1?._personal_data?.game_level_flag;
+      console.log("level",this.levelwise)
+      // for (let i = 1; i <= this.levelwise; i++) {
+        const hierarchyData = res?.data;
+        
+        console.log(hierarchyData.slice(1,this.levelwise))
+        
+      
+        
       
     
       
-      this.firstUserData = this.hierarchyPopupList[0];
-
-      this.modalService.open(this.hierarchyPopup, {
-        centered: true,
-        windowClass: "modal-cls",
-      });
+      this.firstUserData = hierarchyData.slice(1,this.levelwise);
+      console.log('HeirachyData',this.firstUserData);
+      if(this.levelwise!=1){
+        this.modalService.open(this.hierarchyPopup, {
+          centered: true,
+          windowClass: "modal-cls",
+        });
+      }
+     
     } else {
       // this.levelsBucketsList_err = 'Error'
     }
@@ -2734,8 +2752,8 @@ if (this.levelwise===3) {
       })
    }
    else {
-    this.id_coroebus_group=this.rankingDataFirstRowForSectionView_2?.[0]?._data[0].id_coroebus_group;
-    this.id_coroebus_group=this.rankingDataFirstRowForSectionView_2?.[0]?._Overall[0].id_coroebus_group;
+    this.id_coroebus_group=this.rankingDataFirstRowForSectionView_2?.[0]?._data[0]?.id_coroebus_group;
+    this.id_coroebus_group=this.rankingDataFirstRowForSectionView_2?.[0]?._Overall[0]?.id_coroebus_group;
    }
 
   
@@ -2975,7 +2993,7 @@ if (this.levelwise===3) {
 
     body1 = {
       _userid:
-        this.sectionView_1?.is_land_logos[this.indexForIslandLogos]?._userid?this.sectionView_1?.is_land_logos[this.indexForIslandLogos]?._userid:this.queryParams.userID,
+      this.sectionView_1?.about_supervisor[0]?this.sectionView_1?.about_supervisor[0].senior_id:this.sectionView_1?.about_RM[0].RM_id,
       _game: this.gameid?this.gameid:this.queryParams.gameID,
       _section_view: "2",
       page_number: "1",
@@ -3252,19 +3270,25 @@ if (this.levelwise===3) {
     let err: any, res: any;
     let body: any;
 
+    console.log(this.levelwise);
+    this.useridSenior=this.sectionView_1?.about_supervisor[0]?this.sectionView_1?.about_supervisor[0].senior_id:this.sectionView_1?.about_RM[0].RM_id;
+    console.log('SuperVisiorId',this.useridSenior);
+
+    // if (this.sectionView_1?._personal_data.id_role == 4) {
+      
+    //   this.indexForIslandLogos = 2;
+     
     
-
-    if (this.sectionView_1?._personal_data.id_role == 4) {
-      this.indexForIslandLogos = 2;
-    } else if (this.sectionView_1?._personal_data.id_role == 3) {
-      this.indexForIslandLogos = 0;
-    }
-
+    // } else if (this.sectionView_1?._personal_data.id_role == 3) {
+    //   this.indexForIslandLogos = 0;
+    // }
+    // console.log("SuperVisiorId",this.sectionView_1)
     body = {
       _userid:
-        this.sectionView_1?.is_land_logos[this.indexForIslandLogos]?._userid,
+      this.useridSenior
+      ,
       _game:
-        this.sectionView_1?.is_land_logos[this.indexForIslandLogos]?.game_id,
+      this.sectionView_1?._personal_data?.id_coroebus_game,
       _section_view: "3",
       page_number: this.pageNumberForSectionView_3_index,
     };

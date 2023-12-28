@@ -65,18 +65,18 @@ export class TopbarComponent implements OnInit, OnDestroy {
   Org_logo:any
   isinM2ostPlatform:boolean=true;
   ngOnInit() {
-    // this.pageInfo = localStorage.getItem('page');
-    // console.log(this.pageInfo);
+    this.pageInfo = localStorage.getItem('page');
+    console.log(this.pageInfo);
 
-    // if (this.pageInfo==="undefined") {
-    // console.log(true);
+    if (this.pageInfo==="undefined") {
+    console.log(true);
      
-    //  this.isinM2ostPlatform=true;
-    // } else {
-    //   console.log(false);
-    //   console.log('pageInfo is undefined. Not reloading the page.');
-    //   this.isinM2ostPlatform=false;
-    // }
+     this.isinM2ostPlatform=true;
+    } else {
+      console.log(false);
+      console.log('pageInfo is undefined. Not reloading the page.');
+      this.isinM2ostPlatform=false;
+    }
   
   
     this.topbar_color= localStorage.getItem('topbar_color')
@@ -162,14 +162,12 @@ export class TopbarComponent implements OnInit, OnDestroy {
 
     }
     else if(this.id_role == 6||this.id_role == 4 || this.id_role == 3 || this.id_role == 10){
-      // if(this.isinM2ostPlatform){
+      if(this.isinM2ostPlatform){
         this.router.navigateByUrl('account/interactive-dashboard');
-      // }
-      // else {
-
-        
-        // window.open('https://www.m2ost.in/m2ostconsole/Dashboard/Index')
-      // }
+      }
+      else {
+        window.open('https://www.m2ost.in/M2OST_Console_PriME/Dashboard/Index');
+      }
      
 
     }

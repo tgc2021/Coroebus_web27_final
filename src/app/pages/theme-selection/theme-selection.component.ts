@@ -20,7 +20,7 @@ export class ThemeSelectionComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
   themeList: any;
   selectedTheme: any
-  showComponent: boolean = false
+  showComponent: boolean = false;
   themes_reponse:any
   constructor(private readonly store: Store, private router: Router, public Util: Util,public http:ApiserviceService) {
     this.store.select(fromRoot.userLogin).pipe(

@@ -28,6 +28,7 @@ import { NotificationPopupComponent } from '@pages/notification-popup/notificati
 export class SpectatorViewComponent implements OnInit {
 
   selectedValue: '0';
+  levelWiseFlag:any;
   spectSearchStr: any
   notification_response_data: any
   notification_response: any
@@ -78,7 +79,7 @@ export class SpectatorViewComponent implements OnInit {
   spectator_game_id: any
   spectator_role_id: any
   color: any;
-  callNotificationAPIAfterReadSub: Subscription
+  callNotificationAPIAfterReadSub: Subscription;
 
   @ViewChild("scrollTarget") scrollTarget: ElementRef;
   viewmoreorder: any
@@ -110,20 +111,7 @@ export class SpectatorViewComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // this.pageInfo = localStorage.getItem('page');
-    // console.log(this.pageInfo);
-    // if(this.pageInfo!="undefined"){
-    //   setTimeout(()=>{
-    //     if (!localStorage.getItem('foo')) { 
-    //       localStorage.setItem('foo', 'no reload') 
-    //       location.reload() 
-    //     } else {
-    //       localStorage.removeItem('foo') 
-    //     }
-    //  },2000)
-
-    // }
-
+   
 
 
 
@@ -147,7 +135,8 @@ export class SpectatorViewComponent implements OnInit {
         this.selected_gameID = JSON.parse(localStorage.getItem('game'))
         console.log('spectator view', this.selected_gameID?.game?.id_coroebus_game);
         this.getDashboardGroup();
-
+       
+        this.levelWiseFlag=this.userSelectionData?._personal_data?.game_level_flag;
 
 
 
@@ -333,7 +322,7 @@ export class SpectatorViewComponent implements OnInit {
 
                 if (this.tileimages == this.back_image_level) {
 
-                  this.tile_web_image_final = this.tile_web_image
+                  this.tile_web_image_final = this.tile_web_image;
 
                   this.tile_bg_img.push({ 'bgImg': this.tile_web_image_final })
 

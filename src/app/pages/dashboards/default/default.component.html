@@ -357,15 +357,7 @@
                                                         <span class="dashboard-banner-point-btn-text text-center">
                                                             {{rewardPoints?.[0]?.score}}
                                                         </span></button>
-                                                    <!-- <button *ngIf="rewardPoints?.[0]?.score<75"
-                                            class="btn btn-primary- text-white dashboard-banner-point-btn"
-                                            [ngStyle]="{'background':'#FFFFFF'}"
-                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                            data-bs-toggle="modal" data-bs-target="#RewardsModal">
-
-                                            <span class="dashboard-banner-point-btn-text text-center">
-                                                {{rewardPoints?.[0]?.score}}
-                                            </span></button> -->
+                                                    
 
                                                     <span
                                                         class="dashboard-level-rank-name">{{rewardPoints?.[0]?.label}}s</span>
@@ -608,7 +600,7 @@
                     <div class="row row-cols-2" *ngIf="sectionView_3_list?.[0]?._Overall">
                         <div *ngIf="role_id==6;then subTabForPlayer else subTabForOtherRole "></div>
                         <ng-template #subTabForPlayer>
-                            <div class="col" *ngIf="hideBtnLevelWise">
+                            <div class="col" >
                                 <a id="myButton" class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
                                 
                                     [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 ==='My Store'}"
@@ -623,7 +615,7 @@
                                     </span>
                                 </a>
                             </div>
-                            <div class="col" *ngIf="hideBtnLevelWise">
+                            <div class="col" >
                                 <a class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
                                 
                                     [ngClass]="{'': activeSubTabForSectionView_2 === 'Overall'}"
@@ -1091,7 +1083,7 @@
                 <div class="points-rank-card" 
                
                     [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.island_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.island_background == null}"
-                    *ngIf="sectionView_1?.is_land_logos?.length > 0"
+                  
                     [style.background-image]="
                     sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.island_background + ')' : null">
                     <div *ngIf="coroebus_game!='197' then dynamic else static"></div>
@@ -1295,23 +1287,21 @@
 
                 <div>
 
-                    <div class="bulletins-card"
+                    <div class="points-bullentins-card"
                     
-                        [ngClass]="{'points-bullentins-card-no-height': sectionView_1?.is_land_logos?.length == 0, 'points-bullentins-card': sectionView_1?.is_land_logos?.length != 0}"
+                     
                         [ngClass]="{'cardWithBackgroundImage': sectionView_1?.theme_details[0]?.add_ins_background != null, 'cardWithTransparentImage': sectionView_1?.theme_details[0]?.add_ins_background == null}"
                         [style.background-image]="
                         sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.add_ins_background + ')' : null"
                         style="background-size: cover;">
-                        <div *ngIf="sectionView_1?.is_land_logos?.length == 0;then one; else two"></div>
-                        <ng-template #one>
-                            <!-- Empty container -->
-                        </ng-template>
-                        <ng-template #two>
+                        
+                       
+                      
                             <div class="card-div">
                                 <div
                                     style="height: 44vh; padding:2%; display: flex;justify-content:center;align-items:center;">
                                     <div class="card-body px-4 "
-                                        style="height: 42vh; overflow-y:auto;display: flex; flex-direction: column;justify-content:start;gap:0.5em">
+                                        style="height: 40vh; overflow-y:auto;display: flex; flex-direction: column;justify-content:start;gap:0.5em">
                                         <mat-accordion  >
 
                                             <!-- <div class="red_indicator"></div> -->
@@ -1882,7 +1872,7 @@
                                 </div>
 
                             </div>
-                        </ng-template>
+                        
 
 
                     </div>
@@ -2138,7 +2128,7 @@
             <div class="modal-body dashboard-popup-level">
                 
                 <div class="row  hierarchy-popup-list hierarchy-popup-list-border mb-3 p-2 ms-5 w-75"
-                    *ngFor="let item of hierarchyPopupList"
+                    *ngFor="let item of firstUserData"
                     (click)="getDataBasedOnUserIDVIAhierarchyPopupList(item,modal)">
                     <div class=" col-6 pt-2">
                         <div class="media">
@@ -2361,7 +2351,7 @@
 
             <div class="col-12 RankSection mb-2">
 
-                <div class="" style="border-radius:10px;padding:2%" *ngIf="sectionView_1?.is_land_logos?.length > 0"
+                <div class="" style="border-radius:10px;padding:2%;background-size:cover" *ngIf="sectionView_1?.is_land_logos?.length > 0"
                     [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
                     <div class="card-body border-bottom- p-0">
                         <div *ngIf="coroebus_game!='197' then dynamicMobile else staticMobile"></div>
@@ -4568,10 +4558,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" >
-                <div  style="height:80vh;display: flex;justify-content: center;" *ngIf="this.sectionView_1?._personal_data?.id_coroebus_organization=='68'">
+                <div  style="height:80vh;display: flex;justify-content: center;" *ngIf="this.sectionView_1?._personal_data?.id_coroebus_organization=='80'||this.sectionView_1?._personal_data?.id_coroebus_organization=='81'">
                     <img src="assets/images/PointdistImage.png" height="100%" width="90%">
                 </div>
-                <div *ngIf="this.sectionView_1?._personal_data?.id_coroebus_organization!='68';then forOtherOrg"></div>
+                <div *ngIf="this.sectionView_1?._personal_data?.id_coroebus_organization!='80'||this.sectionView_1?._personal_data?.id_coroebus_organization=='81';then forOtherOrg"></div>
                 <ng-template #forOtherOrg>
                     <mat-tab-group [selectedIndex]="selectedIndex" *ngIf="labelArray?.length!=0" >
                     
@@ -4709,8 +4699,8 @@
                                 </thead>
                                 <tbody *ngFor="let kpiData of labelArray[2]?.Kpidata?.data">
                                     <tr>
-                                        <td>{{kpiData.start_range}}</td>
-                                        <td>{{kpiData.points}}</td>
+                                        <td>{{kpiData?.start_range}}</td>
+                                        <td>{{kpiData?.points}}</td>
     
                                     </tr>
                                    
@@ -4866,7 +4856,7 @@
                         </div>
                     </div>
                     <div class="row row-cols-2" *ngIf="sectionView_3_list_index?.[0]?._Overall">
-                        <div *ngIf="role_id==6;then subTabForPlayer else subTabForOtherRole "></div>
+                        <div *ngIf="role_id==6;then subTabForPlayer else subTabForOtherRole"></div>
                         <ng-template #subTabForPlayer>
                            
                         </ng-template>
@@ -4933,7 +4923,7 @@
 
 
                         <div 
-                        *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2_index === 'My Store' ? sectionView_3_list_index?.[0]?._data : sectionView_3_list_index?.[0]?._Overall)) "
+                        *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2_index === 'My Store' ? sectionView_3_list_index?.[0]?._data : sectionView_3_list_index?.[0]?._data)) "
                      >
                  
                         <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
