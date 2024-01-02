@@ -65,7 +65,7 @@
                                                     class="dashboard-user-name ellipsis pb-1">{{sectionView_1?._personal_data?.team_name}}</span>
                                             </div>
                                             <div
-                                                class="d-flex flex-column align-items-center justify-content-center mt-2" *ngIf="!isLevel3Active">
+                                                class="d-flex flex-column align-items-center justify-content-center mt-2">
                                                 <div *ngIf="sectionView_1?._personal_data?.id_role==6;then rankButtonPlayer else rankButtonOtherRole"></div>
                                                 <ng-template #rankButtonPlayer>
                                                     <button class="btn btn-primary- text-white level-badge-btn"
@@ -1133,49 +1133,41 @@
 
                                 </div>
                                 <!-- levelwise section -->
-                                <div *ngIf="isLevel3Active" class="row d-flex flex-column align-items-center">
-                                    <img loading="lazy" class="dashboard-banner-main-rank-img" style="height: 20vh;
-                                     width: 20vh;
-                                     border-radius: 100%;" src="{{sectionView_1?._personal_data?.profile_badge_image}}"
-                                        alt="Generic placeholder image">
-                                        <div
-                                        class="d-flex flex-column align-items-center justify-content-center mt-2">
-                                        <div *ngIf="sectionView_1?._personal_data?.id_role==6;then rankButtonPlayer else rankButtonOtherRole"></div>
-                                        <ng-template #rankButtonPlayer>
-                                            <button class="btn btn-primary- text-white level-badge-btn"
-                                          
-                                            [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
-                                          >
-                                            {{primary_rank}}
-                                            </button>
+                               <div class="ContainerLevelWise" *ngIf="isLevel3Active">
+                                <div style="width:100%;display: flex;justify-content:center;align-items:center">
+                                    <div class="skillmuniCharacterRankSection">
+                                        <img [src]="this.skillMuniCharacterRank?.data?._personal_data?.skillmuni" alt="character" height="100%" width="100%">
 
-                                        </ng-template>
-                                        <ng-template #rankButtonOtherRole>
-                                            <!-- <div *ngIf="sectionView_1?._personal_data?.id_coroebus_organization ==56 then popupGop else popupTataAia"></div> -->
-                                            <!-- <ng-template #popupGop> -->
-                                                <button class="btn btn-primary- text-white level-badge-btn" 
-                                                data-bs-toggle="modal" data-bs-target="#IndexWiseLeaderBoard"
-                                                (click)="getIndexproduce3('')"
-                                                [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
-                                               >
-                                                {{primary_rank}}
-                                                </button>
-                                            <!-- </ng-template> -->
-                                            <!-- <ng-template #popupTataAia>
-                                                <button class="btn btn-primary- text-white level-badge-btn"
-                                                data-bs-toggle="modal" data-bs-target="#IndexWiseLeaderBoard"
-                                                (click)="getIndexproduce3('')"
-                                                [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.dark_color}"
-                                               >
-                                                {{primary_rank}}
-                                                </button>
-                                            </ng-template> -->
-                                           
-                                            
-                                        </ng-template>
-                                        <span class="level-rank-name mt-2">Overall Rank</span>
                                     </div>
                                 </div>
+                            
+                                <div style="width:20vw">
+                                    <hr>
+                                </div>
+                                  
+                                    <!-- <div class="RankRewardSection row">
+                                        <div class="rewardCard">
+
+                                        </div>
+                                        <div class="rewardCard">
+
+                                        </div>
+                                        <div class="rewardCard">
+
+                                        </div>
+                                        <div class="rewardCard">
+
+                                        </div>
+
+
+                                    </div> -->
+                                    <div class="your-class">
+                                        <div>your content</div>
+                                        <div>your content</div>
+                                        <div>your content</div>
+                                      </div>
+
+                               </div>
                                
                             </div>
                         </div>
@@ -5046,14 +5038,14 @@
                 <ng-template #overall>
                     <div class="me-1 mt-1" >
                         <!-- {{rankingDataFirstRowForSectionView_2 | json}} -->
-
+                       
 
                         <div 
-                        *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2_index === 'My Store' ? sectionView_3_list_index?.[0]?._data : sectionView_3_list_index?.[0]?._Overall)) "
+                        *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2_index === 'My Store' ? sectionView_3_list_index?.[0]?._Overall : sectionView_3_list_index?.[0]?._Overall)) "
                      >
                  
                         <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
-                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color" *ngIf="item?.userid == sectionView_1?._personal_data?.USERID"    style="cursor: pointer;"  [style.background-image]="'url('+item?.ranking_image_web +')'">
+                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"  *ngIf="item?.userid == sectionView_1?._personal_data?.USERID"    style="cursor: pointer;"  [style.background-image]="'url('+item?.ranking_image_web +')'">
                         <div class="col" >
                             <div class="media d-flex align-items-center gap-3" style="height: 7vh;">
                                 <span class="col-1 ms-2 text-white position-absolute-s">

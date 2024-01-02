@@ -36,7 +36,7 @@ ModalHeading.ok_button {
       width: 20vw;
     }
   }
-  
+
   .bulletins-card {
     border-radius: 11px;
   }
@@ -81,6 +81,38 @@ ModalHeading.ok_button {
     width: auto;
     height: 40vh;
     border-radius: 11px;
+  }
+ 
+  .skillmuniCharacterRankSection{
+    height: 19vh;
+    width: 30%;
+    padding-bottom: 2%;
+  
+    
+
+  }
+  .RankRewardSection{
+
+    height: 18vh;
+  
+    display:flex; /* Make sure to include this line for grid layout */
+    flex-wrap: nowrap;
+    gap:0.5em;
+    overflow-x: auto;
+    width: 22vw;
+
+    
+  }
+  .rewardCard{
+    height: 16vh;
+    width: 6vw;
+   
+    border:1px solid #000;
+   
+    border-radius: 10px;
+   
+  
+
   }
   .points-dis-card {
     background-repeat: no-repeat;

@@ -122,6 +122,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   link: Promise<boolean>;
   id_coroebus_group: any;gm
   useridSenior: any;
+  skillMuniCharacterRank: any;
   dismiss() {
     throw new Error("Method not implemented.");
   }
@@ -502,8 +503,23 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
     // })
-console.log('isLandLogos',this.sectionView_1?.is_land_logos);
     
+
+    
+  }
+
+  getSkillMuniCharacterForRankSection(){
+   
+    let body = {
+      _userid: this.sectionView_1?._personal_data?.USERID,
+       _game: this.sectionView_1?._personal_data?.id_coroebus_game,
+
+    }
+    this.http.interactiveDashboard(body).subscribe((res)=>{
+      this.skillMuniCharacterRank=res;
+
+    
+    })
   }
 
   Edit_image() {
@@ -946,6 +962,7 @@ console.log('isLandLogos',this.sectionView_1?.is_land_logos);
       this.http.engagamentlog(body).subscribe((res) => {});
 
       this.sectionView_1 = res?.data;
+      this.getSkillMuniCharacterForRankSection();
       this.openKpiInfo();
       this.id_role=this.sectionView_1?._personal_data?.id_role;
       this.primary_rank = this.sectionView_1?._primary?.primary_rank;
@@ -2980,27 +2997,19 @@ if (this.levelwise== 3) {
   async GetIndexWisePopup() {
     let err1: any, res1: any;
     let body1: any;
-    if (this.sectionView_1?._personal_data.id_role == 4) {
-      this.gameid = this.sectionView_1?.is_land_logos[2]?.game_id;
-    } else if (this.sectionView_1?._personal_data?.id_role == 3) {
-      this.gameid = this.sectionView_1?.is_land_logos[1]?.game_id;
-    }
 
-    if (this.sectionView_1?._personal_data.id_role == 4) {
-      this.indexForIslandLogos = 2;
-    }
-    console.log(this.queryParams)
 
     body1 = {
       _userid:
       this.sectionView_1?.about_supervisor[0]?this.sectionView_1?.about_supervisor[0].senior_id:this.sectionView_1?.about_RM[0].RM_id,
-      _game: this.gameid?this.gameid:this.queryParams.gameID,
+      _game: this.sectionView_1?._personal_data?.id_coroebus_game,
       _section_view: "2",
       page_number: "1",
     };
     [err1, res1] = await HttpProtocols.to(
       DashboardModel.getCenterDataSectionView_2(body1)
     );
+   
     if (!err1 && res1?.status === "success" && res1?.statuscode === 200) {
       this.sectionView_2_Indexwise = res1?.data;
 
@@ -3271,7 +3280,7 @@ if (this.levelwise== 3) {
     let body: any;
 
     console.log(this.levelwise);
-    this.useridSenior=this.sectionView_1?.about_supervisor[0]?this.sectionView_1?.about_supervisor[0].senior_id:this.sectionView_1?.about_RM[0].RM_id;
+    this.useridSenior=this.sectionView_1?.about_supervisor[0]?this.sectionView_1?.about_supervisor[0].senior_id:this.sectionView_1?.about_RM[0]?.RM_id;
     console.log('SuperVisiorId',this.useridSenior);
 
     // if (this.sectionView_1?._personal_data.id_role == 4) {
@@ -3296,8 +3305,12 @@ if (this.levelwise== 3) {
     
 
     [err, res] = await HttpProtocols.to(
+   
+
       DashboardModel.getRankingAndOtherDataSectionView_3(body)
     );
+   
+
     if (!err && res?.status === "success" && res?.statuscode === 200) {
       
 
