@@ -84,22 +84,30 @@ ModalHeading.ok_button {
   }
  
   .skillmuniCharacterRankSection{
-    height: 19vh;
+    height: 18vh;
     width: 30%;
-    padding-bottom: 2%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    img{
+      filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.9));
+    }
   
     
 
   }
+  .ContainerLevelWise{
+    padding-top:2%;
+  }
   .RankRewardSection{
 
-    height: 18vh;
+    height: 16vh;
   
     display:flex; /* Make sure to include this line for grid layout */
     flex-wrap: nowrap;
     gap:0.5em;
     overflow-x: auto;
-    width: 22vw;
+    // width: 22vw;
 
     
   }
@@ -113,7 +121,80 @@ ModalHeading.ok_button {
    
   
 
+
   }
+  ::ng-deep{
+   
+
+      .owl-carousel .owl-stage-outer {
+        position: relative;
+        overflow: hidden;
+        width: 22vw !important;
+
+        height: auto;
+    }
+   
+      .owl-item{
+    
+        background: rgb(243, 242, 193);
+        float: inline-start;
+       
+        border:1px solid #000;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       width: 100%;
+        border-radius: 10px;
+        img{
+          border-radius: 10px;
+          height: 6vh;
+          width: 4vw;
+          padding: 1%;
+          border: 1px solid #fff;
+        }
+        span {
+          font-size: 0.7em;
+          font-weight: 600;
+          text-align: center;
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 9ch; /* Maximum width before ellipsis is applied */
+        }
+        // .rewardDatacontainer{
+         
+        //   height: 8vh;
+        //   width: 100%;
+
+
+        // }
+        .pointsSection{
+          background: var(--myvar);
+          color: white;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 2%;
+          font-weight: 600;
+          gap:0.2em;
+          width: 100%;
+          border-bottom-right-radius:10px ;
+          border-bottom-left-radius:10px ;
+          cursor: pointer;
+          img{
+            height: 4vh;
+            width: 4vh;
+            border: none;
+          }
+
+        }
+
+      }
+    
+  }
+ 
   .points-dis-card {
     background-repeat: no-repeat;
     background-position: inherit;

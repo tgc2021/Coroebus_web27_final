@@ -20,6 +20,7 @@ import { ImagecropperComponent } from "@pages/imagecropper/imagecropper.componen
 import { EventService } from "@app/services/event.service";
 import { NotificationPopupComponent } from "@pages/notification-popup/notification-popup.component";
 import * as userActions from "../../../core/app-state/actions";
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 import {
   ActivatedRoute,
@@ -39,6 +40,30 @@ import { UserModel } from "@models/user.model";
   styleUrls: ["./default.component.scss"],
 })
 export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    // autoWidth: true,
+    touchDrag: false,
+    pullDrag: false,
+    startPosition: 0,
+    // autoHeight:true,
+    mergeFit:true,
+    items:3,
+    margin:5,
+    autoplay:true,
+    dots: true,
+    navSpeed: 700,
+    navText: ['', ''],
+   
+    
+  
+    nav: false
+  }
+
+
+
+
   openperformance: boolean = true;
   openActivivities: boolean = false;
   primary_rank: any;
@@ -123,6 +148,10 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   id_coroebus_group: any;gm
   useridSenior: any;
   skillMuniCharacterRank: any;
+  orgRewards: any;
+  orgRewardsData: any;
+  orgReward: any;
+  CoinImage: any;
   dismiss() {
     throw new Error("Method not implemented.");
   }
@@ -520,6 +549,27 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
     
     })
+    this.getRewardSection(body);
+  }
+  getRewardSection(data){
+    console.log('data',data);
+    let body = {
+      _userid: data._userid,
+      _game: data._game,
+      _device: "W",
+      _section: "Rewards Page",
+      _description: "Rewards Page"
+    };
+    this.http.rewards(body).subscribe((res)=>{
+      console.log(res);
+      this.orgRewardsData=res;
+      this.CoinImage=this.orgRewardsData?.data?.game_data[0].coin_image;
+      console.log('CoinImage',this.orgRewardsData?.data?.game_data[0].coin_image
+      );
+      this.orgReward=this.orgRewardsData?.data?.rewardTypes[1]?.rewardList;
+      console.log('OrgReward',this.orgReward);
+    })
+
   }
 
   Edit_image() {

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Injector, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Injector, NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 
 import { NgbNavModule, NgbAccordionModule, NgbTooltipModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -9,6 +9,7 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 
 import { ExtrapagesModule } from './extrapages/extrapages.module';
+
 
 import { LayoutsModule } from './layouts/layouts.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -35,10 +36,12 @@ export function createTranslateLoader(http: HttpClient): any {
    
    
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    CarouselModule,
     
     TranslateModule.forRoot({
       loader: {
@@ -52,7 +55,7 @@ export function createTranslateLoader(http: HttpClient): any {
     AppRoutingModule,
     ExtrapagesModule,
   
-    CarouselModule,
+    
     NgbAccordionModule,
     NgbNavModule,
     NgbTooltipModule,

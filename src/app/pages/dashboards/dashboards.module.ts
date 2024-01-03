@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { DashboardsRoutingModule } from './dashboards-routing.module';
 import { UIModule } from '../../shared/ui/ui.module';
@@ -23,6 +24,7 @@ import { ShortNumberPipe } from './short-number.pipe';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    CarouselModule,
     DashboardsRoutingModule,
     MatExpansionModule,
     UIModule,
