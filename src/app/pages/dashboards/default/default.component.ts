@@ -42,7 +42,7 @@ import { UserModel } from "@models/user.model";
 export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   customOptions: OwlOptions = {
     loop: true,
-    mouseDrag: false,
+    mouseDrag: true,
     // autoWidth: true,
     touchDrag: false,
     pullDrag: false,
@@ -53,7 +53,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     margin:5,
     autoplay:true,
     dots: true,
-    navSpeed: 700,
+    navSpeed: 1000,
     navText: ['', ''],
    
     
@@ -61,6 +61,26 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     nav: false
   }
 
+  customOptionsMobile: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    // autoWidth: true,
+    touchDrag: false,
+    pullDrag: false,
+    startPosition: 0,
+    // autoHeight:true,
+    mergeFit:true,
+    items:1,
+    margin:5,
+    autoplay:true,
+    dots: true,
+    navSpeed: 1000,
+    navText: ['', ''],
+   
+    
+  
+    nav: false
+  }
 
 
 

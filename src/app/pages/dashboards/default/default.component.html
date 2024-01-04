@@ -1140,7 +1140,9 @@
 
                                     </div>
                                 </div>
-                            
+                                <div class="d-flex justify-content-center" style="width:100%;font-weight:600">
+                                    Rewards
+                                </div>
                                 <div style="width:22vw;">
                                     <hr style="margin:5px;font-weight:600;color:#000;height:0.5px;opacity:1.0">
                                    
@@ -2360,7 +2362,7 @@
 
             <div class="col-12 RankSection mb-2">
 
-                <div class="" style="border-radius:10px;padding:2%;background-size:cover" *ngIf="sectionView_1?.is_land_logos?.length > 0"
+                <div class="" style="border-radius:10px;padding:2%;background-size:cover" 
                     [style.background-image]="sectionView_1?.theme_details?.[0]?.point_dist_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
                     <div class="card-body border-bottom- p-0">
                         <div *ngIf="coroebus_game!='197' then dynamicMobile else staticMobile"></div>
@@ -2391,6 +2393,63 @@
                             </div>
 
                         </div>
+                        <div class="ContainerLevelWiseMobile" *ngIf="isLevel3Active">
+                            <div style="width:100%;display: flex;justify-content:center;align-items:center">
+                                <div class="skillmuniCharacterRankSectionMobile">
+                                    <img lazy="loading" [src]="this.skillMuniCharacterRank?.data?._personal_data?.skillmuni" alt="character" height="90%" width="100%">
+
+                                </div>
+                            </div>
+                            <div>
+                                <div class="d-flex justify-content-center" style="width:100%;font-weight:600">
+                                    Rewards
+                                </div>
+                                <div style="width:50vw;">
+                                    <hr style="margin:5px;font-weight:600;color:#000;height:0.5px;opacity:1.0">
+                                   
+                                      
+                                   
+                                   
+                                </div>
+                                  
+                                    <!-- <div class="RankRewardSection row">
+                                        <div class="rewardCard">
+    
+                                        </div>
+                                        <div class="rewardCard">
+    
+                                        </div>
+                                        <div class="rewardCard">
+    
+                                        </div>
+                                        <div class="rewardCard">
+    
+                                        </div>
+    
+    
+                                    </div> -->
+                                    <owl-carousel-o [options]="customOptionsMobile">
+                                        <ng-container  *ngFor="let slide of orgReward"  >
+                                          <ng-template carouselSlide [id]="slide.id">
+                                            
+                                                <div owl-carousel-slide class="rewardDatacontainer p-2">
+                                                    <img lazy="loading" [src]="slide.reward_logo" alt="" srcset="">
+                                                    <span class="pt-2" style="font-size:0.9em;max-width:13ch">{{slide?.name}}</span>
+                                                </div>
+                                            
+                                              <div class="pointsSection" (click)="getRewards()">
+                                                <img [src]="CoinImage" height="100%" width="100%">
+                                                {{slide?.redeem_point}}
+                                            </div>
+                                            
+                                          </ng-template>
+                                        </ng-container>
+                                      </owl-carousel-o>
+                            </div>
+                            
+                               
+
+                           </div>
                         </ng-template>
                         <ng-template #staticMobile>
                             <div class="d-flex justify-content-center align-items-center mt-2 dashboard-user-name">
@@ -2480,6 +2539,7 @@
                         
                     </div>
                 </div>
+
             </div>
 
             <div class="col-12 pointsDistributionSection ">
