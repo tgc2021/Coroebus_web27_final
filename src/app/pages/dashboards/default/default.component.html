@@ -107,7 +107,7 @@
 
                                     <div class="row" *ngIf="sectionView_1?._personal_data?.brand_name"
                                         placement="bottom" ngbTooltip="{{sectionView_1?._personal_data?.brand_name}}" >
-                                        <div class="col-lg-12 ellipsis" *ngIf="!isLevel3Active">
+                                        <div class="col-lg-12 ellipsis" >
                                             <div class="d-flex justify-content-center">
                                                 <span
                                                     class="dashboard-user-name ellipsis pb-1">{{sectionView_1?._personal_data?.brand_name}}</span>
@@ -292,8 +292,8 @@
                             <div>
                                 <div>
                                     <img loading="lazy" class="dashboard-banner-main-rank-img" style="height: 15vh;
-                        width: 15vh;
-                        border-radius: 100%;" src="{{sectionView_1?._personal_data?.profile_badge_image}}"
+                                    width: 15vh;
+                                    border-radius: 100%;" src="{{sectionView_1?._personal_data?.profile_badge_image}}"
                                         alt="Generic placeholder image">
                                 </div>
                                 <div class="badge-level_name d-flex justify-content-center"

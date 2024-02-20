@@ -218,6 +218,7 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
           localStorage.setItem('body_game', this.interactive_dashoard_response?.data?._personal_data?.id_coroebus_game)
 
           this.isInteractiveOn = this.interactive_dashoard_response?.data?._personal_data?.interactive_flag;
+        
           if (this.interactive_dashoard_response?.data.is_about_game == 1) {
             this.about_game_pdf = this.interactive_dashoard_response?.data?.about_game[0]?.file_name
             localStorage.setItem('about_game_pdf', this.about_game_pdf)
@@ -283,7 +284,7 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
           this.scorecardcolor = this.interactive_dashoard_response[0]?.data?.theme_details[0]?.scoreboard_color_bg
 
 
-          this.element.nativeElement.style.setProperty('--colorback', `${this.scorecardcolor}`)
+          this.element.nativeElement.style.setProperty('--colorbacknew', `${this.scorecardcolor}`)
 
           this.accordioncolor = this.interactive_dashoard_response[0]?.data?.theme_details[0]?.light_color
 
@@ -396,7 +397,7 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
           this.scorecardcolor = this.interactive_dashoard_response[0]?.data?.theme_details[0]?.scoreboard_color_bg
 
 
-          this.element.nativeElement.style.setProperty('--colorback', `${this.scorecardcolor}`)
+          this.element.nativeElement.style.setProperty('--colorbacknew', `${this.scorecardcolor}`)
 
           this.eventService.broadcast('passDataToHeader', {
             color: this.interactive_dashoard_response[0]?.data?.theme_details[0]?.dark_color,
@@ -798,19 +799,21 @@ export class InteractiveDashboardComponent implements OnInit, OnDestroy {
 
 
   newInteractive() {
+    console.log(this.userSelectionData?.id_coroebus_game,'coroebusgame');
     let body = {
       "_game": this.userSelectionData?.id_coroebus_game
       // "_game":356
     }
     this.http.newInteractiveDashboard(body).subscribe((res: any) => {
-     
+     console.log(res,'res');
       this.themeDetails = res?.data?._interactive_details[0];
+      console.log(this.themeDetails);
       this.background_color = this.themeDetails?.gradient_color_bg;
 
 
       this.element.nativeElement.style.setProperty('--myvarnew', `${this.background_color}`)
       this.score_color = this.themeDetails?.scoreboard_color_bg;
-
+      console.log(this.score_color,"scoreColor");
 
       this.element.nativeElement.style.setProperty('--colorbacknew', `${this.score_color}`)
 

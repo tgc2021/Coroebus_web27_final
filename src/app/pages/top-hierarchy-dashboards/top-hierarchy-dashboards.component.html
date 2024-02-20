@@ -1223,7 +1223,7 @@
 
             <div class="points-dis-card"
                 [style.background-image]="
-            sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+            sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null"  *ngIf="sectionView_1?.is_land_logos?.length > 0">
                 <div class="d-flex flex-column justify-content-center align-items-center badge_div_mobile"
                     *ngIf="sectionView_1._personal_data.id_role==9"
                     (click)="getDataBasedOnUserIDHos(sectionView_1?._business_user[0])">
@@ -1233,7 +1233,7 @@
                         <span>Level</span>
                     </div>
                 </div>
-                <div class="card-body border-bottom- p-0" *ngIf="sectionView_1?.is_land_logos?.length > 0">
+                <div class="card-body border-bottom- p-0">
                     <div class="row" [ngClass]="{'one-data-mobile': sectionView_1?.is_land_logos?.length == 1,
                     'two-data-mobile': sectionView_1?.is_land_logos?.length === 2,
                     'three-data-mobile': sectionView_1?.is_land_logos?.length === 3,
@@ -2696,8 +2696,8 @@
                            <ng-template #forAdvocacyForOne>
                             <table class="mt-4">
                                 <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
-                                    <th>No. of Instances </th>
-                                    <th>Points per Intance</th>
+                                    <th>No. of instances </th>
+                                    <th>Points per instance</th>
                                 </thead>
                                 <tbody *ngFor="let kpiData of labelArray[0]?.Kpidata?.data">
                                     <tr>
@@ -2751,8 +2751,8 @@
                            <ng-template #forAdvocacyFortwo>
                             <table class="mt-4">
                                 <thead [style.background]="sectionView_1?.theme_details?.[0]?.dark_color">
-                                    <th>No. of Instance </th>
-                                    <th>Points per Instances</th>
+                                    <th>No. of Instances </th>
+                                    <th>Points per instance</th>
                                 </thead>
                                 <tbody *ngFor="let kpiData of labelArray[1]?.Kpidata?.data">
                                     <tr>

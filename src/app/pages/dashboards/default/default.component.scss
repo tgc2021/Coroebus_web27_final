@@ -100,9 +100,7 @@ ModalHeading.ok_button {
     padding-top:2%;
   }
   .RankRewardSection{
-
     height: 16vh;
-  
     display:flex; /* Make sure to include this line for grid layout */
     flex-wrap: nowrap;
     gap:0.5em;
@@ -114,18 +112,10 @@ ModalHeading.ok_button {
   .rewardCard{
     height: 16vh;
     width: 6vw;
-   
     border:1px solid #000;
-   
     border-radius: 10px;
-   
-  
-
-
   }
   ::ng-deep{
-   
-
       .owl-carousel .owl-stage-outer {
         position: relative;
         overflow: hidden;
@@ -1323,24 +1313,24 @@ font-size: 1vw;
   
   ::-webkit-scrollbar {
     // display: none;
-    width: 0.4rem;
-    height: 0.3em;
+    width: 0.4rem !important;
+    height: 0.3em !important;
   
-    scroll-behavior: smooth;
+    scroll-behavior: smooth !important;
   }
   
   /* Track */
   ::-webkit-scrollbar-track {
     // display: none;
-    box-shadow: inset 0 0 5px grey;
-    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgb(16, 16, 16) !important;
+    border-radius: 10px !important;
   }
   
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: scroll;
-    border-radius: 10px;
-    background: #bbb;
+    background: scroll !important;
+    border-radius: 10px !important;
+    background: #CFD8DC !important;
   }
   
   .WeeklyModal {

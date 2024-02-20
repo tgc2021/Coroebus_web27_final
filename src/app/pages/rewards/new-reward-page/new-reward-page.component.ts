@@ -161,6 +161,7 @@ export class NewRewardPageComponent implements OnInit {
             this.rewardresponse = Array.of(this.rewardresponse);
             this.passbook_response = this.rewardresponse[0]?.data?.points_list[1]?._data;
             this.collectionSize = this.passbook_response?.length;
+            console.log('collectionSize',this.collectionSize);
             this.rewardImage = this.rewardresponse[0]?.data?.game_data[0]?.reward_image;
             this.passbookImage = this.rewardresponse[0]?.data?.game_data[0]?.passbook_image;
             this.coinImage = this.rewardresponse[0]?.data?.game_data[0]?.coin_image;
@@ -180,8 +181,8 @@ export class NewRewardPageComponent implements OnInit {
           };
           this.http.rewards(body).subscribe((res) => {
             let body = {
-              _userid: this.mergeObj.USERID,
-              _game: this.mergeObj.id_coroebus_game,
+              _userid: this.mergeObj?.USERID,
+              _game: this.mergeObj?.id_coroebus_game,
               _device: "W",
               _section: "Rewards Page",
               _description: "Rewards Page"
@@ -192,6 +193,7 @@ export class NewRewardPageComponent implements OnInit {
             this.rewardresponse = Array.of(this.rewardresponse);
             this.passbook_response = this.rewardresponse[0]?.data?.points_list[1]?._data;
             this.collectionSize = this.passbook_response?.length;
+            console.log('collectionSize',this.collectionSize);
             this.rewardImage = this.rewardresponse[0]?.data?.game_data[0]?.reward_image;
             this.passbookImage = this.rewardresponse[0]?.data?.game_data[0]?.passbook_image;
             this.coinImage = this.rewardresponse[0]?.data?.game_data[0]?.coin_image;
@@ -265,6 +267,7 @@ export class NewRewardPageComponent implements OnInit {
         this.rewardresponse = Array.of(this.rewardresponse);
         this.passbook_response = this.rewardresponse[0]?.data?.points_list[1]?._data;
         this.collectionSize = this.passbook_response?.length;
+        console.log('collectionSize',this.collectionSize);
         this.rewardImage = this.rewardresponse[0]?.data?.game_data[0]?.reward_image;
         this.passbookImage = this.rewardresponse[0]?.data?.game_data[0]?.passbook_image;
         this.coinImage = this.rewardresponse[0]?.data?.game_data[0]?.coin_image;
@@ -663,7 +666,7 @@ export class NewRewardPageComponent implements OnInit {
        
         this.cantreedeemedPopUp=true;
         window.setTimeout(function () {
-          location.reload();
+          // location.reload();
         }, 3000);
 
       }

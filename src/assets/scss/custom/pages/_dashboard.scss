@@ -353,6 +353,7 @@
     height: 81vh;
     margin-top: 11vh;
  }
+ 
 
 
 .dashboard-popup-level::-webkit-scrollbar {
@@ -382,17 +383,17 @@
     width: 2px;
 }
 
-.dashboard-center-table-forNSM,
-.dashboard-center-table,
-.dashboard-center-table-Mobile,
-.inner-points-height,
-.inner-notification-height,
-.inner-bulletins-height,
+// .dashboard-center-table-forNSM,
+// .dashboard-center-table,
+// .dashboard-center-table-Mobile,
+// .inner-points-height,
+// .inner-notification-height,
+// .inner-bulletins-height,
 
-.dashboard-popup-level {
-    scrollbar-width: thin;
-    scrollbar-color: #90A4AE #CFD8DC;
-}
+// .dashboard-popup-level {
+//     scrollbar-width: thin;
+//     scrollbar-color: #90A4AE #CFD8DC;
+// }
 
 .dashboard-center-table::-webkit-scrollbar-track {
     background: #CFD8DC;

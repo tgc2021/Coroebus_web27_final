@@ -54,6 +54,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     autoplay:true,
     dots: true,
     navSpeed: 1000,
+    autoplayTimeout: 1000,
     navText: ['', ''],
    
     
@@ -74,6 +75,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     margin:5,
     autoplay:true,
     dots: true,
+    autoplayTimeout: 1000,
     navSpeed: 1000,
     navText: ['', ''],
    

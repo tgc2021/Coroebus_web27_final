@@ -19,6 +19,8 @@ import { NewRewardPageComponent } from './new-reward-page/new-reward-page.compon
 
 
 
+
+
 @NgModule({
   declarations: [
     
@@ -42,6 +44,7 @@ import { NewRewardPageComponent } from './new-reward-page/new-reward-page.compon
     Ng2OrderModule,
     MatDialogModule,
     RewardsRoutingModule,
+
     
   ]
 })

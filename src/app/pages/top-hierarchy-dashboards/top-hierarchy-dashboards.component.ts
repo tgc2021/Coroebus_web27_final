@@ -142,6 +142,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   groupID_bh: string;
   gameIdBh: string;
   id_role_bh: string;
+  useridSenior: any;
   constructor(private readonly store: Store, public _route: ActivatedRoute,public snackBar: MatSnackBar,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -1073,14 +1074,16 @@ this.spectSearchStr=''
      
     this.activeClassPopup=event;
   
-   
-  
+    this.useridSenior=this.sectionView_1?.about_supervisor[0]?this.sectionView_1?.about_supervisor[0].senior_id:this.sectionView_1?.about_RM[0]?.RM_id;
+    console.log('SuperVisiorId',this.sectionView_1?._personal_data?.id_coroebus_game
+
+    );
     let err1: any, res1: any;
     let body1: any;
     
     body1 = {
-      "_userid": this.sectionView_1?.is_land_logos[0]?._userid,
-      "_game":this.sectionView_1?.is_land_logos[0]?.game_id,
+      "_userid": this.useridSenior,
+      "_game":this.sectionView_1?._personal_data?.id_coroebus_game,
       "_section_view": "2", "page_number": "1"
     };
     [err1, res1] = await HttpProtocols.to(DashboardModel.getCenterDataSectionView_2(body1))
@@ -1090,15 +1093,15 @@ this.spectSearchStr=''
       this.activeTabOrderNumberForSectionView_2 = res1?.data?._ranking_data?.[event]?.order
       
      
-      this.queryParams = { userID:  this.sectionView_1?.is_land_logos[0]?._userid, gameID: this.sectionView_1?.is_land_logos[0].game_id, roleID:  this.sectionView_1?.is_land_logos[0]?.role_id}
+      this.queryParams = { userID: this.useridSenior, gameID: this.sectionView_1?._personal_data?.id_coroebus_game, roleID: this.sectionView_1?._personal_data?.role_id}
 
       let err: any, res: any;
       let body: any;
       
       
       body = {
-        "_userid": this.sectionView_1?.is_land_logos[0]?._userid,
-        "_game": this.sectionView_1?.is_land_logos[0]?.game_id, "_section_view": "3", "page_number": this.pageNumberForSectionView_3
+        "_userid": this.useridSenior,
+        "_game": this.sectionView_1?._personal_data?.id_coroebus_game, "_section_view": "3", "page_number": this.pageNumberForSectionView_3
       };
       // localStorage.setItem('body_userid', body._userid);
       // localStorage.setItem('body_game', body._game);

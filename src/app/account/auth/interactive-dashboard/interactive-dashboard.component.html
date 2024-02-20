@@ -2,7 +2,7 @@
 <app-loader *ngIf="isLoading"></app-loader>
 <div class="d-flex justify-content-center"
     [ngClass]="isInteractiveOn=='Game'?'web_view_main-game':'web_view_main-theme'">
-
+   
     <div *ngIf="isInteractiveOn==='Game';then interactiveOnGameLevel else interactiveonThemeLevel"></div>
     <ng-template #interactiveOnGameLevel>
         <div class="web-view-game web-view" style="width: 80vw;" *ngFor="let response of interactive_dashoard_response">
