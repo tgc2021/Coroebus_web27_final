@@ -361,7 +361,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     },
   ];
 
-  activeButton: string = "achievement";
+  activeButton: string = "achievement"; 
   isAchievementActive: boolean = true;
   isQualifierActive: boolean = false;
 
@@ -381,6 +381,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
   showButton = false;
   activeclass = false;
+ 
 
   constructor(
     private readonly store: Store,
@@ -398,12 +399,16 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     this.activeSubTabForSectionView_2 = "Overall";
 
     this.Edit_image();
+    
   }
-
+  isdefaultView=true;
   // ngOnChanges(){
   //   this.Edit_image()
   // }
-
+  openFullView(){
+    console.log("Click");
+    this.isdefaultView=!this.isdefaultView;
+  }
   ngOnInit() {
    
     this.pageInfo = localStorage.getItem('page');

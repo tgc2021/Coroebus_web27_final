@@ -1,0 +1,572 @@
+.web-view {
+    background: url('../../../../assets/images/playZone/images/Background.png') center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    height: 100%;
+    margin: 1%;
+   
+}
+::ng-deep{
+    .tooltip-inner {
+        background-color: var(--myvar) !important;
+        font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        /* Grey / Light */
+        color: #F5F5F5;   
+
+    }
+    .page-content {
+      padding: 71px 30px 60px 0px;
+    
+    }
+}
+::-webkit-scrollbar {
+    width: 0.4rem;
+    scroll-behavior: smooth;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    display: none;
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: scroll;
+    border-radius: 10px;
+    background: #bbb;
+}
+.playZoneHedingContainer{
+    padding: 1% ;
+    background: rgba(255, 255, 255, 0.8);
+    height: 7vh;
+    border-radius: 8px;
+  
+    
+    overflow-y:hidden;
+    overflow-x: hidden;
+}
+.playZone-container{
+    padding: 1%;
+    background: rgba(255, 255, 255, 0.8);
+    height: 80vh;
+    border-radius: 8px;
+    overflow-y:hidden;
+    overflow-x: hidden;
+}
+.subHeading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1%;
+    // margin-bottom: 1%;
+}
+.reward-container {
+    display: flex;
+    flex:wrap;
+    justify-content: center;
+    // overflow-y: auto;
+    padding: 1%;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    height: 80vh;
+    width: 94%;
+    
+    // position: fixed;
+    right: 0;
+    // overflow-y: auto;
+    overflow: hidden;
+
+}
+.RewardsearchBar {
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 73%;
+    position: relative;
+    input {
+        height: 44px;
+        width: 100%;
+        border-radius: 8px;
+        border: 1px solid #D1D1D1;
+        position: relative;
+    }
+    .rewardClearBtn{
+        position: absolute;
+        right:1vw;
+        top: 15%;
+        color:#ACACAC;
+        background: #ffff;
+        font-size:18px;
+        font-weight: 500;
+        border: none;
+        border-radius: 50%;
+    }
+}
+.reward-content {
+    margin: 1%;
+    padding: 1%;
+}
+
+.rewardHeading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2%;
+    align-items: center;
+    height: 7vh;
+    width: 94%;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+   
+    .heading {
+        font-weight: bolder;
+        font-size: 1.2rem;
+
+    }
+
+
+}
+.RewardsearchBar {
+    margin-left: 1%;
+    margin-right: 1%;
+    position: relative;
+    input {
+        height: 44px;
+        border-radius: 8px;
+        border: 1px solid #D1D1D1;
+        position: relative;
+    }
+    .rewardClearBtn{
+        position: absolute;
+        right:1vw;
+        top: 15%;
+        color:#ACACAC;
+        background: #ffff;
+        font-size:18px;
+        font-weight: 500;
+        border: none;
+        border-radius: 50%;
+    }
+   
+
+}
+.searchBar {
+    margin-left: 1%;
+    margin-right: 1%;
+    position: relative;
+
+    input {
+            height: 44px;
+            // width: 45vw;
+            // left: 224px;
+            // top: 199px;
+            border-radius: 8px;
+            border: 1px solid #D1D1D1;
+    }
+    .clearBtn{
+        position: absolute;
+        right:1vw;
+        top: 15%;
+        color:#ACACAC;
+        background: #ffff;
+        font-size:18px;
+        font-weight: 400;
+        border: none;
+        border-radius: 50%;
+    }
+    
+}
+
+input[type="checkbox"]::placeholder {
+    color: #bbb;
+  }
+.btn-sm-2 {
+    height: 44px;
+    width: 46px;
+    left: 1408px;
+    top: 177px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background-color: var(--myvar);
+    border: 1px solid #D1D1D1;
+
+
+}
+.text {
+    font-family:'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+    color: rgb(91, 91, 91);
+}
+// .gameCard{
+//     height: 30vh;
+//     width:;
+//     border: 1.5px solid #002A97;
+
+// }
+.card-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap:1rem;
+    padding: 2%;
+  
+}
+
+//Flip card css
+
+.flip-card {
+    perspective: 1000px;
+    // width: 13rem;
+    height: auto;
+    min-height: 14rem;
+    max-height: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+   
+
+    // height: 20rem;
+    
+  }
+
+  .flip-card-inner {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    display: flex;
+    
+
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.6s;
+  }
+
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+
+  .flip-card-front,
+  .flip-card-back {
+    width: 100%;
+    height: 100%;
+    border-radius:10px;
+    position: absolute;
+    backface-visibility: hidden;
+    border: 1px solid #2196F3;
+  }
+  .flip-card-front{
+    display: flex;
+    padding: 2%;
+    flex-direction:column;
+    background-color: #fff;
+  }
+  .logoimg{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+   
+    img{
+        height: 7rem;
+        width: 7rem;
+        border-radius: 100%;
+        border: 2px solid ;
+    }
+
+  }
+
+  .flip-card-front {
+    // background-color: #2196F3;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .title {
+      font-family: 'Inter';
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 20px;
+      letter-spacing: 0em;
+      text-align: center;
+
+
+
+  }
+  .sub-title{
+    font-family: 'Inter';
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: center;
+    white-space: nowrap; 
+    width: 20ch; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+  
+
+  }
+  .type {
+
+
+      font-family: 'Inter';
+      font-size: 10px;
+      font-weight: 400;
+      line-height: 12px;
+      letter-spacing: 0em;
+      text-align: left;
+
+  }
+
+  .default {
+      font-family: 'Inter';
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 12px;
+      letter-spacing: 0em;
+      text-align: left;
+
+  }
+  .flip-card-back {
+    // background-color: #f1f1f1;
+    color: black;
+    transform: rotateY(180deg);
+    border-radius: 10px;
+   
+    .inner-layer{
+        background-color: rgba(52, 31, 31, 0.5);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        .playBtn{
+            width: 8rem;
+            height: 3rem;
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            background: #D0CFFF;
+            border-radius: 10px;
+           
+            border: 1.5px solid;
+
+        
+        }
+
+    }
+   
+    
+  }
+
+//   Modal CSS
+.modal-content{
+    border-radius: 10px;
+    background-color: transparent;
+}
+.modal-heading>h4{
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 25px;
+text-align: center;
+/* identical to box height, or 125% */
+
+letter-spacing: 0.003em;
+
+/* Secondary/Dark Color */
+
+color: #54595E;
+}
+
+.btn-close{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    border:2px solid #ffff;
+    font-size: 18px;
+    position: absolute;
+    background: red;
+ 
+    right:0vw;
+    top:-5vh;
+    color: white;
+
+}
+.noContentContainer{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .noContentContainer-Desc {
+            height: 42px;
+            width: 238px;
+            left: 376px;
+            top: 584px;
+            border-radius: nullpx;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 20px;
+            letter-spacing: 0.003em;
+            color: #878787;
+            text-align: center;
+    }
+}
+.noContentContainer-Desc {
+   
+   
+    border-radius: nullpx;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.003em;
+    color: #878787;
+    text-align: center;
+}
+
+@media screen and (min-width:270px) and (max-width:960px) {
+    .web-view {
+        display: none;
+    }
+
+}
+
+// Mobile view Started //
+@media screen and (min-width:960.1px) {
+    .playzone-mobile-view {
+        display: none;
+    }
+
+
+}
+
+.playzone-mobile-view{
+    // background: url('../../../assets/images/playZone/images/Rectangle\ 569.png') -19vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    width: 98vw;
+    margin: 1%;
+}
+
+
+.mobile-playzone-container {
+
+    display: flex;
+    justify-content: space-between;
+    background: #ffff !important;
+   
+   
+    
+}
+.mobile-card-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+}
+
+.mobile-noContentContainer{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .mobile-noContentContainer-Desc {
+            height: 42px;
+            width: 238px;
+            left: 376px;
+            top: 584px;
+            border-radius: nullpx;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 20px;
+            letter-spacing: 0.003em;
+            color: #878787;
+            text-align: center;
+    }
+}
+.mobile-status-openButton{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+    /* or 101% */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #1A5286;
+}
+.tab-btn{
+    border: none;
+    width: 42vw;
+    // padding: 2%;
+    background-color: #f8fafb;
+}
+.active_tab-btn{
+    border: none;
+    width: 45vw;
+   background-color: #ffff;
+    // background-color: gray;
+    border-bottom:2px solid gray;
+}
+
+
+// Flipcard CSS
+
+.flip-card-mobile {
+    perspective: 1000px;
+    max-height: 15rem;
+    height: 14rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .flip-card-inner{
+        .flip-card-front{
+            height: 14rem;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            grid-gap: 0.5rem;
+            gap: 0.5rem;
+        }
+    }
+   
+    
+  }
+  .flip-card-mobile:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }

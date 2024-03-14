@@ -913,13 +913,13 @@
                                             {{data?.spot_status}}
                                         </button>
                                     </ng-template>
-                                    <ng-template #content1 let-c="close" let-d="dismiss">
+                                   <ng-template #content1 let-c="close" let-d="dismiss">
                                         <button type="button" class="btn-close" aria-label="Close"
                                                     (click)="d('Cross click')">X</button>
                                        
                                         <iframe [src]='safeUrl' title="spin_the_wheel" height="560px" width="100%">
                                         </iframe>
-    
+     
                                     
                                     </ng-template>
                                 </div>

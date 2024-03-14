@@ -9,6 +9,7 @@ import { HttpProtocols } from '@app/http/http.protocols';
 import { Util } from '@app/utils/util';
 import Swal from 'sweetalert2';
 import { ApiserviceService } from 'app/apiservice.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router,
-    private readonly store: Store, private Util: Util,public http:ApiserviceService) { }
+    private readonly store: Store, private Util: Util,public http:ApiserviceService, private sanitizer: DomSanitizer) { }
   loginForm: FormGroup;
   submitted = false;
   error = '';
@@ -40,10 +41,13 @@ export class LoginComponent implements OnInit {
   isfirstLoginSecurityQuestionEWnable: boolean = false
   isTermsandConditionEnalbe: boolean = false
   async ngOnInit() {
-
+    debugger;
     var href = window.location.href;
     
     var url = new URL(href)
+    
+    var sanitizeUrl= this.sanitizer.bypassSecurityTrustResourceUrl(href);
+    console.log('sanitizeURL',sanitizeUrl);
     
 
     document.body.classList.add('auth-body-bg')

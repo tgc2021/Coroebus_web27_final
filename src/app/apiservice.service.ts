@@ -13,12 +13,12 @@ export class ApiserviceService {
 
   URLstring = environment.apiURL;
   open: any;
-  // Path='coroebus-beta-api-levels';
+  //  Path='coroebus-beta-api-levels';
     Path='coroebus-tgc-api-levels';
-  // URL For Navigation
-    //mainUrl='http://coroebusbeta.in';
-    // mainUrl='https://coroebus.in';
-     mainUrl='http://localhost:4201'
+    // URL For Navigation
+    // mainUrl='http://coroebusbeta.in';
+    mainUrl='https://coroebus.in';
+    //  mainUrl='http://localhost:4201'
 
   isinM2OSTPlatform=false;
   constructor(public Http:HttpClient) { }
@@ -209,8 +209,15 @@ export class ApiserviceService {
 
 
    newInteractiveDashboard(data:any){
+    
     var tempurl= `${this.URLstring}`+`/${this.Path}/Dashboard/interactiveDashboard`;
     return this.Http.post(tempurl,data)
+
+   }
+
+   getGroupHod(data:any){
+    var tempurl= `${this.URLstring}`+`/${this.Path}/Dashboard/get_groupHOD`;
+    return this.Http.post(tempurl,data);
 
    }
 }

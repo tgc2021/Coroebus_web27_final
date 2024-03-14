@@ -22,9 +22,9 @@
         color: #F5F5F5;   
 
     }
-    // .page-content {
-    //   padding: 71px 30px 60px 0px;
-    // }
+    .page-content {
+      padding: 71px 30px 60px 0px;
+    }
 }
 
 ::-webkit-scrollbar {
@@ -103,7 +103,6 @@
     font-family: 'Inter';
     font-family: 18px;
     color: #878787;
-
 }
 .form-select{
 font-family: 'Inter';
@@ -445,6 +444,10 @@ color: #54595E;
     min-height: 100vh;
 }
 
+.flip-card-mobile{
+
+}
+
 
 .mobile-playzone-container {
 
@@ -464,7 +467,7 @@ color: #54595E;
 }
 .mobile-noContentContainer{
     display:flex;
-    flex-direction: column;
+    flex-direction: column !important;
     align-items: center;
     justify-content: center;
 

@@ -174,7 +174,7 @@
 
             <!-- Passbook -->
             <mat-tab label="{{points?.data?.points_list[1]?.label}}">
-                <div class="table_div">
+                <div class="table_div" style="height: 60vh;overflow-y: auto;">
                     <div>
                       <input class="search" type="search" name="search" [(ngModel)]="searchText" autocomplete="off"
                         placeholder=" Search">
@@ -204,25 +204,32 @@
                           </tr>
                         </thead>
                         <tbody *ngFor="let response of rewardresponse">
-                          <tr *ngFor="let passbookresponse of response?.data?.points_list[1]?._data|slice: (pagePassbook-1) * pageSize : (pagePassbook-1) * pageSize + pageSize |orderBy: key : reverse |filter:searchText ">
-                            <td style="font-family:sans-serif;" class="col-md-2 col-sm-1">{{passbookresponse?.date_time | date: 'dd/MM/yyyy' }}</td>
+                         
+                          <tr
+                            *ngFor="let passbookresponse of response?.data?.points_list[1]?._data|orderBy: key : reverse |filter:searchText ">
+                            <td style="font-family:sans-serif;" class="col-md-2 col-sm-1">{{passbookresponse?.date_time | date: 'dd/MM/yyyy' }}
+                            </td>
                             <td style="font-family:sans-serif;" class="col-md-4 col-sm-3">{{passbookresponse?.description_}}</td>
-                            <td style="font-family:sans-serif;" *ngIf="passbookresponse?.points_credited!=='' " class="col-md-2 col-sm-3">{{passbookresponse?.points_credited|number : '1.2-2'}}</td>
+                            <td style="font-family:sans-serif;" *ngIf="passbookresponse?.points_credited!=='' " class="col-md-2 col-sm-3">
+                              {{passbookresponse?.points_credited|number : '1.2-2'}}</td>
                             <td style="font-family:sans-serif;" *ngIf="passbookresponse?.points_credited==='' " class="col-md-2 col-sm-3">-</td>
-      
+                        
                             <td style="font-family:sans-serif;" *ngIf="passbookresponse?.points_debited!==''" class="col-md-2 col-sm-3">
-                              <button class="btn btn-reedeemed-passbook" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="popupRedemed(passbookresponse)">
-                                {{passbookresponse?.points_debited  | number : '1.2-2'}}
-                                <img  class="redeemed_popup_logo" src="assets/images/rewards/redeemed.png" >
+                              <button class="btn btn-reedeemed-passbook" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                                (click)="popupRedemed(passbookresponse)">
+                                {{passbookresponse?.points_debited | number : '1.2-2'}}
+                                <img class="redeemed_popup_logo" src="assets/images/rewards/redeemed.png">
                               </button>
-
+                        
                             <td style="font-family:sans-serif;" *ngIf="passbookresponse?.points_debited==='' " class="col-md-2">
                               -
                             </td>
-                            <td style="font-family:sans-serif;" class="col-md-2">{{passbookresponse?.balance  | number : '1.2-2'}}</td>
-        
+                            <td style="font-family:sans-serif;" class="col-md-2">{{passbookresponse?.balance | number : '1.2-2'}}</td>
+                        
                           </tr>
-                         
+                        
+                        
+                        
                         </tbody>
 
                         
@@ -234,11 +241,7 @@
                   </div>
                
 
-                  <div class="d-flex justify-content-end">
-                 
-                    <ngb-pagination class="pagination"  [pageSize]="10" [collectionSize]="collectionSize" [(page)]="pagePassbook" aria-label="Default pagination"></ngb-pagination>
                   
-                  </div>
                
             </mat-tab>
 
@@ -449,7 +452,7 @@
         <mat-tab-group (click)="enagagmentlogPassbookAPI($event)">
             <!-- Points Table -->
             <mat-tab label="{{points?.data?.points_list[0]?.label}}">
-                <div class="table_div">
+                <div class="table_div" >
                     <!-- <span>
                        <p class="from_datepicker">From</p>
                        
@@ -496,7 +499,7 @@
 
             <!-- Passbook -->
             <mat-tab label="{{points?.data?.points_list[1]?.label}}" style="overflow-y: auto;">
-                <div class="table_div">
+                <div class="table_div" style="height: 70vh;overflow-y: auto;">
                     <div>
                       <input class="search" type="search" name="search" [(ngModel)]="searchText" autocomplete="off"
                         placeholder=" Search">
@@ -526,7 +529,7 @@
                           </tr>
                         </thead>
                         <tbody *ngFor="let response of rewardresponse">
-                          <tr *ngFor="let passbookresponse of response?.data?.points_list[1]?._data |orderBy: key : reverse |filter:searchText | slice: (pagePassbook-1) * pageSize : (pagePassbook-1) * pageSize + pageSize">
+                          <tr *ngFor="let passbookresponse of response?.data?.points_list[1]?._data |orderBy: key : reverse |filter:searchText">
                             <td style="font-family:sans-serif;" class="col-md-2 col-sm-1">{{passbookresponse?.date_time.slice(0,11) | date: 'dd/MM/yyyy' }}</td>
                             <td style="font-family:sans-serif;" class="col-md-4 col-sm-3">{{passbookresponse?.description_}}</td>
                             <td style="font-family:sans-serif;" *ngIf="passbookresponse?.points_credited!=='' " class="col-md-2 col-sm-3">{{passbookresponse.points_credited  | number : '1.2-2'}}</td>
@@ -551,10 +554,7 @@
                     </div>
                     
                   </div>
-                  <div class="d-flex justify-content-end">
-                    <ngb-pagination class="pagination" [pageSize]="10" [collectionSize]="collectionSize" [(page)]="pagePassbook" aria-label="Default pagination"></ngb-pagination>
-                  
-                  </div>
+                 
             </mat-tab>
 
             <!-- Redemption History -->

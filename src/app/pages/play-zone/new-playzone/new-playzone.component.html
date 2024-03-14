@@ -1,0 +1,793 @@
+
+    <div class="web-view">
+        <div class="row">
+            <div class="col-12 d-flex   gap-2">
+                <div class="col-8 d-flex flex-column gap-2 ">
+                    <div class="playZoneHedingContainer d-flex justify-content-center align-items-center"  [style.width]="id_role==13||id_role==9?'98vw':''" >
+                        <h5><strong>Play Zone</strong></h5>
+                    </div>
+                    <div class="playZone-container" [style.width]="id_role==13||id_role==9?'98vw':''" [style.margin-top.%]="id_role==13||id_role==9?'0':''">
+                        <div class="subHeading  d-flex justify-content-center">
+                            <span class="text">Welcome to Play Zone! Start playing and earning Rewards!</span>
+                        </div>
+                        <div class="d-flex gap-1">
+                        </div>
+                        <div class="row card-container" id="cardContainer"> 
+                            <div class="d-flex gap-1" >
+                                <select class="form-control  form-select"
+                                    aria-label=".form-select-lg example" [style.display]="id_role==13||id_role==9?'none':''"  [(ngModel)]="spot_type">
+                                    <option value="Performance" class="form-option m-5">Performance</option>
+                                    <option value="Engagement" class="form-option m-5">Engagement</option>
+                                    <option value="" selected="selected" class="form-option m-5">All</option>
+                                </select>
+                               
+                                <div class="searchBar col-9" style="display: inline;" [style.display]="id_role==13||id_role==9?'none':''">
+                                    <input type="text" class="form-control" placeholder="Search" aria-label="Search People here.."
+                                        aria-describedby="basic-addon2"  [(ngModel)]="searchSpotData" (input)="searchData()">
+                                    <button type="button" (click)="clearText()" class="clearBtn">
+                                        X
+                                    </button>
+                                </div>
+                                <div  [style.display]="id_role==13||id_role==9?'none':''">
+                                    <button class="btn-sm-2 col-1" [style.background-color]="color==null? dark_color:color" >
+                                        <img src="assets/images/playZone/images/Vector.png" alt="">
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row" style="overflow-y:auto ;height: 60vh;row-gap: 1em;">
+                              
+                                <div *ngIf="id_role==13||id_role==9;then BHAndHOSROle else forOtherRole"></div>
+                                <ng-template #forOtherRole>
+                                    <div class="col-3 flip-card"  *ngFor="let data of spotEngagementData|filterPipe:spot_type">
+                                    
+                                        <div class="flip-card-inner">
+                                          <div class="flip-card-front" [style.border-color]="dark_color">
+                                            <div class="logoimg" >
+                                                <img [src]="data?.logo" [style.border-color]="dark_color" alt="logo" height="100%" width="100%">
+                                            </div>
+                                           <h3 class="title">{{data?.spot_engagement_title}}</h3>
+                                           <h6 class="sub-title">{{data?.spot_engagement_description}}</h6>
+                                         
+                                            <h6 style="justify-self: start;"><span class="type">Type:</span><span class="default">{{data?.spot_type}}</span></h6>
+                                           
+                                           
+                                         
+                                           
+                                          </div>
+                                          <div class="flip-card-back" style="background: url('{{data?.logo}}');background-size: 100% 100%;" [style.border-color]="dark_color">
+                                            <div class="inner-layer">
+                                                
+                                               <button class="playBtn" [style.background]="dark_color" *ngIf="data?.spot_status=='Open'" (click)="open(content1,data)">PLAY NOW</button>
+                                               <button class="playBtn" [style.background]="dark_color" *ngIf="data?.spot_status=='Opened'">PLAYED</button>
+                                            </div>
+                                           
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="d-flex justify-content-center align-items-center"
+                                      *ngIf="spotEngagementData?.length<=0||spotEngagementData?.length<=0">
+                                      <div class="noContentContainer">
+                                          <img src="assets/images/playZone/images/noData.png" alt="" width="50%" height="50%">
+                                          <span class="noContentContainer-Desc">
+                                              Stay tuned! You might soon get a chance to play and earn rewards.
+                                          </span>
+                                      </div>
+                                      </div>
+                                </ng-template>
+                               
+                                  <ng-template #BHAndHOSROle>
+                                    <!-- Dart Game -->
+                                    <div class="col-2 flip-card">
+                                        <div class="flip-card-inner" >
+                                            <div class="flip-card-front" [style.border-color]="dark_color">
+                                                <div class="logoimg">
+                                                    <img  [style.border-color]="dark_color" src="assets/images/playZone/images/Dart_game_logo.jpg" alt="Dart Game Logo" height="100%" width="100%">
+                                                </div>
+                                                <h3 class="title">Dart Game</h3>
+                                                <h6 class="sub-title">Unleash your inner bullseye.</h6>
+                                                <h6 style="justify-self: start;"><span class="type">Type:</span><span class="default">Default</span></h6>
+                                            </div>
+                                            <div class="flip-card-back" style="background: url('assets/images/playZone/images/Dart_game_logo.jpg'); background-size: 100% 100%;" [style.border-color]="dark_color">
+                                                <div class="inner-layer">
+                                                    <button class="playBtn" [style.background]="dark_color" (click)="openDartGame(content1)">PLAY NOW</button>
+                                                    <!-- <button class="playBtn" *ngIf="data?.spot_status=='Opened'">PLAYED</button> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- CubeBlasters -->
+                                    <div class="col-2 flip-card">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front" [style.border-color]="dark_color">
+                                                <div class="logoimg">
+                                                    <img src="assets/images/playZone/images/cub blaster logo.png" [style.border-color]="dark_color" alt="Cube Blasters Logo" height="100%" width="100%">
+                                                </div>
+                                                <h3 class="title">Cube Blasters</h3>
+                                                <h6 class="sub-title">Slash out your problems with Cube Blaster.</h6>
+                                                <h6 style="justify-self: start;"><span class="type">Type:</span><span class="default">Default</span></h6>
+                                            </div>
+                                            <div class="flip-card-back" style="background: url('../../../../assets/images/playZone/images/cub blaster logo.png'); background-size: 100% 100%;" [style.border-color]="dark_color">
+                                                <div class="inner-layer">
+                                                    <button class="playBtn" [style.background]="dark_color" (click)="openCubeBlasters(content1)">PLAY NOW</button>
+                                                    <!-- <button class="playBtn" *ngIf="data?.spot_status=='Opened'">PLAYED</button> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Skyline -->
+                                    <div class="col-2 flip-card">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front" [style.border-color]="dark_color">
+                                                <div class="logoimg">
+                                                    <img src="assets/images/playZone/images/skyline_logo.png" [style.border-color]="dark_color" alt="Skyline Logo" height="100%" width="100%">
+                                                </div>
+                                                <h3 class="title">Skyline</h3>
+                                                <h6 class="sub-title">Aim for the sky,and no one can stop you from reaching the top.</h6>
+                                                <h6 style="justify-self: start;"><span class="type">Type:</span><span class="default">Default</span></h6>
+                                            </div>
+                                            <div class="flip-card-back" [style.border-color]="dark_color" style="background: url('assets/images/playZone/images/skyline_logo.png'); background-size: 100% 100%;" [style.border-color]="dark_color">
+                                                <div class="inner-layer">
+                                                    <button class="playBtn" [style.background]="dark_color" (click)="openSkyline(content1)">PLAY NOW</button>
+                                                    <!-- <button class="playBtn" *ngIf="data?.spot_status=='Opened'">PLAYED</button> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Car Racing -->
+                                    <div class="col-2 flip-card">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front" [style.border-color]="dark_color">
+                                                <div class="logoimg" >
+                                                    <img src="assets/images/playZone/images/Flash racer logo.png" [style.border-color]="dark_color" alt="Skyline Logo" height="100%" width="100%">
+                                                </div>
+                                                <h3 class="title">Car Racing</h3>
+                                                <h6 class="sub-title">Race Drift and collect Badges</h6>
+                                                <h6 style="justify-self: start;"><span class="type">Type:</span><span class="default">Default</span></h6>
+                                            </div>
+                                            <div class="flip-card-back" style="background: url('../../../../assets/images/playZone/images/Flash racer logo.png'); background-size: 100% 100%;" [style.border-color]="dark_color">
+                                                <div class="inner-layer">
+                                                    <button class="playBtn" [style.background]="dark_color" (click)="openCarRacing(content1)">PLAY NOW</button>
+                                                    <!-- <button class="playBtn" *ngIf="data?.spot_status=='Opened'">PLAYED</button> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Whack a Mole -->
+                                    <div class="col-2 flip-card">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front" [style.border-color]="dark_color">
+                                                <div class="logoimg">
+                                                    <img src="assets/images/whackaMole.png" [style.border-color]="dark_color" alt="Skyline Logo" height="100%" width="100%">
+                                                </div>
+                                                <h3 class="title">Whack a Mole</h3>
+                                                <h6 class="sub-title">Take on the challenge of Whack-a-mole Mastery</h6>
+                                                <h6 style="justify-self: start;"><span class="type">Type:</span><span class="default">Default</span></h6>
+                                            </div>
+                                            <div class="flip-card-back" style="background: url('../../../../assets/images/whackaMole.png'); background-size: 100% 100%;"[style.border-color]="dark_color" >
+                                                <div class="inner-layer">
+                                                    <button class="playBtn" [style.background]="dark_color" (click)="openWhackaMole(content1)">PLAY NOW</button>
+                                                    <!-- <button class="playBtn" *ngIf="data?.spot_status=='Opened'">PLAYED</button> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Zap the Alien -->
+                                    <div class="col-2 flip-card" >
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front" [style.border-color]="dark_color">
+                                                <div class="logoimg">
+                                                    <img src="assets/images/playZone/images/Aliens logo.png" alt="Skyline Logo" [style.border-color]="dark_color" height="100%" width="100%">
+                                                </div>
+                                                <h3 class="title">Zap the Alien</h3>
+                                                <h6 class="sub-title">Arm your spacecraft, Lock onto hostile alien ships</h6>
+                                                <h6 style="justify-self: start;"><span class="type">Type:</span><span class="default">Default</span></h6>
+                                            </div>
+                                            <div class="flip-card-back" style="background: url('../../../../assets/images/playZone/images/Aliens\ logo.png'); background-size: 100% 100%;" [style.border-color]="dark_color">
+                                                <div class="inner-layer">
+                                                    <button class="playBtn" [style.background]="dark_color" (click)="openZapTheAlien(content1)">PLAY NOW</button>
+                                                    <!-- <button class="playBtn" *ngIf="data?.spot_status=='Opened'">PLAYED</button> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Apple King -->
+                                    <div class="col-2 flip-card">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front" [style.border-color]="dark_color" >
+                                                <div class="logoimg">
+                                                    <img src="../../../../assets/images/playZone/images/Apple king Logo.png" alt="Skyline Logo" [style.border-color]="dark_color" height="100%" width="100%">
+                                                </div>
+                                                <h3 class="title">Apple King</h3>
+                                                <h6 class="sub-title">Experience the thrill of apple harvesting! Grab your basket</h6>
+                                                <h6 style="justify-self: start;"><span class="type">Type:</span><span class="default">Default</span></h6>
+                                            </div>
+                                            <div class="flip-card-back" style="background: url('../../../../assets/images/playZone/images/Apple king Logo.png'); background-size: 100% 100%;" >
+                                                <div class="inner-layer">
+                                                    <button class="playBtn" [style.background-color]="dark_color" (click)="openAppleKing(content1)">PLAY NOW</button>
+                                                    <!-- <button class="playBtn" *ngIf="data?.spot_status=='Opened'">PLAYED</button> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     
+                                     
+                                      
+                                  </ng-template>
+                                
+                                  <ng-template #content1 let-c="close" let-d="dismiss">
+                                    <button type="button" class="btn-close" aria-label="Close"
+                                                (click)="d('Cross click')">X</button>
+                                   
+                                    <iframe [src]='safeUrl' title="" height="600px" width="100%">
+                                    </iframe>
+ 
+                                
+                                </ng-template>
+                               
+                            </div>
+                           
+                        </div>
+                        
+                    </div>
+                </div>
+                <div *ngIf="id_role!='13'&& id_role!='9';then RewardForOther"></div>
+                <ng-template #RewardForOther>
+                    <div class="col-4 d-flex flex-column justify-content-center gap-2"  >
+                        <div class="rewardHeading">
+                            <span class="heading">Reward Passbook</span>
+                            <div class="d-flex gap-2 mb-2">
+                                <span>
+                                    <img src="assets/images/playZone/images/Reward point0 1.png" alt="reward">
+                                </span>
+                                
+                                <span  class="heading">{{rewardPoints}}</span>
+        
+                            </div>
+    
+                        </div>
+                        <div class="reward-container">
+                          
+                           
+                            <div class="reward-content col-12">
+                            
+                        
+                                <div class="subHeading  d-flex justify-content-center align-items-center">
+                                    <span class="text">Track your Rewards Here!!!</span>
+                                </div>
+                                <div class="d-flex gap-2 mt-4">
+                                   
+                                    <div style="height:5vh">
+                                        
+                                        <div class="row">
+                                            <div class="col">
+                                                <div ngbDropdown class="d-inline-block" style="font-family:'Inter';">
+                                                    <img src="assets/images/playZone/images/Group 6078.png" type="button"
+                                                        alt="filter" id="dropdownBasic1" ngbDropdownToggle>
+                                                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="m-2"
+                                                        style="width:20vw;">
+                                                        <label class="container" ngbDropdownItem>
+                                                            <span class="DropdownHeading">Status</span>
+                                                        </label>
+                                                        <label class="container" ngbDropdownItem
+                                                            (change)="sortList('date_time_stamp')">
+                                                            <input type="checkbox">&nbsp;Latest&nbsp;
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                       
+            
+                                                        <label class="container" ngbDropdownItem>
+                                                            <span class="DropdownHeading">Engagement type</span>
+                                                        </label>
+                                                        <label class="container" ngbDropdownItem>
+                                                            <input type="checkbox"  (change)="filterPassBook('Performance')" data-value="Performance" >&nbsp;Performance&nbsp;
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <label class="container" ngbDropdownItem
+                                                            (change)="filterPassBook('Engagement')">
+                                                            <input type="checkbox" data-value="Performance">&nbsp;Engagement&nbsp;
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <label class="container" ngbDropdownItem (change)="filterPassBook('')">
+                                                            <input type="checkbox">&nbsp;All
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                    </div>
+            
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+            
+                                    <div class="RewardsearchBar">
+                                        <input type="text" class="form-control" placeholder="Search here" aria-label="Search"
+                                            aria-describedby="basic-addon2" [(ngModel)]="searchFromReward" (input)="searchFromRewardData()">
+                                        <button type="button" (click)="clearRewardText()" class="rewardClearBtn">
+                                            X
+                                        </button>
+                                    </div>
+                                    <button class="btn-sm-2" [style.background-color]="color==null? dark_color:color">
+                                        <img src="assets/images/playZone/images/Vector.png" alt="" type="button"
+                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                    </button>
+                                </div>
+                                <div style="height: 64vh;
+                                overflow-y: auto;
+                                overflow-x: hidden;">
+                                    <table class="table  table-striped m-2">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Sr No.</th>
+                                            <th scope="col">Event</th>
+                                            <th scope="col">
+                                                <div class="d-flex gap-2">
+                                                    Date
+                                                    <div class="d-flex flex-column justify-content-center gap-2">
+                                                        <img src="assets/images/playZone/images/filterUp.png" alt=""
+                                                            (click)="sortList('date_time_stamp')" width="12px" *ngIf="reverse">
+                                                        <img src="assets/images/playZone/images/filterDown.png" alt=""
+                                                            (click)="sortList('date_time_stamp')" width="12px" *ngIf="!reverse">
+                                                    </div>
+                                                </div>
+                                            </th>
+                                            <th scope="col">
+                                                <div class="d-flex gap-2">
+                                                    Points
+                                                    <div class="d-flex flex-column justify-content-center gap-2">
+                                                        <img src="assets/images/playZone/images/filterUp.png" alt=""
+                                                            (click)="filterByPointsDsc()" width="12px" *ngIf="Ascending">
+                                                        <img src="assets/images/playZone/images/filterDown.png" alt=""
+                                                            (click)="filterByPointsAsc()" width="12px" *ngIf="Descending">
+                                                    </div>
+                                                </div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody  >
+                                        <tr *ngFor="let passbookData of Passbook|filter:term |orderBy: key:reverse;let i=index">
+                                            <td scope="row">{{i+1}}</td>
+                                            <td>
+                                                <span [ngbTooltip]="tooltipContent" placement="bottom"
+                                                    id=table-row>{{passbookData?.spot_engagement_title.slice(0,10)}}&nbsp;...</span>
+                                            </td>
+                                            <td>{{passbookData?.date_time_stamp|date:'dd/MM/yyyy'}}</td>
+                                            <td>{{passbookData?.reward_point}}</td>
+                                            <ng-template #tooltipContent>
+                                                {{passbookData?.spot_engagement_title}}
+                                            </ng-template>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="d-flex justify-content-center align-items-center"
+                                *ngIf="spotEngagementPassbook?.length<=0||Passbook?.length<=0">
+                                <div class="noContentContainer">
+                                    <img src="assets/images/playZone/images/noData.png" alt="" width="50%" height="50%">
+                                    <span class="noContentContainer-Desc">
+                                        Stay tuned! You might soon get a chance to play and earn rewards.
+                                    </span>
+                                </div>
+                            </div>
+                                </div>
+                            
+                            
+                            
+                            
+        
+                        </div>
+                        </div>
+                    </div>
+                </ng-template>
+                
+            </div>
+        </div>
+    
+    </div>
+
+    <!-- Mobile View -->
+    <div class="playzone-mobile-view ">
+        <div class="row" style="background-color:white;padding:2%;margin: 2%;border-radius: 10px;">
+            <div class="col">
+                <div class="mobile-playzone-container">
+                    <div class="col-9">
+                        <h5>Play Zone</h5>
+                        <div class="mb-1">
+                            <span class="text">Welcome to Play Zone! Start playing and earning Rewards!</span>
+                        </div>
+                    </div>
+    
+                    <div class="col-3 d-flex align-items-center" [style.display]="id_role==13||id_role==9?'none':''">
+                        <img src="assets/images/playZone/images/Reward point0 1.png" alt="" height="30px" width="30px">&nbsp;
+                        <span class="heading"><strong>{{rewardPoints}}</strong></span>
+                    </div>
+                </div>
+                <div>
+    
+                    <div class="d-flex justify-content-around m-2 mb-3 gap-2 tab" >
+                        <button (click)="openEvent()" [ngClass]="openEvents?'active_tab-btn':'tab-btn'" [style.display]="id_role==13||id_role==9?'none':''">Events</button>
+                        <button (click)="rewardPassBook()" [ngClass]="openPassBook?'active_tab-btn':'tab-btn'" [style.display]="id_role==13||id_role==9?'none':''">Reward passbook</button>
+                    </div>
+                    <div>
+                        <ng-container *ngIf="openEvents">
+                            <div class="d-flex gap-1 mb-2">
+                                <div class="col-2.5">
+                                    <div style="height:5vh"  [style.display]="id_role==13||id_role==9?'none':''">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div ngbDropdown class="d-inline-block" >
+                                                    <img src="assets/images/playZone/images/Group 6078.png" type="button" [style.display]="id_role==13||id_role==9?'none':''"
+                                                        alt="filter" id="dropdownBasic2" ngbDropdownToggle>
+    
+                                                    <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="m-2" style="width:60vw;" [style.display]="id_role==13||id_role==9?'none':''"
+                                                        >
+                                                        <label class="container" ngbDropdownItem
+                                                            (click)="filter('Performance')">
+                                                            &nbsp;Performance&nbsp;
+                                                        </label>
+    
+                                                        <label class="container" ngbDropdownItem
+                                                            (click)="filter('Engagement')">
+                                                            &nbsp;Engagement&nbsp;
+    
+                                                        </label>
+                                                        <label class="container" ngbDropdownItem (click)="filter('')">
+                                                            &nbsp;All
+    
+                                                        </label>
+                                                    </div>
+    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="RewardsearchBar col-8" [style.display]="id_role==13||id_role==9?'none':''">
+                                    <input type="text" class="form-control" placeholder="Search" 
+                                        aria-label="Search People here.." aria-describedby="basic-addon2"  [(ngModel)]="searchSpotData" (input)="searchData()"
+                                        >
+                                    <button type="button" (click)="clearText()" class="rewardClearBtn" >
+                                        X
+                                    </button>
+                                </div>
+                                <button class="btn-sm-2" [style.background-color]="dark_color"  [style.display]="id_role==13||id_role==9?'none':''">
+                                    <img src="assets/images/playZone/images/Vector.png" alt="">
+                                </button>
+                            </div>
+                            <div style="overflow-y: auto;height:70vh;padding: 6%;">
+                                <div *ngIf="id_role==13||id_role==9;then BhROleMobile else otherRoleMobile"></div>
+                                <ng-template #BhROleMobile>
+                                    <div class="col-12 flip-card-mobile mt-2">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front" [style.border-color]="dark_color">
+                                                <div class="logoimg">
+                                                    <img src="assets/images/playZone/images/Dart_game_logo.jpg" alt="Dart Game Logo" height="100%" width="100%">
+                                                </div>
+                                                <h3 class="title">Dart Game</h3>
+                                                <h6 class="sub-title">Unleash your inner bullseye.</h6>
+                                                <h6 style="justify-self: start;"><span class="type">Type:</span><span class="default">Default</span></h6>
+                                            </div>
+                                            <div class="flip-card-back" [style.border-color]="dark_color" style="background: url('assets/images/playZone/images/Dart_game_logo.jpg'); background-size: 100% 100%;">
+                                                <div class="inner-layer">
+                                                    <button class="playBtn" [style.background-color]="dark_color" (click)="openDartGame(content1)">PLAY NOW</button>
+                                                    <!-- <button class="playBtn" *ngIf="data?.spot_status=='Opened'">PLAYED</button> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                    <!-- CubeBlasters -->
+                                    <div class="col-12 flip-card-mobile mt-2">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front" [style.border-color]="dark_color">
+                                                <div class="logoimg">
+                                                    <img src="../../../../assets/images/playZone/images/cub blaster logo.png" alt="Cube Blasters Logo" height="100%" width="100%">
+                                                </div>
+                                                <h3 class="title">Cube Blasters</h3>
+                                                <h6 class="sub-title">Slash out your problems with Cube Blaster.</h6>
+                                                <h6 style="justify-self: start;"><span class="type">Type:</span><span class="default">Default</span></h6>
+                                            </div>
+                                            <div class="flip-card-back" [style.border-color]="dark_color" style="background: url('../../../../assets/images/playZone/images/cub blaster logo.png'); background-size: 100% 100%;">
+                                                <div class="inner-layer">
+                                                    <button class="playBtn" [style.background-color]="dark_color" (click)="openCubeBlasters(content1)">PLAY NOW</button>
+                                                    <!-- <button class="playBtn" *ngIf="data?.spot_status=='Opened'">PLAYED</button> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                    <!-- Skyline -->
+                                    <div class="col-12 flip-card-mobile mt-2">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front" [style.border-color]="dark_color">
+                                                <div class="logoimg">
+                                                    <img src="assets/images/playZone/images/skyline_logo.png" alt="Skyline Logo" height="100%" width="100%">
+                                                </div>
+                                                <h3 class="title">Skyline</h3>
+                                                <h6 class="sub-title">Aim for the sky, and no one can stop you from reaching the top.</h6>
+                                                <h6 style="justify-self: start;"><span class="type">Type:</span><span class="default">Default</span></h6>
+                                            </div>
+                                            <div class="flip-card-back" [style.border-color]="dark_color" style="background: url('assets/images/playZone/images/skyline_logo.png'); background-size: 100% 100%;">
+                                                <div class="inner-layer">
+                                                    <button class="playBtn" [style.background-color]="dark_color" (click)="openSkyline(content1)">PLAY NOW</button>
+                                                    <!-- <button class="playBtn" *ngIf="data?.spot_status=='Opened'">PLAYED</button> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Car Racing -->
+                                    <div class="col-12 flip-card-mobile mt-2">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front" [style.border-color]="dark_color">
+                                                <div class="logoimg">
+                                                    <img src="assets/images/playZone/images/Flash racer logo.png" alt="Skyline Logo" height="100%" width="100%">
+                                                </div>
+                                                <h3 class="title">Car Racing</h3>
+                                                <h6 class="sub-title">Aim Your Goal</h6>
+                                                <h6 style="justify-self: start;"><span class="type">Type:</span><span class="default">Default</span></h6>
+                                            </div>
+                                            <div class="flip-card-back" [style.border-color]="dark_color" style="background: url('../../../../assets/images/playZone/images/Flash racer logo.png'); background-size: 100% 100%;">
+                                                <div class="inner-layer">
+                                                    <button class="playBtn" [style.background-color]="dark_color" [style.bakcground-color]="dark_color" (click)="openCarRacing(content1)">PLAY NOW</button>
+                                                    <!-- <button class="playBtn" *ngIf="data?.spot_status=='Opened'">PLAYED</button> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Whack a Mole -->
+                                    <div class="col-12 flip-card-mobile mt-2">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front" [style.border-color]="dark_color">
+                                                <div class="logoimg">
+                                                    <img src="assets/images/whackaMole.png" alt="Skyline Logo" height="100%" width="100%">
+                                                </div>
+                                                <h3 class="title">Whack a Mole</h3>
+                                                <h6 class="sub-title">Take on the challenge of Whack-a-mole Mastery</h6>
+                                                <h6 style="justify-self: start;"><span class="type">Type:</span><span class="default">Default</span></h6>
+                                            </div>
+                                            <div class="flip-card-back" [style.border-color]="dark_color" style="background: url('../../../../assets/images/whackaMole.png'); background-size: 100% 100%;">
+                                                <div class="inner-layer">
+                                                    <button class="playBtn" [style.background-color]="dark_color" (click)="openWhackaMole(content1)">PLAY NOW</button>
+                                                    <!-- <button class="playBtn" *ngIf="data?.spot_status=='Opened'">PLAYED</button> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Zap the Alien -->
+                                    <div class="col-12 flip-card-mobile mt-2">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front" [style.border-color]="dark_color">
+                                                <div class="logoimg">
+                                                    <img src="../../../../assets/images/playZone/images/Aliens logo.png" alt="Skyline Logo" height="100%" width="100%">
+                                                </div>
+                                                <h3 class="title">Zap the Alien</h3>
+                                                <h6 class="sub-title">Arm your spacecraft, Lock onto hostile alien ships</h6>
+                                                <h6 style="justify-self: start;"><span class="type">Type:</span><span class="default">Default</span></h6>
+                                            </div>
+                                            <div class="flip-card-back" [style.border-color]="dark_color" style="background: url('../../../../assets/images/playZone/images/Aliens\ logo.png'); background-size: 100% 100%;">
+                                                <div class="inner-layer">
+                                                    <button class="playBtn" [style.background-color]="dark_color" (click)="openZapTheAlien(content1)">PLAY NOW</button>
+                                                    <!-- <button class="playBtn" *ngIf="data?.spot_status=='Opened'">PLAYED</button> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Apple King -->
+                                    <div class="col-12 flip-card-mobile mt-2">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front" [style.border-color]="dark_color">
+                                                <div class="logoimg">
+                                                    <img src="../../../../assets/images/playZone/images/Apple king Logo.png" alt="Skyline Logo" height="100%" width="100%">
+                                                </div>
+                                                <h3 class="title">Apple King</h3>
+                                                <h6 class="sub-title">Experience the thrill of apple harvesting! Grab your basket</h6>
+                                                <h6 style="justify-self: start;"><span class="type">Type:</span><span class="default">Default</span></h6>
+                                            </div>
+                                            <div class="flip-card-back" [style.border-color]="dark_color" style="background: url('../../../../assets/images/playZone/images/Apple king Logo.png'); background-size: 100% 100%;">
+                                                <div class="inner-layer">
+                                                    <button class="playBtn" [style.background-color]="dark_color" (click)="openAppleKing(content1)">PLAY NOW</button>
+                                                    <!-- <button class="playBtn" *ngIf="data?.spot_status=='Opened'">PLAYED</button> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <ng-template #otherRoleMobile>
+                                    <div class="col-12 flip-card-mobile mt-2"  *ngFor="let data of spotEngagementData|filterPipe:spot_type">
+                                        <div class="flip-card-inner">
+                                          <div class="flip-card-front" [style.border-color]="dark_color">
+                                            <div class="logoimg">
+                                                <img [src]="data?.logo" [style.border-color]="dark_color" alt="logo" height="100%" width="100%">
+                                            </div>
+                                           <h3 class="title">{{data?.spot_engagement_title}}</h3>
+                                           <h6 class="sub-title">{{data?.spot_engagement_description}}</h6>
+                                         
+                                            <h6 style="justify-self: start;"><span class="type">Type:</span><span class="default">{{data?.spot_type}}</span></h6>
+                                           
+                                           
+                                         
+                                           
+                                          </div>
+                                          <div class="flip-card-back" [style.border-color]="dark_color" style="background: url('{{data?.logo}}');background-size: 100% 100%;">
+                                            <div class="inner-layer">
+                                                
+                                               <button class="playBtn" [style.background-color]="dark_color" *ngIf="data?.spot_status=='Open'" (click)="open(content1,data)">PLAY NOW</button>
+                                               <button class="playBtn" [style.background-color]="dark_color" *ngIf="data?.spot_status=='Opened'">PLAYED</button>
+                                            </div>
+                                           
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-12 d-flex justify-content-center align-items-center"
+                                    *ngIf="!spotEngagementData">
+                                    <div class="mobile-noContentContainer d-flex flex-column">
+                                       <div>
+                                        <img src="assets/images/playZone/images/noData.png" alt="" width="100%" height="90%">
+                                       </div>
+                                        
+                                        <div>
+                                            <span class="mobile-noContentContainer-Desc">
+                                                Stay tuned! You might soon get a chance to play and earn rewards.
+                                            </span>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                                </ng-template>
+                                <ng-template #content1 let-c="close" let-d="dismiss">
+                                    <button type="button" class="btn-close" aria-label="Close"
+                                                (click)="d('Cross click')">X</button>
+                                   
+                                    <iframe [src]='safeUrl' title="" height="560px" width="100%">
+                                    </iframe>
+ 
+                                
+                                </ng-template>
+                                
+                            </div>
+                            
+                            
+                           
+                        </ng-container>
+    
+                        <ng-container *ngIf="openPassBook">
+                            <div class="d-flex gap-1 mb-2">
+                                <div class="col-2.5">
+                                    <div style="height:5vh">
+                                        <div class="row">
+                                            <div class="col-2">
+                                                <div ngbDropdown class="d-inline-block">
+                                                    <img src="assets/images/playZone/images/Group 6078.png" type="button"
+                                                        alt="filter" id="dropdownBasic2" ngbDropdownToggle>
+                                                    <div ngbDropdownMenu aria-labelledby="dropdownBasic" class="m-2"
+                                                        style="width:60vw;">
+                                                        <label class="container" ngbDropdownItem>
+                                                            <span class="DropdownHeading">Status</span>
+                                                        </label>
+                                                        <label class="container" ngbDropdownItem
+                                                            (change)="sortList('date_time_stamp')">
+                                                            <input type="checkbox">&nbsp;Latest&nbsp;
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                       
+    
+                                                        <label class="container" ngbDropdownItem>
+                                                            <span class="DropdownHeading">Engagement type</span>
+                                                        </label>
+                                                        <label class="container" ngbDropdownItem
+                                                            (change)="filterPassBook('Performance')">
+                                                            <input type="checkbox"
+                                                                data-value="Performance">&nbsp;Performance&nbsp;
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <label class="container" ngbDropdownItem
+                                                            (change)="filterPassBook('Engagement')">
+                                                            <input type="checkbox"
+                                                                data-value="Performance">&nbsp;Engagement&nbsp;
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <label class="container" ngbDropdownItem
+                                                            (change)="filterPassBook('')">
+                                                            <input type="checkbox">&nbsp;All
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                    </div>
+    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="RewardsearchBar col-8">
+                                    <input type="text" class="form-control" placeholder="Search"
+                                    [(ngModel)]="searchFromReward" (input)="searchFromRewardData()"
+                                        aria-label="Search People here.." aria-describedby="basic-addon2"
+                                      >
+                                    <button type="button" (click)="clearRewardText()" class="rewardClearBtn">
+                                        X
+                                    </button>
+                                </div>
+                                <button class="btn-sm-2" [style.background-color]="color==null? 'dark_color':'color'">
+                                    <img src="assets/images/playZone/images/Vector.png" alt="">
+    
+                                </button>
+                            </div>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Sr No.</th>
+                                        <th scope="col">Event</th>
+                                        <th scope="col">
+                                            <div class="d-flex gap-2">
+                                                Date
+                                                <div class="d-flex flex-column justify-content-center gap-2">
+                                                    <img src="assets/images/playZone/images/filterUp.png" alt=""
+                                                        (click)="sortList('date_time_stamp')" width="12px" *ngIf="reverse">
+                                                    <img src="assets/images/playZone/images/filterDown.png" alt=""
+                                                        (click)="sortList('date_time_stamp')" width="12px" *ngIf="!reverse">
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="d-flex gap-2">
+                                                Points
+                                                <div class="d-flex flex-column justify-content-center gap-2">
+                                                    <img src="assets/images/playZone/images/filterUp.png" alt=""
+                                                        (click)="filterByPointsDsc()" width="12px" *ngIf="Ascending">
+                                                    <img src="assets/images/playZone/images/filterDown.png" alt=""
+                                                        (click)="filterByPointsAsc()" width="12px" *ngIf="Descending">
+                                                </div>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr
+                                        *ngFor="let passbookData of Passbook |filter:term|orderBy: key : reverse  ;let i=index ">
+                                        <td scope="row">{{i+1}}</td>
+                                        <td>
+                                            <span [ngbTooltip]="tooltipContent" placement="bottom"
+                                                id=table-row>{{passbookData?.spot_engagement_title.slice(0,10)}}&nbsp;...</span>
+                                        </td>
+                                        <td>{{passbookData?.date_time_stamp|date:'dd/MM/yyyy'}}</td>
+                                        <td>{{passbookData?.reward_point}}</td>
+                                        <ng-template #tooltipContent>
+                                            {{passbookData?.spot_engagement_title}}
+                                        </ng-template>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="col-12 d-flex justify-content-center align-items-center"
+                                *ngIf="Passbook.length<=0">
+                                <div class="mobile-noContentContainer d-flex flex-column">
+                                   <div>
+                                    <img src="assets/images/playZone/images/noData.png" alt="" width="100%" height="90%">
+                                   </div>
+                                    
+                                    <div>
+                                        <span class="mobile-noContentContainer-Desc">
+                                            Stay tuned! You might soon get a chance to play and earn rewards.
+                                        </span>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </ng-container>
+    
+                    </div>
+    
+    
+                </div>
+            </div>
+        </div>
+    
+    </div>
+
+

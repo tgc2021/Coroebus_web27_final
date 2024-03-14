@@ -285,251 +285,185 @@
             </div>
             <div class="col-6  DashboardSection">
                 <div class="row">
-                    <div class="col-3  pb-3">
-                        <div class="baddge-section-card d-flex justify-content-center align-items-center"
-                            [style.background-image]="
-                        sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-                            <div>
+                    <div *ngIf="isdefaultView;then defaultView else shrinkedView;"></div>
+                    <ng-template #defaultView>
+                        <div class="col-3  pb-3">
+                
+                            <div class="baddge-section-card d-flex justify-content-center align-items-center"
+                                [style.background-image]="
+                                            sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
                                 <div>
-                                    <img loading="lazy" class="dashboard-banner-main-rank-img" style="height: 15vh;
-                                    width: 15vh;
-                                    border-radius: 100%;" src="{{sectionView_1?._personal_data?.profile_badge_image}}"
-                                        alt="Generic placeholder image">
+                                    <div>
+                                        <img loading="lazy" class="dashboard-banner-main-rank-img" style="height: 15vh;
+                                                        width: 15vh;
+                                                        border-radius: 100%;"
+                                            src="{{sectionView_1?._personal_data?.profile_badge_image}}"
+                                            alt="Generic placeholder image">
+                                    </div>
+                                    <div class="badge-level_name d-flex justify-content-center"
+                                        [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}">
+                                        Level
+                                    </div>
                                 </div>
-                                <div class="badge-level_name d-flex justify-content-center"
-                               
-                                    [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}">
-                                    Level
-                                </div>
+                
+                
                             </div>
-
-
                         </div>
-                    </div>
-
-                    <div class="col-9  pb-3 d-flex justify-content-center">
-                        <div class="baddge-section-card" style="width: 36vw;"
-                            [style.background-image]="
-                            sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-                            <div class="d-flex justify-content-center align-items-center" style="height: 23vh;">
-                                <div class="bg-image"
-                                    [style.background-image]="'url(' + sectionView_1?._personal_data?.background_image_profile_web + ')'"
-                                    [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
-                                    <div class="media ms-2">
-                                        <div class="row row-cols-3 w-100 d-flex justify-content-around align-items-center"
-                                            style="height: 7vh;">
-
-                                            <div class="confetti"
-                                                [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'">
-                                                <div
-                                                    class="col text-center mt-2  d-flex flex-column align-items-center gap-1">
-                                                    <img loading="lazy"
-                                                        src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}"
-                                                        alt="" class="dashboard-game-point-img"
-                                                        style="padding-bottom: 7px;">
-                                                    <button
-                                                        class="btn btn-primary- text-white text-center dashboard-banner-point-btn"
-                                                        [ngStyle]="{'background':'#FFFFFF'}"
-                                                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
-                                                        <span class="dashboard-banner-point-btn-text text-center">
-                                                            {{gamePoints?.[0]?.score}}
-                                                        </span>
-                                                    </button>
-                                                    <span
-                                                        class="dashboard-level-rank-name">{{gamePoints?.[0]?.label}}s</span>
+                
+                        <div class="col-9  pb-3 d-flex justify-content-center"  (click)="openFullView()">
+                            <div class="baddge-section-card" style="width: 36vw;"
+                                [style.background-image]="
+                                                sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                                <div class="d-flex justify-content-center align-items-center" style="height: 23vh;">
+                                    <div class="bg-image"
+                                        [style.background-image]="'url(' + sectionView_1?._personal_data?.background_image_profile_web + ')'"
+                                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
+                                        <div class="media ms-2">
+                                            <div class="row row-cols-3 w-100 d-flex justify-content-around align-items-center"
+                                                style="height: 7vh;">
+                
+                                                <div class="confetti"
+                                                    [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'">
+                                                    <div class="col text-center mt-2  d-flex flex-column align-items-center gap-1">
+                                                        <img loading="lazy"
+                                                            src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}" alt=""
+                                                            class="dashboard-game-point-img" style="padding-bottom: 7px;">
+                                                        <button
+                                                            class="btn btn-primary- text-white text-center dashboard-banner-point-btn"
+                                                            [ngStyle]="{'background':'#FFFFFF'}"
+                                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
+                                                            <span class="dashboard-banner-point-btn-text text-center">
+                                                                {{gamePoints?.[0]?.score}}
+                                                            </span>
+                                                        </button>
+                                                        <span class="dashboard-level-rank-name">{{gamePoints?.[0]?.label}}s</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="confetti"
-                                                [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'">
-                                                <div
-                                                    class="col text-center mt-2  d-flex flex-column align-items-center gap-1">
-                                                    <img loading="lazy"
-                                                        src="{{sectionView_1?.theme_details?.[0]?.reward_points_image}}"
-                                                        alt="" class="dashboard-reward-point-img"
-                                                        style="padding-bottom: 7px;">
-                                                    <button
-                                                        class="btn btn-primary- text-white dashboard-banner-point-btn"
-                                                        [ngStyle]="{'background': '#FFFFFF'}"
-                                                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                                        (click)="getRewards()">
-
-
-                                                        <span class="dashboard-banner-point-btn-text text-center">
-                                                            {{rewardPoints?.[0]?.score}}
-                                                        </span></button>
-                                                    
-
-                                                    <span
-                                                        class="dashboard-level-rank-name">{{rewardPoints?.[0]?.label}}s</span>
+                                                <div class="confetti"
+                                                    [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'">
+                                                    <div class="col text-center mt-2  d-flex flex-column align-items-center gap-1">
+                                                        <img loading="lazy"
+                                                            src="{{sectionView_1?.theme_details?.[0]?.reward_points_image}}" alt=""
+                                                            class="dashboard-reward-point-img" style="padding-bottom: 7px;">
+                                                        <button class="btn btn-primary- text-white dashboard-banner-point-btn"
+                                                            [ngStyle]="{'background': '#FFFFFF'}"
+                                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                                            (click)="getRewards()">
+                
+                
+                                                            <span class="dashboard-banner-point-btn-text text-center">
+                                                                {{rewardPoints?.[0]?.score}}
+                                                            </span></button>
+                
+                
+                                                        <span class="dashboard-level-rank-name">{{rewardPoints?.[0]?.label}}s</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                
+                
+                
+                
                             </div>
-
-                            <!-- <div class="bg-image d-flex  dashboard-banner mb-3"
-                        [style.background-image]="'url(' + sectionView_1?._personal_data?.background_image_profile_web + ')'"
-                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
-                        <div class="row">
-                            <div class="d-flex justify-content-center">
-                                <div class="text-center level-label-name">
-                                    <p class="text-white">{{sectionView_1?._personal_data?.level_label}}</p>
-                                </div>
-                            </div>
-
-                            <div class="media ms-2">
-                                <div class="row row-cols-3 w-100">
-                                   
-                                    <div class="confetti"
-                                        [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'">
-                                        <div
-                                            class="col text-center mt-2  d-flex flex-column align-items-center gap-1">
-                                            <img loading="lazy"
-                                                src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}"
-                                                alt="" class="dashboard-game-point-img"
-                                                style="padding-bottom: 7px;">
-                                            <button
-                                                class="btn btn-primary- text-white text-center dashboard-banner-point-btn"
-                                                [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}"
-                                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
-                                                <span class="dashboard-banner-point-btn-text text-center">
-                                                    {{gamePoints?.[0]?.score}}
-                                                </span>
-                                            </button>
-                                            <span
-                                                class="dashboard-level-rank-name">{{gamePoints?.[0]?.label}}s</span>
-                                        </div>
+                        </div>
+                    </ng-template>
+                    <ng-template #shrinkedView>
+                        <div class="col-3  pb-3">
+                
+                            <div class="baddge-section-card-shrinked d-flex justify-content-center align-items-center"
+                                [style.background-image]="
+                                            sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                                <div class="d-flex gap-2 align-items-center">
+                                    <div>
+                                        <img loading="lazy" class="dashboard-banner-main-rank-img" style="height: 8.5vh;
+                                                        width: 8.5vh;
+                                                        border-radius: 100%;"
+                                            src="{{sectionView_1?._personal_data?.profile_badge_image}}"
+                                            alt="Generic placeholder image">
                                     </div>
-                                    <div class="confetti"
-                                        [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'">
-                                        <div
-                                            class="col text-center mt-2  d-flex flex-column align-items-center gap-1">
-                                            <img loading="lazy"
-                                                src="{{sectionView_1?.theme_details?.[0]?.reward_points_image}}"
-                                                alt="" class="dashboard-reward-point-img"
-                                                style="padding-bottom: 7px;">
-                                            <button *ngIf="rewardPoints?.[0]?.score>75"
-                                                class="btn btn-primary- text-white dashboard-banner-point-btn"
-                                                [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}"
-                                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                                (click)="navigateToRewards()">
-
-
-                                                <span class="dashboard-banner-point-btn-text text-center">
-                                                    {{rewardPoints?.[0]?.score}}
-                                                </span></button>
-                                            <button *ngIf="rewardPoints?.[0]?.score<75"
-                                                class="btn btn-primary- text-white dashboard-banner-point-btn"
-                                                [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}"
-                                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                                data-bs-toggle="modal" data-bs-target="#RewardsModal">
-
-                                                <span class="dashboard-banner-point-btn-text text-center">
-                                                    {{rewardPoints?.[0]?.score}}
-                                                </span></button>
-
-                                            <span
-                                                class="dashboard-level-rank-name">{{rewardPoints?.[0]?.label}}s</span>
-                                        </div>
+                                    <div class="badge-level_name_shrinked d-flex justify-content-center"
+                                        [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}">
+                                        Level
                                     </div>
                                 </div>
+                
+                
                             </div>
-
-
                         </div>
-                    </div> -->
-
-
+                
+                        <div class="col-9  pb-3 d-flex justify-content-center"  (click)="openFullView()">
+                            <div class="baddge-section-card-shrinked" style="width: 36vw;"
+                                [style.background-image]="
+                                                sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
+                                <div class="d-flex justify-content-center align-items-center" style="height: 11.5vh;">
+                                    <div class="bg-image-shrinked"
+                                        [style.background-image]="'url(' + sectionView_1?._personal_data?.background_image_profile_web + ')'"
+                                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
+                                        <div class="media ms-2">
+                                            <div class="row row-cols-3 w-100 d-flex justify-content-around align-items-center"
+                                               >
+                
+                                                <div class="confetti-shrinked"
+                                                  >
+                                                    <div class="col text-center mt-2  d-flex align-items-center gap-2">
+                                                        <img loading="lazy"
+                                                            src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}" alt=""
+                                                            class="dashboard-game-point-img" style="padding-bottom: 7px;">
+                                                        <div class="d-flex flex-column">
+                                                            <button
+                                                            class="btn btn-primary- text-white text-center dashboard-banner-point-btn"
+                                                            [ngStyle]="{'background':'#FFFFFF'}"
+                                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
+                                                            <span class="dashboard-banner-point-btn-text text-center">
+                                                                {{gamePoints?.[0]?.score}}
+                                                            </span>
+                                                        </button>
+                                                        <span class="dashboard-level-rank-name">{{gamePoints?.[0]?.label}}s</span>
+                                                        </div>
+                                                       
+                                                    </div>
+                                                </div>
+                                                <div class="confetti-shrinked"
+                                                    >
+                                                    <div class="col text-center mt-2  d-flex align-items-center gap-2">
+                                                        <img loading="lazy"
+                                                            src="{{sectionView_1?.theme_details?.[0]?.reward_points_image}}" alt=""
+                                                            class="dashboard-reward-point-img" style="padding-bottom: 7px;">
+                                                        <div class="d-flex flex-column">
+                                                            <button class="btn btn-primary- text-white dashboard-banner-point-btn"
+                                                            [ngStyle]="{'background': '#FFFFFF'}"
+                                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
+                                                            (click)="getRewards()">
+                
+                
+                                                            <span class="dashboard-banner-point-btn-text text-center">
+                                                                {{rewardPoints?.[0]?.score}}
+                                                            </span></button>
+                
+                
+                                                        <span class="dashboard-level-rank-name">{{rewardPoints?.[0]?.label}}s</span>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                
+                
+                
+                            </div>
                         </div>
-                    </div>
+                    </ng-template>
+                
                 </div>
 
-                <!-- <div class="">
-                <div class=" col-3" [style.background-image]="
-                sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-
-                       
-
-                   
-                </div>
-                <div class="col-9 d-flex gap-3">
-                    <div class="bg-image d-flex  dashboard-banner mb-3"
-                        [style.background-image]="'url(' + sectionView_1?._personal_data?.background_image_profile_web + ')'"
-                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
-                        <div class="row">
-                            <div class="d-flex justify-content-center">
-                                <div class="text-center level-label-name">
-                                    <p class="text-white">{{sectionView_1?._personal_data?.level_label}}</p>
-                                </div>
-                            </div>
-
-                            <div class="media ms-2">
-                                <div class="row row-cols-3 w-100">
-                                   
-                                    <div class="confetti"
-                                        [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'">
-                                        <div
-                                            class="col text-center mt-2  d-flex flex-column align-items-center gap-1">
-                                            <img loading="lazy"
-                                                src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}"
-                                                alt="" class="dashboard-game-point-img"
-                                                style="padding-bottom: 7px;">
-                                            <button
-                                                class="btn btn-primary- text-white text-center dashboard-banner-point-btn"
-                                                [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}"
-                                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
-                                                <span class="dashboard-banner-point-btn-text text-center">
-                                                    {{gamePoints?.[0]?.score}}
-                                                </span>
-                                            </button>
-                                            <span
-                                                class="dashboard-level-rank-name">{{gamePoints?.[0]?.label}}s</span>
-                                        </div>
-                                    </div>
-                                    <div class="confetti"
-                                        [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'">
-                                        <div
-                                            class="col text-center mt-2  d-flex flex-column align-items-center gap-1">
-                                            <img loading="lazy"
-                                                src="{{sectionView_1?.theme_details?.[0]?.reward_points_image}}"
-                                                alt="" class="dashboard-reward-point-img"
-                                                style="padding-bottom: 7px;">
-                                            <button *ngIf="rewardPoints?.[0]?.score>75"
-                                                class="btn btn-primary- text-white dashboard-banner-point-btn"
-                                                [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}"
-                                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                                (click)="navigateToRewards()">
-
-
-                                                <span class="dashboard-banner-point-btn-text text-center">
-                                                    {{rewardPoints?.[0]?.score}}
-                                                </span></button>
-                                            <button *ngIf="rewardPoints?.[0]?.score<75"
-                                                class="btn btn-primary- text-white dashboard-banner-point-btn"
-                                                [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}"
-                                                [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                                data-bs-toggle="modal" data-bs-target="#RewardsModal">
-
-
-                                                <span class="dashboard-banner-point-btn-text text-center">
-                                                    {{rewardPoints?.[0]?.score}}
-                                       </span></button>
-
-                                            <span
-                                                class="dashboard-level-rank-name">{{rewardPoints?.[0]?.label}}s</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-
-                </div>
-            </div> -->
-
+                
 
                 <div style="padding:2%;border-radius:10px;background-size: cover;"
                   
@@ -538,10 +472,11 @@
                     <div class="row" [ngClass]="{'row-cols-2': sectionView_2?._ranking_data?.length === 2,
                                 'row-cols-3': sectionView_2?._ranking_data?.length === 3,
                                 'row-cols-4': sectionView_2?._ranking_data?.length === 4,
-                                'row-cols-1': sectionView_2?._ranking_data?.length === 4}" style="padding:1% 0%;
+                                'row-cols-1': sectionView_2?._ranking_data?.length === 4}" style="
                                 display: flex;
                                 flex-direction: row;
                                 flex-wrap: nowrap;
+                                margin-top:1%;
                                 width:48vw;
                              ">
 
@@ -600,7 +535,7 @@
                     <div class="row row-cols-2" *ngIf="sectionView_3_list?.[0]?._Overall">
                         <div *ngIf="role_id==6;then subTabForPlayer else subTabForOtherRole "></div>
                         <ng-template #subTabForPlayer>
-                            <div class="col" >
+                            <div class="col"  *ngIf="isdefaultView" >
                                 <a id="myButton" class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
                                 
                                     [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 ==='My Store'}"
@@ -615,7 +550,7 @@
                                     </span>
                                 </a>
                             </div>
-                            <div class="col" >
+                            <div class="col" *ngIf="isdefaultView" >
                                 <a class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
                                 
                                     [ngClass]="{'': activeSubTabForSectionView_2 === 'Overall'}"
@@ -631,7 +566,7 @@
                             </div>
                         </ng-template>
                         <ng-template #subTabForOtherRole>
-                            <div class="col">
+                            <div class="col"  *ngIf="isdefaultView">
                                 <a id="myButton" class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
                                 
                                     [ngClass]="{'filter-btn-dashboard-active': activeSubTabForSectionView_2 ==='My Store'}"
@@ -646,7 +581,7 @@
                                     </span>
                                 </a>
                             </div>
-                            <div class="col">
+                            <div class="col"  *ngIf="isdefaultView">
                                 <a class="btn btn-xs filter-btn-dashboard  fs-sm me-4 mb-2"
                                 
                                     [ngClass]="{'': activeSubTabForSectionView_2 === 'Overall'}"
@@ -680,7 +615,7 @@
                     </div>
                 </div>
                 <!-- Dashboard Table Started -->
-                <div class="mt-2"
+                <div class="mt-2"  
                     [style.background-image]="
             sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null"
                     style="background-size:cover;border-radius:10px;padding:1%">
@@ -863,8 +798,14 @@
 
 
                     <div *ngIf="spectSearchStr ==''|| spectSearchStr == undefined || spectSearList.length>10||spectSearchStr==null;"
-                        [ngClass]="sectionView_1?._personal_data.id_role=='6'? 'dashboard-center-table':'dashboard-center-table1'"
-                        class="">
+                        [ngClass]="{'dashboard-center-table': sectionView_1?._personal_data.id_role=='6' && isdefaultView,
+                        'dashboard-center-table1': sectionView_1?._personal_data.id_role!='6' && isdefaultView,
+                        'dashboard-center-table-shrink-other-role':sectionView_1?._personal_data.id_role!='6' && !isdefaultView,
+                        'dashboard-center-table-shrink': !isdefaultView
+
+                        }"
+                        [style.height.vh]="!isdefaultView && sectionView_1?._personal_data.id_role=='6'?'49vh':''"
+                        >
                         <!-- {{spectSearList | json}} -->
                         <!-- {{spectSearchStr ? 'true': 'false'}} -->
                         <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"

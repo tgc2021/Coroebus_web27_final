@@ -289,6 +289,7 @@ export class SpectatorViewComponent implements OnInit {
 
 
         this.spectator_dashoard_response = res;
+       
         this.spectator_user_list_view_more = res
 
         this.spectator_dashoard_response = Array.of(this.spectator_dashoard_response);

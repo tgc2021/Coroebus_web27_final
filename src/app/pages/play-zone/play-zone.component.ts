@@ -297,7 +297,6 @@ checked:boolean=false;
 
   filterByPointsAsc(){
     this.Passbook = this.spotEngagementPassbook.sort((a, b) => b.reward_point - a.reward_point);  
-   
    this.Ascending=true;
    this.Descending=false;
   }

@@ -51,6 +51,7 @@ export class NewRewardPageComponent implements OnInit {
   status: any;
   bgImage: any;
   passbook_response: any;
+  
   openMobileMenu: boolean;
   headerInfo: any
   popupresponse: any
@@ -160,7 +161,7 @@ export class NewRewardPageComponent implements OnInit {
             this.filterCoreGame = res;
             this.rewardresponse = Array.of(this.rewardresponse);
             this.passbook_response = this.rewardresponse[0]?.data?.points_list[1]?._data;
-            this.collectionSize = this.passbook_response?.length;
+            this.collectionSize = this.passbook_response.length;
             console.log('collectionSize',this.collectionSize);
             this.rewardImage = this.rewardresponse[0]?.data?.game_data[0]?.reward_image;
             this.passbookImage = this.rewardresponse[0]?.data?.game_data[0]?.passbook_image;
@@ -192,7 +193,7 @@ export class NewRewardPageComponent implements OnInit {
             this.filterCoreGame = res;
             this.rewardresponse = Array.of(this.rewardresponse);
             this.passbook_response = this.rewardresponse[0]?.data?.points_list[1]?._data;
-            this.collectionSize = this.passbook_response?.length;
+            this.collectionSize = this.passbook_response.length;
             console.log('collectionSize',this.collectionSize);
             this.rewardImage = this.rewardresponse[0]?.data?.game_data[0]?.reward_image;
             this.passbookImage = this.rewardresponse[0]?.data?.game_data[0]?.passbook_image;
@@ -266,7 +267,7 @@ export class NewRewardPageComponent implements OnInit {
         this.filterCoreGame = res;
         this.rewardresponse = Array.of(this.rewardresponse);
         this.passbook_response = this.rewardresponse[0]?.data?.points_list[1]?._data;
-        this.collectionSize = this.passbook_response?.length;
+        this.collectionSize = this.passbook_response.length;
         console.log('collectionSize',this.collectionSize);
         this.rewardImage = this.rewardresponse[0]?.data?.game_data[0]?.reward_image;
         this.passbookImage = this.rewardresponse[0]?.data?.game_data[0]?.passbook_image;
@@ -379,10 +380,10 @@ export class NewRewardPageComponent implements OnInit {
   enagagmentlogPassbookAPI(tab) {
 
     if (this.mergeObj.id_coroebus_game != null) {
-      if (tab.target.firstChild.data == this.rewardresponse[0].data.points_list[0].label) {
+      if (tab?.target?.firstChild?.data == this.rewardresponse[0]?.data?.points_list[0]?.label) {
         let body = {
-          _userid: this.mergeObj.USERID,
-          _game: this.mergeObj.id_coroebus_game,
+          _userid: this.mergeObj?.USERID,
+          _game: this.mergeObj?.id_coroebus_game,
           _device: "W",
           _section: "Rewards Page",
           _description: "Points Table"
@@ -395,7 +396,7 @@ export class NewRewardPageComponent implements OnInit {
 
       }
 
-      else if (tab.target.firstChild.data == this.rewardresponse[0].data.points_list[1].label) {
+      else if (tab?.target?.firstChild?.data == this.rewardresponse[0]?.data?.points_list[1]?.label) {
         let body = {
           _userid: this.mergeObj.USERID,
           _game: this.mergeObj.id_coroebus_game,

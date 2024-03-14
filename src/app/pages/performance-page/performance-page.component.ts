@@ -93,8 +93,7 @@ export class PerformancePageComponent implements OnInit {
       if (queryParams?.userID) {
         queryParams = {userID: this.Util.decryptData(queryParams?.userID),gameID: this.Util.decryptData(queryParams?.gameID),roleID: this.Util.decryptData(queryParams?.roleID) }
         this.queryParams= queryParams
-      
-        
+    
         this.pointsList()
         this.myperformanceProduce()
     

@@ -143,6 +143,14 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   gameIdBh: string;
   id_role_bh: string;
   useridSenior: any;
+  isdefaultView=true;
+  hodData:any;
+  idCoroebusGroupHod: any;
+  
+  openFullView(){
+    console.log("Click");
+    this.isdefaultView=!this.isdefaultView;
+  }
   constructor(private readonly store: Store, public _route: ActivatedRoute,public snackBar: MatSnackBar,public router:Router, public Util: Util,public http:ApiserviceService,private eventService: EventService,public element: ElementRef,private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -1156,6 +1164,22 @@ this.spectSearchStr=''
     }
      
    }
+   getIdCoroebusGroup(){
+    let body=
+      {"_userid": this.sectionView_1?._personal_data?.USERID,
+      "_game": this.sectionView_1?._personal_data?.id_coroebus_game
+    }
+
+    
+    this.http.getGroupHod(body).subscribe((res)=>{
+      console.log("IdGroupData",res);
+      this.hodData=res;
+
+      this.idCoroebusGroupHod=this.hodData.data[0]?.id_coroebus_group;
+      console.log('IdGroup',this.idCoroebusGroupHod);
+
+    })
+   }
    async openKpiInfo(event) {
 
     this.selectedIndex=0;
@@ -1185,28 +1209,28 @@ this.spectSearchStr=''
     }
     else if(this.sectionView_1?._personal_data?.id_role=="9"){
       
+      this.getIdCoroebusGroup()
+      // let body={
+      //   _userid:this.sectionView_1?._business_user[0]?.USERID,
+      //   _org:this.sectionView_1?._business_user[0]?.id_coroebus_organization
+      // }
+      // this.http.buisnessHead(body).subscribe((res:any)=>{
       
-      let body={
-        _userid:this.sectionView_1?._business_user[0]?.USERID,
-        _org:this.sectionView_1?._business_user[0]?.id_coroebus_organization
-      }
-      this.http.buisnessHead(body).subscribe((res:any)=>{
-      
-        res?.data?._ranking_data[0]?._data.map((res:any)=>{
+      //   res?.data?._ranking_data[0]?._data.map((res:any)=>{
         
-          if (res?.userid == this.sectionView_1?._personal_data?.USERID){
+      //     if (res?.userid == this.sectionView_1?._personal_data?.USERID){
             
-             this.primary_rank=res?.rankingtable_number;
-            localStorage.setItem("group_id_bh",res?.id_coroebus_group);
-            localStorage.setItem("gameId_bh",res?.id_coroebus_game);
-            localStorage.setItem("idRole_bh",res?.id_role);
+      //        this.primary_rank=res?.rankingtable_number;
+      //       localStorage.setItem("group_id_bh",res?.id_coroebus_group);
+      //       localStorage.setItem("gameId_bh",res?.id_coroebus_game);
+      //       localStorage.setItem("idRole_bh",res?.id_role);
             
           
-          }
+      //     }
 
-        })
+      //   })
         
-      })
+      // })
     }
     this.groupID=localStorage.getItem('group_id')
     this.groupID_bh=localStorage.getItem('group_id_bh')
@@ -1246,9 +1270,9 @@ this.spectSearchStr=''
       else if(this.sectionView_1?._personal_data?.id_role=='9'){
         if (location.includes("?")){
           let body = {
-            _game:this.gameIdBh,
+            _game:this.sectionView_1?._personal_data?.id_coroebus_game,
             id_role:this.queryParams?.roleID,
-            id_coroebus_group:this.groupID_bh
+            id_coroebus_group:this.idCoroebusGroupHod
           };
           let res = await this.http.pointDistributionPopup(body).toPromise();
           this.kpiData = res;
@@ -1257,9 +1281,9 @@ this.spectSearchStr=''
          
           let body = {
       
-            _game:this.gameIdBh,
-            id_role:this.id_role_bh,
-            id_coroebus_group:this.groupID_bh
+            _game:this.sectionView_1?._personal_data?.id_coroebus_game,
+            id_role:this.sectionView_1?._personal_data?.id_role,
+            id_coroebus_group:this.idCoroebusGroupHod
     
           };
           let res = await this.http.pointDistributionPopup(body).toPromise();

@@ -9,11 +9,14 @@ import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
+
 import { FilterPipePipe } from './pipe/filter-pipe.pipe';
+import { NewPlayzoneComponent } from './new-playzone/new-playzone.component';
 
 @NgModule({
   declarations: [
     PlayZoneComponent,
+    NewPlayzoneComponent,
     FilterPipePipe
  
   ],
