@@ -182,13 +182,14 @@ export class NewPlayzoneComponent implements OnInit {
 
   }
   open(content, data) {
+
     let gameUrl: string;
     let size: 'lg' | 'xl';
   
     switch (data?.id_engagement_game) {
       case '1':
         gameUrl=`https://coroebus.in/dart_game/?_userid=${this.mergeObj.USERID}&id_spot_engagement=${data.id_spot_engagement}&id_spot_event_setup=${data.id_spot_event_setup}&id_engagement_game=${data.id_engagement_game}&id_spot_stw_log=${data.id_spot_stw_log}&_game=${this.mergeObj.id_coroebus_game}`;
-        size = 'lg';
+        size = 'xl';
         break;
   
       case '2':
@@ -376,8 +377,8 @@ rewardPassBook(){
   this.openPassBook=true;
 }
 dismiss(){
-
-  window.location.reload();
+console.log('dismissModal')
+  this.rewardPassbook();
  
 }
 searchData() {

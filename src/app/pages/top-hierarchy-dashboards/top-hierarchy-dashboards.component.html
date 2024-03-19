@@ -209,83 +209,7 @@
             <!-- Dashboard Section -->
             <div class="col-6 mt-2 justify-content-between align-items-start">
                 <div class="dashboard_section">
-                    <div *ngIf="isdefaultView;then defaultView else shrinkedView;"></div>
-                    <ng-template #defaultView>
-                        <div class="badge_container"
-                        [style.background-image]="
-                        sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-                        <div *ngIf="sectionView_1._personal_data.id_role=='9' then redirectToBH else dontredirect">
-                        </div>
-                        <ng-template #redirectToBH>
-                            <div class="">
-                                <div>
-                                    <img (click)="getDataBasedOnUserIDHos(sectionView_1?._business_user[0])"
-                                        src="{{sectionView_1._personal_data.profile_badge_image}}" alt="badge_img"
-                                        height="60%" width="60%">
-                                </div>
-                                <div (click)="getDataBasedOnUserIDHos(sectionView_1?._business_user[0])"
-                                    class="badge-level_name d-flex justify-content-center">
-                                    <span>Level</span>
-                                </div>
-                            </div>
-
-
-                        </ng-template>
-                        <ng-template #dontredirect>
-                            <div>
-
-
-                                <div>
-                                    <img src="{{sectionView_1._personal_data.profile_badge_image}}" alt="badge_img"
-                                        height="60%" width="60%">
-                                </div>
-                                <div class="badge-level_name d-flex justify-content-center">
-                                    <span>Level</span>
-                                </div>
-                            </div>
-                        </ng-template>
-
-                    </div>
-
-                    <div class="banner_container"
-                        [style.background-image]="
-                sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-                        <div style="background-image:url('{{sectionView_1?._personal_data?.background_image_profile_web}}');width: 33vw;height: 20vh;background-size: 100% 100%;border-radius:10px;display:flex;    justify-content: center;
-                align-items: center;gap:12vw" (click)="openFullView()">
-                            <div *ngIf="sectionView_1._personal_data.id_role!=9;then rewardPoints"></div>
-                            <ng-template #rewardPoints>
-                                <div class="game_points_div">
-                                    <div [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'"
-                                        style="height: 6vh;width: 7vw;display: flex;justify-content: center;align-items:center">
-                                        <img class="game_points_image"
-                                            src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}" />
-                                    </div>
-
-                                    <div class="game_points_score d-flex justify-content-center">
-                                        {{gamePoints?.[0]?.score}}
-                                    </div>
-                                    <div class="game_point_label">{{gamePoints?.[0]?.label}}s</div>
-                                </div>
-
-                                <div class="reward_points_div" (click)="getRewards(sectionView_1)">
-                                    <div [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'"
-                                        style="height: 6vh;
-                            width: 7vw;display: flex;justify-content: center;align-items:center">
-                                        <img class="reward_points_image"
-                                            src="{{sectionView_1?.theme_details?.[0]?.reward_points_image}}" />
-                                    </div>
-
-                                    <div class="reward_points_score d-flex justify-content-center">
-                                        {{sectionView_1?._points?.[2]?.score}}
-                                    </div>
-                                    <div class="reward_point_label">{{sectionView_1?._points?.[2]?.label}}s</div>
-
-                                </div>
-                            </ng-template>
-                        </div>
-                    </div>
-                    </ng-template>
-                    <ng-template #shrinkedView>
+                   
                         
                         <div class="badge_container-shrinked"
                             [style.background-image]="
@@ -327,7 +251,7 @@
                         <div class="banner_container_shrinked"
                             [style.background-image]="
                                     sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null" (click)="openFullView()">
-                            <div style="background-image:url('{{sectionView_1?._personal_data?.background_image_profile_web}}');width: 33vw;height: 10vh;background-size: 100% 100%;border-radius:10px;display:flex;    justify-content: center;
+                            <div style="background-image:url('{{sectionView_1?._personal_data?.background_image_profile_web}}');width: 95%;height: 10vh;background-size: 100% 100%;border-radius:10px;display:flex;    justify-content: center;
                                     align-items: center;gap:3vw">
                                 <div *ngIf="sectionView_1._personal_data.id_role!=9;then rewardPoints"></div>
                                 <ng-template #rewardPoints>
@@ -363,7 +287,7 @@
                                 </ng-template>
                             </div>
                         </div>
-                    </ng-template>
+                    <!-- </ng-template> -->
                     
                 </div>
 
@@ -372,20 +296,20 @@
                 sectionView_1?.theme_details?.[0]?.island_background ? 'url('+sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
                     <div>
                         <div class="button_div">
-                            <button style="margin-left: 1vw;" class="button_series"
+                            <button  class="button_series"
                                 *ngFor="let item of leaderboard_data_buttons;let i=index"
                                 [class.activeTab]="i==this.activeClass" (click)="leaderboard(i)">
                                 {{item.label}}
                             </button>
                         </div>
                         <div class="button_div" *ngIf="sectionView_1._personal_data.id_role==8&&isdefaultView">
-                            <button style="margin-left: 1vw;" class="button_series col" (click)="myLeaderboard()"
+                            <button class="button_series col" (click)="myLeaderboard('_data')"
                                 [class.activeTab]="this.subActiveClass">
-                                My {{leaderboard_data_buttons[0].label}}
+                                My {{leaderboard_data_buttons[0]?.label}}
                             </button>
-                            <button class="button_series col" (click)="overallLeaderboard()"
+                            <button class="button_series col" (click)="overallLeaderboard('_Overall')"
                                 [class.activeTab]="this.subActiveClassOverall">Overall
-                                {{leaderboard_data_buttons[0].label}}</button>
+                                {{leaderboard_data_buttons[0]?.label}}</button>
                         </div>
 
                     </div>
@@ -422,8 +346,8 @@
                         </div>
                         <ng-template #withoutsearch>
                             <div [ngClass]="lengthLeaderBoardData>19 ? 'leaderboard_label_tile_length' : 'leaderboard_label_tile'"
-                                [style.height.vh]="sectionView_1._personal_data.id_role == 8 ? 35 : 42"
-                                [style.height.vh]="isdefaultView ? 35 : 55"
+                                [style.height.vh]="sectionView_1._personal_data.id_role == 8 ? 47:55"
+                                
                                >
                                 
                                 <div *ngIf="sectionView_1._personal_data.id_role=='9'">
@@ -740,7 +664,7 @@
                         <div class="Ranking_section_card" *ngFor="let item of sectionView_1?.is_land_logos">
                             <div class="upper_section">
                                 <!-- <div class="level_name">{{sectionView_1._personal_data.level_label}}</div> -->
-                                <div class="level_name">{{item.tag}}</div>
+                                <div class="level_name" title="{{item.first_name}}">{{item.first_name}}</div>
                             </div>
                             <div class="Island_score">
                                 <!-- <img class="profile_picture_image" src="{{sectionView_1._personal_data.profile_logo}}" height="100%" width="" /> -->
@@ -1325,7 +1249,7 @@
                     'four-data-mobile':sectionView_1?.is_land_logos?.length === 3}">
                         <div class="col-12 card-container" style="overflow-y:auto;">
 
-                            <div class="col-4  text-center" *ngFor="let item of sectionView_1?.is_land_logos">
+                            <div class="col-4  text-center " *ngFor="let item of sectionView_1?.is_land_logos">
                                 <img src="{{item?.logo}}" class="island_login" alt="" height="100">
 
 
@@ -1336,7 +1260,7 @@
                                     <!-- {{item?._data}} -->
                                     Level {{item?.level}}
                                 </button>
-                                <br><span class="level-rank-name">{{item?.tag}}</span>
+                                <br><div class="level-rank-name">{{item?.first_name}}</div>
 
                             </div>
 
@@ -1671,12 +1595,12 @@
 
                 </div>
                 <div style="width:90vw;" class=" d-flex gap-2 mt-2" *ngIf="sectionView_1._personal_data.id_role==8">
-                    <button class="button_series_mobile col" (click)="myLeaderboard()"
+                    <button class="button_series_mobile col" (click)="myLeaderboard('_data')"
                         [class.activeTab]="this.subActiveClass">
                         My {{leaderboard_data_buttons[0].label}}
                     </button>
 
-                    <button class="button_series_mobile col" (click)="overallLeaderboard()"
+                    <button class="button_series_mobile col" (click)="overallLeaderboard('_Overall')"
                         [class.activeTab]="this.subActiveClassOverall">Overall
                         {{leaderboard_data_buttons[0].label}}</button>
                 </div>

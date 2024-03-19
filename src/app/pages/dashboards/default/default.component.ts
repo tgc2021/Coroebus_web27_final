@@ -1853,7 +1853,7 @@ if (this.levelwise== 3) {
     this.activeTabOrderNumberForSectionView_2 = order;
     
   
-    this.activeSubTabForSectionView_2 = "My Store";
+    // this.activeSubTabForSectionView_2 = "My Store";
   
     this.rankingDataFirstRowForSectionView_2 =
       this.sectionView_2?._ranking_data?.filter(
@@ -2646,7 +2646,8 @@ if (this.levelwise== 3) {
     location.reload();
   }
   navigateToM2ost(categoryID: any) {
-    (this.empid = btoa(this.sectionView_1._personal_data.EMPLOYEEID)),
+
+      (this.empid = btoa(this.sectionView_1._personal_data.EMPLOYEEID)),
       (this.empemail = this.sectionView_1._personal_data.email_id);
     this.empname = this.sectionView_1._personal_data.first_name;
     this.emporg = this.sectionView_1._personal_data.organization_name;
@@ -2665,6 +2666,8 @@ if (this.levelwise== 3) {
         categoryID,
       "blank"
     );
+    
+    
   }
 
   // challengeRecievedCount(){
@@ -3113,11 +3116,11 @@ if (this.levelwise== 3) {
           );
 
         this.firstrowbackimage =
-          this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level;
+          this.rankingDataFirstRowForSectionView_2[0]?._data[0]?.ranking_image_level;
 
         for (let item of this.getBackImages) {
           if (item.ranking_image_level === this.firstrowbackimage) {
-            this.web_first_tile_image = item.ranking_image;
+            this.web_first_tile_image = item?.ranking_image;
           }
         }
         if (this.queryParams?.roleID == "4") {

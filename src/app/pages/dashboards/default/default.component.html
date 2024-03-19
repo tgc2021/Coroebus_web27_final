@@ -209,7 +209,7 @@
                                                 <div style="height:2.5vh;" >
 
                                                     <img src="assets/images/BoosterAssests/UP-16687580465394.png" alt=""
-                                                        height="100%">
+                                                        height="80%">
                                                 </div>
 
                                                
@@ -285,92 +285,7 @@
             </div>
             <div class="col-6  DashboardSection">
                 <div class="row">
-                    <div *ngIf="isdefaultView;then defaultView else shrinkedView;"></div>
-                    <ng-template #defaultView>
-                        <div class="col-3  pb-3">
-                
-                            <div class="baddge-section-card d-flex justify-content-center align-items-center"
-                                [style.background-image]="
-                                            sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-                                <div>
-                                    <div>
-                                        <img loading="lazy" class="dashboard-banner-main-rank-img" style="height: 15vh;
-                                                        width: 15vh;
-                                                        border-radius: 100%;"
-                                            src="{{sectionView_1?._personal_data?.profile_badge_image}}"
-                                            alt="Generic placeholder image">
-                                    </div>
-                                    <div class="badge-level_name d-flex justify-content-center"
-                                        [ngStyle]="{'background': sectionView_1?.theme_details?.[0]?.light_color}">
-                                        Level
-                                    </div>
-                                </div>
-                
-                
-                            </div>
-                        </div>
-                
-                        <div class="col-9  pb-3 d-flex justify-content-center"  (click)="openFullView()">
-                            <div class="baddge-section-card" style="width: 36vw;"
-                                [style.background-image]="
-                                                sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
-                                <div class="d-flex justify-content-center align-items-center" style="height: 23vh;">
-                                    <div class="bg-image"
-                                        [style.background-image]="'url(' + sectionView_1?._personal_data?.background_image_profile_web + ')'"
-                                        [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
-                                        <div class="media ms-2">
-                                            <div class="row row-cols-3 w-100 d-flex justify-content-around align-items-center"
-                                                style="height: 7vh;">
-                
-                                                <div class="confetti"
-                                                    [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'">
-                                                    <div class="col text-center mt-2  d-flex flex-column align-items-center gap-1">
-                                                        <img loading="lazy"
-                                                            src="{{sectionView_1?.theme_details?.[0]?.game_points_image}}" alt=""
-                                                            class="dashboard-game-point-img" style="padding-bottom: 7px;">
-                                                        <button
-                                                            class="btn btn-primary- text-white text-center dashboard-banner-point-btn"
-                                                            [ngStyle]="{'background':'#FFFFFF'}"
-                                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color">
-                                                            <span class="dashboard-banner-point-btn-text text-center">
-                                                                {{gamePoints?.[0]?.score}}
-                                                            </span>
-                                                        </button>
-                                                        <span class="dashboard-level-rank-name">{{gamePoints?.[0]?.label}}s</span>
-                                                    </div>
-                                                </div>
-                                                <div class="confetti"
-                                                    [style.background-image]="'url(assets/images/svg/dashboard/Confetti.png)'">
-                                                    <div class="col text-center mt-2  d-flex flex-column align-items-center gap-1">
-                                                        <img loading="lazy"
-                                                            src="{{sectionView_1?.theme_details?.[0]?.reward_points_image}}" alt=""
-                                                            class="dashboard-reward-point-img" style="padding-bottom: 7px;">
-                                                        <button class="btn btn-primary- text-white dashboard-banner-point-btn"
-                                                            [ngStyle]="{'background': '#FFFFFF'}"
-                                                            [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                                                            (click)="getRewards()">
-                
-                
-                                                            <span class="dashboard-banner-point-btn-text text-center">
-                                                                {{rewardPoints?.[0]?.score}}
-                                                            </span></button>
-                
-                
-                                                        <span class="dashboard-level-rank-name">{{rewardPoints?.[0]?.label}}s</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                
-                
-                
-                
-                            </div>
-                        </div>
-                    </ng-template>
-                    <ng-template #shrinkedView>
+                   
                         <div class="col-3  pb-3">
                 
                             <div class="baddge-section-card-shrinked d-flex justify-content-center align-items-center"
@@ -394,7 +309,7 @@
                             </div>
                         </div>
                 
-                        <div class="col-9  pb-3 d-flex justify-content-center"  (click)="openFullView()">
+                        <div class="col-9  pb-3 d-flex justify-content-center">
                             <div class="baddge-section-card-shrinked" style="width: 36vw;"
                                 [style.background-image]="
                                                 sectionView_1?.theme_details?.[0]?.island_background ? 'url(' + sectionView_1?.theme_details?.[0]?.point_dist_background + ')' : null">
@@ -459,7 +374,7 @@
                 
                             </div>
                         </div>
-                    </ng-template>
+                   
                 
                 </div>
 
@@ -645,7 +560,7 @@
                                         <span class="col-1 ms-2 text-white position-absolute-s">
                                             {{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_number}}
                                         </span>
-                                        <div style="height:5vh;display:flex;align-items: center;">
+                                        <div style="height:4vh;display:flex;align-items: center;">
                                             <img class="rounded-circle z-depth-2 user-logo-row" alt=""
                                                 src="{{rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_logo}}"
                                                 data-holder-rendered="true" height="100%" width="41">
@@ -685,13 +600,13 @@
                                                 <div style="height:5vh;">
                                                     <img class="mt-1 f-right up-arrow" alt=""
                                                         src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
-                                                        data-holder-rendered="true" height="100%"
+                                                        data-holder-rendered="true" height="80%"
                                                         *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow === 'green'"
                                                         (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
 
                                                     <img class="mt-1 f-right up-arrow" alt=""
                                                         src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
-                                                        data-holder-rendered="true" height="100%"
+                                                        data-holder-rendered="true" height="80%"
                                                         *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow == 'red'"
                                                         (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
                                                     <img class="mt-1 f-right up-arrow" alt=""
@@ -718,13 +633,13 @@
 
                             <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
 
-                                *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._data?.length > 0"
+                                *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._Overall?.length > 0"
                                 
                                 [style.background-image]="'url(' + web_first_tile_image + ')'"
                                 [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
                                 [style.background-image]="'url('+web_first_tile_image +')'">
                                 <div class="col">
-                                    <div class="media d-flex align-items-center gap-3  " style="height: 7vh;">
+                                    <div class="media d-flex align-items-center gap-3" style="height: 7vh;">
                                         <span class="col-1 ms-2 text-white position-absolute-s">
                                             {{rankingDataFirstRowForSectionView_2?.[0]?._Overall?.[0]?.rankingtable_number}}
                                         </span>
@@ -768,13 +683,13 @@
                                                 <div style="height:5vh;">
                                                     <img class="mt-1 f-right up-arrow" alt=""
                                                         src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
-                                                        data-holder-rendered="true" height="100%"
+                                                        data-holder-rendered="true" height="80%"
                                                         *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._Overall?.[0]?.rankingtable_arrow === 'red'"
                                                         (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
 
                                                     <img class="mt-1 f-right up-arrow" alt=""
                                                         src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
-                                                        data-holder-rendered="true" height="100%"
+                                                        data-holder-rendered="true" height="80%"
                                                         *ngIf="rankingDataFirstRowForSectionView_2?.[0]?._Overall?.[0]?.rankingtable_arrow === 'green'"
                                                         (click)="upDownArrow(rankingDataFirstRowForSectionView_2?.[0]?._data?.[0]?.rankingtable_arrow,rankingDataFirstRowForSectionView_2?.[0]?._data?.[0])">
 
@@ -884,14 +799,14 @@
                                                 <div style="height:5vh;">
                                                     <img class="mt-1 f-right up-arrow" alt=""
                                                         src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
-                                                        data-holder-rendered="true" height="100%"
+                                                        data-holder-rendered="true" height="80%"
                                                         *ngIf="item?.rankingtable_arrow === 'red'"
                                                         (click)="upDownArrow(item?.rankingtable_arrow,item)">
 
 
                                                     <img class="mt-1 f-right up-arrow" alt=""
                                                         src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
-                                                        data-holder-rendered="true" height="100%"
+                                                        data-holder-rendered="true" height="80%"
                                                         *ngIf="item?.rankingtable_arrow !== 'red'"
                                                         (click)="upDownArrow(item?.rankingtable_arrow,item)">
                                                 </div>
@@ -901,13 +816,13 @@
                                                 <div style="height:5vh;">
                                                     <img class="mt-1 f-right up-arrow" alt=""
                                                         src="{{sectionView_1?.theme_details?.[0]?.down_arrow}}"
-                                                        data-holder-rendered="true" height="100%"
+                                                        data-holder-rendered="true" height="80%"
                                                         *ngIf="item?.rankingtable_arrow === 'red'">
 
 
                                                     <img class="mt-1 f-right up-arrow" alt=""
                                                         src="{{sectionView_1?.theme_details?.[0]?.up_arrow}}"
-                                                        data-holder-rendered="true" height="100%"
+                                                        data-holder-rendered="true" height="80%"
                                                         *ngIf="item?.rankingtable_arrow !== 'red'">
                                                 </div>
                                             </ng-template>
@@ -1066,7 +981,7 @@
                                             Level {{item?.level}}
 
                                         </button>
-                                        <br><span class="level-rank-name">{{item?.tag}}</span>
+                                        <br><div class="level-rank-name" title="{{item.first_name}}">{{item.first_name}}</div>
 
 
                                     </div>
@@ -1254,12 +1169,12 @@
                                     style="height: 44vh; padding:2%; display: flex;justify-content:center;align-items:center;">
                                     <div class="card-body px-4 "
                                         style="height: 40vh; overflow-y:auto;display: flex; flex-direction: column;justify-content:start;gap:0.5em">
-                                        <mat-accordion  >
+                                        <mat-accordion>
 
                                             <!-- <div class="red_indicator"></div> -->
                                             <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true"
                                             
-                                                (closed)="panelOpenState = false" >
+                                                (closed)="panelOpenState = false">
                                                 <mat-expansion-panel-header 
                                                     [ngStyle]="{background: sectionView_1?.theme_details?.[0]?.dark_color}">
                                                     <mat-panel-title
@@ -1274,16 +1189,31 @@
 
                                                     <div class="d-flex flex-column align-items-start gap-2  mt-2"
                                                         *ngIf="sectionView_1?._personal_data?.id_role==6">
-                                                        <div class="inner_content" (click)="navigateToM2ost('2289')">
-                                                            Call Centre Basics</div>
-                                                        <div class="inner_content" (click)="navigateToM2ost('2293')">
-                                                            Objection Handling</div>
-                                                        <div class="inner_content" (click)="navigateToM2ost('2301')">
-                                                            Conflict Management</div>
-                                                        <div class="inner_content" (click)="navigateToM2ost('2302')">
-                                                            Power of Speech</div>
-                                                        <div class="inner_content" (click)="navigateToM2ost('2291')">
-                                                            Telephone Etiquette</div>
+                                                        <div *ngIf="sectionView_1?._personal_data?.id_coroebus_game==241||sectionView_1?._personal_data?.id_coroebus_game==242;then comingSoonLearning else otherLearning"></div>
+                                                        <ng-template #comingSoonLearning>
+                                                            <div class="comingSoonContainer">
+                                                                <div class="comingSoonForMyLearnings">
+                                                                
+                                                                    <img lazy="loading" src="assets/images/ComingSoonNewLearning.png" alt="" height="80%" width="80%" >
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </ng-template>
+                                                       
+                                                        <ng-template #otherLearning>
+
+                                                            <div class="inner_content" (click)="navigateToM2ost('2289')">
+                                                                Call Centre Basics</div>
+                                                            <div class="inner_content" (click)="navigateToM2ost('2293')">
+                                                                Objection Handling</div>
+                                                            <div class="inner_content" (click)="navigateToM2ost('2301')">
+                                                                Conflict Management</div>
+                                                            <div class="inner_content" (click)="navigateToM2ost('2302')">
+                                                                Power of Speech</div>
+                                                            <div class="inner_content" (click)="navigateToM2ost('2291')">
+                                                                Telephone Etiquette</div>
+                                                        </ng-template>
+                                                        
                                                     </div>
 
 
@@ -1317,8 +1247,18 @@
                                                 </ng-template>
 
                                                 <ng-template #dontredirect>
-
-                                                    <div class="d-flex flex-column align-items-start gap-2  mt-2"
+                                                    <div *ngIf="sectionView_1?._personal_data?.id_coroebus_game==241||242;then comingSoonLearning else otherLearning"></div>
+                                                    <ng-template #comingSoonLearning>
+                                                        <div class="comingSoonContainer">
+                                                            <div class="comingSoonForMyLearnings">
+                                                            
+                                                                <img lazy="loading" src="assets/images/ComingSoonNewLearning.png" alt="" height="80%" width="80%" >
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </ng-template>
+                                                    <ng-template #otherLearning>
+                                                        <div class="d-flex flex-column align-items-start gap-2  mt-2"
                                                         *ngIf="sectionView_1?._personal_data?.id_role==6">
                                                         <div class="inner_content">Call Centre Basics</div>
                                                         <div class="inner_content">
@@ -1346,6 +1286,8 @@
                                                         <div class="inner_content">Conflict Management</div>
                                                         <div class="inner_content">Communication Styles</div>
                                                     </div>
+                                                    </ng-template>
+                                                   
 
                                                 </ng-template>
 
@@ -2326,7 +2268,7 @@
                                         <!-- {{item?._data}} -->
                                         Level {{item?.level}}
                                     </button>
-                                    <br><span class="level-rank-name" style="color:#ffff">{{item?.tag}}</span>
+                                    <br><div class="level-rank-name" style="color:#ffff">{{item?.first_name}}</div>
 
                                 </div>
 
@@ -2636,8 +2578,17 @@
                                         <div *ngIf="!hideBattleGround then redirectm2ost else dontredirect">
                                         </div>
                                         <ng-template #redirectm2ost>
-
-                                            <div class="d-flex flex-column align-items-start gap-2  mt-2"
+                                            <div *ngIf="sectionView_1?._personal_data?.id_coroebus_game==241||sectionView_1?._personal_data?.id_coroebus_game==242;then comingSoonLearningMobile else forOtherOrgLearning"></div>
+                                            <ng-template #comingSoonLearningMobile>
+                                                <div class="comingSoonContainer">
+                                                    <div class="comingSoonForMyLearnings">
+                                                    
+                                                        <img lazy="loading" src="assets/images/ComingSoonNewLearning.png" alt="" height="80%" width="80%" >
+                                                    </div>
+                                                </div>
+                                            </ng-template>
+                                            <ng-template #forOtherOrgLearning>
+                                                <div class="d-flex flex-column align-items-start gap-2  mt-2"
                                                 *ngIf="sectionView_1._personal_data.id_role==6">
                                                 <div class="inner_content" (click)="navigateToM2ost('2289')">Call Centre
                                                     Basics</div>
@@ -2679,11 +2630,19 @@
                                                 <div class="inner_content" (click)="navigateToM2ost('2296')">Decision
                                                     Making</div>
                                             </div>
+                                            </ng-template>
+                                           
                                         </ng-template>
 
                                         <ng-template #dontredirect>
-
-                                            <div class="d-flex flex-column align-items-start gap-2  mt-2"
+                                            <div *ngIf="sectionView_1?._personal_data?.id_coroebus_game==241||242;then comingSoonLearningMobile else forOtherOrgLearning"></div>
+                                            <ng-template #comingSoonLearningMobile>
+                                                <div class="comingSoonForMyLearnings">
+                                                    <img src="assets/images/ComingSoonNewLearning.png" alt="" height="100%" width="100%" >
+                                                </div>
+                                            </ng-template>
+                                            <ng-template #forOtherOrgLearning>
+                                                <div class="d-flex flex-column align-items-start gap-2  mt-2"
                                                 *ngIf="sectionView_1._personal_data.id_role==6">
                                                 <div class="inner_content">Call Centre Basics</div>
                                                 <div class="inner_content">
@@ -2712,6 +2671,8 @@
                                                 <div class="inner_content">Communication Styles</div>
                                             </div>
 
+                                            </ng-template>
+                                           
                                         </ng-template>
 
 

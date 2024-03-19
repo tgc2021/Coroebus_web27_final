@@ -146,6 +146,7 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   isdefaultView=true;
   hodData:any;
   idCoroebusGroupHod: any;
+  subTabLeaderBoard: any='_Overall';
   
   openFullView(){
     console.log("Click");
@@ -776,33 +777,43 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
    this.spectSearchStr=null
  
   this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[event].order
-
+  this.leaderboard_data=this.sectionView_3?._ranking_data[ this.activeTabOrderNumberForSectionView_2-1]?._data;
   
  
-   
+ 
    this.activeClass=event;
+   if(this.sectionView_1._personal_data.id_role=='8'){
+    if(this.subTabLeaderBoard=='_data'){
+      this.leaderboard_data=this.sectionView_3?._ranking_data[ this.activeTabOrderNumberForSectionView_2-1]?._data;
+  
+     }
+     else {
+      this.leaderboard_data=this.sectionView_3?._ranking_data[ this.activeTabOrderNumberForSectionView_2-1]?._Overall;
+     }
+   }
    
-   this.activeClass=event;
     // this.subActiveClass=0
     
 
-   this.myLeaderboard()
+   
    
  
    
   }
 
-  myLeaderboard(event:any=0){
+  myLeaderboard(subTab){
+
+   this.subTabLeaderBoard=subTab;
   
-    this.leaderboard_data=this.sectionView_3?._ranking_data[ this.activeTabOrderNumberForSectionView_2-1]?._data;
     this.leaderboard_data_popup=this.sectionView_3?._ranking_data[ this.activeTabOrderNumberForSectionView_2-1]?._data;
 
    
     this.subActiveClass=true;
     this.subActiveClassOverall=false;
   }
-  overallLeaderboard(event:any=0){
-    this.leaderboard_data=this.sectionView_3._ranking_data[ this.activeTabOrderNumberForSectionView_2-1]._Overall;
+  overallLeaderboard(subTab){
+    this.subTabLeaderBoard=subTab;
+    
     this.subActiveClass=false;
     this.subActiveClassOverall=true;
 

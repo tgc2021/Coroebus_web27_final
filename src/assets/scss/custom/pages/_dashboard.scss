@@ -293,7 +293,7 @@
 
 
 .dashboard-center-table {
-    height:20vh;
+    height:32vh;
     // max-height:63vh;
     // height: auto;
     // -ms-overflow-style: none;
@@ -357,7 +357,7 @@
 
 }
 .dashboard-center-table1{
-    height:29vh;
+    height:40vh;
     // -ms-overflow-style: none;
     // /* for Internet Explorer, Edge */
     // scrollbar-width: none;
@@ -532,6 +532,7 @@
     background-repeat: no-repeat;
     background-position: inherit;
     background-size: 100% 100%;
+    
     border-style: inherit;
 }
 
@@ -699,12 +700,20 @@
 .level-rank-name {
     font-weight: 500;
     font-size: 1.6vh;
-    line-height: 150%;
+    /* line-height: 150%; */
     align-items: center;
+    cursor:pointer;
     text-align: center;
-    font-family:'Inter' ;
+    margin-left: 1vw;
+    font-family: 'Inter';
     color: #000000;
+    white-space: nowrap; 
+    width: 13ch; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+ 
 }
+
 
 .load-more {
     font-weight: 400;
@@ -767,7 +776,7 @@
     background-position: center;
 }
 .dashboard-user-name {
-    font-size: 2vh;
+    font-size: 1.9vh;
     font-family: 'Inter';
     line-height: 100%;
     color: #000000;
@@ -781,7 +790,7 @@
 }
 .dashboard-user-teamname {
    
-    font-size: 1.7vh;
+    font-size: 1.5vh;
     line-height: 150%;
 
     color: #000000;

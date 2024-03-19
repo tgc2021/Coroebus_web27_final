@@ -560,20 +560,21 @@
         <div class="row mobile_button_row" style="background-image: url({{spectator_dashoard_response[0].data.theme_details[0].add_ins_background}});padding:2%;width:96%;border-radius:5px;display:flex;justify-content:center" >
             <div *ngIf="spectator_dashoard_response[0].data._personal_data.id_coroebus_organization!=61;then forOtherOrgnizationMobile else forTataAIAmobile" ></div>
         <ng-template #forOtherOrgnizationMobile>
+            
             <div class="col-3 mobile_first_tab" *ngIf="spectator_dashoard_response[0]?.data?._personal_data?.game_level_flag=='1'||spectator_dashoard_response[0]?.data?._personal_data?.game_level_flag=='2'||spectator_dashoard_response[0]?.data?._personal_data?.game_level_flag=='3'||spectator_dashoard_response[0]?.data?._personal_data?.game_level_flag=='4'||spectator_dashoard_response[0]?.data?._personal_data?.game_level_flag=='5'">
                 <input type="radio" id="tab-1-mob" [checked]="checked1" value="response.data.ranking[0].label" (click)="filterRankwiseLeaderboard(response.data.ranking[0].label)" >
                 <label class="mobile_cm_tab" for="tab-1-mob">{{response.data.ranking[0].label}}</label>
     
             </div>
-            <div class="col-3 mobile_second_tab" *ngIf="spectator_dashoard_response[0]?.data?._personal_data?.game_level_flag=='1'||spectator_dashoard_response[0]?.data?._personal_data?.game_level_flag=='2'||spectator_dashoard_response[0]?.data?._personal_data?.game_level_flag=='3'">
+            <div class="col-3 mobile_second_tab" *ngIf="spectator_dashoard_response[0]?.data?._personal_data?.game_level_flag=='3'||spectator_dashoard_response[0]?.data?._personal_data?.game_level_flag=='4'||spectator_dashoard_response[0]?.data?._personal_data?.game_level_flag=='5'">
                 <input type="radio" id="tab-2-mob"  [checked]="checked2" value="response.data.ranking[1].label" (click)="filterRankwiseLeaderboard(response.data.ranking[1].label)">
                 <label class="mobile_am_tab" for="tab-2-mob">{{response.data.ranking[1].label}}</label>
             </div>
-            <div class="col-3 mobile_third_tab" *ngIf="spectator_dashoard_response[0]?.data?._personal_data?.game_level_flag=='1'||spectator_dashoard_response[0]?.data?._personal_data?.game_level_flag=='2'">
+            <div class="col-3 mobile_third_tab" *ngIf="spectator_dashoard_response[0]?.data?._personal_data?.game_level_flag=='4'||spectator_dashoard_response[0]?.data?._personal_data?.game_level_flag=='5'">
                 <input type="radio" id="tab-3-mob"  [checked]="checked3" value="response.data.ranking[2].label" (click)="filterRankwiseLeaderboard(response.data.ranking[2].label)">
                 <label class="mobile_rm_tab" for="tab-3-mob">{{response.data.ranking[2].label}}</label>
             </div>
-            <div class="col-3 mobile_fourth_tab" *ngIf="spectator_dashoard_response[0]?.data?._personal_data?.game_level_flag=='1'||spectator_dashoard_response[0]?.data?._personal_data?.game_level_flag=='2'">
+            <div class="col-3 mobile_fourth_tab" *ngIf="spectator_dashoard_response[0]?.data?._personal_data?.game_level_flag=='4'||spectator_dashoard_response[0]?.data?._personal_data?.game_level_flag=='5'">
                 <input type="radio" id="tab-4-mob" [checked]="checked4"  value="response.data.ranking[3].label" (click)="filterRankwiseLeaderboard(response.data.ranking[3].label)">
                 <label class="mobile_nsm_tab" for="tab-4-mob">{{response.data.ranking[3].label}}</label>
             </div>
