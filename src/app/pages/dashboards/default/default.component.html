@@ -1186,10 +1186,10 @@
                                                 <div *ngIf="!hideBattleGround then redirectm2ost else dontredirect">
                                                 </div>
                                                 <ng-template #redirectm2ost>
-
+                                                   
                                                     <div class="d-flex flex-column align-items-start gap-2  mt-2"
                                                         *ngIf="sectionView_1?._personal_data?.id_role==6">
-                                                        <div *ngIf="sectionView_1?._personal_data?.id_coroebus_game==241||sectionView_1?._personal_data?.id_coroebus_game==242;then comingSoonLearning else otherLearning"></div>
+                                                        <div *ngIf="sectionView_1?._personal_data?.id_coroebus_game!=183;then comingSoonLearning else otherLearning"></div>
                                                         <ng-template #comingSoonLearning>
                                                             <div class="comingSoonContainer">
                                                                 <div class="comingSoonForMyLearnings">
@@ -1215,9 +1215,18 @@
                                                         </ng-template>
                                                         
                                                     </div>
-
-
-                                                    <div class="d-flex flex-column align-items-start gap-2  mt-2"
+                                                    <div *ngIf="sectionView_1?._personal_data?.id_coroebus_game!=183&&sectionView_1?._personal_data?.id_role!=6;then comingSoonLearningOther else forGop"></div>
+                                                    <ng-template #comingSoonLearningOther>
+                                                        <div class="comingSoonContainer">
+                                                            <div class="comingSoonForMyLearnings">
+                                                            
+                                                                <img lazy="loading" src="assets/images/ComingSoonNewLearning.png" alt="" height="80%" width="80%" >
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </ng-template>
+                                                    <ng-template #forGop>
+                                                        <div class="d-flex flex-column align-items-start gap-2  mt-2"
                                                         *ngIf="sectionView_1?._personal_data?.id_role==3 ">
                                                         <div class="inner_content" (click)="navigateToM2ost('2273')">
                                                             Mental Wellbeing</div>
@@ -1244,10 +1253,12 @@
                                                         <div class="inner_content" (click)="navigateToM2ost('2296')">
                                                             Decision Making</div>
                                                     </div>
+                                                    </ng-template>
+                                                    
                                                 </ng-template>
 
                                                 <ng-template #dontredirect>
-                                                    <div *ngIf="sectionView_1?._personal_data?.id_coroebus_game==241||242;then comingSoonLearning else otherLearning"></div>
+                                                    <div *ngIf="sectionView_1?._personal_data?.id_coroebus_game!=183;then comingSoonLearning else otherLearning"></div>
                                                     <ng-template #comingSoonLearning>
                                                         <div class="comingSoonContainer">
                                                             <div class="comingSoonForMyLearnings">
@@ -2578,7 +2589,7 @@
                                         <div *ngIf="!hideBattleGround then redirectm2ost else dontredirect">
                                         </div>
                                         <ng-template #redirectm2ost>
-                                            <div *ngIf="sectionView_1?._personal_data?.id_coroebus_game==241||sectionView_1?._personal_data?.id_coroebus_game==242;then comingSoonLearningMobile else forOtherOrgLearning"></div>
+                                            <div *ngIf="sectionView_1?._personal_data?.id_coroebus_game!=183;then comingSoonLearningMobile else forOtherOrgLearning"></div>
                                             <ng-template #comingSoonLearningMobile>
                                                 <div class="comingSoonContainer">
                                                     <div class="comingSoonForMyLearnings">
@@ -2635,7 +2646,7 @@
                                         </ng-template>
 
                                         <ng-template #dontredirect>
-                                            <div *ngIf="sectionView_1?._personal_data?.id_coroebus_game==241||242;then comingSoonLearningMobile else forOtherOrgLearning"></div>
+                                            <div *ngIf="sectionView_1?._personal_data?.id_coroebus_game!=183;then comingSoonLearningMobile else forOtherOrgLearning"></div>
                                             <ng-template #comingSoonLearningMobile>
                                                 <div class="comingSoonForMyLearnings">
                                                     <img src="assets/images/ComingSoonNewLearning.png" alt="" height="100%" width="100%" >
