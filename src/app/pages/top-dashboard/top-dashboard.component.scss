@@ -3,16 +3,19 @@
     ::ng-deep {
         .page-content {
             padding-bottom: 0 !important;
+            background: var(--bhBackgroundImage) center/cover no-repeat !important;
+            background-size: 100% 100% !important;
         }
-
+      
         .modal-content {
             border-radius: 0 !important;
             background: #F7E2AC !important;
-            ;
+            
         }
         .mat-expansion-indicator{
             color: #000000 !important;
         }
+        
     }
 
 
@@ -493,3 +496,4 @@
         font-weight: 600;
     }
 }
+

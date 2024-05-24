@@ -111,6 +111,7 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
     map_url: ''
   },
   ]
+  bhBackgroundImage: string;
 
 
 
@@ -164,6 +165,7 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
       this.buisness_head_response_ = this.buisness_head_response?.data;
 
 
+
       if (this.buisness_head_response_?.is_about_game == 1) {
         this.about_game_pdf = this.buisness_head_response_?.about_game[0]?.file_name
 
@@ -177,8 +179,12 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
       this.GrowthIndexData = this.buisness_head_response?.data?._points
       this.dark_color = localStorage.getItem('topbar_color')
       this.element.nativeElement.style.setProperty('--myvar', `${this.dark_color}`)
-      this.fontcolor = '#FFFFFF'
+      this.fontcolor = '#FFFFFF';
+      this.bhBackgroundImage=this.buisness_head_response_?.theme_details[0]?.theme_background;
+      this.element.nativeElement.style.setProperty('--bhBackgroundImage', `${this.bhBackgroundImage}`)
+      console.log('bh_response',this.bhBackgroundImage);
       this.medium_color = localStorage.getItem('medium_color')
+      // document.body.classList.add('dashboard-bg-image');
       this.element.nativeElement.style.setProperty('--mediumColor', `${this.medium_color}`)
 
       this.videourl = `https://www.youtube.com/0c31548b-b457-4b9b-9159-ba7a08ee2d74`
