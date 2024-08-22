@@ -13,10 +13,10 @@ export class ApiserviceService {
 
   URLstring = environment.apiURL;
   open: any;
-  //  Path='coroebus-beta-api-levels';
+    // Path='coroebus-beta-api-levels';
     Path='coroebus-tgc-api-levels';
     // URL For Navigation
-//  mainUrl='http://coroebusbeta.in';
+// mainUrl='http://coroebusbeta.in';
     mainUrl='https://coroebus.in';
   // mainUrl='http://localhost:4201'
 

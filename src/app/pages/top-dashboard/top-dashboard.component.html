@@ -5,33 +5,12 @@
             <div style="max-height: 30vh;">
               
 
-                <ngx-tableau [tableauVizUrl]="dataMap"></ngx-tableau>
-                <!-- <ng-template #bi>
-                    <ngx-tableau 
-                    tableauVizUrl="{{dataMap}}"
-                    ></ngx-tableau>
-                </ng-template> -->
+                <ngx-tableau [tableauVizUrl]="dataMap" *ngIf="dataMap?.includes('https://public.tableau.com')"></ngx-tableau>
+                <iframe [src]="poweBiReport" frameborder="0" width="100%" height="760px" *ngIf="dataMap?.includes('https://app.powerbi.com')"></iframe>
 
             </div>
             <div class="d-flex align-items-end left_side_div">
-                <!-- <div class="button-container"
-                    [style.background-color]="buisness_head_response_.theme_details[0].light_color">
-                    <div class="button_div">
-                        <div class="col-12 d-flex" style="height: 15vh;margin-left: 1.5vw;">
-                            <div  *ngFor="let response of buisness_head_response_._business_score">
-                                <button class="bottom_button" (click)="navigateToIndexwiseDashboard()">
-                                    <div class="bottom_button_labels">{{response.point_label}}</div>
-                                    <div class="bottom_button_labels_score">{{response.weightage}}</div>
-                                </button>
-                            </div>
-                            
-                          
-                        </div>
-
-                    </div>
-
-
-                </div> -->
+                
             </div>
 
         </div>
@@ -80,19 +59,7 @@
                                                                     alt="" height="100%">
                                                             </div>
 
-                                                            <!-- <div *ngIf="buisness_head_response_._points[0].ranking_arrow=='red'"  style="height:2.5vh;">
-                            
-                                                                <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
-                                                                    height="100%">
-                            
-                                                            </div>
-                                                            <div *ngIf="buisness_head_response_._points[0].ranking_arrow=='yellow'"  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
-                            
-                                                              
-                                                               <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
-                            
-                                                            </div> -->
-
+                                                           
                                                         </div>
                                                     </div>
 
@@ -116,18 +83,7 @@
                                                                 alt="" height="100%">
                                                         </div>
 
-                                                        <!-- <div *ngIf="response.ranking_arrow=='red'"  style="height:2.5vh;">
-                        
-                                                            <img src="assets/images/BoosterAssests/DN-16687580461987.png" alt=""
-                                                                height="100%">
-                        
-                                                        </div>
-                                                        <div *ngIf="response.ranking_arrow=='yellow'"  style="height:2.5vh;width: 2.5vh;display:flex;justify-content:center;align-items: center;">
-                        
-                                                           
-                                                           <img src="assets/images/BoosterAssests/EQ-16687580462022.png" alt="" srcset="" height="60%" width="60%">
-                        
-                                                        </div> -->
+                                                        
 
                                                     </div>
                                                 </div>

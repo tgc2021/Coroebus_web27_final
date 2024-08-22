@@ -34,6 +34,7 @@
             <mat-tab label="Platform Rewards">
                 <div class="col-12 card_container" id="card-container">
                     <div class="col-3">
+                      
                         <div class=" cardWrapper" >
                             <div class="card-header" [style.background]="arrForCardColor[0]?.color">
                               <div class="rewardPoint" style="color:#fff;font-size:1.3em;font-weight:500">
@@ -47,14 +48,22 @@
                                         width="100%" height="100%" />
 
                                 </div>
+                                
                                 <div class="btn_div_redeem" *ngIf="hidedata">
-
-                                    <button *ngIf="reward?.data?.reward_redemption_day==0" class="redeem_btn" type="button" (click)="navigateToLogicalBaniya()">Redeem</button>
-                                    <button *ngIf="reward?.data?.reward_redemption_day!=0" class="redeem_btn" type="button" (click)="navigateToLogicalBaniya()" >Redeem</button>
+                                  <button 
+                                    class="redeem_btn" 
+                                    type="button" 
+                                    *ngIf="mergeObj?.id_coroebus_organization === '88' || mergeObj?.id_coroebus_organization === '108'">
+                                    Redeem
+                                  </button>  
+                                  <button 
+                                    class="redeem_btn" 
+                                    type="button" 
+                                    *ngIf="mergeObj?.id_coroebus_organization !== '88' && mergeObj?.id_coroebus_organization !== '108'" 
+                                    (click)="navigateToLogicalBaniya()">
+                                    Redeem
+                                  </button>
                                 </div>
-                               
-
-
                             </div>
                         </div>
                     </div>
@@ -371,10 +380,25 @@
                   <div class="product_title_mobile">
                     Platform Reward
                   </div>
-                  <div class="btn_div_redeem" *ngIf="hidedata">
+                  <!-- <div class="btn_div_redeem" *ngIf="hidedata">
 
                     <button *ngIf="reward?.data?.reward_redemption_day==0" class="redeem_btn" type="button" (click)="navigateToLogicalBaniya()">Redeem</button>
                     <button *ngIf="reward?.data?.reward_redemption_day!=0" class="redeem_btn" type="button" >Redeem</button>
+                </div> -->
+                <div class="btn_div_redeem" *ngIf="hidedata">
+                  <button 
+                    class="redeem_btn" 
+                    type="button" 
+                    *ngIf="mergeObj?.id_coroebus_organization === '88' || mergeObj?.id_coroebus_organization === '108'">
+                    Redeem
+                  </button>  
+                  <button 
+                    class="redeem_btn" 
+                    type="button" 
+                    *ngIf="mergeObj?.id_coroebus_organization !== '88' && mergeObj?.id_coroebus_organization !== '108'" 
+                    (click)="navigateToLogicalBaniya()">
+                    Redeem
+                  </button>
                 </div>
                   
                 </div>

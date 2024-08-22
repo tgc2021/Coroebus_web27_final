@@ -236,6 +236,7 @@
                     </div>
                     <div class="row web_spectator_leaderboard_section" *ngIf="spectSearList == null">
                         <div class="col-12 mt-1 web_leaderboard" >
+                          
                             <div *ngFor="let spectatorleaderboardreponse of spectator_user_list;  let i =index" >
                                 <mat-card class="web_spectator_leaderboard" 
                                     style="background: url({{spectatorleaderboardreponse?.ranking_image}}); background-size: 100% 100%;"

@@ -1,4 +1,4 @@
-//const api_path='/coroebus-beta-api-levels'
+// const api_path='/coroebus-beta-api-levels'
 const api_path='/coroebus-tgc-api-levels'
 export const apiMethodsList = {
     AUTHENTICATE: [

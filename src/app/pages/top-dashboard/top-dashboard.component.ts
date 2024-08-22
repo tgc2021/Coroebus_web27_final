@@ -48,7 +48,8 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
   userSelectionData: any
   isVideoHide: any;
   dataMap: any = ''
-  dataMapMobile: any = ''
+  dataMapMobile: any = '';
+  poweBiReport:any='';
   map: any
   bi: any
   mapUrl: any
@@ -211,6 +212,7 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
     }
     else {
       this.dataMap = localStorage.getItem('res');
+      this.poweBiReport=this.sanitizer.bypassSecurityTrustResourceUrl(localStorage.getItem('res'))
       this.dataMapMobile = localStorage.getItem('res');
 
     }
@@ -247,9 +249,11 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
    
 
     console.log(this.mapUrl);
-
-    this.location.replaceState("?map=" + this.mapUrl);
-    location.reload();
+    if(this.mapUrl){
+      this.location.replaceState("?map=" + this.mapUrl);
+      location.reload();
+    }
+   
 
 
 
@@ -266,9 +270,11 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
    
 
     console.log(this.mapUrl);
-
-    this.location.replaceState("?map=" + this.mapUrl);
-    location.reload();
+    if(this.mapUrl){
+      this.location.replaceState("?map=" + this.mapUrl);
+      location.reload();
+    }
+   
 
   }
   
@@ -283,10 +289,12 @@ export class TopDashboardComponent implements OnInit, AfterViewInit {
    
 
     console.log(this.mapUrl);
-
-    this.location.replaceState("?map=" + this.mapUrl);
-    location.reload();
-
+    if(this.mapUrl){
+      this.location.replaceState("?map=" + this.mapUrl);
+      location.reload();
+  
+    }
+   
   }
   navigateToGrowthIndexMapMobile(data){
     this.mapUrl = data?.map_url;

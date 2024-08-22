@@ -421,13 +421,8 @@ export class TopHierarchyDashboardsComponent implements OnInit {
               this.scrollTarget?.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end", inline: 'center' });
             }
           }
-
         });
-       
-
         if(this.id_role_check!=9){
-          
-          
           this.leaderboard_data=this.sectionView_3?._ranking_data[0]?._Overall;
           this.leaderboard_data_popup=this.sectionView_3?._ranking_data[0]?._Overall
           this.lengthLeaderBoardData=this.leaderboard_data?.length;
@@ -437,14 +432,10 @@ export class TopHierarchyDashboardsComponent implements OnInit {
           this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0]?.order;
         }
         else{
-         
-
           this.leaderboard_data=this.sectionView_3?._ranking_data[0]._data;
           this.leaderboard_data_popup=this.sectionView_3?._ranking_data[0]?._data
           this.lengthLeaderBoardData=this.leaderboard_data?.length;
-          
           this.leaderboard_data_buttons=this.sectionView_3?._ranking_data;
-          
           this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0].order;
         
         }
@@ -456,13 +447,10 @@ export class TopHierarchyDashboardsComponent implements OnInit {
         if(this.id_role_check!=9){
 
           this.sectionView_3 = res?.data
-          
+
           this.leaderboard_data=this.sectionView_3?._ranking_data[0]?._Overall;
           this.leaderboard_data_popup=this.sectionView_3?._ranking_data[0]?._Overall
-  
-    
-          this.leaderboard_data_buttons=this.sectionView_3?._ranking_data
-          
+          this.leaderboard_data_buttons=this.sectionView_3?._ranking_data;
           this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[0]?.order
         }
      else{
@@ -603,21 +591,24 @@ export class TopHierarchyDashboardsComponent implements OnInit {
   }
 
   navigateToSMDashboard(index:any){
+    console.log("Click to SM");
+    
 
     this.spectSearchStr=''
 
-    
+    setTimeout(()=>{
+      this.overallLeaderboard('')
+    },1200)
     this.spectator="spectator"
     
     this.sm_user_id=this.Util.encryptData(index.userid)
     // this.game_ID_sm=localStorage.getItem('gameId')
     this.sm_game_id=this.Util.encryptData(index.id_coroebus_game)
     this.sm_role_id=this.Util.encryptData(index.id_role)
-
+    
     // this.sm_role_id=this.Util.encryptData(this.sectionView_3._ranking_data[3]._data[index].id_role)
     this.overall_role_id=this.Util.decryptData(this.sm_role_id)
     
-
     if(this.overall_role_id==8 || this.overall_role_id==12){
       this.router.navigateByUrl('/top_dashboard?userID='+this.sm_user_id +"&gameID="+  this.sm_game_id +"&roleID="+  this.sm_role_id)
 
@@ -632,10 +623,10 @@ else{
   navigateToRMDashboard(index:any){
     
 
-    this.sm_user_id=this.Util.encryptData(index.userid)
+    this.sm_user_id=this.Util.encryptData(index.userid);
     // this.game_ID_sm=localStorage.getItem('gameId')
-    this.sm_game_id=this.Util.encryptData(index.id_coroebus_game)
-    this.sm_role_id=this.Util.encryptData(index.id_role)
+    this.sm_game_id=this.Util.encryptData(index.id_coroebus_game);
+    this.sm_role_id=this.Util.encryptData(index.id_role);
   
     // this.sm_role_id=this.Util.encryptData(this.sectionView_3._ranking_data[2]._data[index].id_role)
     this.overall_role_id=this.Util.decryptData(this.sm_role_id)
@@ -672,7 +663,6 @@ else{
 
     this.sm_user_id=this.Util.encryptData(this.spectSearFinalList1[index].userid)
     this.game_ID_rm=localStorage.getItem('gameId')
-
     this.sm_game_id=this.Util.encryptData(this.game_ID_rm)
     this.sm_role_id=this.Util.encryptData(this.spectSearFinalList1[index].id_role)
 
@@ -773,8 +763,9 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
   }
 
   leaderboard(event:any=0){
-  
-   this.spectSearchStr=null
+ 
+   this.spectSearchStr=null;
+
  
   this.activeTabOrderNumberForSectionView_2 = this.sectionView_3?._ranking_data?.[event].order
   this.leaderboard_data=this.sectionView_3?._ranking_data[ this.activeTabOrderNumberForSectionView_2-1]?._data;
@@ -785,10 +776,11 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
    if(this.sectionView_1._personal_data.id_role=='8'){
     if(this.subTabLeaderBoard=='_data'){
       this.leaderboard_data=this.sectionView_3?._ranking_data[ this.activeTabOrderNumberForSectionView_2-1]?._data;
-  
+      console.log(this.leaderboard_data);
      }
      else {
       this.leaderboard_data=this.sectionView_3?._ranking_data[ this.activeTabOrderNumberForSectionView_2-1]?._Overall;
+      console.log(this.leaderboard_data);
      }
    }
    
@@ -802,9 +794,10 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
   }
 
   myLeaderboard(subTab){
-
-   this.subTabLeaderBoard=subTab;
+    this.leaderboard_data=this.sectionView_3?._ranking_data[ this.activeTabOrderNumberForSectionView_2-1]?._data;
   
+   this.subTabLeaderBoard=subTab;
+    console.log(this.subTabLeaderBoard);
     this.leaderboard_data_popup=this.sectionView_3?._ranking_data[ this.activeTabOrderNumberForSectionView_2-1]?._data;
 
    
@@ -812,6 +805,9 @@ this.router.navigateByUrl('/dashboard?userID='+this.sm_user_id +"&gameID="+  thi
     this.subActiveClassOverall=false;
   }
   overallLeaderboard(subTab){
+    this.leaderboard_data=this.sectionView_3?._ranking_data[ this.activeTabOrderNumberForSectionView_2-1]?._Overall;
+   
+    console.log(subTab)
     this.subTabLeaderBoard=subTab;
     
     this.subActiveClass=false;

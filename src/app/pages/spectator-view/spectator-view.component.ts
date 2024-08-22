@@ -299,6 +299,7 @@ export class SpectatorViewComponent implements OnInit {
         this.spectator_ranking_leaderboard = this.spectator_dashoard_response[0].data.ranking
 
         this.spectator_data = this.spectator_dashoard_response[0].data.ranking;
+        
 
         if (this.order == 1 || this.order == null) {
           if (this.spectator_data[0].user_list != '') {
@@ -349,6 +350,7 @@ export class SpectatorViewComponent implements OnInit {
         else if (this.order == 2) {
           if (this.spectator_data[1].user_list != '') {
             this.spectator_user_list = this.spectator_data[1]?.user_list;
+            console.log(this.spectator_user_list);
             this.checked1 = false;
             this.checked2 = true;
             this.checked3 = false;
@@ -1949,7 +1951,7 @@ export class SpectatorViewComponent implements OnInit {
 
   filterRankwiseLeaderboard(category: any) {
     //  debugger
-
+    console.log(category);
 
     this.spectSearchStr = null
     this.spectSearList = null
@@ -1971,6 +1973,7 @@ export class SpectatorViewComponent implements OnInit {
         }
         this.http.spectator_dashboard(body).subscribe((res) => {
 
+
           this.spectator_dashoard_response = res;
 
           this.spectator_dashoard_response = Array.of(this.spectator_dashoard_response);
@@ -1978,9 +1981,9 @@ export class SpectatorViewComponent implements OnInit {
 
 
           this.spectator_ranking_leaderboard = this.spectator_dashoard_response[0].data.ranking
-
+         
           this.spectator_data = this.spectator_dashoard_response[0].data.ranking;
-
+          console.log(this.spectator_data);
 
 
 
@@ -2124,7 +2127,7 @@ export class SpectatorViewComponent implements OnInit {
 
           this.spectator_data = this.spectator_dashoard_response[0].data.ranking;
 
-
+          
 
 
           this.spectator_data_1 = this.spectator_data.filter((a: any) => {
@@ -2256,6 +2259,72 @@ export class SpectatorViewComponent implements OnInit {
 
 
   }
+  // filterRankwiseLeaderboard(category: any) {
+  //   console.log(category);
+  
+  //   this.spectSearchStr = null;
+  //   this.spectSearList = null;
+  //   this.checked = !this.checked;
+  //   this.pageNumberForSectionView_3 = 1;
+  
+  //   const handleResponse = (res) => {
+  //     this.spectator_dashoard_response = Array.of(res);
+  //     this.spectator_ranking_leaderboard = res.data.ranking;
+  //     this.spectator_data = res.data.ranking;
+  
+  //     this.spectator_data_1 = this.spectator_data.filter((a: any) => {
+  //       if (a.label === category) {
+  //         this.order = a.order;
+  //         this.checked1 = this.order === 1 || this.order == null;
+  //         this.checked2 = this.order === 2;
+  //         this.checked3 = this.order === 3;
+  //         this.checked4 = this.order === 4;
+  //         this.checked = false;
+  
+  //         if (a.user_list !== '') {
+  //           this.spectator_user_list = a.user_list;
+  //           this.tile_bg_img = [];
+  
+  //           this.spectator_user_list.forEach((res) => {
+  //             this.tileimages = res.id_ranking_image;
+  //             this.back_images = this.spectator_dashoard_response[0].data._back_images[1]._data;
+  
+  //             this.back_images.forEach((res) => {
+  //               if (this.tileimages === res.ranking_image_level) {
+  //                 this.tile_bg_img.push({ bgImg: res.ranking_image });
+  //               }
+  //             });
+  //           });
+  
+  //           return a;
+  //         } else {
+  //           this.userObj.games.length > 0 ? this.getSpectatorViewWebService('viewmore') : this.getSpectatorViewMore2('viewmore');
+  //         }
+  //       }
+  //     });
+  //   };
+  
+  //   const fetchData = (gameId) => {
+  //     const body = {
+  //       _userid: this.mergeObj.USERID,
+  //       _game: gameId,
+  //       id_theme: this.userObj.themes[0].id_coroebus_theme,
+  //       page_number: this.pageNumberForSectionView_3,
+  //       device_type: "W",
+  //       id_coroebus_group: this.selected ?? this.spectator_group_list[0].data[0].id_coroebus_group,
+  //     };
+  
+  //     this.http.spectator_dashboard(body).subscribe(handleResponse);
+  //   };
+  
+  //   if (this.checked) {
+  //     const gameId = this.userObj.games.length > 0 ? this.selected_gameID?.game?.id_coroebus_game : this.userSelectionData.id_coroebus_game;
+  //     fetchData(gameId);
+  //   } else {
+  //     this.spectator_data = this.spectator_ranking_leaderboard.filter((a: any) => a);
+  //   }
+  // }
+  
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {

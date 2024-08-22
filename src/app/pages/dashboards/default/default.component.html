@@ -719,6 +719,7 @@
                         'dashboard-center-table-shrink': !isdefaultView
 
                         }"
+                         
                         [style.height.vh]="!isdefaultView && sectionView_1?._personal_data.id_role=='6'?'49vh':''"
                         >
                         <!-- {{spectSearList | json}} -->
@@ -726,7 +727,7 @@
                         <div class="row row-cols-2 dashboard-rank-row ms-1 mb-2"
                        
                             [style.border-color]="sectionView_1?.theme_details?.[0]?.medium_color"
-                            *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger) ? spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) "
+                            *ngFor="let item of ((spectSearchStr && spectSearchStrTrigger)?spectSearList?.[0]?._data :  (activeSubTabForSectionView_2 === 'My Store' ? sectionView_3_list?.[0]?._data : sectionView_3_list?.[0]?._Overall)) "
                             style="cursor: pointer;" [style.background-image]="'url('+item?.ranking_image_web +')'">
                             <div class="col">
                                 <div class="media d-flex align-items-center gap-3" style="height: 7vh;">

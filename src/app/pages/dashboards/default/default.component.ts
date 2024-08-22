@@ -714,7 +714,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
             this.sectionView_2?._ranking_data?.filter(
               (data) => data?.order === this.activeTabForSectionView_2
             );
-  
+          console.log(this.rankingDataFirstRowForSectionView_2);
           this.firstrowbackimage =
             this.rankingDataFirstRowForSectionView_2[0]?._data[0]?.ranking_image_level;
   
@@ -1124,7 +1124,8 @@ if (this.levelwise== 3) {
         this.sectionView_1?.theme_details?.[0]?.point_dist_background
       );
 
-      this.pokeAnimationData = this.sectionView_1._poked_data;
+      this.pokeAnimationData = this.sectionView_1?._poked_data;
+      console.log('pokeAnimationData',this.pokeAnimationData);
 
       this.dark_color = this.sectionView_1?.theme_details?.[0]?.dark_color;
       this.elementref.nativeElement.style.setProperty(
@@ -1613,7 +1614,7 @@ if (this.levelwise== 3) {
   updatedPoke() {
   
 
-    if (this.pokeAnimationData.length > 0) {
+    if (this.pokeAnimationData?.length > 0) {
       let i = 0;
 
       const intervalId = setInterval(() => {
@@ -1624,11 +1625,11 @@ if (this.levelwise== 3) {
           this.pokeslidedata.pop();
         
         }, 5000); // Remove the last element after 5 seconds'
-        this.updatePokeData(this.pokeAnimationData[i].poke_id_log);
+        this.updatePokeData(this.pokeAnimationData[i]?.poke_id_log);
 
         i++;
 
-        if (i === this.pokeAnimationData.length) {
+        if (i === this.pokeAnimationData?.length) {
           clearInterval(intervalId);
          
           // this.pokeAnimationData=[]
@@ -2467,31 +2468,26 @@ if (this.levelwise== 3) {
     
   }
   navigateToOtherRole(item) {
-   
-    
     this.spectSearchStr = "";
     this.activeSubTabForSectionView_2 = "Overall";
     this.activeSubTabForSectionView_2_index = "Overall";
+    console.log("NavigateTOOtherRole");
 
     this.userID = this.Util.encryptData(item?.userid);
     this.gameID = this.Util.encryptData(item?.id_coroebus_game);
     this.roleID = this.Util.encryptData(item?.id_role);
     this.groupID = this.Util.encryptData(item?.id_coroebus_group);
+
+ 
+
     this._router.navigateByUrl(
-      "/dashboard?userID=" +
-        this.userID +
-        "&gameID=" +
-        this.gameID +
-        "&roleID=" +
-        this.roleID+
-        "&groupID="+
-        this.groupID
-        
+        `/dashboard?userID=${this.userID}&gameID=${this.gameID}&roleID=${this.roleID}&groupID=${this.groupID}`
     );
+
     this.activeSubTabForSectionView_2_index = "Overall";
     this.isLevel3Active = false;
-    
-  }
+}
+
 
 
  

@@ -246,9 +246,10 @@
     }
     .map-view {
         // background: url(../../../assets/images/TopHierarchyDashboard/ancient_map_color.png);
-        width: 77vw;
+        width: 100vw;
         // height: 32vh;
         background-size: 100% 100%;
+        background-color: #000000;
     }
 
     ::ng-deep {
