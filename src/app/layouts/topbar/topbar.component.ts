@@ -34,13 +34,15 @@ export class TopbarComponent implements OnInit, OnDestroy {
   buisness_head_response: any;
   buisness_head_response_: any;
   pageInfo: any;
+  kpiData: any;
+  labelArray: any = [];
   constructor(public http: ApiserviceService, @Inject(DOCUMENT) private document: any, private router: Router,
     public languageService: LanguageService,
     public translate: TranslateService,
     private readonly store: Store,
     private eventService: EventService,
     private _route: ActivatedRoute,
-    ) {
+  ) {
   }
 
 
@@ -59,30 +61,32 @@ export class TopbarComponent implements OnInit, OnDestroy {
   headerInfo: any
   _routeSub: Subscription
   queryParams: any
-  id_role:any
-  top_toolbar_logo:any
-  topbar_color:any
-  Org_logo:any
-  isinM2ostPlatform:boolean=true;
+  id_role: any
+  top_toolbar_logo: any
+  topbar_color: any
+  Org_logo: any
+  seasonalData: any
+  isinM2ostPlatform: boolean = true;
   ngOnInit() {
     this.pageInfo = localStorage.getItem('page');
     console.log(this.pageInfo);
 
-    if (this.pageInfo==="undefined") {
-    console.log(true);
-     
-     this.isinM2ostPlatform=true;
+
+    if (this.pageInfo === "undefined") {
+      console.log(true);
+
+      this.isinM2ostPlatform = true;
     } else {
       console.log(false);
       console.log('pageInfo is undefined. Not reloading the page.');
-      this.isinM2ostPlatform=false;
+      this.isinM2ostPlatform = false;
     }
-  
-  
-    this.topbar_color= localStorage.getItem('topbar_color')
+
+
+    this.topbar_color = localStorage.getItem('topbar_color')
     // console.log(this.topbar_color);
-    
-    this.top_toolbar_logo= localStorage.getItem('theme_logo')
+
+    this.top_toolbar_logo = localStorage.getItem('theme_logo')
     this.openMobileMenu = false;
     this.element = document.documentElement;
     this.combineLatest = combineLatest([
@@ -94,34 +98,37 @@ export class TopbarComponent implements OnInit, OnDestroy {
       this.userSelectionData = { ...login?.user, ...theme?.theme, ...game?.game }
       this.notificationStatus()
       this.handlePolling()
+      this.getPointDist()
+      this.GetDataFromProduceInfo()
+
     })
-    // console.log(this.userSelectionData);
-    
-    this.id_role=this.userSelectionData._personal_data.id_role
+    console.log(this.userSelectionData);
+
+    this.id_role = this.userSelectionData._personal_data.id_role
     // console.log(this.id_role);
-    if(this.id_role== 13){
-      let bodyforBH={
-    
+    if (this.id_role == 13) {
+      let bodyforBH = {
+
         '_userid': this.userSelectionData?._personal_data?.USERID,
         '_org': this.userSelectionData?._personal_data?.id_coroebus_organization
-  
-        }
-        // console.log(bodyforBH);
-        
-        this.http.buisnessHead(bodyforBH).subscribe(res=>{
-          // console.log(res);
-          this.buisness_head_response=res
-        this.buisness_head_response_=this.buisness_head_response.data
-        // console.log(this.buisness_head_response_);
-        localStorage.setItem('bhresponse',this.buisness_head_response_._personal_data.organization_logo)
-          this.Org_logo=localStorage.getItem('bhresponse')
-        })
+
+      }
+      // console.log(bodyforBH);
+
+      this.http.buisnessHead(bodyforBH).subscribe(res => {
+        // console.log(res);
+        this.buisness_head_response = res
+        this.buisness_head_response_ = this.buisness_head_response.data
+        console.log(this.buisness_head_response_);
+        localStorage.setItem('bhresponse', this.buisness_head_response_._personal_data.organization_logo)
+        this.Org_logo = localStorage.getItem('bhresponse')
+      })
     }
-    
+
 
     this.passDataToHeaderSub?.unsubscribe()
     this.passDataToHeaderSub = this.eventService.subscribe('passDataToHeader', (data) => {
-      
+
       this.headerInfo = data
     })
     if (this.userSelectionData?.otherInfo) {
@@ -132,49 +139,61 @@ export class TopbarComponent implements OnInit, OnDestroy {
       // console.log(queryParams)
     })
 
-   
+
   }
 
- 
-    
-  RedirectionToHome(){
+
+
+  RedirectionToHome() {
     // console.log(this.id_role);
-    
-    if(this.id_role==13){
+
+    if (this.id_role == 13) {
       this.router.navigateByUrl('topdashboard')
     }
-    else if(this.id_role == 8 ){
+    else if (this.id_role == 8) {
       // console.log('back');
-      
+
       this.router.navigateByUrl('top_dashboard')
-      
+
 
     }
-    else if(this.id_role == 7){
+    else if (this.id_role == 7) {
       this.router.navigateByUrl('/spectator/spectatorView')
     }
-    else if(this.id_role == 9 ||this.id_role=='9'){
+    else if (this.id_role == 9 || this.id_role == '9') {
       this.router.navigateByUrl('/top_dashboard')
-      setTimeout(()=>{
+      setTimeout(() => {
         window.location.reload();
-      },2000)
-      
+      }, 2000)
+
 
     }
-    else if(this.id_role == 6||this.id_role == 4 || this.id_role == 3 || this.id_role == 10){
-      if(this.isinM2ostPlatform){
+    else if (this.id_role == 6 || this.id_role == 4 || this.id_role == 3 || this.id_role == 10) {
+      if (this.isinM2ostPlatform) {
         this.router.navigateByUrl('account/interactive-dashboard');
       }
       else {
         window.open('https://www.m2ost.in/M2OST_Console_PriME/Dashboard/Index');
       }
-     
+    }
+  }
+
+  RedirectionChatBot() {
+  
+    if (this.id_role == 13) {
+      // console.log(`http://13.232.97.76:8000/assistant?business_id_coroebus_measurement_First=${this.buisness_head_response_?._business_score[0]?.id_coroebus_measurement}&business_id_coroebus_measurement_Second=${this.buisness_head_response_?._business_score[1]?.id_coroebus_measurement}&business_id_coroebus_measurement_Third=${this.buisness_head_response_?._business_score[2]?.id_coroebus_measurement}&business_id_coroebus_measurement_Forth=${this.buisness_head_response_?._business_score[3]?.id_coroebus_measurement}&business_id_coroebus_measurement_Fifth=${this.buisness_head_response_?._business_score[4]?.id_coroebus_measurement}&governance_id_coroebus_measurement_First=${this.buisness_head_response_?._governance_score[1]?.id_coroebus_measurement}&governance_id_coroebus_measurement_Second=${this.buisness_head_response_?._governance_score[2]?.id_coroebus_measurement}&governance_id_coroebus_measurement_Third=${this.buisness_head_response_?._governance_score[3]?.id_coroebus_measurement}&governance_id_coroebus_measurement_Forth=${this.buisness_head_response_?._governance_score[4]?.id_coroebus_measurement}&rankingtable_name_First=${this.buisness_head_response_?._ranking_data[0]?._data[0]?.rankingtable_name}&rankingtable_name_Second=${this.buisness_head_response_?._ranking_data[0]?._data[1]?.rankingtable_name}&rankingtable_name_Third=${this.buisness_head_response_?._ranking_data[0]?._data[2]?.rankingtable_name}&rankingtable_name_Forth=${this.buisness_head_response_?._ranking_data[0]?._data[3]?.rankingtable_name}&rankingtable_name_Fifth=${this.buisness_head_response_?._ranking_data[0]?._data[4]?.rankingtable_name}&id_ref_measurement_First=${this.buisness_head_response_?._kpi_score[0]?.id_ref_measurement}&id_ref_measurement_Second=${this.buisness_head_response_?._kpi_score[1]?.id_ref_measurement}&id_ref_measurement_Third=${this.buisness_head_response_?._kpi_score[2]?.id_ref_measurement}&id_ref_measurement_Forth=${this.buisness_head_response_?._kpi_score[3]?.id_ref_measurement}`);
+      window.open(`http://13.232.97.76:8000/assistant?id_coroebus_user=${this.userSelectionData?._personal_data?.id_coroebus_user}&userId=${this.userSelectionData?._personal_data?.USERID}&id_coroebus_game=${this.buisness_head_response_?.about_game[0]?.id_coroebus_game}&id_coroebus_organization=${this.userSelectionData?._personal_data?.id_coroebus_organization}&id_role=${this.userSelectionData?._personal_data?.id_role}&business_id_coroebus_measurement_First=${this.buisness_head_response_?._business_score[0]?.id_coroebus_measurement}&business_id_coroebus_measurement_Second=${this.buisness_head_response_?._business_score[1]?.id_coroebus_measurement}&business_id_coroebus_measurement_Third=${this.buisness_head_response_?._business_score[2]?.id_coroebus_measurement}&business_id_coroebus_measurement_Forth=${this.buisness_head_response_?._business_score[3]?.id_coroebus_measurement}&business_id_coroebus_measurement_Fifth=${this.buisness_head_response_?._business_score[4]?.id_coroebus_measurement}&governance_id_coroebus_measurement_First=${this.buisness_head_response_?._governance_score[1]?.id_coroebus_measurement}&governance_id_coroebus_measurement_Second=${this.buisness_head_response_?._governance_score[2]?.id_coroebus_measurement}&governance_id_coroebus_measurement_Third=${this.buisness_head_response_?._governance_score[3]?.id_coroebus_measurement}&governance_id_coroebus_measurement_Forth=${this.buisness_head_response_?._governance_score[4]?.id_coroebus_measurement}&rankingtable_name_First=${this.buisness_head_response_?._ranking_data[0]?._data[0]?.rankingtable_name}&rankingtable_name_Second=${this.buisness_head_response_?._ranking_data[0]?._data[1]?.rankingtable_name}&rankingtable_name_Third=${this.buisness_head_response_?._ranking_data[0]?._data[2]?.rankingtable_name}&rankingtable_name_Forth=${this.buisness_head_response_?._ranking_data[0]?._data[3]?.rankingtable_name}&rankingtable_name_Fifth=${this.buisness_head_response_?._ranking_data[0]?._data[4]?.rankingtable_name}&id_coroebus_user_First=${this.buisness_head_response_?._ranking_data[0]?._data[0]?.id_coroebus_user}&id_coroebus_user_Second=${this.buisness_head_response_?._ranking_data[0]?._data[1]?.id_coroebus_user}&id_coroebus_user_Third=${this.buisness_head_response_?._ranking_data[0]?._data[2]?.id_coroebus_user}&id_coroebus_user_Forth=${this.buisness_head_response_?._ranking_data[0]?._data[3]?.id_coroebus_user}&id_coroebus_user_Fifth=${this.buisness_head_response_?._ranking_data[0]?._data[4]?.id_coroebus_user}&id_ref_measurement_First=${this.buisness_head_response_?._kpi_score[0]?.id_ref_measurement}&id_ref_measurement_Second=${this.buisness_head_response_?._kpi_score[1]?.id_ref_measurement}&id_ref_measurement_Third=${this.buisness_head_response_?._kpi_score[2]?.id_ref_measurement}&id_ref_measurement_Forth=${this.buisness_head_response_?._kpi_score[3]?.id_ref_measurement}`, '_blank');
+    } else {
+      this.labelArray = Object.entries(this.kpiData?.data?._point_details).map(
+        ([label, otherKpiData]) => {
+          return { label, Kpidata: otherKpiData };
+        }
+      );
+      window.open(`http://13.232.97.76:8000/assistant?id_coroebus_user=${this.userSelectionData?._personal_data?.id_coroebus_user}&userId=${this.userSelectionData?._personal_data?.USERID}&id_coroebus_game=${this.userSelectionData?._personal_data?.id_coroebus_game}&id_coroebus_theme=${this.userSelectionData?._personal_data?.id_coroebus_theme}&id_role=${this.userSelectionData?._personal_data?.id_role}&daily_id_seasonal_theme=${this.seasonalData?.data?.seasonal_theme_daily[0]?.id_seasonal_theme}&daily_valid_till_date=${this.seasonalData?.data?.seasonal_theme_daily[0]?.valid_till_date}&daily_seasonal_theme_title=${this.seasonalData?.data?.seasonal_theme_daily[0]?.seasonal_theme_title}&weekly_id_seasonal_theme=${this.seasonalData?.data?.seasonal_theme_weekly[0]?.id_seasonal_theme}&weekly_valid_till_date=${this.seasonalData?.data?.seasonal_theme_weekly[0]?.valid_till_date}&weekly_seasonal_theme_title=${this.seasonalData?.data?.seasonal_theme_weekly[0]?.seasonal_theme_title}&monthly_id_seasonal_theme=${this.seasonalData?.data?.seasonal_theme_monthly[0]?.id_seasonal_theme}&monthly_valid_till_date=${this.seasonalData?.data?.seasonal_theme_monthly[0]?.valid_till_date}&monthly_seasonal_theme_title=${this.seasonalData?.data?.seasonal_theme_monthly[0]?.seasonal_theme_title}&id_coroebus_kpiFirst=${this.labelArray[0]?.Kpidata?.data[0]?.id_coroebus_kpi}&id_coroebus_kpiSecond=${this.labelArray[1]?.Kpidata?.data[0]?.id_coroebus_kpi}&id_coroebus_kpiThird=${this.labelArray[2]?.Kpidata?.data[0]?.id_coroebus_kpi}&id_coroebus_kpiFourth=${this.labelArray[3]?.Kpidata?.data[0]?.id_coroebus_kpi}`, '_blank');
 
     }
-
-
   }
-  
+
   /**
    * Toggle the menu bar when having mobile screen
    */
@@ -210,14 +229,52 @@ export class TopbarComponent implements OnInit, OnDestroy {
     this.pollingNotificationSubscription?.unsubscribe()
     this.pollingNotificationSubscription = interval(30000).pipe(
       switchMap(() => this.notificationStatus()),
-      map(res => {})
+      map(res => { })
     ).subscribe(res => { }, err => { })
   }
 
-  closeMenuTop(){
+  closeMenuTop() {
     this.closemenu.emit();
-// console.log("hello");
+    // console.log("hello");
 
-    
+
   }
+
+
+  async GetDataFromProduceInfo(queryParams?: any) {
+    try {
+      const obj = {
+        _userid: queryParams?.userID || this.userSelectionData?._personal_data?.USERID,
+        _game: queryParams?.gameID || this.userSelectionData?.id_coroebus_game,
+
+      };
+      const res = await this.http.produceInfo(obj).toPromise();
+      this.seasonalData = res;
+      console.log(this.seasonalData);
+
+    } catch (error) {
+      console.error('An error occurred:', error);
+      // Handle error here
+    }
+  }
+
+  async getPointDist() {
+    let body = {
+      _game: this.userSelectionData?.id_coroebus_game,
+      id_role: this.userSelectionData?._personal_data?.id_role,
+      id_coroebus_group: this.userSelectionData?.games[0]?.id_coroebus_group
+    };
+    console.log(body);
+
+    try {
+      const res = await this.http.pointDistributionPopup(body).toPromise();
+      this.kpiData = res;
+      console.log(this.kpiData);
+
+    } catch (error) {
+      console.error('An error occurred:', error);
+      // Handle error here
+    }
+  }
+
 }

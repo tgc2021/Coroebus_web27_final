@@ -32,23 +32,23 @@
         <mat-tab-group  mat-align-tabs="start" style="position: relative;" *ngFor="let reward of rewardresponse" [selectedIndex]="selectedIndex">
           
             <mat-tab label="Platform Rewards">
-                <div class="col-12 card_container" id="card-container">
-                    <div class="col-3">
+                <div class="col-12  d-flex justify-content-center align-items-center" style="height: 62vh;">
+                  <div style="height: 50vh">
+                    <img src="assets/images/NewRewardAssets/excitingRewardsComingSoon.png" height="100%" width="100%" alt="" srcset="">
+                  </div>
+                    <!-- <div class="col-3">
                       
-                        <div class=" cardWrapper" >
+                         <div class=" cardWrapper" >
                             <div class="card-header" [style.background]="arrForCardColor[0]?.color">
                               <div class="rewardPoint" style="color:#fff;font-size:1.3em;font-weight:500">
                                 Platform Reward
                             </div>
                             </div>
                             <div class="card-body" [style.background]="arrForCardColor[0]?.color">
-                             
                                 <div class="product_image_div">
                                     <img class="platform_image" src="assets/images/rewards/Platform_reward.jpg"
                                         width="100%" height="100%" />
-
                                 </div>
-                                
                                 <div class="btn_div_redeem" *ngIf="hidedata">
                                   <button 
                                     class="redeem_btn" 
@@ -65,8 +65,8 @@
                                   </button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div> 
+                    </div> -->
 
                 </div>
             </mat-tab>
@@ -365,7 +365,12 @@
         <mat-tab-group  mat-align-tabs="start" style="position:relative;" *ngFor="let reward of rewardresponse" [selectedIndex]="selectedIndex">
             
             <mat-tab label="Platform Rewards">
-              <div class="cardWrap" >
+              <div class="col-12  d-flex justify-content-center align-items-center" style="height: 62vh;">
+                <div style="height: 50vh">
+                  <img src="assets/images/NewRewardAssets/excitingRewardsComingSoon.png" height="100%" width="100%" alt="" srcset="">
+                </div>
+                </div>
+              <!-- <div class="cardWrap" >
                 <div class="card cardLeft" [style.background]="arrForCardColor[0]?.color">
                   <div class="product_image_div_mobile">
                     <img class="platform_image" src="assets/images/rewards/Platform_reward.jpg"
@@ -380,11 +385,6 @@
                   <div class="product_title_mobile">
                     Platform Reward
                   </div>
-                  <!-- <div class="btn_div_redeem" *ngIf="hidedata">
-
-                    <button *ngIf="reward?.data?.reward_redemption_day==0" class="redeem_btn" type="button" (click)="navigateToLogicalBaniya()">Redeem</button>
-                    <button *ngIf="reward?.data?.reward_redemption_day!=0" class="redeem_btn" type="button" >Redeem</button>
-                </div> -->
                 <div class="btn_div_redeem" *ngIf="hidedata">
                   <button 
                     class="redeem_btn" 
@@ -403,7 +403,7 @@
                   
                 </div>
               
-              </div>
+              </div> -->
                
             </mat-tab>
             <mat-tab label="Organization Rewards">

@@ -48,17 +48,17 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     pullDrag: false,
     startPosition: 0,
     // autoHeight:true,
-    mergeFit:true,
-    items:3,
-    margin:5,
-    autoplay:true,
+    mergeFit: true,
+    items: 3,
+    margin: 5,
+    autoplay: true,
     dots: true,
     navSpeed: 1000,
     autoplayTimeout: 1000,
     navText: ['', ''],
-   
-    
-  
+
+
+
     nav: false
   }
 
@@ -70,17 +70,17 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     pullDrag: false,
     startPosition: 0,
     // autoHeight:true,
-    mergeFit:true,
-    items:1,
-    margin:5,
-    autoplay:true,
+    mergeFit: true,
+    items: 1,
+    margin: 5,
+    autoplay: true,
     dots: true,
     autoplayTimeout: 1000,
     navSpeed: 1000,
     navText: ['', ''],
-   
-    
-  
+
+
+
     nav: false
   }
 
@@ -96,11 +96,11 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   additionOfBadgesScore: number;
   hideTab: boolean = true;
   titleTab: any;
-  titleTabSecond:any;
+  titleTabSecond: any;
   my_rank: any;
-  levelwise:any;
+  levelwise: any;
   sectionView_2_Indexwise: any;
-  monthlyCampaign:boolean;
+  monthlyCampaign: boolean;
   labelNameMyIndex: any;
   activeTabForSectionView_2_index: any;
   sectionView_3_index: any;
@@ -131,7 +131,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   themeId: any;
   id_role: any;
   levelIdRole: any;
-  isLevel3Active: boolean=false;
+  isLevel3Active: boolean = false;
   newKpiName: any;
   fullFormKpiName: any;
   newKpiNamefirst: any;
@@ -143,16 +143,16 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   newKpiNameFourth: any;
   fullFormKpiNameFourth: string;
   endRangeForFirst: any;
-  endRange: boolean=false;
+  endRange: boolean = false;
   endRangeForSecond: any;
-  endRangeSecond: boolean=false;
+  endRangeSecond: boolean = false;
   endRangeForThird: any;
-  endRangeThird: boolean=false;
+  endRangeThird: boolean = false;
   endRangeForFourth: any;
-  endRangeFourth: boolean=false;
+  endRangeFourth: boolean = false;
   hideBtn: boolean;
-  hideBtnLevelWise: boolean=true;
-  isLandLogos: any=[];
+  hideBtnLevelWise: boolean = true;
+  isLandLogos: any = [];
   labelThird: any;
   labelFourth: any;
   labelSecond: any;
@@ -167,7 +167,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   ZoneRankTL: any;
   pageInfo: string;
   link: Promise<boolean>;
-  id_coroebus_group: any;gm
+  id_coroebus_group: any; gm
   useridSenior: any;
   skillMuniCharacterRank: any;
   orgRewards: any;
@@ -229,8 +229,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   _routeSub: Subscription;
   queryParams: any;
   requestForProduce1Data: Subscription;
-  hierarchyPopupList: any=[];
-  hierachyPopUpArray:any;
+  hierarchyPopupList: any = [];
+  hierachyPopUpArray: any;
   pokeErr: any;
   clicked = 0;
   // declare by shubham
@@ -316,7 +316,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   trues: any = [];
   MyZoneRank: any;
   badgePercentage: number;
-  
+
   // seasonal_theme_monthly_badge_details: any;
   empid: any;
   empemail: any;
@@ -361,7 +361,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     },
   ];
 
-  activeButton: string = "achievement"; 
+  activeButton: string = "achievement";
   isAchievementActive: boolean = true;
   isQualifierActive: boolean = false;
 
@@ -381,7 +381,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
   showButton = false;
   activeclass = false;
- 
+
 
   constructor(
     private readonly store: Store,
@@ -399,45 +399,45 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     this.activeSubTabForSectionView_2 = "Overall";
 
     this.Edit_image();
-    
+
   }
-  isdefaultView=true;
+  isdefaultView = true;
   // ngOnChanges(){
   //   this.Edit_image()
   // }
-  openFullView(){
+  openFullView() {
     console.log("Click");
-    this.isdefaultView=!this.isdefaultView;
+    this.isdefaultView = !this.isdefaultView;
   }
   ngOnInit() {
-   
+
     this.pageInfo = localStorage.getItem('page');
- 
-    if(this.pageInfo!="undefined"){
-      setTimeout(()=>{
-        if (!localStorage.getItem('foo')) { 
-          localStorage.setItem('foo', 'no reload') 
-          location.reload() 
+
+    if (this.pageInfo != "undefined") {
+      setTimeout(() => {
+        if (!localStorage.getItem('foo')) {
+          localStorage.setItem('foo', 'no reload')
+          location.reload()
         } else {
-          localStorage.removeItem('foo') 
+          localStorage.removeItem('foo')
         }
-      },2000)
-      
+      }, 2000)
+
     }
 
-  
+
 
     this.daily_text = localStorage.getItem("daily_text");
     this.weekly_text = localStorage.getItem("weekly_text");
     this.monthly_text = localStorage.getItem("monthly_text");
 
-  
+
     this.medium_color = localStorage.getItem("medium_color");
     this.elementref.nativeElement.style.setProperty(
       "--mediumColor",
       `${this.medium_color}`
     );
-  
+
     this.tl_team_rank = localStorage.getItem("tl_rank");
     // if (!localStorage.getItem('foo')) {
     //   localStorage.setItem('foo', 'no reload')
@@ -460,13 +460,13 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
         ...theme?.theme,
         ...game?.game,
       };
-   
+
 
       this.themeId = this.userSelectionData?.id_coroebus_theme;
-      this.levelIdRole=this.userSelectionData?._personal_data?.id_role;
-     
-     
-      
+      this.levelIdRole = this.userSelectionData?._personal_data?.id_role;
+
+
+
 
       // this.GetDataFromProduceInfo();
       this._routeSub?.unsubscribe();
@@ -491,8 +491,8 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
               roleID: this.Util.decryptData(replacedRoleId),
               // groupID: this.Util.decryptData(replacedGroupId),
             };
-           
-            
+
+
           } else {
             queryParams = {
               userID: this.Util.decryptData(queryParams?.userID),
@@ -507,7 +507,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
           this.getUserBannerDataSectionView_2(queryParams);
           this.getUserBannerDataSectionView_3(null, queryParams);
           this.overallPopup('');
-          
+
           this.GetRankingPopupData("", "");
           this.GetDataFromProduceInfo(queryParams);
           // this.navigateToStatistics(queryParams)
@@ -525,15 +525,15 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
           this.GetRankingPopupData("", "");
 
           // this.navigateToStatistics()
-   
+
 
           this.notificationList();
           this.addIns();
         }
-        
+
       });
     });
-    
+
     this.callSectionView_1APISub?.unsubscribe();
     this.callSectionView_1APISub = this.eventService.subscribe(
       "callSectionView_1API",
@@ -550,7 +550,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     );
     this.requestForProduce1Data?.unsubscribe();
-   
+
     // this.isLevel3Active = false;
 
     // this.requestForProduce1Data = this.eventService.subscribe('requestForProduce1Data', (data) => {
@@ -559,27 +559,27 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
     // })
-    
 
-    
+
+
   }
 
-  getSkillMuniCharacterForRankSection(){
-   
+  getSkillMuniCharacterForRankSection() {
+
     let body = {
       _userid: this.sectionView_1?._personal_data?.USERID,
-       _game: this.sectionView_1?._personal_data?.id_coroebus_game,
+      _game: this.sectionView_1?._personal_data?.id_coroebus_game,
 
     }
-    this.http.interactiveDashboard(body).subscribe((res)=>{
-      this.skillMuniCharacterRank=res;
+    this.http.interactiveDashboard(body).subscribe((res) => {
+      this.skillMuniCharacterRank = res;
 
-    
+
     })
     this.getRewardSection(body);
   }
-  getRewardSection(data){
-    console.log('data',data);
+  getRewardSection(data) {
+    console.log('data', data);
     let body = {
       _userid: data._userid,
       _game: data._game,
@@ -587,14 +587,14 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       _section: "Rewards Page",
       _description: "Rewards Page"
     };
-    this.http.rewards(body).subscribe((res)=>{
+    this.http.rewards(body).subscribe((res) => {
       console.log(res);
-      this.orgRewardsData=res;
-      this.CoinImage=this.orgRewardsData?.data?.game_data[0].coin_image;
-      console.log('CoinImage',this.orgRewardsData?.data?.game_data[0].coin_image
+      this.orgRewardsData = res;
+      this.CoinImage = this.orgRewardsData?.data?.game_data[0].coin_image;
+      console.log('CoinImage', this.orgRewardsData?.data?.game_data[0].coin_image
       );
-      this.orgReward=this.orgRewardsData?.data?.rewardTypes[1]?.rewardList;
-      console.log('OrgReward',this.orgReward);
+      this.orgReward = this.orgRewardsData?.data?.rewardTypes[1]?.rewardList;
+      console.log('OrgReward', this.orgReward);
     })
 
   }
@@ -616,26 +616,26 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
     //
   }
 
-  overallPopup(title:any) {
-    
-    
+  overallPopup(title: any) {
+
+
     if (title == "My Team") {
       this.hideTab = false;
       this.titleTab = "My Team";
-      
+
       this.selectedIndex = 0;
-      
+
     }
     else if (title == "Zonal Rank") {
       this.hideTab = true;
       this.titleTab = "My Zone";
-      this.titleTabSecond="My National Rank"
+      this.titleTabSecond = "My National Rank"
       this.selectedIndex = 0;
     }
     else if (title == "My National Rank") {
       this.hideTab = true;
       this.titleTab = "My Zone";
-      this.titleTabSecond="My National Rank"
+      this.titleTabSecond = "My National Rank"
       this.selectedIndex = 1;
     }
     let body = {
@@ -644,24 +644,24 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
       _section_view: "3",
       page_number: this.pageNumberForSectionView_3,
     };
-    if(this.userSelectionData?._personal_data?.id_coroebus_organization=="61"){
+    if (this.userSelectionData?._personal_data?.id_coroebus_organization == "61") {
       this.http.produce12(body).subscribe({
         next: (res) => {
-          
-      
+
+
           if (res) {
             this.sectionView_3_popup_1 = res;
             this.sectionView_3_popup = this.sectionView_3_popup_1?.data;
-      
+
             if (this.sectionView_3_popup && this.sectionView_3_popup._ranking_data) {
-              
-             
+
+
               this.sectionView_3_list_popup = this.sectionView_3_popup._ranking_data.filter(
                 (data: any) => data?.order === this.activeTabForSectionView_2
               );
             }
           }
-      
+
         },
         error: (err) => {
           console.error('An error occurred:', err);
@@ -669,35 +669,35 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       });
     }
-   
-   
-  
+
+
+
     let bodyForFixedTile = {
       _userid: this.userSelectionData?._personal_data?.USERID,
       _game: this.userSelectionData?.id_coroebus_game,
       _section_view: "2",
       page_number: 1,
     };
-    if(this.userSelectionData?._personal_data?.id_coroebus_organization=="61"){
+    if (this.userSelectionData?._personal_data?.id_coroebus_organization == "61") {
       this.http.produce12(bodyForFixedTile).subscribe((res) => {
-       
+
         this.section_view_res = res;
-       
+
         this.MyZoneRank =
           this.section_view_res.data?._ranking_data[0]?._data[0]?.rankingtable_number;
-          
+
         this.MyOverallRank =
           this.section_view_res?.data?._ranking_data[0]?._Overall[0]?.rankingtable_number;
-  
-       
-  
+
+
+
         this.sectionView_2_popup = this.section_view_res?.data;
-  
+
         this.labelNameMy = this.sectionView_2?._ranking_data[0]?.label;
-  
+
         this.activeTabForSectionView_2 =
           this.sectionView_2?._ranking_data?.[0]?.order;
-  
+
         // for(let i=0;i<this.sectionView_2?._ranking_data?.length;i++){
         if (
           this.queryParams?.roleID == "6" ||
@@ -706,10 +706,10 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
           // this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
           this.activeTabForSectionView_2 =
             this.sectionView_2?._ranking_data?.[0].order;
-  
+
           this.activeTabOrderNumberForSectionView_2 =
             this.sectionView_2?._ranking_data?.[0]?.order;
-  
+
           this.rankingDataFirstRowForSectionView_2 =
             this.sectionView_2?._ranking_data?.filter(
               (data) => data?.order === this.activeTabForSectionView_2
@@ -717,13 +717,13 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
           console.log(this.rankingDataFirstRowForSectionView_2);
           this.firstrowbackimage =
             this.rankingDataFirstRowForSectionView_2[0]?._data[0]?.ranking_image_level;
-  
+
           for (let item of this.getBackImages) {
             if (item?.ranking_image_level === this.firstrowbackimage) {
               this.web_first_tile_image = item?.ranking_image;
             }
           }
-  
+
           if (this.queryParams?.roleID == "4") {
             this.activeTabForSectionView_2 =
               this.sectionView_2?._ranking_data?.[1].order;
@@ -733,10 +733,10 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
               this.sectionView_2?._ranking_data?.filter(
                 (data) => data.order === this.activeTabForSectionView_2
               );
-  
+
             this.firstrowbackimage =
               this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level;
-  
+
             for (let item of this.getBackImages) {
               if (item.ranking_image_level === this.firstrowbackimage) {
                 this.web_first_tile_image = item.ranking_image;
@@ -751,10 +751,10 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
               this.sectionView_2?._ranking_data?.filter(
                 (data) => data.order === this.activeTabForSectionView_2
               );
-  
+
             this.firstrowbackimage =
               this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level;
-  
+
             for (let item of this.getBackImages) {
               if (item.ranking_image_level === this.firstrowbackimage) {
                 this.web_first_tile_image = item.ranking_image;
@@ -771,7 +771,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
               );
             this.firstrowbackimage =
               this.rankingDataFirstRowForSectionView_2[0]?._data[0]?.ranking_image_level;
-  
+
             for (let item of this.getBackImages) {
               if (item?.ranking_image_level === this.firstrowbackimage) {
                 this.web_first_tile_image = item?.ranking_image;
@@ -782,7 +782,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
             this.queryParams?.roleID == null ||
             this.queryParams?.roleID === "undefined" ||
             this.queryParams?.roleID ==
-              this.userSelectionData?._personal_data?.id_role
+            this.userSelectionData?._personal_data?.id_role
           ) {
             this.activeTabForSectionView_2 =
               this.sectionView_2?._ranking_data?.[0]?.order;
@@ -794,7 +794,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
               );
             this.firstrowbackimage =
               this.rankingDataFirstRowForSectionView_2[0]?._data[0]?.ranking_image_level;
-  
+
             for (let item of this.getBackImages) {
               if (item?.ranking_image_level === this.firstrowbackimage) {
                 this.web_first_tile_image = item.ranking_image;
@@ -803,14 +803,14 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
           } else {
             this.activeTabForSectionView_2 =
               this.sectionView_2?._ranking_data?.[0]?.order;
-  
+
             for (let item of this.getBackImages) {
               if (item?.ranking_image_level === this.firstrowbackimage) {
                 this.web_first_tile_image = item?.ranking_image;
               }
             }
           }
-  
+
           this.activeTabOrderNumberForSectionView_2 =
             this.sectionView_2?._ranking_data?.[0]?.order;
           this.rankingDataFirstRowForSectionView_2 =
@@ -824,7 +824,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
         ) {
           this.activeTabForSectionView_2 =
             this.sectionView_2?._ranking_data?.[0].order;
-  
+
           if (this.queryParams?.roleID === "3") {
             this.activeTabForSectionView_2 =
               this.sectionView_2?._ranking_data?.[0].order;
@@ -835,9 +835,9 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
           // else if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
           //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
           //
-  
+
           // }
-  
+
           this.activeTabOrderNumberForSectionView_2 =
             this.sectionView_2?._ranking_data?.[0].order;
           this.rankingDataFirstRowForSectionView_2 =
@@ -845,10 +845,10 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
               (data) => data.order === this.activeTabForSectionView_2
             );
           // }
-  
+
           this.firstrowbackimage =
             this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level;
-  
+
           for (let item of this.getBackImages) {
             if (item.ranking_image_level === this.firstrowbackimage) {
               this.web_first_tile_image = item.ranking_image;
@@ -860,7 +860,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
         ) {
           this.activeTabForSectionView_2 =
             this.sectionView_2?._ranking_data?.[0].order;
-  
+
           if (this.queryParams?.roleID === "8") {
             this.activeTabForSectionView_2 =
               this.sectionView_2?._ranking_data?.[3]?.order;
@@ -868,9 +868,9 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
           // else if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
           //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
           //
-  
+
           // }
-  
+
           this.activeTabOrderNumberForSectionView_2 =
             this.sectionView_2?._ranking_data?.[0]?.order;
           this.rankingDataFirstRowForSectionView_2 =
@@ -878,10 +878,10 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
               (data) => data?.order === this.activeTabForSectionView_2
             );
           // }
-  
+
           this.firstrowbackimage =
             this.rankingDataFirstRowForSectionView_2[0]?._data[0]?.ranking_image_level;
-  
+
           for (let item of this.getBackImages) {
             if (item.ranking_image_level === this.firstrowbackimage) {
               this.web_first_tile_image = item?.ranking_image;
@@ -893,13 +893,13 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
         ) {
           this.activeTabForSectionView_2 =
             this.sectionView_2?._ranking_data?.[3]?.order;
-  
+
           // if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
           //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
           //
-  
+
           // }
-  
+
           this.activeTabOrderNumberForSectionView_2 =
             this.sectionView_2?._ranking_data?.[0].order;
           this.rankingDataFirstRowForSectionView_2 =
@@ -907,10 +907,10 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
               (data) => data.order === this.activeTabForSectionView_2
             );
           // }
-  
+
           this.firstrowbackimage =
             this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level;
-  
+
           for (let item of this.getBackImages) {
             if (item.ranking_image_level === this.firstrowbackimage) {
               this.web_first_tile_image = item.ranking_image;
@@ -928,13 +928,13 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
         ) {
           this.activeTabForSectionView_2 =
             this.sectionView_2?._ranking_data?.[0].order;
-  
+
           // if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
           //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
           //
-  
+
           // }
-  
+
           this.activeTabOrderNumberForSectionView_2 =
             this.sectionView_2?._ranking_data?.[0]?.order;
           this.rankingDataFirstRowForSectionView_2 =
@@ -944,7 +944,7 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
           // }
           this.firstrowbackimage =
             this.rankingDataFirstRowForSectionView_2[0]?._data[0]?.ranking_image_level;
-  
+
           for (let item of this.getBackImages) {
             if (item?.ranking_image_level === this.firstrowbackimage) {
               this.web_first_tile_image = item?.ranking_image;
@@ -953,58 +953,58 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       });
     }
-   
+
   }
 
   ngAfterViewInit() {
 
 
-    
 
-   
+
+
     this.edit_image;
-    
- 
-   
+
+
+
 
     // setTimeout(() => {
-      this.changeSubTabFilter("Overall");
-      this.changeSubTabFilterIndex("Overall");
-      // this.isLevel3Active=false;
-      setTimeout(()=>{
-        this.openKpiInfo()
-      },2000)
-     
-      // if(this.se)
-      if(this.userSelectionData?._personal_data?.id_coroebus_organization=="61"){
-        setTimeout(()=>{
-          this.GetRankingPopupData('','');
-        },1000)
-      }
-     
-      
-      let body={
-       
-          _userid: this.queryParams?.userID,
-          _game: this.queryParams?.gameID,
+    this.changeSubTabFilter("Overall");
+    this.changeSubTabFilterIndex("Overall");
+    // this.isLevel3Active=false;
+    setTimeout(() => {
+      this.openKpiInfo()
+    }, 2000)
 
-    
-      }
-      this.http.interactiveDashboard(body).subscribe((res:any)=>{
-        
-        this.daily_text=res?.data?.theme_details[0]?.daily_text;
-        this.weekly_text=res?.data?.theme_details[0]?.weekly_text;
-        this.monthly_text=res?.data?.theme_details[0]?.monthly_text
+    // if(this.se)
+    if (this.userSelectionData?._personal_data?.id_coroebus_organization == "61") {
+      setTimeout(() => {
+        this.GetRankingPopupData('', '');
+      }, 1000)
+    }
 
 
-      })
-      
+    let body = {
 
-      // this.changeTabFilter('', this.activeTabForSectionView_2=[0] )
+      _userid: this.queryParams?.userID,
+      _game: this.queryParams?.gameID,
+
+
+    }
+    this.http.interactiveDashboard(body).subscribe((res: any) => {
+
+      this.daily_text = res?.data?.theme_details[0]?.daily_text;
+      this.weekly_text = res?.data?.theme_details[0]?.weekly_text;
+      this.monthly_text = res?.data?.theme_details[0]?.monthly_text
+
+
+    })
+
+
+    // this.changeTabFilter('', this.activeTabForSectionView_2=[0] )
     // }, 3000);
 
-    
-   
+
+
 
   }
 
@@ -1019,11 +1019,11 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
         ? queryParams?.gameID
         : this.userSelectionData?.id_coroebus_game,
       _section_view: "1",
-      page_number:this.pageNumberForSectionView_3,
+      page_number: this.pageNumberForSectionView_3,
       device_type: "W",
     };
 
-   
+
     [err, res] = await HttpProtocols.to(
       DashboardModel.getUserBannerDataSectionView_1(body)
     );
@@ -1036,79 +1036,80 @@ export class DefaultComponent implements OnInit, AfterViewInit, OnDestroy {
         _description: "Dashboard",
       };
 
-      this.http.engagamentlog(body).subscribe((res) => {});
+      this.http.engagamentlog(body).subscribe((res) => { });
 
       this.sectionView_1 = res?.data;
       this.getSkillMuniCharacterForRankSection();
       this.openKpiInfo();
-      this.id_role=this.sectionView_1?._personal_data?.id_role;
+      this.id_role = this.sectionView_1?._personal_data?.id_role;
       this.primary_rank = this.sectionView_1?._primary?.primary_rank;
       this.role_id = this.sectionView_1?._personal_data?.id_role;
       this.userGrade = this.sectionView_1?._personal_data?.user_grade;
-      this.levelwise=this.sectionView_1?._personal_data?.game_level_flag;
+      this.levelwise = this.sectionView_1?._personal_data?.game_level_flag;
 
-      console.log('isLandLogos',this.sectionView_1.is_land_logos.length);
-      if(this.sectionView_1?.is_land_logos?.length!=0){
-        this.isLevel3Active=false;
+      console.log('isLandLogos', this.sectionView_1.is_land_logos.length);
+      if (this.sectionView_1?.is_land_logos?.length != 0) {
+        this.isLevel3Active = false;
       }
 
-      
 
 
-    
-var url_string = window.location.href;
-
-console.log(this.levelwise);
-
-if (this.levelwise== 3) {
-
-    if (this.queryParams?.roleID === "3" || this.userSelectionData?._personal_data?.id_role === "3" && this.sectionView_1?._personal_data?.id_role === '3'  ) {
-      this.isLevel3Active = true;
-      
-    }
-    else{
-      if(this.queryParams?.roleID === "3" && this.userSelectionData?._personal_data?.id_role === "3" || this.sectionView_1?._personal_data?.id_role === '3'  ) {
-        this.isLevel3Active = true;
-        
-
-    }
-  }
-} else if (this.levelwise == 2) {
-  
-  if (this.queryParams?.roleID === "4" || this.userSelectionData?._personal_data?.id_role === "4" && this.sectionView_1?._personal_data?.id_role === '4') {
-    this.isLevel3Active = true;
-   
-  }
-  else{
-    if(this.queryParams?.roleID === "4" && this.userSelectionData?._personal_data?.id_role === "4" || this.sectionView_1?._personal_data?.id_role === '4'  ) {
-      this.isLevel3Active = true;
-     
-
-  }
-  }
-} else if (this.levelwise == 1) {
-  if (this.queryParams?.roleID === "6" && this.userSelectionData?._personal_data?.id_role === "6" || this.sectionView_1?._personal_data?.id_role === '6') {
-    this.isLevel3Active = true;
-    this.hideBtnLevelWise=false;
-   
-  }
-  else{
-    if(this.queryParams?.roleID === "4" && this.userSelectionData?._personal_data?.id_role === "4" || this.sectionView_1?._personal_data?.id_role === '4'  ) {
-      this.isLevel3Active = true;
-      this.hideBtnLevelWise=false;
-     
-
-  }}
-} else {
-  this.isLevel3Active = false;
-  
-}
 
 
-      
+      var url_string = window.location.href;
+
+      console.log(this.levelwise);
+
+      if (this.levelwise == 3) {
+
+        if (this.queryParams?.roleID === "3" || this.userSelectionData?._personal_data?.id_role === "3" && this.sectionView_1?._personal_data?.id_role === '3') {
+          this.isLevel3Active = true;
+
+        }
+        else {
+          if (this.queryParams?.roleID === "3" && this.userSelectionData?._personal_data?.id_role === "3" || this.sectionView_1?._personal_data?.id_role === '3') {
+            this.isLevel3Active = true;
 
 
-  // Level Wise Data Ended
+          }
+        }
+      } else if (this.levelwise == 2) {
+
+        if (this.queryParams?.roleID === "4" || this.userSelectionData?._personal_data?.id_role === "4" && this.sectionView_1?._personal_data?.id_role === '4') {
+          this.isLevel3Active = true;
+
+        }
+        else {
+          if (this.queryParams?.roleID === "4" && this.userSelectionData?._personal_data?.id_role === "4" || this.sectionView_1?._personal_data?.id_role === '4') {
+            this.isLevel3Active = true;
+
+
+          }
+        }
+      } else if (this.levelwise == 1) {
+        if (this.queryParams?.roleID === "6" && this.userSelectionData?._personal_data?.id_role === "6" || this.sectionView_1?._personal_data?.id_role === '6') {
+          this.isLevel3Active = true;
+          this.hideBtnLevelWise = false;
+
+        }
+        else {
+          if (this.queryParams?.roleID === "4" && this.userSelectionData?._personal_data?.id_role === "4" || this.sectionView_1?._personal_data?.id_role === '4') {
+            this.isLevel3Active = true;
+            this.hideBtnLevelWise = false;
+
+
+          }
+        }
+      } else {
+        this.isLevel3Active = false;
+
+      }
+
+
+
+
+
+      // Level Wise Data Ended
 
 
 
@@ -1117,7 +1118,7 @@ if (this.levelwise== 3) {
         this.sectionView_1?.is_land_logos[2]?._userid
       );
       this.usertl = localStorage.getItem("user_tl");
-  
+
 
       localStorage.setItem(
         "bg_image",
@@ -1125,14 +1126,14 @@ if (this.levelwise== 3) {
       );
 
       this.pokeAnimationData = this.sectionView_1?._poked_data;
-      console.log('pokeAnimationData',this.pokeAnimationData);
+      console.log('pokeAnimationData', this.pokeAnimationData);
 
       this.dark_color = this.sectionView_1?.theme_details?.[0]?.dark_color;
       this.elementref.nativeElement.style.setProperty(
         "--myvar",
         `${this.dark_color}`
       );
-     
+
       this.updatedPoke();
       // this.pokeAnimationData1=this.sectionView_1._poked_data[0].poke_description
 
@@ -1162,7 +1163,7 @@ if (this.levelwise== 3) {
       this.web_profile_back_image =
         this.sectionView_1?._back_images[1]?._data[0]?.ranking_image_profile;
       this.userGrade = this.sectionView_1?._personal_data.user_grade;
-      
+
 
       if (this.sectionView_1?.is_about_game == 1) {
         this.about_game_pdf = this.sectionView_1?.about_game[0].file_name;
@@ -1193,36 +1194,36 @@ if (this.levelwise== 3) {
     } else {
       this.sectionView_1_err = "Please try after some time";
 
-     
-      
-      
+
+
+
     }
   }
 
   async GetRankingPopupData(title: any, num: any) {
-   
-    
- 
+
+
+
 
     if (title == "My Team") {
       this.hideTab = false;
       this.titleTab = "My Team";
-      this.titleTabSecond="My National Rank"
+      this.titleTabSecond = "My National Rank"
       this.selectedIndex = 0;
-      
+
     }
     else if (title == "My Zone") {
       this.hideTab = true;
       this.titleTab = "My Zone";
-      this.titleTabSecond="My National Rank"
-      
+      this.titleTabSecond = "My National Rank"
+
       this.selectedIndex = 0;
     }
     else if (title == "My National Rank") {
       this.hideTab = true;
       this.titleTab = "My Zone";
-      
-      this.titleTabSecond="My National Rank"
+
+      this.titleTabSecond = "My National Rank"
       this.selectedIndex = 1;
     }
     // if (num == 1) {
@@ -1230,7 +1231,7 @@ if (this.levelwise== 3) {
     // } else {
     //   this.selectedIndex = 0;
     // }
-   
+
     // this.selectedIndex=0;
 
     if (this.sectionView_1?._personal_data?.id_role == 4) {
@@ -1239,14 +1240,14 @@ if (this.levelwise== 3) {
         gameID: this.sectionView_1?.is_land_logos[2]?.game_id,
         roleID: this.sectionView_1?.is_land_logos[2]?.role_id,
       };
-     
+
     } else if (this.sectionView_1?._personal_data?.id_role == 3) {
       this.queryParams = {
         userID: this.sectionView_1?.is_land_logos[0]._userid,
         gameID: this.sectionView_1?.is_land_logos[0].game_id,
         roleID: this.sectionView_1?.is_land_logos[0].role_id,
       };
-    
+
     } else if (this.sectionView_1?._personal_data?.id_role == 6) {
       this.queryParams = {
         userID: this.sectionView_1?._personal_data.USERID,
@@ -1255,7 +1256,7 @@ if (this.levelwise== 3) {
       };
     }
 
-   
+
     // this.queryParams = { userID:  this.sectionView_1.is_land_logos[0]._userid, gameID: this.sectionView_1.is_land_logos[0].game_id, roleID:  this.sectionView_1.is_land_logos[0].role_id}
 
     let err: any, res: any;
@@ -1276,43 +1277,43 @@ if (this.levelwise== 3) {
     );
     if (!err && res?.status === "success" && res?.statuscode === 200) {
       this.pokeData = res?.data?._poke_list;
-    
+
 
       this.sectionView_3_popup = res?.data;
 
       // this.filterRankingData()
-     
-      this.sectionView_3_popup?._ranking_data[0]?._data.filter((res)=>{
-       
-        if(res?.userid==this.sectionView_1?._personal_data?.USERID){
-          
-          this.ZoneRankTL=res?.rankingtable_number;
+
+      this.sectionView_3_popup?._ranking_data[0]?._data.filter((res) => {
+
+        if (res?.userid == this.sectionView_1?._personal_data?.USERID) {
+
+          this.ZoneRankTL = res?.rankingtable_number;
         }
       });
-    
+
 
       this.sectionView_3_list_popup =
         this.sectionView_3_popup?._ranking_data?.filter((data) => {
 
 
-         
+
           if (data?.order === this.activeTabForSectionView_2) {
 
-           
-           
+
+
             return data;
-            
+
           }
-         
-        
+
+
         });
-      
-       
+
+
       //
     } else {
       this.sectionView_3_err = "Please try after some time";
     }
-    if(this.userSelectionData?._personal_data?.id_coroebus_organization=="61"){
+    if (this.userSelectionData?._personal_data?.id_coroebus_organization == "61") {
       let bodyForFixedTile = {
         _userid: this.userSelectionData?._personal_data?.USERID,
         _game: this.userSelectionData?.id_coroebus_game,
@@ -1325,24 +1326,24 @@ if (this.levelwise== 3) {
       );
       if (!err && res?.status === "success" && res?.statuscode === 200) {
         this.sectionView_2_popup = res?.data;
-    
+
         this.my_rank =
           this.sectionView_2_popup?._ranking_data[0]?._data[0]?.rankingtable_number;
-  
+
         if (this.userSelectionData?._personal_data?.id_role == "4") {
-          
-          
+
+
           this.MyZoneRank =
             this.sectionView_2_popup?._ranking_data[0]?._data[0]?.rankingtable_number;
           this.MyOverallRank =
             this.sectionView_2_popup?._ranking_data[0]?._data[0]?.rankingtable_number;
         }
-  
+
         this.labelNameMy = this.sectionView_2?._ranking_data[0].label;
-  
+
         this.activeTabForSectionView_2 =
           this.sectionView_2?._ranking_data?.[0].order;
-  
+
         // for(let i=0;i<this.sectionView_2?._ranking_data?.length;i++){
         if (
           this.queryParams?.roleID == "6" ||
@@ -1351,24 +1352,24 @@ if (this.levelwise== 3) {
           // this.activeTabForSectionView_2 = this.sectionView_2?._ranking_data?.[0].order
           this.activeTabForSectionView_2 =
             this.sectionView_2?._ranking_data?.[0].order;
-  
+
           this.activeTabOrderNumberForSectionView_2 =
             this.sectionView_2?._ranking_data?.[0].order;
-  
+
           this.rankingDataFirstRowForSectionView_2 =
             this.sectionView_2?._ranking_data?.filter(
               (data) => data.order === this.activeTabForSectionView_2
             );
-  
+
           this.firstrowbackimage =
             this.rankingDataFirstRowForSectionView_2[0]?._data[0]?.ranking_image_level;
-  
+
           for (let item of this.getBackImages) {
             if (item?.ranking_image_level === this.firstrowbackimage) {
               this.web_first_tile_image = item?.ranking_image;
             }
           }
-  
+
           if (this.queryParams?.roleID == "4") {
             this.activeTabForSectionView_2 =
               this.sectionView_2?._ranking_data?.[1].order;
@@ -1378,10 +1379,10 @@ if (this.levelwise== 3) {
               this.sectionView_2?._ranking_data?.filter(
                 (data) => data.order === this.activeTabForSectionView_2
               );
-  
+
             this.firstrowbackimage =
               this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level;
-  
+
             for (let item of this.getBackImages) {
               if (item.ranking_image_level === this.firstrowbackimage) {
                 this.web_first_tile_image = item.ranking_image;
@@ -1396,19 +1397,19 @@ if (this.levelwise== 3) {
               this.sectionView_2?._ranking_data?.filter(
                 (data) => data.order === this.activeTabForSectionView_2
               );
-  
+
             this.firstrowbackimage =
               this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level;
-  
+
             for (let item of this.getBackImages) {
               if (item.ranking_image_level === this.firstrowbackimage) {
                 this.web_first_tile_image = item.ranking_image;
               }
             }
           } else if (this.queryParams?.roleID == "8") {
-  
-            
-  
+
+
+
             this.activeTabForSectionView_2 =
               this.sectionView_2?._ranking_data?.[3]?.order;
             this.activeTabOrderNumberForSectionView_2 =
@@ -1419,7 +1420,7 @@ if (this.levelwise== 3) {
               );
             this.firstrowbackimage =
               this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level;
-  
+
             for (let item of this.getBackImages) {
               if (item.ranking_image_level === this.firstrowbackimage) {
                 this.web_first_tile_image = item.ranking_image;
@@ -1428,9 +1429,9 @@ if (this.levelwise== 3) {
           } else if (
             this.queryParams?.roleID == "" ||
             this.queryParams?.roleID == null ||
-            this.queryParams?.roleID === "undefined"||
+            this.queryParams?.roleID === "undefined" ||
             this.queryParams?.roleID ==
-              this.userSelectionData?._personal_data?.id_role
+            this.userSelectionData?._personal_data?.id_role
           ) {
             this.activeTabForSectionView_2 =
               this.sectionView_2?._ranking_data?.[0].order;
@@ -1442,7 +1443,7 @@ if (this.levelwise== 3) {
               );
             this.firstrowbackimage =
               this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level;
-  
+
             for (let item of this.getBackImages) {
               if (item.ranking_image_level === this.firstrowbackimage) {
                 this.web_first_tile_image = item.ranking_image;
@@ -1451,14 +1452,14 @@ if (this.levelwise== 3) {
           } else {
             this.activeTabForSectionView_2 =
               this.sectionView_2?._ranking_data?.[0].order;
-  
+
             for (let item of this.getBackImages) {
               if (item.ranking_image_level === this.firstrowbackimage) {
                 this.web_first_tile_image = item.ranking_image;
               }
             }
           }
-  
+
           this.activeTabOrderNumberForSectionView_2 =
             this.sectionView_2?._ranking_data?.[0].order;
           this.rankingDataFirstRowForSectionView_2 =
@@ -1472,7 +1473,7 @@ if (this.levelwise== 3) {
         ) {
           this.activeTabForSectionView_2 =
             this.sectionView_2?._ranking_data?.[0].order;
-  
+
           if (this.queryParams?.roleID === "3") {
             this.activeTabForSectionView_2 =
               this.sectionView_2?._ranking_data?.[0].order;
@@ -1483,9 +1484,9 @@ if (this.levelwise== 3) {
           // else if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
           //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
           //
-  
+
           // }
-  
+
           this.activeTabOrderNumberForSectionView_2 =
             this.sectionView_2?._ranking_data?.[0].order;
           this.rankingDataFirstRowForSectionView_2 =
@@ -1493,10 +1494,10 @@ if (this.levelwise== 3) {
               (data) => data.order === this.activeTabForSectionView_2
             );
           // }
-  
+
           this.firstrowbackimage =
             this.rankingDataFirstRowForSectionView_2[0]?._data[0]?.ranking_image_level;
-  
+
           for (let item of this.getBackImages) {
             if (item.ranking_image_level === this.firstrowbackimage) {
               this.web_first_tile_image = item.ranking_image;
@@ -1506,11 +1507,11 @@ if (this.levelwise== 3) {
           this.queryParams?.roleID === "3" ||
           this.userSelectionData?._personal_data?.id_role === "3"
         ) {
-  
-        
+
+
           this.activeTabForSectionView_2 =
             this.sectionView_2?._ranking_data?.[0].order;
-  
+
           if (this.queryParams?.roleID === "8") {
             this.activeTabForSectionView_2 =
               this.sectionView_2?._ranking_data?.[3]?.order;
@@ -1518,9 +1519,9 @@ if (this.levelwise== 3) {
           // else if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
           //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
           //
-  
+
           // }
-  
+
           this.activeTabOrderNumberForSectionView_2 =
             this.sectionView_2?._ranking_data?.[0].order;
           this.rankingDataFirstRowForSectionView_2 =
@@ -1528,10 +1529,10 @@ if (this.levelwise== 3) {
               (data) => data.order === this.activeTabForSectionView_2
             );
           // }
-  
+
           this.firstrowbackimage =
             this.rankingDataFirstRowForSectionView_2[0]?._data[0]?.ranking_image_level;
-  
+
           for (let item of this.getBackImages) {
             if (item.ranking_image_level === this.firstrowbackimage) {
               this.web_first_tile_image = item.ranking_image;
@@ -1543,13 +1544,13 @@ if (this.levelwise== 3) {
         ) {
           this.activeTabForSectionView_2 =
             this.sectionView_2?._ranking_data?.[3]?.order;
-  
+
           // if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
           //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
           //
-  
+
           // }
-  
+
           this.activeTabOrderNumberForSectionView_2 =
             this.sectionView_2?._ranking_data?.[0].order;
           this.rankingDataFirstRowForSectionView_2 =
@@ -1557,10 +1558,10 @@ if (this.levelwise== 3) {
               (data) => data.order === this.activeTabForSectionView_2
             );
           // }
-  
+
           this.firstrowbackimage =
             this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level;
-  
+
           for (let item of this.getBackImages) {
             if (item.ranking_image_level === this.firstrowbackimage) {
               this.web_first_tile_image = item.ranking_image;
@@ -1578,13 +1579,13 @@ if (this.levelwise== 3) {
         ) {
           this.activeTabForSectionView_2 =
             this.sectionView_2?._ranking_data?.[0].order;
-  
+
           // if(this.queryParams?.roleID===''|| this.queryParams?.roleID==null ||this.queryParams?.roleID==='undefined'){
           //   this.activeTabForSectionView_2=this.sectionView_2?._ranking_data?.[0].order
           //
-  
+
           // }
-  
+
           this.activeTabOrderNumberForSectionView_2 =
             this.sectionView_2?._ranking_data?.[0].order;
           this.rankingDataFirstRowForSectionView_2 =
@@ -1594,7 +1595,7 @@ if (this.levelwise== 3) {
           // }
           this.firstrowbackimage =
             this.rankingDataFirstRowForSectionView_2[0]._data[0].ranking_image_level;
-  
+
           for (let item of this.getBackImages) {
             if (item.ranking_image_level === this.firstrowbackimage) {
               this.web_first_tile_image = item.ranking_image;
@@ -1604,26 +1605,26 @@ if (this.levelwise== 3) {
       } else {
         this.sectionView_2_err = "Please try after some time";
       }
-  
+
     }
-   
-   
+
+
     // this.getUserBannerDataSectionView_3(null, this.queryParams)
   }
 
   updatedPoke() {
-  
+
 
     if (this.pokeAnimationData?.length > 0) {
       let i = 0;
 
       const intervalId = setInterval(() => {
         this.pokeslidedata.push(this.pokeAnimationData[i]);
-       
+
 
         setTimeout(() => {
           this.pokeslidedata.pop();
-        
+
         }, 5000); // Remove the last element after 5 seconds'
         this.updatePokeData(this.pokeAnimationData[i]?.poke_id_log);
 
@@ -1631,7 +1632,7 @@ if (this.levelwise== 3) {
 
         if (i === this.pokeAnimationData?.length) {
           clearInterval(intervalId);
-         
+
           // this.pokeAnimationData=[]
           setTimeout(() => {
             // (<HTMLInputElement>document.getElementById('animationPoke')).style.background = "none";
@@ -1639,42 +1640,42 @@ if (this.levelwise== 3) {
           }, 5000);
         }
       }, 6000);
-     
+
     } else {
       clearInterval(this.pokeInterval);
       this.pokeAnimationData = [];
     }
 
-    
+
   }
 
   checkUserGrade() {
-   
 
-   
+
+
   }
   async getUserBannerDataSectionView_2(queryParams?: any) {
     const userID = queryParams?.userID || this.userSelectionData?._personal_data?.USERID;
     const gameID = queryParams?.gameID || this.userSelectionData?.id_coroebus_game;
     const roleID = queryParams?.roleID || this.userSelectionData?._personal_data?.id_role;
-  
+
     const body = {
       _userid: userID,
       _game: gameID,
       _section_view: "2",
       page_number: "1",
     };
-  
+
     try {
       const [err, res] = await HttpProtocols.to(DashboardModel.getCenterDataSectionView_2(body));
-  
+
       if (!err && res?.status === "success" && res?.statuscode === 200) {
         this.sectionView_2 = res.data;
         this.labelNameMy = this.sectionView_2._ranking_data[0].label;
         this.activeTabForSectionView_2 = this.sectionView_2._ranking_data[0].order;
-  
+
         let roleIndex = 0;
-  
+
         // switch (roleID) {
         //   case "5": roleIndex = 1; break;
         //   case "3": roleIndex = 2; break;
@@ -1682,15 +1683,15 @@ if (this.levelwise== 3) {
         //   // Add more cases for other role IDs if needed
         //   default: roleIndex = 0; break;
         // }
-  
+
         this.activeTabForSectionView_2 = this.sectionView_2._ranking_data[roleIndex].order;
         this.activeTabOrderNumberForSectionView_2 = this.activeTabForSectionView_2;
-  
+
         this.rankingDataFirstRowForSectionView_2 =
           this.sectionView_2._ranking_data.filter(data => data.order === this.activeTabForSectionView_2);
-  
+
         this.firstrowbackimage = this.rankingDataFirstRowForSectionView_2[0]?._data[0]?.ranking_image_level;
-  
+
         for (let item of this.getBackImages) {
           if (item.ranking_image_level === this.firstrowbackimage) {
             this.web_first_tile_image = item.ranking_image;
@@ -1704,31 +1705,31 @@ if (this.levelwise== 3) {
       this.sectionView_2_err = "An error occurred. Please try again later.";
     }
   }
-  
+
 
   async getUserBannerDataSectionView_3(viewMore?: any, queryParams?: any) {
     try {
-      
-  
+
+
       const userID = queryParams?.userID || this.userSelectionData?._personal_data?.USERID;
       const gameID = queryParams?.gameID || this.userSelectionData?.id_coroebus_game;
-  
+
       const body = {
         _userid: userID,
         _game: gameID,
         _section_view: "3",
         page_number: this.pageNumberForSectionView_3,
       };
-  
+
       localStorage.setItem("body_game", body._game);
       this.coroebus_game = localStorage.getItem("body_game");
-  
+
       const [err, res] = await HttpProtocols.to(DashboardModel.getRankingAndOtherDataSectionView_3(body));
-  
+
       if (!err && res?.status === "success" && res?.statuscode === 200) {
         this.pokeData = res?.data?._poke_list;
-        
-  
+
+
         if (viewMore) {
           res?.data?._ranking_data?.forEach((element, index) => {
             if (element?.label === this.sectionView_3?._ranking_data[index]?.label) {
@@ -1745,7 +1746,7 @@ if (this.levelwise== 3) {
         } else {
           this.sectionView_3 = res?.data;
         }
-  
+
         this.sectionView_3_list = this.sectionView_3?._ranking_data?.filter(data => data.order === this.activeTabForSectionView_2);
       } else {
         this.sectionView_3_err = "Please try after some time";
@@ -1755,25 +1756,25 @@ if (this.levelwise== 3) {
       this.sectionView_3_err = "An error occurred. Please try again later.";
     }
   }
-  
+
 
   async filterRankingData() {
     this.sectionView_3._ranking_data = await Promise.all(
       (this.sectionView_3?._ranking_data || []).map(async (firstLevel) => {
         const filteredFirstLevel = { ...firstLevel };
-        
+
         const activeSubTab = this.activeSubTabForSectionView_2;
         const subTabProperty = activeSubTab === "My Store" ? "_data" : "_Overall";
-  
+
         filteredFirstLevel[subTabProperty] = await Promise.all(
           (filteredFirstLevel[subTabProperty] || []).map(async (secondLevel) => {
             const filteredSecondLevel = { ...secondLevel };
-            
+
             const compareDataArray = this.sectionView_1?._back_images || [];
-  
+
             await Promise.all(compareDataArray.map(async (compareData) => {
               const { _data, label } = compareData || {};
-  
+
               if (label === "badge images") {
                 await Promise.all(
                   (_data || []).map(async (backImages) => {
@@ -1792,16 +1793,16 @@ if (this.levelwise== 3) {
                 );
               }
             }));
-  
+
             return filteredSecondLevel;
           })
         );
-  
+
         return filteredFirstLevel;
       })
     );
   }
-  
+
   ngOnDestroy(): void {
     document.body.classList.remove("dashboard-bg-image");
     document.body.style.backgroundImage = "url('')";
@@ -1811,7 +1812,7 @@ if (this.levelwise== 3) {
     this.destroy$.unsubscribe();
     this.combineLatest?.unsubscribe();
     this.toastService?.clear();
-    
+
   }
   async openPopupForTeam() {
     let err: any, res: any;
@@ -1836,11 +1837,11 @@ if (this.levelwise== 3) {
   }
 
   changeTabFilter(name: string, order: any) {
-    
-    
+
+
     this.pageNumberForSectionView_3 = 1;
     this.activeTabForSectionView_2 = order;
-  
+
     if (this.activeTabForSectionView_2 == 1) {
       // ... (HTTP request and subscription)
     } else if (this.activeTabForSectionView_2 == 2) {
@@ -1850,12 +1851,12 @@ if (this.levelwise== 3) {
     } else if (this.activeTabForSectionView_2 == 4) {
       // ... (HTTP request and subscription)
     }
-  
+
     this.activeTabOrderNumberForSectionView_2 = order;
-    
-  
+
+
     // this.activeSubTabForSectionView_2 = "My Store";
-  
+
     this.rankingDataFirstRowForSectionView_2 =
       this.sectionView_2?._ranking_data?.filter(
         (data) => data.order === this.activeTabForSectionView_2
@@ -1867,18 +1868,18 @@ if (this.levelwise== 3) {
       this.spectSearch();
     }
   }
-  
+
 
   async changeTabFilterIndex(name: string, order: any) {
-   
-  
+
+
     this.pageNumberForSectionView_3_index = 1;
     this.activeTabForSectionView_2_index = order;
-  
+
     this.activeTabOrderNumberForSectionView_2_index = order;
-  
+
     this.activeSubTabForSectionView_2_index = "My Store";
-  
+
     this.rankingDataFirstRowForSectionView_2_index =
       this.sectionView_2_Indexwise?._ranking_data?.filter(
         (data) => data.order === this.activeTabForSectionView_2_index
@@ -1887,11 +1888,11 @@ if (this.levelwise== 3) {
       this.sectionView_3_index?._ranking_data?.filter(
         (data) => data?.order === this.activeTabForSectionView_2_index
       );
-  
+
     if (this.spectSearchStrIndex) {
       await this.spectSearchIndex(); // Assuming spectSearchIndex is an asynchronous function
     }
-  
+
     try {
       // const response = await this.http.get('https://example.com/api/data'); // Example API request
       // Process the response here
@@ -1899,57 +1900,57 @@ if (this.levelwise== 3) {
       console.error('Error:', error);
     }
   }
-  
+
 
   async upDownArrow(arrowStatus: string, rowData: any) {
     // alert('TODO: Add Poke popup-> ' + arrowStatus)
     //
     if (rowData?.userid !== this.userSelectionData?._personal_data?.USERID) {
-        let roleCheckArray = this.Util.pokeMapping();
-        
-        if (this.queryParams?.roleID) {
-           
-            roleCheckArray = roleCheckArray?.filter(
-                (data) => data?.roleID === this.userSelectionData?._personal_data?.id_role
-            );
+      let roleCheckArray = this.Util.pokeMapping();
 
-            
-        } else {
-            roleCheckArray = roleCheckArray?.filter(
-                (data) => data?.roleID === this.userSelectionData?._personal_data?.id_role
-            );
-           
+      if (this.queryParams?.roleID) {
+
+        roleCheckArray = roleCheckArray?.filter(
+          (data) => data?.roleID === this.userSelectionData?._personal_data?.id_role
+        );
+
+
+      } else {
+        roleCheckArray = roleCheckArray?.filter(
+          (data) => data?.roleID === this.userSelectionData?._personal_data?.id_role
+        );
+
+      }
+
+
+
+      if (roleCheckArray?.[0]?.canPokeTo?.indexOf(rowData?.id_role) > -1) {
+        this.pokeRowData = rowData;
+
+
+        this.arrowStatus = arrowStatus === "red" ? "Motivation" : "Positive";
+
+        this.emojiSelected(0, this.arrowStatus);
+
+        try {
+          await this.modalService.open(this.pokeList, {
+            centered: true,
+            windowClass: "modal-cls",
+          });
+        } catch (error) {
+          console.error("Error opening modal:", error);
         }
-        
-        
-
-        if (roleCheckArray?.[0]?.canPokeTo?.indexOf(rowData?.id_role) > -1) {
-            this.pokeRowData = rowData;
-            
-
-            this.arrowStatus = arrowStatus === "red" ? "Motivation" : "Positive";
-            
-            this.emojiSelected(0, this.arrowStatus);
-
-            try {
-                await this.modalService.open(this.pokeList, {
-                    centered: true,
-                    windowClass: "modal-cls",
-                });
-            } catch (error) {
-                console.error("Error opening modal:", error);
-            }
-        } else {
-            this.toastService.show(this.pokeDangerTpl, {
-                classname: "",
-                delay: 1500,
-            });
-            console.warn(
-                `Role id ${this.userSelectionData?._personal_data?.id_role} can't pokes to role id ${rowData?.id_role}`
-            );
-        }
+      } else {
+        this.toastService.show(this.pokeDangerTpl, {
+          classname: "",
+          delay: 1500,
+        });
+        console.warn(
+          `Role id ${this.userSelectionData?._personal_data?.id_role} can't pokes to role id ${rowData?.id_role}`
+        );
+      }
     }
-}
+  }
 
 
   viewMore() {
@@ -2081,10 +2082,10 @@ if (this.levelwise== 3) {
         _description: "Search",
       };
 
-      this.http.engagamentlog(body).subscribe((res) => {});
+      this.http.engagamentlog(body).subscribe((res) => { });
 
       if (res.data == "") {
-        
+
         // this.openSnackBar('No data Available','Ok')
 
         // Swal.fire({
@@ -2149,7 +2150,7 @@ if (this.levelwise== 3) {
     [err, res] = await HttpProtocols.to(DashboardModel.spectSearch(body));
     if (!err && res?.statuscode === 200) {
       if (res.data == "") {
-        
+
         // this.openSnackBar('No data Available','Ok')
 
         // Swal.fire({
@@ -2197,20 +2198,20 @@ if (this.levelwise== 3) {
     // $('.emojiBackgroundButton').removeClass('acrtive')
 
     this.clicked = id;
-    
+
 
     this.emojiText = this.pokeData;
-    
+
 
     this.idSelected = event === "Positive" ? 0 : 1;
-  
+
 
     this.pokeidselected =
       this.emojiText[this.idSelected]._data[id].poke_description;
     this.emoji = this.emojiText[this.idSelected]._data[id].poke_description;
-    
+
     this.pokeId = this.emojiText[this.idSelected]._data[id].id_coroebus_poke;
-  
+
   }
   async pokeSelection(modal: any) {
     let err: any, res: any;
@@ -2245,17 +2246,17 @@ if (this.levelwise== 3) {
     }
   }
   updatePokeData(data: any) {
-    
+
 
     let body = {
       _pokeid: data,
     };
     this.http.updatePoke(body).subscribe((res) => {
-      
+
 
       this.updatedata = res;
       if (this.updatedata.statuscode === 200) {
-        
+
       } else {
       }
 
@@ -2285,7 +2286,7 @@ if (this.levelwise== 3) {
         _description: "Profile Edit from Dashboard",
       };
 
-      this.http.engagamentlog(body).subscribe((res) => {});
+      this.http.engagamentlog(body).subscribe((res) => { });
       //
     }
     this.getUserBannerDataSectionView_2();
@@ -2300,10 +2301,10 @@ if (this.levelwise== 3) {
   }
   getDataBasedOnUserID(data: any) {
     this.spectSearchStr = "";
-  
-  
+
+
     this.role_id = data?.role_id.toString();
-    
+
     this.Edit_image();
     if (this.role_id === "8" || this.role_id == "9" || this.role_id == "12") {
       if (this.role_id == "9") {
@@ -2374,31 +2375,31 @@ if (this.levelwise== 3) {
     };
     [err, res] = await HttpProtocols.to(DashboardModel.hierarchyPopup(body));
     if (!err && res?.statuscode === 200) {
-      console.log("level",res);
+      console.log("level", res);
 
-      this.hierarchyPopupList = []; 
+      this.hierarchyPopupList = [];
       console.log(this.levelwise);
-      this.levelwise=this.sectionView_1?._personal_data?.game_level_flag;
-      console.log("level",this.levelwise)
+      this.levelwise = this.sectionView_1?._personal_data?.game_level_flag;
+      console.log("level", this.levelwise)
       // for (let i = 1; i <= this.levelwise; i++) {
-        const hierarchyData = res?.data;
-        
-        console.log(hierarchyData.slice(1,this.levelwise))
-        
-      
-        
-      
-    
-      
-      this.firstUserData = hierarchyData.slice(1,this.levelwise);
-      console.log('HeirachyData',this.firstUserData);
-      if(this.levelwise!=1){
+      const hierarchyData = res?.data;
+
+      console.log(hierarchyData.slice(1, this.levelwise))
+
+
+
+
+
+
+      this.firstUserData = hierarchyData.slice(1, this.levelwise);
+      console.log('HeirachyData', this.firstUserData);
+      if (this.levelwise != 1) {
         this.modalService.open(this.hierarchyPopup, {
           centered: true,
           windowClass: "modal-cls",
         });
       }
-     
+
     } else {
       // this.levelsBucketsList_err = 'Error'
     }
@@ -2424,7 +2425,7 @@ if (this.levelwise== 3) {
   //   }
   // }
 
-  activeTab() {}
+  activeTab() { }
 
   navigateToRewards(data) {
     var url_string = window.location.href;
@@ -2440,7 +2441,7 @@ if (this.levelwise== 3) {
 
   getRewards() {
 
-    
+
     let obj = {
       _userid: this.queryParams?.userID
         ? this.queryParams?.userID
@@ -2453,19 +2454,19 @@ if (this.levelwise== 3) {
 
     localStorage.setItem("rewardid", obj._userid);
 
-   
+
     this._router.navigate(["/reward/rewardPoints"], {
       relativeTo: this._route,
       queryParams: {
-        userID:this.Util.encryptData(this.sectionView_1?._personal_data?.USERID),
+        userID: this.Util.encryptData(this.sectionView_1?._personal_data?.USERID),
         gameID: this.Util.encryptData(this.sectionView_1?._personal_data?.id_coroebus_game),
         // roleID: this.Util.encryptData(this.queryParams?.roleID)
       },
       queryParamsHandling: "merge",
       skipLocationChange: false,
     });
-  
-    
+
+
   }
   navigateToOtherRole(item) {
     this.spectSearchStr = "";
@@ -2478,19 +2479,19 @@ if (this.levelwise== 3) {
     this.roleID = this.Util.encryptData(item?.id_role);
     this.groupID = this.Util.encryptData(item?.id_coroebus_group);
 
- 
+
 
     this._router.navigateByUrl(
-        `/dashboard?userID=${this.userID}&gameID=${this.gameID}&roleID=${this.roleID}&groupID=${this.groupID}`
+      `/dashboard?userID=${this.userID}&gameID=${this.gameID}&roleID=${this.roleID}&groupID=${this.groupID}`
     );
 
     this.activeSubTabForSectionView_2_index = "Overall";
     this.isLevel3Active = false;
-}
+  }
 
 
 
- 
+
 
   navigateToNewChallenge() {
     let _userid = this.userSelectionData?._personal_data?.USERID;
@@ -2510,14 +2511,14 @@ if (this.levelwise== 3) {
         // 'http://coroebus.in/champions_league/#/home/newChallenge?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
         // '_self' // <- This is what makes it open in a new window.
 
-        this.http.mainUrl+"/champions_league/#/home/newChallenge?_userid=" +
-          userId +
-          "&_game=" +
-          game +
-          "&id_role=" +
-          roleid +
-          "&id_coroebus_user=" +
-          id_coroebus_user,
+        this.http.mainUrl + "/champions_league/#/home/newChallenge?_userid=" +
+        userId +
+        "&_game=" +
+        game +
+        "&id_role=" +
+        roleid +
+        "&id_coroebus_user=" +
+        id_coroebus_user,
         "_self"
       );
     }
@@ -2534,14 +2535,14 @@ if (this.levelwise== 3) {
 
     if (this.userSelectionData.is_champions_league == "A") {
       window.open(
-        this.http.mainUrl+"/champions_league/#/home/onGoing?_userid=" +
-          userId +
-          "&_game=" +
-          game +
-          "&id_role=" +
-          roleid +
-          "&id_coroebus_user=" +
-          id_coroebus_user,
+        this.http.mainUrl + "/champions_league/#/home/onGoing?_userid=" +
+        userId +
+        "&_game=" +
+        game +
+        "&id_role=" +
+        roleid +
+        "&id_coroebus_user=" +
+        id_coroebus_user,
         "_self" // <- This is what makes it open in a new window.
 
         // 'http://localhost:56671/champions_league/#/home/onGoing?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
@@ -2561,14 +2562,14 @@ if (this.levelwise== 3) {
 
     if (this.userSelectionData.is_champions_league == "A") {
       window.open(
-        this.http.mainUrl+"/champions_league/#/home/challengeRecieved?_userid=" +
-          userId +
-          "&_game=" +
-          game +
-          "&id_role=" +
-          roleid +
-          "&id_coroebus_user=" +
-          id_coroebus_user,
+        this.http.mainUrl + "/champions_league/#/home/challengeRecieved?_userid=" +
+        userId +
+        "&_game=" +
+        game +
+        "&id_role=" +
+        roleid +
+        "&id_coroebus_user=" +
+        id_coroebus_user,
         "_self" // <- This is what makes it open in a new window.
 
         // 'http://localhost:56671/champions_league/#/home/challengeRecieved?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
@@ -2620,18 +2621,18 @@ if (this.levelwise== 3) {
     //
 
     window.open(
-      this.http.mainUrl+"/champions_league/#/home/statistics?_userid=" +
-        userId +
-        "&_game=" +
-        game +
-        "&id_role=" +
-        roleid +
-        "&id_coroebus_user=" +
-        id_coroebus_user +
-        "&status=" +
-        "total" +
-        "&spect=" +
-        spectStaus,
+      this.http.mainUrl + "/champions_league/#/home/statistics?_userid=" +
+      userId +
+      "&_game=" +
+      game +
+      "&id_role=" +
+      roleid +
+      "&id_coroebus_user=" +
+      id_coroebus_user +
+      "&status=" +
+      "total" +
+      "&spect=" +
+      spectStaus,
       "_self" // <- This is what makes it open in a new window.
       //  'http://localhost:56671/champions_league/#/home/statistics?_userid='+userId+"&_game="+game+"&id_role="+roleid+"&id_coroebus_user="+id_coroebus_user,
       // '_self' // <- This is what makes it open in a new window.
@@ -2643,7 +2644,7 @@ if (this.levelwise== 3) {
   }
   navigateToM2ost(categoryID: any) {
 
-      (this.empid = btoa(this.sectionView_1._personal_data.EMPLOYEEID)),
+    (this.empid = btoa(this.sectionView_1._personal_data.EMPLOYEEID)),
       (this.empemail = this.sectionView_1._personal_data.email_id);
     this.empname = this.sectionView_1._personal_data.first_name;
     this.emporg = this.sectionView_1._personal_data.organization_name;
@@ -2651,19 +2652,19 @@ if (this.levelwise== 3) {
       // https://www.m2ost.in/m2ostproductionapiSSO/api/m2ostSSO?param=empid$103$empemail$empname$TGC
 
       "https://www.m2ost.in/m2ostSSOWithCategory/api/m2ostSSOWithCat?param=" +
-        this.empid +
-        "$113$" +
-        this.empemail +
-        "$" +
-        this.empname +
-        "$" +
-        "GOP" +
-        "$" +
-        categoryID,
+      this.empid +
+      "$113$" +
+      this.empemail +
+      "$" +
+      this.empname +
+      "$" +
+      "GOP" +
+      "$" +
+      categoryID,
       "blank"
     );
-    
-    
+
+
   }
 
   // challengeRecievedCount(){
@@ -2690,91 +2691,93 @@ if (this.levelwise== 3) {
   //     _userid: queryParams?.userID || this.userSelectionData?._personal_data?.USERID,
   //     _game: queryParams?.gameID || this.userSelectionData?.id_coroebus_game,
   //   };
-  
+
 
   // }
 
- 
+
 
   async GetDataFromProduceInfo(queryParams?: any) {
-    
+
     try {
       const obj = {
         _userid: queryParams?.userID || this.userSelectionData?._personal_data?.USERID,
         _game: queryParams?.gameID || this.userSelectionData?.id_coroebus_game,
-       
+
       };
       const res = await this.http.produceInfo(obj).toPromise();
       this.data = res;
-   
+      console.log(this.data);
+      localStorage.setItem('SeasonalData', this.data)
+     
       this.triviaCornerData = this.data.data.trivia_corner;
       this.hideTriviaIndicator = this.triviaCornerData.some(res => res.view_status !== "Read");
-  
-      if(this.data?.data?.seasonal_theme_daily!=undefined&&this.data?.data?.seasonal_theme_daily?.length>0){
-        this.dailyCampaign=true;
+
+      if (this.data?.data?.seasonal_theme_daily != undefined && this.data?.data?.seasonal_theme_daily?.length > 0) {
+        this.dailyCampaign = true;
         this.seasonalThemeDaily1 = this.data?.data?.seasonal_theme_daily;
-        
-        
+
+
         this.seasonalThemeDailyBadges1 = this.data?.data?.seasonal_theme_daily_badge_details;
-        this.LastindexDaily=this.data?.data?.seasonal_theme_daily_badge_details;
-              
-              
-              this.lastArrayseasonalThemeDailyBadges2=this.data?.data?.seasonal_theme_daily_badge_details[this.LastindexDaily.length-1];
-         
-              
+        this.LastindexDaily = this.data?.data?.seasonal_theme_daily_badge_details;
+
+
+        this.lastArrayseasonalThemeDailyBadges2 = this.data?.data?.seasonal_theme_daily_badge_details[this.LastindexDaily.length - 1];
+
+
       }
-    
+
       else {
-        this.dailyCampaign=false;
+        this.dailyCampaign = false;
       }
-  
-    if(this.data?.data?.seasonal_theme_weekly!=undefined&& this.data?.data?.seasonal_theme_weekly?.length>0){
-      this.weeklyCampaign=true;
-      this.seasonalThemeWeekly2 = this.data?.data?.seasonal_theme_weekly;
-       
-     
-     this.seasonalThemeWeeklyBadges2=this.data?.data?.seasonal_theme_weekly_badge_details;
-              this.LastindexWeekly=this.data?.data?.seasonal_theme_weekly_badge_details;
-              this.lastArrayseasonalThemeWeeklyBadges2=this.data?.data?.seasonal_theme_weekly_badge_details[this.LastindexWeekly.length-1];
-              
-    }
-      
-    else{
-      this.weeklyCampaign=false;
-    }   
-    
+
+      if (this.data?.data?.seasonal_theme_weekly != undefined && this.data?.data?.seasonal_theme_weekly?.length > 0) {
+        this.weeklyCampaign = true;
+        this.seasonalThemeWeekly2 = this.data?.data?.seasonal_theme_weekly;
+
+
+        this.seasonalThemeWeeklyBadges2 = this.data?.data?.seasonal_theme_weekly_badge_details;
+        this.LastindexWeekly = this.data?.data?.seasonal_theme_weekly_badge_details;
+        this.lastArrayseasonalThemeWeeklyBadges2 = this.data?.data?.seasonal_theme_weekly_badge_details[this.LastindexWeekly.length - 1];
+
+      }
+
+      else {
+        this.weeklyCampaign = false;
+      }
+
       if (this.data?.data?.seasonal_theme_monthly != undefined && this.data?.data?.seasonal_theme_monthly?.length > 0) {
         this.monthlyCampaign = false
         this.seasonalThemeMonthl3 = this.data?.data?.seasonal_theme_monthly;
         this.seasonalThemeMonthlyBadges3 = this.data?.data?.seasonal_theme_monthly_badge_details;
 
-         this.seasonalThemeMonthlyBadges3=this.data?.data?.seasonal_theme_monthly_badge_details;
-              this.lastIndexMonthly=this.data?.data?.seasonal_theme_monthly_badge_details;
-              this.lastArrayseasonalThemeMonthlyBadges2=this.data?.data?.seasonal_theme_monthly_badge_details[this.data?.data?.seasonal_theme_monthly_badge_details.length-1];
-    
+        this.seasonalThemeMonthlyBadges3 = this.data?.data?.seasonal_theme_monthly_badge_details;
+        this.lastIndexMonthly = this.data?.data?.seasonal_theme_monthly_badge_details;
+        this.lastArrayseasonalThemeMonthlyBadges2 = this.data?.data?.seasonal_theme_monthly_badge_details[this.data?.data?.seasonal_theme_monthly_badge_details.length - 1];
 
-       
-         
+
+
+
 
       }
       else {
-        this.monthlyCampaign=true;
+        this.monthlyCampaign = true;
 
       }
-      
-      if(this.data?.data?.seasonal_theme_monthly!=undefined &&this.data?.data?.seasonal_theme_weekly!=undefined&&this.data?.data?.seasonal_theme_daily!=undefined){
+
+      if (this.data?.data?.seasonal_theme_monthly != undefined && this.data?.data?.seasonal_theme_weekly != undefined && this.data?.data?.seasonal_theme_daily != undefined) {
         this.seasonalThemeDailyBadges1?.forEach((res) => {
           if (res.active_class === '1') {
             this.dailyBadgesActive = true;
           }
         });
-    
+
         this.seasonalThemeWeeklyBadges2?.forEach((res) => {
           if (res.active_class === '1') {
             this.weeklyBadgesActive = true;
           }
         });
-    
+
         this.seasonalThemeMonthlyBadges3?.forEach((res) => {
           if (res.active_class === '1') {
             this.monthlyBadgesActive = true;
@@ -2791,7 +2794,7 @@ if (this.levelwise== 3) {
   LastindexDaily(arg0: string, LastindexDaily: any) {
     throw new Error("Method not implemented.");
   }
-  
+
 
   openDailyModal() {
     this.isDailyModalopen = true;
@@ -2810,81 +2813,80 @@ if (this.levelwise== 3) {
   }
 
 
-  async getGroupId(){
-    const autologin= "1";
+  async getGroupId() {
+    const autologin = "1";
     const userid = this.queryParams?.userID;
-    
-    
-      const body = { "USERID":userid, "autologin": autologin}
 
-      const [err, res] = await HttpProtocols.to(UserModel.authenticationAndAuthorization(body))
-      
-      if (!err && res?.status === 'success' && res?.statuscode === 200) {
-        
 
-        
+    const body = { "USERID": userid, "autologin": autologin }
 
-        
-        } 
+    const [err, res] = await HttpProtocols.to(UserModel.authenticationAndAuthorization(body))
+
+    if (!err && res?.status === 'success' && res?.statuscode === 200) {
+
+
+
+
+
+    }
 
   }
- 
+
   async openKpiInfo() {
 
     this.getIndexproduce3('')
-  
+
     // console.log(this.sectionView_1)
-    if(this.sectionView_1?._personal_data?.id_role!='6'){
-      this.sectionView_3_list_index[0]?._Overall?.map((res:any)=>{
-   
-        if(this.sectionView_1?._personal_data?.USERID==res?.userid){
-        
-          this.id_coroebus_group=res?.id_coroebus_group;
+    if (this.sectionView_1?._personal_data?.id_role != '6') {
+      this.sectionView_3_list_index[0]?._Overall?.map((res: any) => {
+
+        if (this.sectionView_1?._personal_data?.USERID == res?.userid) {
+
+          this.id_coroebus_group = res?.id_coroebus_group;
         }
-  
+
       })
-   }
-   else {
-    this.id_coroebus_group=this.rankingDataFirstRowForSectionView_2?.[0]?._data[0]?.id_coroebus_group;
-    this.id_coroebus_group=this.rankingDataFirstRowForSectionView_2?.[0]?._Overall[0]?.id_coroebus_group;
-   }
+    }
+    else {
+      this.id_coroebus_group = this.rankingDataFirstRowForSectionView_2?.[0]?._data[0]?.id_coroebus_group;
+      this.id_coroebus_group = this.rankingDataFirstRowForSectionView_2?.[0]?._Overall[0]?.id_coroebus_group;
+    }
 
-  
-   
- 
+
+
+
     this.userSelectionData?.games[0]?.id_coroebus_group
-    this.selectedIndex=0;
+    this.selectedIndex = 0;
     //  this.getGroupId()
-   
 
-    
-    
+
+
+
     this.openKpi = !this.openKpi;
     try {
-      
+
       var location = window.location.href;
-      if (location.includes("?")){
+      if (location.includes("?")) {
         let body = {
-          _game:this.sectionView_1?._personal_data?.id_coroebus_game,
-          id_role:this.sectionView_1?._personal_data?.id_role,
-          id_coroebus_group:this.id_coroebus_group
-        
+          _game: this.sectionView_1?._personal_data?.id_coroebus_game,
+          id_role: this.sectionView_1?._personal_data?.id_role,
+          id_coroebus_group: this.id_coroebus_group
+
         };
         let res = await this.http.pointDistributionPopup(body).toPromise();
         this.kpiData = res;
       }
-      else{
+      else {
         let body = {
-    
-          _game:this.userSelectionData?.id_coroebus_game,
-          id_role:this.sectionView_1?._personal_data?.id_role,
-          id_coroebus_group:this.userSelectionData?.games[0]?.id_coroebus_group
-        
-  
+
+          _game: this.userSelectionData?.id_coroebus_game,
+          id_role: this.sectionView_1?._personal_data?.id_role,
+          id_coroebus_group: this.userSelectionData?.games[0]?.id_coroebus_group
+
+
         };
         let res = await this.http.pointDistributionPopup(body).toPromise();
         this.kpiData = res;
-       
       }
       this.labelArray = Object.entries(this.kpiData?.data?._point_details).map(
 
@@ -2892,77 +2894,77 @@ if (this.levelwise== 3) {
           return { label, Kpidata: otherKpiData };
         }
       );
-      
-      this.endRangeForFirst=this.labelArray[0]?.Kpidata?.data.forEach(element => {
-      
-        if(element.kpi_type=='Actual'){
-          this.endRange=true;
+
+      this.endRangeForFirst = this.labelArray[0]?.Kpidata?.data.forEach(element => {
+
+        if (element.kpi_type == 'Actual') {
+          this.endRange = true;
         }
-        else{
-          this.endRange=false;
+        else {
+          this.endRange = false;
 
         }
-        
+
       });
-     // First Index
-     this.newKpiNamefirst=this.labelArray[0]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
-     this.newKpiNamefirst=this.labelArray[0]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNamefirst,"");
-     this.labelFirst=this.labelArray[0]?.label?.replace('- rollup','');
-     this.fullFormKpiNamefirst=`${this.newKpiNamefirst}${this.labelFirst} Index`;
-     
+      // First Index
+      this.newKpiNamefirst = this.labelArray[0]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
+      this.newKpiNamefirst = this.labelArray[0]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNamefirst, "");
+      this.labelFirst = this.labelArray[0]?.label?.replace('- rollup', '');
+      this.fullFormKpiNamefirst = `${this.newKpiNamefirst}${this.labelFirst} Index`;
+
 
       // Second Index
-      this.endRangeForSecond=this.labelArray[1]?.Kpidata?.data.forEach(element => {
-        if(element.kpi_type=='Actual'){
-          this.endRangeSecond=true;
+      this.endRangeForSecond = this.labelArray[1]?.Kpidata?.data.forEach(element => {
+        if (element.kpi_type == 'Actual') {
+          this.endRangeSecond = true;
         }
-        else{
-          this.endRangeSecond=false;
+        else {
+          this.endRangeSecond = false;
 
         }
       });
-      this.newKpiNameSecond=this.labelArray[1]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
-      this.newKpiNameSecond=this.labelArray[1]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNameSecond,"");
-      this.labelSecond=this.labelArray[1]?.label?.replace('- rollup','');
-      this.fullFormKpiNamesecond=`${this.newKpiNameSecond}${this.labelSecond} Index`
-    
+      this.newKpiNameSecond = this.labelArray[1]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
+      this.newKpiNameSecond = this.labelArray[1]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNameSecond, "");
+      this.labelSecond = this.labelArray[1]?.label?.replace('- rollup', '');
+      this.fullFormKpiNamesecond = `${this.newKpiNameSecond}${this.labelSecond} Index`
+
       // Third Index
-      this.endRangeForThird=this.labelArray[2]?.Kpidata?.data.forEach(element => {
-        if(element.kpi_type=='Actual'){
-          this.endRangeThird=true;
+      this.endRangeForThird = this.labelArray[2]?.Kpidata?.data.forEach(element => {
+        if (element.kpi_type == 'Actual') {
+          this.endRangeThird = true;
         }
-        else{
-          this.endRangeThird=false;
+        else {
+          this.endRangeThird = false;
 
         }
       });
-      this.newKpiNameThird=this.labelArray[2]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
-      this.newKpiNameThird=this.labelArray[2]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNameThird,"");
-      this.labelThird=this.labelArray[2]?.label?.replace('- rollup','');
-      this.fullFormKpiNameThird=`${this.newKpiNameThird}${this.labelThird} Index`
-      
+      this.newKpiNameThird = this.labelArray[2]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
+      this.newKpiNameThird = this.labelArray[2]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNameThird, "");
+      this.labelThird = this.labelArray[2]?.label?.replace('- rollup', '');
+      this.fullFormKpiNameThird = `${this.newKpiNameThird}${this.labelThird} Index`
+
 
       // Fourth Index
-      this.endRangeForFourth=this.labelArray[3]?.Kpidata?.data.forEach(element => {
-        if(element.kpi_type=='Actual'){
-          this.endRangeFourth=true;
+      this.endRangeForFourth = this.labelArray[3]?.Kpidata?.data.forEach(element => {
+        if (element.kpi_type == 'Actual') {
+          this.endRangeFourth = true;
         }
-        else{
-          this.endRangeFourth=false;
+        else {
+          this.endRangeFourth = false;
 
         }
       });
-      this.newKpiNameFourth=this.labelArray[3]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
-      this.newKpiNameFourth=this.labelArray[3]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNameFourth,"");
-      this.labelFourth=this.labelArray[3]?.label?.replace('- rollup','');
-      this.fullFormKpiNameFourth=`${this.newKpiNameFourth}${this.labelFourth} Index`
-     
-      
-    
+      this.newKpiNameFourth = this.labelArray[3]?.Kpidata?.data[0]?.kpi_name.split(" ").pop();
+      this.newKpiNameFourth = this.labelArray[3]?.Kpidata?.data[0]?.kpi_name?.replace(this.newKpiNameFourth, "");
+      this.labelFourth = this.labelArray[3]?.label?.replace('- rollup', '');
+      this.fullFormKpiNameFourth = `${this.newKpiNameFourth}${this.labelFourth} Index`
+
+
+
     } catch (err) {
-      
+
     }
-    
+
   }
 
 
@@ -2990,30 +2992,30 @@ if (this.levelwise== 3) {
           this.sectionView_1?._personal_data.external_kpi_data[0].is_correct;
 
         window.open(
-          this.http.mainUrl+"/Learning_academy/#/LearningAcademy/library?_game=" +
-            data._game +
-            "&_userid=" +
-            data._userid +
-            "&_team=" +
-            id_coroebus_team +
-            "&_categoryid=" +
-            data._categoryid +
-            "&_briefid=" +
-            data.id_learning_academy_brief +
-            "&_subcategoryid=" +
-            data._subcategoryid +
-            "&brief_type=" +
-            data.brief_type +
-            "&_game_name=" +
-            gameName +
-            "&_team_name=" +
-            teamName +
-            "&_kpi_name=" +
-            this.kpiName +
-            "&_isAttemted=" +
-            isAttemted +
-            "&_isCorrect=" +
-            isCorrect,
+          this.http.mainUrl + "/Learning_academy/#/LearningAcademy/library?_game=" +
+          data._game +
+          "&_userid=" +
+          data._userid +
+          "&_team=" +
+          id_coroebus_team +
+          "&_categoryid=" +
+          data._categoryid +
+          "&_briefid=" +
+          data.id_learning_academy_brief +
+          "&_subcategoryid=" +
+          data._subcategoryid +
+          "&brief_type=" +
+          data.brief_type +
+          "&_game_name=" +
+          gameName +
+          "&_team_name=" +
+          teamName +
+          "&_kpi_name=" +
+          this.kpiName +
+          "&_isAttemted=" +
+          isAttemted +
+          "&_isCorrect=" +
+          isCorrect,
           "_self"
         );
       } else {
@@ -3022,30 +3024,30 @@ if (this.levelwise== 3) {
         const isCorrect = "8";
 
         window.open(
-          this.http.mainUrl+"/Learning_academy/#/LearningAcademy/library?_game=" +
-            data._game +
-            "&_userid=" +
-            data._userid +
-            "&_team=" +
-            id_coroebus_team +
-            "&_categoryid=" +
-            data._categoryid +
-            "&_briefid=" +
-            data.id_learning_academy_brief +
-            "&_subcategoryid=" +
-            data._subcategoryid +
-            "&brief_type=" +
-            data.brief_type +
-            "&_game_name=" +
-            gameName +
-            "&_team_name=" +
-            teamName +
-            "&_kpi_name=" +
-            this.kpiName +
-            "&_isAttemted=" +
-            isAttemted +
-            "&_isCorrect=" +
-            isCorrect,
+          this.http.mainUrl + "/Learning_academy/#/LearningAcademy/library?_game=" +
+          data._game +
+          "&_userid=" +
+          data._userid +
+          "&_team=" +
+          id_coroebus_team +
+          "&_categoryid=" +
+          data._categoryid +
+          "&_briefid=" +
+          data.id_learning_academy_brief +
+          "&_subcategoryid=" +
+          data._subcategoryid +
+          "&brief_type=" +
+          data.brief_type +
+          "&_game_name=" +
+          gameName +
+          "&_team_name=" +
+          teamName +
+          "&_kpi_name=" +
+          this.kpiName +
+          "&_isAttemted=" +
+          isAttemted +
+          "&_isCorrect=" +
+          isCorrect,
           "_self"
         );
       }
@@ -3077,7 +3079,7 @@ if (this.levelwise== 3) {
 
     body1 = {
       _userid:
-      this.sectionView_1?.about_supervisor[0]?this.sectionView_1?.about_supervisor[0].senior_id:this.sectionView_1?.about_RM[0].RM_id,
+        this.sectionView_1?.about_supervisor[0] ? this.sectionView_1?.about_supervisor[0].senior_id : this.sectionView_1?.about_RM[0].RM_id,
       _game: this.sectionView_1?._personal_data?.id_coroebus_game,
       _section_view: "2",
       page_number: "1",
@@ -3085,7 +3087,7 @@ if (this.levelwise== 3) {
     [err1, res1] = await HttpProtocols.to(
       DashboardModel.getCenterDataSectionView_2(body1)
     );
-   
+
     if (!err1 && res1?.status === "success" && res1?.statuscode === 200) {
       this.sectionView_2_Indexwise = res1?.data;
 
@@ -3177,7 +3179,7 @@ if (this.levelwise== 3) {
           this.queryParams?.roleID == null ||
           this.queryParams?.roleID === "undefined" ||
           this.queryParams?.roleID ==
-            this.userSelectionData?._personal_data?.id_role
+          this.userSelectionData?._personal_data?.id_role
         ) {
           this.activeTabForSectionView_2 =
             this.sectionView_2?._ranking_data?.[0].order;
@@ -3356,43 +3358,43 @@ if (this.levelwise== 3) {
     let body: any;
 
     console.log(this.levelwise);
-    this.useridSenior=this.sectionView_1?.about_supervisor[0]?this.sectionView_1?.about_supervisor[0].senior_id:this.sectionView_1?.about_RM[0]?.RM_id;
-    console.log('SuperVisiorId',this.useridSenior);
+    this.useridSenior = this.sectionView_1?.about_supervisor[0] ? this.sectionView_1?.about_supervisor[0].senior_id : this.sectionView_1?.about_RM[0]?.RM_id;
+    console.log('SuperVisiorId', this.useridSenior);
 
     // if (this.sectionView_1?._personal_data.id_role == 4) {
-      
+
     //   this.indexForIslandLogos = 2;
-     
-    
+
+
     // } else if (this.sectionView_1?._personal_data.id_role == 3) {
     //   this.indexForIslandLogos = 0;
     // }
     // console.log("SuperVisiorId",this.sectionView_1)
     body = {
       _userid:
-      this.useridSenior
+        this.useridSenior
       ,
       _game:
-      this.sectionView_1?._personal_data?.id_coroebus_game,
+        this.sectionView_1?._personal_data?.id_coroebus_game,
       _section_view: "3",
       page_number: this.pageNumberForSectionView_3_index,
     };
 
-    
+
 
     [err, res] = await HttpProtocols.to(
-   
+
 
       DashboardModel.getRankingAndOtherDataSectionView_3(body)
     );
-   
+
 
     if (!err && res?.status === "success" && res?.statuscode === 200) {
-      
+
 
       this.pokeData = res?.data?._poke_list;
-      
-      
+
+
 
       if (viewMore) {
         res?.data?._ranking_data?.forEach((element, index) => {
@@ -3433,7 +3435,7 @@ if (this.levelwise== 3) {
     this.GetIndexWisePopup();
   }
   getGraphDataByIdPerformance() {
-   
+
     let obj = {
       _userid: this.queryParams?.userID
         ? this.queryParams?.userID
@@ -3442,7 +3444,7 @@ if (this.levelwise== 3) {
         ? this.queryParams?.gameID
         : this.userSelectionData?.id_coroebus_game,
     };
-   
+
 
     let body = {
       _userid: this.userSelectionData?._personal_data?.USERID,
@@ -3453,7 +3455,7 @@ if (this.levelwise== 3) {
     };
 
     this.http.engagamentlog(body).subscribe((res) => {
- 
+
     });
 
     // this._router.navigate('/performance/page')
@@ -3461,7 +3463,7 @@ if (this.levelwise== 3) {
     this._router.navigate(["/performance/page"], {
       relativeTo: this._route,
       queryParams: {
-        userID:this.Util.encryptData(this.sectionView_1?._personal_data?.USERID),
+        userID: this.Util.encryptData(this.sectionView_1?._personal_data?.USERID),
         gameID: this.Util.encryptData(this.sectionView_1?._personal_data?.id_coroebus_game),
         // roleID: this.Util.encryptData(this.queryParams?.roleID)
       },

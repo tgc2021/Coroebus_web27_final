@@ -18,8 +18,6 @@
       <div class="d-flex">
       <span class="top-bar-game-name text-white">
         <img src="{{headerInfo?.game_logo}}" class="top-bar-game-logo" alt="Logo">
-        
-       
       </span>
       </div>
   
@@ -27,9 +25,11 @@
   
 
         <div class="dropdown d-inline-block" ngbDropdown>
+          <img class="home_btn" style="cursor: pointer; height:3.5vh;margin-right: 1vw;" src="assets/images/TopHierarchyDashboard/skillmunilogo.png" (click)="RedirectionChatBot()">
+
           <img class="home_btn" style="cursor: pointer; height:3vh;margin-right: 1vw;" src="assets/images/TopHierarchyDashboard/home_button.png" (click)="RedirectionToHome()">
 
-          <button type="button" class="d-none- btn header-item noti-icon" id="page-header-notifications-dropdown"
+          <button type="button" class="d-none- btn header-item noti-icon p-0" id="page-header-notifications-dropdown"
             [routerLink]="[ '/notification/list']" ngbDropdownToggle>
 
            
@@ -111,6 +111,8 @@
           <div class="d-flex">
       
             <div class="dropdown d-inline-block" ngbDropdown>
+              <img class="home_btn" style="cursor: pointer; height:3.5vh;margin-right: 1vw;" src="assets/images/TopHierarchyDashboard/skillmunilogo.png" (click)="RedirectionChatBot()">
+
               <img class="home_btn" style="cursor: pointer; height:3vh;margin-right: 1vw;" src="assets/images/TopHierarchyDashboard/home_button.png" (click)="RedirectionToHome()">
     
              
